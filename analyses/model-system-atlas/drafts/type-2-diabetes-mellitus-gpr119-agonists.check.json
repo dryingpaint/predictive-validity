@@ -11,8 +11,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 8",
-   "note": "Chu 2007 = PMID 17289847, epub 2007-02-08; quote verbatim in abstract. Track opens untested on the tool agonist AR231453; proximal readout_tier defensible (decision 15)."
+   "rule": "DRAFTER_BRIEF rule 6 (opener)",
+   "note": "Chu 2007 (PMID 17289847, epub 2007-02-08) abstract quote verbatim; opener of GSK1292263 mouse track, oral, unselected; untested 2007 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -21,8 +22,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 4",
-   "note": "Nunez 2014 PMID 24699248 full text; quote verbatim. GLP-1/GIP/insulin flat at steady state in 96 T2D patients; PYY 5-fold is partial. model_src Chu 2008 (epub 2008-01-17) resolves; registry 2018-01-17 confirmed."
+   "rule": "DRAFTER_BRIEF engagement; track = model x drug x route",
+   "note": "Nunez 2014 (PMID 24699248, epub 2014-04-03) abstract quote verbatim; GSK1292263 oral, T2D unselected; Study 2 metformin arms noted, GLP-1/GIP flat on drug alone. Contra 2014 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -31,8 +33,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 4",
-   "note": "Chu 2007 abstract, quote verbatim; no human exposure yet, untested is right."
+   "rule": "DRAFTER_BRIEF dose table row 1; rule 5 (untested_reason)",
+   "note": "Chu 2007 abstract quote verbatim; no model stated an exposure, occupancy or regimen target or margin for a member: untested, untested_reason no_prediction. GSK1292263, oral.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -41,8 +44,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 8",
-   "note": "Chu 2007 abstract; quote verbatim; untested at model first use."
+   "rule": "DRAFTER_BRIEF rule 6 (opener)",
+   "note": "Chu 2007 quote verbatim; GSK1292263 mouse-track opener, oral, unselected; untested 2007.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -51,8 +55,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 4",
-   "note": "All four Nunez quotes verbatim; registry results NCT01119846 2018-01-17 and NCT01128621 2017-10-16 confirmed. Both registries list fasted/weighted-mean glucose among PRIMARY outcomes, so endpoint_role 'primary' fits at least as well as poc_gate; contra unchanged."
+   "rule": "DRAFTER_BRIEF efficacy (poc_gate); rule 6",
+   "note": "Nunez 2014 conclusion verbatim; GSK1292263 oral; metformin arms noted, scored alone vs placebo; contra 2014 (epub precedes registry 2018-01-17). Registry primaries are AE/PK plus glucose PD, poc_gate reasonable.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -61,8 +66,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "decision 6",
-   "note": "NCT02647320 results posted 2018-05-01; every number in the assembled quote matches the registry HbA1c table. Track already contra, so contra holds. Missed: Daiichi dropped DS-8500a May 2017 (portfolio cut, FierceBiotech/BioSpace); NCT02222350 is Inagaki 2017 doi:10.1136/bmjdrc-2017-000424 (24-h WMG -1.05 mmol/L at 75 mg), fill the null row."
+   "rule": "DRAFTER_BRIEF efficacy (combination_with); track = model x drug x route; rule 6",
+   "note": "NCT02647320 (US/Canada, on metformin) results posted 2018-05-01; HbA1c primary, 75 mg -0.08 p=.566, sitagliptin -0.43; assembled quote matches. Firuglipel own track, Chu 2007 model_src predates trials: contra 2018. Inagaki 2017 same is missing before it.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -71,20 +77,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 5",
-   "note": "Chu 2007 abstract; quote verbatim; the glucose-dependence statement is the class's stated safety prediction."
+   "rule": "DRAFTER_BRIEF rule 6 (opener); safety",
+   "note": "Chu 2007 abstract quote verbatim; glucose-dependence is the stated safety prediction. Firuglipel opener, oral, unselected, untested 2007. GSK1292263 has no safety track on this model (missing).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2017,
-   "rule": "decision 7",
-   "note": "Yamada 2018 (epub 2018-02-27) quotes verbatim in abstract; same holds. But Inagaki 2017 (doi:10.1136/bmjdrc-2017-000424, 2017-09-29, NCT02222350: 'well tolerated without ... hypoglycemia') is the earliest public comparison, so year 2017. model_src Matsumoto 2018 (epub 2018-09-14) post-dates both trials; use Chu 2007 as the model side."
+   "rule": "DRAFTER_BRIEF rule 6 (dating); safety",
+   "note": "Inagaki 2017 (PMID 29071087, epub 2017-09-29) abstract quote verbatim; 99 Japanese T2D, no hypoglycaemia. Earliest public: 2017; model_src Chu 2007 predates firuglipel's trials; firuglipel, oral, unselected. Same holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -93,9 +99,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 8",
-   "note": "Habib 2013 PMC3648684 full text, epub 2013-03-22; quote verbatim in abstract. Human primary colonic cultures are patient ex-vivo cells, in scope; AR231453 is the tool agonist, no member run, only GLP-1 assayed (Fig. 2c). untested is right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "DRAFTER_BRIEF rule 6 (opener)",
+   "note": "Habib 2013 (PMID 23519462, epub 2013-03-22) abstract quote verbatim; human L-cell opener, untested 2013; drug gsk-1292263 (member later compared), route oral.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -104,9 +110,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 4 (#58)",
-   "note": "Nunez 2014 PMC3974707 full text, quote verbatim; epub 2014-04-03 before registry 2018-01-17. Not retro: Katz 2012 (non-member, decision 12) reported raised GLP-1/GIP, the opposite. Null-null rests on Habib's hedged 'may be relatively poor stimuli in the human colon'; same holds, weakly.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "DRAFTER_BRIEF retrodiction (engagement: any same-target patient result counts)",
+   "note": "Nunez quote verbatim. Katz 2012 (JNJ-38431055 in T2D, epub 2012-03-14) precedes Habib epub 2013-03-22: retrodiction true; reproduced GSK1292263's flat GLP-1: retro 2014. Judgement still opens 'Same'/'Not a retrodiction': stale prose.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -115,9 +121,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 8",
-   "note": "Matsumoto 2018 PMID 30217957, epub 2018-09-14; quote verbatim in abstract. Own track is supported by decision 8 (later animal model, member drug's own model, clinically tested members as comparators); opens untested, model entry first in the same year (#30).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "DRAFTER_BRIEF rule 6 (opener)",
+   "note": "Matsumoto 2018 (PMID 30217957, epub 2018-09-14) abstract quote verbatim; GSK1292263 nSTZ rat opener, oral; untested 2018 at model first use.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -126,9 +132,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 10",
-   "note": "Wayback full text re-read: quote verbatim in Results. Comparators chosen as 'already been studied in clinical stages', citing Nunez 2014: retrodiction. GSK1292263's day-14 OGTT null reproduces the 14-day WM-glucose null at exposure above rat EC50 (Suppl. Table 3); retro, not contra. endpoint_role 'primary' fits better than poc_gate.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "DRAFTER_BRIEF retrodiction (reproduced = retro)",
+   "note": "Matsumoto Results quote verbatim in 2022-06-16 Wayback capture; run after Nunez 2014, reproduced GSK1292263's 14-day null: retro, retrodiction true. GSK1292263, oral, unselected; firuglipel split out.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -137,9 +143,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 8",
-   "note": "Polli 2013 PMID 23256625, Xenobiotica 43:498, epub 2012-12-21; quote verbatim in abstract (full text paywalled). In scope: a member drug's own human in-vitro model (decision 8), off-target harm in the small-molecule strip (decision 12; single-modality tile, no `modality` needed). untested is right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "DRAFTER_BRIEF rule 6 (opener)",
+   "note": "Polli 2013 (PMID 23256625, epub 2012-12-21) abstract quote verbatim; GSK1292263 in-vitro DDI panel opener, untested 2012, oral.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -148,9 +154,46 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 11",
-   "note": "Quote verbatim, contiguous in abstract. Safety accepts healthy volunteers (decision 3). BCRP call held (1.34-1.39x), OATP1B1 did not (1.05): partial inside one source, same + partial, not a decision-5 contra, since the flagged harm (raised statin exposure) occurred. CYP3A4 was not predicted in vitro (IC50 >30 uM). Headline caveat in rule_questions.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "DRAFTER_BRIEF safety; population_group",
+   "note": "Polli 2013 quote verbatim; healthy-volunteer DDI (300 mg BID), subjects healthy_volunteers, population words set; population_group unselected (no HV code, nothing imported). Same + partial stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2007,
+   "rule": "DRAFTER_BRIEF rule 6 (cell opens at model_first_use_year, untested)",
+   "note": "Chu 2007 quote verbatim; firuglipel, oral fine. A 2018 opener sorts after the track's own 2018 contra (efficacy 3) and after Inagaki 2017's same; open at model_first_use_year 2007.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: a track opens at model_first_use_year with untested. Both agree on untested; the firuglipel mouse-track opener belongs at 2007, not 2018. Not the track's latest entry (efficacy 3 contra is), so no untested_reason."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF rule 6 (opener)",
+   "note": "Matsumoto 2018 abstract quote verbatim (epub 2018-09-14); firuglipel nSTZ rat opener, oral, untested 2018 at model first use; precedes efficacy 8 in the list.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF retrodiction (failed to reproduce = contra); efficacy (combination_with)",
+   "note": "Registry quote assembled from NCT02647320 table (posted 2018-05-01). Matsumoto epub 2018-09-14 post-dates firuglipel's results: retrodiction. Did not reproduce the HbA1c add-on failure (metformin): contra 2018, partial. Firuglipel, oral, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -159,7 +202,9 @@
   "In-vitro transporter/CYP panel vs clinical statin DDI for GSK1292263: Polli 2013, doi:10.3109/00498254.2012.739719 — in vitro predicted BCRP and OATP1B1 inhibition; clinic (300 mg BID) showed 1.34-1.39x statin AUC consistent with intestinal BCRP/CYP3A4 and no OATP1B1 inhibition (simvastatin acid ratio 1.05). A stated in-vitro-to-human comparison for a member drug with no track (scope question below).",
   "Sponsor discontinuation the draft says it could not find: Daiichi Sankyo removed DS-8500a from its pipeline in May 2017 as a portfolio decision (FierceBiotech 'Daiichi cuts 6 medicines in last quarter'; BioSpace 'Daiichi Sankyo Abandons 6 Clinical Programs in Q1 Update'); tier 5, patient side only.",
   "Inagaki 2017 (NCT02222350), doi:10.1136/bmjdrc-2017-000424, epub 2017-09-29: 28-day placebo-controlled DS-8500a trial, primary 24-h WMG met (-0.74 and -1.05 mmol/L at 10 and 75 mg), no hypoglycaemia. Listed in the draft with null doi and quote.",
-  "MBX-2982 Phase 2 (NCT01035879, 4 weeks, no posted results): only a secondary database summary (NCATS Inxight, drugs.ncats.io/substance/B5TRY67L51) reports lower mean and post-meal glucose with higher insulin and GLP-1; no sponsor press release found, so at best tier 5 with trial_unreported: true. JNJ-38431055 (Katz 2012, doi:10.1111/j.1463-1326.2012.01587.x, no 24-h WMG effect after 14 days) is a non-member and stays out per decision 12."
+  "MBX-2982 Phase 2 (NCT01035879, 4 weeks, no posted results): only a secondary database summary (NCATS Inxight, drugs.ncats.io/substance/B5TRY67L51) reports lower mean and post-meal glucose with higher insulin and GLP-1; no sponsor press release found, so at best tier 5 with trial_unreported: true. JNJ-38431055 (Katz 2012, doi:10.1111/j.1463-1326.2012.01587.x, no 24-h WMG effect after 14 days) is a non-member and stays out per decision 12.",
+  "Firuglipel efficacy on t2d-rodent-gpr119-ogtt: a 2017 'same' entry for Inagaki 2017 (doi:10.1136/bmjdrc-2017-000424, epub 2017-09-29, NCT02222350, 24-h WMG primary met at 10 and 75 mg) between the opener and the 2018 contra; it is only in patient_trials, which change no status.",
+  "GSK1292263 safety on t2d-rodent-gpr119-ogtt: safety 1-2 now belong to firuglipel, leaving no GSK1292263 track for the glucose-dependence (hypoglycaemia) prediction; Nunez 2014 (doi:10.1371/journal.pone.0092494, 14 days, 96 T2D) is the patient side to check for hypoglycaemia and tolerability (abstract silent; full text not re-read here)."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

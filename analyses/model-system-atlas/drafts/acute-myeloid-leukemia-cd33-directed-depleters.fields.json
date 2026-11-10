@@ -1,0 +1,152 @@
+{
+ "tile": "acute-myeloid-leukemia-cd33-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to 'vadastuximab talirine', route iv (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to 'bi-836858', route iv (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug set to 'bi-836858', route iv (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to 'vadastuximab talirine', route iv (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to 'vadastuximab talirine', route iv (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to 'bi-836858', route iv (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to 'vadastuximab talirine', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same->untested (single-arm ruling: NCT01902329 primary endpoints are adverse events and lab abnormalities; CR/CRi not a pre-specified gate); strengthens true; drug set to 'vadastuximab talirine', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2018->2017 (earliest public: sponsor discontinuation release 2017-06-19); retrodiction false->true, status stays contra (same-target retrodiction ruling: gemtuzumab AML results preceded the 2013 model; failed to reproduce); combination_with azacitidine or decitabine (combination ruling); co-primary ruling: neither met; drug set to 'vadastuximab talirine', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to 'bi-836858', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status contra->untested (single-arm ruling: NCT01690624 primaries MTD/DLT, response secondary per Vasu 2022); year 2025->2021 and src registry->Vasu 2022 doi:10.3324/haematol.2020.274118 (checker adjudication, rule 6 Crossref epub 2021-12-02); quote replaced with the paper's endpoint sentence; untested_reason not_measured; drug set to 'bi-836858', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to 'class' (human genetic predictor built on gemtuzumab, a non-member), route not_applicable; rule question 6 settled: in scope as its own patient-level track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug set to 'vadastuximab talirine', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "status same->retro (same-target retrodiction ruling: CD33 depletion's AML efficacy public before the model); year 2025->2023 (earliest public: EHA 2023 abstract P522, PMC10429699); single-arm ruling: ORR a registered primary; drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to 'vadastuximab talirine', route iv (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to 'vadastuximab talirine', route iv (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to 'bi-836858', route iv (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "year 2025->2023 (earliest public: EHA 2023 abstract P522 reported the safety result); status same unchanged (no earlier patient result for this product); drug set to 'anti-CD33 CAR-NK cells', route iv (from null)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "opening untested entry for the vadastuximab talirine (iv) track of the rs12459419 genotype predictor, at its first use for that drug (Stanchina 2019)"
+  }
+ ]
+}

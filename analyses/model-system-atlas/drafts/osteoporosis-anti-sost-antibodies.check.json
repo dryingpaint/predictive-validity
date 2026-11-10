@@ -73,9 +73,10 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "McClung 2014 NEJM: primary endpoint is 12-month lumbar spine BMD (confirmed in abstract); quote is first part of abstract sentence. Blosozumab Recker 2015 quote verbatim. Paired same, outcome_tested positive supported."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "quote_found": "abstract_only",
+   "note": "Press release 2011-04-21 (PRNewswire, re-fetched) states phase 2 met its 12-month lumbar spine BMD primary endpoint; year 2011 right (rule 6). McClung quote verbatim in abstract. Rat 2009 prospective; same; romosozumab, sc, unselected match."
   },
   {
    "cell": "efficacy",
@@ -91,9 +92,10 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Same McClung pairing on monkey track; direction only reasonable given different sites and durations."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "quote_found": "abstract_only",
+   "note": "Same press release 2011-04-21 confirmed; year 2011 right. Monkey model 2010 precedes it, prospective same. Quote verbatim in McClung 2014 abstract; romosozumab, sc, unselected correct."
   },
   {
    "cell": "safety",
@@ -137,10 +139,10 @@
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "McClung 2014 NEJM quote verbatim in abstract. Model (2005) prospective to phase 2, so same not retro; paired, direction_only fair. Class relied on carrier genetics as rationale.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "checked_by": "CHECKER_BRIEF / fields",
+   "quote_found": "abstract_only",
+   "note": "Press release 2011-04-21 confirmed; year 2011 right. Carrier genetics 2005 prospective. Draft has drug 'class', correct for human_genetic (fields note says romosozumab); route sc is patients' route; unselected correct."
   },
   {
    "cell": "efficacy",
@@ -330,6 +332,26 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "No CD62P/P-selectin platelet activation at 1-300 ug/mL (~10x Cmax 28.1 ug/mL); retrodiction after ARCH, failed to reproduce CV harm, so contra per DRAFTER_BRIEF retrodiction rule; product_in_model true correct."
+  },
+  {
+   "cell": "safety",
+   "index": 16,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "quote_found": "abstract_only",
+   "note": "Ominsky 2017 (PMID 27865001, epub 2016-12-13); quote is the abstract's last sentence verbatim. Untested 2016 opener fits passing-safety-claim rule; romosozumab, sc, unselected right. Model postdates FRAME, so retrodiction flag should be true."
+  },
+  {
+   "cell": "safety",
+   "index": 17,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "quote_found": "abstract_only",
+   "note": "FRAME (PMID 27641143, epub 2016-09-18) quote verbatim; abstract adds 1 AFF, 2 ONJ on romosozumab. Same drug's result predates monkey paper, so retro; partial fair; year 2016 = model epub. Drug, sc, unselected right."
   }
  ],
  "missing": [

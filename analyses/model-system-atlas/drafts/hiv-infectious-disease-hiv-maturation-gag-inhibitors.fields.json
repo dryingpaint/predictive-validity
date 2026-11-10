@@ -1,0 +1,111 @@
+{
+ "tile": "hiv-infectious-disease-hiv-maturation-gag-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug -> bms-955176, route -> oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug -> bms-955176, route -> oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug -> fipravirimat, route -> oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug -> class, route -> oral (proxy track: only non-member bevirimat was ever run in this model)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug -> bms-955176, route -> oral"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug -> bms-955176, route -> oral"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug -> fipravirimat, route -> oral"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug -> class, route -> oral (proxy track: only non-member bevirimat was ever run in this model)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug -> bms-955176, route -> oral"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug -> bms-955176, route -> oral, combination_with -> tenofovir disoproxil fumarate/emtricitabine"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "drug -> fipravirimat, route -> oral, combination_with -> dolutegravir"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "what": "drug -> fipravirimat, route -> oral"
+  },
+  {
+   "cell": "dose",
+   "index": 9,
+   "what": "drug -> gsk-2838232, route -> oral"
+  },
+  {
+   "cell": "dose",
+   "index": 10,
+   "what": "drug -> fipravirimat, route -> oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug -> bms-955176, route -> oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug -> bms-955176, route -> oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug -> fipravirimat, route -> oral, combination_with -> two NRTIs (investigator-selected backbone)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug -> class, route -> oral (proxy track: only non-member bevirimat was ever run in this model)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug -> gsk-2838232, route -> oral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug -> fipravirimat, route -> oral, combination_with -> two NRTIs (investigator-selected backbone)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2017 -> 2015: earlier public date, CROI 2015 late-breaker abstract 114LB (rule 6); status same unchanged"
+  }
+ ],
+ "added": []
+}

@@ -1,0 +1,87 @@
+{
+ "tile": "asthma-ptgdr2-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug azd-1981, route oral (from null); opener of the AZD1981 track"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true (ruling: model result post-dates OC000459 patient sputum/ex-vivo eosinophil data, Singh 2012); drug fevipiprant, route oral; model_src -> Sykes 2016"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug azd-1981, route oral (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug fevipiprant, route oral (from null); model_src -> Sykes 2016"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug qav-680, route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "retrodiction false -> true, status stays contra (ruling: Sandham 2013 model result post-dates OC000459 patient FEV1 data); drug azd-1981, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug fevipiprant, route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug MK-1029, route oral (from null); opener of the MK-1029 challenge track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "retrodiction false -> true, status stays contra (ruling: Diamant 2014 post-dates AZD1981 2013-09-10 and OC000459 results); drug azd-1981, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug azd-1981, route oral (from null)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "fevipiprant opener, untested 2016 (Sykes 2016 Mol Pharmacol, human eosinophil/Th2 assays)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "arry-502 retro 2014 (Wenzel 2014 ERS abstract 4836: FeNO -27.0 ppb vs placebo, Th2-high subgroup); split from entry 2 per checker adjudication"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "fevipiprant opener, untested 2016 (Sykes 2016)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "bi-671800 retro 2015 (Hall 2015, FEV1 primary met), split from entry 2"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "fevipiprant contra 2016, retrodiction (Erpenbeck 2016b, FEV1 primary missed), split from entry 2"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "MK-1029 contra 2019, retrodiction, combination with montelukast (NCT01624974 FEV1 missed; NCT02720081 met), split from entry 5"
+  }
+ ]
+}

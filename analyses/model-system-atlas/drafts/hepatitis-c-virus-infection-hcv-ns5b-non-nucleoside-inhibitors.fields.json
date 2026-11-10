@@ -1,0 +1,132 @@
+{
+ "tile": "hepatitis-c-virus-infection-hcv-ns5b-non-nucleoside-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug dasabuvir, route oral; status same -> retro, retrodiction true (Reddy 2012 modelled 2007-2011 NNI monotherapy results already public; HCV-796 patient RNA decline public 2006); split: filibuvir, abt-072, setrobuvir, tegobuvir, lomibuvir appended as entries 6-14"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true (target rule: HCV-796 patient RNA decline public 2006, Reddy 2012 before the review); quote and src swapped from MedR reviewer-error sentence to ClinPharmR ABT-333 400 mg monotherapy sentence; drug dasabuvir, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true (target rule: HCV-796 patient RNA decline, AASLD 2006, predates Chen 2007); RULE QUESTION settled: table row is not a verbatim sentence, quote and src swapped to FDA ClinPharmR 2014 prose sentence, year 2012 kept from Reddy Table 1; drug dasabuvir, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "status same -> retro, retrodiction true (dose rule: model built 2012 on dasabuvir's own earlier monotherapy results); drug dasabuvir, route oral; model_filed null -> false; split: other members appended as entries 3-7"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true (dose rule: tox margin first public in the 2014 FDA review, after dasabuvir's own AVIATOR results, Oct-Nov 2012); drug dasabuvir, route oral; model_first_use_year 2008 (pre-FIH proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2014 -> 2012 (earlier public date: AVIATOR results released Oct 2012, Enanta press release 2012-10-17, AASLD Nov 2012); drug dasabuvir, route oral, combination_with paritaprevir/r + ombitasvir +/- ribavirin (combination design)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug filibuvir, route oral, combination_with peginterferon alfa-2a + ribavirin (combination design; status unchanged)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug dasabuvir, route oral, combination_with three-DAA partners; status left for the pending decision-4 adjudication (untested)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "status same -> retro, retrodiction true (target rule: dasabuvir combination cures public Oct 2012 / Poordad NEJM 2013-01-03, before Shi Gut 2013); year 2015 -> 2014 (BMS UNITY press release and AASLD Nov 2014); single-arm design scored on SVR12; drug beclabuvir, route oral, combination daclatasvir + asunaprevir, population_group stage_or_line"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "model_id -> hcv-chimeric-mouse-patient-virus (patient-level use is its own system, prediction_level patient), strengthens dropped as first entry on its track; drug beclabuvir, route oral, population_group stage_or_line; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "status same -> retro, retrodiction true (safety rule: tox statement first public in the 2014 FDA review, after dasabuvir's own AVIATOR patients 2012); drug dasabuvir, route oral"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "retro 2012, hcv-gt1-replicon x filibuvir oral: Reddy 2012 Table 1, retrodiction (split from entry 2)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "opener, hcv-gt1-replicon x abt-072 oral, untested 2012 (proxy year; split from entry 2)"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "retro 2012, hcv-gt1-replicon x abt-072 oral: Reddy 2012 Table 1, retrodiction (split from entry 2)"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "what": "opener, hcv-gt1-replicon x setrobuvir oral, untested 2012 (proxy year; split from entry 2)"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "retro 2012, hcv-gt1-replicon x setrobuvir oral: Reddy 2012 Table 1, retrodiction (split from entry 2)"
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "what": "opener, hcv-gt1-replicon x tegobuvir oral, untested 2012 (proxy year; split from entry 2)"
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "what": "retro 2012, hcv-gt1-replicon x tegobuvir oral: Reddy 2012 Table 1, retrodiction (split from entry 2)"
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "what": "opener, hcv-gt1-replicon x lomibuvir oral, untested 2012 (proxy year; split from entry 2)"
+  },
+  {
+   "cell": "engagement",
+   "index": 14,
+   "what": "retro 2012, hcv-gt1-replicon x lomibuvir oral: Reddy 2012 Table 1, retrodiction (split from entry 2)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "retro 2012, hcv-vk-pkpd-model x filibuvir oral: Reddy 2012 Table 1 (split from entry 1)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "retro 2012, hcv-vk-pkpd-model x abt-072 oral: Reddy 2012 Table 1 (split from entry 1)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "retro 2012, hcv-vk-pkpd-model x setrobuvir oral: Reddy 2012 Table 1 (split from entry 1)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "retro 2012, hcv-vk-pkpd-model x tegobuvir oral: Reddy 2012 Table 1 (split from entry 1)"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "contra 2012, hcv-vk-pkpd-model x lomibuvir oral: Reddy 2012 Table 1 (split from entry 1)"
+  }
+ ]
+}

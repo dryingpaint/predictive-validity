@@ -1,0 +1,147 @@
+{
+ "tile": "diffuse-large-b-cell-lymphoma-cd19-directed-depleters",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2011 -> 2009, src/quote Blanc 2011 review -> Al-Katib 2009 (10.1158/1078-0432.ccr-08-2808), primary model paper; rule 6 earliest date and rule 2 (review not a source); model_first_use_year 2009 on the track; status untested unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "status same -> retro, retrodiction true: ADCT-402 xenografts (2018) post-date anti-CD19 CAR T responses in refractory DLBCL (Kochenderfer JCO epub 2014-08-25); efficacy retrodiction counts any drug of the same target and action"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "year 2023 -> 2022: earlier public date, ASH 2022 Blood abstract 10.1182/blood-2022-159626; status retro unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "combination_with rituximab; design note (single-arm, pre-set ORR bar not met, contra stands); model_src -> Al-Katib 2009; drug coltuximab ravtansine, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "combination_with ICE or DHAP chemotherapy; design note; status contra unchanged; drug inebilizumab, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "single-arm design note; status same unchanged; drug tisagenlecleucel, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to 'tisagenlecleucel', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to 'inebilizumab', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to 'tisagenlecleucel', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug set to 'loncastuximab tesirine', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to 'coltuximab ravtansine', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to 'loncastuximab tesirine', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to 'loncastuximab tesirine', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug set to 'inebilizumab', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug set to 'tisagenlecleucel', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to 'tisagenlecleucel', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to 'inebilizumab', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to 'loncastuximab tesirine', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug set to 'loncastuximab tesirine', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug set to 'loncastuximab tesirine', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "drug set to 'loncastuximab tesirine', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to 'coltuximab ravtansine', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to 'loncastuximab tesirine', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to 'loncastuximab tesirine', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to 'inebilizumab', route iv, population_group stage_or_line (track fields; no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug set to 'tisagenlecleucel', route iv, population_group stage_or_line (track fields; no status change)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "opener untested 2009, sar3419-lymphoma-xenograft x coltuximab ravtansine x iv: Al-Katib 2009 'well-tolerated' claim now a safety prediction"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "same 2016, coltuximab ravtansine + rituximab well tolerated in R/R DLBCL (Coiffier 2016, BJH), paired with Al-Katib 2009; prospective (phase 1 first public ASH Dec 2009)"
+  }
+ ]
+}

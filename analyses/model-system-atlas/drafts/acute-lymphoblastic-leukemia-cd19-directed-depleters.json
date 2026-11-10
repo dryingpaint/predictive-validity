@@ -52,7 +52,11 @@
     "src": "https://doi.org/10.1158/1078-0432.CCR-07-0674",
     "srcLabel": "Brentjens 2007",
     "quote": "Bioluminescent imaging of tumor in treated mice failed to identify a conserved site of tumor relapse, consistent with successful homing by tumor-specific T cells to systemic sites of tumor involvement.",
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "drug": "vadacabtagene leraleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "nalm6-scid-beige-19-28z",
@@ -89,7 +93,11 @@
     "srcLabel": "Brentjens 2013",
     "quote": "Nonetheless, in our studies, despite the steroid limited duration of 19-28z CAR modified T cells, CD19 targeted modified T cell persistence was sufficient to convert all patients with detectable disease to an MRD − status",
     "readout_tier": "direct",
-    "reason": "CD19+ clones cleared in patients"
+    "reason": "CD19+ clones cleared in patients",
+    "drug": "vadacabtagene leraleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -127,7 +135,11 @@
     "short": "Mouse schedule, no human cell dose",
     "src": "https://doi.org/10.1158/1078-0432.CCR-07-0674",
     "srcLabel": "Brentjens 2007",
-    "quote": "A treatment schedule of 4 weekly T-cell injections, designed to prolong in vivo T-cell function, further improved long-term survival."
+    "quote": "A treatment schedule of 4 weekly T-cell injections, designed to prolong in vivo T-cell function, further improved long-term survival.",
+    "drug": "vadacabtagene leraleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "pptp-all-pdx-sar3419",
@@ -165,7 +177,11 @@
     "srcLabel": "Carol 2013",
     "quote": "SAR3419 also exerted significant efficacy against chemoresistant BCP-ALL xenografts over a large (10-fold) dose range and significantly enhanced VXL-induced leukemia progression delay in two highly chemoresistant xenografts by up to 82 days.",
     "untested_reason": "no_prediction",
-    "reason": "No human exposure target stated"
+    "reason": "No human exposure target stated",
+    "drug": "coltuximab ravtansine",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "syngeneic-mcd19-car-mouse",
@@ -203,7 +219,11 @@
     "srcLabel": "FDA SBRA Tecartus 2020",
     "quote": "an in vivo study conducted using an analogous murine CAR construct recognizing the murine CD19 molecule demonstrated anti-tumor activity and increased survival in a lymphodepleted syngeneic adoptive transfer mouse model of CD19+ B cell lymphoma.",
     "untested_reason": "no_prediction",
-    "reason": "No human dose stated"
+    "reason": "No human dose stated",
+    "drug": "brexucabtagene autoleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -240,7 +260,11 @@
     "short": "Mice: systemic ALL eradicated",
     "src": "https://doi.org/10.1158/1078-0432.CCR-07-0674",
     "srcLabel": "Brentjens 2007",
-    "quote": "The finding that modifications in CAR design as well as T-cell dosing allowed for the complete eradication of systemic disease affects the design of clinical trials using this treatment strategy."
+    "quote": "The finding that modifications in CAR design as well as T-cell dosing allowed for the complete eradication of systemic disease affects the design of clinical trials using this treatment strategy.",
+    "drug": "vadacabtagene leraleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "pptp-all-pdx-sar3419",
@@ -266,7 +290,7 @@
     "model_first_use_year": 2013,
     "confidence": "medium",
     "confidence_note": "Full text read (PMC3618498). Published Feb 2013, after the adult phase 2 began (Oct 2011) but before its results.",
-    "judgement": "Prospective: the trial outcome was unknown when the xenograft data were published.",
+    "judgement": "Prospective: the trial outcome was unknown when the xenograft data were published. Carol 2013 postdates CD19-directed ALL responses (CAR T, blinatumomab), but the track compares with coltuximab's own trial, not public until 2015, so entry 5 stays a prospective contra.",
     "prediction_level": "class",
     "model": "Patient-derived ALL xenografts in NOD/SCID mice (PPTP)",
     "year": 2013,
@@ -275,7 +299,11 @@
     "short": "PDX: responses in 6 of 7",
     "src": "https://doi.org/10.1158/1078-0432.CCR-12-3613",
     "srcLabel": "Carol 2013",
-    "quote": "SAR3419 significantly delayed the progression of 4 of 4 CD19(+) BCP-ALL and 3 of 3 MLL-ALL xenografts, induced objective responses in all but one xenograft but was ineffective against T-lineage ALL xenografts."
+    "quote": "SAR3419 significantly delayed the progression of 4 of 4 CD19(+) BCP-ALL and 3 of 3 MLL-ALL xenografts, induced objective responses in all but one xenograft but was ineffective against T-lineage ALL xenografts.",
+    "drug": "coltuximab ravtansine",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "pptp-all-pdx-cd19-level",
@@ -312,7 +340,11 @@
     "srcLabel": "Carol 2013",
     "quote": "Relative surface CD19 expression across the xenograft panel significantly correlated with leukemia progression delay and objective response measure scores.",
     "untested_reason": "not_measured",
-    "reason": "No trial tested CD19 level"
+    "reason": "No trial tested CD19 level",
+    "drug": "coltuximab ravtansine",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "nalm6-scid-beige-19-28z",
@@ -343,7 +375,7 @@
     "model": "19-28z CAR T cells in SCID-Beige mice with systemic NALM-6 ALL",
     "year": 2013,
     "status": "same",
-    "note": "All five adults with relapsed B-ALL reached MRD-negative complete remission after 19-28z T cells.",
+    "note": "Single-arm phase 1 with no success bar; its primary endpoint was safety, and MRD-negative CR in 5/5 adults was a secondary readout.",
     "short": "5 of 5 MRD-negative CR",
     "src": "https://doi.org/10.1126/scitranslmed.3005930",
     "srcLabel": "Brentjens 2013",
@@ -364,7 +396,11 @@
       "quote": "Safety reasons"
      }
     ],
-    "untested_reason": "unsettled"
+    "untested_reason": "unsettled",
+    "drug": "vadacabtagene leraleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "pptp-all-pdx-sar3419",
@@ -395,7 +431,7 @@
     "model": "Patient-derived ALL xenografts in NOD/SCID mice (PPTP)",
     "year": 2015,
     "status": "contra",
-    "note": "Adult phase 2 gave a 25.5% response rate lasting 1.9 months and stopped early; xenografts had predicted near-universal responses.",
+    "note": "Single-arm phase 1/2 monotherapy, primary endpoint ORR: 25.5% lasting 1.9 months, stopped early; xenografts predicted near-universal responses.",
     "short": "ORR 25.5%, trial stopped",
     "src": "https://doi.org/10.1016/j.clml.2015.12.004",
     "srcLabel": "Kantarjian 2016",
@@ -410,7 +446,11 @@
       "doi": "10.1016/j.clml.2015.12.004",
       "quote": "The study is stopped due to very modest activity compared to competitors"
      }
-    ]
+    ],
+    "drug": "coltuximab ravtansine",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "syngeneic-mcd19-car-mouse",
@@ -445,7 +485,11 @@
     "short": "Surrogate CAR: lymphoma mice",
     "src": "https://www.fda.gov/media/141093/download",
     "srcLabel": "FDA SBRA Tecartus 2020",
-    "quote": "an in vivo study conducted using an analogous murine CAR construct recognizing the murine CD19 molecule demonstrated anti-tumor activity and increased survival in a lymphodepleted syngeneic adoptive transfer mouse model of CD19+ B cell lymphoma."
+    "quote": "an in vivo study conducted using an analogous murine CAR construct recognizing the murine CD19 molecule demonstrated anti-tumor activity and increased survival in a lymphodepleted syngeneic adoptive transfer mouse model of CD19+ B cell lymphoma.",
+    "drug": "brexucabtagene autoleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "syngeneic-mcd19-car-mouse",
@@ -476,7 +520,7 @@
     "model": "Syngeneic murine anti-mouse-CD19 CAR T cells in lymphodepleted lymphoma-bearing mice",
     "year": 2021,
     "status": "same",
-    "note": "ZUMA-3: 71% overall complete remission in adults with relapsed or refractory B-ALL after one KTE-X19 infusion.",
+    "note": "ZUMA-3 single-arm phase 2, primary endpoint overall CR/CRi: 71% after one KTE-X19 infusion, as the mouse predicted.",
     "short": "ZUMA-3: 71% CR/CRi",
     "src": "https://doi.org/10.1016/S0140-6736(21)01222-8",
     "srcLabel": "Shah 2021",
@@ -491,7 +535,11 @@
       "doi": "10.1093/oncolo/oyac163",
       "quote": "Of 54 patients in the primary efficacy population, OCR rate was 65% (95% CI: 51, 77), and CR rate was 54% (95% CI: 40, 67)."
      }
-    ]
+    ],
+    "drug": "brexucabtagene autoleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -530,7 +578,11 @@
     "srcLabel": "Brentjens 2007",
     "quote": "Bioluminescent imaging of tumor in treated mice failed to identify a conserved site of tumor relapse, consistent with successful homing by tumor-specific T cells to systemic sites of tumor involvement.",
     "untested_reason": "no_prediction",
-    "reason": "Species cannot show CRS"
+    "reason": "Species cannot show CRS",
+    "drug": "vadacabtagene leraleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "nod-scid-sar3419-tox",
@@ -566,7 +618,11 @@
     "short": "Mice: no obvious toxicity",
     "src": "https://doi.org/10.1158/1078-0432.CCR-12-3613",
     "srcLabel": "Carol 2013",
-    "quote": "The long term toxicity study carried out in non-engrafted mice revealed there were no obvious side effects caused by SAR3419 exposure"
+    "quote": "The long term toxicity study carried out in non-engrafted mice revealed there were no obvious side effects caused by SAR3419 exposure",
+    "drug": "coltuximab ravtansine",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "nod-scid-sar3419-tox",
@@ -603,7 +659,11 @@
     "src": "https://doi.org/10.1016/j.clml.2015.12.004",
     "srcLabel": "Kantarjian 2016",
     "quote": "One dose-limiting toxicity was observed at 90 mg/m(2) (grade 3 peripheral motor neuropathy); therefore, 70 mg/m(2) was selected for the dose-expansion phase.",
-    "reason": "Tolerated at selected dose"
+    "reason": "Tolerated at selected dose",
+    "drug": "coltuximab ravtansine",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "syngeneic-mcd19-car-mouse",
@@ -638,7 +698,11 @@
     "short": "Mice: normal B cells destroyed",
     "src": "https://www.fda.gov/media/141093/download",
     "srcLabel": "FDA SBRA Tecartus 2020",
-    "quote": "These studies indicated that the CAR T cells could target normal B cells, however, no other effects on the overall health of the animals were observed."
+    "quote": "These studies indicated that the CAR T cells could target normal B cells, however, no other effects on the overall health of the animals were observed.",
+    "drug": "brexucabtagene autoleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "syngeneic-mcd19-car-mouse",
@@ -667,14 +731,18 @@
     "judgement": "Mouse silence on CRS (grade >=3 26%) and neurotoxicity (35%) not scored as a miss per the brief; only the stated B-cell harm is scored.",
     "prediction_level": "class",
     "model": "Syngeneic murine anti-mouse-CD19 CAR T cells in lymphodepleted lymphoma-bearing mice",
-    "year": 2022,
+    "year": 2021,
     "status": "same",
-    "note": "The B-ALL label warns of hypogammaglobulinemia, the predicted on-target B-cell loss; CRS and neurotoxicity were outside what mice could show.",
+    "note": "B-ALL label (Oct 2021) warns of hypogammaglobulinemia, the predicted B-cell loss; earliest public date is the label. CRS was outside mouse reach.",
     "short": "B-cell loss held; CRS unscorable",
     "src": "https://doi.org/10.1093/oncolo/oyac163",
     "srcLabel": "FDA approval summary 2022",
     "quote": "The USPI for brexu-cel has Warnings and Precautions for CRS, neurologic toxicity, HLH/MAS, serious infections, prolonged cytopenias, hypogammaglobulinemia, and secondary malignancies.",
-    "reason": "On-target B-cell loss held"
+    "reason": "On-target B-cell loss held",
+    "drug": "brexucabtagene autoleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -710,7 +778,11 @@
     "model": "Human 19-28z CAR T cells in SCID-beige mice bearing intraperitoneal Raji tumours (CRS model)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "vadacabtagene leraleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -732,7 +804,7 @@
     "population": "Relapsed/refractory CD19+ B-cell ALL",
     "confidence": "high",
     "confidence_note": "Full text read (PMC6410714); citation markers dropped from quote.",
-    "judgement": "Retrodiction: patient CRS (Brentjens 2013, Davila 2014) preceded the model. Neurotoxicity absent in mice, so called partial rather than a full reproduction.",
+    "judgement": "Retrodiction: patient CRS (Brentjens 2013, Davila 2014) preceded the model. Neurotoxicity absent in mice, so called partial rather than a full reproduction. Retro rests on 19-28z (JCAR015) patients' own published CRS cytokines.",
     "year": 2018,
     "status": "retro",
     "product_in_model": true,
@@ -747,7 +819,11 @@
     "model": "Human 19-28z CAR T cells in SCID-beige mice bearing intraperitoneal Raji tumours (CRS model)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "vadacabtagene leraleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -783,7 +859,11 @@
     "model": "CD19- or CD44v6-CAR T cells in HSPC-humanized NSG-SGM3 mice with high ALL-CM leukemia burden (CRS/neurotoxicity model)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "vadacabtagene leraleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -805,7 +885,7 @@
     "population": "Relapsed/refractory CD19+ B-cell ALL",
     "confidence": "medium",
     "confidence_note": "Abstract only (paywalled); CD19 and CD44v6 CARs both used per ACIR digest, not verified in full text.",
-    "judgement": "Retrodiction; not a member product, product_in_model false. CD44v6-CAR arms are a sibling target and are not the basis of the call.",
+    "judgement": "Retrodiction; not a member product, product_in_model false. CD44v6-CAR arms are a sibling target and are not the basis of the call. Drug set to vadacabtagene leraleucel: the CRS and neurotoxicity reproduced were already public for 19-28z (JCAR015) patients, so the retrodiction rests on that drug's own result; the mouse CAR was a sibling (product_in_model false).",
     "year": 2018,
     "status": "retro",
     "product_in_model": false,
@@ -820,7 +900,11 @@
     "model": "CD19- or CD44v6-CAR T cells in HSPC-humanized NSG-SGM3 mice with high ALL-CM leukemia burden (CRS/neurotoxicity model)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "vadacabtagene leraleucel",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -856,7 +940,11 @@
     "model": "Conventional vs IL-6-shRNA (ssCART-19) CD19 CAR T cells in NOD/SCID/gamma-c-null mice bearing luciferase Raji cells",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "CD19 CAR-T cells with CRS suppression technology",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -893,7 +981,11 @@
     "model": "Conventional vs IL-6-shRNA (ssCART-19) CD19 CAR T cells in NOD/SCID/gamma-c-null mice bearing luciferase Raji cells",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "CD19 CAR-T cells with CRS suppression technology",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ]
  }

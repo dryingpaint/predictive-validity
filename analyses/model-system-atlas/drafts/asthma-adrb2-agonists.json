@@ -14,7 +14,7 @@
  "modality_groups": [
   "small molecule"
  ],
- "class_share": 0.048,
+ "class_share": 0.046,
  "cells": {
   "engagement": [
    {
@@ -52,7 +52,11 @@
     "srcLabel": "Aparici 2012",
     "quote": "In conclusion, our results suggest that abediterol has a preclinical profile for once-daily dosing in humans together with a fast onset of action and a favorable cardiovascular safety profile.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -66,7 +70,7 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "duration: guinea-pig bronchoprotection t1/2 36 h and human-bronchus t1/2 ~690 min vs FEV1 improvement sustained to 36 h in asthma patients; not the same quantity",
@@ -74,7 +78,7 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level (paywalled). First-in-patient five-way crossover (abediterol 5, 10, 25 ug, salmeterol, placebo; male persistent asthmatics on ICS); no ClinicalTrials.gov record was found for it, so registry_date is null. Healthy volunteers had already shown 36-h airway-conductance gains at 5-50 ug (Timmer 2014, https://doi.org/10.1002/jcph.355, online 2014-07-08). The dose-ranging study NCT01425801 (Singh 2014, https://doi.org/10.1186/1471-2466-14-176; results posted 2018-01-26) confirmed 24-h duration at 0.313-2.5 ug.",
     "reason": "36-h FEV1 gain matched tissue duration",
-    "judgement": "FEV1 over 36 h is the downstream readout of the same airway smooth-muscle relaxation the guinea-pig bronchoprotection and human-bronchus duration models measured; no occupancy measure exists for an inhaled LABA. Dated to the first asthma patient paper (online 2014-09-08).",
+    "judgement": "FEV1 over 36 h is the downstream readout of the same airway smooth-muscle relaxation the guinea-pig bronchoprotection and human-bronchus duration models measured; no occupancy measure exists for an inhaled LABA. Dated to the first asthma patient paper (online 2014-09-08). Retrodiction ruling (2026-11-09): engagement counts any earlier patient result for ADRB2 agonism; indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006), before this model was public.",
     "readout_tier": "downstream",
     "model_id": "almirall-guinea-pig-dog-bronchoprotection-heart-rate",
     "model": "Almirall guinea-pig acetylcholine bronchoprotection, human isolated bronchi, and dog bronchoprotection-versus-heart-rate safety margin (abediterol)",
@@ -82,14 +86,18 @@
     "model_first_use_year": 2012,
     "model_filed": null,
     "year": 2014,
-    "status": "same",
-    "note": "Single-dose abediterol 5-25 ug on top of ICS raised trough FEV1 over placebo and salmeterol in persistent asthma, with improvements sustained to 36 h: the duration the tissue models showed.",
+    "status": "retro",
+    "note": "Single-dose abediterol 5-25 ug on top of ICS raised trough FEV1 over placebo and salmeterol in persistent asthma, with improvements sustained to 36 h: the duration the tissue models showed. Retrodiction: the model was public after indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006).",
     "short": "FEV1 up to 36 h in asthma patients",
     "src": "https://doi.org/10.1016/j.rmed.2014.08.005",
     "srcLabel": "Beier 2014",
     "quote": "These improvements were sustained to 36 h post-dose.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -126,7 +134,11 @@
     "srcLabel": "Aparici 2018",
     "quote": "In conclusion, abediterol is a potent LABA with a fast association rate and a long residence time at β-adrenoceptors.",
     "epub_year": 2017,
-    "print_year": 2018
+    "print_year": 2018,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -163,7 +175,11 @@
     "srcLabel": "Aparici 2018",
     "quote": "These data are in agreement with the onset and duration of action of abediterol shown in humans.",
     "epub_year": 2017,
-    "print_year": 2018
+    "print_year": 2018,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -200,7 +216,11 @@
     "srcLabel": "Stocks 2014",
     "quote": "Determination of activities at the human β-adrenoreceptors demonstrated a series of highly potent and selective β2 receptor agonists that were progressed to further study in a guinea pig histamine-induced bronchoconstriction model.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -214,7 +234,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2014-04-03",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "duration: guinea-pig intratracheal duration vs 22-26 h FEV1 in patients; no FEV1 magnitude was predicted",
@@ -222,7 +242,7 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level (paywalled). Single-dose six-way crossover in 37 asthmatics (AZD3199 120, 480, 1920 ug; formoterol 9, 36 ug; placebo), NCT00736489, results posted 2014-04-03. The 120 ug dose did not significantly raise 22-26 h FEV1.",
     "reason": "24-h airway readout moved as predicted",
-    "judgement": "The trial (online 2013-08-01) predates the model paper (online 2014-02-08), so the earliest public pairing is 2014 (rule 6); the model was run before the trial, so not a retrodiction. FEV1 at 22-26 h is the downstream readout of the relaxation the intratracheal duration model measured.",
+    "judgement": "The trial (online 2013-08-01) predates the model paper (online 2014-02-08), so the earliest public pairing is 2014 (rule 6); the model was run before the trial, so not a retrodiction. FEV1 at 22-26 h is the downstream readout of the relaxation the intratracheal duration model measured. Retrodiction ruling (2026-11-09): engagement counts any earlier patient result for ADRB2 agonism; indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006) and AZD3199's own Bjermer 2013 (online 2013-08-01), before this model was public.",
     "readout_tier": "downstream",
     "model_id": "az-guinea-pig-histamine-bronchoconstriction",
     "model": "AstraZeneca guinea-pig histamine bronchoconstriction, tracheal and human bronchial ring onset, and intratracheal duration models (AZD3199)",
@@ -230,14 +250,18 @@
     "model_first_use_year": 2014,
     "model_filed": null,
     "year": 2014,
-    "status": "same",
-    "note": "Single doses of AZD3199 480 and 1920 ug held FEV1 over placebo at 22-26 h in 37 asthmatics, the 24-h airway relaxation the intratracheal duration model showed; 120 ug did not.",
+    "status": "retro",
+    "note": "Single doses of AZD3199 480 and 1920 ug held FEV1 over placebo at 22-26 h in 37 asthmatics, the 24-h airway relaxation the intratracheal duration model showed; 120 ug did not. Retrodiction: the model was public after indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006) and AZD3199's own Bjermer 2013 (online 2013-08-01).",
     "short": "22-26 h FEV1 up in asthma",
     "src": "https://doi.org/10.1177/1753465813497527",
     "srcLabel": "Bjermer 2013",
     "quote": "AZD3199 480 µg and 1920 µg produced 24-hour bronchodilation.",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -274,7 +298,11 @@
     "srcLabel": "Kobayashi 2001",
     "quote": "The selectivity of KUR-1246 was assessed simultaneously in organs isolated from late-pregnant rats.",
     "epub_year": 2001,
-    "print_year": 2001
+    "print_year": 2001,
+    "drug": "bedoradrine",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -288,7 +316,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2011-12-15",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "tracheal relaxation via beta2 (rat EC50 1.6 uM) vs dose- and plasma-concentration-related FEV1 rise in stable asthma; not the same quantity",
@@ -296,22 +324,26 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level (paywalled). Two trials, n=40: MN-221-CL-004 dose escalation in stable mild-to-moderate asthma and MN-221-CL-005 (NCT00679263; results posted 2011-12-15) fixed dose over 1- or 2-h infusion in moderate-to-severe asthma. The registry posting for CL-005 precedes the paper (online 2012-10-25); a re-dater could set 2011.",
     "reason": "FEV1 rose with dose and plasma level",
-    "judgement": "FEV1 is the downstream readout of the beta2-mediated tracheal relaxation the organ bath measured; intravenous dosing gives a plasma-concentration-response, the closest an asthma beta2 agonist comes to an exposure-engagement link. Dated to the paper that carries the quote.",
+    "judgement": "FEV1 is the downstream readout of the beta2-mediated tracheal relaxation the organ bath measured; intravenous dosing gives a plasma-concentration-response, the closest an asthma beta2 agonist comes to an exposure-engagement link. Dated to the paper that carries the quote. Retrodiction ruling (2026-11-09): engagement counts any earlier patient result for ADRB2 agonism; salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674), before this model was public.",
     "readout_tier": "downstream",
     "model_id": "kissei-pregnant-rat-organ-bath-selectivity",
     "model": "Kissei pregnant-rat isolated uterus, atrium, trachea and colon organ-bath selectivity screen with in vivo rat uterine motility and human beta-adrenoceptor binding (bedoradrine / KUR-1246)",
     "model_kind": "animal",
     "model_first_use_year": 2001,
     "model_filed": null,
-    "year": 2012,
-    "status": "same",
-    "note": "Intravenous bedoradrine raised FEV1 over placebo with a significant dose response in 40 stable asthmatics, plateauing at 30 ug/min: the beta2 airway relaxation the rat trachea showed.",
+    "year": 2011,
+    "status": "retro",
+    "note": "Intravenous bedoradrine raised FEV1 over placebo with a significant dose response in 40 stable asthmatics, plateauing at 30 ug/min: the beta2 airway relaxation the rat trachea showed. Retrodiction: the model was public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674). Dated 2011: NCT00679263 posted the FEV1 result on 2011-12-15.",
     "short": "IV dose-response on FEV1 in stable asthma",
     "src": "https://doi.org/10.3109/02770903.2012.729631",
     "srcLabel": "Matsuda 2012",
     "quote": "Dose escalation results showed that mean changes in FEV₁ from pre-infusion were significantly greater than placebo and an overall dose response was statistically significant (p < .0001).",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "bedoradrine",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -348,7 +380,11 @@
     "srcLabel": "Rossoni 2005",
     "quote": "The duration of action of CHF 4226.01 in antagonizing the airway obstruction elicited by AcCHO was also substantially longer than formoterol (area under the curve) at 10 pmol, 763+/-58 and 480+/-34, respectively; P<0.01).",
     "epub_year": 2005,
-    "print_year": 2005
+    "print_year": 2005,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -362,7 +398,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2017-01-01",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "bronchoprotection in guinea pig vs peak FEV1 +0.241 L over placebo at week 4; the model gave no FEV1 magnitude",
@@ -370,7 +406,7 @@
     "confidence": "high",
     "confidence_note": "EU Clinical Trials Register results record (EudraCT 2006-005689-38; Chiesi clinical study report CCD-0604-RS-0009, ICH E3 synopsis read in full). 252 moderate-to-severe asthmatics on ICS, 4 weeks, CHF 4226 2 ug once daily in the evening vs formoterol 12 ug twice daily vs placebo; trial ended 2007-07-18, results posted 2017-01-01. Conference abstracts from 2006-2008 are not admissible, so the comparison is dated to the registry posting.",
     "reason": "Peak FEV1 moved; 24-h trough did not",
-    "judgement": "The downstream airway readout moved (peak FEV1 and FEV1 AUC 0-3 h both p<0.001 vs placebo at every visit), so engagement is same; the duration claim is scored under dose and efficacy. The 7-day trial (EudraCT 2005-002195-15) synopsis could not be downloaded.",
+    "judgement": "The downstream airway readout moved (peak FEV1 and FEV1 AUC 0-3 h both p<0.001 vs placebo at every visit), so engagement is same; the duration claim is scored under dose and efficacy. The 7-day trial (EudraCT 2005-002195-15) synopsis could not be downloaded. Retrodiction ruling (2026-11-09): engagement counts any earlier patient result for ADRB2 agonism; salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674), before this model was public.",
     "readout_tier": "downstream",
     "model_id": "chiesi-guinea-pig-challenge-bronchoconstriction",
     "model": "Chiesi anaesthetised guinea-pig bronchoconstriction against acetaldehyde, acetylcholine, histamine and ovalbumin challenge with intratracheal dosing and duration-of-protection readout (carmoterol / CHF 4226)",
@@ -378,14 +414,18 @@
     "model_first_use_year": 2005,
     "model_filed": null,
     "year": 2017,
-    "status": "same",
-    "note": "Carmoterol 2 ug once daily raised peak FEV1 by 0.241 L and FEV1 AUC 0-3 h by 0.222 L over placebo (both p<0.001) after 4 weeks in 252 asthmatics: the beta2 bronchodilation the guinea pig showed.",
+    "status": "retro",
+    "note": "Carmoterol 2 ug once daily raised peak FEV1 by 0.241 L and FEV1 AUC 0-3 h by 0.222 L over placebo (both p<0.001) after 4 weeks in 252 asthmatics: the beta2 bronchodilation the guinea pig showed. Retrodiction: the model was public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674).",
     "short": "Peak FEV1 +0.241 L in asthma",
     "src": "https://www.clinicaltrialsregister.eu/ctr-search/trial/2006-005689-38/results",
     "srcLabel": "EU CTR 2006-005689-38 (2017)",
     "quote": "The LS mean treatment difference between CHF 4226 and placebo for peak FEV1 after 4 weeks of treatment was 0.241 L (p <0.001 ) and for FEV1 AUC(0,3) was 0.222 L (p <0.001).",
     "epub_year": 2017,
-    "print_year": null
+    "print_year": null,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -422,10 +462,14 @@
     "srcLabel": "De Backer 2008",
     "quote": "The aim of the present study was to improve the actual imaging techniques by subsequent analysis of the imaging data using computational fluid dynamics (CFD).",
     "epub_year": 2007,
-    "print_year": 2008
+    "print_year": 2008,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "prediction_level": "class",
     "population": "Unselected",
@@ -452,14 +496,18 @@
     "model_first_use_year": 2007,
     "model_filed": null,
     "year": 2007,
-    "status": "same",
-    "note": "In 10 asthmatics FEV1 rose 8.8% predicted 4 h after carmoterol and CFD-computed total and distal airway resistance fell in step (r = -0.73, -0.76).",
+    "status": "retro",
+    "note": "In 10 asthmatics FEV1 rose 8.8% predicted 4 h after carmoterol and CFD-computed total and distal airway resistance fell in step (r = -0.73, -0.76). Retrodiction: CFD was solved after these patients' FEV1 was measured, and beta2 bronchodilation was known.",
     "short": "CFD airway resistance fell with FEV1",
     "src": "https://doi.org/10.1016/j.jbiomech.2007.07.009",
     "srcLabel": "De Backer 2008",
     "quote": "All changes in the CFD-based calculated R(aw) significantly correlate with the observed changes in spirometric values therefore validating the CFD method for the studied application.",
     "epub_year": 2007,
-    "print_year": 2008
+    "print_year": 2008,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -496,10 +544,14 @@
     "srcLabel": "Voss 1992",
     "quote": "The long duration of action of TA 2005 might be explained by tight binding of this compound to the beta 2-adrenoceptor.",
     "epub_year": 1992,
-    "print_year": 1992
+    "print_year": 1992,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "prediction_level": "class",
     "population": "Unselected",
@@ -518,7 +570,7 @@
     "confidence": "medium",
     "confidence_note": "EU Clinical Trials Register results record (EudraCT 2006-005689-38; Chiesi CSR CCD-0604-RS-0009 synopsis), the same record and quote the draft's Chiesi-track engagement entry carries (read in full by the drafter, verified by the checker; not re-downloaded here). 252 moderate-to-severe asthmatics on ICS, CHF 4226 2 ug once daily vs formoterol 12 ug twice daily vs placebo for 4 weeks; results posted 2017-01-01. Conference abstracts from 2006-2008 are not admissible.",
     "reason": "Bronchodilated; 24-h trough missed at 2 ug",
-    "judgement": "The downstream readout moved (peak FEV1 and FEV1 AUC 0-3 h p<0.001 vs placebo), so same on engagement, as on the Chiesi track; the duration claim is scored under efficacy. Dated to the registry posting. By then Sykes 2012 had shown the tight-binding mechanism does not hold in vitro, so the bronchodilation prediction was right for a reason the model got wrong.",
+    "judgement": "The downstream readout moved (peak FEV1 and FEV1 AUC 0-3 h p<0.001 vs placebo), so same on engagement, as on the Chiesi track; the duration claim is scored under efficacy. Dated to the registry posting. By then Sykes 2012 had shown the tight-binding mechanism does not hold in vitro, so the bronchodilation prediction was right for a reason the model got wrong. Retrodiction ruling (2026-11-09): engagement counts any earlier patient result for ADRB2 agonism; salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674), before this model was public.",
     "readout_tier": "downstream",
     "model_id": "ta2005-tight-binding-receptor-kinetics",
     "model": "Tanabe-era in vitro receptor-binding kinetics of TA-2005 (carmoterol): methacholine-precontracted guinea-pig trachea relaxation with bovine trapezium beta2 binding and GppNHp shift, tight binding offered as the basis of a long duration of action",
@@ -526,14 +578,18 @@
     "model_first_use_year": 1992,
     "model_filed": null,
     "year": 2017,
-    "status": "same",
-    "note": "Carmoterol 2 ug once daily raised peak FEV1 0.241 L over placebo at week 4: the bronchodilation the binding assay implied; 24-h trough did not.",
+    "status": "retro",
+    "note": "Carmoterol 2 ug once daily raised peak FEV1 0.241 L over placebo at week 4: the bronchodilation the binding assay implied; 24-h trough did not. Retrodiction: the model was public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674).",
     "short": "Peak FEV1 up, as tight binding implied",
     "src": "https://www.clinicaltrialsregister.eu/ctr-search/trial/2006-005689-38/results",
     "srcLabel": "EU CTR 2006-005689-38 (2017)",
     "quote": "The LS mean treatment difference between CHF 4226 and placebo for peak FEV1 after 4 weeks of treatment was 0.241 L (p <0.001 ) and for FEV1 AUC(0,3) was 0.222 L (p <0.001).",
     "epub_year": 2017,
-    "print_year": null
+    "print_year": null,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -573,7 +629,11 @@
     "srcLabel": "Aparici 2012",
     "quote": "In conclusion, our results suggest that abediterol has a preclinical profile for once-daily dosing in humans together with a fast onset of action and a favorable cardiovascular safety profile.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -611,7 +671,11 @@
     "srcLabel": "Beier 2014",
     "quote": "The profile of treatment-emergent adverse events judged as related to abediterol was consistent with that seen after adrenergic stimulation and occurred exclusively in patients who received abediterol 10 μg or 25 μg.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -649,7 +713,11 @@
     "srcLabel": "Stocks 2014",
     "quote": "Determination of activities at the human β-adrenoreceptors demonstrated a series of highly potent and selective β2 receptor agonists that were progressed to further study in a guinea pig histamine-induced bronchoconstriction model.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -663,7 +731,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2014-04-03",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "24-h dosing interval; the model gave no human dose",
@@ -680,14 +748,18 @@
     "model_first_use_year": 2014,
     "model_filed": null,
     "year": 2014,
-    "status": "same",
-    "note": "Once-daily target reached: single 480 and 1920 ug doses held FEV1 at 22-26 h over placebo; 120 ug did not. Dose set by clinical ranging, not by the model.",
+    "status": "retro",
+    "note": "Once-daily target reached: single 480 and 1920 ug doses held FEV1 at 22-26 h over placebo; 120 ug did not. Dose set by clinical ranging, not by the model. Retrodiction: the model paper (online 2014-02-08) came after AZD3199's own trial (online 2013-08-01).",
     "short": "Once daily reached at 480 ug, not 120",
     "src": "https://doi.org/10.1177/1753465813497527",
     "srcLabel": "Bjermer 2013",
     "quote": "All active treatments dose-dependently increased E(max) and AZD3199 (480 and 1920 µg) and formoterol (36 µg) significantly increased E(₂₂₋₂₆) versus placebo.",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -725,7 +797,11 @@
     "srcLabel": "Kobayashi 2001",
     "quote": "The selectivity of KUR-1246 was assessed simultaneously in organs isolated from late-pregnant rats.",
     "epub_year": 2001,
-    "print_year": 2001
+    "print_year": 2001,
+    "drug": "bedoradrine",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -763,7 +839,11 @@
     "srcLabel": "Matsuda 2012",
     "quote": "Post-infusion FEV1 improvements appeared to plateau at the 30 μg/min dose level despite a higher peak plasma concentration at 60 μg/min.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "bedoradrine",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -801,7 +881,11 @@
     "srcLabel": "Rossoni 2005",
     "quote": "The duration of action of CHF 4226.01 in antagonizing the airway obstruction elicited by AcCHO was also substantially longer than formoterol (area under the curve) at 10 pmol, 763+/-58 and 480+/-34, respectively; P<0.01).",
     "epub_year": 2005,
-    "print_year": 2005
+    "print_year": 2005,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -839,7 +923,11 @@
     "srcLabel": "EU CTR 2006-005689-38 (2017)",
     "quote": "In comparison, a statistically significant difference of 0.157 L in trough FEV1 between formoterol 12 µg given twice daily and placebo in favor of formoterol was observed.",
     "epub_year": 2017,
-    "print_year": null
+    "print_year": null,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -880,7 +968,11 @@
     "srcLabel": "Aparici 2012",
     "quote": "In conclusion, our results suggest that abediterol has a preclinical profile for once-daily dosing in humans together with a fast onset of action and a favorable cardiovascular safety profile.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -894,7 +986,7 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "FEV1 response; the model predicted bronchoprotection and duration, not an FEV1 effect size",
@@ -902,7 +994,7 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level (paywalled). Single-dose Phase IIa crossover in male persistent asthmatics on ICS (no registry record found); the later Phase 2 trials are listed under patient_trials. No Phase 3 in asthma was registered; AstraZeneca ran Phase 1 asthma studies in 2016-2017 (NCT02777827, NCT03273127) and no reason for the stop was found in the sources used.",
     "reason": "Trough FEV1 primaries met; dropped unexplained",
-    "judgement": "Class-level bronchodilation, the only thing the model predicts. Three asthma trials met FEV1 primaries (single-dose trough, single-dose peak, 7-day trough); the model's rank claim (longer than salmeterol) also held in direction. The program's end is not a model miss.",
+    "judgement": "Class-level bronchodilation, the only thing the model predicts. Three asthma trials met FEV1 primaries (single-dose trough, single-dose peak, 7-day trough); the model's rank claim (longer than salmeterol) also held in direction. The program's end is not a model miss. Retrodiction ruling (2026-11-09): efficacy counts any earlier patient result for ADRB2 agonism; indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006), before this model was public.",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
@@ -931,14 +1023,18 @@
     "model_first_use_year": 2012,
     "model_filed": null,
     "year": 2014,
-    "status": "same",
-    "note": "Primary endpoint met: single-dose abediterol 5-25 ug raised trough FEV1 over placebo and salmeterol in persistent asthma; peak-FEV1 (NCT01425801) and 7-day trough-FEV1 primaries were met later at 0.313-10 ug.",
+    "status": "retro",
+    "note": "Primary endpoint met: single-dose abediterol 5-25 ug raised trough FEV1 over placebo and salmeterol in persistent asthma; peak-FEV1 (NCT01425801) and 7-day trough-FEV1 primaries were met later at 0.313-10 ug. Retrodiction: the model was public after indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006).",
     "short": "Trough FEV1 primary met in asthma",
     "src": "https://doi.org/10.1016/j.rmed.2014.08.005",
     "srcLabel": "Beier 2014",
     "quote": "All three abediterol doses induced statistically significant increases in trough FEV1 vs placebo and salmeterol.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -977,7 +1073,11 @@
     "srcLabel": "Stocks 2014",
     "quote": "Determination of activities at the human β-adrenoreceptors demonstrated a series of highly potent and selective β2 receptor agonists that were progressed to further study in a guinea pig histamine-induced bronchoconstriction model.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -991,7 +1091,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2014-04-03",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "FEV1 response; the guinea pig predicted bronchoprotection and duration, not an FEV1 effect size",
@@ -999,7 +1099,7 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level (paywalled). Co-primary endpoints were peak FEV1 (Emax) and 22-26 h average FEV1 (E22-26), plus serum potassium (NCT00736489, results 2014-04-03). Single-dose study in 37 patients; the only later asthma record is the formulation crossover NCT01348139 (results 2013-03-05), so no multi-week asthma trial and no Phase 3 were run. Year is the model paper's (2014), see engagement.",
     "reason": "FEV1 primaries met; dropped unexplained",
-    "judgement": "A single-dose Phase 2 met both FEV1 co-primaries at 480 and 1920 ug, so the model was right on the class question; the program's end is not a model miss and no reason was published.",
+    "judgement": "A single-dose Phase 2 met both FEV1 co-primaries at 480 and 1920 ug, so the model was right on the class question; the program's end is not a model miss and no reason was published. Retrodiction ruling (2026-11-09): efficacy counts any earlier patient result for ADRB2 agonism; indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006) and AZD3199's own Bjermer 2013 (online 2013-08-01), before this model was public.",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
@@ -1016,14 +1116,18 @@
     "model_first_use_year": 2014,
     "model_filed": null,
     "year": 2014,
-    "status": "same",
-    "note": "Co-primaries met: peak FEV1 rose dose-dependently and 22-26 h FEV1 rose at 480 and 1920 ug over placebo in 37 asthmatics, matching formoterol 36 ug; no multi-week asthma trial followed.",
+    "status": "retro",
+    "note": "Co-primaries met: peak FEV1 rose dose-dependently and 22-26 h FEV1 rose at 480 and 1920 ug over placebo in 37 asthmatics, matching formoterol 36 ug; no multi-week asthma trial followed. Retrodiction: the model was public after indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006) and AZD3199's own Bjermer 2013 (online 2013-08-01).",
     "short": "Peak and 24-h FEV1 primaries met",
     "src": "https://doi.org/10.1177/1753465813497527",
     "srcLabel": "Bjermer 2013",
     "quote": "All active treatments dose-dependently increased E(max) and AZD3199 (480 and 1920 µg) and formoterol (36 µg) significantly increased E(₂₂₋₂₆) versus placebo.",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1062,7 +1166,11 @@
     "srcLabel": "Kobayashi 2001",
     "quote": "The selectivity of KUR-1246 was assessed simultaneously in organs isolated from late-pregnant rats.",
     "epub_year": 2001,
-    "print_year": 2001
+    "print_year": 2001,
+    "drug": "bedoradrine",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1076,15 +1184,15 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "FEV1 response to beta2 agonism; the model predicted tracheal relaxation, not an FEV1 effect size",
     "source_calls_it": null,
     "confidence": "medium",
-    "confidence_note": "Abstract-level (paywalled). MN-221-CL-007 (NCT00838591; 167 randomised; 1200 ug IV as adjunct to nebulised albuterol, ipratropium and systemic steroid; FEV1 <=50% predicted at entry; no registry results posted). Dyspnoea secondary improved (AUC 0-2 h p<0.005). Earlier, Cochrane (Travers 2012, https://doi.org/10.1002/14651858.CD010179, tier 4) found no significant hospitalisation advantage for IV bedoradrine in a 29-adult conference-abstract trial (Nowak 2010; NCT00683449, terminated).",
+    "confidence_note": "Abstract-level (paywalled). MN-221-CL-007 (NCT00838591; 167 randomised; 1200 ug IV as adjunct to nebulised albuterol, ipratropium and systemic steroid; FEV1 <=50% predicted at entry; no registry results posted). Dyspnoea secondary improved (AUC 0-2 h p<0.005). Earlier, Cochrane (Travers 2012, https://doi.org/10.1002/14651858.CD010179, tier 4) found no significant hospitalisation advantage for IV bedoradrine in a 29-adult conference-abstract trial (Nowak 2010; NCT00683449, terminated). Earliest public: MediciNova press release 2012-05-23 (https://www.globenewswire.com/news-release/2012/05/23/477618/7767/en/medicinova-reports-results-of-a-phase-2b-clinical-trial-of-mn-221-in-asthma-exacerbations.html): 'did not statistically meet the primary endpoint, improvement in FEV1'; House 2015 sets the status.",
     "reason": "3-h FEV1 primary missed on top of albuterol",
-    "judgement": "Scored contra on the primary endpoint: the model predicted beta2 bronchodilation and the pre-specified 3-h %FEV1 did not move in patients already treated with high-dose nebulised beta2 agonist. Caveats a re-scorer could act on: the model was a tocolytic organ-bath screen with no exacerbation or beta2-refractory component, so 'untested' is defensible; the secondary dyspnoea endpoint improved. Dated to the paper (online 2015-08-14); the trial completed 2012-03 and its result was first released in a 2012 sponsor press release not used here.",
+    "judgement": "Scored contra on the primary endpoint: the model predicted beta2 bronchodilation and the pre-specified 3-h %FEV1 did not move in patients already treated with high-dose nebulised beta2 agonist. Caveats a re-scorer could act on: the model was a tocolytic organ-bath screen with no exacerbation or beta2-refractory component, so 'untested' is defensible; the secondary dyspnoea endpoint improved. Dated to the paper (online 2015-08-14); the trial completed 2012-03 and its result was first released in a 2012 sponsor press release not used here. Retrodiction ruling (2026-11-09): efficacy counts any earlier patient result for ADRB2 agonism; salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674), before this model was public.",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
@@ -1100,15 +1208,19 @@
     "model_kind": "animal",
     "model_first_use_year": 2001,
     "model_filed": null,
-    "year": 2015,
+    "year": 2012,
     "status": "contra",
-    "note": "Primary missed: 1200 ug IV bedoradrine added to standard emergency therapy did not raise %FEV1 at 3 h over placebo in 167 acute-exacerbation patients; dyspnoea scores improved.",
+    "note": "Primary missed: 1200 ug IV bedoradrine added to standard emergency therapy did not raise %FEV1 at 3 h over placebo in 167 acute-exacerbation patients; dyspnoea scores improved. Retrodiction: the model was public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674). Dated 2012: MediciNova's 2012-05-23 release first reported the missed FEV1 primary.",
     "short": "3-h FEV1 primary missed in acute asthma",
     "src": "https://doi.org/10.1016/j.rmed.2015.08.003",
     "srcLabel": "House 2015",
     "quote": "There was no significant difference in %FEV1 at 3 h between the 2 groups.",
     "epub_year": 2015,
-    "print_year": 2015
+    "print_year": 2015,
+    "drug": "bedoradrine",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1147,7 +1259,11 @@
     "srcLabel": "Rossoni 2005",
     "quote": "The duration of action of CHF 4226.01 in antagonizing the airway obstruction elicited by AcCHO was also substantially longer than formoterol (area under the curve) at 10 pmol, 763+/-58 and 480+/-34, respectively; P<0.01).",
     "epub_year": 2005,
-    "print_year": 2005
+    "print_year": 2005,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1161,7 +1277,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2017-01-01",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "duration: guinea-pig protection AUC 763 vs 480 for formoterol at 10 pmol, against trough FEV1 +0.057 L (NS) for carmoterol 2 ug once daily vs +0.157 L for formoterol twice daily; the predicted rank reversed",
@@ -1169,7 +1285,7 @@
     "confidence": "high",
     "confidence_note": "EU CTR synopsis (EudraCT 2006-005689-38; CSR CCD-0604-RS-0009 dated 2010-03-02) read in full; 252 randomised, 243 completed; trial ended 2007-07-18, results posted 2017-01-01. Secondary peak FEV1, FEV1 AUC 0-3 h and morning PEF favoured carmoterol; symptom and rescue-use outcomes did not separate for either active arm. The 7-day trial (EudraCT 2005-002195-15, trough FEV1 Day 8 primary, results posted 2017-01-01) synopsis could not be downloaded. Conference abstracts from 2006-2008 may have made the result public earlier but are not admissible.",
     "reason": "Guinea pig said longer than formoterol; patients said shorter",
-    "judgement": "Contra: the model's one testable claim, protection lasting longer than formoterol, was tested as 2 ug once daily against formoterol 12 ug twice daily and the primary trough FEV1 at 24 h did not beat placebo while formoterol's did. The sponsor's own synopsis notes earlier 24-h bronchodilation data (not public in an admissible form). A re-scorer might treat it as a dose-selection miss rather than a model miss; under the dose table both cells carry one contra. The combination program (CHF 5188, carmoterol 4 ug) ran in 2010 and was not followed by a Phase 3.",
+    "judgement": "Contra: the model's one testable claim, protection lasting longer than formoterol, was tested as 2 ug once daily against formoterol 12 ug twice daily and the primary trough FEV1 at 24 h did not beat placebo while formoterol's did. The sponsor's own synopsis notes earlier 24-h bronchodilation data (not public in an admissible form). A re-scorer might treat it as a dose-selection miss rather than a model miss; under the dose table both cells carry one contra. The combination program (CHF 5188, carmoterol 4 ug) ran in 2010 and was not followed by a Phase 3. Retrodiction ruling (2026-11-09): efficacy counts any earlier patient result for ADRB2 agonism; salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674), before this model was public.",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
@@ -1187,13 +1303,17 @@
     "model_filed": null,
     "year": 2017,
     "status": "contra",
-    "note": "Primary missed: carmoterol 2 ug once daily for 4 weeks gave trough FEV1 +0.057 L over placebo (NS) in 252 asthmatics while formoterol twice daily gave +0.157 L; the guinea pig had ranked carmoterol longer-lasting.",
+    "note": "Primary missed: carmoterol 2 ug once daily for 4 weeks gave trough FEV1 +0.057 L over placebo (NS) in 252 asthmatics while formoterol twice daily gave +0.157 L; the guinea pig had ranked carmoterol longer-lasting. Retrodiction: the model was public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674).",
     "short": "24-h trough FEV1 primary missed vs formoterol",
     "src": "https://www.clinicaltrialsregister.eu/ctr-search/trial/2006-005689-38/results",
     "srcLabel": "EU CTR 2006-005689-38 (2017)",
     "quote": "The primary efficacy analysis did not demonstrate that CHF 4226 2 µg administered once daily in the evening was statistically significant superior to placebo on trough FEV1 after 4 weeks of treatment (LS mean difference = 0.057 L).",
     "epub_year": 2017,
-    "print_year": null
+    "print_year": null,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1232,10 +1352,14 @@
     "print_year": 1992,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "prediction_level": "class",
     "population": "Unselected",
@@ -1254,7 +1378,7 @@
     "confidence": "medium",
     "confidence_note": "EU CTR synopsis (EudraCT 2006-005689-38; CSR CCD-0604-RS-0009 dated 2010-03-02), the same record and quote as the draft's Chiesi-track efficacy entry (read in full by the drafter, verified by the checker; not re-downloaded here); 252 randomised, results posted 2017-01-01. The 4 ug carmoterol dose later held trough FEV1 only inside the budesonide/carmoterol combination CHF 5188 (EudraCT 2008-001773-15, results posted 2017-01-01, trough +0.26 L per the checker), the 'higher dose later worked' branch left to the checker's open rule question; no monotherapy trial followed.",
     "reason": "Trough FEV1 at 24 h missed",
-    "judgement": "Contra: the model's one claim, long duration, was tested as 2 ug once daily and trough FEV1 at 24 h did not beat placebo while formoterol twice daily did. The same trial failure sits on the Chiesi guinea-pig track; it is scored again here because this is a separate system, each track scored by its own rules.",
+    "judgement": "Contra: the model's one claim, long duration, was tested as 2 ug once daily and trough FEV1 at 24 h did not beat placebo while formoterol twice daily did. The same trial failure sits on the Chiesi guinea-pig track; it is scored again here because this is a separate system, each track scored by its own rules. Retrodiction ruling (2026-11-09): efficacy counts any earlier patient result for ADRB2 agonism; salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674), before this model was public.",
     "model_id": "ta2005-tight-binding-receptor-kinetics",
     "model": "Tanabe-era in vitro receptor-binding kinetics of TA-2005 (carmoterol): methacholine-precontracted guinea-pig trachea relaxation with bovine trapezium beta2 binding and GppNHp shift, tight binding offered as the basis of a long duration of action",
     "model_kind": "ex_vivo",
@@ -1262,7 +1386,7 @@
     "model_filed": null,
     "year": 2017,
     "status": "contra",
-    "note": "Primary missed: carmoterol 2 ug once daily gave trough FEV1 +0.057 L (NS) at 24 h in 252 asthmatics; the tight-binding duration claim failed.",
+    "note": "Primary missed: carmoterol 2 ug once daily gave trough FEV1 +0.057 L (NS) at 24 h in 252 asthmatics; the tight-binding duration claim failed. Retrodiction: the model was public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674).",
     "short": "24-h trough FEV1 primary missed",
     "src": "https://www.clinicaltrialsregister.eu/ctr-search/trial/2006-005689-38/results",
     "srcLabel": "EU CTR 2006-005689-38 (2017)",
@@ -1278,7 +1402,11 @@
       "doi": null,
       "quote": "The primary efficacy analysis did not demonstrate that CHF 4226 2 µg administered once daily in the evening was statistically significant superior to placebo on trough FEV1 after 4 weeks of treatment (LS mean difference = 0.057 L)."
      }
-    ]
+    ],
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -1316,7 +1444,11 @@
     "srcLabel": "Aparici 2012",
     "quote": "In conclusion, our results suggest that abediterol has a preclinical profile for once-daily dosing in humans together with a fast onset of action and a favorable cardiovascular safety profile.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1352,7 +1484,11 @@
     "srcLabel": "Beier 2014",
     "quote": "The profile of treatment-emergent adverse events judged as related to abediterol was consistent with that seen after adrenergic stimulation and occurred exclusively in patients who received abediterol 10 μg or 25 μg.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1388,7 +1524,11 @@
     "srcLabel": "Stocks 2014",
     "quote": "Determination of activities at the human β-adrenoreceptors demonstrated a series of highly potent and selective β2 receptor agonists that were progressed to further study in a guinea pig histamine-induced bronchoconstriction model.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1424,7 +1564,11 @@
     "srcLabel": "Furihata 2006",
     "quote": "KUR-1246 at 10 and 100 microg/kg significantly decreased blood pressure and increased heart rate.",
     "epub_year": 2006,
-    "print_year": 2006
+    "print_year": 2006,
+    "drug": "bedoradrine",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1460,7 +1604,11 @@
     "srcLabel": "Matsuda 2012",
     "quote": "There were no consistent dose-dependent effects of MN-221 on any safety parameters, with the exception of heart rate, which was not considered to be clinically significant and did not require any treatment.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "bedoradrine",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1496,7 +1644,11 @@
     "srcLabel": "Voss 1994",
     "quote": "Approximately 64% of the TA 2005 chronotropic response was exerted via the beta-2 adrenoceptor.",
     "epub_year": 1994,
-    "print_year": 1994
+    "print_year": 1994,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1532,7 +1684,11 @@
     "srcLabel": "EU CTR 2006-005689-38 (2017)",
     "quote": "A small proportion of patients experienced tachycardia and palpitations in both active treatment groups as well as in the placebo group although no substantial increases in heart rate were observed in any treatment group.",
     "epub_year": 2017,
-    "print_year": null
+    "print_year": null,
+    "drug": "carmoterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1568,7 +1724,11 @@
     "srcLabel": "Kiguchi 2002",
     "quote": "Significant differences between the two groups were found at high doses over 0.03 microg/kg/minute for the following parameters: maternal heart rate, diastolic blood pressure, mean blood pressure, base excess, blood K(+), blood lactate, plasma glucose, plasma insulin",
     "epub_year": 2002,
-    "print_year": 2002
+    "print_year": 2002,
+    "drug": "bedoradrine",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1604,7 +1764,51 @@
     "srcLabel": "Matsuda 2012",
     "quote": "The most frequently reported AEs were tremor, hypokalemia, and headache.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "bedoradrine",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "prediction_level": "class",
+    "population": "Unselected",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1021/ml4005232",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "registry_date": "2014-04-03",
+    "product_in_model": true,
+    "retrodiction": true,
+    "imported_from": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "tolerability: stated favourable safety profile vs mild class effects and good tolerability in patients",
+    "source_calls_it": null,
+    "confidence": "medium",
+    "confidence_note": "Abstract-level reading of both (Stocks 2014 open access PMC4027610; Bjermer 2013 abstract, NCT00736489 results posted 2014-04-03).",
+    "reason": "Tolerability claim held, after own trial",
+    "judgement": "Passing-tolerability ruling (2026-11-09): Stocks 2014 says AZD3199, after 'further selectivity and safety profiling', 'was shown to have an excellent over all profile'. Bjermer 2013 (online 2013-08-01) found mild dose-dependent potassium, heart-rate and QTc effects and good tolerability. The model paper (online 2014-02-08) came after the drug's own patient result, so retro.",
+    "model_id": "az-guinea-pig-histamine-bronchoconstriction",
+    "model": "AstraZeneca guinea-pig histamine bronchoconstriction, tracheal and human bronchial ring onset, and intratracheal duration models (AZD3199)",
+    "model_kind": "animal",
+    "model_first_use_year": 2014,
+    "model_filed": null,
+    "year": 2014,
+    "status": "retro",
+    "note": "The model paper's passing claim of an 'excellent over all profile' after safety profiling is a safety prediction; asthmatics had only mild class effects. Retrodiction: AZD3199's own trial was public first.",
+    "short": "Stated favourable profile held; post-dated",
+    "src": "https://doi.org/10.1177/1753465813497527",
+    "srcLabel": "Bjermer 2013",
+    "quote": "AZD3199 was well tolerated, with no safety concerns identified to preclude further investigation.",
+    "epub_year": 2013,
+    "print_year": 2013,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

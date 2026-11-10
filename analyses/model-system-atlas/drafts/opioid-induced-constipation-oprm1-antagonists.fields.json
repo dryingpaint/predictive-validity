@@ -1,0 +1,21 @@
+{
+ "tile": "opioid-induced-constipation-oprm1-antagonists",
+ "changed": [
+  {"cell": "efficacy", "index": 2, "what": "status same -> retro, retrodiction true: rat transit data first public in the 2017 FDA review, after PAMORA OIC patient results for the same target (methylnaltrexone 2008; naldemedine COMPOSE at DDW May 2016). Bevenopran trial NCT01207427 removed from patient_trials. drug naldemedine, route oral."},
+  {"cell": "efficacy", "index": 4, "what": "status same -> retro, year 2019 -> 2013, retrodiction true: rat loperamide gastric-emptying data first public Mar 2013 (Armstrong), after axelopran's July 2012 phase 2b topline release; congress abstract / press release dating ruling settles the RULE QUESTION. drug axelopran, route oral."},
+  {"cell": "efficacy", "index": 6, "what": "status same -> retro, retrodiction true: mouse transit screen first public 2019 (Long), after the 2012 phase 2b result. drug axelopran, route oral."},
+  {"cell": "dose", "index": 2, "what": "status same -> retro, retrodiction true: rat tail-flick window first public in the 2017 FDA review, after naldemedine's own DDW May 2016 report of no analgesic impact (same-drug rule). drug naldemedine, route oral."},
+  {"cell": "dose", "index": 4, "what": "status same -> retro, year 2019 -> 2013, retrodiction true: hot-plate window first public Mar 2013, after axelopran's own 10 July 2012 release (no analgesic interference); settles both RULE QUESTIONS (abstract dating; margin public after trial = retrodiction). drug axelopran, route oral."},
+  {"cell": "safety", "index": 2, "what": "status same -> retro, retrodiction true: rat withdrawal data first public in the 2017 FDA review, after naldemedine's own COMPOSE adverse events at DDW May 2016. drug naldemedine, route oral."},
+  {"cell": "safety", "index": 4, "what": "status same -> retro, year 2019 -> 2013, retrodiction true, source_calls_it partial -> null: mouse CNS-withdrawal data first public Mar 2013, after axelopran's own July 2012 release reporting no CNS withdrawal by COWS; settles the RULE QUESTION. drug axelopran, route oral."},
+  {"cell": "engagement", "index": 1, "what": "drug naldemedine, route oral set (opener, status unchanged)."},
+  {"cell": "dose", "index": 1, "what": "drug naldemedine, route oral set (opener, status unchanged)."},
+  {"cell": "dose", "index": 3, "what": "drug axelopran, route oral set (opener, status unchanged)."},
+  {"cell": "efficacy", "index": 1, "what": "drug naldemedine, route oral set (opener, status unchanged)."},
+  {"cell": "efficacy", "index": 3, "what": "drug axelopran, route oral set (opener, status unchanged)."},
+  {"cell": "efficacy", "index": 5, "what": "drug axelopran, route oral set (opener, status unchanged)."},
+  {"cell": "safety", "index": 1, "what": "drug naldemedine, route oral set (opener, status unchanged)."},
+  {"cell": "safety", "index": 3, "what": "drug axelopran, route oral set (opener, status unchanged)."}
+ ],
+ "added": []
+}

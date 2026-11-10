@@ -11,30 +11,28 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Sakamoto 2011 abstract (PMID 21575866, Cancer Cell 2011-05) carries the sentence verbatim; untested opener is right. L1196M and Ba/F3 appear in the alectinib FDA pharmacology review, so model_filed is now verified rather than inferred."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Sakamoto 2011 abstract (PMID 21575866) verbatim. Alectinib, oral, ALK-rearranged biomarker_selected; untested opener (no dosed-human readout) holds; year 2011 matches epub."
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2014,
-   "rule": "10",
-   "note": "Friboulet full text (PMC4068971) says phase 1 ceritinib activity in crizotinib-relapsed patients was already known ('Based on this impressive clinical activity, we investigated'): cells run after the clinic knew. Retro, not same (decision 10). Alternative: Sakamoto 2011 to Gadgeel 2014.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: full text (PMC4068971) opens with the known phase I activity in crizotinib-relapsed patients and frames the cell work as 'consistent with' it; a post-hoc model reproducing the patient result is retro, not same. Timing verified."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Friboulet 2014 abstract (PMID 24675041) verbatim. Retro, retrodiction true: ceritinib phase 1 responses in crizotinib-relapsed patients preceded the cells. Ceritinib oral; crizotinib-relapsed patients make stage_or_line right."
   },
   {
    "cell": "engagement",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "near",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Shaw 2019 abstract (PMID 30892989, epub 2019-03-20) matches bar JCO's 'Conclusion' header; Gainor 2016 (epub 2016-07-18) precedes it; NCT01970865 results 2018-05-29 verified. ORR as a 'downstream' engagement readout is a convention; rule question."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Shaw 2019 abstract (PMID 30892989) verbatim. Lorlatinib oral; patients compared by ALK mutation status after second-gen TKIs, so biomarker_selected fits (stage_or_line also defensible). Gainor 2016 cells predate lorlatinib patient data: same holds."
   },
   {
    "cell": "dose",
@@ -43,7 +41,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Sakamoto 2011 abstract sentence verbatim; untested opener with no stated exposure target is correct. Same quote serves efficacy 1."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Sakamoto 2011 abstract verbatim. Alectinib oral, ALK-rearranged biomarker_selected; untested opener holds."
   },
   {
    "cell": "dose",
@@ -52,7 +51,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Ceritinib PharmR line 4976 verbatim; 50 mg/kg 'approximately equal' to human exposure and the 'higher LDK378 exposures may be necessary' caveat both present; NCT01283516 results 2014-08-11 verified. Reached and worked: same, within_2x holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ceritinib PharmR (bundle 205755) verbatim. Ceritinib oral; ASCEND-1 ALK-rearranged patients, biomarker_selected. Exposure margin stated in model, dose reached: same holds."
   },
   {
    "cell": "dose",
@@ -61,7 +61,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Lorlatinib review line 6094 verbatim. margin_stated rests on Zou 2015 abstract 'safety margins' (verified, epub 2015-07-02); the review says 100 mg was chosen on phase-1 tolerability, not 'lowest dose above Ceff'. G1202R Ceff model is an engineered-mutant xenograft; rule question."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lorlatinib multidisciplinary review (bundle 210868) verbatim. Lorlatinib oral, ALK-rearranged biomarker_selected. Same holds; note's 'lowest dose above Ceff' overstates (100 mg chosen on tolerability too)."
   },
   {
    "cell": "efficacy",
@@ -70,30 +71,33 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Sakamoto 2011 abstract verbatim; untested opener at the first member's xenograft paper is right, crizotinib being a non-member."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Sakamoto 2011 abstract verbatim. Alectinib oral, biomarker_selected; untested opener holds. Note: this xenograft first ran after crizotinib's ALK+ NSCLC responses were public (see efficacy 2)."
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Seto 2013 resolves (Lancet Oncol, epub 2013-04-30, PMID 23639470); quote verbatim; phase 2 primary endpoint ORR; prospective pairing with Sakamoto 2011. All three patient_trials quotes and registry dates (2014-08-11, 2017-06-21, 2018-03-15) verified."
-  },
-  {
-   "cell": "efficacy",
-   "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "retro",
-   "proposed_year": 2014,
-   "rule": "10",
-   "note": "Same Friboulet paper: the response-by-mutation half reproduces known phase 1 data (the paper cites the phase 1 responders by mutation); the G1202R half is a resistance-biopsy correlation, not an endpoint. Retro (decision 10); untested is the stricter alternative.",
+   "proposed_year": 2013,
+   "rule": "engagement/efficacy retrodiction: a model first public after a patient result on the same target (member or not) is a retrodiction; reproduced -> retro, never same",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Seto 2013 abstract (PMID 23639470) verbatim; primary ORR, crizotinib-naive ALK+, alectinib oral, biomarker_selected correct. But Sakamoto 2011 xenograft post-dates crizotinib's ALK+ NSCLC responses (Kwak, NEJM 2010): same target, so retro.",
    "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: the response-by-mutation patient data preceded and motivated the cells, which reproduce it; the G1202R biopsy enrichment is no trial endpoint (decision 4, efficacy cell), so it cannot carry same. A patient result exists: retro, not untested."
+   "adjudication_note": "Retrodiction rule: for efficacy, a model first public after a same-target patient result 'from a member drug or any other drug' is a retrodiction. Sakamoto 2011 post-dates crizotinib's ALK+ responses (Kwak 2010) and reproduced them: retro."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Friboulet 2014 abstract verbatim. Retro, retrodiction true: ceritinib phase 1 responses by mutation status preceded the cell work. Ceritinib oral; crizotinib-resistant patients make stage_or_line right."
   },
   {
    "cell": "efficacy",
@@ -102,16 +106,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Peters 2017 abstract verbatim (PMID 28586279, epub 2017-06-06); model_src sentence found in alectinib PharmR (intracranial NCI-H2228 vs crizotinib); NCT02075840 results 2018-03-15, Gadgeel 2014 and CROWN quotes verified. NCT01588028 API returned empty, not retried."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Peters 2017 abstract (PMID 28586279) verbatim; ALEX primary PFS in untreated ALK+ patients: alectinib oral, biomarker_selected. 2015 intracranial-model superiority claim predates any alectinib-vs-crizotinib patient result (J-ALEX 2016): same holds."
   },
   {
    "cell": "efficacy",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "near",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Shaw 2019 conclusion verbatim after the 'Conclusion' header; Gainor 2016 prospective; registry 2018-05-29 verified. ORR was the phase 2 primary endpoint analysed by mutation subgroup, so endpoint_role could be 'primary' rather than null; rule question. Same holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Shaw 2019 abstract verbatim. Lorlatinib oral; ALK-mutation subgroups after second-gen TKIs coded biomarker_selected, defensible. Gainor 2016 model predates lorlatinib patient data: same holds."
   },
   {
    "cell": "safety",
@@ -120,7 +126,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "NCT01283516 official title verbatim; first posted 2011-01-26, start 2011-01-24 verified. Proxy opener per brief."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT01283516 title verbatim, first posted 2011-01-26. Ceritinib oral; ALK-abnormal tumours, biomarker_selected. Untested opener holds (tox data unpublished then)."
   },
   {
    "cell": "safety",
@@ -129,7 +136,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Ceritinib PharmR line 229 verbatim; lung phospholipidosis 'correlates with pneumonitis and interstitial lung disease observed clinically' at line 753; registry 2014-08-11 verified. Same holds; bradycardia absent from the review, as the draft says."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ceritinib PharmR (bundle 205755) verbatim. Ceritinib oral, ALK-rearranged biomarker_selected. Rat/monkey GI and liver flags matched clinical harms: same holds."
   },
   {
    "cell": "safety",
@@ -138,7 +146,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Alectinib PharmR sentence verbatim once line breaks are joined; review also says safety pharmacology 'suggested a potential for bradycardia and hypotension', seen clinically. NCT01871805 results 2016-02-12 verified. Same holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Alectinib PharmR (bundle 208434) verbatim. Alectinib oral, ALK-rearranged biomarker_selected. Monkey heart-rate fall matched clinical bradycardia: same holds."
   },
   {
    "cell": "safety",
@@ -147,7 +156,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Brigatinib review sentence verbatim; monkey delayed cardiorespiratory effects at ~0.6-2x clinical AUC and 'has not been described with other ALK' both present; NCT01449461 results 2017-06-21 verified. Same with partial is fair."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Brigatinib multidisciplinary review (bundle 208772) verbatim. Brigatinib oral, ALK-rearranged biomarker_selected. Same with partial (early pulmonary events only loosely flagged) holds."
   },
   {
    "cell": "safety",
@@ -156,7 +166,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Lorlatinib review line 1672 verbatim; memory-recall (Study 12GR137), neuropathy-like gait, 'pneumonitis occurs clinically' and 'hallucinations, mood disorders' sentences all present; registry 2018-05-29 verified. Same holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lorlatinib multidisciplinary review (bundle 210868) verbatim. Lorlatinib oral, ALK-rearranged biomarker_selected. Cholesterol rises seen in animals and clinically: same holds."
   },
   {
    "cell": "efficacy",
@@ -165,23 +176,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract sentence verbatim (PMC10664561). Untested opener at first class use holds. Counts: 17-PDO library, 5 ALK-positive in the screen plus LC_08PE; alectinib never tested on LC_02T/04T (wrong stock). Model name bakes in the post-hoc index."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lee 2023 (PMC10664561) full text verbatim. Alectinib oral, ALK-rearranged biomarker_selected; untested opener for the alectinib PDO track holds."
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2023,
-   "rule": "11",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract sentence verbatim. Five patients compared, not four: LC_08PE (alectinib PD, sampled after failure) is the lone non-responder; conventional AUC called it alectinib-sensitive (Z -0.58), only the post-hoc MLR-fitted CODRP index (includes clinical stage) called it resistant. Pre-specified readout (#110) fails: contra (retrodiction stays true); retro only on the paper's own index.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "retro (decision 10): the paper's pre-specified readout, the CODRP index, reproduced all five RECIST outcomes including non-responder LC_08PE; per #110 the conventional-AUC miss (Z -0.58) goes in the note, not the status. Five patients, not four."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lee 2023 full text: alectinib-treated LC_01T PR, LC_03PE PR, LC_08PE resistant; CODRP called all three, quote verbatim. Alectinib oral, biomarker_selected, n=3; patient outcomes predate the paper: retro, retrodiction true holds."
   },
   {
    "cell": "efficacy",
@@ -190,8 +196,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Author manuscript (PMC6942925) sentence verbatim; MATCH-R NCT02517892 confirmed; epub 2019-10-04. Untested opener at the first PDX from a lorlatinib-progressing patient holds. Five patients' fragments implanted (MR57, MR135, MR144, MR210, MR347)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Recondo 2019 full text (PMC6942925) verbatim. Lorlatinib oral; lorlatinib-progressing MATCH-R patients make stage_or_line right. Untested opener; year 2019 epub, print 2020 correct."
   },
   {
    "cell": "efficacy",
@@ -200,8 +206,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Sentence verbatim (Fig. 4D). PDX from the adrenal progression biopsy after 15 months on lorlatinib: retrodiction that reproduced resistance, retro holds; lorlatinib-alone growth is inferred from the combination comparison, as the draft says. MR57-S PDX-derived line stayed sensitive (IC50 50 nM): track-ownership rule question."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Recondo 2019 full text verbatim (MR135-R2 PDX). Lorlatinib oral; MR135 progressing on lorlatinib: stage_or_line. PDX built after the patient progressed: retro, retrodiction true holds."
   },
   {
    "cell": "dose",
@@ -210,38 +216,28 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim at lines 447-449 (hyphen joined). Steady-state 51%/67% prediction and the one-third dose cut never tested: untested holds. Line 2934: single-dose ketoconazole/rifampin data 'were used to verify' the model, a retrodiction not scored. Whether a PBPK DDI model belongs in dose: rule question."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ceritinib ClinPharmR (bundle 205755) verbatim. Ceritinib oral; healthy-subject DDI data coded unselected (no healthy-volunteer code). Steady-state PBPK prediction never measured: untested holds."
   },
   {
    "cell": "dose",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2015,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim (lines 1935-1937); Table 2 1.64 vs 1.75 confirmed. But the review is 'development and verification': M4 'updated using observed DDI caused by posaconazole', fa fitted to NP29042. Verification against completed DDI studies is a retrodiction: retro, not same; retrodiction should be true.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "retro (decision 10): the sponsor's PBPK model was verified against completed DDI studies NP28990/NP29042, with M4 updated on the observed posaconazole ratio and fa fitted to NP29042; a verification post-dating the patient data reproduces, not predicts. Set retrodiction: true."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Alectinib ClinPharmR (bundle 208434) verbatim. Alectinib oral, healthy subjects coded unselected. Retro, retrodiction true: model verified on alectinib's own completed NP28990/NP29042; partial fits rifampicin-M4 miss."
   },
   {
    "cell": "dose",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2018,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim (PBPK review executive summary). FDA built the model during the 2018 review and 'validated' it against B7461012 (completed 2017-05-04): retro, not same. Table 100 obs/pred AUC 1.12 itraconazole, 2.1-2.6 rifampicin under-predicted (partial). strengthens is for a second miss (#127); a second match goes to patient_trials (#113).",
-   "adjudicated_status": "retro",
-   "adjudication_note": "retro (decision 10): FDA built the lorlatinib PBPK model in review and validated it against completed B7461012 (2017); itraconazole within 2x, rifampicin under-predicted 2-2.6x (partial, decision 11). Same-status second match: patient_trials per #113, not strengthens (#127)."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lorlatinib review (bundle 210868) verbatim. Lorlatinib oral, healthy subjects (B7461012) coded unselected. Retro, retrodiction true: same drug's completed DDI study preceded FDA's model; partial for rifampicin under-prediction. Own lorlatinib track correct."
   },
   {
    "cell": "efficacy",
@@ -253,10 +249,30 @@
    "proposed_status": "untested",
    "proposed_year": 2023,
    "rule": "same/contra from a pairing whose trial source attributes the result to conditions the model never tested should be untested",
-   "note": "Quote verbatim in Yang 2023 abstract (PMID 37574132); NCT03596866 results 2025-02-19 confirmed; Zhang 2016 abstract confirms mutant-panel superiority claim. ALTA-3 unselected for ALK mutations; authors attribute tie to low ctDNA ALK fusion (34%). Panel's mutant ranking untested.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "drop",
-   "adjudication_note": "drop (checker rule 3a): Zhang 2016 ranked brigatinib over alectinib on ALK mutants; ALTA-3 was mutation-unselected, tie attributed to low ctDNA ALK fusion. Inadmissible pairing; track stays same (2019), so no untested entry."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Yang 2023 abstract (PMID 37574132) verbatim; brigatinib oral, crizotinib-pretreated stage_or_line correct, year 2023 epub. ALTA-3 was not ALK-mutation-selected; the panel's mutant ranking was never compared with patients, so contra is unsupported.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy population rule plus rule 5: the panel's ranking concerns crizotinib-resistant ALK mutants; ALTA-3 was not mutation-selected (mutants well under 80%), so no trial measured the prediction. Untested, not_measured."
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lee 2023 full text verbatim; brigatinib dosed on ALK-positive and negative PDOs. Brigatinib oral, biomarker_selected; untested opener for the split brigatinib PDO track holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lee 2023 full text verbatim: LC_02 SD after resection, LC_09PE PR on brigatinib; both organoids called sensitive. Outcomes predate the paper: retro, retrodiction true. Brigatinib oral, biomarker_selected."
   }
  ],
  "missing": [
@@ -278,6 +294,7 @@
   "A single paper that reproduces a known clinical result (retro) and also makes a new prediction tested in the same paper by resistance-biopsy enrichment (G1202R): one entry or two, and does an in-paper resistance correlation count as an efficacy comparison at all?",
   "PBPK DDI models in the dose cell (alk-pbpk-ddi): decision 4 scores whether the model's exposure target was reached and sufficient; a PBPK DDI model predicts a co-medication exposure ratio and is verified against DDI studies already in the NDA, so the track can only ever be retro or untested. Does it belong in dose, and is prediction_level 'class' right for a drug-level PK prediction (neither 'does the class work' nor 'which patients respond')?",
   "One organoid system, two readouts (alk-nsclc-pdo-codrp, Lee 2023): the conventional AUC mis-called the only non-responder while the paper's post-hoc regression-fitted CODRP index (which includes clinical stage) matched 5/5. Is the track scored on the pre-specified readout (#110, contra) or on the index the paper proposes (retro), or are these two tracks under decision 8?",
-  "PDX-derived cell lines (Recondo 2019 MR57-S, lorlatinib-sensitive at IC50 50 nM while patient MR57 progressed): owned by the PDX track (alk-lorlatinib-resistant-pdx) or by the patient-derived resistant-lines track (alk-mutant-cells)?"
+  "PDX-derived cell lines (Recondo 2019 MR57-S, lorlatinib-sensitive at IC50 50 nM while patient MR57 progressed): owned by the PDX track (alk-lorlatinib-resistant-pdx) or by the patient-derived resistant-lines track (alk-mutant-cells)?",
+  "Efficacy 2 (fields pass): the alectinib xenograft (Sakamoto 2011) post-dates crizotinib's ALK+ NSCLC responses (2010). Does a non-member, multi-target ALK inhibitor's patient result make a second-generation member's class-level xenograft a retrodiction, or only for the patient population crizotinib was tested in?"
  ]
 }

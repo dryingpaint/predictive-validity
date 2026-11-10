@@ -21,7 +21,7 @@
     "year": 2009,
     "status": "untested",
     "model": "Diet-induced obese (DIO) C57BL/6 mouse",
-    "note": "Merck's DualAG beat a potency-matched GLP-1R agonist on weight in DIO mice; knockouts showed both receptors are needed. No patient comparison yet.",
+    "note": "Merck's DualAG beat a potency-matched GLP-1R agonist on weight in DIO mice; knockouts showed both receptors are needed. No patient comparison yet. Opener of the SAR425899 track (proxy peptide); the cotadutide track's own DIO-mouse result is Henderson 2016.",
     "short": "Dual agonism needs both receptors in DIO mice",
     "src": "https://doi.org/10.2337/db09-0278",
     "srcLabel": "Pocai 2009",
@@ -47,15 +47,19 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2009,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2018,
-    "status": "same",
+    "status": "retro",
     "model": "Diet-induced obese (DIO) C57BL/6 mouse",
-    "note": "Cotadutide cut MMTT glucose AUC 22.6 % and weight 2.1 kg vs placebo in T2D patients: the mouse's glucose and weight readouts moved, direction only.",
+    "note": "Cotadutide cut MMTT glucose AUC 22.6 % and weight 2.1 kg vs placebo in T2D patients: the mouse's glucose and weight readouts moved, direction only. Retrodiction: this model result (Henderson 2016, cotadutide in DIO mice, online 2016-08) was first public after Transition Therapeutics' 2013-04-30 release of the pegapamodutide (TT-401) five-week T2D study, fasting glucose and weight down vs placebo; for engagement and efficacy any drug's earlier patient result for the target counts.",
     "short": "Glucose AUC and weight fell in patients",
     "src": "https://doi.org/10.1016/S0140-6736(18)30726-8",
     "srcLabel": "Ambery 2018",
@@ -78,13 +82,17 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "direction of MMTT glucose AUC and body weight vs placebo; mouse effect sizes not read at abstract level",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2009,
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2020,
@@ -118,9 +126,13 @@
     "magnitude": null,
     "magnitude_basis": "GCGR occupancy 11.2 ± 14.4 % vs GLP1R 49.9 ± 13.3 % at 0.2 mg/day; no mouse occupancy number exists to ratio against",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2009,
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -153,17 +165,21 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2017,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2018,
-    "status": "same",
+    "status": "retro",
     "model": "Diabetic db/db mouse (chronic glucose lowering, Sanofi exendin-based dual agonists)",
-    "note": "SAR425899 for 28 days lowered fasting plasma glucose and weight in overweight/obese T2D patients (NCT02411825): the db/db glucose readout moved, direction only.",
+    "note": "SAR425899 for 28 days lowered fasting plasma glucose and weight in overweight/obese T2D patients (NCT02411825): the db/db glucose readout moved, direction only. Retrodiction: this model result (Evers 2017, db/db mouse, online 2017-05) was first public after Transition Therapeutics' 2013-04-30 release of the pegapamodutide (TT-401) five-week T2D study, fasting glucose and weight down vs placebo; for engagement and efficacy any drug's earlier patient result for the target counts.",
     "short": "Fasting glucose fell in dosed T2D patients",
     "src": "https://doi.org/10.1111/dom.13494",
     "srcLabel": "Tillner 2019",
@@ -189,9 +205,13 @@
     "magnitude": "direction_only",
     "magnitude_basis": "direction of fasting plasma glucose in T2D patients; db/db effect sizes not read at abstract level",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2017,
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -224,9 +244,13 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Overweight adults without diabetes (co-infusion volunteers)",
     "model_first_use_year": 2012,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "other_disease",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -260,9 +284,13 @@
     "magnitude": "direction_only",
     "magnitude_basis": "co-infusion: resting EE up (+53 kcal/day at subanorectic doses, Cegla 2014); SAR425899: body-composition-adjusted sleeping metabolic rate fell less than placebo (p=0.002), 24-h EE not different",
     "source_calls_it": "partial",
-    "population": "Unselected",
+    "population": "Adults with overweight or obesity, without diabetes (healthy volunteers)",
     "model_first_use_year": 2012,
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "other_disease",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -295,9 +323,13 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2021,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -331,9 +363,13 @@
     "magnitude": null,
     "magnitude_basis": "abstract reports endpoints 'successfully predicted' without an error statistic",
     "source_calls_it": "match",
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2021,
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -367,16 +403,20 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2009,
     "blocked_by": null,
-    "margin_stated": true
+    "margin_stated": true,
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2020,
     "status": "contra",
     "model": "Diet-induced obese (DIO) C57BL/6 mouse",
-    "note": "At SAR425899's top phase-2 dose 6 of 13 patients stopped for adverse events and glucagon-receptor occupancy was 11 %: the mouse-tolerated dual exposure was unreachable.",
+    "note": "At SAR425899's top phase-2 dose 6 of 13 patients stopped for adverse events and glucagon-receptor occupancy was 11 %: the mouse-tolerated dual exposure was unreachable. SAR425899 track; the cotadutide and efinopegdutide GI ceilings in the judgement are context, not scored here.",
     "short": "GI intolerance capped dose below glucagon engagement",
     "src": "https://doi.org/10.1038/s41598-020-73815-5",
     "srcLabel": "Eriksson 2020",
@@ -404,10 +444,14 @@
     "magnitude": null,
     "magnitude_basis": "GCGR occupancy 11.2 % at the maximum tolerated phase-2 dose; no human exposure target was stated by the model",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2009,
     "blocked_by": "toxicity",
-    "margin_stated": true
+    "margin_stated": true,
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -415,7 +459,7 @@
     "year": 2009,
     "status": "untested",
     "model": "Diet-induced obese (DIO) C57BL/6 mouse",
-    "note": "In DIO mice the dual agonist beat a potency-matched GLP-1R agonist on weight with equal glucose lowering; this is the class's prediction for patients.",
+    "note": "In DIO mice the dual agonist beat a potency-matched GLP-1R agonist on weight with equal glucose lowering; this is the class's prediction for patients. Opener of the cotadutide track, DualAG as proxy.",
     "short": "More weight loss than GLP-1R alone in mice",
     "src": "https://doi.org/10.2337/db09-0278",
     "srcLabel": "Pocai 2009",
@@ -441,17 +485,21 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2009,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2018,
-    "status": "same",
+    "status": "retro",
     "model": "Diet-induced obese (DIO) C57BL/6 mouse",
-    "note": "Cotadutide met both co-primaries (MMTT glucose AUC, weight) vs placebo; later head-to-heads showed weight gains over GLP-1R agonists marginal and glucose no better.",
+    "note": "Cotadutide met both co-primaries (MMTT glucose AUC, weight) vs placebo; later head-to-heads showed weight gains over GLP-1R agonists marginal and glucose no better. Retrodiction: this model result (Henderson 2016, cotadutide in DIO mice, online 2016-08) was first public after Transition Therapeutics' 2013-04-30 release of the pegapamodutide (TT-401) five-week T2D study, fasting glucose and weight down vs placebo; for engagement and efficacy any drug's earlier patient result for the target counts. Design: co-primary endpoints (MMTT glucose AUC and weight), both met vs placebo, so the authors call it positive.",
     "short": "Primary endpoints met; superiority over GLP-1R not",
     "src": "https://doi.org/10.1016/S0140-6736(18)30726-8",
     "srcLabel": "Ambery 2018",
@@ -475,11 +523,11 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "direction of body weight and MMTT glucose AUC vs placebo; mouse effect sizes not read at abstract level",
     "source_calls_it": "partial",
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2009,
     "endpoint_role": "primary",
     "outcome_tested": null,
@@ -526,7 +574,11 @@
       "doi": null,
       "quote": "Change in HbA1c in Subjects With Type 2 DM, baseline to 30 weeks: OPK-88003 -1.47 vs placebo -0.25."
      }
-    ]
+    ],
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -559,19 +611,23 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2016,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2018,
-    "status": "same",
+    "status": "retro",
     "model": "Healthy cynomolgus monkey (4- and 8-week repeat-dose toxicology studies, cotadutide)",
-    "note": "Cotadutide cut weight 2.1 kg vs placebo over 41 days in T2D patients (co-primary met); the monkey's weight prediction held, direction only.",
+    "note": "Cotadutide cut weight 2.1 kg vs placebo over 41 days in T2D patients (co-primary met); the monkey's weight prediction held, direction only. Retrodiction: this model result (Henderson 2016, cotadutide in cynomolgus monkeys, online 2016-08) was first public after Transition Therapeutics' 2013-04-30 release of the pegapamodutide (TT-401) five-week T2D study, fasting glucose and weight down vs placebo; for engagement and efficacy any drug's earlier patient result for the target counts. Design: co-primaries glucose AUC and weight, both met.",
     "short": "Weight co-primary met; monkey had no glucose arm",
     "src": "https://doi.org/10.1016/S0140-6736(18)30726-8",
     "srcLabel": "Ambery 2018",
@@ -597,7 +653,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "direction of body weight vs placebo; monkeys lost up to ~20 % in 8 weeks at 27 nmol/kg/d, patients 3.8 kg (~4 %) in 41 days at <=200 ug/day, doses not matched",
     "source_calls_it": "partial",
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2016,
     "endpoint_role": "primary",
     "outcome_tested": null,
@@ -614,7 +670,11 @@
       "doi": "10.2337/dc20-2151",
       "quote": "Cotadutide treatment for 54 weeks improved glycemic control and weight loss in participants with overweight/obesity and type 2 diabetes."
      }
-    ]
+    ],
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -647,19 +707,23 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2017,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2021,
-    "status": "same",
+    "status": "retro",
     "model": "Diabetic db/db mouse (chronic glucose lowering, Sanofi exendin-based dual agonists)",
-    "note": "26-week phase 2 (NCT02973321, HbA1c primary): SAR425899 improved glycaemic control vs placebo, matching liraglutide; the db/db prediction held in direction. Programme then dropped.",
+    "note": "26-week phase 2 (NCT02973321, HbA1c primary): SAR425899 improved glycaemic control vs placebo, matching liraglutide; the db/db prediction held in direction. Programme then dropped. Retrodiction: this model result (Evers 2017, db/db mouse, online 2017-05) was first public after Transition Therapeutics' 2013-04-30 release of the pegapamodutide (TT-401) five-week T2D study, fasting glucose and weight down vs placebo; for engagement and efficacy any drug's earlier patient result for the target counts.",
     "short": "HbA1c primary met; equal to liraglutide",
     "src": "https://doi.org/10.1111/dom.14394",
     "srcLabel": "Schiavon 2021",
@@ -685,7 +749,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "direction of HbA1c and postprandial glucose vs placebo; db/db effect sizes not read",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2017,
     "endpoint_role": "primary",
     "outcome_tested": null,
@@ -696,7 +760,11 @@
       "doi": "10.1111/dom.14394",
       "quote": "SAR425899 and liraglutide improved postprandial glucose control in overweight to obese subjects with T2D."
      }
-    ]
+    ],
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -729,11 +797,15 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Overweight adults without diabetes (co-infusion volunteers)",
     "model_first_use_year": 2012,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "other_disease",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -741,7 +813,7 @@
     "year": 2018,
     "status": "same",
     "model": "Human GLP-1 + glucagon co-infusion challenge (overweight volunteers without diabetes)",
-    "note": "Cotadutide met both co-primaries (glucose AUC -22.6 %, weight -2.1 kg vs placebo) as predicted; the EE-driven edge over GLP-1R agonists did not follow.",
+    "note": "Cotadutide met both co-primaries (glucose AUC -22.6 %, weight -2.1 kg vs placebo) as predicted; the EE-driven edge over GLP-1R agonists did not follow. Design: co-primaries glucose AUC and weight, both met vs placebo. Prospective: Tan 2013 (online 2012-12) precedes every class patient result.",
     "short": "Glucose and weight fell; dual edge marginal",
     "src": "https://doi.org/10.1016/S0140-6736(18)30726-8",
     "srcLabel": "Ambery 2018",
@@ -767,7 +839,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "direction of MMTT glucose AUC and body weight vs placebo; the acute infusion gives no chronic effect size to ratio",
     "source_calls_it": "partial",
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2012,
     "endpoint_role": "primary",
     "outcome_tested": null,
@@ -784,7 +856,11 @@
       "doi": "10.2337/dc20-2151",
       "quote": "Cotadutide treatment for 54 weeks improved glycemic control and weight loss in participants with overweight/obesity and type 2 diabetes."
      }
-    ]
+    ],
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -817,11 +893,15 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2021,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -829,7 +909,7 @@
     "year": 2025,
     "status": "retro",
     "model": "4GI quantitative systems pharmacology model of human glucose regulation (AstraZeneca, in silico)",
-    "note": "4GI coupled to an HbA1c model reproduced cotadutide's and liraglutide's 26-week fasting glucose and HbA1c in the phase 2b (RMSPE 5.9 % and 13 %).",
+    "note": "4GI coupled to an HbA1c model reproduced cotadutide's and liraglutide's 26-week fasting glucose and HbA1c in the phase 2b (RMSPE 5.9 % and 13 %). Design: phase 2b co-primaries HbA1c and weight, both met vs placebo.",
     "short": "Reproduced 26-week HbA1c within 13 %",
     "src": "https://doi.org/10.1002/psp4.70074",
     "srcLabel": "Bosch 2025",
@@ -855,7 +935,7 @@
     "magnitude": "within_2x",
     "magnitude_basis": "RMSPE 5.9 % (fasting plasma glucose) and 13 % (HbA1c) for cotadutide and liraglutide over 26 weeks of NCT03235050",
     "source_calls_it": "match",
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2021,
     "endpoint_role": "primary",
     "outcome_tested": null,
@@ -866,7 +946,11 @@
       "doi": "10.2337/dc20-2151",
       "quote": "Cotadutide treatment for 54 weeks improved glycemic control and weight loss in participants with overweight/obesity and type 2 diabetes."
      }
-    ]
+    ],
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -880,7 +964,7 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2018,
     "year": 2018,
     "status": "untested",
@@ -903,10 +987,14 @@
     "source_calls_it": null,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "model": "Obese diabetic cynomolgus monkey (chronic dosing, monkey-specific surrogate of SAR425899, liraglutide comparator)",
     "model_id": "dio-nhp-surrogate",
@@ -917,11 +1005,11 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2018,
     "year": 2018,
-    "status": "same",
-    "note": "SAR425899 for 28 days lowered fasting plasma glucose and weight in overweight/obese T2D patients (NCT02411825), as the obese diabetic monkey predicted; direction only, no comparator arm.",
+    "status": "retro",
+    "note": "SAR425899 for 28 days lowered fasting plasma glucose and weight in overweight/obese T2D patients (NCT02411825), as the obese diabetic monkey predicted; direction only, no comparator arm. Retrodiction: this model result (Elvert 2018, monkey surrogate, received 2017-05, online 2018-01) was first public after Transition Therapeutics' 2013-04-30 release of the pegapamodutide (TT-401) five-week T2D study, fasting glucose and weight down vs placebo; for engagement and efficacy any drug's earlier patient result for the target counts. Settles the rule question on the sponsor's internal MAD readout: moot, because a public class patient result already predated the model.",
     "short": "Glucose and weight fell in dosed T2D patients",
     "src": "https://doi.org/10.1111/dom.13494",
     "srcLabel": "Tillner 2019",
@@ -941,10 +1029,14 @@
     "source_calls_it": null,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "model": "Obese diabetic cynomolgus monkey (chronic dosing, monkey-specific surrogate of SAR425899, liraglutide comparator)",
     "model_id": "dio-nhp-surrogate",
@@ -955,11 +1047,11 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2018,
     "year": 2021,
-    "status": "same",
-    "note": "26-week phase 2 (NCT02973321): HbA1c -1.5 to -1.6 % vs -0.66 % placebo and -1.31 % liraglutide, the monkey's glucose match held; weight -4.3 to -5.3 kg vs -4.6 kg liraglutide, so the weight edge did not follow.",
+    "status": "retro",
+    "note": "26-week phase 2 (NCT02973321): HbA1c -1.5 to -1.6 % vs -0.66 % placebo and -1.31 % liraglutide, the monkey's glucose match held; weight -4.3 to -5.3 kg vs -4.6 kg liraglutide, so the weight edge did not follow. Retrodiction: this model result (Elvert 2018, monkey surrogate, received 2017-05, online 2018-01) was first public after Transition Therapeutics' 2013-04-30 release of the pegapamodutide (TT-401) five-week T2D study, fasting glucose and weight down vs placebo; for engagement and efficacy any drug's earlier patient result for the target counts. Settles the rule question on the sponsor's internal MAD readout: moot, because a public class patient result already predated the model.",
     "short": "HbA1c met; no weight edge over liraglutide",
     "src": "https://doi.org/10.1111/dom.14394",
     "srcLabel": "Schiavon 2021",
@@ -987,7 +1079,11 @@
       "quote": "SAR425899 and liraglutide improved postprandial glucose control in overweight to obese subjects with T2D."
      }
     ],
-    "strengthens": true
+    "strengthens": true,
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -995,7 +1091,7 @@
     "year": 2009,
     "status": "untested",
     "model": "Diet-induced obese (DIO) C57BL/6 mouse",
-    "note": "Mouse papers report no overt adverse effects. Patients showed GI intolerance (not mouse-visible) and MK-8521 raised heart rate 7 bpm vs placebo; no source compares.",
+    "note": "Mouse papers report no overt adverse effects. Patients showed GI intolerance (not mouse-visible) and MK-8521 raised heart rate 7 bpm vs placebo; no source compares. Ruling: the passing claim of no overt adverse effects is a safety prediction of the model, scored on the SAR425899 track (appended entry).",
     "short": "No model-patient safety comparison found",
     "src": "https://doi.org/10.1038/nchembio.209",
     "srcLabel": "Day 2009",
@@ -1023,9 +1119,13 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2009,
-    "imported_from": null
+    "imported_from": null,
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1058,9 +1158,13 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2016,
-    "imported_from": null
+    "imported_from": null,
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1093,9 +1197,13 @@
     "magnitude": null,
     "magnitude_basis": "GI disorders 72 % vs 40 % placebo (phase 2a, n=25 vs 26) against a stated absence of adverse clinical signs or vomiting in monkeys at 30-100 ug/kg/d; no rate to ratio",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2016,
-    "imported_from": null
+    "imported_from": null,
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1130,9 +1238,54 @@
     "magnitude": null,
     "magnitude_basis": "vomiting 17 %, nausea 35 % of cotadutide-treated T2D patients over 54 weeks vs none stated in monkeys; no rate to ratio",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Unselected type 2 diabetes",
     "model_first_use_year": 2016,
-    "imported_from": null
+    "imported_from": null,
+    "drug": "cotadutide",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "year": 2018,
+    "status": "same",
+    "model": "Diet-induced obese (DIO) C57BL/6 mouse",
+    "note": "Ruling: the DIO mouse's passing claim of no overt adverse effects is a safety prediction. SAR425899 was well tolerated in T2D patients over 28 days; GI intolerance, not mouse-visible, is counted once in dose.",
+    "short": "Mouse tolerability claim held in T2D MAD",
+    "src": "https://doi.org/10.1111/dom.13494",
+    "srcLabel": "Tillner 2019",
+    "quote": "SAR425899 was well tolerated and led to favourable glycaemic effects in patients with T2D and weight reduction in both healthy volunteers and patients.",
+    "confidence": "low",
+    "confidence_note": "Abstract-level on both sides. Day 2009 dosed a sibling PEGylated co-agonist, not SAR425899. Later SAR425899 studies stopped patients for GI adverse events (Eriksson 2020), a harm the mouse cannot show, scored in dose not here.",
+    "reason": "Tolerability claim held for mouse-visible harms",
+    "judgement": "Ruling 2026-11-09: a statement that the drug was well tolerated, even in an efficacy paper, is a safety prediction. Paired by the drafter: Day 2009 is the model side; Tillner 2019 the patient side. Same, partial, because tolerability held on mouse-visible harms while GI intolerance (not mouse-visible) capped the dose and is counted in the dose cell. Prospective: no SAR425899 patient result predated Day 2009.",
+    "model_id": "dio-mouse",
+    "prediction_level": "class",
+    "subjects": "mixed",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1038/nchembio.209",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2018,
+    "print_year": 2019,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": false,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "magnitude": "direction_only",
+    "magnitude_basis": "presence vs absence of adverse effects",
+    "source_calls_it": "partial",
+    "population": "Overweight/obese adults with type 2 diabetes (28-day MAD)",
+    "model_first_use_year": 2009,
+    "imported_from": null,
+    "drug": "SAR425899",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    }
   ]
  }

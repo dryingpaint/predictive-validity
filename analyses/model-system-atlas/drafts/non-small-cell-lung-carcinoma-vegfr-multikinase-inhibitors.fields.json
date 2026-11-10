@@ -1,0 +1,106 @@
+{
+ "tile": "non-small-cell-lung-carcinoma-vegfr-multikinase-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug lenvatinib, route oral, population_group unselected, combination_with None"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug lenvatinib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug lenvatinib, route oral, population_group unselected, combination_with pembrolizumab"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug famitinib, route oral, population_group unselected, combination_with None"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug lenvatinib, route oral, population_group unselected, combination_with None"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug lenvatinib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug lenvatinib, route oral, population_group unselected, combination_with pembrolizumab"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug famitinib, route oral, population_group unselected, combination_with None"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug lenvatinib, route oral, population_group unselected, combination_with None"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug lenvatinib, route oral, population_group biomarker_selected, combination_with None; status untested -> retro, retrodiction true (2026-11-09 retrodiction ruling: model online 2013-07-12, after Drilon 2013 cabozantinib RET-fusion responses online 2013-03-26)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug lenvatinib, route oral, population_group stage_or_line, combination_with None; year 2016 -> 2014 (rule 6 earliest date: ASCO 2014 abstract 8043, same OS/PFS medians)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug lenvatinib, route oral, population_group unselected, combination_with pembrolizumab"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug lenvatinib, route oral, population_group biomarker_selected, combination_with None; year 2019 -> 2016 (rule 6: ESMO 2016 poster 1204PD); status same kept under the single-arm ruling (response where the model predicted one)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug lenvatinib, route oral, population_group biomarker_selected, combination_with pembrolizumab; status contra kept under the combination and co-primary rulings"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug famitinib, route oral, population_group unselected, combination_with None"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug famitinib, route oral, population_group biomarker_selected, combination_with camrelizumab"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug lenvatinib, route oral, population_group biomarker_selected, combination_with pembrolizumab; split onto its own lenvatinib track of llc-syngeneic-c57bl6-rt-checkpoint; status untested -> contra, retrodiction true (2026-11-09 retrodiction ruling: post-dates LEAP-007, failed to reproduce its null; settles rule question 5)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug lenvatinib, route oral, population_group unselected, combination_with None"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug lenvatinib, route oral, population_group stage_or_line, combination_with None; src/quote moved from the FDA review (now model_src) to the Study 703 ASCO 2014 abstract; imported_from removed (imported-harm ruling: NSCLC patients were measured); status same, year 2015 kept"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug lenvatinib, route oral, population_group biomarker_selected, combination_with None"
+  }
+ ],
+ "added": []
+}

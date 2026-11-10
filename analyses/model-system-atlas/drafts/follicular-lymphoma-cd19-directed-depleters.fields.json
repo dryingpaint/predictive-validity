@@ -1,0 +1,66 @@
+{
+ "tile": "follicular-lymphoma-cd19-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "year 2011->2010 (rule 6 earliest public date: 2010 FL case report, epub 2010-07-28, after the model paper); drug set to axi-cel (NCI precursor construct); status same unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "year 2011->2010 (rule 6 earliest public date: 2010 FL case report, epub 2010-07-28, after the model paper); drug set to axi-cel (NCI precursor construct); status same unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2011->2010 (rule 6 earliest public date: 2010 FL case report, epub 2010-07-28, after the model paper); drug set to axi-cel (NCI precursor construct); status same unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2011->2010 (rule 6 earliest public date: 2010 FL case report, epub 2010-07-28, after the model paper); drug set to axi-cel (NCI precursor construct); status same unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2011->2010 (rule 6 earliest public date: 2010 FL case report, epub 2010-07-28, after the model paper); drug set to axi-cel (NCI precursor construct); status same unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "year 2011->2010 (rule 6 earliest public date: 2010 FL case report, epub 2010-07-28, after the model paper); drug set to axi-cel (NCI precursor construct); status contra unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to axi-cel; imported_from MONDO:0004947 removed (imported-harm ruling: FL patients' own CRS/neurotoxicity on the axi-cel NCI construct was measured, Kochenderfer 2012); status retro and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to axi-cel; imported_from MONDO:0004947 removed (imported-harm ruling: FL patients' own CRS/neurotoxicity on the axi-cel NCI construct was measured, Kochenderfer 2012); status retro and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "what": "drug set to axi-cel; imported_from MONDO:0004947 removed (imported-harm ruling: FL patients' own CRS/neurotoxicity on the axi-cel NCI construct was measured, Kochenderfer 2012); status retro and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "year 2023->2021 (rule 6: ASH 2021 congress abstract 10.1182/blood-2021-150431 on the same cohort); drug axi-cel (74% of patients), combination_with anakinra, population_group other_disease; status same unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 13,
+   "what": "year 2023->2021 (rule 6: ASH 2021 congress abstract 10.1182/blood-2021-150431 on the same cohort); drug axi-cel (74% of patients), combination_with anakinra, population_group other_disease; status same unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "what": "year 2024->2021 (rule 6: sponsor press release 2021-04-20 on the same ZUMA-19 phase 1b patients; registry results still set status contra); combination_with lenzilumab, population_group other_disease"
+  }
+ ],
+ "added": []
+}

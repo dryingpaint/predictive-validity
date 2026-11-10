@@ -10,7 +10,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Fischer 2017 (PMID 28549772) abstract quote verbatim; mouse RPGR expression/glutamylation readout has no sampled human counterpart, so untested/not_measured holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fischer 2017 (PMID 28549772) abstract quote verbatim; AAV8-coRPGR is cotoretigene, subretinal; XIRIUS enrolled RPGR-XLRP males, biomarker_selected. Untested/not_measured holds."
   },
   {
    "cell": "engagement",
@@ -19,7 +20,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Song 2020 (PMID 32414297) quote verbatim; opsin relocalisation and transgene expression not measurable in treated patients; untested/not_measured correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Song 2020 (PMID 32414297) quote verbatim; rAAV2tYF-GRK1-hRPGRco is AGTC-501 = laru-zova, subretinal; HORIZON/VISTA males with pathogenic RPGR variants. Untested/not_measured holds."
   },
   {
    "cell": "dose",
@@ -28,7 +30,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Fischer 2017 abstract states no human dose, exposure or margin; untested/no_prediction holds (abstract only)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fischer 2017 abstract states no human dose, exposure or margin; cotoretigene, subretinal, biomarker_selected correct. Untested/no_prediction holds (abstract only)."
   },
   {
    "cell": "dose",
@@ -37,17 +40,22 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Song 2020 quote verbatim; Dufour 2020 abstract defines NOAEL 6x10^11 vg/mL. Opening untested entry at 2018 proxy is fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Song 2020 'guided the initial doses' quote verbatim; laru-zova, subretinal, RPGR males correct. Opening untested entry stands."
   },
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "unverified",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": false,
-   "note": "Yang 2024 (PMID 39643074) quote verbatim but is an efficacy sentence; human doses are vg/eye and HORIZON registry gives no vg/mL, so whether toxicity arose above the dog NOAEL concentration is unchecked. Dog toxic per-eye load (~2.1x10^11 vg) is below human tolerated 6.8x10^11 vg/eye.",
-   "rule": "Rule 3 (quote must support status); dose table margin_stated row"
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "untested",
+   "rule": "CHECKER_BRIEF 3: dose same on a target the model never stated (an MTD, the drafter's arithmetic); DRAFTER_BRIEF dose table margin_stated row",
+   "note": "Yang 2024 (epub 4 Dec 2024) quote verbatim but names the clinical MTD, not the dog margin. Dog NOAEL 6e11 vg/mL (0.07 mL, ~4e10 vg); humans tolerated 6.8e11 vg/eye: the margin cannot be matched. Drug/route/population correct.",
+   "adjudicated_status": "same",
+   "adjudication_note": "DRAFTER_BRIEF dose table margin_stated row / Decision 16: dog NOAEL 6e11, toxic 3e12 vg/mL (Song/Dufour 2020) is a model-stated margin; HORIZON concentrations (Ophthalmology Times): 1.1e12 vg/mL tolerated, 3.2e12 vg/mL toxic. Margin held."
   },
   {
    "cell": "efficacy",
@@ -56,16 +64,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Fischer 2017 quote verbatim; opening untested entry for the mouse track."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fischer 2017 quote verbatim; cotoretigene subretinal opener; RPGR-genotyped males fit biomarker_selected."
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Biogen 14 May 2021 release quote verbatim (via Firecrawl scrape); Lam 2024 Ophthalmology (PMID 38423215) 'primary microperimetry end point was not met' confirms; LUMEOS miss confirmed by Fierce/J&J 5 May 2025. Tier 1 record agrees, so status stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Biogen release (14 May 2021) re-opened: 'did not meet its primary endpoint' seen; full microperimetry wording confirmed by Lam 2024 abstract. Cotoretigene subretinal, RPGR males; contra, year 2021 correct."
   },
   {
    "cell": "efficacy",
@@ -74,7 +84,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Dufour 2020 (PMID 31910043) quote verbatim; ERG/structure rescue at low/mid dose."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dufour 2020 (PMID 31910043) quote verbatim; AGTC-501 = laru-zova, subretinal in XLPRA2 dogs; opener untested stands."
   },
   {
    "cell": "efficacy",
@@ -83,7 +94,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Beacon 21 Sep 2026 release quote verbatim; 31.0%/24.1% vs 0% at 6.8 and 3.7x10^11 vg/eye. Tier 5, trial_unreported correct; no registry results."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Beacon release (21 Sep 2026) quote verbatim; VISTA laru-zova subretinal in RPGR males met LLVA primary; same, tier 5, year 2026."
   },
   {
    "cell": "safety",
@@ -92,7 +104,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Fischer 2017 quote verbatim; mouse safety statement opens the track."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fischer 2017 'good safety' quote verbatim; cotoretigene subretinal opener; population correct."
   },
   {
    "cell": "safety",
@@ -101,7 +114,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Cehajic-Kapetanovic 2020 (PMID 32094925) quote verbatim. Mice can show subretinal AAV inflammation, so silence scored contra is defensible; mouse vector loads unread, low confidence appropriate. Lam 2024 adds 7 vs 3 ocular SAEs high vs low dose."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Cehajic-Kapetanovic 2020 (PMID 32094925) quote verbatim; XIRIUS phase 1/2 AAV8-coRPGR subretinal in RPGR-XLRP males; inflammation unshown in mice, contra stands (low confidence)."
   },
   {
    "cell": "safety",
@@ -110,7 +124,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Dufour 2020 quote verbatim; Song 2020 adds retinal detachment and inflammation at 3x10^12 vg/mL."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dufour 2020 high-dose toxicity quote verbatim; laru-zova subretinal; population correct."
   },
   {
    "cell": "safety",
@@ -119,7 +134,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Yang 2024 quote verbatim; dose-limited posterior-segment/RPE toxicity at top dose matches dog high-dose toxicity in direction; lesion naming differs, as the draft says. VISTA (2026) reports no drug-related SAEs at 6.8x10^11."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Yang 2024 RPE-change quote verbatim; HORIZON males with pathogenic RPGR variants, subretinal AGTC-501; top-dose posterior-segment toxicity matches dog high dose in direction."
   },
   {
    "cell": "engagement",
@@ -128,8 +144,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Sladen 2024 (PMID 38339118, MDPI full text) quote verbatim. RPGR/opsin localisation has no human readout: untested/no_prediction holds. Vector was AAV7m8-hRKp.RPGR (bota-vec cassette, not its AAV5 capsid); product_in_model should be false."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Sladen 2024 (PMID 38339118, epub 2 Feb 2024) quote verbatim; clinical bota-vec cassette, product_in_model false; LUMEOS subretinal RPGR males. Untested/no_prediction holds."
   },
   {
    "cell": "efficacy",
@@ -138,8 +154,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Abstract sentence verbatim (epub 2 Feb 2024). Phase 1/2 primary was safety, so no retro score against it; opening untested entry stands. Capsid AAV7m8, not AAV5: product_in_model should be false."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Sladen 2024 sentence verbatim; botaretigene, product_in_model false; phase 1/2 primary was safety, so untested opener stands; subretinal, biomarker_selected correct."
   },
   {
    "cell": "efficacy",
@@ -148,8 +164,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "MeiraGTx SEC EX-99.1 quote verbatim; VMA primary missed (J&J May 2025). Organoid paper (Feb 2024) predates readout, so prospective contra, year 2025, not retro. Sponsor blames maze insensitivity, not an untested condition."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "MeiraGTx EX-99.1 'did not meet statistical significance' VMA quote verbatim; LUMEOS bota-vec subretinal RPGR males missed primary (2025). Organoids predate readout: prospective contra."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lam 2024 (PMID 38423215) Conclusions quote verbatim. Organoids (2 Feb 2024) post-date XIRIUS miss (May 2021): efficacy retrodiction on target; rescue vs primary miss is contra. Underpowering is not an untested model condition. Year 2024 correct."
   }
  ],
  "missing": [

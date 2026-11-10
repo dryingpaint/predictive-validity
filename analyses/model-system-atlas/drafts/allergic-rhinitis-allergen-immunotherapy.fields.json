@@ -1,0 +1,147 @@
+{
+ "tile": "allergic-rhinitis-allergen-immunotherapy",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug Ragweed-SPIRE, route intradermal set from the entry's source"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug Grass-SPIRE, route intradermal set; year kept 2017 (the 2013 chamber result the checker cited is HDM-SPIRE's, now engagement 6)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug gpASIT+, route sc set from the entry's source"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug gpASIT+, route sc set from the entry's source"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug Ragweed-SPIRE, route intradermal set from the entry's source"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug rBet v 1, route sublingual set from the entry's source"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug HDM-SPIRE, route intradermal set from the entry's source"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug birch pollen allergen extract, route sublingual set from the entry's source"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug gpASIT+, route sc set from the entry's source"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug gpASIT+, route sc set from the entry's source"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "status contra -> same: dose table (target reached is dose same; the confirmatory Phase III miss is scored in efficacy 5 only), per check adjudication; strengthens dose 6"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug Ragweed-SPIRE, route intradermal set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug HDM-SPIRE, route intradermal set; birch SLIT-tablet result removed from patient_trials and split into its own track (efficacy 8-9)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug gpASIT+, route sc set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug gpASIT+, route sc set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug gpASIT+, route sc set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug rBet v 1, route sublingual set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "year 2015 -> 2013: rule 6, patient result public in Stallergenes 2009-09-16 release, so the retrodiction comparison was public with the 2013 mouse paper (check adjudication)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug Ragweed-SPIRE, route intradermal set from the entry's source"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug rBet v 1, route sublingual set from the entry's source"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug HDM-SPIRE, route intradermal set from the entry's source"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug birch pollen allergen extract, route sublingual set from the entry's source"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug gpASIT+, route sc set from the entry's source"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug gpASIT+, route sc set from the entry's source"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "opener, allergen-exposure-chamber x HDM-SPIRE intradermal, untested 2011 (NCT01447784)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "same 2013, allergen-exposure-chamber x HDM-SPIRE: Circassia PR 2013-09-12 chamber symptoms vs placebo p=0.02 (settles checker's engagement 2 year correction on HDM-SPIRE's own track)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "opener, allergen-exposure-chamber x birch pollen allergen extract sublingual, untested 2015 (NCT02481856)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "same 2019, chamber x birch SLIT-tablet: Biedermann 2019 Phase 3 met primary (split from efficacy 2 patient_trials)"
+  }
+ ]
+}

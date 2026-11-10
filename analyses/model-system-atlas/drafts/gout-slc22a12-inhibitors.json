@@ -50,7 +50,11 @@
     "confidence": "high",
     "source_tier": 1,
     "epub_year": 2002,
-    "print_year": 2002
+    "print_year": 2002,
+    "drug": "class",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1097/01.asn.0000105320.04395.d0",
@@ -59,7 +63,7 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "model_filed": null,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "sUA fall and FEUA rise on lesinurad vs low sUA and high urate clearance in SLC22A12 loss-of-function carriers",
@@ -69,15 +73,15 @@
     "prediction_level": "class",
     "subjects": "healthy_volunteers",
     "comparison_stated": false,
-    "judgement": "Paired by me: genetics paper (model) against healthy-volunteer PD paper. Urate is the transporter's own substrate, so proximal. Dated to the first tier-1 human PD paper found; sUA lowering was also in the 2015 label.",
+    "judgement": "Paired by me: genetics paper (model) against healthy-volunteer PD paper. Urate is the transporter's own substrate, so proximal. Dated to the first tier-1 human PD paper found; sUA lowering was also in the 2015 label. Retrodiction (engagement/efficacy rule: any drug on the same target and action counts): benzbromarone and probenecid, uricosurics Enomoto 2002 shows act on URAT1, had lowered serum urate in gout patients decades before, so the genotype model is a retrodiction (the Enomoto abstract says URAT1 is 'targeted by uricosuric and antiuricosuric agents'). Year moved 2016 -> 2009, the earliest public lesinurad urate lowering: Ardea press release 11 Jun 2009 (EULAR 2009 posters: healthy-volunteer sUA lowering and 'RDEA594: A Potent URAT1 Inhibitor'); Fleischmann 2014 (lesinurad + febuxostat in gout, doi 10.1093/rheumatology/ket487) was the checker's earlier date. Miner 2016 stays the source of the status. Drug is 'class': a genotype is tied to no drug; the patient result compared is lesinurad's.",
     "model": "People with SLC22A12 loss-of-function (renal hypouricemia type 1)",
     "model_id": "slc22a12-lof-renal-hypouricemia",
     "model_kind": "human_genetic",
     "product_in_model": false,
-    "year": 2016,
-    "status": "same",
+    "year": 2009,
+    "status": "retro",
     "model_first_use_year": 2002,
-    "note": "A single 200 mg lesinurad dose raised FEUA 3.6-fold and cut sUA 33%, the phenotype of URAT1 loss-of-function carriers.",
+    "note": "A single 200 mg lesinurad dose raised FEUA 3.6-fold and cut sUA 33%, the phenotype of URAT1 loss-of-function carriers. Retro: uricosurics already lowered urate in patients when URAT1 genetics appeared. Dated to lesinurad's first public human urate fall, 2009.",
     "short": "Lesinurad mimics URAT1-null urate phenotype",
     "src": "https://doi.org/10.1186/s13075-016-1107-x",
     "srcLabel": "Miner 2016",
@@ -87,7 +91,11 @@
     "readout_tier": "proximal",
     "source_tier": 1,
     "epub_year": 2016,
-    "print_year": 2016
+    "print_year": 2016,
+    "drug": "class",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -122,7 +130,11 @@
     "confidence": "medium",
     "source_tier": 2,
     "epub_year": 2015,
-    "print_year": 2015
+    "print_year": 2015,
+    "drug": "lesinurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -131,7 +143,7 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "model_filed": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "in vitro URAT1/OAT4 inhibition at clinical concentrations vs FEUA and sUA change in volunteers",
@@ -141,15 +153,15 @@
     "prediction_level": "class",
     "subjects": "healthy_volunteers",
     "comparison_stated": true,
-    "judgement": "Urate excretion is the transporter's own product, so proximal. The FDA ClinPharmR (2015) makes a related statement only for oxypurinol, a URAT1 substrate.",
+    "judgement": "Urate excretion is the transporter's own product, so proximal. The FDA ClinPharmR (2015) makes a related statement only for oxypurinol, a URAT1 substrate. Year moved 2016 -> 2009: Ardea press release 11 Jun 2009 (EULAR 2009 posters: healthy-volunteer sUA lowering and 'RDEA594: A Potent URAT1 Inhibitor'); the Zurampic label (2015, 12.1-12.2) restates both sides. Retrodiction (engagement/efficacy rule: any drug on the same target and action counts): benzbromarone and probenecid, uricosurics Enomoto 2002 shows act on URAT1, had lowered serum urate in gout patients decades before; per the FDA PharmR the hURAT1 study SR08-012 was also run after RDEA806 had lowered urate in volunteers. So retro, not same.",
     "model": "Human URAT1-expressing cells (HEK293/oocyte urate uptake)",
     "model_id": "hurat1-cell-urate-uptake",
     "model_kind": "ex_vivo",
     "product_in_model": true,
     "model_first_use_year": 2008,
-    "year": 2016,
-    "status": "same",
-    "note": "Lesinurad inhibited URAT1 in vitro at clinical concentrations and raised FEUA, lowered sUA in volunteers; one paper states both.",
+    "year": 2009,
+    "status": "retro",
+    "note": "Lesinurad inhibited URAT1 in vitro at clinical concentrations and raised FEUA, lowered sUA in volunteers; one paper states both. Retro: URAT1 inhibitors (benzbromarone, probenecid; lesinurad's prodrug RDEA806) had lowered urate in people before the assay. Both sides public at EULAR 2009.",
     "short": "Volunteer uricosuria matched URAT1 block",
     "src": "https://doi.org/10.1186/s13075-016-1107-x",
     "srcLabel": "Miner 2016",
@@ -159,7 +171,11 @@
     "readout_tier": "proximal",
     "source_tier": 1,
     "epub_year": 2016,
-    "print_year": 2016
+    "print_year": 2016,
+    "drug": "lesinurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -195,10 +211,14 @@
     "model": "Tufted capuchin monkeys (low uricase, high plasma urate) dosed with UR-1102/epaminurad",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "epaminurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "healthy_volunteers",
     "comparison_stated": false,
@@ -216,23 +236,27 @@
     "product_in_model": true,
     "confidence": "medium",
     "confidence_note": "Abstract read (PMID 31056705); epub month not confirmed, print Nov 2019.",
-    "judgement": "Paired by the drafter: Lee 2019 does not set the monkey data beside its results. Registry checked: NCT01953497 and NCT02524678 posted no results.",
+    "judgement": "Paired by the drafter: Lee 2019 does not set the monkey data beside its results. Registry checked: NCT01953497 and NCT02524678 posted no results. Ruling: an engagement result first public after a patient result for the same target and action, from any member drug, is a retrodiction. Ahn 2016 post-dates lesinurad's published urate lowering, so same becomes retro.",
     "epub_year": 2019,
     "print_year": 2019,
     "year": 2019,
-    "status": "same",
+    "status": "retro",
     "src": "https://doi.org/10.1093/rheumatology/kez140",
     "srcLabel": "Lee 2019",
     "readout_tier": "proximal",
     "quote": "URC102 rapidly reduced serum uric acid, which was maintained over the entire treatment period.",
-    "note": "Healthy volunteers on URC102 showed falling serum urate and dose-dependent FEUA rise, as the capuchin monkeys did.",
+    "note": "Healthy volunteers on URC102 showed falling serum urate and dose-dependent FEUA rise, as the capuchin monkeys did. Retro: the monkey data (2016) came after lesinurad, a URAT1 inhibitor, lowered urate in patients (2009-2015).",
     "short": "Volunteers: urate down, FEUA up",
     "reason": "Human PD matched monkey uricosuria",
     "model_id": "capuchin-monkey-uricosuric",
     "model": "Tufted capuchin monkeys (low uricase, high plasma urate) dosed with UR-1102/epaminurad",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "epaminurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -269,7 +293,11 @@
     "confidence": "medium",
     "source_tier": 2,
     "epub_year": 2015,
-    "print_year": 2015
+    "print_year": 2015,
+    "drug": "lesinurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/207988Orig1s000PharmR.pdf",
@@ -298,7 +326,7 @@
     "status": "contra",
     "blocked_by": "toxicity",
     "margin_stated": true,
-    "note": "400 mg lowered urate more but caused acute uric acid nephropathy, capping the dose at 200 mg, inside the stated kidney margin.",
+    "note": "400 mg lowered urate more but caused acute uric acid nephropathy, capping the dose at 200 mg, inside the stated kidney margin. Renal events counted at 400 mg added to an XOI (CLEAR, CRYSTAL); no retrodiction: the tox data predate lesinurad's own patient results.",
     "short": "Renal failure capped dose inside margin",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/207988Orig1s000ClinPharmR.pdf",
     "srcLabel": "FDA ClinPharmR 2015",
@@ -307,7 +335,11 @@
     "reason": "Kidney toxicity at clinical exposures",
     "source_tier": 2,
     "epub_year": 2015,
-    "print_year": 2015
+    "print_year": 2015,
+    "drug": "lesinurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "allopurinol or febuxostat"
    }
   ],
   "efficacy": [
@@ -344,7 +376,11 @@
     "confidence": "medium",
     "source_tier": 2,
     "epub_year": 2015,
-    "print_year": 2015
+    "print_year": 2015,
+    "drug": "lesinurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/207988Orig1s000PharmR.pdf",
@@ -353,7 +389,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2016-05-26",
     "model_filed": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "proportion reaching sUA <6 mg/dL at month 6 (CLEAR 1: 54.2% vs 27.9%)",
@@ -363,17 +399,17 @@
     "prediction_level": "class",
     "subjects": "patients",
     "comparison_stated": false,
-    "judgement": "Judgement call: partial, because CRYSTAL (febuxostat add-on, 200 mg) showed no significant difference for sUA <5 mg/dL (57% vs 47%), though sUA fell. outcome_tested negative: flare rates and tophus resolution, the clinical outcomes, did not differ in any pivotal study. Paired by me; registry results first posted 2016 (CLEAR 2 2016-05-26, CLEAR 1 2016-08-18), after the December 2015 label.",
+    "judgement": "Judgement call: partial, because CRYSTAL (febuxostat add-on, 200 mg) showed no significant difference for sUA <5 mg/dL (57% vs 47%), though sUA fell. outcome_tested negative: flare rates and tophus resolution, the clinical outcomes, did not differ in any pivotal study. Paired by me; registry results first posted 2016 (CLEAR 2 2016-05-26, CLEAR 1 2016-08-18), after the December 2015 label. Year moved 2015 -> 2011: Ardea press release 6 Jan 2011 reported the phase 2b lesinurad + allopurinol study met its primary endpoint ('the primary and key secondary endpoints were achieved'); the hURAT1 data were public at EULAR 2009. Retrodiction (engagement/efficacy rule: any drug on the same target and action counts): benzbromarone and probenecid, uricosurics Enomoto 2002 shows act on URAT1, had lowered serum urate in gout patients decades before, so retro, not same. The epaminurad item in patient_trials is another drug's result, same direction; it changes no status.",
     "model": "Human URAT1-expressing cells (HEK293/oocyte urate uptake)",
     "model_id": "hurat1-cell-urate-uptake",
     "model_kind": "ex_vivo",
     "product_in_model": true,
     "model_first_use_year": 2008,
-    "year": 2015,
-    "status": "same",
+    "year": 2011,
+    "status": "retro",
     "endpoint_role": "primary",
     "outcome_tested": "negative",
-    "note": "Lesinurad 200 mg plus allopurinol beat allopurinol for sUA <6 mg/dL in CLEAR 1 and 2; CRYSTAL missed sUA <5 at 200 mg.",
+    "note": "Lesinurad 200 mg plus allopurinol beat allopurinol for sUA <6 mg/dL in CLEAR 1 and 2; CRYSTAL missed sUA <5 at 200 mg. Combination design: lesinurad added to allopurinol vs allopurinol alone, scored on the primary sUA endpoint. Retro: benzbromarone and probenecid had already lowered urate in gout.",
     "short": "sUA target met in CLEAR 1 and 2",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2015/207988lbl.pdf",
     "srcLabel": "Zurampic label 2015",
@@ -396,7 +432,11 @@
     ],
     "source_tier": 2,
     "epub_year": 2015,
-    "print_year": 2015
+    "print_year": 2015,
+    "drug": "lesinurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "allopurinol"
    },
    {
     "model_src": null,
@@ -433,7 +473,11 @@
     "reason": "Anti-inflammatory readout never a primary endpoint",
     "source_tier": 2,
     "epub_year": 2015,
-    "print_year": 2015
+    "print_year": 2015,
+    "drug": "lesinurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -468,10 +512,14 @@
     "model": "Tufted capuchin monkeys (low uricase, high plasma urate) dosed with UR-1102/epaminurad",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "epaminurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -489,11 +537,11 @@
     "product_in_model": true,
     "confidence": "high",
     "confidence_note": "Full text read (BMC open access).",
-    "judgement": "Paired, not stated: Jun 2025 cites Ahn 2016 in its rationale only. Phase 2a results (NCT02290210, NCT02557126) never posted to the registry or published, so they change no status. Registry checked: NCT04804111 has no posted results.",
+    "judgement": "Paired, not stated: Jun 2025 cites Ahn 2016 in its rationale only. Phase 2a results (NCT02290210, NCT02557126) never posted to the registry or published, so they change no status. Registry checked: NCT04804111 has no posted results. Ruling: an efficacy model result first public after a patient result for the same target and action from any member drug is a retrodiction; Ahn 2016 post-dates lesinurad's phase 2b/3 sUA results, so same becomes retro. Epaminurad phase 2b press release, if earlier than 2025, not found.",
     "epub_year": 2025,
     "print_year": 2025,
     "year": 2025,
-    "status": "same",
+    "status": "retro",
     "src": "https://doi.org/10.1186/s13075-025-03577-w",
     "srcLabel": "Jun 2025",
     "endpoint_role": "primary",
@@ -507,14 +555,18 @@
      }
     ],
     "quote": "The proportion of patients with sUA < 0.36 mmol/L at week 4 was significantly higher in each epaminurad group (9 mg, 88.89%; 6 mg, 71.79%; 3 mg, 54.05%) compared with placebo (0.00%) (all p < 0.0001).",
-    "note": "Phase 2b in gout met its primary sUA <0.36 mmol/L endpoint at all three epaminurad doses, as the monkey uricosuria predicted.",
+    "note": "Phase 2b in gout met its primary sUA <0.36 mmol/L endpoint at all three epaminurad doses, as the monkey uricosuria predicted. Retro: the monkey data (2016) came after lesinurad met its sUA endpoint in gout (2011-2015).",
     "short": "Phase 2b met sUA primary",
     "reason": "Gout patients' sUA fell as predicted",
     "model_id": "capuchin-monkey-uricosuric",
     "model": "Tufted capuchin monkeys (low uricase, high plasma urate) dosed with UR-1102/epaminurad",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "epaminurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -551,7 +603,11 @@
     "confidence": "high",
     "source_tier": 1,
     "epub_year": 2004,
-    "print_year": 2004
+    "print_year": 2004,
+    "drug": "class",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1097/01.asn.0000105320.04395.d0",
@@ -587,7 +643,11 @@
     "reason": "Renal failure as genotype foretold",
     "source_tier": 2,
     "epub_year": 2015,
-    "print_year": 2015
+    "print_year": 2015,
+    "drug": "class",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -622,7 +682,11 @@
     "model": "In vitro hepatotoxicity-mechanism assays (mitochondrial toxicity, reactive metabolites) for epaminurad vs benzbromarone",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "epaminurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -658,7 +722,11 @@
     "model": "In vitro hepatotoxicity-mechanism assays (mitochondrial toxicity, reactive metabolites) for epaminurad vs benzbromarone",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "epaminurad",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

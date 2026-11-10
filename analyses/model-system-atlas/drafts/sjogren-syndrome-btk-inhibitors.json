@@ -29,7 +29,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (anti-Ro/SSA positive in the remibrutinib trial)",
+    "population": "Healthy volunteers (remibrutinib single and multiple ascending dose)",
     "confidence_note": "Abstract-level (J Med Chem paywalled). FDA integrated review (NDA 218436) describes the rat spleen/blood occupancy studies.",
     "prediction_level": "class",
     "subjects": null,
@@ -51,7 +51,11 @@
     "quote": "It demonstrates potent in vivo target occupancy with an EC90 of 1.6 mg/kg and dose-dependent efficacy in rat collagen-induced arthritis.",
     "confidence": "high",
     "judgement": "Opening entry at first public use of the rat occupancy system.",
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "drug": "remibrutinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1021/acs.jmedchem.9b01916",
@@ -60,13 +64,13 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "model_filed": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "blood BTK occupancy, rat vs healthy volunteers",
     "source_calls_it": null,
-    "population": "Unselected (anti-Ro/SSA positive in the remibrutinib trial)",
-    "confidence_note": "Full text read (PMC8504815); the paper does not itself compare with rat data.",
+    "population": "Healthy volunteers (remibrutinib single and multiple ascending dose)",
+    "confidence_note": "Full text read (PMC8504815); the paper does not itself compare with rat data. Ibrutinib had shown full BTK occupancy in patients in 2012 (Advani 2013, PMID 23045577); the engagement retrodiction rule counts another drug's result for the same target and action.",
     "prediction_level": "class",
     "subjects": "healthy_volunteers",
     "comparison_stated": false,
@@ -79,16 +83,20 @@
     "model": "Rat BTK occupancy and collagen-induced arthritis (remibrutinib)",
     "model_id": "rat-btk-occupancy-cia",
     "year": 2021,
-    "status": "same",
-    "note": "Healthy volunteers: blood BTK occupancy >95% for 24 h at single doses of at least 30 mg, as in rat blood and spleen.",
+    "status": "retro",
+    "note": "Healthy volunteers: blood BTK occupancy >95% for 24 h at single doses of at least 30 mg, as in rat blood and spleen. Retrodiction: the rat occupancy work (2020) was public after ibrutinib's patient BTK occupancy (2012), so a reproduction of a known target result.",
     "short": "Human blood BTK occupancy >95%",
     "src": "https://doi.org/10.1111/cts.13005",
     "srcLabel": "Kaul 2021",
     "quote": "With remibrutinib doses greater than or equal to 30 mg, blood BTK occupancy was greater than 95% for at least 24 h (SAD).",
     "confidence": "high",
     "reason": "Occupancy readout moved in humans",
-    "judgement": "Paired by me: the readout the rat system used (BTK occupancy) moved in dosed humans; direction-only match because rat and human dose scales differ.",
-    "readout_tier": "direct"
+    "judgement": "Paired by me: the readout the rat system used (BTK occupancy) moved in dosed humans; direction-only match because rat and human dose scales differ. Re-scored retro under the retrodiction ruling: BTK occupancy was already known to move in dosed humans.",
+    "readout_tier": "direct",
+    "drug": "remibrutinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -102,7 +110,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (anti-Ro/SSA positive in the remibrutinib trial)",
+    "population": "Healthy volunteers (BMS-986142 single ascending dose)",
     "confidence_note": "Abstract-level reading.",
     "prediction_level": "class",
     "subjects": null,
@@ -124,7 +132,11 @@
     "quote": "In both models, robust efficacy was observed without continuous, complete inhibition of BTK.",
     "confidence": "medium",
     "judgement": "Opening entry for the BMS-986142 system; the paper names primary Sjogren's syndrome as a clinical indication.",
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "drug": "bms-986142",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1371/journal.pone.0181782",
@@ -133,13 +145,13 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "model_filed": null,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "stimulated CD69 inhibition",
     "source_calls_it": null,
-    "population": "Unselected (anti-Ro/SSA positive in the remibrutinib trial)",
-    "confidence_note": "Abstract-level for both papers; whether the mouse work itself read out CD69 ex vivo was not confirmed (the abstract reports co-stimulatory molecule blockade in human B cells).",
+    "population": "Healthy volunteers (BMS-986142 single ascending dose)",
+    "confidence_note": "Abstract-level for both papers; whether the mouse work itself read out CD69 ex vivo was not confirmed (the abstract reports co-stimulatory molecule blockade in human B cells). Lee 2017 epub 2017-03-06 precedes Gillooly 2017 epub 2017-07-24. Ibrutinib had shown full BTK occupancy in patients in 2012 (Advani 2013, PMID 23045577).",
     "prediction_level": "class",
     "subjects": "healthy_volunteers",
     "comparison_stated": false,
@@ -152,16 +164,20 @@
     "model": "Mouse CIA/CAIA and BTK-pathway assays (BMS-986142)",
     "model_id": "mouse-cia-caia-bms986142",
     "year": 2017,
-    "status": "same",
-    "note": "Healthy volunteers: dose- and concentration-dependent inhibition of CD69 expression, the B-cell activation readout the model blocked.",
+    "status": "retro",
+    "note": "Healthy volunteers: dose-dependent inhibition of CD69, the B-cell activation readout the model blocked. Retrodiction: the mouse paper (July 2017) was public after this human result (March 2017) and after ibrutinib's patient occupancy (2012).",
     "short": "Human CD69 inhibition dose-dependent",
     "src": "https://doi.org/10.1007/s00228-017-2226-2",
     "srcLabel": "Lee 2017",
     "quote": "A dose- and concentration-dependent inhibition of CD69 expression was observed following administration of BMS-986142.",
     "confidence": "low",
     "reason": "CD69 blockade reproduced in humans",
-    "judgement": "Judgement call: matched the model's BCR-activation readout (co-stimulatory molecule/CD69 expression) to the human ex-vivo CD69 assay; scored direct as ex-vivo blockade of a stimulus. Paired by me.",
-    "readout_tier": "direct"
+    "judgement": "Judgement call: matched the model's BCR-activation readout (co-stimulatory molecule/CD69 expression) to the human ex-vivo CD69 assay; scored direct as ex-vivo blockade of a stimulus. Paired by me. Re-scored retro under the retrodiction ruling (model first public after the human engagement result).",
+    "readout_tier": "direct",
+    "drug": "bms-986142",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -177,7 +193,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (anti-Ro/SSA positive in the remibrutinib trial)",
+    "population": "Healthy volunteers (remibrutinib single and multiple ascending dose)",
     "confidence_note": "Abstract-level; the abstract states an occupancy EC90, not a human dose.",
     "prediction_level": "class",
     "subjects": null,
@@ -200,7 +216,11 @@
     "confidence": "medium",
     "judgement": "Read the EC90 as the model's stated occupancy target.",
     "margin_stated": false,
-    "blocked_by": null
+    "blocked_by": null,
+    "drug": "remibrutinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1021/acs.jmedchem.9b01916",
@@ -214,7 +234,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "blood BTK occupancy vs rat EC90",
     "source_calls_it": null,
-    "population": "Unselected (anti-Ro/SSA positive in the remibrutinib trial)",
+    "population": "Healthy volunteers (remibrutinib single and multiple ascending dose)",
     "confidence_note": "Full text read. The rat/dog NOAEL margins (12-77x at 25 mg BID) were public only in the 2025 FDA review and were computed for the CSU dose, so no margin is scored.",
     "prediction_level": "class",
     "subjects": "healthy_volunteers",
@@ -239,7 +259,11 @@
     "judgement": "Judgement call: the target is the rat system's occupancy EC90, reached in healthy volunteers; margin_stated false because no margin for the Sjogren doses was public before the trial.",
     "margin_stated": false,
     "blocked_by": null,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "remibrutinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -253,7 +277,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (anti-Ro/SSA positive in the remibrutinib trial)",
+    "population": "Active Sjogren syndrome, ESSDAI >= 5 (tirabrutinib 40 mg arm); model fit to healthy-volunteer and RA occupancy data",
     "confidence_note": "Abstract-level. Model built on human data, not an animal; published after the Sjogren trial (NCT03100942) had posted results.",
     "prediction_level": "class",
     "subjects": null,
@@ -278,7 +302,11 @@
     "judgement": "Judgement call: the target was fit to the same human data it would be checked against, and Price 2022 reports no BTK occupancy in Sjogren patients, so untested (not_measured).",
     "untested_reason": "not_measured",
     "margin_stated": false,
-    "blocked_by": null
+    "blocked_by": null,
+    "drug": "tirabrutinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -294,7 +322,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (anti-Ro/SSA positive in the remibrutinib trial)",
+    "population": "Moderate-to-severe primary Sjogren syndrome (NCT02843659, BMS-986142)",
     "confidence_note": "Registry NCT02843659 results posted 2018-10-04: 18 randomized (6 on BMS-986142), none completed; terminated for inability to meet protocol objectives.",
     "prediction_level": "class",
     "subjects": null,
@@ -327,7 +355,11 @@
       "doi": null,
       "quote": "The study was terminated and the remaining 15 randomized subjects who had not yet completed the double-blind period entered the follow-up period."
      }
-    ]
+    ],
+    "drug": "bms-986142",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -341,7 +373,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (anti-Ro/SSA positive in the remibrutinib trial)",
+    "population": "Sjogren syndrome, anti-Ro/SSA positive, ESSDAI >= 5 and ESSPRI >= 5 (LOUiSSe, remibrutinib)",
     "confidence_note": "Abstract-level. No Sjogren-specific animal model was found for any member; the trial paper argues from mechanism.",
     "prediction_level": "class",
     "subjects": null,
@@ -364,7 +396,11 @@
     "confidence": "medium",
     "judgement": "Opening entry: an arthritis model is the only disease model found in the remibrutinib Sjogren rationale.",
     "endpoint_role": "primary",
-    "outcome_tested": null
+    "outcome_tested": null,
+    "drug": "remibrutinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1021/acs.jmedchem.9b01916",
@@ -378,7 +414,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "ESSDAI change vs placebo",
     "source_calls_it": null,
-    "population": "Unselected (anti-Ro/SSA positive in the remibrutinib trial)",
+    "population": "Sjogren syndrome, anti-Ro/SSA positive, ESSDAI >= 5 and ESSPRI >= 5 (LOUiSSe, remibrutinib)",
     "confidence_note": "Full text read for the trial; the model side is a rat arthritis model (cross-disease), abstract-level. Year from registry results posting (2022-12-20).",
     "prediction_level": "class",
     "subjects": "patients",
@@ -410,7 +446,11 @@
       "doi": "https://doi.org/10.1093/rheumatology/keac167",
       "quote": "At week 12, 43.3% of the filgotinib group achieved the primary end point (P = 0.17 vs placebo) vs 42.3% (P = 0.16), 34.7% (P = 0.33), and 26.7% of lanraplenib, tirabrutinib, and placebo groups, respectively."
      }
-    ]
+    ],
+    "drug": "remibrutinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -447,7 +487,11 @@
     "model_id": "mouse-cia-tirabrutinib",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2012
+    "model_first_use_year": 2012,
+    "drug": "tirabrutinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -494,7 +538,11 @@
     "model_kind": "animal",
     "prediction_level": "class",
     "model_first_use_year": 2012,
-    "untested_reason": "unpublished"
+    "untested_reason": "unpublished",
+    "drug": "tirabrutinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -540,7 +588,11 @@
     "model_id": "mouse-cia-tirabrutinib",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2012
+    "model_first_use_year": 2012,
+    "drug": "tirabrutinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -556,7 +608,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (anti-Ro/SSA positive in the remibrutinib trial)",
+    "population": "Sjogren syndrome, anti-Ro/SSA positive, ESSDAI >= 5 and ESSPRI >= 5 (LOUiSSe, remibrutinib)",
     "confidence_note": "2016 is a proxy for the first 2-week GLP studies; the toxicology was unpublished until the NDA 218436 review.",
     "prediction_level": "class",
     "subjects": null,
@@ -578,43 +630,51 @@
     "quote": "Inhibition of collagen-induced platelet aggregation and prolonged bleeding time were observed in both rat and dog toxicology studies.",
     "confidence": "medium",
     "judgement": "Opening proxy year.",
-    "untested_reason": "unpublished"
+    "untested_reason": "unpublished",
+    "drug": "remibrutinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "model_src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2025/218436Orig1s000IntegratedR.pdf",
     "model_src_tier": 2,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "registry_date": null,
+    "registry_date": "2022-12-20",
     "model_filed": true,
-    "retrodiction": false,
-    "imported_from": "MONDO:0005492",
-    "magnitude": "direction_only",
-    "magnitude_basis": "bleeding adverse event rate vs placebo",
+    "retrodiction": true,
+    "imported_from": null,
+    "magnitude": "opposite",
+    "magnitude_basis": "bleeding adverse-event rate, remibrutinib 10.2% vs placebo 8.3% over 24 weeks in Sjogren",
     "source_calls_it": null,
-    "population": "Chronic spontaneous urticaria (imported)",
-    "confidence_note": "Label and integrated review read in the bundle. Rat-specific pancreatic islet fibrosis, called rat-specific by the reviewer, is not scored.",
+    "population": "Sjogren syndrome, anti-Ro/SSA positive, ESSDAI >= 5 and ESSPRI >= 5 (LOUiSSe, remibrutinib)",
+    "confidence_note": "Dörner 2024 full text read (PMC10894844); small trial (49 on drug, 24 on placebo), bleeding numerically higher. Toxicology read in the bundled NDA 218436 integrated review; rat-specific pancreatic islet fibrosis not scored. Year is the first public date of the model side (2025).",
     "prediction_level": "class",
     "subjects": "patients",
     "comparison_stated": false,
-    "source_tier": 2,
-    "epub_year": 2025,
-    "print_year": 2025,
+    "source_tier": 1,
+    "epub_year": 2023,
+    "print_year": 2024,
     "product_in_model": true,
     "model_kind": "animal",
     "model_first_use_year": 2016,
     "model": "Rat and dog repeat-dose toxicology (remibrutinib)",
     "model_id": "remibrutinib-rat-dog-tox",
     "year": 2025,
-    "status": "same",
-    "note": "Bleeding occurred in 9% on remibrutinib vs 2% on placebo in CSU trials; in Sjogren patients minor bleeding was 10.2% vs 8.3%.",
-    "short": "Mucocutaneous bleeding seen in patients",
-    "src": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2025/218436s000lbl.pdf",
-    "srcLabel": "Rhapsido label 2025",
-    "quote": "In placebo-controlled studies in patients with CSU, mucocutaneous-related bleeding occurred in 9% of patients who received RHAPSIDO",
-    "confidence": "medium",
-    "reason": "Predicted bleeding appeared in patients",
-    "judgement": "Judgement call: the comparison is made in CSU (imported); the Sjogren trial (Dörner 2024) showed minor bleeding numerically higher than placebo (10.2% vs 8.3%) in a small trial, consistent in direction."
+    "status": "contra",
+    "note": "Sjogren patients were measured, so their result sets the status, not CSU (9% vs 2% bleeding on the label, now context only). Bleeding was comparable to placebo (10.2% vs 8.3%). The rat/dog toxicology was first public in 2025, after this result, so it is a retrodiction that did not reproduce it.",
+    "short": "Sjogren bleeding comparable to placebo",
+    "src": "https://doi.org/10.1136/ard-2023-224691",
+    "srcLabel": "Dörner 2024",
+    "quote": "Minor mild-to-moderate non-serious bleeding events were reported at comparable frequencies between the remibrutinib arms (10.2%) and placebo arm (8.3%).",
+    "confidence": "low",
+    "reason": "Predicted bleeding not above placebo in Sjogren",
+    "judgement": "Imported-harm ruling: CSU data set aside because Sjogren patients were measured. Safety retrodiction ruling: the same drug's Sjogren result (registry 2022-12-20) was public before the toxicology (2025); the predicted bleeding did not exceed placebo, so contra rather than retro.",
+    "drug": "remibrutinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ]
  }

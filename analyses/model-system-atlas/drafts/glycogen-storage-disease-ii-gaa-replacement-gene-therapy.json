@@ -40,7 +40,7 @@
     "judgement": "Opening entry at the first published member-drug use of the Gaa KO mouse (the strain itself dates from 1998).",
     "year": 2012,
     "status": "untested",
-    "model": "Gaa knockout mice (tissue glycogen)",
+    "model": "Gaa knockout mice (Gaa tm1Rabn; tissue glycogen, muscle and respiratory function)",
     "model_id": "gaa-ko-mouse",
     "note": "Reveglucosidase alfa (GILT-tagged GAA) cleared skeletal-muscle glycogen better than rhGAA in Gaa KO mice; no patient glycogen readout yet.",
     "short": "KO mice: better muscle glycogen clearance",
@@ -50,7 +50,12 @@
     "confidence": "high",
     "epub_year": 2012,
     "print_year": 2013,
-    "model_first_use_year": 2012
+    "model_first_use_year": 2012,
+    "drug": "reveglucosidase alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_src": "https://doi.org/10.1172/jci.insight.125358",
@@ -65,7 +70,7 @@
     "magnitude_basis": "urinary Hex4 change vs alglucosidase against mouse tissue glycogen clearance vs alglucosidase",
     "source_calls_it": null,
     "population": "Late-onset Pompe disease (GAA-deficient), unselected",
-    "confidence_note": "FDA integrated review read (section 6.1.4); model side Xu 2019 abstract. PROPEL paper (Schoser 2021) may have reported Hex4 earlier; full text not read, so dated to the review/registry posting.",
+    "confidence_note": "FDA integrated review read (section 6.1.4); model side Xu 2019 abstract. Year set to 2021 under rule 6: PROPEL Hex4/CK vs alglucosidase first public in Schoser 2021 Lancet Neurol (online 2021), not read in full; quote from the 2023 review.",
     "prediction_level": "class",
     "subjects": "patients",
     "comparison_stated": false,
@@ -73,11 +78,11 @@
     "product_in_model": true,
     "model_kind": "animal",
     "judgement": "Paired by me: mouse tissue glycogen (Xu 2019) against urinary Hex4, a downstream glycogen biomarker, in PROPEL. Reveglucosidase alfa has no comparable patient glycogen readout found.",
-    "year": 2023,
+    "year": 2021,
     "status": "same",
-    "model": "Gaa knockout mice (tissue glycogen)",
+    "model": "Gaa knockout mice (Gaa tm1Rabn; tissue glycogen, muscle and respiratory function)",
     "model_id": "gaa-ko-mouse",
-    "note": "Mice showed cipaglucosidase+miglustat clearing more glycogen than alglucosidase; in PROPEL urinary Hex4 fell 1.88 vs rose 1.22 mmol/mol on alglucosidase.",
+    "note": "Mice showed cipaglucosidase+miglustat clearing more glycogen than alglucosidase; in PROPEL urinary Hex4 fell 1.88 vs rose 1.22 mmol/mol on alglucosidase. Combination with miglustat; Hex4 first public in Schoser 2021.",
     "short": "Hex4 fell more than on alglucosidase",
     "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/761204Orig1s000IntegratedR.pdf",
     "srcLabel": "FDA BLA 761204 review 2023",
@@ -87,7 +92,11 @@
     "epub_year": 2023,
     "print_year": 2023,
     "model_first_use_year": 2012,
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "cipaglucosidase alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": "miglustat"
    },
    {
     "retrodiction": false,
@@ -123,7 +132,11 @@
     "quote": "In contrast, when cipaglucosidase alfa alone was incubated with whole human blood for 4 h, it lost 70% of its enzymatic activity.",
     "confidence": "medium",
     "confidence_note": "Year is a proxy: first-in-human ATB200-02 (NCT02675465), which tested miglustat co-dosing, started 2016; study RRB200-040 itself is undated in the review.",
-    "judgement": "Opening entry at the first clinical use of the stabilisation rationale."
+    "judgement": "Opening entry at the first clinical use of the stabilisation rationale.",
+    "drug": "cipaglucosidase alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": "miglustat"
    },
    {
     "retrodiction": false,
@@ -152,7 +165,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "ex vivo: 70% activity loss without vs very little with miglustat over 4 h; patients: plasma GAA activity AUC0-t +7.1%/+3.7%, AUCtmax-24h +24%/+21.3% with 130/260 mg miglustat",
     "source_calls_it": "partial",
-    "note": "In ATB200-02, miglustat raised plasma GAA activity and protein exposure versus cipaglucosidase alone, but by under 50%, far less than the ex vivo stabilisation implied.",
+    "note": "In ATB200-02, miglustat raised plasma GAA activity and protein exposure versus cipaglucosidase alone, but by under 50%, far less than the ex vivo stabilisation implied. Design: cipaglucosidase with versus without miglustat.",
     "short": "Plasma enzyme exposure rose, modestly",
     "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/761204Orig1s000IntegratedR.pdf",
     "srcLabel": "FDA BLA 761204 review 2023",
@@ -160,7 +173,11 @@
     "confidence": "medium",
     "confidence_note": "FDA integrated review read (section on contribution of miglustat, Table 30, in vitro evidence). Quote ends mid-sentence. No earlier tier 1 publication of the ATB200-02 with/without-miglustat PK found; dated to the 2023 review.",
     "reason": "Exposure rose, smaller than ex vivo",
-    "judgement": "Comparison stated: the FDA review sets the clinical PK beside the in vitro stabilisation data in one assessment. Scored same with partial: direction held, but the review calls the enhancement relatively small (<50%), with no exposure-response link to efficacy."
+    "judgement": "Comparison stated: the FDA review sets the clinical PK beside the in vitro stabilisation data in one assessment. Scored same with partial: direction held, but the review calls the enhancement relatively small (<50%), with no exposure-response link to efficacy.",
+    "drug": "cipaglucosidase alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": "miglustat"
    }
   ],
   "dose": [
@@ -197,7 +214,11 @@
     "confidence": "medium",
     "epub_year": 2023,
     "print_year": 2023,
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "cipaglucosidase alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": "miglustat"
    },
    {
     "model_src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/761204Orig1s000IntegratedR.pdf",
@@ -235,7 +256,11 @@
     "print_year": 2023,
     "model_first_use_year": 2016,
     "margin_stated": true,
-    "blocked_by": null
+    "blocked_by": null,
+    "drug": "cipaglucosidase alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": "miglustat"
    }
   ],
   "efficacy": [
@@ -262,7 +287,7 @@
     "judgement": null,
     "year": 2012,
     "status": "untested",
-    "model": "Gaa knockout mice (glycogen, muscle function)",
+    "model": "Gaa knockout mice (Gaa tm1Rabn; tissue glycogen, muscle and respiratory function)",
     "model_id": "gaa-ko-mouse",
     "note": "Gaa KO mice predicted next-generation GAA would beat rhGAA; first member data (reveglucosidase alfa) published 2012.",
     "short": "KO mice: beats rhGAA",
@@ -272,46 +297,53 @@
     "confidence": "high",
     "epub_year": 2012,
     "print_year": 2013,
-    "model_first_use_year": 2012
+    "model_first_use_year": 2012,
+    "drug": "reveglucosidase alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "model_src": null,
-    "model_src_tier": null,
+    "model_src": "https://doi.org/10.1124/jpet.116.235952",
+    "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "registry_date": "2018-06-11",
+    "registry_date": "2018-06-14",
     "model_filed": null,
     "retrodiction": true,
     "imported_from": null,
-    "magnitude": "within_2x",
-    "magnitude_basis": "mouse PIF/PEF vs patient MIP/MEP improvement, as the authors describe",
-    "source_calls_it": "match",
-    "population": "Late-onset Pompe disease (GAA-deficient), unselected",
-    "confidence_note": "Abstract-level (JPET paywalled). Retrodiction status inferred: the paper cites the patient data (Byrne, in preparation) from a trial running since 2011; study dates not verified.",
+    "magnitude": "off_by_>5x",
+    "magnitude_basis": "MIP % predicted change: mouse gain matched to the 13.9% phase 1/2 rise vs +2.2 at week 24 in INSPIRE",
+    "source_calls_it": null,
+    "population": "Late-onset Pompe disease previously treated with alglucosidase alfa (switch)",
+    "confidence_note": "Registry results record read (CT.gov API); terminated by sponsor decision, no publication found. Peng 2017 abstract-level.",
     "prediction_level": "class",
     "subjects": "patients",
-    "comparison_stated": true,
-    "source_tier": 1,
+    "comparison_stated": false,
+    "source_tier": 3,
     "product_in_model": true,
     "model_kind": "animal",
-    "judgement": "Separate track (plethysmography is a different readout). The patient comparator (MIP/MEP) was exploratory in a safety-primary phase 1/2, and the INSPIRE MIP primary (+2.2% at week 24, single-arm, terminated) was never inferentially tested.",
-    "year": 2016,
+    "judgement": "Merged into the gaa-ko-mouse track (same strain). Peng 2017 matched mouse flow to exploratory MIP/MEP of a safety-primary phase 1/2, which the primary-endpoint rule does not score; re-based on INSPIRE, whose primary was MIP, under the single-arm ruling: a small mean rise in the predicted direction counts as a response. Retrodiction: the mouse data were public after GAA replacement's respiratory benefit (alglucosidase; phase 1/2 MIP cited by Peng).",
+    "year": 2018,
     "status": "retro",
-    "model": "Gaa knockout mice, whole-body plethysmography",
-    "model_id": "gaa-ko-mouse-plethysmography",
-    "note": "Reveglucosidase alfa stabilised peak inspiratory/expiratory flow in Gaa KO mice, which the authors matched to MIP/MEP gains in phase 1/2 patients.",
-    "short": "Mouse respiratory gain matched MIP/MEP",
-    "src": "https://doi.org/10.1124/jpet.116.235952",
-    "srcLabel": "Peng 2017",
-    "quote": "Improvement of murine PIF and PEF were similar in magnitude to increases in maximal inspiratory and expiratory pressure observed clinically in late onset Pompe patients treated with Reveglucosidase alfa",
+    "model": "Gaa knockout mice (Gaa tm1Rabn; tissue glycogen, muscle and respiratory function)",
+    "model_id": "gaa-ko-mouse",
+    "note": "Single-arm design, no success bar: INSPIRE primary MIP rose 2.2 (SD 8.3) % predicted at week 24 (n=18), as the mice predicted. Peng's own match used exploratory phase 1/2 MIP/MEP.",
+    "short": "Single-arm MIP rose 2.2 points",
+    "src": "https://clinicaltrials.gov/study/NCT01924845",
+    "srcLabel": "INSPIRE NCT01924845 results 2018",
+    "quote": "Percent Predicted Maximum Inspiratory Pressure (MIP) ... Change from Baseline to Week 24: 2.2 (SD 8.3) Percent Predicted",
     "confidence": "low",
-    "reason": "Run after phase 1/2 respiratory data",
-    "epub_year": 2016,
-    "print_year": 2017,
-    "model_first_use_year": 2016,
+    "epub_year": null,
+    "print_year": null,
+    "model_first_use_year": 2012,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "untested_reason": "unsettled"
+    "drug": "reveglucosidase alfa",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null,
+    "reason": "MIP rose slightly, as mice predicted"
    },
    {
     "model_src": "https://doi.org/10.1172/jci.insight.125358",
@@ -336,9 +368,9 @@
     "judgement": "Judgement call: the mouse predicted superiority over alglucosidase; the primary endpoint moved in that direction (13.6 m LOCF; 5.3 m in the FDA MMRM) but missed significance. Scored same, partial, not contra, because direction agreed and FDA accepted the mouse data as confirmatory evidence. Reveglucosidase trials had safety primaries or were single-arm and terminated, so they change no status.",
     "year": 2021,
     "status": "same",
-    "model": "Gaa knockout mice (glycogen, muscle function)",
+    "model": "Gaa knockout mice (Gaa tm1Rabn; tissue glycogen, muscle and respiratory function)",
     "model_id": "gaa-ko-mouse",
-    "note": "Mice showed cipaglucosidase+miglustat superior to alglucosidase; PROPEL 6MWD favoured it by 13.6 m but missed statistical superiority.",
+    "note": "Combination: cipaglucosidase alfa with miglustat vs alglucosidase plus placebo, scored on the 6MWD primary. Mice showed superiority; PROPEL favoured it by 13.6 m but missed statistical superiority.",
     "short": "6MWD favoured, superiority missed",
     "src": "https://doi.org/10.1016/S1474-4422(21)00331-8",
     "srcLabel": "Schoser 2021",
@@ -363,7 +395,11 @@
       "doi": "https://doi.org/10.1186/s13023-017-0693-2",
       "quote": "Subjects receiving 20 mg/kg of reveglucosidase alfa demonstrated increases in predicted maximum inspiratory pressure (13.9%), predicted maximum expiratory pressure (8.0%), forced vital capacity (-0.4%)"
      }
-    ]
+    ],
+    "drug": "cipaglucosidase alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": "miglustat"
    }
   ],
   "safety": [
@@ -400,7 +436,11 @@
     "confidence": "medium",
     "epub_year": 2023,
     "print_year": 2023,
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "cipaglucosidase alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": "miglustat"
    },
    {
     "model_src": null,
@@ -437,7 +477,11 @@
     "untested_reason": "unpublished",
     "epub_year": 2017,
     "print_year": 2017,
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "reveglucosidase alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/761204Orig1s000IntegratedR.pdf",
@@ -473,7 +517,11 @@
     "reason": "Clean tox matched clinical profile",
     "epub_year": 2023,
     "print_year": 2023,
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "cipaglucosidase alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": "miglustat"
    }
   ]
  }

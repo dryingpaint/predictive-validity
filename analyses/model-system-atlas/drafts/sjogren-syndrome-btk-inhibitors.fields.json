@@ -1,0 +1,81 @@
+{
+ "tile": "sjogren-syndrome-btk-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: rat occupancy model first public 2020, after ibrutinib's patient BTK occupancy (Advani 2013, epub 2012); drug remibrutinib, route oral set"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: Gillooly 2017 (July) public after Lee 2017 human CD69 result (March) and ibrutinib occupancy (2012); drug bms-986142, route oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug and route set (oral) from the entry's sources; population_group coded"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> contra, retrodiction true; src/quote CSU label -> Dörner 2024 Sjogren bleeding (10.2% vs 8.3%, comparable); imported_from cleared: imported-harm ruling (Sjogren patients measured) and safety retrodiction ruling (tox public 2025 after the same drug's Sjogren result); year stays 2025; drug remibrutinib, route oral set"
+  }
+ ],
+ "added": []
+}

@@ -1,0 +1,92 @@
+{
+ "tile": "type-2-diabetes-mellitus-gpr119-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: Habib 2013 human L-cell result post-dates Katz 2012 (JNJ-38431055 engagement in T2D); engagement retrodiction counts any drug's earlier patient result (2026-11-09 ruling, settles rule question 5); drug gsk-1292263, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug firuglipel (own track, was pooled with GSK1292263 on the mouse model); combination_with metformin (add-on design, scored on HbA1c primary); model_src Matsumoto 2018 -> Chu 2007 because Matsumoto post-dates the trials (rat track; settles rule questions 2, 3, 9); status contra and year 2018 unchanged; NCT02222350 row filled from Inagaki 2017"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug firuglipel: opener for firuglipel's safety track on the mouse model; status/year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2018 -> 2017 (earliest public comparison: Inagaki 2017, doi:10.1136/bmjdrc-2017-000424, epub 2017-09-29); src, srcLabel and quote moved to Inagaki 2017; model_src Matsumoto 2018 -> Chu 2007; drug firuglipel; status same unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug gsk-1292263, route oral (opener of GSK1292263 track)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug gsk-1292263, route oral; metformin co-dosing arms noted"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug gsk-1292263, route oral (opener of human L-cell track)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug gsk-1292263, route oral; untested_reason no_prediction (rule question 1: no model stated an exposure target, so untested)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug gsk-1292263, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug gsk-1292263, route oral; metformin co-dosing arms noted, scored on GSK1292263 alone"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug gsk-1292263, route oral (opener of GSK1292263 nSTZ rat track)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug gsk-1292263, route oral; firuglipel split out to an appended entry"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug gsk-1292263, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug gsk-1292263, route oral; population words set to healthy volunteers"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "untested opener of firuglipel's track on the mouse OGTT model (Chu 2007), year 2018 proxy so the track stays in year order"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "untested opener of firuglipel's nSTZ rat track (Matsumoto 2018)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "split from efficacy 5: firuglipel on the nSTZ rat track, contra with retrodiction true, 2018 (rat glucose lowering published after the North-American add-on failure NCT02647320, 2018-05-01, which it did not reproduce; Japanese monotherapy results reproduced, source_calls_it partial)"
+  }
+ ]
+}

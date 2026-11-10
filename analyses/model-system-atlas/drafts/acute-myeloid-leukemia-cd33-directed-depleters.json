@@ -53,7 +53,11 @@
     "quote": "Mechanistic studies indicate that the cytotoxic effects of SGN-CD33A involve DNA damage with ensuing cell cycle arrest and apoptotic cell death.",
     "model_first_use_year": 2013,
     "readout_tier": null,
-    "judgement": "Left untested: Stein 2018's full text (PK, any CD33 saturation) could not be retrieved, and MRD-negative remission is scored under efficacy, not counted twice as a downstream engagement readout."
+    "judgement": "Left untested: Stein 2018's full text (PK, any CD33 saturation) could not be retrieved, and MRD-negative remission is scored under efficacy, not counted twice as a downstream engagement readout.",
+    "drug": "vadastuximab talirine",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "subjects": null,
@@ -89,7 +93,11 @@
     "quote": "BI 836858-opsonized AML cells significantly induced both autologous and allogeneic natural killer (NK)-cell degranulation and NK-cell-mediated antibody-dependent cellular cytotoxicity (ADCC).",
     "model_first_use_year": 2016,
     "readout_tier": null,
-    "judgement": "The Beat AML S2 paper (Hochman 2026, doi:10.3324/haematol.2026.300627) says dose escalation used receptor occupancy 'data not shown'; the MDS trial (Komrokji 2022) found no NK activation in patients but is another disease and cannot be imported into engagement."
+    "judgement": "The Beat AML S2 paper (Hochman 2026, doi:10.3324/haematol.2026.300627) says dose escalation used receptor occupancy 'data not shown'; the MDS trial (Komrokji 2022) found no NK activation in patients but is another disease and cannot be imported into engagement.",
+    "drug": "bi-836858",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "subjects": "patients",
@@ -110,7 +118,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory AML (CD33-CAR NK-92 first-in-human)",
     "prediction_level": "class",
     "confidence": "low",
     "confidence_note": "Abstract only (Am J Cancer Res 2018;8:1083, PMID 30034945, no DOI); the PMC full text could not be retrieved and the NK-92 preclinical data were not published separately.",
@@ -126,7 +134,11 @@
     "model_first_use_year": 2016,
     "readout_tier": null,
     "reason": "No model-patient comparison for any member",
-    "judgement": "The later primary CD33-CAR-NK xenograft (Albinger 2022, doi:10.1038/s41408-022-00660-2) is a different product with no patient results yet (NCT05008575, no results posted), so it opens no track."
+    "judgement": "The later primary CD33-CAR-NK xenograft (Albinger 2022, doi:10.1038/s41408-022-00660-2) is a different product with no patient results yet (NCT05008575, no results posted), so it opens no track.",
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "subjects": "patients",
@@ -147,7 +159,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "activated NK cells (CD69 or CD158b) in blood and bone marrow during treatment",
     "source_calls_it": "unresolved",
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory CD33-positive AML (BI 836858 phase 1)",
     "prediction_level": "class",
     "confidence": "low",
     "confidence_note": "Open-access full text read (Europe PMC, PMC8883544). The NK-activation result is 'data not shown' and the lack of pharmacodynamic effects is referred to the Online Supplementary Appendix (evidence rule 2).",
@@ -163,7 +175,11 @@
     "model_first_use_year": 2016,
     "readout_tier": "downstream",
     "reason": "Ex-vivo NK ADCC readout silent in patients",
-    "judgement": "Scored on the readout the model used (NK activation/ADCC), not on CD33 saturation, which the paper reports as direct engagement (CD33+ blasts undetectable in marrow in 5 of 7 patients at 40 mg). The paper states the comparison itself: 'As BI 836858 relies on ADCC for functionality, the low levels of effector cells detected in the patient population, and the lack of pharmacodynamic effects (see Online Supplementary Appendix), underpinned the decision to terminate the study', and calls the gap to the preclinical superiority unexplained (source_calls_it unresolved). Dated to online publication 2021-12-02 (publisher epub date and Crossref; PubMed carries only the 2022-03-01 issue date), rule 6; print March 2022, registry results 2025-01-27."
+    "judgement": "Scored on the readout the model used (NK activation/ADCC), not on CD33 saturation, which the paper reports as direct engagement (CD33+ blasts undetectable in marrow in 5 of 7 patients at 40 mg). The paper states the comparison itself: 'As BI 836858 relies on ADCC for functionality, the low levels of effector cells detected in the patient population, and the lack of pharmacodynamic effects (see Online Supplementary Appendix), underpinned the decision to terminate the study', and calls the gap to the preclinical superiority unexplained (source_calls_it unresolved). Dated to online publication 2021-12-02 (publisher epub date and Crossref; PubMed carries only the 2022-03-01 issue date), rule 6; print March 2022, registry results 2025-01-27.",
+    "drug": "bi-836858",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -199,7 +215,11 @@
     "model": "Cord-blood CD33-CAR-NK (4-1BB, sIL-15) in NSG Molm13-luc xenografts + HSC colony assay",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -219,7 +239,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory CD33-positive AML (Xinqiao CAR-NK phase 1)",
     "confidence": "medium",
     "confidence_note": "Full text read. The xenograft measured tumour bioluminescence only.",
     "year": 2025,
@@ -236,7 +256,11 @@
     "model": "Cord-blood CD33-CAR-NK (4-1BB, sIL-15) in NSG Molm13-luc xenografts + HSC colony assay",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    }
   ],
   "dose": [
@@ -273,7 +297,11 @@
     "src": "https://doi.org/10.1182/blood-2013-03-491506",
     "srcLabel": "Kung Sutherland 2013",
     "quote": "In preclinical testing, SGN-CD33A is more potent than GO against a panel of AML cell lines and primary AML cells in vitro and in xenotransplantation studies in mice.",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "vadastuximab talirine",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "subjects": "patients",
@@ -294,7 +322,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "remission at the clinical dose; the model stated no exposure target to scale against",
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "CD33-positive AML, relapsed or older untreated (vadastuximab phase 1)",
     "prediction_level": "class",
     "confidence": "medium",
     "confidence_note": "Abstract-level; Stein 2018 full text (PMC5813721) was rate-limited and not read, so PK against any model exposure is unverified.",
@@ -310,7 +338,12 @@
     "quote": "At the recommended monotherapy dose of 40 µg/kg, the complete remission + CRi rate was 28% (5 of 18 patients); 50% of patients who responded achieved minimal residual disease negativity.",
     "model_first_use_year": 2013,
     "margin_stated": null,
-    "judgement": "Scored same under the 'reached, drug worked' row on the phase 1 proof-of-concept remissions. No model tolerability margin (NOAEL/MTD) could be verified, so margin_stated is null and decision 16 is not applied. NCT01902329 has no results posted."
+    "judgement": "Scored same under the 'reached, drug worked' row on the phase 1 proof-of-concept remissions. No model tolerability margin (NOAEL/MTD) could be verified, so margin_stated is null and decision 16 is not applied. NCT01902329 has no results posted.",
+    "drug": "vadastuximab talirine",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line",
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -331,7 +364,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory CD33-positive AML (BI 836858 phase 1)",
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": null,
@@ -346,7 +379,11 @@
     "srcLabel": "Vasu 2016",
     "quote": "Here, we report the in vitro efficacy of BI 836858, a fully human, Fc-engineered, anti-CD33 antibody using AML cell lines and primary AML blasts as targets.",
     "model_first_use_year": 2016,
-    "judgement": "NCT01690624 (first posted 2012-09-24, results 2025-01-27) reports MTD 'NA' with 2 DLTs at 10 mg; NCT02632721 (results 2024-03-19) reached 80 mg + decitabine with 1 DLT. Neither can be compared with a model that stated no target."
+    "judgement": "NCT01690624 (first posted 2012-09-24, results 2025-01-27) reports MTD 'NA' with 2 DLTs at 10 mg; NCT02632721 (results 2024-03-19) reached 80 mg + decitabine with 1 DLT. Neither can be compared with a model that stated no target.",
+    "drug": "bi-836858",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "subjects": "patients",
@@ -367,7 +404,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory AML (CD33-CAR NK-92 first-in-human)",
     "prediction_level": "class",
     "confidence": "low",
     "confidence_note": "Abstract only; full text not retrieved.",
@@ -381,7 +418,11 @@
     "src": "https://pubmed.ncbi.nlm.nih.gov/30034945/",
     "srcLabel": "Tang 2018",
     "quote": "At doses up to 5 × 10⁹ (5 billion) cells per patient, no significant adverse effects were observed.",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -419,7 +460,11 @@
     "model": "Cord-blood CD33-CAR-NK (4-1BB, sIL-15) in NSG Molm13-luc xenografts + HSC colony assay",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -439,7 +484,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory CD33-positive AML (Xinqiao CAR-NK phase 1)",
     "confidence": "medium",
     "confidence_note": "Full text read; the quote is a verbatim fragment of the dose-rationale sentence.",
     "year": 2025,
@@ -458,7 +503,11 @@
     "model": "Cord-blood CD33-CAR-NK (4-1BB, sIL-15) in NSG Molm13-luc xenografts + HSC colony assay",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    }
   ],
   "efficacy": [
@@ -496,7 +545,11 @@
     "quote": "Unlike GO, antileukemic activity is observed with SGN-CD33A in AML models with the multidrug-resistant phenotype.",
     "model_first_use_year": 2013,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "drug": "vadastuximab talirine",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "subjects": "patients",
@@ -514,24 +567,24 @@
     "model_kind": "animal",
     "retrodiction": false,
     "imported_from": null,
-    "magnitude": "direction_only",
-    "magnitude_basis": "remission rate; xenograft readout not quantified in the abstract",
+    "magnitude": null,
+    "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "CD33-positive AML, relapsed or older untreated (vadastuximab phase 1)",
     "prediction_level": "class",
     "confidence": "medium",
     "confidence_note": "Abstract-level for both phase 1 papers.",
     "year": 2017,
-    "status": "same",
+    "status": "untested",
     "model": "CD33+ AML cell-line and primary-blast xenografts (mouse)",
     "model_id": "aml-xenograft-cd33-pbd-adc",
-    "note": "Monotherapy phase 1: 28% CR+CRi at 40 ug/kg, half MRD-negative; with HMAs 70% composite remission (Fathi 2018): the xenograft's antileukemic prediction held.",
+    "note": "Single-arm phase 1 whose primary endpoint was adverse events; 28% CR+CRi at 40 ug/kg was secondary, so efficacy is not scored (single-arm ruling).",
     "short": "Phase 1 remissions, 28% mono / 70% +HMA",
     "src": "https://doi.org/10.1182/blood-2017-06-789800",
     "srcLabel": "Stein 2018",
     "quote": "Vadastuximab talirine demonstrates activity and a tolerable safety profile as a single agent in patients with AML.",
     "model_first_use_year": 2013,
-    "endpoint_role": "poc_gate",
+    "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [
      {
@@ -541,7 +594,12 @@
       "quote": "The composite remission rate (complete remission [CR] and CR with incomplete blood count recovery) was 70%."
      }
     ],
-    "judgement": "endpoint_role poc_gate: the phase 1 primary was safety and the CR/CRi rate was the activity gate taken into CASCADE. Fathi 2018's abstract sets the preclinical HMA-then-ADC prediction beside the 70% remission rate but does not evaluate the match, so comparison_stated stays false."
+    "judgement": "Was same on the CR/CRi rate as a poc_gate. Single-arm ruling: a trial with no success bar set in advance is scored on its primary endpoint; NCT01902329's primary endpoints are incidence of adverse events and laboratory abnormalities, and no pre-specified efficacy gate is documented, so the remissions (and Fathi 2018's 70% with HMAs) are recorded, not scored. Under the retrodiction ruling a scored match would have been retro, since gemtuzumab's AML efficacy was public before 2013.",
+    "drug": "vadastuximab talirine",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line",
+    "strengthens": true
    },
    {
     "subjects": "patients",
@@ -557,20 +615,20 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "opposite",
     "magnitude_basis": "overall survival direction versus control",
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Older adults with newly diagnosed CD33-positive AML eligible for HMA (CASCADE)",
     "prediction_level": "class",
     "confidence": "medium",
     "confidence_note": "Registry results are tabular: OS 5.1 (95% CI 2.3-9.9) vs NA (4.0-NA) months; CRc 30/111 vs 26/128; deaths 43 vs 34. No peer-reviewed CASCADE report was found.",
-    "year": 2018,
+    "year": 2017,
     "status": "contra",
     "model": "CD33+ AML cell-line and primary-blast xenografts (mouse)",
     "model_id": "aml-xenograft-cd33-pbd-adc",
-    "note": "Randomized phase 3 (n=240): co-primary OS 5.1 months vs not reached and CRc 27% vs 20% with placebo + HMA, CIs overlapping; stopped for excess deaths.",
+    "note": "Randomized phase 3 with HMA (combination ruling), co-primaries OS 5.1 mo vs not reached and CRc 27% vs 20%, neither met; stopped for excess deaths, announced 2017-06-19. Retrodiction: gemtuzumab preceded.",
     "short": "Phase 3: OS worse, CRc not separated",
     "src": "https://clinicaltrials.gov/study/NCT02785900",
     "srcLabel": "NCT02785900 results 2018",
@@ -587,7 +645,11 @@
      }
     ],
     "reason": "Phase 3 OS worse, stopped for deaths",
-    "judgement": "Called contra rather than keeping the surrogate's same: remission (CRc) was itself a co-primary endpoint and did not separate from placebo + HMA, and OS went the wrong way. OS is confounded by toxic deaths (outcome_tested negative_confounded), so a reader who treats CASCADE as a pure safety failure would leave efficacy at same; the antileukemic signal (MRD-negative CRc 16% vs 8%) is real but the trial's primary endpoints failed. Entered on CASCADE's registry posting (2018-12-12), later than the June 2017 sponsor release (tier 5, not used)."
+    "judgement": "Called contra rather than keeping the surrogate's same: remission (CRc) was itself a co-primary endpoint and did not separate from placebo + HMA, and OS went the wrong way. OS is confounded by toxic deaths (outcome_tested negative_confounded), so a reader who treats CASCADE as a pure safety failure would leave efficacy at same; the antileukemic signal (MRD-negative CRc 16% vs 8%) is real but the trial's primary endpoints failed. Dated to the sponsor's discontinuation release of 2017-06-19 (rule 6, earliest public date: it announced the excess deaths, the OS direction); the registry record (2018-12-12, tier 3) sets the status. Combination ruling: vadastuximab with azacitidine or decitabine against placebo with the same HMA, scored on the co-primaries; co-primary ruling: neither was met and the trial is called a failure. Retrodiction ruling: the model (2013) post-dates gemtuzumab's AML patient results, so retrodiction is true; it failed to reproduce them for this drug, so the status stays contra.",
+    "drug": "vadastuximab talirine",
+    "route": "iv",
+    "combination_with": "azacitidine or decitabine",
+    "population_group": "stage_or_line"
    },
    {
     "subjects": null,
@@ -623,59 +685,69 @@
     "quote": "These data provide a rationale for combination therapy of Fc-engineered antibodies such as BI 836858 with azanucleosides in elderly patients with AML.",
     "model_first_use_year": 2016,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "drug": "bi-836858",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "subjects": "patients",
-    "comparison_stated": false,
-    "source_tier": 3,
+    "comparison_stated": true,
+    "source_tier": 1,
     "model_src": "Vasu 2016, doi:10.1182/blood-2015-11-680546 (primary AML blasts + NK cells ex vivo, ADCC)",
     "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": null,
-    "epub_year": null,
-    "print_year": null,
+    "epub_year": 2021,
+    "print_year": 2022,
     "registry_date": "2025-01-27",
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "ex_vivo",
     "retrodiction": false,
     "imported_from": null,
-    "magnitude": "direction_only",
-    "magnitude_basis": "objective response rate, single agent",
+    "magnitude": null,
+    "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory CD33-positive AML (BI 836858 phase 1)",
     "prediction_level": "class",
     "confidence": "medium",
-    "confidence_note": "Registry results are tabular; the quote is the outcome-measure title and the zeros (CR 0, CRi 0, PR 0 at 10, 20 and 40 mg; TF 7, PD 16) are read from its table. No peer-reviewed report of this trial was found.",
-    "year": 2025,
-    "status": "contra",
+    "confidence_note": "Open-access full text read (Europe PMC, PMC8883544). Registry NCT01690624 (results 2025-01-27) lists MTD and DLTs as the primary outcomes.",
+    "year": 2021,
+    "status": "untested",
     "model": "Primary AML blasts + NK cells ex vivo (ADCC)",
     "model_id": "aml-blast-nk-adcc-ex-vivo",
-    "note": "R/R AML monotherapy at 10-40 mg: no CR, CRi or PR in 27 evaluable patients; single-arm decitabine combinations (19 CR+CRi of 49) cannot be attributed.",
-    "short": "No single-agent responses in R/R AML",
-    "src": "https://clinicaltrials.gov/study/NCT01690624",
-    "srcLabel": "NCT01690624 results 2025",
-    "quote": "Best Overall Response According to International Working Group (IWG) Criteria",
+    "note": "Single-arm R/R phase 1 (primary MTD/DLT): no responses in 27 patients, response secondary, so not scored (single-arm ruling). Decitabine combination (Fiedler 2022) also had DLT/MTD primaries.",
+    "short": "Phase 1 primary MTD; zero responses unscored",
+    "src": "https://doi.org/10.3324/haematol.2020.274118",
+    "srcLabel": "Vasu 2022",
+    "quote": "Secondary efficacy endpoints included best overall response according to International Working Group Criteria and progression-free survival (PFS), defined as the time from first treatment with BI 836858 until disease progression, relapse or death.",
     "model_first_use_year": 2016,
-    "endpoint_role": "poc_gate",
+    "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [
      {
       "nct": "NCT02632721",
       "registry_date": "2024-03-19",
-      "doi": null,
+      "doi": "10.3324/haematol.2022.281128",
       "quote": "Phase 1: Number of Patients With Objective Response (CR + CRi)"
      },
      {
       "nct": "NCT01690624",
       "registry_date": "2025-01-27",
-      "doi": null,
+      "doi": "10.3324/haematol.2020.274118",
       "quote": "Best Overall Response According to International Working Group (IWG) Criteria"
      }
     ],
-    "reason": "Ex-vivo ADCC, zero patient responses",
-    "judgement": "Contra on the single-agent arm, where the ex-vivo ADCC prediction was tested cleanly. The Beat AML S2 single-arm phase II (Hochman 2026, doi:10.3324/haematol.2026.300627; CR/CRi 50% with azacitidine, versus 28% for azacitidine alone in VIALE-A) is uncontrolled and the sponsor halted development, so it is recorded here and does not lift the contra. The model paper's own patient-sample work (serial marrows after decitabine) is ex-vivo, not a patient outcome."
+    "reason": "Single-arm, efficacy only secondary",
+    "judgement": "Was contra (registry 2025) on the secondary response endpoint. Re-dated to Vasu 2022's online publication (2021-12-02, rule 6; the tier-1 paper supersedes the registry as src). Single-arm ruling: NCT01690624's primary endpoints are MTD and DLTs and the paper names best overall response a secondary endpoint, with no success bar; NCT02632721 (BI 836858 + decitabine, Fiedler 2022, doi:10.3324/haematol.2022.281128, ORR 38.8%) likewise has only DLT and MTD primaries. The zero single-agent responses and the paper's own statement that the preclinical superiority did not translate are recorded, not scored; Hochman 2026 (Beat AML S2, single-arm with azacitidine) is uncontrolled and recorded only.",
+    "drug": "bi-836858",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line",
+    "strengthens": true,
+    "untested_reason": "not_measured"
    },
    {
     "subjects": "patients",
@@ -696,7 +768,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory AML (CD33-CAR NK-92 first-in-human)",
     "prediction_level": "class",
     "confidence": "low",
     "confidence_note": "Abstract only; full text not retrieved.",
@@ -711,7 +783,11 @@
     "quote": "In the current study, we tested the safety of CD33-CAR NK cells in patients with relapsed and refractory AML.",
     "model_first_use_year": 2016,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -731,7 +807,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Pediatric de novo AML treated with gemtuzumab (COG AAML0531)",
     "confidence": "high",
     "confidence_note": "Abstract-level. The predictor's own data are gemtuzumab's (not a member): set aside, not scored (decision 13); the track opens untested until a member is tested.",
     "year": 2017,
@@ -743,12 +819,16 @@
     "quote": "Our results suggest that patients with the CC genotype for rs12459419 have a substantial response to GO, making this a potential biomarker for the selection of patients with a likelihood of significant response to GO.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "judgement": "Opened as its own patient-level track: the brief admits people with a loss-of-function genotype (the T allele skips exon 2, removing the IgV epitope that SGN-CD33A and gemtuzumab share) and a model built on a sibling drug (product_in_model false). Dated to Lamba's epub (2017-06-23); registry_date is AAML0531 (NCT00372593, first posted 2006-09-07). Rule question 6 is pending with the adjudicator.",
+    "judgement": "Opened as its own patient-level track, as the brief admits a human loss-of-function genotype and a model built on a sibling drug (product_in_model false): the T allele skips exon 2, removing the IgV epitope that vadastuximab and gemtuzumab share. drug 'class': built on gemtuzumab, a non-member; the vadastuximab track opens with its own entry in 2019. Dated to Lamba's epub (2017-06-23); registry_date is AAML0531 (NCT00372593, first posted 2006-09-07).",
     "model_id": "cd33-rs12459419-splice-genotype",
     "model": "CD33 rs12459419 splice-site genotype (human genetic predictor of CD33 V-domain antibody benefit)",
     "model_kind": "human_genetic",
     "prediction_level": "patient",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "drug": "class",
+    "route": "not_applicable",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -768,12 +848,12 @@
     "magnitude": "null",
     "magnitude_basis": "CR/CRi rate by genotype: predicted CC > CT/TT, observed 30% vs 30%",
     "source_calls_it": "miss",
-    "population": "CD33-positive (unselected)",
+    "population": "Vadastuximab phase 1 patients genotyped for rs12459419 (CC n=10 vs CT/TT n=10)",
     "confidence": "low",
     "confidence_note": "n = 20 (10 per genotype group), retrospective genotyping of phase 1 patients; the source calls itself limited by sample size. Gale 2018's adult gemtuzumab null is a non-member datum, set aside. EFS and OS nulls are in the same letter; no separate outcome trial.",
     "year": 2019,
     "status": "contra",
-    "note": "20 SGN-CD33A patients (mono or +HMA): CR/CRi 3/10 CC vs 3/10 CT/TT, EFS and OS not associated; the predicted genotype-restricted benefit did not appear.",
+    "note": "20 SGN-CD33A patients (mono or +HMA): CR/CRi 3/10 CC vs 3/10 CT/TT, EFS and OS not associated; the predicted genotype-restricted benefit did not appear. Pooled monotherapy and HMA-combination patients.",
     "short": "Genotype did not predict SGN-CD33A response",
     "src": "https://doi.org/10.1186/s13045-019-0771-0",
     "srcLabel": "Stanchina 2019",
@@ -794,7 +874,12 @@
     "model": "CD33 rs12459419 splice-site genotype (human genetic predictor of CD33 V-domain antibody benefit)",
     "model_kind": "human_genetic",
     "prediction_level": "patient",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "drug": "vadastuximab talirine",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line",
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -831,10 +916,14 @@
     "model": "Cord-blood CD33-CAR-NK (4-1BB, sIL-15) in NSG Molm13-luc xenografts + HSC colony assay",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": null,
     "subjects": "patients",
     "comparison_stated": true,
@@ -851,12 +940,12 @@
     "magnitude": "direction_only",
     "magnitude_basis": "response rate; xenograft clearance not quantified against a remission rate",
     "source_calls_it": "match",
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory CD33-positive AML (Xinqiao CAR-NK phase 1)",
     "confidence": "low",
     "confidence_note": "Single-centre, single-arm, n = 10; one durable remission (bridged to HSCT), median PFS 71.5 days. The trial may have been public as an EHA 2023 abstract (HemaSphere P522, PMC10429699, no DOI indexed): if rule question 5 admits supplement abstracts the entry re-dates to 2023.",
-    "year": 2025,
-    "status": "same",
-    "note": "Phase 1 (n=10, median 5 prior lines): 6/10 MRD-negative CR at day 28, a co-primary; the xenograft's clearance held, but remissions were short.",
+    "year": 2023,
+    "status": "retro",
+    "note": "Single-arm phase 1 with ORR a registered primary: 6/10 MRD-negative CR at day 28 (EHA 2023); reproduces CD33 depletion's known AML activity (retrodiction ruling).",
     "short": "6/10 MRD-negative CR at day 28",
     "src": "https://doi.org/10.1186/s40164-024-00592-6",
     "srcLabel": "Huang 2025",
@@ -872,12 +961,57 @@
      }
     ],
     "reason": "Day-28 MRD-negative CR in 6 of 10",
-    "judgement": "same on the registered co-primary (ORR at 4 weeks), so endpoint_role primary. comparison_stated true because one paper reports model and trial and draws the joint conclusion ('Our preclinical and clinical data demonstrated the primary efficacy and safety'); it does not quantify the match, so magnitude is direction_only. Short durability does not change the primary-endpoint call and is noted.",
+    "judgement": "same on the registered co-primary (ORR at 4 weeks), so endpoint_role primary. comparison_stated true because one paper reports model and trial and draws the joint conclusion ('Our preclinical and clinical data demonstrated the primary efficacy and safety'); it does not quantify the match, so magnitude is direction_only. Short durability does not change the primary-endpoint call and is noted. Single-arm ruling: ORR is a registered primary of NCT05008575, so a response where the model predicted one is a match. Retrodiction ruling: CD33 depletion's AML efficacy (gemtuzumab; CD33 CAR-T) was public before this model, so the match is retro, not same. Dated to the EHA 2023 abstract P522 (HemaSphere 7 Suppl, PMC10429699), which reported 'Six of ten patients have received MRD- CR at day 28 assessment' (rule 6); Huang 2025 is the status source. Flu/Cy lymphodepletion is conditioning, not a combination partner.",
     "model_id": "cd33-car-nk-cb-nsg-xenograft",
     "model": "Cord-blood CD33-CAR-NK (4-1BB, sIL-15) in NSG Molm13-luc xenografts + HSC colony assay",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": null,
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "epub_year": 2019,
+    "print_year": 2019,
+    "registry_date": "2013-07-18",
+    "model_filed": null,
+    "product_in_model": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Vadastuximab phase 1 patients (CD33-positive AML)",
+    "confidence": "high",
+    "confidence_note": "Open-access full text read (Europe PMC, PMC6704571).",
+    "year": 2019,
+    "status": "untested",
+    "note": "First use of the rs12459419 predictor for vadastuximab: the shared IgV epitope set the expectation that CC patients would respond better.",
+    "short": "Genotype predictor applied to vadastuximab",
+    "src": "https://doi.org/10.1186/s13045-019-0771-0",
+    "srcLabel": "Stanchina 2019",
+    "quote": "The fragment variable (Fv) regions of SGN-CD33A and GO recognize the same epitope on CD33, so any effect of the CD33 splice site SNP is expected to be similar for both agents.",
+    "endpoint_role": null,
+    "outcome_tested": null,
+    "judgement": "Opening untested entry for the vadastuximab track of the genotype predictor, at its first use for that drug (Stanchina 2019, the same letter that tests it).",
+    "model_id": "cd33-rs12459419-splice-genotype",
+    "model": "CD33 rs12459419 splice-site genotype (human genetic predictor of CD33 V-domain antibody benefit)",
+    "model_kind": "human_genetic",
+    "prediction_level": "patient",
+    "model_first_use_year": 2017,
+    "drug": "vadastuximab talirine",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    }
   ],
   "safety": [
@@ -914,7 +1048,11 @@
     "src": "https://doi.org/10.1182/blood-2013-03-491506",
     "srcLabel": "Kung Sutherland 2013",
     "quote": "Together, these data suggest that SGN-CD33A has CD33-directed antitumor activity and support clinical testing of this novel therapeutic in patients with AML.",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "vadastuximab talirine",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "subjects": "patients",
@@ -935,7 +1073,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Older adults with newly diagnosed CD33-positive AML eligible for HMA (CASCADE)",
     "prediction_level": "class",
     "confidence": "medium",
     "confidence_note": "Registry termination statement; deaths 43/111 vs 34/128 from its adverse-event table.",
@@ -945,14 +1083,18 @@
     "model": "CD33+ AML cell-line and primary-blast xenografts (mouse)",
     "model_id": "aml-xenograft-cd33-pbd-adc",
     "modality": "ADC",
-    "note": "The Dec 2016 hepatotoxicity/VOD hold and CASCADE's excess fatal infections were never set beside a model; xenograft mice can show neither.",
+    "note": "The Dec 2016 hepatotoxicity/VOD hold and CASCADE's excess fatal infections were never set beside a model; xenograft mice can show neither. CASCADE combined vadastuximab with an HMA.",
     "short": "VOD hold and fatal infections, no model",
     "src": "https://clinicaltrials.gov/study/NCT02785900",
     "srcLabel": "NCT02785900 results 2018",
     "quote": "Due to safety; specifically a higher rate of deaths, including fatal infections, in the SGN33A arm versus the control arm",
     "model_first_use_year": 2013,
     "reason": "Harms never compared with a model",
-    "judgement": "Not contra: the species that could have shown sinusoidal injury is the monkey (Guffroy 2017 showed it for a calicheamicin conjugate), but vadastuximab's monkey toxicology could not be retrieved, so its silence cannot be asserted. Godwin 2017 (doi:10.1182/blood-2017-01-762419) reported SOS after vadastuximab and called for adequate animal models; its text is paywalled. The hold is known from a sponsor release (tier 5), not used for status. Kept as a second untested entry (strengthens) to record the attempted test."
+    "judgement": "Not contra: the species that could have shown sinusoidal injury is the monkey (Guffroy 2017 showed it for a calicheamicin conjugate), but vadastuximab's monkey toxicology could not be retrieved, so its silence cannot be asserted. Godwin 2017 (doi:10.1182/blood-2017-01-762419) reported SOS after vadastuximab and called for adequate animal models; its text is paywalled. The hold is known from a sponsor release (tier 5), not used for status. Kept as a second untested entry (strengthens) to record the attempted test.",
+    "drug": "vadastuximab talirine",
+    "route": "iv",
+    "combination_with": "azacitidine or decitabine",
+    "population_group": "stage_or_line"
    },
    {
     "subjects": null,
@@ -973,7 +1115,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory CD33-positive AML (BI 836858 phase 1)",
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": null,
@@ -988,7 +1130,11 @@
     "srcLabel": "Vasu 2016",
     "quote": "In vitro treatment of AML blasts with decitabine (DAC) or 5-azacytidine, 2 hypomethylating agents that show efficacy in older patients, did not compromise BI 836858-induced NK-cell-mediated ADCC.",
     "model_first_use_year": 2016,
-    "judgement": "NCT01690624 results (2025-01-27): DLTs 2/0/0 at 10/20/40 mg, deaths 8 of 27 R/R patients on study; Hochman 2026 calls the azacitidine-combination AEs consistent with azacitidine alone. Nothing on the model side predicts or denies these."
+    "judgement": "NCT01690624 results (2025-01-27): DLTs 2/0/0 at 10/20/40 mg, deaths 8 of 27 R/R patients on study; Hochman 2026 calls the azacitidine-combination AEs consistent with azacitidine alone. Nothing on the model side predicts or denies these.",
+    "drug": "bi-836858",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "subjects": "patients",
@@ -1009,7 +1155,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory AML (CD33-CAR NK-92 first-in-human)",
     "prediction_level": "class",
     "confidence": "low",
     "confidence_note": "Abstract only; full text not retrieved.",
@@ -1024,7 +1170,11 @@
     "srcLabel": "Tang 2018",
     "quote": "Theoretically, CAR-NK cells have a more favorable toxicity profile compared to CAR T cells, especially in avoiding adverse effects such as cytokine release syndrome.",
     "model_first_use_year": 2016,
-    "judgement": "A looser reader scores same on the no-CRS expectation; the abstract calls it theoretical, no NK-92 model can show CRS (immunodeficient mice cannot either), so the match is not a model prediction and silence is not a miss."
+    "judgement": "A looser reader scores same on the no-CRS expectation; the abstract calls it theoretical, no NK-92 model can show CRS (immunodeficient mice cannot either), so the match is not a model prediction and silence is not a miss.",
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -1060,7 +1210,11 @@
     "model": "Cord-blood CD33-CAR-NK (4-1BB, sIL-15) in NSG Molm13-luc xenografts + HSC colony assay",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -1080,10 +1234,10 @@
     "magnitude": "direction_only",
     "magnitude_basis": "reversibility of marrow suppression; the model's colony counts were not set against patient cytopenia grades",
     "source_calls_it": "match",
-    "population": "CD33-positive (unselected)",
+    "population": "Relapsed/refractory CD33-positive AML (Xinqiao CAR-NK phase 1)",
     "confidence": "low",
     "confidence_note": "n = 10; Flu/Cy lymphodepletion confounds early cytopenias; the stated prediction (HSC sparing relative to CAR-T) is judged on recovery without allo-HSCT rescue. One grade 2 CRS is not a miss: a mouse cannot show CRS.",
-    "year": 2025,
+    "year": 2023,
     "status": "same",
     "modality": "cell therapy",
     "note": "Grade 3-4 cytopenias in most patients after Flu/Cy resolved in a median 27 days without HSCT rescue; one grade 2 CRS, no ICANS/GVHD.",
@@ -1092,12 +1246,16 @@
     "srcLabel": "Huang 2025",
     "quote": "Additionally, all instances of severe bone marrow suppression resolved within one month, highlighting the favorable safety profile of the treatment.",
     "reason": "HSC-sparing prediction held: cytopenias recovered",
-    "judgement": "same, not partial: the model's stated prediction was sparing of HSCs relative to CD33 CAR-T's prolonged aplasia, and every severe cytopenia recovered within a month without transplant rescue; the paper itself calls the profile favourable. Grade 4 neutropenia in 4/10 is recorded in the note.",
+    "judgement": "same, not partial: the model's stated prediction was sparing of HSCs relative to CD33 CAR-T's prolonged aplasia, and every severe cytopenia recovered within a month without transplant rescue; the paper itself calls the profile favourable. Grade 4 neutropenia in 4/10 is recorded in the note. Dated to the EHA 2023 abstract P522 (PMC10429699), which reported one grade 2 CRS and concluded the trial 'proved the primary efficacy and safety' (rule 6). Not a retrodiction: the only earlier anti-CD33 CAR-NK patient data (Tang 2018) are for a different product (irradiated NK-92 line), and dose and safety count only the same drug's own result.",
     "model_id": "cd33-car-nk-cb-nsg-xenograft",
     "model": "Cord-blood CD33-CAR-NK (4-1BB, sIL-15) in NSG Molm13-luc xenografts + HSC colony assay",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "anti-CD33 CAR-NK cells",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    }
   ]
  }

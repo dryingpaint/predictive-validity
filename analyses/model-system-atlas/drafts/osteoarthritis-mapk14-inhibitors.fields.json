@@ -1,0 +1,61 @@
+{
+ "tile": "osteoarthritis-mapk14-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "status same -> retro, retrodiction true: human endotoxin TNF suppression by p38 inhibitors public 2001-2002 (Fijen 2001, Branger 2002) before the 2009 rat/monkey model result (retrodiction by post-dating ruling); drug pha-797804, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug emprumapimod, route oral (opener)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: human LPS cytokine suppression by p38 inhibitors public from 2001 (Fijen 2001) before Koch 2007 (retrodiction by post-dating ruling); drug emprumapimod, route oral; checker's untested adjudication (not a rule question) left open"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug emprumapimod, route oral (opener on the sibling-drug rat iodoacetate track; emprumapimod is its only scored member)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug emprumapimod, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug pha-797804, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug emprumapimod, route oral (opener)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug emprumapimod, route oral; not split: FX005 IA result same direction, kept in patient_trials"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug emprumapimod, route oral (opener)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug emprumapimod, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug FX005, route intra_articular"
+  }
+ ],
+ "added": []
+}

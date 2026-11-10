@@ -1,0 +1,111 @@
+{
+ "tile": "rheumatoid-arthritis-syk-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug mk-8457, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug mk-8457, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug cevidoplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug lanraplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug lanraplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug mk-8457, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug mk-8457, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug cevidoplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug lanraplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug lanraplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "status contra -> same: dose table row 'target reached'; a reached dose that failed is an efficacy failure only (checker correction); marked strengthens as a duplicate of dose 5; drug lanraplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug mk-8457, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: rat model first public Nov 2014 after fostamatinib's RA ACR20 result (Weinblatt 2008, PMID 18975322); efficacy retrodiction counts any drug of the same target and action; drug mk-8457, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug cevidoplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2021 -> 2022 and retrodiction true (status stays contra): Cho 2023 epub Nov 2022 post-dates the Jan 2021 topline miss; a retrodiction that failed to reproduce is contra; drug cevidoplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug lanraplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug lanraplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug mk-8457, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug mk-8457, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "src/quote/subjects moved from healthy volunteers (Clarke 2018) to RA patients (Kivitz ACR 2018, NCT02885181 posted 2018-09-19): this disease's patients were measured, so they decide; status same and year 2018 unchanged; drug lanraplenib, route oral set (track fields, from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug lanraplenib, route oral set (track fields, from the entry's own sources)"
+  }
+ ],
+ "added": []
+}

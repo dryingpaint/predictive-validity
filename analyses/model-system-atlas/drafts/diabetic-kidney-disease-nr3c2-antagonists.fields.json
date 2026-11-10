@@ -1,0 +1,42 @@
+{
+ "tile": "diabetic-kidney-disease-nr3c2-antagonists",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "year 2020 -> 2019 (rule 6 earliest date: online 2019-10-04 per Crossref/PubMed; print 2020-03); model_first_use_year 2019 on the track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true (retrodiction rule: mouse epub 2019-01 after ARTS-DN UACR result 2015, same target and action)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "year 2026 -> 2025, src/quote Wang 2026 -> Li 2025 Cells (rule 6 earliest public comparison, epub 2025-02-26); drug finerenone, split from esaxerenone db/db track"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "opening untested 2025 for the finerenone track on db/db mice (Li 2025, Cells)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "what": "opening untested 2016 for the esaxerenone track on the DOCA-salt rat (Arai 2016)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "what": "retro 2020 for the esaxerenone DOCA-salt track: Arai 2016 rat vs ESAX-DN primary (split from efficacy 3; retrodiction rule)"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "contra 2020 for the esaxerenone Dahl-rat track: ESAX-DN K>=5.5/6.0 9% vs 2% (split from safety 6, product-matched)"
+  }
+ ]
+}

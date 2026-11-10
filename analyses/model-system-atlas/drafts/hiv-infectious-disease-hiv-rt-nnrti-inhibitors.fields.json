@@ -1,0 +1,24 @@
+{"tile": "hiv-infectious-disease-hiv-rt-nnrti-inhibitors",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "year 2009 -> 2008 (earliest public date: Idenix 6 Feb 2008 release on CROI 2008 in-vitro poster); model_first_use_year 2009 -> 2008 on the model; drug fosdevirine, route oral set"},
+  {"cell": "engagement", "index": 2, "what": "year 2012 -> 2008 (press-release ruling: Idenix 6 Feb 2008 release, 800 mg cohort -2.01 log10); drug fosdevirine, route oral set"},
+  {"cell": "dose", "index": 1, "what": "year 2009 -> 2008 (healthy-volunteer PK poster at CROI Feb 2008, opener at model_first_use_year); model string unified with the model_id; drug fosdevirine, route oral set"},
+  {"cell": "dose", "index": 2, "what": "year 2012 -> 2008 (congress-abstract ruling: June 2008 HIV Drug Resistance Workshop poster, troughs >10-40x adjusted EC50, no PK/PD relationship); model string unified; drug fosdevirine, route oral set"},
+  {"cell": "dose", "index": 3, "what": "drug doravirine, route oral set; no status/year change"},
+  {"cell": "dose", "index": 4, "what": "drug doravirine, route oral set; no status/year change"},
+  {"cell": "efficacy", "index": 1, "what": "year 2009 -> 2008 (Idenix 6 Feb 2008 release); drug fosdevirine, route oral set"},
+  {"cell": "efficacy", "index": 2, "what": "year 2012 -> 2008 (press-release ruling: Idenix 6 Feb 2008 release); model string unified; drug fosdevirine, route oral set"},
+  {"cell": "safety", "index": 1, "what": "drug fosdevirine, route oral set; no status/year change"},
+  {"cell": "safety", "index": 2, "what": "year 2012 -> 2011 (press-release ruling: FDA hold for four seizure reports public 10 Feb 2011, POZ); population_group stage_or_line; doravirine comparison moved to its own track; drug fosdevirine, route oral set"},
+  {"cell": "safety", "index": 3, "what": "drug fosdevirine, route oral set; population_group stage_or_line; no status/year change"}
+ ],
+ "added": [
+  {"cell": "engagement", "index": 3, "what": "doravirine track opener on hiv-nnrti-cell-culture, untested 2013 (Lai 2014 in-vitro profile)"},
+  {"cell": "engagement", "index": 4, "what": "doravirine same 2015 (Schurmann 2016 7-day monotherapy, -1.37/-1.26 log10), split from engagement 2"},
+  {"cell": "dose", "index": 5, "what": "doravirine dose track opener, untested 2014 (Anderson 2015 healthy-volunteer C24 > 19 nM EC95)"},
+  {"cell": "dose", "index": 6, "what": "doravirine dose same 2015 (Schurmann 2016: 25 and 200 mg equally active), split from dose 2"},
+  {"cell": "efficacy", "index": 3, "what": "doravirine efficacy track opener, untested 2013 (Lai 2014)"},
+  {"cell": "efficacy", "index": 4, "what": "doravirine efficacy same 2015 (Schurmann 2016 monotherapy primary viral-load endpoint)"},
+  {"cell": "efficacy", "index": 5, "what": "doravirine efficacy same 2017, strengthens (DRIVE-FORWARD combination non-inferiority trial, 84% vs 80% <50 copies/mL; dated by Merck 14 Feb 2017 CROI release); combination and non-inferiority ruling"},
+  {"cell": "safety", "index": 4, "what": "doravirine track on nnrti-standard-tox-species, untested 2018 (not_measured; Pifeltro label 8.1/13.1), split from safety 2"}
+ ]}

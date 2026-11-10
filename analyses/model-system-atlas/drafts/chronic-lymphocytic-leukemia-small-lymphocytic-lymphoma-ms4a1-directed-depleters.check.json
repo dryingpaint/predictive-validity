@@ -9,163 +9,165 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "DOI resolves to de Romeuf 2008 (PMID 18302712); quote verbatim in abstract. Ex-vivo ADCC has no patient counterpart in GENUINE; untested/not_measured stands."
+   "quote_found": "abstract_only",
+   "note": "de Romeuf 2008 (PMID 18302712) quote verbatim in abstract. Ublituximab IV, biomarker_selected (GENUINE: del17p/del11q/TP53 required, Sharman 2021 abstract) correct; ADCC has no patient readout, untested/not_measured stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Engelberts 2020 (PMID 31981978, epub 2020-01-23); quote verbatim. Abstract says the monkey studies supported the FIH trial, so model_filed true is reasonable."
+   "quote_found": "abstract_only",
+   "note": "Engelberts 2020 (PMID 31981978) quote verbatim. Epcoritamab SC, stage_or_line (EPCORE CLL-1: >=2 prior lines incl. BTKi, Danilov 2024) correct; 2020 untested opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Mhibik 2023 (PMID 37219524); quote verbatim. T-cell expansion not reported in CLL-1 abstracts read (2021, 2024); untested/not_measured stands."
+   "quote_found": "abstract_only",
+   "note": "Mhibik 2023 (PMID 37219524) quote verbatim. Epcoritamab SC, stage_or_line correct; Kater 2021 and Danilov 2024 abstracts report no T-cell expansion, so untested/not_measured stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
+   "status_supported": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Danilov 2024 ASH abstract (Blood 144 Suppl 1:883) scraped; uMRD quote verbatim; NCT04623541 first posted 2020-11-10 confirmed. Pairing is a call; readout_tier arguably proximal (target-cell clearance) rather than downstream."
+   "note": "Danilov 2024 ASH abstract (online 2024-11-05) uMRD quote verbatim. Retro correct: rituximab B-cell depletion in patients 1994 precedes the 2020 cyno model. Kater 2021 reports PRs but no MRD/depletion, so 2024 stands; SC 48 mg, stage_or_line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim. 'Difference more pronounced at low doses' states no exposure target or margin; untested/no_prediction correct."
+   "quote_found": "abstract_only",
+   "note": "Quote verbatim in de Romeuf 2008. Ublituximab IV, biomarker_selected correct; 'more pronounced at low doses' is no exposure target or margin, untested/no_prediction stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim. Abstract states route/bioavailability only, no human exposure target or NOAEL margin; CLL 48 mg came from NHL-1. Epcoritamab FDA review not in bundle, not read."
+   "quote_found": "abstract_only",
+   "note": "Quote verbatim in Engelberts 2020. Epcoritamab SC, stage_or_line correct; SC bioavailability is no human exposure target or margin, untested/no_prediction stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim (last sentence of abstract); opening untested at 2008 correct."
+   "quote_found": "abstract_only",
+   "note": "Quote verbatim (de Romeuf 2008). Ublituximab IV, biomarker_selected correct; 2008 untested opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "GENUINE (PMID 33631112, epub 2021-02-22); quote verbatim; amended single primary ORR confirmed; NCT02301156 posted 2014-11-25, results 2022-05-20. Earlier ublituximab CLL data (2016-17, combo or mixed NHL/CLL phase 1) reasonably kept as patient_trials."
+   "quote_found": "abstract_only",
+   "note": "Sharman 2021 (PMID 33631112) ORR quote verbatim; ORR sole primary after amendment. Retro correct (rituximab CLL responses 2001). TG press release at 53rd ASCO (2017) reports primary met, so year 2017. Combination with ibrutinib; IV, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
+   "status_supported": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2023,
-   "rule": "What the model is: a model built or run after the clinic already knew the answer is a retrodiction (retrodiction: true)",
-   "note": "Quote verbatim. Mhibik 2023 cites Kater, Blood 2021;138 Suppl 1:2627 (EPCORE CLL-1: partial responses in 3 of 5 R/R CLL), so CLL activity was public before these experiments; set retrodiction: true.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Retrodiction rule: Mhibik 2023's own introduction cites EPCORE CLL-1 (Kater, Blood 2021 suppl, PR 3/5 in BTKi-exposed R/R CLL), so the model ran after CLL activity was public; opening entry stays untested, retrodiction: true."
+   "note": "Mhibik 2023 quote verbatim. Epcoritamab SC, stage_or_line correct; untested opener, note records post-dating of rituximab 2001 and Kater 2021-11-05 PRs in 3/5 (confirmed).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
+   "status_supported": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2024,
-   "rule": "A retrodiction that reproduced the human data is retro, never same",
-   "note": "ORR 61%/CR 39% quote verbatim and primary endpoint confirmed. But the PBMC/PDX track was run after ASH 2021 CLL responses (doi 10.1182/blood-2021-146563), so the match is retro, retrodiction: true.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: the PBMC/PDX track postdates Kater 2021's CLL responses in BTKi-exposed patients; the 2024 expansion ORR 61% reproduces that known direction, no new prospective claim, so retro, never same."
+   "note": "Danilov 2024 'In EXP, ORR was 61% and CR rate was 39%' verbatim; EXP primary endpoint ORR (confex). Retro correct: model 2023 post-dates rituximab 2001 and Kater 2021. Single-arm design in note; no earlier EXP readout found; SC, stage_or_line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim; cytokine release in monkeys is a harm the species can show; opening untested 2020 fine."
+   "quote_found": "abstract_only",
+   "note": "Engelberts 2020 quote verbatim. Epcoritamab SC, stage_or_line correct; 2020 untested opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2021,
-   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public",
-   "note": "CRS 96% quote verbatim in Danilov 2024, but Kater ASH 2021 (Blood 138 Suppl 1:2627, doi 10.1182/blood-2021-146563) already reported 'CRS (100%)... All pts experienced CRS in the first cycle, but no CRS events were higher than grade 2.' Date to 2021, cite Kater.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dating rule 6: status unchanged; Kater ASH 2021 (doi 10.1182/blood-2021-146563) already reported CRS in 100% of R/R CLL patients, all grade ≤2, so the matched entry dates to 2021."
+   "quote_found": "verbatim",
+   "note": "Kater 2021 ASH abstract (doi 10.1182/blood-2021-146563, online 2021-11-05) quote verbatim; 7 R/R CLL pts SC 24/48 mg. Same correct and prospective: cyno model (epub Jan 2020) precedes epcoritamab's own patient CRS. Year 2021, SC, stage_or_line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Goldenberg 2009 (PMID 18941114, epub 2008-10-21) resolves; quote verbatim in abstract. Opening untested at 2008 correct; prediction_level class."
+   "quote_found": "abstract_only",
+   "note": "Goldenberg 2009 (PMID 18941114, epub 2008-10-21) quote verbatim. Veltuzumab SC, unselected (untreated or relapsed CD20+ CLL, Kalaycio ASH 2012) correct; 2008 untested opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 6,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Kalaycio 2016 (PMID 26389849, epub 2015-10-19); quote verbatim. Monkey model public 2008, before the CLL result, so prospective (not retro). NCT00546793 posted 2007-10-19, CLL in conditions; trial-to-paper link not stated in abstract."
+   "proposed_status": "retro",
+   "proposed_year": 2012,
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public, including a congress abstract",
+   "note": "Kalaycio 2016 quote verbatim; retro correct (rituximab 1994). But Kalaycio ASH 2012 (doi 10.1182/blood.V120.21.192.192, online 2012-11-16) already reported 'Circulating leukemic cells decreased after treatment in all patients'; year 2015 -> 2012.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status retro agreed by both (retrodiction rule: post-dates rituximab 1994 depletion). Rule 6 dating: Kalaycio ASH 2012 abstract (Blood 120:192) already reported circulating leukemic cells fell in all patients, so the entry year is 2012, not 2015."
   },
   {
    "cell": "dose",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim. Abstract gives only 'low doses' qualitatively, no human exposure target or margin; untested/no_prediction correct. Kalaycio abstract confirms no exposure-response across 80-320 mg."
+   "quote_found": "abstract_only",
+   "note": "Quote verbatim in Goldenberg 2009. Veltuzumab SC, unselected correct; only qualitative 'low doses', no exposure target or margin; untested/no_prediction stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim. NCT00546793 primary outcome is safety/tolerability (registry checked); 2/21 PR quote verbatim in Kalaycio. No efficacy-primary CLL trial, so untested; untested_reason unsettled is defensible (not_measured also arguable)."
+   "quote_found": "abstract_only",
+   "note": "Goldenberg 2009 quote verbatim; Kalaycio 2016 2/21 PR verbatim. Veltuzumab SC, unselected correct; safety-primary phase I, untested/unsettled stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

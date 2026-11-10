@@ -1,0 +1,71 @@
+{
+ "tile": "diffuse-large-b-cell-lymphoma-ms4a1-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: monkey B-cell depletion first public Jan 2020, after rituximab and mosunetuzumab (ASH 2018/2019) depletion in patients (engagement retrodiction counts any drug with the same target and action); drug epcoritamab, route sc"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "status same -> retro, year 2021 -> 2020: mosunetuzumab's own step-up result (Schuster, Blood 2019;134 Suppl 1:6, 13 Nov 2019; up to 1/2/60 mg, CRS mostly grade 1-2) predates the QSP model paper (Hosseini, 28 Aug 2020); dose retrodiction on the same drug's own result; drug mosunetuzumab, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: anti-CD20 DLBCL responses (rituximab; mosunetuzumab aNHL ORR 34.7%, ASH 2019) public before the Jan 2020 xenograft paper; single-arm ORR design written into note; drug epcoritamab, route sc"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "src press release -> NCT04628494 registry results (tier 3, posted 2026-11-03), trial_unreported false, quote from registry fields (check adjudication, rule 2); status same -> retro because the track's surrogate is a retrodiction (outcome_tested negative, OS sole primary); year stays 2026 (press release earliest); strengthens prose -> confidence_note, strengthens true; drug epcoritamab, route sc"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2021 -> 2020: same CRS result (59%, all grade 1/2) first public in ASCO 2020 abstract (JCO 38 suppl, abstr 8009), after Engelberts Jan 2020, so still prospective same; drug epcoritamab, route sc"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug epcoritamab, route sc set (opener)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug mosunetuzumab, route iv set (opener)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug mosunetuzumab, route iv set (opener)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug epcoritamab, route sc set (opener)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug epcoritamab, route sc set (opener)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug epcoritamab, route sc set (already retro)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug epcoritamab, route sc set (opener)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug mt-3724, route iv set; model_first_use_year null -> 2014 proxy (FIH NCT02361346)"
+  }
+ ],
+ "added": []
+}

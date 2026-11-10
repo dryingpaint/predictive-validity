@@ -1,0 +1,51 @@
+{
+ "tile": "hiv-infectious-disease-hiv-integrase-insti-inhibitors",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "year 2010->2009, src Kobayashi 2011 -> Min 2010 AAC (10.1128/AAC.00842-09, epub 2009-11-02); earlier public date of the PA-IC90 trough target; model_first_use_year 2009; drug dolutegravir, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "year 2013->2009, src FDA ClinPharm review -> Min 2010 AAC healthy-volunteer trough 25x PA-IC90 (HV PK counts; earlier public date); status same unchanged; drug dolutegravir, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2019->2018, src Zash 2019 -> Zash 2018 NEJM letter (10.1056/NEJMc1807653), quote from PMC full text; earlier public date; contra unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "year 2026->2025, src Zash 2026 -> Brummel 2025 AIDS (10.1097/QAD.0000000000004326, epub 2025-08-26); earlier public date of the attenuated signal; same unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "year 2013->2012, src FDA ClinPharm -> Koteff BJCP (online 2012-08); earlier public date; model_first_use_year 2012"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "year 2013->2012 (Koteff online 2012-08); same unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "retrodiction true->false and patient_signal_reversed true->false: the 2025 Tsepamo update is the 2020 mouse model's first prospective test; contra unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "combination design noted: dolutegravir + tenofovir/emtricitabine or abacavir/lamivudine (combination_with); status same unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "combination design noted (DTG substituted into failing regimen); population_group biomarker_selected; status same unchanged"
+  }
+ ],
+ "added": []
+}

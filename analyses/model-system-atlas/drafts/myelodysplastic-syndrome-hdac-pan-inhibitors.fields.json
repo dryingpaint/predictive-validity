@@ -1,0 +1,24 @@
+{
+ "tile": "myelodysplastic-syndrome-hdac-pan-inhibitors",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "drug pracinostat, route oral set (opener)"},
+  {"cell": "engagement", "index": 2, "what": "status same -> retro, retrodiction true: engagement retrodiction rule; panobinostat patient histone acetylation (Giles 2006) public before the 2010-11 pracinostat mouse data. drug pracinostat, route oral, population_group other_disease (solid-tumour phase 1)"},
+  {"cell": "engagement", "index": 3, "what": "retrodiction true (status stays contra: a retrodiction that failed to reproduce dose-dependent acetylation). drug pracinostat, route oral"},
+  {"cell": "engagement", "index": 4, "what": "drug panobinostat, route oral set (opener)"},
+  {"cell": "engagement", "index": 5, "what": "status same -> retro, retrodiction true: Fiskus 2009 cell data post-date panobinostat's own patient acetylation (Giles 2006). drug panobinostat, route oral, combination_with azacitidine"},
+  {"cell": "dose", "index": 1, "what": "drug pracinostat, route oral set (opener)"},
+  {"cell": "dose", "index": 2, "what": "status same -> retro, retrodiction true: dose retrodiction rule; pracinostat's own phase 1 PK (Razak 2011-02, Yong 2011-03) public before Jayaraman 2011-08 (settles check rule question on unverifiable run date). drug pracinostat, route oral, population_group other_disease"},
+  {"cell": "dose", "index": 3, "what": "drug panobinostat, route oral set (opener)"},
+  {"cell": "dose", "index": 4, "what": "drug pracinostat, route oral set (opener)"},
+  {"cell": "efficacy", "index": 1, "what": "drug pracinostat, route oral set (opener)"},
+  {"cell": "efficacy", "index": 2, "what": "year 2017 -> 2015: rule 6 earliest public date, MEI Pharma top-line press release 2015-03-23 (no difference in CR, the primary endpoint). Combination design noted, combination_with azacitidine; drug pracinostat, route oral, population_group stage_or_line"},
+  {"cell": "efficacy", "index": 3, "what": "drug panobinostat, route oral set (opener)"},
+  {"cell": "efficacy", "index": 4, "what": "drug panobinostat, route oral, population_group stage_or_line; single-arm design written into note (status unchanged, contra)"},
+  {"cell": "safety", "index": 1, "what": "drug panobinostat, route iv set (opener on the IV program, Giles 2006)"},
+  {"cell": "safety", "index": 2, "what": "status same -> retro, retrodiction true: dog QTc/GI data first public in the 2015 FDA review, after panobinostat's own patient QTcF DLTs (2006). imported_from MONDO:0009693 removed and population_group unselected: MDS patients were measured (imported-harm ruling). drug panobinostat, route oral"},
+  {"cell": "safety", "index": 3, "what": "drug pracinostat, route oral; untested_reason no_prediction added (mouse abstract states no harm or margin; no passing tolerability claim found)"}
+ ],
+ "added": [
+  {"cell": "safety", "index": 4, "what": "Split track panobinostat-dog-rat-tox x panobinostat x iv: 2015 retro, Giles 2006 IV phase 1 QTcF DLTs (AML/ALL/MDS) paired with dog QTc in the FDA PharmR (model_src)"}
+ ]
+}

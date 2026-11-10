@@ -1,0 +1,112 @@
+{
+ "tile": "alzheimer-disease-anti-app-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "year 2021 -> 2018 (rule 6: Eisai/Biogen topline release of 5 Jul 2018 first reported the significant 18-month amyloid-PET fall); drug lecanemab, route iv; model_filed text moved to note, set true"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status stays contra; retrodiction false -> true (model public 2012, after bapineuzumab's failed phase 2 for the same target and action, which it did not reproduce); ABBY co-primary design (ADAS-Cog12 and CDR-SB, both missed) written into note; drug crenezumab, route mixed (sc and iv cohorts, both missed)"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "status same -> retro, retrodiction true: mouse microhemorrhage null first public in the Jan 2023 FDA review, after lecanemab's own ARIA-H results (dose/safety retrodiction rule); drug lecanemab, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "retrodiction true, status contra unchanged (failed to reproduce Clarity AD's ARIA-H excess published Nov 2022); drug lecanemab, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "route iv (crenezumab phase 1), drug crenezumab; model_kind ex_vivo -> animal so happ-ps1-mabt is described one way"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug lecanemab, route iv; crenezumab split onto its own track (safety 10)"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug and route set from the source (no status or year change): ponezumab, iv, unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug and route set from the source (no status or year change): ponezumab, iv, unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug and route set from the source (no status or year change): crenezumab, mixed, unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug and route set from the source (no status or year change): crenezumab, mixed, unselected"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug and route set from the source (no status or year change): crenezumab, mixed, unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug and route set from the source (no status or year change): ponezumab, iv, unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug and route set from the source (no status or year change): lecanemab, iv, biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug and route set from the source (no status or year change): lecanemab, iv, biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug and route set from the source (no status or year change): lecanemab, iv, biomarker_selected"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug and route set from the source (no status or year change): ponezumab, iv, unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug and route set from the source (no status or year change): ponezumab, iv, unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug and route set from the source (no status or year change): lecanemab, iv, biomarker_selected"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug and route set from the source (no status or year change): lecanemab, iv, biomarker_selected"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "caa-fibril-binding-human x crenezumab x mixed: opening untested entry at the model's first use (2024, Soderberg 2024)"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "caa-fibril-binding-human x crenezumab x mixed: retro 2024, split from safety 5 because crenezumab patients (no ARIA-E) differed from lecanemab's (12.6%); quote 'Solanezumab and crenezumab showed negligible CAA fibril binding and these antibodies have no reported ARIA-E cases.'"
+  }
+ ]
+}

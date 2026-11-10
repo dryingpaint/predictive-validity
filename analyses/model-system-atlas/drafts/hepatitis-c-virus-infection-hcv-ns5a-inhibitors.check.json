@@ -11,8 +11,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "status table: untested opener at model_first_use_year",
-   "note": "J Virol 84(1):482, PMID 19812153; both quoted sentences verbatim in abstract. Europe PMC first-publication 2010-01-01; Oct-2009 ahead-of-print not confirmed, year 2010 stands. Abstract already cites clinical proof-of-concept; opener untested still right."
+   "rule": "status table: untested opener at model_first_use_year, proxy allowed; rule 6",
+   "note": "Lemm 2010 (PMID 19812153) quote verbatim in abstract. natap AASLD late-breaker 3 Nov 2008 states picomolar replicon potency for BMS-790052, so the 2008 proxy holds. Daclatasvir, oral, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -21,8 +22,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "engagement: proximal readout (viral load); evidence rule 1 comparison_stated",
-   "note": "Nature 465:96, epub 2010-04-21; quote verbatim in abstract, which carries both replicon EC50s and the 3.3 log10 fall, so comparison_stated true holds. Proximal readout, direction only: supported."
+   "rule": "engagement: proximal readout (viral load); rule 6 earliest public date",
+   "note": "Gao 2010 quote verbatim (abstract, epub 2010-04-21). natap AASLD 3 Nov 2008 Nettles poster: picomolar replicon potency, 3.3 log10 at 24 h after 100 mg in GT1 patients: year 2008 supported. Daclatasvir, oral, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -31,8 +33,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "same (patient-level); evidence rule 6 dating note",
-   "note": "Hepatology 54(6):1924, PMID 21809362; quote verbatim (PubMed abstract). Patient-level match supported. Dating: Gao 2010 abstract already states patient variants sat at replicon-identified positions, so this strengthening comparison was public in 2010, not 2011."
+   "rule": "same (patient-level); rule 6 dating",
+   "note": "Fridell 2011 quote verbatim (abstract). Gao 2010 abstract (epub 2010-04-21): variants 'at amino-acid positions identified using the in vitro replicon system', so 2010 holds. Daclatasvir, oral, biomarker_selected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -41,8 +44,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "status table: untested opener",
-   "note": "Gao 2010 resolves; quote verbatim in abstract. Opener untested is right: single-dose PD only, no exposure-versus-EC50 comparison at that date."
+   "rule": "status table: untested opener; rule 6",
+   "note": "Gao 2010 quote verbatim (abstract). Replicon PBA EC90 target public at AASLD Nov 2008 (natap), so 2008 proxy holds. Note 'no steady-state exposure comparison yet' is stale beside dose 2 at 2008; status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -51,8 +55,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "dose table row 'reached, drug worked'; rule 7 (no later knowledge) strained, see rule question 1",
-   "note": "Hepatology 54(6):1956, PMID 21837752; quote verbatim. Target reached (once-daily PK, 2.8-4.1 log10 declines) supported at abstract level; trough/EC50 ratio unread by both of us. 'Drug worked' leans on Lok 2012/ALLY-3 (rule 7); see rule question 1."
+   "rule": "dose table row 'target reached' -> same; rule 6",
+   "note": "natap AASLD 2008 poster: patients 'had C24 above the protein binding-adjusted (PBA) EC90 derived in replicon for both genotypes 1a and 1b at doses >=1 mg': 2008 supported. Nettles 2011 Cmin quote from full text (prior check). Daclatasvir, oral.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -97,17 +102,13 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2014,
-   "rule": "rule 6 dating (earliest source stating the comparison); source_calls_it partial",
-   "note": "Field year/epub_year/print_year 2015->2014, src -> FDA Harvoni label Oct 2014 (205834s000lbl.pdf, sec 12.4, bundle lines 1105-1127): treatment-experienced baseline NS5A RAP relapse 22% (5/23); quote verbatim. Naive ION-1/3 showed no difference (6% vs 5%), so source_calls_it partial. | superseded: confirmed (): Quote verbatim in bundled label section 12.4; Table 7 (54% 7/13 vs 92% 124/135; cirrhotics 25% 1/4) verified; NCT02032901 results posted 2015-09-14. Patient-level same supported; 2,737-fold figure not re-read. Harvoni Oct-2014 label made the same comparison earlier (missing).",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same agreed. Rule 6 dating: Harvoni label Oct 2014 sec 12.4 already pairs baseline NS5A RAPs with relapse (22%, 5/23 treatment-experienced; naive no difference), so year 2014, source_calls_it partial."
+   "rule": "efficacy: combination scored on primary SVR12 with combination_with; track = model x drug x route",
+   "note": "Daklinza label 12.4 quote verbatim (bundle 206843s000lbl.txt line 847). ALLY-3 abstract (Nelson 2015, epub 2015-03-10) gives no RAS data, so 2015 holds. Daclatasvir, oral, sofosbuvir, biomarker_selected right; Harvoni 2014 belongs to ledipasvir.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -116,8 +117,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "efficacy: patient-level same, comparison stated by regulator (tier 2)",
-   "note": "Quote verbatim in bundled Zepatier label section 12.4; Table 11 (98% 441/450 vs 70% 39/56) verified; NCT02105467 (C-EDGE TN) results posted 2016-04-12, primary SVR12. Patient-level same supported; the positions tested are the replicon's."
+   "rule": "efficacy: patient-level same, regulator-stated comparison; combination_with",
+   "note": "Zepatier label 12.4 quote verbatim (bundle line 1713). hcv-replicon-ns5a-ras, elbasvir, oral, grazoprevir, biomarker_selected match the GT1a patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -136,8 +138,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "safety: model's silence not contradicted -> same; harm from another class set aside (decision 13)",
-   "note": "Quote verbatim in bundled Harvoni PharmR (safety-pharmacology section, after hERG/dog telemetry); 'No clear target organs ... mice, rats and dogs' also verified. Comparison stated by reviewer; same supported. Later amiodarone bradycardia (2015) is attributed to sofosbuvir, outside class."
+   "rule": "safety: model silence not contradicted -> same; track = model x drug x route",
+   "note": "Harvoni PharmR quote verbatim (bundle line 2819); 'No clear target organs' at line 303. Ledipasvir, oral, sofosbuvir, own track. Opener safety 4 sits after this entry (see its verdict).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -146,8 +149,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "safety: predicted harm absent in patients -> contra, magnitude opposite; see rule question 3",
-   "note": "Quote verbatim in bundled SumR. PharmR margins verified (1-month rat NOAEL AUC 5.07, adrenal hypertrophy >=25.4; 6-month effects >=9.14 ug.h/mL) vs label human 60-mg AUC 10,973 ng.h/mL: ~0.8-2.3x. Contra/opposite by the letter; rule question 3. EMA 2014 dating unverified."
+   "rule": "safety: predicted harm absent in patients -> contra, opposite (rule question 3); rule 6",
+   "note": "EMA Daklinza EPAR re-read: 'adrenal gland was a target organ in repeat-dose studies in rats and monkeys... no exposure margins'; cortisol quote verbatim. CHMP 2014, so year 2014 holds. Daclatasvir, oral, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -167,9 +171,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 10: post-hoc model reproducing the known result -> retro",
-   "note": "J Hepatol 65:1, PMID 26907973, epub 2016-02-22; quote verbatim; abstract states retrospective design, SVR known before fitting; relapser flagged post hoc, so retro patient-level. Member-drug arms are SOF+DCV (19) and SOF+LDV (20); SOF+SMV (19) carries no NS5A drug. Abstract level.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction reproducing known SVR -> retro; combination_with",
+   "note": "Dahari 2016 (PMID 26907973, epub 2016-02-22) quote verbatim in abstract; the relapser was on SOF+LDV. Ledipasvir, oral, sofosbuvir, unselected right. Opener efficacy 16 (same year) is listed after this entry; move it before 7.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -178,24 +182,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 11: pre-specified readout (SVR rate) held with one per-patient miss -> same; member drug in every regimen; see rule questions",
-   "note": "Sci Rep 10:17820, PMC7575564 full text read. Model fitted to week 0-4 kinetics in real time, TTC binned to 6/8/10/12 wk; regimens SOF/VEL 11, ELB/GRZ 8, SOF/LED 6, GLE/PIB 4, all NS5A-containing. 11 shortened = 10 by model TTC + 1 by day-2 <LLoQ rule (Pt 5, no fit): model-picked cures are 9/10, not 10/11; fix magnitude_basis. Relapser Pt 3 (GT3a, SOF/VEL, TTC 36 d -> 6 wk) relapsed wk 4 post-EOT; paper hedges GT3 might relapse at 12 wk. NCT03603327 first posted 2018-07-27 but started 2018-02-25 (registered after start), no results; year 2020 from epub stands. Same supported; prospective, patient-level.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "efficacy single-arm rule: response where model predicted one -> same; one per-patient miss -> partial",
+   "note": "Etzion 2020 abstract quote verbatim (PMC7575564); full text: 28/29 SVR, the one relapse a GT3 patient on SOF/VEL (retreated SOF/VEL/VOX). Single-arm design in note; NCT03603327 posted 2018-07-27. Velpatasvir, oral, sofosbuvir right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 9,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2015,
-   "rule": "decision 7 (opener at first class use)",
-   "note": "Field year 2019->2015, src -> Kai 2015 (first author Kai Y, not Kan; J Gastroenterol 50:1145, doi:10.1007/s00535-015-1108-6, PMID 26208695, epub 2015-07-25), model_first_use_year 2015. Abstract confirms TK-NOG mice, LDV/GS-558093 failed. Status untested stands for opener. | superseded: corrected (CHECKER_BRIEF_v3 / models): Doi 2019 resolves (J Gastroenterol 54:449, published 2019-01-25); quote verbatim; TK-NOG host confirmed from keywords, abbreviation list, ref 19 Hasegawa 2011 and CIEA co-author Suemizu (methods paywalled). Split from the Hiroshima/PhoenixBio cDNA-uPA/SCID track (Osawa 2019 affiliations and refs Tateno 2015, Uchida 2017) is right. But the same Osaka TK-NOG system was first used for the class in Kan 2015 (J Gastroenterol 50:1145, PMID 26208695, epub 2015-07-25: DCV/ASV-failure L31V+Y93H serum into TK-NOG mice, LDV+GS-558093 failed), so the opener is Kan 2015, model_first_use_year 2015, and the model description should drop the per-experiment P32del inoculum. Status untested stands for the opener; Kan's prospective prediction is listed in missing.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Drafter and checker agree on untested; only the opener date differs. Rule 6 / opener at first class use: Kai 2015 (PMID 26208695) first used TK-NOG for the class, so year 2015. Not the track latest (retro follows); no untested_reason."
+   "rule": "opener at first class use of the system (model_first_use_year; rule 6)",
+   "note": "Kai 2015 (J Gastroenterol, PMID 26208695, epub 2015-07-25) quote verbatim in abstract: TK-NOG mice, DCV/ASV-failure serum. Untested opener, 2015, ledipasvir, oral, biomarker_selected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -204,9 +204,178 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 10: model run after the patient result was known -> retro, never same",
-   "note": "Quote verbatim in abstract. Donor serum came from a patient who had already failed LDV/SOF, so the LDV+GS-558093 mouse failure reproduces a known patient result: retro, patient-level, 2019 right. The retro rests on the donor history; Uemura 2019 (epub 2019-01-05, GLE/PIB) is incidental since pibrentasvir was not dosed in the mice. source_calls_it 'match' is the drafter's reading, not stated by the source. Abstract level.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction reproducing a known patient result -> retro; combination_with",
+   "note": "Doi 2019 (PMID 30684016, epub 2019-01-25) quote verbatim in abstract. Ledipasvir, oral, sofosbuvir (donor regimen), biomarker_selected; model_first_use_year 2015 matches efficacy 9.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "drop",
+   "rule": "track latest = last entry in seq order (track_store.py sorts by year, then JSON index); DRAFTER_BRIEF status table: each track opens untested at model_first_use_year, so a same-year opener listed after the comparison makes untested the track's latest",
+   "note": "Lemm 2010 quote verbatim (BMS-824 sibling). Year 2010 ties engagement 3 (same 2010) on the same track and sorts after it, so the track latest reads untested. Drop, or list it before entry 3.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Status table: track (ns5a-ras x daclatasvir) has a 2010 'same' comparison (entry 3); this same-year opener sorts after it and makes the latest untested, which the table forbids. Rule 6 opener is redundant. Drop."
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "status table: untested opener, proxy allowed",
+   "note": "Harvoni label quote verbatim (bundle line 1103) but is about RAS persistence, not the replicon map; acceptable for a proxy opener. Sorts before efficacy 12 (same year, lower index). Ledipasvir, oral, sofosbuvir right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "efficacy: patient-level same, partial; rule 6 dating; combination_with",
+   "note": "Harvoni label 12.4 quote verbatim (bundle line 1121; also SumR line 437); naive ION-1/3 no difference (6% vs 5%, 1% vs 1%), so partial. 2014, ledipasvir, oral, sofosbuvir, biomarker_selected supported.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "drop",
+   "rule": "track latest = last entry in seq order (track_store.py sorts by year, then JSON index); DRAFTER_BRIEF status table: each track opens untested at model_first_use_year, so a same-year opener listed after the comparison makes untested the track's latest",
+   "note": "Lemm 2010 quote verbatim, but year 2015 ties efficacy 4 (same 2015) and sorts after it, so the daclatasvir RAS track latest reads untested; source_tier 2/epub 2015 mismatch Lemm 2010 (tier 1). Drop, or re-date 2010 before entry 4.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Status table: efficacy 4 is a 2015 'same' on this daclatasvir track; this opener sorts after it, so latest reads untested. Rule 6 also breaks: Lemm 2010 quote dated 2015, tier 2. Drop."
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "drop",
+   "rule": "track latest = last entry in seq order (track_store.py sorts by year, then JSON index); DRAFTER_BRIEF status table: each track opens untested at model_first_use_year, so a same-year opener listed after the comparison makes untested the track's latest",
+   "note": "Zepatier quote verbatim, but year 2016 ties efficacy 5 (same 2016) and sorts after it, so the elbasvir RAS track latest reads untested. Drop, or list it before entry 5.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Status table: elbasvir ns5a-ras track has a 2016 'same' (efficacy 5) from the same label quote; this same-year opener sorts after it and leaves latest untested. Not a rule 6 opener at 2010. Drop."
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "retrodiction reproducing known SVR -> retro; combination_with",
+   "note": "Quote is the Dahari 2016 title, verbatim. SOF+DCV n=19, sole relapser on SOF+LDV, so all daclatasvir patients cured. Retro, daclatasvir, oral, sofosbuvir; follows opener efficacy 6 (2013) correctly.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "status table: untested opener, proxy allowed",
+   "note": "Dahari 2016 quote verbatim. Sorts after retro efficacy 7 (same year) but before same efficacy 20 (2020), so the track latest is right; for strip order, list it before entry 7.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 17,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "drop",
+   "rule": "track latest = last entry in seq order (track_store.py sorts by year, then JSON index); DRAFTER_BRIEF status table: each track opens untested at model_first_use_year, so a same-year opener listed after the comparison makes untested the track's latest",
+   "note": "Etzion 2020 quote verbatim, but year 2020 ties efficacy 8 (same 2020) and sorts after it, so the velpatasvir kinetic-model track latest reads untested. Drop, or list it before entry 8.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Status table: velpatasvir kinetic-model track has a 2020 'same' (efficacy 8); this same-year opener sorts after it so latest reads untested. Not a rule 6 opener at model_first_use_year 2013. Drop."
+  },
+  {
+   "cell": "efficacy",
+   "index": 18,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "status table: untested opener, proxy allowed",
+   "note": "Etzion 2020 abstract sentence verbatim (PMC7575564). Sorts before efficacy 19 on the elbasvir track. Elbasvir, oral, grazoprevir right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 19,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "efficacy single-arm rule: response where model predicted one -> same; combination_with",
+   "note": "Etzion 2020 Results sentence verbatim (PMC7575564); the only relapse was on SOF/VEL, so ELB/GRZ patients were all cured. Single-arm design in note. Elbasvir, oral, grazoprevir, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 20,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "efficacy single-arm rule -> same; combination_with",
+   "note": "Same Etzion 2020 sentence, verbatim; no relapse on SOF/LED. Ledipasvir, oral, sofosbuvir right; single-arm design in note.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 21,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "status table: untested opener, proxy allowed",
+   "note": "Etzion 2020 abstract sentence verbatim. Sorts before efficacy 22 on the pibrentasvir track. Pibrentasvir, oral, glecaprevir right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 22,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "efficacy single-arm rule -> same; combination_with",
+   "note": "Etzion 2020 sentence verbatim ('Modeling did not support reducing treatment duration below 8 weeks in any of the 4 patients treated with GLE/PIB'); all cured on 8 weeks. Weak test, as drafted.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "drop",
+   "rule": "track latest = last entry in seq order (track_store.py sorts by year, then JSON index); DRAFTER_BRIEF status table: each track opens untested at model_first_use_year, so a same-year opener listed after the comparison makes untested the track's latest",
+   "note": "PharmR quote verbatim (bundle line 303), but year 2014 ties safety 2 (same 2014) and sorts after it, so the ledipasvir toxicology track latest reads untested. Drop, or list it before safety 2.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Status table: ledipasvir animal-tox track has a 2014 'same' (safety 2); this same-year opener sorts after it and makes latest untested. Not a rule 6 opener at model_first_use_year 2010. Drop."
   }
  ],
  "missing": [

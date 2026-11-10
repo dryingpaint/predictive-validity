@@ -11,16 +11,22 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "DOI resolves to Brisbare-Roch 2007 (PMID 17259994); quote verbatim in abstract. Almorexant is not a member, so untested is right. Cosmetic: source_calls_it 'match' on an untested opener; null would be cleaner."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Brisbare-Roch 2007 (PMID 17259994) quote verbatim in abstract. Almorexant, a non-member, opens suvorexant's oral track (product_in_model false); drug suvorexant, route oral, unselected fit an opener; untested at 2007 holds."
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Sun 2013 (PMID 23372274, epub 2013-02-01) quote verbatim; Winrow 2011 (PMID 21473737) shows suvorexant sleep promotion in rat, dog and rhesus. Downstream readout, partial (no delta-power effect) as the abstract states."
+   "status_supported": false,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "retro",
+   "rule": "DRAFTER_BRIEF What the model is: for engagement and efficacy a model result first public after a patient result on the same target (any drug) is a retrodiction; reproduced -> retro",
+   "note": "Sun 2013 (PMID 23372274) quote verbatim; drug suvorexant, oral, healthy men fit. Model side Winrow 2011 (PMID 21473737) is public after almorexant human somnolence (2007) and suvorexant Phase IIb (SLEEP 2010): retrodiction that reproduced, so retro.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement is a target claim, any drug): suvorexant model data (Cox Jul 2010, Winrow 2011) post-date almorexant human somnolence (2007) and suvorexant Phase IIb (Jun 2010); reproduced, so retro. The sibling 2007 opener does not make it prospective."
   },
   {
    "cell": "dose",
@@ -29,7 +35,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Winrow 2011 quote (>90% hOX2R occupancy at 1.1 uM) verbatim in abstract. Untested opener is correct; the 0.4 uM target itself is not in Winrow, as the judgement says."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Winrow 2011 occupancy quote verbatim in abstract. Suvorexant, oral, unselected correct; untested opener at 2011 holds (the 0.4 uM target 'based on preclinical data' is stated in the ClinPharm review)."
   },
   {
    "cell": "dose",
@@ -38,7 +45,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "ClinPharmR (bundle) has the quote and 'C4hr above 0.4 uM (based on preclinical EEG data)'. Target reached at 40 mg, which worked (Herring 2012); efficacy down to 10 mg makes off_by_2-5x fair. No pre-trial next-day margin, so same not contra."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "ClinPharmR quote verbatim; reviewer's note gives the 0.4 uM target as based on preclinical data, reached at 40-100 mg, which worked. Suvorexant oral, mixed HV/patients. Dose retrodiction is same-drug only; target set before Phase 3: same."
   },
   {
    "cell": "dose",
@@ -47,7 +55,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "IntegratedR (bundle): 13-week dog cataplexy NOAEL 20 mg/kg/day, 3-fold margin at 50 mg MRHD, no cataplexy in Phase 3. Decision 16 same with margin_stated fits. Fill model_first_use_year (13-week dog study precedes Phase 3, ~2017). Did not find the 200 mg claim."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "IntegratedR quote verbatim; T-14.067 is the 13-week oral dog toxicity study, so the 2014 proxy holds. Daridorexant oral, Phase 3 insomnia, unselected. The judgement's 200 mg cataplexy-like claim was not found in the review; status does not rest on it."
   },
   {
    "cell": "efficacy",
@@ -56,16 +65,23 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in Brisbare-Roch 2007 abstract. Sibling drug, untested opener correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Brisbare-Roch 2007 quote verbatim in abstract; almorexant sibling, product_in_model false; untested opener on suvorexant's oral track at 2007 holds."
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Herring 2012 (PMID 23197752, epub 2012-11-28) coprimary sleep efficiency quote verbatim. registry_date 2014-11-14 matches NCT00792298 results posting; Phase 3 NCT01097616/629 posted 2014-09-01. No member failed an insomnia primary, so not neg."
+   "status_supported": false,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "retro",
+   "proposed_year": 2011,
+   "rule": "DRAFTER_BRIEF What the model is: for engagement and efficacy a model result first public after a patient result on the same target (any drug) is a retrodiction; reproduced -> retro; evidence rule 6 (earliest public date)",
+   "note": "Herring 2012 (PMID 23197752) co-primary quote verbatim; suvorexant oral, primary insomnia fit. Same Phase IIb result was public at SLEEP 2010 (Merck release 2010-06-09), before Winrow 2011's suvorexant model data: retrodiction, retro, comparison public 2011.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: Winrow 2011 suvorexant model data follow the suvorexant Phase IIb result public at SLEEP June 2010 (and almorexant insomnia trials); reproduced, so retro. Rule 6: comparison first public 2011, not 2012."
   },
   {
    "cell": "safety",
@@ -74,7 +90,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in abstract; almorexant is not a member, so untested is right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in abstract; almorexant is a non-member, so untested with untested_reason unsettled holds. Suvorexant oral fills the track opener."
   },
   {
    "cell": "safety",
@@ -83,7 +100,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "MedR quote verbatim; PharmR/label 13.2 has dog food-enrichment cataplexy at 30 mg/kg, and MedR says 'nonclinical studies suggested a theoretical safety concern for cataplexy'. Same/partial is supported. model_change true is harmless because the prior status was untested."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "MedR quote verbatim; dog food-enrichment cataplexy at 30 mg/kg beside patient cataplexy-like events; suvorexant oral, insomnia patients. Unchecked: the May 2013 AdCom briefing might date the comparison to 2013."
   },
   {
    "cell": "dose",
@@ -92,18 +110,23 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Treiber 2017 (PMID 28663311, epub 2017-06-29) quote verbatim in abstract. Model chose ACT-541468 and its dose before FIH, so prospective; threshold calibrated on sibling clinical data is allowed. Untested opener, class level, correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Treiber 2017 (PMID 28663311) quote verbatim in abstract; 25 mg predicted before daridorexant's own trials, prospective. Daridorexant oral correct; untested opener at proxy 2015 holds."
   },
   {
    "cell": "dose",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Mignot 2022 (PMID 35065036) quote verbatim; 10 mg failed WASO/LPS, 25 mg met both in study 1 and WASO only in study 2. Model predates patient data, so same not retro; within_2x fair. Phase 2 (2020) is an earlier comparison if year should be first readout."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "same",
+   "proposed_year": 2020,
+   "rule": "DRAFTER_BRIEF evidence rule 6: year is the earliest public date (sponsor press release counts)",
+   "note": "Mignot 2022 (PMID 35065036) quote verbatim; daridorexant oral, insomnia adults; same holds. But Idorsia's 2020-04-20 release reported Phase 3 study 1 positive at 25 and 50 mg; model side public 2017, so comparison first public 2020.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status agreed (same). Rule 6: Idorsia's 2020-04-20 release reported study 1 positive at 25 and 50 mg, so the entry year is 2020, not 2022; model side public 2017."
   },
   {
    "cell": "safety",
@@ -112,8 +135,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "PharmR (bundle) lists TT089003/004/005 with the quoted title. Results are not in the bundle; Born 2017 (PMID 28279667) gives them: no withdrawal, incomplete zolpidem generalization, no reinforcement in rhesus. Untested opener correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PharmR lists the rhesus self-administration study with the quoted title. Route oral is the patients' route (rhesus arm IV), per the field rule; suvorexant correct. Untested opener at proxy 2009 holds."
   },
   {
    "cell": "safety",
@@ -122,8 +145,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "MedR quote verbatim beside sponsor's 'lack of nonclinical evidence of abuse potential'. Born 2017 (doi:10.1016/j.yrtph.2017.03.006) states animals predicted low abuse yet C-IV followed the HAP study; a better model_src. Battery prospective; contra supported."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "MedR quote verbatim: Phase 3 0-3 month abuse-related ECIs HD 2.0%, LD 3.2%, placebo 2.2%, beside the sponsor's nonclinical no-abuse finding. Insomnia patients were measured, so they set status (not the P025 recreational-user HAP): same."
   },
   {
    "cell": "safety",
@@ -132,8 +155,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Multidiscipline review (bundle) has the quote verbatim and study W-20140712 (WT vs preproorexin KO mice). Untested opener correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Multidiscipline review quote verbatim (W-20140712, WT vs preproorexin KO mice). Lemborexant oral; untested opener at proxy 2014 holds."
   },
   {
    "cell": "safety",
@@ -142,8 +165,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Label 5.x quote verbatim; review gives cataplexy-related terms 1.5% PBO vs 2.7-3.0% LEM and 'similar in all groups', one unadjudicated case. Mouse study (2014) preceded lemborexant Phase 3, so same/partial, direction_only, holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Label quote verbatim. Mouse study (2014) precedes lemborexant's own patient data; safety retrodiction is same-drug only, so prospective. Weak, unadjudicated events in insomnia patients: same/partial; lemborexant oral; 2019."
   }
  ],
  "missing": [
@@ -153,11 +176,12 @@
   "Fazamorexant Phase 3 (NCT05525637) is reported positive only on secondary aggregators. No failure was found for any member in a press release or SEC filing.",
   "Lemborexant's and daridorexant's own nonclinical abuse-liability studies vs their human abuse potential trials (FDA 212028 multidiscipline review 2019: 'Nonclinical findings were less suggestive of abuse liability'; daridorexant NDA 214985 review 2022, HAP vs zolpidem): further entries in the rhesus-rat-abuse-liability-battery track, both C-IV."
  ],
- "overall": "accept",
+ "overall": "accept_with_corrections",
  "rule_questions": [
   "Suvorexant next-day impairment was the harm behind the FDA dose cut, and the animal package never tested it. The drafter left it unscored under dose. Decision 16 puts an unpredicted harm in safety, so does model silence on next-day or residual sedation count as a harm the species could have shown (safety contra)? Or is it human-PK carryover (half-life), outside what the model could show?",
   "A dose cell mixes an efficacy-exposure target model (suvorexant C4h) with a decision 16 tolerability-margin model (daridorexant dog NOAEL). Should model_change: true be set when the cell was not contra, given the rule defines model_change only for turning a contra back?",
   "Dose entry 2: the effective-exposure target is published only in the FDA review that also holds the patient comparison, and Winrow 2011 is cited as model_src. Is this comparison_stated true (regulator states both sides) or false (a pairing)?",
-  "Safety 5-6: the lemborexant mouse cataplexy study (W-20140712, mid-2014) ran when suvorexant's cataplexy-like events in patients were already known (2013 AdCom, 2014 label). At prediction_level class, is a member's model run after a sibling's patient result a retrodiction, or prospective because its own drug's patients were untested?"
+  "Safety 5-6: the lemborexant mouse cataplexy study (W-20140712, mid-2014) ran when suvorexant's cataplexy-like events in patients were already known (2013 AdCom, 2014 label). At prediction_level class, is a member's model run after a sibling's patient result a retrodiction, or prospective because its own drug's patients were untested?",
+  "Engagement 2 / efficacy 2: the rat-dog-sleep-eeg track opened prospectively with almorexant in 2007 (product_in_model false), but suvorexant's own model data (Cox 2010, Winrow 2011) post-date its June 2010 Phase IIb result. Is the scored entry a retrodiction (model result after patient result) or does the 2007 class-level opener make the track prospective?"
  ]
 }

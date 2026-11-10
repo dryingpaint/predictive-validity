@@ -11,16 +11,23 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "DOI resolves to Tully 2017 J Med Chem (PMID 29148806); quote verbatim in abstract. Model opener, untested, correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Tully 2017 abstract (PMID 29148806) quote verbatim. Opener untested 2017; drug tropifexor, route oral, unselected correct."
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Badman 2020 (PMID 31823525, epub 2019-12) abstract has the quote verbatim; FGF19 is FXR target-gene product, proximal fits. Healthy volunteers count. Pairing correctly unstated."
+   "proposed_status": "retro",
+   "proposed_year": 2017,
+   "rule": "6 (dating: earliest date the comparison was public, congress abstract counts)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Retro correct: Papazyan ref 41, Badman 2016 Hepatology 64:16A 'demonstrates potent activation of FXR in healthy subjects', plus OCA FGF19 data, predate Tully 2017. Both sides public 2017, not Badman 2020's 2019 epub. Drug/route fine.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Both sides agree retro (retrodiction rule: human FGF19 rise under FXR agonism predates Tully 2017). Rule 6: Badman 2016 AASLD abstract made tropifexor's human side public before the model, so the comparison dates to 2017, not 2019."
   },
   {
    "cell": "dose",
@@ -29,7 +36,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Hernandez quote verbatim. Sanyal full text confirms Part A doses chosen 'based on preclinical results, safety and pharmacological activity (elevation of FGF19)', no exposure target. Untested defensible; see rule question on derived dose for cilofexor."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Hernandez 2019 quote verbatim (PMC6672390); no model-stated exposure target or margin, so untested/no_prediction. Drug tropifexor, oral, unselected correct."
   },
   {
    "cell": "efficacy",
@@ -38,21 +46,18 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Erstad 2018 (PMID 30027140) abstract quote verbatim (italic P). EDP-305 BDL/CDAHFD fibrosis model; ARGON-1 primary was ALT, not fibrosis, so this model stays untested."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Erstad 2018 abstract quote verbatim (PMID 30027140). EDP-305 opener untested 2018; drug edp-305, route oral correct."
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2020,
-   "rule": "7",
-   "note": "Contra holds: ATLAS primary (NCT03449446, results 2020-12-03) cilofexor 12% vs 11%. Rat model was public as Reiberger 2016 Z Gastroenterol abstract (doi:10.1055/s-0036-1583977, GS-9674 rodent NASH/cirrhosis), so not a retrodiction; model_first_use_year ~2016, year 2020.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Decision 7: both agree contra (ATLAS cilofexor 12% vs 11%, primary). Only dating differs: year is the earliest public date of the comparison; registry and Loomba epub are 2020, so 2020 if Reiberger 2016 abstract admits the model side."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Loomba quote verbatim in abstract (PMID 33169409): cilofexor 12% vs 11% on primary. Year 2019 from Gilead 2019-12-16 topline; Reiberger 2016 DOI resolves (Thieme), so prospective. Combination arms also missed. Drug/route/stage_or_line correct."
   },
   {
    "cell": "efficacy",
@@ -61,7 +66,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Sanyal 2023 discussion; primary endpoints ALT/AST/HFF at wk12 confirmed in text and registry (results 2021-07-29). Different model, so model_change valid. outcome_tested should be null: histology was a secondary in the same trial, not a hard-outcome trial (decision 9)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Sanyal 2023 quote verbatim. Novartis release dated 2019-11-11 reports week-12 ALT/HFF falls, so 2019. Retro holds (FLINT 2014 predates Hernandez 2019). confidence_note still says year from registry; tidy."
   },
   {
    "cell": "safety",
@@ -70,7 +76,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Hernandez 2019 full text (PMC6672390) has the quote verbatim. Opener untested is fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Hernandez 2019 cholesterol quote verbatim; opener untested 2019; drug tropifexor, oral, unselected correct."
   },
   {
    "cell": "safety",
@@ -80,10 +87,11 @@
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "4",
-   "note": "LDL/HDL quote verbatim. But the model source itself disclaims the readout: 'the use of this rodent model may not be an appropriate tool to predict the effects of FXR agonists on cholesterol' (already failed vs OCA in FLINT). No stated prediction; contra needs the model's own prediction to fail.",
+   "rule": "safety: did the model's stated prediction hold (untested_reason no_prediction)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote and fields fine, but Hernandez states 'the use of this rodent model may not be an appropriate tool to predict the effects of FXR agonists on c[holesterol]': no stated prediction to fail. Year 2021 unverified (Novartis 2019 release silent on lipids).",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decisions 4 and 8: safety contra needs the model's own stated prediction to fail; Hernandez disclaims STAM mice as a tool for FXR-agonist cholesterol effects, so the class did not rely on it there. Untested, not contra."
+   "adjudication_note": "Safety rule scores a stated prediction; Hernandez says STAM mice already missed OCA's human cholesterol rise and 'may not be an appropriate tool to predict' it, so no prediction to contradict. Rule 5: untested, no_prediction."
   },
   {
    "cell": "safety",
@@ -92,8 +100,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Papazyan 2018 full text (PMC5983391): abstract quote verbatim; Methods chemical names confirm INT-2228 = tropifexor, INT-2231 = cilofexor. Opener untested fine. Judgement overstates novelty: paper cites 2016 HV abstracts (refs 40-41) as lipid-neutral."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Papazyan 2018 (epub 2018-03-20) quote verbatim; INT-2228 chemical name matches tropifexor, INT-2231 cilofexor. Tropifexor PXB opener untested 2018; drug, oral, unselected correct."
   },
   {
    "cell": "safety",
@@ -102,21 +110,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Model (2018) predicted LDL rise before NASH-patient lipid data; FLIGHT-FXR 12-wk LDL up/HDL down matches, so prospective same, not retro. Only short HV abstracts (Badman 2016) preceded it. 2021 year from registry plausible; AASLD 2020 interim not checked."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Sanyal LDL-up/HDL-down quote verbatim; PXB 2018 precedes tropifexor's NASH lipid data, so prospective same. Tropifexor HV lipid-neutral (Badman 2020, ref 41) is set aside because NASH patients were measured; see rule question."
   },
   {
    "cell": "safety",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2018,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Younis 2023 reports the same HV study first shown as Djedjos 2016 abstract, which Papazyan cites ('reportedly devoid of effects on circulating lipids'). Model post-dates and tests that result: retrodiction true, failed to reproduce = contra, stated 2018."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in Papazyan full text; GS-9674 HV abstract is Djedjos 2016, ref 40 (judgement says ref 41; fix). Same drug's earlier human result, mouse LDL rise failed it: retro contra 2018. Drug cilofexor, oral, unselected correct."
   },
   {
    "cell": "safety",
@@ -125,8 +130,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Hollenback 2024 abstract (PMID 38409114) has quote verbatim; screen built on Px-102 human ALT/cholesterol data and used to select cilofexor before its human dosing. Opener untested with 2016 proxy year acceptable (#112)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Hollenback 2024 abstract quote verbatim (PMID 38409114); opener with 2016 proxy year; drug cilofexor, oral, unselected correct. epub/print_year null though paper is 2024; tidy."
   },
   {
    "cell": "safety",
@@ -135,8 +140,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim in abstract; stated sponsor comparison. Screen preceded cilofexor dosing, so prospective, not retro. Human side checked in Younis 2023 full text: no lipid change, one grade-3 ALT discontinuation; Patel 2020 abstract shows ALT/GGT fell in NASH."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote in Hollenback 2024 abstract. Screen first public 2024, after cilofexor's own 2016 HV data, so retro under the safety rule. Judgement still holds the superseded 'Not a retrodiction for cilofexor' sentence; delete it."
   }
  ],
  "missing": [
@@ -151,6 +156,7 @@
   "Safety, model-side disclaimer: when the model paper itself says its readout cannot predict the human effect (Hernandez on STAM cholesterol, after OCA's FLINT LDL rise was known), is the later patient opposite result contra or untested? Decision 4 covers trials disclaimed as efficacy tests (#57) but not model papers disclaiming their own readout.",
   "Safety, askable silence on pruritus: every member had dose-limiting pruritus (tropifexor, EDP-305 50.9%, cilofexor, vonafexor). Mice can show scratching, but no member's rodent studies measured it. Is 'measurable in the model species at the time' satisfied by the behaviour being measurable, or does it require an FXR-itch mouse readout to have existed? If the former, safety should carry a contra on pruritus.",
   "Dose tie without a stated exposure target: cilofexor efficacy is contra at 30 mg (rat effective dose 10-30 mg/kg, no human exposure mapping). Does row 3 ('reached, failed, abandoned' -> dose contra derived_from efficacy) apply when the model never stated a target, or does dose stay untested as drafted?",
-  "Is a conference abstract with a DOI in a journal supplement (Reiberger 2016) an admissible tier-1 model-side source for dating and for model_first_use_year?"
+  "Is a conference abstract with a DOI in a journal supplement (Reiberger 2016) an admissible tier-1 model-side source for dating and for model_first_use_year?",
+  "Safety, healthy-volunteer retrodiction across tracks: Papazyan 2018 sets the PXB mouse LDL rise beside both tropifexor's and cilofexor's lipid-neutral 2016 HV abstracts. The cilofexor track scores it retro contra; the tropifexor track skips it because NASH patients were later measured. The imported-harm rule covers other diseases, not volunteers; which treatment is right, and does a later patient 'same' then override an earlier HV contra?"
  ]
 }

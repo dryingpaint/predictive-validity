@@ -1,0 +1,117 @@
+{
+ "tile": "rheumatoid-arthritis-btk-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug spebrutinib, route oral set (track opener; probe first run with sibling ibrutinib, product_in_model false)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug spebrutinib, route oral set (Evans 2013 healthy-volunteer occupancy)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug fenebrutinib, route oral set (track opener; sibling ibrutinib in the model)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug fenebrutinib, route oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug elsubrutinib, route oral set; now its own track, so strengthens removed; stale v3 judgement rewritten"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug bms-986142, route oral set (track opener on the sibling ibrutinib CIA data, product_in_model false)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug bms-986142, route oral set; split: spebrutinib, poseltinib, fenebrutinib, evobrutinib, elsubrutinib and TAS5315 moved to their own tracks (appended), leaving only acalabrutinib's unscored record in patient_trials; co-primary design written into note"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug spebrutinib, route oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug acalabrutinib, route oral, population_group other_disease set"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "status same -> untested (not_measured): imported-harm ruling, RA patients were measured for class safety so the CLL head-to-head no longer scores; drug acalabrutinib, route oral, population_group other_disease"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "spebrutinib oral, untested 2013 (Evans 2013): track opener at the model's first use for this drug"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "spebrutinib oral, contra 2019 (Schafer 2020): split from efficacy 2, primary endpoint vs placebo"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "poseltinib oral, untested 2016 (Park 2016): track opener at the model's first use for this drug"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "poseltinib oral, contra 2019 (Park 2021): split from efficacy 2, primary endpoint vs placebo"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "fenebrutinib oral, untested 2018 (Crawford 2018): track opener at the model's first use for this drug"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "fenebrutinib oral, same 2019 (Cohen 2020): split from efficacy 2, primary endpoint vs placebo"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "evobrutinib oral, untested 2019 (Haselmayer 2019): track opener at the model's first use for this drug"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "evobrutinib oral, contra 2020 (ACR Convergence 2020 abstract): split from efficacy 2, primary endpoint vs placebo"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "elsubrutinib oral, untested 2018 (Goess 2019): track opener at the model's first use for this drug"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "elsubrutinib oral, contra 2021 (Fleischmann 2022): split from efficacy 2, primary endpoint vs placebo"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "TAS5315 oral, untested 2017 (Yoshiga 2017 (ACR abstract)): track opener at the model's first use for this drug"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "TAS5315 oral, contra 2023 (Takeuchi 2023): split from efficacy 2, primary endpoint vs placebo"
+  }
+ ]
+}

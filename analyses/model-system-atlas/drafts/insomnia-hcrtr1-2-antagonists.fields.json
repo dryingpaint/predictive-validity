@@ -1,0 +1,81 @@
+{
+ "tile": "insomnia-hcrtr1-2-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to suvorexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to suvorexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to suvorexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to suvorexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to daridorexant, route oral (field fill from the entry's source); model_first_use_year 2014 from study T-14.067; status unchanged (no earlier own-drug patient result)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug set to daridorexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug set to daridorexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to suvorexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to suvorexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to suvorexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to suvorexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to suvorexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to suvorexant, route oral (field fill from the entry's source); status contra -> same, quote and population changed: imported-harm ruling, insomnia Phase 3 patients were measured for abuse-related events (FDA MedR 2014), so the recreational-user HAP no longer sets the status"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug set to lemborexant, route oral (field fill from the entry's source)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug set to lemborexant, route oral (field fill from the entry's source); status unchanged; settles checker rule question 4 under the same-drug retrodiction ruling (prospective)"
+  }
+ ],
+ "added": []
+}

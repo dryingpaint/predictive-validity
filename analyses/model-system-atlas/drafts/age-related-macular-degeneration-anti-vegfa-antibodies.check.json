@@ -17,9 +17,10 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "near",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "DOI resolves to HAWK/HARRIER (PMID 30986442). Abstract says 'Anatomic outcomes favored brolucizumab over aflibercept'; the word 'retinal fluid' is not in the abstract, so quote is near, not verbatim. Status same/direction_only holds."
+   "note": "Dugel abstract (PMID 30986442, epub 2019-04-12) has 'Anatomic outcomes favored brolucizumab over aflibercept.' verbatim in Conclusions. Mouse CNV public only in 2019 FDA review, after ranibizumab 2006: retro 2019; intravitreal, unselected match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -89,16 +90,12 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2014,
-   "rule": "Evidence rule 6 (dating: earliest public comparison)",
-   "note": "PHOENIX quote verbatim. Earlier: AURORA phase 2 (doi:10.1016/j.ophtha.2014.03.026), primary endpoint BCVA change at month 3, +8.97/+10.43 letters; uncontrolled, but it opens 'same' in 2014. PANDA-1 terminated 'desired primary endpoint was not met' confirmed.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same either way; per Evidence rule 6 the entry dates to 2014: AURORA's primary endpoint (BCVA change, month 3) gained 8.97/10.43 letters, matching the predicted activity. The efficacy rule asks only whether the primary endpoint responded."
+   "note": "AURORA abstract (PMID 24793528) quote verbatim; BCVA at month 3 is the stated primary; uncontrolled dose-ranging design in note. Phase 1 (2010) primary was safety, so 2014 is the first efficacy comparison. Retro vs ranibizumab 2006.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -107,7 +104,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in HAWK/HARRIER abstract. Non-inferiority vs aflibercept counted as direction agreement, consistent with treating PANDA as non-scoring."
+   "note": "Dugel abstract quote verbatim; non-inferiority BCVA at week 48 (4-letter margin) is the primary and was met, noted. Model public 2019 after ranibizumab 2006: retro. Drug, route, population match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -116,7 +114,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in abstract; primary endpoint met at Q8/Q12. Efficacy scored as the trial showed while dose is contra is consistent with decision 16 (target reached)."
+   "note": "Kunimoto 2020 (PMID 32471729) quote verbatim; stable-vision non-inferiority primary met, noted. Rodrigues IOVS (PMID 30535424) dated 2018-12-01 plus July 2018 topline put both sides public in 2018; retro correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -167,17 +166,12 @@
   {
    "cell": "engagement",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2024,
-   "rule": "Retrodiction: a model run after the clinic knew the answer is retro, never same",
-   "note": "Quote verbatim in Campochiaro 2024 abstract. Dose-dependent aqueous RGX-314 protein in patients was public at AAO 2018 (REGENXBIO release; Retinal Physician Oct 2018), before Ding 2019; as dated the rat model is a retrodiction.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: rat model first public Aug 2019 (Ding, JCI); dose-dependent patient aqueous RGX-314 protein was public at AAO Oct 2018. An earlier run date is unsourced, so retro; draft's retrodiction flag should be true."
+   "status_supported": true,
+   "note": "Campochiaro 2024 (PMID 38554726) resolves; Ding 2019 JCI epub 2019-08-13 shows rat RGX-314 Fab expression and leakage suppression. Patient protein public 2018, so retro dated 2019 under rule 6; subretinal, unselected match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -216,8 +210,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Kunimoto 2020 (PMID 32471729) conclusions verbatim; primary endpoint. Simulation of phase 3 regimens preceded CEDAR/SEQUOIA readout, so prospective same holds; model predicted PD suppression, not efficacy directly (direction_only appropriate).",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Kunimoto quote verbatim; in-silico ocular PK model first public in EMA 2020 withdrawal report, after CEDAR/SEQUOIA 2018 and ranibizumab 2006, so retro 2020 holds; non-inferiority noted; fields match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -262,12 +256,52 @@
   {
    "cell": "engagement",
    "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2010,
+   "rule": "Evidence rule 6 (year is the earliest date the comparison was public)",
+   "note": "AURORA CRT quote verbatim and retro is right, but the conbercept phase 1 in AMD (Zhang 2011 Ophthalmology, doi:10.1016/j.ophtha.2010.08.008, epub 2010-12-13) already reported center point thickness -77.2 um; the comparison was first public 2010.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Evidence rule 6 and retrodiction rule: status retro stands (model 2008 post-dates ranibizumab 2006). Year 2010: Zhang 2011 phase 1 (PMID 21146224, epub 2010-12-13) reported center point thickness -77.2 um, the earliest public comparison."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "CT.gov NCT03577899/NCT03630952: terminated, why-stopped verbatim, last update 2021-06-24/23, primary BCVA week 36. Kanghong exchange notice 2021-04-09 (same year) said over half of subjects were at or below baseline vision. Contra 2021 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "DOI resolves to AURORA (Ophthalmology, epub May 2014, PMID 24793528); CRT quote verbatim. Monkey CNV (2008) precedes it, so prospective same holds. CRT is a secondary end point but this is the engagement cell, not efficacy."
+   "note": "Zhang 2008 Mol Vis (PMID 18246030, 2008-01-10) abstract has the quote verbatim. Precedes conbercept's own patient results; untested opener at model_first_use_year 2008 is right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2010,
+   "rule": "Evidence rule 6 (year is the earliest date the comparison was public)",
+   "note": "AURORA 'well tolerated' quote verbatim and same is right, but the phase 1 in AMD patients (doi:10.1016/j.ophtha.2010.08.008, epub 2010-12-13) already reported no DLT and no drug-related adverse events up to 3.0 mg; year should be 2010.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Evidence rule 6: status same stands (2008 monkey claim precedes conbercept's own patient data). Year 2010: phase 1 (PMID 21146224, epub 2010-12-13) reported no DLT and no drug-related adverse events up to 3.0 mg."
   }
  ],
  "missing": [
@@ -283,6 +317,7 @@
   "When a model predicts only activity vs vehicle, does failing non-inferiority vs an active comparator (PANDA-1/2) leave the track unchanged, as the draft assumes?",
   "Safety silence when the species showed the harm in one study but it was dismissed (monkey IND study: ocular inflammation in vehicle and low doses, not dose-limiting): miss (contra) or partial?",
   "Is a margin 'stated before the trial' when it exists only in unpublished sponsor reports dated before phase 3 and made public in the later regulator review (brolucizumab, abicipar dose entries)?",
-  "RGX-314 rat model: first public date (Ding 2019) postdates public patient protein data (2018), though the rat work likely supported the 2017 IND. Does the publication date or the presumed (unsourced) IND date decide retrodiction?"
+  "RGX-314 rat model: first public date (Ding 2019) postdates public patient protein data (2018), though the rat work likely supported the 2017 IND. Does the publication date or the presumed (unsourced) IND date decide retrodiction?",
+  "PANDA-1/2: the sponsor's April 2021 notice also cites pandemic disruption of the trial; does a sponsor's mention of operational conditions the model never tested make an efficacy failure untested rather than contra?"
  ]
 }

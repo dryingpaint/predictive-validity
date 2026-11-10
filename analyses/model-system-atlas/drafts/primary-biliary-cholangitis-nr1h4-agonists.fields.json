@@ -1,0 +1,86 @@
+{
+ "tile": "primary-biliary-cholangitis-nr1h4-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug tropifexor, route oral, population_group unselected (opener); status untested kept"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: tropifexor rodent PD first public 2017, after OCA raised human FGF19 (Mudaliar 2013, epub 2013-05-30) - post-dating ruling, engagement counts any earlier patient result for the target; drug tropifexor, route oral, population_group unselected (healthy volunteers)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true, strengthens true -> null: cilofexor rodent PD first public 2024, after human FGF19 rises with OCA (2013) and tropifexor (2019) - post-dating ruling; cilofexor is now its own track (drug split); drug cilofexor, route oral, population_group unselected"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug tropifexor, route oral, population_group unselected (opener); status untested kept"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug tropifexor, route oral, population_group stage_or_line; status same kept (dose retrodiction needs the same drug's earlier patient result; none before Tully 2017)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug edp-305, route oral, population_group unselected (opener); status untested kept"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug edp-305, route oral, population_group unselected (opener); status untested kept"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: Mdr2 EDP-305 result first public 2020-05-06, after OCA's second-line PBC ALP result (Hirschfield 2015) and tropifexor's PBC registry results (2019-11-13) - post-dating ruling; year 2021 -> 2020: Enanta press release 2020-05-06 is the earliest public date (rule 6); untested_reason cleared; drug edp-305, route oral, population_group stage_or_line"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug tropifexor, route oral, population_group stage_or_line; status retro kept"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug cilofexor, route oral, population_group unselected; status retro kept"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug tropifexor, route oral, population_group unselected (opener); status untested kept"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug tropifexor, route oral, population_group stage_or_line; status contra kept (patients of the other members had the same pruritus, so no split)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug edp-305, route oral, population_group unselected; status untested kept"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug cilofexor (the patient-side member; model dosed OCA), route oral, population_group unselected (opener); status untested kept"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "status retro -> untested, retrodiction true -> false, strengthens true: imported NASH harm set aside because PBC patients were measured (imported-harm ruling); drug cilofexor, route oral, population_group other_disease"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug cilofexor, route oral, population_group unselected; status contra kept, now the only scoring entry on the cilofexor PXB track"
+  }
+ ],
+ "added": []
+}

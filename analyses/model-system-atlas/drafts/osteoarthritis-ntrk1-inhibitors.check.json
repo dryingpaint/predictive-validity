@@ -12,7 +12,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Nwosu resolves (PMID 26286016, epub 2015-08-18, print 2016-06); quote verbatim in abstract. Untested correct: rat pain behaviour only. The member's own rat model (Flannery 2015, OARSI, April 2015) predates it and should open the track."
+   "note": "Nwosu PMID 26286016 abstract re-read (epub 2015-08-18); quote verbatim. Untested opener; AR786 oral sibling, product_in_model false; asp-7962/oral/unselected matches the patients later compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -22,7 +23,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Walsh 2019 full text (PMC6941477) read; quote verbatim. No member trial reported a TrkA engagement readout; GZ389988 first-in-human NCT02424942 planned synovial-fluid PK and WOMAC only, results never posted. Untested stands."
+   "note": "Walsh 2019 (PMC6941477) full text re-read; quote verbatim. Neither member trial measured TrkA engagement: untested not_measured; asp-7962/oral/unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -32,7 +34,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Quote verbatim in Nwosu abstract. No exposure target published for any member; AR786 30 mg/kg BID is a sibling dose. Untested stands."
+   "note": "Nwosu abstract: 30 mg/kg oral BID quote verbatim; no exposure target or margin stated. Untested; asp-7962/oral/unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -41,8 +44,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "4",
-   "note": "Watt 2019 full text read: dose set on pre-clinical toxicity ceiling, 'data on file'; discussion says plasma 'well above the IC50' on total drug (unbound trough 111 nM < TrkA IC50 155 nM). Post-hoc PK/PD justification: untested stands, source_calls_it scaling."
+   "rule": "dose",
+   "note": "Walsh full text: dosing-regimen quote verbatim. No model-stated exposure target or margin is public: untested no_prediction; asp-7962/oral/unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -52,7 +56,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Quote verbatim in Nwosu abstract; tier 1, opens track. Flannery 2015 (DOI 10.1016/j.joca.2015.02.100), GZ389988's own rat MIA intra-articular study, is the member-side model source the draft said it could not locate."
+   "note": "Nwosu abstract conclusion verbatim. Untested 2015 opener on rat-MIA x asp-7962 oral; drug/route/population correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -62,7 +67,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Watt abstract quote verbatim; EudraCT 2014-004996-22 first results publication 20 Jun 2018 confirmed (no CT.gov results). Primary WOMAC pain missed, naproxen positive; Watt does not blame under-dosing. Contra stands; GZ389988A same (Krupka citing Flannery, comparison_stated) is subordinate."
+   "note": "Watt PMID 31356878 abstract: quote verbatim, WOMAC pain -0.14 (P=0.316), naproxen -0.67. Rat tested 4-week oral TrkA block, so contra stands; year 2018 from EudraCT (not re-opened; CT.gov has no posted results).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -72,21 +78,19 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Quote verbatim in Nwosu abstract. Untested opening entry correct; Flannery 2015 rat IA biocompatibility (no joint histopathology change) is the earlier member-side safety statement on this track."
+   "note": "Nwosu abstract quote verbatim. Untested 2015 opener; asp-7962/oral/unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2019,
-   "rule": "4",
-   "note": "Flannery 2015: rat IA biocompatibility showed 'nor any significant histopathologic changes in joint tissues'. Krupka 2019: injection joint inflammation 'occurred only in the GZ389988A group' (two thirds, Walsh). Askable harm the rat could show, missed: contra; src Krupka, model_src Flannery.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Decision 4: stated prediction failed. Flannery 2015 (DOI 10.1016/j.joca.2015.02.100, read): rat IA biocompatibility 'nor any significant histopathologic changes in joint tissues'; Krupka 2019: injection-joint inflammation only on GZ389988A. Contra 2019; RPOA stays untested in the note."
+   "status_supported": true,
+   "rule": null,
+   "note": "Walsh full text quote verbatim. ASP7962 4-week oral, RPOA-risk patients excluded: untested. asp-7962/oral/unselected correct; entry still lacks untested_reason (not_measured).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -96,7 +100,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Kigami abstract quote verbatim (paywalled). Watt full text: orthostatic challenge, neurological exam, autonomic AEs 1 vs 1, sensory disturbance n=1; prediction tested and held; confidence_note 'no autonomic testing' is wrong. src should be Watt, model_src Kigami; pre-trial GLP, not retrodiction."
+   "note": "Kigami PMID 33667609 abstract: quote verbatim; epub 2021-03-02, after ASP7962's own patient safety result (EudraCT 2018; Watt 2019 'safe and well-tolerated'). Same drug's earlier result: retro, retrodiction true; asp-7962/oral correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -106,23 +111,23 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Indo 1996 (PMID 8696348, Nat Genet Aug 1996) abstract read; quote verbatim. Opening entry, untested, year 1996, class level, tier 1 all correct; model predates every member, not a retrodiction.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Indo 1996 PMID 8696348 abstract; quote verbatim. Untested 1996 opener, human_genetic, drug class; route oral marks the ASP7962 comparison track.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "untested",
    "proposed_year": 2019,
-   "rule": "4",
-   "note": "Watt 2019 full text read; quote verbatim, no reference attached. Watt floats 'more complete and longer-lasting blockade' as the gap and unbound trough fell below IC50: a lifelong complete loss was never produced, so a failure attributed to conditions the model never tested is untested (decision 4), collapsing into the 1996 entry.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "rule": "efficacy: trial source attributes the result to conditions the model never tested -> untested (as settled for efficacy 8)",
+   "note": "Watt full text unreachable this pass (abstract only). Watt blames incomplete, short blockade, a condition a lifelong complete loss never tested; same reasoning that settled efficacy 8 untested. Propose untested, untested_reason not_measured; class/oral correct.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 (#35): Watt attributes the gap to blockade degree and duration (source_calls_it scaling), conditions a lifelong complete loss never tested; dose #2 stands unresolved, so 'reached' is unshown. Untested; track stays at Indo 1996."
+   "adjudication_note": "Checker rule (trial source attributes result to conditions model never tested -> untested), per 2026-11-09 ruling on efficacy 8: Watt blames incomplete, short blockade; the genotype is lifelong complete loss. Untested, not_measured (rule 5)."
   },
   {
    "cell": "efficacy",
@@ -132,23 +137,23 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Smeyne 1994 (PMID 8145823, Nature 17 Mar 1994) abstract read; quote verbatim. Opening entry untested, 1994, class level correct. Pain phenotype rests on Indo 1996's description of these mice, as the confidence_note says.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Smeyne 1994 PMID 8145823 abstract; quote verbatim. Untested 1994 opener; drug class, route oral (ASP7962 comparison) correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 6,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "untested",
    "proposed_year": 2019,
-   "rule": "4",
-   "note": "Same Watt sentence, verbatim, with no citation, so the TrkA-null identity is inferred (Indo 1996 supports it). A lethal developmental null never tested a 4-week partial inhibitor; Watt's blockade-degree explanation makes this untested, not contra (decision 4).",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "rule": "efficacy: trial source attributes the result to conditions the model never tested -> untested (as settled for efficacy 8)",
+   "note": "Same Watt full-text sentence (abstract only this pass); TrkA-null identity inferred. A lethal developmental null never tested 4-week partial blockade, which Watt blames: untested not_measured, consistent with efficacy 8. class/oral correct.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 (#35): same Watt sentence as efficacy #4; failure attributed to blockade degree/duration (scaling), conditions a lethal developmental null never tested, and the model identity is only inferred. Untested; track stays at Smeyne 1994."
+   "adjudication_note": "Same rule and ruling as efficacy 8: Watt attributes ASP7962 failure to partial, 4-week blockade, which a lethal developmental TrkA null never tested. Untested, not_measured (rule 5), consistent with efficacy 8."
   },
   {
    "cell": "efficacy",
@@ -158,34 +163,30 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Bergmann 1998 (PMID 9835221, Neurosci Lett 16 Oct 1998) abstract read; quote verbatim. Opening entry untested, 1998, class level correct; a mechanism model (TrkA sufficient for NGF hyperalgesia), prospective.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Bergmann 1998 PMID 9835221 abstract; quote verbatim. Untested 1998 opener; class/oral correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2019,
-   "rule": "4",
-   "note": "Quote verbatim (Watt ref 7). Watt uses the knockout only to reject the mAb-completeness excuse and leaves the failure unexplained; the draft's own source_calls_it 'unresolved' maps to untested (decision 4, #90). The knockout tested acute exogenous-NGF hyperalgesia, never a partial TrkA inhibitor in chronic OA pain.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "contra",
-   "adjudication_note": "RULE QUESTION: decision 4: is a receptor-sufficiency knockout's prediction tested when a selective inhibitor fails, the source rejects the excuse, leaves it unexplained, and exposure adequacy is unresolved (dose #2, RQ1)? #90 covers unresolvable readouts, not unexplained failures."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Bergmann abstract confirms only acute NGF-evoked hyperalgesia tested; Watt quote is full-text (abstract only this pass). No trial produced or measured that readout: untested not_measured per the ruling; class/oral/unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 9,
-   "verdict": "confirmed",
+   "verdict": "unverified",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "not_found",
    "status_supported": true,
    "rule": null,
-   "note": "Flannery 2015 OARSI abstract (OAC 23 Suppl 2:A45-6, Crossref created 2015-04-11, open archive) read in full; quote verbatim. Untested opening entry, 2015, product_in_model true correct. Tier 1 for a congress-supplement abstract is marginal; same abstract calls GZ389988 pan-Trk/CSF1R (rule question 2).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Flannery 2015 resolves (Crossref, OAC 23 Suppl A45-6) but ScienceDirect, OARSI site and Elsevier API all 403/401; quote unseen. Krupka abstract-era citation supports an untested 2015 opener; gz-389988/intra_articular/unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -194,32 +195,75 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "1",
-   "note": "Krupka 2019 full text read; quote verbatim; primary (WOMAC A1 over 4 weeks) met, one-sided alpha; 12-week miss stays in patient_trials. Model (2015) predates the trial, so same, not retro; year 2019 (Crossref 2019-07-25, no registry results). comparison_stated should be false: the intro restates the rat premise (ref 28) but the discussion never mentions the rat, a bare-citation (b) pairing.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": null,
+   "note": "Krupka PMID 31351965 abstract (epub 2019-07-25): primary met, quote verbatim; NCT02845271 has no posted results, so 2019 holds. Same, direction_only, prospective; gz-389988/IA correct. comparison_stated should be false (bare citation, rule 1).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "unverified",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "not_found",
    "status_supported": true,
    "rule": null,
-   "note": "Flannery 2015 abstract read; quote verbatim. Untested opening entry, 2015, class level correct. A stated local-tolerability prediction (no joint histopathology, no clinical-appearance effect) in naive rat knees; dose and timepoint not given.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Flannery 2015 resolves but full abstract unreachable this pass (403/401 on every route), so the biocompatibility quote is unseen. Untested opener plausible; gz-389988/intra_articular/unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Krupka abstract: transient injection joint inflammatory reactions in the GZ389988A group (67.3% vs 0% is full-text only). Rat knee could show it; stated no-change prediction failed: contra 2019; gz-389988/IA/unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "not_found",
+   "status_supported": true,
+   "rule": null,
+   "note": "Flannery abstract could not be re-opened (all publisher routes 403/401; no S2/OpenAlex abstract), so the MIA sentence is unseen. Untested 2015 opener plausible; gz-389988/intra_articular/unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "8",
-   "note": "Krupka full text read; quote verbatim (IJIR 67.3% vs 0%, onset within hours, hsCRP >=2-fold). Contra under decision 4 holds, but the identical Flannery-to-Krupka pairing was already adjudicated contra on rat-mia-knee-oa safety index 2; one comparison now sits on two tracks and one must go (decision 8).",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudication_note": "Decision 8: keep the Flannery 2015 → Krupka 2019 IJIR contra here; naive-knee IA biocompatibility is this system, not rat MIA OA. Count it once: rat-mia-knee-oa safety #2 (first-pass contra) should revert to the drafted untested."
+   "rule": null,
+   "note": "Krupka abstract: primary met, quote verbatim; 2019 holds (no registry results). Prospective vs Flannery April 2015; own gz-389988 IA track, separate from ASP7962 oral contra. comparison_stated false is right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Indo 1996 abstract quote verbatim. Untested 1996 opener for the genotype on the intra-articular comparison track; drug class, route intra_articular correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Krupka abstract quote verbatim; primary met, 2019. Krupka attributes the result to nothing the genotype lacked, so same at low confidence under the letter; symmetry with efficacy 4/6 untested stays a rule question. class/IA correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

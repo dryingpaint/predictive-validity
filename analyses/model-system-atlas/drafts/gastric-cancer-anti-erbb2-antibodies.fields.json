@@ -1,0 +1,17 @@
+{
+ "tile": "gastric-cancer-anti-erbb2-antibodies",
+ "changed": [
+  {"cell": "efficacy", "index": 2, "what": "year 2018 -> 2017 (rule 6 ruling: congress abstract counts; JACOB first public at ESMO 2017, abstract 616O); combination_with trastuzumab plus cisplatin-fluoropyrimidine, design written into note. Settles the checker's RULE QUESTION."},
+  {"cell": "efficacy", "index": 4, "what": "status untested -> same, year 2022 -> 2018, src/quote -> Catenacci 2020 (CP-MGAH22-05 ORR 17/92), combination_with pembrolizumab: single-arm and combination rulings, scored on the primary ORR in the predicted direction; first public ASCO 2018 abstract 4030. Settles the checker's RULE QUESTION; the CD16A-genotype differential stays unread (source_calls_it partial)."},
+  {"cell": "efficacy", "index": 6, "what": "year 2022 -> 2021 (earlier public date: ASCO 2021 abstract e16005, ORR 55.6% in HER2-high cohort)."},
+  {"cell": "efficacy", "index": 7, "what": "year 2026 -> 2025 (earlier public date: ESMO 2025 LBA and Alphamab press release, Cancer Commun 2025 phase II part); combination_with chemotherapy, co-primary design in note."},
+  {"cell": "dose", "index": 3, "what": "year 2020 -> 2018 (earlier public date: ASCO 2018 abstract 4030 reports the regimen well tolerated); combination_with pembrolizumab."},
+  {"cell": "dose", "index": 6, "what": "year 2018 -> 2014, src/quote -> Kang 2014 (JOSHUA day-43 trough 40.0 and 62.7 ug/mL above the 20 ug/mL target): the target-reached comparison was public earlier than JACOB."},
+  {"cell": "dose", "index": 7, "what": "year 2018 -> 2017 (JACOB first public at ESMO 2017); entry stays adjudicated drop."},
+  {"cell": "safety", "index": 2, "what": "year 2018 -> 2017 (rule 6 ruling: JACOB first public at ESMO 2017 congress abstract). Settles the checker's RULE QUESTION."},
+  {"cell": "safety", "index": 4, "what": "year 2020 -> 2018 (earlier public date: ASCO 2018 abstract 4030 safety results); combination_with pembrolizumab."}
+ ],
+ "added": [
+  {"cell": "efficacy", "index": 10, "what": "margetuximab plus retifanlimab, MAHOGANY cohort A (Catenacci 2022), single-arm ORR 53%: same, strengthens, 2022, on the fc-optimised-adcc-cd16a-158f track; carries the 2022 content formerly at efficacy 4."}
+ ]
+}

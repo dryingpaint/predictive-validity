@@ -1,0 +1,52 @@
+{
+ "tile": "sjogren-syndrome-pik3cd-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: adv5 mouse first public 2018-11-24, after dosed-human PI3Kδ engagement (Helmer 2017, Rao 2017); drug seletalisib, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: Allen 2017 assay paper (2017-04-25) first public after Helmer dosed-human result (2017-02-04); drug seletalisib, oral, population_group other_disease (HV + psoriasis)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "year 2016 -> 2015 (and model_first_use_year on the track): checker adjudication, APDS trial NCT02435173 started 2015-08-24 using the assay; drug leniolisib, oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true: Hoegenauer 2017 (2017-08-25) first public after Helmer 2017-02-04 dosed-human PI3Kδ result; drug leniolisib, oral, population_group other_disease (APDS)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to seletalisib, oral; status unchanged (unsettled): co-primary ruling, authors call it a trend, not a failure; design written into note"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug parsaclisib, oral; status contra kept under the single-arm ruling; retrodiction settled by first public dates (rule question 3)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: leniolisib tox first public 2023, after leniolisib's own Sjögren's AE results (registry 2019-10-18); drug leniolisib, oral; model_filed 2016 -> true"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "adv5-sialadenitis-mouse x seletalisib x oral opener, untested 2015: Nayar 2019 passing tolerability claim (no infection or weight loss) is a safety prediction"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "adv5-sialadenitis-mouse x seletalisib x oral, contra 2020 (retrodiction true): Juarez 2020 SAEs 3/13 vs 1/14, AE discontinuations 5/13 vs 1/14"
+  }
+ ]
+}

@@ -1,0 +1,122 @@
+{
+ "tile": "breast-cancer-hsp90aa1-hsp90ab1-inhibitors",
+ "changed": [
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to luminespib and note/population narrowed to luminespib; alvespimycin and ganetespib split into safety 6 and 7 (track split per drug); status retro 2013 unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug ganetespib; RULE QUESTION settled under the passing-tolerability ruling: Ying 2012 no cardiac/liver claim is a scored safety prediction that held; status same kept, ruling written into note"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug retaspimycin, route iv, combination_with trastuzumab; combination and single-arm design written into note; status contra unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug ganetespib, route iv, combination_with fulvestrant; randomised combination design written into note; status contra unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug ganetespib, route iv; single-arm Simon design written into note; status contra unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to luminespib, route iv; status and year unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to alvespimycin, route iv, combination_with trastuzumab; status and year unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to luminespib, route iv; status and year unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug set to luminespib, route iv; status and year unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to luminespib, route iv; status and year unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to alvespimycin, route iv; status and year unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to alvespimycin, route iv, combination_with trastuzumab; status and year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to luminespib, route iv; status and year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set to alvespimycin, route iv; status and year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to ganetespib, route iv; status and year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to ganetespib, route iv; status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to ganetespib, route iv; status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to alvespimycin, route iv; status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug set to alvespimycin, route iv, combination_with trastuzumab; status and year unchanged"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "Split from safety 3 (Zhou 2013 rat retina model): alvespimycin track, retro 2013, same quote"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "Split from safety 3 (Zhou 2013): ganetespib track, retro 2013 (its own earlier patient result: no visual disorders), quote on ganetespib"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "Opener for retaspimycin track of her2-breast-xenograft (efficacy 2), untested 2009, Leow 2009"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "Opener for ganetespib track of tnbc-xenograft (efficacy 4), untested 2013, Friedland 2014"
+  }
+ ]
+}

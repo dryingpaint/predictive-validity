@@ -1,0 +1,32 @@
+{
+ "tile": "recessive-dystrophic-epidermolysis-bullosa-col7a1-replacement-gene-therapy",
+ "changed": [
+  {"cell": "engagement", "index": 2, "what": "status same -> retro, retrodiction true: the B-VEC hypomorph-mouse/xenograft data were first public in Gurevich 2022, after member-drug patient C7 at the DEJ (pz-cel, Siprashvili JAMA 2016; B-VEC, Krystal release 2018-10-15); retrodiction rule (engagement is a target claim). Year stays 2022. drug beremagene geperpavec, route topical."},
+  {"cell": "efficacy", "index": 2, "what": "status same -> retro, retrodiction true: B-VEC's own primary-endpoint result (GEM-3 topline release 2021-11-29) was public before the model system's first publication (Gurevich 2022); retrodiction rule. Year stays 2022. drug beremagene geperpavec, route topical."},
+  {"cell": "safety", "index": 2, "what": "status same -> retro, year 2022 -> 2023, retrodiction true: the GLP mouse safety data were first public in the CBER SBRA (2023), after B-VEC's own patients were reported well tolerated (Krystal release 2018-10-15); same-drug safety retrodiction rule."},
+  {"cell": "efficacy", "index": 4, "what": "year 2025 -> 2022: earliest public date is Abeona's VIITAL topline press release of 2022-11-03 (both co-primary endpoints met); Tang 2025 Lancet still sets the status (same). Co-primary design written into note."},
+  {"cell": "efficacy", "index": 6, "what": "quote swapped to the registry primary endpoint (4 of 6 patients responders on the 7-point wound scale at day 120, BridgeBio/Phoenix release 2022-05-20); single-arm ruling, status same unchanged."},
+  {"cell": "efficacy", "index": 8, "what": "rule question settled: DEFI-RDEB (terminated, 6 patients, 1 vs 0 closures) is inconclusive, so untested/unsettled stands; ruling written into note."},
+  {"cell": "engagement", "index": 5, "what": "drug PTR-01, route iv set; product_in_model null -> true (Lotus/Shire CHO rC7 lineage)."},
+  {"cell": "engagement", "index": 6, "what": "drug PTR-01, route iv set; product_in_model null -> true."},
+  {"cell": "dose", "index": 3, "what": "drug PTR-01, route iv set; product_in_model null -> true."},
+  {"cell": "efficacy", "index": 5, "what": "drug PTR-01, route iv set; product_in_model null -> true."},
+  {"cell": "safety", "index": 5, "what": "drug PTR-01, route iv set; product_in_model null -> true."},
+  {"cell": "engagement", "index": 1, "what": "drug beremagene geperpavec, route topical."},
+  {"cell": "dose", "index": 1, "what": "drug beremagene geperpavec, route topical."},
+  {"cell": "efficacy", "index": 1, "what": "drug beremagene geperpavec, route topical."},
+  {"cell": "safety", "index": 1, "what": "drug beremagene geperpavec, route topical."},
+  {"cell": "engagement", "index": 3, "what": "drug prademagene zamikeracel, route ex_vivo_cells, population_group biomarker_selected (NC1+)."},
+  {"cell": "engagement", "index": 4, "what": "drug prademagene zamikeracel, route ex_vivo_cells, population_group biomarker_selected (NC1+)."},
+  {"cell": "dose", "index": 2, "what": "drug prademagene zamikeracel, route ex_vivo_cells."},
+  {"cell": "efficacy", "index": 3, "what": "drug prademagene zamikeracel, route ex_vivo_cells."},
+  {"cell": "safety", "index": 3, "what": "drug prademagene zamikeracel, route ex_vivo_cells."},
+  {"cell": "safety", "index": 4, "what": "drug prademagene zamikeracel, route ex_vivo_cells."},
+  {"cell": "engagement", "index": 7, "what": "drug dabocemagene autoficel, route intradermal."},
+  {"cell": "engagement", "index": 8, "what": "drug dabocemagene autoficel, route intradermal."},
+  {"cell": "efficacy", "index": 7, "what": "drug dabocemagene autoficel, route intradermal."}
+ ],
+ "added": [
+  {"cell": "safety", "index": 6, "what": "col7-null-mouse-iv-rc7 / PTR-01 / iv: same, 2022, tier 5 (BridgeBio/Phoenix release 2022-05-20, 'well tolerated'), model_src Woodley 2013 JID (no adverse effects in mice to 33 mg/kg IV); passing-tolerability ruling. Anti-C7 antibody prediction stays unscored."}
+ ]
+}

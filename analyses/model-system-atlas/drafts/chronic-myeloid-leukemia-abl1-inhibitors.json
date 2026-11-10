@@ -31,7 +31,7 @@
     "population": "BCR::ABL1-positive (Ph+) CML",
     "confidence_note": "Abstract-level (Europe PMC).",
     "prediction_level": "class",
-    "subjects": null,
+    "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
     "epub_year": 2009,
@@ -50,7 +50,11 @@
     "readout_tier": "proximal",
     "note": "Ponatinib (AP24534) blocked BCR-ABL signalling, including T315I, in Ba/F3 cells and suppressed T315I tumours in mice.",
     "short": "Pan-BCR-ABL inhibition in cells and mice",
-    "judgement": "Opening entry: the system first used for this class; the PD readout (BCR-ABL/CRKL phosphorylation) has a direct patient counterpart."
+    "judgement": "Opening entry: the system first used for this class; the PD readout (BCR-ABL/CRKL phosphorylation) has a direct patient counterpart.",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1016/j.ccr.2009.09.028",
@@ -83,10 +87,14 @@
     "quote": "At doses of 15 mg or more, 32 of 34 patients (94%) had a reduction of 50% or more in CRKL phosphorylation, including 8 of 10 patients (80%) with the T315I mutation",
     "confidence": "medium",
     "readout_tier": "proximal",
-    "note": "pCRKL, the BCR-ABL substrate readout, fell >=50% in 94% of patients at >=15 mg, T315I included.",
+    "note": "pCRKL, the BCR-ABL substrate readout, fell >=50% in 94% of patients at >=15 mg, T315I included. Single-arm dose-escalation phase 1.",
     "short": "pCRKL suppressed in patients incl. T315I",
     "reason": "pCRKL fell in dosed patients",
-    "judgement": "Paired comparison: the phase 1 paper reports CRKL inhibition but does not set it beside the preclinical readout. Tiered proximal (direct substrate of the target kinase). NCT00660920 has no posted results."
+    "judgement": "Paired comparison: the phase 1 paper reports CRKL inhibition but does not set it beside the preclinical readout. Tiered proximal (direct substrate of the target kinase). NCT00660920 has no posted results.",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -103,8 +111,8 @@
     "source_calls_it": null,
     "population": "BCR::ABL1-positive (Ph+) CML",
     "confidence_note": "Abstract-level (Europe PMC).",
-    "prediction_level": "class",
-    "subjects": null,
+    "prediction_level": "patient",
+    "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
     "epub_year": 2009,
@@ -122,7 +130,11 @@
     "confidence": "high",
     "note": "Cell-based mutagenesis screens defined 40 nM ponatinib as the concentration that suppressed all resistant BCR-ABL clones.",
     "short": "40 nM suppresses all resistant clones",
-    "judgement": "The screen stated a concentration target (40 nM) that a human trial could check; untested until patient PK."
+    "judgement": "The screen stated a concentration target (40 nM) that a human trial could check; untested until patient PK.",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -137,7 +149,7 @@
     "source_calls_it": "match",
     "population": "BCR::ABL1-positive (Ph+) CML",
     "confidence_note": "PMC author manuscript full text; FDA clinical pharmacology review gives 45 mg steady-state Cmin 34 ng/mL (about 64 nM).",
-    "prediction_level": "class",
+    "prediction_level": "patient",
     "subjects": "patients",
     "comparison_stated": true,
     "source_tier": 1,
@@ -159,7 +171,11 @@
     "note": "Troughs exceeded the 40 nM screen threshold at >=30 mg; 45 mg was taken forward.",
     "short": "Trough above 40 nM at >=30 mg",
     "reason": "Exposure target reached",
-    "judgement": "Scored same: the target was reached. The screen stated no tolerability margin, so margin_stated is null; arterial occlusive events at 45 mg and OPTIC's later response-based reduction to 15 mg (below the 40 nM trough) are safety and efficacy matters, not a dose miss under the brief."
+    "judgement": "Scored same: the target was reached. The screen stated no tolerability margin, so margin_stated is null; arterial occlusive events at 45 mg and OPTIC's later response-based reduction to 15 mg (below the 40 nM trough) are safety and efficacy matters, not a dose miss under the brief.",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -177,7 +193,7 @@
     "population": "BCR::ABL1-positive (Ph+) CML",
     "confidence_note": "Abstract-level (Europe PMC).",
     "prediction_level": "class",
-    "subjects": null,
+    "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
     "epub_year": 2009,
@@ -195,7 +211,11 @@
     "confidence": "high",
     "note": "T315I-driven leukemia and xenograft mice responded to ponatinib; benefit in TKI-resistant CML predicted.",
     "short": "T315I mice respond to ponatinib",
-    "judgement": "Opening entry for the class track."
+    "judgement": "Opening entry for the class track.",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1016/j.ccr.2009.09.028",
@@ -237,9 +257,13 @@
       "quote": "Of 12 patients who had chronic-phase CML with the T315I mutation, 100% had a complete hematologic response and 92% had a major cytogenetic response."
      }
     ],
-    "note": "PACE primary endpoint met: 56% MCyR in chronic phase, 70% in T315I, as the T315I mice predicted.",
+    "note": "PACE primary endpoint met: 56% MCyR in chronic phase, 70% in T315I, as the T315I mice predicted. Design: single-arm phase 2; scored on its primary endpoint (MCyR in chronic phase) against the predicted response.",
     "short": "PACE MCyR 56%, T315I 70%",
-    "judgement": "Paired: PACE does not cite the mouse data side by side. Phase 1 (primary endpoint MTD) kept as a patient_trials record."
+    "judgement": "Paired: PACE does not cite the mouse data side by side. Phase 1 (primary endpoint MTD) kept as a patient_trials record. Not a retrodiction: no ABL1 inhibitor had a patient result in T315I or post-dasatinib/nilotinib CML before the 2009 model.",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1038/leu.2010.169",
@@ -248,12 +272,12 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "model_filed": null,
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "MMR at 6 months vs imatinib against preclinical superiority over imatinib",
     "source_calls_it": null,
     "population": "BCR::ABL1-positive (Ph+) CML",
-    "confidence_note": "Abstract-level for both; model side known only from the Leukemia 2010 letter title (no abstract), so the exact cell lines and mouse models are not confirmed.",
+    "confidence_note": "Abstract-level for both; model side known only from the Leukemia 2010 letter title (no abstract), so the exact cell lines and mouse models are not confirmed. No separate 2010 opener for the flumbatinib track: appending one after this 2020 entry breaks the track's year order and reordering would shift verdict indices; model_src Luo 2010 dates the model.",
     "prediction_level": "class",
     "subjects": "patients",
     "comparison_stated": false,
@@ -266,26 +290,22 @@
     "model_kind": "animal",
     "model_first_use_year": 2009,
     "year": 2020,
-    "status": "same",
-    "strengthens": true,
+    "status": "retro",
     "src": "https://doi.org/10.1158/1078-0432.CCR-20-1600",
     "srcLabel": "Zhang 2021 (flumatinib)",
     "quote": "The rate of major molecular response (MMR) at 6 months (primary endpoint) was significantly higher with flumatinib than with imatinib (33.7% vs. 18.3%; P = 0.0006)",
     "confidence": "medium",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": [
-     {
-      "nct": null,
-      "registry_date": null,
-      "doi": "10.1007/s00277-025-06239-8",
-      "quote": "The MTD was 600 mg with the Grade-3 psoriasis-like skin toxicity as the DLT."
-     }
-    ],
-    "note": "Flumatinib, preclinically more potent than imatinib, beat imatinib on 6-month MMR in first-line CML (NCT02204644).",
+    "patient_trials": [],
+    "note": "Flumatinib, preclinically more potent than imatinib, beat imatinib on 6-month MMR in first-line CML (NCT02204644). Retrodiction: the 2010 model followed nilotinib and dasatinib beating imatinib on MMR in first-line CML (June 2010).",
     "short": "Flumatinib beats imatinib on MMR6",
-    "reason": "Members met primary endpoints",
-    "judgement": "Same model family (BCR-ABL cell lines and mice), so the flumatinib program shares the track; the 2010 claim 'outperforms imatinib' is the prediction tested. Vamotinib's phase 1 (Turkina 2025; primary endpoint MTD, 5 of 16 T315I responders against mouse survival 'similar to ponatinib') is recorded under patient_trials and scores no status. NCT02204644 has no posted results."
+    "reason": "Retrodicts second-generation TKI first-line superiority",
+    "judgement": "Rule: efficacy model first public after a patient result for the same target and action from any drug is a retrodiction. Luo 2010 (epub 2010-08-12) post-dates ENESTnd/DASISION (NEJM June 2010), so retro, not same. The vamotinib phase 1 quote formerly under patient_trials moved to its own vamotinib entry.",
+    "drug": "flumbatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -301,7 +321,7 @@
     "population": "BCR::ABL1-positive (Ph+) CML",
     "confidence_note": "Abstract-level (Europe PMC).",
     "prediction_level": "patient",
-    "subjects": null,
+    "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
     "epub_year": 2009,
@@ -319,7 +339,11 @@
     "confidence": "high",
     "note": "Mutagenesis screen predicted no single BCR-ABL mutation would escape ponatinib at clinical concentrations.",
     "short": "No single mutant escapes at 40 nM",
-    "judgement": "Patient-level prediction: which mutation carriers respond."
+    "judgement": "Patient-level prediction: which mutation carriers respond.",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1016/j.ccr.2009.09.028",
@@ -356,7 +380,11 @@
     "note": "Responses occurred regardless of baseline mutation; no single resistance mutation emerged, as the screen predicted.",
     "short": "No single resistant mutation in PACE",
     "reason": "Mutation-agnostic response held",
-    "judgement": "Paired comparison; the abstract states responses 'regardless of the baseline BCR-ABL kinase domain mutation status'. Scored on the mutation-level prediction, not on the primary MCyR rate."
+    "judgement": "Paired comparison; the abstract states responses 'regardless of the baseline BCR-ABL kinase domain mutation status'. Scored on the mutation-level prediction, not on the primary MCyR rate.",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -393,7 +421,11 @@
     "source_tier": 1,
     "epub_year": 2014,
     "print_year": 2014,
-    "population": "Ph+ CML and ALL patients treated with ponatinib, compound mutation carriers"
+    "population": "Ph+ CML and ALL patients treated with ponatinib, compound mutation carriers",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -431,7 +463,11 @@
     "source_tier": 1,
     "epub_year": 2014,
     "print_year": 2014,
-    "population": "Ph+ CML and ALL patients treated with ponatinib, compound mutation carriers"
+    "population": "Ph+ CML and ALL patients treated with ponatinib, compound mutation carriers",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -471,7 +507,59 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
-    "strengthens": true
+    "strengthens": true,
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
+   },
+   {
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "registry_date": null,
+    "model_filed": null,
+    "retrodiction": false,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "CML failing >=1 second-generation TKI or with T315I (NCT02885766)",
+    "confidence_note": "Abstract-level for Mian 2015; Turkina 2025 full text (PMC12141164) read for the trial design.",
+    "prediction_level": "class",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "epub_year": 2014,
+    "print_year": 2015,
+    "product_in_model": true,
+    "model": "BCR-ABL cell lines and mouse leukemia/xenograft models",
+    "model_id": "bcr-abl-cell-xenograft",
+    "model_kind": "animal",
+    "model_first_use_year": 2009,
+    "year": 2014,
+    "status": "untested",
+    "src": "https://doi.org/10.1038/leu.2014.326",
+    "srcLabel": "Mian 2015",
+    "quote": "In BCR/ABL- or BCR/ABL-T315I-driven murine leukemia as well as in xenograft models of primary Ph+ leukemia harboring the T315I, PF-114 significantly prolonged survival to a similar extent as ponatinib.",
+    "confidence": "medium",
+    "note": "Vamotinib (PF-114) prolonged survival in T315I mice as ponatinib did. Its phase 1 (Turkina 2025, NCT02885766) had MTD/DLT as primary endpoint; responses (MMR 7 of 51) were secondary, so no primary-endpoint comparison.",
+    "short": "Vamotinib active in T315I mice; untested",
+    "judgement": "Split from efficacy 3, which carried the vamotinib phase 1 under patient_trials. A dose-escalation phase 1 whose primary objective was MTD and DLT is not an efficacy primary endpoint, so untested.",
+    "drug": "vamotinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null,
+    "untested_reason": "unsettled",
+    "reason": "Phase 1 efficacy only a secondary endpoint",
+    "patient_trials": [
+     {
+      "nct": "NCT02885766",
+      "registry_date": null,
+      "doi": "10.1007/s00277-025-06239-8",
+      "quote": "The primary objective was to determine the MTD and DLT of vamotinib during the 1st cycle of therapy."
+     }
+    ]
    }
   ],
   "safety": [
@@ -509,7 +597,11 @@
     "note": "Monkey heart murmurs and myocardial necrosis, ALT/AST rises and pancreatic necrosis matched patient cardiovascular, hepatic and pancreatic toxicity; arterial thrombosis itself was not modelled.",
     "short": "Heart, liver, pancreas flagged; partial",
     "reason": "Organ systems matched, thrombosis not",
-    "judgement": "Judgement call: same with source_calls_it partial rather than contra. The review links the animal cardiac findings to clinical cardiovascular toxicity and the liver and pancreas findings map to boxed hepatotoxicity and DLT pancreatitis, but no animal showed arterial occlusion, the boxed harm. Monkeys could in principle show vascular occlusion, so a stricter reading would add a contra for arterial thrombosis (PACE 2013, label 2012)."
+    "judgement": "Judgement call: same with source_calls_it partial rather than contra. The review links the animal cardiac findings to clinical cardiovascular toxicity and the liver and pancreas findings map to boxed hepatotoxicity and DLT pancreatitis, but no animal showed arterial occlusion, the boxed harm. Monkeys could in principle show vascular occlusion, so a stricter reading would add a contra for arterial thrombosis (PACE 2013, label 2012).",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -545,7 +637,11 @@
     "epub_year": 2017,
     "print_year": 2017,
     "population": "Patients on ponatinib (CML and Ph+ ALL)",
-    "untested_reason": null
+    "untested_reason": null,
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -581,7 +677,11 @@
     "source_tier": 1,
     "epub_year": 2017,
     "print_year": 2017,
-    "population": "Patients on ponatinib (CML and Ph+ ALL)"
+    "population": "Patients on ponatinib (CML and Ph+ ALL)",
+    "drug": "ponatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -617,7 +717,11 @@
     "epub_year": 2014,
     "print_year": 2015,
     "population": "CML failing second-generation TKI or with T315I",
-    "untested_reason": null
+    "untested_reason": null,
+    "drug": "vamotinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -653,7 +757,11 @@
     "source_tier": 1,
     "epub_year": 2025,
     "print_year": 2025,
-    "population": "CML failing >=1 second-generation TKI or with T315I (NCT02885766)"
+    "population": "CML failing >=1 second-generation TKI or with T315I (NCT02885766)",
+    "drug": "vamotinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ]
  }

@@ -1,0 +1,72 @@
+{
+ "tile": "asthma-adrb2-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction false -> true: model first public after indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006) (same-target retrodiction ruling); drug abediterol, route inhaled"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "status same -> retro, retrodiction false -> true: model first public after indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006) and AZD3199's own Bjermer 2013 (online 2013-08-01) (same-target retrodiction ruling); drug azd-3199, route inhaled"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "status same -> retro, retrodiction false -> true: model first public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674) (same-target retrodiction ruling); drug bedoradrine, route iv; year 2012 -> 2011: NCT00679263 results posted 2011-12-15 (rule 6 earliest public date; check adjudication)"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "status same -> retro, retrodiction false -> true: model first public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674) (same-target retrodiction ruling); drug carmoterol, route inhaled"
+  },
+  {
+   "cell": "engagement",
+   "index": 14,
+   "what": "status same -> retro, retrodiction false -> true: model first public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674) (same-target retrodiction ruling); drug carmoterol, route inhaled"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction false -> true: model first public after indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006) (same-target retrodiction ruling); drug abediterol, route inhaled"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro, retrodiction false -> true: model first public after indacaterol gave 24-h bronchodilation in asthma in 2007 (Beeh, Eur Respir J, doi 10.1183/09031936.00060006) and AZD3199's own Bjermer 2013 (online 2013-08-01) (same-target retrodiction ruling); drug azd-3199, route inhaled"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status contra -> contra, retrodiction false -> true: model first public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674) (same-target retrodiction ruling), contra kept as the trial did not reproduce bronchodilation; drug bedoradrine, route iv; year 2015 -> 2012: MediciNova press release 2012-05-23 reported the missed FEV1 primary (earlier-public-date ruling); population_group stage_or_line (severe exacerbation after standard therapy; add-on to standard care, not a combination trial)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "status contra -> contra, retrodiction false -> true: model first public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674) (same-target retrodiction ruling), contra kept as the trial did not reproduce 24-h bronchodilation; drug carmoterol, route inhaled"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "status contra -> contra, retrodiction false -> true: model first public after salmeterol raised FEV1 for over 12 h in asthmatics in 1988 (Ullman, Thorax, doi 10.1136/thx.43.9.674) (same-target retrodiction ruling), contra kept; drug carmoterol, route inhaled"
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "what": "status same -> retro, retrodiction false -> true: CFD solved on the dosed patients' scans after their FEV1 was known and after salmeterol's 1988 asthma result (retrodiction ruling; applies the check adjudication); drug carmoterol, route inhaled"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "status same -> retro, retrodiction false -> true: Stocks 2014 (online 2014-02-08) post-dates AZD3199's own patient result Bjermer 2013 (online 2013-08-01); dose retrodiction ruling, same drug's own earlier result; drug azd-3199, route inhaled"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "azd-3199 inhaled, AZ guinea-pig track: retro 2014 (retrodiction true), Stocks 2014 'excellent over all profile' after safety profiling scored as a safety prediction (passing-tolerability ruling) against Bjermer 2013 'well tolerated'; the model paper post-dates the drug's own trial"
+  }
+ ]
+}

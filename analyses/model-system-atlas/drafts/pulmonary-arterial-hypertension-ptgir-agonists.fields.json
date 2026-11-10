@@ -1,0 +1,57 @@
+{
+ "tile": "pulmonary-arterial-hypertension-ptgir-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true: retrodiction rule, IV prostacyclin inhibited ex vivo platelet aggregation in volunteers in 1980 (PMID 6992228), before Sim 1985; drug beraprost, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "retrodiction false -> true (status stays contra): MCT rat 1994 post-dates epoprostenol's 1990 haemodynamic RCT; ralinepag split to its own track; drug beraprost, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: retrodiction rule, MCT rat (1994) post-dates epoprostenol's 1990 PPH RCT (Rubin 1990); drug beraprost, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "retrodiction false -> true (status stays contra): MCT rat post-dates epoprostenol RCT; ralinepag patient_trials moved to its own appended track; note no longer misnames the trial BEAT"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "year 2020 -> 2019 (United Therapeutics press release 2019-04-08), retrodiction true (press release predates Shen 2019 epub); combination ruling: combination_with treprostinil, population_group stage_or_line; status stays contra"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "mct-rat x beraprost x oral: same 2002, Yuki 1994 no Psa fall paired with Galie 2002 'neither systemic hypotension' (checker adjudication, pairing rule)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "split track mct-rat x ralinepag x oral: opener untested 2017 (Tran 2017)"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "split track mct-rat x ralinepag x oral: retro 2017, Torres 2019 PVR -29.8% (topline press release Jul 2017); retrodiction rule (epoprostenol 1990)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "split track mct-rat x ralinepag x oral: opener untested 2017 (Tran 2017)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "split track mct-rat x ralinepag x oral: retro 2017, phase 2 PVR primary met (Torres 2019; topline Jul 2017), outcome_tested positive (ADVANCE OUTCOMES 2026); retrodiction rule"
+  }
+ ]
+}

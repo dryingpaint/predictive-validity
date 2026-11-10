@@ -1,0 +1,141 @@
+{
+ "tile": "hemophilia-b-f9-replacement-gene-therapy",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug albutrepenonacog alfa, route iv, population unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: FIX replacement raised FIX activity in patients long before the 2012 dog/monkey PK (target-level retrodiction rule); drug albutrepenonacog alfa, route iv, population unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: AAV-FIX patient expression (Nathwani 2011) preceded Crudele 2015 (target-level retrodiction rule); rule question 1 settled by per-drug tracks; drug fidanacogene elaparvovec, route iv, population unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug AskBio009, route iv, population unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "year 2020 -> 2015 (Baxalta ISTH release 2015-06-24, rule 6, check adjudication); retrodiction true, contra stands (failed retrodiction); drug AskBio009, route iv, population unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug AAV5-hFIX, route iv, population unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug AAV5-hFIX, route iv, population unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "drug verbrinacogene setparvovec, route iv, population unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "what": "status same -> retro, retrodiction true: AAV-FIX patient expression (Nathwani 2011) preceded Dane 2018 macaques (target-level rule); drug verbrinacogene setparvovec, route iv, population unselected"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug albutrepenonacog alfa, route iv, population unselected"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug albutrepenonacog alfa, route iv, population unselected"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug fidanacogene elaparvovec, route iv, population unselected"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug fidanacogene elaparvovec, route iv, population unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug albutrepenonacog alfa, route iv, population unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: FIX replacement efficacy in patients (rFIX) preceded the 2009 mouse model (target-level rule); drug albutrepenonacog alfa, route iv, population unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true; year 2021 -> 2020: comparison public when the dog paper appeared (Oct 2020), after Catalyst Phase 2b release 2020-06-15 (rule 6, retrodiction by post-dating); drug dalcinonacog alfa, route sc, population unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: surrogate-dog data first public in 2024 SBRA after FIX replacement efficacy in patients; year stays 2024 (later of the two sides, rule question 3); NI primary design noted; drug fidanacogene elaparvovec, route iv, population unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug fidanacogene elaparvovec, route iv, population unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug fidanacogene elaparvovec, route iv, population unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug dalcinonacog alfa, route sc, population unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true; year 2021 -> 2020: Nichols 2020 dogs post-date dalcinonacog's own patient safety (Catalyst release 2020-06-15, drug-level rule); drug dalcinonacog alfa, route sc, population unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug AskBio009, route iv, population unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug AskBio009, route iv, population unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug fidanacogene elaparvovec, route iv, population unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "status same -> retro, retrodiction true: NHP toxicology first public 2024, after fidanacogene's own patient safety (George 2017, drug-level rule); drug fidanacogene elaparvovec, route iv, population unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "drug fidanacogene elaparvovec, route iv, population unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "retrodiction true, contra stands: mouse tox first public 2024 after fidanacogene's patient safety; rule question 4 settled as contra/opposite (predicted harm absent in patients); drug fidanacogene elaparvovec, route iv, population unselected"
+  }
+ ],
+ "added": []
+}

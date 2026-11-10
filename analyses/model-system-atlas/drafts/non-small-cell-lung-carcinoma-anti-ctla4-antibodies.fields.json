@@ -1,0 +1,67 @@
+{
+ "tile": "non-small-cell-lung-carcinoma-anti-ctla4-antibodies",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "status same -> untested (dose table: the mouse stated no exposure, occupancy, regimen or margin; rule question 3); untested_reason no_prediction; drug ipilimumab, route iv, population_group unselected, combination_with carboplatin + paclitaxel"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "status same -> untested (dose table: the dual-blockade mice stated no exposure or margin; rule question 3); untested_reason no_prediction; drug ipilimumab, route iv, population_group biomarker_selected, combination_with nivolumab"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same 2012 kept under the combination ruling (ipilimumab with carboplatin + paclitaxel, scored on its primary endpoint); drug ipilimumab, route iv, population_group unselected, combination_with carboplatin + paclitaxel"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status contra 2016 kept under the combination ruling (ipilimumab with carboplatin + paclitaxel); drug ipilimumab, route iv, population_group unselected, combination_with carboplatin + paclitaxel"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "year 2019 -> 2018, src Hellmann 2019 -> Hellmann 2018 (10.1056/NEJMoa1801946) with its quote (co-primary ruling, rule 6 earliest date; checker correction); Hellmann 2019 OS moved to patient_trials; drug ipilimumab, route iv, population_group biomarker_selected, combination_with nivolumab"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status same 2020 (strengthens) kept under the combination ruling; reason moved to the appended KEYNOTE-598 entry; drug ipilimumab, route iv, population_group unselected, combination_with nivolumab + chemotherapy"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "year 2011 -> 2012, src FDA review (melanoma, imported) -> Lynch 2012 NSCLC with its quote; status same kept (imported-harm ruling: this disease's patients were measured); drug class, route iv, population_group unselected, combination_with carboplatin + paclitaxel"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "year 2011 -> 2012, src FDA review (melanoma, imported) -> Lynch 2012 NSCLC with its quote, FDA review now model_src, comparison_stated false; status contra kept (imported-harm ruling); drug ipilimumab, route iv, population_group unselected, combination_with carboplatin + paclitaxel"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "year 2011 -> 2012, src FDA review (melanoma, imported) -> Lynch 2012 NSCLC with its quote, FDA review now model_src, comparison_stated false; status retro kept (imported-harm ruling; retrodiction rests on ipilimumab's own melanoma enterocolitis); drug ipilimumab, route iv, population_group unselected, combination_with carboplatin + paclitaxel"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug ipilimumab, route iv, population_group unselected, combination_with nivolumab (CheckMate 012 NSCLC patient side); status retro 2018 kept"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "drug class, route iv, population_group other_disease (imported pan-cancer myocarditis kept: no NSCLC myocarditis measurement found), combination_with nivolumab; status retro 2020 kept"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "KEYNOTE-598 (Boyer 2021, 10.1200/JCO.20.03579; futility halt Nov 2020): contra 2020 on syngeneic-mouse-dual-blockade / ipilimumab / iv, combination_with pembrolizumab, biomarker_selected; settles checker verdict efficacy 6 (adjudicated contra); S1400I in patient_trials"
+  }
+ ]
+}

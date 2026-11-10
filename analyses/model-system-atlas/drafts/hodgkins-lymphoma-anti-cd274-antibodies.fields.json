@@ -1,0 +1,36 @@
+{
+ "tile": "hodgkins-lymphoma-anti-cd274-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug sugemalimab, route iv set (opener of the sugemalimab IV track)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "year 2024 -> 2022, src/quote -> Gong 2022 CII (PMID 34984540, epub 2022-01-05; 100% RO on CD3+ T cells, 7 patients); earliest-date rule, checker adjudication; drug sugemalimab, route iv; status same unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug sugemalimab, route iv set"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "year 2024 -> 2022, src/quote -> Gong 2022 CII (no DLT 3-40 mg/kg, MTD not reached); earliest-date rule, checker adjudication; drug sugemalimab, route iv; status same unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug sugemalimab, route iv set (opener of the genetics x sugemalimab IV track)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug sugemalimab, route iv set; single-arm design written into note (ORR primary, no bar, value unreported); status contra kept; benmelstobart phase 1 added to patient_trials"
+  }
+ ],
+ "added": []
+}

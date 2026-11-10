@@ -1,0 +1,122 @@
+{
+ "tile": "osteoarthritis-ntrk1-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug and route set from the entry's sources: drug asp-7962, route oral; population_group unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug and route set from the entry's sources: drug asp-7962, route oral; population_group unselected"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug and route set from the entry's sources: drug asp-7962, route oral; population_group unselected"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug and route set from the entry's sources: drug asp-7962, route oral; population_group unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug and route set from the entry's sources: drug asp-7962, route oral; population_group unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug and route set from the entry's sources: drug asp-7962, route oral; population_group unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug and route set from the entry's sources: drug class, route oral; population_group unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug and route set from the entry's sources: drug class, route oral; population_group unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug and route set from the entry's sources: drug class, route oral; population_group unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug and route set from the entry's sources: drug class, route oral; population_group unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug and route set from the entry's sources: drug class, route oral; population_group unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "status contra -> untested (untested_reason not_measured, strengthens): RULE QUESTION settled; p75NTR knockout tested acute NGF-evoked hyperalgesia, conditions no trial produced or measured; drug class, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug and route set from the entry's sources: drug gz-389988, route intra_articular; population_group unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug and route set from the entry's sources: drug gz-389988, route intra_articular; population_group unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug and route set from the entry's sources: drug asp-7962, route oral; population_group unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug and route set from the entry's sources: drug asp-7962, route oral; population_group unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: Kigami 2021 rat GLP neurotox first public after ASP7962's own 2018 patient safety result (ruling: same drug's earlier patient result makes a safety model a retrodiction); drug asp-7962, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug and route set from the entry's sources: drug gz-389988, route intra_articular; population_group unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug and route set from the entry's sources: drug gz-389988, route intra_articular; population_group unselected"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "opener: rat-mia-knee-oa x gz-389988 intra_articular, 2015 untested (Flannery 2015 MIA arm), split from efficacy 2"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "rat-mia-knee-oa x gz-389988 intra_articular, 2019 same (Krupka 2019 primary met; paired with Flannery 2015), split from efficacy 2 whose ASP7962 patients failed"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "opener: human-ntrk1-lof-cipa x class intra_articular, 1996 untested (Indo 1996), split from efficacy 4"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "human-ntrk1-lof-cipa x class intra_articular, 2019 same, low confidence (Krupka 2019 GZ389988A primary met; paired with Indo 1996), split from efficacy 4 whose oral ASP7962 patients failed"
+  }
+ ]
+}

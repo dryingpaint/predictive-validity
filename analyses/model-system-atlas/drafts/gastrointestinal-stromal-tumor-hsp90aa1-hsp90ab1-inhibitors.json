@@ -45,12 +45,16 @@
     "prediction_level": "class",
     "year": 2008,
     "status": "untested",
-    "model": "Human tumour xenograft mice dosed with BIIB021 (tumour and serum Hsp70)",
+    "model": "Human tumour xenograft mice (non-GIST) dosed with BIIB021: tumour and serum Hsp70, exposure-efficacy and growth",
     "note": "BIIB021 raised serum Hsp70 3-4-fold in tumour-bearing mice; non-GIST xenografts.",
     "short": "Mice: serum Hsp70 rises 3-4-fold",
     "src": "https://doi.org/10.3109/13547500903261347",
     "srcLabel": "Dakappagari 2010",
-    "quote": "In in vivo studies a 3-4-fold increase in serum Hsp70 was observed following treatment with BIIB021 in tumour-bearing mice."
+    "quote": "In in vivo studies a 3-4-fold increase in serum Hsp70 was observed following treatment with BIIB021 in tumour-bearing mice.",
+    "drug": "biib-021",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "gist-xenograft-at13387",
@@ -85,7 +89,11 @@
     "short": "GIST xenografts: Hsp70 up, KIT down",
     "src": "https://doi.org/10.1158/1535-7163.mct-11-1046",
     "srcLabel": "Smyth 2012",
-    "quote": "Induction of HSP70, depletion of phospho-KIT and inhibition of KIT signaling were seen in tumors from both models after treatment with AT13387."
+    "quote": "Induction of HSP70, depletion of phospho-KIT and inhibition of KIT signaling were seen in tumors from both models after treatment with AT13387.",
+    "drug": "onalespib",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "biib021-xenograft-mouse",
@@ -102,7 +110,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "within_2x",
     "magnitude_basis": "serum Hsp70 fold rise: 3-4-fold in mice vs ~4-fold at cycle 2 in GIST patients",
@@ -114,15 +122,19 @@
     "judgement": "Hsp70 induction is a stress response downstream of Hsp90 blockade, so readout_tier downstream; paired by me with the mouse paper.",
     "prediction_level": "class",
     "year": 2012,
-    "status": "same",
-    "model": "Human tumour xenograft mice dosed with BIIB021 (tumour and serum Hsp70)",
-    "note": "Serum Hsp70 rose about fourfold in refractory GIST patients, as in BIIB021-treated mice.",
+    "status": "retro",
+    "model": "Human tumour xenograft mice (non-GIST) dosed with BIIB021: tumour and serum Hsp70, exposure-efficacy and growth",
+    "note": "Serum Hsp70 rose about fourfold in refractory GIST patients, as in BIIB021-treated mice. Retrodiction: Hsp70 induction in dosed patients' tumours and blood was public for the Hsp90 inhibitor 17-AAG in 2005 (Banerji, J Clin Oncol, doi:10.1200/JCO.2005.00.612), before this model, so it reproduces a known result.",
     "short": "Patient Hsp70 rose as in mice",
     "src": "https://doi.org/10.1093/annonc/mds275",
     "srcLabel": "Dickson 2012",
     "quote": "HSP70 increased substantially following treatment.",
     "readout_tier": "downstream",
-    "reason": "Patient Hsp70 rose as in mice"
+    "reason": "Patient Hsp70 rose as in mice",
+    "drug": "biib-021",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "gist-xenograft-at13387",
@@ -139,7 +151,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "Hsp70 induction in plasma and tumour biopsies (not quantified against mice)",
@@ -152,14 +164,18 @@
     "prediction_level": "class",
     "model": "GIST-PSW and GIST430 xenografts in SCID mice (onalespib ± imatinib)",
     "year": 2014,
-    "status": "same",
-    "note": "Onalespib induced Hsp70 in patient plasma and paired tumour biopsies in the first-in-human study.",
+    "status": "retro",
+    "note": "Onalespib induced Hsp70 in patient plasma and paired tumour biopsies in the first-in-human study. Retrodiction: Hsp70 induction in dosed patients' tumours and blood was public for the Hsp90 inhibitor 17-AAG in 2005 (Banerji, J Clin Oncol, doi:10.1200/JCO.2005.00.612), before this model, so it reproduces a known result.",
     "short": "Patient Hsp70 induced in tumour",
     "src": "https://doi.org/10.1158/1078-0432.ccr-14-0979",
     "srcLabel": "Shapiro 2014",
     "quote": "Target engagement as measured by HSP70 induction occurred in plasma and tumor biopsy samples.",
     "readout_tier": "downstream",
-    "reason": "Patient tumour Hsp70 induced"
+    "reason": "Patient tumour Hsp70 induced",
+    "drug": "onalespib",
+    "route": "iv",
+    "population_group": "other_disease",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -191,12 +207,16 @@
     "prediction_level": "class",
     "year": 2008,
     "status": "untested",
-    "model": "BIIB021 xenograft PK/efficacy (AUC for ≥90% antitumour activity)",
+    "model": "Human tumour xenograft mice (non-GIST) dosed with BIIB021: tumour and serum Hsp70, exposure-efficacy and growth",
     "note": "Xenograft studies set the exposure (AUC) linked to near-maximal antitumour activity used to pick 600 mg twice weekly.",
     "short": "Xenograft AUC sets human dose",
     "src": "https://doi.org/10.1158/1535-7163.mct-08-0758",
     "srcLabel": "Lundgren 2009",
-    "quote": "Studies to investigate the antitumor effects of BIIB021 showed activity on both daily and intermittent dosing schedules, providing dose schedule flexibility for clinical studies."
+    "quote": "Studies to investigate the antitumor effects of BIIB021 showed activity on both daily and intermittent dosing schedules, providing dose schedule flexibility for clinical studies.",
+    "drug": "biib-021",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "gist-xenograft-at13387",
@@ -233,7 +253,11 @@
     "srcLabel": "Smyth 2012",
     "quote": "AT13387 was dissolved in 17.5% (w/v) hydroxypropyl-β-cyclodextrin and administered intraperitoneally at 70 mg/kg once a week for 4 weeks except for the first dose in GIST-PSW study, which was 80 mg/kg.",
     "untested_reason": "no_prediction",
-    "reason": "No human exposure target stated"
+    "reason": "No human exposure target stated",
+    "drug": "onalespib",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "biib021-xenograft-mouse",
@@ -263,7 +287,7 @@
     "prediction_level": "class",
     "year": 2012,
     "status": "same",
-    "model": "BIIB021 xenograft PK/efficacy (AUC for ≥90% antitumour activity)",
+    "model": "Human tumour xenograft mice (non-GIST) dosed with BIIB021: tumour and serum Hsp70, exposure-efficacy and growth",
     "note": "Patient exposures exceeded the xenograft exposure linked to client degradation and near-maximal antitumour activity.",
     "short": "Xenograft exposure target reached",
     "src": "https://doi.org/10.1093/annonc/mds275",
@@ -271,7 +295,11 @@
     "quote": "These levels are also well above those associated with HSP90 client protein degradation in preclinical models.",
     "reason": "Xenograft exposure target reached",
     "margin_stated": null,
-    "blocked_by": null
+    "blocked_by": null,
+    "drug": "biib-021",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -303,12 +331,16 @@
     "prediction_level": "class",
     "year": 2008,
     "status": "untested",
-    "model": "Human tumour xenografts (non-GIST) dosed with BIIB021",
+    "model": "Human tumour xenograft mice (non-GIST) dosed with BIIB021: tumour and serum Hsp70, exposure-efficacy and growth",
     "note": "BIIB021 slowed several non-GIST human xenografts; GIST cell activity came from other Hsp90 inhibitors.",
     "short": "Xenografts: tumour growth inhibited",
     "src": "https://doi.org/10.1158/1535-7163.mct-08-0758",
     "srcLabel": "Lundgren 2009",
-    "quote": "Oral administration of BIIB021 led to the degradation of Hsp90 client proteins measured in tumor tissue and resulted in the inhibition of tumor growth in several human tumor xenograft models."
+    "quote": "Oral administration of BIIB021 led to the degradation of Hsp90 client proteins measured in tumor tissue and resulted in the inhibition of tumor growth in several human tumor xenograft models.",
+    "drug": "biib-021",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "gist-xenograft-at13387",
@@ -343,7 +375,11 @@
     "short": "GIST xenografts: combo beats monotherapy",
     "src": "https://doi.org/10.1158/1535-7163.mct-11-1046",
     "srcLabel": "Smyth 2012",
-    "quote": "These results suggest AT13387 is an excellent candidate for clinical testing in GIST in combination with imatinib."
+    "quote": "These results suggest AT13387 is an excellent candidate for clinical testing in GIST in combination with imatinib.",
+    "drug": "onalespib",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "biib021-xenograft-mouse",
@@ -360,7 +396,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "FDG-PET metabolic partial response 5/23 (22%), primary endpoint met",
@@ -372,9 +408,9 @@
     "judgement": "The xenografts were not GIST; scored as a class prediction of antitumour activity, paired by me.",
     "prediction_level": "class",
     "year": 2012,
-    "status": "same",
-    "model": "Human tumour xenografts (non-GIST) dosed with BIIB021",
-    "note": "BIIB021 met its primary endpoint: FDG-PET metabolic responses in 22% of imatinib- and sunitinib-refractory GIST.",
+    "status": "retro",
+    "model": "Human tumour xenograft mice (non-GIST) dosed with BIIB021: tumour and serum Hsp70, exposure-efficacy and growth",
+    "note": "BIIB021 met its primary endpoint: FDG-PET metabolic responses in 22% of imatinib- and sunitinib-refractory GIST. Retrodiction: FDG-PET metabolic responses to the Hsp90 inhibitor IPI-504 in TKI-resistant GIST patients were public in June 2007 (Van den Abbeele, ASCO 2007, doi:10.1200/jco.2007.25.18_suppl.3530), before this model. Design: single-arm phase 2 scored on its primary endpoint, FDG-PET metabolic partial response (5/23, 22%), a response where the model predicted one.",
     "short": "22% metabolic responses, endpoint met",
     "src": "https://doi.org/10.1093/annonc/mds275",
     "srcLabel": "Dickson 2012",
@@ -383,7 +419,11 @@
     "outcome_tested": null,
     "patient_trials": [],
     "reason": "Primary endpoint met (22% mPR)",
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "biib-021",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "gist-xenograft-at13387",
@@ -400,7 +440,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": "disease control at 4 months 19% (5/26), one PR; model predicted combination activity in imatinib-resistant GIST",
@@ -414,7 +454,7 @@
     "model": "GIST-PSW and GIST430 xenografts in SCID mice (onalespib ± imatinib)",
     "year": 2016,
     "status": "contra",
-    "note": "Onalespib plus imatinib showed limited activity in TKI-resistant GIST: 19% disease control at 4 months.",
+    "note": "Onalespib plus imatinib showed limited activity in TKI-resistant GIST: 19% disease control at 4 months. Retrodiction: FDG-PET metabolic responses to the Hsp90 inhibitor IPI-504 in TKI-resistant GIST patients were public in June 2007 (Van den Abbeele, ASCO 2007, doi:10.1200/jco.2007.25.18_suppl.3530), before this model. It failed to reproduce: the combination showed limited activity, so contra stands. Design: onalespib combined with imatinib, single-arm, primary endpoint disease control at 4 months (19%).",
     "short": "Limited activity in TKI-resistant GIST",
     "src": "https://doi.org/10.1016/j.ejca.2016.03.076",
     "srcLabel": "Wagner 2016",
@@ -429,7 +469,11 @@
       "doi": null,
       "quote": "Percentage of Participants Showing Clinical Benefit Based on Response Evaluation Criteria in Solid Tumors (RECIST) Version 1.0"
      }
-    ]
+    ],
+    "drug": "onalespib",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": "imatinib"
    },
    {
     "retrodiction": false,
@@ -464,7 +508,11 @@
     "short": "GIST cells: KIT degraded, growth stopped",
     "src": "https://doi.org/10.1158/0008-5472.CAN-06-0165",
     "srcLabel": "Bauer 2006",
-    "quote": "The dramatic inactivation of imatinib-resistant KIT oncoproteins suggests that HSP90 inhibition provides a therapeutic solution to the challenge of heterogeneous imatinib resistance mutations in GIST patients."
+    "quote": "The dramatic inactivation of imatinib-resistant KIT oncoproteins suggests that HSP90 inhibition provides a therapeutic solution to the challenge of heterogeneous imatinib resistance mutations in GIST patients.",
+    "drug": "biib-021",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -495,14 +543,18 @@
     "prediction_level": "class",
     "year": 2012,
     "status": "same",
-    "note": "BIIB021 met its primary endpoint in imatinib- and sunitinib-refractory GIST, as the GIST cell lines predicted for Hsp90 inhibition.",
+    "note": "BIIB021 met its primary endpoint in imatinib- and sunitinib-refractory GIST, as the GIST cell lines predicted for Hsp90 inhibition. Design: single-arm phase 2 scored on its primary endpoint, FDG-PET metabolic response (22%), as the model predicted; the cell lines (2006) predate any patient result, so prospective.",
     "short": "BIIB021 met PET endpoint in refractory GIST",
     "src": "https://doi.org/10.1093/annonc/mds275",
     "srcLabel": "Dickson 2012",
     "quote": "This study met its primary end-point.",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "biib-021",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -533,7 +585,7 @@
     "prediction_level": "class",
     "year": 2016,
     "status": "contra",
-    "note": "Ganetespib gave no objective responses and 18.5% clinical benefit in refractory GIST; onalespib plus imatinib later showed limited activity.",
+    "note": "Ganetespib gave no objective responses and 18.5% clinical benefit in refractory GIST; onalespib plus imatinib later showed limited activity. Design: single-arm phase 2 of ganetespib alone, primary endpoint clinical benefit 18.5% with no responses, against the activity the cell lines predicted.",
     "short": "Ganetespib: no responses in refractory GIST",
     "src": "https://clinicaltrials.gov/study/NCT01039519",
     "srcLabel": "NCT01039519 results",
@@ -548,7 +600,11 @@
       "doi": "10.1016/j.ejca.2016.03.076",
       "quote": "The combination of onalespib plus imatinib was well tolerated but exhibited limited antitumour activity as dosed in this TKI-resistant GIST patient population."
      }
-    ]
+    ],
+    "drug": "ganetespib",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -579,13 +635,17 @@
     "prediction_level": "patient",
     "year": 2008,
     "status": "untested",
-    "note": "IPI-504 degraded imatinib-resistant PDGFRA D842V in GIST cells, predicting D842V patients respond to Hsp90 inhibition; no member trial reported D842V outcomes.",
+    "note": "IPI-504 degraded imatinib-resistant PDGFRA D842V in GIST cells, predicting D842V patients respond to Hsp90 inhibition; no member trial reported D842V outcomes. IPI-504 is outside the member list, so the track is tied to the class, not a member drug.",
     "short": "D842V cells sensitive; patients unreported",
     "src": "https://doi.org/10.1158/1078-0432.CCR-08-0533",
     "srcLabel": "Dewaele 2008",
     "quote": "Treatment with dasatinib or the heat shock protein 90 inhibitor IPI-504 may provide a therapeutic alternative for GIST patients whose tumors carry the imatinib-resistant PDGFRA(D842V) mutant isoform.",
     "untested_reason": "unsettled",
-    "reason": "D842V outcomes not reported"
+    "reason": "D842V outcomes not reported",
+    "drug": "class",
+    "route": "not_applicable",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -620,10 +680,14 @@
     "short": "Xenografts: growth inhibition, regressions",
     "src": "https://doi.org/10.1158/1535-7163.MCT-11-0755",
     "srcLabel": "Ying 2012",
-    "quote": "In vivo, ganetespib showed potent antitumor efficacy in solid and hematologic xenograft models of oncogene addiction, as evidenced by significant growth inhibition and/or regressions."
+    "quote": "In vivo, ganetespib showed potent antitumor efficacy in solid and hematologic xenograft models of oncogene addiction, as evidenced by significant growth inhibition and/or regressions.",
+    "drug": "ganetespib",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -651,7 +715,7 @@
     "prediction_level": "class",
     "year": 2016,
     "status": "contra",
-    "note": "Ganetespib produced no objective responses and 18.5% clinical benefit in imatinib- and sunitinib-refractory GIST.",
+    "note": "Ganetespib produced no objective responses and 18.5% clinical benefit in imatinib- and sunitinib-refractory GIST. Retrodiction: FDG-PET metabolic responses to the Hsp90 inhibitor IPI-504 in TKI-resistant GIST patients were public in June 2007 (Van den Abbeele, ASCO 2007, doi:10.1200/jco.2007.25.18_suppl.3530), before this model. It failed to reproduce in ganetespib patients, so contra stands. Design: single-arm phase 2, primary endpoint clinical benefit 18.5%, no responses.",
     "short": "No responses in refractory GIST",
     "src": "https://clinicaltrials.gov/study/NCT01039519",
     "srcLabel": "NCT01039519 results",
@@ -660,7 +724,51 @@
     "outcome_tested": null,
     "reason": "No responses, 18.5% clinical benefit",
     "patient_trials": [],
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "ganetespib",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": false,
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "epub_year": 2006,
+    "print_year": 2006,
+    "registry_date": null,
+    "model_filed": false,
+    "product_in_model": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "TKI-refractory GIST (unselected by KIT/PDGFRA genotype)",
+    "confidence": "medium",
+    "confidence_note": "Abstract read. 17-AAG (tanespimycin) is an ansamycin Hsp90 inhibitor outside the member list, so product_in_model false.",
+    "judgement": "Opener for the ganetespib track, dated at the pairing with NCT01039519 (2016) because no source used the cell lines for ganetespib earlier.",
+    "model_id": "gist-cell-lines-17aag",
+    "model": "Imatinib-sensitive and -resistant GIST cell lines (GIST882, GIST430, GIST48) treated with 17-AAG",
+    "model_kind": "ex_vivo",
+    "model_first_use_year": 2006,
+    "prediction_level": "class",
+    "year": 2016,
+    "status": "untested",
+    "note": "17-AAG GIST cell lines set against ganetespib: the model was never run with ganetespib, so this track opens when it is first paired with ganetespib's GIST result.",
+    "short": "GIST cells: opener for ganetespib",
+    "src": "https://doi.org/10.1158/0008-5472.CAN-06-0165",
+    "srcLabel": "Bauer 2006",
+    "quote": "The dramatic inactivation of imatinib-resistant KIT oncoproteins suggests that HSP90 inhibition provides a therapeutic solution to the challenge of heterogeneous imatinib resistance mutations in GIST patients.",
+    "drug": "ganetespib",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null,
+    "untested_reason": null
    }
   ],
   "safety": [
@@ -699,7 +807,11 @@
     "srcLabel": "Dickson 2012",
     "quote": "BIIB021 is not an ansamycin derivative and has not demonstrated any substantial hepatotoxicity.",
     "untested_reason": "unpublished",
-    "reason": "Toxicology unpublished"
+    "reason": "Toxicology unpublished",
+    "drug": "biib-021",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "gist-xenograft-at13387",
@@ -734,7 +846,11 @@
     "short": "Mice: combo well tolerated",
     "src": "https://doi.org/10.1158/1535-7163.mct-11-1046",
     "srcLabel": "Smyth 2012",
-    "quote": "Importantly, the combination of AT13387 and imatinib was well tolerated."
+    "quote": "Importantly, the combination of AT13387 and imatinib was well tolerated.",
+    "drug": "onalespib",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "gist-xenograft-at13387",
@@ -765,12 +881,16 @@
     "model": "GIST-PSW and GIST430 xenografts in SCID mice (onalespib ± imatinib)",
     "year": 2016,
     "status": "same",
-    "note": "The combination was well tolerated in patients as in mice, but GI adverse events hit 81%, which mice did not flag.",
+    "note": "The combination was well tolerated in patients as in mice, but GI adverse events hit 81%, which mice did not flag. Design: onalespib combined with imatinib; the mouse statement that the combination was well tolerated is the safety prediction scored.",
     "short": "Tolerated, but frequent GI events",
     "src": "https://doi.org/10.1016/j.ejca.2016.03.076",
     "srcLabel": "Wagner 2016",
     "quote": "The combination of onalespib plus imatinib was well tolerated but exhibited limited antitumour activity as dosed in this TKI-resistant GIST patient population.",
-    "reason": "Tolerated as mice predicted"
+    "reason": "Tolerated as mice predicted",
+    "drug": "onalespib",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": "imatinib"
    }
   ]
  }

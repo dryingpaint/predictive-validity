@@ -1,0 +1,177 @@
+{
+ "tile": "colorectal-cancer-anti-egfr-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "year 2015->2013; drug futuximab (Sym004, with modotuximab), route iv; rule 6, ASCO 2013 abstract 3551"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "status same->retro, retrodiction true; post-dates the imgatuzumab patient NK decline (Delord 2013); drug imgatuzumab, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "year 2015->2013; drug futuximab, route iv; rule 6, ASCO 2013 abstract 3551"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2015->2013; single-arm design noted; drug futuximab, route iv; rule 6, ASCO 2013 abstract 3551"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same->retro, retrodiction true; ECD-mutant models post-date the phase 1 S492R response; drug futuximab, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2018->2017; drug futuximab, route iv; rule 6, Symphogen press release Sept 2017"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "combination_with FOLFIRI; combination design noted; drug imgatuzumab, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2015->2013 (rule 6, ASCO 2013 abstract 3551); RULE QUESTION settled: monkey could show hypomagnesaemia, silence a miss, rash matched -> same with source_calls_it partial; drug futuximab, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug set to imgatuzumab, route iv (previously absent)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug set to imgatuzumab, route iv (previously absent)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug set to zalutumumab, route iv (previously absent)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug set to imgatuzumab, route iv (previously absent)"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to imgatuzumab, route iv (previously absent)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug set to imgatuzumab, route iv (previously absent)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug set to zalutumumab, route iv (previously absent)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug set to imgatuzumab, route iv (previously absent)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to imgatuzumab, route iv (previously absent)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug set to zalutumumab, route iv (previously absent)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug set to imgatuzumab, route iv (previously absent)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug set to imgatuzumab, route iv (previously absent)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to futuximab, route iv (previously absent)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "opening untested 2017 for the Napolitano mouse model: its passing tolerability claim is now a safety prediction; drug futuximab, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "contra 2017, retrodiction true: the mouse tolerability claim post-dates and fails to reproduce Sym004 phase 1 grade 3 rash (50%) and hypomagnesaemia (21%); drug futuximab, route iv"
+  }
+ ]
+}

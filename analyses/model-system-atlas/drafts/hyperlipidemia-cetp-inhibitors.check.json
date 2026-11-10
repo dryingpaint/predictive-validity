@@ -1,142 +1,144 @@
 {
-  "draft": "analyses/model-system-atlas/drafts/v3/hyperlipidemia-cetp-inhibitors.json",
-  "index_base": 1,
-  "checked_by": "CHECKER_BRIEF_v3",
-  "lint": "0 findings",
-  "entries": [
-    {
-      "cell": "engagement",
-      "index": 1,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Cao 2011 (PMID 21957197, JLR, epub 2011-09-25) read in full via PMC3220285; quote verbatim in abstract. Transgenic hCETP/apoAI mouse ex-vivo CETP inhibition is the class's PD model; untested opening correct."
-    },
-    {
-      "cell": "engagement",
-      "index": 2,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Suico 2014 (PMID 24961753) quote verbatim; plasma CETP activity in dosed HVs = mouse readout, direct. Teramoto 2014 (PMID 24786356, epub 2014-04-02) reports CETP activity -50 to -95% in Japanese patients, slightly earlier, same year; no change."
-    },
-    {
-      "cell": "dose",
-      "index": 1,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Full text states the margin: ZDF-rat MAP unchanged at 142-fold exposure multiple, 'will not likely induce blood pressure increases in humans'. model_id is the mouse slug though the margin rests on rats; consider a combined slug."
-    },
-    {
-      "cell": "dose",
-      "index": 2,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Suico: 91% CETP inhibition at 600 mg, no 24-h ABPM change; target reached and drug moved the surrogate, so same holds even without decision 16. Margin published 2011, after the MAD was run (published 2014); see rule question."
-    },
-    {
-      "cell": "efficacy",
-      "index": 1,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Same Cao 2011 quote, verbatim. Mouse work preceded phase 1 (paper says compound already in phase II), so not a retrodiction despite 2011 publication."
-    },
-    {
-      "cell": "efficacy",
-      "index": 2,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Nicholls 2011 (PMID 22089718; NCT01105975, results posted 2018-03-22 matches registry_date) co-primary HDL-C/LDL-C in dyslipidaemic patients; quote verbatim. ACCELERATE NCT01687998 results 2018-05-16, HR 1.01 verified; outcome_tested negative correct."
-    },
-    {
-      "cell": "safety",
-      "index": 1,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Stated prediction of no torcetrapib-like BP/aldosterone liability confirmed in Cao full text (rat MAP, H295R CYP11B1/B2)."
-    },
-    {
-      "cell": "safety",
-      "index": 2,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Suico conclusion sentence verbatim. ACCELERATE +1.2 mmHg SBP (NEJM text, not re-read beyond abstract) could justify a 2017 same entry with source_calls_it partial, imported_from high-risk CVD; no status change."
-    },
-    {
-      "cell": "dose",
-      "index": 3,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "checked_by": "CHECKER_BRIEF_v3 / models",
-      "note": "Choi 2019 (PMC6680430, epub 2019-07-15) full text; quote verbatim in abstract. Model built on hamster/rat/monkey PK only; 2014 proxy matches NCT02156544 start 2014-06 at 25 mg (Kim 2016 SAD 25-400 mg). Untested opening, class level, fine."
-    },
-    {
-      "cell": "dose",
-      "index": 4,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "checked_by": "CHECKER_BRIEF_v3 / models",
-      "note": "Quote verbatim; text says observed F 'less than one-fifth of the predicted' (Table 7: 0.036 at 25 mg), so off_by_>5x holds. Paper never dates the model; FIH starting at the predicted 25 mg suggests prospective, and a failed retrodiction is contra anyway."
-    },
-    {
-      "cell": "efficacy",
-      "index": 3,
-      "verdict": "corrected",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "proposed_status": "untested",
-      "proposed_year": 1989,
-      "rule": "brief item 6 (cell opens at model_first_use_year)",
-      "checked_by": "CHECKER_BRIEF_v3 / models",
-      "note": "Thompson 2008 conclusion quote verbatim (Europe PMC abstract). But the genetic model existed long before: Brown 1989 Nature (doi 10.1038/342448a0) CETP-deficient siblings with high HDL; Inazu 1990 NEJM. Open the track at 1989 on that source.",
-      "adjudicated_status": "untested",
-      "adjudication_note": "Status agreed. Decision 7 / brief item 6: the genetic model opens at its first class use; CETP-deficiency genetics (Brown 1989) underpinned the class, so rebase the untested opener to 1989 on that source (proxy allowed)."
-    },
-    {
-      "cell": "efficacy",
-      "index": 4,
-      "verdict": "corrected",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": false,
-      "proposed_status": "retro",
-      "rule": "decision 10 (retrodiction scored retro, never same)",
-      "checked_by": "CHECKER_BRIEF_v3 / models",
-      "note": "Nicholls quote verbatim. As drafted the model is Thompson 2008, after patients already showed CETP inhibition raises HDL-C (JTT-705, de Grooth 2002, PMID 11994249; torcetrapib 2004-07), so class-level same is a retrodiction: retro. Alternative: rebase on Brown 1989, then same dated 2002.",
-      "adjudicated_status": "same",
-      "adjudication_note": "Decision 10 not met: the genotype-HDL prediction dates to 1989 (opener rebased), not motivated by patient data; JTT-705/torcetrapib are non-members (decision 12). Evacetrapib HDL rise in Nicholls 2011 is a prospective match: same, 2011."
-    }
-  ],
-  "missing": [
-    "Lilly press release 2015-10-12 announcing discontinuation of evacetrapib after ACCELERATE futility (tier 5, investor.lilly.com; page returned 403, not opened) dates the outcome failure to 2015, earlier than the NEJM 2017 / registry 2018 dates in patient_trials.",
-    "Rocacetrapib (CKD-519): Choi 2019 (https://doi.org/10.3390/pharmaceutics11070336, abstract) animal allometric PK/PD model predicted a 25 mg efficacious dose with a 'huge difference' from observed phase 1 bioavailability; published after phase 1 (Kim 2016, https://doi.org/10.2147/DDDT.S120387), so likely retrodiction/contra on a different model of a member drug. Drafter noted it in judgement but scored nothing; best-model rule keeps cell same.",
-    "Teramoto 2014 (PMID 24786356, Europe PMC abstract) gives patient CETP-activity engagement data in April 2014, ahead of Suico (June 2014).",
-    "DRL-17822 patient_trials quote is a paraphrase of the NCT01388816 results table, not a verbatim sentence; numbers (3.2/84.2/122.1/160.6%) verified.",
-    "Prospective pairing for the human-genetics track: Brown 1989 (https://doi.org/10.1038/342448a0) / Inazu 1990 (https://doi.org/10.1056/NEJM199011013231803) CETP deficiency raises HDL-C, confirmed in patients by de Grooth 2002 JTT-705/dalcetrapib phase 2 (https://doi.org/10.1161/01.CIR.0000015857.31889.7B): first class-level same, 2002."
-  ],
-  "overall": "accept",
-  "rule_questions": [
-    "Decision 16 margin_stated: does a margin count as 'stated before the trial' when the model data were generated pre-IND but first published (Cao 2011) after the human MAD that tested it was run, and before that MAD was published (2014)?",
-    "The same rat BP / exposure-multiple datum scores both dose (margin_stated same) and safety (same). 'Count the harm once' covers a harm that occurred; is double scoring allowed when no harm occurred?",
-    "Best-model rule vs member-specific dose models: should a different model's dose miss for another member (rocacetrapib PK/PD allometry, Choi 2019) appear as its own entry, and is a model published after phase 1 data a retrodiction even if it set the FIH dose?"
-  ]
+ "draft": "analyses/model-system-atlas/drafts/v3/hyperlipidemia-cetp-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cao 2011 (PMID 21957197, JLR, epub 2011-09-25) read in full via PMC3220285; quote verbatim in abstract. Transgenic hCETP/apoAI mouse ex-vivo CETP inhibition is the class's PD model; untested opening correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "brief: retrodiction (engagement is a target claim)",
+   "note": "Suico 2014 (PMID 24961753, epub 2014-06-24) quote verbatim in abstract; healthy volunteers, oral evacetrapib. Cao 2011 (epub 2011-09-25) post-dates de Grooth 2002 JTT-705 37% CETP-activity fall: retro, retrodiction true correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Full text states the margin: ZDF-rat MAP unchanged at 142-fold exposure multiple, 'will not likely induce blood pressure increases in humans'. model_id is the mouse slug though the margin rests on rats; consider a combined slug."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Suico: 91% CETP inhibition at 600 mg, no 24-h ABPM change; target reached and drug moved the surrogate, so same holds even without decision 16. Margin published 2011, after the MAD was run (published 2014); see rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same Cao 2011 quote, verbatim. Mouse work preceded phase 1 (paper says compound already in phase II), so not a retrodiction despite 2011 publication."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "brief: retrodiction; efficacy co-primary design",
+   "note": "Nicholls 2011 (PMID 22089718) conclusion verbatim; co-primary HDL-C and LDL-C % change, both met, in judgement. Cao 2011 after JTT-705 HDL-C rise (2002): retro. Evacetrapib oral, dyslipidaemia patients unselected; registry results 2018-03-22 later than print.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Stated prediction of no torcetrapib-like BP/aldosterone liability confirmed in Cao full text (rat MAP, H295R CYP11B1/B2)."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "brief: safety, this disease's patients decide; rule 6",
+   "note": "Nicholls 2011 'Although the study was underpowered, no adverse effects were observed.' verbatim; dyslipidaemia patients, earliest public 2011 (Nov), after Cao 2011 (Sept), no earlier evacetrapib patient result, so not retro. Abstract does not name BP.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "brief: track fields drug/route",
+   "note": "Choi 2019 (PMID 31311144) quote verbatim in abstract and full text. Rocacetrapib (CKD-519) is a listed member, oral; 2014 opener proxy (FIH start) allowed. Model's dose target stated, compared in entry 4.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "brief: retrodiction (dose: same drug's own earlier result); failed retrodiction is contra",
+   "note": "Choi 2019 full-text quote verbatim. Kim 2016 (PMID 27895466, 2016-11-15) rocacetrapib SAD PK public before Choi 2019-07: retrodiction true; failed, so contra. Judgement keeps stale 'Not marked retrodiction' sentence; prose only.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "brief rule 6 (cell opens at model_first_use_year; earliest date)",
+   "note": "Brown 1989 Nature (PMID 2586614) quote verbatim in abstract. Opener at 1989 untested, drug class, route not_applicable fit a genetic system tied to no drug. No untested_reason; see track rule question.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "brief: retrodiction (target claim); efficacy surrogate rule",
+   "note": "model_src Brown 1989 resolves; genetic HDL prediction public 1989, before any CETP-inhibitor patient result (JTT-705 2002), so prospective same holds for evacetrapib 2011; Nicholls quote verbatim. Outcome_tested negative (ACCELERATE) correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "Lilly press release 2015-10-12 announcing discontinuation of evacetrapib after ACCELERATE futility (tier 5, investor.lilly.com; page returned 403, not opened) dates the outcome failure to 2015, earlier than the NEJM 2017 / registry 2018 dates in patient_trials.",
+  "Rocacetrapib (CKD-519): Choi 2019 (https://doi.org/10.3390/pharmaceutics11070336, abstract) animal allometric PK/PD model predicted a 25 mg efficacious dose with a 'huge difference' from observed phase 1 bioavailability; published after phase 1 (Kim 2016, https://doi.org/10.2147/DDDT.S120387), so likely retrodiction/contra on a different model of a member drug. Drafter noted it in judgement but scored nothing; best-model rule keeps cell same.",
+  "Teramoto 2014 (PMID 24786356, Europe PMC abstract) gives patient CETP-activity engagement data in April 2014, ahead of Suico (June 2014).",
+  "DRL-17822 patient_trials quote is a paraphrase of the NCT01388816 results table, not a verbatim sentence; numbers (3.2/84.2/122.1/160.6%) verified.",
+  "Prospective pairing for the human-genetics track: Brown 1989 (https://doi.org/10.1038/342448a0) / Inazu 1990 (https://doi.org/10.1056/NEJM199011013231803) CETP deficiency raises HDL-C, confirmed in patients by de Grooth 2002 JTT-705/dalcetrapib phase 2 (https://doi.org/10.1161/01.CIR.0000015857.31889.7B): first class-level same, 2002."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Decision 16 margin_stated: does a margin count as 'stated before the trial' when the model data were generated pre-IND but first published (Cao 2011) after the human MAD that tested it was run, and before that MAD was published (2014)?",
+  "The same rat BP / exposure-multiple datum scores both dose (margin_stated same) and safety (same). 'Count the harm once' covers a harm that occurred; is double scoring allowed when no harm occurred?",
+  "Best-model rule vs member-specific dose models: should a different model's dose miss for another member (rocacetrapib PK/PD allometry, Choi 2019) appear as its own entry, and is a model published after phase 1 data a retrodiction even if it set the FIH dose?",
+  "Genetics track (cetp-lof-human-genetics): opener carries drug 'class'/route not_applicable while its comparison carries evacetrapib/oral; a track is model_id x drug x route, so the brief does not say whether these are one track or two."
+ ]
 }

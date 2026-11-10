@@ -17,9 +17,10 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Galie 2002 (PMID 11985913) abstract: haemodynamics a secondary endpoint, no significant change at max tolerated dose. Contra on readout is admissible; one drug's contra holds over ralinepag's 2019 PVR fall. Missed earlier 1996 same entry (see missing)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Galie 2002 quote verbatim (abstract). Rubin 1990 (PMID 2107780) epoprostenol RCT lowered pulmonary resistance before Yuki 1994: retrodiction true; failed to reproduce, so contra stands. Beraprost, oral, unselected PAH correct."
   },
   {
    "cell": "engagement",
@@ -71,9 +72,10 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Galie 2002 abstract: primary 6MWD +25.1 m, p=0.036, quote verbatim. same, direction_only, primary — supported."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Galie 2002 6MWD quote verbatim; 6MWD was the primary endpoint. Rubin 1990 predates Yuki 1994, so retro is right. Beraprost, oral, unselected PAH."
   },
   {
    "cell": "efficacy",
@@ -82,7 +84,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Barst 2003 (PMID 12821234) abstract: primary = disease progression over 12 months; effect at 6 months only, attenuated later. Quote verbatim. Contra supported, but see rule question on durability as an untested condition."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Barst 2003 quote verbatim; primary (disease progression) not sustained, authors say effect attenuates: contra. Retrodiction true per Rubin 1990. Note fixed, but 'short' still calls the trial BEAT; Barst 2003 is unnamed (BEAT is esuberaprost)."
   },
   {
    "cell": "efficacy",
@@ -137,8 +140,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Demolis 1993 (PMID 7506323, DOI resolves) abstract: quote verbatim; 40/60 ug inhibited ex vivo ADP aggregation in healthy volunteers (count). Paired with 1985 in vitro model, prospective, direct readout: same supported."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Demolis 1993 (PMID 7506323) quote verbatim in abstract. O'Grady 1980 (PMID 6992228): IV prostacyclin gave ex vivo platelet inhibition in volunteers, before Sim 1985 (PMID 3913423): retro correct. Oral, volunteers, direct readout fit."
   },
   {
    "cell": "efficacy",
@@ -153,17 +156,12 @@
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2019,
-   "rule": "Retrodiction: a model built or run after the clinic already knew the answer is retrodiction: true; failed to reproduce -> contra",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "United Therapeutics PR 2019-04-08 announced BEAT failed its primary endpoint, before Shen 2019 epub (2019-05-31). Set retrodiction: true (contra stays as failed retrodiction); year 2019, when both were public. PR not cited in draft.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Retrodiction rule: BEAT failure press release (2019-04-08) predates Shen 2019 epub (2019-05-31), so the ex vivo pairing is a retrodiction that failed to reproduce the human result; contra either way, retrodiction flag true."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "UT press release dated 8 Apr 2019 confirms BEAT missed primary; Shen 2019 epub 31 May 2019: year 2019, retrodiction true. Registry title confirms add-on to inhaled treprostinil, FC III/IV on it: stage_or_line right. Esuberaprost is beraprost-314d, oral. Registry quote is weak support; press release carries it."
   },
   {
    "cell": "safety",
@@ -179,6 +177,56 @@
    "note": "Quote verbatim in Yuki 1994 abstract (PMID 7825169). Galie 2002 full text (JACC, doi:10.1016/S0735-1097(02)01786-2) states 'the safety profile of the drug was excellent with neither systemic hypotension'; hypotension data were reported, so not unsettled: add paired same, 2002.",
    "adjudicated_status": "same",
    "adjudication_note": "Pairing rule (rule 1, comparison_stated false): Yuki 1994 'Psa was not lowered' vs Galie 2002 JACC full text 'neither systemic hypotension' (verified). Prospective; 1994 opener stays untested, track becomes same in 2002."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Yuki 1994 abstract: 'Psa was not lowered dose-dependently by BPS' confirmed. Galie 2002 Discussion sentence not reachable (full text blocked); abstract reports no hypotension. Same 2002 for beraprost, oral, unselected; retrodiction question remains open (prior rule question)."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Tran 2017 (PMID 28072531, epub Jan 2017) quote verbatim. Opener untested 2017 on ralinepag/oral track, same mct-rat model_id fields."
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Torres 2019 quote verbatim; Arena topline 10 Jul 2017 confirmed (drugs.com history, BioPharma Dive); registry results 2020-07-14 (NCT02279160). Retro per Rubin 1990. Ralinepag, oral, unselected."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Tran 2017 quote verbatim; untested opener for ralinepag oral track, year 2017 matches epub."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Torres 2019: primary was PVR change, met (p=0.02); topline 10 Jul 2017 sets year; retro per Rubin 1990. outcome_tested positive from ADVANCE OUTCOMES in patient_trials; status follows surrogate."
   }
  ],
  "missing": [
@@ -192,6 +240,7 @@
  "overall": "accept",
  "rule_questions": [
   "Efficacy 3: BEAT's 12-month primary failed because benefit attenuated over time; the MCT rat studies were 3-week designs. Is treatment duration a 'condition the model never tested' (-> untested) or is a model's benefit claim implicitly a durable-benefit claim (-> contra)?",
-  "Engagement 2: is an uncontrolled acute haemodynamic series (1996) admissible as a same entry before the controlled 2002 null, and should engagement use only controlled comparisons?"
+  "Engagement 2: is an uncontrolled acute haemodynamic series (1996) admissible as a same entry before the controlled 2002 null, and should engagement use only controlled comparisons?",
+  "Safety 4: beraprost was in Japanese patients (chronic arterial occlusion, approved 1992; stroke study PMID 2057914, 1991) and healthy volunteers (Demolis 1993) before Yuki 1994. Does a same-drug result in another disease or in volunteers make a safety model a retrodiction, and does it count if no hypotension finding is quoted?"
  ]
 }

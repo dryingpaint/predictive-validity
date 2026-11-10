@@ -31,8 +31,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (model_first_use_year)",
-   "note": "Opening untested entry at the first public model paper (epub 2014-05-19); quote verbatim in abstract. Registry NCT01063517 first posted 2010-02-05 with ATM-negative PFS co-primary, as the draft says."
+   "rule": "evidence rule 6 (cell opens at model_first_use_year, proxy allowed); retrodiction rule",
+   "note": "Kubota 2014 quote verbatim (abstract). NCT01063517 first posted 2010-02-05 (start 2010-02-02); ASCO 2013 abstract says ATM-stratified enrichment rested on 'initial preclinical data'. Opener 2010, untested, prospective; olaparib/oral/biomarker_selected right. Original 2010 registry version not viewable (history 403).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -41,32 +42,31 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "efficacy: primary endpoint governs",
-   "note": "Bang 2015 JCO (PMID 26282658), abstract only; quote verbatim. Registry results 2015-04-30 and co-primary PFS (overall, ATM-negative) confirmed on CT.gov; both missed, OS secondary hit. contra + partial supported."
+   "rule": "evidence rule 6 (earliest public date); efficacy: combination and co-primary designs",
+   "note": "ASCO 2013 abstract 4013 (online 2013-05-20) read: co-primary PFS all HR 0.80 p=0.261, ATM-negative HR 0.74 p=0.315, both missed; OS secondary significant. Year 2013, combination_with paclitaxel, olaparib/oral/stage_or_line correct; contra holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2016,
-   "rule": "evidence rule 6 (earliest public date) with rule 2 (tier 5 press release; tier 1 paper still sets status)",
-   "note": "GOLD abstract (PMID 29103871, epub 2017-11-02) quote verbatim; registry 2018-11-07 confirmed. But AstraZeneca press release 2016-05-18 already reported OS miss in both co-primary populations: year should be 2016 if tier 5 dates."
+   "rule": "evidence rule 6 with rule 2 (tier 5 dates, tier 1 sets status); efficacy: combination",
+   "note": "AstraZeneca release dated 18 May 2016 read: OS primary missed in overall and ATM-negative populations, olaparib 100 mg BID oral + paclitaxel, 525 Asian second-line patients. Year 2016, combination_with paclitaxel, stage_or_line correct; Bang 2017 quote verbatim; contra holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2021,
-   "rule": "evidence rule 6 with rule 2 (tier 5); track admissibility is rule question 2",
-   "note": "Ciardiello 2023 (PMID 37260158) quote verbatim; registry 2023-09-21 confirmed. BeiGene press release 2021-06-04 (ASCO 2021 poster) gave the full PFS miss (HR 0.799, p=0.1428) two years earlier. Cross-indication track itself is a rule question."
+   "rule": "evidence rule 6 with rule 2 (tier 5 dates, tier 1 sets status)",
+   "note": "BusinessWire 2021-06-04 read: pamiparib 60 mg BID oral maintenance vs placebo, primary investigator PFS 3.7 v 2.1 mo, HR 0.799, p=0.1428, 136 of ~540 enrolled. Year 2021, pamiparib, monotherapy, stage_or_line correct; contra holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -75,8 +75,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "safety: stated prediction held; imported_from",
-   "note": "Quote verbatim at sources/206162/206162Orig1s000PharmR.txt line 104; '2-4% of clinical exposures' for rat/dog cytopenias confirmed at lines 484 and 4434. Imported from ovarian correctly flagged."
+   "rule": "safety: this disease's patients set the status; imported_from only without own-disease data",
+   "note": "PharmR line 104-105 quote verbatim; MedR line 1845 names gastric in the 2034-patient database and line 4957 lists D0810C00039 (gastric, 100 mg combo, n=61); ASCO 2013 grade>=3 neutropenia 56% v 39% confirmed. Status/year/drug/route/group right; combination_with should be paclitaxel.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -146,13 +147,17 @@
   {
    "cell": "efficacy",
    "index": 6,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "efficacy: primary endpoint governs; decision 13 (data, not the authors' reading)",
-   "note": "Cecchini 2023 BJC (PMID 38135713, epub 2023-12-22; registry results 2025-06-04): both quotes and the go-rule sentence verbatim in full text. Phase 2 primary ORR; HRD-negative bar >=4 missed with 1 counted (3 responders unsequenced). Authors claim activity vs historical ramucirumab, so partial. contra stands; keep medium confidence.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2023,
+   "rule": "evidence rule 5 (unsettled: patients measured, result inconclusive); rule 3; efficacy single-arm design",
+   "note": "Full text re-read: go rule needs >=4 HRD-negative responses; 6 PRs = 2 HRD+, 1 HRD-negative, 3 without genomics, so the bar could still be met; authors say this 'significantly impacts our ability to interpret'. Note's 'one seen' omits the 3. Untested/unsettled.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Untested, unsettled (evidence rule 5). Pre-set bar (>=4 HRD-negative responses) cannot be judged: 1 HRD-negative, 2 HRD-positive, 3 unsequenced responders; authors say this 'significantly impacts our ability to interpret'. No contra on the confirmed count."
   },
   {
    "cell": "efficacy",
@@ -204,6 +209,7 @@
  "rule_questions": [
   "Dating with tier 5: evidence rule 6 names registry posting, online publication, label or print as the dates that set `year`, but rule 2 says a phase 3 failure known from a press release must be found. When a sponsor press release reports the primary-endpoint miss 18 months (GOLD, 2016-05-18) or 24 months (PARALLEL 303, 2021-06-04) before the tier-1 paper, does `year` follow the press release while the tier-1 paper sets the status, or the first tier 1-3 record? Both corrections above turn on this.",
   "Cross-indication inference as a track: pamiparib entered gastric cancer with no disease model (rationale = PARPi approvals elsewhere + HR-gene mutation frequency). The brief says 'no disease model relied on -> empty list', yet `model_kind` offers `cross_indication`. Is a cross-indication inference a scoreable track (contra on the PARALLEL 303 miss, as drafted), or should the pamiparib miss be left out of the figure / recorded only as a patient trial? The draft itself invites the reviewer to drop it.",
-  "Dose/efficacy coupling when the model stated no exposure target: the only model is in-vitro viability; the clinical regimen was 100 mg BID with paclitaxel (a third of the monotherapy dose, neutropenia-limited) and the sponsor's 2016 press release attributes the GOLD miss to 'a low dose and in combination with chemotherapy'. Does the coupling row 'never reached because of toxicity; no stated margin -> untested/untested' apply (which would also make efficacy untested), or does efficacy stay contra because the trial was the direct prospective test of the model's ATM prediction and no model source set a target? Decision 13 (data, not the sponsor's reading) and the checker rule on 'conditions the model never tested' pull in opposite directions."
+  "Dose/efficacy coupling when the model stated no exposure target: the only model is in-vitro viability; the clinical regimen was 100 mg BID with paclitaxel (a third of the monotherapy dose, neutropenia-limited) and the sponsor's 2016 press release attributes the GOLD miss to 'a low dose and in combination with chemotherapy'. Does the coupling row 'never reached because of toxicity; no stated margin -> untested/untested' apply (which would also make efficacy untested), or does efficacy stay contra because the trial was the direct prospective test of the model's ATM prediction and no model source set a target? Decision 13 (data, not the sponsor's reading) and the checker rule on 'conditions the model never tested' pull in opposite directions.",
+  "Single-arm trial with a pre-set success bar that cannot be evaluated because biomarker status is missing for some responders (NCI10066: >=4 HRD-negative responses required, 1 confirmed, 3 responders unsequenced). Is the cell untested/unsettled, scored against the model's direction as if no bar were set (responses seen -> same, partial), or contra on the confirmed count?"
  ]
 }

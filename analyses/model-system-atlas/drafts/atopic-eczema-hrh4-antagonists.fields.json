@@ -1,0 +1,151 @@
+{
+ "tile": "atopic-eczema-hrh4-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug class, route not_applicable, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug adriforant, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug jnj-39758979, route oral; co-primary design (safety + EASI in registry) written into note, scored a failure as the authors call it; status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2018 -> 2016 (rule 6 earliest public date: Ziarco statement 2016-05-19 that the 2a missed its itch NRS primary); drug adriforant, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug adriforant, route oral; track split from JNJ-39758979, strengthens true -> false; status and year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug adriforant, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "retrodiction false -> true, status stays contra (retrodiction ruling: mouse data first public 2023-01, after the class's 2014/2016/2021 patient misses; failed to reproduce them); drug adriforant, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug jnj-39758979, route oral; co-primary design (safety + EASI in registry) written into note, scored a failure as the authors call it; status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug adriforant, route oral; track split from JNJ-39758979, strengthens true -> false; status and year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "drug jnj-39758979, route oral; co-primary design (safety + EASI in registry) written into note, scored a failure as the authors call it; status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "year 2018 -> 2016 (rule 6, Ziarco 2016-05-19 statement); drug adriforant, route oral; now its own adriforant track after the split"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "what": "drug jnj-39758979, route oral; co-primary design (safety + EASI in registry) written into note, scored a failure as the authors call it; status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "what": "drug adriforant, route oral; track split from JNJ-39758979, strengthens true -> false; status and year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 17,
+   "what": "opener year 2014 -> 2010 and model_first_use_year 2010 (rule 6 model first use, check correction: NCT01068223 ran 2010-02 to 2010-05); drug jnj-39758979, route oral; untested_reason not_measured"
+  },
+  {
+   "cell": "efficacy",
+   "index": 18,
+   "what": "year 2018 -> 2016 (rule 6, Ziarco 2016-05-19 statement); drug adriforant, route oral; model_first_use_year 2010"
+  },
+  {
+   "cell": "efficacy",
+   "index": 19,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 20,
+   "what": "drug jnj-39758979, route oral; co-primary design (safety + EASI in registry) written into note, scored a failure as the authors call it; status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 21,
+   "what": "drug adriforant, route oral; track split from JNJ-39758979, strengthens true -> false; status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug jnj-39758979, route oral, population_group unselected, combination_with null; no status or year change"
+  }
+ ],
+ "added": []
+}

@@ -11,7 +11,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 21976485 (PNAS, epub 2011-10-05). Quote verbatim in abstract (truncated mid-sentence). Opening untested at 2009 matches NCT00865904 start; HBE is the system the class relied on."
+   "note": "PMID 21976485 abstract quote verbatim. Lumacaftor, oral, F508del (biomarker_selected), no partner: untested 2009 opener on the HBE system the class went to patients on.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -20,7 +21,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 21825083, epub 2011-08-08, print 2012. Quote verbatim. NCT00865904 results 2015-08-28 (estimated). Sweat moved, nasal PD and rectal maturation did not: same + partial is right. Pairing, correctly comparison_stated false."
+   "note": "Clancy 2012 Thorax (PMID 21825083, NCT00865904) quote verbatim. Lumacaftor monotherapy in F508del homozygotes: combination_with null, oral, biomarker_selected correct; same holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -29,7 +31,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "SEC 6-K exh 99.1 quote verbatim; PK 'did not impact the exposure', so not a PK miss. de Wilde 2019 (PMC6521598) full text shows 'further increase in Cl current' with the same triple in HBE. Add-on design attributes the null to GLPG2737."
+   "note": "6-K exh 99.1 (24 Oct 2018) re-fetched; quote verbatim, tier 5 with trial_unreported. GLPG2737 add-on to galicaftor + GLPG2451; HBE side 2019 post-dates 2011 corrector sweat-chloride result: retrodiction, failed, contra; year 2019 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -38,7 +41,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "EC50 81 nM verbatim. No source compares the cell EC50 with human free exposure; untested opening is correct."
+   "note": "EC50 81 nM verbatim in PMID 21976485 abstract; no stated human exposure target. Untested opener, lumacaftor monotherapy, oral, holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -47,7 +51,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PharmR 206038 l.826-832: rat NOAEL '3- or 7-fold', dog 2-fold, verbatim. Wainwright quote verbatim (PMID 25981758). Margin is published only in the 2015 NDA review, after Phase 3; see rule question."
+   "note": "PharmR 206038: rat 6-month NOAEL '3- or 7-fold safety margin' verbatim; Wainwright AE quote verbatim. Lumacaftor with ivacaftor, oral, F508del homozygotes match; margin first public in 2015 review (open rule question).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -56,7 +61,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Same Van Goor abstract; 'a level associated with mild CF' is the stated prediction of benefit. Untested opening fine."
+   "note": "Van Goor 2011 abstract quote verbatim; 'a level associated with mild CF' is the benefit prediction. Lumacaftor oral opener, no partner, holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -65,7 +71,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Primary FEV1 met (2.6-4.0 points, P<0.001); NCT01807923 results 2015-08-31. FDA PharmR l.1244-1246 is a tier-2 stated comparison calling translation 'limited'; source_calls_it could be over_predicted. Mono FEV1 decline was never a primary endpoint."
+   "note": "Wainwright 2015 (PMID 25981758) quote verbatim; primary ppFEV1 met. Lumacaftor with ivacaftor scored on primary; year 2014 from the 24 Jun 2014 Vertex topline release (not re-opened).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -74,21 +81,23 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PharmR l.435 verbatim; rat plethysmography clean at 250-1000 mg/kg (l.1909). Not scoring respiratory events is defensible. Lumacaftor liver-related SAEs (label 5.2) not discussed; see missing."
+   "note": "PharmR 206038 'no relevant target organs of toxicity identified in rats' verbatim; same paragraph notes dog GI and RBC effects. Lumacaftor tox opener, oral, no partner, holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
+   "quote_found": "near",
+   "status_supported": true,
    "proposed_status": "untested",
-   "proposed_year": 2025,
-   "rule": "12",
-   "note": "Quote and IntegratedR margin verified. But the fatal liver cases are on Trikafta, not vanzacaftor; the label attributes liver injury to the combination products, not to a class drug (#70). Alyftrek's own LFT rises lack a placebo arm.",
+   "proposed_year": 2019,
+   "rule": "Dating rule 6: each cell opens at model_first_use_year with status untested",
+   "note": "Bundled 218730 label boxed sentence near-verbatim; IntegratedR rat liver necrosis >20x/60x MRHD verbatim. Untested is right (fatal DILI under Trikafta). As the track's only entry it must open at model_first_use_year 2019; 2025 also post-dates the Dec 2024 label.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 12 (#70): the label attributes fatal liver injury to Trikafta, a combination without vanzacaftor, not to a class drug. Decision 16: a predicted organ with misplaced margin belongs in dose, never safety contra."
+   "adjudication_note": "Rule 6: drafter and checker agree on untested (reason unsettled kept, rule 5). As the vanzacaftor track's only entry it opens at model_first_use_year 2019; a 2025 untested repeat is no status change, so the entry is dated 2019."
   },
   {
    "cell": "engagement",
@@ -97,8 +106,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Dekkers 2013 abstract quote verbatim (PMID 23727931). Organoid assay first run 2013, after Clancy 2012 (epub 2011) and Vertex's 2012 Phase 2 sweat-chloride data: retro, class level is right. VX-809 use from full text not re-seen.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Dekkers 2013 (PMID 23727931) quote verbatim. Organoid assay public 2013, after lumacaftor monotherapy sweat-chloride result (2011): retro; lumacaftor, oral, no partner match Clancy patients.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -107,8 +116,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": null,
-   "note": "Berkers 2019 abstract quote verbatim (PMID 30759382). Full text 403 again. Abstract says the assay 'can prospectively select' and some rare-mutation patients got off-label drug on organoid response, so retrodiction likely false; lumacaftor/ivacaftor share and within-arm correlation still unverified.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Berkers 2019 (PMID 30759382) quote verbatim; not open access, full text unread. Lumacaftor with ivacaftor fields fit, but the lumacaftor/ivacaftor share and within-arm correlation stay unverified; retrodiction left null.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -117,8 +126,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in bundled 210491 SumR (Study 107 selection rule). FRT was used to select Study 107 patients with no comparison yet; untested 2015 holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Quote verbatim in bundled 210491 SumR (Study 107 selection rule). Tezacaftor with ivacaftor, oral, FRT-selected genotypes; untested 2015 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -127,8 +136,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Castellani 2026 abstract quote verbatim (PMID 41738096). 445-124 enrolled only FRT-responsive non-F508del variants, so prospective; sweat chloride -28.3 is the engagement readout. Same, patient level, 2024 (registry) holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Castellani 2026 (PMID 41738096) abstract: sweat chloride -28.3 mmol/L verbatim. Elexacaftor with tezacaftor + ivacaftor, oral, FRT-selected rare variants; prospective on these genotypes, same 2024 (registry) holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -137,23 +146,18 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Dekkers 2013 abstract quote verbatim. Organoids made no stated efficacy prediction; untested 2013 is an acceptable placeholder, but see efficacy 4: lumacaftor/ivacaftor FEV1 benefit was already public in 2012.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Dekkers 2013 abstract quote verbatim. Organoid opener for lumacaftor, oral, no partner; untested 2013 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2015,
-   "rule": "10",
-   "note": "Wainwright 2015 quote verbatim. But Vertex's May/June 2012 Phase 2 releases already reported FEV1 +8.5 points vs placebo in F508del homozygotes on VX-809+ivacaftor, before Dekkers 2013. Class-level answer was known when organoids were first run: retro, not same.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "Decisions 10 and 4: the 2012 Phase 2 (Boyle 2014, PMID 24973281) missed its sweat-chloride primary in cohorts 2/3; FEV1 +5.6 was secondary, so no efficacy patient result preceded Dekkers 2013, which the trial did not motivate."
+   "status_supported": true,
+   "note": "Wainwright quote verbatim. Organoid data (2013) preceded the 2014 topline FEV1 result: prospective same. Lumacaftor with ivacaftor, oral; year 2014 from the topline release.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -162,8 +166,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Dekkers 2016 STM abstract quote verbatim (PMID 27334259): correlation with 'published outcome data' is a retrodiction; retro, patient level holds. Pooled with ivacaftor genotype groups, as noted.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Dekkers 2016 (PMID 27334259) quote verbatim: correlation with 'published outcome data' is a retrodiction; retro holds. Lumacaftor with ivacaftor fits; ivacaftor-only groups pooled, as noted.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -172,8 +176,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": null,
-   "note": "Berkers 2019 quote verbatim but abstract only. FEV1 changes are observational on-label/off-label responses, not a trial primary endpoint, and the lumacaftor/ivacaftor subset correlation is unverified; if it does not hold alone, drop the entry.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Berkers 2019 quote verbatim, abstract only (not OA). Observational on-label FEV1, not a trial primary, yet endpoint_role 'primary'; lumacaftor/ivacaftor subset correlation unverified, so status cannot be confirmed.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -182,8 +186,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Same SumR selection-rule quote, verbatim. Untested 2015 for the FRT track with a tezacaftor combination holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "SumR 210491 selection-rule quote verbatim. Tezacaftor with ivacaftor, oral, FRT-defined genotypes; untested 2015 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -192,38 +196,28 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in 210491 SumR. FDA checked 'consistency of in vitro assay findings with clinical efficacy data' for the modified TEZ/IVA assay submitted after EVOLVE/EXPAND: retro, class level holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "SumR 210491 quote verbatim. NDA-time consistency check against EVOLVE/EXPAND already read out: retro holds; tezacaftor with ivacaftor, F508del, oral.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 9,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2018,
-   "rule": "10",
-   "note": "Quote verbatim, but it is the same NDA-time consistency check as efficacy 8: the modified TEZ/IVA assay was run for the NDA after Studies 106/107/108 read out. Study 107's FRT rule defined minimal function, not a TEZ/IVA failure prediction. Retro, not same.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: SumR describes an NDA-time 'consistency' check of the modified TEZ/IVA FRT assay against Studies 106/107/108 already read out; Study 107's FRT rule defined minimal function, not predicted failure. Duplicates efficacy 8."
+   "status_supported": true,
+   "note": "SumR 210491 quote verbatim. Retro with retrodiction true: NDA-time check against Studies 106/107/108 already read out. Tezacaftor with ivacaftor, oral, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 10,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2020,
-   "rule": "10",
-   "note": "Quote verbatim in 212273s002 label (fetched). The ≥10% call 'predictive or reasonably expected to predict' rests on trials already read out; no patient outcome for the 177 added variants existed in 2020. Regulatory reliance, scored retro.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Decisions 10 and 14: the label's FRT-vs-clinical-response statement rests on trials already read out; the 177 added variants had no patient outcome until 445-124 (efficacy 11). Regulatory reliance is a flag, not a status."
+   "status_supported": true,
+   "note": "212273s002 label (12/2020) re-fetched; quote verbatim. Statement rests on elexacaftor trials already read out: retro holds. Elexacaftor with tezacaftor + ivacaftor, oral, FRT-selected variants.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -232,45 +226,68 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Castellani 2026 abstract quote verbatim; primary ppFEV1 +9.2 in FRT-selected variants. Prospective, so same, patient level, 2024. With efficacy 9 and 10 retro, this is the FRT track's first prospective same (decision 10).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "PMID 41738096 abstract: primary ppFEV1 +9.2 verbatim. Prospective FRT-only selection; same 2024 (registry 2024-08-01). Elexacaftor with tezacaftor + ivacaftor, oral, biomarker_selected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 12,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "untested means a model existed and nobody compared it",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Pranke 2017 Sci Rep (nature.com full text, published 2017-08-07) abstract quote verbatim. Lumacaftor/tezacaftor rescue in HNE with no prospective patient comparison; untested 2017 opening for the cf-hne-isc track holds."
+   "note": "Pranke 2017 (PMID 28785019) abstract quote verbatim. HNE opener; lumacaftor with ivacaftor matches the Orkambi patients, oral; untested 2017 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 13,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2017,
-   "rule": "A model built or run after the clinic already knew the answer is a retrodiction: retro, never same",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim. Nasal cells sampled pre-treatment, but correlation (R2=0.95, n=8) was drawn after 6-month FEV1 was known and after Orkambi's FEV1 benefit was public (2014-15); no stated pre-outcome prediction. retrodiction: true, as Dekkers 2016 (efficacy 5).",
-   "adjudicated_status": "same",
-   "adjudication_note": "Retrodiction rule (run after the answer was known): Pranke methods say nasal cells were 'always sampled before starting' Orkambi; cultures read weeks later, before 6-month FEV1. Patient-level answer unknown then; same, low confidence, n=7 members."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Pranke 2017 abstract quote verbatim. Lumacaftor with ivacaftor, oral, 7 of 8 patients; same kept (pre-treatment cells). Same-target retrodiction at patient level remains an open rule question.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 14,
    "verdict": "confirmed",
    "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Davies 2018 (PMID 30334693) conclusion quote verbatim; co-primary safety and ppFEV1 met. Bamocaftor with tezacaftor + ivacaftor; HBE data first public 2018, after 2014 corrector FEV1: retro under same-target rule.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Keating 2018 (PMID 30334692) methods sentence verbatim. Elexacaftor track opener on HBE, with tezacaftor + ivacaftor, oral; 2017 Phase 2 start (NCT03227471) proxy is fine.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Keating 2018 conclusion quote verbatim; ppFEV1 +13.8 (MF) and +11.0 on TEZ/IVA. HBE data first public 2018, after 2014 corrector FEV1: retro, consistent with efficacy 14; co-primary both met.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "stated same-drug comparison, primary endpoint met, model run before the trial",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Davies 2018 NEJM (PMID 30334693, epub 2018-10-18) conclusion quote verbatim in abstract; ppFEV1 is a primary endpoint (P<0.001). Bamocaftor HBE selection preceded NCT03224351/NCT03029455, so prospective. Inconsistent with efficacy 2's note excluding Keating 2018 as a repeat."
+   "note": "PharmR l.435 'no relevant target organs' and Wainwright AE quote verbatim. Same/partial fits (three liver SAEs; respiratory events a healthy rat could not show). Lumacaftor with ivacaftor, oral; distinct prediction from dose 2.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -286,6 +303,7 @@
   "Decision 16 / checker brief: does a tox margin first published in the NDA review (after Phase 3) count as 'stated before the trial' when the studies themselves were in the IND before Phase 3 (model_filed true)?",
   "Decision 16 says a harm the model predicted with a misplaced margin is counted in dose, but its dose contra row is for a target never reached. Where does a predicted-organ, misplaced-margin harm go when patients reached target and the harm was not dose-limiting (vanzacaftor liver)? Safety contra, safety same, or dose contra?",
   "#70 for fixed-dose combinations whose components are all class members or the shared backbone (Trikafta, Alyftrek): can a label harm attributed to the combination anchor a contra for the corrector's tox model?",
-  "Same drug, two combinations, opposite engagement results on the same model (GLPG2737: FALCON null, PELICAN positive). Decision 6 says one drug's contra beats another drug's same; it does not say how one drug's mixed record is resolved."
+  "Same drug, two combinations, opposite engagement results on the same model (GLPG2737: FALCON null, PELICAN positive). Decision 6 says one drug's contra beats another drug's same; it does not say how one drug's mixed record is resolved.",
+  "Same-target retrodiction at prediction_level 'patient' (efficacy 13, efficacy 6/engagement 5, efficacy 11): does a class-level patient result for the target make a later patient-selection model a retrodiction, or only the patient-level outcome it predicts?"
  ]
 }

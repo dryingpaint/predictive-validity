@@ -9,50 +9,55 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "JEM 2005 (PMID 16103409, OA) resolves; quote verbatim in abstract; track opener. Alberts 2003 (BVT.2733, KKAy/ob-ob) would put model_first_use_year at 2003; proxy allowed, no status effect."
+   "note": "JEM 2005 (PMID 16103409) abstract verbatim. Compound 544 is no member: class / not_applicable / unselected right; untested opener 2005 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "DOM 2014 (PMID 24828020, paywalled; abstract only) resolves, quote verbatim, epub 2014-06-09. Urinary THF+alloTHF/THE is the enzyme product: proximal. Drafter's pairing with the mouse hepatic-conversion readout; same supported."
+   "note": "DOM 2014 (PMID 24828020, epub 2014-06-09) abstract verbatim. RO5093151 oral, unselected T2D on stable metformin, partner metformin (see combination rule question); urinary readout moved, same 2014 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "same",
    "proposed_year": 2021,
-   "rule": "decision 7 (dating: earliest public date; healthy volunteers count)",
-   "note": "Quote verbatim (PMID 36343645, OA). The direct ex-vivo adipose readout was public 2021-08-15: BI 187004 single-dose study in healthy overweight men, NCT01587417, 86.8-99.5% inhibition (doi:10.1186/s40842-021-00130-x). Date this strengthening entry 2021.",
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date) with engagement 'healthy volunteers count'",
+   "note": "EXCD 2022 (PMID 36343645) abstract verbatim; bi-187004/oral/unselected right. Single-dose BI 187004 study in overweight men (PMID 34391480, doi:10.1186/s40842-021-00130-x, online 2021-08-15) already showed ex-vivo adipose inhibition: same, dated 2021.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "same",
-   "adjudication_note": "Status agreed (same, strengthening). Dating rule 6 plus engagement rule 'healthy volunteers count': the 2021 single-dose study (NCT01587417, 86.8-99.5% adipose inhibition) is the earliest public direct readout, so date this entry 2021."
+   "adjudication_note": "Rule 6 + engagement 'healthy volunteers count': BI 187004 single-dose study in overweight men (PMID 34391480, online 2021-08-15) showed 86.8-99.5% ex-vivo adipose inhibition. Same, dated 2021."
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Verbatim first clause of the JEM abstract sentence. Li 2018 (PMID 30613321) confirms BMS-823778 ED50 34 mg/kg (DIO acute PD) and 5.2 mg/kg (ex vivo adipose). No NOAEL/MTD stated, so margin_stated false is right."
+   "note": "JEM 2005 abstract verbatim. Non-member tool compound: class / not_applicable / unselected right; no exposure target or margin stated, untested 2005 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "JEM 2005 abstract, quote verbatim (last sentence); track opener, untested."
+   "note": "JEM 2005 abstract last sentence verbatim. Class / not_applicable / unselected right; untested opener 2005 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -62,103 +67,111 @@
    "quote_found": "near",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "decision 4 (#32: missed primary + significant secondary is untested unless the source's own conclusion calls it a match)",
-   "note": "Registry results (posted 2013-12-11) read in full and match: both BP primaries missed vs placebo (p 0.25-0.92); HbA1c -0.28% significant at 2 mg only (0.5/8 mg NS). Secondary endpoint, no poc_gate, registry has no conclusion: untested, not same.",
+   "rule": "DRAFTER_BRIEF efficacy: the primary endpoint governs; a secondary only with endpoint_role poc_gate",
+   "note": "NCT00806585 API re-read: primaries are sitting DBP/SBP at week 12 (missed); HbA1c a secondary, endpoint_role null. mk-0736 oral, unselected right. Scored on a secondary without poc_gate: untested, not same.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 #32: both blood-pressure primaries missed, HbA1c significant at 2 mg only as a secondary, no poc_gate pre-specified, registry states no conclusion calling it a match: untested. Partial (#110) needs the pre-specified readout to match."
+   "adjudication_note": "Efficacy rule: primary endpoint governs; NCT00806585 primaries were BP, HbA1c a secondary with no poc_gate. Untested; the entry's existing untested_reason not_measured (rule 5) stands."
   },
   {
    "cell": "efficacy",
    "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "decision 4 (#32); contra arguable under 'failed = predicted effect absent' (#53)",
-   "note": "Abstract quote verbatim, but the registry primary (mean daily plasma glucose) was MISSED: Roche CSR synopsis on the EU register (EudraCT 2008-001122-13, posted 2015-06-26) says 'failed to show treatment-related improvements in mean daily blood glucose'. Weight was the significant secondary.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 #32: registry primary (mean daily glucose) missed per the Roche CSR synopsis (EudraCT 2008-001122-13); weight a significant secondary; source does not call it a match: untested. #53/#110 contra reading stays with the checker's logged rule question."
+   "proposed_status": "contra",
+   "proposed_year": 2015,
+   "rule": "DRAFTER_BRIEF efficacy: did the trial's primary endpoint respond as predicted",
+   "note": "Abstract verbatim, but the registry primary (mean daily glucose) was missed: Roche BP21850 synopsis, EU register 2008-001122-13, posted 2015-06-26. Mouse predicted glucose lowering: contra. RO5093151 oral, partner metformin, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Efficacy rule: primary governs. Roche BP21850 synopsis (EU CTR 2008-001122-13, first posted 2015-06-26) re-read: 'failed to show' mean daily glucose improvement. Contra, dated 2015 unless Heise 2014 full text (unseen) reports it."
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "contra",
    "proposed_year": 2015,
-   "rule": "decision 7 (dating) with evidence rule 2 (tier-5 press release, trial_unreported: true)",
-   "note": "Contra holds. Vitae 8-K 2015-06-29: fasting plasma glucose was the predefined primary efficacy endpoint, unmet; 2015-12-17: monotherapy arm unmet, programme terminated. Add a 2015 tier-5 entry; poc_gate is now sourced. patient_trials quotes for NCT01111955/NCT00698789 are near-verbatim, not verbatim.",
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date; press release counts)",
+   "note": "DOM 2023 (PMID 36478142, epub 2022-12-22) abstract verbatim. Vitae 8-K 2015-06-29 re-opened: FPG primary unmet (metformin arm); monotherapy arm unmet 2015-12-17. bi-187004 oral, pooled, unselected right. Contra dated 2015.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "contra",
-   "adjudication_note": "Evidence rule 2 and dating rule 6: Vitae 8-K (2015) reports the predefined FPG endpoint unmet, a tier-5 contra with trial_unreported true; the 2023 tier-1 paper of the same trial also reads contra. Contra, first public 2015."
+   "adjudication_note": "Rule 6: earliest public date, press release counts. Vitae 8-K 2015-06-29 (already the draft's ko-mouse 2015 source) reports the BI 187004 FPG endpoint unmet. Contra, dated 2015."
   },
   {
    "cell": "efficacy",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "BPB 2023 (PMID 37394647) abstract verbatim. NCT00997152 (sponsor listed as Shionogi Inc.) terminated 2010, no results posted, so untested holds; not a retrodiction because no human result exists to reproduce."
+   "note": "BPB 2023 (PMID 37394647) abstract verbatim. JTT-654 oral, unselected right; NCT00997152 never reported, untested holds. GK rat first public after member patient results, so retrodiction should read true; status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PNAS 1997 (PMID 9405715) abstract verbatim; KO track opener, untested."
+   "note": "PNAS 1997 abstract verbatim (adrenal hyperplasia, raised corticosterone). Class / not_applicable / unselected right; untested opener 1997 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "DOM 2014 abstract verbatim (abstract only). ACTH and adrenal-androgen precursor rise with RO-151 matches the KO's compensatory HPA drive; the Roche EU CSR synopsis confirms HPA/androgen profiles were measured. Same, direction only."
+   "note": "DOM 2014 abstract verbatim: ACTH and adrenal androgen precursors up with RO-151 in metformin-treated T2D. RO5093151 oral, partner metformin, unselected; same 2014 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "DOM 2023 abstract verbatim (OA). HPA activation again, so same/strengthens holds. The dose-dependent heart-rate rise and one SVT discontinuation at 360 mg (2022 paper) stay unscored silence; see rule question 2."
+   "note": "DOM 2023 abstract verbatim: HPA activation at near-full hepatic inhibition. bi-187004 oral, unselected; same holds, but the EXCD 14-day paper (epub 2022-11-07) showed ACTH rise first; 2022 holds either way.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Nat Genet 2003 (PMID 12858176, abstract only) resolves; quote verbatim. Opener untested holds. Lavery 2008 did not corroborate the 2003 digenic claim, but the quoted phenotype sentence stands and the track survives on H6PD and HSD11B1 R137C/K187N.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Nat Genet 2003 (PMID 12858176) abstract verbatim. Human-genetic opener tied to no drug: class / not_applicable / unselected right; untested 2003 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "DOM 2014 (PMID 24828020, epub 2014-06-09, abstract only) quote verbatim; model_src Lavery 2008 (PMID 18628520) confirms CRD is defined by 24-h urinary GC/MS steroid biomarkers. Proximal matches the engagement-2 verdict on the same readout; same, direction only, holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "DOM 2014 abstract verbatim; model_src Lavery 2008 defines CRD by urinary steroid signature. RO5093151 oral, partner metformin, unselected; same 2014 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "BJP 2015 (PMID 26218540, epub 2015-10-08) quote verbatim; full text not in PMC OA (Europe PMC 500, BioC no record), abstract only. Abstract frames tachyphylaxis as species-level (two compounds, continuous cover; mouse spared). Opener untested holds; AZD8329 human arm is a non-member.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "BJP 2015 (PMID 26218540, epub 2015-10-08) abstract verbatim. AZD8329 and COMPOUND-20 are non-members: class / not_applicable / unselected right; untested opener 2015 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -167,48 +180,48 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PMC9811530 full text: quote verbatim (en dashes). t1/2,ss 106-124 h confirms continuous cover, so the rat's stated condition was met and inhibition held 73.8-97.5% at trough after dose 14: contra holds. Vitae 2015 8-Ks carry no engagement data, so 2022 stands; magnitude could be 'opposite'.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "EXCD 2022 abstract verbatim (PMC9811530); bi-187004 oral, unselected T2D, 14 days. Adipose inhibition held at trough (73.8-97.5%): contra 2022 holds. Rat model post-dates 2014 patient engagement, so retrodiction should read true; status unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "BCP 2018 (PMID 29469197, epub 2018-04-10) quote verbatim; full text not in PMC OA (BioC: no record), abstract only. Opener untested with product_in_model true holds; the model's DDI and genotype simulations were never tested after the programme ended.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "BCP 2018 (PMID 29469197, epub 2018-04-10) abstract verbatim. bms-823778 oral; compared subjects are healthy volunteers by CYP2C19 genotype, coded unselected. Untested opener 2018 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Abstract: 'built and verified using existing clinical data', 'accurately recovered observed PK': a post-hoc model reproducing known HV PK is retro under decision 10, never same. Chinese/Japanese cohorts and the acceptance fold are not in the abstract. prediction_level class holds: it stratifies exposure, not response.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "BCP 2018 abstract verbatim: PBPK built on the drug's own earlier clinical PK, so retro (same-drug retrodiction) holds. bms-823778 oral, unselected; 2018 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Same Nat Genet 2003 abstract, quote verbatim. The on-target HPA/adrenal-androgen prediction is in the sentence itself ('adrenocorticotropin-mediated androgen excess'); opener untested holds, and pooling rather than splitting by modality is right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Nat Genet 2003 abstract verbatim ('adrenocorticotropin-mediated androgen excess'). Human-genetic opener: class / not_applicable / unselected right; untested 2003 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "DOM 2014 abstract quote verbatim; model_src Lawson 2011 (PMID 21325058, PMC3054023) abstract has 'typified by increased cortisol clearance and androgen excess' verbatim. Same, direction only, as the safety-2 verdict read the same sentence. RO-838 showed no rise despite urinary engagement: logged as a rule question, not a flip.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "DOM 2014 abstract verbatim; model_src Lawson 2011 (PMID 21325058) 'typified by increased cortisol clearance and androgen excess' verbatim. RO5093151 oral, partner metformin, unselected; same 2014 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -217,8 +230,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PMC9811530 full text: quote verbatim; ACTH 'increased but within the normal range' in all dose groups, reverting after discontinuation. Paper cites earlier inhibitor trials (refs 12, 14, 15), not CRD, as the drafter says. 2015 8-Ks silent on HPA, NCT01874483 no results: 2022 dating holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "PMC9811530 full text: quote verbatim (not in abstract). bi-187004 oral, 14-day T2D, unselected right; the 2021 single-dose study was healthy volunteers, not this disease's patients, so 2022 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -227,8 +240,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PubMed 9405715 abstract: quote verbatim (incl. 'hyperglycamia' typo). Efficacy opener on the KO track, 1997, untested, class-level genetic stand-in; product_in_model false correct.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "PNAS 1997 (PMID 9405715) abstract verbatim. Knockout tied to no drug: class / not_applicable / unselected right; untested opener 1997 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -237,18 +250,33 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Vitae 8-K EX-99.1 2015-06-29 re-opened: quote verbatim; FPG called the primary efficacy data, so poc_gate holds (registry primary is safety). Tier 5 with trial_unreported and tier-1 model_src as rule 2 requires; KO predicted glucose lowering, contra 2015.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Vitae 8-K EX-99.1 2015-06-29 re-opened: quote verbatim; FPG is predefined primary (poc_gate). bi-187004 oral, metformin arm, partner metformin (8-K says 'metformin background therapy'; rule question), unselected; contra 2015 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 8,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Europe PMC abstract of doi:10.1111/dom.14932 (first published 2022-12-22): quote verbatim. Higher-tier record of the same trial keeps contra (strengthens); epub 2022/print 2023 correct.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "DOM 2023 abstract verbatim (epub 2022-12-22). bi-187004 oral, pooled strata, no partner, unselected; contra right, but it repeats entry 7's contra on the same track, so it is not a change of status.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_drug": "bi-187004",
+   "rule": "DRAFTER_BRIEF track rule (drug = member whose patient result is compared) and CHECKER_BRIEF 3 (pairing on conditions the model never tested)",
+   "note": "Quotes verbatim (BPB 2023; DOM 2023). Compared patients are BI 187004's, so drug is bi-187004, not JTT-654. Heitaku frames GK rat for non-obese T2D; Bianzano enrolled BMI 28-40. Untested; retrodiction true, year 2023 right.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "RULE QUESTION: does CHECKER_BRIEF 3's pairing exclusion apply when the model paper (GK rat, 'non-obese T2D') scopes itself away from the patients (BMI 28-40) but the trial source attributes nothing to obesity? Drug should be bi-187004 per track rule."
   }
  ],
  "missing": [
@@ -264,6 +292,9 @@
   "Decision 4 #32 vs #53: a 28-day trial whose glucose PRIMARY was missed with clear target engagement and whose sponsor's own conclusion calls it a failure (Roche BP21850), but with one significant secondary (weight -1.67 kg) that the model also predicted — #32 literally gives untested; #53 ('failed = predicted effect absent') gives contra. Which governs when the source's conclusion calls a miss rather than a match?",
   "Askable silence when the safety track is a genetic model (11β-HSD1 KO) and the drug's nonclinical tox package is unpublished: does the KO's silence on a dose-dependent heart-rate rise and one SVT discontinuation (BI 187004, 2022/2023) score contra, is an in-range HR rise a 'harm' at all, and may a sponsor-run GLP tox study that no source describes be presumed silent?",
   "When a tier-5 press release (2015) precedes the tier-1 paper (2022) on the same trial by seven years and both say contra, should the track carry two entries (2015 tier-5 trial_unreported, 2022 tier-1) or one entry dated 2015 with the tier-1 source? The brief's 'higher-tier record sets the status' and 'year = earliest public date' both apply but do not say which carries the year.",
-  "Decision 6 (#3) vs decision 11 (#110), raised by the models check: in one source (Heise 2014) the predicted HPA/adrenal-androgen rise appeared with RO5093151 but not with RO5027383, both with urinary-confirmed 11β-HSD1 inhibition. Does the second drug's null score contra on the safety track (decision 5), partial (decision 11, though the split is by drug not readout), or nothing? Affects the crd-human-genetic and hsd11b1-ko-mouse safety entries alike."
+  "Decision 6 (#3) vs decision 11 (#110), raised by the models check: in one source (Heise 2014) the predicted HPA/adrenal-androgen rise appeared with RO5093151 but not with RO5027383, both with urinary-confirmed 11β-HSD1 inhibition. Does the second drug's null score contra on the safety track (decision 5), partial (decision 11, though the split is by drug not readout), or nothing? Affects the crd-human-genetic and hsd11b1-ko-mouse safety entries alike.",
+  "[fields] combination_with for add-on to background therapy: RO5093151 and BI 187004 metformin arms name metformin as partner (Vitae 8-K calls it 'metformin background therapy'), while MK-0736's background ACEi/ARB, active on its BP primaries, is not named. Is an add-on to stable background with placebo on the same background a 'combination trial'?",
+  "[fields] Retrodiction by post-dating when a model system is first public after a patient result on the target but before the compared drug's own result (rat-adipose 2015 vs BI 187004 2022; GK rat 2023): is every later entry on that track a retrodiction, or only the result it could have reproduced? Also, does non-selective carbenoxolone's human hepatic 11b-HSD1 inhibition (1995) make the 2005 DIO-mouse engagement and efficacy openers retrodictions?",
+  "[fields] A model whose source scopes its prediction to a subpopulation (GK rat, non-obese T2D) paired with a trial in the complementary subpopulation (BMI 28-40): untested (condition never tested) or contra?"
  ]
 }

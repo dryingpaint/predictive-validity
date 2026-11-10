@@ -49,7 +49,11 @@
     "note": "YLLIP2 (MS1819 lipase) 4-80 mg/d raised CFA from 60% to 85-90% in PEI minipigs, matching 1.2 g pancreatin; no patient data yet.",
     "short": "Yeast lipase restored CFA in minipigs",
     "quote": "Oral administration of milligram amounts of YLLIP2 significantly increased CFA values, similar to that of 1.2 g pancreatin, in a minipig model of PEI.",
-    "judgement": "Opening entry: the minipig readout is coefficient of fat absorption, which has a direct human counterpart."
+    "judgement": "Opening entry: the minipig readout is coefficient of fat absorption, which has a direct human counterpart.",
+    "drug": "adrulipase alfa",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1053/j.gastro.2015.08.047",
@@ -62,7 +66,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "CFA change from off-enzyme baseline (+21.8 points at 2.2 g/d in 11 CP patients) vs minipig +25-30 points",
     "source_calls_it": null,
-    "population": "Unselected (EPI due to chronic pancreatitis or cystic fibrosis)",
+    "population": "Unselected (EPI due to chronic pancreatitis)",
     "confidence_note": "Sponsor-reported only (announced 2018, restated in the 10-K for 2019); NCT03481803 (first posted 2018-03-29) has no posted results; no peer-reviewed paper found.",
     "prediction_level": "class",
     "subjects": "patients",
@@ -85,7 +89,11 @@
     "confidence": "low",
     "reason": "CFA moved in dosed patients",
     "readout_tier": "downstream",
-    "judgement": "CFA is both the model's readout and the trial endpoint; the uncontrolled phase 2a primary was safety, so its CFA rise is scored here as engagement, not efficacy. Dated 2018 (Oct 2018 announcement); src is the 10-K restating it. Paired by me."
+    "judgement": "CFA is both the model's readout and the trial endpoint; the uncontrolled phase 2a primary was safety, so its CFA rise is scored here as engagement, not efficacy. Dated 2018 (Oct 2018 announcement); src is the 10-K restating it. Paired by me.",
+    "drug": "adrulipase alfa",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -113,17 +121,21 @@
     "model_first_use_year": 2015,
     "year": 2015,
     "status": "untested",
-    "model": "Pancreatic duct-ligated, embolized minipig (PEI model) and in-vitro test-meal assay",
+    "model": "Pancreatic duct-ligated, embolized minipig (PEI model)",
     "model_id": "pei-minipig-duct-ligation",
     "src": "https://doi.org/10.1053/j.gastro.2015.08.047",
     "srcLabel": "Aloulou 2015",
     "confidence": "medium",
-    "note": "Effective pig dose 4-80 mg/d YLLIP2; in vitro 10 mg judged equal to 100,000 USP pancreatin. No human exposure or margin stated.",
+    "note": "Effective pig dose 4-80 mg/d YLLIP2; a separate in-vitro test-meal assay judged 10 mg equal to 100,000 USP pancreatin. No human exposure or margin stated.",
     "short": "Pig dose only, no human target",
     "quote": "From in vitro test meal experiments, the lipase activity of YLLIP2 (10 mg) was estimated to be equivalent to that of pancreatin (1200 mg; 100,000 US Pharmacopeia units) at pH 6.",
     "reason": "No human dose target stated",
     "untested_reason": "no_prediction",
-    "judgement": "Judgement call: the in-vitro equivalence is a potency ratio, not a human regimen; the 2.2 g/d MS1819-SD clinical dose (a spray-dried powder of undisclosed lipase content) was a bridging dose from the CP phase 2a, not a model-stated target, so the two cannot be compared."
+    "judgement": "Judgement call: the in-vitro equivalence is a potency ratio, not a human regimen; the 2.2 g/d MS1819-SD clinical dose (a spray-dried powder of undisclosed lipase content) was a bridging dose from the CP phase 2a, not a model-stated target, so the two cannot be compared.",
+    "drug": "adrulipase alfa",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -159,7 +171,11 @@
     "note": "Minipig CFA on YLLIP2 (84.6-90.0%) matched pancreatin (90.5%), implying a non-porcine lipase could replace PERT.",
     "short": "Pigs: yeast lipase equals pancreatin",
     "quote": "Oral administration of milligram amounts of YLLIP2 significantly increased CFA values, similar to that of 1.2 g pancreatin, in a minipig model of PEI.",
-    "judgement": "The model's prediction is equivalence to pancreatin, which is what the CF trials tested."
+    "judgement": "The model's prediction is equivalence to pancreatin, which is what the CF trials tested.",
+    "drug": "adrulipase alfa",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1053/j.gastro.2015.08.047",
@@ -172,7 +188,7 @@
     "magnitude": "off_by_>5x",
     "magnitude_basis": "CFA shortfall vs pancreatin: minipig 0.5-6 points, OPTION patients 30.6 points (55.6% vs 86.2%)",
     "source_calls_it": null,
-    "population": "Unselected (EPI due to chronic pancreatitis or cystic fibrosis)",
+    "population": "Unselected (EPI due to cystic fibrosis)",
     "confidence_note": "Registry results table (primary outcome), not prose; the quote is the outcome title and arm means. No peer-reviewed publication found.",
     "prediction_level": "class",
     "subjects": "patients",
@@ -183,13 +199,13 @@
     "product_in_model": true,
     "model_kind": "animal",
     "model_first_use_year": 2015,
-    "year": 2022,
+    "year": 2021,
     "status": "contra",
     "model": "Pancreatic duct-ligated, embolized minipig (PEI model)",
     "model_id": "pei-minipig-duct-ligation",
     "src": "https://clinicaltrials.gov/study/NCT03746483",
     "srcLabel": "NCT03746483 results",
-    "note": "OPTION crossover in CF-EPI: CFA 55.6% on MS1819 2.2 g/d vs 86.2% on PERT; OPTION 2 at 2.2-4.4 g/d also fell short of PERT.",
+    "note": "OPTION crossover in CF-EPI: CFA 55.6% on MS1819 2.2 g/d vs 86.2% on PERT; OPTION 2 at 2.2-4.4 g/d also fell short of PERT. Dated to the OPTION 2 topline press release (31 Mar 2021), the earliest public comparison; registry results (2022) set the status. Combination design: the single-arm add-on trial of MS1819 on top of PERT (NCT04302662) is scored on its primary endpoint, CFA, which rose 6.57 points from baseline (topline 18 Aug 2021, interim 13 May 2021); it matches the model in direction but comes after this contra on the same track, so it changes no status and sits in patient_trials.",
     "short": "CFA far below PERT in CF patients",
     "quote": "Efficacy of MS1819-SD: Coefficient of Fat Absorption (CFA) [...] MS1819 55.6 [...] PERT 86.2",
     "confidence": "high",
@@ -207,9 +223,19 @@
       "registry_date": "2024-09-19",
       "doi": null,
       "quote": "Study to Assess an Enteric Microgranule Formulation of Adrulipase in Patients With Cystic Fibrosis"
+     },
+     {
+      "nct": "NCT04302662",
+      "registry_date": "2020-03-10",
+      "doi": null,
+      "quote": "Data collected from 20 patients indicated that MS1819 in combination with PERT led to clinically meaningful improvements in the primary efficacy endpoint, the Coefficient of Fat Absorption."
      }
     ],
-    "judgement": "Judgement call: the sponsor announced OPTION as positive in Sept 2019 (about half of patients reached non-inferiority CFA), but the registry means show MS1819 far below PERT, so the higher-tier record sets contra, dated to its 2022 posting. CF-EPI patients count as the EPI disease. Paired by me; burlulipase and SLV339 have no public model data and do not enter this track."
+    "judgement": "Judgement call: the sponsor announced OPTION as positive in Sept 2019 (about half of patients reached non-inferiority CFA), but the registry means show MS1819 far below PERT, so the higher-tier record sets contra, dated to its 2022 posting. CF-EPI patients count as the EPI disease. Paired by me; burlulipase and SLV339 have no public model data and do not enter this track.",
+    "drug": "adrulipase alfa",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -246,7 +272,11 @@
     "model": "Pancreatic duct-ligated dogs (Mayo Clinic, DiMagno), dosed with Burkholderia plantarii bacterial lipase",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 1997
+    "model_first_use_year": 1997,
+    "drug": "burlulipase",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -285,7 +315,11 @@
     "model": "Pancreatic duct-ligated dogs (Mayo Clinic, DiMagno), dosed with Burkholderia plantarii bacterial lipase",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 1997
+    "model_first_use_year": 1997,
+    "drug": "burlulipase",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -323,7 +357,11 @@
     "quote": "In October 2018, the FDA cleared the Company’s Investigational New Drug (“IND”) application for MS1819 in patients with EPI due to CF.",
     "reason": "Toxicology never published",
     "untested_reason": "unpublished",
-    "judgement": "Year is a proxy: the phase 2a started January 2017, so the toxicology predates it. The minipig efficacy paper reports no safety readout."
+    "judgement": "Year is a proxy: the phase 2a started January 2017, so the toxicology predates it. The minipig efficacy paper reports no safety readout.",
+    "drug": "adrulipase alfa",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

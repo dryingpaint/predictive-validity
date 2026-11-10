@@ -21,8 +21,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "engagement definition; evidence rule 1",
-   "note": "Han 2019 APT (PMID 31437865), epub 2019-08-22, healthy volunteers; quote verbatim. Acid in dog and human = proximal; paired, comparison_stated false correct. Sunwoo 2020 and 2018 abstracts match the judgement's figures."
+   "rule": "retrodiction rule (engagement is a target claim)",
+   "note": "Han 2019 (PMID 31437865, epub 2019-08-22) quote verbatim in abstract. Dog model (PMID 29180359) epub 2017-11-27, after revaprazan human pH (Kim 2010, PMID 20880169): retro. Tegoprazan, oral, healthy volunteers (unselected), year 2019 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -51,8 +52,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "efficacy definition; evidence rule 1",
-   "note": "Lee 2019 full text (PMC6594096): primary endpoint healing by wk 8, quote verbatim. Its 'nonclinical studies' cite ref 14 = Takahashi 2018 (dog), not Kim 2019, so pairing with comparison_stated false is right. Rat 15x potency edge not seen; source_calls_it 'partial' arguable, status unchanged."
+   "rule": "retrodiction rule (post-dating alone; efficacy is a target claim)",
+   "note": "Lee 2019 (PMID 30843245, epub 2019-03-06) quote verbatim; primary week-8 healing, non-inferiority design in note. Kim 2019 rat (PMID 30894456) epub 2019-03-20 post-dates it: retro. Tegoprazan, oral, unselected EE patients correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -141,8 +143,31 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim; fitted to the literature pH it is compared with, so retro. Table 3 does give numbers (day 7 pH>=4 HTR tegoprazan 50 mg 60.7% vs reported 52-68%; fexuprazan 40 mg 69.6% vs 55-70%): magnitude could be within_2x rather than direction_only; status unchanged.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "track definition; retrodiction rule",
+   "note": "Jung 2026 (PMC12823312, 2026-01-15) quote verbatim. Fitted to published tegoprazan phase 1 pH data: retro. Tegoprazan, oral, unselected correct; steady-state 60% vs reported 52-68% would support within_2x over direction_only.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "track definition; opening entry",
+   "note": "Jung 2026 abstract sentence verbatim; model run for fexuprazan from published phase 1 data. Opening untested entry for the fexuprazan track; year 2026, fexuprazan, oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "retrodiction rule",
+   "note": "Jung 2026 Results sentence verbatim (fexuprazan 40 mg 69% vs reported 55-70%; Table 3 day-7 simulation 56%). Fitted to those published phase 1 data: retro, within_2x. Fexuprazan, oral, healthy volunteers (unselected), 2026 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

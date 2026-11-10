@@ -1,0 +1,147 @@
+{
+ "tile": "cystic-fibrosis-cftr-correctors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with None (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with None (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to 'glpg-2737', route oral, population_group biomarker_selected, combination_with 'galicaftor + GLPG2451' (from null); retrodiction false->true, status stays contra (same-target retrodiction ruling: lumacaftor sweat-chloride result public 2011 preceded the GLPG2737 HBE data; failed to reproduce); combination ruling: add-on to galicaftor + GLPG2451 scored"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with None (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug set to 'tezacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug set to 'elexacaftor', route oral, population_group biomarker_selected, combination_with 'tezacaftor + ivacaftor' (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with None (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with None (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null); year 2015->2014 (earliest public: Vertex TRAFFIC/TRANSPORT topline press release 2014-06-24); combination ruling: lumacaftor with ivacaftor scored on primary ppFEV1"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with None (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null); year 2015->2014 (earliest public: Vertex TRAFFIC/TRANSPORT topline press release 2014-06-24); combination ruling: lumacaftor with ivacaftor scored on primary ppFEV1"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to 'tezacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug set to 'tezacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug set to 'tezacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null); status same->retro, retrodiction true, strengthens true (retrodiction ruling and checker adjudication: NDA-time consistency check against trials already read out); regulatory_reliance moved to the tile"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug set to 'elexacaftor', route oral, population_group biomarker_selected, combination_with 'tezacaftor + ivacaftor' (from null); status same->retro, retrodiction true (retrodiction ruling and checker adjudication: label statement rests on trials already read out); regulatory_reliance moved to the tile"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug set to 'elexacaftor', route oral, population_group biomarker_selected, combination_with 'tezacaftor + ivacaftor' (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with 'ivacaftor' (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "drug set to 'bamocaftor', route oral, population_group biomarker_selected, combination_with 'tezacaftor + ivacaftor' (from null); status same->retro, retrodiction false->true (same-target retrodiction ruling: CFTR-corrector FEV1 benefit public 2014 before bamocaftor's HBE data); strengthens prose moved to note; combination ruling: with tezacaftor + ivacaftor"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to 'lumacaftor', route oral, population_group biomarker_selected, combination_with None (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to 'vanzacaftor', route oral, population_group biomarker_selected, combination_with 'tezacaftor + deutivacaftor' (from null); status contra->untested, magnitude off_by_>5x->null (per-drug track ruling and checker adjudication, decisions 12 and 16: the label's fatal liver injury is under Trikafta, which contains no vanzacaftor)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "what": "untested opener 2017, f508del-hbe-ussing x elexacaftor x oral (Keating 2018; split from efficacy 2's patient_trials)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "what": "retro 2018, f508del-hbe-ussing x elexacaftor x oral (Keating 2018 NEJM stated comparison, PMID 30334692; split from efficacy 2)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "same 2015, lumacaftor-rat-dog-tox x lumacaftor x oral (tolerability ruling: 'no relevant target organs' vs Wainwright 2015 AEs similar to placebo)"
+  }
+ ]
+}

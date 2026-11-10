@@ -49,7 +49,11 @@
     "srcLabel": "Li 2009",
     "quote": "Scl-AbII treatment in these animals had robust anabolic effects, with marked increases in bone formation on trabecular, periosteal, endocortical, and intracortical surfaces.",
     "confidence": "high",
-    "judgement": "Opening entry; Scl-AbII is a research antibody, not a tile member, so product_in_model is false."
+    "judgement": "Opening entry; Scl-AbII is a research antibody, not a tile member, so product_in_model is false.",
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1359/jbmr.081206",
@@ -62,7 +66,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "bone formation (rat histomorphometry) vs serum P1NP rise",
     "source_calls_it": null,
-    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "population": "Healthy men and postmenopausal women (single-dose phase 1)",
     "confidence_note": "Abstract-level (Europe PMC); epub 2010, print 2011.",
     "prediction_level": "class",
     "subjects": "healthy_volunteers",
@@ -85,7 +89,11 @@
     "confidence": "high",
     "reason": "Bone formation rose as rats predicted",
     "judgement": "Paired by me: model side is Li 2009 (bone formation by histomorphometry), human side serum formation markers, read as downstream of Wnt activation. Healthy volunteers count for engagement.",
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -119,7 +127,11 @@
     "srcLabel": "Ominsky 2010",
     "quote": "Scl-AbIV treatment had clear anabolic effects, with marked dose-dependent increases in bone formation on trabecular, periosteal, endocortical, and intracortical surfaces.",
     "confidence": "high",
-    "judgement": "Opening entry; Scl-AbIV is described only as a humanized sclerostin antibody, not confirmed to be romosozumab, so product_in_model is false."
+    "judgement": "Opening entry; Scl-AbIV is described only as a humanized sclerostin antibody, not confirmed to be romosozumab, so product_in_model is false.",
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1002/jbmr.14",
@@ -132,7 +144,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "bone formation (monkey histomorphometry) vs serum P1NP rise",
     "source_calls_it": null,
-    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "population": "Healthy men and postmenopausal women (single-dose phase 1)",
     "confidence_note": "Abstract-level (Europe PMC).",
     "prediction_level": "class",
     "subjects": "healthy_volunteers",
@@ -155,7 +167,11 @@
     "confidence": "high",
     "reason": "Formation markers rose as monkeys predicted",
     "judgement": "Paired by me with Ominsky 2010 (May 2010); the Padhi epub is also 2010, so the track opens and turns in the same year.",
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ],
   "dose": [
@@ -193,7 +209,11 @@
     "confidence": "medium",
     "reason": "No human dose or margin stated",
     "judgement": "The FDA review later expressed rat efficacy and toxicity as 1-19x and 1-38x the human AUC at 210 mg, computed against the approved dose after the trials, so not a prospective model target.",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -229,7 +249,11 @@
     "confidence": "medium",
     "reason": "Margins only stated post hoc",
     "judgement": "Judgement call: the 6-month tox studies show tolerability at or above clinical exposure, but the margin public in 2019 is stated against the dose patients had already received, so it is not scored as a stated margin that held.",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ],
   "efficacy": [
@@ -265,7 +289,11 @@
     "srcLabel": "Li 2009",
     "quote": "This not only resulted in complete reversal, at several skeletal sites, of the 1 yr of estrogen deficiency-induced bone loss, but also further increased bone mass and bone strength to levels greater than those found in non-ovariectomized control rats.",
     "confidence": "high",
-    "judgement": "Opening entry, sibling antibody."
+    "judgement": "Opening entry, sibling antibody.",
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1359/jbmr.081206",
@@ -279,7 +307,7 @@
     "magnitude_basis": "BMD gain, rat vs lumbar spine DXA",
     "source_calls_it": null,
     "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
-    "confidence_note": "Abstract-level. Registry NCT00896532 results posted 2018-12-14.",
+    "confidence_note": "Abstract-level. Registry NCT00896532 results posted 2018-12-14. Earliest public: Amgen/UCB press release 2011-04-21 (https://www.prnewswire.com/news-releases/amgen-and-ucb-announce-positive-phase-2-results-of-amg-785cdp7851-in-patients-with-postmenopausal-osteoporosis-pmo-120335159.html) stating the primary endpoint (12-month lumbar spine BMD) was met; McClung 2014 sets the status.",
     "prediction_level": "class",
     "subjects": "patients",
     "comparison_stated": false,
@@ -291,9 +319,9 @@
     "model_first_use_year": 2009,
     "model": "Aged ovariectomized rat (sclerostin antibody Scl-AbII)",
     "model_id": "ovx-rat-scl-ab",
-    "year": 2014,
+    "year": 2011,
     "status": "same",
-    "note": "Phase 2 primary endpoint: lumbar spine BMD rose 11.3% on romosozumab 210 mg monthly vs -0.1% on placebo at 12 months.",
+    "note": "Phase 2 primary endpoint: lumbar spine BMD rose 11.3% on romosozumab 210 mg monthly vs -0.1% on placebo at 12 months. Dated to the April 2011 Amgen/UCB topline press release (earliest public date).",
     "short": "Spine BMD rose 11%, as predicted",
     "src": "https://doi.org/10.1056/nejmoa1305224",
     "srcLabel": "McClung 2014",
@@ -322,7 +350,11 @@
       "doi": "https://doi.org/10.1056/nejmoa1708322",
       "quote": "Over a period of 24 months, a 48% lower risk of new vertebral fractures was observed in the romosozumab-to-alendronate group (6.2% [127 of 2046 patients]) than in the alendronate-to-alendronate group (11.9% [243 of 2047 patients]) (P<0.001)."
      }
-    ]
+    ],
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -356,7 +388,11 @@
     "srcLabel": "Ominsky 2010",
     "quote": "These increases, expressed as percent changes from baseline were 11 to 29 percentage points higher than those found in the vehicle-treated group.",
     "confidence": "high",
-    "judgement": "Opening entry; the 12-month OVX-cyno romosozumab bone-quality study (Ominsky 2017, doi 10.1002/jbmr.3036) was published after FRAME and is not scored separately."
+    "judgement": "Opening entry; the 12-month OVX-cyno romosozumab bone-quality study (Ominsky 2017, doi 10.1002/jbmr.3036) was published after FRAME and is not scored separately.",
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1002/jbmr.14",
@@ -370,7 +406,7 @@
     "magnitude_basis": "BMD gain, monkey DXA vs lumbar spine DXA",
     "source_calls_it": null,
     "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
-    "confidence_note": "Abstract-level.",
+    "confidence_note": "Abstract-level. Earliest public: Amgen/UCB press release 2011-04-21 (https://www.prnewswire.com/news-releases/amgen-and-ucb-announce-positive-phase-2-results-of-amg-785cdp7851-in-patients-with-postmenopausal-osteoporosis-pmo-120335159.html) stating the primary endpoint (12-month lumbar spine BMD) was met; McClung 2014 sets the status.",
     "prediction_level": "class",
     "subjects": "patients",
     "comparison_stated": false,
@@ -382,9 +418,9 @@
     "model_first_use_year": 2010,
     "model": "Cynomolgus monkey (humanized sclerostin antibody Scl-AbIV)",
     "model_id": "cyno-monkey-scl-ab",
-    "year": 2014,
+    "year": 2011,
     "status": "same",
-    "note": "Phase 2 lumbar spine BMD rose with every romosozumab dose, as the monkey BMD gains predicted.",
+    "note": "Phase 2 lumbar spine BMD rose with every romosozumab dose, as the monkey BMD gains predicted. Dated to the April 2011 Amgen/UCB topline press release (earliest public date).",
     "short": "Spine BMD rose, as in monkeys",
     "src": "https://doi.org/10.1056/nejmoa1305224",
     "srcLabel": "McClung 2014",
@@ -413,7 +449,11 @@
       "doi": "https://doi.org/10.1056/nejmoa1708322",
       "quote": "Over a period of 24 months, a 48% lower risk of new vertebral fractures was observed in the romosozumab-to-alendronate group (6.2% [127 of 2046 patients]) than in the alendronate-to-alendronate group (11.9% [243 of 2047 patients]) (P<0.001)."
      }
-    ]
+    ],
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -451,7 +491,11 @@
     "model": "Heterozygous carriers of SOST loss-of-function (sclerosteosis gene carriers)",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -465,20 +509,20 @@
     "magnitude_basis": "BMD above age mean in carriers vs lumbar spine BMD gain on romosozumab",
     "source_calls_it": null,
     "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
-    "confidence_note": "Abstract-level. Registry NCT00896532 results posted 2018-12-14.",
+    "confidence_note": "Abstract-level. Registry NCT00896532 results posted 2018-12-14. Earliest public: Amgen/UCB press release 2011-04-21 (https://www.prnewswire.com/news-releases/amgen-and-ucb-announce-positive-phase-2-results-of-amg-785cdp7851-in-patients-with-postmenopausal-osteoporosis-pmo-120335159.html) stating the primary endpoint (12-month lumbar spine BMD) was met; McClung 2014 sets the status.",
     "subjects": "patients",
     "comparison_stated": false,
     "imported_from": null,
     "endpoint_role": "primary",
     "outcome_tested": "positive",
     "patient_trials": [],
-    "year": 2014,
+    "year": 2011,
     "status": "same",
     "product_in_model": false,
     "source_tier": 1,
     "epub_year": 2014,
     "print_year": 2014,
-    "note": "Partial sclerostin loss predicted higher BMD; romosozumab raised lumbar spine BMD 11.3% at 12 months in phase 2.",
+    "note": "Partial sclerostin loss predicted higher BMD; romosozumab raised lumbar spine BMD 11.3% at 12 months in phase 2. Dated to the April 2011 Amgen/UCB topline press release (earliest public date).",
     "short": "Spine BMD rose, as carriers predicted",
     "src": "https://doi.org/10.1056/nejmoa1305224",
     "srcLabel": "McClung 2014",
@@ -490,7 +534,11 @@
     "model": "Heterozygous carriers of SOST loss-of-function (sclerosteosis gene carriers)",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -528,7 +576,11 @@
     "model": "UK Biobank carriers of the SOST-lowering common allele rs2741856 (Amgen Study 150655)",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": true,
@@ -567,7 +619,11 @@
     "model": "UK Biobank carriers of the SOST-lowering common allele rs2741856 (Amgen Study 150655)",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -605,7 +661,11 @@
     "model": "Mendelian randomization with SOST-locus variants scaled to romosozumab 210 mg",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": true,
@@ -644,7 +704,11 @@
     "model": "Mendelian randomization with SOST-locus variants scaled to romosozumab 210 mg",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -682,7 +746,11 @@
     "model": "Ovariectomized cynomolgus monkey, romosozumab 12 months",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": true,
@@ -721,7 +789,11 @@
     "model": "Ovariectomized cynomolgus monkey, romosozumab 12 months",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ],
   "safety": [
@@ -758,7 +830,11 @@
     "quote": "In addition, the totality of the data from the romosozumab clinical program do not support a risk for cancer, although conclusions may be limited because the duration of romosozumab treatment was limited to only 1 year.",
     "confidence": "medium",
     "reason": "No cancer signal in either",
-    "judgement": "The review puts the rat study and the clinical data in one paragraph, so comparison_stated true. Two osteosarcomas (2/54) in high-dose males at 19x exposure were judged not drug-related; scored on the review's call. The study start year is not public; 2019 used as proxy for first use."
+    "judgement": "The review puts the rat study and the clinical data in one paragraph, so comparison_stated true. Two osteosarcomas (2/54) in high-dose males at 19x exposure were judged not drug-related; scored on the review's call. The study start year is not public; 2019 used as proxy for first use.",
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -771,7 +847,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "atherosclerotic plaque necrosis vs human MACE",
     "source_calls_it": "partial",
-    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "population": "Postmenopausal women with osteoporosis and a prior fragility fracture (ARCH)",
     "confidence_note": "Full FDA review read; the study is sponsor-filed and unpublished; the sponsor read it as negative.",
     "prediction_level": "class",
     "subjects": "patients",
@@ -793,7 +869,11 @@
     "quote": "However, the increase in necrotic plaques in the ApoE KO mice upon treatment with sclerostin antibody may signal an increase in plaque vulnerability and an increased risk of plaque rupture.",
     "confidence": "low",
     "reason": "Partly reproduced the CV signal",
-    "judgement": "Judgement call: a retrodiction prompted by the ARCH (Study 142) MACE imbalance, now a boxed warning. Most endpoints were null and plaque volume fell, but FDA reads the necrotic-plaque increase as consistent with the human signal, so retro with source_calls_it partial rather than contra. Standard rat and monkey tox silence on MI/stroke is not scored: healthy animals cannot show ischemic events."
+    "judgement": "Judgement call: a retrodiction prompted by the ARCH (Study 142) MACE imbalance, now a boxed warning. Most endpoints were null and plaque volume fell, but FDA reads the necrotic-plaque increase as consistent with the human signal, so retro with source_calls_it partial rather than contra. Standard rat and monkey tox silence on MI/stroke is not scored: healthy animals cannot show ischemic events.",
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761062Orig1s000MultidisciplineR.pdf",
@@ -828,7 +908,11 @@
     "quote": "An additional nonclinical study showed lack of induction of ONJ-like lesions by sclerostin antibody in OVX rats with experimental periodontitis.",
     "confidence": "low",
     "reason": "Missed ONJ seen in patients",
-    "judgement": "Judgement call: a retrodiction that failed to reproduce the human finding is contra. Human ONJ: two cases on romosozumab in FRAME (Cosman 2016) and an ONJ warning in the label; few events, so low confidence."
+    "judgement": "Judgement call: a retrodiction that failed to reproduce the human finding is contra. Human ONJ: two cases on romosozumab in FRAME (Cosman 2016) and an ONJ warning in the label; few events, so low confidence.",
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -863,7 +947,11 @@
     "model": "Heterozygous carriers of SOST loss-of-function (sclerosteosis gene carriers)",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -899,7 +987,11 @@
     "model": "Heterozygous carriers of SOST loss-of-function (sclerosteosis gene carriers)",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -912,7 +1004,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "population": "Postmenopausal women with osteoporosis and a prior fragility fracture (ARCH)",
     "confidence_note": "FDA review text; study start date not public, 2019 used as proxy.",
     "subjects": null,
     "comparison_stated": false,
@@ -934,7 +1026,11 @@
     "model": "UK Biobank carriers of the SOST-lowering common allele rs2741856 (Amgen Study 150655)",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": true,
@@ -947,7 +1043,7 @@
     "magnitude": "opposite",
     "magnitude_basis": "MI/stroke association (null, p>0.10) vs ARCH serious CV event imbalance",
     "source_calls_it": null,
-    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "population": "Postmenopausal women with osteoporosis and a prior fragility fracture (ARCH)",
     "confidence_note": "FDA review text; single SNP, eQTL in arterial tissue, no MR scaling; human CV signal itself inconsistent across FRAME and ARCH.",
     "subjects": "patients",
     "comparison_stated": true,
@@ -970,7 +1066,11 @@
     "model": "UK Biobank carriers of the SOST-lowering common allele rs2741856 (Amgen Study 150655)",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -1005,7 +1105,11 @@
     "model": "Mendelian randomization with SOST-locus variants scaled to romosozumab 210 mg",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": true,
@@ -1041,7 +1145,11 @@
     "model": "Mendelian randomization with SOST-locus variants scaled to romosozumab 210 mg",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -1054,7 +1162,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "population": "Postmenopausal women with osteoporosis and a prior fragility fracture (ARCH)",
     "confidence_note": "Abstract-level (Europe PMC); epub 2016-12-22, before the ARCH CV imbalance was public (May 2017).",
     "subjects": null,
     "comparison_stated": false,
@@ -1076,7 +1184,11 @@
     "model": "Angiotensin II-infused ApoE-knockout mouse with SOST transgene or recombinant sclerostin",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -1089,7 +1201,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "aneurysm/atherosclerosis protection by sclerostin vs serious CV events on romosozumab",
     "source_calls_it": "partial",
-    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "population": "Postmenopausal women with osteoporosis and a prior fragility fracture (ARCH)",
     "confidence_note": "Abstract-level. The mouse readout (aneurysm, plaque) is not the human event (MI, stroke); FRAME vs placebo showed no imbalance.",
     "subjects": "patients",
     "comparison_stated": false,
@@ -1100,7 +1212,7 @@
     "source_tier": 1,
     "epub_year": 2017,
     "print_year": 2017,
-    "note": "ARCH then showed more adjudicated serious CV events on romosozumab than alendronate, in the direction the mouse implied.",
+    "note": "ARCH then showed more adjudicated serious CV events on romosozumab than alendronate, in the direction the mouse implied. Design: romosozumab then alendronate vs alendronate alone, an active comparator, not a combination.",
     "short": "CV excess in ARCH, as mouse implied",
     "src": "https://doi.org/10.1056/nejmoa1708322",
     "srcLabel": "Saag 2017",
@@ -1113,7 +1225,11 @@
     "model_kind": "animal",
     "prediction_level": "class",
     "model_first_use_year": 2016,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "class",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -1126,7 +1242,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "population": "Postmenopausal women with osteoporosis and a prior fragility fracture (ARCH)",
     "confidence_note": "FDA review text; study date not public, 2019 used as proxy; tests one mechanism (vasospasm), not ischemic events.",
     "subjects": null,
     "comparison_stated": false,
@@ -1148,7 +1264,11 @@
     "model": "Isolated healthy human coronary artery rings in myograph baths (Amgen Study 150483, non-GLP)",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": true,
@@ -1161,7 +1281,7 @@
     "magnitude": "opposite",
     "magnitude_basis": "Vasoconstriction (none vs vehicle; sumatriptan positive control) vs ARCH serious CV event imbalance",
     "source_calls_it": null,
-    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "population": "Postmenopausal women with osteoporosis and a prior fragility fracture (ARCH)",
     "confidence_note": "FDA review text; study date not public, 2019 used as proxy; tests one mechanism (vasospasm), not ischemic events.",
     "subjects": "patients",
     "comparison_stated": false,
@@ -1184,7 +1304,11 @@
     "model": "Isolated healthy human coronary artery rings in myograph baths (Amgen Study 150483, non-GLP)",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -1197,7 +1321,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "population": "Postmenopausal women with osteoporosis and a prior fragility fracture (ARCH)",
     "confidence_note": "FDA review text; study date not public, 2019 used as proxy; tests one mechanism (platelet activation), not ischemic events.",
     "subjects": null,
     "comparison_stated": false,
@@ -1219,7 +1343,11 @@
     "model": "Human whole blood platelet activation assay by flow cytometry (Amgen Study 125269, non-GLP)",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": true,
@@ -1232,7 +1360,7 @@
     "magnitude": "opposite",
     "magnitude_basis": "CD62P/P-selectin on platelets (none at 1-300 ug/mL) vs ARCH serious CV event imbalance",
     "source_calls_it": null,
-    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "population": "Postmenopausal women with osteoporosis and a prior fragility fracture (ARCH)",
     "confidence_note": "FDA review text; study date not public, 2019 used as proxy; tests one mechanism (platelet activation), not ischemic events.",
     "subjects": "patients",
     "comparison_stated": false,
@@ -1255,7 +1383,90 @@
     "model": "Human whole blood platelet activation assay by flow cytometry (Amgen Study 125269, non-GLP)",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "stage_or_line"
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": false,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "registry_date": null,
+    "model_filed": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "confidence_note": "Abstract-level (Europe PMC); epub 2016-12-13.",
+    "subjects": null,
+    "comparison_stated": false,
+    "imported_from": null,
+    "year": 2016,
+    "status": "untested",
+    "product_in_model": true,
+    "source_tier": 1,
+    "epub_year": 2016,
+    "print_year": 2017,
+    "note": "Passing claim scored as a safety prediction: 12 months of romosozumab kept bone quality and mineralization normal in OVX monkeys.",
+    "short": "Bone quality kept in OVX monkeys",
+    "src": "https://doi.org/10.1002/jbmr.3036",
+    "srcLabel": "Ominsky 2017",
+    "quote": "Romo resulted in marked improvements in bone mass, architecture, and bone strength, while maintaining bone quality in OVX cynos, supporting its bone efficacy and safety profile.",
+    "confidence": "medium",
+    "judgement": "Opening entry for the safety track; the abstract's safety-profile sentence is a passing tolerability claim, which the brief scores.",
+    "model_id": "ovx-cyno-romosozumab-12mo",
+    "model": "Ovariectomized cynomolgus monkey, romosozumab 12 months",
+    "model_kind": "animal",
+    "prediction_level": "class",
+    "model_first_use_year": 2016,
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected"
+   },
+   {
+    "retrodiction": true,
+    "patient_signal_reversed": false,
+    "model_src": "https://doi.org/10.1002/jbmr.3036",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "registry_date": "2018-11-08",
+    "model_filed": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "skeletal adverse events (bone quality in monkeys vs hyperostosis, atypical femoral fracture, ONJ in FRAME)",
+    "source_calls_it": "partial",
+    "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+    "confidence_note": "Abstract-level (PubMed). FRAME (NCT01575834) epub 2016-09-18, before the monkey paper; same drug, so a safety retrodiction. One AFF and two ONJ cases on romosozumab.",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "imported_from": null,
+    "year": 2016,
+    "status": "retro",
+    "product_in_model": true,
+    "source_tier": 1,
+    "epub_year": 2016,
+    "print_year": 2016,
+    "note": "FRAME, public three months earlier, found skeletal adverse events balanced except one atypical femoral fracture and two jaw osteonecrosis cases; monkey bone-safety claim reproduced it, partly.",
+    "short": "Bone safety matched FRAME, mostly",
+    "src": "https://doi.org/10.1056/nejmoa1607948",
+    "srcLabel": "Cosman 2016",
+    "quote": "Adverse events, including instances of hyperostosis, cardiovascular events, osteoarthritis, and cancer, appeared to be balanced between the groups.",
+    "confidence": "low",
+    "judgement": "Retrodiction: romosozumab's own FRAME safety data were public before the monkey paper. Balanced skeletal events match the bone-quality claim; the single AFF and two ONJ cases make it partial.",
+    "model_id": "ovx-cyno-romosozumab-12mo",
+    "model": "Ovariectomized cynomolgus monkey, romosozumab 12 months",
+    "model_kind": "animal",
+    "prediction_level": "class",
+    "model_first_use_year": 2016,
+    "drug": "romosozumab",
+    "route": "sc",
+    "combination_with": null,
+    "population_group": "unselected",
+    "reason": "Bone safety retro-matched FRAME"
    }
   ]
  }

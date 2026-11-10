@@ -11,38 +11,42 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 8 (opener at first class use)",
-   "note": "NCT00784732 resolves: Novartis QAV680 EEC crossover, first posted 2008-11-04, start 2008-09, n=44, no results posted. Quote is the brief summary verbatim. Untested opener correct."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT00784732 re-opened (Novartis QAV680 EEC, first posted 2008-11-04, start 2008-09, n=44); brief summary verbatim. QAV680 oral; unselected SAR; mometasone is a separate comparator arm, not a partner. Untested opener stands."
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "decision 4 (engagement = model readout moved in dosed humans); decision 8 (#82 human challenge in scope)",
-   "note": "Krug 2014 PMID 24332218, JACI; quote verbatim in abstract (abstract only). Europe PMC epub 2013-12-09 (draft says 12-18), year 2013 unchanged. Chamber trial NCT01007721 first posted 2009-11-04, n=146. See rule question 6."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Krug abstract (Europe PMC, epub 2013-12-09): nasal eosinophil quote verbatim. BI 671800 oral b.i.d., unselected chamber SAR; montelukast and fluticasone are separate arms. Same, year 2013 stand."
   },
   {
    "cell": "engagement",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "decision 8 (proxy opener, product_in_model false)",
-   "note": "Stearns 2009 PMID 19608418, BMCL, epub 2009-06-25; both sentences verbatim in the abstract. Amira tricyclics are same-mechanism non-members; opener allowed as proxy."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Stearns 2009 abstract: whole-blood shape-change quote verbatim. Sibling-dosed opener (product_in_model false) for the BI 671800 track; oral, unselected match the Krug patients later compared. Fields correct."
   },
   {
    "cell": "engagement",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "decision 1 (drafter pairing) and decision 4 (direct = ex vivo blockade of stimulus)",
-   "note": "Quote verbatim in Krug abstract; model_src Sandham 2013 PMID 24021582 resolves (QAV680 'inhibition of CRTh2 driven human eosinophil' in vitro). Dose-related ex vivo shape-change blockade in dosed patients supports same, direction_only."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Krug abstract: 'induced a dose-related reduction in ex vivo prostaglandin D2-mediated eosinophil shape change' verbatim; direct readout. BI 671800 oral, unselected, no partner. Same, 2013 stand; assay first used 2009, so prospective."
   },
   {
    "cell": "dose",
@@ -51,42 +55,42 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 4 (dose) and decision 8",
-   "note": "Registry verified. No chamber-tested member (QAV680, BI 671800, fevipiprant NCT01804400 n=188 unreported) ever had a field SAR trial; setipiprant never in the chamber. Untested, not empty, is right."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT00784732 re-opened (Novartis QAV680 EEC, first posted 2008-11-04, start 2008-09, n=44); brief summary verbatim. QAV680 oral; unselected SAR; mometasone is a separate comparator arm, not a partner. Untested opener stands."
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "decision 8 (#18/#47 cross-indication model opens the track)",
-   "note": "Diamant 2014 PMID 24964348, Clin Exp Allergy, Europe PMC first-publication 2014-08-01; quote verbatim in abstract (abstract only). Abstract gives no exposure target ('high inter-subject variability'), so a regimen prediction only."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Diamant 2014 abstract (first published 2014-08-01): randomisation quote verbatim; 1000 mg b.i.d. oral. Setipiprant oral; population_group coded for the SAR field patients later compared (unselected). Opener stands."
   },
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "decision 7 (earliest public date) with decision 2 (tier 5 patient side)",
-   "note": "Status stands (regimen dosed in both trials; Phase 3 median trough 1120 vs 1540-1920 ng/mL, capsules to tablets, biocomparison matched; all verified in full text). Phase 3 miss public 2012-04-02 (Actelion release); model side public 2014, so pairing is datable 2014, not 2017.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): the challenge regimen, 1000 mg b.i.d., was dosed and tolerated"
+   "rule": "dose table: target reached = same; reached-dose failure is efficacy's alone; rule 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ratner full text (PMC5379543, epub 2017-04-04): quote verbatim; dose 'selected ... based on findings from a Phase 2 proof-of-mechanism study'. Regimen dosed and tolerated: same, margin_stated true; failure counted in efficacy. 2012 release has no dose result: 2017 holds."
   },
   {
    "cell": "dose",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "decision 8 (#82 in silico model as a track)",
-   "note": "Krause 2016 PMID 26692193, Clin Pharmacokinet; quote verbatim in abstract (abstract only). Europe PMC lists print 2016-07 and no epub date; PubMed record created 2015-12 is consistent with online 2015-12-23."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Krause abstract: 90% trough-blockade PD target quote verbatim. In silico opener; setipiprant oral, unselected. Fields correct."
   },
   {
    "cell": "dose",
@@ -96,10 +100,11 @@
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "decision 4 (#50: post-hoc PK/PD justification is untested with source_calls_it scaling); conflicts with decision 10",
-   "note": "Quote verbatim in Ratner full text. The model output (<30% of subjects at 90% trough blockade) is a post-hoc dose justification invoked to explain the miss; it reproduces the Phase 3 null but not the Phase 2 positive at the same dose. Propose untested, source_calls_it scaling.",
+   "rule": "dose: whether the reached dose worked is the efficacy question, never this one (DRAFTER_BRIEF dose; CHECKER_BRIEF 3)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in Ratner, citing Krause [42]: a simulation, no SAR patient blockade measured. Agreement rests only on the Phase 3 null, an efficacy result. Fields correct; status should be untested, untested_reason not_measured.",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 governs the dose cell: a post-hoc PK/PD justification is untested, source_calls_it scaling (#50). Decision 10's #50 is the retrodiction flag only; matching the Phase 3 null but not the Phase 2 positive is not reproduction."
+   "adjudication_note": "Dose rule: the <30% at 90% trough blockade is the model's own simulation; no human blockade at 1000 mg b.i.d. was measured. Agreement rests on the Phase 3 null, efficacy's alone. Untested, not_measured (rule 5)."
   },
   {
    "cell": "efficacy",
@@ -108,72 +113,64 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 8",
-   "note": "Registry verified; primary outcome TNSS over last 2 h on day 10 matches the note. No publication of NCT01804400 (fevipiprant chamber) found on Europe PMC 2026-11-05."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT00784732 re-opened (Novartis QAV680 EEC, first posted 2008-11-04, start 2008-09, n=44); brief summary verbatim. QAV680 oral; unselected SAR; mometasone is a separate comparator arm, not a partner. Untested opener stands."
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2012,
-   "rule": "decision 7 (earliest public date) with decision 8 (sibling-dosed model side, product_in_model false)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field year: 2017 -> 2012 (supersedes proposed 2013). Horak 2012 (PMID 23025511, first published 2012-10-01): OC000459 'significantly reduced both nasal and ocular symptoms' in Vienna chamber; Phase 3 miss public 2012-04-02 (RTTNews). model_src would become Horak 2012. | superseded: corrected (): All numbers verified (chamber TNSS AUC -17%, p=.0026; Phase 3 DNSS -0.02, p=0.652; Phase 2 -0.15, p=0.030). Miss public 2012-04-02; member model side Krug epub 2013-12-09 gives 2013 (Horak 2012 OC000459 chamber, a sibling source, would give 2012).",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status contra agreed. Rule 6: Horak 2012 OC000459 chamber (first published 2012-10-01, verified) is an admissible sibling model side (decision 8, product_in_model false); with the 2012-04-02 tier-5 miss, year 2012; model_src Horak."
+   "rule": "retrodiction (efficacy: target claim); rule 6 dating",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ratner: Phase 3 DNSS -0.02, p=0.652 verbatim (primary). Horak 2012 (OC000459 chamber, sibling) epub 2012-10-01, after the 2012-04-02 miss: retrodiction true, failed to reproduce, contra, year 2012. Setipiprant oral unselected, no partner."
   },
   {
    "cell": "efficacy",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "decision 8 (proxy opener)",
-   "note": "Stearns 2009 quote verbatim. Model_src candidates confirmed: Stebbins 2010 PMID 20447387 (AM156 inhibited sneezing and nasal rubs) and Shiraishi 2014 PMID 24456221 (ARRY-063, OVA mouse) are the same system."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Stearns 2009 abstract: mouse AR efficacy quote verbatim. Sibling-dosed opener (product_in_model false) for the setipiprant track; oral, unselected. Fields correct."
   },
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2012,
-   "rule": "decision 7 (earliest public date) with decision 2 (tier 5 patient side)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field year: 2017 -> 2012. Model side Stebbins 2010 (Europe PMC 2010-05-04, 'AM156 inhibited sneezing and nasal rubs'); Phase 3 miss public 2012-04-02 (RTTNews: 'did not confirm efficacy findings made in earlier studies'). Status contra as adjudicated. | superseded: corrected (): Quote verbatim. No member was ever reported in the OVA-mouse rhinitis model (QAV680 unspecified 'rodent allergic disease models'; setipiprant, fevipiprant in vitro only; BI 671800 unpublished) and no source compares it with patients. If kept, year is 2012 (Stebbins 2010 + 2012-04-02 release).",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status contra (as adjudicated earlier). Rule 6 earliest public date: Stebbins 2010 model side (2010-05-04, verified) plus Actelion tier-5 miss 2012-04-02 (RTTNews, verified), so year 2012, not 2017."
+   "rule": "rule 6 dating; contra",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ratner: individual rDNSS quote verbatim. Stebbins 2010 abstract (epub 2010-05-04) shows AM156 'inhibited sneezing and nasal rubs', before the 2012-04-02 miss: prospective, contra on primary, year 2012. Setipiprant oral unselected."
   },
   {
    "cell": "efficacy",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "decision 8 (#18/#47 cross-indication)",
-   "note": "Diamant 2014 abstract verbatim (LAR AUC -25.6%, P=0.006; 15 completers). Ratner states the 1000 mg b.i.d. dose was selected on this study [37]. Untested opener correct."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Diamant abstract: LAR AUC -25.6% (P=0.006) quote verbatim. Opener for the setipiprant asthma-challenge track; setipiprant oral, unselected. Fields correct."
   },
   {
    "cell": "efficacy",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "decision 7 with decision 2 (tier 5)",
-   "note": "Status stands: DNSS is the registered primary in NCT01241214 and NCT01484119; Phase 3 null; development dropped. Phase 3 miss public 2012-04-02; model side (Diamant) public 2014, so the comparison dates to 2014, not the 2017 paper.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status contra agreed. Rule 6 earliest public date: Phase 3 miss public 2012-04-02 (tier 5, verified); model side Diamant 2014 first published 2014-08-01 (verified). Comparison public 2014, so year 2014, not 2017."
+   "rule": "retrodiction (efficacy: target claim); rule 6 dating",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ratner abstract conclusion: 'Setipiprant dose-related efficacy in the Phase 2 trial was not confirmed during Phase 3' verbatim. Diamant first public 2014-08-01, after the 2012-04-02 miss: retrodiction true, contra, 2014. Setipiprant oral unselected."
   },
   {
    "cell": "safety",
@@ -182,8 +179,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 8",
-   "note": "Registry verified; opener matches the other cells."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT00784732 re-opened (Novartis QAV680 EEC, first posted 2008-11-04, start 2008-09, n=44); brief summary verbatim. QAV680 oral; unselected SAR; mometasone is a separate comparator arm, not a partner. Untested opener stands."
   },
   {
    "cell": "safety",
@@ -192,18 +190,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 4 (safety: stated prediction held) and decision 1 (drafter pairing)",
-   "note": "Ratner quote verbatim; Krug abstract states 'favorable safety profile' (model_src resolves). Cross-member 2-week tolerability pairing; low confidence appropriate. ALT/AST >3x ULN in 3 Phase 3 patients and one unrelated SAE verified; no stated harm contradicted."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ratner: tolerability quote verbatim; Krug abstract 'had a favorable safety profile' (model_src, 2013). Setipiprant SAR field patients, oral, unselected; no setipiprant patient safety result public before Krug, so prospective same, 2017."
   },
   {
    "cell": "safety",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "decision 16 (stated tolerability at the effective dose)",
-   "note": "Diamant abstract verbatim: 'Overall, setipiprant was well tolerated and no clinically relevant adverse events occurred' (15 completers, 5 days)."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Diamant abstract: 'Overall, setipiprant was well tolerated and no clinically relevant adverse events occurred' verbatim. Setipiprant oral, unselected. Opener stands."
   },
   {
    "cell": "safety",
@@ -212,8 +212,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 4 (safety) and decision 1 (comparison stated)",
-   "note": "Ratner quote verbatim; comparison is stated: the PoM dose 'was well tolerated and protected against allergen-induced AR ... over a 5-day period [37]' and 'well tolerated in both studies'. Same tolerability fact is also carried as dose margin_stated true (rule question 5)."
+   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ratner: tolerability quote verbatim; same drug and regimen tolerated in 1,209 SAR field participants. Setipiprant oral unselected, no partner. Same, 2017 stand."
   }
  ],
  "missing": [
@@ -228,6 +229,7 @@
   "A sibling-dosed animal model (OVA mouse; AM156, ARRY-063) that no member drug ever used and no source compared with patients: can a drafter pairing open a track and score it contra, or does #73's reliance requirement (decided for the inverse miss) apply to the direct miss too?",
   "Cross-member human-challenge contra under #35: the chamber was never run with the failing member (setipiprant) and the trial source leaves the failure 'not fully known' with a hedged exposure explanation. Is that contra (one drug's contra beats another's same on the track) or untested (failure attributed to conditions the model never tested)?",
   "Decision 16 double count: when a model's only safety statement is that the effective regimen was tolerated, is it scored as dose margin_stated true, as a safety same, or both (the draft does both on the asthma-challenge track)?",
-  "Human challenge model in engagement: when the chamber's readout is itself the dosed-patient readout and there is no separate model number, is engagement 'same' a comparison at all, or should the chamber appear only in dose and efficacy?"
+  "Human challenge model in engagement: when the chamber's readout is itself the dosed-patient readout and there is no separate model number, is engagement 'same' a comparison at all, or should the chamber appear only in dose and efficacy?",
+  "Dose/safety retrodiction: does any earlier public patient result of the same drug (e.g. setipiprant's 2012 efficacy miss, or healthy-volunteer PK) make a later model a retrodiction, or only a result on the dose/safety question itself? The draft uses the first reading for dose 5 and the second for dose 3 and safety 2/4."
  ]
 }

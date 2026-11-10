@@ -11,8 +11,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Each cell opens at model_first_use_year with status untested",
-   "note": "de Vrij 2008 (PMID 18571098) resolves; quote verbatim in abstract. model_id fmr1-ko-mouse-ppi names the same Fmr1 KO mouse (same paper) that dose/efficacy call fmr1-ko-mouse-behaviour; see rule_questions."
+   "rule": "Track = model_id x member drug x route; opener untested at model_first_use_year",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "de Vrij 2008 (PMID 18571098, epub 25 Apr 2008) quote verbatim. Fenobam is a member; the track's patient comparison (index 2) is oral fenobam, so drug fenobam, route oral, unselected confirmed."
   },
   {
    "cell": "engagement",
@@ -21,36 +22,31 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "same + source_calls_it partial; comparison_stated false pairing",
-   "note": "Berry-Kravis 2009 (PMID 19126569) resolves; quote verbatim. Open-label single dose, 6/12 met PPI criterion; same/partial/low confidence is defensible. Abstract cites fenobam's own animal data but no source given, so pairing with MPEP mouse stands."
+   "rule": "drug/route = the patients compared; same + source_calls_it partial",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Berry-Kravis 2009 (PMID 19126569, epub 6 Jan 2009) quote verbatim; 'a single oral dose of 50-150 mg of fenobam' in 12 FXS adults. Drug fenobam, oral, unselected and year 2009 confirmed."
   },
   {
    "cell": "dose",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2005,
-   "rule": "Dating rule 6: each cell opens at model_first_use_year",
-   "note": "Status untested/no_prediction is right: no model stated a human exposure or margin; human mavoglurant PET occupancy (PMID 33545349) guided dosing but is human, not a model target. Opening year should be 2005: Yan 2005 MPEP rescue in Fmr1 KO mice.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: status untested agreed (no model-stated human exposure, occupancy or margin; untested_reason no_prediction stands). Cell opens at model_first_use_year 2005, Yan 2005 MPEP Fmr1 KO rescue (PMID 16054174 verified), not 2008."
+   "rule": "Dose: untested/no_prediction when the model stated no exposure, occupancy or margin; rule 6 opening year",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Yan 2005 (PMID 16054174, epub 27 Jul 2005) quote verbatim; mg/kg MPEP only, no human target. Untested/no_prediction, year 2005, model_first_use_year 2005, mavoglurant oral unselected confirmed."
   },
   {
    "cell": "efficacy",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2005,
-   "rule": "Dating rule 6: each cell opens at model_first_use_year",
-   "note": "Quote verbatim in de Vrij 2008. Earlier Fmr1 KO rescue by mGluR5 blockade exists: Yan 2005 Neuropharmacology (doi:10.1016/j.neuropharm.2005.06.004, MPEP suppressed audiogenic seizures and open-field phenotype). Open the track 2005; model_first_use_year 2005.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: opening untested agreed. Track opens at model_first_use_year 2005: Yan 2005 (PMID 16054174, verified) MPEP rescued Fmr1 KO seizures and open-field phenotype, predating de Vrij 2008. Not the latest entry, so no untested_reason."
+   "rule": "Rule 6: cell opens at model_first_use_year with status untested",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Yan 2005 quote verbatim; earliest Fmr1 KO rescue by mGluR5 blockade (Jul 2005). Opener untested 2005, mavoglurant oral (NCT00718341), unselected confirmed."
   },
   {
    "cell": "efficacy",
@@ -59,8 +55,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "contra: model predicted wrongly; primary endpoint governs",
-   "note": "Jacquemont 2011 (PMID 21209411) quote verbatim; ABC-C primary failed, methylation subgroup exploratory. 2016 and 2017 patient_trials quotes verbatim. NCT02920892 should cite the FXLEARN primary paper (doi:10.1172/jci171723), which states the model-patient contrast itself."
+   "rule": "contra: primary endpoint failed; paired comparison names model side in model_src",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Jacquemont 2011 (PMID 21209411) quote verbatim; ABC-C primary missed. model_src Yan 2005 precedes trial, prospective. patient_trials mavoglurant only; drug mavoglurant, oral, unselected confirmed."
   },
   {
    "cell": "safety",
@@ -69,8 +66,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "untested_reason unpublished; species cannot show hallucination, so silence is not a miss",
-   "note": "Youssef 2017 (PMID 28816242) quote verbatim. No FDA review exists (manifest: no NDA/BLA for all three members). Untested/unpublished stands."
+   "rule": "Safety is per drug; untested_reason unpublished; species cannot show hallucination",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Youssef 2017 quote verbatim (psychiatric AEs incl. hallucinations/psychosis on basimglurant) in oral-dosed FXS patients; drug basimglurant correct. Proxy year 2008 holds: basimglurant's NCT00809562 posted 2008-12-17. Tox unpublished; untested stands."
   },
   {
    "cell": "efficacy",
@@ -79,9 +77,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Evidence rule 6 (track opens untested at model_first_use_year)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "DOI resolves to McBride 2005 Neuron (PMID 15748850, Mar 2005); quote verbatim in abstract. Opening untested entry at 2005, prediction_level class, sibling mGluR antagonists with product_in_model false is correct."
+   "rule": "Rule 6 opener; drug = member the track is run for",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "McBride 2005 (PMID 15748850, Mar 2005) quote verbatim. Fly-track opener for mavoglurant, oral, consistent with index 4; untested 2005 confirmed."
   },
   {
    "cell": "efficacy",
@@ -90,9 +88,53 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Evidence rule 1 (paired comparison, comparison_stated false); primary endpoint failure",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Jacquemont 2011 Sci Transl Med (PMID 21209411, Jan 2011) resolves; quote verbatim in abstract; primary ABC-C failed. Fly prediction public 2005, before trial, so prospective, not retro. model_src McBride 2005 correct. contra 2011 stands."
+   "rule": "contra on primary endpoint; drug/route = patients compared",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Jacquemont 2011 quote verbatim; oral mavoglurant missed ABC-C primary. Fly prediction 2005 is prospective. patient_trials mavoglurant only; drug mavoglurant, oral, unselected confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Separate track per member drug; opener untested at model_first_use_year (rule 6)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Yan 2005 quote verbatim. Basimglurant not tested in Fmr1 KO mice, so sibling-MPEP opener (product_in_model false) is right; untested 2005, basimglurant oral, unselected confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "contra on primary endpoint; rule 6 year = earliest public date",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Youssef 2017 (PMID 28816242, epub 17 Aug 2017) quote verbatim; ADAMS primary missed. NCT01517698 completed Apr 2014, no posted results; Roche Sept 2014 letter (quoted in draft, not re-fetched) gives 2014. Basimglurant oral unselected confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Separate track per member drug; opener untested at model_first_use_year",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "McBride 2005 quote verbatim; flies dosed with non-member antagonists, product_in_model false. Basimglurant fly opener untested 2005, oral, unselected confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "contra on primary endpoint; rule 6 year = earliest public date",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Same FragXis comparison as index 6: Youssef 2017 quote verbatim, ADAMS primary missed; public Sept 2014 via Roche letter. Fly prediction 2005 prospective. contra 2014, basimglurant oral, unselected confirmed."
   }
  ],
  "missing": [

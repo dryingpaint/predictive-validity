@@ -49,7 +49,11 @@
     "confidence": "high",
     "population": "Mouse and rat tumour models",
     "model_first_use_year": 2007,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "veliparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "subjects": "patients",
@@ -85,7 +89,11 @@
     "judgement": "The brief admits healthy volunteers for engagement, so a mixed-tumour phase 0 PAR read is used in the same spirit; no breast-only PAR-change read was found at abstract level (Somlo 2017 reports only baseline PBMC PAR vs benefit). Paired comparison: Kummar does not put the xenograft PAR data beside the patient data. E7449/2X-121 also showed concentration-dependent PBMC PARP inhibition in mixed tumours (Plummer 2020), consistent, not entered as a track.",
     "population": "Advanced solid tumours, mixed (n=13), NCT00387608",
     "model_first_use_year": 2007,
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "veliparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "retrodiction": false,
@@ -120,15 +128,19 @@
     "model_id": "e7449-brca-deficient-xenografts",
     "model": "2X-121 (E7449) BRCA-deficient xenografts: single-agent MDA-MB-436 (BRCA1-mutant TNBC) with tumour PAR pharmacodynamics, plus MX-1 carboplatin and temozolomide potentiation",
     "model_kind": "animal",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "2x-121",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
-    "year": 2020,
-    "status": "same",
+    "year": 2018,
+    "status": "retro",
     "prediction_level": "class",
-    "note": "Phase 1: PAR in PBMCs fell dose-dependently, ~90% at 600 mg QD and at least 70% at 24 h, the readout the xenograft work used.",
+    "note": "Phase 1: PAR in PBMCs fell dose-dependently, ~90% at 600 mg QD and at least 70% at 24 h, the readout the xenograft work used. Retrodiction: the 2015 xenograft PD followed veliparib's 2009 patient PAR inhibition, and reproduced it. First public at ASCO 2018 (abstract 2505).",
     "short": "PBMC PAR inhibition sustained 24 h",
     "src": "https://doi.org/10.1038/s41416-020-0916-5",
     "srcLabel": "Plummer 2020",
@@ -156,7 +168,11 @@
     "model_id": "e7449-brca-deficient-xenografts",
     "model": "2X-121 (E7449) BRCA-deficient xenografts: single-agent MDA-MB-436 (BRCA1-mutant TNBC) with tumour PAR pharmacodynamics, plus MX-1 carboplatin and temozolomide potentiation",
     "model_kind": "animal",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "2x-121",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "retrodiction": false,
@@ -191,15 +207,19 @@
     "model_id": "pamiparib-mda-mb-436-xenograft",
     "model": "Pamiparib's own BRCA1-mutant MDA-MB-436 TNBC xenograft with tumour PAR pharmacodynamics and a mouse PK/PD model (head-to-head vs olaparib)",
     "model_kind": "animal",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "pamiparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
-    "year": 2021,
-    "status": "same",
+    "year": 2020,
+    "status": "retro",
     "prediction_level": "class",
-    "note": "Phase 1A/1B: PBMC PAR inhibition rose with dose to 10 mg BID and plateaued near 80% at or above it.",
+    "note": "Phase 1A/1B: PBMC PAR inhibition rose with dose to 10 mg BID and plateaued near 80% at or above it. Retrodiction: the 2020 xenograft followed patient PAR inhibition (veliparib 2009; pamiparib ASCO 2016, >80% at 10 mg BID or more), and reproduced it.",
     "short": "PBMC PAR ~80% inhibited from 10 mg",
     "src": "https://doi.org/10.1038/s41416-021-01632-2",
     "srcLabel": "Lickliter 2022",
@@ -227,7 +247,11 @@
     "model_id": "pamiparib-mda-mb-436-xenograft",
     "model": "Pamiparib's own BRCA1-mutant MDA-MB-436 TNBC xenograft with tumour PAR pharmacodynamics and a mouse PK/PD model (head-to-head vs olaparib)",
     "model_kind": "animal",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "pamiparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    }
   ],
   "dose": [
@@ -264,7 +288,11 @@
     "population": "Mouse and rat tumour models",
     "model_first_use_year": 2007,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "veliparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "subjects": "patients",
@@ -299,7 +327,11 @@
     "population": "Advanced solid tumours, mixed (n=13), NCT00387608",
     "model_first_use_year": 2007,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "veliparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "retrodiction": false,
@@ -335,15 +367,19 @@
     "model_id": "e7449-brca-deficient-xenografts",
     "model": "2X-121 (E7449) BRCA-deficient xenografts: single-agent MDA-MB-436 (BRCA1-mutant TNBC) with tumour PAR pharmacodynamics, plus MX-1 carboplatin and temozolomide potentiation",
     "model_kind": "animal",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "2x-121",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "year": 2020,
+    "year": 2018,
     "status": "same",
     "prediction_level": "class",
-    "note": "600 mg once daily was the MTD and RP2D, giving maximal, sustained PAR inhibition; the model's tolerated PD-active regimen was reached.",
+    "note": "600 mg once daily was the MTD and RP2D, giving maximal, sustained PAR inhibition; the model's tolerated PD-active regimen was reached. First public at ASCO 2018 (abstract 2505: MTD 600 mg QD, ~90% PBMC PAR inhibition).",
     "short": "MTD 600 mg QD saturates PARP",
     "src": "https://doi.org/10.1038/s41416-020-0916-5",
     "srcLabel": "Plummer 2020",
@@ -372,7 +408,11 @@
     "model_id": "e7449-brca-deficient-xenografts",
     "model": "2X-121 (E7449) BRCA-deficient xenografts: single-agent MDA-MB-436 (BRCA1-mutant TNBC) with tumour PAR pharmacodynamics, plus MX-1 carboplatin and temozolomide potentiation",
     "model_kind": "animal",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "2x-121",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "retrodiction": false,
@@ -408,15 +448,19 @@
     "model_id": "pamiparib-mda-mb-436-xenograft",
     "model": "Pamiparib's own BRCA1-mutant MDA-MB-436 TNBC xenograft with tumour PAR pharmacodynamics and a mouse PK/PD model (head-to-head vs olaparib)",
     "model_kind": "animal",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "pamiparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
-    "year": 2021,
-    "status": "same",
+    "year": 2020,
+    "status": "retro",
     "prediction_level": "class",
-    "note": "RP2D 60 mg BID (MTD 80 mg BID) sits well above the 10 mg BID PAR-inhibition plateau, so the PD target was reached with margin.",
+    "note": "RP2D 60 mg BID (MTD 80 mg BID) sits well above the 10 mg BID PAR-inhibition plateau, so the PD target was reached with margin. Retrodiction: pamiparib's own MTD (80 mg BID, ASCO 2016) and RP2D (60 mg BID, ESMO 2017) preceded the 2020 model, which reproduced them.",
     "short": "RP2D above PAR plateau, tolerated",
     "src": "https://doi.org/10.1038/s41416-021-01632-2",
     "srcLabel": "Lickliter 2022",
@@ -445,7 +489,11 @@
     "model_id": "pamiparib-mda-mb-436-xenograft",
     "model": "Pamiparib's own BRCA1-mutant MDA-MB-436 TNBC xenograft with tumour PAR pharmacodynamics and a mouse PK/PD model (head-to-head vs olaparib)",
     "model_kind": "animal",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "pamiparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    }
   ],
   "efficacy": [
@@ -483,7 +531,11 @@
     "model_first_use_year": 2007,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "veliparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "subjects": "patients",
@@ -504,12 +556,12 @@
     "magnitude_basis": "pCR rate gain vs xenograft regression",
     "source_calls_it": null,
     "confidence_note": "Adaptive phase 2; the arm combined veliparib with carboplatin against a no-carboplatin control, so the model's potentiation claim was not isolated. Abstract-level. I-SPY 2 master record NCT01042379 has no posted results for this arm.",
-    "year": 2016,
+    "year": 2013,
     "status": "same",
     "model": "MX-1 BRCA1/2-deficient breast xenograft and syngeneic models, veliparib (ABT-888) potentiating temozolomide, platinums and cyclophosphamide",
     "model_id": "mx1-brca-xenograft-chemopotentiation",
     "prediction_level": "class",
-    "note": "I-SPY 2: veliparib-carboplatin doubled pCR in TNBC (51% vs 26%) and graduated, as the potentiation model predicted.",
+    "note": "I-SPY 2: veliparib-carboplatin doubled pCR in TNBC (51% vs 26%) and graduated, as the potentiation model predicted. Combination design (veliparib plus carboplatin added to paclitaxel): scored on the primary pCR endpoint, so same stands. First public at SABCS 2013 (Rugo, abstract S5-02).",
     "short": "Veliparib-carboplatin doubles TNBC pCR",
     "src": "https://doi.org/10.1056/NEJMoa1513749",
     "srcLabel": "Rugo 2016",
@@ -520,7 +572,11 @@
     "model_first_use_year": 2007,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "veliparib",
+    "route": "oral",
+    "combination_with": "carboplatin",
+    "population_group": "stage_or_line"
    },
    {
     "subjects": "patients",
@@ -541,12 +597,12 @@
     "magnitude_basis": null,
     "source_calls_it": "miss",
     "confidence_note": "Abstract-level; the result is the trial's stated co-primary conclusion. NCT02032277 has no posted results; EFS follow-up (Geyer 2022) confirmed no veliparib effect.",
-    "year": 2018,
+    "year": 2017,
     "status": "contra",
     "model": "MX-1 BRCA1/2-deficient breast xenograft and syngeneic models, veliparib (ABT-888) potentiating temozolomide, platinums and cyclophosphamide",
     "model_id": "mx1-brca-xenograft-chemopotentiation",
     "prediction_level": "class",
-    "note": "BrighTNess phase 3: pCR 53% with veliparib plus carboplatin-paclitaxel vs 58% with carboplatin-paclitaxel; the xenograft potentiation did not transfer.",
+    "note": "BrighTNess phase 3: pCR 53% with veliparib plus carboplatin-paclitaxel vs 58% with carboplatin-paclitaxel; the xenograft potentiation did not transfer. Combination design: veliparib added to carboplatin-paclitaxel, scored on the primary pCR endpoint. First public at ASCO 2017 (Geyer).",
     "short": "Veliparib adds nothing to carboplatin",
     "src": "https://doi.org/10.1016/S1470-2045(18)30111-6",
     "srcLabel": "Loibl 2018",
@@ -577,7 +633,11 @@
       "doi": "10.1016/j.annonc.2022.01.009",
       "quote": "Improvement in pCR with the addition of carboplatin was associated with long-term EFS benefit with a manageable safety profile, and without increasing the risk of second malignancies, whereas adding veliparib did not impact EFS."
      }
-    ]
+    ],
+    "drug": "veliparib",
+    "route": "oral",
+    "combination_with": "carboplatin + paclitaxel",
+    "population_group": "stage_or_line"
    },
    {
     "subjects": null,
@@ -613,7 +673,11 @@
     "model_first_use_year": 2008,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "drug": "veliparib"
    },
    {
     "subjects": "patients",
@@ -634,12 +698,12 @@
     "magnitude_basis": "single-agent ORR in gBRCA patients vs GEMM tumour control",
     "source_calls_it": null,
     "confidence_note": "Abstract-level; single-arm phase 2 (n=44) with a phase 1 combination cohort (n=27). The source does not compare with the GEMM.",
-    "year": 2017,
+    "year": 2015,
     "status": "same",
     "model": "BRCA1-deficient K14cre;Brca1F/F;p53F/F mammary-tumour GEMM dosed with olaparib (AZD2281) alone and with platinum",
     "model_id": "brca1-gemm-k14cre-azd2281",
     "prediction_level": "patient",
-    "note": "Single-agent veliparib 400 mg BID gave responses in gBRCA metastatic breast cancer (14% BRCA1, 36% BRCA2); combination RR 56%.",
+    "note": "Single-agent veliparib 400 mg BID gave responses in gBRCA metastatic breast cancer (14% BRCA1, 36% BRCA2); combination RR 56%. Single-arm phase 2 with no preset success bar: response in gBRCA patients, as the model predicted, so same. First public at ASCO 2015 (abstract 520).",
     "short": "gBRCA carriers respond to veliparib",
     "src": "https://doi.org/10.1158/1078-0432.CCR-16-2714",
     "srcLabel": "Somlo 2017",
@@ -650,7 +714,11 @@
     "model_first_use_year": 2008,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "drug": "veliparib"
    },
    {
     "subjects": "patients",
@@ -671,13 +739,13 @@
     "magnitude_basis": "PFS hazard ratio vs GEMM survival gain",
     "source_calls_it": null,
     "confidence_note": "Abstract-level. The phase 2 BROCADE (2018) with the same combination missed PFS (HR 0.789, p=0.227) but raised ORR significantly; treated as partial agreement, not a contradiction, since it was underpowered and the phase 3 answered the same question.",
-    "year": 2020,
+    "year": 2019,
     "status": "same",
     "strengthens": true,
     "model": "BRCA1-deficient K14cre;Brca1F/F;p53F/F mammary-tumour GEMM dosed with olaparib (AZD2281) alone and with platinum",
     "model_id": "brca1-gemm-k14cre-azd2281",
     "prediction_level": "patient",
-    "note": "BROCADE3 phase 3: veliparib plus carboplatin-paclitaxel, then maintenance, improved PFS in gBRCA carriers (HR 0.71).",
+    "note": "BROCADE3 phase 3: veliparib plus carboplatin-paclitaxel, then maintenance, improved PFS in gBRCA carriers (HR 0.71). Combination design: veliparib added to carboplatin-paclitaxel, scored on primary PFS. First public at ESMO 2019 (Dieras).",
     "short": "PFS gain in gBRCA phase 3",
     "src": "https://doi.org/10.1016/S1470-2045(20)30447-2",
     "srcLabel": "Diéras 2020",
@@ -695,7 +763,11 @@
       "doi": "10.1093/annonc/mdx505",
       "quote": "Numerical but not statistically significant increases in both PFS and OS were observed in patients with BRCA1/2-mutated recurrent/metastatic breast cancer receiving VCP compared with PCP."
      }
-    ]
+    ],
+    "route": "oral",
+    "combination_with": "carboplatin + paclitaxel",
+    "population_group": "biomarker_selected",
+    "drug": "veliparib"
    },
    {
     "subjects": "patients",
@@ -716,13 +788,12 @@
     "magnitude_basis": "single-agent ORR vs GEMM tumour control",
     "source_calls_it": null,
     "confidence_note": "Abstract-level; single-arm phase 2 (n=88). Year is the registry results posting (2022-09-07), before the 2023 print.",
-    "year": 2022,
+    "year": 2021,
     "status": "same",
-    "strengthens": true,
     "model": "BRCA1-deficient K14cre;Brca1F/F;p53F/F mammary-tumour GEMM dosed with olaparib (AZD2281) alone and with platinum",
     "model_id": "brca1-gemm-k14cre-azd2281",
     "prediction_level": "patient",
-    "note": "Pamiparib monotherapy phase 2 (China): ORR 38% in gBRCA TNBC and 62% in HR+/HER2-, confirming genotype-selected activity.",
+    "note": "Pamiparib monotherapy phase 2 (China): ORR 38% in gBRCA TNBC and 62% in HR+/HER2-, confirming genotype-selected activity. Pamiparib track of this model. Single-arm phase 2, no preset success bar: ORR 38% (TNBC), a response as predicted. First public at ASCO 2021 (Sun, abstract 1087).",
     "short": "Pamiparib active in gBRCA breast",
     "src": "https://doi.org/10.1007/s10549-022-06785-z",
     "srcLabel": "Xu 2023",
@@ -734,7 +805,11 @@
     "model_first_use_year": 2008,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "drug": "pamiparib"
    },
    {
     "subjects": null,
@@ -755,12 +830,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "confidence_note": "Full text read (PMC7434893). The retrodiction was in 13 patients of mixed tumour types (4 of 41 enrolled had breast cancer), so it is not a breast-cancer patient result and is not scored retro here; NCT03562832 (completed 2024-08, 20 enrolled) has no posted results or publication as of 2026-11-05 and the sponsor's 2023 pipeline update is silent on it.",
-    "year": 2020,
+    "year": 2018,
     "status": "untested",
     "model": "2X-121 drug-response predictor (DRP): 414-gene in-silico classifier trained on E7449 cell-line sensitivity, used to select patients",
     "model_id": "2x121-drp-in-silico",
     "prediction_level": "patient",
-    "note": "DRP picked responders retrospectively in 13 mixed-tumour phase 1 patients; the DRP-selected breast phase 2 (n=20) is complete but unreported.",
+    "note": "DRP picked responders retrospectively in 13 mixed-tumour phase 1 patients; the DRP-selected breast phase 2 (n=20) is complete but unreported. DRP first public at ASCO 2018 (Plummer, abstract 2505), so the model opens in 2018.",
     "short": "DRP-selected breast trial unreported",
     "src": "https://doi.org/10.1038/s41416-020-0916-5",
     "srcLabel": "Plummer 2020",
@@ -769,7 +844,7 @@
     "reason": "Breast DRP trial never reported",
     "judgement": "Kept untested rather than retro because the task scores breast-cancer patient results only; a reviewer applying the healthy-volunteer latitude to a patient-selection model would enter 2020 as retro (retrodiction reproduced, product in model) and the breast phase 2 as untested.",
     "population": "Metastatic breast cancer, DRP top-20% likelihood of response, after two or more prior therapies",
-    "model_first_use_year": 2020,
+    "model_first_use_year": 2018,
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [
@@ -779,7 +854,11 @@
       "doi": null,
       "quote": "Investigation of Anti-tumour Effect and Tolerability of the PARP Inhibitor 2X-121 in Patients With Metastatic Breast Cancer Selected by the 2X-121 DRP"
      }
-    ]
+    ],
+    "drug": "2x-121",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected"
    },
    {
     "retrodiction": false,
@@ -816,14 +895,18 @@
     "model": "I-SPY 2 pre-specified DNA-repair-deficiency expression signatures: PARPi-7 (7 genes, from olaparib sensitivity in 22 breast cancer cell lines) and BRCA1ness (77-gene BRCA1-like classifier)",
     "model_kind": "in_silico",
     "prediction_level": "patient",
-    "model_first_use_year": 2012
+    "model_first_use_year": 2012,
+    "drug": "veliparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "year": 2017,
+    "year": 2014,
     "status": "same",
-    "note": "I-SPY 2: pre-specified PARPi-7 and BRCA1ness predicted pCR in the veliparib-carboplatin arm but not in controls; biomarker-by-treatment interaction p<0.05.",
+    "note": "I-SPY 2: pre-specified PARPi-7 and BRCA1ness predicted pCR in the veliparib-carboplatin arm but not in controls; biomarker-by-treatment interaction p<0.05. Combination arm (veliparib plus carboplatin): scored on the pre-specified biomarker test, so same stands. First public at SABCS 2014 (abstract P3-06-05).",
     "short": "Signatures predicted VC pCR, not control",
     "src": "https://doi.org/10.1038/s41523-017-0025-7",
     "srcLabel": "Wolf 2017",
@@ -861,7 +944,11 @@
     "model": "I-SPY 2 pre-specified DNA-repair-deficiency expression signatures: PARPi-7 (7 genes, from olaparib sensitivity in 22 breast cancer cell lines) and BRCA1ness (77-gene BRCA1-like classifier)",
     "model_kind": "in_silico",
     "prediction_level": "patient",
-    "model_first_use_year": 2012
+    "model_first_use_year": 2012,
+    "drug": "veliparib",
+    "route": "oral",
+    "combination_with": "carboplatin",
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -905,8 +992,12 @@
     "model_id": "e7449-brca-deficient-xenografts",
     "model": "2X-121 (E7449) BRCA-deficient xenografts: single-agent MDA-MB-436 (BRCA1-mutant TNBC) with tumour PAR pharmacodynamics, plus MX-1 carboplatin and temozolomide potentiation",
     "model_kind": "animal",
-    "prediction_level": "patient",
-    "model_first_use_year": 2015
+    "prediction_level": "class",
+    "model_first_use_year": 2015,
+    "drug": "2x-121",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected"
    },
    {
     "retrodiction": false,
@@ -942,15 +1033,19 @@
     "model_id": "pamiparib-mda-mb-436-xenograft",
     "model": "Pamiparib's own BRCA1-mutant MDA-MB-436 TNBC xenograft with tumour PAR pharmacodynamics and a mouse PK/PD model (head-to-head vs olaparib)",
     "model_kind": "animal",
-    "prediction_level": "patient",
-    "model_first_use_year": 2020
+    "prediction_level": "class",
+    "model_first_use_year": 2020,
+    "drug": "pamiparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
-    "year": 2022,
-    "status": "same",
-    "note": "Pamiparib monotherapy phase 2 (China): ORR 38% in gBRCA TNBC and 62% in gBRCA HR+/HER2-, as the BRCA1-mutant xenograft predicted.",
+    "year": 2021,
+    "status": "retro",
+    "note": "Pamiparib monotherapy phase 2 (China): ORR 38% in gBRCA TNBC and 62% in gBRCA HR+/HER2-, as the BRCA1-mutant xenograft predicted. Retrodiction: the xenograft (2020) followed PARP-inhibitor responses in gBRCA breast cancer (olaparib, talazoparib), and reproduced them. First public at ASCO 2021.",
     "short": "gBRCA breast ORR 38-62% on pamiparib",
     "src": "https://doi.org/10.1007/s10549-022-06785-z",
     "srcLabel": "Xu 2023",
@@ -980,8 +1075,12 @@
     "model_id": "pamiparib-mda-mb-436-xenograft",
     "model": "Pamiparib's own BRCA1-mutant MDA-MB-436 TNBC xenograft with tumour PAR pharmacodynamics and a mouse PK/PD model (head-to-head vs olaparib)",
     "model_kind": "animal",
-    "prediction_level": "patient",
-    "model_first_use_year": 2020
+    "prediction_level": "class",
+    "model_first_use_year": 2020,
+    "drug": "pamiparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected"
    },
    {
     "retrodiction": false,
@@ -1018,7 +1117,11 @@
     "model": "Patient-derived TNBC organoids (n=14) tested for veliparib-cisplatin response against an I-SPY 2-trained classifier (PARPi7 plus lymphocyte signature)",
     "model_kind": "ex_vivo",
     "prediction_level": "patient",
-    "model_first_use_year": 2026
+    "model_first_use_year": 2026,
+    "drug": "veliparib",
+    "route": "oral",
+    "combination_with": "carboplatin",
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": true,
@@ -1056,7 +1159,54 @@
     "model": "Patient-derived TNBC organoids (n=14) tested for veliparib-cisplatin response against an I-SPY 2-trained classifier (PARPi7 plus lymphocyte signature)",
     "model_kind": "ex_vivo",
     "prediction_level": "patient",
-    "model_first_use_year": 2026
+    "model_first_use_year": 2026,
+    "drug": "veliparib",
+    "route": "oral",
+    "combination_with": "carboplatin",
+    "population_group": "stage_or_line"
+   },
+   {
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2008,
+    "print_year": 2008,
+    "registry_date": null,
+    "model_filed": false,
+    "product_in_model": false,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "confidence_note": null,
+    "year": 2021,
+    "status": "untested",
+    "model": "BRCA1-deficient K14cre;Brca1F/F;p53F/F mammary-tumour GEMM dosed with olaparib (AZD2281) alone and with platinum",
+    "model_id": "brca1-gemm-k14cre-azd2281",
+    "prediction_level": "patient",
+    "note": "Pamiparib track of the olaparib GEMM; the model was never run with pamiparib, so it opens at its first pairing with pamiparib (proxy year).",
+    "short": "GEMM opens for pamiparib",
+    "src": "https://doi.org/10.1073/pnas.0806092105",
+    "srcLabel": "Rottenberg 2008",
+    "quote": "Combination of AZD2281 with cisplatin or carboplatin increased the recurrence-free and overall survival, suggesting that AZD2281 potentiates the effect of these DNA-damaging agents.",
+    "confidence": "high",
+    "population": "K14cre;Brca1F/F;p53F/F mammary tumours, olaparib 50 mg/kg",
+    "model_first_use_year": 2008,
+    "endpoint_role": null,
+    "outcome_tested": null,
+    "patient_trials": [],
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "drug": "pamiparib",
+    "untested_reason": null,
+    "reason": null,
+    "judgement": "Opener for the pamiparib track; proxy year 2021 because the GEMM was never dosed with pamiparib and the cell keeps JSON order."
    }
   ],
   "safety": [
@@ -1092,7 +1242,11 @@
     "confidence": "high",
     "imported_from": null,
     "population": "K14cre;Brca1F/F;p53F/F mammary tumours, olaparib 50 mg/kg",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "drug": "pamiparib"
    },
    {
     "subjects": "patients",
@@ -1113,12 +1267,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "confidence_note": "Abstract-level on both sides; the GEMM abstract's 'without signs of toxicity' may rest on weight and behaviour rather than blood counts (full text not retrievable), and the model drug was olaparib, not a member.",
-    "year": 2022,
+    "year": 2021,
     "status": "contra",
     "model": "BRCA1-deficient K14cre;Brca1F/F;p53F/F mammary-tumour GEMM dosed with olaparib (AZD2281) alone and with platinum",
     "model_id": "brca1-gemm-k14cre-azd2281",
     "prediction_level": "patient",
-    "note": "Pamiparib monotherapy: grade 3+ haematological toxicity common, 65% of patients dose-reduced; the mouse that could show cytopenias said none.",
+    "note": "Pamiparib monotherapy: grade 3+ haematological toxicity common, 65% of patients dose-reduced; the mouse that could show cytopenias said none. A passing no-toxicity claim is a safety prediction and is scored; breast patients were measured, so their result sets the status. First public at ASCO 2021.",
     "short": "Haematological toxicity the GEMM missed",
     "src": "https://doi.org/10.1007/s10549-022-06785-z",
     "srcLabel": "Xu 2023",
@@ -1128,7 +1282,11 @@
     "judgement": "A mouse can show marrow suppression, so the GEMM's stated absence of toxicity is a prediction the species could have tested, and monotherapy with a member drug contradicted it (64.8% dose reductions). Veliparib combination toxicity (BROCADE3 thrombocytopenia 40% vs 28%) is confounded by carboplatin and not used. Olaparib rat/dog toxicology predicted marrow toxicity but olaparib is not a member here, so that evidence is set aside under decision 13.",
     "imported_from": null,
     "population": "gBRCA1/2-mutated HER2-negative advanced breast cancer",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "drug": "pamiparib"
    },
    {
     "retrodiction": false,
@@ -1163,7 +1321,11 @@
     "model_id": "e7449-brca-deficient-xenografts",
     "model": "2X-121 (E7449) BRCA-deficient xenografts: single-agent MDA-MB-436 (BRCA1-mutant TNBC) with tumour PAR pharmacodynamics, plus MX-1 carboplatin and temozolomide potentiation",
     "model_kind": "animal",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "2x-121",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected"
    },
    {
     "retrodiction": false,
@@ -1171,7 +1333,7 @@
     "year": 2020,
     "status": "same",
     "prediction_level": "class",
-    "note": "Phase 1: no intestinal DLTs; diarrhoea 29% any grade; DLTs were fatigue and anaphylaxis, with unexpected rash, photosensitivity and chromaturia.",
+    "note": "Phase 1: no intestinal DLTs; diarrhoea 29% any grade; DLTs were fatigue and anaphylaxis, with unexpected rash, photosensitivity and chromaturia. Imported mixed-tumour cohort (4 breast patients); no breast-only 2X-121 safety data exist, so the import stands.",
     "short": "No intestinal toxicity; rash unforeseen",
     "src": "https://doi.org/10.1038/s41416-020-0916-5",
     "srcLabel": "Plummer 2020",
@@ -1199,7 +1361,11 @@
     "model_id": "e7449-brca-deficient-xenografts",
     "model": "2X-121 (E7449) BRCA-deficient xenografts: single-agent MDA-MB-436 (BRCA1-mutant TNBC) with tumour PAR pharmacodynamics, plus MX-1 carboplatin and temozolomide potentiation",
     "model_kind": "animal",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "2x-121",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "retrodiction": false,
@@ -1234,15 +1400,19 @@
     "model_id": "pamiparib-mda-mb-436-xenograft",
     "model": "Pamiparib's own BRCA1-mutant MDA-MB-436 TNBC xenograft with tumour PAR pharmacodynamics and a mouse PK/PD model (head-to-head vs olaparib)",
     "model_kind": "animal",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "pamiparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
-    "year": 2022,
+    "year": 2021,
     "status": "contra",
     "prediction_level": "class",
-    "note": "Pamiparib monotherapy in gBRCA breast cancer: haematologic grade 3+ TEAEs common, 65% dose-reduced; the mouse that could show cytopenias reported none.",
+    "note": "Pamiparib monotherapy in gBRCA breast cancer: haematologic grade 3+ TEAEs common, 65% dose-reduced; the mouse that could show cytopenias reported none. Retrodiction failed: pamiparib's own grade 3-4 anaemia (13%) was public at ASCO 2016, before the 2020 model, which reported no toxicity. Breast data, ASCO 2021.",
     "short": "Anaemia, neutropenia unforeseen by model",
     "src": "https://doi.org/10.1007/s10549-022-06785-z",
     "srcLabel": "Xu 2023",
@@ -1270,7 +1440,11 @@
     "model_id": "pamiparib-mda-mb-436-xenograft",
     "model": "Pamiparib's own BRCA1-mutant MDA-MB-436 TNBC xenograft with tumour PAR pharmacodynamics and a mouse PK/PD model (head-to-head vs olaparib)",
     "model_kind": "animal",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "pamiparib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected"
    }
   ]
  }

@@ -45,11 +45,12 @@ assert set(ENTRY) | set(TRACK) | {"modality"} == KEYS, "every key the brief list
 
 
 def rows(d: dict) -> list[tuple]:
-    """(question, modality, seq, json_index, entry) per entry; seq counts within the question and modality."""
+    """(question, modality, seq, json_index, entry) per entry; seq counts within the question and modality in year
+    order (ties in list order), so a track's entries are ordered by year wherever they sit in the list."""
     out = []
     for q in QUESTIONS:
         seen: dict[str, int] = {}
-        for i, e in enumerate(d["cells"][q], 1):
+        for i, e in sorted(enumerate(d["cells"][q], 1), key=lambda ie: (ie[1]["year"], ie[0])):
             mod = e.get("modality") or ""
             seen[mod] = seen.get(mod, 0) + 1
             out.append((q, mod, seen[mod], i, e))

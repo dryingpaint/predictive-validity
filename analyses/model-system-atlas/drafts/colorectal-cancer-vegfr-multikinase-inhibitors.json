@@ -51,7 +51,11 @@
     "src": "https://doi.org/10.1158/1535-7163.MCT-05-0410",
     "srcLabel": "Albert 2006",
     "quote": "In vivo ABT-869 is effective orally in the mechanism-based murine models of VEGF-induced uterine edema (ED50 = 0.5 mg/kg) and corneal angiogenesis (>50% inhibition, 15 mg/kg).",
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "linifanib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "vegf-induced-uterine-edema-mouse",
@@ -88,7 +92,11 @@
     "srcLabel": "Wong 2009",
     "quote": "Dynamic contrast-enhanced magnetic resonance imaging (DCE-MRI) showed dose-dependent reduced tumor vascular permeability that correlated with drug exposure.",
     "readout_tier": "downstream",
-    "reason": "DCE-MRI permeability fell as model said"
+    "reason": "DCE-MRI permeability fell as model said",
+    "drug": "linifanib",
+    "route": "oral",
+    "population_group": "other_disease",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -124,7 +132,11 @@
     "src": "https://doi.org/10.1124/jpet.110.178061",
     "srcLabel": "Jiang 2011",
     "quote": "After 2 days of treatment on the HT1080 model, vascular permeability, K(trans), was reduced by >60% and hypoxic tumor fraction was significantly decreased, which was also seen in the SW620 tumors after 4 days of treatment.",
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "linifanib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -161,7 +173,11 @@
     "srcLabel": "Wong 2009",
     "quote": "Dynamic contrast-enhanced magnetic resonance imaging (DCE-MRI) showed dose-dependent reduced tumor vascular permeability that correlated with drug exposure.",
     "readout_tier": "downstream",
-    "reason": "Reproduces patient DCE-MRI permeability drop"
+    "reason": "Reproduces patient DCE-MRI permeability drop",
+    "drug": "linifanib",
+    "route": "oral",
+    "population_group": "other_disease",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -200,7 +216,11 @@
     "srcLabel": "Albert 2006",
     "quote": "efficacy correlated more strongly with time over a threshold value (cellular KDR IC50 corrected for plasma protein binding = 0.08 microg/mL, >or=7 hours) than with plasma area under the curve or Cmax.",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "linifanib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "crc-cellline-xenograft-mouse",
@@ -227,19 +247,22 @@
     "prediction_level": "class",
     "confidence": "low",
     "confidence_note": "Abstract-level reading; the exposure comparison is my arithmetic from the abstract's mean clearance and nominal dose, not a stated or measured trough. Sufficiency is not shown for linifanib in CRC: the 2014 phase 2 used lower doses (7.5/12.5 mg) against an active comparator and the 17.5 mg KRAS-mutant phase 2 stopped for futility on ORR; the one placebo-controlled CRC win (famitinib) has no public exposure target. Phase 1 NCT not found.",
-    "judgement": "Scored same, low confidence, under 'reached': the model's exposure target was cleared at the tolerated phase 1 dose, with DCE-MRI permeability falling in step with exposure. Not contra via efficacy because neither linifanib CRC trial tested the model's actual prediction (activity versus no VEGF blockade): one was superiority over bevacizumab, the other a single-arm ORR gate. A checker who scores those trials as failures should turn this entry contra with derived_from efficacy.",
+    "judgement": "Scored same, low confidence, under 'reached': the model's exposure target was cleared at the tolerated phase 1 dose. Under the current dose table, whether the reached dose worked is the efficacy question only, so linifanib's CRC efficacy failures (efficacy cell) do not turn this entry; the checker's 'reached and sufficient' objection falls away with that ruling.",
     "year": 2009,
     "status": "same",
     "model": "Human tumour cell-line xenografts in mice incl. colon carcinoma (ABT-869/linifanib)",
-    "note": "Phase 1 PK (clearance 2.7 L/h, half-life 18 h) puts the tolerated 0.25 mg/kg dose above the xenograft 0.08 ug/mL threshold all day; whether that was enough in CRC was never cleanly tested.",
+    "note": "Phase 1 PK (clearance 2.7 L/h, half-life 18 h) puts the tolerated 0.25 mg/kg dose above the xenograft 0.08 ug/mL threshold all day; under the dose ruling, reached is same and whether it worked is efficacy. Mixed solid-tumour phase 1.",
     "short": "Exposure target cleared at tolerated dose",
     "src": "https://doi.org/10.1200/JCO.2008.21.7125",
     "srcLabel": "Wong 2009",
     "quote": "Oral clearance of ABT-869 was linear, with a mean of 2.7 +/- 1.2 L/h and half-life of 18.4 +/- 5.7 hours, with no evidence of drug accumulation at day 15.",
     "blocked_by": null,
     "margin_stated": false,
-    "reason": "Target exposure reached; sufficiency untested in CRC",
-    "untested_reason": "unsettled"
+    "reason": "Target exposure reached at tolerated dose",
+    "drug": "linifanib",
+    "route": "oral",
+    "population_group": "other_disease",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -277,7 +300,11 @@
     "quote": "This study is to establish physiologically based pharmacokinetic (PBPK) models of famitinib in rat and monkey, and then to predict the pharmacokinetics and tissue distribution of famitinib in human based on the PBPK models.",
     "blocked_by": null,
     "margin_stated": false,
-    "untested_reason": "unsettled"
+    "untested_reason": "unsettled",
+    "drug": "famitinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -315,7 +342,11 @@
     "quote": "The AUC0-∞, ratios of observed and predicted data in human were 1.63 (rat to human) and 1.57 (monkey to human), respectively.",
     "blocked_by": null,
     "margin_stated": false,
-    "reason": "Human exposure reproduced within 2-fold"
+    "reason": "Human exposure reproduced within 2-fold",
+    "drug": "famitinib",
+    "route": "oral",
+    "population_group": "other_disease",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -332,7 +363,7 @@
     "print_year": 2006,
     "registry_date": null,
     "model_filed": null,
-    "product_in_model": true,
+    "product_in_model": false,
     "model_kind": "animal",
     "retrodiction": false,
     "imported_from": null,
@@ -348,14 +379,18 @@
     "year": 2006,
     "status": "untested",
     "model": "Human tumour cell-line xenografts in mice incl. colon carcinoma (ABT-869/linifanib)",
-    "note": "Linifanib inhibited growth of colon and other carcinoma xenografts (ED50 1.5-5 mg/kg twice daily); no CRC patient result existed to compare.",
+    "note": "Opener of the famitinib track: the class's colon xenografts were dosed with linifanib (sibling member, product_in_model false); no CRC patient result existed to compare.",
     "short": "Colon xenografts respond to linifanib",
     "src": "https://doi.org/10.1158/1535-7163.MCT-05-0410",
     "srcLabel": "Albert 2006",
     "quote": "In tumor growth studies, ABT-869 exhibits efficacy in human fibrosarcoma and breast, colon, and small cell lung carcinoma xenograft models (ED50 = 1.5-5 mg/kg, twice daily)",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "famitinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "crc-cellline-xenograft-mouse",
@@ -381,12 +416,12 @@
     "model_first_use_year": 2006,
     "prediction_level": "class",
     "confidence": "medium",
-    "confidence_note": "Abstract-level reading of Xu 2017; quote verbatim in the abstract. The pairing crosses drugs: the xenograft was dosed with linifanib and the trial drug is famitinib (sibling member, product_in_model false). NCT01762293 has no results posted, registry_date null; the result was first presented at ASCO-GI 2015 (conference abstract, not an admissible tier), hence year 2017. The same trial's secondary OS was null (7.4 vs 7.2 months, P = 0.657).",
-    "judgement": "Scored same on the primary endpoint (PFS HR 0.60 vs placebo). Two linifanib CRC trials are recorded but not scored: O'Neil 2014 tested superiority over bevacizumab plus mFOLFOX6 (PFS HR 1.45 low dose, 1.26 high dose), a comparison the xenograft never made, as the KDR sibling tile treats BATON-CRC; Chan 2017 was a single-arm KRAS-mutant trial whose ORR gate (0/30) is not the xenograft's growth-inhibition prediction (63.5% stable disease, PFS 4.7 months). outcome_tested null: the OS phase 3 FACT (NCT02390947, 543 patients, completed Feb 2019) has no results anywhere I could find, as has donafenib's placebo-controlled OS phase 3 (NCT02870582, 536 patients, completed Apr 2020); six and five years of silence are suggestive but not a source. A checker who scores Chan 2017 as a failed primary endpoint would turn this track contra.",
-    "year": 2017,
+    "confidence_note": "Abstract-level reading of Xu 2017; quote verbatim in the abstract. The pairing crosses drugs: the xenograft was dosed with linifanib and the trial drug is famitinib (sibling member, product_in_model false). NCT01762293 has no results posted, registry_date null. Dated to the ASCO-GI 2015 abstract (doi 10.1200/jco.2015.33.3_suppl.513, 2015-01-20: mPFS 2.8 vs 1.5 months, HR 0.58), the earliest public date under rule 6. Secondary OS null (7.4 vs 7.2 months, P = 0.657).",
+    "judgement": "Scored same on the primary endpoint (PFS HR 0.60 vs placebo) for the famitinib track only. The two linifanib CRC trials are now scored on linifanib's own track (entries 4-5 of this cell, both contra) under the combination and single-arm rulings; a contra on one drug's track does not carry to another. outcome_tested null: the OS phase 3 FACT (NCT02390947, completed Feb 2019) and donafenib's OS phase 3 (NCT02870582, completed Apr 2020) have no results anywhere found.",
+    "year": 2015,
     "status": "same",
     "model": "Human tumour cell-line xenografts in mice incl. colon carcinoma (ABT-869/linifanib)",
-    "note": "Famitinib vs placebo in refractory mCRC met its PFS primary endpoint (2.8 vs 1.5 months, HR 0.60), the activity the class's colon xenografts predicted; OS was null and the phase 3 is unreported.",
+    "note": "Famitinib vs placebo in refractory mCRC met its PFS primary endpoint (2.8 vs 1.5 months, HR 0.60), first public at ASCO-GI January 2015; OS was null and the phase 3 is unreported.",
     "short": "Phase 2b PFS HR 0.60 vs placebo",
     "src": "https://doi.org/10.1186/s40880-017-0263-y",
     "srcLabel": "Xu 2017",
@@ -399,18 +434,6 @@
       "registry_date": null,
       "doi": "10.1186/s40880-017-0263-y",
       "quote": "The median OS of the famitinib and placebo groups was 7.4 and 7.2 months (P = 0.657)."
-     },
-     {
-      "nct": "NCT00707889",
-      "registry_date": null,
-      "doi": "10.1016/j.clcc.2014.04.001",
-      "quote": "No statistically significant differences in PFS occurred between bevacizumab and linifanib doses (low, hazard ratio [HR], 1.453 [95% confidence interval [CI], 0.830-2.539]; high, HR, 1.257 [95% CI, 0.672-2.351])."
-     },
-     {
-      "nct": "NCT01365910",
-      "registry_date": "2014-08-26",
-      "doi": "10.1007/s10637-017-0458-8",
-      "quote": "Although no responses were observed, 63.5% of patients achieved stable disease."
      },
      {
       "nct": "NCT02390947",
@@ -431,7 +454,153 @@
       "quote": "Donafenib Monotherapy for Previously Treated Metastatic Colorectal Cancer: Multicentre, Open-label,Phase 1B Safety Study"
      }
     ],
-    "reason": "Placebo-controlled PFS win; OS unreported"
+    "reason": "Placebo-controlled PFS win; OS unreported",
+    "drug": "famitinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
+   },
+   {
+    "model_id": "crc-cellline-xenograft-mouse",
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1158/1535-7163.MCT-05-0410",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2006,
+    "print_year": 2006,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Unselected",
+    "model_first_use_year": 2006,
+    "prediction_level": "class",
+    "confidence": "high",
+    "confidence_note": "Abstract-level reading; the colon xenograft line is not named in the abstract.",
+    "judgement": "Opening untested entry for the xenograft x linifanib x oral track at the model's first use (Albert 2006), split from entry 1, which now opens the famitinib track.",
+    "year": 2006,
+    "status": "untested",
+    "model": "Human tumour cell-line xenografts in mice incl. colon carcinoma (ABT-869/linifanib)",
+    "note": "Opener of the linifanib track: linifanib inhibited growth of colon and other carcinoma xenografts (ED50 1.5-5 mg/kg twice daily); no CRC patient result existed.",
+    "short": "Colon xenografts respond to linifanib",
+    "src": "https://doi.org/10.1158/1535-7163.MCT-05-0410",
+    "srcLabel": "Albert 2006",
+    "quote": "In tumor growth studies, ABT-869 exhibits efficacy in human fibrosarcoma and breast, colon, and small cell lung carcinoma xenograft models (ED50 = 1.5-5 mg/kg, twice daily)",
+    "endpoint_role": null,
+    "outcome_tested": null,
+    "patient_trials": [],
+    "drug": "linifanib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "model_id": "crc-cellline-xenograft-mouse",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1158/1535-7163.MCT-05-0410",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2014,
+    "print_year": 2014,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": "opposite",
+    "magnitude_basis": "xenograft growth inhibition predicted activity; PFS HR vs bevacizumab + mFOLFOX6 1.45 (7.5 mg) and 1.26 (12.5 mg), no gain",
+    "source_calls_it": null,
+    "population": "Previously treated (second-line) metastatic CRC, 148 patients, linifanib 7.5 or 12.5 mg + mFOLFOX6 vs bevacizumab + mFOLFOX6",
+    "model_first_use_year": 2006,
+    "prediction_level": "class",
+    "confidence": "medium",
+    "confidence_note": "Abstract-level reading of O'Neil 2014 (PMID 25066269, epub 2014-06-23). NCT00707889 has no posted results, registry_date null. An earlier congress abstract was not found.",
+    "judgement": "Combination ruling: a member drug given with another active regimen is scored on the trial's primary endpoint. PFS (primary) did not improve versus bevacizumab + mFOLFOX6 and the authors call it a failure, so the xenograft's prediction of linifanib activity in CRC is contra on the linifanib track.",
+    "year": 2014,
+    "status": "contra",
+    "model": "Human tumour cell-line xenografts in mice incl. colon carcinoma (ABT-869/linifanib)",
+    "note": "Combination design: linifanib + mFOLFOX6 vs bevacizumab + mFOLFOX6, second-line mCRC; the PFS primary endpoint was not improved (HR 1.45 low dose, 1.26 high dose), scored contra under the combination ruling.",
+    "short": "BATON-CRC: no PFS gain over bevacizumab",
+    "src": "https://doi.org/10.1016/j.clcc.2014.04.001",
+    "srcLabel": "O'Neil 2014",
+    "quote": "Combining linifanib with mFOLFOX6 as a second-line treatment for metastatic CRC did not improve PFS, radiographic findings, or duration of response versus bevacizumab and mFOLFOX6.",
+    "endpoint_role": "primary",
+    "outcome_tested": null,
+    "patient_trials": [
+     {
+      "nct": "NCT00707889",
+      "registry_date": null,
+      "doi": "10.1016/j.clcc.2014.04.001",
+      "quote": "No statistically significant differences in PFS occurred between bevacizumab and linifanib doses (low, hazard ratio [HR], 1.453 [95% confidence interval [CI], 0.830-2.539]; high, HR, 1.257 [95% CI, 0.672-2.351])."
+     }
+    ],
+    "drug": "linifanib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": "mFOLFOX6"
+   },
+   {
+    "model_id": "crc-cellline-xenograft-mouse",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1158/1535-7163.MCT-05-0410",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2017,
+    "print_year": 2017,
+    "registry_date": "2014-08-26",
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": "opposite",
+    "magnitude_basis": "xenograft growth inhibition predicted activity; ORR 0/30 against a pre-set inactivity rule (2 or fewer responses in 30)",
+    "source_calls_it": null,
+    "population": "KRAS-mutant, refractory mCRC, single arm (30 patients, linifanib 17.5 mg)",
+    "model_first_use_year": 2006,
+    "prediction_level": "class",
+    "confidence": "medium",
+    "confidence_note": "Abstract-level reading of Chan 2017 (PMID 28353122, epub 2017-03-28). Dated to the NCT01365910 registry results posting (2014-08-26: ORR primary 'with a target of at least 15%', study terminated at interim as not meeting criteria to proceed). KRAS-mutant only, coded biomarker_selected; the trial is CRC patients and is counted for this unselected context.",
+    "judgement": "Single-arm design with a success bar set in advance (Simon two-stage; inactive if 2 or fewer of 30 respond): scored on its primary endpoint like any trial. Zero responses and closure for futility make it contra; the authors' 'some anti-tumor activity' (63.5% stable disease) is a secondary reading, kept in note. Same status as entry 4, so strengthens.",
+    "year": 2014,
+    "status": "contra",
+    "model": "Human tumour cell-line xenografts in mice incl. colon carcinoma (ABT-869/linifanib)",
+    "note": "Single-arm design with a pre-set ORR bar: zero of 30 KRAS-mutant patients responded and the trial stopped for futility (stable disease 63.5%, PFS 4.7 months), scored contra on its primary endpoint.",
+    "short": "Single-arm: 0/30 responses, stopped",
+    "src": "https://doi.org/10.1007/s10637-017-0458-8",
+    "srcLabel": "Chan 2017",
+    "quote": "Linifanib was considered inactive if two or fewer patients among the first 30 achieved an objective response.",
+    "endpoint_role": "primary",
+    "outcome_tested": null,
+    "patient_trials": [
+     {
+      "nct": "NCT01365910",
+      "registry_date": "2014-08-26",
+      "doi": "10.1007/s10637-017-0458-8",
+      "quote": "Although no responses were observed, 63.5% of patients achieved stable disease."
+     }
+    ],
+    "drug": "linifanib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "strengthens": true,
+    "reason": "Both linifanib CRC trials missed primary"
    }
   ],
   "safety": [
@@ -468,7 +637,11 @@
     "short": "Rat telemetry predicts hypertension",
     "src": "https://doi.org/10.1124/jpet.108.144816",
     "srcLabel": "Franklin 2009",
-    "quote": "We report that ABT-869-induced hypertension can be prevented and reversed with subtherapeutic or therapeutic doses of antihypertensive drugs with a general rank order of ACEi > ARB > CCB."
+    "quote": "We report that ABT-869-induced hypertension can be prevented and reversed with subtherapeutic or therapeutic doses of antihypertensive drugs with a general rank order of ACEi > ARB > CCB.",
+    "drug": "linifanib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "linifanib-rat-telemetry-hypertension",
@@ -494,17 +667,21 @@
     "model_first_use_year": 2009,
     "prediction_level": "class",
     "confidence": "medium",
-    "confidence_note": "Abstract-level reading of Chan 2017; the registry results (posted 2014-08-26) do not itemise hypertension. The comparison was public earlier in a mixed population (Wong 2009: grade 3 hypertension was dose-limiting at 0.25 and 0.3 mg/kg/d) but this entry is dated to the first CRC-only report to avoid an import. Famitinib agrees (Xu 2017: grade 3-4 hypertension 11.1% in mCRC).",
-    "judgement": "Predicted harm held in patients: same, direction only. Hand-foot syndrome, proteinuria, thrombocytopenia and hypothyroidism were not predicted by this model, but a telemetry study is not a system that could show them, so its silence is not a miss; the GLP toxicology that could have is not public for any member and is left unscored.",
-    "year": 2017,
+    "confidence_note": "Abstract-level reading of Chan 2017; dated to the NCT01365910 registry results (posted 2014-08-26), which list hypertension in 20 of 30 linifanib patients (rule 6, earliest date). Mixed-population hypertension was public earlier (Wong 2009) but this entry uses the first CRC-only measurement. Famitinib agrees (Xu 2017: grade 3-4 hypertension 11.1% in mCRC).",
+    "judgement": "Predicted harm held in patients: same, direction only. Hand-foot syndrome, proteinuria, thrombocytopenia and hypothyroidism were not predicted by this model, but a telemetry study is not a system that could show them, so its silence is not a miss; the GLP toxicology that could have is not public for any member and is left unscored. Retrodiction ruling: for safety only the same drug's own earlier patient result counts, so the checker's class-level retro (VEGFR-TKI hypertension known in 2005-2006) is undone; linifanib's own hypertension was first found public in Wong 2009 (epub Aug 2009), after Franklin 2009 (epub Mar 2009). Status same, year 2014.",
+    "year": 2014,
     "status": "same",
     "model": "Conscious telemetered rats and SCID mice: linifanib-induced hypertension and its antihypertensive reversal",
-    "note": "Grade 3 hypertension was among the commonest linifanib toxicities in KRAS-mutant mCRC, as rat telemetry predicted; famitinib mCRC patients showed 11.1% grade 3-4 hypertension.",
+    "note": "Hypertension in 20 of 30 KRAS-mutant mCRC patients on linifanib (registry 2014; grade 3 in Chan 2017), as rat telemetry predicted. Not a retrodiction: linifanib's own patient hypertension was not shown public before the March 2009 model.",
     "short": "Hypertension in patients as rats predicted",
     "src": "https://doi.org/10.1007/s10637-017-0458-8",
     "srcLabel": "Chan 2017",
     "quote": "Grade 3 treatment-related toxicities occurring in at least two patients were fatigue, hypertension, proteinuria, diarrhea, nausea, oral pain, vomiting, thrombocytopenia, and arthralgia.",
-    "reason": "Predicted hypertension held in CRC patients"
+    "reason": "Predicted hypertension held in CRC patients",
+    "drug": "linifanib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ]
  }

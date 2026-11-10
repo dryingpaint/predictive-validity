@@ -11,7 +11,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Visigalli 2010 Blood resolves; quote verbatim in abstract. Opening untested entry for the OTL-203 parent model is correct."
+   "note": "Visigalli 2010 Blood (PMID 20847202) abstract, quote verbatim. Opener untested; azamidugene autotemcel, ex_vivo_cells, unselected fit the OTL-203 track.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -20,7 +21,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Boado 2011 Mol Pharm resolves; quote verbatim. Surrogate mouse-TfR fusion, product_in_model false is right."
+   "note": "Boado 2011 Mol Pharm (PMID 21667973) abstract, quote verbatim. Surrogate-fusion opener; valanafusp alfa, iv, unselected right for the track.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -29,7 +31,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Hinderer 2014 resolves; quote verbatim. Source is cats only; the model label 'cat and dog' covers a second species no cited source supports (see missing)."
+   "note": "Hinderer 2014 Mol Ther (PMID 25027660) abstract, quote verbatim. Opener untested; RGX-111, intrathecal (cisternal/lumbar) fits the enum.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -38,7 +41,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Ou 2018 resolves (epub Nov 2018, after Nov 2017 first dosing but before any patient readout), so not a retrodiction. Quote verbatim."
+   "note": "Ou 2018 Mol Ther (PMID 30528089, epub Nov 2018) abstract, quote verbatim. Opener; devafidugene civaparvovec, iv, unselected right; first patient data (7 Feb 2019) post-date it, so prospective.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -47,7 +51,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Giugliani 2018 resolves; quote verbatim. NCT03053089 first posted 2017-02-14 matches. Urinary GAG proximal and stabilized/improved; partial is fair."
+   "rule": "Retrodiction: for engagement a model result first public after a patient result for the same target and action, from any drug, is a retrodiction; if it reproduced the human data its status is retro, never same",
+   "note": "Giugliani 2018 (PMID 29976218) quote verbatim; full text: 9/11 switched from laronidase, urinary GAG held at laronidase level. Kakkis 2001 NEJM abstract: IV rhIDUA cut urinary GAG 63%, before the 2011 mouse: retro right; valanafusp alfa, iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -56,16 +62,24 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Gentner 2021 NEJM resolves; quote verbatim; NCT03488394 posted 2018-04-05. Supraphysiologic blood IDUA matches mouse claim."
+   "rule": "Rule 6",
+   "note": "Gentner 2021 quote verbatim. Orchard release 15 May 2020: supranormal blood IDUA, 'first two patients ... stable supranormal levels up to 12 months'; year 2020 right (rule 6). Note's 'all treated patients' overstates the release. Drug, ex_vivo_cells right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "REGENXBIO 9 Feb 2022 release scraped; quote verbatim; tier 5 with trial_unreported true and model_src tier 1. NCT03580083 posted 2018-07-09."
+   "quote_found": "near",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2022,
+   "rule": "Retrodiction: for engagement a model result first public after a patient result for the same target and action, from any drug, is a retrodiction; if it reproduced the human data its status is retro, never same",
+   "note": "Press release (9 Feb 2022) CSF HS quote found near-verbatim via search snippet; page 403. Munoz-Rojas 2008 (PMID 18792977): IT laronidase took patient CSF GAG 13.3 to 10.3 mg/L, before the 2014 cat model; draft's 'none found' is wrong. RGX-111 intrathecal right.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement, any drug): Munoz-Rojas 2008 abstract confirms IT laronidase lowered patient CSF GAG 13.3 to 10.3 mg/L, before the 2014 cat model; model reproduced the CSF HS fall: retro."
   },
   {
    "cell": "engagement",
@@ -74,7 +88,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Harmatz 2022 Mol Ther resolves; quote verbatim; MPS I subjects showed only transient leukocyte IDUA, contradicting the mouse's sustained expression claim."
+   "note": "Harmatz 2022 (epub 2022-10-25) quote verbatim; only transient leukocyte IDUA. Feb 2019 Sangamo interim showed IDUA rising, so 2022 is first public contradiction. Drug, iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -83,7 +98,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Mouse stated supranormal hematopoietic IDUA as the requirement; valid model-stated exposure target."
+   "note": "Visigalli 2010 abstract states supranormal hematopoietic IDUA as the requirement: a model-stated target. Opener; azamidugene autotemcel, ex_vivo_cells right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -92,7 +108,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Blood IDUA up to supraphysiologic levels was a registered primary and was reached in all eight; dose same is right."
+   "rule": "Rule 6",
+   "note": "Gentner 2021: blood IDUA to supraphysiologic levels is a registered primary (NCT03488394) and was reached. Orchard 15 May 2020 release already reported supranormal levels: year 2020 right. Drug, ex_vivo_cells right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -101,21 +119,19 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Boado 2009 J Biotechnol resolves; quote verbatim; AGT-181 is valanafusp alfa, stated no toxicity 0.2-20 mg/kg."
+   "note": "Boado 2009 J Biotechnol (PMID 19735678) abstract quote verbatim: no toxicity, no glucose change at 0.2-20 mg/kg. Stated margin opener; valanafusp alfa (AGT-181), iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2018,
+   "quote_found": "near",
+   "status_supported": true,
    "rule": "Decision 16: toxicity at or below the effective exposure is contra; count the harm in dose when the model predicted it but misplaced the margin",
-   "note": "Monkeys stated no glucose change to 20 mg/kg and hypoglycemia only at 30 mg/kg in saline (none with dextrose); patients had drug-related hypoglycemia at 1-6 mg/kg. Margin misplaced >5x, though dosing was not blocked. Abstract-level; dextrose use in patients not verified.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Decision 16: monkeys stated no hypoglycemia with dextrose to 30 mg/kg; patients infused in D5NS had drug-related hypoglycemia at 1-6 mg/kg. Toxicity at the effective exposure, margin misplaced >5x: contra; harm counted here, not safety."
+   "note": "Giugliani 2018 full text: infused in D5NS; hypoglycemia episodes 5/7/24 at 1/3/6 mg/kg. Boado 2012: with dextrose no hypoglycemia at 30 mg/kg. Toxicity at 1 mg/kg, >=30x below the margin: contra, off_by_>5x right. Judgement field stale ('margin held').",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -124,7 +140,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Opening entry, fine."
+   "note": "Opener; Visigalli 2010 quote verbatim; azamidugene autotemcel, ex_vivo_cells right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -133,7 +150,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Opening entry, fine."
+   "note": "Opener; Boado 2011 quote verbatim; valanafusp alfa, iv right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -142,7 +160,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Opening entry; abstract confirms cats have no defined neurological phenotype."
+   "note": "Opener; Hinderer 2014 quote verbatim; RGX-111, intrathecal right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -151,49 +170,41 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Opening entry, fine."
+   "note": "Opener; Ou 2018 quote verbatim; devafidugene civaparvovec, iv right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2018,
-   "rule": "efficacy is scored on the primary endpoint, or a secondary only with endpoint_role poc_gate",
-   "note": "NCT03053089/NCT03071341 primaries are adverse events only; DQ and grey matter are not registered endpoints. No admissible efficacy comparison: untested, untested_reason not_measured.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Efficacy rule: scored on the trial's primary endpoint, or a secondary only with endpoint_role poc_gate. Registered primary was safety only; DQ/grey matter is a secondary, no PoC gate. Untested, not_measured (rule 5)."
+   "status_supported": true,
+   "rule": "Efficacy: primary endpoint, or a secondary only as poc_gate; rule 5 not_measured",
+   "note": "Giugliani 2018 quote verbatim. NCT03053089 and NCT03071341 primaries are adverse events only, no PoC gate: untested/not_measured. Judgement field still says 'scored ... partial': stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2021,
-   "rule": "efficacy is scored on the primary endpoint, or a secondary only with endpoint_role poc_gate",
-   "note": "NCT03488394 primaries are survival, engraftment, safety and blood IDUA (scored in engagement/dose); urinary GAG normalization is a secondary with no poc_gate. Untested, not_measured, pending rule question.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Efficacy rule: primary endpoint or poc_gate secondary only. NCT03488394 primaries are safety, engraftment and blood IDUA (scored in engagement/dose); urinary GAG is a secondary, no PoC gate. Untested, not_measured (rule 5)."
+   "status_supported": true,
+   "rule": "Efficacy: primary endpoint, or a secondary only as poc_gate; rule 5 not_measured",
+   "note": "Gentner 2021 quote verbatim. NCT03488394 primaries: survival, engraftment, safety, blood IDUA; GAG secondary: untested/not_measured. Orchard 15 May 2020 release reported urine/CSF GAG reduction in all eight: year 2020 right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2022,
-   "rule": "efficacy is scored on the primary endpoint, or a secondary only with endpoint_role poc_gate",
-   "note": "NCT03580083 primary is safety and tolerability; BSID-III is a secondary, two children, no comparator. Untested, not_measured.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Efficacy rule: scored on the trial's primary endpoint, or a secondary only with endpoint_role poc_gate. Registered primary was safety only; BSID-III is a secondary, no PoC gate. Untested, not_measured (rule 5)."
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "Efficacy: primary endpoint, or a secondary only as poc_gate; rule 5 not_measured",
+   "note": "REGENXBIO 9 Feb 2022 WORLDSymposium release; BSID-III quote matched near-verbatim in search snippets (page 403). NCT03580083 primary 'Safety and Tolerability' only: untested/not_measured. RGX-111, intrathecal right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -201,13 +212,14 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "near",
-   "status_supported": false,
+   "status_supported": true,
    "proposed_status": "untested",
-   "proposed_year": 2022,
-   "rule": "efficacy is scored on the primary endpoint, or a secondary only with endpoint_role poc_gate",
-   "note": "Registry confirmed (results 2023-01-26; urine HS +30.2/+3.6), but urine GAG is a secondary and primary is TEAEs; the quote is an outcome title, not a sentence. If kept, Harmatz 2022 (Oct 2022) dates it earlier.",
+   "proposed_year": 2019,
+   "rule": "Rule 6: year is the earliest public date (press release, congress abstract, epub, registry)",
+   "note": "Untested/not_measured right (NCT02702115 primary TEAEs). Sangamo 7 Feb 2019 release: 'urine GAG measurements show no meaningful change', before Harmatz 2022 epub (2022-10-25): year 2019. Quote is an outcome title, not a sentence.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Efficacy rule: scored on the trial's primary endpoint, or a secondary only with endpoint_role poc_gate. Registered primary was safety only; urine GAG/HS is a secondary, no PoC gate. Untested, not_measured (rule 5)."
+   "adjudication_note": "Status agreed (untested, not_measured; primary is safety). Rule 6: Sangamo 7 Feb 2019 release made the urine GAG result public before Harmatz 2022 epub, so year 2019."
   },
   {
    "cell": "safety",
@@ -216,16 +228,22 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Boado 2012 DMD resolves; quote verbatim; named hypoglycemia harm from HIR agonism."
+   "note": "Boado 2012 DMD (PMID 22822036) abstract quote verbatim: hypoglycemia at 30 mg/kg in saline, none with dextrose at any dose. Opener; valanafusp alfa, iv right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Hypoglycemia appeared in patients as predicted in kind; partial is right. If dose 4 becomes contra for the misplaced margin, the count-once rule may remove this from safety (rule question)."
+   "status_supported": false,
+   "proposed_status": "same",
+   "rule": "Safety: a statement that the drug was well tolerated is a scored prediction; rule 5 unsettled only when the patient result is unreported or inconclusive",
+   "note": "Hypoglycemia rightly moved to dose 4. But the track's stated 'no toxicity ... no significant immune response' (Boado 2009) was measured: only other drug-related AE was IRR 1.7%, ADAs comparable to laronidase. Reported, so not unsettled: same, partial.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Safety rule: stated no-toxicity/no-immune-response is scored; patients measured and reported (IRR 1.7%, ADAs like laronidase), hypoglycemia counted in dose 4 (Decision 16); rule 5 unsettled does not apply: same, partial."
   },
   {
    "cell": "safety",
@@ -234,7 +252,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Hordeaux 2018 resolves; quote verbatim. REGENXBIO 2022 release reports no drug-related SAEs and no DRG/nerve-conduction readout; untested not_measured holds."
+   "note": "Hordeaux 2018 (PMID 30073179) abstract quote verbatim. No DRG or nerve-conduction readout reported in RGX-111 patients: untested/not_measured. RGX-111, intrathecal right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -243,18 +262,23 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Hinderer 2016 (PMC5240037) full text: quote verbatim but describes the naive (non-tolerized) cohort; tolerized dogs showed 'dose-dependent elevation in CSF IDUA activity similar to the non-tolerized dogs'. Untested opening entry stands; 2016 predates RGX-111 trial.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Hinderer 2016 (PMID 27386755) quote verbatim from full text in models.json search log. Opener on the tolerized-dog track; RGX-111, intrathecal right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 10,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "REGENXBIO 9 Feb 2022 release scraped: quote verbatim; CSF IDUA detectable in 3/4. Tier 5 with trial_unreported and model_src tier 1 correct. Dog model (2016) predates NCT03580083 (2018), so prospective same, not retro.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "quote_found": "near",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2022,
+   "rule": "Retrodiction: for engagement a model result first public after a patient result for the same target and action, from any drug, is a retrodiction; if it reproduced the human data its status is retro, never same",
+   "note": "Same release as entry 7. The 2016 dog model post-dates Munoz-Rojas 2008, a patient CSF GAG fall with IT laronidase (same target and action); it reproduced the CSF HS fall: retro, retrodiction true. RGX-111 intrathecal right.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement, any drug): 2016 dog model post-dates Munoz-Rojas 2008 patient CSF GAG fall with IT laronidase (same target, action); reproduced the CSF HS fall: retro."
   },
   {
    "cell": "dose",
@@ -263,8 +287,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Hinderer 2016 abstract: MED quote verbatim. No stated exposure target mapped to human per-gram-brain cohorts; untested/unsettled, margin_stated false correct.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Hinderer 2016 MED quote verbatim; no stated human exposure target without own arithmetic. Untested/unsettled; RGX-111, intrathecal right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -273,8 +297,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Full text: immune-toxicity quote verbatim (non-tolerized dogs). RGX-111 patients received a 48-week immunosuppression regimen per press release, so the prediction was not tested; untested/unsettled correct.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Hinderer 2016 immune-toxicity quote verbatim; RGX-111 patients immunosuppressed per protocol, so untested/unsettled. RGX-111, intrathecal right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -283,8 +307,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Boado 2008 Biotechnol Bioeng abstract: quote verbatim. Rhesus brain uptake predates NCT03071341; no patient CSF/brain delivery readout reported. Untested/unsettled correct.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Boado 2008 Biotechnol Bioeng (PMID 17680664) abstract quote verbatim. NCT03071341 CSF HS/DS secondary, no posted results; untested/unsettled stands. Valanafusp alfa, iv right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -293,8 +317,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Visigalli 2016 Hum Gene Ther abstract: quote verbatim; human HSPC xenografts with clinical-grade LV. Untested opening entry correct, separate system from Idua-/- mouse.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Visigalli 2016 Hum Gene Ther (PMID 27431943) abstract quote verbatim. Opener for xenograft track; azamidugene autotemcel, ex_vivo_cells right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -303,8 +327,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Gentner 2021 NEJM abstract: quote verbatim; supraphysiologic blood IDUA was a primary end point. Xenograft model (2016) predates trial (2018): prospective pairing, same correct.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "rule": "Rule 6",
+   "note": "Gentner 2021 quote verbatim; Orchard 15 May 2020 release reported supranormal blood IDUA (first two stable to 12 months), so year 2020 right. Same, prospective, as entry 6 (see rule question).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -313,8 +338,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Visigalli 2016 abstract: GLP tox/biodistribution quote verbatim; supports a stated tolerability prediction. Not the track's latest entry, so no untested_reason needed.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Visigalli 2016 GLP tox abstract quote verbatim; stated tolerability prediction. Opener; azamidugene autotemcel, ex_vivo_cells right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -323,8 +348,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Gentner 2021 abstract: safety (primary end point) similar to autologous HSCT at 2.1 y, quote verbatim. Prospective, same correct; short follow-up for clonal events noted at medium confidence.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "rule": "Rule 6",
+   "note": "Gentner 2021 quote verbatim. Orchard 15 May 2020: 'OTL-203 and the selected conditioning regime were well-tolerated across all eight patients': year 2020 right. Same, prospective (no earlier own-drug result).",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -336,6 +362,8 @@
  "overall": "accept_with_corrections",
  "rule_questions": [
   "Phase 1/2 gene-therapy trials here all have safety-only (or safety + transgene-expression) primaries. Should efficacy then be untested (not_measured), or may a registered secondary disease endpoint stand in when no efficacy primary exists at all? I applied the strict rule to efficacy 5-8.",
-  "When a model predicted a harm in kind but placed it at a >5x higher dose and patients were not dose-limited by it (valanafusp hypoglycemia), is dose contra without blocked_by, and does count-once then remove the safety same entry?"
+  "When a model predicted a harm in kind but placed it at a >5x higher dose and patients were not dose-limited by it (valanafusp hypoglycemia), is dose contra without blocked_by, and does count-once then remove the safety same entry?",
+  "Engagement 6/13 (azamidugene): blood IDUA rose in patients after allogeneic HSCT and laronidase long before 2010. Is the model's claim of supranormal levels from autologous cells a distinct, prospective prediction, or does any earlier blood-IDUA rise with IDUA replacement make it a retrodiction (as laronidase's GAG fall did for engagement 5)?",
+  "Safety 2: once count-once moves a predicted harm to dose, does the same track's remaining tolerability statement get scored in safety (here same, partial: IRR 1.7%, ADAs), or does the safety entry go untested?"
  ]
 }

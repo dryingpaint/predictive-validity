@@ -42,16 +42,20 @@
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": null,
-    "judgement": "Opens the Sym004 track: the model's PD readout is loss of surface EGFR (internalization and degradation) in cells and xenografts. No regulator filing exists for any member (all three programs stopped before NDA/BLA), so model_filed is false throughout.",
+    "judgement": "Opens the Sym004 track: the model's PD readout is loss of surface EGFR (internalization and degradation) in cells and xenografts. No regulator filing exists for any member (all three programs stopped before NDA/BLA), so model_filed is false throughout. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "year": 2010,
     "status": "untested",
-    "model": "EGFR-expressing cancer cell lines and A431 xenografts (Sym004)",
+    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines, with A431NS xenograft and cynomolgus PK (Sym004)",
     "note": "Sym004 (futuximab+modotuximab) strips EGFR from the cell surface by internalization and degradation, unlike cetuximab; no patient readout yet.",
     "short": "Sym004 degrades EGFR in cells and xenografts",
     "src": "https://doi.org/10.1158/0008-5472.CAN-09-1417",
     "srcLabel": "Pedersen 2010",
     "quote": "However, unlike the other antibodies, Sym004 induces rapid and efficient removal of the receptor from the cancer cell surface by triggering EGFR internalization and degradation.",
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
     "model_id": "sym004-egfr-resistant-xenograft",
@@ -78,16 +82,20 @@
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": "Full text read (AACR page). NCT01117428 results first posted 2017-07-12; the paper is the earlier public comparison, so year is 2015.",
-    "judgement": "Readout tier direct: the model's readout is the target protein itself leaving the cell surface, measured in patients as membrane EGFR histoscore in tumour (16/22 fell, P=0.0004) and skin (32/33) at week 4. The paper itself frames this as clinical proof of the preclinical mechanism, so comparison_stated is true.",
-    "year": 2015,
+    "judgement": "Readout tier direct: the model's readout is the target protein itself leaving the cell surface, measured in patients as membrane EGFR histoscore in tumour (16/22 fell, P=0.0004) and skin (32/33) at week 4. The paper itself frames this as clinical proof of the preclinical mechanism, so comparison_stated is true. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
+    "year": 2013,
     "status": "same",
-    "model": "EGFR-expressing cancer cell lines and A431 xenografts (Sym004)",
-    "note": "Paired tumour and skin biopsies in anti-EGFR-refractory mCRC showed durable membrane EGFR downmodulation at week 4, the degradation the cell and xenograft work predicted.",
+    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines, with A431NS xenograft and cynomolgus PK (Sym004)",
+    "note": "Paired tumour and skin biopsies in anti-EGFR-refractory mCRC showed durable membrane EGFR downmodulation at week 4, the degradation the cell and xenograft work predicted. Dated 2013: the ASCO 2013 abstract 3551 (Dienstmann) first made this public.",
     "short": "Tumour and skin EGFR fell in patients",
     "src": "https://doi.org/10.1158/2159-8290.CD-14-1432",
     "srcLabel": "Dienstmann 2015",
     "quote": "Pharmacodynamic studies confirmed marked Sym004-induced EGFR downmodulation.",
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected"
    },
    {
     "model_id": "sym004-egfr-resistant-xenograft",
@@ -114,10 +122,10 @@
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": "Full text read (PMC5885274).",
-    "judgement": "Strengthens, same status: the EGFR-ECD-mutant clones the 2016 cell work said Sym004 still binds were suppressed in patients' ctDNA, a downstream readout; this engagement did not translate into benefit (see efficacy).",
+    "judgement": "Strengthens, same status: the EGFR-ECD-mutant clones the 2016 cell work said Sym004 still binds were suppressed in patients' ctDNA, a downstream readout; this engagement did not translate into benefit (see efficacy). Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "year": 2018,
     "status": "same",
-    "model": "EGFR-expressing cancer cell lines and A431 xenografts (Sym004)",
+    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines, with A431NS xenograft and cynomolgus PK (Sym004)",
     "note": "Phase 2 ctDNA: EGFR ECD-mutant allele fractions fell on Sym004, as the ECD-mutant cell lines predicted; engagement without clinical benefit.",
     "short": "ctDNA EGFR ECD clones fell on Sym004",
     "src": "https://doi.org/10.1001/jamaoncol.2017.5245",
@@ -125,7 +133,11 @@
     "quote": "Sym004 effectively targeted EGFR ECD-mutated cancer cells, and a decrease in EGFR ECD ctDNA occurred in Sym004-treated patients.",
     "readout_tier": "downstream",
     "strengthens": true,
-    "reason": "Target loss seen in tumour, skin, ctDNA"
+    "reason": "Target loss seen in tumour, skin, ctDNA",
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected"
    },
    {
     "model_id": "ga201-adcc-orthotopic-xenograft",
@@ -161,7 +173,11 @@
     "src": "https://doi.org/10.1158/1078-0432.CCR-12-0989",
     "srcLabel": "Gerdes 2013",
     "quote": "This resulted in significantly enhanced induction of ADCC compared with cetuximab against both KRAS-wild-type and -mutant tumor cells lines.",
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "imgatuzumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
     "model_id": "ga201-adcc-orthotopic-xenograft",
@@ -198,7 +214,11 @@
     "srcLabel": "Delord 2014",
     "quote": "the number of tumour-infiltrating immune cells increased notably after one cycle of therapy (median compound immune reactive score of 1491 versus 898 cells/mm(3) at baseline), whereas the number of peripheral natural killer cells decreased",
     "readout_tier": "downstream",
-    "reason": "ADCC mechanism engaged; no benefit followed"
+    "reason": "ADCC mechanism engaged; no benefit followed",
+    "drug": "imgatuzumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "biomarker_selected"
    },
    {
     "model_id": "zalutumumab-a431-xenograft-cyno",
@@ -235,7 +255,11 @@
     "srcLabel": "Bleeker 2004",
     "quote": "At saturating concentrations, 2F8 completely blocked EGF-R signaling and inhibited the in vitro proliferation of EGF-R-overexpressing A431 cells.",
     "readout_tier": null,
-    "reason": "No CRC patient readout to compare"
+    "reason": "No CRC patient readout to compare",
+    "drug": "zalutumumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -271,10 +295,14 @@
     "model_id": "ga201-crc-patient-nk-exvivo-adcc",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "imgatuzumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -291,9 +319,9 @@
     "source_calls_it": null,
     "confidence_note": "Abstract-level reading of Delord 2014 (Eur J Cancer, online 2013-11-18, print 2014-02); the pairing was first possible when the ex-vivo paper went online (2014-02-04). Readouts differ: ex-vivo degranulation against A431 versus in-vivo NK decline and tumour infiltration. NCT00721266 has no posted results. Temam 2017 (HNSCC window study, NCT01046266) later showed the NK decline with imgatuzumab but not cetuximab; another indication, so not entered here.",
     "year": 2014,
-    "status": "same",
+    "status": "retro",
     "model": "Ex-vivo NK cells from mCRC patients before, during and after chemotherapy, GA201-induced ADCC against A431 (imgatuzumab)",
-    "note": "In 25 KRAS-mutant mCRC patients, peripheral NK cells fell and tumour immune-effector infiltration rose after one imgatuzumab cycle: the NK engagement the ex-vivo assay showed.",
+    "note": "In 25 KRAS-mutant mCRC patients, peripheral NK cells fell and tumour immune-effector infiltration rose after one imgatuzumab cycle: the NK engagement the ex-vivo assay showed. Retrodiction: the ex-vivo paper came after the patient NK decline was public (Delord online 2013-11) and reproduced it.",
     "short": "Patient NK cells engaged in vivo",
     "src": "https://doi.org/10.1016/j.ejca.2013.10.015",
     "srcLabel": "Delord 2014",
@@ -308,7 +336,11 @@
     "model_id": "ga201-crc-patient-nk-exvivo-adcc",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "imgatuzumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "biomarker_selected"
    },
    {
     "retrodiction": false,
@@ -336,7 +368,7 @@
     "srcLabel": "Napolitano 2017",
     "quote": "SYM004 treatment determined a significant induction of apoptosis and a strong inhibition of MET, AKT and MAPK phosphorilation in these resistant models.",
     "confidence": "high",
-    "judgement": "A Naples-lab system distinct from Symphogen's A431 and EGFR-ECD-mutant lines: resistance was selected in vitro against cetuximab and runs through MET, and the model's PD readout is downstream MET/AKT/MAPK signalling, which no patient study of Sym004 read. Never compared.",
+    "judgement": "A Naples-lab system distinct from Symphogen's A431 and EGFR-ECD-mutant lines: resistance was selected in vitro against cetuximab and runs through MET, and the model's PD readout is downstream MET/AKT/MAPK signalling, which no patient study of Sym004 read. Never compared. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "reason": "Signalling readout never measured in patients",
     "epub_year": 2017,
     "print_year": 2017,
@@ -345,7 +377,11 @@
     "model_id": "sym004-crc-acquired-cetuximab-resistance-met-xenograft",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "stage_or_line"
    }
   ],
   "dose": [
@@ -374,17 +410,21 @@
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": null,
-    "judgement": "Opens the dose strip: Skartved 2011 gives mouse-xenograft PK (50 mg/kg single dose) and monkey PK at 2-24 mg/kg weekly without stating a human exposure target or an efficacious-exposure multiple, so margin_stated is false and decision 16 is not applied.",
+    "judgement": "Opens the dose strip: Skartved 2011 gives mouse-xenograft PK (50 mg/kg single dose) and monkey PK at 2-24 mg/kg weekly without stating a human exposure target or an efficacious-exposure multiple, so margin_stated is false and decision 16 is not applied. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "year": 2011,
     "status": "untested",
-    "model": "A431NS xenograft PK and cynomolgus repeat-dose PK (Sym004)",
+    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines, with A431NS xenograft and cynomolgus PK (Sym004)",
     "note": "Monkeys got 2-24 mg/kg weekly with dose-proportional exposure and no accumulation; no human exposure target was stated.",
     "short": "Monkey PK 2-24 mg/kg; no human target",
     "src": "https://doi.org/10.1158/1078-0432.CCR-11-1209",
     "srcLabel": "Skartved 2011",
     "quote": "Monkeys received once weekly intravenous infusions of Sym004 in the range 2 to 24 mg/kg for 6 to 8 weeks.",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
     "model_id": "sym004-egfr-resistant-xenograft",
@@ -411,17 +451,22 @@
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": "Full text read. Escalation stopped at 12 mg/kg on late skin and hypomagnesaemia toxicity; 9 and 12 mg/kg were both carried into expansion with responses at each.",
-    "judgement": "Scored same because the regimen reached the model's target effect in tumour (EGFR downmodulation) and produced responses, i.e. the dose was reached and was enough for the phase 1 gate. Not margin_stated: the monkey study placed no tolerated dose against an effective exposure, and the human escalation was capped by cumulative skin and magnesium toxicity rather than a formal MTD.",
-    "year": 2015,
+    "judgement": "Scored same because the regimen reached the model's target effect in tumour (EGFR downmodulation) and produced responses, i.e. the dose was reached and was enough for the phase 1 gate. Not margin_stated: the monkey study placed no tolerated dose against an effective exposure, and the human escalation was capped by cumulative skin and magnesium toxicity rather than a formal MTD. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
+    "year": 2013,
     "status": "same",
-    "model": "A431NS xenograft PK and cynomolgus repeat-dose PK (Sym004)",
-    "note": "Weekly 9-12 mg/kg reproduced the model's EGFR loss in patient tumours and gave partial responses; escalation stopped at 12 mg/kg on cumulative skin and magnesium toxicity.",
+    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines, with A431NS xenograft and cynomolgus PK (Sym004)",
+    "note": "Weekly 9-12 mg/kg reproduced the model's EGFR loss in patient tumours and gave partial responses; escalation stopped at 12 mg/kg on cumulative skin and magnesium toxicity. Dated 2013: the ASCO 2013 abstract 3551 (Dienstmann) first made this public.",
     "short": "9-12 mg/kg hit target effect, with toxicity",
     "src": "https://doi.org/10.1158/2159-8290.CD-14-1432",
     "srcLabel": "Dienstmann 2015",
     "quote": "A formal MTD was not reached, and the maximum administered dose, declared in a joint decision of the investigators, sponsor, and the independent data-monitoring committee, was set at 12 mg/kg.",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "ga201-adcc-orthotopic-xenograft",
@@ -458,7 +503,11 @@
     "srcLabel": "Gerdes 2013",
     "quote": "GA201, cetuximab, panitumumab, and the corresponding vehicle (control) were administered intravenously once weekly for 3 weeks at a dosage of 25 mg/kg.",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "imgatuzumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
     "model_id": "ga201-adcc-orthotopic-xenograft",
@@ -496,7 +545,12 @@
     "quote": "Patients received single-agent imgatuzumab (1400mg on day 1 and 8 followed by q2W) as third line therapy in an open-label, multicentre, non-randomised, expansion study.",
     "blocked_by": null,
     "margin_stated": false,
-    "reason": "Dose adequate; KRAS-mutant efficacy failed"
+    "reason": "Dose adequate; KRAS-mutant efficacy failed",
+    "drug": "imgatuzumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "zalutumumab-a431-xenograft-cyno",
@@ -534,7 +588,11 @@
     "quote": "Ex vivo analyses of xenograft tumors of 2F8-treated nude mice revealed that relatively high antibody plasma concentrations were required for maximum EGFR saturation in high-EGFR-expressing human A431 tumors, in contrast to lower-EGFR-expressing human xenograft tumors.",
     "blocked_by": null,
     "margin_stated": false,
-    "reason": "No CRC exposure data to compare"
+    "reason": "No CRC exposure data to compare",
+    "drug": "zalutumumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -562,7 +620,7 @@
     "srcLabel": "Napolitano 2017",
     "quote": "At progression phase mice were assigned to SYM004 treatment (50 mg/Kg twice a week) by i.p. injection.",
     "confidence": "high",
-    "judgement": "A regimen, not an exposure target: the model states a mouse dose and a comparator dose but nothing that maps to a human exposure, so the cell opens untested.",
+    "judgement": "A regimen, not an exposure target: the model states a mouse dose and a comparator dose but nothing that maps to a human exposure, so the cell opens untested. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "epub_year": 2017,
     "print_year": 2017,
     "population": "CRC lines with in-vitro-acquired cetuximab resistance (MET-activated GEO-CR, SW48-CR; LIM1215-CR, CACO2-CR) and nude-mouse xenografts",
@@ -571,7 +629,11 @@
     "model_id": "sym004-crc-acquired-cetuximab-resistance-met-xenograft",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -599,7 +661,7 @@
     "srcLabel": "Montagut 2018",
     "quote": "Median OS in the ITT population was 7.9 months (95% CI, 6.5-9.9 months), 10.3 months (95% CI, 9.0-12.9 months), and 9.6 months (95% CI, 8.3-12.2 months) for arms A, B, and C, respectively",
     "confidence": "high",
-    "judgement": "Dose-table row 'reached, failed, abandoned': the phase 2 used the phase 1 regimen, the primary endpoint failed and Symphogen stopped mCRC development, so dose is contra derived from efficacy; the model itself gave no exposure target to be missed.",
+    "judgement": "Dose-table row 'reached, failed, abandoned': the phase 2 used the phase 1 regimen, the primary endpoint failed and Symphogen stopped mCRC development, so dose is contra derived from efficacy; the model itself gave no exposure target to be missed. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "reason": "Reached, failed, program abandoned",
     "epub_year": 2018,
     "print_year": 2018,
@@ -610,7 +672,11 @@
     "model_kind": "animal",
     "prediction_level": "class",
     "model_first_use_year": 2017,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected"
    }
   ],
   "efficacy": [
@@ -639,10 +705,10 @@
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": null,
-    "judgement": "Opens the Sym004 efficacy track. Pedersen 2010 is the class-level prediction (superior to cetuximab in xenografts); the acquired-resistance predictions came later on the same platform: ligand-driven resistance (Dienstmann 2015 preclinical section), cetuximab-resistant NCI-H226 xenografts (Iida 2013, doi:10.1593/neo.131584) and EGFR-ECD-mutant CRC lines (Sanchez-Martin 2016).",
+    "judgement": "Opens the Sym004 efficacy track. Pedersen 2010 is the class-level prediction (superior to cetuximab in xenografts); the acquired-resistance predictions came later on the same platform: ligand-driven resistance (Dienstmann 2015 preclinical section), cetuximab-resistant NCI-H226 xenografts (Iida 2013, doi:10.1593/neo.131584) and EGFR-ECD-mutant CRC lines (Sanchez-Martin 2016). Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "year": 2010,
     "status": "untested",
-    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines (Sym004)",
+    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines, with A431NS xenograft and cynomolgus PK (Sym004)",
     "note": "Sym004 out-performed cetuximab in vitro and in xenografts; no patient result yet.",
     "short": "Sym004 beats cetuximab in xenografts",
     "src": "https://doi.org/10.1158/0008-5472.CAN-09-1417",
@@ -650,7 +716,11 @@
     "quote": "Compared with reference anti-EGFR monoclonal antibodies, Sym004 exhibited more pronounced growth inhibition in vitro and superior efficacy in vivo.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
     "model_id": "sym004-egfr-resistant-xenograft",
@@ -677,11 +747,11 @@
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": "Full text read. The registry primary outcome of NCT01117428 is adverse events; the expansion cohorts were the sponsor's activity gate in anti-EGFR-refractory mCRC, hence endpoint_role poc_gate.",
-    "judgement": "Scored same on the proof-of-concept gate: the paper states the activity 'validates the preclinical hypothesis that a proportion of tumors remains dependent on EGFR signaling' (comparison_stated). Single-arm, 39 patients, so medium magnitude confidence; the randomized test came in 2018.",
-    "year": 2015,
+    "judgement": "Scored same on the proof-of-concept gate: the paper states the activity 'validates the preclinical hypothesis that a proportion of tumors remains dependent on EGFR signaling' (comparison_stated). Single-arm, 39 patients, so medium magnitude confidence; the randomized test came in 2018. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
+    "year": 2013,
     "status": "same",
-    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines (Sym004)",
-    "note": "Phase 1 expansion in anti-EGFR-refractory mCRC: 5/39 partial responses (13%) and 44% tumour shrinkage at 9-12 mg/kg, the activity the resistance models predicted.",
+    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines, with A431NS xenograft and cynomolgus PK (Sym004)",
+    "note": "Phase 1 expansion in anti-EGFR-refractory mCRC: 5/39 partial responses (13%) and 44% tumour shrinkage at 9-12 mg/kg, the activity the resistance models predicted. Dated 2013: the ASCO 2013 abstract 3551 (Dienstmann) first made this public. Design: single-arm expansion with no preset success bar, scored on response, which the model predicted.",
     "short": "13% PR in anti-EGFR-refractory mCRC",
     "src": "https://doi.org/10.1158/2159-8290.CD-14-1432",
     "srcLabel": "Dienstmann 2015",
@@ -695,7 +765,11 @@
       "doi": "10.1158/2159-8290.CD-14-1432",
       "quote": "17 of 39 patients (44%) had tumor shrinkage, with 5 patients (13%) achieving partial response."
      }
-    ]
+    ],
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected"
    },
    {
     "model_id": "sym004-egfr-resistant-xenograft",
@@ -712,21 +786,21 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "one patient (G465R) benefited; xenograft showed profound regression",
     "source_calls_it": "match",
     "population": "mCRC with EGFR extracellular-domain mutation after cetuximab",
     "model_first_use_year": 2010,
-    "prediction_level": "patient",
+    "prediction_level": "class",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading (Clin Cancer Res, paywalled); n=1 patient from the phase 1 (NCT01117428).",
-    "judgement": "Strengthens, same status, patient-level: the ECD-mutant cell lines and xenograft said Sym004 still binds and regresses tumours carrying G465R/S492R, and one such patient responded. Also the prediction the 2018 trial then tested and refuted.",
+    "judgement": "Strengthens, same status, patient-level: the ECD-mutant cell lines and xenograft said Sym004 still binds and regresses tumours carrying G465R/S492R, and one such patient responded. Also the prediction the 2018 trial then tested and refuted. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "year": 2016,
-    "status": "same",
-    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines (Sym004)",
-    "note": "EGFR-ECD-mutant CRC cells and xenografts stayed Sym004-sensitive; a G465R patient from the phase 1 benefited, a one-patient proof of principle.",
+    "status": "retro",
+    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines, with A431NS xenograft and cynomolgus PK (Sym004)",
+    "note": "EGFR-ECD-mutant CRC cells and xenografts stayed Sym004-sensitive; a G465R patient from the phase 1 benefited, a one-patient proof of principle. Retrodiction: the ECD-mutant models came after the phase 1 S492R responder was public and reproduced that response.",
     "short": "ECD-mutant model matched one patient",
     "src": "https://doi.org/10.1158/1078-0432.CCR-15-2400",
     "srcLabel": "Sanchez-Martin 2016",
@@ -734,7 +808,11 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [],
-    "strengthens": true
+    "strengthens": false,
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected"
    },
    {
     "model_id": "sym004-egfr-resistant-xenograft",
@@ -761,11 +839,11 @@
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": "Full text read (PMC5885274). Registry NCT02083653 results first posted 2018-12-24; the paper is the earlier public comparison. EU-CTR 2013-003829-29.",
-    "judgement": "Contra on the primary endpoint (OS, ITT) and on the patient-level prediction: the paper states that preclinical efficacy in EGFR ECD-mutated cells and the ctDNA fall in those clones 'was not linked to clinical benefit of Sym004 in the present trial'. The exploratory ctDNA-defined RAS/BRAF/EGFR-ECD-negative subgroup (median OS 12.8 vs 7.3 months, arm B vs C) is retrospective and hypothesis-generating by the authors' own words, and was never prospectively tested (NCT03549338 enrolled 2), so it does not lift the status. The 12 mg/kg arm was worse than control (HR 1.31).",
-    "year": 2018,
+    "judgement": "Contra on the primary endpoint (OS, ITT) and on the patient-level prediction: the paper states that preclinical efficacy in EGFR ECD-mutated cells and the ctDNA fall in those clones 'was not linked to clinical benefit of Sym004 in the present trial'. The exploratory ctDNA-defined RAS/BRAF/EGFR-ECD-negative subgroup (median OS 12.8 vs 7.3 months, arm B vs C) is retrospective and hypothesis-generating by the authors' own words, and was never prospectively tested (NCT03549338 enrolled 2), so it does not lift the status. The 12 mg/kg arm was worse than control (HR 1.31). Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
+    "year": 2017,
     "status": "contra",
-    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines (Sym004)",
-    "note": "Randomized phase 2 in anti-EGFR-refractory mCRC: OS not improved (HR 1.31 and 0.97 vs investigator's choice); EGFR-ECD-mutant patients, the model's biomarker, gained nothing.",
+    "model": "EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CRC lines, with A431NS xenograft and cynomolgus PK (Sym004)",
+    "note": "Randomized phase 2 in anti-EGFR-refractory mCRC: OS not improved (HR 1.31 and 0.97 vs investigator's choice); EGFR-ECD-mutant patients, the model's biomarker, gained nothing. Dated 2017: the Symphogen release of September 2017 first reported the missed OS endpoint.",
     "short": "Phase 2 OS failed; ECD biomarker failed",
     "src": "https://doi.org/10.1001/jamaoncol.2017.5245",
     "srcLabel": "Montagut 2018",
@@ -786,7 +864,11 @@
       "quote": "Discontinued development of Sym004 in combination with FOLFIRI"
      }
     ],
-    "reason": "OS and ECD-biomarker predictions both failed"
+    "reason": "OS and ECD-biomarker predictions both failed",
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected"
    },
    {
     "model_id": "crc-pdx-sym004-retro",
@@ -813,7 +895,7 @@
     "prediction_level": "patient",
     "confidence": "medium",
     "confidence_note": "PDX data are in eFigure 11 of the paper's supplement, read only through the main-text sentence.",
-    "judgement": "Separate track and a retrodiction (decision 10): the RAS/BRAF-mutant PDX panel was run alongside the trial, after the clinic already knew RAS/BRAF-mutant tumours resist anti-EGFR antibodies, and reproduced it; scored retro, never same. No prospective PDX prediction for this class followed.",
+    "judgement": "Separate track and a retrodiction (decision 10): the RAS/BRAF-mutant PDX panel was run alongside the trial, after the clinic already knew RAS/BRAF-mutant tumours resist anti-EGFR antibodies, and reproduced it; scored retro, never same. No prospective PDX prediction for this class followed. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "year": 2018,
     "status": "retro",
     "model": "Patient-derived CRC xenografts with RAS/BRAF mutations (Sym004)",
@@ -825,7 +907,11 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
-    "reason": "Retrodiction of known RAS/BRAF resistance"
+    "reason": "Retrodiction of known RAS/BRAF resistance",
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected"
    },
    {
     "model_id": "ga201-adcc-orthotopic-xenograft",
@@ -863,7 +949,11 @@
     "quote": "This superior efficacy of GA201 was seen in both KRAS-mutant and KRAS-wild-type mouse xenograft models and was further enhanced when combined with irinotecan chemotherapy.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "imgatuzumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
     "model_id": "ga201-adcc-orthotopic-xenograft",
@@ -887,14 +977,14 @@
     "source_calls_it": null,
     "population": "KRAS-mutant mCRC (third line)",
     "model_first_use_year": 2012,
-    "prediction_level": "patient",
+    "prediction_level": "class",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading of Delord 2014; the expansion sits inside NCT00721266, which has no posted results. Paz-Ares 2011 (doi:10.1200/JCO.2011.34.8888) reported one KRAS-mutant CRC response among 75 mixed phase 1 patients before the model was published; it is a mixed-tumour cohort and does not change this call.",
     "judgement": "Contra, patient-level: the model's stated prediction was efficacy in KRAS-mutant tumours through ADCC; the dedicated KRAS-mutant mCRC cohort met its primary endpoint of tumour response with zero responses and stable disease in 40% at 8 weeks. Paired by me (Delord's abstract does not set the xenografts beside the result).",
     "year": 2013,
     "status": "contra",
     "model": "Orthotopic KRAS-WT and KRAS-mutant xenografts with NK-cell ADCC assays (GA201)",
-    "note": "Single-agent imgatuzumab in 25 KRAS-mutant mCRC patients: no objective responses, best response stable disease (40% at 8 weeks); the KRAS-mutant xenograft prediction failed.",
+    "note": "Single-agent imgatuzumab in 25 KRAS-mutant mCRC patients: no objective responses, best response stable disease (40% at 8 weeks); the KRAS-mutant xenograft prediction failed. Design: single-arm expansion with no preset bar; 0 of 25 responded where the model predicted activity.",
     "short": "0/25 responses in KRAS-mutant mCRC",
     "src": "https://doi.org/10.1016/j.ejca.2013.10.015",
     "srcLabel": "Delord 2014",
@@ -908,7 +998,11 @@
       "doi": "10.1016/j.ejca.2013.10.015",
       "quote": "Median overall survival was 9.3months (95% confidence interval (CI): 5.1-12.3)."
      }
-    ]
+    ],
+    "drug": "imgatuzumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "biomarker_selected"
    },
    {
     "model_id": "ga201-adcc-orthotopic-xenograft",
@@ -939,7 +1033,7 @@
     "year": 2015,
     "status": "contra",
     "model": "Orthotopic KRAS-WT and KRAS-mutant xenografts with NK-cell ADCC assays (GA201)",
-    "note": "GAIN-C randomized phase 2: no PFS benefit from adding imgatuzumab to FOLFIRI in KRAS-mutant (HR 0.94) and no edge over cetuximab in KRAS-WT (HR 1.13); program stopped.",
+    "note": "GAIN-C randomized phase 2: no PFS benefit from adding imgatuzumab to FOLFIRI in KRAS-mutant (HR 0.94) and no edge over cetuximab in KRAS-WT (HR 1.13); program stopped. Design: imgatuzumab plus FOLFIRI against FOLFIRI or cetuximab plus FOLFIRI, scored on the PFS primary endpoint.",
     "short": "GAIN-C negative in KRAS-WT and mutant",
     "src": "https://doi.org/10.1200/jco.2015.33.3_suppl.669",
     "srcLabel": "Bridgewater 2015",
@@ -955,7 +1049,11 @@
      }
     ],
     "strengthens": true,
-    "reason": "KRAS-mutant and anti-cetuximab predictions failed"
+    "reason": "KRAS-mutant and anti-cetuximab predictions failed",
+    "drug": "imgatuzumab",
+    "combination_with": "FOLFIRI",
+    "route": "iv",
+    "population_group": "stage_or_line"
    },
    {
     "model_id": "zalutumumab-a431-xenograft-cyno",
@@ -1001,7 +1099,11 @@
       "quote": "The BOR defined as the best response recorded from the start of treatment until disease progression or recurrence per RECIST criteria."
      }
     ],
-    "reason": "Nine-patient CRC trial, nothing to compare"
+    "reason": "Nine-patient CRC trial, nothing to compare",
+    "drug": "zalutumumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -1039,7 +1141,11 @@
     "model_id": "ga201-crc-patient-nk-exvivo-adcc",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "imgatuzumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -1085,7 +1191,11 @@
     "model_id": "ga201-crc-patient-nk-exvivo-adcc",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "imgatuzumab",
+    "combination_with": null,
+    "route": "iv",
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -1113,7 +1223,7 @@
     "srcLabel": "Napolitano 2017",
     "quote": "Importantly, in the current work we observed a response to therapy in all cetuximab resistant tumors mice treated with SYM004.",
     "confidence": "high",
-    "judgement": "Different system and different prediction from the Symphogen track: acquired resistance selected against cetuximab and driven by MET, with a treat-at-progression design, where the ECD-mutant lines predicted on a different biomarker. The MET-specific (patient-level) claim stayed untested; the class-level claim was tested by the phase 2.",
+    "judgement": "Different system and different prediction from the Symphogen track: acquired resistance selected against cetuximab and driven by MET, with a treat-at-progression design, where the ECD-mutant lines predicted on a different biomarker. The MET-specific (patient-level) claim stayed untested; the class-level claim was tested by the phase 2. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "epub_year": 2017,
     "print_year": 2017,
     "population": "CRC lines with in-vitro-acquired cetuximab resistance (MET-activated GEO-CR, SW48-CR; LIM1215-CR, CACO2-CR) and nude-mouse xenografts",
@@ -1123,7 +1233,11 @@
     "model_id": "sym004-crc-acquired-cetuximab-resistance-met-xenograft",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": true,
@@ -1151,7 +1265,7 @@
     "srcLabel": "Napolitano 2017",
     "quote": "In the second Phase I trial, SYM004 achieved disease control in 26 of 39 enrolled patients with acquired resistance to anti-EGFR therapy.",
     "confidence": "medium",
-    "judgement": "Decision 10: the acquired-resistance activity the model shows was already known in patients from the phase 1 expansion, so the model's agreement with it is a retrodiction, drawn apart from same; its prospective test is the next entry.",
+    "judgement": "Decision 10: the acquired-resistance activity the model shows was already known in patients from the phase 1 expansion, so the model's agreement with it is a retrodiction, drawn apart from same; its prospective test is the next entry. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "epub_year": 2017,
     "print_year": 2017,
     "population": "Anti-EGFR-refractory KRAS-WT mCRC (phase 1 expansion)",
@@ -1168,7 +1282,11 @@
     "model_id": "sym004-crc-acquired-cetuximab-resistance-met-xenograft",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected"
    },
    {
     "retrodiction": false,
@@ -1196,7 +1314,7 @@
     "srcLabel": "Montagut 2018",
     "quote": "Sym004 did not improve OS in an unselected population of patients with mCRC and acquired anti-EGFR resistance.",
     "confidence": "high",
-    "judgement": "The first prospective test after the retrodiction: the model predicted Sym004 overcomes acquired anti-EGFR resistance and the randomized trial in exactly that population missed its OS primary endpoint. The exploratory ctDNA triple-negative subgroup benefit does not rescue the class call, and the MET-specific claim stays untested.",
+    "judgement": "The first prospective test after the retrodiction: the model predicted Sym004 overcomes acquired anti-EGFR resistance and the randomized trial in exactly that population missed its OS primary endpoint. The exploratory ctDNA triple-negative subgroup benefit does not rescue the class call, and the MET-specific claim stays untested. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "reason": "OS primary failed in the model's population",
     "epub_year": 2018,
     "print_year": 2018,
@@ -1214,7 +1332,11 @@
     "model_id": "sym004-crc-acquired-cetuximab-resistance-met-xenograft",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected"
    }
   ],
   "safety": [
@@ -1243,7 +1365,7 @@
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": null,
-    "judgement": "Opens the safety strip with the only published toxicology for a member: 6-8 week cynomolgus repeat-dose studies of Sym004 at 2-24 mg/kg weekly with cetuximab as comparator. The monkey showed dose-related skin rash (blistering at the 36/24 mg/kg top dose), dehydration and liquid faeces; the full text does not report serum magnesium. Imgatuzumab and zalutumumab have no published toxicology to compare, so no track for them.",
+    "judgement": "Opens the safety strip with the only published toxicology for a member: 6-8 week cynomolgus repeat-dose studies of Sym004 at 2-24 mg/kg weekly with cetuximab as comparator. The monkey showed dose-related skin rash (blistering at the 36/24 mg/kg top dose), dehydration and liquid faeces; the full text does not report serum magnesium. Imgatuzumab and zalutumumab have no published toxicology to compare, so no track for them. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
     "year": 2011,
     "status": "untested",
     "model": "Cynomolgus repeat-dose toxicology with cetuximab comparator (Sym004)",
@@ -1251,7 +1373,11 @@
     "short": "Monkey rash, dehydration, loose stools",
     "src": "https://doi.org/10.1158/1078-0432.CCR-11-1209",
     "srcLabel": "Skartved 2011",
-    "quote": "However, an early onset of pronounced, reversible, and anticipated anti-EGFR-mediated pharmacologic effects, such as skin rash, dehydration, and liquid feces, was observed."
+    "quote": "However, an early onset of pronounced, reversible, and anticipated anti-EGFR-mediated pharmacologic effects, such as skin rash, dehydration, and liquid feces, was observed.",
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "unselected"
    },
    {
     "model_id": "sym004-cyno-tox",
@@ -1272,22 +1398,107 @@
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "skin rash in 69% of 62 patients (grade 3 skin toxicity dose-limiting) vs dose-related rash in all monkey dose groups; no incidence ratio",
-    "source_calls_it": "match",
+    "source_calls_it": "partial",
     "population": "KRAS exon 2 wild-type mCRC with acquired resistance to cetuximab/panitumumab",
     "model_first_use_year": 2011,
     "prediction_level": "class",
     "confidence": "high",
-    "confidence_note": "Full text read. Hypomagnesaemia (53%, dose-limiting) was not reported in the monkey paper; cetuximab's own monkey package is also silent on it, and whether the species can show EGFR-dependent renal magnesium wasting is not established, so the silence is noted, not scored as a miss.",
-    "judgement": "Same: the monkey's predicted harm (dose-related skin rash) was the dose-limiting toxicity in patients, and the paper itself sets the monkey toxicology beside the clinical profile ('Toxicology studies in cynomolgus monkeys showed a toxicity profile consistent with other drugs of the same class, including dermatologic and gastrointestinal events'). Hypomagnesaemia, the second DLT, was unpredicted but is left unscored for the species reason above. Decision 16 not invoked: the harm was predicted but the monkey gave no margin.",
-    "year": 2015,
+    "confidence_note": "Full text read. Hypomagnesaemia (53%, dose-limiting) was not reported in the monkey paper. Ruling: cynomolgus monkeys carry the EGFR-dependent renal magnesium mechanism and serum magnesium is a routine chemistry value, so the monkey could have shown it; its silence is a miss.",
+    "judgement": "Rule question settled: the monkey predicted the dose-related rash, which became dose-limiting, and was silent on hypomagnesaemia, the second dose-limiting harm, which the species could have shown. One harm matched and one missed is partial agreement: same, source_calls_it partial. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
+    "year": 2013,
     "status": "same",
     "model": "Cynomolgus repeat-dose toxicology with cetuximab comparator (Sym004)",
-    "note": "Grade 3 skin toxicity capped the phase 1 dose, as the dose-related monkey rash foretold; hypomagnesaemia (53%) was the unpredicted second dose-limiting toxicity.",
+    "note": "Grade 3 skin toxicity capped the phase 1 dose, as the dose-related monkey rash foretold; hypomagnesaemia (53%) was the unpredicted second dose-limiting toxicity. Dated 2013: the ASCO 2013 abstract 3551 (Dienstmann) first made this public. Rash matched; the monkey missed hypomagnesaemia, so agreement is partial.",
     "short": "Monkey rash became the dose-limiting toxicity",
     "src": "https://doi.org/10.1158/2159-8290.CD-14-1432",
     "srcLabel": "Dienstmann 2015",
     "quote": "In this phase I trial, we observed grade 3 skin toxicity and hypomagnesemia as mechanism-based dose-limiting events during dose escalation.",
-    "reason": "Predicted rash was dose-limiting in patients"
+    "reason": "Predicted rash was dose-limiting in patients",
+    "drug": "futuximab",
+    "combination_with": "modotuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected"
+   },
+   {
+    "model_id": "sym004-crc-acquired-cetuximab-resistance-met-xenograft",
+    "model": "CRC lines with acquired cetuximab resistance and MET activation (GEO-CR, SW48-CR, LIM1215-CR, CACO2-CR) and SW48 xenografts treated at progression on cetuximab (Sym004)",
+    "model_kind": "animal",
+    "prediction_level": "class",
+    "model_first_use_year": 2017,
+    "drug": "futuximab",
+    "route": "iv",
+    "combination_with": "modotuximab",
+    "src": "https://doi.org/10.18632/oncotarget.18749",
+    "srcLabel": "Napolitano 2017",
+    "epub_year": 2017,
+    "print_year": 2017,
+    "population": "CRC lines with in-vitro-acquired cetuximab resistance (MET-activated GEO-CR, SW48-CR; LIM1215-CR, CACO2-CR) and nude-mouse xenografts",
+    "population_group": "stage_or_line",
+    "year": 2017,
+    "status": "untested",
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "registry_date": null,
+    "model_filed": false,
+    "product_in_model": true,
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "quote": "Both treatment protocols were well tolerated by mice and were not accompanied by any major side effect or treatment-related weight loss.",
+    "note": "Napolitano 2017 states both mouse regimens were well tolerated with no major side effect; a passing tolerability claim, now a safety prediction.",
+    "short": "Mice tolerated Sym004 well",
+    "confidence": "medium",
+    "confidence_note": "Full text read (PMC5620195). Non-binding to murine EGFR is from the Sym004 preclinical package (cynomolgus chosen as the relevant species), not restated in this paper.",
+    "judgement": "Opens the safety track of this model at its first public use (online 2017-06-27). Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
+    "untested_reason": null
+   },
+   {
+    "model_id": "sym004-crc-acquired-cetuximab-resistance-met-xenograft",
+    "model": "CRC lines with acquired cetuximab resistance and MET activation (GEO-CR, SW48-CR, LIM1215-CR, CACO2-CR) and SW48 xenografts treated at progression on cetuximab (Sym004)",
+    "model_kind": "animal",
+    "prediction_level": "class",
+    "model_first_use_year": 2017,
+    "drug": "futuximab",
+    "route": "iv",
+    "combination_with": "modotuximab",
+    "src": "https://doi.org/10.18632/oncotarget.18749",
+    "srcLabel": "Napolitano 2017",
+    "epub_year": 2017,
+    "print_year": 2017,
+    "population": "KRAS exon 2 wild-type mCRC with acquired resistance to cetuximab/panitumumab (Sym004 phase 1)",
+    "population_group": "biomarker_selected",
+    "year": 2017,
+    "status": "contra",
+    "subjects": "patients",
+    "comparison_stated": true,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.18632/oncotarget.18749",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "registry_date": "2017-07-12",
+    "model_filed": false,
+    "product_in_model": true,
+    "retrodiction": true,
+    "imported_from": null,
+    "magnitude": "opposite",
+    "magnitude_basis": "no major side effect in mice vs grade 3+ skin toxicity in 50% and hypomagnesaemia in 21% of phase 1 patients",
+    "source_calls_it": null,
+    "quote": "Skin toxicity and hypomagnesemia events of grade 3 or higher were reported for 50% and 21% of the patients, respectively, whereas only 3% of the patients experienced diarrhea of grade 3 or higher",
+    "note": "The mouse tolerability claim post-dates and fails to reproduce Sym004's own phase 1 harms: grade 3 rash in half and hypomagnesaemia in a fifth of patients.",
+    "short": "Well tolerated in mice; not in patients",
+    "confidence": "medium",
+    "confidence_note": "Full text read (PMC5620195); the paper itself cites the phase 1 toxicities. Sym004 is not known to bind mouse EGFR, so the mice could not show the on-target harms; scored because the claim was stated, not silent.",
+    "judgement": "Ruling: a passing tolerability claim is a safety prediction and is scored. It post-dates the same drug's phase 1 safety results (2013/2015), so it is a retrodiction, and it failed to reproduce them: contra. Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
+    "untested_reason": null,
+    "reason": "Mouse tolerability claim contradicted by phase 1"
    }
   ]
  }

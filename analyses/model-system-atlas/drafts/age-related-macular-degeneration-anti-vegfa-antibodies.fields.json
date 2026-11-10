@@ -1,0 +1,57 @@
+{
+ "tile": "age-related-macular-degeneration-anti-vegfa-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "same -> retro (retrodiction rule: engagement is a target claim; ranibizumab/pegaptanib patient results 2004-2006 precede the mouse CNV data); quote corrected to the verbatim abstract sentence"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "same 2024 -> retro 2019 (retrodiction rule: patient RGX-314 protein public 2018 before Ding 2019; rule 6 earliest public date; checker adjudication)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "same -> retro (retrodiction rule: monkey CNV data 2008 post-date ranibizumab's 2006 patient results for the same target)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "same 2018 (PHOENIX) -> retro 2014 (AURORA primary endpoint; rule 6 earliest date per checker adjudication; uncontrolled dose-ranging design scored; retrodiction rule vs ranibizumab 2006); src/quote changed to AURORA, PHOENIX moved to patient_trials"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "same -> retro (retrodiction rule: mouse CNV data post-date ranibizumab's 2006 patient results); non-inferiority design noted"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "same 2020 -> retro 2018 (rule 6: CEDAR/SEQUOIA topline press release July 2018 and Rodrigues 2018 both public in 2018; retrodiction rule vs ranibizumab 2006 and abicipar's own topline); non-inferiority design noted"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "same -> retro (retrodiction rule: model first public in the 2020 EMA report, after ranibizumab 2006 and CEDAR/SEQUOIA 2018 patient results); non-inferiority design noted"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "PANDA-1/2 (NCT03577899, NCT03630952) non-inferiority phase 3 failure now scored on the conbercept monkey CNV track: contra 2021 (registry, tier 3)"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "Opening untested 2008 on the conbercept monkey CNV track: Zhang 2008 'without evidence of toxicity' (passing tolerability claim now a safety prediction)"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "same 2014 on the conbercept monkey CNV track: AURORA 'well tolerated' matches Zhang 2008's no-toxicity claim"
+  }
+ ]
+}

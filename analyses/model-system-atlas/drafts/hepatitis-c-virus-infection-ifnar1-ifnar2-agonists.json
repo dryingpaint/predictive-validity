@@ -6,7 +6,7 @@
  "mondo_id": "MONDO:0005231",
  "population": "Unselected",
  "mechanism": "IFNAR1/IFNAR2 agonists",
- "note": "Three late interferon-α variants (PEG-IFN-SA, IFN-α5, Hanferon) tested in HCV 2010-2015 against the established peginterferon standard; only PEG-IFN-SA published patient data, and Hanferon has no public preclinical model.",
+ "note": "Three late interferon-α variants (PEG-IFN-SA, IFN-α5, Hanferon) tested in HCV 2010-2015 against the peginterferon standard; only PEG-IFN-SA published patient data (approved in China 2018), and Hanferon has no public preclinical model.",
  "programs": null,
  "loa": null,
  "label": "Hepatitis C (IFN-α variants)",
@@ -37,7 +37,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (chronic HCV; member trials enrolled genotype 1 or treatment-naive adults)",
+    "population": "Chronic HCV genotype 1 relapsers after IFN-α2/peginterferon + ribavirin (NCT01121731)",
     "model_first_use_year": 2004,
     "confidence": "medium",
     "confidence_note": "Abstract-level (PubMed). NCT01121731 (Digna Biotech, completed 2013) listed PD among aims; no results posted or published.",
@@ -48,11 +48,15 @@
     "model": "Human hepatoma cells (HepG2, Huh7) ISG induction",
     "year": 2004,
     "status": "untested",
-    "note": "IFN-α5 drove stronger STAT1/Tyk2 signalling and 2',5'-OAS induction than IFN-α2 in hepatoma cells; no human PD for IFN-α5 published.",
+    "note": "IFN-α5 drove stronger STAT1/Tyk2 signalling and 2',5'-OAS induction than IFN-α2 in hepatoma cells; no human PD for IFN-α5 published. Model post-dates interferon-α patient results for this target, so any comparison would be a retrodiction.",
     "short": "Hepatoma cells: IFN-α5 beats IFN-α2 on ISGs",
     "quote": "In conclusion, our data show that in hepatocytic cells, IFN-alpha5 induces stronger signaling and higher expression of antiviral genes than IFN-alpha2.",
     "reason": "IFN-α5 trial PD never reported",
-    "untested_reason": "unsettled"
+    "untested_reason": "unsettled",
+    "drug": "interferon alfa-5",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "peg-ifn-sa-monkey",
@@ -74,7 +78,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (chronic HCV; member trials enrolled genotype 1 or treatment-naive adults)",
+    "population": "Treatment-naive adults with chronic HCV",
     "model_first_use_year": 2011,
     "confidence": "medium",
     "confidence_note": "Abstract-level (PubMed; Regul Pept paywalled).",
@@ -85,9 +89,13 @@
     "year": 2011,
     "status": "untested",
     "model": "Rhesus/cynomolgus monkey PK and serum antiviral activity",
-    "note": "PEG-IFN-SA gave dose-dependent serum antiviral activity in monkeys for a week; no human data yet.",
+    "note": "PEG-IFN-SA gave dose-dependent serum antiviral activity in monkeys for a week; no human data yet. Model post-dates interferon-α patient results for this target, so any comparison would be a retrodiction.",
     "short": "Monkey serum antiviral activity lasts a week",
-    "quote": "Serum sample analysis from PEG-IFN-SA-treated monkeys showed dose-dependent antiviral activity for one week."
+    "quote": "Serum sample analysis from PEG-IFN-SA-treated monkeys showed dose-dependent antiviral activity for one week.",
+    "drug": "PEG-IFN-SA",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "peg-ifn-sa-monkey",
@@ -104,12 +112,12 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "ex vivo serum antiviral activity after one s.c. dose, monkey vs human (no common units reported)",
     "source_calls_it": null,
-    "population": "Unselected (chronic HCV; member trials enrolled genotype 1 or treatment-naive adults)",
+    "population": "Healthy volunteers (single s.c. dose, PEG-IFN-SA vs Pegasys)",
     "model_first_use_year": 2011,
     "confidence": "medium",
     "confidence_note": "Full text read (PMC4386949). Epub 2014-10-08, print April 2015.",
@@ -118,13 +126,17 @@
     "src": "https://doi.org/10.1111/bcp.12528",
     "srcLabel": "Zheng 2014",
     "year": 2014,
-    "status": "same",
+    "status": "retro",
     "model": "Rhesus/cynomolgus monkey PK and serum antiviral activity",
-    "note": "Single s.c. PEG-IFN-SA raised ex vivo serum antiviral activity and 2',5'-OAS in healthy volunteers, at or above Pegasys 180 µg.",
+    "note": "Single s.c. PEG-IFN-SA raised ex vivo serum antiviral activity and 2',5'-OAS in healthy volunteers, at or above Pegasys 180 µg. Retrodiction rule: the model was first public after interferon-α patients had already shown this result for the same target and action.",
     "short": "Human serum antiviral activity rose",
     "quote": "In the healthy volunteers, the ex vivo antiviral activity of PEG-IFN-SA was higher than that of Pegasys (Figure 2 D).",
     "readout_tier": "direct",
-    "reason": "Serum antiviral activity rose as in monkeys"
+    "reason": "Serum antiviral activity rose as in monkeys",
+    "drug": "PEG-IFN-SA",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -148,7 +160,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (chronic HCV; member trials enrolled genotype 1 or treatment-naive adults)",
+    "population": "Treatment-naive adults with chronic HCV",
     "model_first_use_year": 2011,
     "confidence": "medium",
     "confidence_note": "Abstract-level (PubMed). Quote is the first 27 words of a longer sentence.",
@@ -161,7 +173,11 @@
     "model": "Rhesus monkey and rat PK",
     "note": "Pegylation lengthened half-life 12- to 15-fold in monkeys and rats; no human dose or exposure target stated.",
     "short": "Animal PK, no human target",
-    "quote": "The pegylated protein exhibited improved pharmacokinetic properties compared to IFN-SA in both monkeys and rats, with a 12-fold and 15-fold increase in elimination half-life,"
+    "quote": "The pegylated protein exhibited improved pharmacokinetic properties compared to IFN-SA in both monkeys and rats, with a 12-fold and 15-fold increase in elimination half-life,",
+    "drug": "PEG-IFN-SA",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "ifna5-macaque-pk",
@@ -183,7 +199,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (chronic HCV; member trials enrolled genotype 1 or treatment-naive adults)",
+    "population": "Chronic HCV genotype 1 relapsers after IFN-α2/peginterferon + ribavirin (NCT01121731)",
     "model_first_use_year": 2013,
     "confidence": "medium",
     "confidence_note": "Abstract-level (PubMed). NCT01121731 tested 3 MIU IFN-α5; no PK results posted.",
@@ -198,7 +214,11 @@
     "short": "Macaque PK run, unpublished",
     "quote": "However, there is no specific and validated quantification method in order to conduct kinetic studies as part of the preclinical and clinical evaluation for regulatory purposes.",
     "reason": "Macaque PK never published",
-    "untested_reason": "unpublished"
+    "untested_reason": "unpublished",
+    "drug": "interferon alfa-5",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "peg-ifn-sa-monkey-rat-pk",
@@ -220,7 +240,7 @@
     "magnitude": null,
     "magnitude_basis": "PK parameters (half-life, Tmax), animal vs healthy volunteers",
     "source_calls_it": "match",
-    "population": "Unselected (chronic HCV; member trials enrolled genotype 1 or treatment-naive adults)",
+    "population": "Treatment-naive adults with chronic HCV",
     "model_first_use_year": 2011,
     "confidence": "medium",
     "confidence_note": "Full text read (PMC4386949).",
@@ -231,12 +251,16 @@
     "year": 2014,
     "status": "untested",
     "model": "Rhesus monkey and rat PK",
-    "note": "Human PK (t½ 55 h) was called consistent with monkeys and rats, but the animals never stated a human dose or exposure target.",
+    "note": "Human PK (t½ 55 h) was called consistent with monkeys and rats, but the animals never stated a human dose or exposure target. Human PK compared with animals, still no target to score.",
     "short": "PK consistent, no target to test",
     "quote": "The PK parameters of PEG-IFN-SA in healthy volunteers were consistent with those found in monkeys and rats [ 10 ].",
-    "strengthens": "Human PK compared with animals, still no target to score",
+    "strengthens": true,
     "reason": "Animals stated no human dose target",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "PEG-IFN-SA",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -260,7 +284,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (chronic HCV; member trials enrolled genotype 1 or treatment-naive adults)",
+    "population": "Chronic HCV genotype 1 relapsers after IFN-α2/peginterferon + ribavirin (NCT01121731)",
     "model_first_use_year": 2004,
     "confidence": "medium",
     "confidence_note": "Abstract-level. NCT01121731 completed January 2013 with no results posted; no publication found in PubMed or web search.",
@@ -271,7 +295,7 @@
     "model": "Human hepatoma cells (HepG2, Huh7) ISG induction",
     "year": 2004,
     "status": "untested",
-    "note": "Hepatoma-cell ISG data were offered as grounds for IFN-α5 trials; the 29-day phase 1/2 in treatment-experienced genotype 1 patients never reported.",
+    "note": "Hepatoma-cell ISG data were offered as grounds for IFN-α5 trials; the 29-day phase 1/2 in treatment-experienced genotype 1 patients never reported. Model post-dates interferon-α patient results for this target, so any comparison would be a retrodiction.",
     "short": "IFN-α5 trial unreported",
     "quote": "These data warrant clinical trials to evaluate the efficacy of IFN-alpha5 in chronic viral hepatitis.",
     "reason": "IFN-α5 trial result never reported",
@@ -283,7 +307,11 @@
       "doi": null,
       "quote": "The general aim of this study is to determine if 3 MIU of IFN-α5 in monotherapy, are safe dose levels as well as to investigate the antiviral efficacy and pharmacodynamics (PD) of such doses"
      }
-    ]
+    ],
+    "drug": "interferon alfa-5",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "peg-ifn-sa-monkey",
@@ -305,7 +333,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (chronic HCV; member trials enrolled genotype 1 or treatment-naive adults)",
+    "population": "Treatment-naive adults with chronic HCV",
     "model_first_use_year": 2011,
     "confidence": "medium",
     "confidence_note": "Abstract-level (PubMed).",
@@ -316,9 +344,13 @@
     "year": 2011,
     "status": "untested",
     "model": "Rhesus/cynomolgus monkey PK and serum antiviral activity",
-    "note": "Monkey serum antiviral activity implied sustained antiviral action in patients; HCV itself does not infect monkeys.",
+    "note": "Monkey serum antiviral activity implied sustained antiviral action in patients; HCV itself does not infect monkeys. Model post-dates interferon-α patient results for this target, so any comparison would be a retrodiction.",
     "short": "Monkey serum activity implies antiviral effect",
-    "quote": "These findings demonstrate that pegylation of IFN-SA results in more desirable pharmacokinetic properties, enhanced drug exposure and sustained-efficacy of in vivo antiviral action."
+    "quote": "These findings demonstrate that pegylation of IFN-SA results in more desirable pharmacokinetic properties, enhanced drug exposure and sustained-efficacy of in vivo antiviral action.",
+    "drug": "PEG-IFN-SA",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "peg-ifn-sa-monkey",
@@ -335,29 +367,35 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "HCV RNA decline / 12-week EVR (70% at 1.5 µg/kg vs 60% on peginterferon alfa-2a 180 µg)",
     "source_calls_it": null,
-    "population": "Unselected (chronic HCV; member trials enrolled genotype 1 or treatment-naive adults)",
+    "population": "Treatment-naive adults with chronic HCV",
     "model_first_use_year": 2011,
     "confidence": "medium",
-    "confidence_note": "Abstract-level (journal paywalled). PEG-CIFN identified as PEG-IFN-SA (E. coli consensus IFN variant, Jilin site, 1.0/1.5/2.0 µg/kg vs 180 µg arms match NCT01605513). No registry results for NCT01605513, NCT01908335 or NCT01903278.",
+    "confidence_note": "Abstract-level (journal paywalled). PEG-CIFN identified as PEG-IFN-SA (E. coli consensus IFN variant, Jilin site, 1.0/1.5/2.0 µg/kg vs 180 µg arms match NCT01605513). Ding's arms match NCT01605513 (monotherapy, no ribavirin); no registry results for NCT01605513, NCT01908335 or NCT01903278. Phase 3 NCT01903278 (with ribavirin) and 2018 China NMPA approval known only from sponsor web pages.",
     "judgement": "Judgement call: the monkey model is a serum antiviral bioassay, not an HCV model; scored its implicit prediction (antiviral activity in patients) as matched, direction only. Phase 2 and phase 3 SVR results were not found.",
     "prediction_level": "class",
     "year": 2016,
-    "status": "same",
+    "status": "retro",
     "model": "Rhesus/cynomolgus monkey PK and serum antiviral activity",
     "src": "https://doi.org/10.5414/CP202439",
     "srcLabel": "Ding 2016",
-    "note": "In 40 naive HCV patients, weekly PEG-CIFN cut HCV RNA; 12-week EVR 70% at 1.5 µg/kg vs 60% on peginterferon alfa-2a.",
+    "note": "In 40 naive HCV patients, weekly PEG-CIFN cut HCV RNA; 12-week EVR 70% at 1.5 µg/kg vs 60% on peginterferon alfa-2a. Retrodiction rule: the model was first public after interferon-α patients had already shown this result for the same target and action.",
     "short": "HCV RNA fell; EVR matched Pegasys",
     "quote": "PEGCIFN was well tolerated and effective at inhibiting HCV RNA, which is associated with changes in markers of immune response.",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "reason": "HCV RNA fell as monkeys implied",
+    "reason": "HCV RNA fell, as IFN-α already showed",
     "patient_trials": [
+     {
+      "nct": "NCT01605513",
+      "registry_date": null,
+      "doi": null,
+      "quote": "PEG-IFN-SA (new interferon) was injected subcutaneously one times per week for 12 times."
+     },
      {
       "nct": "NCT01903278",
       "registry_date": null,
@@ -365,6 +403,10 @@
       "quote": "This study is to confirm the potential effects and assess the safety of a new bio-product Pegylated Recombinant Consensus Interferon Variant Solution for Injection (PEG-IFN-SA) and Ribavirin"
      }
     ],
+    "drug": "PEG-IFN-SA",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
     "untested_reason": "no_prediction"
    }
   ],
@@ -389,7 +431,7 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected (chronic HCV; member trials enrolled genotype 1 or treatment-naive adults)",
+    "population": "Treatment-naive adults with chronic HCV",
     "model_first_use_year": 2011,
     "confidence": "medium",
     "confidence_note": "Abstract-level. Healthy-volunteer AEs (29/30, mild-moderate, like Pegasys; Zheng 2014) had no published animal prediction to test.",
@@ -404,7 +446,11 @@
     "short": "Tox studies not public",
     "quote": "The study aims to characterize the pharmacokinetic, tissue distribution, excretion, and antiviral activity properties of a novel pegylated recombinant human consensus interferon-α variant (PEG-IFN-SA)",
     "reason": "Animal toxicology never published",
-    "untested_reason": "unpublished"
+    "untested_reason": "unpublished",
+    "drug": "PEG-IFN-SA",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

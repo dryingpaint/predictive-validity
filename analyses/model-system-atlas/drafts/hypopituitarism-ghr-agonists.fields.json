@@ -1,0 +1,102 @@
+{
+ "tile": "hypopituitarism-ghr-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug somatrogon, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug somavaratan, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug somavaratan, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug somatrogon, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug somatrogon, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug somatrogon, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug somavaratan, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug somavaratan, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug somatrogon, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug somatrogon, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug somavaratan, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug somavaratan, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug somavaratan, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug somavaratan, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug somatrogon, route sc, population_group unselected (set from the entry's source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "year 2022 -> 2016, src Deal 2022 -> Strasburger 2017 (online 2016-12-08) with its quote; rule 6 earliest public date (adjudicated); drug somatrogon, route sc"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "year 2017 -> 2015, src VELOCITY press release -> Moore 2016 (online 2015-12-16): dose contra rests on the model's IGF-1 target, not the growth miss (dose rule, adjudicated); magnitude off_by_2-5x"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "year 2022 -> 2016, src EPAR -> Strasburger 2017 (online 2016-12-08), model_src Hershkovitz 2016: passing tolerability claim now a safety prediction (ruling); EPAR injection-site data kept in note; status same"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "somatrogon x hypox-rat-gh x sc track split from efficacy 3: same 2017 (Zelinska 2017 phase 2 vs daily r-hGH); phase 3 in patient_trials"
+  }
+ ]
+}

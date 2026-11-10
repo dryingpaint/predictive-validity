@@ -43,16 +43,20 @@
     "model": "GSK superfused guinea-pig trachea onset/duration, in vivo duration and human isolated bronchus models (vilanterol)",
     "model_kind": "animal",
     "model_first_use_year": 2010,
-    "model_filed": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2013/204275s000lbl.pdf",
+    "model_filed": true,
     "year": 2010,
     "status": "untested",
-    "note": "Vilanterol was picked on guinea-pig trachea onset/duration and in vivo duration; no patient readout yet.",
+    "note": "Vilanterol was picked on guinea-pig trachea onset/duration and in vivo duration; no patient readout yet. Model filed in the NDA 203975 pharmacology review.",
     "short": "Guinea-pig trachea duration picked vilanterol",
     "src": "https://doi.org/10.1021/jm100326d",
     "srcLabel": "Procopiou 2010",
     "quote": "Compound 13f had high potency, selectivity, fast onset, and long duration of action in vitro and was found to have long duration in vivo, low oral bioavailability in the rat, and to be rapidly metabolized.",
     "epub_year": 2010,
-    "print_year": 2010
+    "print_year": 2010,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -66,7 +70,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2013-09-17",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "duration: long in vitro/in vivo relaxation vs 24-h FEV1 in patients; the model gave no FEV1 magnitude",
@@ -80,16 +84,20 @@
     "model": "GSK superfused guinea-pig trachea onset/duration, in vivo duration and human isolated bronchus models (vilanterol)",
     "model_kind": "animal",
     "model_first_use_year": 2010,
-    "model_filed": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2013/204275s000lbl.pdf",
+    "model_filed": true,
     "year": 2012,
-    "status": "same",
-    "note": "Once-daily vilanterol 25-50 ug held 0-24 h weighted-mean and trough FEV1 >=130 mL over placebo in 602 COPD patients, the 24-h relaxation the tissue models showed.",
+    "status": "retro",
+    "note": "Once-daily vilanterol 25-50 ug held 0-24 h weighted-mean and trough FEV1 >=130 mL over placebo in 602 COPD patients, the 24-h relaxation the tissue models showed. Model filed in the NDA 203975 pharmacology review. Retrodiction: salmeterol and formoterol had already raised FEV1 in COPD patients (US COPD labels 1998, 2001), so this target-level result was known before the model was public.",
     "short": "24-h FEV1 up >=130 mL in COPD",
     "src": "https://doi.org/10.1378/chest.11-2231",
     "srcLabel": "Hanania 2012",
     "quote": "Clinically relevant treatment differences of ≥ 130 mL in trough and 0- to 24-h weighted mean FEV(1) were observed with VI 25- and 50-μg doses vs placebo.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -103,7 +111,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2013-09-17",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "duration: significant bronchodilation of human bronchi at 22 h vs 24-h dosing interval in patients",
@@ -117,17 +125,21 @@
     "model": "GSK superfused guinea-pig trachea onset/duration, in vivo duration and human isolated bronchus models (vilanterol)",
     "model_kind": "animal",
     "model_first_use_year": 2010,
-    "model_filed": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2013/204275s000lbl.pdf",
+    "model_filed": true,
     "year": 2012,
-    "status": "same",
+    "status": "retro",
     "strengthens": true,
-    "note": "GSK's own pharmacology paper set 22-h bronchodilation of human isolated bronchi beside the clinical once-daily data.",
+    "note": "GSK's own pharmacology paper set 22-h bronchodilation of human isolated bronchi beside the clinical once-daily data. Model filed in the NDA 203975 pharmacology review. Retrodiction: salmeterol and formoterol had already raised FEV1 in COPD patients (US COPD labels 1998, 2001), so this target-level result was known before the model was public.",
     "short": "Human bronchi 22 h; clinic once daily",
     "src": "https://doi.org/10.1124/jpet.112.198481",
     "srcLabel": "Slack 2013",
     "quote": "This pharmacological profile combined with clinical data is consistent with once a day dosing of vilanterol in the treatment of both asthma and chronic obstructive pulmonary disease (COPD).",
     "epub_year": 2012,
-    "print_year": 2013
+    "print_year": 2013,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -164,7 +176,11 @@
     "srcLabel": "Aparici 2012",
     "quote": "In conclusion, our results suggest that abediterol has a preclinical profile for once-daily dosing in humans together with a fast onset of action and a favorable cardiovascular safety profile.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -178,7 +194,7 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "duration: guinea-pig bronchoprotection t1/2 36 h and human-bronchus t1/2 ~690 min vs bronchodilation sustained 36 h in volunteers; not the same quantity",
@@ -194,14 +210,18 @@
     "model_first_use_year": 2012,
     "model_filed": null,
     "year": 2014,
-    "status": "same",
-    "note": "In 48 healthy men, abediterol 5-50 ug raised airway conductance over placebo at every time point to 36 h, the sustained bronchodilation the guinea pig and human bronchi showed.",
+    "status": "retro",
+    "note": "In 48 healthy men, abediterol 5-50 ug raised airway conductance over placebo at every time point to 36 h, the sustained bronchodilation the guinea pig and human bronchi showed. Retrodiction: salmeterol and formoterol had already raised FEV1 in COPD patients (US COPD labels 1998, 2001), so this target-level result was known before the model was public.",
     "short": "Airway conductance up to 36 h in volunteers",
     "src": "https://doi.org/10.1002/jcph.355",
     "srcLabel": "Timmer 2014",
     "quote": "Improvements in airway conductance (increase) and resistance (decrease) were greater for all doses of abediterol tested compared with placebo at all time-points up to 36 hours.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -215,7 +235,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2017-04-10",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "duration of bronchodilation (36 h in guinea pig and patients)",
@@ -231,15 +251,19 @@
     "model_first_use_year": 2012,
     "model_filed": null,
     "year": 2016,
-    "status": "same",
+    "status": "retro",
     "strengthens": true,
-    "note": "Single-dose abediterol 0.625-10 ug raised trough FEV1 0.10-0.26 L over placebo in 70 COPD patients and held it at every time point to 36 h.",
+    "note": "Single-dose abediterol 0.625-10 ug raised trough FEV1 0.10-0.26 L over placebo in 70 COPD patients and held it at every time point to 36 h. Retrodiction: salmeterol and formoterol had already raised FEV1 in COPD patients (US COPD labels 1998, 2001), so this target-level result was known before the model was public.",
     "short": "Trough FEV1 up at all doses in COPD",
     "src": "https://doi.org/10.1186/s12890-016-0266-5",
     "srcLabel": "Beier 2016",
     "quote": "Improvements in bronchodilation were maintained at all time points post-dose versus placebo (all abediterol doses) and from 15 or 30 min post-dose versus indacaterol 150 μg with abediterol 2.5, 5 and 10 μg (all p < 0.05).",
     "epub_year": 2016,
-    "print_year": 2016
+    "print_year": 2016,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -276,7 +300,11 @@
     "srcLabel": "Stocks 2014",
     "quote": "Determination of activities at the human β-adrenoreceptors demonstrated a series of highly potent and selective β2 receptor agonists that were progressed to further study in a guinea pig histamine-induced bronchoconstriction model.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -290,7 +318,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2014-01-17",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "duration: guinea-pig intratracheal duration vs 24-26 h trough FEV1 in patients; no FEV1 magnitude was predicted",
@@ -306,14 +334,18 @@
     "model_first_use_year": 2014,
     "model_filed": null,
     "year": 2014,
-    "status": "same",
-    "note": "AZD3199 200-800 ug once daily held trough (24-26 h) FEV1 97-110 mL over placebo in 329 COPD patients, the 24-h airway relaxation the intratracheal duration model showed.",
+    "status": "retro",
+    "note": "AZD3199 200-800 ug once daily held trough (24-26 h) FEV1 97-110 mL over placebo in 329 COPD patients, the 24-h airway relaxation the intratracheal duration model showed. Retrodiction: salmeterol and formoterol had already raised FEV1 in COPD patients (US COPD labels 1998, 2001), so this target-level result was known before the model was public.",
     "short": "24-26 h trough FEV1 up in COPD",
     "src": "https://doi.org/10.1186/1465-9921-14-64",
     "srcLabel": "Kuna 2013",
     "quote": "All three doses of AZD3199 produced 24-hour bronchodilation, but with no clear dose-response, suggesting that doses of 200 μg or less may be sufficient to maintain bronchodilation over 24 hours in patients with COPD.",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -350,7 +382,11 @@
     "srcLabel": "Glossop 2010",
     "quote": "Compound 38 (PF-610355) is identified as a clinical candidate from this series, with in vivo duration of action studies confirming its potential for once-daily use in humans.",
     "epub_year": 2010,
-    "print_year": 2010
+    "print_year": 2010,
+    "drug": "pf-00610355",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -364,7 +400,7 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "duration: tissue relaxation and in vivo duration vs trough FEV1 24 h after once-daily dosing",
@@ -380,14 +416,18 @@
     "model_first_use_year": 2010,
     "model_filed": null,
     "year": 2012,
-    "status": "same",
-    "note": "Once-daily PF-00610355 raised trough FEV1 in 690 COPD patients (50 ug fine-particle dose: >0.78 probability of +120 mL), the 24-h relaxation the tissue model showed.",
+    "status": "retro",
+    "note": "Once-daily PF-00610355 raised trough FEV1 in 690 COPD patients (50 ug fine-particle dose: >0.78 probability of +120 mL), the 24-h relaxation the tissue model showed. Retrodiction: salmeterol and formoterol had already raised FEV1 in COPD patients (US COPD labels 1998, 2001), so this target-level result was known before the model was public.",
     "short": "Trough FEV1 up once daily in COPD",
     "src": "https://doi.org/10.1007/s10928-012-9274-0",
     "srcLabel": "Nielsen 2012",
     "quote": "The 50 μg fine-particle dose, on the other hand, has a greater than 0.78 probability of achieving a 120 mL improvement versus placebo at trough.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "pf-00610355",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -418,16 +458,20 @@
     "model": "GSK superfused guinea-pig trachea onset/duration, in vivo duration and human isolated bronchus models (vilanterol)",
     "model_kind": "animal",
     "model_first_use_year": 2010,
-    "model_filed": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2013/204275s000lbl.pdf",
+    "model_filed": true,
     "year": 2010,
     "status": "untested",
-    "note": "Guinea-pig trachea and in vivo duration set a once-daily aim and an antedrug design for low systemic exposure; no human dose was derived.",
+    "note": "Guinea-pig trachea and in vivo duration set a once-daily aim and an antedrug design for low systemic exposure; no human dose was derived. Model filed in the NDA 203975 pharmacology review.",
     "short": "Model set once-daily aim, no dose",
     "src": "https://doi.org/10.1021/jm100326d",
     "srcLabel": "Procopiou 2010",
     "quote": "Compound 13f had high potency, selectivity, fast onset, and long duration of action in vitro and was found to have long duration in vivo, low oral bioavailability in the rat, and to be rapidly metabolized.",
     "epub_year": 2010,
-    "print_year": 2010
+    "print_year": 2010,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -456,16 +500,20 @@
     "model": "GSK superfused guinea-pig trachea onset/duration, in vivo duration and human isolated bronchus models (vilanterol)",
     "model_kind": "animal",
     "model_first_use_year": 2010,
-    "model_filed": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2013/204275s000lbl.pdf",
+    "model_filed": true,
     "year": 2012,
     "status": "same",
-    "note": "Once-daily target reached and sufficient: vilanterol 25 ug gave >=130 mL trough FEV1 at 24 h with no pulse, BP or QTcF signal; the dose came from clinical ranging.",
+    "note": "Once-daily target reached and sufficient: vilanterol 25 ug gave >=130 mL trough FEV1 at 24 h with no pulse, BP or QTcF signal; the dose came from clinical ranging. Model filed in the NDA 203975 pharmacology review.",
     "short": "Once-daily reached at 25 ug; dose by ranging",
     "src": "https://doi.org/10.1378/chest.11-2231",
     "srcLabel": "Hanania 2012",
     "quote": "VI 25 and 50 μg once daily provided both statistically and clinically relevant 24-h improvements in lung function in patients with COPD compared with placebo.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -494,17 +542,21 @@
     "model": "GSK superfused guinea-pig trachea onset/duration, in vivo duration and human isolated bronchus models (vilanterol)",
     "model_kind": "animal",
     "model_first_use_year": 2010,
-    "model_filed": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2013/204275s000lbl.pdf",
+    "model_filed": true,
     "year": 2013,
     "status": "same",
     "strengthens": true,
-    "note": "FDA accepted once-daily vilanterol 25 ug from asthma and COPD dose-ranging and the once- versus twice-daily study; the regimen the tissue duration implied.",
+    "note": "FDA accepted once-daily vilanterol 25 ug from asthma and COPD dose-ranging and the once- versus twice-daily study; the regimen the tissue duration implied. Model filed in the NDA 203975 pharmacology review.",
     "short": "FDA: once-daily regimen supported",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/203975Orig1s000SumR.pdf",
     "srcLabel": "FDA summary review 2013",
     "quote": "These results support a once-daily dosing frequency for vilanterol.",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -542,7 +594,11 @@
     "srcLabel": "Aparici 2012",
     "quote": "In conclusion, our results suggest that abediterol has a preclinical profile for once-daily dosing in humans together with a fast onset of action and a favorable cardiovascular safety profile.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -580,7 +636,11 @@
     "srcLabel": "Beier 2016",
     "quote": "Abediterol had low systemic exposure; incidence of treatment-emergent adverse events was similar between treatment groups.",
     "epub_year": 2016,
-    "print_year": 2016
+    "print_year": 2016,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -618,7 +678,11 @@
     "srcLabel": "Stocks 2014",
     "quote": "Determination of activities at the human β-adrenoreceptors demonstrated a series of highly potent and selective β2 receptor agonists that were progressed to further study in a guinea pig histamine-induced bronchoconstriction model.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -632,7 +696,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2014-01-17",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "24-h dosing interval; the model gave no human dose",
@@ -649,14 +713,18 @@
     "model_first_use_year": 2014,
     "model_filed": null,
     "year": 2014,
-    "status": "same",
-    "note": "Once-daily 200-800 ug all held trough FEV1 at 24-26 h with no dose-response: the target was reached and over-shot; exposure was below the healthy-volunteer prediction.",
+    "status": "retro",
+    "note": "Once-daily 200-800 ug all held trough FEV1 at 24-26 h with no dose-response: the target was reached and over-shot; exposure was below the healthy-volunteer prediction. Retrodiction: AZD3199's own COPD trial (Kuna 2013) was public before the model paper (2014).",
     "short": "Once-daily reached at every dose",
     "src": "https://doi.org/10.1186/1465-9921-14-64",
     "srcLabel": "Kuna 2013",
     "quote": "All AZD3199 doses significantly increased mean peak and trough FEV1 versus placebo (106-171 ml and 97-110 ml increases, respectively), but with no clear dose-response; the level of bronchodilation was comparable to or greater than that achieved with formoterol.",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -694,7 +762,11 @@
     "srcLabel": "Glossop 2010",
     "quote": "Compound 38 (PF-610355) is identified as a clinical candidate from this series, with in vivo duration of action studies confirming its potential for once-daily use in humans.",
     "epub_year": 2010,
-    "print_year": 2010
+    "print_year": 2010,
+    "drug": "pf-00610355",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -732,7 +804,11 @@
     "srcLabel": "Nielsen 2012",
     "quote": "The results of the simulations show that once daily fine-particle doses of 28.1 μg versus placebo have a moderate probability of providing an average improvement above 100 mL at trough.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "pf-00610355",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -764,16 +840,20 @@
     "model": "GSK superfused guinea-pig trachea onset/duration, in vivo duration and human isolated bronchus models (vilanterol)",
     "model_kind": "animal",
     "model_first_use_year": 2010,
-    "model_filed": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2013/204275s000lbl.pdf",
+    "model_filed": true,
     "year": 2010,
     "status": "untested",
-    "note": "The model reads airway smooth-muscle relaxation and its duration, the reversible bronchomotor part of COPD airflow limitation only.",
+    "note": "The model reads airway smooth-muscle relaxation and its duration, the reversible bronchomotor part of COPD airflow limitation only. Model filed in the NDA 203975 pharmacology review.",
     "short": "Model reads smooth-muscle relaxation only",
     "src": "https://doi.org/10.1021/jm100326d",
     "srcLabel": "Procopiou 2010",
     "quote": "Compound 13f had high potency, selectivity, fast onset, and long duration of action in vitro and was found to have long duration in vivo, low oral bioavailability in the rat, and to be rapidly metabolized.",
     "epub_year": 2010,
-    "print_year": 2010
+    "print_year": 2010,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -787,7 +867,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2013-09-17",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "FEV1 response; the model predicted relaxation and duration, not an FEV1 effect size",
@@ -810,16 +890,20 @@
     "model": "GSK superfused guinea-pig trachea onset/duration, in vivo duration and human isolated bronchus models (vilanterol)",
     "model_kind": "animal",
     "model_first_use_year": 2010,
-    "model_filed": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2013/204275s000lbl.pdf",
+    "model_filed": true,
     "year": 2012,
-    "status": "same",
-    "note": "Primary endpoint met: trough FEV1 at day 28 rose dose-dependently, >=130 mL at 25-50 ug, in 602 COPD patients; vilanterol 25 ug was approved in 2013 in Breo and Anoro Ellipta.",
+    "status": "retro",
+    "note": "Primary endpoint met: trough FEV1 at day 28 rose dose-dependently, >=130 mL at 25-50 ug, in 602 COPD patients; vilanterol 25 ug was approved in 2013 in Breo and Anoro Ellipta. Model filed in the NDA 203975 pharmacology review. Retrodiction: salmeterol and formoterol had already raised FEV1 in COPD patients (US COPD labels 1998, 2001), so this target-level result was known before the model was public.",
     "short": "Trough FEV1 primary met; approved 2013",
     "src": "https://doi.org/10.1378/chest.11-2231",
     "srcLabel": "Hanania 2012",
     "quote": "VI once daily for 28 days significantly improved trough FEV(1) in a dose-dependent manner vs placebo.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -858,7 +942,11 @@
     "srcLabel": "Aparici 2012",
     "quote": "In conclusion, our results suggest that abediterol has a preclinical profile for once-daily dosing in humans together with a fast onset of action and a favorable cardiovascular safety profile.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -872,7 +960,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2017-04-10",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "FEV1 response; the model predicted bronchoprotection and duration, not an FEV1 effect size",
@@ -897,14 +985,18 @@
     "model_first_use_year": 2012,
     "model_filed": null,
     "year": 2016,
-    "status": "same",
-    "note": "Primary endpoint met: single doses 0.625-10 ug raised trough FEV1 0.10-0.26 L over placebo (all p<0.0001) in 70 COPD patients; 2.5-10 ug beat indacaterol 150 ug.",
+    "status": "retro",
+    "note": "Primary endpoint met: single doses 0.625-10 ug raised trough FEV1 0.10-0.26 L over placebo (all p<0.0001) in 70 COPD patients; 2.5-10 ug beat indacaterol 150 ug. Retrodiction: salmeterol and formoterol had already raised FEV1 in COPD patients (US COPD labels 1998, 2001), so this target-level result was known before the model was public.",
     "short": "Trough FEV1 primary met at every dose",
     "src": "https://doi.org/10.1186/s12890-016-0266-5",
     "srcLabel": "Beier 2016",
     "quote": "All doses of abediterol (0.625-10 μg) provided clinically and statistically significant, dose-dependent improvements in bronchodilation versus placebo, and abediterol 2.5, 5 and 10 μg gave significant improvements versus indacaterol.",
     "epub_year": 2016,
-    "print_year": 2016
+    "print_year": 2016,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -943,7 +1035,11 @@
     "srcLabel": "Stocks 2014",
     "quote": "Determination of activities at the human β-adrenoreceptors demonstrated a series of highly potent and selective β2 receptor agonists that were progressed to further study in a guinea pig histamine-induced bronchoconstriction model.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -957,7 +1053,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2014-01-17",
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "FEV1 response; the guinea pig predicted bronchoprotection, not an FEV1 effect size",
@@ -982,14 +1078,18 @@
     "model_first_use_year": 2014,
     "model_filed": null,
     "year": 2014,
-    "status": "same",
-    "note": "Primary endpoints met: peak and trough FEV1 rose 106-171 and 97-110 mL over placebo at 4 weeks in 329 COPD patients, matching or beating formoterol; no Phase 3 followed.",
+    "status": "retro",
+    "note": "Primary endpoints met: peak and trough FEV1 rose 106-171 and 97-110 mL over placebo at 4 weeks in 329 COPD patients, matching or beating formoterol; no Phase 3 followed. Retrodiction: salmeterol and formoterol had already raised FEV1 in COPD patients (US COPD labels 1998, 2001), so this target-level result was known before the model was public.",
     "short": "Peak and trough FEV1 primaries met",
     "src": "https://doi.org/10.1186/1465-9921-14-64",
     "srcLabel": "Kuna 2013",
     "quote": "All AZD3199 doses significantly increased mean peak and trough FEV1 versus placebo (106-171 ml and 97-110 ml increases, respectively), but with no clear dose-response; the level of bronchodilation was comparable to or greater than that achieved with formoterol.",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1028,21 +1128,25 @@
     "srcLabel": "Glossop 2010",
     "quote": "Compound 38 (PF-610355) is identified as a clinical candidate from this series, with in vivo duration of action studies confirming its potential for once-daily use in humans.",
     "epub_year": 2010,
-    "print_year": 2010
+    "print_year": 2010,
+    "drug": "pf-00610355",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
     "population": "Unselected",
     "subjects": "patients",
     "comparison_stated": false,
-    "source_tier": 1,
+    "source_tier": 4,
     "model_src": "https://doi.org/10.1021/jm1005989",
     "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
     "registry_date": null,
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "FEV1 response; the model predicted duration, not an FEV1 effect size",
@@ -1050,7 +1154,7 @@
     "confidence": "low",
     "confidence_note": "Abstract-level (paywalled). The Phase 2b (NCT00808288, 405 patients, trough FEV1 at 6 weeks primary) and the single-dose Phase 2a (NCT00783406) posted no results; the pooled K-PD analysis is the only public FEV1 record, so the primary-endpoint result is inferred from the modelled dose-response (50 ug fine-particle: >0.78 probability of +120 mL at trough).",
     "reason": "FEV1 rose as predicted; program dropped",
-    "judgement": "Scored same at low confidence: the trial's primary was never reported as such, but the pooled patient data show the predicted once-daily bronchodilation. The program's discontinuation is unexplained in any source found and is not a model miss.",
+    "judgement": "RULE QUESTION settled: Nielsen 2012 pools four COPD studies (690 patients) and is a tier 4 meta-analysis of patient trials, admissible patient-side; with model_src Glossop 2010 it scores, at low confidence because the Phase 2b primary was never reported on its own. Status retro, not same: the target-level result was known from salmeterol and formoterol before the model was public.",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
@@ -1067,14 +1171,18 @@
     "model_first_use_year": 2010,
     "model_filed": null,
     "year": 2012,
-    "status": "same",
-    "note": "Trough FEV1 rose dose-dependently with once-daily PF-00610355 across four studies in 690 COPD patients; the 6-week Phase 2b primary itself was never published and no Phase 3 followed.",
+    "status": "retro",
+    "note": "Trough FEV1 rose dose-dependently with once-daily PF-00610355 across four studies in 690 COPD patients; the 6-week Phase 2b primary itself was never published and no Phase 3 followed. Scored on a pooled model-based meta-analysis of the patients (tier 4) because the trial never reported. Retrodiction: salmeterol and formoterol had already raised FEV1 in COPD patients (US COPD labels 1998, 2001), so this target-level result was known before the model was public.",
     "short": "Trough FEV1 up; primary never published",
     "src": "https://doi.org/10.1007/s10928-012-9274-0",
     "srcLabel": "Nielsen 2012",
-    "quote": "A longitudinal kinetic-pharmacodynamic (K-PD) model was developed and adequately described changes in FEV1 measurements over time, including circadian patterns within a day, as well as changes in FEV1 measurements elicited from administration of PF-00610355 or salmeterol.",
+    "quote": "The 50 μg fine-particle dose, on the other hand, has a greater than 0.78 probability of achieving a 120 mL improvement versus placebo at trough.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "pf-00610355",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1113,7 +1221,11 @@
     "print_year": 2016,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1152,7 +1264,11 @@
     "print_year": 2016,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1191,7 +1307,11 @@
     "print_year": 2018,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -1230,7 +1350,11 @@
     "print_year": 2018,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -1259,16 +1383,20 @@
     "model": "GSK conscious telemetered beagle dog: heart rate, ECG and blood pressure after intravenous vilanterol",
     "model_kind": "animal",
     "model_first_use_year": 2013,
-    "model_filed": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/203975Orig1s000PharmR.pdf",
+    "model_filed": true,
     "year": 2013,
     "status": "untested",
-    "note": "Intravenous vilanterol 0.3 ug/kg drove dog heart rate from 78 to 111 bpm; 13-week dog toxicology needed a tachyphylaxis pre-dose and raised troponin I: on-target tachycardia predicted.",
+    "note": "Intravenous vilanterol 0.3 ug/kg drove dog heart rate from 78 to 111 bpm; 13-week dog toxicology needed a tachyphylaxis pre-dose and raised troponin I: on-target tachycardia predicted. Model filed in the NDA 203975 pharmacology review.",
     "short": "Dog: beta2 tachycardia, troponin rise",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/203975Orig1s000PharmR.pdf",
     "srcLabel": "FDA pharmacology review 2013",
     "quote": "A transient increase in heart rate was observed following infusion of 0.3 µg/kg GW642444 with GSK573719 vehicle and 0.3 µg/kg GW642444 with 0.3 µg/kg GSK573719, resulting in peak increases to 111 bpm (from a mean predose of 78 bpm)",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1282,7 +1410,7 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "heart-rate rise: +33 bpm after 0.3 ug/kg intravenous in dogs vs +17 bpm after 100 ug inhaled (4x therapeutic) in volunteers; routes and doses are not comparable",
@@ -1295,16 +1423,20 @@
     "model": "GSK conscious telemetered beagle dog: heart rate, ECG and blood pressure after intravenous vilanterol",
     "model_kind": "animal",
     "model_first_use_year": 2013,
-    "model_filed": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/203975Orig1s000PharmR.pdf",
+    "model_filed": true,
     "year": 2013,
-    "status": "same",
-    "note": "Held: heart rate rose dose-dependently in healthy volunteers (+7.8 bpm at 25 ug, +17.1 at 100 ug) and not at 25 ug in four 6-12-month COPD trials; troponin was not reported in patients.",
+    "status": "retro",
+    "note": "Held: heart rate rose dose-dependently in healthy volunteers (+7.8 bpm at 25 ug, +17.1 at 100 ug) and not at 25 ug in four 6-12-month COPD trials; troponin was not reported in patients. Model filed in the NDA 203975 pharmacology review. Retrodiction: vilanterol's own COPD heart-rate data (Hanania 2012) were public before the dog study appeared in the 2013 FDA review.",
     "short": "Dose-dependent heart-rate rise seen in humans",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2013/204275s000lbl.pdf",
     "srcLabel": "Breo Ellipta label 2013",
     "quote": "A dose-dependent increase in heart rate was also observed.",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "drug": "vilanterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1340,7 +1472,11 @@
     "srcLabel": "Aparici 2012",
     "quote": "In conclusion, our results suggest that abediterol has a preclinical profile for once-daily dosing in humans together with a fast onset of action and a favorable cardiovascular safety profile.",
     "epub_year": 2012,
-    "print_year": 2012
+    "print_year": 2012,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1376,7 +1512,11 @@
     "srcLabel": "Timmer 2014",
     "quote": "A dose-dependent increase of systemic treatment-emergent adverse events was observed, the most frequent being palpitations, tremor, nausea, and asthenia; most were mild in intensity and resolved without the need for intervention.",
     "epub_year": 2014,
-    "print_year": 2014
+    "print_year": 2014,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1413,43 +1553,51 @@
     "srcLabel": "Beier 2016",
     "quote": "All doses of abediterol were safe and well tolerated in patients with COPD.",
     "epub_year": 2016,
-    "print_year": 2016
+    "print_year": 2016,
+    "drug": "abediterol",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
     "population": "Unselected",
-    "subjects": null,
+    "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
-    "model_src": null,
-    "model_src_tier": null,
+    "model_src": "https://doi.org/10.1021/ml4005232",
+    "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
     "registry_date": null,
     "product_in_model": true,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
-    "magnitude": null,
-    "magnitude_basis": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "systemic beta2 effects: predicted no worse than formoterol; observed no safety concerns",
     "source_calls_it": null,
-    "confidence": "medium",
-    "confidence_note": "Open access (PMC4027610), abstract-level reading. AZD3199 was already in a 4-week COPD trial in 2009 (NCT00929708), so the model predates its 2014 publication; 2014 is the earliest public record.",
-    "reason": "No stated prediction to compare",
-    "judgement": "Untested rather than same: the abstract gives no specific harm or margin, so the clean 4-week safety in COPD cannot be matched to a prediction. Full text (open access) was not read within budget.",
+    "confidence": "low",
+    "confidence_note": "Abstract-level (open access, PMC4027610). The model's claim (guinea-pig plasma potassium no worse than formoterol) is from the Stocks 2014 full text as read by the checker, not re-read here.",
+    "reason": "Tolerability claim reproduced in COPD",
+    "judgement": "The model paper's passing tolerability claim (potassium no worse than formoterol) is a safety prediction. COPD patients were measured (Kuna 2013), so the asthma comparison (Bjermer 2013) is not imported. Kuna 2013 was public before Stocks 2014: retrodiction on the drug's own result.",
     "model_id": "az-guinea-pig-histamine-bronchoconstriction",
     "model": "AstraZeneca guinea-pig histamine bronchoconstriction, tracheal and human bronchial ring onset, and intratracheal duration models (AZD3199)",
     "model_kind": "animal",
     "model_first_use_year": 2014,
     "model_filed": null,
     "year": 2014,
-    "status": "untested",
-    "note": "The model paper names 'selectivity and safety profiling' without a stated prediction; Kuna 2013 found no safety concern, but there is no model claim to compare.",
-    "short": "No stated safety prediction to compare",
-    "src": "https://doi.org/10.1021/ml4005232",
-    "srcLabel": "Stocks 2014",
-    "quote": "Determination of activities at the human β-adrenoreceptors demonstrated a series of highly potent and selective β2 receptor agonists that were progressed to further study in a guinea pig histamine-induced bronchoconstriction model.",
-    "epub_year": 2014,
-    "print_year": 2014
+    "status": "retro",
+    "note": "Guinea-pig potassium claim held: AZD3199 in 329 COPD patients raised no safety concern. COPD patients were measured, so no asthma import. Retrodiction: Kuna 2013 preceded the model paper.",
+    "short": "Tolerability claim held in COPD (retro)",
+    "src": "https://doi.org/10.1186/1465-9921-14-64",
+    "srcLabel": "Kuna 2013",
+    "quote": "No safety concerns were identified.",
+    "epub_year": 2013,
+    "print_year": 2013,
+    "drug": "azd-3199",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1485,7 +1633,11 @@
     "srcLabel": "Glossop 2010",
     "quote": "Optimization of pharmacokinetic properties was achieved through targeted introduction of a phenolic moiety to support rapid phase II clearance, thereby minimizing systemic exposure following inhalation and reducing systemically mediated adverse events.",
     "epub_year": 2010,
-    "print_year": 2010
+    "print_year": 2010,
+    "drug": "pf-00610355",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -1521,7 +1673,11 @@
     "srcLabel": "Diderichsen 2013",
     "quote": "This PKPD analysis supports the clinical observation that no relevant effects of PF-00610355 on heart rate in COPD patients should be expected for doses up to 280 μg once daily.",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "drug": "pf-00610355",
+    "route": "inhaled",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

@@ -1,0 +1,51 @@
+{
+ "tile": "hyperlipidemia-hcar2-agonists",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 9,
+   "what": "status contra -> same with strengthens: duplicate of dose 8 adjudicated 'drop'; dose table, target reached = same (cannot delete without shifting indices)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: model result first public after niacin's human FFA/flush response (same target and action) under the engagement retrodiction rule"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: model result first public after a patient result for the same target and action (niacin; MK-1903 registry results (2010) also predate it.) under the engagement retrodiction rule"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true: model result first public after a patient result for the same target and action (niacin; MK-1903 and SCH900271 acute FFA lowering (2012) and GSK256073's own Dobbins 2013 NEFA result also predate it.) under the engagement retrodiction rule"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "status same -> retro, retrodiction true: model result first public after niacin's human FFA/flush response (same target and action) under the engagement retrodiction rule"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "status same -> retro, retrodiction true: model result first public after a patient result for the same target and action (niacin; MK-1903's own patient AE rows (posted 2010-09-22) also predate the 2012 mouse datum.) under the engagement retrodiction rule"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true: the drug's own earlier patient result (Dobbins 2013, doi 10.1111/dom.12132, 'not associated with events of flushing') predates the 2015 guinea-pig model paper"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "status same -> retro (strengthens): same retrodiction as safety 6, the guinea-pig model post-dates Dobbins 2013"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "status same -> retro, retrodiction true: MK-1903's own patient AE rows (NCT00847197, 2010-09-22) predate its mouse datum (Boatman 2012)"
+  }
+ ],
+ "added": []
+}

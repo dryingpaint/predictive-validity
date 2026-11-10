@@ -24,16 +24,13 @@
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2015,
-   "rule": "Retrodiction: a model run after the clinic already knew the answer that reproduces the human data is retro, never same",
-   "note": "Quote verbatim (full text PMC4439359). It compares woodchuck ISGs with already-published healthy-volunteer ISG data (Lopatin 2013, ref 11); the human engagement answer was known, so retrodiction: true, status retro.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: the woodchuck study was run after Lopatin 2013 published human ISG induction and reproduced it; a model run after the clinic knew the answer that matches is retro, never same."
+   "status_supported": true,
+   "rule": "retrodiction: model first public after a patient result on the same target is retro",
+   "note": "Quote verbatim in Menne 2015 Discussion (PMC4439359 full text, epub 2015-01-02). Human comparator is Lopatin 2013 (epub 2013-02-15), same target, so retro with retrodiction true; vesatolimod, oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -47,16 +44,13 @@
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2015,
-   "rule": "Dose: same only on a target the model system stated; a target taken from human data is not a model prediction (untested_reason no_prediction)",
-   "note": "The 'target' is human ISG at tolerated doses, read from prior human data; reaching it is circular and duplicates engagement 3. Also woodchuck efficacy dose 5 mg/kg caused thrombocytopenia (dose cut to 2.5), so no tolerated margin was stated.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Dose rule: the ISG 'target' was read from prior human data, not stated by the woodchuck system; a target scores only on the model system that stated it. untested_reason no_prediction."
+   "status_supported": true,
+   "rule": "dose: a target scores only on the model system that stated it",
+   "note": "Quote verbatim. Menne pitched ISGs at human levels (ref 11) and cut 5 to 2.5 mg/kg for thrombocytopenia, so the woodchuck stated no dose target or margin of its own: untested, no_prediction. Field 'short' is stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -83,7 +77,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Janssen 2018 (PMID 29104121, epub 2017-12-11) quote verbatim; HBsAg at week 24 is the primary endpoint. Trial does not attribute failure to dose, and chimp stated no dose target, so contra stands per dose table."
+   "rule": "rule 6 dating; efficacy combination scored on primary endpoint",
+   "note": "Janssen 2018 abstract quote verbatim (PMID 29104121); registry NCT02166047 primary = week-24 HBsAg, results 2020-09-02. Year 2016 rests on the cited AASLD 2016 abstract 1851 (not re-opened). NA background in all arms; contra stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -101,7 +97,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Same Janssen primary-endpoint quote; woodchuck predicted WHsAg loss at ISG levels it said humans reach; patients showed none. Contra correct. NCT02579382 (viremic, results 2020-05-18) could be listed in patient_trials."
+   "rule": "rule 6 dating; efficacy combination scored on primary endpoint",
+   "note": "Same Janssen trial and verbatim quote; registry primary endpoint week-24 HBsAg confirmed. Year 2016 from cited AASLD 2016 abstract 1851 (not re-opened). Gane 2015 HBsAg null had a safety primary, so it does not govern. Contra stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -150,10 +148,11 @@
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim; same paper states monkey and healthy-volunteer whole-blood OAS1/MX1 induction without systemic IFN-alpha. Monkey PD presumably IND-enabling (pre-FIH), so not retro; full text unavailable, timing inferred, medium confidence fair."
+   "rule": "retrodiction: model first public after a patient result on the same target is retro",
+   "note": "Quote verbatim in Fosdick abstract (PMID 24133297, epub 2013-10-16), after Lopatin HV ISG data (2013-02-15) for the same target; it reproduced them, so retro. Drug, oral route, unselected HV fine.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -168,17 +167,13 @@
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2013,
-   "rule": "Dose: margin_stated only where a model source stated the margin before the trial; otherwise the model stated no target or margin (untested)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Lopatin quote verbatim (PMID 23416308, epub 2013-02-15). The only model source stating the presystemic window (Fosdick, epub 2013-10) postdates and includes the human data; no pre-trial stated target or margin found.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Dose rule / checker rule on margin_stated: Fosdick (epub 2013-10) states the presystemic window only alongside already-published human data; no pre-trial stated target or margin. untested_reason no_prediction."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "retrodiction for dose: same drug's own earlier human result",
+   "note": "Lopatin quote verbatim (abstract, epub 2013-02-15); Fosdick states the window later (2013-10-16) for the same drug, so retro. Clean-ups only: drop stray untested_reason; margin_stated should be null (no margin stated before the trial).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -221,6 +216,21 @@
    "rule": "retrodiction rule: model published after human result known is retro, never same",
    "note": "JNJ-4964 FIH (PMID 35485332) quote verbatim in abstract; Europe PMC dates issue 2021-05, epub 2021-10-27. TQ-A3334 HV PD (PMID 33405993, epub 2021-01-13) and FIH preceded mouse paper; retro stands. Healthy volunteers count; direction_only fine.",
    "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2015,
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public",
+   "note": "Menne full text: single 5 mg/kg doses already cut platelets 26%, so the harm needs no repeat dosing. Gane 2015 (CHB, 1-4 mg, ISG15 induced, epub 2015-02-27, after Menne) was safe, AEs mild: first comparison. Contra holds; Janssen/registry confirm.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6 dating: Menne full text shows single 5 mg/kg doses cut platelets 26%, so Gane 2015 (CHB, single/paired doses, ISG15 induced, safe, epub 2015-02) is the first comparison. Contra stands; year 2015, low confidence."
   }
  ],
  "missing": [

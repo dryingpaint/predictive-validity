@@ -52,7 +52,8 @@
    "quote_found": "near",
    "status_supported": true,
    "rule": null,
-   "note": "Registry confirmed: NCT01029405 54.1 vs 2.7 P<0.001 (posted 2017-03-07); NCT00759161 68.6 vs 5.7 P<0.001 and NCT00755196 53.3 vs 30.0 P=0.23 (posted 2017-03-06). News-medical reprint confirms June 2010 primary P<0.001. Same, direction only, holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Stawiski 1979 (PMID 383851) abstract: two double-blind trials, Ro 20-1724 (PDE4-selective) improved plaques vs vehicle; model public 2009, so efficacy retrodiction, retro. CT.gov NCT01029405 primary 54.1 vs 2.7, P<0.001, posted 2017-03-07; June 2010 press release sets year."
   },
   {
    "cell": "efficacy",
@@ -62,7 +63,8 @@
    "quote_found": "near",
    "status_supported": true,
    "rule": null,
-   "note": "Registry primary confirmed (17.4 vs 13.6, CI spans zero). 8-K verbatim: '17% ... met PGA Success, while 14% ...', 'not powered'. 10-K 2012: SPA filed Nov 2011, Phase 3 'deferred' for AD. Contra defensible under decision 13; rule question 1."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT01300052 primary re-read via CT.gov API: PGA success 17.4 vs 13.6, diff 3.8 (-14.3 to 21.8), posted 2017-03-07; crisaborole topical, mild-to-moderate plaque. Ro 20-1724 1979 predates the 2009 model: retrodiction true; failed to reproduce crisaborole's miss, contra stands."
   },
   {
    "cell": "efficacy",
@@ -82,7 +84,8 @@
    "quote_found": "near",
    "status_supported": true,
    "rule": null,
-   "note": "CT.gov NCT00875277: posted 2019-12-11, n=24, primary TCS change vehicle -1.60 vs LEO 29102 -3.04, P<0.001 (t-test); BDP -4.96 beats LEO P<0.001. Quote is a field rendering. Same in direction holds at low confidence; plaque-test status is rule question 5."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT00875277 via CT.gov API: TCS -3.04 vs -1.60 vehicle, P<0.001, posted 2019-12-11; leo-29102 topical, psoriasis vulgaris. Felding 2014 (epub 2014-07-01) post-dates Ro 20-1724 (1979): retrodiction, retro not same; year 2019 holds."
   },
   {
    "cell": "efficacy",
@@ -143,8 +146,31 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "CT.gov API: primary PGA success 17.4 vs 13.6, results posted 2017-03-07 (quote is a field rendering). PMC10066830 full text: imiquimod 5% ear x4 days, 'significantly reduced ear thickness' verbatim. Post-trial run, disagrees with posted primary: contra not retro; same track. Hashim scope is RQ10."
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Youn 2023 PMC10066830 re-read: quote verbatim, imiquimod 5% both ears, epub 2022-12-19. Drug crisaborole matches NCT01300052 patients (topical, unselected plaque). Retrodiction after 2011 miss and 1979 result; did not reproduce the miss: contra on crisaborole's own track; strengthens drop correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PubMed 32479135: Tissue Barriers, epub 2020-06-01, Dermira authors; imiquimod sentence verbatim in abstract. Untested opener for DRM02 topical at 2020 equals model_first_use_year; entry 6 contra follows. untested_reason not owed (track's latest is contra)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Youn 2023 (PMID 36461082, PMC10066830) epub 2022-12-19, print 2023-04; quote verbatim in full text. Opens crisaborole's imiquimod track at its first run with crisaborole, before entry 8 contra; later than the 2020 model_first_use_year correctly."
   }
  ],
  "missing": [
@@ -166,6 +192,7 @@
   "7. A tier-5 sponsor statement that pools several indications ('proof-of-concept clinical trials ... not more effective than vehicle', psoriasis not named) with a registry record showing the psoriasis trial completed without results: admissible as the psoriasis patient side at low confidence with trial_unreported (as drafted), or untested?",
   "8. [models check] Decision 11's partial rule is written for same ('same on the pre-specified readout with source_calls_it: partial'). Does it extend to retro? Jardet 2020 reproduced the vehicle-controlled plaque-test win only in the prophylactic regimen (main text, Figure 4A); in the therapeutic regimen the placebo cream lowered IL-17A/IL-22/IFN-gamma 'comparable to the effect by the PDE4 inhibitor cream' (Figure S4). Drafted retro + partial; the alternative is unresolved.",
   "9. [models check] Does the opening untested entry of a model first used after the patient result was known (InflammaSkin engagement, 2020, eleven years after NCT00875277) carry retrodiction: true, or does the flag attach only to entries that make a comparison (as drafted, false)?",
-  "10. [models check] Is intertriginous/anogenital/facial psoriasis (Hashim 2020, n=21) inside the tile's population 'Unselected (mild-to-moderate plaque)'? If yes it is a patient_trials row on the contra track under decision 6; if no it is out of scope and goes in the note only. Same 2% BID regimen as NCT01300052, so the dose table's 'higher dose later worked' clause does not apply."
+  "10. [models check] Is intertriginous/anogenital/facial psoriasis (Hashim 2020, n=21) inside the tile's population 'Unselected (mild-to-moderate plaque)'? If yes it is a patient_trials row on the contra track under decision 6; if no it is out of scope and goes in the note only. Same 2% BID regimen as NCT01300052, so the dose table's 'higher dose later worked' clause does not apply.",
+  "[fields check] Retrodiction for efficacy is set by the model's first public date versus any same-target patient result (Ro 20-1724, 1979), so every crisaborole trial reported after the 2009 model is scored on a retrodiction track. Does DRAFTER_BRIEF's 'its first prospective prediction afterwards is a fresh entry' make the 2010/2011 crisaborole trials (reported after the model was public) prospective entries (same/contra, retrodiction false) instead?"
  ]
 }

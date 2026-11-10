@@ -1,0 +1,162 @@
+{
+ "tile": "chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug REP 2165, route iv, combination_with TDF + pegIFN; status same -> retro, retrodiction true, year 2020 -> 2017, comparison_stated true: on REP 2165's own duck track (per-drug tracks; strengthens dropped, settling the RULE QUESTION), the duck result (Roehl 2017) post-dates patient HBsAg loss for the target (Al-Mahtab 2016) and REP 401 interim data (AASLD 2016 LB-7); Roehl 2017 states the REP 401 comparison, so the comparison was public in 2017 (rule 6)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug REP 2055, route iv (REP 101 track); REP 2139/REP 102 result moved to its own duck track"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug REP 2139, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug REP 2139, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug REP 2055, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug REP 2139, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "drug REP 2139, route iv (REP 2165 mismatch kept as partial; patients on the two drugs did not differ, so no split)"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "drug REP 2055, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug REP 2165 (opener of the REP 2165 cyno track)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug REP 2165, combination_with TDF + pegIFN; status same -> retro, retrodiction true, year 2020 -> 2017, comparison_stated true: dose retrodiction on the same drug's own earlier patient result (REP 401 interim tolerability for REP 2165, AASLD Nov 2016) which Roehl 2017 cites as consistent"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug REP 2055, route iv; REP 401 combination data now scored on the REP 2139 and REP 2165 tracks (combination ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug REP 2165 (opener of the REP 2165 cyno track)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug REP 2165, combination_with TDF + pegIFN; status same -> retro, retrodiction true, year 2020 -> 2017, comparison_stated true: safety retrodiction on REP 2165's own REP 401 interim safety (AASLD Nov 2016, 'well tolerated in triple combination'), stated in Roehl 2017"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug REP 2139, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug REP 2139 (REP 102 patients, same drug, so the safety retrodiction stands)"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug REP 2055, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "what": "drug REP 2055, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug REP 2055, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug REP 2055, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug REP 2055, route iv"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 11,
+   "what": "untested opener, REP 2165 duck track, 2017 (Roehl 2017)"
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "what": "untested opener, REP 2139 duck track, 2017 (Roehl 2017; earlier REP 2139 duck use cited but unverified)"
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "what": "retro 2017, REP 2139 duck track: duck DHBsAg clearance (Roehl 2017) after REP 102 HBsAg loss (Al-Mahtab 2016)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "untested opener, REP 2139 cyno track, 2017 (Roehl 2017)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "retro 2017, REP 2139 cyno track: 9 mg/kg monkey margin after REP 2139's own patient tolerability (REP 102), stated in Roehl 2017; margin_stated true"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "untested opener, REP 2139 duck track, 2017"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "retro 2020, REP 2139 duck track: REP 401 combination with TDF + pegIFN now scored (combination ruling), poc_gate functional cure 14/40; retrodiction since duck result post-dates 2016 patient efficacy for the target"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "untested opener, REP 2165 duck track, 2017"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "retro 2020, REP 2165 duck track: REP 401 REP 2165 arm, combination scored, arms did not differ as ducks predicted; retrodiction"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "untested opener, REP 2139 cyno track, 2017"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "retro 2017 partial, REP 2139 cyno track: no serum calcium change in monkeys beside unchanged calcium in REP 102 patients (Roehl 2017 stated; checker adjudication applied); REP 2055 hypocalcaemia not used (other drug)"
+  }
+ ]
+}

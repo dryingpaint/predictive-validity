@@ -1,0 +1,82 @@
+{
+ "tile": "hemophilia-a-f8-replacement-gene-therapy",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "same -> retro, retrodiction true: Retrodiction by post-dating: efanesoctocog's own phase 1 FVIII results were posted (NCT03205163, 2019-12-02) and FVIII replacement had long raised FVIII in patients before the mouse and monkey data appeared (Blood 2020). Drug set to efanesoctocog alfa, route iv."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "same -> retro, retrodiction true: Retrodiction by post-dating: the animal transduction data were first set out after valoctocogene patients had expressed FVIII (NEJM 2017-12-09), so reproducing the biopsy trends is retro, not same. Drug set to valoctocogene roxaparvovec, route iv."
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "what": "same -> retro, retrodiction true: Retrodiction by post-dating: the passive-transfer mouse study was first public in 2022, after giroctocogene's Alta participants had expressed FVIII (ASH 2019); the cutoff was set before enrollment but the model result is post-dated. Drug set to giroctocogene fitelparvovec, route iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "same -> retro, retrodiction true: Retrodiction by post-dating: the mouse/macaque paper (online 2017-12-14) appeared five days after valoctocogene's phase 1/2 FVIII results (NEJM 2017-12-09), so the later phase 3 match is retro. Drug set to valoctocogene roxaparvovec, route iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "same -> retro, retrodiction true: Retrodiction by post-dating: the hemophilia A mouse data (Blood 2020) appeared after efanesoctocog's phase 1 results were posted (2019-12-02) and after other FVIII products had prevented bleeds on prophylaxis. Drug set to efanesoctocog alfa, route iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "status stays contra; retrodiction set true (TAK-754 mouse report online 2025-01-28 after the patient loss, online 2024-12-23): a retrodiction that failed to reproduce is contra. Drug set to BAX 888, route iv."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "same -> retro, retrodiction true: Retrodiction by post-dating: the mouse-to-human dose comparison (online 2017-12-14) appeared after valoctocogene's own patient FVIII results (NEJM 2017-12-09). Drug set to valoctocogene roxaparvovec, route iv."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "same -> retro, retrodiction true: Retrodiction by post-dating: efanesoctocog's own phase 1 PK was posted (NCT03205163, 2019-12-02) before the mouse and monkey half-life paper (Blood 2020). Drug set to efanesoctocog alfa, route iv."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status stays contra; retrodiction set true (model data online 2017-12-14, after valoctocogene's own ALT rise in NEJM 2017-12-09). Drug set to valoctocogene roxaparvovec, route iv."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "status stays contra; retrodiction set true (model data online 2017-12-14, after valoctocogene's own ALT rise in NEJM 2017-12-09). Drug set to valoctocogene roxaparvovec, route iv."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "untested -> retro (RULE QUESTION settled): stated tolerability margin held in patients (passing tolerability claim is a safety prediction); monkey ADA is xenogeneic, not a human prediction; model first public in SBRA 2023 after the drug's own phase 1 posting 2019-12-02. Drug efanesoctocog alfa, route iv."
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "opener, hema-dog-chapel-hill x dirloctocogene samoparvovec x iv, untested 2003 (Sarkar 2003 proxy); split from efficacy 4"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "hema-dog-chapel-hill x dirloctocogene samoparvovec x iv, same 2021 (George 2021: multiyear stable FVIII in 16/18, poc_gate, partial); split from efficacy 4"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "opener, hema-dog-chapel-hill x giroctocogene fitelparvovec x iv, untested 2003; split from efficacy 4 patient_trials"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "hema-dog-chapel-hill x giroctocogene fitelparvovec x iv, same 2024 (AFFINE NCT04370054 ABR non-inferiority primary met; Pfizer PR 2024-07-24, registry 2025-08-17); split from efficacy 4"
+  }
+ ]
+}

@@ -50,7 +50,11 @@
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2009/125326s000_PharmR.pdf",
     "srcLabel": "FDA ofatumumab PharmR 2009",
     "quote": "In healthy cynomolgus monkeys treated with ofatumumab, doses as low as 1.25 mg/kg were sufficient to deplete circulating CD20\" B-cells to ~4 to 10% of baseline at the earliest time point measured",
-    "judgement": "Opened at the first public monkey depletion data for a member; ocrelizumab's own 2002-2003 monkey PK/PD studies were unpublished until its 2017 BLA review."
+    "judgement": "Opened at the first public monkey depletion data for a member; ocrelizumab's own 2002-2003 monkey PK/PD studies were unpublished until its 2017 BLA review.",
+    "drug": "ofatumumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "cyno-bcell-depletion-tox",
@@ -67,7 +71,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "peripheral B-cell depletion (monkey >99% at 10 mg/kg vs near-complete CD19+ depletion in patients)",
@@ -78,16 +82,20 @@
     "confidence_note": "Both halves from the 2017 BLA package (pharmacology review and label); model and patient data sit in different documents.",
     "prediction_level": "class",
     "year": 2017,
-    "status": "same",
+    "status": "retro",
     "model": "Cynomolgus monkey B-cell depletion PK/PD and toxicology",
     "readout_tier": "proximal",
-    "note": "Monkeys lost >99% of blood B cells after 10 mg/kg ocrelizumab; MS patients' CD19+ B cells fell by 14 days after infusion.",
+    "note": "Monkeys lost >99% of blood B cells after 10 mg/kg ocrelizumab; MS patients' CD19+ B cells fell by 14 days after infusion. Retrodiction ruling: the ocrelizumab monkey data were first public in the 2017 review, after anti-CD20 B-cell depletion was known in patients (rituximab; ocrelizumab phase 2, 2011).",
     "short": "B-cell depletion carried into patients",
     "src": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2017/761053lbl.pdf",
     "srcLabel": "Ocrevus label 2017",
     "quote": "Treatment with OCREVUS reduces CD19+ B-cell counts in blood by 14 days after infusion.",
     "reason": "B-cell depletion reproduced in patients",
-    "judgement": "Paired, not stated. B-cell count read as proximal (elimination of the CD20-bearing cell), not direct occupancy. Ublituximab (2022 label: CD19+ depletion within 24 h) agrees."
+    "judgement": "Paired, not stated. B-cell count read as proximal (elimination of the CD20-bearing cell), not direct occupancy. Ublituximab (2022 label: CD19+ depletion within 24 h) agrees.",
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -124,7 +132,11 @@
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2009/125326s000_PharmR.pdf",
     "srcLabel": "FDA ofatumumab PharmR 2009",
     "quote": "the doses administered to healthy monkeys may not be directly relevant to patients with CLL.",
-    "judgement": "MS regimens (ocrelizumab 600 mg q24w, ofatumumab 20 mg sc, ublituximab 450 mg) came from rituximab experience and phase 2 dose-ranging, not from monkey PK/PD."
+    "judgement": "MS regimens (ocrelizumab 600 mg q24w, ofatumumab 20 mg sc, ublituximab 450 mg) came from rituximab experience and phase 2 dose-ranging, not from monkey PK/PD.",
+    "drug": "ofatumumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "cyno-bcell-depletion-tox",
@@ -141,9 +153,9 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
-    "magnitude": "within_2x",
+    "magnitude": "direction_only",
     "magnitude_basis": "tolerability margin: NOAEL 100 mg/kg vs 600 mg (~8.6 mg/kg at 70 kg) given without dose-limiting toxicity",
     "source_calls_it": null,
     "population": "Unselected (relapsing and primary progressive MS)",
@@ -152,16 +164,20 @@
     "confidence_note": "Abstract-level for OPERA; NOAEL quoted from the FDA pharmacology review ('Ocrelizumab was well tolerated at both dose levels... The NOAEL is the HD of 100 mg/kg').",
     "prediction_level": "class",
     "year": 2017,
-    "status": "same",
+    "status": "retro",
     "model": "Cynomolgus monkey B-cell depletion PK/PD and toxicology",
     "margin_stated": true,
-    "note": "Ocrelizumab NOAEL 100 mg/kg in monkeys, about 12-fold the 600 mg clinical dose; patients were dosed to it without non-pharmacological toxicity.",
+    "note": "Ocrelizumab NOAEL 100 mg/kg in monkeys, about 12-fold the 600 mg clinical dose; patients were dosed to it without non-pharmacological toxicity. Retrodiction ruling: the monkey NOAEL was first public in the 2017 review, after ocrelizumab's own patients were dosed at 600 mg (phase 2 2011; OPERA online Dec 2016).",
     "short": "NOAEL margin held at 600 mg",
     "src": "https://doi.org/10.1056/NEJMoa1601277",
     "srcLabel": "Hauser 2017",
     "quote": "Serious infection occurred in 1.3% of the patients treated with ocrelizumab and in 2.9% of those treated with interferon beta-1a.",
     "reason": "Tolerability margin held in phase 3",
-    "judgement": "Scored only the margin half (decision 16); the regimen half has no monkey-stated target. Year set to the review's public date (2017), not OPERA's Dec 2016 epub. Ublituximab's monkey program set no NOAEL, so it adds nothing."
+    "judgement": "Scored only the margin half (decision 16); the regimen half has no monkey-stated target. Year set to the review's public date (2017), not OPERA's Dec 2016 epub. Ublituximab's monkey program set no NOAEL, so it adds nothing.",
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -196,7 +212,11 @@
     "model": "Population PK-B cell model of subcutaneous ofatumumab in RMS (pooled phase 2/3, 1486 patients)",
     "model_kind": "in_silico",
     "prediction_level": "class",
-    "model_first_use_year": 2022
+    "model_first_use_year": 2022,
+    "drug": "ofatumumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -231,7 +251,11 @@
     "model": "Population PK-B cell model of subcutaneous ofatumumab in RMS (pooled phase 2/3, 1486 patients)",
     "model_kind": "in_silico",
     "prediction_level": "class",
-    "model_first_use_year": 2022
+    "model_first_use_year": 2022,
+    "drug": "ofatumumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -268,7 +292,11 @@
     "src": "https://doi.org/10.1002/ana.22081",
     "srcLabel": "Weber 2010",
     "quote": "B-cell depletion prevented or reversed established rMOG-induced EAE, which was associated with less central nervous system (CNS) inflammation, elimination of meningeal B cells, and reduction of MOG-specific Th1 and Th17 cells.",
-    "judgement": "The rMOG paradigm taken as the model; the same paper's MOG35-55 arm, where depletion exacerbated EAE, was framed by the authors as a B-cell-independent paradigm, not a class prediction."
+    "judgement": "The rMOG paradigm taken as the model; the same paper's MOG35-55 arm, where depletion exacerbated EAE, was framed by the authors as a B-cell-independent paradigm, not a class prediction.",
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "eae-rmog-mouse-anti-cd20",
@@ -285,7 +313,7 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "EAE clinical score vs MRI lesion count; no common scale",
@@ -296,11 +324,11 @@
     "confidence_note": "Abstract-level for both papers.",
     "prediction_level": "class",
     "year": 2011,
-    "status": "same",
+    "status": "retro",
     "model": "Mouse EAE induced by recombinant MOG, mouse anti-CD20",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "note": "Ocrelizumab phase 2 met its primary endpoint: gadolinium-enhancing lesions 89% lower than placebo at 600 mg.",
+    "note": "Ocrelizumab phase 2 met its primary endpoint: gadolinium-enhancing lesions 89% lower than placebo at 600 mg. Retrodiction ruling: the model result (Weber 2010) was first public after rituximab's phase 2 HERMES trial (NEJM, Feb 2008) showed anti-CD20 depletion cut MS lesions.",
     "short": "Phase 2 lesion endpoint met",
     "src": "https://doi.org/10.1016/s0140-6736(11)61649-8",
     "srcLabel": "Kappos 2011",
@@ -332,7 +360,11 @@
       "doi": "10.17116/jnevro202412404186",
       "quote": "The use of DIV was associated with a statistically significant decrease in ARR compared to TRF (p=0.0001)."
      }
-    ]
+    ],
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "hucd20-dth-tls-mouse",
@@ -362,14 +394,18 @@
     "year": 2022,
     "status": "retro",
     "model": "Humanized-CD20 mouse with brain DTH lesions and tertiary lymphoid structures",
-    "note": "After both were approved, ofatumumab and ocrelizumab cut B and T cells and glial activation in brain lesions of huCD20 mice.",
+    "note": "After both were approved, ofatumumab and ocrelizumab cut B and T cells and glial activation in brain lesions of huCD20 mice. Scored here on the ofatumumab subcutaneous arm; the ocrelizumab intravenous arm is its own track.",
     "short": "Approved members reproduce in huCD20 mice",
     "src": "https://doi.org/10.3389/fimmu.2022.814064",
     "srcLabel": "Torres 2022",
     "quote": "Both treatments significantly decreased the extent of glial activation, as well as the number of B- and T-cells in the lesion following SC and IV administration",
     "endpoint_role": "primary",
     "reason": "Retrodiction of known efficacy",
-    "judgement": "Scored retro: built after OPERA and ASCLEPIOS were known. The patient side is the members' phase 3 primary endpoints."
+    "judgement": "Scored retro: built after OPERA and ASCLEPIOS were known. The patient side is the members' phase 3 primary endpoints.",
+    "drug": "ofatumumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -405,10 +441,14 @@
     "model": "Marmoset EAE (rhMOG/CFA) with late B-cell depletion by HuMab 7D8, a human anti-CD20",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -435,8 +475,8 @@
     "outcome_tested": null,
     "patient_trials": [],
     "year": 2011,
-    "status": "same",
-    "note": "Marmoset MRI lesions shrank with anti-CD20; ocrelizumab phase 2 cut gadolinium-enhancing lesions 89% versus placebo.",
+    "status": "retro",
+    "note": "Marmoset MRI lesions shrank with anti-CD20; ocrelizumab phase 2 cut gadolinium-enhancing lesions 89% versus placebo. Retrodiction ruling: the model result (Kap 2010) was first public after rituximab's phase 2 HERMES trial (NEJM, Feb 2008) showed anti-CD20 depletion cut MS lesions.",
     "short": "Marmoset and phase 2 lesions agree",
     "reason": "Phase 2 lesion endpoint met",
     "judgement": "Paired, not stated: Kappos 2011 does not cite the marmoset study. MRI lesion reduction in marmosets is the closest model readout to the phase 2 primary endpoint.",
@@ -444,7 +484,11 @@
     "model": "Marmoset EAE (rhMOG/CFA) with late B-cell depletion by HuMab 7D8, a human anti-CD20",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -479,10 +523,14 @@
     "model": "Mouse MOG35-55 peptide EAE (C57BL/6) with mouse anti-CD20, depletion before induction vs after onset",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -509,8 +557,8 @@
     "outcome_tested": null,
     "patient_trials": [],
     "year": 2011,
-    "status": "same",
-    "note": "Depletion after onset suppressed mouse EAE, as ocrelizumab did lesions in established MS; the pre-induction worsening has no human counterpart.",
+    "status": "retro",
+    "note": "Depletion after onset suppressed mouse EAE, as ocrelizumab did lesions in established MS; the pre-induction worsening has no human counterpart. Retrodiction ruling: the model result (Matsushita 2008) was first public after rituximab's phase 2 HERMES trial (NEJM, Feb 2008) showed anti-CD20 depletion cut MS lesions.",
     "short": "Therapeutic arm matches phase 2",
     "reason": "Therapeutic arm matched phase 2",
     "judgement": "Scored on the therapeutic (after-onset) arm, the one that corresponds to treating established MS; the exacerbation from pre-induction depletion was untestable in patients, so partial.",
@@ -518,7 +566,11 @@
     "model": "Mouse MOG35-55 peptide EAE (C57BL/6) with mouse anti-CD20, depletion before induction vs after onset",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -553,7 +605,11 @@
     "model": "Population exposure-response analysis of ocrelizumab in OPERA I/II and ORATORIO (exposure quartile vs disability progression)",
     "model_kind": "in_silico",
     "prediction_level": "class",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -570,7 +626,7 @@
     "model_filed": null,
     "product_in_model": true,
     "imported_from": null,
-    "magnitude": "opposite",
+    "magnitude": "null",
     "magnitude_basis": "predicted lower cCDP with higher exposure; observed 12-week cCDP HR 0.93 (MUSETTE) and 0.95 (GAVOTTE), high vs 600 mg",
     "source_calls_it": "miss",
     "population": "Unselected (relapsing and primary progressive MS)",
@@ -605,7 +661,52 @@
     "model": "Population exposure-response analysis of ocrelizumab in OPERA I/II and ORATORIO (exposure quartile vs disability progression)",
     "model_kind": "in_silico",
     "prediction_level": "class",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "model_id": "hucd20-dth-tls-mouse",
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.3389/fimmu.2022.814064",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2022,
+    "print_year": 2022,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": true,
+    "imported_from": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "lesion cell counts vs relapse rate",
+    "source_calls_it": null,
+    "population": "Unselected (relapsing and primary progressive MS)",
+    "model_first_use_year": 2022,
+    "confidence": "medium",
+    "confidence_note": "Abstract-level (Europe PMC). Its hint that ofatumumab beats ocrelizumab has no head-to-head trial.",
+    "prediction_level": "class",
+    "year": 2022,
+    "status": "retro",
+    "model": "Humanized-CD20 mouse with brain DTH lesions and tertiary lymphoid structures",
+    "note": "Intravenous ocrelizumab cut glial activation and lesion B and T cells in huCD20 mice after OPERA was known; retrodiction, ocrelizumab track.",
+    "short": "Ocrelizumab IV reproduced in huCD20 mice",
+    "src": "https://doi.org/10.3389/fimmu.2022.814064",
+    "srcLabel": "Torres 2022",
+    "quote": "Both treatments significantly decreased the extent of glial activation, as well as the number of B- and T-cells in the lesion following SC and IV administration, although this was mostly achieved to a greater extent with ofatumumab versus ocrelizumab.",
+    "endpoint_role": "primary",
+    "reason": "Retrodiction reproduced ocrelizumab's phase 3 result",
+    "judgement": "Track split from efficacy 3: the ocrelizumab IV arm against OPERA I/II (Hauser 2017). Retro: built after the result was known.",
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -642,7 +743,11 @@
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2009/125326s000_PharmR.pdf",
     "srcLabel": "FDA ofatumumab PharmR 2009",
     "quote": "In monkeys, the primary effect of ofatumumab treatment was depletion of B-cells; other effects | were secondary to this primary effect and included histological changes (atrophy of the spleen, lymph nodes, and Peyer’s patches) and increased risk of infection.",
-    "judgement": "Opened on the CLL review; no MS patient data in 2009."
+    "judgement": "Opened on the CLL review; no MS patient data in 2009.",
+    "drug": "ofatumumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "cyno-bcell-depletion-tox",
@@ -659,7 +764,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "proportion with infections",
@@ -670,14 +775,18 @@
     "confidence_note": "Serious infections were not higher (1.3% vs 2.9%, Hauser 2017); the match is on any infection.",
     "prediction_level": "class",
     "year": 2017,
-    "status": "same",
+    "status": "retro",
     "model": "Cynomolgus monkey B-cell depletion PK/PD and toxicology",
-    "note": "Ocrelizumab monkeys needed penicillin for nasal infections and some dams died of infection; MS patients had more infections than on interferon.",
+    "note": "Ocrelizumab monkeys needed penicillin for nasal infections and some dams died of infection; MS patients had more infections than on interferon. Retrodiction ruling: the ocrelizumab monkey toxicology was first public in the 2017 review, after ocrelizumab's own infection data in patients (phase 2 2011; OPERA online Dec 2016).",
     "short": "Infection risk carried into patients",
     "src": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2017/761053lbl.pdf",
     "srcLabel": "Ocrevus label 2017",
     "quote": "In RMS trials, 58% of OCREVUS-treated patients experienced one or more infections compared to 52% of REBIF-treated patients.",
-    "judgement": "Paired: review and label are separate documents. Hepatitis B reactivation, PML and the breast-cancer imbalance are harms a 6-month monkey study could not show, so silence there is not scored."
+    "judgement": "Paired: review and label are separate documents. Hepatitis B reactivation, PML and the breast-cancer imbalance are harms a 6-month monkey study could not show, so silence there is not scored.",
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "cyno-bcell-depletion-tox",
@@ -694,7 +803,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "cytokine release / infusion reaction incidence",
@@ -707,13 +816,58 @@
     "year": 2022,
     "status": "contra",
     "model": "Cynomolgus monkey B-cell depletion PK/PD and toxicology",
-    "note": "Ublituximab raised no IL-6, IL-8, IFN-γ or TNF-α in monkeys; 48% of MS patients had infusion reactions, mostly after the first infusion.",
+    "note": "Ublituximab raised no IL-6, IL-8, IFN-γ or TNF-α in monkeys; 48% of MS patients had infusion reactions, mostly after the first infusion. Retrodiction ruling: the monkey data were first public in the ublituximab review, after ublituximab's own infusion reactions in patients (phase 2 and ULTIMATE, 2021-22), and failed to reproduce them, so contra. Ublituximab track only; it does not carry to ocrelizumab.",
     "short": "No monkey cytokines; 48% infusion reactions",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2022/761238s000lbl.pdf",
     "srcLabel": "Briumvi label 2022",
     "quote": "The incidence of infusion reactions in Studies 1 and 2 in patients who received treatment with BRIUMVI was 48%, with the highest incidence within 24 hours of the first infusion.",
     "reason": "Monkey cytokine silence missed infusion reactions",
-    "judgement": "Treated the monkey's measured absence of cytokine release as a prediction a primate could have shown (unlike a mouse); infusion reactions are a class effect, so the miss is soft."
+    "judgement": "Treated the monkey's measured absence of cytokine release as a prediction a primate could have shown (unlike a mouse); infusion reactions are a class effect, so the miss is soft.",
+    "drug": "ublituximab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "model_id": "cyno-bcell-depletion-tox",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 2,
+    "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761053Orig1s000PharmR.pdf",
+    "model_src_tier": 2,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2017,
+    "print_year": 2017,
+    "registry_date": "2017-07-18",
+    "model_filed": true,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": true,
+    "imported_from": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "monkey first-dose IL-6 rise (15/16, fewer after dose 2) vs 34-40% infusion reactions, highest at first infusion",
+    "source_calls_it": null,
+    "population": "Unselected (relapsing and primary progressive MS)",
+    "model_first_use_year": 2002,
+    "confidence": "medium",
+    "confidence_note": "Model side: 761053 PharmR study 02-082-0352 ('IL-6 levels were increased on SD1 at 2 hours post-dose in 15 of 16 animals'). The label quote elides a bracketed premedication clause.",
+    "prediction_level": "class",
+    "year": 2017,
+    "status": "retro",
+    "model": "Cynomolgus monkey B-cell depletion PK/PD and toxicology",
+    "note": "Monkeys given ocrelizumab raised IL-6 two hours after the first dose (15 of 16), less after the second; MS patients' infusion reactions peaked at the first infusion. Retrodiction: review public after OPERA.",
+    "short": "First-dose IL-6 matched first-infusion reactions",
+    "src": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2017/761053lbl.pdf",
+    "srcLabel": "Ocrevus label 2017",
+    "quote": "In multiple sclerosis (MS) clinical trials, the incidence of infusion reactions in OCREVUS-treated patients [...] was 34 to 40%, with the highest incidence with the first infusion.",
+    "judgement": "From the checker's missing list: the same track's first-dose IL-6 signal pairs with first-infusion reactions; strengthens the 2017 retro on the ocrelizumab track.",
+    "drug": "ocrelizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null,
+    "strengthens": true,
+    "reason": "First-dose cytokine signal reproduced in patients"
    }
   ]
  }

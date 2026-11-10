@@ -1,0 +1,12 @@
+{
+ "tile": "gastric-cancer-parp1-2-inhibitors",
+ "changed": [
+  {"cell": "efficacy", "index": 1, "what": "year 2014 -> 2010; model_first_use_year 2010 on every gastric-cell-lines-atm-low entry: the ATM-low prediction was public in the NCT01063517 registry record (2010-02-05) and precedes the Study 39 patient result now dated 2013, so the opener moves to the model's first use (rule 6)."},
+  {"cell": "efficacy", "index": 2, "what": "year 2015 -> 2013 (earliest public date: ASCO 2013 abstract 4013, doi:10.1200/jco.2013.31.15_suppl.4013, same PFS miss); combination_with paclitaxel; combination and co-primary (both missed) designs written into note; status contra unchanged."},
+  {"cell": "efficacy", "index": 3, "what": "year 2017 -> 2016 (AstraZeneca press release 2016-05-18 announced the GOLD OS miss in both co-primary populations; resolves checker correction); combination_with paclitaxel; status contra unchanged."},
+  {"cell": "efficacy", "index": 4, "what": "year 2023 -> 2021 (BeiGene press release 2021-06-04, ASCO 2021 poster: PFS HR 0.799, p=0.1428; resolves checker correction); drug pamiparib; status contra unchanged."},
+  {"cell": "efficacy", "index": 6, "what": "combination_with ramucirumab; single-arm design with a pre-set go rule written into note; status contra and year 2023 unchanged."},
+  {"cell": "safety", "index": 1, "what": "imported_from MONDO:0008170 -> null and population recoded: gastric patients were measured (Study 39 in the FDA safety database; ASCO 2013 grade 3+ neutropenia 56% vs 39%), so this disease's patients set the status; status same and year 2014 unchanged."}
+ ],
+ "added": []
+}

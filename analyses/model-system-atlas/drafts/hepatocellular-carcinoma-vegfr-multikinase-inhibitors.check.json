@@ -11,7 +11,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in bundle 203085 PharmR (report A58231). Survival-only readout, no PD marker; untested is right. Review summary says Balb/c, study section C3H/HeN, as the draft notes."
+   "rule": "track fields",
+   "note": "Quote verbatim in bundle 203085 PharmR (A58231, line-wrapped). Mice dosed orally; regorafenib, oral, unselected correct. Survival-only readout, so untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -20,7 +22,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Title W-20130793 verbatim in 206947 PharmR; Matsuki 2018 (PMC6010799, full text) confirms MVD/pFRS2 readouts. Study number implies 2013 run, so model_first_use_year could be 2013. See rule question on Finn 2021 FGF19/FGF23 PD."
+   "rule": "track fields",
+   "note": "Study title W-20130793 verbatim in 206947 PharmR. Lenvatinib (E7080), oral, unselected correct; MVD/pFRS2 never measured in HCC patients, untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -29,7 +33,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Verbatim. I searched 203085 PharmR and ClinPharmR: no mouse exposure at 10 mg/kg is stated against the 160 mg exposure, so untested in 2012 holds."
+   "rule": "track fields",
+   "note": "Quote verbatim in 203085 PharmR. Regorafenib, oral correct; review states no hepatoma-mouse exposure against 160 mg, so untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -38,7 +44,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Verbatim title; 206947 PharmR has no xenograft exposure comparison for HCC. Untested holds."
+   "rule": "track fields; 5 (untested_reason)",
+   "note": "Title verbatim in 206947 PharmR; lenvatinib, oral correct; no xenograft exposure target stated. Track's latest untested entry should carry untested_reason no_prediction.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -47,7 +55,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Kissel 2017 (PMC5739799) full text: 10 mg/kg 'lead to exposures in the range of the respective human dose of 160 mg/day'; RESORCE worked at 160 mg. Same, dated 2017 (first public statement of the match). Not a retrodiction: the H129 arm is the 2012-filed study."
+   "rule": "retrodiction (dose: same drug's own earlier patient result)",
+   "note": "Kissel 2017 quote verbatim (PMC5739799, epub Nov 2017). Regorafenib's own 160 mg results (phase 1, CORRECT 2012, RESORCE 2016) were public earlier: retro right. Regorafenib, oral, post-sorafenib stage_or_line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -56,20 +66,24 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "4, 7 (#112), 10",
-   "note": "PMC5575539 full text: section 'Assessment of Lenvatinib Starting Dose for Phase 3 Studies' picks 12/8 mg by weight from Study 202 plus phase 1 popPK. REFLECT (start 2013) used it, so proxy 2013 opening and untested hold; pre-trial, not post-hoc.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "track fields",
+   "note": "Tamai 2017 quote verbatim (PMC5575539). Lenvatinib, oral, Child-Pugh A HCC (stage_or_line) correct; 2013 first-use opener, untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "4 (case 2), 16",
-   "note": "Kudo 2018 quote verbatim in abstract (PMID 29433850, print 2018-03). Model regimen given, OS non-inferior: same. margin_stated true fits decision 16 (AUC 2430 ng.h/mL, 57.8 kg ceiling stated pre-trial); REFLECT exposure or early dose-modification by weight not seen.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2017,
+   "rule": "retrodiction (dose: same drug's own earlier patient result); dating rule 6; margin_stated needs a margin public before the trial",
+   "note": "Kudo quote verbatim in abstract; drug/route/population correct. Tamai model, built on lenvatinib's own HCC phase 1/202 data, first public 2017-05-31, after REFLECT topline (Jan 2017): retro. Year 2017. AUC-2430 ceiling first public then, so margin_stated false.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (dose: same drug's own earlier patient result): Tamai model first public 2017-05-31, after lenvatinib's own HCC phase 1/Study 202 and REFLECT topline (Jan 2017). Retro, year 2017; AUC ceiling not public pre-trial, so margin_stated unsupported."
   },
   {
    "cell": "efficacy",
@@ -78,7 +92,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Verbatim; review gives 50% survival to day 35 vs 27 and about -8% body weight, as the draft states."
+   "rule": "track fields",
+   "note": "Quote verbatim in 203085 PharmR (line-wrapped). Regorafenib, oral, unselected; untested opener before any HCC trial holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -87,7 +103,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Verbatim title only; result not in the review. Untested, low confidence is right."
+   "rule": "track fields",
+   "note": "Title verbatim in 206947 PharmR; result not given. Lenvatinib, oral, unselected; untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -96,18 +114,20 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Bruix 2017 online 2016-12-06 (Europe PMC); quote matches abstract (my fetch truncated after 'p<', median figures not re-seen). NCT01774344 results posted 2017-06-05 confirmed. OS primary; same."
+   "rule": "retrodiction (engagement/efficacy: any drug, same target and action)",
+   "note": "Bruix quote in abstract (PMID 27932229, online Dec 2016). H129 result first public 2012, after SHARP sorafenib OS benefit: retro correct. Regorafenib, oral, post-sorafenib stage_or_line correct; primary OS endpoint.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "3, 10 (prospective vs retro), 8",
-   "note": "Bruix 2017 quote verbatim in abstract (PMID 27932229, online 2016-12-06). model_src Tai 2014 (PMID 25248379, epub 2014-09-23) abstract: PLC5 xenografts, 20/40 mg/kg/d, 'significant tumor inhibition'; predates readout, so same not retro. Track opening year should be 2014.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "rule": "retrodiction (efficacy)",
+   "note": "Bruix quote in abstract; Tai 2014 postdates SHARP, so retro right; first-use 2014 matches the track. Regorafenib, oral correct. Judgement text still says 'scored same rather than retro' and should be updated; no 2014 untested opener on this drug's track.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -116,7 +136,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Kissel 2017 epub 2017-11-06, after RESORCE; authors frame the PDX panel as explaining the trial. Retro correct. See missing: Tai 2014 gives this track a prospective regorafenib xenograft prediction before RESORCE."
+   "rule": "retrodiction (efficacy); track fields",
+   "note": "Kissel 2017 quote verbatim (PMC5739799). Post-RESORCE PDX panel, retro with strengthens true fits. Regorafenib, oral, sorafenib-refractory stage_or_line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -125,7 +147,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Kudo 2018 quote verbatim in abstract; NCT01761266 results posted 2018-09-25 confirmed. Matsuki 2018 full text predicted lenvatinib greater than sorafenib in PLC/PRF/5 and PDX; trial met non-inferiority only, so source_calls_it should be over_predicted or partial, status same stands."
+   "rule": "retrodiction (efficacy); non-inferiority design in note",
+   "note": "Kudo quote verbatim in abstract. Matsuki result first public May 2018 (after SHARP and after Kudo epub Feb 2018), so retro and year 2018 hold. NI OS primary met, described in note. Lenvatinib, oral, first line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -134,9 +158,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7, 8",
-   "note": "Quote verbatim in abstract (PMID 33288659, epub 2020-12-07; full text paywalled). Mouse screen with no patient test: untested 2020, patient level. Hydrodynamic transposon delivery not verified from Methods.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "track fields",
+   "note": "Myojin quote verbatim in abstract (PMID 33288659, epub 2020-12-07). Lenvatinib, oral, biomarker_selected (FGF19) correct; untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -145,9 +169,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "3 (#31), 8, 10",
-   "note": "Quote verbatim in abstract; paper itself links FGF19 screen to ST6GAL1-high patients (comparison_stated). Retrospective cohort counts (#31). No prior patient result on tumour FGF19 and lenvatinib, so not retro; cohort size and HR unseen (paywalled).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "track fields",
+   "note": "Quote verbatim in same abstract; ST6GAL1-high patients lived longer on lenvatinib than sorafenib. Lenvatinib, oral, biomarker_selected, year 2020 correct; no earlier stratified patient result found, so not retro (see rule question).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -156,9 +180,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7, 8",
-   "note": "Quote verbatim in abstract (PMID 36036881, epub 2022-08-29). No patient comparison: untested. Earlier opening checked: Li 2019 JCI Insight PLC organoids (PMC6413833, 129 drugs) names sorafenib only, no lenvatinib or regorafenib in text; supplement unread.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "track fields",
+   "note": "Cell Oncol 2022 quote verbatim in abstract (PMID 36036881). Route oral names the patients' route for the track; acceptable. No patient comparison: untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -167,9 +191,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "7 (#113, #127), 12 (no widening)",
-   "note": "Quote verbatim in abstract (PMID 38593780). Full text unread: cell.com and ScienceDirect 403 to curl, WebFetch and fc.py; no PMC, preprint or repository copy (OpenAlex, Europe PMC, Unpaywall). Whether lenvatinib was compared with patient response stays unknown; untested holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "track fields; 5 (untested_reason)",
+   "note": "Yang 2024 quote verbatim in abstract (PMID 38593780); abstract does not attribute the patient-response comparison to lenvatinib. Untested holds; latest entry on track should carry untested_reason unsettled.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -178,25 +202,59 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Verbatim in 206947 PharmR (study S03016 reviewed April 2005). Proxy opening at model_first_use_year is allowed."
+   "rule": "track fields",
+   "note": "Quote verbatim in 206947 PharmR (rat study reviewed April 2005). Lenvatinib, oral; proxy opener at first-use year holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Verbatim; reviewer pairs animal liver enzyme rises with the clinical boxed hepatotoxicity. MONDO:0005575 = colorectal cancer confirmed (OLS). Same with comparison_stated holds."
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "imported harm: where this disease's patients were measured, their result sets the status",
+   "note": "Quote verbatim (203085 PharmR). But 203085 MedR lists HCC phase II 14596 (n=36); its Hy's-law cases 'all had either HCC or liver metastasis', 'no conclusive evidence of drug induced liver injury'. HCC measured, so CRC import fails; HCC result inconclusive.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Imported-harm rule (safety): 2012 MedR shows HCC patients measured (Study 14596, n=36); their Hy's-law cases gave 'no conclusive evidence of drug induced liver injury'. CRC import fails; inconclusive HCC result is untested (rule 5 unsettled)."
   },
   {
    "cell": "safety",
    "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "imported harm: only when this disease has no patient safety data for the class",
+   "note": "Quote verbatim (206947 PharmR); lenvatinib, oral correct. By 2015 the class had HCC safety data (regorafenib 14596 in 2012 review; Bruix 2013), so thyroid import fails; lenvatinib's own HCC phase 1 (Ikeda CCR 2016, hepatic DLTs) belongs in its own entry.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Imported-harm rule: import only when this disease has no patient safety data for the class. By 2015 member regorafenib had HCC safety data (Study 14596, Bruix 2013), so the thyroid-cancer import fails; no admissible HCC comparison in this entry."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Verbatim; MONDO:0002108 = thyroid cancer confirmed (OLS). Same holds. I did not audit every unpredicted harm (hand-foot skin reaction, proteinuria) against the species that could show it."
+   "rule": "imported harm: HCC patients set the status",
+   "note": "Stivarga 2017 label quote verbatim. HCC patients had mild liver-lab excess, no fatal hepatic failure excess: same + partial fits. Year 2016 (RESORCE online Dec 2016). Regorafenib, oral, second-line stage_or_line correct; not a dose/safety retrodiction.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "imported harm: HCC patients set the status",
+   "note": "Lenvima 2018 label quote verbatim (REFLECT hepatic encephalopathy 8% vs 3%). Predicted liver harm seen in HCC patients: same. Year 2018 (Kudo epub Feb 2018). Lenvatinib, oral, first-line stage_or_line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -212,6 +270,10 @@
   "A filed pre-trial experiment whose results are first published after the trial (Eisai study W-20130793 in Matsuki 2018, written after REFLECT): the draft scores it 'same' because the model was run before the clinic knew the answer. Decision 10 speaks of models built or run after; does a post-trial publication of a pre-trial result count as prospective, and should the date be the filing or the publication?",
   "Engagement readout concordance: the model's PD readout was tumour pFRS2/pErk (FGFR blockade); patients showed serum FGF19/FGF23 rise (Finn 2021), a different quantity on the same axis. Does 'the PD readout the model used' admit a downstream readout_tier entry for a pathway-concordant but different analyte, or must the analyte itself match?",
   "A model that predicts superiority over an active comparator (lenvatinib > sorafenib in Matsuki 2018) when the trial meets non-inferiority only on the primary endpoint and superiority on secondaries: is that 'same' + over_predicted, or 'same' + partial?",
-  "Models pass: Yang 2024 (efficacy 9) is a second untested entry on the organoid track after Cell Oncol 2022 with strengthens: true, but it is not a 'second miss' (#127); decision 7 would fold it into the 2022 entry's note or patient_trials unless the full text turns it into same or contra for lenvatinib."
+  "Models pass: Yang 2024 (efficacy 9) is a second untested entry on the organoid track after Cell Oncol 2022 with strengthens: true, but it is not a 'second miss' (#127); decision 7 would fold it into the 2022 entry's note or patient_trials unless the full text turns it into same or contra for lenvatinib.",
+  "Imported harm 'for the class' vs per-drug tracks: in 2015 regorafenib had HCC safety data (Bruix 2013 EJC, phase II safety primary) but lenvatinib had none public. Does another member's HCC data block a lenvatinib import from thyroid cancer (safety 3)?",
+  "Safety 2 correction: when the disease's own patients were measured only in a small uncontrolled study with inconclusive liver findings (Study 14596; HCC Hy's-law cases without conclusive DILI), is the track untested/unsettled, or may the import still stand until a controlled HCC result (RESORCE)?",
+  "Patient-level prediction and the efficacy retrodiction rule: Myojin 2020 (efficacy 8) post-dates SHARP for the target, but the stratified (FGF19/ST6GAL1) patient result it predicts was not public before. Does the any-drug, same-target retrodiction rule apply to prediction_level patient entries?",
+  "Dose retrodiction for a popPK/exposure-response model fitted on the drug's own early patient data and used prospectively to set the phase 3 regimen (Tamai 2017, public after REFLECT topline): retro by post-dating, or same because the regimen was registered (NCT01761266, 2013) before the trial?"
  ]
 }

@@ -20,7 +20,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Brahmer 2010 (PMID 20516446) quote verbatim. Occupancy >70% on circulating T cells is a direct readout; solid-tumour patients acceptable for a T-cell readout. Pairing dated 2014 by model paper is consistent."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Brahmer 2010 (PMID 20516446, epub 2010-06-01) quote verbatim in abstract. Wang 2014 assay first public 2014, after this same-target patient occupancy: retro per engagement retrodiction rule. iv; solid-tumour patients, other_disease right."
   },
   {
    "cell": "dose",
@@ -38,7 +39,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Review states the mouse PK-PD HED prediction (~1 mg/kg) and that 3 mg/kg troughs >16 ug/mL (>160x EC50), MTD not reached at 10 mg/kg. Target reached; margin_stated false correct; efficacy kept separate."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in bundled 125527 ClinPharm review (lines 568-570). Mouse HED prediction first public in 2015 review, after nivolumab's own 2010 patient PK/occupancy: retro (same-drug dose rule). iv, other_disease fine."
   },
   {
    "cell": "efficacy",
@@ -52,16 +54,12 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "same",
-   "proposed_year": 2016,
-   "rule": "efficacy scored on a secondary endpoint without endpoint_role: poc_gate",
-   "note": "NCT01592370 registry primary outcomes are drug-related grade 3-4 AEs/SAEs/labs only; ORR 87% is secondary, no poc_gate shown. First primary-endpoint result: CheckMate 205 (Younes 2016, epub 2016-07-20, primary ORR 66.3%). Status same holds, year 2016, src Younes.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Efficacy rule (primary endpoint governs): NCT01592370 registry primaries are grade 3-4 AEs only, ORR secondary, no poc_gate. First primary-endpoint match is CheckMate 205 (Younes 2016); same holds, dated 2016 per rule 6."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Younes 2016 (PMID 27451390, epub 2016-07-20) quote verbatim; single-arm, primary IRRC ORR, scored per single-arm rule. NCT02181738 results 2018-12-11 matches. May 2016 label also 2016, so year holds. nivolumab, iv, stage_or_line right."
   },
   {
    "cell": "efficacy",
@@ -95,9 +93,10 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Brahmer 2010 colitis quote verbatim. Contra/opposite on monkey silence is a defensible call. A cHL-specific source (Ansell 2015 or the May 2016 cHL label 5.x immune-mediated warnings) would remove the import flag; status unchanged."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ansell 2015 quote verbatim in PMC4348009 full text (epub 2014-12-06). cHL patients measured, so no import. Monkey data first public 2014 after nivolumab's own 2010 colitis: failed retrodiction stays contra. iv, stage_or_line right."
   },
   {
    "cell": "safety",
@@ -111,16 +110,12 @@
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2016,
-   "rule": "Dating rule 6 (earliest public date) and evidence rule 2 (higher-tier/member-specific record sets the entry)",
-   "note": "Merryman 2017 quote verbatim (epub 2017-01-10) but mixes non-member pembrolizumab/pidilizumab. The May 2016 Opdivo cHL label (125554s019, tier 2) already reports 6/17 deaths, 29% grade>=3 aGVHD, hyperacute GVHD after nivolumab. Same, year 2016, src that label.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dating rule 6 and evidence rule 2: May 2016 Opdivo label (125554s019, verified) already reports 29% grade>=3 aGVHD and hyperacute GVHD after nivolumab, member-specific. Same holds; year 2016, src that label."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "May 2016 Opdivo label (125554s019, Revised: 05/2016) resolves; section 5.10 quote verbatim via pdftotext (5/17, 29%). Earlier and nivolumab-only versus Merryman 2017, so year 2016 right; same, iv, stage_or_line."
   },
   {
    "cell": "safety",
@@ -135,17 +130,12 @@
   {
    "cell": "safety",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2014,
-   "rule": "Dating: the entry's year is the earliest date the comparison was public",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Label quote verbatim (pdftotext, line 645). But Ansell 2015 NEJM (epub 6 Dec 2014, PMC4348009) already reported drug-related grade 3 pneumonitis, colitis, pancreatitis in 23 cHL patients. Same holds; year 2014, src Ansell.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dating rule 6: Ansell 2015 NEJM (epub Dec 2014) reported drug-related grade 3 pneumonitis and colitis in nivolumab-treated cHL, before the 2016 label. Same holds; year 2014, src Ansell."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ansell 2015 quote verbatim (PMC4348009), epub 2014-12-06: earliest cHL immune-mediated harm report. drug 'class' correct for a target knockout; knockout 1999 predates all patient data, not a retrodiction."
   },
   {
    "cell": "safety",
@@ -166,6 +156,121 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Song 2019 CCR (PMID 31420358, epub 16 Aug 2019) quote verbatim. Screen run after patient haemangiomas were known, so retrodiction: retro (not same) is correct; year 2019, prediction_level class OK."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Green 2010 (PMID 20628145) quote verbatim in abstract. NCT03114683 start 2017-03-30 (actual) matches proxy opener year; untested/not_measured, sintilimab, iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Shi 2019 (PMID 30612710) quote verbatim; single-arm, primary IRRC ORR. ASCO 2018 abstract 7536 dates it 2018; no earlier abstract found. NCT03114683 results 2020-12-07 matches. sintilimab, iv, stage_or_line right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Green 2010 quote verbatim. NCT03155425 start 2017-06-09 (actual) matches proxy opener; untested/not_measured, camrelizumab, iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Song 2019 (PMID 31420358, epub 2019-08-16) quote verbatim, primary IRC ORR. ISHL11 abstract T026 on NCT03155425 (HemaSphere, online 2018-10-30, doi 10.1097/01.HS9.0000547948.67887.05) was public earlier: year 2018. Status same unchanged.",
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed by both. Rule 6: ISHL11 abstract T026 (HemaSphere, online 2018-10-30, Crossref-verified) predates Song 2019, so entry year should be 2018; status unaffected."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Green 2010 quote verbatim. NCT03209973 start 2017-04-21 (actual) matches proxy opener; untested/not_measured, tislelizumab, iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Song 2020 (PMID 31520078, epub 2019-09-13) quote verbatim; single-arm, primary IRC ORR. ASH 2018 abstract dates it 2018; NCT03209973 results 2020-10-12 matches. tislelizumab, iv, stage_or_line right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Green 2010 quote verbatim. NCT03655483 start 2018-08-24 (actual) matches proxy opener; untested/not_measured, zimberelimab, iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lin 2022 (PMID 34462189, epub 2021-08-27) quote verbatim. Earlier than ASCO 2020: ASCO 2019 e-abstract e14072 (doi 10.1200/JCO.2019.37.15_suppl.e14072, 2019-05-20), NCT03655483, ORR 15/17 (88.3%). Year 2019; status same.",
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed by both. Rule 6: ASCO 2019 e-abstract e14072 (online 2019-05-20, Crossref-verified) predates the ASCO 2020 abstract and Lin 2022, so year 2019; status unaffected."
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Green 2010 quote verbatim. NCT03722147 start 2018-08-13 (actual) matches proxy opener; untested/not_measured, penpulimab, iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Song 2022 (PMID 35875118) quote verbatim; single-arm, primary IRRC ORR. AK105-201 (NCT03722147) response was presented at SITC 2020 (FirstWord report 2020-11-13), earlier than the paper: year 2020. Status same unchanged.",
+   "proposed_status": "same",
+   "proposed_year": 2020,
+   "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed by both. Rule 6: AK105-201 response presented as a SITC 2020 abstract (listed for NCT03722147), predating Song 2022, so year 2020; status unaffected."
   }
  ],
  "missing": [

@@ -50,14 +50,18 @@
     "population": "Unselected",
     "model_first_use_year": 2017,
     "prediction_level": "class",
-    "judgement": "Strip opens at the first public rodent PD use for a member drug. Tropifexor's PBC phase 2 (NCT02516605) started 2015-09, before this paper, so the model predates the clinic even though it was published after dosing began."
+    "judgement": "Strip opens at the first public rodent PD use for a member drug. Tropifexor's PBC phase 2 (NCT02516605) started 2015-09, before this paper, so the model predates the clinic even though it was published after dosing began.",
+    "drug": "tropifexor",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2019,
-    "status": "same",
+    "status": "retro",
     "model": "Rodent FXR target-gene PD models",
     "model_id": "rodent-fxr-pd",
-    "note": "In the first-in-human study, tropifexor 10-3000 ug raised plasma FGF19 dose-dependently in healthy volunteers: the same FXR-FGF15/19 axis the rodents showed.",
+    "note": "In the first-in-human study, tropifexor 10-3000 ug raised plasma FGF19 dose-dependently in healthy volunteers: the same FXR-FGF15/19 axis the rodents showed. Retrodiction: rodent PD for tropifexor was first public in 2017, after OCA raised FGF19 in patients (Mudaliar 2013), so a match is retro.",
     "short": "FGF19 rose dose-dependently in healthy volunteers",
     "src": "https://doi.org/10.1002/cpdd.762",
     "srcLabel": "Badman 2020",
@@ -77,24 +81,28 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "FGF15 (rodent) vs FGF19 (human) induction, direction only",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Healthy volunteers",
     "model_first_use_year": 2017,
     "prediction_level": "class",
     "readout_tier": "proximal",
-    "judgement": "Paired by me: Badman 2020 does not put rodent and human data side by side. FGF19 is a direct FXR transcriptional product, so the read-out is proximal rather than downstream. Year is the online date (2019-12-10); print 2020. Two MAD subjects discontinued for asymptomatic transaminase rises, which the PD models did not address."
+    "judgement": "Paired by me: Badman 2020 does not put rodent and human data side by side. FGF19 is a direct FXR transcriptional product, so the read-out is proximal rather than downstream. Year is the online date (2019-12-10); print 2020. Two MAD subjects discontinued for asymptomatic transaminase rises, which the PD models did not address. Post-dating ruling (2026-11-09): engagement is a target claim, and obeticholic acid, an FXR agonist outside the member list, had already raised human FGF19 (Mudaliar 2013, doi 10.1053/j.gastro.2013.05.042, epub 2013-05-30) before Tully 2017, so the rodent result is a retrodiction and the match is retro.",
+    "drug": "tropifexor",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2024,
-    "status": "same",
-    "strengthens": true,
+    "status": "retro",
+    "strengthens": null,
     "model": "Rodent FXR target-gene PD models",
     "model_id": "rodent-fxr-pd",
-    "note": "Gilead's development paper states that cilofexor's rodent intestinal-FXR PD was reproduced in phase 1: FGF19 up, C4 and bile acids down, plateau above 30 mg.",
+    "note": "Gilead's development paper states that cilofexor's rodent intestinal-FXR PD was reproduced in phase 1: FGF19 up, C4 and bile acids down, plateau above 30 mg. Retrodiction: published after FXR-agonist FGF19 rises in people (OCA 2013, tropifexor 2019).",
     "short": "Cilofexor rodent PD reproduced in phase 1",
     "src": "https://doi.org/10.1124/jpet.123.001900",
     "srcLabel": "Hollenback 2024",
@@ -114,17 +122,21 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "intestinal FXR target-gene induction (rodent) vs plasma FGF19/C4 (human)",
     "source_calls_it": "match",
-    "population": "Unselected",
+    "population": "Healthy volunteers",
     "model_first_use_year": 2017,
     "prediction_level": "class",
     "readout_tier": "proximal",
     "reason": "FGF19 rose in humans as FGF15 did in rodents",
-    "judgement": "The sponsor states the comparison itself, so comparison_stated is true. The rodent data predate the clinic (cilofexor entered phase 1 around 2015) but were published only in 2024; I have not flagged it as a retrodiction because the model was run before the human answer was known, and say so here. Same status as the 2019 entry, so strengthens: true."
+    "judgement": "The sponsor states the comparison itself, so comparison_stated is true. The rodent data predate the clinic (cilofexor entered phase 1 around 2015) but were published only in 2024; I have not flagged it as a retrodiction because the model was run before the human answer was known, and say so here. Same status as the 2019 entry, so strengthens: true. Post-dating ruling (2026-11-09): cilofexor's rodent PD was first public here (2024), after human FGF19 rises with OCA (Mudaliar 2013) and tropifexor (Badman 2019), so the match is retro. Cilofexor is its own track on this model (drug split), so strengthens no longer applies.",
+    "drug": "cilofexor",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -161,7 +173,11 @@
     "population": "Unselected",
     "model_first_use_year": 2017,
     "prediction_level": "class",
-    "judgement": "Opener for the dose strip on the only track with a public model-side exposure read-out."
+    "judgement": "Opener for the dose strip on the only track with a public model-side exposure read-out.",
+    "drug": "tropifexor",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2019,
@@ -193,14 +209,18 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "PBC with inadequate response to or intolerance of UDCA (second line)",
     "model_first_use_year": 2017,
     "prediction_level": "class",
     "blocked_by": null,
     "margin_stated": false,
     "reason": "ug doses engaged FXR and lowered GGT",
     "judgement": "Year is the registry results posting for NCT02516605 (2019-11-13), which carried the per-dose GGT fold changes (0.74/0.41/0.28/0.31 vs 0.86 placebo); Schramm 2022 is the tier-1 record and sets the status. Scored 'reached, drug worked'. No model stated a tolerability margin, so the pruritus ceiling (3 AE discontinuations at 150 ug; EDP-305 18% pruritus discontinuations at 2.5 mg; cilofexor 7% at 100 mg) is scored once, in safety, not here. EDP-305 and cilofexor have no published rodent exposure bridge in the sources I reached.",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "tropifexor",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -237,7 +257,11 @@
     "population": "Unselected",
     "model_first_use_year": 2018,
     "prediction_level": "class",
-    "judgement": "Separate track from the Mdr2-/- mouse: a surgical obstructive model with a fibrosis prediction, not a genetic cholangiopathy with a cholestatic-injury prediction. INTREPID listed ELF/APRI/FIB-4 as secondary outcomes but I did not extract them, so the fibrosis prediction stays untested for EDP-305."
+    "judgement": "Separate track from the Mdr2-/- mouse: a surgical obstructive model with a fibrosis prediction, not a genetic cholangiopathy with a cholestatic-injury prediction. INTREPID listed ELF/APRI/FIB-4 as secondary outcomes but I did not extract them, so the fibrosis prediction stays untested for EDP-305.",
+    "drug": "edp-305",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2020,
@@ -272,20 +296,24 @@
     "population": "Unselected",
     "model_first_use_year": 2020,
     "prediction_level": "class",
-    "judgement": "Published online 2020-05-06, the same day Enanta released INTREPID topline; the mice were necessarily run earlier and the paper frames itself as support for clinical evaluation, so I treat it as prospective, not a retrodiction. The no-PBC-model problem is real: Mdr2-/- is a sclerosing-cholangitis model standing in for PBC."
+    "judgement": "Published online 2020-05-06, the same day Enanta released INTREPID topline; the mice were necessarily run earlier and the paper frames itself as support for clinical evaluation, so I treat it as prospective, not a retrodiction. The no-PBC-model problem is real: Mdr2-/- is a sclerosing-cholangitis model standing in for PBC.",
+    "drug": "edp-305",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "year": 2021,
-    "status": "same",
+    "year": 2020,
+    "status": "retro",
     "model": "Mdr2-/- (Abcb4-/-) mouse cholangiopathy",
     "model_id": "mdr2-ko-mouse",
-    "note": "INTREPID: ALP response 45% (1 mg) and 46% (2.5 mg) vs 11% placebo at week 12, p=0.106/0.063 with 9 placebo patients; absolute ALP, ALT, AST, GGT changes significant.",
+    "note": "INTREPID: ALP response 45% (1 mg) and 46% (2.5 mg) vs 11% placebo at week 12, p=0.106/0.063 with 9 placebo patients; first public in Enanta's 2020-05-06 release. The mouse post-dates OCA's PBC result, so retro.",
     "short": "ALP response 46% vs 11%, primary not met",
     "src": "https://clinicaltrials.gov/study/NCT03394924",
     "srcLabel": "NCT03394924 results 2021",
     "quote": "Percentage of Participants With At Least a 20% Reduction in Alkaline Phosphatase (ALP) or Normalization of ALP at Week 12 Compared to Baseline",
     "confidence": "low",
-    "confidence_note": "The registry record is a results table, not prose: the quote is the verbatim primary-outcome title and the numbers (45.2 / 46.4 / 11.1 %; CMH OR 5.6, p=0.106 and OR 7.0, 95% CI 0.75-65.22, p=0.063) are its values. The press-release sentence in patient_trials carries the same numbers.",
+    "confidence_note": "The registry record is a results table, not prose: the quote is the verbatim primary-outcome title and the numbers (45.2 / 46.4 / 11.1 %; CMH OR 5.6, p=0.106 and OR 7.0, 95% CI 0.75-65.22, p=0.063) are its values. The press-release sentence in patient_trials carries the same numbers. Press release read in full via nasdaq.com copy; it says INTREPID \"did not meet the primary endpoint\" in the ITT set.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 3,
@@ -299,12 +327,12 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "ALP responder rate 46% vs 11%; mouse read-out was transaminases, fibrosis and portal pressure",
     "source_calls_it": "partial",
-    "population": "Unselected",
+    "population": "PBC with inadequate response to or intolerance of UDCA (second line)",
     "model_first_use_year": 2020,
     "prediction_level": "class",
     "endpoint_role": "primary",
@@ -317,8 +345,12 @@
       "quote": "In the intent-to-treat (ITT) analysis, EDP-305 1 mg and 2.5 mg treatment arms resulted in 45% (n=14/31, p=0.106) and 46% (n=13/28, p=0.063) ALP response, respectively, compared to 11% (n=1/9) in the placebo arm."
      }
     ],
-    "judgement": "This is the main call of the tile. The pre-specified ITT primary (ALP responder rate) was not met and Enanta dropped PBC (press release 2020-05-06, Business Wire 20200506005860), which under the dose table reads 'reached, failed, abandoned' = contra. I scored same + partial instead because the data, not the sponsor's words, govern (decision 13): the direction matched (46% vs 11%, OR 7), absolute ALP change was significant vs placebo (p=0.017/0.021) and so were ALT/AST/GGT, and the placebo arm held 9 patients, so the miss is a power miss, not a model miss. A reviewer who holds to the primary-endpoint test should flip this to contra with source_calls_it unresolved; the 2023 retro entry below would then need to leave this track. Year is the registry posting (the brief's dating events do not include press releases); the comparison was first public in May 2020. No peer-reviewed INTREPID paper was found on PubMed.",
-    "untested_reason": "unsettled"
+    "judgement": "This is the main call of the tile. The pre-specified ITT primary (ALP responder rate) was not met and Enanta dropped PBC (press release 2020-05-06, Business Wire 20200506005860), which under the dose table reads 'reached, failed, abandoned' = contra. I scored same + partial instead because the data, not the sponsor's words, govern (decision 13): the direction matched (46% vs 11%, OR 7), absolute ALP change was significant vs placebo (p=0.017/0.021) and so were ALT/AST/GGT, and the placebo arm held 9 patients, so the miss is a power miss, not a model miss. A reviewer who holds to the primary-endpoint test should flip this to contra with source_calls_it unresolved; the 2023 retro entry below would then need to leave this track. Year is the registry posting (the brief's dating events do not include press releases); the comparison was first public in May 2020. No peer-reviewed INTREPID paper was found on PubMed. Rulings of 2026-11-09: (1) dating - the Enanta press release of 2020-05-06 (https://www.nasdaq.com/press-release/enanta-announces-results-of-intrepid-study-of-edp-305-for-the-treatment-of-primary) made the result public first, so year 2020; the registry record (tier 3) still sets the status. (2) post-dating - efficacy is a target claim; An 2020 (epub 2020-05-06) was first public after OCA lowered ALP in second-line PBC (Hirschfield 2015, doi 10.1053/j.gastro.2014.12.005, epub 2014-12-11) and after tropifexor's PBC registry results (2019-11-13), so the model is a retrodiction and same becomes retro. The design is a plain placebo-controlled add-on to background UDCA, not a combination.",
+    "untested_reason": null,
+    "drug": "edp-305",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "year": 2021,
@@ -350,7 +382,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "serum GGT direction, rat BDL vs PBC day 28",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "PBC with inadequate response to or intolerance of UDCA (second line)",
     "model_first_use_year": 2018,
     "prediction_level": "class",
     "endpoint_role": "primary",
@@ -364,7 +396,11 @@
      }
     ],
     "reason": "BDL rat reproduced the GGT fall",
-    "judgement": "Retrodiction (decision 10): tropifexor's PBC results were posted 2019-11-13 and this rat study appeared 2021-10. It reproduced the human direction on GGT, the trial's primary, so retro not same. A piglet BDL study (Xiao 2021, doi:10.1111/liv.14906, framed for biliary atresia) is a second tropifexor retrodiction on the same model type and is not entered separately."
+    "judgement": "Retrodiction (decision 10): tropifexor's PBC results were posted 2019-11-13 and this rat study appeared 2021-10. It reproduced the human direction on GGT, the trial's primary, so retro not same. A piglet BDL study (Xiao 2021, doi:10.1111/liv.14906, framed for biliary atresia) is a second tropifexor retrodiction on the same model type and is not entered separately.",
+    "drug": "tropifexor",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "year": 2023,
@@ -396,7 +432,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "serum ALP direction, mouse vs PBC week 12",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "PBC without cirrhosis, on or off UDCA",
     "model_first_use_year": 2020,
     "prediction_level": "class",
     "endpoint_role": "primary",
@@ -410,7 +446,12 @@
      }
     ],
     "reason": "ALP fell as the mouse said; trial underpowered",
-    "judgement": "Retrodiction: the PBC trial posted results 2020-01-13 and was terminated 'because of the availability of alternate therapies'; this mouse study is framed for PSC and appeared 2023. Same model system as An 2020 (Abcb4-/- cholangiopathy, cholestatic-injury prediction), so it stays on the mdr2-ko-mouse track. Status retro, never same (decision 10). Low confidence because the patient side is a conference abstract read second-hand."
+    "judgement": "Retrodiction: the PBC trial posted results 2020-01-13 and was terminated 'because of the availability of alternate therapies'; this mouse study is framed for PSC and appeared 2023. Same model system as An 2020 (Abcb4-/- cholangiopathy, cholestatic-injury prediction), so it stays on the mdr2-ko-mouse track. Status retro, never same (decision 10). Low confidence because the patient side is a conference abstract read second-hand.",
+    "drug": "cilofexor",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unsettled"
    }
   ],
   "safety": [
@@ -447,7 +488,11 @@
     "population": "Unselected",
     "model_first_use_year": 2017,
     "prediction_level": "class",
-    "judgement": "Opener at the first public model use for a member; the rodent NASH efficacy models (Hernandez 2019, doi:10.1002/hep4.1368) are the same program and equally silent on harm."
+    "judgement": "Opener at the first public model use for a member; the rodent NASH efficacy models (Hernandez 2019, doi:10.1002/hep4.1368) are the same program and equally silent on harm.",
+    "drug": "tropifexor",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2019,
@@ -479,11 +524,15 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "PBC with inadequate response to or intolerance of UDCA (second line)",
     "model_first_use_year": 2017,
     "prediction_level": "class",
     "reason": "Dose-limiting pruritus no rodent model showed",
-    "judgement": "Silence contradicted on a harm the species could have shown: scratching bouts are a standard rodent read-out, and none of the member programs' rodent studies measured them. This is the class's dose-limiting harm in PBC and is counted once, here: EDP-305 2.5 mg had 18% discontinuations for pruritus and 5 severe cases (INTREPID press release; registry pruritus 16/28 vs 3/9 placebo), cilofexor 100 mg 7% discontinuations (AASLD 2019 abstract, read second-hand). The harm was already known from obeticholic acid in 2015, but that drug is outside the tile and its evidence is set aside. Two caveats a reviewer may weigh toward untested: FXR-agonist itch is thought to run through IL-31, which may be human-specific, and tropifexor's registry primary was safety so this trial was built to find it. Lipids moved the other way from OCA (LDL/HDL fell), unpredicted either way."
+    "judgement": "Silence contradicted on a harm the species could have shown: scratching bouts are a standard rodent read-out, and none of the member programs' rodent studies measured them. This is the class's dose-limiting harm in PBC and is counted once, here: EDP-305 2.5 mg had 18% discontinuations for pruritus and 5 severe cases (INTREPID press release; registry pruritus 16/28 vs 3/9 placebo), cilofexor 100 mg 7% discontinuations (AASLD 2019 abstract, read second-hand). The harm was already known from obeticholic acid in 2015, but that drug is outside the tile and its evidence is set aside. Two caveats a reviewer may weigh toward untested: FXR-agonist itch is thought to run through IL-31, which may be human-specific, and tropifexor's registry primary was safety so this trial was built to find it. Lipids moved the other way from OCA (LDL/HDL fell), unpredicted either way.",
+    "drug": "tropifexor",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "year": 2020,
@@ -519,7 +568,11 @@
     "model_first_use_year": 2020,
     "prediction_level": "class",
     "reason": "Stated prediction had no patient histology",
-    "judgement": "Kept untested rather than contra: the pruritus miss is already scored once on the rodent-fxr-pd track, and the one safety prediction this model stated (no ductular-reaction worsening) had no patient read-out. The INTREPID registry record has the EDP-305 pruritus counts but no quotable sentence, which is the other reason the class miss is quoted from Schramm 2022."
+    "judgement": "Kept untested rather than contra: the pruritus miss is already scored once on the rodent-fxr-pd track, and the one safety prediction this model stated (no ductular-reaction worsening) had no patient read-out. The INTREPID registry record has the EDP-305 pruritus counts but no quotable sentence, which is the other reason the class miss is quoted from Schramm 2022.",
+    "drug": "edp-305",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -559,19 +612,23 @@
     "confidence_note": "Full text read (open access, PMC9970017). Model side: PXB mice (PhoenixBio, human hepatocytes on uPA/SCID) dosed OCA 10 mg/kg for 18 days; hepatic IL-31 mRNA 7.8-fold, serum human IL-31 1.1 vs 0.085 pg/ml. The abstract quote uses an ASCII hyphen where the typeset text has U+2010.",
     "note": "First use of a humanized-liver mouse for the class's harm: an FXR agonist (OCA, not a member) raised human hepatocyte IL-31 mRNA and circulating human IL-31, a pruritogen.",
     "reason": null,
-    "judgement": "Opens the only model system found that was built for the class's dose-limiting harm, pruritus. Dated to online publication 2022-07-17 (print Hepatology 2023;77:20-32). The dosed drug is obeticholic acid, excluded from this tile's member list, so product_in_model is false under the sibling-drug allowance; the adjudicator's answer to rule question 7 decides whether this track stands or drops to untested with a note. Safety cell only: IL-31 is the harm's proposed mediator, not the therapeutic PD read-out (FGF19/C4), so no engagement entry is scored from it."
+    "judgement": "Opens the only model system found that was built for the class's dose-limiting harm, pruritus. Dated to online publication 2022-07-17 (print Hepatology 2023;77:20-32). The dosed drug is obeticholic acid, excluded from this tile's member list, so product_in_model is false under the sibling-drug allowance; the adjudicator's answer to rule question 7 decides whether this track stands or drops to untested with a note. Safety cell only: IL-31 is the harm's proposed mediator, not the therapeutic PD read-out (FGF19/C4), so no engagement entry is scored from it.",
+    "drug": "cilofexor",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": true,
+    "retrodiction": false,
     "patient_signal_reversed": false,
     "model": "PXB chimeric humanized-liver mouse (FXR-agonist induction of human hepatocyte IL-31)",
     "model_id": "pxb-humanized-liver-il31",
     "model_kind": "animal",
     "prediction_level": "class",
     "model_first_use_year": 2022,
-    "population": "Unselected",
+    "population": "NASH (MASH) patients, imported",
     "modality": null,
-    "strengthens": null,
+    "strengthens": true,
     "trial_unreported": false,
     "model_filed": null,
     "product_in_model": false,
@@ -580,7 +637,7 @@
     "effect_size": null,
     "class_threshold": null,
     "year": 2022,
-    "status": "retro",
+    "status": "untested",
     "short": "Cilofexor raised IL-31 with itch in NASH",
     "src": "https://doi.org/10.1002/hep.32599",
     "srcLabel": "Xu 2023",
@@ -597,9 +654,13 @@
     "source_calls_it": "match",
     "confidence": "high",
     "confidence_note": "Full text read. The IL-31 values are not on the registry; registry_date is the NCT02854605 results posting (2019-01-29), which carries the pruritus AE counts (grade 2-3 pruritus 8/56 at 100 mg, 1/56 at 30 mg, 0/28 placebo per the paper's Table 1).",
-    "note": "Retrodiction in another indication: in the 24-week NASH phase 2, cilofexor raised serum IL-31 dose-dependently and IL-31 was higher in patients with grade 2-3 than grade 0-1 pruritus.",
+    "note": "Imported NASH result set aside: cilofexor raised IL-31 dose-dependently in NASH, but PBC patients were measured for the class (next entry), so their result sets the status.",
     "reason": null,
-    "judgement": "Retrodiction: FXR-agonist pruritus was known in PBC from 2015 (OCA) and for the members from 2018-2020 before the mice were dosed, so retro, never same (decision 10). The paper puts mouse and patient results side by side (comparison_stated true) and its conclusion calls the NASH finding a match. Patient side is NASH, not PBC, so it transfers with imported_from (MONDO:0007027, MASH/NASH); the tile's own disease is scored in the next entry. Model drug is OCA (rule question 7)."
+    "judgement": "Retrodiction: FXR-agonist pruritus was known in PBC from 2015 (OCA) and for the members from 2018-2020 before the mice were dosed, so retro, never same (decision 10). The paper puts mouse and patient results side by side (comparison_stated true) and its conclusion calls the NASH finding a match. Patient side is NASH, not PBC, so it transfers with imported_from (MONDO:0007027, MASH/NASH); the tile's own disease is scored in the next entry. Model drug is OCA (rule question 7). Imported-harm ruling (2026-11-09): a harm seen only in another disease counts only when this disease has no patient safety data for the class; PBC patients were measured (cilofexor IL-31 and itch in this paper; tropifexor and EDP-305 pruritus), so this NASH comparison is set aside as untested and the PBC entry sets the status. retrodiction cleared because the entry no longer scores; strengthens marks a second untested on the track.",
+    "drug": "cilofexor",
+    "route": "oral",
+    "population_group": "other_disease",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -609,7 +670,7 @@
     "model_kind": "animal",
     "prediction_level": "class",
     "model_first_use_year": 2022,
-    "population": "Unselected",
+    "population": "PBC without cirrhosis, on or off UDCA",
     "modality": null,
     "strengthens": null,
     "trial_unreported": false,
@@ -639,7 +700,11 @@
     "confidence_note": "Full text read; the PBC IL-31 and itch-score results are reported as figures (4A, S4) without numbers in the text. Quote is from the Results section; the typeset hyphen in IL-31 is U+2010 in the Europe PMC XML. The PBC trial record (NCT02943447, results 2020-01-13) posts safety primaries only.",
     "note": "In the tile's own disease the model's read-out did not move: cilofexor left serum IL-31 and itch scores unchanged vs placebo over 12 weeks in 71 PBC patients; the authors call the NASH/PBC split discrepant.",
     "reason": "IL-31 up in mice, flat in PBC patients",
-    "judgement": "The own-disease comparison governs the PBC context and one member's contra beats the imported NASH match on the same track. The model predicts FXR agonism raises hepatocyte-derived IL-31; in PBC patients dosed with a member drug it did not, and the patient-reported itch did not change either, so the IL-31 route is not shown to carry the class's PBC pruritus (tropifexor, EDP-305 were never measured for IL-31). A failed retrodiction is contra (decision 10); magnitude opposite per the brief's rule for a predicted harm signal that never appeared. Caveats a reviewer may weigh: cilofexor was the member with the mildest PBC itch signal, baseline IL-31 in PBC was 6-9x NASH levels (a ceiling), 12 weeks at 100 mg top dose, and the authors read the split as evidence for multiple pruritogens rather than as a model failure (source_calls_it unresolved). If rule question 7 denies the OCA allowance, this and the prior entry drop and the track stays untested."
+    "judgement": "The own-disease comparison governs the PBC context and one member's contra beats the imported NASH match on the same track. The model predicts FXR agonism raises hepatocyte-derived IL-31; in PBC patients dosed with a member drug it did not, and the patient-reported itch did not change either, so the IL-31 route is not shown to carry the class's PBC pruritus (tropifexor, EDP-305 were never measured for IL-31). A failed retrodiction is contra (decision 10); magnitude opposite per the brief's rule for a predicted harm signal that never appeared. Caveats a reviewer may weigh: cilofexor was the member with the mildest PBC itch signal, baseline IL-31 in PBC was 6-9x NASH levels (a ceiling), 12 weeks at 100 mg top dose, and the authors read the split as evidence for multiple pruritogens rather than as a model failure (source_calls_it unresolved). If rule question 7 denies the OCA allowance, this and the prior entry drop and the track stays untested. The NASH entry before it is set aside under the imported-harm ruling, so this PBC entry alone scores the track.",
+    "drug": "cilofexor",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

@@ -1,0 +1,57 @@
+{
+ "tile": "pituitary-dwarfism-ghr-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same->retro, retrodiction true: target-level retrodiction rule (daily rhGH raised IGF-I in patients before 2012); population_group other_disease (adult GHD)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "year 2022->2017, status same->retro, src/quote Miller 2022 -> Rasmussen 2014 (healthy men): rule 6 earliest date (checker adjudication) and target-level retrodiction rule"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "status same->retro, retrodiction true: target-level retrodiction rule (daily rhGH IGF-I response known)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status contra->untested (no_prediction): dose rule, model stated no human target; drafter mg/kg arithmetic is not one (checker adjudication)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "status same->retro, retrodiction true: dose/safety retrodiction rule, model first public 2020 after the same drug's own tolerability data (Rasmussen 2014, REAL 3); settles checker rule question 2"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same->retro, retrodiction true: target-level retrodiction rule (daily rhGH grew GHD children); single-arm design written into note"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "quote replaced with full-text lipoatrophy sentence (Moore 2016, PMC4803167) per checker; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "status same->retro, retrodiction true: safety retrodiction rule (same drug's own earlier patient safety)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "opening untested entry, somapacitan track of hypophysectomized rat growth assay (Thygesen 2017)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "retro 2020, somapacitan track: REAL 3 height velocity matched daily GH (Savendahl 2020); target-level retrodiction"
+  }
+ ]
+}

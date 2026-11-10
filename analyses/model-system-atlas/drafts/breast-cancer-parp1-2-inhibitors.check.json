@@ -67,16 +67,13 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2016,
-   "rule": "4",
-   "note": "Rugo 2016 full text: 'Our design did not evaluate the individual contributions of veliparib and carboplatin.' The model's prediction (veliparib adds to carboplatin) was never isolated; the pCR gain is attributable to a condition the model did not test. Untested, source_calls_it unresolved.",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: decision 4 states the untested-conditions rule for contra only (#35, #72); #57 covers disclaimed failures; the checker brief extends it to same. Is a met primary with the class drug's contribution unisolated same or untested?"
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "efficacy: combination with another active drug",
+   "note": "Rugo NEJM 2016 quote verbatim; first public SABCS 2013 S5-02. Combination with carboplatin scored on primary pCR: same, 2013, veliparib, oral, stage_or_line right."
   },
   {
    "cell": "efficacy",
@@ -85,8 +82,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "4",
-   "note": "Contra stands: veliparib added nothing to carboplatin (53% vs 58%). Donawho's potentiation claim spanned BRCA-wt models, and Loibl does not attribute the miss to genotype. Geyer 2022 and Han 2018 quotes verbatim; registry dates verified; abstract-only for gBRCA subgroup."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "efficacy: combination with another active drug",
+   "note": "Loibl 2018 quote verbatim; first public ASCO 2017 (Geyer). Veliparib added to carboplatin-paclitaxel, primary pCR not improved: contra, 2017, combination noted, stage_or_line right."
   },
   {
    "cell": "efficacy",
@@ -101,12 +99,17 @@
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "3",
-   "note": "Somlo 2017 sentence verbatim; NCT01149083 results posted 2025-08-15, epub 2017-03-29 earliest. Single-arm ORR in the GEMM-named genotype: same, direction_only, is the right call."
+   "proposed_status": "same",
+   "proposed_year": 2014,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "6 (dating)",
+   "note": "Same right (single-arm, response in gBRCA where predicted). Earliest public is ASCO 2014 abstract 1021 (Somlo, JCO 32:15_suppl; City of Hope release June 2014) reporting single-agent veliparib PRs in gBRCA MBC, not ASCO 2015.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: ASCO 2014 abstract 1021 (JCO 32:15_suppl, print 2014-05-20) already reported single-agent veliparib PRs in BRCA1 (2/12) and BRCA2 (3/13) MBC. Status same; year 2014, not 2015."
   },
   {
    "cell": "efficacy",
@@ -115,8 +118,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "4",
-   "note": "PFS sentence verbatim; NCT02163694 results 2022-04-04, epub 2020-08-27. BROCADE 2018 (missed PFS, ORR significant) is untested under decision 4, not contra, so track stays same. strengthens is defined for a second miss, not a second match."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "efficacy: combination with another active drug",
+   "note": "BROCADE3 quote verbatim; first public ESMO 2019. Combination with carboplatin-paclitaxel scored on primary PFS: same, 2019, veliparib, oral, biomarker_selected right; strengthens removed."
   },
   {
    "cell": "efficacy",
@@ -125,8 +129,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7",
-   "note": "ORR sentence verbatim; NCT03575065 results 2022-09-07 precede epub 2022-12-02, year 2022 right. Same flag caveat as index 6."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "efficacy: single-arm",
+   "note": "ASCO 2021 abstract 1087 (NCT03575065) verified: ORR 38.2% TNBC, 61.9% HR+. Single-arm, response as predicted: same, 2021, pamiparib, oral, biomarker_selected. confidence_note still says year is the 2022 registry posting; stale text."
   },
   {
    "cell": "efficacy",
@@ -135,8 +140,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "note": "Full text (PMC7434893): DRP retrodiction in 13 mixed-tumour patients; both gBRCA breast patients progressed. NCT03562832 completed 2024-08, no results; web search found no 2X-121 breast release (hits were LiPlaCis 2023, a 2017 'planned study' note). SEC filings not checked."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "6 (dating)",
+   "note": "Plummer 2020 quote verbatim; DRP first public ASCO 2018 abstract 2505, so opener and model_first_use_year 2018 right. Breast DRP trial NCT03562832 unreported: untested stays."
   },
   {
    "cell": "safety",
@@ -155,8 +161,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "4",
-   "note": "Contra supported as askable silence: mice can show cytopenias, Rottenberg measured none yet claimed 'excellent therapeutic index'; pamiparib monotherapy gave grade 3+ haematologic TEAEs, 64.8% dose reductions. Low confidence is right; see rule question 2."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "safety: passing no-toxicity claim scored; own-disease patients decide",
+   "note": "Xu 2023 quote verbatim; ASCO 2021 abstract 1087. Breast patients measured, haematologic grade 3+ TEAEs contradict the GEMM's no-toxicity claim: contra, 2021. GEMM predates pamiparib patient data, not retro. Pamiparib, oral, biomarker_selected right."
   },
   {
    "cell": "efficacy",
@@ -172,16 +179,13 @@
   {
    "cell": "efficacy",
    "index": 10,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "near",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "4",
-   "note": "Quote near-verbatim (full text); QBE pre-specified. Arm added carboplatin to control; Wolf defers 'carboplatin alone', BrighTNess found veliparib adds nothing, Tovey 2023 shows DDR signatures predict carboplatin. PARPi prediction never isolated: untested, unresolved; mirrors adjudicated efficacy[2].",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: as efficacy[2]: decision 4 states the untested-conditions rule for contra only (#35, #72); the arm co-added carboplatin, so the PARPi prediction is unisolated. Is a met pre-specified interaction same or untested? Same, consistent with efficacy[2]."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "efficacy: combination with another active drug",
+   "note": "Wolf 2017 quote near-verbatim (PMC5572474); first public SABCS 2014 P3-06-05. Pre-specified signature test in the veliparib-carboplatin arm: same, 2014, combination_with carboplatin right."
   },
   {
    "cell": "engagement",
@@ -197,13 +201,17 @@
   {
    "cell": "engagement",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "3",
-   "note": "Plummer 2020 (PMC7434893, epub 2020-06-11) resolves; sentence verbatim. Mixed-tumour patient PBMC PAR allowed for engagement; proximal, direction_only right; Plummer cites the xenograft PD without comparing, so paired is correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "proposed_status": "retro",
+   "proposed_year": 2015,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "6 (dating) and retrodiction rule",
+   "note": "Retro right. Year wrong: 2X-121's own phase 1 (Plummer, ESMO 2014, Ann Oncol 25 suppl 4; ASCO 2014 e19531) reported ~90% PBMC PAR inhibition at 600 mg QD before McGonigle 2015, so the comparison was public in 2015, not 2018.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6 and retrodiction rule: Plummer ASCO 2014 e19531 reported ~90% PBMC PAR inhibition at 600 mg QD before McGonigle 2015, so the pairing was public at the model's 2015 publication. retro, year 2015."
   },
   {
    "cell": "dose",
@@ -219,13 +227,17 @@
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "16",
-   "note": "Quote verbatim. MTD 600 mg QD is the PD-saturating dose; DLTs 1/6 at 600 (anaphylaxis), 4/6 at 800 (fatigue). No toxicity at or below the effective exposure, so decision 16 same; low confidence right given data-not-shown mouse tolerability.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "proposed_status": "retro",
+   "proposed_year": 2015,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (dose: same drug's own earlier patient result)",
+   "note": "2X-121's own MTD 600 mg QD with ~90% PBMC PAR inhibition was public in 2014 (Plummer, ESMO 2014 / ASCO 2014 e19531), before McGonigle 2015 stated its tolerated PD-active doses. Model reproduced it: retro, 2015, not same 2018.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (dose: same drug's own earlier patient result): ASCO 2014 e19531 gave 2X-121's MTD 600 mg QD with ~90% PAR inhibition before McGonigle 2015; model reproduced it. retro, 2015, not same 2018."
   },
   {
    "cell": "efficacy",
@@ -278,9 +290,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7",
-   "note": "Lickliter 2022 (PMC8854719) epub 2021-11-18, year 2021 right; sentence verbatim. PBMC PAR plateau ~80% from 10 mg BID in mixed solid tumours; same, proximal, direction_only.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction",
+   "note": "Quote verbatim (Lickliter, PMC8854719). Pamiparib PBMC PAR >80% at >=10 mg BID public ASCO 2016 before the 2020 xenograft: retro, dated 2020 when the model made the comparison public. Pamiparib, oral, other_disease (mixed tumours) right."
   },
   {
    "cell": "dose",
@@ -300,9 +312,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "16",
-   "note": "Quote verbatim. PAR plateau 10 mg BID vs RP2D 60 and MTD 80 mg BID; DLTs were grade 2 nausea (40-80 mg) and grade 3 fatigue (120 mg); nothing at or below the effective exposure, so decision 16 same with margin_stated true.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (dose: same drug's own earlier patient result)",
+   "note": "Quote verbatim. Pamiparib MTD 80 mg BID (ASCO 2016) and RP2D 60 mg BID (ESMO 2017) preceded the 2020 model: retro, 2020. Pamiparib, oral, other_disease right."
   },
   {
    "cell": "efficacy",
@@ -322,9 +334,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7",
-   "note": "Xu 2023 abstract quote verbatim; registry results 2022-09-07 precede epub 2022-12-02, year 2022 right. Single-arm gBRCA ORR scored same, direction_only, consistent with efficacy[5] and [7] on the GEMM track.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction",
+   "note": "Model (Xiong 2020) post-dates gBRCA breast PARP-inhibitor responses (olaparib, talazoparib), so retro; ASCO 2021 abstract 1087 earliest public. Pamiparib, oral, biomarker_selected right."
   },
   {
    "cell": "safety",
@@ -340,17 +352,13 @@
   {
    "cell": "safety",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2021,
-   "rule": "7",
-   "note": "Quote verbatim (abstract). Contra follows the safety[2] reading pending rule question 2. Lickliter 2022 (epub 2021-11-18: grade>=3 anaemia 24.8%, neutropenia 5.9%, haematologic dose reductions 23.8%) is the first admissible patient dataset; date 2021 with imported_from, as E7449 safety[4] does.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Both sides contra (askable silence, open rule question 2). Rule 6 dates at earliest public comparison and safety transfers across populations: Lickliter 2022, epub 2021-11-18, grade>=3 anaemia 24.8% on pamiparib, so year 2021 with imported_from."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (safety: same drug's own earlier patient result)",
+   "note": "Pamiparib's own anaemia public ASCO 2016 before the 2020 model: retrodiction true; model reported none, so contra kept; year 2021 from breast data right. The '13% grade 3-4' figure was not seen in the abstract."
   },
   {
    "cell": "efficacy",
@@ -373,6 +381,21 @@
    "rule": "10",
    "note": "Quote verbatim. Built after I-SPY 2, BrighTNess and Geyer 2022: retro, not same. Full text: sensitive TORG146 responded to cisplatin with or without veliparib; concordance is with a patient-trained classifier, so low confidence and partial are right.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2008,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "6 (dating: track opens at model_first_use_year)",
+   "note": "Untested opener right, quote verbatim (Rottenberg 2008). Rule 6 opens a track at model_first_use_year (2008), as safety[1] does for the same GEMM pamiparib track; a 2021 opener collides with efficacy[7] and hides the untested span.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: a cell opens at model_first_use_year (2008), proxy allowed, as safety[1] does on this pamiparib GEMM track. untested, year 2008; not the track's latest entry (efficacy[7] 2021 same), so no untested_reason."
   }
  ],
  "missing": [

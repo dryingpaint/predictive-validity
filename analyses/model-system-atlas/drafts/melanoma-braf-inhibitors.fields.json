@@ -1,0 +1,136 @@
+{
+ "tile": "melanoma-braf-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "year 2010 -> 2009 (rule 6: ASCO 2009 abstract: \"AUC was dose-proportional and above target levels at 240 mg BID and higher\", with regressions there); model text unified; drug vemurafenib, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2010 -> 2009 (rule 6: ASCO 2009 abstract 9000 first reported V600E regressions); endpoint_role poc_gate -> primary under the single-arm ruling; drug vemurafenib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2010 -> 2009 (rule 6: ASCO 2009 abstract: 5/7 V600E regressed, 2 wild-type progressed); model_id -> braf-mutant-vs-wildtype-cell-panel (patient-level system); endpoint_role -> primary; drug vemurafenib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to dabrafenib, route oral, population_group biomarker_selected, combination_with trametinib; combination design written into note, status contra kept"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with cobimetinib; combination design written into note, status contra kept"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to dabrafenib, route oral, population_group biomarker_selected, combination_with trametinib; combination design written into note, status contra kept"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug set to vemurafenib, route oral, population_group stage_or_line, combination_with None"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug set to vemurafenib, route oral, population_group stage_or_line, combination_with None"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "drug set to encorafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "drug set to encorafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug set to vemurafenib, route oral, population_group biomarker_selected, combination_with None"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug set to dabrafenib, route oral, population_group biomarker_selected, combination_with trametinib; now its own dabrafenib track (combination ruling), strengthens -> false, status same kept"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "drug set to encorafenib, route oral, population_group biomarker_selected, combination_with None; now its own encorafenib track, strengthens true -> false, status contra kept on encorafenib's own data"
+  }
+ ],
+ "added": []
+}

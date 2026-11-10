@@ -1,0 +1,32 @@
+{
+ "tile": "gastroesophageal-reflux-disease-atp4a-blockers",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: retrodiction rule (dog model first public 2017, after revaprazan's 2010 human intragastric pH data for the same target and action); drug tegoprazan, route oral set"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "drug set to tegoprazan (track split; fexuprazan comparison moved to its own entry), route oral; status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: retrodiction rule (Kim 2019 rat model epub 2019-03-20, after Lee 2019 phase 3 epub 2019-03-06); drug tegoprazan, route oral set"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 11,
+   "what": "opening untested entry, 2026, for the fexuprazan track of multilevel-poppkpd-pcab (Jung 2026)"
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "what": "retro 2026, fexuprazan track of multilevel-poppkpd-pcab: predicted 69% time at pH>4 vs reported 55-70% (Jung 2026, own quote)"
+  }
+ ]
+}

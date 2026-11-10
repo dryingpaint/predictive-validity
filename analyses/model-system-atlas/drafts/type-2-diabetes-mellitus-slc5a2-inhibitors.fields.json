@@ -1,0 +1,142 @@
+{
+ "tile": "type-2-diabetes-mellitus-slc5a2-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to canagliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro: engagement retrodiction rule, rat result first public after human SGLT2 glucosuria (dapagliflozin 2008, canagliflozin Sha 2011); drug set to canagliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "year 2011 -> 2010: earlier public date, Vallon 2010 Sglt2-/- mouse online 2010-07-08 (rule 6); drug set to class, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro: engagement retrodiction rule, knockout first public 2010 after dapagliflozin human glucosuria (List 2009, online 2008-12-29); registry_date 2010-08-06 (NCT01177150); drug set to class, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to canagliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro: dose retrodiction rule, model target and margin first public after canagliflozin's own earlier patient results; drug set to canagliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to ertugliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug set to ertugliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug set to enavogliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "status same -> retro: dose retrodiction rule, Lee 2023 first public after enavogliflozin's own FIH (Hwang 2022, doi 10.1111/bcp.15348); settles check rule question 9; drug set to enavogliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to canagliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to class, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same -> retro: efficacy retrodiction rule (same target, any drug), rat HbA1c first public after dapagliflozin's 2008 trial; drug set to canagliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to class, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status same -> retro: efficacy retrodiction rule, Zhang 2011 db/db HbA1c first public after dapagliflozin's 2008 trial; drug set to bexagliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2011 -> 2010: earlier public date, Vallon 2010 Sglt2-/- mouse online 2010-07-08 (rule 6); drug set to class, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "status same -> retro: efficacy retrodiction rule, knockout first public 2010 after dapagliflozin's 2008 trial; drug set to class, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to class, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to class, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to canagliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to canagliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "status contra -> same: per-drug tracks; bexagliflozin's own rodent carcinogenicity stated no neoplastic findings and patients had no Leydig or pheochromocytoma events (check correction); drug set to bexagliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "year 2011 -> 2010: earlier public date, Vallon 2010 Sglt2-/- mouse online 2010-07-08 (rule 6); drug set to class, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug set to class, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "drug set to canagliflozin, route oral (track fields from the entry's own sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "drug set to canagliflozin, route oral (track fields from the entry's own sources)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "FRG track (class, oral) 2013 contra: Zhang 2011 passing claim 'glucosuria without hypoglycemia or other obvious morbidity' scored as a safety prediction against the 2013 canagliflozin label genital mycotic infection warning"
+  }
+ ]
+}

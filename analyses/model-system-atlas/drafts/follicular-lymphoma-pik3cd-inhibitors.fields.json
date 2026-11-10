@@ -1,0 +1,31 @@
+{
+ "tile": "follicular-lymphoma-pik3cd-inhibitors",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "status same -> retro (retrodiction true, strengthens true): TIDAL topline press release 2021-11-30 and regimen fixed 2018 predate the mouse (2022-05); the same drug's earlier patient result, per checker adjudication and the earliest-date ruling"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2014 -> 2013: interim ORR first public in Gilead press release / ICML 2013-06-17 (earliest-date ruling); status same unchanged; single-arm design written into note"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "year 2014 -> 2013: grade>=3 diarrhea and transaminase rises first public in the 101-09 interim press release 2013-06-17 (earliest-date ruling); status same unchanged; drug set to 'class' (target knockout)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "status same -> contra, magnitude opposite: settles the RULE QUESTION by the brief's rule that a predicted harm (rat cardiomyopathy, pancreatitis) that never appeared in patients is contra; quote and src moved to Zydelig label 2014 section 13.2"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "src/quote moved from Chellappa's CLL Treg phenotyping (imported_from CLL) to FL-dominated 101-09 grade>=3 harms (Gopal 2014), imported_from dropped: imported-harm ruling, FL patients were measured; status retro unchanged"
+  }
+ ],
+ "added": []
+}

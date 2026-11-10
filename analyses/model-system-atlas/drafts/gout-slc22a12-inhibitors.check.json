@@ -15,16 +15,12 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2014,
-   "rule": "Evidence rule 6 (year = earliest date the comparison was public)",
-   "note": "Miner 2016 quote matches (FE_UA subscript flattened). But lesinurad sUA lowering in gout patients was public in Fleischmann 2014 Rheumatology (doi 10.1093/rheumatology/ket487, epub 2014-02-08); Ichida 2004 model side already public, so the pairing dates 2014.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: status same agreed; date moves to 2014. Fleischmann 2014 (epub 2014-02-08) shows lesinurad added to febuxostat lowering sUA in gout patients; genotype side public since 2004."
+   "note": "Miner 2016 (PMC5048659) quote matches, FEUA subscript flattened. Retro holds: benzbromarone/probenecid (URAT1) lowered urate before the 2002 genotype. Ardea 8-K EX-99.1 filed 11 Jun 2009 names EULAR volunteer sUA poster: year 2009. class, oral, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -38,16 +34,12 @@
   {
    "cell": "engagement",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2015,
-   "rule": "Evidence rule 6 (earliest public comparison); rule 1 (stated comparison)",
-   "note": "Miner 2016 quote verbatim in abstract. The Dec 2015 label already states both sides: 12.1 gives URAT1 IC50 7.3 uM and 12.2 'In gout patients, ZURAMPIC lowered serum uric acid levels and increased ... fractional excretion'. Date 2015, tier 2.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6 with rule 1: status same agreed; date moves to 2015. Zurampic label (Dec 2015) states URAT1 IC50 (12.1) beside gout-patient sUA/FEUA effect (12.2), an earlier stated comparison, tier 2."
+   "note": "Miner 2016 quote verbatim. Ardea 8-K 11 Jun 2009 lists both EULAR posters (volunteer sUA lowering; 'RDEA594: A Potent URAT1 Inhibitor'), so both sides public 2009. Retro holds (benzbromarone, probenecid, RDEA806). lesinurad, oral, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -65,7 +57,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "ClinPharmR quote verbatim. Stated NOAEL margins 15x rat, 3x monkey; renal failure at 200-400 mg (1-2x exposure), so contra/toxicity/margin_stated under Decision 16. Species-uricase caveat raised as rule question."
+   "note": "ClinPharmR quote verbatim (bundle). Status contra and year 2015 unchanged; no dose retrodiction. combination_with fits CLEAR/CRYSTAL data, but label boxed warning says renal failure 'more common when ZURAMPIC was given alone'; note should say so.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -83,7 +76,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Label quote verbatim (14.2). sUA <6 primary met in CLEAR 1/2; CRYSTAL 200 mg missed sUA <5, so partial same is right. Model side (PharmR) only public 2015, so 2015 is the earliest pairing; flares/tophi null supports outcome_tested negative."
+   "note": "Label 14.2 quote verbatim (bundle). Ardea release 6-7 Jan 2011: phase 2b RDEA594+allopurinol, primary sUA % reduction at week 4 'primary and key secondary endpoints were achieved': year 2011. Retro holds; combination_with allopurinol, lesinurad, oral fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -129,8 +123,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Lee 2019 (PMID 31056705) abstract quote verbatim; healthy-volunteer sUA fall and dose-dependent FEUA rise match monkey direction. Monkey data published 2016, before human results: prospective, so same not retro. Paired, hatched.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Lee 2019 abstract (Europe PMC) quote verbatim; healthy males, print Nov 2019. Retro holds: capuchin data (EULAR 2013, JPET 2016) after lesinurad's 2009 human urate lowering. No earlier URC102 volunteer release found. epaminurad, oral fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -145,12 +139,17 @@
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Jun 2025 (PMID 40420308, PMC12105222) quote verbatim; primary endpoint sUA<0.36 mmol/L wk4 met at all doses. Jun cites Ahn 2016 only in rationale, so paired. Phase 2a results unpublished; 2025 is earliest tier 1-3 comparison.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "proposed_status": "retro",
+   "proposed_year": 2021,
+   "rule": "DRAFTER_BRIEF rule 6 (Dating): year is the earliest public date, including a sponsor press release",
+   "note": "Jun 2025 quote verbatim, primary endpoint; retro holds, epaminurad/oral fit. But JW Pharmaceutical announced the same phase 2b primary result (88.89/71.79/54.05% vs 0%) on 18 Mar 2021 (thebigdata.co.kr/view.php?ud=202103181011516063d0a8833aad_23): year 2025 -> 2021.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status retro stands (retrodiction: capuchin data 2016 post-date lesinurad sUA results). Rule 6: JW Pharmaceutical announced the same phase 2b primary result 18 Mar 2021 (verified), so year 2021, not 2025."
   },
   {
    "cell": "safety",

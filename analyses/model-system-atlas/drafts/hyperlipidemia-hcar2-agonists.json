@@ -22,7 +22,7 @@
     "status": "untested",
     "model": "Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing",
     "model_id": "mouse-gpr109a-ko",
-    "note": "Niacin's FFA and triglyceride lowering vanished in PUMA-G-knockout mice: the receptor's anti-lipolytic readout that founded the FFA hypothesis.",
+    "note": "Niacin's FFA and triglyceride lowering vanished in PUMA-G-knockout mice: the receptor's anti-lipolytic readout that founded the FFA hypothesis. Opener on the MK-1903 track: knockout dosed with niacin, dated at the model's first use as a proxy.",
     "short": "Niacin FFA lowering needs GPR109A in mice",
     "src": "https://doi.org/10.1038/nm824",
     "srcLabel": "Tunaru 2003",
@@ -50,14 +50,18 @@
     "model_first_use_year": 2003,
     "prediction_level": "class",
     "readout_tier": "downstream",
-    "judgement": "Opens the mouse track; niacin, not a member, was the ligand. The model's PD readout is plasma FFA, two steps below the receptor (Gi/cAMP in adipocytes), hence downstream."
+    "judgement": "Opens the mouse track; niacin, not a member, was the ligand. The model's PD readout is plasma FFA, two steps below the receptor (Gi/cAMP in adipocytes), hence downstream.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2012,
-    "status": "same",
+    "status": "retro",
     "model": "Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing",
     "model_id": "mouse-gpr109a-ko",
-    "note": "MK-1903 and SCH900271 lowered plasma FFA acutely in dosed humans as in mice, but chronic suppression was not sustained.",
+    "note": "MK-1903 and SCH900271 lowered plasma FFA acutely in dosed humans as in mice, but chronic suppression was not sustained. Retrodiction ruling: niacin, an HCAR2 agonist, had lowered FFA and caused flushing in humans decades before this model result, so a match is retro. SCH900271 agreed (acute FFA fell, chronic did not), so the track is not split.",
     "short": "FFA fell acutely in humans",
     "src": "https://doi.org/10.1126/scitranslmed.3003877",
     "srcLabel": "Lauring 2012",
@@ -65,10 +69,10 @@
     "confidence": "medium",
     "confidence_note": "Abstract and editor's summary only (Science full text returned 403). Boatman 2012 (J Med Chem, abstract) independently reports a 'robust decrease in plasma free fatty acids' in the MK-1903 phase 1.",
     "subjects": "mixed",
-    "comparison_stated": true,
+    "comparison_stated": false,
     "source_tier": 1,
-    "model_src": null,
-    "model_src_tier": null,
+    "model_src": "https://doi.org/10.1038/nm824",
+    "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
     "epub_year": 2012,
@@ -77,7 +81,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "acute plasma FFA reduction; the abstract gives direction, not a percentage",
     "source_calls_it": "partial",
@@ -85,7 +89,11 @@
     "model_first_use_year": 2003,
     "prediction_level": "class",
     "readout_tier": "downstream",
-    "judgement": "Partial rather than full match because the same source says 'Chronic FFA suppression was not sustainable via GPR109A agonism with niacin, MK-1903, or SCH900271.' Subjects mixed: MK-1903 phase 2A was dyslipidaemic patients, SCH900271 phase 1B population not stated in the abstract. Earliest public comparison is this paper (Aug 2012); the MK-1903 registry posting (2010) reports lipids, not FFA."
+    "judgement": "Partial rather than full match because the same source says 'Chronic FFA suppression was not sustainable via GPR109A agonism with niacin, MK-1903, or SCH900271.' Subjects mixed: MK-1903 phase 2A was dyslipidaemic patients, SCH900271 phase 1B population not stated in the abstract. Earliest public comparison is this paper (Aug 2012); the MK-1903 registry posting (2010) reports lipids, not FFA.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2011,
@@ -120,14 +128,18 @@
     "model_first_use_year": 2011,
     "prediction_level": "class",
     "readout_tier": "downstream",
-    "judgement": "A different animal programme (dog, different sponsor history) from the Heidelberg knockout mouse, so its own track."
+    "judgement": "A different animal programme (dog, different sponsor history) from the Heidelberg knockout mouse, so its own track.",
+    "drug": "sch-900271",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2012,
-    "status": "same",
+    "status": "retro",
     "model": "Fasted beagle dog, plasma FFA and flushing",
     "model_id": "beagle-dog-merck",
-    "note": "SCH900271 lowered FFA acutely in dosed humans, as the dog screen predicted; the paper does not itself name the dog.",
+    "note": "SCH900271 lowered FFA acutely in dosed humans, as the dog screen predicted; the paper does not itself name the dog. Retrodiction ruling: niacin, an HCAR2 agonist, had lowered FFA and caused flushing in humans decades before this model result, so a match is retro. MK-1903 registry results (2010) also predate it.",
     "short": "Human FFA fell as in dog",
     "src": "https://doi.org/10.1126/scitranslmed.3003877",
     "srcLabel": "Lauring 2012",
@@ -147,7 +159,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "acute plasma FFA reduction, direction only",
     "source_calls_it": "partial",
@@ -155,7 +167,11 @@
     "model_first_use_year": 2011,
     "prediction_level": "class",
     "readout_tier": "downstream",
-    "judgement": "Pairing made by me: model side Palani 2012 (dog FFA), patient side Lauring 2012 (SCH900271 phase 1B FFA, Table S7). Partial for the same reason as the mouse track: acute suppression yes, chronic no."
+    "judgement": "Pairing made by me: model side Palani 2012 (dog FFA), patient side Lauring 2012 (SCH900271 phase 1B FFA, Table S7). Partial for the same reason as the mouse track: acute suppression yes, chronic no.",
+    "drug": "sch-900271",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2015,
@@ -190,14 +206,18 @@
     "model_first_use_year": 2015,
     "prediction_level": "class",
     "readout_tier": "downstream",
-    "judgement": "model_first_use_year is the publication year; the FTIH ran c. 2008 (food-effect study NCT00808093, 2008) so the models predate it, but no earlier public date exists."
+    "judgement": "model_first_use_year is the publication year; the FTIH ran c. 2008 (food-effect study NCT00808093, 2008) so the models predate it, but no earlier public date exists.",
+    "drug": "gsk-256073",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2015,
-    "status": "same",
+    "status": "retro",
     "model": "Rat and guinea pig plasma NEFA (GSK)",
     "model_id": "rat-gp-nefa-gsk",
-    "note": "GSK authors state the rat/guinea-pig NEFA models predicted the human response: long-lasting NEFA and triglyceride lowering in healthy men.",
+    "note": "GSK authors state the rat/guinea-pig NEFA models predicted the human response: long-lasting NEFA and triglyceride lowering in healthy men. Retrodiction ruling: niacin, an HCAR2 agonist, had lowered FFA and caused flushing in humans decades before this model result, so a match is retro. MK-1903 and SCH900271 acute FFA lowering (2012) and GSK256073's own Dobbins 2013 NEFA result also predate it.",
     "short": "Authors: models predicted human NEFA response",
     "src": "https://doi.org/10.1016/j.ejphar.2015.01.051",
     "srcLabel": "Sprecher 2015",
@@ -217,7 +237,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "NEFA lowering, direction only (abstract gives no percentages)",
     "source_calls_it": "match",
@@ -226,7 +246,11 @@
     "prediction_level": "class",
     "readout_tier": "downstream",
     "reason": "Lipolysis readout moved in humans",
-    "judgement": "Comparison stated by the source in so many words. Durability caveat from another indication (not scored here): in type 2 diabetes NEFA suppression was sustained over 48 h (Dobbins 2013, https://doi.org/10.1111/dom.12132) but 'waned over time' by week 6 despite 2-fold drug accumulation (Dobbins 2015, https://doi.org/10.1016/j.ejphar.2015.03.005)."
+    "judgement": "Comparison stated by the source in so many words. Durability caveat from another indication (not scored here): in type 2 diabetes NEFA suppression was sustained over 48 h (Dobbins 2013, https://doi.org/10.1111/dom.12132) but 'waned over time' by week 6 despite 2-fold drug accumulation (Dobbins 2015, https://doi.org/10.1016/j.ejphar.2015.03.005).",
+    "drug": "gsk-256073",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -261,16 +285,20 @@
     "model_first_use_year": 2009,
     "prediction_level": "class",
     "readout_tier": "downstream",
-    "judgement": "Opener. Dated to the earliest public use of Merck's rat FFA/vasodilation screen for this mechanism (sibling 2g); MK-1903's own rat datum was public only in April 2012."
+    "judgement": "Opener. Dated to the earliest public use of Merck's rat FFA/vasodilation screen for this mechanism (sibling 2g); MK-1903's own rat datum was public only in April 2012.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2012,
-    "status": "same",
+    "status": "retro",
     "model": "Rat plasma FFA (and TG) suppression after oral agonist, Merck / Schering-Plough screen",
     "model_id": "rat-ffa-merck-sp",
-    "note": "MK-1903 lowered rat plasma FFA 90 % and single doses above 50 mg lowered healthy-volunteer FFA 90 % within 1-2 h; SCH 900271 likewise.",
+    "note": "MK-1903 lowered rat plasma FFA 90 % and single doses above 50 mg lowered healthy-volunteer FFA 90 % within 1-2 h; SCH 900271 likewise. Retrodiction ruling: niacin, an HCAR2 agonist, had lowered FFA and caused flushing in humans decades before this model result, so a match is retro.",
     "short": "Acute FFA fell in humans as in rats",
     "src": "https://doi.org/10.1021/jm2010964",
     "srcLabel": "Boatman 2012",
@@ -297,7 +325,11 @@
     "prediction_level": "class",
     "readout_tier": "downstream",
     "reason": "Rat FFA call held acutely in humans",
-    "judgement": "The sponsor paper carries both the rat and the phase 1 FFA data and its title states the human result, so comparison_stated true even though only the abstract is readable. Acute suppression is what the rat measured (1 h post-dose); Lauring 2012 (Aug 2012) adds that chronic FFA suppression was not sustained, the same partial reading the draft gives the knockout-mouse and dog tracks. MK-1903 phase 1 has no registry record."
+    "judgement": "The sponsor paper carries both the rat and the phase 1 FFA data and its title states the human result, so comparison_stated true even though only the abstract is readable. Acute suppression is what the rat measured (1 h post-dose); Lauring 2012 (Aug 2012) adds that chronic FFA suppression was not sustained, the same partial reading the draft gives the knockout-mouse and dog tracks. MK-1903 phase 1 has no registry record.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -332,16 +364,20 @@
     "model_first_use_year": 2007,
     "prediction_level": "class",
     "readout_tier": "downstream",
-    "judgement": "Opener. A pharmacological wild-type mouse dosed with the agonist is a different system from the Gpr109a knockout (niacin, receptor-dependence) the draft tracks, even though both read cutaneous blood flow."
+    "judgement": "Opener. A pharmacological wild-type mouse dosed with the agonist is a different system from the Gpr109a knockout (niacin, receptor-dependence) the draft tracks, even though both read cutaneous blood flow.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2012,
-    "status": "same",
+    "status": "retro",
     "model": "Wild-type mouse dermal blood-flow (vasodilation / flushing) model after oral agonist, Merck",
     "model_id": "mouse-dermal-bloodflow-merck",
-    "note": "MK-1903 raised mouse dermal blood flow 30 %; dosed patients showed vascular (36 % vs 11 %) and skin (28 % vs 3 %) events.",
+    "note": "MK-1903 raised mouse dermal blood flow 30 %; dosed patients showed vascular (36 % vs 11 %) and skin (28 % vs 3 %) events. Retrodiction ruling: niacin, an HCAR2 agonist, had lowered FFA and caused flushing in humans decades before this model result, so a match is retro. MK-1903's own patient AE rows (posted 2010-09-22) also predate the 2012 mouse datum.",
     "short": "Mouse vasodilation readout moved in patients",
     "src": "https://clinicaltrials.gov/study/NCT00847197",
     "srcLabel": "NCT00847197 results 2010",
@@ -368,7 +404,11 @@
     "prediction_level": "class",
     "readout_tier": "downstream",
     "reason": "Cutaneous vasodilation appeared in dosed patients",
-    "judgement": "Paired by me: Boatman 2012 (mouse, model side public Apr 2012, which sets the year) vs the MK-1903 phase 2A AE rows (posted 2010-09-22). The flush readout is the model's PD readout, so the same registry rows carry engagement and safety; the harm is counted once, in safety."
+    "judgement": "Paired by me: Boatman 2012 (mouse, model side public Apr 2012, which sets the year) vs the MK-1903 phase 2A AE rows (posted 2010-09-22). The flush readout is the model's PD readout, so the same registry rows carry engagement and safety; the harm is counted once, in safety.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -377,7 +417,7 @@
     "status": "untested",
     "model": "Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing",
     "model_id": "mouse-gpr109a-ko",
-    "note": "The mouse set no exposure target beyond abolishing adipocyte lipolysis; nothing to compare until agonists were dosed in people.",
+    "note": "The mouse set no exposure target beyond abolishing adipocyte lipolysis; nothing to compare until agonists were dosed in people. Opener on the MK-1903 track: knockout dosed with niacin, dated at the model's first use as a proxy.",
     "short": "No exposure target beyond lipolysis block",
     "src": "https://doi.org/10.1038/nm824",
     "srcLabel": "Tunaru 2003",
@@ -403,7 +443,11 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2003,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2012,
@@ -418,10 +462,10 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level reading only (full text paywalled).",
     "subjects": "mixed",
-    "comparison_stated": true,
+    "comparison_stated": false,
     "source_tier": 1,
-    "model_src": null,
-    "model_src_tier": null,
+    "model_src": "https://doi.org/10.1038/nm824",
+    "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
     "epub_year": 2012,
@@ -439,7 +483,11 @@
     "prediction_level": "class",
     "blocked_by": null,
     "margin_stated": false,
-    "judgement": "Dose scored on its own prediction (rule v4): acute FFA suppression, the model's PD target, was reached. Scored under the 'reached, failed, abandoned' row: FFA suppression, the only dose target the model offered, was achieved acutely at tolerated doses, and the lipid endpoints failed. The chronic-FFA rebound is a PD-durability finding the model never specified, so it does not convert this into a 'target never reached' row; noted, not scored."
+    "judgement": "Dose scored on its own prediction (rule v4): acute FFA suppression, the model's PD target, was reached. Scored under the 'reached, failed, abandoned' row: FFA suppression, the only dose target the model offered, was achieved acutely at tolerated doses, and the lipid endpoints failed. The chronic-FFA rebound is a PD-durability finding the model never specified, so it does not convert this into a 'target never reached' row; noted, not scored.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2011,
@@ -472,7 +520,11 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "sch-900271",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2012,
@@ -507,7 +559,11 @@
     "model_first_use_year": 2011,
     "prediction_level": "class",
     "margin_stated": false,
-    "judgement": "Dose scored on its own prediction (rule v4): acute FFA suppression, the dog's PD target, was reached. Same logic as the mouse track, paired by me with the dog paper. The dog's 10-fold flush window is scored in safety, not here, because it is a harm prediction rather than an exposure target."
+    "judgement": "Dose scored on its own prediction (rule v4): acute FFA suppression, the dog's PD target, was reached. Same logic as the mouse track, paired by me with the dog paper. The dog's 10-fold flush window is scored in safety, not here, because it is a harm prediction rather than an exposure target.",
+    "drug": "sch-900271",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2015,
@@ -540,14 +596,18 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2015,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "gsk-256073",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2017,
     "status": "contra",
     "model": "Rat and guinea pig plasma NEFA (GSK)",
     "model_id": "rat-gp-nefa-gsk",
-    "note": "GSK256073 5-150 mg suppressed NEFA in dyslipidaemic patients but showed no exposure-HDL-C relationship; phase 2a stopped for futility.",
+    "note": "GSK256073 5-150 mg in dyslipidaemic patients: fasting trough NEFA rose rather than fell at weeks 2-6, no exposure-HDL-C relationship; phase 2a stopped for futility. Retrodiction ruling: GSK256073's own NEFA result (Dobbins 2013) predates the 2015 model paper; the chronic loss was not reproduced, so contra.",
     "short": "NEFA suppression not held on chronic dosing",
     "src": "https://clinicaltrials.gov/study/NCT00903617",
     "srcLabel": "NCT00903617 results 2017",
@@ -567,7 +627,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": "miss",
@@ -576,7 +636,11 @@
     "prediction_level": "class",
     "margin_stated": false,
     "reason": "Doses reached, lipid efficacy absent",
-    "judgement": "Dose scored on its own prediction (rule v4): PD target not held: fasting trough NEFA rose on chronic dosing (registry). Reached-failed-abandoned row. Exposure accumulated 2-fold on chronic dosing (Dobbins 2015, T2DM), so PK was not the limit; the registry's own stop reason is lack of a PK/PD relationship for HDL-C."
+    "judgement": "Dose scored on its own prediction (rule v4): PD target not held: fasting trough NEFA rose on chronic dosing (registry). Reached-failed-abandoned row. Exposure accumulated 2-fold on chronic dosing (Dobbins 2015, T2DM), so PK was not the limit; the registry's own stop reason is lack of a PK/PD relationship for HDL-C.",
+    "drug": "gsk-256073",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -612,7 +676,11 @@
     "prediction_level": "class",
     "blocked_by": null,
     "margin_stated": false,
-    "judgement": "Opener."
+    "judgement": "Opener.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -649,16 +717,20 @@
     "blocked_by": null,
     "margin_stated": false,
     "reason": "Target reached, lipid efficacy absent",
-    "judgement": "Dose scored on its own prediction (rule v4): the rat's PD target (90 % FFA suppression) was met in phase 1. Reached-failed-abandoned row, as the draft scores the knockout-mouse and dog tracks in the same year. The rat's PD target was met in phase 1 (FFA -90 %) and the phase 2A (NCT00847197, posted 2010-09-22) found no LDL-C change; Boatman's conclusion is the sponsor's own statement that the FFA-to-lipids prediction failed. SCH 900271 (rat FFA -70 %, Palani 2012) followed the same path in the phase 2B (NCT00941603)."
+    "judgement": "Dose scored on its own prediction (rule v4): the rat's PD target (90 % FFA suppression) was met in phase 1. Reached-failed-abandoned row, as the draft scores the knockout-mouse and dog tracks in the same year. The rat's PD target was met in phase 1 (FFA -90 %) and the phase 2A (NCT00847197, posted 2010-09-22) found no LDL-C change; Boatman's conclusion is the sponsor's own statement that the FFA-to-lipids prediction failed. SCH 900271 (rat FFA -70 %, Palani 2012) followed the same path in the phase 2B (NCT00941603).",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2012,
-    "status": "contra",
+    "status": "same",
     "model": "Rat plasma FFA (and TG) suppression after oral agonist, Merck / Schering-Plough screen",
     "model_id": "rat-ffa-merck-sp",
-    "note": "Human doses reached the rat's PD target (90 % FFA suppression) yet the phase 2 lipid effect was weak; Merck stopped MK-1903.",
+    "note": "Duplicate of entry 8 (same source and year), kept only so verdict indices stay valid; dose table: target reached is same, the lipid failure is efficacy's.",
     "short": "FFA target reached, lipids failed, stopped",
     "src": "https://doi.org/10.1021/jm2010964",
     "srcLabel": "Boatman 2012",
@@ -685,8 +757,12 @@
     "prediction_level": "class",
     "blocked_by": null,
     "margin_stated": false,
-    "reason": "Target reached, lipid efficacy absent",
-    "judgement": "Reached-failed-abandoned row, as the draft scores the knockout-mouse and dog tracks in the same year. The rat's PD target was met in phase 1 (FFA -90 %) and the phase 2A (NCT00847197, posted 2010-09-22) found no LDL-C change; Boatman's conclusion is the sponsor's own statement that the FFA-to-lipids prediction failed. SCH 900271 (rat FFA -70 %, Palani 2012) followed the same path in the phase 2B (NCT00941603)."
+    "judgement": "Reached-failed-abandoned row, as the draft scores the knockout-mouse and dog tracks in the same year. The rat's PD target was met in phase 1 (FFA -90 %) and the phase 2A (NCT00847197, posted 2010-09-22) found no LDL-C change; Boatman's conclusion is the sponsor's own statement that the FFA-to-lipids prediction failed. SCH 900271 (rat FFA -70 %, Palani 2012) followed the same path in the phase 2B (NCT00941603).",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "strengthens": true
    }
   ],
   "efficacy": [
@@ -695,7 +771,7 @@
     "status": "untested",
     "model": "Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing",
     "model_id": "mouse-gpr109a-ko",
-    "note": "Knockout mouse implied GPR109A agonism carries niacin's lipid lowering (FFA hypothesis); no agonist had been tested in patients.",
+    "note": "Knockout mouse implied GPR109A agonism carries niacin's lipid lowering (FFA hypothesis); no agonist had been tested in patients. Opener on the MK-1903 track: knockout dosed with niacin, dated at the model's first use as a proxy.",
     "short": "Mouse implied GPR109A carries lipid efficacy",
     "src": "https://doi.org/10.1038/nm824",
     "srcLabel": "Tunaru 2003",
@@ -724,14 +800,18 @@
     "prediction_level": "class",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2010,
     "status": "contra",
     "model": "Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing",
     "model_id": "mouse-gpr109a-ko",
-    "note": "MK-1903 phase 2A: LDL-C unchanged versus placebo (+0.2 %, P=0.93) and HDL-C +4.6 % at 4 weeks in 191 dyslipidaemic patients.",
+    "note": "MK-1903 phase 2A: LDL-C unchanged versus placebo (+0.2 %, P=0.93) and HDL-C +4.6 % at 4 weeks in 191 dyslipidaemic patients. Co-primary design: LDL-C null, HDL-C +4.6 % (P=0.013) met; the sponsor calls the trial a failure against niacin, so contra. Retrodiction ruling: the model result post-dates a patient result for the same target (niacin, and here no member yet), so retrodiction is true; it failed to reproduce the member's null, so contra stands.",
     "short": "MK-1903: LDL-C unchanged in patients",
     "src": "https://clinicaltrials.gov/study/NCT00847197",
     "srcLabel": "NCT00847197 results 2010",
@@ -751,7 +831,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "off_by_>5x",
     "magnitude_basis": "co-primary LDL-C % change vs placebo at week 4: +0.2 % (P=0.93) against the niacin-like lowering (roughly -10 to -20 %) the FFA hypothesis implied; HDL-C co-primary +4.6 % (P=0.013) vs niacin's ~15-25 %",
     "source_calls_it": null,
@@ -768,14 +848,18 @@
       "quote": "Percent Change From Baseline in LDL-C (week 4): MK1903 -0.3 (SD 16.3), Placebo -1.5 (SD 12.9); mean difference 0.2 (95% CI -3.9 to 4.3), P=0.926."
      }
     ],
-    "judgement": "Earliest public comparison: results posted 2010-09-22, before Boatman (Apr 2012) or Lauring (Aug 2012). Co-primary LDL-C null; HDL-C rose 4.6 %, statistically significant but a fraction of niacin's, which Boatman 2012 (https://doi.org/10.1021/jm2010964) calls 'only a weak effect on serum lipids as compared with niacin'. Scored on the LDL-C co-primary; a reader weighting HDL-C would get off_by_2-5x, still contra."
+    "judgement": "Earliest public comparison: results posted 2010-09-22, before Boatman (Apr 2012) or Lauring (Aug 2012). Co-primary LDL-C null; HDL-C rose 4.6 %, statistically significant but a fraction of niacin's, which Boatman 2012 (https://doi.org/10.1021/jm2010964) calls 'only a weak effect on serum lipids as compared with niacin'. Scored on the LDL-C co-primary; a reader weighting HDL-C would get off_by_2-5x, still contra.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2012,
     "status": "contra",
     "model": "Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing",
     "model_id": "mouse-gpr109a-ko",
-    "note": "Merck's own write-up: neither full agonist had the expected lipid effects; knockout mice kept niacin's lipid efficacy without the receptor.",
+    "note": "Merck's own write-up: neither full agonist had the expected lipid effects; knockout mice kept niacin's lipid efficacy without the receptor. Co-primary design as entry 2; SCH900271 failed alike, so the track is not split. Retrodiction ruling: the model result post-dates a patient result for the same target (niacin, and here MK-1903's 2010 registry result), so retrodiction is true; it failed to reproduce the member's null, so contra stands.",
     "short": "Neither agonist moved lipids as expected",
     "src": "https://doi.org/10.1126/scitranslmed.3003877",
     "srcLabel": "Lauring 2012",
@@ -783,10 +867,10 @@
     "confidence": "high",
     "confidence_note": "Abstract and editor's summary read; full text 403.",
     "subjects": "mixed",
-    "comparison_stated": true,
+    "comparison_stated": false,
     "source_tier": 1,
-    "model_src": null,
-    "model_src_tier": null,
+    "model_src": "https://doi.org/10.1038/nm824",
+    "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
     "epub_year": 2012,
@@ -795,7 +879,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "off_by_>5x",
     "magnitude_basis": "LDL-C primary endpoints of both phase 2 trials vs placebo: MK-1903 +0.2 %, SCH 900271 15 mg -3.5 % (P=0.06)",
     "source_calls_it": "miss",
@@ -819,7 +903,11 @@
       "quote": "Change From Baseline in Direct LDL-C at Week 8: SCH 900271 15 mg -2.0, 10 mg -1.5, 5 mg -4.2, 2.5 mg 0.2, 1 mg 1.2, Placebo 1.5; 15 mg vs placebo -3.5 (P=0.06)."
      }
     ],
-    "judgement": "Strengthens the 2010 contra with a tier-1, comparison-stated source covering both Merck agonists. The same paper's knockout result ('the absence of GPR109A had no effect on niacin's lipid efficacy') is a retrodiction for niacin, not a member, so it is recorded on the Lauring mouse track rather than scored here."
+    "judgement": "Strengthens the 2010 contra with a tier-1, comparison-stated source covering both Merck agonists. The same paper's knockout result ('the absence of GPR109A had no effect on niacin's lipid efficacy') is a retrodiction for niacin, not a member, so it is recorded on the Lauring mouse track rather than scored here.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2012,
@@ -864,7 +952,11 @@
      }
     ],
     "reason": "FFA fell, lipids did not; model wrong",
-    "judgement": "Separate track (different background: humanized, LDLR-deficient; different prediction: the null) per the run's track-identity rule. Scored retro, never same: it reproduced a human answer already public. No opener entry because the model's first public use is this entry."
+    "judgement": "Separate track (different background: humanized, LDLR-deficient; different prediction: the null) per the run's track-identity rule. Scored retro, never same: it reproduced a human answer already public. No opener entry because the model's first public use is this entry.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2011,
@@ -900,14 +992,18 @@
     "prediction_level": "class",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "sch-900271",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2012,
     "status": "contra",
     "model": "Fasted beagle dog, plasma FFA and flushing",
     "model_id": "beagle-dog-merck",
-    "note": "SCH900271 phase 2B (619 patients, 8 weeks): LDL-C -3.5 % vs placebo at 15 mg (P=0.06), no dose-response; programme stopped.",
+    "note": "SCH900271 phase 2B (619 patients, 8 weeks): LDL-C -3.5 % vs placebo at 15 mg (P=0.06), no dose-response; programme stopped. Single primary (LDL-C) met at 5 mg only (-5.7 %), not at 10 or 15 mg, no dose-response; the sponsor calls it a failure, so contra. Retrodiction ruling: the model result post-dates a patient result for the same target (niacin, and here MK-1903's 2010 registry null), so retrodiction is true; it failed to reproduce the member's null, so contra stands.",
     "short": "SCH 900271: LDL-C barely moved",
     "src": "https://doi.org/10.1126/scitranslmed.3003877",
     "srcLabel": "Lauring 2012",
@@ -927,7 +1023,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "off_by_2-5x",
     "magnitude_basis": "primary LDL-C % change vs placebo at week 8, 15 mg: -3.5 % (P=0.06); 5 mg -5.7 % (P<0.01) without dose-response; against niacin-like -10 to -20 %",
     "source_calls_it": "miss",
@@ -944,7 +1040,11 @@
       "quote": "Change From Baseline in Direct LDL-C at Week 8: SCH 900271 15 mg -2.0, 10 mg -1.5, 5 mg -4.2, 2.5 mg 0.2, 1 mg 1.2, Placebo 1.5; 15 mg vs placebo -3.5 (P=0.06)."
      }
     ],
-    "judgement": "Paired by me: dog model (Palani 2012) vs Lauring 2012 / NCT00941603. The 5 mg arm reached P<0.01 at -5.7 % but 10 and 15 mg did less, so I treat the result as a failure the sponsor abandoned, as Lauring states ('neither had the expected effects')."
+    "judgement": "Paired by me: dog model (Palani 2012) vs Lauring 2012 / NCT00941603. The 5 mg arm reached P<0.01 at -5.7 % but 10 and 15 mg did less, so I treat the result as a failure the sponsor abandoned, as Lauring states ('neither had the expected effects').",
+    "drug": "sch-900271",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2015,
@@ -981,14 +1081,18 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [],
-    "judgement": "Healthy-volunteer triglyceride lowering is engagement-grade evidence, not an efficacy comparison in patients of the context's disease, so untested here."
+    "judgement": "Healthy-volunteer triglyceride lowering is engagement-grade evidence, not an efficacy comparison in patients of the context's disease, so untested here.",
+    "drug": "gsk-256073",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2017,
     "status": "contra",
     "model": "Rat and guinea pig plasma NEFA (GSK)",
     "model_id": "rat-gp-nefa-gsk",
-    "note": "GSK256073 phase 2a in dyslipidaemia stopped for futility after Part A: no exposure-HDL-C relationship that could predict HDL-C raising.",
+    "note": "GSK256073 phase 2a in dyslipidaemia stopped for futility after Part A: no exposure-HDL-C relationship that could predict HDL-C raising. Retrodiction ruling: the model result post-dates a patient result for the same target (niacin, and here MK-1903 2010 and SCH900271 2012 nulls), so retrodiction is true; it failed to reproduce the member's null, so contra stands.",
     "short": "GSK256073 phase 2a stopped for futility",
     "src": "https://clinicaltrials.gov/study/NCT00903617",
     "srcLabel": "NCT00903617 results 2017",
@@ -1008,7 +1112,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": null,
     "magnitude_basis": "no HDL-C effect size posted; the primary PK/PD endpoint was declared futile",
     "source_calls_it": "miss",
@@ -1026,7 +1130,11 @@
      }
     ],
     "reason": "Third agonist fails on lipids",
-    "judgement": "Paired by me: Sprecher 2015 (rat/guinea pig NEFA, FTIH TG lowering) vs the registry. The primary was a PK/PD exposure-HDL-C relationship rather than a fixed-dose lipid change; its futility is the sponsor's own efficacy verdict, so contra rather than untested."
+    "judgement": "Paired by me: Sprecher 2015 (rat/guinea pig NEFA, FTIH TG lowering) vs the registry. The primary was a PK/PD exposure-HDL-C relationship rather than a fixed-dose lipid change; its futility is the sponsor's own efficacy verdict, so contra rather than untested.",
+    "drug": "gsk-256073",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1063,16 +1171,20 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [],
-    "judgement": "Opener."
+    "judgement": "Opener.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2012,
     "status": "contra",
     "model": "Rat plasma FFA (and TG) suppression after oral agonist, Merck / Schering-Plough screen",
     "model_id": "rat-ffa-merck-sp",
-    "note": "MK-1903 phase 2A: LDL-C co-primary null (+0.2 % vs placebo), HDL-C +4.6 %, a fraction of niacin; SCH 900271 phase 2B likewise.",
+    "note": "MK-1903 phase 2A: LDL-C co-primary null (+0.2 % vs placebo), HDL-C +4.6 %, a fraction of niacin; SCH 900271 phase 2B likewise. Co-primary design: LDL-C null, HDL-C +4.6 % met; called a failure by the sponsor, so contra. Retrodiction ruling: the model result post-dates a patient result for the same target (niacin, and here MK-1903's own 2010 registry null), so retrodiction is true; it failed to reproduce the member's null, so contra stands.",
     "short": "Rat FFA did not predict lipid efficacy",
     "src": "https://doi.org/10.1021/jm2010964",
     "srcLabel": "Boatman 2012",
@@ -1103,7 +1215,7 @@
      {
       "nct": "NCT00847197",
       "registry_date": "2010-09-22",
-      "doi": "https://doi.org/10.1021/jm2010964",
+      "doi": "https://doi.org/10.1126/scitranslmed.3003877",
       "quote": "Percent Change From Baseline in LDL-C (week 4): MK1903 -0.3 (SD 16.3), Placebo -1.5 (SD 12.9); mean difference 0.2 (95% CI -3.9 to 4.3), P=0.926."
      },
      {
@@ -1114,7 +1226,11 @@
      }
     ],
     "reason": "Weak lipid effect versus niacin, abandoned",
-    "judgement": "Dated 2012 because MK-1903's own rat datum was public only with Boatman (Apr 2012); a reader pairing the sibling-based rat prediction (Shen 2009) with the 2010 registry posting would date it 2010, still contra. Scored on the LDL-C co-primary as the draft does on its other tracks; HDL-C +4.6 % and TG -10.3 % moved in the predicted direction but below the niacin bar, and the sponsor abandoned both members."
+    "judgement": "Dated 2012 because MK-1903's own rat datum was public only with Boatman (Apr 2012); a reader pairing the sibling-based rat prediction (Shen 2009) with the 2010 registry posting would date it 2010, still contra. Scored on the LDL-C co-primary as the draft does on its other tracks; HDL-C +4.6 % and TG -10.3 % moved in the predicted direction but below the niacin bar, and the sponsor abandoned both members.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -1123,7 +1239,7 @@
     "status": "untested",
     "model": "Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing",
     "model_id": "mouse-gpr109a-ko",
-    "note": "Knockout mouse showed niacin flushing is GPR109A-mediated: the model predicts on-target flushing from any full agonist.",
+    "note": "Knockout mouse showed niacin flushing is GPR109A-mediated: the model predicts on-target flushing from any full agonist. Opener on the SCH 900271 track: knockout dosed with niacin, dated at the model's first use as a proxy.",
     "short": "Mouse: flushing is on-target",
     "src": "https://doi.org/10.1172/JCI23626",
     "srcLabel": "Benyo 2005",
@@ -1150,7 +1266,11 @@
     "population": "Unselected",
     "model_first_use_year": 2003,
     "prediction_level": "class",
-    "judgement": "Same mouse system as the FFA track (same model_id); the flushing readout entered in 2005. Prediction: full agonists flush. MK-0354, the partial agonist that did not flush in mice or humans, is class context only and not scored."
+    "judgement": "Same mouse system as the FFA track (same model_id); the flushing readout entered in 2005. Prediction: full agonists flush. MK-0354, the partial agonist that did not flush in mice or humans, is class context only and not scored.",
+    "drug": "sch-900271",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2016,
@@ -1184,7 +1304,11 @@
     "population": "Unselected",
     "model_first_use_year": 2003,
     "prediction_level": "class",
-    "judgement": "Paired by me: Benyo 2005 (mouse) vs the SCH 900271 phase 2 AE table. The on-target harm the knockout mouse predicted appeared in patients; magnitude is direction only because the mouse gives no incidence."
+    "judgement": "Paired by me: Benyo 2005 (mouse) vs the SCH 900271 phase 2 AE table. The on-target harm the knockout mouse predicted appeared in patients; magnitude is direction only because the mouse gives no incidence.",
+    "drug": "sch-900271",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2011,
@@ -1217,7 +1341,11 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "sch-900271",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2016,
@@ -1251,7 +1379,11 @@
     "population": "Unselected",
     "model_first_use_year": 2011,
     "prediction_level": "class",
-    "judgement": "Judgement call: partial match rather than contra. The stated prediction had two parts; the comparative one (better window than nicotinic acid) is consistent with 17 % at the top dose, the absolute one (no overt flushing) was contradicted at 10-15 mg. Low confidence because the human window is unquantified."
+    "judgement": "Judgement call: partial match rather than contra. The stated prediction had two parts; the comparative one (better window than nicotinic acid) is consistent with 17 % at the top dose, the absolute one (no overt flushing) was contradicted at 10-15 mg. Low confidence because the human window is unquantified.",
+    "drug": "sch-900271",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2015,
@@ -1285,14 +1417,18 @@
     "population": "Unselected",
     "model_first_use_year": 2015,
     "prediction_level": "class",
-    "judgement": "A different system (guinea pig ear temperature) and a different prediction (no flush at NEFA-effective exposure) from the knockout mouse, so its own track."
+    "judgement": "A different system (guinea pig ear temperature) and a different prediction (no flush at NEFA-effective exposure) from the knockout mouse, so its own track.",
+    "drug": "gsk-256073",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2015,
-    "status": "same",
+    "status": "retro",
     "model": "Guinea pig ear-temperature flush model (GSK)",
     "model_id": "gp-ear-flush-gsk",
-    "note": "GSK authors: the guinea pig flush model predicted the human response; FTIH NEFA lowering came without flushing in healthy men.",
+    "note": "GSK authors: the guinea pig flush model predicted the human response; FTIH NEFA lowering came without flushing in healthy men. Retrodiction ruling: GSK256073's own patient result, no flushing in type 2 diabetes (Dobbins 2013, June 2013), was public before this 2015 model paper, so the match is retro.",
     "short": "No flushing in FTIH, as guinea pig predicted",
     "src": "https://doi.org/10.1016/j.ejphar.2015.01.051",
     "srcLabel": "Sprecher 2015",
@@ -1312,21 +1448,25 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "flushing absent at NEFA-lowering doses, direction only",
     "source_calls_it": "match",
     "population": "Unselected",
     "model_first_use_year": 2015,
     "prediction_level": "class",
-    "judgement": "Comparison stated by the source. Diabetes trials (Dobbins 2013, 2015: 'not associated with events of flushing'; safety 'did not significantly differ from placebo') agree but are another indication and not scored."
+    "judgement": "Comparison stated by the source. Diabetes trials (Dobbins 2013, 2015: 'not associated with events of flushing'; safety 'did not significantly differ from placebo') agree but are another indication and not scored.",
+    "drug": "gsk-256073",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2017,
-    "status": "same",
+    "status": "retro",
     "model": "Guinea pig ear-temperature flush model (GSK)",
     "model_id": "gp-ear-flush-gsk",
-    "note": "Dyslipidaemic patients: no excess flushing at the NEFA-effective 5 and 50 mg (4/19, 5/20 vs 5/21 placebo); excess only at 150 mg (12/20).",
+    "note": "Dyslipidaemic patients: no excess flushing at the NEFA-effective 5 and 50 mg (4/19, 5/20 vs 5/21 placebo); excess only at 150 mg (12/20). Retrodiction ruling: the model paper (2015) post-dates the drug's own no-flush patient result (Dobbins 2013), so retro.",
     "short": "No excess flush at effective doses",
     "src": "https://clinicaltrials.gov/study/NCT00903617",
     "srcLabel": "NCT00903617 results 2017",
@@ -1346,7 +1486,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "flushing AE incidence by dose vs placebo",
     "source_calls_it": "partial",
@@ -1355,7 +1495,11 @@
     "prediction_level": "class",
     "strengthens": true,
     "reason": "Flush models right at effective doses",
-    "judgement": "Strengthens the 2015 same with patient data. Partial: flushing did appear at 150 mg, 15-30 times the NEFA-effective dose (10 mg QD suppressed NEFA fully in Dobbins 2013), which I read as a margin detail rather than a failed prediction; a stricter reader could call it contra at the top dose."
+    "judgement": "Strengthens the 2015 same with patient data. Partial: flushing did appear at 150 mg, 15-30 times the NEFA-effective dose (10 mg QD suppressed NEFA fully in Dobbins 2013), which I read as a margin detail rather than a failed prediction; a stricter reader could call it contra at the top dose.",
+    "drug": "gsk-256073",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1390,16 +1534,20 @@
     "model_first_use_year": 2007,
     "prediction_level": "class",
     "imported_from": null,
-    "judgement": "Opener."
+    "judgement": "Opener.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2012,
-    "status": "same",
+    "status": "retro",
     "model": "Wild-type mouse dermal blood-flow (vasodilation / flushing) model after oral agonist, Merck",
     "model_id": "mouse-dermal-bloodflow-merck",
-    "note": "Mouse predicted MK-1903 flushes (+30 % dermal blood flow); patients had vascular events 36 % vs 11 %, skin events 28 % vs 3 %.",
+    "note": "Mouse predicted MK-1903 flushes (+30 % dermal blood flow); patients had vascular events 36 % vs 11 %, skin events 28 % vs 3 %. Retrodiction ruling: MK-1903's own patient AE rows (posted 2010-09-22) predate its mouse dermal-flow datum (April 2012), so retro.",
     "short": "MK-1903 flushed patients as mouse predicted",
     "src": "https://clinicaltrials.gov/study/NCT00847197",
     "srcLabel": "NCT00847197 results 2010",
@@ -1426,7 +1574,11 @@
     "prediction_level": "class",
     "imported_from": null,
     "reason": "On-target flushing appeared, as predicted",
-    "judgement": "Paired by me: Boatman 2012 mouse (+30 % dermal blood flow, via Tuteja & Duffy 2016) vs NCT00847197 AE rows. Direction held: the model said MK-1903 flushes and patients flushed. If Lauring's Table S2 or the Offermanns Focus shows niacin-like flushing against a mouse claim of a reduced window, this becomes same + partial (window misplaced) on the dog track's pattern; not readable here."
+    "judgement": "Paired by me: Boatman 2012 mouse (+30 % dermal blood flow, via Tuteja & Duffy 2016) vs NCT00847197 AE rows. Direction held: the model said MK-1903 flushes and patients flushed. If Lauring's Table S2 or the Offermanns Focus shows niacin-like flushing against a mouse claim of a reduced window, this becomes same + partial (window misplaced) on the dog track's pattern; not readable here.",
+    "drug": "mk-1903",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

@@ -1,0 +1,117 @@
+{
+ "tile": "breast-cancer-cdk4-6-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug=palbociclib, route=oral set (Fry 2004, palbociclib xenograft)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug=abemaciclib, route=oral set (Patnaik 2016); split from palbociclib track; population recoded unselected (Phase 1 all tumour types)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug=abemaciclib, route=oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug=abemaciclib, route=oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug=abemaciclib, route=oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug=abemaciclib, route=oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "status contra->same: dose table, target reached is same (failure scored in efficacy 4); duplicate of dose 4 kept for index stability (check.json adjudication drop)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug=palbociclib, route=oral set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug=palbociclib, route=oral, combination_with=letrozole; combination design noted, status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug=abemaciclib, route=oral set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug=abemaciclib, route=oral; single-arm Simon two-stage design noted, contra unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug=palbociclib, route=oral, combination_with=endocrine therapy; combination design noted, contra unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug=palbociclib, route=oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug=palbociclib, route=oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug=abemaciclib, route=oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug=palbociclib, route=oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug=ribociclib, route=oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug=palbociclib, route=oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug=palbociclib, route=oral; rule-10 verdict settled: quoted dog study RR 745-03696 (Ann Arbor, pre-2008) predates 2010-11 patient QTc data, so same stands, not retro"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "abemaciclib track opener on xenograft-prb, untested 2009 (proxy, IND), Gelbert 2014"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "abemaciclib track opener on rat-dog-gltox, untested 2009 (proxy, IND), FDA 208716 review"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "ribociclib track opener on dog-cv-telemetry, untested 2011 (proxy, X2101 first-in-human), FDA 209092 review"
+  }
+ ]
+}

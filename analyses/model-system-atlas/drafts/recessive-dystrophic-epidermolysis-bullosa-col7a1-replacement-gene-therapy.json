@@ -50,7 +50,11 @@
     "short": "Mice and xenografts: C7 restored",
     "src": "https://doi.org/10.1038/s41591-022-01737-y",
     "srcLabel": "Gurevich 2022",
-    "quote": "B-VEC restored C7 expression in RDEB keratinocytes, fibroblasts, RDEB mice and human RDEB xenografts."
+    "quote": "B-VEC restored C7 expression in RDEB keratinocytes, fibroblasts, RDEB mice and human RDEB xenografts.",
+    "drug": "beremagene geperpavec",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "bvec-col7-hypomorph-mouse-rdeb-xenograft",
@@ -67,7 +71,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "C7 expression and anchoring fibrils in treated wounds vs mouse/xenograft BMZ C7",
     "source_calls_it": "match",
@@ -76,17 +80,21 @@
     "confidence": "high",
     "confidence_note": "Abstract-level (Europe PMC). Registry results NCT03536143 posted 2023-01-31, after the paper.",
     "prediction_level": "class",
-    "judgement": "C7 is the transgene's own product, so proximal. One paper states the preclinical and phase 1/2 results together.",
+    "judgement": "C7 is the transgene's own product, so proximal. One paper states the preclinical and phase 1/2 results together. Post-dating rule: engagement is a target claim, and member-drug patient C7 results (Siprashvili 2016 JAMA; Krystal release 2018-10-15) were public before this model's first publication, so retro.",
     "model": "COL7 hypomorphic mice and human RDEB skin xenografts (B-VEC)",
     "year": 2022,
-    "status": "same",
-    "note": "Topical B-VEC produced C7 and anchoring fibrils in patients' wounds, as in the mouse and xenograft studies of the same paper.",
+    "status": "retro",
+    "note": "Topical B-VEC produced C7 and anchoring fibrils in patients' wounds, as in the mouse and xenograft studies of the same paper. Retrodiction: the hypomorph-mouse and xenograft data were first public in this 2022 paper, after pz-cel patients (2016) and B-VEC's own patients (Oct 2018 release) showed C7 at the DEJ.",
     "short": "Patient wounds expressed C7, as predicted",
     "src": "https://doi.org/10.1038/s41591-022-01737-y",
     "srcLabel": "Gurevich 2022",
     "quote": "Primary and secondary objectives of C7 expression, anchoring fibril assembly, wound surface area reduction, duration of wound closure, and time to wound closure following B-VEC treatment were met.",
     "readout_tier": "proximal",
-    "reason": "Patient wounds expressed C7 as mice did"
+    "reason": "Reproduced C7 already seen in patients",
+    "drug": "beremagene geperpavec",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rdeb-keratinocyte-xenograft-immunodeficient-mouse",
@@ -120,7 +128,11 @@
     "short": "Xenograft: C7 durable for 1 year",
     "src": "https://doi.org/10.1089/hum.2010.023",
     "srcLabel": "Siprashvili 2010",
-    "quote": "Type VII collagen expression was maintained for 1 year in vivo, or over 12 epidermal turnover cycles, with no abnormalities in skin morphology or self-renewal."
+    "quote": "Type VII collagen expression was maintained for 1 year in vivo, or over 12 epidermal turnover cycles, with no abnormalities in skin morphology or self-renewal.",
+    "drug": "prademagene zamikeracel",
+    "route": "ex_vivo_cells",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "model_id": "rdeb-keratinocyte-xenograft-immunodeficient-mouse",
@@ -156,7 +168,11 @@
     "srcLabel": "Siprashvili 2016",
     "quote": "Type VII collagen expression at the dermal-epidermal junction was demonstrated on the graft sites by immunofluorescence microscopy in 9 of 10 biopsy samples (90%) at 3 months",
     "readout_tier": "proximal",
-    "reason": "C7 expressed but less durable than xenograft"
+    "reason": "C7 expressed but less durable than xenograft",
+    "drug": "prademagene zamikeracel",
+    "route": "ex_vivo_cells",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "model_id": "col7-null-mouse-iv-rc7",
@@ -171,7 +187,7 @@
     "print_year": 2015,
     "registry_date": null,
     "model_filed": null,
-    "product_in_model": null,
+    "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
     "magnitude": null,
@@ -180,7 +196,7 @@
     "population": "COL7A1-mutant RDEB (pz-cel/PTR-01: NC1-expressing, no anti-C7 immunity)",
     "model_first_use_year": 2015,
     "confidence": "medium",
-    "confidence_note": "Abstract-level. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed.",
+    "confidence_note": "Abstract-level. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed. product_in_model set true: PTR-01 is the CHO-derived rC7 of the Lotus/Shire lineage that Woodley's group dosed; exact lot identity unconfirmed.",
     "prediction_level": "class",
     "judgement": null,
     "model": "C7-null RDEB mice dosed IV with CHO recombinant C7",
@@ -190,7 +206,11 @@
     "short": "IV rC7 reached DEJ in null mice",
     "src": "https://doi.org/10.1038/jid.2015.291",
     "srcLabel": "Hou 2015",
-    "quote": "A single dose of CHO-rhC7, administered intravenously into new-born C7-null RDEB mice, incorporated into the DEJ of multiple skin sites, tongue and esophagus, restored anchoring fibrils, improved dermal-epidermal adherence, and increased the animals' life span."
+    "quote": "A single dose of CHO-rhC7, administered intravenously into new-born C7-null RDEB mice, incorporated into the DEJ of multiple skin sites, tongue and esophagus, restored anchoring fibrils, improved dermal-epidermal adherence, and increased the animals' life span.",
+    "drug": "PTR-01",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "model_id": "col7-null-mouse-iv-rc7",
@@ -205,7 +225,7 @@
     "print_year": null,
     "registry_date": null,
     "model_filed": null,
-    "product_in_model": null,
+    "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
     "magnitude": "direction_only",
@@ -214,7 +234,7 @@
     "population": "COL7A1-mutant RDEB (pz-cel/PTR-01: NC1-expressing, no anti-C7 immunity)",
     "model_first_use_year": 2015,
     "confidence": "low",
-    "confidence_note": "Press release of a SID 2022 poster; NCT04599881 (phase 2) and NCT03752905 (phase 1/2) have no posted results. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed.",
+    "confidence_note": "Press release of a SID 2022 poster; NCT04599881 (phase 2) and NCT03752905 (phase 1/2) have no posted results. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed. product_in_model set true: PTR-01 is the CHO-derived rC7 of the Lotus/Shire lineage that Woodley's group dosed; exact lot identity unconfirmed.",
     "prediction_level": "class",
     "judgement": "Deposited rC7 is the product itself, so proximal. Tier 5; no peer-reviewed or registry record found.",
     "model": "C7-null RDEB mice dosed IV with CHO recombinant C7",
@@ -226,7 +246,11 @@
     "srcLabel": "BridgeBio 2022",
     "quote": "Finally, systemic administration of PTR-01 resulted in rapid deposition of rC7 at the DEJ during the loading phase (first 28 days of treatment) and remained present up to 3 months after treatment.",
     "readout_tier": "proximal",
-    "reason": "rC7 reached patients' DEJ, press release only"
+    "reason": "rC7 reached patients' DEJ, press release only",
+    "drug": "PTR-01",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -246,7 +270,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
@@ -261,7 +284,11 @@
     "short": "Injected fibroblasts put C7 at DEJ",
     "src": "https://doi.org/10.1046/j.1523-1747.2003.12571.x",
     "srcLabel": "Woodley 2003",
-    "quote": "Further, intradermal injection of normal human or gene-corrected RDEB fibroblasts into mouse skin resulted in the stable expression of human type VII collagen at the mouse DEJ."
+    "quote": "Further, intradermal injection of normal human or gene-corrected RDEB fibroblasts into mouse skin resulted in the stable expression of human type VII collagen at the mouse DEJ.",
+    "drug": "dabocemagene autoficel",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -281,7 +308,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "linear C7 at the DEJ by immunofluorescence after intradermal injection, mouse vs patient skin",
     "source_calls_it": "partial",
@@ -298,7 +324,11 @@
     "srcLabel": "Castle Creek poster 2020",
     "quote": "Linear C7 protein was detected by IF at the dermal-epidermal junction at 25 weeks and 52 weeks following injection into skin of subject 0101, and at 12 and 25 weeks in subject 0103.",
     "readout_tier": "proximal",
-    "reason": "C7 deposited in patients, poster only"
+    "reason": "C7 deposited in patients, poster only",
+    "drug": "dabocemagene autoficel",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -337,7 +367,11 @@
     "srcLabel": "FDA SBRA Vyjuvek 2023",
     "quote": "In the Phase 3 study, the unit dose administered weekly to the primary wounds was determined based on the wound area, age at baseline, and preliminary safety and efficacy information from the Phase 1/2 study.",
     "untested_reason": "no_prediction",
-    "reason": "Dose chosen from phase 1/2, not mice"
+    "reason": "Dose chosen from phase 1/2, not mice",
+    "drug": "beremagene geperpavec",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rdeb-keratinocyte-xenograft-immunodeficient-mouse",
@@ -374,7 +408,11 @@
     "srcLabel": "FDA SBRA Zevaskyn 2025",
     "quote": "There were no pharmacokinetic assessments performed.",
     "untested_reason": "no_prediction",
-    "reason": "Fixed graft sheets, no dose to predict"
+    "reason": "Fixed graft sheets, no dose to predict",
+    "drug": "prademagene zamikeracel",
+    "route": "ex_vivo_cells",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "model_id": "col7-null-mouse-iv-rc7",
@@ -389,7 +427,7 @@
     "print_year": 2015,
     "registry_date": null,
     "model_filed": null,
-    "product_in_model": null,
+    "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
     "magnitude": null,
@@ -398,7 +436,7 @@
     "population": "COL7A1-mutant RDEB (pz-cel/PTR-01: NC1-expressing, no anti-C7 immunity)",
     "model_first_use_year": 2015,
     "confidence": "medium",
-    "confidence_note": "Abstract-level. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed.",
+    "confidence_note": "Abstract-level. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed. product_in_model set true: PTR-01 is the CHO-derived rC7 of the Lotus/Shire lineage that Woodley's group dosed; exact lot identity unconfirmed.",
     "prediction_level": "class",
     "judgement": null,
     "model": "C7-null RDEB mice dosed IV with CHO recombinant C7",
@@ -411,7 +449,11 @@
     "srcLabel": "Hou 2015",
     "quote": "A single dose of CHO-rhC7, administered intravenously into new-born C7-null RDEB mice, incorporated into the DEJ of multiple skin sites, tongue and esophagus, restored anchoring fibrils, improved dermal-epidermal adherence, and increased the animals' life span.",
     "untested_reason": "no_prediction",
-    "reason": "No scaled human dose stated"
+    "reason": "No scaled human dose stated",
+    "drug": "PTR-01",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -447,7 +489,11 @@
     "short": "Mouse C7 rescue implies healing",
     "src": "https://www.fda.gov/media/169342/download",
     "srcLabel": "FDA SBRA Vyjuvek 2023",
-    "quote": "These results support the potential for VYJUVEK-mediated restoration of hCOL7 protein and AF formation in RDEB."
+    "quote": "These results support the potential for VYJUVEK-mediated restoration of hCOL7 protein and AF formation in RDEB.",
+    "drug": "beremagene geperpavec",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "bvec-col7-hypomorph-mouse-rdeb-xenograft",
@@ -464,7 +510,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "wound closure in treated vs placebo wounds against C7/anchoring-fibril rescue in mice",
     "source_calls_it": "match",
@@ -473,11 +519,11 @@
     "confidence": "high",
     "confidence_note": "Abstract-level for both papers.",
     "prediction_level": "class",
-    "judgement": "Judgement call: the mice showed molecular rescue (C7, anchoring fibrils), not wound healing itself; read as a class-level prediction of disease correction, so direction only. Dated to the phase 1/2 paper, which states both sides; GEM-3 (Dec 2022) is the pivotal confirmation.",
+    "judgement": "Judgement call: the mice showed molecular rescue (C7, anchoring fibrils), not wound healing itself; read as a class-level prediction of disease correction, so direction only. Dated to the phase 1/2 paper, which states both sides; GEM-3 (Dec 2022) is the pivotal confirmation. Post-dating rule: B-VEC's own primary-endpoint wound result (GEM-3 topline release 2021-11-29) was public before the model system's first publication (Gurevich 2022), so retro, dated to 2022 when both sides were public.",
     "model": "COL7 hypomorphic mice and human RDEB skin xenografts (B-VEC)",
     "year": 2022,
-    "status": "same",
-    "note": "Phase 1/2 met wound-closure objectives; GEM-3 then healed 67% of B-VEC wounds versus 22% on placebo at 6 months.",
+    "status": "retro",
+    "note": "Phase 1/2 met wound-closure objectives; GEM-3 then healed 67% of B-VEC wounds versus 22% on placebo at 6 months. Retrodiction: the mouse and xenograft data were first public in March 2022, after GEM-3 topline (2021-11-29) reported its primary endpoint met.",
     "short": "Wounds healed, as rescue predicted",
     "src": "https://doi.org/10.1038/s41591-022-01737-y",
     "srcLabel": "Gurevich 2022",
@@ -492,7 +538,11 @@
       "quote": "At 6 months, complete wound healing occurred in 67% of the wounds exposed to B-VEC as compared with 22% of those exposed to placebo"
      }
     ],
-    "reason": "Wounds healed as mouse rescue predicted"
+    "reason": "Reproduced wound healing already reported",
+    "drug": "beremagene geperpavec",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rdeb-keratinocyte-xenograft-immunodeficient-mouse",
@@ -526,7 +576,11 @@
     "short": "Xenograft: RDEB features corrected",
     "src": "https://doi.org/10.1089/hum.2010.023",
     "srcLabel": "Siprashvili 2010",
-    "quote": "Type VII collagen restoration led to correction of RDEB disease features, including reestablishment of anchoring fibrils at the BMZ."
+    "quote": "Type VII collagen restoration led to correction of RDEB disease features, including reestablishment of anchoring fibrils at the BMZ.",
+    "drug": "prademagene zamikeracel",
+    "route": "ex_vivo_cells",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "model_id": "rdeb-keratinocyte-xenograft-immunodeficient-mouse",
@@ -550,13 +604,13 @@
     "population": "COL7A1-mutant RDEB (pz-cel/PTR-01: NC1-expressing, no anti-C7 immunity)",
     "model_first_use_year": 2010,
     "confidence": "high",
-    "confidence_note": "Abstract-level. VIITAL NCT04227106 has no registry results posted; Lancet epub 2025-06-23, after the April 2025 approval.",
+    "confidence_note": "Abstract-level. VIITAL NCT04227106 has no registry results posted; Lancet epub 2025-06-23, after the April 2025 approval. Year from Abeona press release 2022-11-03 (VIITAL topline, both co-primary endpoints met), the earliest public date.",
     "prediction_level": "class",
     "judgement": "Phase 1 (2016) had safety primaries, so the first primary-endpoint efficacy read is VIITAL. Paired by me. The phase 1 decline over a year is the partial engagement entry, not an efficacy miss.",
     "model": "Gene-corrected RDEB keratinocyte skin regenerated on immunodeficient mice",
-    "year": 2025,
+    "year": 2022,
     "status": "same",
-    "note": "VIITAL met both coprimary endpoints: 81% of treated versus 16% of control wounds at least 50% healed at week 24, with less pain.",
+    "note": "VIITAL met both coprimary endpoints: 81% of treated versus 16% of control wounds at least 50% healed at week 24, with less pain. Dated to Abeona's topline release of 2022-11-03, which reported both co-primary endpoints met; the 2025 Lancet paper sets the status.",
     "short": "VIITAL wounds healed, as predicted",
     "src": "https://doi.org/10.1016/s0140-6736(25)00778-0",
     "srcLabel": "Tang 2025",
@@ -571,7 +625,11 @@
       "quote": "there was wound healing in some type VII collagen gene-corrected grafts, but the response was variable among patients and among grafted sites and generally declined over 1 year"
      }
     ],
-    "reason": "Phase 3 wound healing matched xenograft rescue"
+    "reason": "Phase 3 wound healing matched xenograft rescue",
+    "drug": "prademagene zamikeracel",
+    "route": "ex_vivo_cells",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "model_id": "col7-null-mouse-iv-rc7",
@@ -586,7 +644,7 @@
     "print_year": 2015,
     "registry_date": null,
     "model_filed": null,
-    "product_in_model": null,
+    "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
     "magnitude": null,
@@ -595,7 +653,7 @@
     "population": "COL7A1-mutant RDEB (pz-cel/PTR-01: NC1-expressing, no anti-C7 immunity)",
     "model_first_use_year": 2015,
     "confidence": "medium",
-    "confidence_note": "Abstract-level. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed.",
+    "confidence_note": "Abstract-level. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed. product_in_model set true: PTR-01 is the CHO-derived rC7 of the Lotus/Shire lineage that Woodley's group dosed; exact lot identity unconfirmed.",
     "prediction_level": "class",
     "judgement": null,
     "model": "C7-null RDEB mice dosed IV with CHO recombinant C7",
@@ -605,7 +663,11 @@
     "short": "Null mice: phenotype reversed",
     "src": "https://doi.org/10.1038/jid.2015.291",
     "srcLabel": "Hou 2015",
-    "quote": "A single dose of CHO-rhC7, administered intravenously into new-born C7-null RDEB mice, incorporated into the DEJ of multiple skin sites, tongue and esophagus, restored anchoring fibrils, improved dermal-epidermal adherence, and increased the animals' life span."
+    "quote": "A single dose of CHO-rhC7, administered intravenously into new-born C7-null RDEB mice, incorporated into the DEJ of multiple skin sites, tongue and esophagus, restored anchoring fibrils, improved dermal-epidermal adherence, and increased the animals' life span.",
+    "drug": "PTR-01",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "model_id": "col7-null-mouse-iv-rc7",
@@ -620,28 +682,32 @@
     "print_year": null,
     "registry_date": null,
     "model_filed": null,
-    "product_in_model": null,
+    "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
     "magnitude": "direction_only",
-    "magnitude_basis": "share of target wounds with >=50% area reduction at day 120 (21/26), open-label",
+    "magnitude_basis": "patients with >=2-point gain on the 7-point wound scale in >=50% of wounds at day 120 (4/6), open-label",
     "source_calls_it": "match",
     "population": "COL7A1-mutant RDEB (pz-cel/PTR-01: NC1-expressing, no anti-C7 immunity)",
     "model_first_use_year": 2015,
     "confidence": "low",
-    "confidence_note": "Press release of a SID 2022 poster; registry NCT04599881 has no results. Uncontrolled, n=6. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed.",
+    "confidence_note": "Press release of a SID 2022 poster; registry NCT04599881 has no results. Uncontrolled, n=6. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed. product_in_model set true: PTR-01 is the CHO-derived rC7 of the Lotus/Shire lineage that Woodley's group dosed; exact lot identity unconfirmed.",
     "prediction_level": "class",
-    "judgement": "Judgement call: treated as the trial's wound-healing endpoint, though the press release does not name the primary; tier 5, low confidence, no control arm.",
+    "judgement": "Single-arm ruling: no pre-set success bar, so scored on the primary endpoint against the model's predicted direction; a response where healing was predicted is same. Registry NCT04599881 names the 7-point Global Impression of Change as primary; the release reports it.",
     "model": "C7-null RDEB mice dosed IV with CHO recombinant C7",
     "year": 2022,
     "status": "same",
-    "note": "Open-label phase 2: 21 of 26 target wounds shrank by half or more at day 120 on IV PTR-01; no control arm.",
+    "note": "Single-arm open-label phase 2 with no success bar set in advance, scored on its registry primary: 4 of 6 patients responded (>=2-point 7-point-scale gain in >=50% of wounds, day 120); 21/26 wounds halved, as mice predicted.",
     "short": "Wounds shrank in open-label phase 2",
     "src": "https://investor.bridgebio.com/news/news-details/2022/bridgebio-pharma-affiliate-phoenix-tissue-repair-announces-positive-results-from-phase-2-trial-of-ptr-01-a-protein-replacement-therapy-for-the-treatment-of-recessive-dystrophic-epidermolysis-bullosa-rdeb-05-20-2022/default.aspx",
     "srcLabel": "BridgeBio 2022",
-    "quote": "Specifically, over 80% of target wounds (21/26) demonstrated a 50% or greater reduction in wound surface area at the end of treatment (day 120) compared to baseline.",
+    "quote": "Based on these criteria, four out of six patients who enrolled (67%) were responders since they had ≥2-point increase on this scale in ≥50% of their wounds at day 120.",
     "endpoint_role": "primary",
-    "reason": "Uncontrolled wound response, press release only"
+    "reason": "Uncontrolled wound response, press release only",
+    "drug": "PTR-01",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -661,7 +727,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
@@ -676,7 +741,11 @@
     "short": "Mouse C7 rescue implies correction",
     "src": "https://doi.org/10.1046/j.1523-1747.2003.12571.x",
     "srcLabel": "Woodley 2003",
-    "quote": "These data demonstrate that human dermal fibroblasts alone are capable of producing type VII collagen at the DEJ, and it is possible to restore type VII collagen gene expression in RDEB skin in vivo by direct intradermal injection of fibroblasts."
+    "quote": "These data demonstrate that human dermal fibroblasts alone are capable of producing type VII collagen at the DEJ, and it is possible to restore type VII collagen gene expression in RDEB skin in vivo by direct intradermal injection of fibroblasts.",
+    "drug": "dabocemagene autoficel",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -696,7 +765,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "imported_from": null,
     "magnitude": null,
     "magnitude_basis": "complete closure of the first wound pair at week 24, treated vs control (1/6 vs 0/6)",
     "source_calls_it": "unresolved",
@@ -708,7 +776,7 @@
     "year": 2024,
     "status": "untested",
     "untested_reason": "unsettled",
-    "note": "DEFI-RDEB enrolled 6 patients: the first treated wound pair closed fully at week 24 in 1 versus 0 controls; inconclusive.",
+    "note": "DEFI-RDEB enrolled 6 patients: the first treated wound pair closed fully at week 24 in 1 versus 0 controls; inconclusive. Ruling: a terminated six-patient trial with 1 versus 0 closures is inconclusive, so the track stays untested (unsettled), not contra.",
     "short": "Phase 3: 1 vs 0 closures, n=6",
     "src": "https://clinicaltrials.gov/study/NCT04213261",
     "srcLabel": "NCT04213261 results 2024",
@@ -724,7 +792,11 @@
      }
     ],
     "reason": "Phase 3 too small to settle",
-    "strengthens": true
+    "strengthens": true,
+    "drug": "dabocemagene autoficel",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -761,7 +833,11 @@
     "short": "Mouse tox clean, vector local",
     "src": "https://www.fda.gov/media/169342/download",
     "srcLabel": "FDA SBRA Vyjuvek 2023",
-    "quote": "No VYJUVEKrelated adverse findings were observed in these studies."
+    "quote": "No VYJUVEKrelated adverse findings were observed in these studies.",
+    "drug": "beremagene geperpavec",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "bvec-col7-hypomorph-mouse-rdeb-xenograft",
@@ -778,7 +854,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "related grade >=2 adverse events and vector shedding",
     "source_calls_it": "match",
@@ -787,17 +863,21 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level; model side read in the SBRA. Pruritus and chills are harms a mouse study would not show.",
     "prediction_level": "class",
-    "judgement": "Paired by me: the mouse GLP data were public only in the 2023 SBRA, but the patient result (2022) is what scores; the model side existed before the trial. Mild itching/chills are not ones mice could report.",
+    "judgement": "Paired by me: the mouse GLP data were public only in the 2023 SBRA, but the patient result (2022) is what scores; the model side existed before the trial. Mild itching/chills are not ones mice could report. Safety is a drug claim; B-VEC's own patient tolerability (Krystal release 2018-10-15: 'no product-related adverse events') preceded the first public mouse tox (SBRA 2023), so retro, year 2023.",
     "model": "COL7 hypomorphic mice and human RDEB skin xenografts (B-VEC)",
     "modality": "gene therapy",
-    "year": 2022,
-    "status": "same",
-    "note": "No grade 2+ related events, shedding or skin immunoreactants in phase 1/2; GEM-3 saw itching and chills only.",
+    "year": 2023,
+    "status": "retro",
+    "note": "No grade 2+ related events, shedding or skin immunoreactants in phase 1/2; GEM-3 saw itching and chills only. Retrodiction: the mouse GLP safety data were first public in the 2023 FDA review, after B-VEC's own patients were reported well tolerated (Oct 2018 release).",
     "short": "No serious harm, as mice predicted",
     "src": "https://doi.org/10.1038/s41591-022-01737-y",
     "srcLabel": "Gurevich 2022",
     "quote": "No grade 2 or above B-VEC-related adverse events or vector shedding or tissue-bound skin immunoreactants were noted.",
-    "reason": "No serious harm, vector stayed local"
+    "reason": "No serious harm, vector stayed local",
+    "drug": "beremagene geperpavec",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rdeb-keratinocyte-xenograft-immunodeficient-mouse",
@@ -832,7 +912,11 @@
     "short": "Xenograft: no abnormality",
     "src": "https://doi.org/10.1089/hum.2010.023",
     "srcLabel": "Siprashvili 2010",
-    "quote": "Type VII collagen expression was maintained for 1 year in vivo, or over 12 epidermal turnover cycles, with no abnormalities in skin morphology or self-renewal."
+    "quote": "Type VII collagen expression was maintained for 1 year in vivo, or over 12 epidermal turnover cycles, with no abnormalities in skin morphology or self-renewal.",
+    "drug": "prademagene zamikeracel",
+    "route": "ex_vivo_cells",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "model_id": "rdeb-keratinocyte-xenograft-immunodeficient-mouse",
@@ -868,7 +952,11 @@
     "src": "https://doi.org/10.1001/jama.2016.15588",
     "srcLabel": "Siprashvili 2016",
     "quote": "All 24 grafts were well tolerated without serious adverse events.",
-    "reason": "No graft-related serious harm"
+    "reason": "No graft-related serious harm",
+    "drug": "prademagene zamikeracel",
+    "route": "ex_vivo_cells",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "model_id": "col7-null-mouse-iv-rc7",
@@ -883,7 +971,7 @@
     "print_year": 2015,
     "registry_date": null,
     "model_filed": null,
-    "product_in_model": null,
+    "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
     "magnitude": null,
@@ -892,7 +980,7 @@
     "population": "COL7A1-mutant RDEB (pz-cel/PTR-01: NC1-expressing, no anti-C7 immunity)",
     "model_first_use_year": 2015,
     "confidence": "medium",
-    "confidence_note": "Abstract-level. The 2022 press release says only 'well tolerated'. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed.",
+    "confidence_note": "Abstract-level. The 2022 press release says only 'well tolerated'. Product identity: PTR-01 is the CHO-derived rC7 licensed from Shire (2017); that it is the exact CHO-rhC7 of Hou 2015 was not confirmed. product_in_model set true: PTR-01 is the CHO-derived rC7 of the Lotus/Shire lineage that Woodley's group dosed; exact lot identity unconfirmed.",
     "prediction_level": "class",
     "judgement": "The press release gives no antibody data, so the stated prediction (no anti-C7 immunity) stays unscored.",
     "model": "C7-null RDEB mice dosed IV with CHO recombinant C7",
@@ -905,7 +993,50 @@
     "srcLabel": "Hou 2015",
     "quote": "Furthermore, no circulating or tissue-bound anti-C7 antibodies were observed in the mice.",
     "untested_reason": "unsettled",
-    "reason": "Patient immunogenicity unreported"
+    "drug": "PTR-01",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
+   },
+   {
+    "model_id": "col7-null-mouse-iv-rc7",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 5,
+    "model_src": "https://doi.org/10.1038/jid.2013.10",
+    "model_src_tier": 1,
+    "trial_unreported": true,
+    "patient_signal_reversed": false,
+    "epub_year": 2022,
+    "print_year": null,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "magnitude": "direction_only",
+    "magnitude_basis": "no adverse effects in mice to 33 mg/kg IV vs patients well tolerated over 18 weeks of IV dosing",
+    "source_calls_it": "match",
+    "population": "COL7A1-mutant RDEB (pz-cel/PTR-01: NC1-expressing, no anti-C7 immunity)",
+    "model_first_use_year": 2015,
+    "confidence": "low",
+    "confidence_note": "Patient side is a sponsor release of a SID 2022 poster (n=6, open-label); registry NCT04599881 has no results. Model tolerability statement from Woodley 2013 full text (PMC3890237), as read by the checker. Anti-C7 antibody prediction remains unscored: no patient antibody data public.",
+    "prediction_level": "class",
+    "judgement": "Passing tolerability ruling: the mouse statement of no adverse effects is a safety prediction; patients were reported well tolerated, so same. Paired by me; tier 5.",
+    "model": "C7-null RDEB mice dosed IV with CHO recombinant C7",
+    "modality": "protein",
+    "year": 2022,
+    "status": "same",
+    "note": "Mice tolerated IV rC7 without adverse effects; in the open-label phase 2, IV PTR-01 was well tolerated in RDEB patients over four months.",
+    "short": "Patients tolerated IV PTR-01, as mice did",
+    "src": "https://investor.bridgebio.com/news/news-details/2022/bridgebio-pharma-affiliate-phoenix-tissue-repair-announces-positive-results-from-phase-2-trial-of-ptr-01-a-protein-replacement-therapy-for-the-treatment-of-recessive-dystrophic-epidermolysis-bullosa-rdeb-05-20-2022/default.aspx",
+    "srcLabel": "Phoenix Tissue Repair 2022",
+    "quote": "The data shared at the 2022 SID Annual Meeting demonstrated that PTR-01 was well tolerated when given once per week for 4 weeks and then every other week for 14 weeks.",
+    "reason": "Patients tolerated IV rC7 as mice did",
+    "drug": "PTR-01",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ]
  }

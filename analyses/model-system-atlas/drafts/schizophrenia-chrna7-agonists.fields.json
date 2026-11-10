@@ -1,0 +1,91 @@
+{
+ "tile": "schizophrenia-chrna7-agonists",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "status same->untested (no_prediction; mg/kg arithmetic is not a stated dose target, check RULE QUESTION 3) and year 2012->2011 (Targacept 8-K 2011-01-19, rule 6); drug bradanicline, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2012->2011: Targacept 8-K EX-99.1 2011-01-19 made the GMLT primary result public first (rule 6, press release counts); drug bradanicline, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status retro->contra: retrodiction failed to reproduce the SANS-primary miss public 2013-12-16 (check RULE QUESTION 2; retrodiction rule); drug bradanicline"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2015->2013: Targacept press release 2013-12-16 reported the SANS-primary miss first (rule 6); drug bradanicline"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "status/year unchanged; retrodiction false->true (trial result public 2013-12-16 before the model); drug bradanicline"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug nelonicline (ABT-126, sibling drug on the TC-5619 rodent track, product_in_model false), route oral; status/year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "year 2012->2011: Targacept 8-K EX-99.1 2011-01-19 first reported TC-5619 'was well tolerated' (rule 6); drug bradanicline"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug azd-0328, route oral set from the entry's source; status/year unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug bradanicline, route oral set from the entry's source; status/year unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug bradanicline, route oral set from the entry's source; status/year unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug bradanicline, route oral set from the entry's source; status/year unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug azd-0328, route oral set from the entry's source; status/year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug bradanicline, route oral set from the entry's source; status/year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug azd-0328, route oral set from the entry's source; status/year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug azd-0328, route oral set from the entry's source; status/year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug bradanicline, route oral set from the entry's source; status/year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug azd-0328, route oral set from the entry's source; status/year unchanged"
+  }
+ ],
+ "added": []
+}

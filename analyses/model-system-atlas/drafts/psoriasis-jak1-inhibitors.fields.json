@@ -1,0 +1,56 @@
+{
+ "tile": "psoriasis-jak1-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: model first public 2018-01-23 after member JAK1 patient readouts (solcitinib Ludbrook 2016, itacitinib 2016); drug/route set abrocitinib/oral"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: FDA review (2022) made the tox margin public after abrocitinib's own psoriasis registry results (2016-10-05)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true (settles RULE QUESTION): rat AIA paper first public 2018-01-23 after itacitinib/solcitinib/abrocitinib psoriasis results; drug set abrocitinib"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "retrodiction true (status stays contra): abrocitinib's own platelet harm posted on the registry 2016-10-05, before the model paper 2018-01-23"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "src/quote moved from FDA review (AD-pooled, imported_from MONDO:0004980) to psoriasis patients Schmieder 2018 per imported-harm ruling; imported_from cleared; retrodiction true, status stays contra"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug/route set: abrocitinib, oral (opener, no status change)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug/route set: abrocitinib, oral (opener, no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug/route set: abrocitinib, oral (opener, no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug/route set: abrocitinib, oral (opener, no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug/route set: abrocitinib, oral (opener, no status change)"
+  }
+ ],
+ "added": []
+}

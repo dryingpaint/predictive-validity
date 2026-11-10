@@ -10,7 +10,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Crossref abstract of Honigberg ASH 2007 (Blood 110:1592, 16 Nov 2007) has the quote verbatim; mouse probe occupancy public before any human dosing. Opener untested 2007, ibrutinib, oral correct.",
+   "note": "Crossref abstract of Honigberg ASH 2007 (Blood 110:1592, 16 Nov 2007) has the quote verbatim; mouse probe occupancy before human dosing. Untested opener 2007; ibrutinib, oral, R/R stage_or_line correct.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -20,7 +20,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Advani 2013 abstract. Pollyea ASH 2009 abstract (20 Nov 2009) reports 89% PBMC occupancy at 4 h in first cohort (2 MCL of 7), so year 2009 holds; direct readout, same.",
+   "note": "Advani JCO quote verbatim (epub 2012-10-08). Pollyea ASH 2009 abstract (20 Nov 2009) reports 89% PBMC occupancy at 4 h: readout moved, same 2009. NCT00849654 has no posted results; registry_date null right. Ibrutinib oral.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -30,7 +30,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Honigberg ASH 2007 abstract; occupancy readout stated before the phase 1, no human dose target yet. Untested opener 2007 correct.",
+   "note": "Quote verbatim in Honigberg ASH 2007 abstract: probe occupancy stated as the dosing readout before the phase 1. Untested opener 2007; ibrutinib, oral, stage_or_line correct.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -40,7 +40,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (Advani abstract). Year 2012 holds: Pollyea 2009 showed 89% (<90% target) at cohort 1 and the ASH 2010 Fowler abstract states no occupancy; full occupancy at 2.5 mg/kg first in JCO epub 2012-10-08.",
+   "note": "Advani abstract quote verbatim; full occupancy at 2.5 mg/kg first public epub 2012-10-08 (Pollyea 2009's 89% sat under the >90% target). Same 2012; margin_stated false right; registry_date null right; ibrutinib oral.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -50,7 +50,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Pollyea ASH 2009 abstract (20 Nov 2009), before the 8 Dec 2009 first MCL responses; canine opener 2009 untested, ibrutinib oral correct.",
+   "note": "Pollyea ASH 2009 abstract (20 Nov 2009) has the canine NHL sentence verbatim, before MCL responses; PNAS 2010 (epub 2010-07-06) details dog responses. Untested opener 2009; ibrutinib oral correct.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -60,7 +60,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (Wang 2013 NEJM abstract); ASH 2011 abstract (18 Nov 2011) verified: ORR 67% (16/24). Single-arm, primary ORR, response predicted and seen: same 2011 per single-arm rule.",
+   "note": "NEJM quote verbatim (epub 2013-06-19); ASH 2011 abstract (18 Nov 2011) ORR 67% (16/24) seen. Single-arm, primary ORR, no pre-set bar, written in note: same 2011. Ibrutinib oral, R/R stage_or_line right.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -70,7 +70,7 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in Zhang 2017 CCR abstract; PDX first public 2017 after ibrutinib MCL results, so retro. Donors are mixed B-cell lymphomas incl. MCL; per-MCL pairs not read.",
+   "note": "Zhang 2017 CCR abstract quote verbatim (epub 2017-03-27); PDXs built from donors with known ibrutinib outcomes after MCL results, so retro 2017. Ibrutinib oral; mixed B-lymphoma donors coded unselected, acceptable.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -80,7 +80,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in bundled 205552 PharmR text. Opener untested, proxy year 2009 from FIH start; ibrutinib oral correct.",
+   "note": "Quote verbatim in bundled 205552 PharmR text. Tier 2; untested opener, proxy year 2009 at first-in-human; ibrutinib oral, stage_or_line correct.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -90,7 +90,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in bundled PharmR text ('increased platelet counts were seen in rats and dogs'); thrombocytopenia in MCL patients the animals reversed: contra, opposite.",
+   "note": "Quote verbatim in bundled PharmR; review also states increased platelet counts in rats and dogs. 2013 label lists MCL platelet decreases 57% but no animal platelet data, so the comparison was first public with the 2014 review: contra 2014.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -100,7 +100,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Zhang 2025 Sci Adv abstract (epub 2025-12-05). Acalabrutinib monotherapy lead-in readout, combination_with null fits; untested opener not_measured.",
+   "note": "Sci Adv abstract quote verbatim (epub 2025-12-05). Readout in the acalabrutinib-alone lead-in of AVO, so combination_with null right; acalabrutinib oral, mixed-line MCL coded unselected; untested not_measured opener fits.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -110,7 +110,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim. Acalabrutinib cycle-1 monotherapy, combination_with null correct. Comparison is per-patient WBC kinetics in 4 patients, not AVO's primary endpoint; kept retro as a patient-level readout (see rule question).",
+   "note": "Same verbatim quote; four MCL patients' cycle-1 acalabrutinib monotherapy response compared after it was known: retro 2025. Acalabrutinib oral, combination_with null, unselected correct. Readout is WBC kinetics, not a trial endpoint (rule question stands).",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -120,22 +120,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Rahal 2014 abstract (epub 2013-12-22). Biomarker-selected (TRAF2/BIRC3) ibrutinib prediction, untested not_measured correct.",
+   "note": "Rahal Nat Med abstract quote verbatim (epub 2013-12-22). TRAF2/BIRC3-lesion insensitivity prediction for ibrutinib; biomarker_selected, oral; untested not_measured right, no genotype-response patient data then.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "Status table (same needs the model's prediction to agree for a drug of this class) and evidence rule 5 untested_reason unsettled",
-   "note": "Freeman 2022 quote verbatim, but the BIRC3 effect is for the whole RAY cohort (ibrutinib and temsirolimus arms), not shown for ibrutinib alone: prognostic, not a test of ibrutinib insensitivity. Entry already carries untested_reason unsettled.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Status table: same needs agreement for a class drug; Freeman 2022 reports the BIRC3 effect across both RAY arms (incl. temsirolimus), not for ibrutinib alone. Rule 5: untested, unsettled (already set on draft)."
+   "status_supported": true,
+   "note": "Freeman 2022 Leukemia abstract quote verbatim (epub 2022-08-13); BIRC3 effect reported for the whole RAY cohort, temsirolimus arm included, so prognostic, not a test of ibrutinib insensitivity: untested unsettled agreed. Ibrutinib oral biomarker_selected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -144,7 +140,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in bundled 213217 MultidisciplineR text. Zanubrutinib is a member; opener untested unpublished, proxy 2014.",
+   "note": "Quote verbatim in bundled 213217 MultidisciplineR. Zanubrutinib is a member; untested unpublished opener, proxy 2014 at first-in-human; zanubrutinib oral correct.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -152,9 +148,9 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Quote verbatim. Contra holds on thrombocytopenia (R/R MCL 28%, animals raised platelets); AF basis is the pooled B-cell population (review: none or 1.6% in R/R MCL), so note should drop AF as an MCL harm.",
+   "note": "New quote near-verbatim (OCR spacing) in 213217 review; R/R MCL thrombocytopenia 33/118 (28%) vs raised dog platelets in the same review: contra 2019 holds. AF 2 (1.6%) in R/R MCL, rightly dropped. Zanubrutinib oral.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -164,7 +160,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in bundled 210259 MultidisciplineR text. Acalabrutinib opener untested unpublished, proxy 2014 correct.",
+   "note": "Quote verbatim in bundled 210259 MultidisciplineR. Acalabrutinib untested unpublished opener, proxy 2014 at first-in-human; acalabrutinib oral correct.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -174,7 +170,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in bundled 210259 text. Animals showed no platelet or bleeding signal; ACE-LY-004 bleeding and platelet decreases in MCL patients: contra stands.",
+   "note": "Telemetry quote verbatim in 210259 review. Contra rests on ACE-LY-004 bleeding and platelet decreases that tolerated-dose animals did not flag; quote shows the silence only. Acalabrutinib oral, 2017 right.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -184,7 +180,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Harrington 2016 quote verbatim (PLoS One epub 2016-07-19). Own acalabrutinib track on the canine model is right. Dog run post-dates ibrutinib MCL responses, so retrodiction could be true on the opener; no status effect.",
+   "note": "Harrington 2016 PLoS One abstract quote verbatim (epub 2016-07-19). Own acalabrutinib track, oral, untested opener 2016 correct. Dog run post-dates ibrutinib MCL responses, so retrodiction should be true; no status effect.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -194,7 +190,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Lancet abstract quote verbatim (epub 2017-12-11; label Oct 2017 also 2017). Single-arm ORR 81%, response as dogs showed; retro by post-dating ibrutinib MCL 2011, correct.",
+   "note": "Lancet abstract quote verbatim (epub 2017-12-11); single-arm ACE-LY-004, primary ORR 81%, design in note. Dog result (2016) post-dates 2011 ibrutinib MCL responses: retro 2017 right. Acalabrutinib oral; registry 2018-10-19.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -204,7 +200,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Pollyea ASH 2009 abstract; it shows the canine system in use for ibrutinib in 2009 (an efficacy sentence, adequate for an untested opener).",
+   "note": "Quote verbatim in Pollyea ASH 2009 abstract; shows the canine system in use for ibrutinib in 2009, adequate for an untested opener. Ibrutinib oral correct.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -214,7 +210,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Patient quote verbatim in Wang ASH 2011 abstract. PNAS 2010 'well-tolerated' is not in the abstract (drafter read full text). Dog claim (Jul 2010) post-dates Pollyea 2009 'extremely well tolerated', so retro is right.",
+   "note": "Patient quote verbatim in Wang ASH 2011 abstract (18 Nov 2011, MCL-only). Dog claim (PNAS Jul 2010) post-dates ibrutinib's own phase 1 'extremely well tolerated' (ASH 2009): retro 2011 correct, same-drug basis.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -224,7 +220,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Harrington 2016 quote verbatim in abstract; passing tolerability claim is a scorable safety prediction; untested opener 2016 correct.",
+   "note": "Harrington 2016 tolerability quote verbatim; a passing tolerability claim is a scorable prediction; untested opener 2016. Post-dates acalabrutinib's own CLL tolerability (Dec 2015), so retrodiction should be true; no status effect.",
    "checked_by": "CHECKER_BRIEF / fields"
   },
   {
@@ -234,7 +230,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Lancet abstract quote verbatim. Dog tolerability (2016) post-dates ibrutinib MCL and acalabrutinib CLL tolerability, so retro; bleeding is scored on the tox track.",
+   "note": "Lancet abstract quote verbatim (epub 2017-12-11). Retro basis is acalabrutinib's own NEJM Dec 2015 CLL tolerability, as the dose/safety rule requires; retro 2017 correct; acalabrutinib oral.",
    "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
@@ -246,7 +242,7 @@
   "Acalabrutinib rat/dog GLP toxicology and dog telemetry (NDA 210259 MultidisciplineR 2017, in bundle): 'acalabrutinib had no toxicologically-significant effects on cardiovascular function in a cardiovascular study in telemetered dogs', while label lists AF/flutter 3% and hemorrhage; would be a safety track parallel to the ibrutinib/zanubrutinib tox tracks (likely contra).",
   "Acalabrutinib platelet-function models (light-transmission aggregometry and humanized VWF-HA1 mouse thrombus formation) predicted fewer platelet effects than ibrutinib (FDA NDA 210259 MultidisciplineR 2017, pharmacology section); compare ELEVATE-RR head-to-head bleeding/AF (Byrd 2021 JCO, doi:10.1200/JCO.21.01210, CLL, imported_from). A comparative-safety track not drafted."
  ],
- "overall": "accept_with_corrections",
+ "overall": "accept",
  "rule_questions": [
   "registry_date when the trial registry has no results posted: the draft uses the first-posting date; rule 6 reads as results posting only, implying null. Which?",
   "Safety year when the FDA review was signed 2013 (MCL approval Nov 2013, NDA 205552 Orig1) but the bundled copy sits in the 2014 Orig2 folder: does the year follow the earliest public posting of any copy of the review (possibly 2013 under Orig1)?",

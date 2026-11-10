@@ -11,7 +11,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Milone 2009 Mol Ther resolves (epub 2009-04); quote verbatim in abstract. ALL xenograft, 4-1BB CAR; untested opener correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Milone 2009 quote verbatim; CTL019 4-1BB construct = tisagenlecleucel; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested opener stands."
   },
   {
    "cell": "engagement",
@@ -20,7 +21,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Herbst 2010 JPET resolves; quote verbatim. NCT01453205 posted ORR only, no B-cell counts; untested/not_measured fits."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Herbst 2010 quote verbatim; MEDI-551 = inebilizumab; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested stands."
   },
   {
    "cell": "engagement",
@@ -29,7 +31,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Schuster 2017 NEJM resolves (epub 2017-12-10); quote verbatim. NCT02030834 results posted 2020-10-05 confirmed. Proximal readout, same, paired; fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Schuster 2017 quote verbatim; trial mixed DLBCL/FL, coded stage_or_line; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; same stands."
   },
   {
    "cell": "engagement",
@@ -38,7 +41,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Zammarchi 2018 Blood resolves (epub 2018-01); quote verbatim. No patient crosslink/gamma-H2AX readout found either; untested/not_measured."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Zammarchi 2018 quote verbatim; ADCT-402 = loncastuximab tesirine; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested stands."
   },
   {
    "cell": "dose",
@@ -47,7 +51,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim, but Blanc 2011 is indexed as a Review (PubMed pubType), so not an admissible source tier 1; status untested/unpublished unaffected. Consider Al-Katib 2009 as cited model paper."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Blanc 2011 quote verbatim (review, opener only); SAR3419 = coltuximab ravtansine; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested/unpublished stands."
   },
   {
    "cell": "dose",
@@ -56,7 +61,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim. FDA review (bundle) confirms Applicant's 1/6 HNSTD monkey convention for starting dose; untested opener fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Zammarchi 2018 quote verbatim; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested opener stands."
   },
   {
    "cell": "dose",
@@ -67,10 +73,11 @@
    "status_supported": false,
    "proposed_status": "untested",
    "proposed_year": 2019,
-   "rule": "dose: margin_stated only where a model source stated the margin before the trial; an MTD (or no-MTD) is not a model target; untested_reason no_prediction",
-   "note": "The ~3x AUC figure is the 2021 label's exposure multiple for ADVERSE testis findings at monkey 0.3 mg/kg, not a tolerated margin; 1/6 HNSTD set only a start dose. Draft admits monkey stated no effective exposure. Cumulative toxicity at 200 µg/kg.",
+   "rule": "dose: margin_stated only where a model source stated the margin before the trial; an MTD or no-MTD is not a model target (untested_reason no_prediction)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fields fine. Zammarchi 2018 states 'excellent tolerability', no margin vs a human effective exposure, and appeared after phase 1 began; the ~3x AUC is the 2021 FDA review's arithmetic. Entry also carries untested_reason no_prediction with status same.",
    "adjudicated_status": "untested",
-   "adjudication_note": "Dose table row 1: monkey stated no effective exposure; FDA's ~3x AUC multiple is at adverse testis findings, and 1/6 HNSTD only set a start dose, so no tolerated margin was stated. Rule 5: no_prediction."
+   "adjudication_note": "Dose table row 1: monkey HNSTD only set the 1/6 start dose; the ~3x AUC margin is the 2021 FDA review's post-trial arithmetic at the MRHD, not a model-stated margin. untested, untested_reason no_prediction (already set)."
   },
   {
    "cell": "dose",
@@ -79,7 +86,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Abstract gives potency vs rituximab only, no human dose; untested/no_prediction."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Herbst 2010 gives no human dose; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested/no_prediction stands."
   },
   {
    "cell": "dose",
@@ -88,7 +96,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Abstract states no human cell dose; untested/no_prediction. CBER review for BLA 125646 not in bundle; not checked either."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Milone 2009 states no human cell dose; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested/no_prediction stands."
   },
   {
    "cell": "efficacy",
@@ -97,7 +106,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim; opener at model_first_use_year 2009."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Milone 2009 quote verbatim; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested opener 2009 stands (retrodiction trigger by earlier anti-CD19 patient data is a rule question)."
   },
   {
    "cell": "efficacy",
@@ -106,21 +116,18 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim. Note the abstract measured normal B-cell depletion only; 'implying superiority in lymphoma' is the drafter's reading (see rule question)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Herbst 2010 quote verbatim; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested opener 2010 stands."
   },
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2009,
-   "rule": "Evidence rule 2 (reviews point to a source but are not one); rule 6 (cell opens at model_first_use_year)",
-   "note": "Blanc 2011 is a Review. Primary model paper is Al-Katib 2009 Clin Cancer Res (10.1158/1078-0432.ccr-08-2808, epub 2009-06): WSU-DLCL2 SCID xenograft, SAR3419 beat rituximab and CHOP. Opener should be 2009, model_first_use_year 2009.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Untested agreed. Evidence rule 2: Blanc 2011 is a review; opener should cite primary Al-Katib 2009 (PMID 19509168, epub 2009-06-09), year and model_first_use_year 2009 per rule 6."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Al-Katib 2009 (PMID 19509168, epub 2009-06-09) resolves; quote verbatim in abstract; primary model paper, year and model_first_use_year 2009 correct; coltuximab ravtansine, iv, stage_or_line."
   },
   {
    "cell": "efficacy",
@@ -129,7 +136,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Coiffier 2016 BJH quote verbatim; primary ORR null (<=40%) not rejected. Contra stands, but model_src should be Al-Katib 2009 not the Blanc review. NCT01470456/NCT01472887 no results posted, confirmed."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Coiffier 2016 quote verbatim; single-arm with pre-set bar (reject ORR<=40%) not met: contra; combination_with rituximab, design note, model_src Al-Katib 2009 correct. Track misses the 2014 STARLYTE monotherapy same before it (see missing)."
   },
   {
    "cell": "efficacy",
@@ -138,7 +146,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim. FDA review confirms Ramos 6-9/10 and Daudi 7/10 tumor-free; no mice tumor-free in WSU-DLCL2 up to 1 mg/kg."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Zammarchi 2018 quote verbatim; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested opener stands."
   },
   {
    "cell": "efficacy",
@@ -147,25 +156,38 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "CT.gov NCT01453205 results first posted 2018-03-12; quote is the ORR definition; values 47.5/46.2/43.6, p=0.554; stated purpose superiority vs rituximab with ICE/DHAP. Contra defensible; see rule question."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT01453205 results posted 2018-03-12; quote is the registry ORR definition; MEDI-551 + ICE/DHAP vs rituximab + same chemo; combination_with and design note correct; inebilizumab, iv, stage_or_line; contra stands."
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "JULIET NEJM epub 2018-12, print 2019; quote verbatim; NCT02445248 results posted 2024-04-18 confirmed. BELINDA as patient_trial fine."
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "Evidence rule 6: year is the earliest public date, incl. sponsor press release or congress abstract",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim; single-arm note, tisagenlecleucel/iv/stage_or_line fine; same stands. JULIET primary ORR first public in Novartis release 2017-06-07 (interim 3-month ORR 45%, CR 37%), before NEJM 2018.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Evidence rule 6: JULIET ORR first public in 2017 Novartis releases (interim ORR 45%, CR 37%; primary analysis ASH 2017), before NEJM 2018. same, year 2017."
   },
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "LOTIS-2 Lancet Oncol epub 2021-05-11; quote verbatim; NCT03589469 results 2021-07-29 confirmed. Could add LOTIS-5 (positive PFS, 2026) as patient_trial; no status change."
+   "proposed_status": "retro",
+   "proposed_year": 2020,
+   "rule": "Evidence rule 6: year is the earliest public date, incl. sponsor press release or congress abstract",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Retro confirmed: Kochenderfer JCO epub 2014-08-25 anti-CD19 CAR T CRs in refractory DLBCL precede the 2018 xenografts. LOTIS-2 data shown at EHA June 2020; ORR 48.3% in ADC Therapeutics release 2020-11-20, before Lancet Oncol 2021.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Evidence rule 6: LOTIS-2 48.3% ORR public in 2020 (EHA June 2020; ADC Therapeutics release 2020-12-07, ASH 2020), before Lancet Oncol 2021. retro stands, year 2020."
   },
   {
    "cell": "safety",
@@ -174,7 +196,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim (sentence truncated). Blanc 2011 is a Review; untested/unpublished stands regardless."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Blanc 2011 quote verbatim (review, opener only); drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested/unpublished stands."
   },
   {
    "cell": "safety",
@@ -183,7 +206,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "FDA review (bundle) lists monkey marrow, kidney, skin, testis findings; opener fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Zammarchi 2018 quote verbatim; FDA review lists monkey findings; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested opener stands."
   },
   {
    "cell": "safety",
@@ -192,7 +216,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote and 'These trends are noted because there are pericardial effusions...' found verbatim in bundle text. Same+partial defensible; kidney/testis non-carryover raised as rule question."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "FDA BLA 761196 review quote verbatim (bundle); drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; same stands (kidney/testis rule question unchanged)."
   },
   {
    "cell": "safety",
@@ -201,7 +226,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Abstract is pharmacology only; untested/unpublished fits for DLBCL context (NMOSD BLA tox not read, as draft says)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Herbst 2010 pharmacology only; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested/unpublished stands."
   },
   {
    "cell": "safety",
@@ -210,7 +236,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Immunodeficient NSG cannot show CRS/ICANS; silence not a miss per brief; untested/no_prediction."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NSG mice cannot show CRS/ICANS; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested/no_prediction stands."
   },
   {
    "cell": "efficacy",
@@ -219,23 +246,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Caimi 2023 EJHaem (PMC10887233) abstract quote verbatim. ASH 2022 abstract (Blood 140 Suppl 1:9548, online 2022-11-15) confirms the QSP model existed in 2022; untested opener at 2022 correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Caimi 2023 quote verbatim; ASH 2022 abstract (Blood 10.1182/blood-2022-159626, 2022-11-15) shows the QSP model in 2022; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested opener stands."
   },
   {
    "cell": "efficacy",
    "index": 10,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2022,
-   "rule": "Dating: year is the earliest date the comparison was public (online publication)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim; retro correct (run on LOTIS-2 after 2021 results), prediction_level patient fits. Same QSP-vs-IHC conclusion published online 2022-11-15 in Blood ASH abstract (10.1182/blood-2022-159626), so year 2022, not 2023.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retro agreed. Rule 6 dating: same QSP-vs-IHC comparison was public in the Blood ASH 2022 abstract (10.1182/blood-2022-159626, Nov 2022), so year 2022."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim; Blood ASH abstract 10.1182/blood-2022-159626 published 2022-11-15 states QSP predicts IHC CD19 not predictive, surface density improves prediction; built on LOTIS-2 patients, retro 2022 correct; lonca, iv, stage_or_line."
   },
   {
    "cell": "efficacy",
@@ -244,30 +266,63 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim in Caimi 2023 abstract. Six-line panel shown on the ASH Dec 2022 poster (adctmedical.com PDF snippet), so 2022 opener proxy holds. ex_vivo is nearest enum for cell lines."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Caimi 2023 quote verbatim; six-line panel shown on ASH Dec 2022 poster (the Blood abstract text itself does not mention cell lines); drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared."
   },
   {
    "cell": "efficacy",
    "index": 12,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim; 'Similarly' sets cell lines beside patients, run after LOTIS-2, so retro. Cell-line data not in the ASH 2022 abstract text (poster only), so 2023 epub dating stands."
+   "proposed_status": "retro",
+   "proposed_year": 2022,
+   "rule": "Evidence rule 6: year is the earliest public date, incl. congress presentation",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim; retro stands. ASH Dec 2022 poster already stated lonca was active in cell lines with very low H-score, so the comparison was public 2022 (Blood abstract text omits cell lines; poster not re-opened).",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Evidence rule 6: ASH Dec 2022 poster (Caimi) sets lonca cell-line activity at very low CD19 beside LOTIS-2 low-H-score responders. Comparison public 2022; retro, year 2022."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Al-Katib 2009 conclusion quote verbatim ('novel and well-tolerated therapy'); a passing tolerability claim is a safety prediction; opener 2009 prospective (SAR3419 phase 1 first public ASH Dec 2009). Lacks modality 'ADC' that other ADC safety entries carry."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2014,
+   "rule": "Evidence rule 6: year is the earliest public date, incl. congress abstract",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Coiffier 2016 quote verbatim, same holds, but DLBCL-only safety was public earlier: STARLYTE monotherapy (NCT01472887; ASCO 2014 abstract 8506, presented 2014-06-01; Trneny 2018 Haematologica 10.3324/haematol.2017.168401): 'monotherapy was well tolerated'. Re-date and re-source; combination_with null. Modality 'ADC' missing.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Evidence rule 6: STARLYTE monotherapy in R/R DLBCL, ASCO 2014 abstract 8506 (JCO 32:15_suppl), 'acceptable safety profile', precedes Coiffier 2016. same, year 2014, re-sourced, combination_with null."
   }
  ],
  "missing": [
   "Al-Katib 2009 Clin Cancer Res 10.1158/1078-0432.ccr-08-2808: primary SAR3419 xenograft paper (WSU-DLCL2 DLBCL and WSU-FSCCL in SCID mice, superior to rituximab/CHOP); should be the model source of the sar3419-lymphoma-xenograft track instead of the Blanc 2011 review.",
   "LOTIS-5 phase 3 (Lonca-R vs R-GemOx, R/R DLBCL): PFS primary endpoint met, HR 0.73 (ADC Therapeutics press release 2026-06-03, https://ir.adctherapeutics.com/2026-06-03-ADC-Therapeutics-Announces-Results-From-LOTIS-5-Phase-3-Confirmatory-Clinical-Trial-of-ZYNLONTA-R-in-Combination-with-Rituximab-in-Relapsed-or-Refractory-Diffuse-Large-B-Cell-Lymphoma); patient_trial on efficacy 8, no status change.",
-  "Not checked: CBER review of Kymriah DLBCL supplement (BLA 125646) for any lymphoma xenograft or other model compared with patients."
+  "Not checked: CBER review of Kymriah DLBCL supplement (BLA 125646) for any lymphoma xenograft or other model compared with patients.",
+  "STARLYTE (NCT01472887), coltuximab ravtansine monotherapy in R/R DLBCL: primary ORR 43.9% (90% CI 30.6-57.9), null rejected P<0.0001 against a pre-set bar; first public ASCO 2014 abstract 8506 (2014-06-01), Trneny 2018 Haematologica 10.3324/haematol.2017.168401. Missing 2014 efficacy 'same' on sar3419-lymphoma-xenograft before the 2016 combination contra."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
   "Efficacy 4: the xenograft predicted activity (complete regressions) and patients responded (ORR 31%) but below the sponsor's 40% bar. Does missing a pre-specified ORR bar count as a direction contra, or only as neg/partial?",
   "Efficacy 6: the transgenic mouse compared normal B-cell depletion depth with rituximab as monotherapy; the trial tested tumour ORR on an ICE/DHAP backbone. Is a model readout of normal-B-cell depletion a prediction of tumour-response superiority, or should this be untested (conditions/readout never tested)?",
   "Safety 3: monkey kidney nephropathy and testis toxicity had no reported patient counterpart. Testis is unmeasurable in practice; kidney could have shown. Does a named harm absent in patients force contra/opposite, or is it absorbed into same+partial?",
-  "Can a sponsor Review (Blanc 2011) carry an untested opener's quote when it is the only public statement of the model, or must the opener cite the primary paper?"
+  "Can a sponsor Review (Blanc 2011) carry an untested opener's quote when it is the only public statement of the model, or must the opener cite the primary paper?",
+  "Efficacy retrodiction: anti-CD19 immunotoxin anti-B4-blocked ricin produced responses in relapsed B-NHL in the early 1990s. Does a same-target result in mixed B-NHL (not DLBCL-only) or from a drug outside the member list make the 2009 SAR3419 and CTL019 xenografts retrodictions?",
+  "Efficacy, sar3419 track: STARLYTE monotherapy met its pre-set ORR bar (2014) and the rituximab combination missed its bar (2016), same drug and track. Does the later combination contra override the monotherapy same, given the model tested monotherapy only?"
  ]
 }

@@ -51,7 +51,11 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2010,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "ixekizumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2012,
@@ -88,7 +92,11 @@
     "readout_tier": "downstream",
     "population": "Unselected",
     "model_first_use_year": 2010,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "ixekizumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -123,10 +131,14 @@
     "model": "Mice injected with human IL-17A, plasma KC (CXCL1) readout",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2007
+    "model_first_use_year": 2007,
+    "drug": "ixekizumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -147,20 +159,24 @@
     "confidence": "medium",
     "confidence_note": "Full text read via PMC (PMC3470466). Phase 1 NCT number not given in the paper; registry_date not found.",
     "year": 2016,
-    "status": "same",
-    "note": "In ixekizumab-dosed patients' lesions CXCL1 and IL-8, the human homologues of the mouse KC readout, fell more than 6-fold by week 2.",
+    "status": "retro",
+    "note": "In ixekizumab-dosed patients' lesions CXCL1 and IL-8, the human homologues of the mouse KC readout, fell more than 6-fold by week 2. Retrodiction: the mouse result was first public in the 2016 FDA review, after ixekizumab's 2012 lesional result for the same target.",
     "short": "Lesional CXCL1 fell >6-fold on ixekizumab",
     "src": "https://doi.org/10.1016/j.jaci.2012.04.024",
     "srcLabel": "Krueger 2012",
     "quote": "As illustrated in Figure 3, genes that were strongly suppressed (change >6-fold) by ixekizumab included: IL-19, a potent inducer of epidermal hyperplasia; IL-8 and CXCL1, known IL-17 induced chemokines with potent ability to attract neutrophils",
     "reason": "CXCL1 fell in patients as in mice",
-    "judgement": "A pairing: the mouse result became public only in the 2015 FDA review (posted 2016), so the entry is dated 2016. Mouse readout is induced plasma KC; human readout is lesional CXCL1 mRNA, the same chemokine but a different compartment and no exogenous challenge, so downstream, not direct.",
+    "judgement": "A pairing: the mouse result became public only in the 2015 FDA review (posted 2016), so the entry is dated 2016. Mouse readout is induced plasma KC; human readout is lesional CXCL1 mRNA, the same chemokine but a different compartment and no exogenous challenge, so downstream, not direct. Re-scored retro under the post-dating rule: engagement is a target claim, and the patient result (Krueger 2012) was public before the model's first public statement (FDA review 2016), whatever the 2007 run date.",
     "readout_tier": "downstream",
     "model_id": "mouse-hil17a-kc-challenge",
     "model": "Mice injected with human IL-17A, plasma KC (CXCL1) readout",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2007
+    "model_first_use_year": 2007,
+    "drug": "ixekizumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -199,15 +215,19 @@
     "margin_stated": true,
     "population": "Unselected",
     "model_first_use_year": 2007,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "ixekizumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2016,
-    "status": "same",
+    "status": "retro",
     "modality": "antibody",
     "model": "Cynomolgus monkey repeat-dose toxicology (only cross-reactive species)",
     "model_id": "cyno-tox-ixekizumab",
-    "note": "Patients got the full regimen (160 mg then 80 mg, ≤2.67 mg/kg) under the 5 mg/kg/week NOAEL; injection-site reactions, the monkey's limiting toxicity, were mostly mild and stopped no one.",
+    "note": "Patients got the full regimen (160 mg then 80 mg, ≤2.67 mg/kg) under the 5 mg/kg/week NOAEL; injection-site reactions, the monkey's limiting toxicity, were mostly mild and stopped no one. Retrodiction: the margin was first public in the 2015 FDA review, after ixekizumab's own Phase 2 patient results (2012).",
     "short": "Cyno NOAEL margin held at clinical dose",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2016/125521s000lbl.pdf",
     "srcLabel": "Taltz label 2016",
@@ -215,7 +235,7 @@
     "confidence": "medium",
     "confidence_note": null,
     "reason": "NOAEL margin held; dose reached",
-    "judgement": "Paired by me: the review states the NOAEL and the maximum human dose (2.67 mg/kg) but does not set them against patient outcomes. Injection-site reactions occurred at 17% vs 3% placebo, below the monkey margin, but were not dose-limiting, so not scored as a toxicity block. No animal efficacy exposure target exists: the clinical dose came from the Phase 2 dose range, so only the tolerability end is scored (decision 16).",
+    "judgement": "Paired by me: the review states the NOAEL and the maximum human dose (2.67 mg/kg) but does not set them against patient outcomes. Injection-site reactions occurred at 17% vs 3% placebo, below the monkey margin, but were not dose-limiting, so not scored as a toxicity block. No animal efficacy exposure target exists: the clinical dose came from the Phase 2 dose range, so only the tolerability end is scored (decision 16). Re-scored retro under the post-dating rule (settles the checker's decision-16 question: the public date governs, not the filing date): dose is a drug claim, and ixekizumab's own Phase 2 dosing and tolerability (Leonardi 2012) were public before the NOAEL's first public statement.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 2,
@@ -229,7 +249,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "monkey NOAEL 5 mg/kg/week vs maximum human dose 2.67 mg/kg",
@@ -237,7 +257,11 @@
     "margin_stated": true,
     "population": "Unselected",
     "model_first_use_year": 2007,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "ixekizumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -274,10 +298,14 @@
     "model": "Cynomolgus monkey repeat-dose toxicology of izokibep (only cross-reactive species)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "izokibep",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -298,21 +326,25 @@
     "confidence": "medium",
     "confidence_note": "Patient side abstract-level (Europe PMC).",
     "year": 2023,
-    "status": "same",
+    "status": "retro",
     "modality": "protein",
-    "note": "Patients took up to 160 mg every 2 weeks (about 1 mg/kg/week, under the 6.5 mg/kg human-equivalent NOAEL); harms matched placebo apart from mild injection-site reactions.",
+    "note": "Patients took up to 160 mg every 2 weeks (about 1 mg/kg/week, under the 6.5 mg/kg human-equivalent NOAEL); harms matched placebo apart from mild injection-site reactions. Retrodiction: the monkey margin was first public in Klint 2023, after izokibep's own Phase 2 psoriasis result was announced as tolerable (press release 2020-06-15).",
     "short": "Margin held at the effective dose",
     "src": "https://doi.org/10.1093/bjd/ljad186",
     "srcLabel": "Gerdes 2023",
     "quote": "During the placebo-controlled period, AEs in the izokibep groups were similar to placebo except for mild injection site reactions.",
     "reason": "NOAEL margin held; dose reached",
-    "judgement": "Paired by me: the effective dose (80-160 mg every 2 weeks, Phase 2) sits about 6-fold under the monkey NOAEL's human equivalent per week. The monkey's limiting harm was an injection-site abscess; patients had only mild injection-site reactions, so no toxicity block. AFFIRM-35 (NCT03591887) has no registry results.",
+    "judgement": "Paired by me: the effective dose (80-160 mg every 2 weeks, Phase 2) sits about 6-fold under the monkey NOAEL's human equivalent per week. The monkey's limiting harm was an injection-site abscess; patients had only mild injection-site reactions, so no toxicity block. AFFIRM-35 (NCT03591887) has no registry results. Re-scored retro under the post-dating rule: dose is a drug claim, and Affibody's 2020-06-15 AFFIRM-35 top-line release ('Overall, ABY-035 treatment appeared tolerable and safe.') was public before the NOAEL's first public statement (Klint 2023).",
     "margin_stated": true,
     "model_id": "cyno-tox-izokibep",
     "model": "Cynomolgus monkey repeat-dose toxicology of izokibep (only cross-reactive species)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "izokibep",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -349,14 +381,18 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2007,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "ixekizumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2016,
-    "status": "same",
+    "status": "retro",
     "model": "Psoriasis patients' blood cells ex vivo (IL-17-secreting cells, sponsor report bTDR80)",
     "model_id": "pso-pbmc-il17-exvivo",
-    "note": "Ixekizumab Phase 2: PASI 75 at week 12 in 77-83% on 25-150 mg vs 7.7% placebo, the primary endpoint, as the IL-17 rationale predicted.",
+    "note": "Ixekizumab Phase 2: PASI 75 at week 12 in 77-83% on 25-150 mg vs 7.7% placebo, the primary endpoint, as the IL-17 rationale predicted. Retrodiction: the model data were first public in 2016, after IL-17A blockade had already worked in psoriasis patients (2012).",
     "short": "PASI 75 in ~80% vs 8%",
     "src": "https://doi.org/10.1056/NEJMoa1109997",
     "srcLabel": "Leonardi 2012",
@@ -364,7 +400,7 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level (PubMed).",
     "reason": "PASI matched IL-17 rationale",
-    "judgement": "A pairing: the trial (2012) precedes public release of the model data (FDA review posted 2016), so the entry is dated 2016, when both sides were public. Quote is the first 40 words of a longer sentence. Prediction is direction only. Leonardi registry results posted 2017-07-25.",
+    "judgement": "A pairing: the trial (2012) precedes public release of the model data (FDA review posted 2016), so the entry is dated 2016, when both sides were public. Quote is the first 40 words of a longer sentence. Prediction is direction only. Leonardi registry results posted 2017-07-25. Re-scored retro under the post-dating rule: efficacy is a target claim; Leonardi 2012 was public before the model's first public statement in the 2016 FDA review.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -378,7 +414,7 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "ex_vivo",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "PASI 75 at week 12",
@@ -401,7 +437,11 @@
     ],
     "population": "Unselected",
     "model_first_use_year": 2007,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "ixekizumab",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -436,10 +476,14 @@
     "model": "Mice injected with human IL-17A, plasma KC (CXCL1) readout",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2007
+    "model_first_use_year": 2007,
+    "drug": "izokibep",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -460,14 +504,14 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level (Europe PMC). Model side read in full (PMC10187109).",
     "year": 2023,
-    "status": "same",
-    "note": "Izokibep Phase 2 met its primary endpoint, PASI 90 at week 12: 71% on 80 mg vs 0% placebo. The predicted edge over ixekizumab was not tested head to head.",
+    "status": "retro",
+    "note": "Izokibep Phase 2 met its primary endpoint, PASI 90 at week 12: 71% on 80 mg vs 0% placebo. The predicted edge over ixekizumab was not tested head to head. Retrodiction: the izokibep mouse data were first public in 2023, after IL-17A antibodies had worked in psoriasis (2012) and after izokibep's own top-line result (press release 2020-06-15).",
     "short": "PASI 90 71% vs 0% placebo",
     "src": "https://doi.org/10.1093/bjd/ljad186",
     "srcLabel": "Gerdes 2023",
     "quote": "At week 12, PASI 90 response rates were 0%, 5%, 19%, 71% and 59% for the placebo, 2-, 20-, 80- and 160-mg izokibep groups, respectively.",
     "reason": "Primary endpoint met; superiority untested",
-    "judgement": "Scored on direction (izokibep works in psoriasis). The model's magnitude claim, 30-fold better than ixekizumab, has no head-to-head test; across trials izokibep's 71% PASI 90 is close to ixekizumab's Phase 3 rates, so the superiority looks over-stated, but that is my cross-trial reading and not scored. AFFIRM-35 (NCT03591887) has no registry results.",
+    "judgement": "Scored on direction (izokibep works in psoriasis). The model's magnitude claim, 30-fold better than ixekizumab, has no head-to-head test; across trials izokibep's 71% PASI 90 is close to ixekizumab's Phase 3 rates, so the superiority looks over-stated, but that is my cross-trial reading and not scored. AFFIRM-35 (NCT03591887) has no registry results. Re-scored retro under the post-dating rule: efficacy is a target claim and IL-17A neutralization had shown psoriasis efficacy since 2012 (ixekizumab), before the model's first public statement (Klint 2023). Affibody announced AFFIRM-35 top-line PASI 90 71% on 2020-06-15 (press release via FirstWord), also before the model side; year stays 2023, when both sides were public.",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
@@ -475,7 +519,11 @@
     "model": "Mice injected with human IL-17A, plasma KC (CXCL1) readout",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2007
+    "model_first_use_year": 2007,
+    "drug": "izokibep",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -512,7 +560,11 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "class",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2016,
@@ -548,7 +600,11 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "class",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

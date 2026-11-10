@@ -12,7 +12,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": "",
-   "note": "PNAS 2009 abstract (Europe PMC): quote verbatim (Cl- rendering aside). Ivacaftor is not a tile member, so untested opening proxy is right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Van Goor 2009 abstract (PMID 19846789): quote verbatim. Track member deutivacaftor, taken orally in VNZ/TEZ/D-IVA where patients were compared (opener otherwise); G551D/F508del donors biomarker_selected. Status unchanged."
   },
   {
    "cell": "engagement",
@@ -22,31 +23,34 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "",
-   "note": "J Med Chem 2018-01-10 abstract: quote verbatim. Untested is right. Gees 2018 (open access) shows the assay was YFP halide in recombinant cells and GLPG1837 was also run in primary CF lung cells; see missing."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Van der Plas 2018 abstract (PMID 29148763, online 2018-01-10) quote verbatim. GLPG1837 oral tablets (NCT02707562); class III biomarker_selected. Opener untested unchanged."
   },
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "",
-   "note": "J Cyst Fibros 2019-05-27 abstract: quote and 97.7/68.7/42.5 mmol/L verbatim; NCT02707562 first posted 2016-03-14, primary = safety, no results. Direction held; superiority over ivacaftor did not, so source_calls_it 'partial' would fit."
-  },
-  {
-   "cell": "engagement",
-   "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2024,
-   "rule": "6 (dating)",
-   "note": "Lancet Respir Med epub 2025-01-02, quote verbatim; same is right. But the 2024-12-20 label carries both sides (12.1 HBE; 14 sweat chloride -8.4 and -2.8 mmol/L), which the draft itself uses to date efficacy 4 as 2024. Same year for both.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same agreed. Rule 6: the 2024-12-20 label carries HBE data (12.1) and SKYLINE sweat chloride (-8.4, -2.8 mmol/L), as efficacy 4 is dated; year 2024, not 2025."
+   "proposed_status": "retro",
+   "proposed_year": 2018,
+   "rule": "6 (dating: earliest public date, press release counts)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Davies 2019 abstract (PMID 31147302) quote verbatim; retro, partial, oral GLPG1837, G551D right. But SAPHIRA1 topline was press-released 2016 (firmenpresse.de/pressrelease514179) and the model paper was online 2018-01-10, so the pairing was public 2018. registry_date 2016-03-14 is first-posted; no CT.gov results.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6: status retro agreed; year is earliest public date of the pairing, SAPHIRA1 sweat-chloride topline press release (2016) plus model paper online 2018-01-10, so year 2018, after the 2018 opener."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "6 (dating); retrodiction (target-level)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Keating 2025 abstract (PMID 39756424) quote verbatim. Label revised 12/2024 carries HBE (12.1) and SKYLINE sweat chloride -8.4/-2.8 (14): year 2024. D-IVA HBE public after ivacaftor/ETI patient results: retro. Oral, with vanzacaftor/tezacaftor, genotype-selected."
   },
   {
    "cell": "engagement",
@@ -55,8 +59,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "10",
-   "note": "J Cyst Fibros epub 2026-06-16, 62 PDIO lines, quote verbatim; run after SKYLINE so retro is right. Form: src and model_src are the same DOI with comparison_stated false (patient side should be Keating 2025), and the organoid track has no 2016 opening entry."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kroes 2026 abstract (PMID 42303492): quote verbatim. Track member deutivacaftor, taken orally in VNZ/TEZ/D-IVA where patients were compared (opener otherwise); rare-variant lines biomarker_selected. Status unchanged."
   },
   {
    "cell": "dose",
@@ -66,7 +71,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": "",
-   "note": "Same Van Goor 2009 abstract sentence; non-member proxy opening, untested is right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Van Goor 2009 abstract: quote found. Deutivacaftor (CTP-656/VX-561) is oral in every study compared; population_group biomarker_selected (G551D/F508del) right. Status unchanged."
   },
   {
    "cell": "dose",
@@ -76,7 +82,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": "",
-   "note": "Label section 12.1 sentence found verbatim in the bundle; review confirms 250 mg QD came from phase 2 dose-ranging vs IVA 150 mg Q12h. No model exposure target, so untested is the right call, not same."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Label bundle (Alyftrek 12/2024): quote found. Deutivacaftor (CTP-656/VX-561) is oral in every study compared; population_group biomarker_selected (gating-variant phase 2) right. Status unchanged."
   },
   {
    "cell": "efficacy",
@@ -86,7 +93,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": "",
-   "note": "Van Goor 2009 closing sentence verbatim in abstract; untested proxy opening is right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Van Goor 2009 abstract quote verbatim. HBE efficacy track member deutivacaftor, oral; G551D/F508del donors biomarker_selected. Opener untested unchanged."
   },
   {
    "cell": "efficacy",
@@ -95,8 +103,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "",
-   "note": "Registry confirms SAPHIRA1 primary outcomes were safety measures, so GLPG1837 cannot score efficacy; untested is right."
+   "rule": "untested_reason (rule 5)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim. GLPG1837 oral; SAPHIRA1 primary is safety, so no efficacy primary measured: not_measured fits first. Untested unchanged."
   },
   {
    "cell": "efficacy",
@@ -105,8 +114,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "",
-   "note": "Grand 2021 quote verbatim; Kazani 2021 abstract confirms LCI2.5 primary and class III/IV response; NCT02190604 results 2017-07-19, Part 3 primary LCI. Same holds for the primary. F508del-homozygous arm null after the model potentiated F508del: partial at least; see rule question 1."
+   "rule": "retrodiction (efficacy: same target, any drug)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Grand 2021 abstract (PMID 34028270, online 2021-05-24) quote verbatim. NCT02190604 results 2017-07-19, QBW251 oral capsules: model public after its own trial and ivacaftor, so retro, partial. F508del-homozygous null arm stays rule question 1."
   },
   {
    "cell": "efficacy",
@@ -115,8 +125,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "",
-   "note": "Quote verbatim in Integrated Review (bundle); 'greater activity for the triple ... compared to the mono- and dual-components' confirmed; NCT05033080/NCT05076149 results 2024-06-10/13. Same, direction only, is defensible; see rule question 3."
+   "rule": "retrodiction; efficacy combination rule",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote found in review bundle. NCT05033080/SKYLINE results 2024-06-10, oral FDC, ppFEV1 non-inferiority primary; partner and NI design in note. D-IVA HBE first public 2024 after ivacaftor and ETI worked: retro. Year 2024 via label."
   },
   {
    "cell": "efficacy",
@@ -125,8 +136,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "",
-   "note": "Quote verbatim; 42 subjects with 23 non-F508del variants, 259 FRT variants incl. 31 new, and the label's 10%-of-normal threshold all confirmed. Patient-level same at medium confidence is right. FRT track lacks its 2012 opening entry."
+   "rule": "retrodiction",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote found in review bundle. FRT data for the triple public with the 2024 label, after these genotypes had responded to ETI (subjects entered on it): retro. Oral, with vanzacaftor/tezacaftor, genotype-selected subgroup."
   },
   {
    "cell": "safety",
@@ -136,7 +148,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": "",
-   "note": "Quote verbatim; Table 46 and 'rates of AEs related to cataracts were similar between treatment arms' confirmed; juvenile tox bridged to NDA 203188. Sibling-drug dosing (product_in_model false) is allowed; low confidence fits a harm with unestablished causality."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Review quote found in bundle. Patients on oral VNZ/TEZ/D-IVA (SKYLINE), partner vanzacaftor/tezacaftor, genotype-selected; rats dosed ivacaftor (product_in_model false). Same unchanged."
   },
   {
    "cell": "engagement",
@@ -146,8 +159,8 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "PubMed 28785019 (Sci Rep, epub 2017-08-07) abstract: quote verbatim; HNE Ussing with VX-770 acute, lumacaftor/tezacaftor correctors, 8 patients, no tile member. Opening untested, patient level, right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Pranke 2017 abstract (PMID 28785019): quote verbatim. Track member deutivacaftor, taken orally in VNZ/TEZ/D-IVA where patients were compared (opener otherwise); genotype-defined donors biomarker_selected. Status unchanged."
   },
   {
    "cell": "engagement",
@@ -156,9 +169,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "PubMed 41765052 (Respir Med, epub 2026-02-27) abstract: quote verbatim; 45% vs 67% WT confirmed; SKYLINE result stated as background, so retro (decision 10). Both dish arms used IVA: the swap tested is the corrector, potentiator held constant; proxy flagged."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Borek-Dohalska 2026 abstract (PMID 41765052): quote verbatim. Track member deutivacaftor, taken orally in VNZ/TEZ/D-IVA where patients were compared (opener otherwise); F508del/F508del biomarker_selected. Status unchanged."
   },
   {
    "cell": "engagement",
@@ -167,9 +180,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "3, 11",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "PubMed 42243036 (J Cyst Fibros, epub 2026-06-04) abstract: quote verbatim. Full text paywalled (two scrapes); prospectivity rests on the title/abstract framing ('ex vivo prediction' then clinical assessment). n=1 compassionate use; same + partial is defensible at low confidence."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Capurro 2026 abstract (PMID 42243036): quote verbatim. Track member deutivacaftor, taken orally in VNZ/TEZ/D-IVA where patients were compared (opener otherwise); L467F;F508del biomarker_selected. Status unchanged."
   },
   {
    "cell": "efficacy",
@@ -179,8 +192,8 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Pranke 2017 abstract: quote verbatim; the 8 patients had ivacaftor, lumacaftor or tezacaftor, no member. No member-drug trial primary endpoint vs HNE; CHOICES ran on organoids. Untested through 2026 is right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Pranke 2017 abstract quote verbatim (sub tags aside). HNE efficacy track member deutivacaftor, oral; genotype-defined donors biomarker_selected. Untested/not_measured unchanged."
   },
   {
    "cell": "dose",
@@ -189,9 +202,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "14",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Bundle label 2024-12-20 section 12.3 table footnote, verbatim (line 1115). PBPK-only predictions for moderate CYP3A inhibitors/inducers and children 6-11; no observed comparison public at the label. Untested with regulatory reliance flagged is right."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Label bundle (12.3/7.1 PBPK): quote found. Deutivacaftor (CTP-656/VX-561) is oral in every study compared; population_group unselected (simulated healthy/children) right. Status unchanged."
   },
   {
    "cell": "dose",
@@ -200,9 +213,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Bundle Integrated Review 14.5.2, quote verbatim; Table 170 titled 'Used in Model Development and Validation, Study 006' (P/O 0.93/1.00/1.31/1.01), Table 171 AUCinf ratio 12.4 predicted vs 11.1 observed. Study 445-006 was healthy adults, May-Jul 2018, so reproduced known data: retro, within_2x, 2025 right."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Review bundle (Table 171 text): quote found. Deutivacaftor (CTP-656/VX-561) is oral in every study compared; population_group unselected (healthy adults, 445-006) right. Status unchanged."
   },
   {
    "cell": "dose",
@@ -212,8 +225,8 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "PubMed 28611092 (JPET, epub 2017-06-13) abstract: quote verbatim; CYP-mediated in-vitro stability (DV 3.8, DV/K 2.2), no human number predicted. Full text paywalled. Opening untested right; same-year model entry first (#30)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Harbeson 2017 abstract (PMID 28611092): quote found. Deutivacaftor (CTP-656/VX-561) is oral in every study compared; population_group unselected (in-vitro) right. Status unchanged."
   },
   {
    "cell": "dose",
@@ -222,57 +235,68 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "3, 4 (#91)",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Same abstract: quote verbatim; six healthy volunteers, 15.9-h half-life read by the authors as once daily. Healthy-volunteer PK admissible for dose (rule 3); regimen prediction counts (#91). In vitro preceded the crossover, so same, direction only, is right."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Harbeson 2017 abstract (PMID 28611092): quote found. Deutivacaftor (CTP-656/VX-561) is oral in every study compared; population_group unselected (six healthy volunteers) right. Status unchanged."
   },
   {
    "cell": "dose",
    "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6 (dating)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Review quote found in bundle. CT.gov NCT03911713 results first posted 2022-01-25 (VX-561 oral tablets vs IVA): year 2022 right. Same (once-daily regimen reached) unchanged; gating-variant patients biomarker_selected."
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Pharm Res abstract (PMID 42343021, 2026-06-24) quote verbatim (CLint subscript aside). Human clearance from oral ADME in healthy men: icenticaftor, oral, unselected right. Retro unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dekkers 2016 abstract (PMID 27334259) quote verbatim. Organoid efficacy track's member is dirocaftor (CHOICES, oral DIR/POS/NES); rare-variant donors biomarker_selected. Opener untested unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested_reason unsettled (tier 5 only)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "cf-europe.eu page re-opened: quote verbatim; adapts 2025-10-20 release. CT.gov NCT06468527: oral DIR/POS/NES (diponecaftor) vs placebo, no results. Drug dirocaftor, oral, combination_with right; strengthens true clears the repeated-untested lint; unsettled unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2022,
-   "rule": "7 (dating)",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Review section 2 quote verbatim (line 2059); 'predicted to provide exposure similar' at line 10556 is clinical PK, not the in-vitro model, as the draft says. Same holds. But the entry records registry_date 2022-01-25 (NCT03911713 results posted, confirmed on CT.gov), the earliest admissible source for the once-daily regimen matching IVA q12h on ppFEV1; rule 7 takes the earliest, so 2022 not 2024.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same agreed (dose rule: regimen reached, worked). Rule 6 (checker cited 7): paired comparison public once NCT03911713 results posted 2022-01-25, 250 mg QD matching IVA q12h; year 2022."
-  },
-  {
-   "cell": "dose",
-   "index": 8,
-   "verdict": "confirmed",
-   "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "PubMed 42343021 (Pharm Res, epub 2026-06-24) abstract: quote verbatim. Human clearance is from the healthy-male ADME study (doi 10.1124/dmd.124.001751, Europe PMC 2024-11-15); scaling published 19 months later and framed as validating the scalars, so retro is right. Full text not open."
-  },
-  {
-   "cell": "efficacy",
-   "index": 7,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "product_in_model false -> untested opening proxy",
-   "note": "Europe PMC PMID 27334259 (Sci Transl Med 2016-06-01, DOI matches): quote verbatim in abstract. Organoid FIS shown with ivacaftor/lumacaftor only, no tile member, so untested opening is right; prediction_level patient fits.",
-   "checked_by": "CHECKER_BRIEF / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 8,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "untested (unsettled): agreement claimed only at tier 5, neither model predictions nor trial results public at tier 1-3",
-   "note": "cf-europe.eu page (community adaptation of 2025-10-20 press release) carries the quote verbatim, -12% to +22% ppFEV1, organoid FIS pre-selection. Organoids run before the trial, so prospective, not retro. Untested/unsettled is right; '41 adults' is from the registry, not this page.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "proposed_status": "untested",
+   "proposed_year": 2021,
+   "rule": "track order: a track opens with untested (rule 6); seq orders ties by list position",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Grand 2021 abstract quote verbatim; icenticaftor oral, untested opener right. But it ties efficacy 3 (2021) on the same track and sits after it, so seq (year, then list order) makes this opener the latest; list it before efficacy 3.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: a track opens with untested; this icenticaftor opener ties efficacy 3 (2021) and must be listed before it, so efficacy 3 (retro) is the latest and no untested_reason applies."
   }
  ],
  "missing": [

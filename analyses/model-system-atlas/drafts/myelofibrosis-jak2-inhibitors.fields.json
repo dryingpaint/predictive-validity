@@ -1,0 +1,122 @@
+{
+ "tile": "myelofibrosis-jak2-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged; NS-018 and BMS-911543 comparisons moved out of the judgement and NS-018 patient_trial moved to their own tracks (appended entries 5-7)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged; note records the passing tolerability claim as this model's safety prediction, scored in appended safety 9"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to ilginatinib (NS-018 track, split from fedratinib), route oral; model_filed null -> false (never filed); status/year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "drug set to fedratinib, route oral, population_group unselected (field was absent); status/year unchanged"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "NS-018 (ilginatinib) track on the JAK2V617F BMT mouse: opener untested 2014 (Nakaya 2014), untested_reason unsettled; phase 1 primary was safety, Part 2 and phase 2b give no quotable primary result"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "BMS-911543 track on the JAK2V617F BMT mouse: opener untested 2015 (Pomicter 2015, 'limited activity')"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "BMS-911543 mouse track: contra 2019, retrodiction true; single-arm ruling on NCT01236352 primary IWG best overall response (3/42 PR, 21/42 CI in phase II; registry 2019-05-21; Tefferi 2023 62% spleen response); settles check rule question 1"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "BMS-911543 track on patient JAK2V617F+ progenitor colonies: opener untested 2011 (Purandare 2012, epub 2011-10-21)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "BMS-911543 progenitor track: retro 2019, retrodiction true (post-dated fedratinib's 2011 spleen responses); single-arm ruling on NCT01236352"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "Fedratinib on the JAK2V617F BMT mouse: Wernig 2008 'no apparent toxicities' scored as a safety prediction (passing tolerability ruling): same 2011, source_calls_it partial (Pardanani 2011 'well tolerated'; grade 3-4 diarrhoea 10%, cytopenias)"
+  }
+ ]
+}

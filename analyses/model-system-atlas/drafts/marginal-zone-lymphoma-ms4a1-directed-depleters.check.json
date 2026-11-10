@@ -16,11 +16,17 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Hutchings 2021 (PMID 34508654) abstract has the quote verbatim; paired comparison with Engelberts correctly flagged comparison_stated false. Proximal B-cell depletion in dosed B-NHL patients matches the monkey prediction."
+   "proposed_status": "retro",
+   "proposed_year": 2019,
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public",
+   "note": "Retro right (Maloney 1994 predates model); epcoritamab sc, other_disease right. Lugtenburg ASH 2019 abstract (doi 10.1182/blood-2019-121460, 2019-11-13) states cyno B-cell depletion and 'rapid, complete depletion of circulating B cells' in patients: year 2019, comparison_stated true.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status agreed: retro (retrodiction, rituximab depletion 1994 predates model). Rule 6 moves year to 2019: Lugtenburg ASH 2019 (DOI resolves) first stated monkey and patient B-cell depletion; comparison_stated true."
   },
   {
    "cell": "engagement",
@@ -66,11 +72,17 @@
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in PMC5412890 but concerns indolent NHL (FL+MZL), not MZL; MZL table (CR, CR, PR in phase 1) supports direction. Low confidence appropriate; better to quote the MZL table line. Superiority over rituximab untested."
+   "proposed_status": "retro",
+   "proposed_year": 2013,
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public",
+   "note": "Retro right (Conconi 2003 predates 2008 model); ublituximab iv, stage_or_line right. Deng ASCO 2013 (doi 10.1200/jco.2013.31.15_suppl.8575, 2013-05-20), same trial: '1 CR (rituximab refractory MZL); 2 PR's (1 MZL, 1 FL)'. Year 2013; registry_date 2012-07-24 missing.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status agreed: retro (Conconi 2003 predates 2008 ex-vivo model). Rule 6 moves year to 2013: Deng ASCO 2013 abstract (DOI resolves) first reported MZL responses on ublituximab; add registry_date 2012-07-24."
   },
   {
    "cell": "safety",
@@ -88,7 +100,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Hutchings abstract: CRS 59%, all grade 1-2, quote verbatim. imported_from MONDO:0018905 (DLBCL) reasonable for a 68% DLBCL mixed B-NHL trial. ICANS (~5-7% in FDA review) not predicted by monkeys; see rule question."
+   "note": "Blood 2019;134(S1):758 quote verbatim; abstract states SC cyno lower cytokines beside non-severe patient CRS: comparison_stated true, year 2019, not retro, same. epcoritamab sc, other_disease (14/18 DLBCL) right. srcLabel should be Lugtenburg 2019 (first author).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -103,17 +116,12 @@
   {
    "cell": "engagement",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "same",
-   "proposed_year": 2025,
-   "rule": "same: agreed in direction; partial agreement is same + source_calls_it partial; engagement asks only whether the readout moved in dosed humans",
-   "note": "Press-release quote verbatim; Oyasu 2023 confirms near-complete cyno depletion (surrogate IGM-2324). Patients did deplete B cells, only not deeply enough for the sponsor's bar: direction held, so same/partial, not contra. imported_from field also empty.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status rule 'same': agreement in direction, magnitude recorded; partial is same + source_calls_it partial. Patients depleted B cells, only less deeply than monkeys; engagement asks whether the readout moved. Set imported_from (RA/SLE)."
+   "status_supported": true,
+   "note": "GlobeNewswire 2025-01-09 quote verbatim; tier 5, trial_unreported true. Retro right (rituximab 1994 predates 2019 model); partial for shallower depletion. imvotamab iv, other_disease right. imported_from null though RA/SLE imported; set RA MONDO id.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -164,6 +172,21 @@
    "status_supported": true,
    "note": "Sinnollareddy 2026 abstract quote verbatim; 48 mg regimen reached and response plateau held in FL expansion patients the model had not seen. Some escalation patients overlap the fitting data; see rule question. same 2026, within_2x.",
    "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2010,
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public",
+   "note": "Sawas 2017 quote verbatim; retro, ublituximab iv, CLL other_disease right. But Cartron ASH 2010 (doi 10.1182/blood.V116.21.2447.2447, 2010-11-19) reported 'rapid, profound and sustained lymphocyte depletion' in 21 CLL pts on LFB-R603 (ublituximab): year 2010.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status agreed: retro (rituximab depletion predates 2008 model). Rule 6 moves year to 2010: Cartron ASH 2010 (DOI resolves) first reported lymphocyte depletion in CLL patients on LFB-R603 (ublituximab)."
   }
  ],
  "missing": [

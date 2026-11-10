@@ -49,7 +49,11 @@
     "src": "https://doi.org/10.1038/nature03443",
     "srcLabel": "Bryant 2005",
     "quote": "Here, we show that PARP inhibitors trigger gamma-H2AX and RAD51 foci formation.",
-    "judgement": "Opening entry. The system the class went into prostate patients on is the tissue-agnostic BRCA2-null model of Bryant and Farmer 2005 (doi 10.1038/nature03445); no prostate-specific BRCA2 model preceded TOPARP."
+    "judgement": "Opening entry. The system the class went into prostate patients on is the tissue-agnostic BRCA2-null model of Bryant and Farmer 2005 (doi 10.1038/nature03445); no prostate-specific BRCA2 model preceded TOPARP.",
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -85,7 +89,11 @@
     "quote": "pharmacodynamic studies confirmed PARP inhibition in surrogate samples (of peripheral-blood mononuclear cells and plucked eyebrow-hair follicles) and tumor tissue.",
     "readout_tier": "proximal",
     "reason": "PARP inhibition confirmed in patients",
-    "judgement": "Paired by me. The prostate trials (TOPARP, PROfound, MAGNITUDE, TALAPRO-2) reported no PAR pharmacodynamics, so the class-level PD read stays the 2009 phase 1."
+    "judgement": "Paired by me. The prostate trials (TOPARP, PROfound, MAGNITUDE, TALAPRO-2) reported no PAR pharmacodynamics, so the class-level PD read stays the 2009 phase 1.",
+    "drug": "olaparib",
+    "population_group": "other_disease",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": null,
@@ -120,7 +128,11 @@
     "srcLabel": "Schiewer 2012",
     "quote": "In vivo analyses show that PARP-1 activity is required for AR function in xenograft tumors, as well as tumor cell growth in vivo and generation and maintenance of castration resistance.",
     "reason": "No human AR-output PD read",
-    "judgement": "Schiewer 2012, Asim 2017 (doi 10.1038/s41467-017-00393-y) and Li 2017 are three model programs with one prediction - PARP inhibitor plus AR blockade works without HRR selection - so one track. No trial read AR output or PAR on the combination, so untested, not empty."
+    "judgement": "Schiewer 2012, Asim 2017 (doi 10.1038/s41467-017-00393-y) and Li 2017 are three model programs with one prediction - PARP inhibitor plus AR blockade works without HRR selection - so one track. No trial read AR output or PAR on the combination, so untested, not empty.",
+    "drug": "olaparib",
+    "population_group": "unselected",
+    "combination_with": null,
+    "route": "oral"
    }
   ],
   "dose": [
@@ -157,7 +169,11 @@
     "srcLabel": "Bryant 2005",
     "quote": "We exploit this requirement in order to kill BRCA2-deficient tumours by PARP inhibition alone.",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -194,7 +210,11 @@
     "blocked_by": null,
     "margin_stated": false,
     "reason": "Dose reached; BRCA2 responded",
-    "judgement": "Dose follows efficacy (reached, worked). Niraparib's combination dose fell to 200 mg (BEDIVERE RP2D, below the 300 mg monotherapy dose) and talazoparib's to 0.5 mg with enzalutamide, for tolerability and a P-gp interaction, but both regimens worked in BRCA patients (Chi 2023; Agarwal 2023), so no toxicity block under decision 16; the model stated no margin."
+    "judgement": "Dose follows efficacy (reached, worked). Niraparib's combination dose fell to 200 mg (BEDIVERE RP2D, below the 300 mg monotherapy dose) and talazoparib's to 0.5 mg with enzalutamide, for tolerability and a P-gp interaction, but both regimens worked in BRCA patients (Chi 2023; Agarwal 2023), so no toxicity block under decision 16; the model stated no margin.",
+    "drug": "olaparib",
+    "population_group": "unselected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": null,
@@ -229,7 +249,11 @@
     "srcLabel": "Schiewer 2012",
     "quote": "Finally, in a novel explant system of primary human tumors, targeting PARP-1 potently suppresses tumor cell proliferation.",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "olaparib",
+    "population_group": "unselected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -258,13 +282,18 @@
     "year": 2018,
     "status": "same",
     "model": "AR-PARP cross-talk: PARP-1 required for AR transcriptional output in LNCaP/C4-2/VCaP cells, castrate xenografts and primary-tumour explants (Schiewer 2012); ADT- or enzalutamide-induced HR deficiency plus olaparib in xenografts (Asim 2017, Li 2017)",
-    "note": "Full-dose olaparib 300 mg twice daily with abiraterone was given to unselected mCRPC and prolonged rPFS.",
+    "note": "Full-dose olaparib 300 mg twice daily with abiraterone was given to unselected mCRPC and prolonged rPFS. Combination design: olaparib with abiraterone, scored like any trial.",
     "short": "Full olaparib dose with abiraterone, rPFS gain",
     "src": "https://doi.org/10.1016/S1470-2045(18)30365-6",
     "srcLabel": "Clarke 2018",
     "quote": "Median rPFS was 13·8 months (95% CI 10·8-20·4) with olaparib and abiraterone and 8·2 months (5·5-9·7) with placebo and abiraterone (hazard ratio [HR] 0·65, 95% CI 0·44-0·97, p=0·034).",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "olaparib",
+    "population_group": "unselected",
+    "combination_with": "abiraterone",
+    "route": "oral",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -301,7 +330,11 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Simcyp olaparib PBPK model; capsule 400 mg BID; simulations for itraconazole, rifampin, fluconazole and efavirenz"
+    "population": "Simcyp olaparib PBPK model; capsule 400 mg BID; simulations for itraconazole, rifampin, fluconazole and efavirenz",
+    "drug": "olaparib",
+    "population_group": "other_disease",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "retrodiction": true,
@@ -339,7 +372,11 @@
     "magnitude": "off_by_2-5x",
     "magnitude_basis": "PBPK-predicted vs observed olaparib AUC ratio: itraconazole 2.75 vs 2.66, rifampin 0.32 vs 0.12 (2.7-fold)",
     "source_calls_it": "partial",
-    "population": "Olaparib capsule DDI studies with itraconazole and rifampin vs Simcyp PBPK simulations; ovarian-cancer NDA 206162, DDI dose rules carried to the mCRPC label"
+    "population": "Olaparib capsule DDI studies with itraconazole and rifampin vs Simcyp PBPK simulations; ovarian-cancer NDA 206162, DDI dose rules carried to the mCRPC label",
+    "drug": "olaparib",
+    "population_group": "other_disease",
+    "combination_with": null,
+    "route": "oral"
    }
   ],
   "efficacy": [
@@ -377,7 +414,11 @@
     "quote": "Furthermore, we show that BRCA2-deficient cells, as a result of their deficiency in homologous recombination, are acutely sensitive to PARP inhibitors, presumably because resultant collapsed replication forks are no longer repaired.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -406,7 +447,7 @@
     "year": 2015,
     "status": "same",
     "model": "BRCA2-null synthetic lethality: BRCA2-deficient V-C8 and ES cells and V-C8 xenografts killed by PARP inhibition alone (Bryant 2005, Farmer 2005); tissue-agnostic, no prostate line",
-    "note": "TOPARP-A primary composite response 33%; every BRCA2-loss patient (7 of 7) responded, the model's exact prediction.",
+    "note": "TOPARP-A primary composite response 33%; every BRCA2-loss patient (7 of 7) responded, the model's exact prediction. Single-arm design with no success bar: scored on its response primary against the model's predicted direction.",
     "short": "All 7 BRCA2-loss patients responded",
     "src": "https://doi.org/10.1056/NEJMoa1506859",
     "srcLabel": "Mateo 2015",
@@ -421,7 +462,11 @@
       "quote": "Objective antitumor activity was reported only in mutation carriers, all of whom had ovarian, breast, or prostate cancer and had received multiple treatment regimens."
      }
     ],
-    "judgement": "Paired by me: the trial cites the synthetic-lethality rationale but does not set model and patient data side by side. Fong 2009 had already seen a BRCA2 prostate responder in phase 1 (patient_trials)."
+    "judgement": "Paired by me: the trial cites the synthetic-lethality rationale but does not set model and patient data side by side. Fong 2009 had already seen a BRCA2 prostate responder in phase 1 (patient_trials).",
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -447,11 +492,11 @@
     "model_first_use_year": 2005,
     "prediction_level": "class",
     "model_id": "brca2-null-synthetic-lethality",
-    "year": 2020,
+    "year": 2019,
     "status": "same",
     "strengthens": true,
     "model": "BRCA2-null synthetic lethality: BRCA2-deficient V-C8 and ES cells and V-C8 xenografts killed by PARP inhibition alone (Bryant 2005, Farmer 2005); tissue-agnostic, no prostate line",
-    "note": "PROfound cohort A (BRCA1/2/ATM) rPFS 7.4 vs 3.6 months, HR 0.34; overall survival later confirmed (HR 0.69).",
+    "note": "PROfound cohort A (BRCA1/2/ATM) rPFS 7.4 vs 3.6 months, HR 0.34; overall survival later confirmed (HR 0.69). Rule 6: first public in the AstraZeneca press release of 2019-08-07 (primary met) and at ESMO 2019, before the 2020 paper.",
     "short": "PROfound rPFS HR 0.34 in BRCA/ATM",
     "src": "https://doi.org/10.1056/NEJMoa1911440",
     "srcLabel": "de Bono 2020",
@@ -466,7 +511,11 @@
       "quote": "The median duration of overall survival in cohort A was 19.1 months with olaparib and 14.7 months with control therapy (hazard ratio for death, 0.69; 95% confidence interval [CI], 0.50 to 0.97; P = 0.02)."
      }
     ],
-    "judgement": "Judgement call: cohort A is biomarker-selected on BRCA1/2/ATM rather than BRCA2 alone, so it is counted for the BRCA2 model with the ATM share flagged; outcome_tested positive from Hussain 2020 OS."
+    "judgement": "Judgement call: cohort A is biomarker-selected on BRCA1/2/ATM rather than BRCA2 alone, so it is counted for the BRCA2 model with the ATM share flagged; outcome_tested positive from Hussain 2020 OS.",
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -492,11 +541,11 @@
     "model_first_use_year": 2005,
     "prediction_level": "class",
     "model_id": "brca2-null-synthetic-lethality",
-    "year": 2023,
+    "year": 2022,
     "status": "same",
-    "strengthens": true,
+    "strengthens": false,
     "model": "BRCA2-null synthetic lethality: BRCA2-deficient V-C8 and ES cells and V-C8 xenografts killed by PARP inhibition alone (Bryant 2005, Farmer 2005); tissue-agnostic, no prostate line",
-    "note": "MAGNITUDE's first prespecified test, the BRCA-mutated subpopulation, met rPFS (HR 0.53); FDA isolated BRCA2 at HR 0.43.",
+    "note": "MAGNITUDE's first prespecified test, the BRCA-mutated subpopulation, met rPFS (HR 0.53); FDA isolated BRCA2 at HR 0.43. Combination design (niraparib + abiraterone/prednisone), scored on rPFS. Rule 6: BRCA1/2 HR 0.53 first public at ASCO GU 2022 (abstract 12, Feb 2022). Niraparib track; no niraparib opener appended (would break year order).",
     "short": "BRCA-selected primary met; BRCA2 HR 0.43",
     "src": "https://doi.org/10.1200/JCO.22.01649",
     "srcLabel": "Chi 2023",
@@ -512,7 +561,11 @@
      }
     ],
     "reason": "BRCA2 prediction held in three phase 3s",
-    "judgement": "outcome_tested negative_confounded: the BRCAm OS HR 0.79 (95% CI 0.55-1.12) was exploratory, unpowered and crossover-contaminated per the FDA review. TALAPRO-2 (patient_trials) is an all-comer primary and is not scored on this track."
+    "judgement": "outcome_tested negative_confounded: the BRCAm OS HR 0.79 (95% CI 0.55-1.12) was exploratory, unpowered and crossover-contaminated per the FDA review. TALAPRO-2 (patient_trials) is an all-comer primary and is not scored on this track.",
+    "drug": "niraparib",
+    "population_group": "biomarker_selected",
+    "combination_with": "abiraterone acetate + prednisone",
+    "route": "oral"
    },
    {
     "subjects": null,
@@ -549,7 +602,11 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [],
-    "judgement": "Separate track from the BRCA2 model: different system (siRNA cell panel), different prediction (which genotypes respond). Bajrami 2014 (doi 10.1158/0008-5472.CAN-13-2541) extended the same screen logic to CDK12, the gene the prostate trials later tested."
+    "judgement": "Separate track from the BRCA2 model: different system (siRNA cell panel), different prediction (which genotypes respond). Bajrami 2014 (doi 10.1158/0008-5472.CAN-13-2541) extended the same screen logic to CDK12, the gene the prostate trials later tested.",
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -578,25 +635,29 @@
     "year": 2015,
     "status": "same",
     "model": "HRR-gene-panel cell screen: siRNA/isogenic cell lines deficient in RAD51, RAD54, DSS1, RPA1, NBS1, ATR, ATM, CHK1, CHK2, FANCD2, FANCA or FANCC tested for KU0058948 sensitivity (McCabe 2006); CDK12 added by the Bajrami 2014 genome-wide screen",
-    "note": "TOPARP-A: 14 of 16 patients with DDR-gene defects (BRCA2, ATM, FANCA, CHEK2) responded, specificity 94%; the panel held at first.",
+    "note": "TOPARP-A: 14 of 16 patients with DDR-gene defects (BRCA2, ATM, FANCA, CHEK2) responded, specificity 94%; the panel held at first. Single-arm design with no success bar: scored on its response primary against the predicted direction.",
     "short": "DDR panel picked 14/16 responders",
     "src": "https://doi.org/10.1056/NEJMoa1506859",
     "srcLabel": "Mateo 2015",
     "quote": "Of these 16 patients, 14 (88%) had a response to olaparib, including all 7 patients with BRCA2 loss (4 with biallelic somatic loss, and 3 with germline mutations) and 4 of 5 with ATM aberrations.",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
-    "comparison_stated": false,
-    "source_tier": 1,
+    "comparison_stated": true,
+    "source_tier": 2,
     "model_src": "https://doi.org/10.1158/0008-5472.CAN-06-0140",
     "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "epub_year": 2021,
-    "print_year": 2021,
+    "epub_year": 2020,
+    "print_year": null,
     "registry_date": null,
     "model_filed": true,
     "product_in_model": false,
@@ -606,19 +667,19 @@
     "magnitude_basis": "Presence of the predicted HR deficiency (RAD51 foci loss) in ATM/CDK12-altered tumours: absent in most",
     "source_calls_it": "partial",
     "confidence": "medium",
-    "confidence_note": "Abstract-level. The source also reports ATM protein loss by IHC associating with better outcome, so the ATM miss is partial; CDK12 is the clean miss.",
+    "confidence_note": "Abstract-level. The source also reports ATM protein loss by IHC associating with better outcome, so the ATM miss is partial; CDK12 is the clean miss. Source moved to the EMA II/0036 EPAR (p.161, quote as pulled by the checker from the PDF); Carreira 2021 Cancer Discov (doi 10.1158/2159-8290.CD-21-0007) remains a later supporting source.",
     "population": "TOPARP-B, 98 mCRPC patients with DDR gene aberrations, olaparib 300 or 400 mg BID, NCT01682772 (no results posted)",
     "model_first_use_year": 2006,
     "prediction_level": "patient",
     "model_id": "hrr-gene-panel-cell-screen",
-    "year": 2021,
+    "year": 2020,
     "status": "contra",
     "model": "HRR-gene-panel cell screen: siRNA/isogenic cell lines deficient in RAD51, RAD54, DSS1, RPA1, NBS1, ATR, ATM, CHK1, CHK2, FANCD2, FANCA or FANCC tested for KU0058948 sensitivity (McCabe 2006); CDK12 added by the Bajrami 2014 genome-wide screen",
-    "note": "TOPARP-B biomarkers: most ATM- and CDK12-altered tumours kept RAD51 foci (HR-proficient); benefit concentrated in BRCA2 and biallelic PALB2.",
+    "note": "EMA (Sept 2020) restricted olaparib to BRCA1/2 mCRPC: PROfound non-BRCA HRR genes gained nothing. TOPARP-B (Carreira 2021) later showed ATM/CDK12 tumours kept RAD51 foci. Rule 6 dates it 2020.",
     "short": "ATM/CDK12 tumours HR-proficient, little benefit",
-    "src": "https://doi.org/10.1158/2159-8290.CD-21-0007",
-    "srcLabel": "Carreira 2021",
-    "quote": "RAD51 foci loss identified tumors with biallelic BRCA and PALB2 alterations while most ATM- and CDK12-altered APCs had higher RAD51 foci levels.",
+    "src": "https://www.ema.europa.eu/en/documents/variation-report/lynparza-h-c-3726-ii-0036-epar-assessment-report-variation_en.pdf",
+    "srcLabel": "EMA Lynparza II/0036 EPAR 2020",
+    "quote": "the available non-clinical data on sensitivity of tumour cells harbouring particular non-BRCA HRR gene alterations to olaparib are reported mainly for a gene/protein loss and do not appear to translate into clinical setting",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
@@ -629,7 +690,11 @@
       "quote": "The favourable benefit-risk profile supports the study of talazoparib in larger, randomised clinical trials, including in patients with non-BRCA alterations."
      }
     ],
-    "judgement": "Judgement call: the source calls the panel partially right (BRCA2, PALB2 yes; ATM, CDK12 mostly no). For a patient-level selection rule, picking genotypes that lack the predicted mechanism and do not respond is a wrong prediction, so contra rather than same+partial; the FDA 2023 entry makes the same point with a randomised comparison."
+    "judgement": "Judgement call: the source calls the panel partially right (BRCA2, PALB2 yes; ATM, CDK12 mostly no). For a patient-level selection rule, picking genotypes that lack the predicted mechanism and do not respond is a wrong prediction, so contra rather than same+partial; the FDA 2023 entry makes the same point with a randomised comparison.",
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -657,9 +722,9 @@
     "model_id": "hrr-gene-panel-cell-screen",
     "year": 2023,
     "status": "contra",
-    "strengthens": true,
+    "strengthens": false,
     "model": "HRR-gene-panel cell screen: siRNA/isogenic cell lines deficient in RAD51, RAD54, DSS1, RPA1, NBS1, ATR, ATM, CHK1, CHK2, FANCD2, FANCA or FANCC tested for KU0058948 sensitivity (McCabe 2006); CDK12 added by the Bajrami 2014 genome-wide screen",
-    "note": "MAGNITUDE non-BRCA HRR-mutant patients (ATM, CDK12, CHEK2 and others): rPFS HR 0.99; FDA confined Akeega to BRCA-mutated disease.",
+    "note": "MAGNITUDE non-BRCA HRR-mutant patients (ATM, CDK12, CHEK2 and others): rPFS HR 0.99; FDA confined Akeega to BRCA-mutated disease. Combination design (niraparib + abiraterone/prednisone). Niraparib track.",
     "short": "Non-BRCA HRR genes: rPFS HR 0.99",
     "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2024/216793Orig1s000MultidisciplineR.pdf",
     "srcLabel": "FDA Akeega review 2023",
@@ -675,7 +740,11 @@
      }
     ],
     "reason": "ATM/CDK12 rule failed; BRCA-only label",
-    "judgement": "Strengthens the 2021 contra with a randomised member-drug comparison. The olaparib (2020) and talazoparib (2023) US labels still list the full HRR panel on pooled cohorts; the FDA review quotes external data that benefit is substantially greater in BRCA-mutated tumours."
+    "judgement": "Strengthens the 2021 contra with a randomised member-drug comparison. The olaparib (2020) and talazoparib (2023) US labels still list the full HRR panel on pooled cohorts; the FDA review quotes external data that benefit is substantially greater in BRCA-mutated tumours.",
+    "drug": "niraparib",
+    "population_group": "biomarker_selected",
+    "combination_with": "abiraterone acetate + prednisone",
+    "route": "oral"
    },
    {
     "subjects": null,
@@ -704,7 +773,7 @@
     "year": 2020,
     "status": "untested",
     "model": "Isogenic ATM-deficient prostate cancer cell lines and xenograft-derived models (CRISPR ATM loss) tested for PARP-inhibitor versus ATR-inhibitor sensitivity (Rafiei 2020)",
-    "note": "Isogenic ATM loss did not sensitise prostate cells or models to PARP inhibition; predicts no benefit for ATM-mutant patients.",
+    "note": "Isogenic ATM loss did not sensitise prostate cells or models to PARP inhibition; predicts no benefit for ATM-mutant patients. Post-dates TOPARP-B ATM and PROfound (retrodiction); flag sits on entry 10.",
     "short": "ATM loss predicted not PARPi-sensitive",
     "src": "https://doi.org/10.1158/0008-5472.CAN-19-3126",
     "srcLabel": "Rafiei 2020",
@@ -712,7 +781,11 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [],
-    "judgement": "Own track: a different system (prostate-specific isogenic ATM loss) making the opposite prediction to the 2006 cell screen."
+    "judgement": "Own track: a different system (prostate-specific isogenic ATM loss) making the opposite prediction to the 2006 cell screen.",
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -722,35 +795,39 @@
     "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "epub_year": 2023,
-    "print_year": 2023,
-    "registry_date": "2023-10-04",
+    "epub_year": 2020,
+    "print_year": null,
+    "registry_date": null,
     "model_filed": false,
-    "product_in_model": false,
+    "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "Predicted absence of PARPi benefit on ATM loss vs non-BRCA HRRm rPFS HR 0.99",
     "source_calls_it": null,
     "confidence": "low",
-    "confidence_note": "The FDA subgroup pools ATM with other non-BRCA genes and is exploratory; Carreira 2021 found ATM protein loss by IHC associated with benefit, so the ATM picture is not uniform.",
+    "confidence_note": "The FDA subgroup pools ATM with other non-BRCA genes and is exploratory; Carreira 2021 found ATM protein loss by IHC associated with benefit, so the ATM picture is not uniform. Retrodiction ruling: Rafiei 2020 (received 2019-10-22) cites TOPARP-B ATM 11% and PROfound before its hypothesis. Patient side moved from the pooled non-BRCA FDA Akeega datum to the ATM-specific EMA II/0036 subgroup (p.113).",
     "population": "MAGNITUDE Cohort 1 non-BRCA HRR-mutant subgroup, NCT03748641",
     "model_first_use_year": 2020,
     "prediction_level": "patient",
     "model_id": "atm-null-prostate-isogenic",
-    "year": 2023,
-    "status": "same",
+    "year": 2020,
+    "status": "retro",
     "model": "Isogenic ATM-deficient prostate cancer cell lines and xenograft-derived models (CRISPR ATM loss) tested for PARP-inhibitor versus ATR-inhibitor sensitivity (Rafiei 2020)",
-    "note": "Non-BRCA HRR-mutant patients, ATM the largest gene among them, gained nothing from niraparib (rPFS HR 0.99); the negative prediction held.",
-    "short": "Predicted ATM non-response held",
-    "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2024/216793Orig1s000MultidisciplineR.pdf",
-    "srcLabel": "FDA Akeega review 2023",
-    "quote": "FDA conducted an exploratory analysis in the subgroup of 198 (47%) patients with non-BRCA HRR mutations. The rPFS hazard ratio was 0.99 (95% CI: 0.67, 1.44)",
+    "note": "PROfound ATM subgroup gained nothing from olaparib (rPFS HR 1.04), as the ATM-null models showed; Rafiei 2020 post-dates TOPARP-B and PROfound, so retro.",
+    "short": "ATM patients: no olaparib benefit, reproduced",
+    "src": "https://www.ema.europa.eu/en/documents/variation-report/lynparza-h-c-3726-ii-0036-epar-assessment-report-variation_en.pdf",
+    "srcLabel": "EMA Lynparza II/0036 EPAR 2020",
+    "quote": "No difference of median rPFS between olaparib (5.36 months, 95% CI 3.61, 6.21) compared to NHA (4.70 months, 95% CI 1.84, 7.26) in ATM subgroup was shown with HR = 1.04 (95% CI 0.61-1.87)",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
     "reason": "Negative ATM prediction held",
-    "judgement": "Scored same, not neg: neg is reserved for a drug that failed, and here the model foresaw a genotype, not a drug, failing. Low confidence because no gene-level ATM hazard ratio could be quoted from an abstract (PROfound's ATM subgroup sits in a supplement)."
+    "judgement": "Scored same, not neg: neg is reserved for a drug that failed, and here the model foresaw a genotype, not a drug, failing. Low confidence because no gene-level ATM hazard ratio could be quoted from an abstract (PROfound's ATM subgroup sits in a supplement).",
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": null,
@@ -795,7 +872,11 @@
      }
     ],
     "reason": "No member drug tested the rule",
-    "judgement": "Untested, not contra: NCI 9012 (Hussain 2018) stratified abiraterone with or without veliparib by ETS status and found no effect, but veliparib is outside the member list, so the comparison is noted and not scored (class rule). TOPARP-A's abstract does not report ERG status. NCI 9012 is NCT01576172; registry results posted 2020-11-12."
+    "judgement": "Untested, not contra: NCI 9012 (Hussain 2018) stratified abiraterone with or without veliparib by ETS status and found no effect, but veliparib is outside the member list, so the comparison is noted and not scored (class rule). TOPARP-A's abstract does not report ERG status. NCI 9012 is NCT01576172; registry results posted 2020-11-12.",
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": null,
@@ -831,7 +912,11 @@
     "quote": "Collectively, these studies identify novel functions of PARP-1 in promoting disease progression, and ultimately suggest that the dual functions of PARP-1 can be targeted in human prostate cancer to suppress tumor growth and progression to castration resistance.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "olaparib",
+    "population_group": "unselected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -860,14 +945,18 @@
     "year": 2018,
     "status": "same",
     "model": "AR-PARP cross-talk: PARP-1 required for AR transcriptional output in LNCaP/C4-2/VCaP cells, castrate xenografts and primary-tumour explants (Schiewer 2012); ADT- or enzalutamide-induced HR deficiency plus olaparib in xenografts (Asim 2017, Li 2017)",
-    "note": "Phase 2 in unselected mCRPC: olaparib plus abiraterone rPFS 13.8 vs 8.2 months, HR 0.65, regardless of HRR status.",
+    "note": "Phase 2 in unselected mCRPC: olaparib plus abiraterone rPFS 13.8 vs 8.2 months, HR 0.65, regardless of HRR status. Combination design (olaparib + abiraterone), scored on rPFS.",
     "short": "Unselected phase 2 rPFS HR 0.65",
     "src": "https://doi.org/10.1016/S1470-2045(18)30365-6",
     "srcLabel": "Clarke 2018",
     "quote": "Median rPFS was 13·8 months (95% CI 10·8-20·4) with olaparib and abiraterone and 8·2 months (5·5-9·7) with placebo and abiraterone (hazard ratio [HR] 0·65, 95% CI 0·44-0·97, p=0·034).",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "olaparib",
+    "population_group": "unselected",
+    "combination_with": "abiraterone",
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -893,11 +982,11 @@
     "model_first_use_year": 2012,
     "prediction_level": "class",
     "model_id": "ar-parp-crosstalk-xenografts",
-    "year": 2022,
+    "year": 2021,
     "status": "same",
     "strengthens": true,
     "model": "AR-PARP cross-talk: PARP-1 required for AR transcriptional output in LNCaP/C4-2/VCaP cells, castrate xenografts and primary-tumour explants (Schiewer 2012); ADT- or enzalutamide-induced HR deficiency plus olaparib in xenografts (Asim 2017, Li 2017)",
-    "note": "PROpel: olaparib plus abiraterone first-line, enrolled irrespective of HRR status, ibPFS 24.8 vs 16.6 months, HR 0.66.",
+    "note": "PROpel: olaparib plus abiraterone first-line, enrolled irrespective of HRR status, ibPFS 24.8 vs 16.6 months, HR 0.66. Combination design. Rule 6: primary met first public in the AstraZeneca press release of 2021-09-24.",
     "short": "PROpel all-comer ibPFS HR 0.66",
     "src": "https://doi.org/10.1056/EVIDoa2200043",
     "srcLabel": "Clarke 2022",
@@ -912,7 +1001,11 @@
       "quote": "Overall survival was not significantly different between treatment groups at this final prespecified analysis."
      }
     ],
-    "judgement": "Strengthens 2018. The abstract itself says preclinical studies suggested the combined effect, a citation not a side-by-side, so comparison_stated stays false."
+    "judgement": "Strengthens 2018. The abstract itself says preclinical studies suggested the combined effect, a citation not a side-by-side, so comparison_stated stays false.",
+    "drug": "olaparib",
+    "population_group": "unselected",
+    "combination_with": "abiraterone acetate + prednisone",
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -938,10 +1031,10 @@
     "model_first_use_year": 2012,
     "prediction_level": "class",
     "model_id": "ar-parp-crosstalk-xenografts",
-    "year": 2023,
+    "year": 2022,
     "status": "contra",
     "model": "AR-PARP cross-talk: PARP-1 required for AR transcriptional output in LNCaP/C4-2/VCaP cells, castrate xenografts and primary-tumour explants (Schiewer 2012); ADT- or enzalutamide-induced HR deficiency plus olaparib in xenografts (Asim 2017, Li 2017)",
-    "note": "MAGNITUDE Cohort 2 (no HRR mutation, n=233): niraparib plus abiraterone met prespecified futility; the HRR-independent synergy did not appear.",
+    "note": "MAGNITUDE Cohort 2 (no HRR mutation, n=233): niraparib plus abiraterone met prespecified futility; the HRR-independent synergy did not appear. Combination design; HRR-negative cohort stopped at a prespecified futility gate on a composite endpoint (HR 1.09), rPFS never formally tested. Rule 6: futility first public in the Janssen press release of 2022-02-15.",
     "short": "HRR-negative cohort stopped for futility",
     "src": "https://doi.org/10.1200/JCO.22.01649",
     "srcLabel": "Chi 2023",
@@ -957,7 +1050,11 @@
      }
     ],
     "reason": "Unselected synergy failed in HRR-negative cohort",
-    "judgement": "Judgement call: two of three all-comer phase 3s (PROpel, TALAPRO-2) met their primaries, but the only trial that prospectively enrolled an HRR-negative cohort and tested it on its own was stopped for futility, and the FDA confined all three combinations to BRCA- or HRR-mutated disease (Akeega review; 2023 Lynparza and Talzenna labels). Under the track rule one drug's contra beats another's same; endpoint_role poc_gate because the futility gate, not rPFS, decided the cohort."
+    "judgement": "Judgement call: two of three all-comer phase 3s (PROpel, TALAPRO-2) met their primaries, but the only trial that prospectively enrolled an HRR-negative cohort and tested it on its own was stopped for futility, and the FDA confined all three combinations to BRCA- or HRR-mutated disease (Akeega review; 2023 Lynparza and Talzenna labels). Under the track rule one drug's contra beats another's same; endpoint_role poc_gate because the futility gate, not rPFS, decided the cohort.",
+    "drug": "niraparib",
+    "population_group": "biomarker_selected",
+    "combination_with": "abiraterone acetate + prednisone",
+    "route": "oral"
    },
    {
     "retrodiction": false,
@@ -994,7 +1091,11 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "LuCaP PDX-derived organoid lines of three BRCA2 genotypes: wild-type, single-copy loss (LuCaP 86.2), two-copy loss (LuCaP 86.2CR)"
+    "population": "LuCaP PDX-derived organoid lines of three BRCA2 genotypes: wild-type, single-copy loss (LuCaP 86.2), two-copy loss (LuCaP 86.2CR)",
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "retrodiction": true,
@@ -1040,7 +1141,11 @@
       "doi": "10.1056/NEJMoa1506859",
       "quote": "Treatment with the PARP inhibitor olaparib in patients whose prostate cancers were no longer responding to standard treatments and who had defects in DNA-repair genes led to a high response rate."
      }
-    ]
+    ],
+    "drug": "olaparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    }
   ],
   "safety": [
@@ -1077,7 +1182,11 @@
     "srcLabel": "FDA Lynparza pharmacology review 2014",
     "quote": "In general toxicology studies, the major target organ of toxicity was the hematopoietic system, which is consistent with adverse reactions reported in patients treated with olaparib.",
     "imported_from": "MONDO:0008170",
-    "judgement": "No untested opener: the first public description of the toxicology and the first comparison are the same FDA document. Imported from ovarian cancer under the safety transfer rule; the prostate datum is the 2023 entry."
+    "judgement": "No untested opener: the first public description of the toxicology and the first comparison are the same FDA document. Imported from ovarian cancer under the safety transfer rule; the prostate datum is the 2023 entry.",
+    "drug": "olaparib",
+    "population_group": "other_disease",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -1105,7 +1214,7 @@
     "model_id": "parpi-rat-dog-toxicology",
     "year": 2017,
     "status": "same",
-    "strengthens": true,
+    "strengthens": false,
     "model": "Rat and dog repeat-dose toxicology of olaparib, niraparib and talazoparib: hematopoietic system the major target organ (FDA nonclinical reviews)",
     "note": "Niraparib: rat deaths from marrow toxicity, dog reticulocyte falls; FDA states the hematopoietic findings matched the frequent clinical events.",
     "short": "Niraparib marrow prediction held",
@@ -1113,7 +1222,11 @@
     "srcLabel": "FDA Zejula review 2017",
     "quote": "Thus, toxicological findings in the hematopoietic system in nonclinical studies were consistent with the frequent adverse events observed in clinical trials.",
     "imported_from": "MONDO:0008170",
-    "judgement": "Strengthens with a second member drug; talazoparib's 2018 review (NDA 211651) makes the same statement for a third."
+    "judgement": "Strengthens with a second member drug; talazoparib's 2018 review (NDA 211651) makes the same statement for a third.",
+    "drug": "niraparib",
+    "population_group": "other_disease",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
@@ -1150,7 +1263,11 @@
     "quote": "In MAGNITUDE Cohort 1, Grade 3-4 anemia, thrombocytopenia, and neutropenia were reported, respectively in 28%, 8%, and 7% of patients receiving AKEEGA.",
     "imported_from": null,
     "reason": "Rat/dog marrow prediction held in prostate",
-    "judgement": "Paired by me (the label does not cite the toxicology). MDS/AML (0.4% in TALAPRO-2) was not a stated animal prediction and no carcinogenicity study was run, so it is not askable silence and is not scored."
+    "judgement": "Paired by me (the label does not cite the toxicology). MDS/AML (0.4% in TALAPRO-2) was not a stated animal prediction and no carcinogenicity study was run, so it is not askable silence and is not scored.",
+    "drug": "niraparib",
+    "population_group": "biomarker_selected",
+    "combination_with": "abiraterone acetate + prednisone",
+    "route": "oral"
    },
    {
     "subjects": null,
@@ -1179,25 +1296,29 @@
     "year": 2020,
     "status": "untested",
     "model": "Pamiparib's own BRCA1-mutant MDA-MB-436 TNBC xenograft with tumour PAR pharmacodynamics and a mouse PK/PD model (head-to-head vs olaparib)",
-    "note": "Xenograft study reported no effect on body weight at any dose; haematology not measured; no patient comparison yet.",
+    "note": "Xenograft study reported no effect on body weight at any dose; haematology not measured; no patient comparison yet. A passing tolerability claim (no body-weight effect) is scored as this model's safety prediction.",
     "short": "No body-weight effect in mice",
     "src": "https://doi.org/10.1016/j.neo.2020.06.009",
     "srcLabel": "Xiong 2020",
     "quote": "all treatments had no effect on mouse body weight",
     "imported_from": null,
-    "judgement": "Opening entry carried over from the breast tile; tolerability stated on body weight alone, so the haematology question is askable silence."
+    "judgement": "Opening entry carried over from the breast tile; tolerability stated on body weight alone, so the haematology question is askable silence.",
+    "drug": "pamiparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    },
    {
     "subjects": "patients",
     "comparison_stated": false,
-    "source_tier": 1,
+    "source_tier": 3,
     "model_src": "https://doi.org/10.1016/j.neo.2020.06.009",
     "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "epub_year": 2022,
-    "print_year": 2023,
-    "registry_date": "2022-09-07",
+    "epub_year": 2021,
+    "print_year": null,
+    "registry_date": "2021-11-17",
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
@@ -1206,22 +1327,26 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "confidence": "low",
-    "confidence_note": "Abstract-level on the patient side; imported from the breast-cancer PARP tile (decision 12). Pamiparib has no prostate trial.",
-    "population": "gBRCA1/2-mutated HER2-negative advanced breast cancer (China), NCT03575065 (imported)",
+    "confidence_note": "Abstract-level on the patient side; imported from the breast-cancer PARP tile (decision 12). Pamiparib has no prostate trial. Registry results record (posted 2021-11-17), AE tables read via the ClinicalTrials.gov API; the quote is the registry table row. Earlier pamiparib patient data (Friedlander 2019, with tislelizumab) not assessed for a safety retrodiction.",
+    "population": "Phase 2 single-arm, 13 mCRPC patients with homologous recombination deficiency, pamiparib 60 mg BID, NCT03712930 (terminated)",
     "model_first_use_year": 2020,
     "prediction_level": "class",
     "model_id": "pamiparib-mda-mb-436-xenograft",
-    "year": 2022,
+    "year": 2021,
     "status": "contra",
     "model": "Pamiparib's own BRCA1-mutant MDA-MB-436 TNBC xenograft with tumour PAR pharmacodynamics and a mouse PK/PD model (head-to-head vs olaparib)",
-    "note": "Pamiparib monotherapy in gBRCA breast cancer: haematologic grade 3+ events common, 65% dose-reduced; the mouse that could show cytopenias reported none.",
-    "short": "Anaemia, neutropenia unforeseen by model",
-    "src": "https://doi.org/10.1007/s10549-022-06785-z",
-    "srcLabel": "Xu 2023",
-    "quote": "The most common treatment-emergent adverse events (TEAEs), treatment-related TEAEs, and ≥ Grade 3 TEAEs were hematologic (including anemia, decreased neutrophil count, and decreased white blood cell count).",
-    "imported_from": "MONDO:0007254",
+    "note": "Prostate patients on pamiparib: anaemia 7/13, plus serious febrile neutropenia, neutropenia and pancytopenia; the xenograft's 'well tolerated' claim missed marrow toxicity. Imported-harm ruling: prostate patients were measured, so they replace the breast import (Xu 2023, NCT03575065, 2022).",
+    "short": "Pamiparib prostate: anaemia 7/13, model silent",
+    "src": "https://clinicaltrials.gov/study/NCT03712930",
+    "srcLabel": "NCT03712930 results 2021",
+    "quote": "Anaemia: Pamiparib, 7/13 participants affected",
+    "imported_from": null,
     "reason": "Mouse missed PARPi cytopenias",
-    "judgement": "Imported safety comparison for a member drug (decision 12). A mouse can show marrow suppression and the study measured only body weight, so its 'no effect' is askable silence contradicted by patients; counted here, not in dose, because the model never predicted the harm (decision 16). Kept on its own track because the toxicology species did predict the harm."
+    "judgement": "Imported safety comparison for a member drug (decision 12). A mouse can show marrow suppression and the study measured only body weight, so its 'no effect' is askable silence contradicted by patients; counted here, not in dose, because the model never predicted the harm (decision 16). Kept on its own track because the toxicology species did predict the harm.",
+    "drug": "pamiparib",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "route": "oral"
    }
   ]
  }

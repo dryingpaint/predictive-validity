@@ -101,9 +101,10 @@
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Biedermann 2019 abstract quote verbatim (epub 2019-01-15). Couroux 2019 full text (PMC6588091) verified: 'in-field phase III trial has been initiated with the SQ tree SLIT-tablet (12 DU)' and 'generally well tolerated in all administered doses', so margin_stated under decision 16 holds. NCT02481856 start 2015-06 confirmed."
+   "note": "Couroux epub 2018-11-22 (12 DU optimal), Biedermann quote verbatim (epub 2019-01-15). ALK 2017-09-14 release not re-opened (site blocked); prior read stands. Same drug's own result first: retro, year 2018. Tree extract/sublingual/unselected match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -211,12 +212,12 @@
   {
    "cell": "safety",
    "index": 5,
-   "verdict": "unverified",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "4",
-   "note": "Patient side verbatim in the 2016 release; registry SAEs 11/467, 13/470 vs 9/470 confirmed. Model side (NCT01033344 record, no results) states no tolerability prediction; Patel 2013 full text is paywalled (Elsevier blocked) and its abstract has no safety sentence. Decision 4 (#58): null-null is same only if the model stated the null; needs a chamber source saying 'well tolerated' (Patel 2013 text or WAO J 2013 abstract PMC3643727)."
+   "note": "Hafner 2013 WAO J abstract (PMC3643727, WISC Dec 2012) read: no SAEs, no respiratory signal, 'Cat-PAD was safe and well tolerated'. Circassia PR 2016-06-20 quote verbatim. Same, year 2016; Cat-PAD/intradermal/unselected match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -232,9 +233,10 @@
    "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Biedermann 2019 abstract quote verbatim; Couroux 2019 full text carries 'local reactions in the oral cavity of mild-to-moderate severity'. Same holds on the 'other' strip; whether a route-specific local reaction is a platform harm (split) or on-target (pooled) is rule question 3."
+   "note": "Biedermann quote verbatim; Couroux abstract: well tolerated, mild-moderate oral local reactions, epub 2018-11-22. Tree tablet's own Phase 3 tolerability public 2017-09-14 (ALK PR, not re-opened): retro, 2018. Drug/route/population match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -273,8 +275,8 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "NCT01620762 results (2018-05-14) re-read: CS 1.04/1.00/1.05, SE 0.068, analysed n 417/414/414 (467/470/470 randomised). Paper submitted 2017-03-29, nine months after the 2016-06-20 failure, as a bystander-tolerance study not motivated by it: retrodiction false defensible; contra either way (decision 10)."
+   "note": "Europe PMC: Moldaver abstract epub 2018-06-12, after Circassia PR 2016-06-20 (field fail). Registry results 2018-05-14 match quote (1.04/1.00 vs 1.05). Efficacy post-dating: retrodiction; mouse protection fails to reproduce null: contra, 2018.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -323,6 +325,7 @@
   "Decision 16 on allergen products: the 'tolerated dose at or above the effective one' is a DU regimen with an AE profile from the same chamber study, not a NOAEL/MTD margin. Does margin_stated apply to any human dose-ranging study that reports tolerability, or only to a stated ceiling?",
   "models: Engagement on an ex-vivo patient-cell track: the opener (Worm 2011) read proliferation and cytokines, the dosed-patient entry (Rudulier 2019) read tetramer frequency and chemokine-receptor expression on the same Fel d 1-specific CD4+ T cells. Does 'the PD readout the model used' mean the opener's readout (then untested) or any readout on the model's cell system (same + partial as drafted)? And does one uncorrected P=0.047 among ~12 readouts, with the authors' 'may decrease', meet decision 11 partial or #90 unresolved?",
   "models: A retrodiction scored on a positive key secondary (SQ tree tablet, alder/hazel-season TCS) when the primary (birch-season TCS) was also met: decision 4 ties efficacy to the primary or a poc_gate secondary, but the ex-vivo cross-reactivity panel predicts only the cross-season effect. Admissible with endpoint_role null as drafted, or should the retro be scored on the primary via the birch-specific IgG4/IgE-blocking readouts?",
-  "models: A model paper submitted after a Phase 3 failure (Moldaver received 2017-03-29 vs 2016-06-20) whose experiments may have run before it and whose stated motivation is not the failed trial: decision 10 requires 'motivated by the patient result' for retrodiction: true. Is the flag decided by motivation (false, as drafted) or by run date when unknown? Status is contra either way."
+  "models: A model paper submitted after a Phase 3 failure (Moldaver received 2017-03-29 vs 2016-06-20) whose experiments may have run before it and whose stated motivation is not the failed trial: decision 10 requires 'motivated by the patient result' for retrodiction: true. Is the flag decided by motivation (false, as drafted) or by run date when unknown? Status is contra either way.",
+  "safety 5: Cat-PAD's own Phase 1/2 tolerability in patients (Worm 2011 JACI) predates the Dec 2012 chamber abstract; does an earlier same-drug tolerability result in a different study make a chamber safety claim a retrodiction?"
  ]
 }

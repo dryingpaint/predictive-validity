@@ -1,0 +1,71 @@
+{
+ "tile": "metabolic-dysfunction-associated-steatohepatitis-nr1h4-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same->retro, retrodiction true: rodent PD (Tully 2017) post-dates human FGF19/C4 movement under FXR agonism (OCA trials; Badman 2016 LJN452 abstract); engagement retrodiction counts any drug of the same target and action. drug tropifexor, route oral."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2021->2019 (rule 6: Gilead ATLAS topline press release 2019-12-16; model side public as Reiberger 2016 abstract, model_first_use_year 2018->2016, so prospective). Combination arms (firsocostat, selonsertib) scored under the combination ruling, also failed; status contra unchanged. drug cilofexor, route oral, stage_or_line."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same->retro, retrodiction true, year 2021->2019: Hernandez 2019 STAM/AMLN mice post-date FXR-agonist human ALT/steatosis falls (FLINT 2014, FLIGHT-FXR Part A/B interim 2018); earliest public date Novartis press release 2019-11-11 / AASLD 2019 abstract. model_first_use_year 2018->2019 to match the model_id; outcome_tested negative->null per checker. drug tropifexor."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "year 2023->2018, retrodiction true, status contra kept; src/quote Younis 2023 -> Papazyan 2018 (stated comparison with cilofexor's own 2016 volunteer lipid data); checker verdict safety 5. Track split: drug cilofexor (tropifexor stays on entries 3-4)."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "status same->retro, retrodiction true: HFD screen first public 2024, after cilofexor's own phase 1 safety data (safety retrodiction rule, same drug). drug cilofexor."
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug tropifexor, route oral (track fields)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug tropifexor, route oral (track fields)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug edp-305, route oral (track fields)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug tropifexor, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug tropifexor, route oral, stage_or_line"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug tropifexor, route oral; PXB model opener now the tropifexor track only"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug tropifexor, route oral, stage_or_line; no tropifexor HV retrodiction because this disease's patients (FLIGHT-FXR) measured lipids"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug cilofexor, route oral (track fields)"
+  }
+ ],
+ "added": []
+}

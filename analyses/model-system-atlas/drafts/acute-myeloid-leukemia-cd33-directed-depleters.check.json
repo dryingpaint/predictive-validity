@@ -9,92 +9,94 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 23770776 resolves; quote verbatim in the abstract (abstract-only, ashpublications PDF blocked). No patient PD comparison for the ADC exists; Stein 2018's PMC record is front matter only. untested stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 23770776 abstract re-read, quote verbatim. SGN-CD33A = tile member vadastuximab talirine, iv (NCT01902329). Opener, unselected right; untested stands. retrodiction false conflicts with the same-target ruling; no status effect."
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMC4900955/PMID 27013443 abstract re-read, quote verbatim. BI 836858 = tile's bi-836858, iv infusion (NCT01690624). untested 2016 opener stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 30034945 abstract re-read, quote verbatim. CD33-CAR NK-92 cells under tile member 'anti-CD33 CAR-NK cells', infused iv; R/R AML = stage_or_line. No PD readout; untested stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMC8883544 re-read, quote verbatim (data not shown). NCT01690624: bi-836858 iv monotherapy, R/R (stage_or_line). contra on the model's NK-activation readout stands; retrodiction arguably true (gemtuzumab engagement earlier), status unchanged."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abstract re-read, quote verbatim; states no human exposure, occupancy or regimen target. vadastuximab iv right. untested opener stands."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
    "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2022,
-   "rule": "engagement definition: 'did the PD readout the model used move in dosed humans?'; evidence rule 2 ('data not shown' scores at low confidence)",
-   "note": "Quote verbatim. Missed Vasu 2022 (doi:10.3324/haematol.2020.274118, tier 1): R/R trial terminated for 'lack of pharmacodynamic effects' despite marrow CD33 saturation at 40 mg. The model's NK-ADCC readout did not move; add a 2022 contra entry, readout downstream, low confidence.",
+   "proposed_status": "untested",
+   "rule": "Dose table row 1 and CHECKER_BRIEF step 3: no dose 'same' on a target the model never stated; whether the reached dose worked is efficacy's",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Stein 2018 abstract quote verbatim; drug/iv/stage_or_line right. Kung Sutherland 2013 states no human exposure/regimen target or margin; remissions are efficacy's. Propose untested (no_prediction), matching the draft's own untested_reason and the prior adjudication.",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 scores the readout the model used (NK activation/ADCC), not CD33 saturation. Vasu 2022: activated NK cells unchanged despite marrow saturation; 'data not shown', confidence low (decision 2). 2016 opener stays untested. 2021 contra entry added to the draft."
-  },
-  {
-   "cell": "engagement",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "PMID 30034945 resolves; quote verbatim (abstract). NCT02944162 first posted 2016-10-25, no results. No PD readout in the safety test; untested stands."
-  },
-  {
-   "cell": "engagement",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "adjudication / draft amendment",
-   "note": "Entry added on adjudication of engagement 2. Quote verified verbatim in the Europe PMC full text of PMC8883544 (DOI resolves); contra, readout_tier downstream, confidence low (data not shown), dated 2021."
-  },
-  {
-   "cell": "dose",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim (abstract-only). The abstract states no exposure or regimen target; full text could not be opened. untested opener stands."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "PMID 29196412 resolves; quote verbatim; epub 2017-12-01; NCT01902329 posted 2013-07-18, no results. 'Reached' is inferred from remissions, not from a model-stated regimen (rule question 1). margin_stated null is right: no monkey margin is retrievable."
+   "adjudication_note": "Dose table row 1: Kung Sutherland 2013 stated no exposure, occupancy or regimen target nor margin; remissions at 40 ug/kg are efficacy's question. Untested, no_prediction."
   },
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2022,
-   "rule": "dose table row 'reached, failed, abandoned' = contra with derived_from 'efficacy'",
-   "note": "Quote verbatim. Vasu 2022: CD33+ blasts undetectable in marrow in 5/7 patients at 40 mg 'suggesting target saturation', zero responses, programme terminated. By the reading the draft applied to the ADC this is 'reached, failed, abandoned'; hinges on rule question 1.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 scores whether the model's stated exposure/occupancy/regimen target was reached; Vasu 2016 stated none, so nothing was compared (decision 8 untested; silence is untested, #22/decision 16). Observed CD33 saturation is patient-side only; the failure is counted in efficacy 5."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Vasu 2016 abstract quote verbatim; no exposure target stated. bi-836858 iv right; untested stands. Opener's population words name the R/R phase 1 while population_group is unselected; minor."
   },
   {
    "cell": "dose",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Quote verbatim (abstract; the superscript renders as '109' in PubMed text). No model-derived cell-dose target; untested stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abstract re-read; PubMed renders the superscript as '5 x 109'. NK-92 product under the tile member, iv, R/R AML. No model-derived cell-dose target; untested stands."
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim (abstract-only). untested opener stands; model_first_use_year 2013 matches epub 2013-06-14."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abstract quote verbatim. vadastuximab iv right; untested opener stands (retrodiction false is inconsistent with efficacy 3's same-target ruling; no status effect)."
   },
   {
    "cell": "efficacy",
@@ -103,21 +105,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Stein 2018 quote verbatim; Fathi 2018 (PMID 30045838, epub 2018-07-25) 70% quote verbatim. Phase 1 primary was AEs with CR rate secondary; poc_gate is inferred from the CASCADE design, not a documented pre-specification. same stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT01902329 re-read: non-randomized, primaries incidence of AEs and lab abnormalities; SGN-CD33A iv. Stein 2018 quote verbatim, monotherapy, R/R or older untreated (stage_or_line). Single-arm ruling: untested stands."
   },
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "same",
-   "proposed_year": 2018,
-   "rule": "efficacy definition: 'the status still follows the surrogate'; status table: 'partial agreement is same + source_calls_it: partial'; evidence rule 3 (quote must support the status)",
-   "note": "Registry: co-primary OS and CRc; CRc 30/111 vs 26/128 trended the predicted way (OS range is IQR, not 95% CI). Status follows the surrogate and the quote is a safety statement: propose same + partial, outcome_tested negative_confounded. Rule question 2.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Decision 4: co-primary OS reversed, co-primary CRc not separated: primary endpoint failed (#53, #64). Decision 11 partial needs a matched pre-specified readout stated by the source; a non-significant CRc trend in a trial stopped early is neither. Keep outcome_tested negative_confounded."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT02785900 re-read: randomized, co-primaries OS (5.1 mo vs NA) and CRc (30 vs 26), 33A 10 mcg/kg iv push + aza/decitabine, newly diagnosed (stage_or_line); whyStopped quote verbatim. 2017 press-release date, retrodiction true, contra stand."
   },
   {
    "cell": "efficacy",
@@ -126,40 +125,38 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PMID 27013443 resolves; quote verbatim (abstract). untested opener stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Vasu 2016 abstract quote verbatim. bi-836858 iv right; untested opener stands."
   },
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2021,
-   "rule": "evidence rule 6 (year = earliest public date); rule 2 (higher-tier record of the same trial)",
-   "note": "Vasu 2022 (PMC8883544) re-opened: Crossref published-online 2021-12-02. Fields: year 2025->2021, epub_year 2021, print_year 2022, src doi:10.3324/haematol.2020.274118, source_tier 1, comparison_stated true (\"considered superior...in preclinical experiments...did not show clinical activity\"); \"No responses to treatment were detected\". contra stands. | superseded: corrected (): Registry zeros confirmed (quote is the truncated measure title). Missed the tier-1 report Vasu 2022, Haematologica 107:770 (doi:10.3324/haematol.2020.274118), which itself sets preclinical superiority beside absent clinical activity (comparison_stated true). Re-date to 2022 on it; contra stands.",
-   "checked_by": "CHECKER_BRIEF / models gaps",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Contra stands. Rule 6: earliest public date is Crossref published-online 2021-12-02 (verified), so year 2021, epub 2021, print 2022; rule 2: tier-1 Vasu paper supersedes the 2025 registry record as src."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMC8883544 re-read: endpoint sentence verbatim; primaries MTD and DLT (paper and NCT01690624), iv, R/R. Epub 2021-12-02. untested stands; not_measured fits loosely (response measured, but only as a secondary)."
   },
   {
    "cell": "efficacy",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim (abstract). Safety-only first-in-human test; untested stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abstract quote verbatim. Safety-only first-in-human test; drug, iv, stage_or_line right; untested stands."
   },
   {
    "cell": "safety",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim (abstract-only). The paper reports no toxicology; the cynomolgus package is unretrievable (confirmed: no FDA review, Stein 2018 PMC text is front matter only). untested stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abstract quote verbatim. No toxicology in the paper; vadastuximab iv right. untested stands."
   },
   {
    "cell": "safety",
@@ -168,7 +165,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Why-stopped quote verbatim; deaths 43/111 vs 34/128 confirmed. Coverage of the 2017-06-19 release says the deaths were not hepatotoxicity-related. A xenograft mouse cannot show myelosuppression-driven infection or SOS; untested with strengthens stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT02785900 whyStopped quote verbatim; iv push + HMA, combination_with right; newly diagnosed stage_or_line. Xenograft cannot show fatal infections; untested stands. Year could follow efficacy 3 to 2017 (press release); no status effect."
   },
   {
    "cell": "safety",
@@ -177,16 +175,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (abstract). Vasu 2022 adds a fatal intracranial haemorrhage and infusion reactions with nothing on the model side predicting or denying them; untested stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Vasu 2016 abstract quote verbatim. bi-836858 iv right; no in-vivo harm predicted ex vivo; untested stands. Population words name the R/R phase 1 while population_group is unselected; minor."
   },
   {
    "cell": "safety",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim (abstract); 'theoretically' marks an expectation, not a model prediction, and no NK-92 assay can show CRS. untested stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abstract quote verbatim; 'theoretically' is an expectation, not a model prediction. drug, iv, R/R right; untested stands."
   },
   {
    "cell": "engagement",
@@ -195,8 +195,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Registry quote verbatim (briefSummary); first posted 2021-08-17, start 2021-12-23, no results. Proxy-dated untested opener sets no status; a protocol-only record is not a tier-3 source under decision 2 (#125), so source_tier 3 is nominal."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT05008575 briefSummary re-read, quote verbatim; first posted 2021-08-17. Drug matches tile member, cells iv after Flu/Cy; opener unselected. untested stands."
   },
   {
    "cell": "engagement",
@@ -205,8 +205,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Full text (PMC11694373) read; quote verbatim. Model readouts were Molm13 lysis, IL-15 and xenograft BLI, none carried into patients; qPCR persistence has no model counterpart. untested stands (engagement 2 adjudication); strengthens on an untested entry follows safety 2's accepted use."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMC11694373 re-read, qPCR quote verbatim. Cord-blood CD33 CAR-NK iv, R/R AML (stage_or_line). Model measured only bioluminescence, no PD counterpart; untested stands."
   },
   {
    "cell": "dose",
@@ -215,38 +215,42 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Registry quote verbatim (briefSummary); first posted 2021-08-17, start 2021-12-23, no results. Proxy-dated untested opener sets no status; a protocol-only record is not a tier-3 source under decision 2 (#125), so source_tier 3 is nominal."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Registry briefSummary quote verbatim; drug and iv right; opener unselected. No cell-dose target from the model; untested stands."
   },
   {
    "cell": "dose",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim (dose-rationale sentence). Mice got 1 x 10^7 cells; no patient cell-dose target stated; 6 x 10^8 to 1.8 x 10^9 came from prior trials. untested follows the adjudicated dose 4 reading; the ADC reading of rule question 1 would make it same 2025."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMC11694373: quote is a verbatim fragment of the dose-rationale sentence. Doses came from prior CAR-T/CAR-NK trials, not the model; untested stands. drug, iv, stage_or_line right."
   },
   {
    "cell": "efficacy",
    "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "DOI resolves (PMID 28644774, epub 2017-06-23); quote verbatim (abstract). NCT00372593 first posted 2006-09-07 confirmed. Predictor built on gemtuzumab, a non-member: set aside, opener untested at patient level. Track stands only if rule question 6 admits it."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 28644774 abstract re-read (epub 2017-06-23); quote verbatim. Predictor built on non-member gemtuzumab: drug 'class', route not_applicable right; untested opener stands."
   },
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Full text (PMC6704571) read; quote verbatim, patient_trials quote near-verbatim (spacing). 30% CR/CRi in both genotypes, EFS/OS null, n=20. The 2017 predictor predates its member test, so contra not retro; magnitude null, low confidence right. poc_gate inferred as on efficacy 2."
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "Efficacy: scored on the primary endpoint; poc_gate only for a sponsor pre-specified secondary (single-arm ruling, as applied to efficacy 2)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMC6704571 quote verbatim; vadastuximab iv, mono+HMA pooled. But CR/CRi is not NCT01902329's primary (AEs) and no sponsor poc_gate exists; the draft's own poc_gate basis was withdrawn when efficacy 2 went untested. Propose untested.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy primary-endpoint and single-arm rules: NCT01902329's primary was adverse events with no sponsor pre-specified poc_gate; genotype-stratified CR/CRi is a secondary correlative readout, so not scored. Untested, not_measured."
   },
   {
    "cell": "efficacy",
@@ -255,18 +259,23 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Registry quote verbatim (briefSummary); first posted 2021-08-17, start 2021-12-23, no results. Proxy-dated untested opener sets no status; a protocol-only record is not a tier-3 source under decision 2 (#125), so source_tier 3 is nominal."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Registry quote verbatim; drug and iv right; unselected opener. untested stands (retrodiction false is inconsistent with efficacy 10's same-target ruling; no status effect)."
   },
   {
    "cell": "efficacy",
    "index": 10,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim; registry co-primary ORR at 4 weeks confirmed. Model preceded the trial designed on it (start 2021-12-23): same, not retro. EHA 2023 abstract (DOI 10.1097/01.HS9.0000968996.69938.df) has the 6/10 result but no model side, so 2025 stands under rule question 5 either way."
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2025,
+   "rule": "Evidence rule 6: year = earliest date the comparison (both sides) was public",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim; ORR a registered primary; drug, iv, R/R right; retro stands. EHA 2023 P522 (PMC10429699, re-read) reports 6/10 MRD-negative CR but no model data; the xenograft side was first public in Huang 2025 (accepted 2024-12-20). Year 2025.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction ruling and evidence rule 6: retro stands; EHA 2023 P522 (re-read) has patient data only, no model data, so the comparison was first public in Huang 2025. Year 2025."
   },
   {
    "cell": "safety",
@@ -275,18 +284,33 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Registry quote verbatim (briefSummary); first posted 2021-08-17, start 2021-12-23, no results. Proxy-dated untested opener sets no status; a protocol-only record is not a tier-3 source under decision 2 (#125), so source_tier 3 is nominal."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Registry quote verbatim; drug and iv right; unselected opener. untested stands."
   },
   {
    "cell": "safety",
    "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2025,
+   "rule": "Retrodiction rule (dose and safety: the same drug's own earlier patient result) and evidence rule 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (PMC11694373). The model's HSC-sparing data were first public in Huang 2025, after this product's own EHA 2023 P522 safety result (safe, one grade 2 CRS). Reproduced: retro, year 2025, as previously adjudicated.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (safety: same drug's own earlier patient result): EHA 2023 P522 reported this product's safety before the model's HSC-sparing data appeared (Huang 2025); reproduced, so retro, year 2025 (rule 6)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim. Model side stated limited HSC toxicity and no HSC damage in mice; patients' grade 3-4 marrow suppression (Flu/Cy-confounded) all resolved within a month without HSCT rescue; source calls it favourable. same, direction_only, low confidence stands; a strict reader could call it partial."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Added opener. PMC6704571 re-read; shared-epitope sentence verbatim. Opens the vadastuximab (iv) track of the genotype predictor in 2019 at its first use for that drug; untested, patient level, product_in_model false right."
   }
  ],
  "missing": [
@@ -302,6 +326,7 @@
   "3. Dating: when a tier-5 press release (CASCADE discontinuation, 2017-06-19) made the comparison public and a tier-3 registry record (2018-12-12) later set the status, is `year` the press-release date (evidence rule 6, earliest public date) or the date of the status-setting source?",
   "4. Engagement when direct target engagement is shown (CD33 saturation on blasts) but the PD readout the model used (NK degranulation / ADCC) did not move: score on the model's readout (contra) or record the direct tier as same?",
   "5. Are conference abstracts published in a journal supplement with a DOI (ASH abstracts in Blood) tier 1? If so the BI 836858 phase 1 result may have been public before the 2022 paper and the entry would re-date again.",
-  "6. Is a human genetic predictor (CD33 rs12459419) derived from a non-member drug's trials (gemtuzumab) and tested on a member (SGN-CD33A) a model system with its own patient-level track (model_kind human_genetic), or outside the class?"
+  "6. Is a human genetic predictor (CD33 rs12459419) derived from a non-member drug's trials (gemtuzumab) and tested on a member (SGN-CD33A) a model system with its own patient-level track (model_kind human_genetic), or outside the class?",
+  "Safety retrodiction when a model was run before the trial (the trial opened on it, 2021) but first published only after the same drug's own interim patient result (EHA 2023): does post-dating of publication alone make it retro, as the brief's wording says? Also: is a tile member spanning distinct products ('anti-CD33 CAR-NK cells': NK-92 line 2018 and cord-blood 2025) one drug for that rule?"
  ]
 }

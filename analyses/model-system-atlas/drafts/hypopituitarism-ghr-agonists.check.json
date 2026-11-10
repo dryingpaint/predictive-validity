@@ -10,25 +10,33 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Fares 2010 (PMID 20660071) abstract carries the quote verbatim; hypophysectomized rats, GH-LA = somatrogon. Opening untested is correct."
+   "note": "Fares 2010 (PMID 20660071, online 2010-07-21) quote verbatim in abstract; GH-LA (CTP-GH-CTP-CTP) is somatrogon, sc in hypophysectomized rats. Opener untested 2010; drug somatrogon, route sc, population_group unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Cleland 2012 (PMID 22678811, PMC3427893) abstract carries the quote verbatim. Opening untested on the monkey track is correct."
+   "note": "Cleland 2012 (PMID 22678811, epub 2012-06-07) quote verbatim; VRS-317 = somavaratan, sc in juvenile monkeys. Opener untested 2012; drug, route sc, population_group unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Yuen 2013 abstract quote verbatim; full text confirms dose selection cites monkey potency ('Because in vivo potency was enhanced in monkeys...'). IGF-1 rose in GHD adults: same, downstream."
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
+   "note": "Yuen quote verbatim; same, somavaratan sc, GHD adults, unselected correct. Versartis ENDO 2012 release (2012-06-25, firstwordpharma.com/story/1469105): 'IGF-1 was normalized in a dose-dependent manner', after Cleland epub 2012-06-07. Year 2013 -> 2012.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Evidence rule 6: ENDO 2012 release dates the comparison to 2012 (year change only); same in direction holds, both sides agree."
   },
   {
    "cell": "engagement",
@@ -38,11 +46,12 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "proposed_status": "same",
-   "proposed_year": 2016,
-   "rule": "Evidence rule 6 (dating: earliest date the comparison was public)",
-   "note": "Quote verbatim in Deal 2022 full text, status right, but somatrogon's IGF-1 rise in GHD patients was public earlier: Strasburger 2017 (doi 10.1530/eje-16-0748, epub 2016-12-08) adults; Zelinska 2017 (10.1210/jc.2016-3547) children vs daily r-hGH.",
+   "proposed_year": 2011,
+   "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
+   "note": "Strasburger quote verbatim (epub 2016-12-08); same, somatrogon sc, unselected correct. PROLOR release 2011-08-04 (fiercebiotech) on this adult phase 2: all cohorts 'achieved average IGF-1 levels that were within the normal range on 100% of the days'. Year 2016 -> 2011.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "same",
-   "adjudication_note": "Status agreed. Evidence rule 6: year is the earliest public comparison; Strasburger 2017 (epub 2016-12-08) showed somatrogon raising IGF-1 in GHD patients, so the entry dates 2016, not Deal 2022."
+   "adjudication_note": "Evidence rule 6: PROLOR 2011 adult phase 2 release dates it earlier (year only); rat model (2010) still precedes it, so same, not retro."
   },
   {
    "cell": "dose",
@@ -51,39 +60,48 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in Fares 2010 abstract; rat gives total-mg/kg comparison only, no human dose or margin. untested/no_prediction holds."
+   "note": "Fares 2010 abstract quote verbatim; rat doses given only as mg/kg vs Biotropin, no human dose, exposure or margin. untested/no_prediction holds; somatrogon, sc, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Cleland 2012 states the monkey dose equivalence and, in the discussion, 'administered up to monthly ... at total monthly doses lower than the typical daily rhGH': a stated regimen target."
+   "note": "Cleland 2012 abstract quote verbatim: 1.4 mg/kg monthly = 0.05 mg/kg/day rhGH, a stated regimen target. Opener untested 2012; somavaratan, sc, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Yuen 2013 quote verbatim. Doses picked from monkey potency; 0.8 mg/kg (~5 ug/kg/d equivalent) held adult IGF-1 in range ~3 weeks, so the equivalence held in adults (within 2x)."
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
+   "note": "Yuen quote verbatim; same within_2x, somavaratan sc, unselected correct. ENDO 2012 release (2012-06-25) already reported mean IGF-1 SDS above -1.5 for up to 3 weeks after 0.80 mg/kg, after Cleland epub 2012-06-07. Year 2013 -> 2012.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Evidence rule 6: ENDO 2012 release dates it (year only); IGF-1 target reached within 2x, dose same holds."
   },
   {
    "cell": "dose",
    "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
+   "quote_found": "abstract_only",
+   "status_supported": true,
    "proposed_status": "contra",
-   "proposed_year": 2015,
-   "rule": "Dose: whether the reached dose worked is efficacy's alone; a dose contra must rest on the model's own target (here IGF-1 potency), not the trial's failure",
-   "note": "Contra rests on VELOCITY height velocity, which is efficacy. The defensible dose contra is Moore 2016 (epub 2015-12-16): children needed 5.0 mg/kg monthly to normalize IGF-1 vs monkey-equivalent ~1-1.4 mg/kg; re-source there. Moore full text not read.",
+   "proposed_year": 2014,
+   "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
+   "note": "Moore abstract quote verbatim (epub 2015-12-16); contra on the IGF-1 target holds. ESPE 2014 abstract (2014-08-28, hrp0082p1-d3-171): phase 2a doses 'equivalent to daily rhGH of ~30 μg rhGH/kg per day' kept IGF-1 in range, ~3.5x monkey's 8.7. Year 2015 -> 2014.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "contra",
-   "adjudication_note": "Dose rule: VELOCITY growth miss is efficacy only. Contra holds on the model's own IGF-1 target: Moore 2016 (epub 2015-12-16) needed 5.0 mg/kg monthly to normalize pediatric IGF-1 vs monkey 1.4; target too low, off_by_2-5x."
+   "adjudication_note": "Evidence rule 6: ESPE 2014 abstract dates it (year only); children needed ~3.5x the monkey-stated IGF-1 potency dose, dose contra (target too low) holds."
   },
   {
    "cell": "efficacy",
@@ -92,7 +110,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Fares 2010 abstract quote verbatim. Same hypophysectomized-rat system as Cleland's rats for somavaratan, so one model_id is right."
+   "note": "Fares 2010 abstract quote verbatim; opener untested 2010. Drug somatrogon, route sc, population_group unselected correct for the rat system's first member drug.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -101,7 +120,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Moore 2016 abstract quote verbatim; epub 2015-12-16, so 2015 is right. Single-arm VISTA growth only in direction; same at medium confidence is fair."
+   "note": "Moore abstract quote verbatim (epub 2015-12-16); somavaratan sc, naive prepubertal GHD children, unselected. Dose-regimen comparison, no daily arm, scored in direction: same holds. ESPE 2014 gave only 3-month interim HV, so 2015 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -110,40 +130,48 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Press release quote verbatim (via fc.py); NCT02339090 results 2022-12-30 confirm LS diff -1.28, CI -2.32 to -0.24 vs -2.0. PP population met non-inferiority; ITT primary governs. Contra stands."
+   "note": "Press release (2017-09-21) quote verbatim; NCT02339090 results 2022-12-30 confirm the ITT non-inferiority miss. Somavaratan, sc, naive prepubertal GHD children (unselected) correct; contra 2017 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Cleland 2012 abstract quote verbatim; full text adds injection-site histology in monkeys. A stated negative prediction on a harm the species can show."
+   "note": "Cleland 2012 abstract quote verbatim: no lipoatrophy in pigs or monkeys, a harm these species can show. Opener untested 2012; somavaratan, sc, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Yuen 2013 full text has the quote verbatim and 'No injection site lipoatrophy was observed.' Single-dose test; medium confidence appropriate."
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
+   "note": "Yuen quote verbatim; same correct; drug, route, population_group correct. ENDO 2012 release (2012-06-25): 'no injection site lipoatrophy observed during treatment', after Cleland epub 2012-06-07. Year 2013 -> 2012.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Evidence rule 6: ENDO 2012 release reported no lipoatrophy (year only); predicted absence held, same."
   },
   {
    "cell": "engagement",
    "index": 5,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "untested",
    "proposed_year": 2016,
-   "rule": "DRAFTER_BRIEF rule 8: model_filed must be sourced from the regulator review, not left null",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged. | superseded: confirmed (CHECKER_BRIEF / models): Europe PMC PMID 26713839 (epub 2016-01-18); quote verbatim in abstract. Opening untested at 2016, class level, downstream IGF-1 readout correct.",
+   "rule": "Retrodiction: post-dating alone makes a model a retrodiction (engagement/efficacy: any earlier same-target patient result); reproduced -> retro, never same",
+   "note": "Hershkovitz quote verbatim (epub 2016-01-18); drug, route, population_group correct. Somatrogon's adult IGF-1 result was public 2011-08-04 (PROLOR), before the monkey data: retrodiction false -> true. Status untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Status unchanged; drafter and checker agree. Correction is field-only: rule 8 requires model_filed from the regulator review; Ngenla EPAR s.2.5.4 lists the rhesus PK/tox in the MAA, so model_filed true."
+   "adjudication_note": "Retrodiction rule: monkey data (2016-01) post-date somatrogon's adult IGF-1 result (2011) and somavaratan's (2012), so retrodiction true; opener stays untested."
   },
   {
    "cell": "engagement",
@@ -151,54 +179,74 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
+   "status_supported": false,
+   "proposed_status": "retro",
    "proposed_year": 2016,
-   "rule": "DRAFTER_BRIEF rule 8: model_filed must be sourced from the regulator review, not left null",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged. | superseded: confirmed (CHECKER_BRIEF / models): Strasburger PMID 27932411 epub 2016-12-08, quote verbatim; model_src abstract checked. Monkey PK/PD/tox was IND-enabling (pre-FIH 2009), so prospective despite 2016 publication; same, year 2016 stands.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status unchanged; drafter and checker agree. Correction is field-only: rule 8 requires model_filed from the regulator review; Ngenla EPAR s.2.5.4 lists the rhesus PK/tox in the MAA, so model_filed true."
+   "rule": "Retrodiction: post-dating alone makes a model a retrodiction (engagement/efficacy: any earlier same-target patient result); reproduced -> retro, never same",
+   "note": "Strasburger quote verbatim; drug, route, population_group correct. Monkey model first public 2016-01-18, after somatrogon's own adult IGF-1 result (PROLOR 2011-08-04); post-dating alone makes it a retrodiction that reproduced it: same -> retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: engagement counts any earlier same-target patient result; monkey data first public 2016-01, after somatrogon 2011 and somavaratan 2012 IGF-1 rises; reproduced, so retro, never same."
   },
   {
    "cell": "dose",
    "index": 5,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "untested",
    "proposed_year": 2016,
-   "rule": "DRAFTER_BRIEF rule 8: model_filed must be sourced from the regulator review, not left null",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged. | superseded: confirmed (CHECKER_BRIEF / models): Quote verbatim in Hershkovitz abstract; animal-to-animal exposure match states no human dose or margin. untested/no_prediction correct.",
+   "rule": "Retrodiction: post-dating alone makes a model a retrodiction (dose/safety: the same drug's own earlier patient result); reproduced -> retro, never same",
+   "note": "Quote verbatim; no human dose stated, untested/no_prediction holds; drug, route, population_group correct. Somatrogon's own adult PK/IGF-1 was public 2011-08-04, before the monkey data (2016-01-18): retrodiction false -> true.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Status unchanged; drafter and checker agree. Correction is field-only: rule 8 requires model_filed from the regulator review; Ngenla EPAR s.2.5.4 lists the rhesus PK/tox in the MAA, so model_filed true. untested_reason no_prediction kept (rule 5)."
+   "adjudication_note": "Retrodiction rule: monkey exposure data post-date somatrogon's own 2011 adult PK/IGF-1 result, retrodiction true; no human dose stated, untested/no_prediction holds."
   },
   {
    "cell": "safety",
    "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "untested",
    "proposed_year": 2016,
-   "rule": "DRAFTER_BRIEF rule 8: model_filed must be sourced from the regulator review, not left null",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged. | superseded: confirmed (CHECKER_BRIEF / models): Quote verbatim in abstract; general tolerability names no harm. untested/no_prediction correct; lipoatrophy case series not scored, consistent with existing rule question.",
+   "rule": "Retrodiction: post-dating alone makes a model a retrodiction (dose/safety: the same drug's own earlier patient result); reproduced -> retro, never same",
+   "note": "Quote verbatim; drug, route, population_group correct. PROLOR 2011-08-04 reported somatrogon's 'excellent safety and tolerability profile across all doses' in GHD adults, before the monkey tox was public (2016-01-18): retrodiction false -> true; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Status unchanged; drafter and checker agree. Correction is field-only: rule 8 requires model_filed from the regulator review; Ngenla EPAR s.2.5.4 lists the rhesus PK/tox in the MAA, so model_filed true."
+   "adjudication_note": "Retrodiction rule: monkey tox (public 2016-01) post-dates somatrogon's own adult tolerability result (PROLOR 2011); retrodiction true; opener stays untested."
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2016,
+   "rule": "Retrodiction: post-dating alone makes a model a retrodiction (dose/safety: the same drug's own earlier patient result); reproduced -> retro, never same",
+   "note": "Strasburger quote verbatim; drug, route, population_group correct. Monkey 'well tolerated' claim first public 2016-01-18, after somatrogon's own adult tolerability result (PROLOR 2011-08-04): a reproduced retrodiction, same -> retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (dose/safety): somatrogon's own adult tolerability was public 2011, before the monkey 'well tolerated' claim (2016-01); reproduced, so retro, never same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "EPAR text (pdftotext) has the 43.1% vs 25.2% ISR quote and 'no reports of lipoatrophy'; s.2.5.4.3/2.5.4.7: 26-week monkey injection-site infiltration only, alike with somatropin, reversible. Tox preceded phase 3, filed in MAA; same, partial holds."
+   "proposed_status": "same",
+   "proposed_year": 2015,
+   "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
+   "note": "Zelinska quote verbatim (PMID 28323965); somatrogon sc, prepubertal GHD, unselected, primary 12-month HV correct. OPKO release 2015-03-03 announced the 12-month HV data (6-month interim 2014-06-23 not the endpoint): year 2017 -> 2015.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Evidence rule 6: OPKO 2015-03-03 12-month HV release dates it (year only); primary growth result in predicted direction, same."
   }
  ],
  "missing": [
@@ -212,6 +260,7 @@
  "rule_questions": [
   "When a model states a potency equivalence (monkey 1.4 mg/kg/month = 0.05 mg/kg/day rhGH) and patients later need a higher dose on the same PD readout to normalize it, is that the 'reached, failed, higher dose worked' dose contra, or is the target 'reached' because dose-finding simply escalated?",
   "Does a post-marketing case series (tier 1, no denominator) count as a patient comparison that can make a safety contra for a negative animal prediction (lipoatrophy)?",
-  "For efficacy 3, a tier 5 press release is cited though a tier 3 registry record of the same trial exists; should src move to the registry (year then 2022) or stay on the earlier-public press release (2017)? The brief says the higher tier sets the status but dates by first public."
+  "For efficacy 3, a tier 5 press release is cited though a tier 3 registry record of the same trial exists; should src move to the registry (year then 2022) or stay on the earlier-public press release (2017)? The brief says the higher tier sets the status but dates by first public.",
+  "Engagement/efficacy retrodiction counts any earlier same-target patient result: daily somatropin raised IGF-1 and growth in GHD patients decades before Fares 2010 and Cleland 2012. Does that make every long-acting GHR-agonist model a retrodiction, or only results on the long-acting claim?"
  ]
 }

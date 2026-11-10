@@ -1,0 +1,35 @@
+{"tile": "acute-coronary-syndrome-apoa1-replacement-gene-therapy",
+ "changed": [
+  {"cell": "engagement", "index": 4, "what": "status same -> retro, retrodiction true: rHDL raised plasma efflux capacity in patients in 2009 (Patel 2009 JACC, PMID 19281927) before the 2013 rabbit CSL112 model; drug apolipoprotein a-i (CSL112), route iv"},
+  {"cell": "engagement", "index": 7, "what": "status same -> retro, retrodiction true: ex vivo CSL112 spiking (2013) post-dates Patel 2009 human efflux rise; drug apolipoprotein a-i (CSL112), route iv"},
+  {"cell": "efficacy", "index": 6, "what": "year 2017 -> 2016: MILANO-PILOT public at AHA / Cleveland Clinic release 2016-11-15 (rule 6, check adjudication); statin background is not a combination, contra stands; drug MDCO-216, iv"},
+  {"cell": "efficacy", "index": 9, "what": "year 2017 -> 2016: MILANO-PILOT public 2016-11-15 (rule 6, check adjudication); contra stands; drug MDCO-216, iv"},
+  {"cell": "efficacy", "index": 12, "what": "year 2017 -> 2016: MILANO-PILOT public 2016-11-15 (rule 6, check adjudication); contra stands; drug class (human genetic system), iv"},
+  {"cell": "engagement", "index": 1, "what": "drug MDCO-216, route iv"},
+  {"cell": "engagement", "index": 2, "what": "drug apolipoprotein a-i (CSL112), route iv"},
+  {"cell": "engagement", "index": 3, "what": "drug CER-001, route iv"},
+  {"cell": "engagement", "index": 5, "what": "drug MDCO-216, route iv; population healthy volunteers and stable CAD (other_disease); product_in_model false (Shah 2001 sibling formulation)"},
+  {"cell": "engagement", "index": 6, "what": "drug apolipoprotein a-i (CSL112), route iv"},
+  {"cell": "dose", "index": 1, "what": "drug MDCO-216, route iv"},
+  {"cell": "dose", "index": 2, "what": "drug apolipoprotein a-i (CSL112), route iv"},
+  {"cell": "dose", "index": 3, "what": "drug CER-001, route iv"},
+  {"cell": "dose", "index": 4, "what": "drug CER-001, route iv"},
+  {"cell": "dose", "index": 5, "what": "drug CER-001, route iv; population healthy volunteers (other_disease)"},
+  {"cell": "efficacy", "index": 1, "what": "drug MDCO-216, route iv"},
+  {"cell": "efficacy", "index": 2, "what": "drug MDCO-216 (ETC-216 scored as MDCO-216), route iv; product_in_model false (Shah 2001 sibling formulation)"},
+  {"cell": "efficacy", "index": 3, "what": "drug CER-001, route iv"},
+  {"cell": "efficacy", "index": 4, "what": "drug apolipoprotein a-i (CSL112), route iv"},
+  {"cell": "efficacy", "index": 5, "what": "drug CER-001, route iv"},
+  {"cell": "efficacy", "index": 7, "what": "drug MDCO-216, route iv"},
+  {"cell": "efficacy", "index": 8, "what": "drug MDCO-216 (ETC-216 scored as MDCO-216), route iv"},
+  {"cell": "efficacy", "index": 10, "what": "drug class (human genetic system), route iv"},
+  {"cell": "efficacy", "index": 11, "what": "drug class (human genetic system), route iv"},
+  {"cell": "efficacy", "index": 13, "what": "drug class (human genetic system), route iv"},
+  {"cell": "efficacy", "index": 14, "what": "drug class (human genetic system), route iv"},
+  {"cell": "safety", "index": 1, "what": "drug apolipoprotein a-i (CSL112), route iv"},
+  {"cell": "safety", "index": 2, "what": "drug MDCO-216, route iv; population_group other_disease to match imported_from (healthy volunteers and stable CAD)"}
+ ],
+ "added": [
+  {"cell": "engagement", "index": 8, "what": "mouse-cer001 track, CER-001 iv: retro 2015, Kootte 2015 J Lipid Res (doi:10.1194/jlr.M055665) CER-001 raised plasma efflux 44% in FHA patients; per check.json engagement 3 adjudication; retro because the 2013 mouse model post-dates Patel 2009"}
+ ]
+}

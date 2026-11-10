@@ -1,0 +1,122 @@
+{
+ "tile": "type-2-diabetes-mellitus-dpp4-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true (target rule: earlier DPP-4 inhibitor patient results, Ahren 2002/2004); drug teneligliptin, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true (target rule: earlier DPP-4 inhibitor patient results, Ahren 2002/2004); drug omarigliptin, route oral; strengthens dropped, first entry on the omarigliptin track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true (target rule: earlier DPP-4 inhibitor patient results, Ahren 2002/2004); drug teneligliptin, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true (target rule: earlier DPP-4 inhibitor patient results, Ahren 2002/2004); drug omarigliptin, route oral; strengthens dropped, first entry on the omarigliptin track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true (target rule: earlier DPP-4 inhibitor patient results, Ahren 2002/2004); drug cofrogliptin, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug teneligliptin, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug teneligliptin, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug teneligliptin, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug teneligliptin, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug omarigliptin, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug omarigliptin, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug teneligliptin, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug teneligliptin, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug teneligliptin, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug teneligliptin, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug omarigliptin, route oral; strengthens dropped (first entry on the rodent x omarigliptin track)"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug omarigliptin, route oral; strengthens dropped (first entry on the hERG x omarigliptin track)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug prusogliptin, route oral (Yeh 2021 is the prusogliptin/DBPR108 paper); stays the track opener, its passing tolerability claim is scored in appended safety 8"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "status same (strengthens) -> untested: became the nonrodent-pk-allometry x cofrogliptin opener at 2026; the same comparison is a retrodiction (cofrogliptin's own Phase 3 public first) and is already dose 7 (retro)"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "drug cofrogliptin, route oral; retro kept (rests on cofrogliptin's own earlier Phase 3)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "status same -> retro, retrodiction true: the C-QTc model was first public (Krishna 2016) after omarigliptin's own thorough-QT result (PMDA review 2015); drug omarigliptin, route oral"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "animal-tox-package x prusogliptin retro 2021: passing tolerability claim (Yeh 2021) scored against prusogliptin Phase 2 safety (doi:10.1080/03007995.2020.1761311), post-dated by it"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "herg-nonrodent-telemetry-qt x omarigliptin opener, untested 2015 (PMDA Marizev review)"
+  }
+ ]
+}

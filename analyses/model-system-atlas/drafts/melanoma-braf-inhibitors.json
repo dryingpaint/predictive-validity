@@ -50,7 +50,11 @@
     "source_calls_it": null,
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2008,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2010,
@@ -86,7 +90,11 @@
     "source_calls_it": "match",
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2008,
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -124,19 +132,23 @@
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2008,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
-    "year": 2010,
+    "year": 2009,
     "status": "same",
-    "model": "Colo205 BRAF V600E xenograft (exposure-response)",
-    "note": "Colo205 xenografts regressed only at AUC0-24 ~300 uM.h; patients below 300 uM.h had no tumour shrinkage, those above did, and the 960 mg BID MTD sat far above.",
+    "model": "BRAF V600E cell lines and xenografts",
+    "note": "Colo205 xenografts regressed only at AUC0-24 ~300 uM.h; patients below 300 uM.h had no tumour shrinkage, those above did, and the 960 mg BID MTD sat far above. Dated 2009: Flaherty ASCO 2009 abstract 9000 (doi:10.1200/jco.2009.27.15_suppl.9000, online 2009-05-20) reported AUC above the preclinical target from 240 mg BID, where regressions began.",
     "short": "Patient regressions began above xenograft AUC",
     "src": "https://doi.org/10.1038/nature09454",
     "srcLabel": "Bollag 2010",
     "quote": "Patients exposed to plasma levels of PLX4032 less than 300 μM·h experienced no measurable decreases in tumor burden.",
     "confidence": "high",
-    "confidence_note": "Quote from the PMC author manuscript (PMC2948082); model side in the same text: 'significant tumor regressions were observed at 20 mg/kg BID (AUC0-24 ~ 300 μM*hr)'.",
+    "confidence_note": "Quote from the PMC author manuscript (PMC2948082); model side in the same text: 'significant tumor regressions were observed at 20 mg/kg BID (AUC0-24 ~ 300 μM*hr)'. Model side is the Colo205 BRAF V600E xenograft exposure-response titration.",
     "judgement": "Target reached and the drug worked: same. Margin: the paper states toxicology 'confirmed a wide safety margin' and no skin histology change in rat or dog, and patients were dosed to 960 mg BID (AUC0-24 1741 uM.h) with DLTs only at 1120 mg, so margin_stated is true; the harm the margin did not foresee (cuSCC) is counted once, in safety. Model and patient thresholds are both ~300 uM.h, so within_2x.",
     "model_id": "braf-v600e-cell-xenograft",
     "prediction_level": "class",
@@ -160,20 +172,24 @@
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2008,
     "blocked_by": null,
-    "margin_stated": true
+    "margin_stated": true,
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2011,
     "status": "same",
     "strengthens": true,
-    "model": "Colo205 BRAF V600E xenograft (exposure-response)",
+    "model": "BRAF V600E cell lines and xenografts",
     "note": "FDA restated the comparison: first patient regressions at 240-360 mg BID, the cohorts that crossed the xenograft-derived 400 uM.h threshold.",
     "short": "FDA: regressions once xenograft AUC crossed",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2011/202429Orig1s000PharmR.pdf",
     "srcLabel": "FDA pharmacology review 2011",
     "quote": "Consistent with nonclinical findings, tumor regressions in PLX06-02 were first observed in the dose range of 240 mg b.i.d. to 360 mg b.i.d. that on average exceeded the target exposure threshold AUC0-24h of 400 µM*hr.",
     "confidence": "high",
-    "confidence_note": "Pharmacology review p.105, 'Correlation with Clinical Toxicity', NDA 202429, signed 2011-07-27/28.",
+    "confidence_note": "Pharmacology review p.105, 'Correlation with Clinical Toxicity', NDA 202429, signed 2011-07-27/28. Model side is the Colo205 BRAF V600E xenograft exposure-response titration.",
     "reason": "Xenograft AUC threshold held in patients",
     "judgement": "Regulator-stated version of the 2010 comparison, kept as a strengthening entry rather than a status change. The review attributes the >400 uM.h threshold to 'xenograft models' generally (sponsor interpretation) and does not name Colo205.",
     "model_id": "braf-v600e-cell-xenograft",
@@ -198,7 +214,11 @@
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2008,
     "blocked_by": null,
-    "margin_stated": true
+    "margin_stated": true,
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -237,13 +257,17 @@
     "model_first_use_year": 2008,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
-    "year": 2010,
+    "year": 2009,
     "status": "same",
     "model": "BRAF V600E cell lines and xenografts",
-    "note": "Xenografts regressed; 26 of 32 V600E patients at the 960 mg BID extension cohort responded; phase 3 OS/PFS (vemurafenib), PFS (dabrafenib, encorafenib) followed.",
+    "note": "Xenografts regressed; 26 of 32 V600E patients at the 960 mg BID extension cohort responded; phase 3 OS/PFS (vemurafenib), PFS (dabrafenib, encorafenib) followed. Single-arm extension cohort with no preset success bar: scored on its response-rate primary (81%, 26/32), a response as predicted. Dated 2009: Flaherty ASCO 2009 abstract 9000 (doi:10.1200/jco.2009.27.15_suppl.9000, online 2009-05-20) first reported 5 of 7 V600E patients regressing at >=240 mg BID.",
     "short": "81% responded, as xenografts predicted",
     "src": "https://doi.org/10.1038/nature09454",
     "srcLabel": "Bollag 2010",
@@ -272,7 +296,7 @@
     "source_calls_it": "match",
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2008,
-    "endpoint_role": "poc_gate",
+    "endpoint_role": "primary",
     "outcome_tested": "positive",
     "patient_trials": [
      {
@@ -293,14 +317,18 @@
       "doi": "10.1016/S1470-2045(18)30142-6",
       "quote": "Encorafenib plus binimetinib and encorafenib monotherapy showed favourable efficacy compared with vemurafenib."
      }
-    ]
+    ],
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
-    "year": 2010,
+    "year": 2009,
     "status": "same",
-    "strengthens": true,
-    "model": "BRAF V600E vs wild-type cell-line panel (patient selection)",
-    "note": "Cell-line selectivity predicted who responds: 11 of 16 V600E patients but 0 of 5 BRAF-wild-type patients above 300 uM.h responded, and enrolment was restricted to BRAF-mutant tumours.",
+    "strengthens": false,
+    "model": "BRAF V600E vs BRAF-wild-type cell-line panel (patient selection)",
+    "note": "Cell-line selectivity predicted who responds: 11 of 16 V600E patients but 0 of 5 BRAF-wild-type patients above 300 uM.h responded, and enrolment was restricted to BRAF-mutant tumours. Dated 2009: Flaherty ASCO 2009 abstract 9000 (doi:10.1200/jco.2009.27.15_suppl.9000, online 2009-05-20) already reported 5 of 7 V600E patients regressing while 2 BRAF-wild-type patients progressed.",
     "short": "V600E-only rule held: 0/5 wild-type responded",
     "src": "https://doi.org/10.1038/nature09454",
     "srcLabel": "Bollag 2010",
@@ -308,8 +336,8 @@
     "confidence": "high",
     "confidence_note": "Quote from the PMC author manuscript (PMC2948082): 'Ten patients with BRAF-mutant melanoma achieved ... partial responses ... and one patient had a complete response (CR); none of the patients with melanomas lacking BRAF mutations achieved PR.'",
     "reason": "Xenograft regression and V600E-only rule both held",
-    "judgement": "Patient-level prediction on the same system, kept on one track per the task's identity rule (same model, same cell-line panel; a different question). The panel's V600E-only sensitivity (Tsai 2008; Yang 2010: no activity in wild-type or non-V600 lines) became the enrolment rule for BRIM-2/3 and the label population; the 2013 Tafinlar label ties its wild-type limitation to 'in vitro experiments' on paradoxical activation, but no indication was granted on model data, so regulatory_reliance stays false.",
-    "model_id": "braf-v600e-cell-xenograft",
+    "judgement": "Patient-level prediction on the same system, kept on one track per the task's identity rule (same model, same cell-line panel; a different question). The panel's V600E-only sensitivity (Tsai 2008; Yang 2010: no activity in wild-type or non-V600 lines) became the enrolment rule for BRIM-2/3 and the label population; the 2013 Tafinlar label ties its wild-type limitation to 'in vitro experiments' on paradoxical activation, but no indication was granted on model data, so regulatory_reliance stays false. Moved to its own model_id because a model_id carries one prediction_level: this is the patient-level use of the panel; no opener appended, since a 2008 opener after this entry would break the track's year order (the cell already opens 2008 on the same cell lines).",
+    "model_id": "braf-mutant-vs-wildtype-cell-panel",
     "prediction_level": "patient",
     "subjects": "patients",
     "comparison_stated": true,
@@ -328,11 +356,15 @@
     "magnitude": "direction_only",
     "magnitude_basis": "response by BRAF genotype: 11/16 V600E vs 0/5 wild-type at AUC0-24 >300 uM.h",
     "source_calls_it": "match",
-    "population": "BRAF V600-mutant",
+    "population": "BRAF V600E and BRAF-wild-type metastatic melanoma",
     "model_first_use_year": 2008,
-    "endpoint_role": "poc_gate",
+    "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -370,7 +402,11 @@
     "quote": "We further demonstrate that a discontinuous dosing strategy, which exploits the fitness disadvantage displayed by drug-resistant cells in the absence of the drug, forestalls the onset of lethal drug-resistant disease.",
     "confidence": "high",
     "population": "BRAF V600-mutant",
-    "judgement": "Opened as its own track: a different system (resistant, drug-addicted xenografts) making a different prediction (a schedule prevents resistance) from the V600E-xenograft track. Prospective: S1320 was registered 18 months later to test it."
+    "judgement": "Opened as its own track: a different system (resistant, drug-addicted xenografts) making a different prediction (a schedule prevents resistance) from the V600E-xenograft track. Prospective: S1320 was registered 18 months later to test it.",
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -408,14 +444,18 @@
     "epub_year": 2020,
     "print_year": 2020,
     "registry_date": "2014-07-21",
-    "note": "SWOG S1320: intermittent dabrafenib+trametinib (3 weeks off, 5 on) shortened post-randomisation PFS, median 5.5 vs 9.0 months continuous; prediction reversed.",
+    "note": "SWOG S1320: intermittent dabrafenib+trametinib (3 weeks off, 5 on) shortened post-randomisation PFS, median 5.5 vs 9.0 months continuous; prediction reversed. Design: a member drug combined with trametinib (non-member) in both arms; scored on the trial's primary endpoint under the combination ruling.",
     "short": "S1320: intermittent dosing shortened PFS",
     "src": "https://doi.org/10.1038/s41591-020-1060-8",
     "srcLabel": "Algazi 2020",
     "quote": "Therefore, contrary to the initial hypothesis, intermittent dosing did not improve progression-free survival in patients.",
     "confidence": "high",
     "population": "BRAF V600-mutant, non-progressing after an 8-week continuous lead-in",
-    "judgement": "Placed in efficacy, not dose: the model's claim was a schedule-efficacy claim (longer control of resistance), the schedule was delivered exactly as randomised with no exposure target to reach, and the trial's primary endpoint (PFS) is what answered it; a derived dose entry would count the one failure twice. product_in_model false: the model used vemurafenib, the trial dabrafenib (a member) plus trametinib (not a member); both drugs were withheld in the intermittent arm, and the paper attributes the test to the BRAF-inhibitor drug-addiction hypothesis, so the contra is anchored on the class drug. Scored opposite: PFS moved against the prediction, not merely short of it."
+    "judgement": "Placed in efficacy, not dose: the model's claim was a schedule-efficacy claim (longer control of resistance), the schedule was delivered exactly as randomised with no exposure target to reach, and the trial's primary endpoint (PFS) is what answered it; a derived dose entry would count the one failure twice. product_in_model false: the model used vemurafenib, the trial dabrafenib (a member) plus trametinib (not a member); both drugs were withheld in the intermittent arm, and the paper attributes the test to the BRAF-inhibitor drug-addiction hypothesis, so the contra is anchored on the class drug. Scored opposite: PFS moved against the prediction, not merely short of it. Its own dabrafenib track; no dabrafenib opener appended, since the model never ran dabrafenib and an opener dated before 2020 after this entry would break the track's year order.",
+    "drug": "dabrafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "trametinib"
    },
    {
     "retrodiction": false,
@@ -448,20 +488,24 @@
     ],
     "year": 2021,
     "status": "contra",
-    "strengthens": true,
+    "strengthens": false,
     "comparison_stated": true,
     "product_in_model": true,
     "epub_year": 2021,
     "print_year": 2021,
     "registry_date": "2015-10-22",
-    "note": "Spanish phase 2 (NCT02583516): intermittent vemurafenib+cobimetinib missed its PFS primary; the model's own drug, same answer.",
+    "note": "Spanish phase 2 (NCT02583516): intermittent vemurafenib+cobimetinib missed its PFS primary; the model's own drug, same answer. Design: a member drug combined with cobimetinib (non-member) in both arms; scored on the trial's primary endpoint under the combination ruling.",
     "short": "Vemurafenib intermittent trial also missed PFS",
     "src": "https://doi.org/10.1038/s41467-021-26572-6",
     "srcLabel": "Gonzalez-Cao 2021",
     "quote": "Our results show that the antitumor activity of the experimental intermittent schedule of vemurafenib plus cobimetinib is not superior to the standard continuous schedule.",
     "confidence": "medium",
     "population": "BRAF V600-mutant, unresectable or metastatic",
-    "judgement": "Strengthens the contra with the model's own drug (vemurafenib) in patients; the paper itself sets the preclinical intermittent-dosing rationale against the result. Cobimetinib (non-member) was co-dosed, as in S1320."
+    "judgement": "Strengthens the contra with the model's own drug (vemurafenib) in patients; the paper itself sets the preclinical intermittent-dosing rationale against the result. Cobimetinib (non-member) was co-dosed, as in S1320. Now the first comparison on the vemurafenib track (tracks are per drug), so not a strengthening entry.",
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "cobimetinib"
    },
    {
     "retrodiction": false,
@@ -500,7 +544,7 @@
     "epub_year": 2023,
     "print_year": 2024,
     "registry_date": "2017-11-24",
-    "note": "INTERIM (NCT03352947): intermittent dabrafenib+trametinib inferior on every efficacy measure, median PFS 8.5 vs 10.7 months; composite PFS+QoL primary.",
+    "note": "INTERIM (NCT03352947): intermittent dabrafenib+trametinib inferior on every efficacy measure, median PFS 8.5 vs 10.7 months; composite PFS+QoL primary. Design: a member drug combined with trametinib (non-member) in both arms; scored on the trial's primary endpoint under the combination ruling. Composite PFS+QoL primary, both components favouring continuous dosing; the authors call it a failure.",
     "short": "INTERIM: intermittent arm inferior again",
     "src": "https://doi.org/10.1016/j.ejca.2023.113455",
     "srcLabel": "Dayimu 2023",
@@ -508,7 +552,11 @@
     "confidence": "medium",
     "population": "BRAF V600-mutant advanced melanoma",
     "reason": "Three trials: intermittent dosing never beat continuous",
-    "judgement": "Third randomised test, third miss; the paper states the comparison with the preclinical rationale. Composite primary (PFS and QoL) treated as the primary; both components favoured continuous dosing."
+    "judgement": "Third randomised test, third miss; the paper states the comparison with the preclinical rationale. Composite primary (PFS and QoL) treated as the primary; both components favoured continuous dosing.",
+    "drug": "dabrafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "trametinib"
    },
    {
     "retrodiction": false,
@@ -546,7 +594,11 @@
     "quote": "Here tumor biopsies from patients with stage III and IV metastatic malignant melanoma were transplanted into immunocompromised mice to generate PDXes.",
     "confidence": "high",
     "population": "Stage III-IV melanoma, unselected",
-    "judgement": "Opens the patient-level PDX track at its first use; the first comparison is in the same paper."
+    "judgement": "Opens the patient-level PDX track at its first use; the first comparison is in the same paper.",
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -577,14 +629,18 @@
     "epub_year": 2014,
     "print_year": 2014,
     "registry_date": null,
-    "note": "Case 2: nine PDX randomised to vemurafenib, trametinib or both reproduced the donor's responses to BRAF inhibitor, MEK inhibitor and combination.",
+    "note": "Case 2: nine PDX randomised to vemurafenib, trametinib or both reproduced the donor's responses to BRAF inhibitor, MEK inhibitor and combination. PDX arms included vemurafenib with trametinib; the drug scored is vemurafenib.",
     "short": "One patient's PDX matched her responses",
     "src": "https://doi.org/10.18632/oncotarget.2445",
     "srcLabel": "Einarsdottir 2014",
     "quote": "The responses of Case 2 (patient M120521A) to BRAF inhibitors, MEK inhibitors or both were similar in the patient and the PDX model",
     "confidence": "medium",
     "population": "BRAF V600-mutant metastatic melanoma (one patient)",
-    "judgement": "Scored retro, not same: the PDX arms were designed to mimic a trial the patient had already been through. Patient-level because the question is whether this patient's tumour responds. PDX dosed with vemurafenib, a member."
+    "judgement": "Scored retro, not same: the PDX arms were designed to mimic a trial the patient had already been through. Patient-level because the question is whether this patient's tumour responds. PDX dosed with vemurafenib, a member.",
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -623,7 +679,11 @@
     "quote": "Tumors did not respond to BRAF inhibition, but regressed on BRAF/MEKi combination followed by relapse",
     "confidence": "medium",
     "population": "BRAF V600E melanoma relapsing on vemurafenib (one patient); 47 BRAFi/MEKi-progressed patients",
-    "judgement": "Kept on the one PDX track: same system (melanoma PDX) and same prediction (the donor's response) as Einarsdottir, a different institution. Retro with partial: resistance reproduced, the initial partial response not; a checker could read the missed initial response as contra. The 57 progressed-patient PDX were maintained on BRAFi or BRAFi+MEKi diet matching each patient's therapy and stayed resistant, a second concordance in the same paper."
+    "judgement": "Kept on the one PDX track: same system (melanoma PDX) and same prediction (the donor's response) as Einarsdottir, a different institution. Retro with partial: resistance reproduced, the initial partial response not; a checker could read the missed initial response as contra. The 57 progressed-patient PDX were maintained on BRAFi or BRAFi+MEKi diet matching each patient's therapy and stayed resistant, a second concordance in the same paper.",
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -663,7 +723,11 @@
     "confidence": "medium",
     "population": "BRAF V600E/K metastatic melanoma, treatment-naive or progressed on BRAF/MEK inhibitors",
     "reason": "PDX reproduce donors' BRAFi sensitivity/resistance after the fact",
-    "judgement": "Retro: every donor's BRAF-inhibitor outcome was known before the PDX/PDXC were screened. No prospective, PDX-guided treatment decision for a member drug has been reported, so the track never leaves retro."
+    "judgement": "Retro: every donor's BRAF-inhibitor outcome was known before the PDX/PDXC were screened. No prospective, PDX-guided treatment decision for a member drug has been reported, so the track never leaves retro.",
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -701,7 +765,11 @@
     "srcLabel": "Gao 2015",
     "quote": "We demonstrate both the reproducibility and the clinical translatability of this approach by identifying associations between a genotype and drug response, and established mechanisms of resistance.",
     "confidence": "medium",
-    "judgement": "Own track: a population-level PDX screen (one mouse per model) giving a class response rate, distinct from the donor-matched PDX track (patient level) and from cell-line xenografts. Encorafenib, a member, was dosed (product_in_model true)."
+    "judgement": "Own track: a population-level PDX screen (one mouse per model) giving a class response rate, distinct from the donor-matched PDX track (patient level) and from cell-line xenografts. Encorafenib, a member, was dosed (product_in_model true).",
+    "drug": "encorafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -739,7 +807,11 @@
     "srcLabel": "Gao & Williams 2018",
     "quote": "the BRAF inhibitor encorafenib demonstrated an approximately 65% response rate among BRAF-mutant melanomas, which is consistent with the response rates reported for vemurafenib and dabrefinib in the clinic.",
     "confidence": "medium",
-    "judgement": "Retro: the vemurafenib (2011-12) and dabrafenib (2012-13) response rates were public before the 2015 PCT, so the match is a reproduction of known results. Class level: the comparison is a population response rate. No prospective comparison with encorafenib's own patient response rate (COLUMBUS, PFS primary) was stated, so none is scored."
+    "judgement": "Retro: the vemurafenib (2011-12) and dabrafenib (2012-13) response rates were public before the 2015 PCT, so the match is a reproduction of known results. Class level: the comparison is a population response rate. No prospective comparison with encorafenib's own patient response rate (COLUMBUS, PFS primary) was stated, so none is scored. Kept on the encorafenib track: the PDX were dosed with encorafenib and the efficacy post-dating rule counts any member's earlier response rate; the vemurafenib and dabrafenib rates the authors cite are those earlier results.",
+    "drug": "encorafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -776,7 +848,11 @@
     "source_calls_it": null,
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2006,
-    "imported_from": null
+    "imported_from": null,
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2010,
@@ -811,20 +887,24 @@
     "source_calls_it": null,
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2006,
-    "imported_from": null
+    "imported_from": null,
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2010,
     "status": "retro",
-    "model": "BRAF-wild-type / RAS-mutant cells and Kras-driven mice (paradoxical RAF activation)",
+    "model": "RAS-mutant cells, keratinocytes and mouse skin (paradoxical RAF activation)",
     "note": "After the 2009 clinic reports, RAS-mutant cells and kinase-dead Braf/Kras mice showed BRAF-selective drugs drive CRAF-MEK-ERK and tumour growth, offered as the explanation of patient cuSCC.",
     "short": "Paradoxical activation explains cuSCC, post hoc",
     "src": "https://doi.org/10.1016/j.cell.2009.12.040",
     "srcLabel": "Heidorn 2010",
     "quote": "Intriguingly, 10%–15% of patients treated with BRAF-selective drugs develop squamous cell carcinoma (SCC) (Flaherty et al., 2009; Schwartz et al., 2009).",
     "confidence": "medium",
-    "confidence_note": "Quote from the PMC author manuscript (PMC2872605), discussion; the paper continues 'raising the intriguing possibility that the BRAF-selective drugs act as tumor promoters in premalignant skin cells harboring existing mutations in RAS'. Model drugs were PLX4720/885-A, not a member.",
-    "judgement": "Retrodiction: the cuSCC were reported at ASCO 2009 (Flaherty 2009; Schwartz 2009) before Heidorn (Cell, Jan 2010), Hatzivassiliou (doi:10.1038/nature08833) and Poulikakos (doi:10.1038/nature08902, both Feb 2010) published the dimer-transactivation model; Heidorn is cited because it alone names the patient SCC beside its data. Reproduced the direction of the human harm, so retro, not same; the source offers it as a possibility, so source_calls_it is unresolved. A third track: a different system (RAS-mutant, BRAF-wild-type cells) with a different prediction from the V600E xenografts and the tox package. model_filed true because the 2013 Tafinlar label (section 5.2) and the 2018 Braftovi review cite the in-vitro paradoxical activation; the 2011 vemurafenib NDA instead filed a post-hoc A431 xenograft (own track).",
+    "confidence_note": "Quote from the PMC author manuscript (PMC2872605), discussion; the paper continues 'raising the intriguing possibility that the BRAF-selective drugs act as tumor promoters in premalignant skin cells harboring existing mutations in RAS'. Model drugs were PLX4720/885-A, not a member. System used here: BRAF-wild-type / RAS-mutant cells and Kras-driven mice (paradoxical RAF activation).",
+    "judgement": "Retrodiction: the cuSCC were reported at ASCO 2009 (Flaherty 2009; Schwartz 2009) before Heidorn (Cell, Jan 2010), Hatzivassiliou (doi:10.1038/nature08833) and Poulikakos (doi:10.1038/nature08902, both Feb 2010) published the dimer-transactivation model; Heidorn is cited because it alone names the patient SCC beside its data. Reproduced the direction of the human harm, so retro, not same; the source offers it as a possibility, so source_calls_it is unresolved. A third track: a different system (RAS-mutant, BRAF-wild-type cells) with a different prediction from the V600E xenografts and the tox package. model_filed true because the 2013 Tafinlar label (section 5.2) and the 2018 Braftovi review cite the in-vitro paradoxical activation; the 2011 vemurafenib NDA instead filed a post-hoc A431 xenograft (own track). Dose/safety retrodiction rule: Flaherty 2009 reported vemurafenib's own cuSCC, so the retrodiction rests on the same drug and stays.",
     "model_id": "paradoxical-mapk-ras-mutant",
     "prediction_level": "class",
     "subjects": "patients",
@@ -846,7 +926,11 @@
     "source_calls_it": "unresolved",
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2010,
-    "imported_from": null
+    "imported_from": null,
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2011,
@@ -883,7 +967,11 @@
     "source_calls_it": "miss",
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2006,
-    "imported_from": null
+    "imported_from": null,
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2011,
@@ -919,19 +1007,23 @@
     "source_calls_it": "unresolved",
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2011,
-    "imported_from": null
+    "imported_from": null,
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2012,
     "status": "same",
-    "model": "HRAS Q61L keratinocytes and DMBA/TPA mouse skin (paradoxical RAF activation)",
+    "model": "RAS-mutant cells, keratinocytes and mouse skin (paradoxical RAF activation)",
     "note": "First prospective test: 60% (21/35) of patient cuSCC/keratoacanthomas carried RAS mutations (HRAS Q61L); PLX4720 accelerated HRAS-mutant mouse lesions and a MEK inhibitor blocked it.",
     "short": "Patient cuSCC are RAS-mutant, as predicted",
     "src": "https://doi.org/10.1056/NEJMoa1105358",
     "srcLabel": "Su 2012",
     "quote": "The molecular mechanism is consistent with the paradoxical activation of MAPK signaling and leads to accelerated growth of these lesions.",
     "confidence": "high",
-    "confidence_note": "Abstract verbatim; full text read via the PMC author manuscript (PMC3724537). Patient side: 'Thus, 60% (21 of 35) of the specimens harbored RAS mutations, the most prevalent being HRAS Q61L.'",
+    "confidence_note": "Abstract verbatim; full text read via the PMC author manuscript (PMC3724537). Patient side: 'Thus, 60% (21 of 35) of the specimens harbored RAS mutations, the most prevalent being HRAS Q61L.' System used here: HRAS Q61L keratinocytes and DMBA/TPA mouse skin (paradoxical RAF activation).",
     "judgement": "The 2010 model's forward prediction (lesions arise from RAS-primed keratinocytes; MEK inhibition should block) tested in patient lesions from NCT00405587, NCT00949702, NCT01001299 and NCT01006980 and in the HRAS Q61L mouse, with vemurafenib in the cell lines and PLX4720 in mice: same, a fresh prospective entry after the retrodiction (decision 10). Oberholzer 2011 (doi:10.1200/JCO.2011.36.7680, epub 2011-11-07) found RAS mutations enriched (21% vs 3%) earlier but pooled vemurafenib with sorafenib (not a member) across 19 patients, so the entry is dated on the vemurafenib-only series. registry_date is the earliest results posting among the four trials (NCT01006980).",
     "model_id": "paradoxical-mapk-ras-mutant",
     "prediction_level": "class",
@@ -954,22 +1046,26 @@
     "source_calls_it": "match",
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2010,
-    "imported_from": null
+    "imported_from": null,
+    "drug": "vemurafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2014,
     "status": "same",
-    "strengthens": true,
-    "model": "HRAS Q61L keratinocytes and DMBA/TPA mouse skin (paradoxical RAF activation)",
-    "note": "The model's MEK-block prediction held in phase 3: dabrafenib plus trametinib cut cuSCC to 2% from 9% on dabrafenib alone (COMBI-d).",
+    "strengthens": false,
+    "model": "RAS-mutant cells, keratinocytes and mouse skin (paradoxical RAF activation)",
+    "note": "The model's MEK-block prediction held in phase 3: dabrafenib plus trametinib cut cuSCC to 2% from 9% on dabrafenib alone (COMBI-d). Design: dabrafenib plus trametinib versus dabrafenib alone; the combination is the predicted mitigation.",
     "short": "MEK co-inhibition cut cuSCC 9% to 2%",
     "src": "https://doi.org/10.1056/NEJMoa1406037",
     "srcLabel": "Long 2014",
     "quote": "The rate of cutaneous squamous-cell carcinoma was lower in the dabrafenib-trametinib group than in the dabrafenib-only group (2% vs. 9%)",
     "confidence": "medium",
-    "confidence_note": "Verbatim first clause of a 43-word abstract sentence (the remainder concerns pyrexia). Paired by me; mouse MEK inhibitor was PD184352, not trametinib.",
+    "confidence_note": "Verbatim first clause of a 43-word abstract sentence (the remainder concerns pyrexia). Paired by me; mouse MEK inhibitor was PD184352, not trametinib. System used here: HRAS Q61L keratinocytes and DMBA/TPA mouse skin (paradoxical RAF activation).",
     "reason": "RAS-mutant skin model held; MEK block cut cuSCC",
-    "judgement": "Paired comparison: Su 2012's mouse (MEK inhibitor suppressed PLX4720-accelerated tumour development by 91%) against COMBI-d (NCT01584648, results posted 2014-08-15; dabrafenib is a member), a 78% relative reduction, so within_2x. The earlier phase 1/2 signal (Flaherty 2012, doi:10.1056/NEJMoa1210093: 7% vs 19%, P=0.09, NCT01072175 results 2013-11-21) was non-significant, so the entry is dated on the phase 3. The 2018 Braftovi review states the same reliance ('Coadministration with MEK inhibitors has been shown to reduce the incidence of these hyperproliferative lesions by blocking paradoxical MAPK activation'): cuSCC 2.6% combination, 7.8% encorafenib, 16.7% vemurafenib.",
+    "judgement": "Paired comparison: Su 2012's mouse (MEK inhibitor suppressed PLX4720-accelerated tumour development by 91%) against COMBI-d (NCT01584648, results posted 2014-08-15; dabrafenib is a member), a 78% relative reduction, so within_2x. The earlier phase 1/2 signal (Flaherty 2012, doi:10.1056/NEJMoa1210093: 7% vs 19%, P=0.09, NCT01072175 results 2013-11-21) was non-significant, so the entry is dated on the phase 3. The 2018 Braftovi review states the same reliance ('Coadministration with MEK inhibitors has been shown to reduce the incidence of these hyperproliferative lesions by blocking paradoxical MAPK activation'): cuSCC 2.6% combination, 7.8% encorafenib, 16.7% vemurafenib. Now its own dabrafenib track (tracks are per drug), so the first comparison on it rather than a strengthening entry; trametinib is the combination partner, scored under the combination ruling. No dabrafenib opener appended (it would follow this entry and break the year order).",
     "model_id": "paradoxical-mapk-ras-mutant",
     "prediction_level": "class",
     "subjects": "patients",
@@ -991,7 +1087,11 @@
     "source_calls_it": null,
     "population": "BRAF V600-mutant",
     "model_first_use_year": 2010,
-    "imported_from": null
+    "imported_from": null,
+    "drug": "dabrafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "trametinib"
    },
    {
     "retrodiction": false,
@@ -1003,7 +1103,7 @@
     "model_first_use_year": 2006,
     "year": 2018,
     "status": "contra",
-    "strengthens": true,
+    "strengthens": false,
     "note": "Encorafenib's 13-week rat study showed skin abnormalities and paw hyperkeratosis, matching clinical skin toxicity, but no neoplasia; cuSCC reached 7.8% on encorafenib monotherapy.",
     "short": "Rat skin toxicity matched; cuSCC still missed",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210496Orig1s000MultidisciplineR.pdf",
@@ -1012,7 +1112,7 @@
     "confidence": "medium",
     "confidence_note": "Bundle text of the NDA 210496 review: p.35 rat skin abnormalities at all doses incl. 6 mg/kg (~11x clinical exposure) and 'Skin toxicity is the most common adverse event noted clinically with encorafenib treatment'; rat gross pathology table: hind-paw thickening 'correlates with hyper keratosis of the skin'; COLUMBUS hyperkeratosis 57.3% on encorafenib. Carcinogenicity studies not conducted.",
     "reason": "Rat/dog skin silent on cuSCC for two members",
-    "judgement": "Second member's own rat package on the same track. The review states the skin-toxicity match (hyperkeratosis predicted and seen), so source_calls_it partial; it never pairs the rat with cuSCC, which the 13-week rat did not show, so the cuSCC miss is my pairing and the entry is contra, strengthening the 2010 contra (one drug's contra beats another's same; the encorafenib cuSCC miss keeps it contra regardless). Dated to the 2018 review; COLUMBUS NCT01909453 results first posted 2021-07-12.",
+    "judgement": "Second member's own rat package on the same track. The review states the skin-toxicity match (hyperkeratosis predicted and seen), so source_calls_it partial; it never pairs the rat with cuSCC, which the 13-week rat did not show, so the cuSCC miss is my pairing and the entry is contra, strengthening the 2010 contra (one drug's contra beats another's same; the encorafenib cuSCC miss keeps it contra regardless). Dated to the 2018 review; COLUMBUS NCT01909453 results first posted 2021-07-12. Now the encorafenib track of the rat-dog system (tracks are per drug), so the vemurafenib contra no longer carries; scored on encorafenib's own data: rat skin toxicity predicted and seen, cuSCC not foreseen and seen in 7.8%, so contra stays. No encorafenib opener appended (it would follow this entry and break the year order).",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 2,
@@ -1028,7 +1128,11 @@
     "magnitude_basis": "cuSCC 7.8% on encorafenib monotherapy vs no neoplastic skin finding in the 13-week rat; hyperkeratosis predicted and seen (57.3%)",
     "source_calls_it": "partial",
     "population": "BRAF V600-mutant",
-    "imported_from": null
+    "imported_from": null,
+    "drug": "encorafenib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ]
  }

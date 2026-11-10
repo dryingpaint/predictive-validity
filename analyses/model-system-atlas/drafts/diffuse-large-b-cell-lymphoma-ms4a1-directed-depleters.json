@@ -51,7 +51,11 @@
     "src": "https://doi.org/10.1016/j.ebiom.2019.102625",
     "srcLabel": "Engelberts 2020",
     "quote": "In cynomolgus monkeys, DuoBody-CD3xCD20 demonstrated profound and long-lasting B-cell depletion from peripheral blood and lymphoid organs, which was comparable after subcutaneous and intravenous administration.",
-    "judgement": "Opening entry; the monkey was the only cross-reactive toxicology species and the PD readout was peripheral B-cell depletion."
+    "judgement": "Opening entry; the monkey was the only cross-reactive toxicology species and the PD readout was peripheral B-cell depletion.",
+    "drug": "epcoritamab",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "cyno-epcoritamab",
@@ -68,7 +72,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "peripheral B-cell depletion, monkey vs patient (qualitative)",
@@ -79,16 +83,20 @@
     "confidence_note": "Abstract-level. Registry NCT03625037 (first posted 2018-08-10) has no results posted. Population mixed B-NHL incl. DLBCL.",
     "prediction_level": "class",
     "year": 2021,
-    "status": "same",
+    "status": "retro",
     "model": "Cynomolgus monkey (epcoritamab toxicology/PD)",
-    "note": "Subcutaneous epcoritamab produced robust, sustained peripheral B-cell depletion in R/R B-NHL patients, as in monkeys.",
-    "short": "B cells depleted in patients too",
+    "note": "Patients' B cells were depleted as in monkeys, but CD20 depletion in patients was known from rituximab and mosunetuzumab before the 2020 monkey paper: retrodiction.",
+    "short": "Depletion known from anti-CD20 patients",
     "src": "https://doi.org/10.1016/S0140-6736(21)00889-8",
     "srcLabel": "Hutchings 2021",
     "quote": "Epcoritamab induced robust and sustained B-cell depletion, and CD4+ and CD8+ T-cell activation and expansion, with modest increases in cytokine levels.",
-    "reason": "B-cell depletion matched monkeys",
+    "reason": "Retrodiction: depletion known from rituximab",
     "readout_tier": "proximal",
-    "judgement": "Paired by me (Hutchings does not cite monkey data side by side). Depletion of the CD20-bearing cell read as proximal: it is the target cell itself, not occupancy. Patients were mixed B-NHL, DLBCL the largest group."
+    "judgement": "Paired by me (Hutchings does not cite monkey data side by side). Depletion of the CD20-bearing cell read as proximal: it is the target cell itself, not occupancy. Patients were mixed B-NHL, DLBCL the largest group. Ruling 2026-11-09 (engagement retrodiction counts any drug with the same target and action): the monkey data were first public in January 2020, after rituximab and mosunetuzumab (ASH 2018/2019) had shown peripheral B-cell depletion in patients, so same -> retro.",
+    "drug": "epcoritamab",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -128,7 +136,11 @@
     "quote": "The results (EC20 values) were used to inform the starting dose in the first in human study.",
     "reason": "EC20 values and dose not public",
     "untested_reason": "unpublished",
-    "judgement": "Kept untested: a starting-dose safety assay with its numbers withheld gives no checkable margin. Year set to the trial start (NCT02500407 first posted 2015-07-16) as a proxy for first use."
+    "judgement": "Kept untested: a starting-dose safety assay with its numbers withheld gives no checkable margin. Year set to the trial start (NCT02500407 first posted 2015-07-16) as a proxy for first use.",
+    "drug": "mosunetuzumab",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "mosun-qsp-crs",
@@ -164,7 +176,11 @@
     "src": "https://doi.org/10.1038/s41540-020-00145-7",
     "srcLabel": "Hosseini 2020",
     "quote": "Simulations delineated mechanisms contributing to observed cell and cytokine (IL6) dynamics and predicted that initial step-fractionated dosing limits systemic T-cell activation and cytokine release without compromising tumor response.",
-    "judgement": "Opening entry. The regimen prediction (step-up allows higher doses tolerably) is the model's stated tolerability margin; it changed the ongoing Phase I schedule, so it is prospective."
+    "judgement": "Opening entry. The regimen prediction (step-up allows higher doses tolerably) is the model's stated tolerability margin; it changed the ongoing Phase I schedule, so it is prospective.",
+    "drug": "mosunetuzumab",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "mosun-qsp-crs",
@@ -181,7 +197,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "in_silico",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "highest tolerated full dose step-up (60 mg) vs fixed (2.8 mg); grade>=3 CRS rate",
@@ -189,20 +205,24 @@
     "population": "Unselected (relapsed/refractory CD20+ large B-cell lymphoma)",
     "model_first_use_year": 2020,
     "confidence": "medium",
-    "confidence_note": "Abstract-level. Registry NCT02500407 has no results posted. Aggressive B-NHL (mostly DLBCL) and indolent B-NHL pooled in safety.",
+    "confidence_note": "Abstract-level. Registry NCT02500407 has no results posted. Aggressive B-NHL (mostly DLBCL) and indolent B-NHL pooled in safety. ASH 2019 abstract read in full on ashpublications.org.",
     "prediction_level": "class",
-    "year": 2021,
-    "status": "same",
+    "year": 2020,
+    "status": "retro",
     "model": "Mechanistic QSP model of CD20xCD3 CRS (mosunetuzumab)",
     "modality": "antibody",
-    "note": "With step-up dosing mosunetuzumab reached 60 mg (vs 2.8 mg fixed) with CRS 27%, grade 3+ only 1%, mainly cycle 1.",
-    "short": "Step-up reached 60 mg, little severe CRS",
+    "note": "Step-up mosunetuzumab reached 60 mg with mostly low-grade CRS, as the model said; that result (ASH 2019) was public before the August 2020 model paper: retrodiction.",
+    "short": "Step-up margin already seen in patients",
     "src": "https://doi.org/10.1200/JCO.21.00931",
     "srcLabel": "Budde 2022",
     "quote": "Cytokine release syndrome was mostly low-grade (grade ≥ 3: 1.0%) and mainly confined to cycle 1.",
-    "reason": "Step-up regimen tolerable as modelled",
+    "reason": "Retrodiction: drug's own step-up data public 2019",
     "margin_stated": true,
-    "judgement": "Scored dose same with margin_stated: the model's tolerability claim for step-fractionated dosing held and full doses were reached. Whether the dose worked (aNHL ORR 34.9%) is efficacy, not scored here. Paired by me."
+    "judgement": "Scored dose same with margin_stated: the model's tolerability claim for step-fractionated dosing held and full doses were reached. Whether the dose worked (aNHL ORR 34.9%) is efficacy, not scored here. Paired by me. Ruling 2026-11-09 (dose retrodiction counts only the same drug's own earlier patient result): Schuster et al., Blood 2019;134(Suppl 1):6 (13 Nov 2019, doi:10.1182/blood-2019-123742) reported step-up dosing up to 1/2/60 mg with CRS 28.4%, grade 3 1.4%, before Hosseini 2020 (28 Aug 2020). Same -> retro; year 2021 -> 2020, when the model side became public.",
+    "drug": "mosunetuzumab",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -239,7 +259,11 @@
     "src": "https://doi.org/10.1016/j.ebiom.2019.102625",
     "srcLabel": "Engelberts 2020",
     "quote": "DuoBody-CD3xCD20 showed promising anti-tumour activity in vivo, also in the presence of excess levels of a CD20 Ab that competes for binding.",
-    "judgement": "Opening entry. Most xenografts were Burkitt or mantle-cell lines; only one DLBCL PDX. Study year 2018 is a proxy from the BLA study numbering."
+    "judgement": "Opening entry. Most xenografts were Burkitt or mantle-cell lines; only one DLBCL PDX. Study year 2018 is a proxy from the BLA study numbering.",
+    "drug": "epcoritamab",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "humanized-mouse-lymphoma-xenograft",
@@ -256,7 +280,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "tumour regression in mice vs objective response in patients",
@@ -267,25 +291,30 @@
     "confidence_note": "Abstract-level. NCT03625037 has no registry results posted. Single-arm trial; FDA accelerated approval 2023 on this endpoint.",
     "prediction_level": "class",
     "year": 2022,
-    "status": "same",
+    "status": "retro",
     "model": "Humanized-mouse lymphoma xenografts (CDX and DLBCL PDX)",
-    "note": "EPCORE NHL-1 LBCL expansion met its primary endpoint: ORR 63.1%, CR 38.9% in heavily pretreated patients.",
-    "short": "ORR 63% in R/R LBCL",
+    "note": "Single-arm EPCORE NHL-1 met ORR 63.1% (CR 38.9%); scored on its primary endpoint. DLBCL responses to CD20 depleters predated the 2020 xenograft paper: retrodiction.",
+    "short": "ORR met; anti-CD20 activity already known",
     "src": "https://doi.org/10.1200/JCO.22.01725",
     "srcLabel": "Thieblemont 2023",
     "quote": "At a median follow-up of 10.7 months, the overall response rate was 63.1% (95% CI, 55.0 to 70.6) and the complete response rate was 38.9% (95% CI, 31.2 to 46.9).",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "judgement": "Paired by me. The xenografts predicted antitumour activity, which the primary ORR endpoint showed. Hutchings 2021 already reported DLBCL ORR 68% but its primary endpoint was MTD."
+    "judgement": "Paired by me. The xenografts predicted antitumour activity, which the primary ORR endpoint showed. Hutchings 2021 already reported DLBCL ORR 68% but its primary endpoint was MTD. Design: single-arm, primary endpoint ORR by IRC, scored as a response where the model predicted one. Ruling 2026-11-09 (efficacy retrodiction counts any drug with the same target and action): rituximab monotherapy responses in DLBCL and mosunetuzumab aggressive-NHL ORR 34.7% (ASH 2019) were public before Engelberts 2020 (January 2020), so same -> retro.",
+    "drug": "epcoritamab",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null,
+    "reason": "Retrodiction: anti-CD20 DLBCL responses known"
    },
    {
     "model_id": "humanized-mouse-lymphoma-xenograft",
     "subjects": "patients",
     "comparison_stated": false,
-    "source_tier": 5,
+    "source_tier": 3,
     "model_src": "https://doi.org/10.1016/j.ebiom.2019.102625",
     "model_src_tier": 1,
-    "trial_unreported": true,
+    "trial_unreported": false,
     "patient_signal_reversed": false,
     "epub_year": 2026,
     "print_year": null,
@@ -293,7 +322,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "tumour regression in mice vs response/OS in patients",
@@ -301,29 +330,33 @@
     "population": "Unselected (relapsed/refractory CD20+ large B-cell lymphoma)",
     "model_first_use_year": 2018,
     "confidence": "medium",
-    "confidence_note": "Press release plus registry results (NCT04628494 posted 2026-11-03: OS HR 0.96, p=0.7285); no peer-reviewed paper found. Registry quote in patient_trials is my paraphrase of the results table, not verbatim.",
+    "confidence_note": "Registry results read via the ClinicalTrials.gov API (primary outcome OS only; stratified HR 0.96, 95% CI 0.77-1.20, p=0.7285). The quote joins verbatim registry field values with ellipses; the registry has no prose sentence. Press release quote kept in patient_trials. No peer-reviewed paper found. Strengthens: adds the randomized phase 3 outcome trial (OS negative, outcome_tested) to the single-arm response retrodiction; status unchanged.",
     "prediction_level": "class",
     "year": 2026,
-    "status": "same",
+    "status": "retro",
     "model": "Humanized-mouse lymphoma xenografts (CDX and DLBCL PDX)",
-    "note": "Phase 3 EPCORE DLBCL-1 vs chemoimmunotherapy missed its OS primary endpoint (HR 0.96); response rates and PFS favoured epcoritamab.",
-    "short": "Phase 3 OS missed; response held",
-    "src": "https://news.abbvie.com/2026-01-16-AbbVie-Announces-Topline-Results-for-Epcoritamab-DuoBody-R-CD3xCD20-from-Phase-3-EPCORE-R-DLBCL-1-Trial-in-Patients-with-Relapsed-Refractory-Diffuse-Large-B-cell-Lymphoma-DLBCL",
-    "srcLabel": "AbbVie 2026",
-    "quote": "The study did not demonstrate a statistically significant improvement in overall survival (OS) (HR: 0.96 [95% CI 0.77 to 1.20]).",
-    "reason": "Response held; OS outcome trial negative",
+    "note": "Phase 3 EPCORE DLBCL-1 vs chemoimmunotherapy missed its sole primary endpoint, OS (HR 0.96); PFS favoured epcoritamab. Status follows the retrodicted tumour-shrinkage surrogate.",
+    "short": "Phase 3 missed OS; surrogate already known",
+    "src": "https://clinicaltrials.gov/study/NCT04628494?tab=results",
+    "srcLabel": "NCT04628494 results 2026",
+    "quote": "Overall Survival (OS) ... Stratified hazard ratio 0.96 ... 0.77 to 1.20 ... Stratified log-rank test ... 0.7285",
+    "reason": "OS missed; track stays on retro surrogate",
     "endpoint_role": "primary",
     "outcome_tested": "negative",
-    "strengthens": "Adds the randomized phase 3 outcome trial (OS negative, outcome_tested) to the single-arm response match; status unchanged.",
+    "strengthens": true,
     "patient_trials": [
      {
       "nct": "NCT04628494",
       "registry_date": "2026-11-03",
       "doi": null,
-      "quote": "Overall Survival (OS): stratified hazard ratio 0.96 (95% CI 0.77 to 1.20), p=0.7285"
+      "quote": "The study did not demonstrate a statistically significant improvement in overall survival (OS) (HR: 0.96 [95% CI 0.77 to 1.20])."
      }
     ],
-    "judgement": "Judgement call: the mouse models predicted tumour regression versus vehicle, a surrogate; the phase 3 is an outcome trial against active therapy. Per the outcome_tested rule the status stays on the surrogate (same) with outcome_tested negative, not contra."
+    "judgement": "The xenografts predicted tumour regression versus vehicle, a surrogate; the phase 3 is an outcome trial against active therapy, so outcome_tested negative and the status follows the surrogate, which on this track is a retrodiction (efficacy 2), hence retro, not same. Rule 2: the registry results record (tier 3, posted 2026-11-03) sets the status; the January 2026 press release is the earliest public date, so year stays 2026. OS is the only registered primary endpoint; the EHA 2026 PFS gain is a secondary result.",
+    "drug": "epcoritamab",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -359,7 +392,11 @@
     "model": "Ex vivo cytotoxicity against primary lymph-node B-NHL tumour cells (epcoritamab)",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "epcoritamab",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -397,7 +434,11 @@
     "model": "Ex vivo cytotoxicity against primary lymph-node B-NHL tumour cells (epcoritamab)",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "epcoritamab",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -435,7 +476,11 @@
     "src": "https://doi.org/10.1016/j.ebiom.2019.102625",
     "srcLabel": "Engelberts 2020",
     "quote": "Peak plasma levels of DuoBody-CD3xCD20 were lower and delayed after subcutaneous administration, which was associated with a reduction in plasma cytokine levels compared to intravenous administration, while bioavailability was comparable.",
-    "judgement": "Cytokine release is a CD3-engager platform harm, so the entry carries modality antibody. Monkeys can show cytokine release, so the prediction is admissible."
+    "judgement": "Cytokine release is a CD3-engager platform harm, so the entry carries modality antibody. Monkeys can show cytokine release, so the prediction is admissible.",
+    "drug": "epcoritamab",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "cyno-epcoritamab",
@@ -462,17 +507,21 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level. Quote is a fragment of a longer abstract sentence (lowercase start). Later LBCL expansion (Thieblemont 2023) had grade 3 CRS 2.5% and ICANS 6.4% with one death.",
     "prediction_level": "class",
-    "year": 2021,
+    "year": 2020,
     "status": "same",
     "model": "Cynomolgus monkey (epcoritamab toxicology/PD)",
     "modality": "antibody",
-    "note": "Subcutaneous step-up epcoritamab caused CRS in 59% of patients, all grade 1-2, mostly early, as monkeys predicted.",
+    "note": "Subcutaneous step-up epcoritamab caused CRS in 59% of patients, all grade 1-2, as monkeys predicted; first public at ASCO 2020.",
     "short": "CRS frequent but low-grade with SC",
     "src": "https://doi.org/10.1016/S0140-6736(21)00889-8",
     "srcLabel": "Hutchings 2021",
     "quote": "common adverse events were pyrexia (47 patients [69%]), primarily associated with cytokine release syndrome (CRS; 40 [59%], all grade 1-2), and injection site reactions (32 [47%]; 31 grade 1).",
     "reason": "CRS present but mild, as predicted",
-    "judgement": "Paired by me. The monkey predicted cytokine release that SC dosing attenuates; patients had frequent but low-grade CRS. ICANS was not flagged as such in monkeys, though uncoordinated movements were noted, so I did not score a silence miss."
+    "judgement": "Paired by me. The monkey predicted cytokine release that SC dosing attenuates; patients had frequent but low-grade CRS. ICANS was not flagged as such in monkeys, though uncoordinated movements were noted, so I did not score a silence miss. Rule 6 (earliest date): the same CRS result (59%, all grade 1/2) was first public in the ASCO 2020 abstract (J Clin Oncol 38:2020 suppl, abstr 8009, May 2020), after Engelberts (23 January 2020), so year 2021 -> 2020 and still prospective.",
+    "drug": "epcoritamab",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "model_id": "mt3724-nonclinical-tox",
@@ -495,9 +544,9 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected (relapsed/refractory CD20+ large B-cell lymphoma)",
-    "model_first_use_year": null,
+    "model_first_use_year": 2014,
     "confidence": "low",
-    "confidence_note": "Abstract-level. No published nonclinical safety study of MT-3724 found; the toxicology species is not confirmed.",
+    "confidence_note": "Abstract-level. No published nonclinical safety study of MT-3724 found; the toxicology species is not confirmed. model_first_use_year 2014 is a proxy: the first-in-human trial NCT02361346 opened in 2014-2015, so toxicology preceded it.",
     "prediction_level": "class",
     "year": 2022,
     "status": "untested",
@@ -510,7 +559,11 @@
     "quote": "Two patients (75 μg/kg/dose) experienced grade 2 treatment-related capillary leak syndrome.",
     "reason": "Nonclinical tox data not public",
     "untested_reason": "unpublished",
-    "judgement": "Capillary leak is a toxin-platform harm, so modality protein. Without a public toxicology source the prediction cannot be compared."
+    "judgement": "Capillary leak is a toxin-platform harm, so modality protein. Without a public toxicology source the prediction cannot be compared.",
+    "drug": "mt-3724",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ]
  }

@@ -9,10 +9,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "6",
-   "note": "Clegg 2012 (PMID 22266222, epub 2012-01-20) resolves; quote verbatim in abstract. Quote is about efficacy, not the reporter readout; luciferase readout confirmed in FDA review NDA 210951 (LNCaP/AR-Luc, 10 mg/kg/d). Untested opener fine."
+   "rule": "Fields on every entry (drug, route, population_group)",
+   "note": "Clegg 2012 (Cancer Res, epub Jan 2012) quote verbatim in abstract. Opener untested 2012; apalutamide given orally in the LNCaP/AR xenografts; stage_or_line CRPC fits.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -21,18 +22,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "engagement definition",
-   "note": "Rathkopf 2013 (PMID 24002508, epub 2013-09-03) quote verbatim; FDHT-PET fell at all doses (direct). Reporter vs PSA as proximal AR transcriptional output is reasonable. Registry date 2018-07-27 confirmed for NCT01171898."
+   "rule": "Retrodiction (engagement is a target claim); evidence rule 6",
+   "note": "Rathkopf 2013 quote verbatim (14/30, 46.7%). Retro right: enzalutamide CRPC PSA falls (Scher 2010) predate Clegg 2012. ASCO GU 2012 abstract 43 (2012-02-10) reported 55% PSA>=50% falls and FDHT-PET AR blockade: year 2012.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "16",
-   "note": "Clegg abstract states 30 mg/kg/d maximal response and 'higher therapeutic index with a greater potential to reach maximally efficacious doses in man'. AUC ~160.3 µg·h/mL projection confirmed in FDA review (lines ~1293-1297). margin_stated is qualitative only."
+   "rule": "Fields on every entry (drug, route)",
+   "note": "Clegg 2012 abstract: maximal xenograft response at 30 mg/kg/d and wider therapeutic index; FDA review gives ~160 ug*h/mL projection. Apalutamide, oral, CRPC correct. Opener untested 2012.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -42,41 +45,45 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "proposed_status": "same",
-   "proposed_year": 2013,
-   "rule": "Evidence rule 1; decision 16",
-   "note": "Status same holds (reached, worked, no MTD to 480 mg). Fix fields: Rathkopf does not set the model projection beside patient PK, so comparison_stated false, source_calls_it null. Margin weak: dog convulsions at Cmax 7 µg/mL vs human 6 µg/mL."
+   "proposed_year": 2012,
+   "rule": "Evidence rule 6 (earliest public date)",
+   "note": "Same holds, not retro (Clegg Jan 2012 precedes apalutamide patient data). But ASCO GU 2012 abstract 43 (2012-02-10) already states 240 mg RP2D chosen on preclinical maximum efficacious dose, no DLT to 300 mg: year 2013 -> 2012.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: ASCO GU 2012 abstract 43 (JCO 30:5_suppl 43) already states 240 mg RP2D from preclinical maximum efficacious dose, no further DLT to 300 mg; status same, year 2012 not 2013. Not retro: Clegg Jan 2012 precedes."
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "6",
-   "note": "Clegg 2012 abstract quote verbatim; 8/10 tumours regressed >50% at 10 mg/kg confirmed in FDA review."
+   "rule": "Fields on every entry (drug, route)",
+   "note": "Clegg 2012 abstract quote verbatim; LNCaP/AR regressions with oral apalutamide. Opener untested 2012; drug, route, population_group correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "efficacy definition",
-   "note": "Smith 2016 (PMID 27160947, epub 2016-05-06): primary endpoint 12-wk PSA response, quote verbatim; nmCRPC on ADT matches castrate model. NCT registry dates for all four patient_trials confirmed. Judgement's proxalutamide reason is wrong (see missing)."
+   "rule": "Retrodiction (efficacy is a target claim); evidence rule 6",
+   "note": "Smith 2016 primary 12-week PSA response 89% confirmed. ESMO 2012 abstract (Ann Oncol 23 suppl 9, ix303, 2012-09) states 17/19 (89.5%) PSA response, primary endpoint: year 2012. Retro right: enzalutamide CRPC efficacy (2010) predates the 2012 model.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2018,
-   "rule": "Evidence rule 6",
-   "note": "FDA review quote verbatim (line 1093); dog convulsions 25 mg/kg/d, GABA-A IC50 3.0/0.88 µM; label seizure 0.2%; ARAMIS 0.2% both arms confirmed. Latest status same stands, but cell must open with an untested entry at model_first_use_year 2010 (proxy)."
+   "rule": "Retrodiction (safety: same drug's earlier patient result)",
+   "note": "FDA review NDA 210951 quote verbatim. Retro right: dog convulsions first public in the Feb 2018 label/review, after SPARTAN seizures (NEJM epub 2018-02-08). Apalutamide, oral, nmCRPC correct. Track still lacks a 2010 untested opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -85,8 +92,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Moilanen 2015 (PMID 26137992) abstract carries the quote verbatim; FDA review NDA 212099 confirms study 09000124 VCaP regrowth delay after orchidectomy. Untested opener at 2009 proxy is correct; prospective.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Fields on every entry (drug, route)",
+   "note": "Moilanen 2015 (Sci Rep) quote verbatim in abstract; darolutamide oral in castration-resistant VCaP xenografts; 2009 first-use proxy from FDA review study number acceptable.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -95,8 +103,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in abstract. Xenografts (09000124, 1010TM03) ran ~2009-10, before ARADES (start 2011-03, published 2014), so not retro. FDA review: CR-VCaP tumour trend non-significant, PSA fell; direction_only same holds. Registry date 2017-03-29 verified.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Retrodiction (efficacy: any drug on the target)",
+   "note": "Quote verbatim in abstract. Retro right: model first public 2015 after enzalutamide (2010) and ARADES (Lancet Oncol 2014; 12-week PSA response primary) CRPC results. Darolutamide, oral, mCRPC stage_or_line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -105,8 +114,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Joseph 2013 (PMID 23779130, epub 2013-06-18) abstract quote verbatim; resistant lines and F876L xenografts are the model. Opener 2013 at publication proxy correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Fields on every entry (drug, route)",
+   "note": "Joseph 2013 abstract quote verbatim; resistant lines derived under ARN-509; drug apalutamide, oral; opener 2013 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -115,8 +125,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim. Mutation found in lines first, then sought in ARN-509-001 plasma, so prospective, not retro. Readout is an exploratory biomarker, not a trial endpoint (see rule question); Rathkopf 2017 rarity noted. NCT01171898 results 2018-07-27 verified.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Retrodiction; prediction_level patient",
+   "note": "Quote verbatim. Same kept: no patient F876L result was public before this paper (Korpal/Balbas 2013 were preclinical), so not a retrodiction. Drug apalutamide, oral, progressing CRPC correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -125,8 +136,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Zhou 2020 (PMID 32460179, epub 2020-05-24) quote verbatim; xenograft published before Kintor's Sept 2020 interim rPFS miss, so not retro. Post-NHA trial population never modelled; untested per decision on unmodelled conditions.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Untested for conditions the model never tested; rule 5",
+   "note": "Zhou 2020 (EJC) quote verbatim. Kintor's interim rPFS miss (tier 5) was in post-NHA mCRPC, a population the xenograft never tested: untested/unsettled right. Pruxelutamide, oral correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -135,8 +147,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Moilanen 2015 abstract quote verbatim; FDA review confirms mouse brain:plasma 0.02 and no CNS signs in rats/dogs at Cmax up to 46/35 uM. Opener at 2015 publication proxy; model predates ARAMIS.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Fields on every entry (drug, route)",
+   "note": "Moilanen 2015 abstract quote verbatim; darolutamide oral; brain:plasma 0.02 and no CNS signs in rat/dog per FDA review. Opener 2015 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -145,8 +158,24 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "Quote in FDA multidisciplinary review NDA 212099 section 8.2.5.2 (line break only); seizures 0.2% vs 0.2%, none in 12 with seizure history. Model ran before ARAMIS, so same, not retro. Tier 2 correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Retrodiction (safety: same drug's earlier patient result)",
+   "note": "FDA review NDA 212099 quote confirmed; ARAMIS seizures 0.2% both arms. Not retro: no darolutamide seizure result (ARADES 2014 abstract reports none) preceded the 2015 model. Darolutamide, oral, nmCRPC correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2021,
+   "rule": "Evidence rule 6 (earliest public date)",
+   "note": "IJC 2023 quote verbatim; primary endpoint PSA response, three doses, no control, so single-arm rule and retro right; NHA-pretreated patients excluded, matching the model. ASCO GU 2021 abstract 108 (print 2021-02-20) already reported PSA50 41.9%: year 2021.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6: ASCO GU 2021 abstract 108 (JCO 39:6_suppl 108) reported PSA50 41.9% across three doses; year 2021 not 2023. Single-arm rule; model (2020) post-dates class CRPC results, so retro."
   }
  ],
  "missing": [

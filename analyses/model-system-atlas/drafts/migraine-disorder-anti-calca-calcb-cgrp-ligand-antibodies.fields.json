@@ -1,0 +1,147 @@
+{
+ "tile": "migraine-disorder-anti-calca-calcb-cgrp-ligand-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to fremanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to galcanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to fremanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to fremanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug galcanezumab, route sc; status same -> retro, retrodiction true: dose ruling, model first public 2015 after galcanezumab's own Phase 2 (Dodick 2014)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug fremanezumab, route sc; src Dodick 2014 (galcanezumab) -> Bigal 2015 (fremanezumab HFEM Phase 2b), quote replaced, year 2014 -> 2015: track split, the galcanezumab comparison moved to efficacy 13 and eptinezumab's to efficacy 15"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to fremanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set to fremanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to fremanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to fremanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug set to fremanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to eptinezumab, route iv (track split per drug and route)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug set to eptinezumab, route iv (track split per drug and route)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug set to eptinezumab, route iv (track split per drug and route)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug set to eptinezumab, route iv (track split per drug and route)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug set to fremanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to fremanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to fremanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to galcanezumab, route sc (track split per drug and route)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug fremanezumab, route sc; year 2025 -> 2022, src Ajovy label -> de Vries Lentsch 2022, quote replaced: rule 6 earliest date (checker adjudication on safety 4)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "galcanezumab sc opener, untested 2011 (IND 111295 nonclinical review), Vermeersch 2015"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "galcanezumab sc, same 2014 (Dodick 2014 Phase 2, moved from efficacy 2)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "eptinezumab iv opener, untested 2008 (Zeller 2008 class prediction)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "what": "eptinezumab iv, same 2014 (Dodick 2014b ALD403 Phase 2, split from efficacy 2)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "galcanezumab sc, contra 2025 (Emgality hypertension warning 761063s010, split from safety 4)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "eptinezumab iv opener, untested 2013 proxy (761119 SumR rat/monkey toxicology)"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "eptinezumab iv, same 2014 (Dodick 2014b vital signs vs rat null BP prediction)"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "eptinezumab iv, contra 2025 (Vyepti hypertension warning 761119s009/s012, split from safety 4)"
+  }
+ ]
+}

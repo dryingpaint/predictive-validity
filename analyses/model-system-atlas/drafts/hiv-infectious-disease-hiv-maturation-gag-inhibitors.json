@@ -20,7 +20,7 @@
    {
     "year": 2009,
     "status": "untested",
-    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection",
+    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
     "model_id": "hiv-gag-polymorph-cell-panel",
     "note": "Patient-derived gag/pr recombinant viruses and site-directed mutants in culture: the Gag-polymorphism panel the class was optimised on, first run with bevirimat.",
     "short": "Gag-polymorphism virus panel built on bevirimat",
@@ -48,14 +48,18 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2009,
-    "prediction_level": null,
+    "prediction_level": "class",
     "readout_tier": null,
-    "judgement": "The panel of patient-derived Gag/Pr recombinant viruses and site-directed CA-SP1 mutants is the system every member was optimised on (Nowicka-Sans 2016, Dicker 2022), so the track opens where that panel first existed, with bevirimat as the proxy compound (product_in_model false). model_kind is ex_vivo because the viruses are patient-derived and clinical-isolate assays run in donor PBMCs; no animal model exists for this class. model_filed is null because no member reached an NDA/BLA (sources/manifest.csv: 'no NDA/BLA' for all three) and IND content is not public."
+    "judgement": "The panel of patient-derived Gag/Pr recombinant viruses and site-directed CA-SP1 mutants is the system every member was optimised on (Nowicka-Sans 2016, Dicker 2022), so the track opens where that panel first existed, with bevirimat as the proxy compound (product_in_model false). model_kind is ex_vivo because the viruses are patient-derived and clinical-isolate assays run in donor PBMCs; no animal model exists for this class. model_filed is null because no member reached an NDA/BLA (sources/manifest.csv: 'no NDA/BLA' for all three) and IND content is not public.",
+    "drug": "bms-955176",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2019,
     "status": "same",
-    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection",
+    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
     "model_id": "hiv-gag-polymorph-cell-panel",
     "note": "Resistance selected in culture mapped to the CA/SP1 cleavage site (A364V, V362I plus secondary changes); the same substitutions emerged in Phase 2a monotherapy.",
     "short": "A364V/V362I selected in culture and patients",
@@ -85,13 +89,17 @@
     "model_first_use_year": 2009,
     "prediction_level": "class",
     "readout_tier": "direct",
-    "judgement": "Engagement is read as on-target resistance: the model's readout is reduced susceptibility mapping to the inhibited CA/SP1 cleavage site, and the same substitutions (A364V, V362I with secondary changes) emerged in patients on 10-day monotherapy. readout_tier is 'direct' because resistance at the drug's binding site is the nearest an antiviral comes to occupancy; a checker may prefer 'proximal'. The viral-load decline (Hwang 2017) is the earliest human PD signal but is assigned to dose and efficacy rather than reused here. registry_date is the NCT01803074 results posting; the resistance comparison itself was first public in this 2019 paper (epub 2019-10-17)."
+    "judgement": "Engagement is read as on-target resistance: the model's readout is reduced susceptibility mapping to the inhibited CA/SP1 cleavage site, and the same substitutions (A364V, V362I with secondary changes) emerged in patients on 10-day monotherapy. readout_tier is 'direct' because resistance at the drug's binding site is the nearest an antiviral comes to occupancy; a checker may prefer 'proximal'. The viral-load decline (Hwang 2017) is the earliest human PD signal but is assigned to dose and efficacy rather than reused here. registry_date is the NCT01803074 results posting; the resistance comparison itself was first public in this 2019 paper (epub 2019-10-17).",
+    "drug": "bms-955176",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2021,
     "status": "same",
     "strengthens": true,
-    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection",
+    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
     "model_id": "hiv-gag-polymorph-cell-panel",
     "note": "Second member: GSK3640254 selected A364V in culture and in 4 of 6 participants on 200 mg monotherapy by day 11 (one with 132-fold phenotypic resistance).",
     "short": "Same Gag site selected in culture and patients",
@@ -122,7 +130,11 @@
     "prediction_level": "class",
     "readout_tier": "direct",
     "reason": "Same Gag site selected in culture and patients",
-    "judgement": "Strengthening entry for a second member (fipravirimat); year is the AAC epub (2021-11-15), registry_date the NCT03784079 results posting. Spinner 2022 adds the cross-member count: of 37 GSK3532795 monotherapy participants with data, 18 had emergent RAMs and 6 A364A/V, 5 with phenotypic resistance. The emergence drove a protocol amendment shortening monotherapy to 7 days, after which no RAMs appeared."
+    "judgement": "Strengthening entry for a second member (fipravirimat); year is the AAC epub (2021-11-15), registry_date the NCT03784079 results posting. Spinner 2022 adds the cross-member count: of 37 GSK3532795 monotherapy participants with data, 18 had emergent RAMs and 6 A364A/V, 5 with phenotypic resistance. The emergence drove a protocol amendment shortening monotherapy to 7 days, after which no RAMs appeared.",
+    "drug": "fipravirimat",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -159,14 +171,18 @@
     "model": "HIV-1-infected SCID-hu Thy/Liv humanized mouse (human fetal thymus/liver implant), oral dosing, thymocyte viral RNA, p24 and CA-SP1 cleavage",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2007
+    "model_first_use_year": 2007,
+    "drug": "class",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
    {
     "year": 2016,
     "status": "untested",
-    "model": "Protein-binding-adjusted cell-culture EC90 (40% human serum + albumin) as the plasma trough target",
+    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
     "model_id": "hiv-gag-polymorph-cell-panel",
     "note": "Serum shift 5.4-fold (86% bound) gave a protein-adjusted EC90 of 14 nM for BMS-955176; the patient trough target was derived from it.",
     "short": "Serum-shifted EC90 sets the trough target",
@@ -193,16 +209,20 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2016,
-    "prediction_level": null,
+    "model_first_use_year": 2009,
+    "prediction_level": "class",
     "blocked_by": null,
     "margin_stated": null,
-    "judgement": "The dose track is the same cell system read as a serum-adjusted potency; it opens in 2016 with the first member paper rather than 2009 because the bevirimat-era serum-shift work is not a member source and the 643 ng/mL target was formalised for GSK3532795. Nowicka-Sans 2016 also cites the Phase 2a result as unpublished data; the scored comparison is taken from the trial paper (Hwang 2017). No NOAEL or tolerability margin is public for any member (no FDA review), so margin_stated is null throughout."
+    "judgement": "The dose track is the same cell system read as a serum-adjusted potency; it opens in 2016 with the first member paper rather than 2009 because the bevirimat-era serum-shift work is not a member source and the 643 ng/mL target was formalised for GSK3532795. Nowicka-Sans 2016 also cites the Phase 2a result as unpublished data; the scored comparison is taken from the trial paper (Hwang 2017). No NOAEL or tolerability margin is public for any member (no FDA review), so margin_stated is null throughout.",
+    "drug": "bms-955176",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2017,
     "status": "same",
-    "model": "Protein-binding-adjusted cell-culture EC90 (40% human serum + albumin) as the plasma trough target",
+    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
     "model_id": "hiv-gag-polymorph-cell-panel",
     "note": "Antiviral response plateaued at C24 >=500 ng/mL, close to the 643 ng/mL protein-adjusted target trough; every dose >=40 mg cut HIV RNA >1 log10.",
     "short": "Plateau at trough matches protein-adjusted target",
@@ -229,17 +249,21 @@
     "magnitude_basis": "trough at the antiviral plateau (>=500 ng/mL) vs protein-adjusted target trough (643 ng/mL)",
     "source_calls_it": "match",
     "population": "Unselected",
-    "model_first_use_year": 2016,
+    "model_first_use_year": 2009,
     "prediction_level": "class",
     "blocked_by": null,
     "margin_stated": null,
-    "judgement": "Called 'same' because the exposure at which response plateaued sits within 2x of the serum-adjusted target and all doses above it were active. Caveat recorded, not scored: in the Phase 2b (Morales-Ramirez 2018, 10.1371/journal.pone.0205368; NCT02415595 results 2018-09-19) 'the AE and efficacy endpoints did not show strong trends with increasing GSK3532795 exposure' across 60-180 mg, and the trial was terminated for GI intolerability and NRTI-backbone resistance (M184V/I in 10/12 sequenced failures), so the exposure model could not rank doses and may have under-called the antiviral pressure needed to protect the backbone. The Week-24 primary endpoint was met, so this is not a dose failure under the table; the harm is scored in safety."
+    "judgement": "Called 'same' because the exposure at which response plateaued sits within 2x of the serum-adjusted target and all doses above it were active. Caveat recorded, not scored: in the Phase 2b (Morales-Ramirez 2018, 10.1371/journal.pone.0205368; NCT02415595 results 2018-09-19) 'the AE and efficacy endpoints did not show strong trends with increasing GSK3532795 exposure' across 60-180 mg, and the trial was terminated for GI intolerability and NRTI-backbone resistance (M184V/I in 10/12 sequenced failures), so the exposure model could not rank doses and may have under-called the antiviral pressure needed to protect the backbone. The Week-24 primary endpoint was met, so this is not a dose failure under the table; the harm is scored in safety.",
+    "drug": "bms-955176",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2022,
     "status": "same",
     "strengthens": true,
-    "model": "Protein-binding-adjusted cell-culture EC90 (40% human serum + albumin) as the plasma trough target",
+    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
     "model_id": "hiv-gag-polymorph-cell-panel",
     "note": "GSK3640254: target trough set at 3x PBA EC90 of a least-sensitive triple polymorph (110 ng/mL); doses >=40 mg exceeded it and gave >=1 log10 declines, 200 mg gave 2.0.",
     "short": "Troughs above 3x PBA EC90 were active",
@@ -266,12 +290,16 @@
     "magnitude_basis": "steady-state trough vs 3x PBA EC90 target (110 ng/mL) and dose-response in HIV-1 RNA",
     "source_calls_it": "match",
     "population": "Unselected",
-    "model_first_use_year": 2016,
+    "model_first_use_year": 2009,
     "prediction_level": "class",
     "blocked_by": null,
     "margin_stated": null,
     "reason": "Target trough held; 100-150 mg matched DTG",
-    "judgement": "Strengthening entry for the second member. Magnitude is direction_only because PK was non-proportional between 140 and 200 mg and the response had not plateaued, so the target cannot be placed within 2x. The Phase 2b doses (100/150/200 mg) were then chosen by exposure-response modelling to keep troughs >3x PBA EC90 (0.11 ug/mL) in >95% of participants (Joshi 2025, 10.1016/j.eclinm.2025.103567); 100 and 150 mg matched dolutegravir at Week 24, which is consistent with the target but is recorded under efficacy rather than as another dose entry."
+    "judgement": "Strengthening entry for the second member. Magnitude is direction_only because PK was non-proportional between 140 and 200 mg and the response had not plateaued, so the target cannot be placed within 2x. The Phase 2b doses (100/150/200 mg) were then chosen by exposure-response modelling to keep troughs >3x PBA EC90 (0.11 ug/mL) in >95% of participants (Joshi 2025, 10.1016/j.eclinm.2025.103567); 100 and 150 mg matched dolutegravir at Week 24, which is consistent with the target but is recorded under efficacy rather than as another dose entry.",
+    "drug": "fipravirimat",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -309,7 +337,11 @@
     "model": "HIV-1-infected SCID-hu Thy/Liv humanized mouse (human fetal thymus/liver implant), oral dosing, thymocyte viral RNA, p24 and CA-SP1 cleavage",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2007
+    "model_first_use_year": 2007,
+    "drug": "class",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -346,7 +378,11 @@
     "model": "Population PK + sigmoid Emax exposure-response model fitted to Phase 2a monotherapy viral-load data, with clinical-trial simulation, used to pick Phase 2b doses",
     "model_kind": "in_silico",
     "prediction_level": "class",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "drug": "bms-955176",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -372,7 +408,7 @@
     "status": "same",
     "srcLabel": "Morales-Ramirez 2018",
     "src": "https://doi.org/10.1371/journal.pone.0205368",
-    "note": "Phase 2b at 60/120/180 mg (all above the plateau) gave 76-83% <40 copies/mL vs 77% on efavirenz, with no exposure-response, as the plateau model predicted.",
+    "note": "Phase 2b at 60/120/180 mg (all above the plateau) gave 76-83% <40 copies/mL vs 77% on efavirenz, with no exposure-response, as the plateau model predicted. Combination design: GSK3532795 with tenofovir DF/emtricitabine; target reached, so dose stays same; later abandonment is not a dose failure.",
     "short": "Flat 60-180 mg response matches plateau",
     "quote": "Efficacy endpoints demonstrated little correlation to GSK3532795 exposure. It is likely that lower doses would need to be studied to elucidate clear exposure-response relationships.",
     "confidence": "medium",
@@ -383,7 +419,11 @@
     "model": "Population PK + sigmoid Emax exposure-response model fitted to Phase 2a monotherapy viral-load data, with clinical-trial simulation, used to pick Phase 2b doses",
     "model_kind": "in_silico",
     "prediction_level": "class",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "drug": "bms-955176",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "tenofovir disoproxil fumarate/emtricitabine"
    },
    {
     "retrodiction": false,
@@ -409,7 +449,7 @@
     "status": "same",
     "srcLabel": "Joshi 2025 (DYNAMIC)",
     "src": "https://doi.org/10.1016/j.eclinm.2025.103566",
-    "note": "Trial simulation from Phase 2a popPK/Emax picked 100/150/200 mg fipravirimat as >=75% of max effect; Week-24 response 95/85/77% vs 86% on DTG+3TC.",
+    "note": "Trial simulation from Phase 2a popPK/Emax picked 100/150/200 mg fipravirimat as >=75% of max effect; Week-24 response 95/85/77% vs 86% on DTG+3TC. Combination design: fipravirimat with dolutegravir, two-drug regimen.",
     "short": "Simulated doses met Week-24 endpoint, 200 mg short",
     "quote": "At Week 24, proportions with HIV-1 RNA <50 copies/mL were 95% (21/22), 85% (17/20), and 77% (17/22) in the GSK’254 100-mg, 150-mg, and 200-mg groups, respectively, vs 86% (18/21) in the DTG plus 3TC group.",
     "confidence": "medium",
@@ -422,7 +462,11 @@
     "model": "Population PK + sigmoid Emax exposure-response model fitted to Phase 2a monotherapy viral-load data, with clinical-trial simulation, used to pick Phase 2b doses",
     "model_kind": "in_silico",
     "prediction_level": "class",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "drug": "fipravirimat",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "dolutegravir"
    },
    {
     "retrodiction": true,
@@ -460,7 +504,11 @@
     "model": "Physiologically based biopharmaceutic model (Simcyp v20) of GSK3640254 absorption built from in-vitro solubility/MDCK permeability in biorelevant media, to reproduce the clinical food effect",
     "model_kind": "in_silico",
     "prediction_level": "class",
-    "model_first_use_year": 2023
+    "model_first_use_year": 2023,
+    "drug": "fipravirimat",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -497,7 +545,11 @@
     "model": "Cross-species preclinical ADME projection (rat/dog/monkey PK, in-vitro microsome/hepatocyte clearance, metabolite profiling) of human disposition and clearance route",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "gsk-2838232",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -536,14 +588,18 @@
     "model": "Cross-species preclinical ADME projection (rat/dog/monkey PK, in-vitro microsome/hepatocyte clearance, metabolite profiling) of human disposition and clearance route",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "fipravirimat",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
    {
     "year": 2009,
     "status": "untested",
-    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses",
+    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
     "model_id": "hiv-gag-polymorph-cell-panel",
     "note": "Cell-culture replication of patient-derived viruses carrying Gag polymorphisms: bevirimat failed on polymorphic viruses, so the panel became the class's efficacy screen.",
     "short": "Polymorphic-virus panel is the efficacy screen",
@@ -571,24 +627,28 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2009,
-    "prediction_level": null,
+    "prediction_level": "class",
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [],
-    "judgement": "No animal efficacy model exists for this class: HIV-2 and SIV Gag are intrinsically resistant to GSK2838232 (Jeffrey/Smith 2023, 10.1371/journal.pone.0280568), so no macaque arm was possible and the class went to patients on cell culture alone. The cell is therefore a populated track, not an empty list."
+    "judgement": "No animal efficacy model exists for this class: HIV-2 and SIV Gag are intrinsically resistant to GSK2838232 (Jeffrey/Smith 2023, 10.1371/journal.pone.0280568), so no macaque arm was possible and the class went to patients on cell culture alone. The cell is therefore a populated track, not an empty list.",
+    "drug": "bms-955176",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "year": 2017,
+    "year": 2015,
     "status": "same",
-    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses",
+    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
     "model_id": "hiv-gag-polymorph-cell-panel",
-    "note": "Ten-day GSK3532795 monotherapy cut HIV RNA >1 log10 at every dose >=40 mg, in subtype B and C, and irrespective of the Gag polymorphisms that defeated bevirimat.",
+    "note": "Ten-day GSK3532795 monotherapy cut HIV RNA >1 log10 at every dose >=40 mg, in subtype B and C, and irrespective of the Gag polymorphisms that defeated bevirimat. Dated to CROI 2015 abstract 114LB (Feb 2015), first public report of the day-11 decline irrespective of Gag polymorphisms (rule 6).",
     "short": "Monotherapy worked across Gag polymorphisms",
     "src": "https://doi.org/10.1093/cid/cix239",
     "srcLabel": "Hwang 2017",
     "quote": "Median of the maximum declines in HIV-1 RNA were similar for the 40–120 mg once-daily dose groups regardless of baseline Gag polymorphisms.",
     "confidence": "high",
-    "confidence_note": "Open-access full text read. Primary endpoint was change in HIV-1 RNA to day 11 (registry).",
+    "confidence_note": "Open-access full text read. Primary endpoint was change in HIV-1 RNA to day 11 (registry). Earliest public date: Hwang et al, CROI 2015 abstract 114LB, reported by aidsmap 2015-02-26 ('its antiviral activity was similar against wild-type HIV and virus with baseline Gag polymorphisms that led to failure of bevirimat'); the abstract itself was not opened.",
     "subjects": "patients",
     "comparison_stated": true,
     "source_tier": 1,
@@ -625,15 +685,19 @@
       "quote": "At Week 24, 76-83% participants receiving GSK3532795 and 77% receiving EFV achieved HIV-1 RNA <40 copies/mL."
      }
     ],
-    "judgement": "The panel predicted activity across the polymorphisms that defeated bevirimat and the 10-day monotherapy confirmed it; comparison_stated because the paper reads the subtype C and polymorph results against the in-vitro susceptibility profiles. Partial patient-level caveat: Dicker 2022 notes that Phase 2a participants carrying the more complex V362I/V370A combination responded less, which the panel had listed among reduced-susceptibility genotypes, so the patient-level prediction is directionally right but was not pre-specified. The Phase 2b (NCT02415595) met its Week-24 primary (76-83% vs 77% on efavirenz) yet was terminated for GI intolerability and NRTI-backbone resistance; that is a safety/regimen failure, not an efficacy miss, so the status does not change. 'neg' is unavailable: no member fell below the class bar in the model. GSK2838232 Phase 2a (DeJesus 2020, 10.1093/cid/ciz938, abstract only; NCT03045861 results 2019-05-29; -1.70 log10 at 200 mg + cobicistat) is a consistent third member not given its own entry."
+    "judgement": "The panel predicted activity across the polymorphisms that defeated bevirimat and the 10-day monotherapy confirmed it; comparison_stated because the paper reads the subtype C and polymorph results against the in-vitro susceptibility profiles. Partial patient-level caveat: Dicker 2022 notes that Phase 2a participants carrying the more complex V362I/V370A combination responded less, which the panel had listed among reduced-susceptibility genotypes, so the patient-level prediction is directionally right but was not pre-specified. The Phase 2b (NCT02415595) met its Week-24 primary (76-83% vs 77% on efavirenz) yet was terminated for GI intolerability and NRTI-backbone resistance; that is a safety/regimen failure, not an efficacy miss, so the status does not change. 'neg' is unavailable: no member fell below the class bar in the model. GSK2838232 Phase 2a (DeJesus 2020, 10.1093/cid/ciz938, abstract only; NCT03045861 results 2019-05-29; -1.70 log10 at 200 mg + cobicistat) is a consistent third member not given its own entry.",
+    "drug": "bms-955176",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2023,
     "status": "same",
     "strengthens": true,
-    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses",
+    "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
     "model_id": "hiv-gag-polymorph-cell-panel",
-    "note": "Fipravirimat Phase 2b: Week-24 HIV RNA <50 c/mL in 83-91% on 100-150 mg + 2 NRTIs vs 92% on dolutegravir (DOMINO); 95%/85% vs 86% as a two-drug regimen with DTG (DYNAMIC).",
+    "note": "Fipravirimat Phase 2b: Week-24 HIV RNA <50 c/mL in 83-91% on 100-150 mg + 2 NRTIs vs 92% on dolutegravir (DOMINO); 95%/85% vs 86% as a two-drug regimen with DTG (DYNAMIC). Combination design: fipravirimat with two NRTIs vs dolutegravir with two NRTIs, scored on the Week-24 primary endpoint.",
     "short": "Fipravirimat matched dolutegravir at week 24",
     "src": "https://doi.org/10.1016/j.eclinm.2025.103567",
     "srcLabel": "Joshi 2025 (DOMINO)",
@@ -677,7 +741,11 @@
      }
     ],
     "reason": "Fipravirimat matched dolutegravir at week 24",
-    "judgement": "Paired comparison: the model side is Dicker 2022 (library-wide PBA EC90 33 nM, clinical-isolate EC50 9 nM) and the trial side the two Phase 2b papers; the trial papers cite the model work but do not compare to it, hence comparison_stated false. Year is the NCT04493216 results posting (2023-11-18), the earliest both sides were public; the papers are 2025. The 200 mg arms' lower Snapshot rates are attributed by the authors to missing data and blips, not to loss of antiviral effect, so the status is same, not partial. ViiV stopped fipravirimat for portfolio reasons (registry whyStopped) and an editorial (10.1016/j.eclinm.2025.103573) reads the decision as commercial; no member of this class has failed an efficacy endpoint in patients."
+    "judgement": "Paired comparison: the model side is Dicker 2022 (library-wide PBA EC90 33 nM, clinical-isolate EC50 9 nM) and the trial side the two Phase 2b papers; the trial papers cite the model work but do not compare to it, hence comparison_stated false. Year is the NCT04493216 results posting (2023-11-18), the earliest both sides were public; the papers are 2025. The 200 mg arms' lower Snapshot rates are attributed by the authors to missing data and blips, not to loss of antiviral effect, so the status is same, not partial. ViiV stopped fipravirimat for portfolio reasons (registry whyStopped) and an editorial (10.1016/j.eclinm.2025.103573) reads the decision as commercial; no member of this class has failed an efficacy endpoint in patients.",
+    "drug": "fipravirimat",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "two NRTIs (investigator-selected backbone)"
    },
    {
     "retrodiction": false,
@@ -716,14 +784,18 @@
     "model": "HIV-1-infected SCID-hu Thy/Liv humanized mouse (human fetal thymus/liver implant), oral dosing, thymocyte viral RNA, p24 and CA-SP1 cleavage",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2007
+    "model_first_use_year": 2007,
+    "drug": "class",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
    {
     "year": 2018,
     "status": "same",
-    "model": "Nonclinical toxicology (short- and longer-duration repeat-dose studies; species not public)",
+    "model": "Nonclinical repeat-dose toxicology (rat and dog; short-duration and chronic studies)",
     "model_id": "mi-nonclinical-tox",
     "note": "GSK2838232: short-duration tox raised minimal, sporadic cardiovascular signals not reproduced in longer studies; Holter/troponin-monitored Phase 1 found no drug-related cardiovascular toxicity.",
     "short": "Equivocal animal CV signal; humans clean",
@@ -753,14 +825,18 @@
     "population": "Unselected",
     "model_first_use_year": 2018,
     "prediction_level": "class",
-    "judgement": "The only public animal-side safety statement for any member before 2025. The paper juxtaposes the nonclinical signal with intensive cardiovascular monitoring in Phase 1, so comparison_stated is true; one SAE 'of a cardiovascular nature' terminated one study early and was later judged unlikely to be drug-related. Not scored on this track: the harm that killed BMS-955176 (GI disorders in 65% vs 30% on efavirenz; diarrhoea 27-51% by dose; Morales-Ramirez 2018) has no public animal-side record, so the model's silence or prediction on it cannot be judged. The Phase 1 registry records (NCT02289495, terminated; NCT02795754, completed) carry no posted results, so registry_date is null and the comparison was first public in this paper. GSK2838232 was later shelved for its boosting requirement (editorial 10.1016/j.eclinm.2025.103573), not for safety."
+    "judgement": "The only public animal-side safety statement for any member before 2025. The paper juxtaposes the nonclinical signal with intensive cardiovascular monitoring in Phase 1, so comparison_stated is true; one SAE 'of a cardiovascular nature' terminated one study early and was later judged unlikely to be drug-related. Not scored on this track: the harm that killed BMS-955176 (GI disorders in 65% vs 30% on efavirenz; diarrhoea 27-51% by dose; Morales-Ramirez 2018) has no public animal-side record, so the model's silence or prediction on it cannot be judged. The Phase 1 registry records (NCT02289495, terminated; NCT02795754, completed) carry no posted results, so registry_date is null and the comparison was first public in this paper. GSK2838232 was later shelved for its boosting requirement (editorial 10.1016/j.eclinm.2025.103573), not for safety.",
+    "drug": "gsk-2838232",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2025,
     "status": "contra",
-    "model": "Nonclinical toxicology (short- and longer-duration repeat-dose studies; species not public)",
+    "model": "Nonclinical repeat-dose toxicology (rat and dog; short-duration and chronic studies)",
     "model_id": "mi-nonclinical-tox",
-    "note": "Fipravirimat animal tox predicted gastric parietal/chief-cell changes; paired Week-24 gastric biopsies in DOMINO (14 on drug) showed no drug-related findings and gastrin/pepsinogens were unchanged.",
+    "note": "Fipravirimat animal tox predicted gastric parietal/chief-cell changes; paired Week-24 gastric biopsies in DOMINO (14 on drug) showed no drug-related findings and gastrin/pepsinogens were unchanged. Patients of this disease measured (on two NRTIs); their biopsies set the status.",
     "short": "Animal gastric lesions absent in patient biopsies",
     "src": "https://doi.org/10.1016/j.eclinm.2025.103567",
     "srcLabel": "Joshi 2025 (DOMINO)",
@@ -789,7 +865,11 @@
     "model_first_use_year": 2018,
     "prediction_level": "class",
     "reason": "Animal gastric lesions absent in patient biopsies",
-    "judgement": "Scored under the v3 rule that a predicted harm which never appeared in patients is contra with magnitude opposite: the sponsor ran a prospective EGD sub-study specifically 'to look for evidence of translation of non-clinical toxicology findings (eg, parietal cell and chief cell changes)' and found none. Confidence is low for the reasons in confidence_note; a checker who weighs the unknown exposure margin may downgrade to same with margin_stated. Year is the paper (epub 2025-10-17); the registry results posting (2023-11-18) was not checked for the exploratory biopsy endpoint. Clinical GI intolerability with fipravirimat was 29-42% vs 31% on dolutegravir in DOMINO and higher in the 150/200 mg DYNAMIC arms; the GI harm of the class was addressed by chemistry (reduced basicity), not predicted by an animal model. GSK3640254's thorough-QT study (10.1002/prp2.1151: ddQTcF 10.6 ms at a 500 mg supratherapeutic dose) has no public animal-side counterpart and is not scored."
+    "judgement": "Scored under the v3 rule that a predicted harm which never appeared in patients is contra with magnitude opposite: the sponsor ran a prospective EGD sub-study specifically 'to look for evidence of translation of non-clinical toxicology findings (eg, parietal cell and chief cell changes)' and found none. Confidence is low for the reasons in confidence_note; a checker who weighs the unknown exposure margin may downgrade to same with margin_stated. Year is the paper (epub 2025-10-17); the registry results posting (2023-11-18) was not checked for the exploratory biopsy endpoint. Clinical GI intolerability with fipravirimat was 29-42% vs 31% on dolutegravir in DOMINO and higher in the 150/200 mg DYNAMIC arms; the GI harm of the class was addressed by chemistry (reduced basicity), not predicted by an animal model. GSK3640254's thorough-QT study (10.1002/prp2.1151: ddQTcF 10.6 ms at a 500 mg supratherapeutic dose) has no public animal-side counterpart and is not scored.",
+    "drug": "fipravirimat",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "two NRTIs (investigator-selected backbone)"
    }
   ]
  }

@@ -1,0 +1,152 @@
+{
+ "tile": "type-2-diabetes-mellitus-gcgr-glp1r-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "same -> retro (retrodiction true): cotadutide DIO-mouse result (Henderson 2016) post-dates the pegapamodutide TT-401 T2D result (press release 2013-04-30); drug cotadutide, route sc"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "same -> retro (retrodiction true): db/db model (Evers 2017) post-dates the TT-401 T2D result (2013-04-30); drug SAR425899, route sc"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "same -> retro (retrodiction true): Henderson 2016 cotadutide DIO-mouse result post-dates TT-401 2013-04-30; co-primary design (both met) written into note"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "same -> retro (retrodiction true): cynomolgus model first public 2016 after TT-401 2013-04-30; co-primaries both met"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "same -> retro (retrodiction true): db/db model first public 2017 after TT-401 2013-04-30"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "same -> retro (retrodiction true): settles RULE QUESTION; Elvert 2018 monkey surrogate first public after TT-401 2013-04-30, so the sponsor-internal MAD question is moot"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "same -> retro (retrodiction true, strengthens kept): same post-dated Elvert 2018 model result as entry 12"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to SAR425899, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to SAR425899, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug set to SAR425899, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug set to SAR425899, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug set to SAR425899, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "drug set to cotadutide, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "what": "drug set to cotadutide, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to SAR425899, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to SAR425899, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to cotadutide, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set to cotadutide, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to SAR425899, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to cotadutide, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug set to cotadutide, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug set to cotadutide, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug set to cotadutide, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug set to SAR425899, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to SAR425899, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to cotadutide, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to cotadutide, route sc (track assignment; no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to cotadutide, route sc (track assignment; no status change)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "dio-mouse x SAR425899 sc: same 2018 (Tillner 2019 'well tolerated'); ruling: Day 2009's passing 'without any overt adverse effects' claim is now a safety prediction; GI harm stays in dose"
+  }
+ ]
+}

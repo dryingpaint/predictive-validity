@@ -1,0 +1,72 @@
+{
+ "tile": "non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true (model first public 2012-2013, after 17-AAG patient PD in Banerji 2005; engagement counts any drug's earlier patient result); drug luminespib, route iv; model_src -> Garon 2013, product_in_model true (check)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug luminespib, route iv; model_src Shimamura 2012 -> Eccles 2008 (check, Sessa's stated comparison); status same unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2016 -> 2015 (Synta press release 2015-10-20, earliest public date, rule 6); combination_with docetaxel; 'strengthens' folded into note."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true (post-dating alone: Jorge 2018 epub 2018-08-28 after NCT01854034 results 2018-04-10); model_kind animal -> ex_vivo; drug luminespib."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> contra (RULE QUESTION settled: passing tolerability claim is a scored safety prediction; silence on mouse-measurable diarrhoea contradicted); src Goldman 2013 -> Socinski 2013 (NSCLC patients measured set the status)."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "status retro -> same, retrodiction false (safety retrodiction may rest only on the dosed drug's own earlier patient result; dogs got non-member Chugai drugs); year 2014 -> 2015, src Kanamaru 2014 -> Johnson 2015 (NSCLC luminespib patients, night blindness); drug luminespib, combination_with erlotinib."
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "luminespib opener on nsclc-xenograft-panel, untested 2013 (Garon 2013)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "luminespib opener on nsclc-xenograft-panel, untested 2013 (Garon 2013)."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "split rat-retina-model ganetespib track: retro 2013 (Zhou 2013), patients differ from luminespib."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "rat-retina-model luminespib opener, untested 2013 (Zhou 2013)."
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "rat-retina-model ganetespib opener, untested 2013 (Zhou 2013)."
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "beagle-dog-retina-model ganetespib opener, untested 2014 (Kanamaru 2014)."
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "split beagle-dog-retina-model ganetespib track: contra 2014 (Kanamaru 2014 paired with Socinski 2013, no visual harm)."
+  }
+ ]
+}

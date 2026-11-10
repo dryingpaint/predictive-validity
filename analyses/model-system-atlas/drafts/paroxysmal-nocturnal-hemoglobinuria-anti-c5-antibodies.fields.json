@@ -1,0 +1,57 @@
+{
+ "tile": "paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: assay first run after eculizumab's patient C5 blockade (same target and action); drug ravulizumab, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "year 2022 -> 2018 (rule 6: Chugai ASH 2018 press release reported complete inhibition in all Part 2 patients incl. two C5 SNP carriers); drug crovalimab, route sc"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: mouse PK first public 2018, after ravulizumab's own ASH 2016 patient dose-escalation data; drug ravulizumab, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "year 2020 -> 2018 (rule 6: Chugai ASH press release 6 Dec 2018, complete inhibition in all patients on SC dosing); drug crovalimab, route sc"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "status same -> retro, retrodiction true: final PopPK fitted to crovalimab's own Phase 3 data (checker adjudication, decision 10); drug crovalimab, route sc"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: eculizumab's PNH efficacy (same target and action) predates the assay; co-primary NI design written into note; drug ravulizumab, route iv"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "crovalimab sc track of the human-serum assay: retro 2018 (Röth 2020; Chugai ASH 2018 press release), split from entry 2's judgement"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "ravulizumab iv opener of the human-serum assay track, untested 2018 (FDA review)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "crovalimab sc track: retro 2022, COMMODORE 3 single-arm co-primaries met (Roche ASH press release); single-arm ruling"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "ravulizumab iv opener of the human-serum assay track, untested 2018 (FDA review)"
+  }
+ ]
+}

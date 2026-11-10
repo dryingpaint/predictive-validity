@@ -1,0 +1,67 @@
+{
+ "tile": "fragile-x-syndrome-grm5-negative-modulators",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug fenobam, route oral (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug fenobam, route oral (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "year 2008 -> 2005, src/quote de Vrij 2008 -> Yan 2005 (earliest Fmr1 KO MPEP rescue; rule 6 per check adjudication); model_first_use_year 2005; drug mavoglurant, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "year 2008 -> 2005, src/quote de Vrij 2008 -> Yan 2005 (rule 6, check adjudication); model_first_use_year 2005; drug mavoglurant, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug mavoglurant, route oral; model_src -> Yan 2005; basimglurant FragXis moved out of patient_trials to its own track (index 6)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug mavoglurant, route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug mavoglurant, route oral; basimglurant FragXis moved out of patient_trials to its own track (index 8)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug basimglurant (the member whose patient harm the entry names), route oral"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "basimglurant opener on fmr1-ko-mouse-behaviour, untested 2005 (Yan 2005, sibling MPEP)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "basimglurant contra 2014 on fmr1-ko-mouse-behaviour: FragXis missed ADAMS primary (Youssef 2017; year from Roche letter 8 Sept 2014)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "basimglurant opener on dfmr1-drosophila, untested 2005 (McBride 2005)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "basimglurant contra 2014 on dfmr1-drosophila: FragXis missed ADAMS primary (Youssef 2017; year from Roche letter)"
+  }
+ ]
+}

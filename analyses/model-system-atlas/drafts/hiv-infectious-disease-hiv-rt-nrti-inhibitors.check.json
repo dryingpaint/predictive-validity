@@ -11,70 +11,108 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Dutschman 2004 resolves (PMID 15105115, AAC print 2004-05); quote verbatim in abstract; untested opener on the cell-culture track, product_in_model true (4'-Ed4T = censavudine). No change."
+   "note": "Dutschman 2004 (PMID 15105115) abstract quote verbatim; untested opener at model_first_use_year 2004; drug censavudine, route oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Cotte 2013 resolves (PMID 23771104); quote verbatim in abstract. Viral load is a proximal readout (decision 15); decision 4 routes the GS-9131 genotype-stratified failure to efficacy, so same stands. Azvudine NMPA label adds a 2021 same (see missing)."
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2013,
+   "rule": "retrodiction (DRAFTER_BRIEF 'What the model is'; CHECKER_BRIEF 3): for engagement and efficacy a model result first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced is retro, never same; failed is contra",
+   "note": "Cotte 2013 (PMID 23771104) quote verbatim; censavudine, oral, unselected correct. Panel (2004) post-dates zidovudine/lamivudine patient viral-load results on HIV RT, same action: retrodiction true, reproduced the drop, so retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule ('What the model is'): engagement is a target claim; the 2004 panel post-dates zidovudine/lamivudine patient viral-load results on RT, and it reproduced them, so retro with retrodiction true."
   },
   {
    "cell": "dose",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2004,
+   "rule": "rule 6: each cell opens at model_first_use_year with status untested",
+   "note": "Wang 2009 (PMID 19470503) abstract quote verbatim; censavudine, oral correct. model_first_use_year now 2004 but the cell opens 2009; rule 6 opens the cell at model_first_use_year, so year 2004 (status untested unchanged).",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: the cell opens at model_first_use_year (2004) with status untested, so the opener's year is 2004, not 2009; status unchanged."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2013,
+   "rule": "dose (DRAFTER_BRIEF; CHECKER_BRIEF 3): same only on a target the model system stated; no stated target is untested",
+   "note": "Cotte 2013 AUC quote verbatim; censavudine, oral. Wang 2009 abstract (full text not retrievable) states triphosphate persistence but no exposure, occupancy or regimen target; plateau activity is efficacy's. untested, untested_reason no_prediction.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose rule: same needs a stated exposure/occupancy/regimen target; Wang 2009 abstract states triphosphate persistence only, no target; plateau activity is efficacy's. Untested, untested_reason no_prediction (rule 5)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2007,
+   "rule": "rule 5: a track's latest untested entry carries untested_reason",
+   "note": "Cihlar 2008 (PMID 18056282, epub 2007) quote verbatim; rovafovir etalafenamide, oral (registry tablets) correct; untested right (no human PK posted). As the track's latest untested entry it lacks untested_reason: not_measured.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5: track's latest untested entry needs untested_reason; dog PBMC diphosphate has a human counterpart, but NCT03472326 registers no PK outcome and none is published: not_measured."
+  },
+  {
+   "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Wang 2009 resolves (PMID 19470503, epub 2009-05-26); quote verbatim; untested opener with margin_stated false, decision 16 correctly not invoked. No change."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Cotte 2013 AUC sentence verbatim in abstract; a regimen prediction (triphosphate persistence to once daily) counts under decision 4 (#91); direction_only right since no numeric target. No change."
-  },
-  {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Cihlar 2008 resolves (PMID 18056282, epub 2007-12-03); quote verbatim; separate beagle-dog track untested because no human intracellular GS-9148-DP or PK was posted (registry lists no PK outcome). No change."
-  },
-  {
-   "cell": "efficacy",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Dutschman 2004 closing sentence verbatim in abstract; untested opener, cell not empty because the cell-culture package was the efficacy model. No change."
+   "note": "Dutschman 2004 closing sentence verbatim; untested opener, censavudine, oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Cotte 2013 conclusion verbatim; antiviral activity is one of four stated co-objectives of the Phase 2a, so endpoint_role primary is acceptable; EudraCT 2008-004810-29 ranking not read by me either. No change."
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2013,
+   "rule": "retrodiction (DRAFTER_BRIEF 'What the model is'; CHECKER_BRIEF 3): for engagement and efficacy a model result first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced is retro, never same; failed is contra",
+   "note": "Cotte 2013 conclusion verbatim; censavudine, oral, unselected, primary correct. Panel (2004) post-dates earlier NRTI patient HIV-RNA results on RT: target-level retrodiction, reproduced, so retro with retrodiction true.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: efficacy is a target claim; panel (2004) post-dates earlier NRTI patient HIV-RNA results on RT and reproduced them, so retro with retrodiction true, not same."
   },
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Gupta 2016 resolves (PMID 26762988, Lancet HIV epub 2015-12-12); abstract names week-24 HIV-1 RNA <50 copies/mL as primary; NCT01489046 hasResults false, so registry_date null is right. Strengthening same stands."
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2014,
+   "rule": "retrodiction (DRAFTER_BRIEF 'What the model is'; CHECKER_BRIEF 3): for engagement and efficacy a model result first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced is retro, never same; failed is contra",
+   "note": "Gupta 2016 (PMID 26762988) quote verbatim; TAG 2015 pipeline report places Phase 2b at ICAAC 2014, so year 2014 holds; combination_with efavirenz + lamivudine and primary endpoint right. Target-level retrodiction: retro, not same.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: target-level post-dating of earlier NRTI patient results makes this a retrodiction; it reproduced them, so retro, never same; year 2014 (ICAAC) under rule 6 holds."
   },
   {
    "cell": "efficacy",
@@ -85,8 +123,11 @@
    "status_supported": true,
    "proposed_status": "contra",
    "proposed_year": 2021,
-   "rule": "decision 4 (#144): sponsor-pre-specified secondary as the proof-of-concept gate carries endpoint_role poc_gate",
-   "note": "Status contra stands (predicted effect absent, decision 4 #53). But the registered primary outcome (randomized-cohort responder rate) was never populated; the sentinel-cohort viral-load changes are registered SECONDARY outcomes used as the Part 2 gate, so endpoint_role should be poc_gate."
+   "rule": "retrodiction (DRAFTER_BRIEF 'What the model is'; CHECKER_BRIEF 3): for engagement and efficacy a model result first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced is retro, never same; failed is contra",
+   "note": "NCT03472326 limitationsAndCaveats verbatim, results posted 2021-01-05; registered primary (randomized cohort) unpopulated, sentinel bar was the gate, so poc_gate; genotype eligibility makes biomarker_selected right; rovafovir, oral. Contra stands but retrodiction should be true.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Retrodiction rule: a retrodiction that failed to reproduce is contra; status stands, and retrodiction should be true (model post-dates earlier NRTI patient results on RT)."
   },
   {
    "cell": "safety",
@@ -95,16 +136,23 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Dutschman 2004 quote verbatim; mitochondrial-toxicity track opener; Wang 2013 (PMID 24080659, epub 2013-09-30) resolves as the later model side. No change."
+   "note": "Dutschman 2004 quote verbatim; mitochondrial-toxicity opener; censavudine, oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Gupta 2016 quote verbatim. Abstract reports fat gain and smaller BMD loss; 'no lipoatrophy' is an inference from fat gain, not stated. same + partial is defensible; a 19-day mtDNA assay cannot show visceral fat, so no contradicted silence. No change."
+   "proposed_status": "same",
+   "proposed_year": 2014,
+   "rule": "rule 6 dating: earliest public date, congress abstract included",
+   "note": "Gupta 2016 quote verbatim; censavudine, oral, unselected; same/partial stands (2004 prediction prospective for this drug). TAG 2015 pipeline report: bone and peripheral-fat differences reported at ICAAC 2014, so rule 6 moves year to 2014 (secondary report).",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 dating: earliest public date including congress abstract; bone and fat differences were presented at ICAAC 2014, so year 2014; same/partial stands (prediction prospective for this drug)."
   },
   {
    "cell": "safety",
@@ -113,7 +161,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Guha 2014 resolves (PMID 24846376, Int J Toxicol 2014-05); quote verbatim; stated predictions (dyserythropoiesis, 3/60 monkey platelet falls, no mitochondrial toxicity) read correctly. No change."
+   "note": "Guha 2014 (PMID 24846376) quote verbatim; untested opener at first public date; censavudine, oral; note correctly records post-dating Cotte 2013, retrodiction false on an opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -122,16 +171,33 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Gupta 2016 SAE sentence verbatim. One drug-related thrombocytopenia in 198 against an immune-mediated 3/60 monkey finding is a thin same; anaemia (the primary predicted harm) is unreported in the abstract. Accept at low confidence; see rule question 3."
+   "note": "Gupta 2016 SAE sentence verbatim; Guha 2014 first public after censavudine's own Phase 2a safety result (Cotte 2013), so retro with retrodiction true is right under the drug-level safety rule; censavudine, oral, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2008,
+   "rule": "rule 5: a track's latest untested entry carries untested_reason",
+   "note": "Cihlar 2009 (PMID 19001108) quote verbatim; renal track untested (14-day dosing, no renal data posted); rovafovir, oral, unselected correct. Track's latest untested entry lacks untested_reason: not_measured.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5: latest untested entry needs untested_reason; renal-transport prediction made, but the 14-day trial registers no renal outcome and posts no renal AE: not_measured."
+  },
+  {
+   "cell": "efficacy",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Cihlar 2009 resolves (PMID 19001108, epub 2008-11-10); quote verbatim; renal-transport track untested because GS-9131 patients were dosed 14 days with no posted renal data. No change."
+   "note": "Cihlar 2008 abstract quote verbatim (epub 2007); untested opener for the rovafovir track, oral, unselected correct. Lint reads tracks in year order regardless of list position (0 findings), so placement after the 2021 contra is fine.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -145,6 +211,7 @@
   "When one proximal readout (plasma HIV-1 RNA) is both the engagement readout and the efficacy primary endpoint, a success scores in both cells but decision 4 routes a genotype-stratified failure to efficacy only, so the same track reads engagement `same` (censavudine 2013) and efficacy `contra` (GS-9131 2021). Is that asymmetry intended?",
   "Does one drug-related SAE in 198 patients (thrombocytopenia, Gupta 2016) count as a predicted low-frequency animal harm appearing in patients (`same`), or is there an n or incidence floor below which the comparison is `untested`?",
   "When the registered primary outcome was never populated (randomized cohort not enrolled) and the sponsor's stated go/no-go bar sat on a registered secondary outcome in sentinel cohorts, does the trial score on that bar as endpoint_role poc_gate (my proposal) even though the sponsor itself calls it the primary endpoint in the limitations field?",
-  "Dating: does a registry status change to Terminated with an efficacy reason (GS-9131, 2020 per Adis) make the comparison public under decision 7, or only the results posting (2021-01-05)?"
+  "Dating: does a registry status change to Terminated with an efficacy reason (GS-9131, 2020 per Adis) make the comparison public under decision 7, or only the results posting (2021-01-05)?",
+  "Target-level retrodiction in a follow-on class: every next-generation NRTI model post-dates zidovudine/lamivudine/tenofovir patient results on HIV RT, so every engagement and efficacy comparison on this tile becomes retro (or retrodiction-flagged contra) and no track can set a headline. Is that the intended reading for classes whose target was clinically validated before any member's model?"
  ]
 }

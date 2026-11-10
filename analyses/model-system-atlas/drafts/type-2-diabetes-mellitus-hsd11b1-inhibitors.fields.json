@@ -1,0 +1,132 @@
+{
+ "tile": "type-2-diabetes-mellitus-hsd11b1-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug/route set to class/not_applicable; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug/route set to RO5093151/oral, partner metformin; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug/route set to bi-187004/oral; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug/route set to class/not_applicable; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug/route set to RO5093151/oral, partner metformin; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug/route set to class/not_applicable; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug/route set to bi-187004/oral; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug/route set to class/not_applicable; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug/route set to bms-823778/oral; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug/route set to bms-823778/oral; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug/route set to class/not_applicable; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug/route set to mk-0736/oral; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug/route set to RO5093151/oral, partner metformin (add-on design noted); population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug/route set to bi-187004/oral (pooled mono and add-on strata noted); population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug/route set to JTT-654/oral; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug/route set to class/not_applicable; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug/route set to bi-187004/oral, partner metformin (metformin arm); population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug/route set to bi-187004/oral (pooled strata noted); population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug/route set to class/not_applicable; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug/route set to RO5093151/oral, partner metformin; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug/route set to bi-187004/oral; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug/route set to class/not_applicable; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug/route set to RO5093151/oral, partner metformin; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug/route set to bi-187004/oral; population_group unselected; status and year unchanged (no 2026-11-09 ruling changes them)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "gk-rat x JTT-654 x oral contra 2023, retrodiction: true (retrodiction ruling: GK-rat glucose lowering first public 2023, after member drug BI 187004's null at full inhibition, Bianzano 2023 doi:10.1111/dom.14932, first online 2022-12-22; 2015 Vitae 8-K); paired, model_src Biol Pharm Bull 2023 doi:10.1248/bpb.b23-00129"
+  }
+ ]
+}

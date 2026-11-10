@@ -1,0 +1,92 @@
+{
+ "tile": "retinitis-pigmentosa-rpgr-replacement-gene-therapy",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to cotoretigene toliparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to laruparetigene zovaparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to botaretigene sparoparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to cotoretigene toliparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to laruparetigene zovaparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to laruparetigene zovaparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males); quote replaced with Yang 2024's tolerated-dose sentence (the old quote was an efficacy sentence), status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to cotoretigene toliparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to cotoretigene toliparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set to laruparetigene zovaparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to laruparetigene zovaparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to botaretigene sparoparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug set to botaretigene sparoparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to cotoretigene toliparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to cotoretigene toliparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to laruparetigene zovaparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to laruparetigene zovaparvovec, route subretinal (the product the model was run with / the patients compared); population_group biomarker_selected (RPGR-genotyped males)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "new track organoid x cotoretigene toliparvovec x subretinal: 2024 contra, retrodiction true (organoid rescue public after the 2021 XIRIUS phase 2/3 primary miss; efficacy retrodiction counts any drug on the target); src Lam 2024, model_src Sladen 2024"
+  }
+ ]
+}

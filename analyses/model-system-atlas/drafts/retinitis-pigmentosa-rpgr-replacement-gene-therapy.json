@@ -52,7 +52,11 @@
     "untested_reason": "not_measured",
     "reason": "RPGR protein cannot be sampled in patients",
     "src": "https://doi.org/10.1016/j.ymthe.2017.05.005",
-    "srcLabel": "Fischer 2017"
+    "srcLabel": "Fischer 2017",
+    "drug": "cotoretigene toliparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -89,7 +93,11 @@
     "srcLabel": "Song 2020",
     "quote": "Subretinal administration of rAAV2tYF-GRK1-hRPGRco and rAAV2tYF-GRK1-hRPGRstb both corrected rod and cone opsin mislocalization, two early markers of disease in the XLPRA2 canine model of RPGR-XLRP.",
     "untested_reason": "not_measured",
-    "reason": "Opsin localisation not measurable in patients"
+    "reason": "Opsin localisation not measurable in patients",
+    "drug": "laruparetigene zovaparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -100,7 +108,7 @@
     "model_kind": "ex_vivo",
     "model_first_use_year": 2024,
     "population": "RPGR-associated X-linked RP (males)",
-    "product_in_model": true,
+    "product_in_model": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
@@ -114,7 +122,7 @@
     "srcLabel": "Sladen 2024",
     "quote": "The transduction of RPGR-KO ROs using AAV-RPGR successfully restored RPGR mRNA and protein expression and localisation to the photoreceptor connecting cilium in rod and cone photoreceptors.",
     "confidence": "high",
-    "confidence_note": "Full text (PMC10855600).",
+    "confidence_note": "Full text (PMC10855600). Organoids carried the bota-vec hRKp.RPGR cassette in an AAV7m8 capsid, not the clinical AAV5, so product_in_model is false.",
     "reason": "Readouts have no human counterpart",
     "judgement": "RPGR localisation and opsin trafficking cannot be sampled in dosed patients' retinas, so engagement stays untested.",
     "subjects": null,
@@ -127,7 +135,11 @@
     "print_year": 2024,
     "source_calls_it": null,
     "readout_tier": "proximal",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "botaretigene sparoparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -166,7 +178,11 @@
     "untested_reason": "no_prediction",
     "reason": "Mouse work stated no human dose",
     "src": "https://doi.org/10.1016/j.ymthe.2017.05.005",
-    "srcLabel": "Fischer 2017"
+    "srcLabel": "Fischer 2017",
+    "drug": "cotoretigene toliparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -201,7 +217,11 @@
     "short": "Dogs set NOAEL and starting dose",
     "quote": "These results support the selection and use of rAAV2tYF-GRK1-hRPGRco (AGTC-501) and guided the initial doses in clinical studies in patients with XLRP caused by RPGR mutations.",
     "src": "https://doi.org/10.1089/hum.2019.337",
-    "srcLabel": "Song 2020"
+    "srcLabel": "Song 2020",
+    "drug": "laruparetigene zovaparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -233,12 +253,16 @@
     "year": 2024,
     "status": "same",
     "margin_stated": true,
-    "note": "Humans were escalated to 1.99 x 10^12 vg/eye; RPE changes capped the dose, and 6.8 x 10^11 vg/eye was tolerated with preliminary efficacy.",
+    "note": "Humans were escalated to 1.99 x 10^12 vg/eye; RPE changes capped the dose, and 6.8 x 10^11 vg/eye was tolerated with preliminary efficacy. Dog margin was stated in vg/mL and human doses in vg/eye, so the margin is matched in shape only (tolerated middle, toxic top).",
     "short": "Toxic only at top dose, as dogs showed",
     "src": "https://doi.org/10.1016/j.ajo.2024.11.021",
     "srcLabel": "Yang 2024",
-    "quote": "Half the participants at the highest tolerated dose (6.8 × 1011vg/eye) maintained ≥7 dB improvement in ≥5 loci at 24 months.",
-    "reason": "Margin held: toxicity only at top dose"
+    "quote": "Preliminary efficacy was observed at the maximum tolerated dose.",
+    "reason": "Margin held: toxicity only at top dose",
+    "drug": "laruparetigene zovaparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -275,7 +299,11 @@
     "short": "Mice: degeneration rescued",
     "quote": "Significantly, when delivered by AAV8 vector and driven by the rhodopsin kinase promoter, the codon-optimized RPGR rescues the disease phenotype in two relevant animal models (Rpgr-/y and C57BL/6JRd9/Boc) and shows good safety in C57BL6/J wild-type mice.",
     "src": "https://doi.org/10.1016/j.ymthe.2017.05.005",
-    "srcLabel": "Fischer 2017"
+    "srcLabel": "Fischer 2017",
+    "drug": "cotoretigene toliparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -327,7 +355,11 @@
       "doi": null,
       "quote": "In a pooled analysis of all who received bota-vec, the trial’s primary endpoint of improvement in the ability of patients to visually navigate through a virtual maze was not met"
      }
-    ]
+    ],
+    "drug": "cotoretigene toliparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -362,7 +394,11 @@
     "short": "Dogs: rod/cone function rescued",
     "quote": "Electroretinography, in vivo retinal imaging, and histological analysis showed rescue of photoreceptor function and structure in the absence of ocular toxicity in the low- and mid-dose treatment groups when compared with the vehicle-treated group.",
     "src": "https://doi.org/10.1089/hum.2019.297",
-    "srcLabel": "Dufour 2020"
+    "srcLabel": "Dufour 2020",
+    "drug": "laruparetigene zovaparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -400,7 +436,11 @@
     "endpoint_role": "primary",
     "quote": "VISTA met its FDA-endorsed primary endpoint, demonstrating statistically significant low luminance visual acuity (LLVA) responder rates at Month 12 compared to the untreated control group",
     "reason": "Dog rescue matched VISTA primary",
-    "outcome_tested": null
+    "outcome_tested": null,
+    "drug": "laruparetigene zovaparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -411,7 +451,7 @@
     "model_kind": "ex_vivo",
     "model_first_use_year": 2024,
     "population": "RPGR-associated X-linked RP (males)",
-    "product_in_model": true,
+    "product_in_model": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
@@ -425,7 +465,7 @@
     "srcLabel": "Sladen 2024",
     "quote": "These data provide mechanistic insights into RPGR ORF15 gene supplementation functional potency in human photoreceptor cells and support the previously reported Phase I/II trial positive results using this vector construct in patients with RPGR-associated XLRP",
     "confidence": "high",
-    "confidence_note": "Full text (PMC10855600); MeiraGTx-funded.",
+    "confidence_note": "Full text (PMC10855600); MeiraGTx-funded. Organoids carried the bota-vec hRKp.RPGR cassette in an AAV7m8 capsid, not the clinical AAV5, so product_in_model is false.",
     "judgement": "The phase 1/2 trial's primary outcome was safety, so the organoids' agreement with its secondary efficacy signals is not scored as retro; LUMEOS is the first primary-endpoint test.",
     "subjects": null,
     "comparison_stated": false,
@@ -438,7 +478,11 @@
     "source_calls_it": null,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "botaretigene sparoparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -449,7 +493,7 @@
     "model_kind": "ex_vivo",
     "model_first_use_year": 2024,
     "population": "RPGR-associated X-linked RP (males)",
-    "product_in_model": true,
+    "product_in_model": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
@@ -463,7 +507,7 @@
     "srcLabel": "MeiraGTx 2026",
     "quote": "The novel primary endpoint to assess the effect of bilaterial treatment with bota-vec on functional vision as measured by a Visual Mobility Assessment (VMA), or maze, did not meet statistical significance.",
     "confidence": "medium",
-    "confidence_note": "Sponsor SEC exhibit (16 Apr 2026); J&J first released the miss on 2 May 2025 (Fierce Biotech, 5 May 2025); the J&J Medical Connect page now returns 404. No peer-reviewed or registry results yet.",
+    "confidence_note": "Sponsor SEC exhibit (16 Apr 2026); J&J first released the miss on 2 May 2025 (Fierce Biotech, 5 May 2025); the J&J Medical Connect page now returns 404. No peer-reviewed or registry results yet. Organoids carried the bota-vec hRKp.RPGR cassette in an AAV7m8 capsid, not the clinical AAV5, so product_in_model is false.",
     "reason": "Phase 3 primary missed",
     "judgement": "Paired comparison: organoid paper predates the phase 3 readout, so it is prospective; secondary-endpoint gains do not change a primary-endpoint miss.",
     "subjects": "patients",
@@ -484,7 +528,56 @@
       "doi": null,
       "quote": "Change From Baseline to Week 52 in Vision-guided Mobility Assessment (VMA) as Measured by the Ability of the Participant to Navigate Through a VMA Maze"
      }
-    ]
+    ],
+    "drug": "botaretigene sparoparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
+   },
+   {
+    "retrodiction": true,
+    "patient_signal_reversed": false,
+    "model": "Isogenic RPGR-knockout human iPSC retinal organoids, AAV-RPGR clinical construct (bota-vec)",
+    "model_id": "rpgr-ko-ipsc-retinal-organoid-botavec",
+    "prediction_level": "class",
+    "model_kind": "ex_vivo",
+    "model_first_use_year": 2024,
+    "population": "RPGR-associated X-linked RP (males)",
+    "product_in_model": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "model_filed": null,
+    "registry_date": "2024-01-18",
+    "year": 2024,
+    "status": "contra",
+    "note": "Retrodiction: the organoids (Feb 2024) showed RPGR rescue after XIRIUS phase 2/3 had already missed its microperimetry primary for cotoretigene (May 2021); efficacy is a claim about the target, so the earlier miss counts and the model failed to reproduce it.",
+    "short": "Rescue shown after XIRIUS had failed",
+    "src": "https://doi.org/10.1016/j.ophtha.2024.02.023",
+    "srcLabel": "Lam 2024",
+    "quote": "The primary microperimetry end point was not met.",
+    "confidence": "low",
+    "confidence_note": "Abstract-level for Lam 2024 (PMID 38423215); XIRIUS miss first public in the Biogen release of 14 May 2021. Organoids used the bota-vec cassette in AAV7m8, not cotoretigene, so the pairing is target-level only.",
+    "reason": "Organoid rescue contradicts the earlier XIRIUS miss",
+    "judgement": "Judgement call under the retrodiction rule: post-dating alone makes the organoid result a retrodiction for the target; it predicted rescue where patients showed no primary-endpoint benefit, so contra. Paired by me.",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.3390/ijms25031839",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "epub_year": 2024,
+    "print_year": 2024,
+    "source_calls_it": null,
+    "endpoint_role": "primary",
+    "outcome_tested": null,
+    "patient_trials": [],
+    "drug": "cotoretigene toliparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "strengthens": null,
+    "untested_reason": null
    }
   ],
   "safety": [
@@ -521,7 +614,11 @@
     "short": "Mice: no safety signal",
     "quote": "Significantly, when delivered by AAV8 vector and driven by the rhodopsin kinase promoter, the codon-optimized RPGR rescues the disease phenotype in two relevant animal models (Rpgr-/y and C57BL/6JRd9/Boc) and shows good safety in C57BL6/J wild-type mice.",
     "src": "https://doi.org/10.1016/j.ymthe.2017.05.005",
-    "srcLabel": "Fischer 2017"
+    "srcLabel": "Fischer 2017",
+    "drug": "cotoretigene toliparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -557,7 +654,11 @@
     "src": "https://doi.org/10.1038/s41591-020-0763-1",
     "srcLabel": "Cehajic-Kapetanovic 2020",
     "quote": "Apart from steroid-responsive subretinal inflammation in patients at the higher doses, there were no notable safety concerns after subretinal delivery of an adeno-associated viral vector encoding codon-optimized human RPGR (AAV8-coRPGR), meeting the pre-specified primary endpoint.",
-    "reason": "Mice silent on dose-related inflammation"
+    "reason": "Mice silent on dose-related inflammation",
+    "drug": "cotoretigene toliparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -592,7 +693,11 @@
     "short": "Dogs: toxicity at high dose only",
     "quote": "The high-dose group showed evidence of both photoreceptor rescue and posterior segment toxicity.",
     "src": "https://doi.org/10.1089/hum.2019.297",
-    "srcLabel": "Dufour 2020"
+    "srcLabel": "Dufour 2020",
+    "drug": "laruparetigene zovaparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -628,7 +733,11 @@
     "src": "https://doi.org/10.1016/j.ajo.2024.11.021",
     "srcLabel": "Yang 2024",
     "quote": "Three of 4 participants at the highest dose exhibited concerning retinal pigment epithelial changes.",
-    "reason": "Predicted high-dose retinal toxicity appeared"
+    "reason": "Predicted high-dose retinal toxicity appeared",
+    "drug": "laruparetigene zovaparvovec",
+    "route": "subretinal",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ]
  }

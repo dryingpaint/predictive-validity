@@ -51,7 +51,11 @@
     "epub_year": 2012,
     "print_year": 2012,
     "readout_tier": "direct",
-    "judgement": "Pooled as one track: every member's pharmacology paper uses the same assay (ex-vivo plasma DPP-4 activity plus an oral glucose or carbohydrate load) in a rodent, the strain varying; the earliest member publication (teneligliptin, 2012) opens the strip."
+    "judgement": "Pooled as one track: every member's pharmacology paper uses the same assay (ex-vivo plasma DPP-4 activity plus an oral glucose or carbohydrate load) in a rodent, the strain varying; the earliest member publication (teneligliptin, 2012) opens the strip.",
+    "drug": "teneligliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rodent-dpp4-ogtt",
@@ -66,7 +70,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "postprandial active GLP-1 rise; neither abstract gives a fold change, so only direction is compared",
@@ -77,9 +81,9 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level, paywalled. Japanese 4-week trial; no ClinicalTrials.gov record found under teneligliptin/MP-513 for this design, so registry_date is null.",
     "year": 2012,
-    "status": "same",
+    "status": "retro",
     "model": "Rodent plasma DPP-4 inhibition and oral glucose/carbohydrate load (Wistar and Zucker fatty rats; lean, DIO, db/db mice)",
-    "note": "Teneligliptin 10 and 20 mg raised postprandial active GLP-1 and cut 2-h postprandial glucose by 29-51 mg/dl in 99 Japanese T2D patients over 4 weeks.",
+    "note": "Teneligliptin 10 and 20 mg raised postprandial active GLP-1 and cut 2-h postprandial glucose by 29-51 mg/dl in 99 Japanese T2D patients over 4 weeks. Retrodiction by the target rule: DPP-4 inhibition had already raised active GLP-1 and lowered glucose in T2D patients (NVP DPP728, Ahren 2002, doi:10.2337/diacare.25.5.869; vildagliptin, Ahren 2004, doi:10.1210/jc.2003-031907) before this model result was public, so a match is retro, not same.",
     "short": "Active GLP-1 rose in patients",
     "src": "https://doi.org/10.1111/j.1463-1326.2012.01662.x",
     "srcLabel": "Eto 2012",
@@ -87,7 +91,11 @@
     "epub_year": 2012,
     "print_year": 2012,
     "readout_tier": "proximal",
-    "judgement": "Paired by the drafter: the rat readouts (plasma DPP-4 inhibition, active GLP-1 and insulin after a load) are the readouts Eto 2012 measured in patients, and both moved the same way. Eto's online date (July 2012) precedes the rat paper's (September 2012), so the comparison became public in 2012 and the two entries share a year."
+    "judgement": "Paired by the drafter: the rat readouts (plasma DPP-4 inhibition, active GLP-1 and insulin after a load) are the readouts Eto 2012 measured in patients, and both moved the same way. Eto's online date (July 2012) precedes the rat paper's (September 2012), so the comparison became public in 2012 and the two entries share a year.",
+    "drug": "teneligliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rodent-dpp4-ogtt",
@@ -102,7 +110,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "sustained plasma DPP-4 inhibition across the dosing interval; the Biftu 2014 abstract gives no animal percentage to scale against",
@@ -113,10 +121,9 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level, paywalled; Merck authors. Healthy-subject Phase 1, no registry record found.",
     "year": 2016,
-    "status": "same",
-    "strengthens": true,
+    "status": "retro",
     "model": "Rodent plasma DPP-4 inhibition and oral glucose/carbohydrate load (Wistar and Zucker fatty rats; lean, DIO, db/db mice)",
-    "note": "Omarigliptin 25 mg weekly held 77-89% plasma DPP-4 inhibition at the 168-h trough and doubled postprandial active GLP-1 in healthy subjects.",
+    "note": "Omarigliptin 25 mg weekly held 77-89% plasma DPP-4 inhibition at the 168-h trough and doubled postprandial active GLP-1 in healthy subjects. Retrodiction by the target rule: DPP-4 inhibition had already raised active GLP-1 and lowered glucose in T2D patients (NVP DPP728, Ahren 2002, doi:10.2337/diacare.25.5.869; vildagliptin, Ahren 2004, doi:10.1210/jc.2003-031907) before this model result was public, so a match is retro, not same.",
     "short": "77-89% trough DPP-4 inhibition, GLP-1 x2",
     "src": "https://doi.org/10.1002/jcph.773",
     "srcLabel": "Krishna 2016",
@@ -125,7 +132,11 @@
     "print_year": 2016,
     "readout_tier": "direct",
     "reason": "GLP-1 and DPP-4 inhibition moved as in rodents",
-    "judgement": "Second member on the same track (omarigliptin, lean-mouse/dog/monkey pharmacology in Biftu 2014); added as strengthens because the status does not change. Prusogliptin later reproduced the pattern in patients (62-89% DPP-4 inhibition, Clin Pharmacokinet 2025, doi:10.1007/s40262-025-01501-8, NCT05146869)."
+    "judgement": "Second member on the same track (omarigliptin, lean-mouse/dog/monkey pharmacology in Biftu 2014); added as strengthens because the status does not change. Prusogliptin later reproduced the pattern in patients (62-89% DPP-4 inhibition, Clin Pharmacokinet 2025, doi:10.1007/s40262-025-01501-8, NCT05146869).",
+    "drug": "omarigliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -163,7 +174,11 @@
     "epub_year": 2012,
     "print_year": 2012,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "teneligliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rodent-dpp4-ogtt",
@@ -200,7 +215,12 @@
     "print_year": 2013,
     "blocked_by": null,
     "margin_stated": null,
-    "judgement": "Called same by the drafter's pairing: the human dose range that lowered HbA1c brackets the rat ED50, and the flat 10-40 mg dose-response matches a target already saturated at the rat threshold. No source states the comparison. margin_stated is null because the rat paper gives no tolerated-dose ceiling, so the toxic end of the window is not scored here."
+    "judgement": "Called same by the drafter's pairing: the human dose range that lowered HbA1c brackets the rat ED50, and the flat 10-40 mg dose-response matches a target already saturated at the rat threshold. No source states the comparison. margin_stated is null because the rat paper gives no tolerated-dose ceiling, so the toxic end of the window is not scored here.",
+    "drug": "teneligliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "rodent-dpp4-ogtt",
@@ -227,7 +247,6 @@
     "confidence_note": "Abstract-level for both sides; the Biftu 2014 full text (ACS) could not be opened, so the mouse OGTT ED50 and the animal half-lives are not quoted. Merck authors on both.",
     "year": 2016,
     "status": "same",
-    "strengthens": true,
     "model": "Rodent plasma DPP-4 inhibition and oral glucose/carbohydrate load (Wistar and Zucker fatty rats; lean, DIO, db/db mice)",
     "note": "Biftu 2014 projected once-weekly dosing from omarigliptin's dog and monkey PK; 25 mg weekly in healthy subjects held 77-89% DPP-4 inhibition over 7 days.",
     "short": "Weekly interval projected from dog/monkey PK held",
@@ -239,7 +258,12 @@
     "blocked_by": null,
     "margin_stated": null,
     "reason": "Human dose at rodent ED50; weekly interval held",
-    "judgement": "Strengthens, second member: the regimen prediction (weekly) rather than a mg/kg target is what the model side states in its abstract. Cofrogliptin's biweekly regimen, projected from monkey DPP-4 inhibition of ~80% through day 14 (Front Pharmacol 2025, doi:10.3389/fphar.2025.1702101), was not scored because that paper appeared after the Phase 3 read out."
+    "judgement": "Strengthens, second member: the regimen prediction (weekly) rather than a mg/kg target is what the model side states in its abstract. Cofrogliptin's biweekly regimen, projected from monkey DPP-4 inhibition of ~80% through day 14 (Front Pharmacol 2025, doi:10.3389/fphar.2025.1702101), was not scored because that paper appeared after the Phase 3 read out.",
+    "drug": "omarigliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -276,7 +300,11 @@
     "blocked_by": null,
     "margin_stated": null,
     "judgement": "Own track per the checker: the regimen prediction comes from non-rodent PK scaled to humans, not from the rodent plasma-DPP-4/OGTT system that the draft's dose index 3 (Krishna 2016) is keyed to. Dose only: the system predicts exposure and interval, not efficacy or harm.",
-    "model": "Dog and monkey pharmacokinetics scaled allometrically to a human half-life and dosing interval (once-weekly omarigliptin, biweekly cofrogliptin)"
+    "model": "Dog and monkey pharmacokinetics scaled allometrically to a human half-life and dosing interval (once-weekly omarigliptin, biweekly cofrogliptin)",
+    "drug": "omarigliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -313,12 +341,16 @@
     "blocked_by": null,
     "margin_stated": null,
     "judgement": "The predicted regimen (weekly) was reached and was enough: trough DPP-4 inhibition above the 80% target and a positive 24-week Phase 3 at that interval. The draft's dose index 3 (Krishna 2016, tier 1) is this comparison on the wrong track; it should be re-keyed to this model_id rather than duplicated, so no 2016 entry is added here.",
-    "model": "Dog and monkey pharmacokinetics scaled allometrically to a human half-life and dosing interval (once-weekly omarigliptin, biweekly cofrogliptin)"
+    "model": "Dog and monkey pharmacokinetics scaled allometrically to a human half-life and dosing interval (once-weekly omarigliptin, biweekly cofrogliptin)",
+    "drug": "omarigliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "subjects": "patients",
+    "subjects": null,
     "comparison_stated": true,
     "source_tier": 1,
     "model_src": null,
@@ -328,14 +360,13 @@
     "model_filed": null,
     "product_in_model": true,
     "imported_from": null,
-    "magnitude": "within_2x",
-    "magnitude_basis": "dosing interval: monkey DPP-4 inhibition ~80% through day 14 after 10 mg/kg plus allometric scaling vs the biweekly 10/25 mg regimen that lowered HbA1c 0.63/0.59% at week 24 (NCT04556851)",
-    "source_calls_it": "match",
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
     "population": "Unselected",
     "confidence_note": "Abstract-level, open access; sponsor (Haisco) authors. Published 2026-01-05, after the Phase 3 (Gao 2025, doi:10.1111/dom.16014; NCT04556851, no results posted) read out. The monkey work is IND-enabling pharmacology run before the clinic, so scored prospective (retrodiction false) and dated at publication (decision 7); this is the checker's rule question 4, and if read as a retrodiction the status becomes retro. model_filed null: the Chinese NMPA review is not public.",
     "year": 2026,
-    "status": "same",
-    "strengthens": true,
+    "status": "untested",
     "prediction_level": "class",
     "model_id": "nonrodent-pk-allometry",
     "model_kind": "animal",
@@ -345,14 +376,18 @@
     "print_year": 2025,
     "src": "https://doi.org/10.3389/fphar.2025.1702101",
     "srcLabel": "Gou 2026",
-    "note": "Cofrogliptin 10 mg/kg held ~80% monkey DPP-4 inhibition through day 14; allometry predicted the biweekly regimen that lowered HbA1c in Phase 3.",
+    "note": "Opener for cofrogliptin on this track: monkey PK-PD and allometry projecting biweekly dosing, first public in Gou 2026; the comparison with patients is the retro entry that follows.",
     "short": "Monkey PK-PD matched biweekly regimen",
     "quote": "Based on allometric scaling analyses, cofrogliptin is predicted to display superior human pharmacokinetic properties relative to MK3102, with anticipated longer-acting features that align with its clinical dosing frequency.",
     "blocked_by": null,
     "margin_stated": null,
     "reason": "Animal PK set the interval that held",
-    "judgement": "Second member on the track, status unchanged. The draft dropped this because the paper post-dates the Phase 3; v3 dates by public date, so it is entered as strengthens with the retrodiction question flagged rather than left out.",
-    "model": "Dog and monkey pharmacokinetics scaled allometrically to a human half-life and dosing interval (once-weekly omarigliptin, biweekly cofrogliptin)"
+    "judgement": "Was a strengthening 'same' duplicating dose 7. Under the retrodiction ruling the comparison cannot be same (cofrogliptin's own Phase 3 read out before the model was public), and dose 7 already carries it as retro; this entry becomes the cofrogliptin track's opening untested entry, dated at the model's first public use for cofrogliptin (2026; the IND-era studies have no earlier public date).",
+    "model": "Dog and monkey pharmacokinetics scaled allometrically to a human half-life and dosing interval (once-weekly omarigliptin, biweekly cofrogliptin)",
+    "drug": "cofrogliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -390,7 +425,11 @@
     "margin_stated": null,
     "reason": "Animal PK set the interval that held",
     "judgement": "Second member on the track. Retrodiction: Gou 2026 (epub 2026-01-05) reports the monkey PK-PD and allometry after the cofrogliptin Phase 3 had read out (Gao 2025, NCT04556851) and frames them as aligning with the clinical biweekly regimen, so retro, not same (brief: retrodiction). Zhang 2020 (J Med Chem, the discovery paper) gives mouse PK only in its abstract and states the biweekly regimen from ongoing clinical studies, so it is not a prospective model-side source.",
-    "model": "Dog and monkey pharmacokinetics scaled allometrically to a human half-life and dosing interval (once-weekly omarigliptin, biweekly cofrogliptin)"
+    "model": "Dog and monkey pharmacokinetics scaled allometrically to a human half-life and dosing interval (once-weekly omarigliptin, biweekly cofrogliptin)",
+    "drug": "cofrogliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -428,7 +467,11 @@
     "epub_year": 2012,
     "print_year": 2012,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "drug": "teneligliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rodent-dpp4-ogtt",
@@ -443,7 +486,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "direction of glycaemic lowering; rat glucose-excursion AUC and human HbA1c are different quantities",
@@ -454,9 +497,9 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level, paywalled; NCT00628212 results first posted 2013-05-31, after the 2013-04-07 online date.",
     "year": 2013,
-    "status": "same",
+    "status": "retro",
     "model": "Rodent plasma DPP-4 inhibition and oral glucose/carbohydrate load (Wistar and Zucker fatty rats; lean, DIO, db/db mice)",
-    "note": "12-week placebo-controlled dose-ranging: teneligliptin 10-40 mg cut HbA1c 0.9-1.0% and FPG 17-20 mg/dl (primary endpoint HbA1c) in 324 Japanese patients.",
+    "note": "12-week placebo-controlled dose-ranging: teneligliptin 10-40 mg cut HbA1c 0.9-1.0% and FPG 17-20 mg/dl (primary endpoint HbA1c) in 324 Japanese patients. Retrodiction by the target rule: DPP-4 inhibition had already raised active GLP-1 and lowered glucose in T2D patients (NVP DPP728, Ahren 2002, doi:10.2337/diacare.25.5.869; vildagliptin, Ahren 2004, doi:10.1210/jc.2003-031907) before this model result was public, so a match is retro, not same.",
     "short": "HbA1c -0.9 to -1.0% at 12 weeks",
     "src": "https://doi.org/10.1111/dom.12092",
     "srcLabel": "Kadowaki 2013",
@@ -465,7 +508,11 @@
     "print_year": 2013,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "judgement": "Paired by the drafter, not stated by either source. Same rather than neg: no member that worked in the rodent assay later failed on HbA1c, and melogliptin (GRC 8200), the one member that stopped (Phase 2 NCT00836940, no results), has no public rodent or patient efficacy data to judge against the class bar."
+    "judgement": "Paired by the drafter, not stated by either source. Same rather than neg: no member that worked in the rodent assay later failed on HbA1c, and melogliptin (GRC 8200), the one member that stopped (Phase 2 NCT00836940, no results), has no public rodent or patient efficacy data to judge against the class bar.",
+    "drug": "teneligliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rodent-dpp4-ogtt",
@@ -480,7 +527,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "direction of glycaemic lowering; the Biftu 2014 abstract gives no mouse OGTT number",
@@ -491,10 +538,9 @@
     "confidence": "high",
     "confidence_note": "Open-access abstract with numbers; NCT01217073 results first posted 2015-10-29, after the 2015-08-26 online date. Merck authors.",
     "year": 2015,
-    "status": "same",
-    "strengthens": true,
+    "status": "retro",
     "model": "Rodent plasma DPP-4 inhibition and oral glucose/carbohydrate load (Wistar and Zucker fatty rats; lean, DIO, db/db mice)",
-    "note": "Omarigliptin 0.25-25 mg once weekly gave dose-related HbA1c reductions over 12 weeks in 685 patients; 25 mg -0.72% vs placebo (primary endpoint HbA1c).",
+    "note": "Omarigliptin 0.25-25 mg once weekly gave dose-related HbA1c reductions over 12 weeks in 685 patients; 25 mg -0.72% vs placebo (primary endpoint HbA1c). Retrodiction by the target rule: DPP-4 inhibition had already raised active GLP-1 and lowered glucose in T2D patients (NVP DPP728, Ahren 2002, doi:10.2337/diacare.25.5.869; vildagliptin, Ahren 2004, doi:10.1210/jc.2003-031907) before this model result was public, so a match is retro, not same.",
     "short": "Omarigliptin 25 mg weekly: HbA1c -0.72%",
     "src": "https://doi.org/10.2337/dc15-0109",
     "srcLabel": "Sheu 2015",
@@ -535,7 +581,11 @@
       "doi": "10.1111/dom.15601",
       "quote": "At week 16, the least squares mean change in HbA1c from baseline, compared with placebo, was -0.82% (95% CI, -1.05% to -0.58%) for the retagliptin 100 mg QD group (P < .0001) per treatment policy estimand."
      }
-    ]
+    ],
+    "drug": "omarigliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "hsk7653-popPKPD-mbma",
@@ -550,7 +600,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "in_silico",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "HbA1c change predicted vs observed; the abstract says the profiles matched but gives no numbers",
@@ -561,9 +611,9 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level; sponsor (Haisco) authors, first author Cui C. Validating trials NCT04556851 and NCT04564872 have no posted results, so registry_date is null. The Phase 2b waiver is stated in the abstract.",
     "year": 2023,
-    "status": "same",
+    "status": "retro",
     "model": "Population PK/PD plus model-based meta-analysis (cofrogliptin single-ascending-dose data to DPP-4 inhibition to HbA1c)",
-    "note": "Cofrogliptin's PopPK/PD-MBMA model, built on healthy-subject SAD data, predicted the biweekly DPP-4 inhibition and HbA1c profiles later seen in T2D patients.",
+    "note": "Cofrogliptin's PopPK/PD-MBMA model, built on healthy-subject SAD data, predicted the biweekly DPP-4 inhibition and HbA1c profiles later seen in T2D patients. Retrodiction by the target rule: DPP-4 inhibition had already raised active GLP-1 and lowered glucose in T2D patients (NVP DPP728, Ahren 2002, doi:10.2337/diacare.25.5.869; vildagliptin, Ahren 2004, doi:10.1210/jc.2003-031907) before this model result was public, so a match is retro, not same.",
     "short": "PK/PD-MBMA HbA1c forecast matched Phase 3",
     "src": "https://doi.org/10.1111/dom.15348",
     "srcLabel": "Cui 2024",
@@ -573,7 +623,11 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "reason": "HbA1c fell as rodents and PK/PD model predicted",
-    "judgement": "A second track because it is a different system: an in-silico human PK/PD model, not an animal. Prospective, not a retrodiction: the prediction was made from Phase 1 data and the Phase 2b waiver granted before the Phase 3 read out. model_first_use_year is the publication year; the model was built earlier but no earlier public date exists. The alternative reading is that clinical-pharmacology modelling is not a model system for this atlas, in which case this entry is dropped and the cell stands on the rodent track."
+    "judgement": "A second track because it is a different system: an in-silico human PK/PD model, not an animal. Prospective, not a retrodiction: the prediction was made from Phase 1 data and the Phase 2b waiver granted before the Phase 3 read out. model_first_use_year is the publication year; the model was built earlier but no earlier public date exists. The alternative reading is that clinical-pharmacology modelling is not a model system for this atlas, in which case this entry is dropped and the cell stands on the rodent track.",
+    "drug": "cofrogliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -590,7 +644,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "in_silico",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "QTc prolongation risk at clinical exposure (predicted low, observed none); no ms values in the abstract",
@@ -601,16 +655,20 @@
     "confidence": "low",
     "confidence_note": "Abstract-level, paywalled, Merck authors; the thorough QT trial is not cited by registry number in the abstract. Low because this is clinical-pharmacology modelling rather than a preclinical model.",
     "year": 2016,
-    "status": "same",
+    "status": "retro",
     "model": "Concentration-QTc model from the omarigliptin single-ascending-dose study",
-    "note": "A C-QTc model fitted to omarigliptin's SAD data predicted low QTc-prolongation risk at clinical doses; a thorough QT trial later confirmed it.",
+    "note": "A C-QTc model fitted to omarigliptin's SAD data predicted low QTc-prolongation risk at clinical doses; a thorough QT trial later confirmed it. Retrodiction: omarigliptin's own thorough QT result was public in the 2015 PMDA review before this model was published (2016).",
     "short": "C-QTc forecast confirmed in thorough QT",
     "src": "https://doi.org/10.1002/jcph.773",
     "srcLabel": "Krishna 2016",
     "quote": "A model-based assessment of QTc interval risk from the single ascending dose study predicted a low risk of QTc prolongation within the likely clinical dose range, a finding later confirmed in a thorough QT trial.",
     "epub_year": 2016,
     "print_year": 2016,
-    "judgement": "Scored same because the model made a stated prediction (low QTc risk) that held in a dedicated trial, and in_silico is an admissible model_kind. Cofrogliptin's C-QTc model (doi:10.1002/cpdd.1418) predicted the same but no confirming study is cited, so it is not scored. If the reviewer reads human-data models as out of scope, drop this track and the safety cell is untested only."
+    "judgement": "Scored same because the model made a stated prediction (low QTc risk) that held in a dedicated trial, and in_silico is an admissible model_kind. Cofrogliptin's C-QTc model (doi:10.1002/cpdd.1418) predicted the same but no confirming study is cited, so it is not scored. If the reviewer reads human-data models as out of scope, drop this track and the safety cell is untested only.",
+    "drug": "omarigliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "animal-tox-package",
@@ -638,7 +696,7 @@
     "year": 2021,
     "status": "untested",
     "model": "Animal pharmacology and toxicology (rat, dog, mouse) behind the members' approvals",
-    "note": "Prusogliptin's rat, dog and diabetic-mouse pharmacology claims 'good safety profiles in animals' and names no harm; no member tox package set against a patient harm.",
+    "note": "Prusogliptin's rat, dog and diabetic-mouse pharmacology claims 'good safety profiles in animals' and names no harm; no member tox package set against a patient harm. Its 'good safety profiles in animals' is a passing tolerability claim, scored as a safety prediction in the entry appended for prusogliptin.",
     "short": "Animals silent; nothing compared",
     "src": "https://doi.org/10.1016/j.lfs.2021.119574",
     "srcLabel": "Yeh 2021",
@@ -646,7 +704,11 @@
     "epub_year": 2021,
     "print_year": 2021,
     "judgement": "Untested, not empty: tox packages existed for every approved member but nothing public compares them with patients. Patient-side facts with no model side: omarigliptin's early-terminated CVOT (NCT01703208, results 2017-12-12, doi:10.1186/s12933-017-0593-8) found MACE HR 1.00 and hHF HR 0.60 (no harm to compare); retagliptin's Phase 3 saw slightly more lipase and amylase rises (doi:10.1111/dom.15601); teneligliptin's Japanese label QT caution at 160 mg rests on a thorough-QT study whose nonclinical hERG/dog counterpart could not be found. The class pancreatitis and heart-failure questions were raised on sitagliptin and saxagliptin, which are not members.",
-    "reason": "QTc forecast held; class harms never compared"
+    "reason": "QTc forecast held; class harms never compared",
+    "drug": "prusogliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -681,7 +743,11 @@
     "short": "Monkey necrotic dermatosis at 13-25x margin",
     "quote": "One male and 2 females in the 75 mg/kg/day showed necrotic dermatosis in the auricle, tail, etc., and in these animals, teneligliptin was withdrawn or administered in reduced dose from Day 40.",
     "judgement": "Opening entry at first public use. Its own track: the draft's animal-tox-package track is rat, dog and mouse on a prusogliptin paper and names no monkey and no harm; this is a named species-specific finding with its own mechanism literature (DPP-8/9 inhibition, Lankas 2005 rat/dog syndrome cited via the Januvia package).",
-    "model": "Cynomolgus monkey 13- and 52-week repeat-dose toxicity (necrotic dermatosis at the extremities, the DPP-8/9-linked cutaneous toxicity of the gliptin class)"
+    "model": "Cynomolgus monkey 13- and 52-week repeat-dose toxicity (necrotic dermatosis at the extremities, the DPP-8/9-linked cutaneous toxicity of the gliptin class)",
+    "drug": "teneligliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -717,7 +783,11 @@
     "quote": "Necrotic dermatosis observed in the oral toxicity study in monkeys and serious hypersensitivity reactions observed with drugs of the same class were not observed in any of the clinical studies.",
     "reason": "Predicted skin necrosis never appeared in patients",
     "judgement": "Decision 5 canonical case: the regulator itself calls the predicted harm species-specific, so contra with magnitude opposite. product_in_model true because teneligliptin was dosed; the vildagliptin/saxagliptin monkey data and the Januvia DPP-8/9 package are the mechanism source only. Not changed by later labels: pemphigoid entered the teneligliptin (2016-11-22) and omarigliptin (2018-04-19) labels, a different pathology the monkeys did not show (checker rule question 2), and omarigliptin's 3-month monkey study (9 mg/kg/day, 48x AUC) was silent on skin with no necrotic dermatosis in its trials, a same that cannot turn a contra track back. The checker proposed correcting the draft's animal-tox-package 2021 entry from this same finding; the merger should carry it on one track only.",
-    "model": "Cynomolgus monkey 13- and 52-week repeat-dose toxicity (necrotic dermatosis at the extremities, the DPP-8/9-linked cutaneous toxicity of the gliptin class)"
+    "model": "Cynomolgus monkey 13- and 52-week repeat-dose toxicity (necrotic dermatosis at the extremities, the DPP-8/9-linked cutaneous toxicity of the gliptin class)",
+    "drug": "teneligliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -752,7 +822,11 @@
     "short": "hERG IC50 15x, monkey QTc NOEL 17x",
     "quote": "In vitro and in vivo studies on teneligliptin show effects suggestive of QTc interval prolongation.",
     "judgement": "Opening entry. Its own track: a safety-pharmacology system (ion channel plus non-rodent ECG), distinct from the draft's in-silico C-QTc track and from the generic rat/dog/mouse tox track.",
-    "model": "hERG channel assay plus dog and monkey ECG/telemetry (QTc) safety pharmacology"
+    "model": "hERG channel assay plus dog and monkey ECG/telemetry (QTc) safety pharmacology",
+    "drug": "teneligliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -787,7 +861,11 @@
     "short": "QTc rose at 160 mg as hERG predicted",
     "quote": "In addition, in the Thorough QT/QTc study, QTc interval prolongation was observed only time points near tmax after administration of teneligliptin 160 mg, and no clinically significant QTc interval prolongation was observed at 40 mg",
     "judgement": "Predicted harm appeared, at a supratherapeutic dose: same in direction, margin about 4x narrower than the animal NOEL. Counted once, here in safety; no dose-ceiling entry is made on this track (decision 16, checker rule question 3), and the 40 mg maximum dose was clean, so the Japanese label carries a QT caution rather than a dose restriction.",
-    "model": "hERG channel assay plus dog and monkey ECG/telemetry (QTc) safety pharmacology"
+    "model": "hERG channel assay plus dog and monkey ECG/telemetry (QTc) safety pharmacology",
+    "drug": "teneligliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -809,7 +887,6 @@
     "confidence_note": "Japanese review read via pdftotext (nonclinical 2) 心血管系 and clinical (6) QT/QTc 評価試験 P010); the quote is the contiguous span of the TQT sentence after the footnote marker 52 ('心電図について、第 1 日目に本薬 25 mg、第 2 日目に本薬 175 mg を投与したときの QTcP 間隔 ...'), and the sentence continues 'msec であり、信頼区間の上限が 10 msec を下回った'. comparison_stated false because the review states the animal margins against clinical Cmax but does not itself set them beside the thorough-QT result; model side is the same document. P010 has no registry record found.",
     "year": 2015,
     "status": "same",
-    "strengthens": true,
     "prediction_level": "class",
     "model_id": "herg-nonrodent-telemetry-qt",
     "model_kind": "animal",
@@ -824,7 +901,91 @@
     "quote": "ベースラインからの変化量のプラセボ群との差の最大値とその 90%信頼区間は 3.66［1.56, 5.76］",
     "reason": "Animal QT margins held in thorough-QT studies",
     "judgement": "Second member, status unchanged: the model predicted no QTc liability at clinical exposure with a stated 40.8x margin, and the thorough-QT at 175 mg (7x the 25 mg dose) showed no clinically relevant prolongation. The draft credits omarigliptin's QT only to the in-silico C-QTc model (Krishna 2016); the filed basis was this animal package.",
-    "model": "hERG channel assay plus dog and monkey ECG/telemetry (QTc) safety pharmacology"
+    "model": "hERG channel assay plus dog and monkey ECG/telemetry (QTc) safety pharmacology",
+    "drug": "omarigliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "model_id": "animal-tox-package",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1016/j.lfs.2021.119574",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": true,
+    "imported_from": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "adverse-event incidence vs placebo",
+    "source_calls_it": "partial",
+    "population": "Unselected",
+    "model_first_use_year": 2021,
+    "prediction_level": "class",
+    "confidence": "medium",
+    "confidence_note": "Abstract-level for both papers; NCT04124484 has no posted results. Phase 3 safety: doi:10.1111/dom.15433.",
+    "year": 2021,
+    "status": "retro",
+    "model": "Animal pharmacology and toxicology (rat, dog, mouse) behind the members' approvals",
+    "note": "Passing tolerability claim scored: Yeh 2021's 'good safety profiles in animals' held in T2D patients (adverse events like placebo, mild hypoglycaemia at 200 mg; Phase 3 2024 AEs comparable). Retro: prusogliptin's own Phase 2 safety was public a year earlier.",
+    "short": "Animal tolerability held; post-dated",
+    "src": "https://doi.org/10.1080/03007995.2020.1761311",
+    "srcLabel": "Phase II DBPR108 2020",
+    "quote": "The incidence of adverse events did not show significant difference between DBPR108 and placebo except mild hypoglycemia in DBPR108 200 mg group.",
+    "epub_year": 2020,
+    "print_year": 2020,
+    "judgement": "The passing tolerability ruling makes the animal claim a safety prediction; dose and safety retrodiction needs the same drug's own earlier patient result, which the 2020 Phase 2 (NCT04124484) is, so retro. Year is the model paper's 2021 public date, when both sides existed.",
+    "reason": "Animal tolerability matched, after patients",
+    "drug": "prusogliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": false,
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 2,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "registry_date": null,
+    "model_filed": true,
+    "product_in_model": true,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Unselected",
+    "confidence_note": "Read in the PMDA Marizev review text (nonclinical safety pharmacology, hERG and dog telemetry).",
+    "year": 2015,
+    "status": "untested",
+    "prediction_level": "class",
+    "model_id": "herg-nonrodent-telemetry-qt",
+    "model_kind": "animal",
+    "model_first_use_year": 2012,
+    "confidence": "medium",
+    "epub_year": 2015,
+    "print_year": null,
+    "src": "https://www.pmda.go.jp/drugs/2015/P20151007002/170050000_22700AMX01014000_A100_2.pdf",
+    "srcLabel": "PMDA Marizev review 2015",
+    "note": "Opener for omarigliptin on this track: hERG IC50 105 uM; conscious-dog telemetry QT/QTc up only at 75 mg/kg, no effect at 10 mg/kg (40.8x clinical unbound Cmax); PMDA review 2015.",
+    "short": "Omarigliptin hERG/dog telemetry",
+    "quote": "その結果、100 μmol/L 以上で投与前値（溶媒20処置時）に対して有意な阻害作用が認められ、IC50 は 105 μmol/L、IC20 は 30 μmol/L であった。",
+    "reason": null,
+    "judgement": "Track split: the model was used for teneligliptin (2012) and omarigliptin; omarigliptin's track gets its own opening entry at its first public use (PMDA review 2015), appended at the end of the cell so indices stay valid.",
+    "model": "hERG channel assay plus dog and monkey ECG/telemetry (QTc) safety pharmacology",
+    "drug": "omarigliptin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

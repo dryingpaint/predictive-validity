@@ -6,7 +6,7 @@
  "mondo_id": "MONDO:0005338",
  "population": "Unselected",
  "mechanism": "ROCK inhibitors",
- "note": "Netarsudil was taken to patients on IOP lowering in normotensive monkeys and rabbits; ATS907 and DE-104 failed Phase 2 with no public model data.",
+ "note": "Netarsudil was taken to patients on IOP lowering in normotensive monkeys and rabbits, sovesudil on rabbit IOP; ATS907 (monkey IOP, ARVO 2011 abstract only) and DE-104 failed Phase 2 with no admissible patient source.",
  "programs": null,
  "loa": null,
  "label": "Glaucoma ROCK",
@@ -14,7 +14,7 @@
  "modality_groups": [
   "small molecule"
  ],
- "class_share": 0.15,
+ "class_share": 0.222,
  "cells": {
   "engagement": [
    {
@@ -35,7 +35,7 @@
     "model_src_tier": null,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "epub_year": null,
+    "epub_year": 2013,
     "print_year": 2015,
     "registry_date": null,
     "model_filed": true,
@@ -51,19 +51,23 @@
     "year": 2012,
     "status": "untested",
     "readout_tier": "downstream",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model": "Normotensive monkey eye, topical netarsudil 0.04%",
     "model_id": "normotensive-monkey-netarsudil",
-    "note": "In healthy volunteers netarsudil 0.02% raised outflow facility 22% versus 53% in monkeys; aqueous flow fell only as a trend.",
+    "note": "In healthy volunteers netarsudil 0.02% raised outflow facility 22% versus 53% in monkeys; aqueous flow fell only as a trend; first public in the ARVO 2017 abstract (facility +19%, p=0.02).",
     "short": "Human outflow facility up 22%",
     "src": "https://doi.org/10.1089/jop.2017.0138",
     "srcLabel": "Kazemi 2018",
     "quote": "In netarsudil-treated eyes, diurnal outflow facility increased from 0.27 ± 0.10 μL/min/mmHg to 0.33 ± 0.11 μL/min/mmHg (+22%; P = 0.02) after 7 days of treatment.",
     "confidence": "high",
-    "confidence_note": "Abstract-level (Europe PMC). Sit 2021 (doi 10.1016/j.ajo.2021.01.019) repeated the outflow-facility rise in 20 POAG/OHT patients; it changes no status.",
-    "judgement": "Paired by me: Kazemi does not set the monkey data beside the human data in the abstract. Outflow facility is physiology downstream of ROCK, so readout_tier downstream. 53% vs 22% is 2.4-fold; the monkey's second mechanism (aqueous flow -20%) only trended in humans (-15%, P=0.08), hence partial.",
+    "confidence_note": "Abstract-level (Europe PMC). Sit 2021 (doi 10.1016/j.ajo.2021.01.019) repeated the outflow-facility rise in 20 POAG/OHT patients; it changes no status. ARVO 2017 abstract read (iovs.arvojournals.org articleid 2637454): 'Netarsudil-treated eyes showed an increase in outflow facility of 19% (p = 0.02) and a decrease in EVP of 9% (p = 0.01).'",
+    "judgement": "Paired by me: Kazemi does not set the monkey data beside the human data in the abstract. Outflow facility is physiology downstream of ROCK, so readout_tier downstream. 53% vs 22% is 2.4-fold; the monkey's second mechanism (aqueous flow -20%) only trended in humans (-15%, P=0.08), hence partial. Year 2017: the same study's ARVO 2017 abstract (Sit, IOVS 2017;58(8):2112, June 2017) first made the human result public; a congress abstract dates the entry under rule 6.",
     "subjects": "healthy_volunteers",
     "comparison_stated": false,
     "source_tier": 1,
@@ -84,11 +88,15 @@
     "source_calls_it": "partial",
     "population": "Unselected",
     "model_first_use_year": 2012,
-    "year": 2018,
+    "year": 2017,
     "status": "same",
     "reason": "Outflow facility rose in humans",
     "readout_tier": "downstream",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -124,7 +132,11 @@
     "model_id": "rabbit-evp-dutch-belted-netarsudil",
     "model": "Dutch Belted rabbit, invasive episcleral venous pressure, topical netarsudil 0.04%",
     "model_kind": "animal",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -146,22 +158,26 @@
     "source_calls_it": "partial",
     "population": "Unselected",
     "confidence": "medium",
-    "confidence_note": "Abstract-level. Kazemi: 'Diurnal EVP was not significantly different between netarsudil- and placebo-treated eyes.' Sit 2021 (doi 10.1016/j.ajo.2021.01.019; NCT03233308, results 2019-06-11) found a significant -0.89 mmHg treatment difference in POAG/OHT patients; changes no status. FDA ClinPharmR (2017-08-28) states EVP reduction was shown 'in animal and human studies'.",
-    "year": 2018,
+    "confidence_note": "Abstract-level. Kazemi: 'Diurnal EVP was not significantly different between netarsudil- and placebo-treated eyes.' Sit 2021 (doi 10.1016/j.ajo.2021.01.019; NCT03233308, results 2019-06-11) found a significant -0.89 mmHg treatment difference in POAG/OHT patients; changes no status. FDA ClinPharmR (2017-08-28) states EVP reduction was shown 'in animal and human studies'. ARVO 2017 abstract read (iovs.arvojournals.org articleid 2637454): 'Netarsudil-treated eyes showed an increase in outflow facility of 19% (p = 0.02) and a decrease in EVP of 9% (p = 0.01).'",
+    "year": 2017,
     "status": "same",
     "model_first_use_year": 2015,
     "readout_tier": "downstream",
-    "note": "EVP fell 10% in netarsudil-treated healthy-volunteer eyes versus 35% in rabbits; not significant against the vehicle eye.",
+    "note": "EVP fell 10% in netarsudil-treated healthy-volunteer eyes versus 35% in rabbits; not significant against the vehicle eye; first public in the ARVO 2017 abstract (EVP -9%, p=0.01).",
     "short": "Human EVP down 10%",
     "src": "https://doi.org/10.1089/jop.2017.0138",
     "srcLabel": "Kazemi 2018",
     "quote": "Diurnal episcleral venous pressure (EVP) in netarsudil-treated eyes decreased from 7.9 ± 1.2 mmHg to 7.2 ± 1.8 (-10%; P = 0.01).",
     "reason": "EVP fell in humans, smaller",
-    "judgement": "Paired by me: Kazemi does not cite the rabbit data in the abstract. Within-eye fall significant, between-eye difference not, hence partial. 35% vs 10% is 3.5-fold.",
+    "judgement": "Paired by me: Kazemi does not cite the rabbit data in the abstract. Within-eye fall significant, between-eye difference not, hence partial. 35% vs 10% is 3.5-fold. Year 2017: the same study's ARVO 2017 abstract (Sit, IOVS 2017;58(8):2112, June 2017) first made the human result public; a congress abstract dates the entry under rule 6.",
     "model_id": "rabbit-evp-dutch-belted-netarsudil",
     "model": "Dutch Belted rabbit, invasive episcleral venous pressure, topical netarsudil 0.04%",
     "model_kind": "animal",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -197,7 +213,11 @@
     "model_id": "human-enucleated-eye-perfusion-netarsudil",
     "model": "Perfused enucleated human donor eyes, netarsudil-M1 0.3 μM",
     "model_kind": "ex_vivo",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -219,22 +239,26 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "confidence": "medium",
-    "confidence_note": "Abstract-level. Sit 2021 (POAG/OHT patients) repeated the rise; Kim 2024 (doi 10.1016/j.xops.2024.100533) found episcleral vessel diameter up ~27% in patients, matching the ex-vivo ESV dilation. Neither changes the status.",
-    "year": 2018,
+    "confidence_note": "Abstract-level. Sit 2021 (POAG/OHT patients) repeated the rise; Kim 2024 (doi 10.1016/j.xops.2024.100533) found episcleral vessel diameter up ~27% in patients, matching the ex-vivo ESV dilation. Neither changes the status. ARVO 2017 abstract read (iovs.arvojournals.org articleid 2637454): 'Netarsudil-treated eyes showed an increase in outflow facility of 19% (p = 0.02) and a decrease in EVP of 9% (p = 0.01).'",
+    "year": 2017,
     "status": "same",
     "model_first_use_year": 2016,
     "readout_tier": "downstream",
-    "note": "Outflow facility rose 22% in dosed healthy volunteers versus 51% in perfused donor eyes; same direction, smaller.",
+    "note": "Outflow facility rose 22% in dosed healthy volunteers versus 51% in perfused donor eyes; same direction, smaller; first public in the ARVO 2017 abstract (facility +19%, p=0.02).",
     "short": "Human facility up 22%",
     "src": "https://doi.org/10.1089/jop.2017.0138",
     "srcLabel": "Kazemi 2018",
     "quote": "In netarsudil-treated eyes, diurnal outflow facility increased from 0.27 ± 0.10 μL/min/mmHg to 0.33 ± 0.11 μL/min/mmHg (+22%; P = 0.02) after 7 days of treatment.",
     "reason": "Outflow facility rose in humans",
-    "judgement": "Paired by me. Ex-vivo dosing was the active metabolite at a fixed perfusate concentration, so the dose link is loose; 51% vs 22% is 2.3-fold. Kept to engagement: the system made no IOP or dose prediction for patients.",
+    "judgement": "Paired by me. Ex-vivo dosing was the active metabolite at a fixed perfusate concentration, so the dose link is loose; 51% vs 22% is 2.3-fold. Kept to engagement: the system made no IOP or dose prediction for patients. Year 2017: the same study's ARVO 2017 abstract (Sit, IOVS 2017;58(8):2112, June 2017) first made the human result public; a congress abstract dates the entry under rule 6.",
     "model_id": "human-enucleated-eye-perfusion-netarsudil",
     "model": "Perfused enucleated human donor eyes, netarsudil-M1 0.3 μM",
     "model_kind": "ex_vivo",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -270,7 +294,11 @@
     "model_id": "mouse-oct-outflow-netarsudil",
     "model": "Living mouse eye, OCT of conventional outflow tissue, topical netarsudil",
     "model_kind": "animal",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -292,22 +320,26 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "confidence": "medium",
-    "confidence_note": "Abstract-level for both sides; mouse facility magnitude unknown, so direction only.",
-    "year": 2018,
+    "confidence_note": "Abstract-level for both sides; mouse facility magnitude unknown, so direction only. ARVO 2017 abstract read (iovs.arvojournals.org articleid 2637454): 'Netarsudil-treated eyes showed an increase in outflow facility of 19% (p = 0.02) and a decrease in EVP of 9% (p = 0.01).'",
+    "year": 2017,
     "status": "same",
     "model_first_use_year": 2016,
     "readout_tier": "downstream",
-    "note": "Outflow facility rose 22% in dosed healthy volunteers, the direction the mouse showed; no human OCT of Schlemm's canal was found.",
+    "note": "Outflow facility rose 22% in dosed healthy volunteers, the direction the mouse showed; no human OCT of Schlemm's canal was found; first public in the ARVO 2017 abstract (facility +19%, p=0.02).",
     "short": "Human facility up 22%",
     "src": "https://doi.org/10.1089/jop.2017.0138",
     "srcLabel": "Kazemi 2018",
     "quote": "In netarsudil-treated eyes, diurnal outflow facility increased from 0.27 ± 0.10 μL/min/mmHg to 0.33 ± 0.11 μL/min/mmHg (+22%; P = 0.02) after 7 days of treatment.",
     "reason": "Outflow facility rose in humans",
-    "judgement": "Paired by me. Only the facility readout has a human counterpart; the OCT canal readouts were never measured in dosed patients that I found.",
+    "judgement": "Paired by me. Only the facility readout has a human counterpart; the OCT canal readouts were never measured in dosed patients that I found. Year 2017: the same study's ARVO 2017 abstract (Sit, IOVS 2017;58(8):2112, June 2017) first made the human result public; a congress abstract dates the entry under rule 6.",
     "model_id": "mouse-oct-outflow-netarsudil",
     "model": "Living mouse eye, OCT of conventional outflow tissue, topical netarsudil",
     "model_kind": "animal",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ],
   "dose": [
@@ -329,7 +361,7 @@
     "model_src_tier": null,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "epub_year": null,
+    "epub_year": 2013,
     "print_year": 2015,
     "registry_date": null,
     "model_filed": true,
@@ -346,7 +378,11 @@
     "status": "untested",
     "blocked_by": null,
     "margin_stated": null,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model": "Normotensive monkey eye, topical netarsudil 0.04%",
@@ -358,7 +394,7 @@
     "quote": "On day 28, mean diurnal IOP was 20.1, 20.0, and 18.7 mmHg in the AR-13324 0.01%, 0.02%, and latanoprost groups, respectively, representing a decrease from unmedicated baseline of 5.5, 5.7, and 6.8 mmHg (P<0.001).",
     "confidence": "medium",
     "confidence_note": "Abstract-level. The 7-day dose-ranging study CS201 (0.01/0.02/0.04%) is known only from the FDA clinical pharmacology review: '0.02% had similar efficacy but superior tolerability compared to netarsudil 0.04%'.",
-    "judgement": "Paired by me; year 2015 is the print date of the monkey paper (the trial epub is 2014-09). Topical drug with no measurable plasma level, so concentration is the only dose metric. No margin_stated: the corneal-haze NOEL margin was 1, so the model did not state that the effective concentration was free of that finding; the corneal harm is scored in safety.",
+    "judgement": "Paired by me; year 2014: the monkey paper was online 2013 (Crossref 2013-07-16) and the trial paper online 2014-09-27, so the pairing was public in 2014 (rule 6). Topical drug with no measurable plasma level, so concentration is the only dose metric. No margin_stated: the corneal-haze NOEL margin was 1, so the model did not state that the effective concentration was free of that finding; the corneal harm is scored in safety.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -379,12 +415,16 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2012,
-    "year": 2015,
+    "year": 2014,
     "status": "same",
     "reason": "Effective concentration reached in patients",
     "blocked_by": null,
     "margin_stated": false,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ],
   "efficacy": [
@@ -406,7 +446,7 @@
     "model_src_tier": null,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "epub_year": null,
+    "epub_year": 2013,
     "print_year": 2015,
     "registry_date": null,
     "model_filed": true,
@@ -424,19 +464,23 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model": "Normotensive monkey eye, topical netarsudil 0.04%",
     "model_id": "normotensive-monkey-netarsudil",
-    "note": "Netarsudil lowered mean diurnal IOP 5.7 mmHg (~22%) in glaucoma/OHT patients, as the monkey (~25%) predicted; it missed non-inferiority to latanoprost.",
+    "note": "Netarsudil lowered mean diurnal IOP 5.7 mmHg (~22%) in glaucoma/OHT patients, as the monkey (~25%) predicted; it missed non-inferiority to latanoprost. ROCKET-1's non-inferiority primary against timolol tested a comparator margin the model never stated, so it stays a patient trial, not a score.",
     "short": "Patient IOP down ~22%",
     "src": "https://doi.org/10.1016/j.ophtha.2014.08.022",
     "srcLabel": "Bacharach 2015",
     "quote": "On day 28, mean diurnal IOP was 20.1, 20.0, and 18.7 mmHg in the AR-13324 0.01%, 0.02%, and latanoprost groups, respectively, representing a decrease from unmedicated baseline of 5.5, 5.7, and 6.8 mmHg (P<0.001).",
     "confidence": "medium",
     "confidence_note": "Abstract-level. ATS907 and DE-104 failed Phase 2 per a review (Wang & Chang 2014, doi 10.2147/OPTH.S41000) only; no primary source or model data found, so neither is scored.",
-    "judgement": "Paired by me. The model predicted IOP lowering, not a margin against an active comparator; the IOP endpoint responded in every netarsudil trial, so 'same' although Phase 2b and ROCKET-1 missed non-inferiority (ROCKET-1 met it only post hoc at baseline <25 mmHg). ~22% = 5.7 of ~25.7 mmHg baseline, back-calculated from the abstract.",
+    "judgement": "Paired by me. The model predicted IOP lowering, not a margin against an active comparator; the IOP endpoint responded in every netarsudil trial, so 'same' although Phase 2b and ROCKET-1 missed non-inferiority (ROCKET-1 met it only post hoc at baseline <25 mmHg). ~22% = 5.7 of ~25.7 mmHg baseline, back-calculated from the abstract. Year 2014 (rule 6): monkey paper online 2013, Bacharach online 2014-09.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -457,7 +501,7 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2012,
-    "year": 2015,
+    "year": 2014,
     "status": "same",
     "reason": "IOP fell in patients as predicted",
     "endpoint_role": "primary",
@@ -476,7 +520,11 @@
       "quote": "Study 302 achieved success in its primary endpoint and demonstrated that netarsudil was non-inferior to timolol in patients with a baseline IOP < 25 mmHg."
      }
     ],
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -514,7 +562,11 @@
     "model_id": "arhgef12-genotype-netarsudil",
     "model": "ARHGEF12 rs11824032 risk genotype (African-ancestry POAG GWAS) as predictor of netarsudil response",
     "model_kind": "human_genetic",
-    "prediction_level": "patient"
+    "prediction_level": "patient",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "biomarker_selected"
    },
    {
     "retrodiction": false,
@@ -553,7 +605,11 @@
     "model_id": "arhgef12-genotype-netarsudil",
     "model": "ARHGEF12 rs11824032 risk genotype (African-ancestry POAG GWAS) as predictor of netarsudil response",
     "model_kind": "human_genetic",
-    "prediction_level": "patient"
+    "prediction_level": "patient",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "biomarker_selected"
    },
    {
     "retrodiction": false,
@@ -574,25 +630,29 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2012,
+    "model_first_use_year": 2011,
     "confidence": "high",
-    "confidence_note": "Abstract-level (Europe PMC). Opening year is a proxy: the rabbit work preceded the first-in-human study NCT01693315 (start 2012-09); paper online 2014-02-18.",
-    "year": 2012,
+    "confidence_note": "Abstract-level. First use dated by the ARVO 2011 abstract (Van de Velde, IOVS 2011;52:236, April 2011, https://iovs.arvojournals.org/article.aspx?articleid=2349758): topical AMA0076 0.3% lowered IOP 18% (single dose) and 14% (TID) in New Zealand white rabbits. Full paper online 2014-02-18.",
+    "year": 2011,
     "status": "untested",
     "untested_reason": "unsettled",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
-    "note": "AMA0076 (sovesudil) lowered IOP in normotensive and acutely hypertensive New Zealand white rabbits, as well as Y-39983 did.",
+    "note": "AMA0076 (sovesudil) lowered IOP in normotensive and acutely hypertensive New Zealand white rabbits, as well as Y-39983 did; first public as an ARVO 2011 abstract.",
     "short": "Rabbit IOP lowered",
     "src": "https://doi.org/10.1167/iovs.13-13157",
     "srcLabel": "Van de Velde 2014",
     "quote": "Administration of AMA0076 effectively reduces IOP in ocular normotensive and acute hypertensive rabbits without causing distinct hyperemia.",
-    "judgement": "Sovesudil's own model, distinct from the netarsudil monkey/rabbit track. Opens at the first-in-human start year as proxy for first use.",
+    "judgement": "Sovesudil's own model, distinct from the netarsudil monkey/rabbit track. Opens at the ARVO 2011 abstract, the first public use of the model.",
     "model_id": "nzw-rabbit-iop-sovesudil",
     "model": "New Zealand white rabbit, normotensive and acute hypertensive IOP plus hyperemia scoring, topical AMA0076 (sovesudil)",
     "model_kind": "animal",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "sovesudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -613,10 +673,10 @@
     "magnitude_basis": "direction of IOP change from baseline",
     "source_calls_it": "match",
     "population": "Ocular hypertension or open-angle glaucoma",
-    "model_first_use_year": 2012,
+    "model_first_use_year": 2011,
     "confidence": "medium",
     "confidence_note": "Tier 5 sponsor release (2013-11-14); NCT01693315 has no posted results and no paper. Ha 2021 (tier 1, normal-tension glaucoma) repeated the IOP fall; listed in patient_trials, changes no status. NCT02136940 (Phase 2, POAG) has no posted results.",
-    "year": 2014,
+    "year": 2013,
     "status": "same",
     "reason": "IOP fell in patients as predicted",
     "endpoint_role": "primary",
@@ -629,16 +689,20 @@
       "quote": "0.5% sovesudil TID met the criteria for superiority to the placebo."
      }
     ],
-    "note": "In the first-in-human trial the best AMA0076 dose cut mean diurnal IOP 3.7 mmHg from baseline (p=0.020 vs placebo), as the rabbits predicted.",
+    "note": "In the first-in-human trial the best AMA0076 dose cut mean diurnal IOP 3.7 mmHg from baseline (p=0.020 vs placebo), as the rabbits predicted; the rabbit IOP result was public as an ARVO 2011 abstract, so the comparison dates from the 2013 release.",
     "short": "Patient IOP down 3.7 mmHg",
     "src": "https://www.prnewswire.com/news-releases/amakem-presents-positive-top-line-clinical-results-for-ama0076-for-glaucoma-at-ophthalmology-innovation-summit-231913301.html",
     "srcLabel": "Amakem 2013",
     "quote": "The results seen so far with AMA0076 suggest that the promise seen in pre-clinical development has been carried into the clinic successfully.",
-    "judgement": "Stated by an investigator in the sponsor release. Year 2014: the release (2013-11) predates the rabbit paper (2014-02), so the comparison was public only once both sides were. Rabbit work preceded the trial, so not retro.",
+    "judgement": "Stated by an investigator in the sponsor release. Year 2013: the rabbit IOP model was public as an ARVO 2011 congress abstract, so the comparison was public with the release on 2013-11-14 (rule 6 counts congress abstracts and press releases). Rabbit work preceded the trial, so not retro.",
     "model_id": "nzw-rabbit-iop-sovesudil",
     "model": "New Zealand white rabbit, normotensive and acute hypertensive IOP plus hyperemia scoring, topical AMA0076 (sovesudil)",
     "model_kind": "animal",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "sovesudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ],
   "safety": [
@@ -675,7 +739,11 @@
     "model_first_use_year": 2012,
     "year": 2012,
     "status": "untested",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model": "Monkey 9-month topical ocular toxicology",
@@ -711,7 +779,11 @@
     "year": 2017,
     "status": "same",
     "reason": "Hyperemia and corneal deposits both predicted",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "netarsudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -732,22 +804,26 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2012,
+    "model_first_use_year": 2011,
     "confidence": "high",
-    "confidence_note": "Abstract-level (Europe PMC). Opening year is a proxy: the rabbit work preceded the first-in-human study NCT01693315 (start 2012-09); paper online 2014-02-18.",
-    "year": 2012,
+    "confidence_note": "Abstract-level. First use dated by the ARVO 2011 abstract (Van de Velde, IOVS 2011;52:236, April 2011, https://iovs.arvojournals.org/article.aspx?articleid=2349758): topical AMA0076 0.3% lowered IOP 18% (single dose) and 14% (TID) in New Zealand white rabbits. Full paper online 2014-02-18.",
+    "year": 2011,
     "status": "untested",
     "untested_reason": "unsettled",
-    "note": "Single topical AMA0076 gave significantly less conjunctival hyperemia than Y-39983 in rabbits, the design goal of a locally acting ROCK inhibitor.",
+    "note": "Single topical AMA0076 gave significantly less conjunctival hyperemia than Y-39983 in rabbits, the design goal of a locally acting ROCK inhibitor; first public as an ARVO 2011 abstract.",
     "short": "Rabbit: minimal hyperemia",
     "src": "https://doi.org/10.1167/iovs.13-13157",
     "srcLabel": "Van de Velde 2014",
     "quote": "The degree of hyperemia was significantly lower in rabbits treated with AMA0076 then with Y-39983.",
-    "judgement": "Named harm with a stated prediction (little hyperemia) checkable in patients.",
+    "judgement": "Named harm with a stated prediction (little hyperemia) checkable in patients. Opens at the ARVO 2011 abstract, the model's first public use; the hyperemia claim itself is first verified in the 2014 paper.",
     "model_id": "nzw-rabbit-iop-sovesudil",
     "model": "New Zealand white rabbit, normotensive and acute hypertensive IOP plus hyperemia scoring, topical AMA0076 (sovesudil)",
     "model_kind": "animal",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "sovesudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -768,7 +844,7 @@
     "magnitude_basis": "presence of conjunctival hyperemia",
     "source_calls_it": "match",
     "population": "Ocular hypertension or open-angle glaucoma",
-    "model_first_use_year": 2012,
+    "model_first_use_year": 2011,
     "confidence": "medium",
     "confidence_note": "Tier 5 sponsor release; no posted results for NCT01693315. Ha 2021 (doi 10.1111/aos.14949, NTG, TID dosing) later reported hyperaemia in 24.4% (0.5%) and 17.5% (0.25%), mostly mild, which the authors call 'relatively low'; changes no status.",
     "year": 2014,
@@ -779,11 +855,15 @@
     "src": "https://www.prnewswire.com/news-releases/amakem-presents-positive-top-line-clinical-results-for-ama0076-for-glaucoma-at-ophthalmology-innovation-summit-231913301.html",
     "srcLabel": "Amakem 2013",
     "quote": "To see such low levels of hyperemia accompanying meaningful reductions in IOP is a breakthrough in the development of ROCK inhibitors.",
-    "judgement": "Same release; the investigator ties the clinical hyperemia result to the preclinical promise. Year 2014 as for efficacy.",
+    "judgement": "Same release; the investigator ties the clinical hyperemia result to the preclinical promise. Year 2014 as for efficacy. Year stays 2014: the rabbit hyperemia claim is first verified in the 2014 paper; the ARVO 2011 abstract reports IOP only (a May 2011 BioWorld item mentions no hyperemia at effective doses, trade press, not admissible).",
     "model_id": "nzw-rabbit-iop-sovesudil",
     "model": "New Zealand white rabbit, normotensive and acute hypertensive IOP plus hyperemia scoring, topical AMA0076 (sovesudil)",
     "model_kind": "animal",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "sovesudil",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ]
  }

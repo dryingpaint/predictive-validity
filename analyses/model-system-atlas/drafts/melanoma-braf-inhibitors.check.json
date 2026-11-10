@@ -11,7 +11,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PubMed abstract verbatim (PNAS, PMID 18287029, epub 2008-02-19). Opener on the PLX4720 tool analogue; product_in_model false is right. Nothing to change."
+   "rule": "",
+   "note": "PubMed abstract verbatim (PMID 18287029, epub 2008-02-19). Opener for the vemurafenib programme on PLX4720; vemurafenib, oral, biomarker_selected fit. Untested 2008 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -20,7 +22,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Abstract verbatim ('tumours'); manuscript PMC2948082 sets xenograft pERK/pMEK blockade beside day-15 patient biopsies, so comparison_stated true holds. pERK is downstream. Same supported."
+   "rule": "",
+   "note": "Bollag abstract verbatim (epub 2010-09-07). ASCO 2009 abstract 9000 has no pERK biopsy data, so 2010 stands. Vemurafenib, oral, V600E patients; same holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -29,7 +33,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Abstract verbatim. Opener; the Colo205 AUC titration is indeed in Bollag 2010, not Tsai. Nothing to change."
+   "rule": "",
+   "note": "PubMed abstract verbatim. Opener on PLX4720 run for vemurafenib; vemurafenib, oral, biomarker_selected fit. Untested 2008 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -38,7 +44,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Manuscript verbatim ('less than 300 uM.h'); model side '20 mg/kg BID (AUC0-24 ~300 uM*hr)', 'Toxicology studies confirmed a wide safety margin' and 'rat exposures exceeded those that were effective in patients' all verbatim. Decision 16 same with margin_stated true supported."
+   "rule": "",
+   "note": "Bollag full text (PMC2948082) verbatim; Colo205 regression at AUC ~300 uM.h and 'wide safety margin' confirmed. ASCO 2009 abstract (Crossref text): 'AUC was dose-proportional and above target levels at 240 mg BID and higher'; 2009 holds. Same holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -47,7 +55,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Bundle PharmR p.105 verbatim after line-wrap collapse. Review attributes the 400 uM*hr threshold to 'the sponsor's interpretation' of xenografts, as the judgement says. Strengthens entry, tier 2, fine."
+   "rule": "",
+   "note": "Bundle PharmR (NDA 202429) verbatim. FDA restatement of the xenograft 400 uM.h threshold; vemurafenib, oral, V600E melanoma. Same 2011 strengthening entry holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -56,7 +66,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Abstract verbatim. Yang 2010 (PMID 20551065) confirms vemurafenib regressed V600E xenografts and lacked activity in wild-type/non-V600 lines. Nothing to change."
+   "rule": "",
+   "note": "PubMed abstract verbatim. Opener on PLX4720 xenografts for vemurafenib; drug, route and population fit. Untested 2008 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -65,16 +77,24 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Manuscript verbatim. Field fix only: Flaherty 2010 calls response 'the primary end point ... in the extension cohort', so endpoint_role should be primary, not poc_gate. patient_trials quotes verbatim; registry dates match CT.gov."
+   "rule": "",
+   "note": "Bollag abstract verbatim. ASCO 2009 abstract: '5 of the 7 BRAF V600E+ pts treated at >= 240 mg BID had tumor regression'; 2009 holds. endpoint_role primary fits the single-arm ruling; the judgement text still says poc_gate (stale prose).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Manuscript verbatim; 'none of the patients with melanomas lacking BRAF mutations achieved PR' verified. 11/16 vs 0/5 denominators not re-counted. Patient-level entry on the same model_id is consistent with one-system rule."
+   "proposed_status": "same",
+   "proposed_population_group": "unselected",
+   "rule": "drug, route and population_group code the patients compared (DRAFTER_BRIEF, fields)",
+   "note": "Bollag full text verbatim; ASCO 2009: '2 BRAF wild-type pts had progressive disease', so 2009 and same hold. The patients compared are V600E and wild-type (genotype-unselected escalation), so population_group should be unselected.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status rule: 11/16 V600E vs 0/5 wild-type responders matched the cell-panel prediction in direction; same holds. Field rule: patients compared span both genotypes, so checker's population_group unselected is right; status unaffected."
   },
   {
    "cell": "safety",
@@ -83,7 +103,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PharmR executive summary verbatim; proxy opener allowed (decision 7); NCT00405587 first posted 2006-11-30. Same paragraph records a dog paw 'wart-like growth' (see safety 2 and 4)."
+   "rule": "",
+   "note": "Bundle PharmR verbatim. Vemurafenib rat/dog tox opener, proxy 2006 allowed; oral, V600 melanoma. Untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -92,52 +114,64 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Flaherty quote verbatim (PMC3724529 Results); Bollag model quote verbatim, and Bollag's manuscript also carries '31% ... cutaneous squamous cell carcinomas, keratoacanthoma type', so comparison_stated could be true on Bollag alone. Contra stands; dog-growth caveat in rule_questions."
+   "rule": "",
+   "note": "Flaherty 2010 full text (PMC3724529) verbatim; Bollag body confirms 'no histological changes were observed in the skin'. Vemurafenib, oral, V600E melanoma. Contra 2010 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Europe PMC full text verbatim (en dash). Cell received 14 Aug 2009, after ASCO 2009, so the model paper post-dates the public patient result: retro supported, comparison stated in the discussion."
-  },
-  {
-   "cell": "safety",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "PharmR p.105-106 verbatim; table verified ('Cutaneous Squamous Cell Carcinoma ~29% ... Modeled in Athymic Mice', rat/dog blank). Note should add the exec-summary dog growth 'may have been similar to the cutaneous skin cell carcinomas'; hedged n=1, status kept."
-  },
-  {
-   "cell": "safety",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Exec summary verbatim; A431 studies (PLX_Nu_A431_001, MEKi RO5068760, RO5212054 comparator) listed in the review; 'No clear mechanism was determined' supports unresolved. Post-hoc sponsor model, retro correct."
-  },
-  {
-   "cell": "safety",
-   "index": 6,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Abstract verbatim; '60% (21 of 35)' and PD184352 91% suppression verified in PMC3724537. Oberholzer 2012 abstract confirms vemurafenib and sorafenib pooled (n=19, 21.1% vs 3.2%), so 2012 dating is defensible; see rule_questions."
-  },
-  {
-   "cell": "safety",
-   "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "First clause of the abstract sentence, verbatim as far as it goes; COMBI-d results posted 2014-08-15 verified. Flaherty 2012 (epub 2012-09-29) had cuSCC incidence as a PRIMARY end point (7% vs 19%, P=0.09): possible 2012 date; strengthens entry, no status effect."
+   "rule": "",
+   "note": "Heidorn full text (PMC2872605) matches except en dash. Built after the clinical cuSCC reports, vemurafenib patients: retro 2010 holds; drug, route, population fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "Bundle PharmR verbatim. FDA correlation of vemurafenib cuSCC with silent rat/dog skin (one unexamined dog paw growth, hedged); oral, V600 melanoma. Contra 2011 strengthening holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "Bundle PharmR verbatim. A431 SCC xenograft run after the clinical finding: retro 2011; vemurafenib, oral, V600 melanoma fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "Su 2012 abstract verbatim (PMID 22256804). Vemurafenib patients' cuSCC, 60% RAS-mutant; PLX4720 mouse blocked by MEKi. Same 2012 holds; drug, route, population fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "COMBI-d abstract verbatim (epub 2014-09-29): cuSCC 2% vs 9%. Dabrafenib+trametinib vs dabrafenib, oral, V600E/K melanoma; own dabrafenib track, first comparison, strengthens false correct. Same holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -146,8 +180,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract verbatim (PMID 23302800, epub 2013-01-09); manuscript PMC3930354 not served. Vemurafenib-resistant xenografts, discontinuous dosing; no patient test before S1320 (first posted 2014-07-21). Untested opener, class level, product_in_model true all hold."
+   "rule": "",
+   "note": "PubMed abstract verbatim (PMID 23302800, epub 2013-01-09). Opener: vemurafenib-resistant xenografts on vemurafenib; oral, biomarker_selected fit. Untested 2013 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -156,8 +191,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract verbatim, both quotes; manuscript PMC8063889 not served. CT.gov NCT02196181 first posted 2014-07-21 (estimated), PFS primary, no results. Prospective test of the 2013 prediction; PFS 5.5 vs 9.0 reversed, so contra + opposite. Cell choice and #70 in rule_questions."
+   "rule": "",
+   "note": "S1320 abstract verbatim (epub 2020-10-05): PFS 9.0 vs 5.5 months favouring continuous. Dabrafenib+trametinib both arms: combination ruling, primary PFS, contra holds; dabrafenib, oral, biomarker_selected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -166,8 +202,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract verbatim; full text PMC8636498 read: median PFS 16.2 continuous vs 6.9 intermittent (p = 0.079), ORR 71.4% vs 60%, both drugs withheld. Field fix: magnitude opposite with that basis. NCT02583516 first posted 2015-10-22. Contra and strengthens hold."
+   "rule": "",
+   "note": "Full text verbatim (PMC8636498, epub 2021-12-01; ASCO 2021 abstract same year). Vemurafenib+cobimetinib both arms, PFS primary missed: combination ruling, contra holds; drug, route, population fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -176,8 +213,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract verbatim, both quotes (not OA; abstract only). NCT03352947 first posted 2017-11-24; registry lists four primaries (recruitment, compliance, QoL, PFS). Contra holds; opposite rests on non-significant point estimates (HR 1.39, CI 0.79-2.45). Third-miss entry: see rule_questions."
+   "rule": "",
+   "note": "Abstract verbatim (EJCA, Crossref created 2023-11-24). Composite PFS+QoL primary, both favour continuous, authors call it a failure; dabrafenib+trametinib, oral, V600 melanoma. Contra holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -186,28 +224,39 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract verbatim (PMC4259423, epub 2014-10-01). PDX dosed with vemurafenib (Zelboraf) and trametinib, so product_in_model true. Untested opener, patient level, same-year model-first ordering per decision 7. Nothing to change."
+   "rule": "",
+   "note": "Full text verbatim (PMC4259423, epub 2014-09-08). Stage III-IV, genotype unselected: stage_or_line fits; PDX dosed Zelboraf, so vemurafenib, oral. Untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 9,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Figure 3 legend verbatim (full text). Patient entered a double-blind phase III (BRAFi +/- MEKi) June 2012, arm undisclosed; nine PDX randomised to vemurafenib/trametinib/both 'mimicking the clinical trial design', all arms responded. Dosing date unstated, arms not discriminated: retro, direction_only, never same."
+   "proposed_status": "retro",
+   "proposed_drug": "dabrafenib",
+   "rule": "drug is the member drug whose patient result the entry compares (DRAFTER_BRIEF, fields)",
+   "note": "Figure 3 legend verbatim. Patient joined a double-blind global phase III of BRAFi +/- MEKi in June 2012: COMBI-d (dabrafenib +/- trametinib); coBRIM opened 2013. Drug compared should be dabrafenib; retro holds.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: PDX arms run after the donor's trial response, and efficacy counts any drug's earlier result for the target, so retro whichever member the patient got. Fields rule supports checker's dabrafenib (COMBI-d, June 2012)."
   },
   {
    "cell": "efficacy",
    "index": 10,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "PMC HTML verbatim ('Predictive Value of PDX'). Patient PR (70.6%), PFS 16 weeks on vemurafenib; pre-therapy PDX: no response to PLX4720, combination regressed then relapsed. Retro + partial holds on the source's readout (early relapse); contra reading in rule_questions. Population '47' unmatched (paper 57; 37 + 44)."
+   "proposed_status": "retro",
+   "proposed_population_group": "biomarker_selected",
+   "rule": "drug, route and population_group code the patients compared (DRAFTER_BRIEF, fields)",
+   "note": "Full text verbatim (PMC5726788). Compared patient was BRAF V600E on vemurafenib (PR 70.6%, PFS 16 weeks), not selected by stage or line: population_group biomarker_selected, as entry 11. Retro holds; missed initial PR stays a rule question.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "RULE QUESTION: retro needs the PDX to reproduce the human data; it reproduced early relapse but not the patient's 70.6% initial PR (PDX no response). Is that retro with source_calls_it partial (as same+partial), or a failure to reproduce, contra?"
   },
   {
    "cell": "efficacy",
@@ -216,8 +265,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Full text verbatim (Results). 4/4 progressed donors (MM321, MM337, MM302, MM358) vemurafenib-resistant, 3/3 untreated (MM313, MM314, MM325) responsive; PDXC-vs-PDX vemurafenib correlation 0.98 verified. Donor outcomes preceded screening: retro, patient level, epub 2019-12-20. Nothing to change."
+   "rule": "",
+   "note": "Full text verbatim (PMC7054294, epub 2019-12-20). Donors BRAF-mutant, treatment-naive or BRAFi-progressed; vemurafenib screened, oral, biomarker_selected fit. Retro holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -227,19 +277,24 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "",
-   "note": "Europe PMC: Gao 2015 Nat Med, PMID 26479923, epub 2015-10-19; quote verbatim in abstract. Body paywalled; a ResearchGate figure caption shows an encorafenib waterfall (n=33 melanoma PDX), so a member drug was dosed in 2015. Untested first-use entry stands.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Abstract verbatim (PMID 26479923, epub 2015-10-19); encorafenib dosing per body not read. Opener: encorafenib, oral, BRAF-mutant PDX, biomarker_selected fit. Untested 2015 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 13,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "",
-   "note": "PMC5821416 read: quote verbatim. Retro is right, since the vemurafenib and dabrafenib rates were published 2012-13. Article received/accepted 2016-02-29 and Crossref record created 2016-03-22, so the stated comparison may date to 2016 (or to Gao 2015); retro either way.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "proposed_status": "retro",
+   "proposed_drug": "vemurafenib",
+   "proposed_year": 2016,
+   "rule": "drug is the member drug whose patient result the entry compares (DRAFTER_BRIEF, fields); rule 6 dating",
+   "note": "PMC5821416 verbatim. Patient side is vemurafenib and dabrafenib response rates, so drug should be vemurafenib. Accepted 2016-02-29, DOI registered 2016-03-22 (accepted manuscript); PubMed epub 2018-02-09: year likely 2016. Retro holds.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: vemurafenib and dabrafenib response rates were public before the PCT, so retro holds whether drug is vemurafenib (fields rule, checker) and dated 2016 (rule 6, accepted manuscript online) or 2018."
   },
   {
    "cell": "safety",
@@ -248,9 +303,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "one drug's contra beats another's same; contra when the model source shows the system silent on the patient finding",
-   "note": "NDA 210496 review bundle: cuSCC 7.8% quote verbatim (p.~190); p.35 rat skin abnormalities at all doses, no neoplasia, carcinogenicity not done; paw hyperkeratosis 3/10 males; 57.3% is Enc 300 column. Contra on cuSCC consistent with safety 2/4.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "rule": "",
+   "note": "Bundle 210496 review verbatim (cuSCC 7.8%); 13-week rat hyperkeratosis seen, no neoplasia. Encorafenib, oral, COLUMBUS V600 melanoma; own encorafenib track, strengthens false correct. Contra 2018 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

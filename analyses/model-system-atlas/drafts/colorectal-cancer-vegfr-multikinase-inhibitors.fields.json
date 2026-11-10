@@ -1,0 +1,22 @@
+{
+ "tile": "colorectal-cancer-vegfr-multikinase-inhibitors",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "drug linifanib, route oral, population_group unselected, combination_with null"},
+  {"cell": "engagement", "index": 2, "what": "drug linifanib, route oral, population_group other_disease (mixed solid-tumour phase 1), combination_with null"},
+  {"cell": "engagement", "index": 3, "what": "drug linifanib, route oral, population_group unselected, combination_with null"},
+  {"cell": "engagement", "index": 4, "what": "drug linifanib, route oral, population_group other_disease (mixed solid-tumour phase 1), combination_with null; retro 2011 kept (engagement retrodiction keyed to linifanib's own earlier DCE-MRI result)"},
+  {"cell": "dose", "index": 1, "what": "drug linifanib, route oral, population_group unselected, combination_with null"},
+  {"cell": "dose", "index": 2, "what": "drug linifanib, route oral, population_group other_disease; status same 2009 kept under the dose ruling (target reached = same; whether it worked is efficacy), which settles the checker's 'reached and sufficient' correction; stale untested_reason removed"},
+  {"cell": "dose", "index": 3, "what": "drug famitinib, route oral, population_group unselected, combination_with null"},
+  {"cell": "dose", "index": 4, "what": "drug famitinib, route oral, population_group other_disease; retro 2014 kept (dose retrodiction rests on famitinib's own earlier phase 1 PK, Zhou 2013)"},
+  {"cell": "efficacy", "index": 1, "what": "drug linifanib -> famitinib: the 2006 xenograft opener now opens the famitinib track that entry 2 continues; product_in_model false; route oral, population_group unselected"},
+  {"cell": "efficacy", "index": 2, "what": "year 2017 -> 2015: first public in the ASCO-GI 2015 abstract (10.1200/jco.2015.33.3_suppl.513, 2015-01-20) (rule 6); drug famitinib, route oral, population_group stage_or_line; linifanib trials moved out of patient_trials onto their own track"},
+  {"cell": "safety", "index": 1, "what": "drug linifanib, route oral, population_group unselected, combination_with null"},
+  {"cell": "safety", "index": 2, "what": "year 2017 -> 2014: NCT01365910 registry results posted 2014-08-26 list hypertension 20/30 (rule 6); status same kept, retrodiction false: the checker's class-level retro is undone by the ruling that only linifanib's own earlier patient result counts for safety; drug linifanib, route oral, population_group biomarker_selected"}
+ ],
+ "added": [
+  {"cell": "efficacy", "index": 3, "what": "opener, crc-cellline-xenograft-mouse x linifanib oral, untested 2006 (Albert 2006; split from entry 1)"},
+  {"cell": "efficacy", "index": 4, "what": "contra 2014, crc-cellline-xenograft-mouse x linifanib oral: BATON-CRC (O'Neil 2014) PFS primary not improved vs bevacizumab, combination with mFOLFOX6 scored under the combination ruling"},
+  {"cell": "efficacy", "index": 5, "what": "contra 2014 (strengthens), crc-cellline-xenograft-mouse x linifanib oral: Chan 2017 single-arm KRAS-mutant, 0/30 responses against a pre-set inactivity rule; dated to NCT01365910 registry results 2014-08-26"}
+ ]
+}

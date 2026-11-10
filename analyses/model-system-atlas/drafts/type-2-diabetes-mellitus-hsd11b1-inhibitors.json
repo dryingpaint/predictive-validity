@@ -45,12 +45,16 @@
     "year": 2005,
     "status": "untested",
     "model": "Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor",
-    "note": "Merck compound 544 inhibited hepatic 11β-HSD1 and lowered glucose and insulin in DIO and KKAy mice; no dosed-human readout yet.",
+    "note": "Merck compound 544 inhibited hepatic 11β-HSD1 and lowered glucose and insulin in DIO and KKAy mice; no dosed-human readout yet. Opener tied to no member drug: compound 544 is not a member, so drug is \"class\".",
     "short": "Mouse hepatic 11β-HSD1 blocked by compound 544",
     "src": "https://doi.org/10.1084/jem.20050119",
     "srcLabel": "Hermanowski-Vosatka 2005",
     "quote": "We report that pharmacologic inhibition of 11beta-HSD1 has a therapeutic effect in mouse models of metabolic syndrome.",
-    "judgement": "Opens the track at the first selective-inhibitor mouse pharmacology paper; the tool compound (544) is not a member, so product_in_model is false. Alberts 2003 (BVT.2733, KKAy mice) preceded it but was not read."
+    "judgement": "Opens the track at the first selective-inhibitor mouse pharmacology paper; the tool compound (544) is not a member, so product_in_model is false. Alberts 2003 (BVT.2733, KKAy mice) preceded it but was not read.",
+    "drug": "class",
+    "route": "not_applicable",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "dio-mouse",
@@ -81,12 +85,16 @@
     "status": "same",
     "model": "Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor",
     "readout_tier": "proximal",
-    "note": "RO5093151 200 mg bid for 28 days in metformin-treated T2D shifted urinary cortisol:cortisone metabolites, the hepatic enzyme-product readout the mouse used.",
+    "note": "RO5093151 200 mg bid for 28 days in metformin-treated T2D shifted urinary cortisol:cortisone metabolites, the hepatic enzyme-product readout the mouse used. Design: RO5093151 added to stable metformin, placebo-controlled; scored like any trial, metformin named as partner.",
     "short": "Urinary cortisol metabolite ratio shifted in T2D",
     "src": "https://doi.org/10.1111/dom.12317",
     "srcLabel": "Heise 2014",
     "quote": "Both compounds were well tolerated and showed inhibitory effects on 11β-HSD1 activity based on urinary corticosteroid excretion.",
-    "judgement": "Called proximal rather than direct: the urinary tetrahydrocortisol/tetrahydrocortisone ratio reports the enzyme's own product (cortisol regeneration), not occupancy. MK-0736 (NCT00806585, 2013) posted no PD readout, so RO5093151 is the first member with one."
+    "judgement": "Called proximal rather than direct: the urinary tetrahydrocortisol/tetrahydrocortisone ratio reports the enzyme's own product (cortisol regeneration), not occupancy. MK-0736 (NCT00806585, 2013) posted no PD readout, so RO5093151 is the first member with one.",
+    "drug": "RO5093151",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "metformin"
    },
    {
     "model_id": "dio-mouse",
@@ -112,7 +120,7 @@
     "population": "Unselected",
     "model_first_use_year": 2005,
     "confidence": "medium",
-    "confidence_note": "Abstract only; NCT01874483 posted no results. Model side is BMS-823778 in DIO mice (Li 2018), a sibling member, not BI 187004. No FDA review exists for this class (nothing approved), so model_filed cannot be read from a filing. Abstract-level reading.",
+    "confidence_note": "Abstract only; NCT01874483 posted no results. Model side is BMS-823778 in DIO mice (Li 2018), a sibling member, not BI 187004. No FDA review exists for this class (nothing approved), so model_filed cannot be read from a filing. Abstract-level reading. model_src (Li 2018) is the BMS-823778 discovery paper: it reports the ex-vivo adipose DIO-mouse assay as a class readout, not BI 187004 data.",
     "year": 2022,
     "status": "same",
     "strengthens": true,
@@ -124,7 +132,11 @@
     "srcLabel": "Bianzano 2022",
     "quote": "Median inhibition of 11beta-HSD1 in subcutaneous adipose tissue biopsies was 87.9-99.4% immediately after the second dose and 73.8-97.5% 24 h after the last dose of BI 187004.",
     "reason": "Enzyme blocked 88-99% in liver and fat",
-    "judgement": "Strengthens, not a new status: same direction with a direct ex-vivo tissue readout. The 2021 single-dose study (NCT01587417, healthy overweight men, 86.8-99.5%) would also count but the patient study is used."
+    "judgement": "Strengthens, not a new status: same direction with a direct ex-vivo tissue readout. The 2021 single-dose study (NCT01587417, healthy overweight men, 86.8-99.5%) would also count but the patient study is used.",
+    "drug": "bi-187004",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -150,7 +162,7 @@
     "year": 2003,
     "status": "untested",
     "readout_tier": "proximal",
-    "note": "People lacking 11β-HSD1 oxoreductase activity: cortisone is not regenerated to cortisol, read as a shifted urinary cortisol:cortisone metabolite signature.",
+    "note": "People lacking 11β-HSD1 oxoreductase activity: cortisone is not regenerated to cortisol, read as a shifted urinary cortisol:cortisone metabolite signature. Human-genetic opener tied to no drug.",
     "short": "Loss-of-function genotype: no cortisone-to-cortisol regeneration",
     "src": "https://doi.org/10.1038/ng1214",
     "srcLabel": "Draper 2003",
@@ -160,7 +172,11 @@
     "model": "Cortisone reductase deficiency: people with loss-of-function HSD11B1 or H6PD genotypes",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2003
+    "model_first_use_year": 2003,
+    "drug": "class",
+    "route": "not_applicable",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -186,7 +202,7 @@
     "year": 2014,
     "status": "same",
     "readout_tier": "proximal",
-    "note": "RO5093151 200 mg bid for 28 days in metformin-treated T2D shifted urinary corticosteroid excretion, the GC/MS steroid signature that defines CRD.",
+    "note": "RO5093151 200 mg bid for 28 days in metformin-treated T2D shifted urinary corticosteroid excretion, the GC/MS steroid signature that defines CRD. Design: RO5093151 added to stable metformin, placebo-controlled; scored like any trial, metformin named as partner.",
     "short": "CRD urinary steroid signature reproduced by drug",
     "src": "https://doi.org/10.1111/dom.12317",
     "srcLabel": "Heise 2014",
@@ -197,7 +213,11 @@
     "model": "Cortisone reductase deficiency: people with loss-of-function HSD11B1 or H6PD genotypes",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2003
+    "model_first_use_year": 2003,
+    "drug": "RO5093151",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "metformin"
    },
    {
     "retrodiction": false,
@@ -223,7 +243,7 @@
     "year": 2015,
     "status": "untested",
     "readout_tier": "direct",
-    "note": "Rat adipose lost 11β-HSD1 inhibition after 7-9 days of continuous inhibitor cover, as did human adipose on AZD8329; mouse adipose did not.",
+    "note": "Rat adipose lost 11β-HSD1 inhibition after 7-9 days of continuous inhibitor cover, as did human adipose on AZD8329; mouse adipose did not. Opener run with non-member siblings (AZD8329, COMPOUND-20), so drug is \"class\".",
     "short": "Rat predicts adipose tachyphylaxis on repeat dosing",
     "src": "https://doi.org/10.1111/bph.13251",
     "srcLabel": "Morentin Gutierrez 2015",
@@ -233,7 +253,11 @@
     "model": "Rat ex-vivo adipose 11β-HSD1 activity after 7-9 days' continuous dosing with sibling inhibitors (AZD8329, COMPOUND-20)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "class",
+    "route": "not_applicable",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -270,7 +294,11 @@
     "model": "Rat ex-vivo adipose 11β-HSD1 activity after 7-9 days' continuous dosing with sibling inhibitors (AZD8329, COMPOUND-20)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "bi-187004",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -302,7 +330,7 @@
     "year": 2005,
     "status": "untested",
     "model": "Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor",
-    "note": "Mice were dosed to near-complete enzyme inhibition (compound 544; BMS-823778 later gave ED50 34 mg/kg in DIO mice); no human exposure yet.",
+    "note": "Mice were dosed to near-complete enzyme inhibition (compound 544; BMS-823778 later gave ED50 34 mg/kg in DIO mice); no human exposure yet. Opener tied to no member drug: compound 544 is not a member, so drug is \"class\".",
     "short": "Mouse dosed to full enzyme inhibition",
     "src": "https://doi.org/10.1084/jem.20050119",
     "srcLabel": "Hermanowski-Vosatka 2005",
@@ -310,7 +338,11 @@
     "blocked_by": null,
     "margin_stated": false,
     "judgement": "Quote is the first clause of a 45-word sentence. The model papers state effective doses (ED50s), not a tolerability margin, so margin_stated is false.",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "class",
+    "route": "not_applicable",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -348,7 +380,11 @@
     "model_kind": "in_silico",
     "prediction_level": "class",
     "model_first_use_year": 2018,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "bms-823778",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -386,7 +422,11 @@
     "model": "PBPK model of BMS-823778 built on in-vitro metabolism and healthy-volunteer PK, simulating CYP2C19/UGT1A4 genotypes and DDI",
     "model_kind": "in_silico",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "bms-823778",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -420,11 +460,15 @@
     "model": "Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor",
     "endpoint_role": null,
     "outcome_tested": null,
-    "note": "Compound 544 lowered fasting glucose, insulin, weight and lipids in DIO mice and improved glucose tolerance in KKAy mice; no patient yet.",
+    "note": "Compound 544 lowered fasting glucose, insulin, weight and lipids in DIO mice and improved glucose tolerance in KKAy mice; no patient yet. Opener tied to no member drug: compound 544 is not a member, so drug is \"class\".",
     "short": "Glucose, insulin, weight fell in DIO/KKAy mice",
     "src": "https://doi.org/10.1084/jem.20050119",
     "srcLabel": "Hermanowski-Vosatka 2005",
-    "quote": "These data provide the first evidence that pharmacologic inhibition of intracellular GC activation can effectively treat atherosclerosis, the key clinical consequence of metabolic syndrome, in addition to its salutary effect on multiple aspects of the metabolic syndrome itself."
+    "quote": "These data provide the first evidence that pharmacologic inhibition of intracellular GC activation can effectively treat atherosclerosis, the key clinical consequence of metabolic syndrome, in addition to its salutary effect on multiple aspects of the metabolic syndrome itself.",
+    "drug": "class",
+    "route": "not_applicable",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "dio-mouse",
@@ -456,12 +500,17 @@
     "model": "Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor",
     "endpoint_role": null,
     "outcome_tested": null,
-    "note": "MK-0736 in 620 T2D+hypertension patients: HbA1c -0.28 % at 2 mg (p=0.035) but NS at 0.5 and 8 mg, weight -1.9 kg; BP primaries missed; trial terminated.",
+    "note": "MK-0736 in 620 T2D+hypertension patients: HbA1c -0.28 % at 2 mg (p=0.035) but NS at 0.5 and 8 mg, weight -1.9 kg; BP primaries missed; trial terminated. Background ACEi/ARB in both arms is background therapy, not a combination partner.",
     "short": "HbA1c -0.3 % at one dose, not dose-dependent",
     "src": "https://clinicaltrials.gov/study/NCT00806585",
     "srcLabel": "NCT00806585 results 2013",
     "quote": "Change From Baseline in Hemoglobin A1c (HbA1c) at Week 24: MK-0736 2.0 mg vs Placebo, Difference in least squares means -0.28 (95% CI -0.54 to -0.02), p=0.035.",
-    "judgement": "Scored same with source_calls_it partial, not contra: the model predicted lower glucose and weight and both moved in that direction, but HbA1c reached significance at one of three doses only (-0.18/-0.28/-0.22 %) and the primary endpoints were blood pressure, which the mouse never predicted, so endpoint_role is null. A stricter reading (secondary endpoint, inconsistent dose-response) would leave this entry untested; the cell's final status does not depend on it."
+    "judgement": "Scored same with source_calls_it partial, not contra: the model predicted lower glucose and weight and both moved in that direction, but HbA1c reached significance at one of three doses only (-0.18/-0.28/-0.22 %) and the primary endpoints were blood pressure, which the mouse never predicted, so endpoint_role is null. A stricter reading (secondary endpoint, inconsistent dose-response) would leave this entry untested; the cell's final status does not depend on it.",
+    "drug": "mk-0736",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "dio-mouse",
@@ -494,12 +543,16 @@
     "model": "Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor",
     "endpoint_role": null,
     "outcome_tested": null,
-    "note": "RO5093151 for 28 days in metformin-treated T2D: HbA1c trends, weight -1.67 kg (p=0.019), insulin sensitivity NS; registry primary (mean daily glucose) not in the abstract.",
+    "note": "RO5093151 for 28 days in metformin-treated T2D: HbA1c trends, weight -1.67 kg (p=0.019), insulin sensitivity NS; registry primary (mean daily glucose) not in the abstract. Design: RO5093151 added to stable metformin, placebo-controlled; scored like any trial, metformin named as partner.",
     "short": "Weight fell, HbA1c only trended at 4 weeks",
     "src": "https://doi.org/10.1111/dom.12317",
     "srcLabel": "Heise 2014",
     "quote": "Despite the short treatment duration, both RO-151 and RO-838 showed trends for improved HbA1c and consistent reductions in body weight (-0.86 to -1.67 kg) exceeding those observed with placebo (-0.28 kg, p = 0.019 for 200 mg RO-151 vs. placebo).",
-    "judgement": "Same/partial on the authors' own wording ('slight metabolic improvements ... often did not reach statistical significance'); the alternative is contra on an unmet glucose primary, which the abstract does not state. Strengthens the 2013 entry rather than changing it."
+    "judgement": "Same/partial on the authors' own wording ('slight metabolic improvements ... often did not reach statistical significance'); the alternative is contra on an unmet glucose primary, which the abstract does not state. Strengthens the 2013 entry rather than changing it.",
+    "drug": "RO5093151",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "metformin"
    },
    {
     "model_id": "dio-mouse",
@@ -531,7 +584,7 @@
     "model": "Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor",
     "endpoint_role": "poc_gate",
     "outcome_tested": null,
-    "note": "BI 187004 20-240 mg ± metformin for 28 days in 103 T2D patients: complete hepatic inhibition, no change in FPG, weight or meal-test glucose; weighted mean glucose rose at 80/240 mg.",
+    "note": "BI 187004 20-240 mg ± metformin for 28 days in 103 T2D patients: complete hepatic inhibition, no change in FPG, weight or meal-test glucose; weighted mean glucose rose at 80/240 mg. Design: monotherapy and metformin add-on strata pooled in one 28-day trial; both missed, so no partner is named.",
     "short": "Complete inhibition, no glucose lowering",
     "src": "https://doi.org/10.1111/dom.14932",
     "srcLabel": "Bianzano 2023",
@@ -588,7 +641,11 @@
       "quote": "Safety and tolerability as determined by monitoring of AEs, vital signs, ECGs, physical exams",
       "note": "INCB019602 phase 2, n=48, terminated 2009, never reported"
      }
-    ]
+    ],
+    "drug": "bi-187004",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "gk-rat",
@@ -625,8 +682,11 @@
     "src": "https://doi.org/10.1248/bpb.b23-00129",
     "srcLabel": "Heitaku 2023",
     "quote": "In GK rats, JTT-654 treatment significantly reduced fasting plasma glucose and insulin levels, enhanced insulin-stimulated glucose oxidation in adipose tissue, and suppressed hepatic gluconeogenesis as assessed by pyruvate administration.",
-    "reason": "No patient result to compare",
-    "judgement": "A separate track because it is a different system (non-obese rat) and a different member. Not flagged as a retrodiction: the paper postdates the clinic but no patient result is public, so there is nothing it could reproduce or contradict."
+    "judgement": "A separate track because it is a different system (non-obese rat) and a different member. Not flagged as a retrodiction: the paper postdates the clinic but no patient result is public, so there is nothing it could reproduce or contradict.",
+    "drug": "JTT-654",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -653,7 +713,7 @@
     "year": 1997,
     "status": "untested",
     "endpoint_role": null,
-    "note": "Enzyme-null mice resisted hyperglycaemia on obesity or stress: a prediction that blocking 11β-HSD1 lowers glucose in obese diabetics.",
+    "note": "Enzyme-null mice resisted hyperglycaemia on obesity or stress: a prediction that blocking 11β-HSD1 lowers glucose in obese diabetics. Knockout opener tied to no drug.",
     "short": "KO mouse resists obesity-driven hyperglycaemia",
     "src": "https://doi.org/10.1073/pnas.94.26.14924",
     "srcLabel": "Kotelevtsev 1997",
@@ -663,7 +723,11 @@
     "model": "11β-HSD1 knockout mouse",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 1997
+    "model_first_use_year": 1997,
+    "drug": "class",
+    "route": "not_applicable",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -690,7 +754,7 @@
     "year": 2015,
     "status": "contra",
     "endpoint_role": "poc_gate",
-    "note": "BI 187004 add-on to metformin for 28 days in overweight T2D missed the predefined fasting-glucose endpoint; the monotherapy arm also missed and Boehringer ended the programme.",
+    "note": "BI 187004 add-on to metformin for 28 days in overweight T2D missed the predefined fasting-glucose endpoint; the monotherapy arm also missed and Boehringer ended the programme. Design: BI 187004 added to metformin (metformin arm); scored on its fasting-glucose endpoint, metformin named as partner.",
     "short": "BI 187004 missed fasting-glucose endpoint",
     "src": "https://www.sec.gov/Archives/edgar/data/1157602/000110465915048184/a15-14878_1ex99d1.htm",
     "srcLabel": "Vitae 8-K 2015",
@@ -701,7 +765,11 @@
     "model": "11β-HSD1 knockout mouse",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 1997
+    "model_first_use_year": 1997,
+    "drug": "bi-187004",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "metformin"
    },
    {
     "retrodiction": false,
@@ -729,7 +797,7 @@
     "status": "contra",
     "strengthens": true,
     "endpoint_role": "poc_gate",
-    "note": "Full publication of the 28-day BI 187004 trial in 103 T2D patients: complete target block, no clinically relevant change in glucose endpoints.",
+    "note": "Full publication of the 28-day BI 187004 trial in 103 T2D patients: complete target block, no clinically relevant change in glucose endpoints. Design: monotherapy and metformin add-on strata pooled; both missed, so no partner is named.",
     "short": "Complete inhibition, no glucose lowering",
     "src": "https://doi.org/10.1111/dom.14932",
     "srcLabel": "Bianzano 2023",
@@ -740,7 +808,55 @@
     "model": "11β-HSD1 knockout mouse",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 1997
+    "model_first_use_year": 1997,
+    "drug": "bi-187004",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "model_id": "gk-rat",
+    "prediction_level": "class",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1248/bpb.b23-00129",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2022,
+    "print_year": 2023,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": false,
+    "model_kind": "animal",
+    "retrodiction": true,
+    "imported_from": null,
+    "magnitude": "opposite",
+    "magnitude_basis": "fasting plasma glucose change at full 11β-HSD1 inhibition",
+    "source_calls_it": null,
+    "population": "Unselected (T2D with overweight or obesity; patient result is BI 187004, a member drug of the same target)",
+    "model_first_use_year": 2023,
+    "confidence": "medium",
+    "confidence_note": "Paired by the drafter; GK-rat abstract only. Retrodiction by post-dating: the GK-rat result (2023) was public after member-drug patient results for the target. Human data for the target were mixed (non-member INCB13739 lowered HbA1c in 2010), so contra rests on member drugs.",
+    "year": 2023,
+    "status": "contra",
+    "model": "Goto-Kakizaki and cortisone-treated rats (JTT-654)",
+    "endpoint_role": "poc_gate",
+    "outcome_tested": null,
+    "note": "Retrodiction ruling: GK rats on JTT-654 (2023) lowered fasting glucose after BI 187004 had shown no glucose change at full inhibition in T2D (2015/2022); JTT-654's own trial never reported.",
+    "short": "Post-dated GK rat misses member-drug null",
+    "src": "https://doi.org/10.1111/dom.14932",
+    "srcLabel": "Bianzano 2023",
+    "quote": "No clinically relevant changes from baseline with BI 187004 treatment were observed for bodyweight or meal tolerance test parameters, or in most efficacy endpoints testing glucose and lipid metabolism",
+    "reason": "Post-dated rat model contradicts patient null",
+    "judgement": "Efficacy is a target claim, so a model first public after a member drug's patient result is a retrodiction; it predicted glucose lowering the member drugs did not show.",
+    "drug": "JTT-654",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null,
+    "patient_trials": []
    }
   ],
   "safety": [
@@ -772,12 +888,16 @@
     "year": 1997,
     "status": "untested",
     "model": "11β-HSD1 knockout mouse",
-    "note": "Enzyme-null mice showed compensatory adrenal hyperplasia and raised corticosterone secretion: a prediction that inhibition will activate the HPA axis.",
+    "note": "Enzyme-null mice showed compensatory adrenal hyperplasia and raised corticosterone secretion: a prediction that inhibition will activate the HPA axis. Knockout opener tied to no drug.",
     "short": "KO mouse predicts HPA-axis activation",
     "src": "https://doi.org/10.1073/pnas.94.26.14924",
     "srcLabel": "Kotelevtsev 1997",
     "quote": "Despite compensatory adrenal hyperplasia and increased adrenal secretion of corticosterone, on starvation homozygous mutants had attenuated activation of the key hepatic gluconeogenic enzymes glucose-6-phosphatase and phosphoenolpyruvate carboxykinase, presumably, because of relative intrahepatic glucocorticoid deficiency.",
-    "judgement": "A genetic model standing in for lifelong complete inhibition; product_in_model false because no drug was given."
+    "judgement": "A genetic model standing in for lifelong complete inhibition; product_in_model false because no drug was given.",
+    "drug": "class",
+    "route": "not_applicable",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "hsd11b1-ko-mouse",
@@ -807,12 +927,16 @@
     "year": 2014,
     "status": "same",
     "model": "11β-HSD1 knockout mouse",
-    "note": "RO5093151 raised ACTH and adrenal androgen precursors in T2D patients over 28 days, the compensatory HPA drive the knockout predicted.",
+    "note": "RO5093151 raised ACTH and adrenal androgen precursors in T2D patients over 28 days, the compensatory HPA drive the knockout predicted. Design: RO5093151 added to stable metformin, placebo-controlled; scored like any trial, metformin named as partner.",
     "short": "ACTH and adrenal androgens rose in T2D",
     "src": "https://doi.org/10.1111/dom.12317",
     "srcLabel": "Heise 2014",
     "quote": "As reported for other 11β-HSD1-inhibitors increased concentrations of ACTH and adrenal androgen precursors were found with RO-151, but not with RO-838.",
-    "judgement": "Same on an on-target harm: the species could show it and did. The rise stayed within reference ranges in every trial, so it is a mechanism signal rather than a clinical harm; nothing in the model mis-sized it."
+    "judgement": "Same on an on-target harm: the species could show it and did. The rise stayed within reference ranges in every trial, so it is a mechanism signal rather than a clinical harm; nothing in the model mis-sized it.",
+    "drug": "RO5093151",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "metformin"
    },
    {
     "model_id": "hsd11b1-ko-mouse",
@@ -849,7 +973,11 @@
     "srcLabel": "Bianzano 2023",
     "quote": "Target engagement of 11β-HSD1 was observed with near-full inhibition of 11β-HSD1 in the liver [decreased (5α-tetrahydrocortisol + 5β-tetrahydrocortisol)/tetrahydrocortisone ratio]; hypothalamic-pituitary-adrenal axis activation was also seen (increased total urinary corticosteroids).",
     "reason": "HPA activation predicted and seen",
-    "judgement": "Strengthens the 2014 match. The dose-dependent heart-rate increase and one supraventricular tachycardia (Bianzano 2022) are harms a rodent or dog could have shown, but no source states what the BI 187004 toxicology predicted, so they are noted and not scored as contra; a reader with the nonclinical package could overturn this."
+    "judgement": "Strengthens the 2014 match. The dose-dependent heart-rate increase and one supraventricular tachycardia (Bianzano 2022) are harms a rodent or dog could have shown, but no source states what the BI 187004 toxicology predicted, so they are noted and not scored as contra; a reader with the nonclinical package could overturn this.",
+    "drug": "bi-187004",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -874,7 +1002,7 @@
     "confidence_note": "Abstract-level reading (Nat Genet, paywalled). No FDA review exists for this class (nothing approved), so model_filed cannot be read from a filing.",
     "year": 2003,
     "status": "untested",
-    "note": "Lifelong loss of cortisol regeneration drives ACTH and adrenal androgens up: a prediction that inhibition will activate the HPA axis and raise adrenal androgens.",
+    "note": "Lifelong loss of cortisol regeneration drives ACTH and adrenal androgens up: a prediction that inhibition will activate the HPA axis and raise adrenal androgens. Human-genetic opener tied to no drug.",
     "short": "Genotype predicts ACTH-driven androgen excess",
     "src": "https://doi.org/10.1038/ng1214",
     "srcLabel": "Draper 2003",
@@ -884,7 +1012,11 @@
     "model": "Cortisone reductase deficiency: people with loss-of-function HSD11B1 or H6PD genotypes",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2003
+    "model_first_use_year": 2003,
+    "drug": "class",
+    "route": "not_applicable",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -909,7 +1041,7 @@
     "confidence_note": "Abstract only (paywalled); NCT00823680 posted no results. Model side is Lawson 2011 (heterozygous HSD11B1 R137C/K187N, 'typified by increased cortisol clearance and androgen excess'); pairing is the drafter's. No FDA review exists for this class (nothing approved), so model_filed cannot be read from a filing.",
     "year": 2014,
     "status": "same",
-    "note": "RO5093151 raised ACTH and adrenal androgen precursors in T2D patients over 28 days, the ACTH-mediated adrenal androgen drive the CRD genotype shows.",
+    "note": "RO5093151 raised ACTH and adrenal androgen precursors in T2D patients over 28 days, the ACTH-mediated adrenal androgen drive the CRD genotype shows. Design: RO5093151 added to stable metformin, placebo-controlled; scored like any trial, metformin named as partner.",
     "short": "ACTH and adrenal androgens rose in T2D",
     "src": "https://doi.org/10.1111/dom.12317",
     "srcLabel": "Heise 2014",
@@ -919,7 +1051,11 @@
     "model": "Cortisone reductase deficiency: people with loss-of-function HSD11B1 or H6PD genotypes",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2003
+    "model_first_use_year": 2003,
+    "drug": "RO5093151",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "metformin"
    },
    {
     "retrodiction": false,
@@ -956,7 +1092,11 @@
     "model": "Cortisone reductase deficiency: people with loss-of-function HSD11B1 or H6PD genotypes",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2003
+    "model_first_use_year": 2003,
+    "drug": "bi-187004",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

@@ -9,36 +9,40 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "DOI resolves to Dmitrieva 1997 (PMID 9145801); quote verbatim in abstract. No IC trial (Evans 2011, NCT00999518, NCT01060254, EudraCT 2016-004138-12) reports an NGF/PD readout; untested holds. Abstract-level."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dmitrieva 1997 (PMID 9145801) quote verbatim in abstract. Tanezumab IV matches NCT00601484 (200 mcg/kg IV single dose); no IC trial measured an NGF/PD readout: untested, not_measured stands."
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim (trkA-IgG 1 mg/kg). Cystitis models dosed sibling sequestrants only; no stated human exposure target or margin, so untested. See rule question on dose-efficacy coupling."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dmitrieva 1997 trkA-IgG 1 mg/kg quote verbatim; a fixed rat dose, no human exposure target or margin, so untested/no_prediction. Drug tanezumab, route iv (NCT00601484) correct."
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in Dmitrieva 1997 abstract; Hu 2005 (PMID 15711368, REN1820 CYP cystitis) also verified. Correct model family; product_in_model false right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in Dmitrieva 1997 abstract. Opens the chem-cystitis x tanezumab x iv track at first use 1997; product_in_model false (trkA-IgG); drug and route match the IV POC."
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Evans 2011 (PMID 21420111, epub 2011-03-21) quote verbatim; primary endpoint pain; NCT00601484 results posted 2021-05-13, -1.36 [-2.203,-0.510]. Micturition frequency, the cystometric analogue, did not move; source_calls_it 'partial' would be defensible."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Evans 2011 (PMID 21420111, epub 2011-03-21) primary week-6 pain quote verbatim; AdCom 2012 confirms primary landmark p=0.0032. NCT00601484 200 mcg/kg IV single dose, results 2021-05-13. Same 2011, tanezumab, iv, unselected confirmed."
   },
   {
    "cell": "efficacy",
@@ -47,19 +51,23 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "AAC briefing (Feb 2012, Pfizer, FDA-hosted) quote verbatim (chronic visceral pain section). NCT00999518 (A4091035, n=205) caveat: 'terminated due to lack of efficacy of all doses ... interim analysis'; posted 2021-08-03. Fulranumab IC trial did report results (see missing)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "AdCom 2012 quote verbatim (study 1035, IC). NCT00999518: tanezumab 1-20 mg SC x2 q8w, terminated after hold and interim analysis, results 2021-08-03. Contra 2012, route sc confirmed; earlier registry wording could not be dated (history 403). Track lacks its own opener."
   },
   {
    "cell": "safety",
    "index": 1,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
    "proposed_status": "untested",
    "proposed_year": 2008,
-   "rule": "Evidence rule 6 (cell opens at model_first_use_year, proxy allowed)",
-   "note": "Quote verbatim in Evans 2011. Status untested is right, but the draft itself sets model_first_use_year 2008 (proxy) and rule 6 opens the cell there; the 2011 date should move to 2008."
+   "rule": "Evidence rule 6: each cell opens at model_first_use_year with status untested, proxy allowed",
+   "note": "Evans 2011 AE quote verbatim; tanezumab iv correct. The cell opens at model_first_use_year (2008 proxy, stated on the entry), not at the 2011 readout; the tox package had no admissible comparison until the 2012 AdCom. Year 2008, status unchanged.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: each cell opens at model_first_use_year with status untested, proxy allowed. Status untested agreed; opener year should be the 2008 proxy, not the 2011 readout. Not the track latest, so no untested_reason."
   },
   {
    "cell": "safety",
@@ -68,17 +76,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Both quotes verbatim (sec 7.1 and the joint-safety discussion); briefing confirms FDA put IC studies on hold 16 Jul 2010. Tier 2 (AdCom briefing), imported_from OA correct; on-target harm a rodent could show (LaBranche 2017)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "AdCom 2012 non-clinical quote verbatim. NCT00601484 (IV IC): no joint SAE; non-serious arthralgia 3/34 vs 0/30, joint injury 1/34 (checked). IC patients measured, so they set the status: same 2012, tanezumab iv. registry_date should read 2021-05-13 (IC AEs used)."
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Koya 2023 (PMC9721442, received 2022-07-06) abstract quote verbatim; full text has no bladder/cystitis model. untested opening at 2016 proxy (EudraCT) is fine. Arthritis-pain model for an IC trial: model_kind would better read cross_indication (decision 8)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Koya 2023 (PMID 36458900, epub 2022-12-02) abstract quote verbatim. ASP6294 320 mg SC q4w per EU CTR 2016-004138-12: drug, route sc correct. Opener untested at 2016 proxy stands; its retrodiction flag (false) differs from entry 5 on the same model, no status effect."
   },
   {
    "cell": "efficacy",
@@ -87,33 +96,28 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "EU CTR quote verbatim; primary endpoint is change in average mean daily pain at wk 12; results first posted 2020-02-08, end 2019-03-21. Rodent data were candidate-selection work not motivated by the IC result, so contra not retro; 2022 pairing date OK."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "EU CTR 2016-004138-12 results (first posted 2020-02-08) primary MMRM P=0.591, LS mean -0.2 verbatim. Model first public 2022, after tanezumab 2011 and ASP6294 2020 IC results: retrodiction; failed to reproduce, so contra. ASP6294, sc, women-only coded unselected: fine."
   },
   {
    "cell": "safety",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim in Koya 2023 abstract (MIA-arthritis rats). Opening untested entry, 2016 proxy; correct as a separate track from the three-species toxicology."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Koya 2023 abstract edema quote verbatim. ASP6294, route sc correct; opener untested at 2016 proxy stands."
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "proposed_status": "untested",
-   "proposed_year": 2022,
-   "rule": "Decision 8 safety row (stated prediction must be tested) / checker brief 3.1 (untested conditions)",
-   "note": "Quote verbatim, 0/56 vs 3/61 SAEs verified. The prediction is comparative (no edema vs IgG in arthritic joints); the 12-wk IC trial had no IgG arm, no arthritic joints, no joint imaging. Non-serious arthralgia 4/56 (7.1%) vs 2/61 (3.3%). Untested, not same.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 safety cell: the stated prediction was lower joint harm than IgG in arthritic joints; a 12-week IC trial with no IgG arm, no arthritis and no joint imaging could not show it, so never compared."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in Koya 2023 discussion (PMC9721442 full text). EU CTR: SAEs 0/56 vs 3/61, posted 2020-02-08, before the 2022 model: safety retrodiction on ASP6294's own result that reproduced it: retro. Claim is global tolerability, low confidence apt."
   },
   {
    "cell": "safety",
@@ -122,8 +126,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "LaBranche 2017 (epub 2016-07-05) objective quote verbatim in abstract. Opening untested entry for the post-hoc rat MMT track; year 2016 by publication is fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "LaBranche 2017 (PMID 27381034, epub 2016-07-05) objective sentence verbatim. Tanezumab iv and IC population (imported-harm ruling) correct; opener untested 2016 at model first use stands."
   },
   {
    "cell": "safety",
@@ -132,8 +136,48 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim in abstract. Built after the 2010 RPOA hold, so retrodiction true; reproduced cartilage damage (prophylactic dosing) but not the hypotrophic bone response: retro with source_calls_it partial (decisions 10, 11)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "LaBranche abstract quote verbatim, though it is the model_src side, not src (Evans 2011). Tanezumab IV IC patients: no joint SAE (NCT00601484 checked). Retrodiction (after tanezumab's own 2010-11 results) failing to reproduce: contra, opposite, 2016, per rules as written."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener for chem-cystitis x fulranumab x sc; Dmitrieva 1997 quote verbatim. NCT01060254: JNJ-42160443 (fulranumab) 9 mg SC q28d; drug and route correct. Untested 1997 stands; listed after later entries of other tracks."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Wang 2017 (PMID 28056917, epub 2017-01-05) primary-endpoint quote verbatim; NCT01060254 terminated for the hold, no posted results; Europe PMC shows no earlier report, so 2017 is earliest public. Primary missed: contra; underpowered stop correctly in confidence."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener for chem-cystitis x ASP6294 x sc; Dmitrieva 1997 quote verbatim. Untested 1997; drug ASP6294, route sc match EU CTR 2016-004138-12."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "EU CTR 2016-004138-12 quote verbatim (primary MMRM, P=0.591); results first posted 2020-02-08. 1997 model predates trial, not a retrodiction; contra 2020, ASP6294, sc correct. Women-only trial; unselected coding acceptable."
   }
  ],
  "missing": [
@@ -144,6 +188,8 @@
  "rule_questions": [
   "Dose table row 'reached, failed, abandoned -> dose contra, derived_from efficacy' (and 'reached, worked -> same'): does it apply when no model ever stated an exposure target for any member drug? The draft keeps dose untested while efficacy goes same then contra; the rules do not say whether 'target reached' can be scored without a stated target.",
   "Engagement: can a model's functional readout (cystometric voiding frequency in CYP cystitis) count as a downstream PD readout when the human trial measured its counterpart (micturition frequency, unchanged in Evans 2011)? If yes, engagement would be contra 2011 at readout_tier downstream; the draft scored it as a symptom endpoint.",
-  "Dating of efficacy entry 3: could not open the ClinicalTrials.gov history for NCT00999518 (API returned non-JSON). If the termination-for-interim-analysis text was public before Feb 2012, the year should be earlier; the rules do not say whether a registry termination reason without results counts as a public comparison."
+  "Dating of efficacy entry 3: could not open the ClinicalTrials.gov history for NCT00999518 (API returned non-JSON). If the termination-for-interim-analysis text was public before Feb 2012, the year should be earlier; the rules do not say whether a registry termination reason without results counts as a public comparison.",
+  "Safety 2 and 6 (imported-harm ruling): IC patients set the status, but the only IC IV data are a single 200 ug/kg dose in 34 patients over 8 weeks. The rules do not say whether such exposure can test a rare, OA-joint harm (RPOA), i.e. whether no serious joint event there makes the tox package 'same' and the rat MMT model 'contra, opposite', or leaves both untested (not_measured).",
+  "Track openers: efficacy 6 and 8 add 1997 openers listed after 2022 entries, while efficacy 3's judgement says the tanezumab x sc track gets no opener because that would break year order. The rules do not say whether every track needs its own opener or whether cell-level year order governs."
  ]
 }

@@ -1,239 +1,270 @@
 {
- "draft": "analyses/model-system-atlas/drafts/v3/migraine-disorder-cgrp-receptor-antagonists.json",
- "index_base": 1,
- "checked_by": "CHECKER_BRIEF_v3",
- "lint": "0 findings",
- "entries": [
-  {
-   "cell": "engagement",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Salvatore 2010 (PMID 20065019) abstract has the quote verbatim; rhesus CIDV EC50/EC90 0.8/7 nM. FDA ubrogepant PharmR calls CIDV an 'animal efficacy model', so model_filed=true holds."
-  },
-  {
-   "cell": "engagement",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "note": "Li 2015 (PMC4415719) full text: 'EC50 of ~1.6 nM', EC90 14 nM; quote matches apart from small-caps units. It says CIDV was 'first established and validated in the rhesus monkey', so the pairing is right. Moore 2020 abstract confirms ubrogepant rhesus 3.2 vs human 2.6 nM."
-  },
-  {
-   "cell": "dose",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "untested is right, but fix fields: Li 2015 shows the MK-3207 dose target came from human healthy-volunteer CIDV PK/PD (EC90 14 nM) calibrated on telcagepant phase 3, not rhesus 7 nM. Set model_kind human_challenge and correct the note."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim in Li 2015. Li predicted 20 mg with a 40-100 mg plateau. Hewitt 2011 added 200 mg for 'insufficient efficacy' at 20-100 mg, and only 200 mg was significant. contra fits that dose-table row. Li says CIs overlap from 10 mg up. model_kind should be human_challenge (see dose 1)."
-  },
-  {
-   "cell": "efficacy",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Quote verbatim in the Salvatore 2010 abstract. FDA PharmR (NDA 211765) lists monkey CIDV among 'animal efficacy models' for ubrogepant."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Hewitt 2011 abstract: primary endpoint 2-h pain freedom, and the dose-response trend quote is verbatim. NCT00712725 results were first posted 2010-11-22 (type ESTIMATED). patient_trials quotes for MD-02 (SumR) and rimegepant 75 mg (212728 bundle) are verified. BI 44370 quote not checked."
-  },
-  {
-   "cell": "safety",
-   "index": 1,
-   "verdict": "corrected",
-   "source_resolves": false,
-   "quote_found": "near",
-   "status_supported": true,
-   "note": "The Fierce Biotech URL returned 403, so I could not see the quote. Smith 2020 abstract independently confirms MK-3207 was discontinued over DILI concerns. No MK-3207 animal toxicology is public, so untested is reasonable. A citable copy of the 2009 Merck release is needed. | Fierce URL Cloudflare-blocked. 'Never published' is wrong: Monroe 2020 Table 1 gives MK-3207 rat 6 mo 30X, NHP 9 mo 4X, mouse 6 mo 14X, no liver signal. Untested stands for 2009; add a 2020 contra (see missing).",
-   "rule": "safety row, askable silence (#13, #54); decision 6 dating",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6/7 dating and rule 5: in 2009 MK-3207 animal toxicology was not public, so no comparison existed; untested stands. Monroe 2020 contra is already the later entry, so no untested_reason (not latest)."
-  },
-  {
-   "cell": "safety",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "SumR quote verbatim. PharmR quote verbatim: 'no ALT elevations were predicted for any of the protocols tested'. Smith 2020 full text says DILIsym predicted liver safety 'before the clinical trial was conducted', so it is prospective. model_change=true is unneeded (prior entry untested) but harmless."
-  },
-  {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Rubio-Beltrán 2019 (PMID 31674221, epub 2019-11-01) abstract has the quote verbatim. FDA PharmR 211765 lists the ex vivo human artery studies, so model_filed holds. Opening untested at 2019 is right; prediction_level class.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "dose",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Boucherie 2024 (PMC11351853) full text: quote verbatim; the paper combines published therapeutic Cmax with its own artery potency. Ubrogepant and rimegepant doses were approved before, so retrodiction/retro is correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Navratilova 2020 (PMC7412872): conclusion quote verbatim; ED50 ~50 mg/kg confirmed; abstract says ubrogepant 'was recently approved', so run after phase 3 and retro, not same, is correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Luo 2012 (PMID 23153230) abstract has the quote verbatim; primate CGRP-induced facial blood flow for rimegepant (BMS-927711). Untested opening at 2012, class level, is right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Marcus 2013 (PMID 23965396, epub 2013-08-21) abstract: quote verbatim, 885 randomised, primary endpoint 2-h pain freedom met at 75/150/300 mg. Model published (2012) before the trial result, so prospective same holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Rubio-Beltrán 2019 abstract quote verbatim. FDA PharmR 211765 confirms 'ubrogepant (up to 100 µM) did not induce constriction of the human distal coronary artery'. No patient comparison yet, so untested at 2019 is right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Chaudhry 2026 (PMC12820400): quote verbatim in abstract; 'Preclinical studies have reported no direct vascular effects' confirmed. Rimegepant SumR (212728, local bundle) has 'no vasoconstrictive effects on isolated human coronary or cerebral arteries'. Prospective, same.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Mulder 2020 (PMC7540520) abstract quote verbatim; Interpretation states the prediction ('might thus aggravate coincidental cerebral ischemic events'). Stated prospective prediction, untested until a patient comparison; correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 6,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Lusk 2026 (PMC12782279) full text, sensitivity analyses: quote verbatim (aHR 1.36, 1.12-1.64); MI aHR 1.16 also confirmed. Mulder also predicted raised infarct risk after TIA-like occlusion, so same holds at low confidence.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 7,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Monroe 2020 (PMC7553701) full text: BA-LRA quote verbatim; phase 2 ALT>3x ULN 1% (2/197) at <=100 mg, 42% (5/12) >500 mg confirmed. Assay postdates the 2009 signal, so retro is right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 8,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Monroe 2020 full text: HepatoPac quote verbatim (MK-3207 up to 50 µM, Kang 2020 assay). Run after the 2009 clinical signal, so retro is correct; separate in vitro system from BA-LRA.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 9,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Navratilova 2020 abstract quote verbatim. Europe PMC search found no patient MOH study of ubrogepant or rimegepant, so untested (prospective, unanswered) stands.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 10,
-   "verdict": "confirmed",
-   "quote_found": "verbatim",
-   "note": "Entry built from this checker's verified 'missing' item (Monroe 2020 PMC7553701 Table 1, full text read).",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "source_resolves": true,
-   "status_supported": true,
-   "rule": "decision 4 (safety: silence where the harm is measurable is contra)"
-  },
-  {
-   "cell": "safety",
-   "index": 11,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "retrodiction: a model run after the patient result was known is retro",
-   "note": "Smith 2020 (Toxicol Sci, Europe PMC) abstract quote verbatim. DILIsym runs postdate the 2009 MK-3207 discontinuation for liver injury, so retro (not same) is correct; year 2020, class level fits a member drug.",
-   "checked_by": "CHECKER_BRIEF / models"
-  }
- ],
- "missing": [
-  "Smith 2020 (doi 10.1093/toxsci/kfaa093, PMC8312697): 'DILIsym successfully modeled liver toxicity for telcagepant and MK-3207 at the dosing regimens used in clinical trials'. This is a 2020 retrodiction for member MK-3207. The draft mentions it only in a judgement, with no retro entry (see rule question).",
-  "BI 44370 discontinuation: secondary reviews (e.g. PMC4392770) attribute it to liver toxicity and/or oral formulation difficulty. No primary source (press release or registry) was found. If confirmed, it is a second member liver signal for the safety cell. At minimum the safety note should mention it.",
-  "Ubrogepant dose: Voss 2016 phase 2b (doi 10.1177/0333102416653233) found 1 and 10 mg ineffective and 25/50/100 mg effective. Moore 2020 gives human CIDV EC50 2.6 nM. If a CIDV-based ubrogepant dose prediction exists (e.g. the exposure-response paper 'Making Better Dose Decisions...'), it is a second member's dose comparison. The FDA ClinPharmR bundle has no CIDV dose rationale.",
-  "MK-3207 GLP toxicology, 2020 contra on model_id mk3207-glp-tox: Monroe 2020 (doi 10.1093/toxsci/kfaa088, PMC7553701, Table 1 and text) states MK-3207 'was dosed for 9 months in NHP at ... exposures exceeding 4-fold', rat and mouse 6-month margins 'exceeded 30-fold and 14-fold', 'No liver safety signals of concern were noted', and concludes such molecules 'present no evidence of liver safety concerns in 3 species of conventional animal toxicology studies ... and still provoke liver signals' in the clinic (phase 2 ALT>3x ULN 42% at >500 mg, Hy's law case). Comparison stated (comparison_stated true, tier 1); prospective model (run before the clinical signal), so contra, year 2020. Caveat: a 1-month dog study at 17X showed slight periportal vacuolation with <4X ALT/AST, attributed to excessive body-weight loss (see rule question)."
- ],
- "overall": "accept_with_corrections",
- "rule_questions": [
-  "Retrodiction vs prospective on the same model: DILIsym retro-modeled MK-3207 (published 2020) in the same paper that reports the prospective ubrogepant match (2019 FDA, 2020 paper). Should the cell carry a separate retro entry for the MK-3207 member, or does the prospective same subsume it? Decision 10 does not say how a retro and a same of the same date and model order on the strip.",
-  "Dose-table row 'reached, failed, a higher dose later worked': does the higher dose have to be shown superior to the predicted dose? For MK-3207, 200 mg alone was significant, but CIs overlapped from 10 mg up, and the same trial met its primary endpoint on a pooled dose-response trend. The table also implies efficacy contra-then-same, while the draft keeps efficacy same because the primary was met in the same trial. Which applies?",
-  "Should a dose model built in human healthy volunteers (human CIDV calibrated on a non-member's phase 3 data) count as the same model_id/system as the rhesus CIDV used for engagement and efficacy, given that the brief scopes 'the model' to the preclinical system the class relied on?",
-  "MK-3207 GLP toxicology: Monroe 2020 reads three species as silent on liver, but a 1-month dog study showed slight periportal vacuolation and <4X ALT/AST at 17X, attributed to body-weight loss. Is that a sponsor-dismissed animal signal that patients confirmed (same, #23) or askable silence contradicted (contra)? The paper's own reading is silence."
- ]
+  "draft": "analyses/model-system-atlas/drafts/v3/migraine-disorder-cgrp-receptor-antagonists.json",
+  "index_base": 1,
+  "checked_by": "CHECKER_BRIEF_v3",
+  "lint": "0 findings",
+  "entries": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Salvatore 2010 (PMID 20065019, epub Jan 2010) abstract: quote verbatim, rhesus dosed with orally active MK-3207. Opener: drug mk-3207, route oral, population unselected fit; untested 2010 stands.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "retrodiction: engagement/efficacy, any drug of the same target and action",
+      "note": "Li 2015 PMC4415719 full text: quote verbatim (truncated sentence); oral MK-3207 in healthy volunteers, EC50 ~1.6, EC90 14 nM. Petersen 2005 (PMID 15735614) olcegepant blocked CGRP-induced extracerebral dilatation in volunteers before 2010, so retro holds.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Salvatore 2010 abstract: quote verbatim. drug mk-3207, route oral match the phase 2 dosed (Hewitt 2011, oral). Untested opener 2010 unchanged.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Li 2015 full text: quote verbatim; abstract says CIDV predictions 'provided a quantitative rationale for dose selection in a phase 2' (20 mg target, plateau 40-100 mg). Hewitt 2011: oral MK-3207, 547 migraine patients. Drug, route, population fit.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Salvatore 2010 abstract: quote verbatim. drug mk-3207, route oral, unselected fit the opener.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "rule": "retrodiction: engagement/efficacy, any drug of the same target and action",
+      "note": "Hewitt 2011 (PMID 21383045) abstract: quote verbatim; primary 2-h pain freedom trend met, 547 patients, oral. Olesen 2004 NEJM (PMID 15014183, IV olcegepant effective in migraine) precedes the 2010 rhesus result, so retro holds.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Merck release via Fierce Biotech (10 Sep 2009): quote verbatim. Oral MK-3207, extended phase 1 subjects; drug, route fit. Untested 2009 stands; note's 'never published' is superseded by Monroe 2020 (safety 10).",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "FDA SumR 211765 quote verbatim (bundle text); PharmR 'no ALT elevations were predicted for any of the protocols tested' verbatim. 8-week study in migraine patients on oral ubrogepant 100 mg; drug, route, population fit.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "dose",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Rubio-Beltrán 2019 (PMID 31674221, epub Nov 1 2019) abstract: quote verbatim. FDA PharmR also lists ex vivo human artery studies. Opener for ubrogepant; drug ubrogepant, route oral, unselected fit.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "dose",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Boucherie 2024 (PMID 39198753) abstract: quote verbatim. Compares artery potency with approved-dose plasma levels already known for ubrogepant (2019), so retro under the same-drug dose rule; drug ubrogepant, route oral fit.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Navratilova 2020 (PMID 32615788, epub Jul 2020) abstract: quote verbatim; oral ubrogepant in rats, run after ubrogepant approval. Retro; drug ubrogepant, route oral, unselected fit.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Luo 2012 (PMID 23153230, epub Nov 2012) abstract: quote verbatim; BMS-927711 is rimegepant, oral. Opener drug rimegepant, route oral, unselected fit.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "rule": "retrodiction: engagement/efficacy, any drug of the same target and action",
+      "note": "Marcus 2013 (PMID 23965396, epub Aug 2013) abstract: quote verbatim; oral rimegepant beat placebo on 2-h pain freedom. Luo 2012 postdates Olesen 2004 and telcagepant patient efficacy, so retro holds.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Rubio-Beltrán 2019 abstract: quote verbatim; FDA PharmR confirms ubrogepant up to 100 µM did not constrict human coronary, meningeal or cerebral arteries. Ubrogepant oral; untested/not_measured stands.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Chaudhry 2026 (PMID 41574090, Jan 2026) abstract: quote verbatim; single oral rimegepant 75 mg in migraine attacks. FDA SumR 212728 model-side quote verbatim. Drug, route fit; rimegepant track on this model lacks an untested opener.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Mulder 2020 (PMID 32583883) abstract: quote verbatim; rimegepant is the member dosed in mice. Opener drug rimegepant, route oral (patients compared take it orally), unselected fit.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 6,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "proposed_status": "same",
+      "rule": "fields: route is the route the drug was given by in the patients compared",
+      "note": "Lusk 2026 PMC12782279 full text: quote verbatim. 'Abortive' group pools rimegepant, ubrogepant (oral) and zavegepant (intranasal, not a member); no rimegepant-only estimate. Route should be mixed and note should say pooled; status same, low confidence, unchanged.",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "same",
+      "adjudication_note": "Status same: both agree; the correction is a field. Fields rule (route = route given in the patients compared): Lusk's abortive group pools oral gepants with intranasal zavegepant, so route is mixed; pooling stays in note, low confidence."
+    },
+    {
+      "cell": "safety",
+      "index": 7,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Monroe 2020 PMC7553701 full text: BA-LRA quote verbatim; ALT>3x ULN 1% at <=100 mg, 42% at >500 mg, Hy's law case. Oral MK-3207; drug, route, unselected fit. Retro holds (2009 liver signal earlier).",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 8,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Monroe 2020 full text: HepatoPac quote verbatim. Oral MK-3207 clinical liver signal public 2009; drug, route fit. Retro holds.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 9,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Navratilova 2020 abstract: quote verbatim. Ubrogepant oral in rats; no patient MOH comparison for a member, untested/not_measured stands; drug, route fit.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 10,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Monroe 2020 full text: 'No liver safety signals of concern were noted' verbatim (rat 30x, mouse 14x, NHP 4x). Oral MK-3207; drug, route fit. Monroe calls the ALT data phase 2, so subjects may be mixed. Contra holds; dog vacuolation caveat remains.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 11,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Smith 2020 (PMID 32579200) abstract: quote verbatim. MK-3207 oral; the drug's own 2009 liver signal precedes the DILIsym runs, so retro holds; drug, route fit.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "engagement",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "FDA PharmR 211765 (bundle text, Dec 17 2019): quote verbatim. Valid ubrogepant-track opener; drug ubrogepant, route oral fit. PharmR elsewhere gives monkey EC50 3 pM vs Moore's 3.2 nM, likely a unit slip; status unaffected.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "engagement",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "rule": "retrodiction: engagement/efficacy, any drug of the same target and action",
+      "note": "Moore 2020 (PMID 31992609, Jan 28 2020) abstract: quote verbatim, rhesus 3.2 vs human 2.6 nM in one source. Human target engagement public since Petersen 2005, so retro; drug ubrogepant, route oral, healthy volunteers fit.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    }
+  ],
+  "missing": [
+    "Smith 2020 (doi 10.1093/toxsci/kfaa093, PMC8312697): 'DILIsym successfully modeled liver toxicity for telcagepant and MK-3207 at the dosing regimens used in clinical trials'. This is a 2020 retrodiction for member MK-3207. The draft mentions it only in a judgement, with no retro entry (see rule question).",
+    "BI 44370 discontinuation: secondary reviews (e.g. PMC4392770) attribute it to liver toxicity and/or oral formulation difficulty. No primary source (press release or registry) was found. If confirmed, it is a second member liver signal for the safety cell. At minimum the safety note should mention it.",
+    "Ubrogepant dose: Voss 2016 phase 2b (doi 10.1177/0333102416653233) found 1 and 10 mg ineffective and 25/50/100 mg effective. Moore 2020 gives human CIDV EC50 2.6 nM. If a CIDV-based ubrogepant dose prediction exists (e.g. the exposure-response paper 'Making Better Dose Decisions...'), it is a second member's dose comparison. The FDA ClinPharmR bundle has no CIDV dose rationale.",
+    "MK-3207 GLP toxicology, 2020 contra on model_id mk3207-glp-tox: Monroe 2020 (doi 10.1093/toxsci/kfaa088, PMC7553701, Table 1 and text) states MK-3207 'was dosed for 9 months in NHP at ... exposures exceeding 4-fold', rat and mouse 6-month margins 'exceeded 30-fold and 14-fold', 'No liver safety signals of concern were noted', and concludes such molecules 'present no evidence of liver safety concerns in 3 species of conventional animal toxicology studies ... and still provoke liver signals' in the clinic (phase 2 ALT>3x ULN 42% at >500 mg, Hy's law case). Comparison stated (comparison_stated true, tier 1); prospective model (run before the clinical signal), so contra, year 2020. Caveat: a 1-month dog study at 17X showed slight periportal vacuolation with <4X ALT/AST, attributed to excessive body-weight loss (see rule question)."
+  ],
+  "overall": "accept_with_corrections",
+  "rule_questions": [
+    "Retrodiction vs prospective on the same model: DILIsym retro-modeled MK-3207 (published 2020) in the same paper that reports the prospective ubrogepant match (2019 FDA, 2020 paper). Should the cell carry a separate retro entry for the MK-3207 member, or does the prospective same subsume it? Decision 10 does not say how a retro and a same of the same date and model order on the strip.",
+    "Dose-table row 'reached, failed, a higher dose later worked': does the higher dose have to be shown superior to the predicted dose? For MK-3207, 200 mg alone was significant, but CIs overlapped from 10 mg up, and the same trial met its primary endpoint on a pooled dose-response trend. The table also implies efficacy contra-then-same, while the draft keeps efficacy same because the primary was met in the same trial. Which applies?",
+    "Should a dose model built in human healthy volunteers (human CIDV calibrated on a non-member's phase 3 data) count as the same model_id/system as the rhesus CIDV used for engagement and efficacy, given that the brief scopes 'the model' to the preclinical system the class relied on?",
+    "MK-3207 GLP toxicology: Monroe 2020 reads three species as silent on liver, but a 1-month dog study showed slight periportal vacuolation and <4X ALT/AST at 17X, attributed to body-weight loss. Is that a sponsor-dismissed animal signal that patients confirmed (same, #23) or askable silence contradicted (contra)? The paper's own reading is silence.",
+    "Safety 6 (Lusk 2026): the patient estimate pools member gepants with zavegepant, a non-member given intranasally. Does a pooled class estimate that is mostly members score on the rimegepant track, or is it 'unsettled' (result partly belongs to a drug outside the class)?"
+  ]
 }

@@ -49,7 +49,11 @@
     "population": "Unselected",
     "model_first_use_year": 2008,
     "readout_tier": "proximal",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "balipodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2016,
@@ -85,7 +89,11 @@
     "population": "Healthy male volunteers",
     "model_first_use_year": 2008,
     "readout_tier": "direct",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "balipodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -121,7 +129,11 @@
     "model": "Rat and monkey ketamine-challenge phMRI/EEG reversal",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "balipodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -158,7 +170,11 @@
     "model": "Rat and monkey ketamine-challenge phMRI/EEG reversal",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "balipodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -167,7 +183,7 @@
     "status": "untested",
     "model": "Rodent antipsychotic-like dose and occupancy",
     "model_id": "pde10a-rodent-exposure-occupancy",
-    "note": "Rodent MK-801 hyperlocomotion set the antipsychotic-like dose at 0.3-1 mg/kg TAK-063; Pfizer set PF-02545920 exposures from rat screens.",
+    "note": "Rodent MK-801 hyperlocomotion set the antipsychotic-like dose of TAK-063 at 0.3-1 mg/kg; no human exposure or occupancy target was stated.",
     "short": "Effective exposure set in rodents",
     "src": "https://doi.org/10.1124/jpet.114.218552",
     "srcLabel": "Suzuki 2015",
@@ -195,22 +211,28 @@
     "model_first_use_year": 2008,
     "blocked_by": null,
     "margin_stated": false,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "balipodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction",
+    "judgement": "Balipodect's dose track: the rodent paper states an effective mg/kg dose but no human exposure, occupancy or margin that a trial could check, so it stays untested."
    },
    {
-    "year": 2019,
+    "year": 2013,
     "status": "same",
     "model": "Rodent antipsychotic-like dose and occupancy",
     "model_id": "pde10a-rodent-exposure-occupancy",
-    "note": "PF-02545920 exposures in patients sat inside the range predicted to be efficacious, yet PANSS did not separate from placebo; the exposure target was reached and was not enough.",
-    "short": "Exposure inside predicted efficacious range",
-    "src": "https://doi.org/10.1097/JCP.0000000000001047",
-    "srcLabel": "DeMartinis 2019",
-    "quote": "Treatment was well tolerated, and observed PF-02545920 exposures were within the range predicted to be adequate for demonstrating efficacy.",
+    "note": "Earlier public date: Uthayathas (epub 2013-10) put the rat CAR IC50 (Cp,u 0.16 nM) beside exposures examined in the monotherapy Phase 2A; target reached, PANSS not separated.",
+    "short": "Rodent-effective exposure reached in Phase 2A",
+    "src": "https://doi.org/10.1016/j.neuropharm.2013.10.015",
+    "srcLabel": "Uthayathas 2014",
+    "quote": "In fact, mean MP-10 Cp,u 1–3 h after 0.21 and 0.67 mg/kg were approximately 0.19 nM and 0.89 nM, respectively, which were similar to those examined in the MP-10 Phase 2A study.",
     "confidence": "medium",
-    "confidence_note": "Abstract-level reading (full text paywalled); the predicted range is not given in the abstract.",
+    "confidence_note": "Full text read (PMC3934827); the preceding sentence ties the 0.16 nM Cp,u to rat conditioned avoidance. DeMartinis 2019 (10.1097/JCP.0000000000001047; NCT01939548 results 2016-08-22) later said the same for adjunctive use: PF-02545920 exposures in patients sat inside the range predicted to be efficacious, yet PANSS did not separate from placebo; the exposure target was reached and was not enough.",
     "reason": "Target exposure reached, no efficacy",
-    "judgement": "Dose scored on its own prediction (rule v4): patient exposures sat inside the predicted efficacious range. Decision-table row 'reached, failed, abandoned': dose contra derived from efficacy. Walling 2019 (10.1097/JCP.0000000000001128) says the same for monotherapy; Mukai 2026 (10.1097/jcp.0000000000002152) failed with elpipodect at 16/24 mg after Smith 2024 set doses from rodent occupancy. EPS at target dose is counted in safety, not here, because the dose was reached rather than blocked.",
+    "judgement": "Dated to the earliest public statement of the comparison (ruling: earliest public date). Dose table row 'target reached': same; the failure counts in efficacy. Not a retrodiction: the rodent target predates the trial. The monotherapy trial is NCT01175135 (results posted 2018-03-20).",
     "subjects": "patients",
     "comparison_stated": true,
     "source_tier": 1,
@@ -218,21 +240,25 @@
     "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "epub_year": 2019,
-    "print_year": 2019,
-    "registry_date": "2016-08-22",
+    "epub_year": 2013,
+    "print_year": 2014,
+    "registry_date": "2018-03-20",
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
     "magnitude": null,
-    "magnitude_basis": "plasma exposure versus rodent-predicted efficacious range",
-    "source_calls_it": "miss",
-    "population": "Stable outpatients with suboptimally controlled schizophrenia",
+    "magnitude_basis": "unbound plasma exposure versus rat CAR IC50 (0.16 nM)",
+    "source_calls_it": "match",
+    "population": "Acute exacerbation of schizophrenia (monotherapy Phase 2A)",
     "model_first_use_year": 2008,
     "blocked_by": null,
     "margin_stated": false,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "mardepodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -269,22 +295,26 @@
     "model_first_use_year": 2008,
     "endpoint_role": null,
     "outcome_tested": null,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "mardepodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "year": 2016,
+    "year": 2013,
     "status": "contra",
     "model": "Rodent CAR / psychostimulant hyperlocomotion",
     "model_id": "rodent-antipsychotic-screens",
-    "note": "Adjunctive PF-02545920 5/15 mg Q12H for 12 weeks: PANSS change -13.1/-16.0 vs -16.7 placebo, stopped at interim; later member trials also failed.",
-    "short": "PANSS no better than placebo",
-    "src": "https://doi.org/10.1097/JCP.0000000000001047",
-    "srcLabel": "DeMartinis 2019",
-    "quote": "Current data and results of a prior monotherapy study in which PF-02545920 failed to differentiate from placebo refute the hypothesis that PDE10A inhibitors have use as antipsychotic agents for schizophrenia.",
+    "note": "Monotherapy PF-02545920 5/15 mg BID for 4 weeks in acute exacerbation missed PANSS (first public 2012-13); the adjunctive 12-week trial and every later member trial also failed.",
+    "short": "Monotherapy PANSS not met",
+    "src": "https://doi.org/10.1016/j.neuropharm.2013.10.015",
+    "srcLabel": "Uthayathas 2014",
+    "quote": "MP-10 did not meet the primary endpoint for a reduction in psychotic symptoms in a recent Phase 2A trial (ClinicalTrials.gov identifier: NCT01175135), although the compound was reported to cause sedation and side effects consistent with target engagement.",
     "confidence": "high",
-    "confidence_note": "Abstract-level reading for papers; primary-endpoint numbers from the NCT01939548 registry results.",
+    "confidence_note": "Full text read (PMC3934827, epub 2013-10, print 2014). The SIRS 2012 poster (10.1016/s0920-9964(12)70783-1, April 2012) is earlier but its abstract text could not be read, so it cannot carry the quote. Monotherapy registry results NCT01175135 posted 2018-03-20; Walling 2019 (10.1097/JCP.0000000000001128) is the full report.",
     "reason": "Rodent screens positive; members failed",
-    "judgement": "Dated to the NCT01939548 results posting (2016-08-22), the first public comparison; the registry says 'A pre-planned interim analysis indicated the trial was unlikely to meet the pre-specified efficacy criteria.' comparison_stated true because the paper names the preclinical rationale and says the data refute it; a stricter reader would call it a pairing. No later member trial turned the cell: balipodect (p=0.115), elpipodect phase 2a (p=0.074) and 2b (p=0.241/0.784) and Lu AF11167 (stopped for futility) all missed. Alofropodect (CPL'36) met its endpoint in 2026 but is not a member and does not score.",
+    "judgement": "Moved from the adjunctive trial (DeMartinis 2019; NCT01939548 results 2016-08-22) to the monotherapy failure, public earlier (ruling: earliest public date; a congress abstract would count but the 2012 poster is unread). Uthayathas's abstract names rodent models that 'predict antipsychotic efficacy' beside the failed trial, so comparison_stated. No member trial turned the cell: balipodect (p=0.115), elpipodect 2a/2b and Lu AF11167 (futility) all missed; same result, so not split into drug tracks.",
     "subjects": "patients",
     "comparison_stated": true,
     "source_tier": 1,
@@ -292,32 +322,32 @@
     "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "epub_year": 2019,
-    "print_year": 2019,
-    "registry_date": "2016-08-22",
+    "epub_year": 2013,
+    "print_year": 2014,
+    "registry_date": "2018-03-20",
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
     "magnitude": "null",
-    "magnitude_basis": "PANSS total change versus placebo at week 12",
-    "source_calls_it": "miss",
-    "population": "Stable outpatients with suboptimally controlled schizophrenia",
+    "magnitude_basis": "PANSS total change versus placebo at week 4",
+    "source_calls_it": null,
+    "population": "Acute exacerbation of schizophrenia (monotherapy)",
     "model_first_use_year": 2008,
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
      {
+      "nct": "NCT01939548",
+      "registry_date": "2016-08-22",
+      "doi": "https://doi.org/10.1097/JCP.0000000000001047",
+      "quote": "Current data and results of a prior monotherapy study in which PF-02545920 failed to differentiate from placebo refute the hypothesis that PDE10A inhibitors have use as antipsychotic agents for schizophrenia."
+     },
+     {
       "nct": "NCT02477020",
       "registry_date": "2017-09-29",
       "doi": "https://doi.org/10.1016/j.schres.2018.08.028",
       "quote": "The primary endpoint, change from baseline in the Positive and Negative Syndrome Scale total score at week 6, was not achieved (least-squares mean difference vs placebo [standard error] = -5.46 [3.44]; p = 0.115)."
-     },
-     {
-      "nct": "NCT01175135",
-      "registry_date": "2018-03-20",
-      "doi": "https://doi.org/10.1097/JCP.0000000000001128",
-      "quote": "This indicates that PDE10A inhibition does not produce an antipsychotic effect in patients with acute exacerbation of schizophrenia."
      },
      {
       "nct": "NCT03055338",
@@ -338,7 +368,11 @@
       "quote": "These findings suggest that PDE10A inhibition does not have antipsychotic effects at the doses tested."
      }
     ],
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "mardepodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -352,7 +386,7 @@
     "quote": "Effects of TAK-063 on Preventing Ketamine-Induced Brain Activity Changes as Well as Psychotic-Like Symptoms in Healthy Male Adults",
     "confidence": "high",
     "confidence_note": "Registry record: first posted 2013-07-04, start 2013-08, completed 2014-08.",
-    "judgement": "Quote is the registry title; the study was run before any member's patient efficacy result, so it is a prospective model, not a retrodiction.",
+    "judgement": "Quote is the registry title. Run after mardepodect's monotherapy failure was public (2012 poster; 2013 paper), so this class-level model is a retrodiction; the opener stays untested.",
     "subjects": "healthy_volunteers",
     "comparison_stated": false,
     "source_tier": 3,
@@ -375,14 +409,18 @@
     "model": "Healthy-volunteer ketamine challenge (fMRI BOLD/EEG)",
     "model_kind": "human_challenge",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "balipodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2017,
     "status": "contra",
-    "note": "The ketamine challenge met Takeda's Go criterion, but TAK-063 20 mg missed the PANSS primary endpoint in acute schizophrenia (p=0.115).",
+    "note": "Retrodiction: the challenge ran after mardepodect had failed; it predicted benefit, and TAK-063 20 mg then missed PANSS in acute schizophrenia (p=0.115).",
     "short": "Challenge passed; phase 2 PANSS missed",
     "src": "https://doi.org/10.1016/j.schres.2018.08.028",
     "srcLabel": "Macek 2019",
@@ -390,7 +428,7 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level reading. Model side: Takeda 2020 full text (PMC7689203) records the Go decision but does not mention the phase 2 result, so this is a pairing; Yurgelun-Todd 2020 itself says predictivity was unknown.",
     "reason": "Human challenge passed; patient trial failed",
-    "judgement": "Paired, not stated. Dated to the NCT02477020 results posting (2017-09-29); the challenge's own results were posted 2017-01-12. Takeda states the phase 1 results 'showed some consistent evidence of antipsychotic activity', so the model predicted benefit. Magnitude null: the drug was numerically better but not separated.",
+    "judgement": "Paired, not stated. Dated to the NCT02477020 results posting (2017-09-29); the challenge's own results were posted 2017-01-12. Takeda states the phase 1 results 'showed some consistent evidence of antipsychotic activity', so the model predicted benefit. Magnitude null: the drug was numerically better but not separated. Ruling (efficacy is a claim about the target): the challenge's result was first public in 2017, after mardepodect's patient failure (2012-13), so retrodiction: true; it failed to reproduce that failure, so the status stays contra.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -414,7 +452,11 @@
     "model": "Healthy-volunteer ketamine challenge (fMRI BOLD/EEG)",
     "model_kind": "human_challenge",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "balipodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -450,7 +492,11 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2008,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "balipodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2017,
@@ -486,7 +532,11 @@
     "source_calls_it": null,
     "population": "Acute exacerbation of schizophrenia",
     "model_first_use_year": 2008,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "balipodect",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

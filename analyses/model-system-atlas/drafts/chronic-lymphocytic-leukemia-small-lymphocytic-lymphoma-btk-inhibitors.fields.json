@@ -1,0 +1,112 @@
+{
+ "tile": "chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-btk-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug=acalabrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same->retro, retrodiction true (engagement retrodiction: ibrutinib and acalabrutinib patient occupancy public earlier); drug=acalabrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same->retro, retrodiction true (engagement retrodiction: patient BTK occupancy public before Guo 2019); drug=zanubrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug=zanubrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug=zanubrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug=acalabrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug=zanubrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug=acalabrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug=acalabrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug=zanubrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug=zanubrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug=acalabrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "quote corrected to verbatim (\"compared to vehicle\", per checker); drug=acalabrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same->retro, retrodiction true (canine data first public 2014 after ibrutinib CLL responses, Byrd 2013); year 2020->2019 (AstraZeneca press release 2019-05-07 that ASCEND met its PFS primary endpoint); drug=acalabrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug=acalabrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug=acalabrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "year 2022->2021 (BeiGene press release 2021-04-28 and EHA 2021 interim: lower AF/flutter with zanubrutinib vs ibrutinib); drug=zanubrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "status untested->contra, retrodiction true (passing tolerability claim scored; bleeding in patients); quote and src now the review clinical-safety sentence; drug=acalabrutinib, route=oral set from the entry source"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "status same->retro, retrodiction true (tox first public in the 2019 review, after zanubrutinib own patient bleeding data, e.g. Tam 2019); drug=zanubrutinib, route=oral set from the entry source"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "QSP acalabrutinib track opener, 2025 untested (track split from engagement 4)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "QSP acalabrutinib track, 2025 retro (split from engagement 5)"
+  }
+ ]
+}

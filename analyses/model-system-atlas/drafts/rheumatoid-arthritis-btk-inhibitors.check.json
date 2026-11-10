@@ -11,18 +11,23 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "model definition (sibling drug, product_in_model false)",
-   "note": "PNAS 2010 (PMID 20615965) resolves; quote verbatim in abstract. Ibrutinib is a sibling outside the member list, correctly product_in_model false; untested opening entry is right."
+   "rule": "model definition (sibling drug, product_in_model false); rule 6 opener",
+   "note": "Honigberg 2010 (PMID 20615965, epub 2010-07-06) quote verbatim in abstract. Spebrutinib oral track opener on ibrutinib probe data, product_in_model false; unselected fits; 2010 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "engagement definition; evidence rule 1 (comparison_stated)",
-   "note": "JPET 2013 (PMID 23709115) resolves; quote verbatim. Abstract itself pairs CIA occupancy-efficacy with healthy-volunteer full occupancy for spebrutinib (a member), so comparison_stated true and same/direct hold."
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "retrodiction: engagement is a target claim; a model result first public after any drug's patient result on the same target is retro",
+   "note": "Evans 2013 (PMID 23709115, epub 2013-05-24) quote verbatim; spebrutinib oral, healthy volunteers, 2013 right. Its mouse occupancy data post-date ibrutinib patient BTK occupancy (Advani JCO, epub 2012-10-08): reproduced, so retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: engagement is a target claim; ibrutinib patient BTK occupancy (Advani, PMID 23045577, epub 2012-10-08) preceded Evans 2013's CC-292 mouse occupancy, which reproduced human full occupancy, so retro, not same."
   },
   {
    "cell": "dose",
@@ -31,30 +36,37 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "evidence rule 6 (cell opens at model_first_use_year)",
-   "note": "Quote verbatim in Honigberg 2010 abstract; occupancy-efficacy link is the exposure target the class used. Untested opening is correct."
+   "rule": "rule 6 opener (proxy allowed); product_in_model false",
+   "note": "Honigberg 2010 quote verbatim in abstract. Fenebrutinib oral opener on sibling ibrutinib occupancy-efficacy data, 2010. Model_id pools mouse probe with rat CIA (Crawford) under one PK/PD system; acceptable.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "dose table: reached, drug worked -> same",
-   "note": "Quote verbatim in Cohen 2020 full text (PMC7496340); ref 15 there is the J Med Chem GDC-0853 paper named as model_src. Patient exposure vs IC70 not shown in the paper (Chan 2020 Pharm Res has exposure-response); medium confidence fair."
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "dose table: same needs the model-stated target shown reached; rule 3; rule 5 untested_reason unsettled",
+   "note": "Cohen 2020 (PMC7496340) quote verbatim (IC70 rendered 'IC 70'). States only the dosing goal; IC70 attainment in patients not reported. Draft itself carries untested_reason unsettled on a same entry. Fenebrutinib oral, unselected, 2020 fine.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose table: same needs the stated target reached. Cohen 2020 and Chan 2020 (PMC6944649) state only the IC70 dosing goal, no patient attainment; rule 5 untested_reason unsettled (patients measured, result unreported)."
   },
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "dose table: reached, failed, abandoned -> contra, derived_from efficacy; one drug's contra beats another's same",
-   "note": "Fleischmann 2022 (PMID 38293957) quote verbatim; Goess 2019 abstract says occupancy correlated with rat-CIA efficacy. Registry 2021-05-03 confirmed. Spebrutinib (83% patient occupancy, ACR20 P=0.25, epub 2019-11) could date this contra to 2019; not required.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): a second member reached the rat-CIA occupancy target"
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "dose: a target scores only where the model system stated it; same on a target the model never stated is a misapplication; rule 5 no_prediction",
+   "note": "Fleischmann 2022 quote verbatim; Goess 2019 abstract states only that occupancy correlated with rat-CIA efficacy, no occupancy or exposure number. 'Adequate' is the trial's reading. Untested unless Goess full text states a target. No elsubrutinib dose opener.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose: a target scores only where the model stated it. Goess 2019 abstract gives only a correlation, no occupancy or exposure number; 'adequate' is the trial's word. Untested, rule 5 no_prediction (Goess full text not read)."
   },
   {
    "cell": "efficacy",
@@ -63,8 +75,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "model definition (product_in_model false)",
-   "note": "Quote verbatim in Honigberg 2010 abstract; rodent CIA is the system every member's RA programme cited (Gillooly 2017, Goess 2019, Crawford 2018, Evans 2013 checked)."
+   "rule": "model definition (product_in_model false); rule 6 opener",
+   "note": "Honigberg 2010 quote verbatim; bms-986142 oral opener on sibling ibrutinib mouse CIA, unselected, 2010. Fine.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -73,8 +86,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "status contra; one drug's contra beats another's same; evidence rule 6 dating",
-   "note": "Conaghan 2023 quote verbatim; NCT02638948 co-primaries ACR20/ACR70, results posted 2019-05-28. Gillooly CIA 79% inhibition, not sub-threshold, so not neg. patient_trials mislabels acalabrutinib NCT02387762: DAS28-CRP wk4 was its registered primary (posted 2019-03-26); year unchanged."
+   "rule": "efficacy: co-primary endpoints scored as authors call it, written in note; rule 6 dating",
+   "note": "Conaghan 2023 (PMID 38251590) quote verbatim; both co-primaries (ACR20, ACR70 wk12) missed, described in note. Year 2019 = NCT02638948 registry posting. Bms-986142 oral, MTX-IR unselected. Acalabrutinib kept unscored in patient_trials.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -83,8 +97,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "safety definition; evidence rule 5",
-   "note": "Schafer quote verbatim (PMC7021855). No member's RA tox prediction is compared with patients. But see missing: acalabrutinib FDA review pairs dog platelet aggregation 'Unremarkable' with 31.5% hemorrhage in MCL, an importable comparison."
+   "rule": "safety definition; rule 5 untested_reason",
+   "note": "Schafer quote verbatim in full text (PMC7021855). Spebrutinib oral, RA unselected, 2019. Spermatid finding unmeasured (men excluded); 'unpublished' fits first as the tox data are not public.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -93,9 +108,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 10 (prospective, not retro); safety: stated relative prediction opens untested",
-   "note": "Quote verbatim twice in bundled NDA 210259 review (pp. 26, 33; study r2017005): LTA on healthy-volunteer and acalabrutinib/ibrutinib-treated CLL platelets plus VWF-HA1 mouse. Predates the head-to-head result, so prospective; untested, class level, ex_vivo, tier 2 hold.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "safety: relative prediction opens untested; drug/route/population_group",
+   "note": "Quote found in bundled NDA 210259 Multidiscipline Review text. Acalabrutinib oral; other_disease matches the CLL/MCL and volunteer platelets; untested 2017 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -104,9 +119,141 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 10 (model 2017 precedes 2021 result, so same not retro); safety stated prediction held",
-   "note": "Byrd 2021 JCO full text (PMC8547923): quote verbatim; major bleeding 4.5% vs 5.3% also verbatim, so partial is right. Paper never mentions platelets, so comparison_stated false. ELEVATE-RR read out 2021, after the 2017 review: same, year 2021, class level.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "imported-harm ruling: RA patients measured for class safety, so CLL harm does not score; rule 5 not_measured",
+   "note": "Byrd 2021 quote verbatim (PMC8547923). RA trials measured class safety (BMS-986142 liver enzymes, TAS5315 bleeding), so untested/not_measured, acalabrutinib oral, other_disease, 2021 hold. Judgement still says 'Was same.' (history).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "rule 6 opener at the model's first use for this drug",
+   "note": "Evans 2013 quote verbatim (epub 2013-05-24); spebrutinib mouse CIA, oral, product_in_model true; precedes any RA BTK patient result, so prospective.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "efficacy primary endpoint; paired comparison; rule 6 dating",
+   "note": "Schafer quote verbatim (PMID 31721017, epub 2019-11-13); registered primary ACR20 wk4 missed (P=0.25). Spebrutinib oral on background MTX (not a partner), unselected; contra 2019 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "rule 6 opener at the model's first use for this drug",
+   "note": "Park 2016 (PMID 27090981, 2016-04-18) quote verbatim; poseltinib mouse CIA, oral; prospective.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "efficacy primary endpoint; rule 6 dating (registry posting earliest)",
+   "note": "Park 2021 (PMID 33323529) quote verbatim in abstract; Part B primary ACR20 wk12, no dose separated. Year 2019 = NCT02628028 posting (2019-10-09). Background DMARDs, no partner; oral, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "rule 6 opener at the model's first use for this drug",
+   "note": "Crawford 2018 (PMID 29457982, epub 2018-02-23) quote verbatim; fenebrutinib rat arthritis, oral; prospective.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "efficacy primary endpoint; rule 6 dating (registry posting earliest)",
+   "note": "Cohen 2020 quote verbatim; primary ACR50 wk12, 150 mg QD and 200 mg BID beat placebo. Year 2019 = NCT02833350 posting (2019-09-10). Background MTX; adalimumab comparator, not partner; oral, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "rule 6 opener; retrodiction (efficacy: any drug's patient result on the target)",
+   "note": "Haselmayer 2019 quote verbatim (epub 2019-04-15); evobrutinib oral, untested 2019 holds. It post-dates acalabrutinib's RA registry results (2019-03-26); the rules do not exempt unscored results, so retrodiction arguably true; status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "efficacy primary endpoint; rule 6 dating (registry posting earliest)",
+   "note": "ACR Convergence 2020 abstract re-opened; conclusion sentence found verbatim. Primary ACR20 wk12 missed. Year 2020 = NCT03233230 posting (2020-09-28). Evobrutinib oral, MTX-IR unselected. Contra holds even if retrodiction.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "rule 6 opener at the model's first use for this drug",
+   "note": "Goess 2019 (PMID 29862859, epub 2018-07-23) quote verbatim; elsubrutinib rat CIA, oral; prospective; 2018 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "efficacy primary endpoint; monotherapy arms scored, combination arm noted",
+   "note": "Fleischmann 2022 quote verbatim; primary DAS28-CRP wk12, elsubrutinib alone p=0.29-0.61. Year 2021 = NCT03682705 posting. Oral. Bio-IR population could be stage_or_line, but tile codes lines unselected consistently.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "rule 6 opener; earliest public date (congress abstract)",
+   "note": "ACR/ARHP 2017 abstract re-opened; quote verbatim. TAS5315 mouse CIA, oral, 2017; precedes any RA BTK patient result, so prospective.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "efficacy primary endpoint; rule 6 dating",
+   "note": "Takeuchi 2023 (PMID 37217273, epub 2023-05-22) quote verbatim; primary ACR20 wk12 not met (p=0.053). Background MTX, no partner; TAS5315 oral, unselected Japanese MTX-IR; 2023.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -117,6 +264,8 @@
  "overall": "accept_with_corrections",
  "rule_questions": [
   "Safety silence and species capability: does a dog toxicology study that measured platelet aggregation as 'unremarkable' count as a model silent on a harm the species could have shown, when human BTK-inhibitor bleeding is mediated by GPVI platelet signalling whose BTK dependence differs across species (Tec compensation in rodents)? The rules do not say who decides species capability or on what evidence.",
-  "Dose for a failed drug whose dose basis is unpublished (BMS-986142, poseltinib): the dose table assumes we know whether the model's exposure target was reached. When no source states the dose basis, is the dose entry untested (draft's implicit choice) or does efficacy contra still stand without the dose check (draft scores efficacy contra on BMS-986142 regardless)?"
+  "Dose for a failed drug whose dose basis is unpublished (BMS-986142, poseltinib): the dose table assumes we know whether the model's exposure target was reached. When no source states the dose basis, is the dose entry untested (draft's implicit choice) or does efficacy contra still stand without the dose check (draft scores efficacy contra on BMS-986142 regardless)?",
+  "Engagement retrodiction across indications: is a sibling's oncology patient occupancy (ibrutinib, Advani 2012) the 'patient result for the same target' that makes a member's later mouse occupancy data a retrodiction, or does the track's own 2010 first use keep it prospective?",
+  "Does a registry results posting with no statistical analysis (acalabrutinib NCT02387762, 2019-03-26) count as a patient result for the efficacy retrodiction test, when the draft leaves it unscored?"
  ]
 }

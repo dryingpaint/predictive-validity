@@ -61,8 +61,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "contra; efficacy primary endpoint",
-   "note": "Registry primary OS, phase 2, n=160, results 2013-09-26 verified; quotes verbatim; NCT01016483 (2017-06-23) and NCT01251640 (no results) verified. Contra holds. '5/5 trametinib PDX' is not stated in Walters' abstract; add-on design is rule question 1."
+   "rule": "efficacy: combination scored on primary endpoint; 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (Infante 2014 abstract); NCT01231581 randomised, primary OS, results 2013-09-26; ASCO GI 2013 abstr 291 (Jan 2013) also 2013. Combination ruling: contra 2013 stands. Trametinib, oral, unselected, gemcitabine correct."
   },
   {
    "cell": "efficacy",
@@ -77,12 +78,17 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 1-2",
-   "note": "IJC DOI resolves; quotes verbatim; NCT01016483 phase II primary PFS, results 2017-06-23. Contra holds. Model paper identifiable: Vena 2015 CCR 10.1158/1078-0432.CCR-15-0485 (pimasertib + gemcitabine, orthotopic model, epub 2015-07-30): set model_src tier 1, comparison_stated false (rationale cite = pairing)."
+   "proposed_status": "contra",
+   "proposed_year": 2015,
+   "rule": "6 (earliest public date incl. congress abstract); retrodiction (target-level, efficacy)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim. ASCO GI 2015 abstr 344 (10.1200/jco.2015.33.3_suppl.344, Jan 2015) reported primary PFS HR 0.883, so 2015. Vena 2015 (epub 2015-07-30) post-dates the 2013 trametinib null: retrodiction true; failed to reproduce, so contra stands.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6: ASCO GI 2015 abstr 344 (2015-01-20) dates it 2015. Vena 2015 post-dates the 2013 trametinib null, so retrodiction per target-level rule; it failed to reproduce the null, so contra either way."
   },
   {
    "cell": "safety",
@@ -91,8 +97,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "safety definition; imported_from",
-   "note": "Bundle PharmR line 3992 carries the quote verbatim; dog ophthalmoscopy was done (cornea opacity, adnexal discharge only) while patients had CSR/RPED/RVO, so contra on a harm the species could show. Pimasertib ocular 28.9% vs 4.8% verified. Mouse echo retrodiction rightly not credited."
+   "rule": "safety: this disease's patients measured set the status; 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (Infante 2014 abstract). NCT01231581 AEs: rash 38/80 vs 20, stomatitis 29 vs 6, ILD+pneumonitis 3 vs 1, blurred vision 7 vs 10; dog lung target organ. EF fall 7 vs 2 with rat/dog silent (ECG only) keeps it partial, not same outright. ASCO GI 2013 keeps 2013."
   },
   {
    "cell": "efficacy",
@@ -119,24 +126,32 @@
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7; 8 (#16, #34); 11",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Target Oncol DOI resolves (PMID 27975152; Crossref online 2016-12-14, print 2017-02): year 2016 holds; quote verbatim, abstract only (Springer paywalled). Iverson 2009 abstract (10.1158/0008-5472.CAN-09-0679) claims no genotype sensitivity, so the proxy pairing stands. Source calls the reversal a 'trend' (rule question)."
+   "proposed_status": "contra",
+   "proposed_year": 2014,
+   "rule": "6 (earliest public date incl. congress abstract)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (abstract). ASCO 2014 abstr 4025 (10.1200/jco.2014.32.15_suppl.4025, issued 2014-05-20) gave the same KRAS split, so 2014. Contra, refametinib, oral, unselected, unresolved, strengthens false hold; judgement still says 'so strengthens'.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6: ASCO 2014 abstr 4025 (2014-05-20) reported the KRAS split first, so year 2014. Status contra (reversed genotype prediction) is agreed by both sides and unchanged."
   },
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7 (#127)",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "IJC DOI resolves (PMID 29756206, epub 2018-08-09); both quotes verbatim in abstract. NCT01016483 results (2017-06-23) carry no KRAS data, so 2018 holds. Contra with strengthens holds; KRAS assay (tissue vs ctDNA) unstated in the abstract."
+   "proposed_status": "contra",
+   "proposed_year": 2015,
+   "rule": "6 (earliest public date incl. congress abstract)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (Van Cutsem 2018 abstract). ASCO GI 2015 abstr 344 already stated 'KRAS mutational status did not influence PFS or OS', so year 2015. Pimasertib, oral, gemcitabine, unselected, contra, strengthens false hold.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6: ASCO GI 2015 abstr 344 (2015-01-20) already reported KRAS status did not influence PFS or OS, so year 2015. Status contra agreed and unchanged."
   },
   {
    "cell": "efficacy",
@@ -145,8 +160,50 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Tang 2023 (PMID 37817078) and Kinsey 2019 (epub 2019-03-04) abstracts confirm quotes; model precedes patient series, contra prospective. Tang's 10 measurable mix HCQ and CDK4/6i arms; Witte 2024 THCQ 13/13 PD supports the same contra."
+   "rule": "efficacy: single-arm and combination rulings; retrodiction",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Tang 2023 quote verbatim (PMID 37817078). Contra 2023, trametinib, oral, HCQ hold. Kinsey 2019 post-dates the 2013 MEK null, so retrodiction should be true by the target rule (status contra either way). All patients KRAS G12D/V, third-line."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2014,
+   "rule": "6 (earliest public date incl. congress abstract); single-arm ruling",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (abstract); NCT01251640 single-group, primary tumour response, no results. ASCO 2014 abstr 4025 reported the phase 2a response first, so 2014. Chang 2010: growth inhibition in 3/3 orthotopic PDX; same under single-arm ruling holds.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Single-arm ruling: response where the model predicted one is same (ORR 23%). Rule 6: ASCO 2014 abstr 4025 (2014-05-20) first reported the response, so year 2014."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6; sibling drug allowed (product_in_model false)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim at bundled PharmR line 3992. Untested opener at 2010 for pimasertib with trametinib's package (product_in_model false) is allowed; pimasertib's own toxicology unpublished. Not the track's latest entry."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2015,
+   "rule": "6 (earliest public date incl. congress abstract); safety silence on a harm the species could show",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim. NCT01016483: retinal detachment 10/45 vs 1/42, macular detachment 7/45 vs 0; dog ophthalmoscopy unremarkable (PharmR 4195, 4540). ASCO GI 2015 abstr 344 already reported retinal detachment 24.4% almost only on pimasertib: year 2015.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Safety silence rule: dogs had ophthalmoscopy yet retinal detachment appeared in this disease's patients, so contra. Rule 6: ASCO GI 2015 abstr 344 (2015-01-20) reported it first, so year 2015."
   }
  ],
  "missing": [
@@ -157,7 +214,9 @@
   "Trametinib 2 mg + gemcitabine phase I/Ib in Japanese patients, Invest New Drugs 2015 10.1007/s10637-015-0270-2 (NCT01324258): interstitial lung disease in 3 of 5 pancreatic patients, one fatal. A harm in this disease on the context's regimen; whether the rat/dog lung findings in NDA 204114 predicted it was not checked here. Candidate safety entry for the tox-species track.",
   "Checked and excluded: patient-derived organoids (Front Immunol 2026 10.3389/fimmu.2026.1760379) screened trametinib combinations in PDOs and matched PDXs, but compared organoids with patients only for gemcitabine/paclitaxel, so there is no MEK-class patient comparison and no missing PDO track.",
   "[CHECKER_BRIEF_v3 / models] Tox-species-rat-dog track, safety: tier-2 stated comparison in NDA 204114 PharmR lines 400-405 (analyses/model-system-atlas/sources/204114/204114Orig1s000PharmR.txt): 13-week dog study, 'the lymph nodes and lungs were target organs'; lung histopathology 'minimal hemorrhage, mononuclear infiltration, pleural fibrosis, and macrophage accumulation. All findings in the lung were classified as minimal to mild; however, clinically, treatment with trametinib has been associated with cases of interstitial lung disease and pneumonitis.' A regulator's reconciliation counts as stated (safety rule, #79); rat lungs are not named. Disease-specific patient side: trametinib + gemcitabine Japanese phase I/Ib, Invest New Drugs 2015 10.1007/s10637-015-0270-2 (ILD in 3 of 5 pancreatic patients, one fatal). Candidate safety entry (dog lung signal -> clinical ILD, year 2013) on the same track as the 2013 ocular contra.",
-  "[CHECKER_BRIEF_v3 / models] PDX track (pdac-xenograft-pdx), efficacy: a member-drug combination comparison the sweep parked under considered_not_added. Model: Kinsey 2019 Nat Med 10.1038/s41591-019-0367-9 (trametinib + chloroquine regressed patient-derived PDA xenografts; one patient responded to trametinib + hydroxychloroquine). Patients: Witte 2024 J Cancer Res Clin Oncol 10.1007/s00432-024-05954-5 (AIO retrospective, trametinib + hydroxychloroquine, no responses) and Tang 2023 BMC Cancer 10.1186/s12885-023-11464-3 (real-world third-/later-line, trametinib + hydroxychloroquine, no responses); THREAD NCT03825289 terminated without results. Same PDX system, model tested the regimen patients received, model precedes the patient series: a candidate prospective contra entry on the existing track (tier 1 both sides), not a new track."
+  "[CHECKER_BRIEF_v3 / models] PDX track (pdac-xenograft-pdx), efficacy: a member-drug combination comparison the sweep parked under considered_not_added. Model: Kinsey 2019 Nat Med 10.1038/s41591-019-0367-9 (trametinib + chloroquine regressed patient-derived PDA xenografts; one patient responded to trametinib + hydroxychloroquine). Patients: Witte 2024 J Cancer Res Clin Oncol 10.1007/s00432-024-05954-5 (AIO retrospective, trametinib + hydroxychloroquine, no responses) and Tang 2023 BMC Cancer 10.1186/s12885-023-11464-3 (real-world third-/later-line, trametinib + hydroxychloroquine, no responses); THREAD NCT03825289 terminated without results. Same PDX system, model tested the regimen patients received, model precedes the patient series: a candidate prospective contra entry on the existing track (tier 1 both sides), not a new track.",
+  "[CHECKER_BRIEF / fields] Van Laethem, ASCO 2014 (J Clin Oncol 32:5s, abstr 4025; https://www.asco.org/abstracts-presentations/93949): single-arm phase 2a refametinib + gemcitabine, primary ORR, PR 35%, KRAS mut/WT ORR 28%/48%, OS 6.6/18.2 mo. Earliest public date for efficacy entries 7 and 10 (2014, not 2016).",
+  "[CHECKER_BRIEF / fields] Earlier congress abstracts: ASCO GI 2015 abstr 344 (10.1200/jco.2015.33.3_suppl.344) for NCT01016483 (PFS HR 0.883, KRAS no influence, retinal detachment 24.4%); ASCO GI 2013 abstr 291 (10.1200/jco.2013.31.4_suppl.291) already reported the trametinib KRAS-mutant subgroup (n=143) null, which would date efficacy entry 6 to 2013."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
@@ -168,6 +227,8 @@
   "Track openers: the GEMM track has no untested opener at its model_first_use_year. Does a non-member MEK inhibitor in the same KRAS GEMM (Collisson 2012 Cancer Discov with PD325901; Alagesan 2015 with selumetinib, neither re-opened in this run) set model_first_use_year under 'proxy allowed', which would open the track in 2012 rather than 2014?",
   "[models] model_kind for an immortalised pan-tumour cancer cell-line panel (Gilmartin 2011): the enum offers ex_vivo (patient ex-vivo cells) but no in_vitro; is ex_vivo the intended bin, or does the enum need in_vitro?",
   "[models] Patient-level prediction when the class result is null in everyone: Infante 2014 and Van Cutsem 2018 show no benefit in any arm and 'KRAS status did not influence' outcomes. Is the genotype-selection prediction contra (the predicted responders did not respond) or untested (no responders in whom selection could show)? Only Van Laethem 2017 (KRAS-wild-type did better) is a true reversal; the track's latest status is contra either way.",
-  "[models] source_calls_it for Van Laethem 2017: the source calls the wild-type advantage 'a trend ... that deserves future investigation' and never names a cell-line panel; is 'miss' admissible as source-stated, or should an un-framed subgroup reversal be 'unresolved'?"
+  "[models] source_calls_it for Van Laethem 2017: the source calls the wild-type advantage 'a trend ... that deserves future investigation' and never names a cell-line panel; is 'miss' admissible as source-stated, or should an un-framed subgroup reversal be 'unresolved'?",
+  "[fields] Single-arm combination: when the partner alone gives a similar response (gemcitabine ORR 18% in the Infante 2014 placebo arm vs 23-35% with refametinib), does 'a response where the model predicted one is same' still apply, or should the response be attributable to the member drug?",
+  "[fields] Retrodiction for a new combination: Kinsey 2019 (trametinib + chloroquine PDX) post-dates the 2013 MEK + gemcitabine null. Under 'same target and action' it is a retrodiction; it predicted a new regimen. Status is contra either way, but which retrodiction flag is right?"
  ]
 }

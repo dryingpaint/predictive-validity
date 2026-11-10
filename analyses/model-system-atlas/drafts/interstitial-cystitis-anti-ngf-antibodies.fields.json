@@ -1,0 +1,24 @@
+{
+ "tile": "interstitial-cystitis-anti-ngf-antibodies",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "drug tanezumab, route iv (opener of the chem-cystitis x tanezumab x iv track)"},
+  {"cell": "dose", "index": 1, "what": "drug tanezumab, route iv"},
+  {"cell": "efficacy", "index": 1, "what": "drug tanezumab, route iv (opener of the IV track)"},
+  {"cell": "efficacy", "index": 2, "what": "drug tanezumab, route iv (Evans 2011 single 200 ug/kg IV dose; NCT00601484)"},
+  {"cell": "efficacy", "index": 3, "what": "drug tanezumab, route sc (NCT00999518, 1-20 mg SC added to standard of care in both arms; design noted); ASP6294 moved out of patient_trials to its own track; status contra, year 2012 unchanged"},
+  {"cell": "efficacy", "index": 4, "what": "drug ASP6294, route sc"},
+  {"cell": "efficacy", "index": 5, "what": "drug ASP6294, route sc; retrodiction true under the retrodiction rule (model first public 2022, after ASP6294's 2020 IC result); status contra unchanged (failed to reproduce)"},
+  {"cell": "safety", "index": 1, "what": "drug tanezumab, route iv"},
+  {"cell": "safety", "index": 2, "what": "status contra -> same (imported-harm ruling: IC patients were measured and logged no serious joint event; NCT00601484 AEs); imported_from cleared, comparison now paired with model_src the 2012 AdCom briefing; model_filed text moved to note, set true; drug tanezumab, route iv"},
+  {"cell": "safety", "index": 3, "what": "drug ASP6294, route sc"},
+  {"cell": "safety", "index": 4, "what": "status same -> retro, retrodiction true (passing-tolerability claim scored; safety retrodiction on ASP6294's own IC result, EU CTR 2020-02-08, public before the 2022 model paper); drug ASP6294, route sc"},
+  {"cell": "safety", "index": 5, "what": "drug tanezumab, route iv; imported_from cleared, population IC patients (imported-harm ruling)"},
+  {"cell": "safety", "index": 6, "what": "status retro -> contra, magnitude opposite (imported-harm ruling: IC patients set the status and showed no serious joint event the rat MMT model predicts; retrodiction that failed to reproduce); src now Evans 2011 with model_src LaBranche 2017; quote replaced with LaBranche's cartilage-damage sentence; drug tanezumab, route iv"}
+ ],
+ "added": [
+  {"cell": "efficacy", "index": 6, "what": "opener untested 1997 for the chem-cystitis x fulranumab x sc track"},
+  {"cell": "efficacy", "index": 7, "what": "contra 2017 for the chem-cystitis x fulranumab x sc track: Wang 2017 (doi:10.1186/s12894-016-0193-z, NCT01060254), primary pain endpoint -0.2 [-1.52, 1.10], n=31, stopped for the class hold"},
+  {"cell": "efficacy", "index": 8, "what": "opener untested 1997 for the chem-cystitis x ASP6294 x sc track (split from efficacy entry 3's patient_trials)"},
+  {"cell": "efficacy", "index": 9, "what": "contra 2020 for the chem-cystitis x ASP6294 x sc track: EU CTR 2016-004138-12 results (first posted 2020-02-08), LS mean -0.2, P=0.591"}
+ ]
+}

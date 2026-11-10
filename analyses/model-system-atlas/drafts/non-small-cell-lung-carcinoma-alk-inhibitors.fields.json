@@ -1,0 +1,137 @@
+{
+ "tile": "non-small-cell-lung-carcinoma-alk-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug alectinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug ceritinib, route oral set from the entry's source; population_group stage_or_line; status same -> retro, retrodiction true: engagement retrodiction rule (cells run after ceritinib phase 1 responses in crizotinib-relapsed patients were public; Friboulet 2014 full text), per check adjudication"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug lorlatinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug alectinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug ceritinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug lorlatinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug ceritinib, route oral set from the entry's source; population_group unselected"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug alectinib, route oral set from the entry's source; population_group unselected; status same -> retro, retrodiction true: dose retrodiction counts the same drug's own earlier human result; the model was fitted/verified on alectinib's completed DDI studies NP28990/NP29042 (check adjudication)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug lorlatinib, route oral set from the entry's source; population_group unselected; status same -> retro, retrodiction true: FDA PBPK model validated against lorlatinib's own completed study B7461012 (dose retrodiction, same drug); now its own lorlatinib track, strengthens removed; source_calls_it partial (rifampicin under-predicted)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug alectinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug alectinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug ceritinib, route oral set from the entry's source; population_group stage_or_line; status same -> retro, retrodiction true: efficacy retrodiction rule (phase 1 ceritinib responses by mutation status preceded the cell work), per check adjudication"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug alectinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug lorlatinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug alectinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug alectinib, route oral set from the entry's source; population_group biomarker_selected; track split by drug: kept for alectinib (3 patients incl. non-responder LC_08PE, per check note: five patients not four); brigatinib patients moved to appended efficacy 12"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug lorlatinib, route oral set from the entry's source; population_group stage_or_line"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug lorlatinib, route oral set from the entry's source; population_group stage_or_line"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug brigatinib, route oral set from the entry's source; population_group stage_or_line"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug ceritinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug ceritinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug alectinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug brigatinib, route oral set from the entry's source; population_group biomarker_selected"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug lorlatinib, route oral set from the entry's source; population_group biomarker_selected"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "opening untested entry for the brigatinib (oral) track of alk-nsclc-pdo-codrp at its first use for brigatinib (Lee 2023)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "brigatinib track split from efficacy 7: retro 2023, Lee 2023 LC_02T/LC_09PE organoids matched both brigatinib responses (own quote)"
+  }
+ ]
+}

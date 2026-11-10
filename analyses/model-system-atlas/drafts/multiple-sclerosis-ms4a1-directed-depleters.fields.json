@@ -1,0 +1,107 @@
+{
+ "tile": "multiple-sclerosis-ms4a1-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug ofatumumab, route sc, population_group unselected (opener on the ofatumumab FDA CLL review); no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (engagement is a target claim; monkey data first public in the 2017 BLA review, after B-cell depletion in patients with rituximab and ocrelizumab's own phase 2, Kappos 2011); drug ocrelizumab, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug ofatumumab, route sc, population_group unselected; no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug ofatumumab, route sc, population_group unselected; no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug ofatumumab, route sc (retro stands: ofatumumab's own ASCLEPIOS 20 mg result came first); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: dose ruling (ocrelizumab's own earlier patient result, OPERA epub 2016-12 and phase 2 2011, precedes the monkey NOAEL's first public date in the 2017 review); magnitude within_2x -> direction_only (12-fold margin held, not an accuracy); drug ocrelizumab, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug ocrelizumab, route iv, population_group unselected; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug ocrelizumab, route iv, population_group unselected; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug ocrelizumab, route iv, population_group unselected; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug ocrelizumab, route iv, population_group unselected; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (efficacy is a target claim; Weber 2010 (rMOG EAE, online 2010) post-dates rituximab HERMES, Hauser 2008 NEJM, PMID 18272891, Feb 2008); drug ocrelizumab, route iv; year kept 2011"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (efficacy is a target claim; Kap 2010 (marmoset EAE, online 2010-08) post-dates rituximab HERMES, Hauser 2008 NEJM, PMID 18272891, Feb 2008); drug ocrelizumab, route iv; year kept 2011"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (efficacy is a target claim; Matsushita 2008 (JCI, Oct 2008) post-dates rituximab HERMES, Hauser 2008 NEJM, PMID 18272891, Feb 2008); drug ocrelizumab, route iv; year kept 2011"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug ocrelizumab, route iv; magnitude opposite -> null (HR 0.93/0.95 is a null, not a reversal); two parallel trials (MUSETTE RMS, GAVOTTE PPMS) with the same primary endpoint; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug ofatumumab, route sc (model's SC ofatumumab arm vs ASCLEPIOS); ocrelizumab iv arm split to a new entry; no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug ofatumumab, route sc, population_group unselected; no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: safety ruling (ocrelizumab's own earlier patient result, phase 2 Kappos 2011 and OPERA epub 2016-12, precedes the monkey data's first public date in the 2017 review); drug ocrelizumab, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "retrodiction false -> true, status contra kept: safety ruling (ublituximab's own earlier patient infusion reactions precede the monkey data's first public date in the review; a retrodiction that failed is contra); track split by drug settles the checker's rule question: the contra sits on the ublituximab track and does not override ocrelizumab's; drug ublituximab, route iv"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "ocrelizumab x hucd20-dth-tls-mouse x iv track split from efficacy 3: retro 2022 (Torres 2022, IV ocrelizumab arm, vs OPERA I/II)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "ocrelizumab x cyno-bcell-depletion-tox x iv: retro 2017 (strengthens) - monkey first-dose IL-6 (761053 PharmR) vs first-infusion reactions 34-40% (Ocrevus label 5.1)"
+  }
+ ]
+}

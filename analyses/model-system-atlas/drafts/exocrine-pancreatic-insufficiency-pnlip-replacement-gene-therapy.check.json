@@ -8,9 +8,10 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "DOI resolves to Aloulou 2015 Gastroenterology (epub 2015-08-29); quote is the abstract's conclusion verbatim; minipig CFA 60.1% to 84.6-90.0% on 4-80 mg YLLIP2. Opening untested correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Aloulou 2015 (DOI resolves) conclusion sentence verbatim in abstract; untested opener 2015. Adrulipase alfa (YLLIP2/MS1819) is a listed member, oral; unselected EPI correct."
   },
   {
    "cell": "engagement",
@@ -19,39 +20,38 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "10-K R7 text holds the quote verbatim (11 CP patients, +21.8%, p=0.002). NCT03481803 primary is safety, no posted results. Phase 2a completed June 2018, announced 2018 (Fierce). CFA as a 'downstream' engagement readout is a call; see rule question."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "10-K R7 holds the 2.2 g/d, mean +21.8% quote. NCT03481803 first posted 2018-03-29 (CP), no results. Adrulipase alfa oral MS1819-SD, unselected; same/2018 unchanged."
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "In-vitro equivalence quote verbatim in abstract. 10-K says 2.2 g/d was an FDA-agreed bridging dose from phase 2a highest safe dose, not a model target; untested/no_prediction stands. Model name merges the in-vitro assay into the minipig model_id."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "In-vitro equivalence sentence verbatim in abstract; 10-K says 2.2 g/d was an FDA-agreed bridging dose, not a model target, so untested/no_prediction holds. Adrulipase alfa, oral, unselected."
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Abstract: YLLIP2 CFA 84.6-90.0% vs pancreatin 90.5% in PEI minipigs; equivalence-to-pancreatin prediction correctly stated."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abstract conclusion verbatim: minipig CFA on YLLIP2 similar to 1.2 g pancreatin; untested opener 2015. Adrulipase alfa, oral, unselected correct."
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2021,
-   "rule": "Dating (rule 6): the entry's year is the earliest date the comparison was public; tier 5 sources must be used to get the trials right (rule 2).",
-   "note": "Registry confirms OPTION primary CFA 55.6 vs PERT 86.2 (results 2022-06-06); OPTION 2 2.2/4.4 g 66/52.8 vs 83.3/89.3. Contra holds, but AzurRx 31 Mar 2021 OPTION 2 topline: 'majority did not' reach non-inferiority; track turns contra in 2021.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rules 6 and 2: contra stands; the 31 Mar 2021 OPTION 2 topline (tier 5, majority missed non-inferiority vs PERT) is the earliest public comparison, so the entry dates to 2021; the later registry records agree."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Registry primary CFA 55.6 vs 86.2 (results 2022-06-06) sets contra. 31 Mar 2021 release: 'majority did not' reach non-inferiority; Sep 2019 release called OPTION positive, so 2021 is earliest. Judgement prose still says 2022."
   },
   {
    "cell": "safety",
@@ -60,27 +60,28 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "IND-clearance quote verbatim in 10-K R7. No published MS1819 toxicology found in searches; untested/unpublished with proxy year 2017 is right. Registry shows only mild AEs, no harm to score."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "IND-clearance sentence verbatim in 10-K R7; no published MS1819 toxicology found; untested/unpublished 2017 proxy stands. Adrulipase alfa, oral, unselected correct."
   },
   {
    "cell": "efficacy",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "DOI resolves to Suzuki 1997 Gastroenterology (Jun 1997); quote is the abstract conclusion verbatim. Duct-ligated dogs, bacterial lipase; burlulipase is B. plantarii lipase (Gosset, patent DE102017104482). Opening untested, prospective, 1997 correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Suzuki 1997 (DOI resolves) abstract conclusion verbatim; B. plantarii lipase became burlulipase. Untested opener 1997; burlulipase, oral, unselected CF-EPI correct."
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "DOI resolves to Heubi 2016 J Pediatr (epub 2016-06-11); quote verbatim in abstract; CFA primary, NCT01710644 (no posted results). Dog model 1997 predates trial start 2013, so prospective, not retro; same with direction_only magnitude stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Heubi 2016 abstract quote verbatim: CFA 72.7% vs 53.8% placebo; NCT01710644 posted 2012-10-19, burlulipase oral solution vs placebo. Same 2016, oral, unselected stands."
   }
  ],
  "missing": [
@@ -95,6 +96,7 @@
  "rule_questions": [
   "For an enzyme replacement, the model's PD readout (CFA) is also the efficacy endpoint. Can an uncontrolled CFA change from baseline in a safety-primary phase 2a be scored as engagement (readout_tier downstream) while the controlled CFA comparison is scored as efficacy? Or does that count one readout twice?",
   "OPTION 2's sponsor puts the failure down to enteric-capsule formulation, which the minipig (purified enzyme) never tested. The brief would make an OPTION 2-only pairing untested. Does the non-enteric OPTION shortfall (55.6 vs 86.2) keep the contra by itself? I judged that it does.",
-  "Minipigs got milligram doses of purified YLLIP2; patients got grams of MS1819-SD spray-dried powder with undisclosed lipase content. When the dose cell is untested (no_prediction), can an under-dose explanation ever move efficacy to untested, or does efficacy always follow the trial?"
+  "Minipigs got milligram doses of purified YLLIP2; patients got grams of MS1819-SD spray-dried powder with undisclosed lipase content. When the dose cell is untested (no_prediction), can an under-dose explanation ever move efficacy to untested, or does efficacy always follow the trial?",
+  "Efficacy 2 dating: AzurRx's 25 Sep 2019 OPTION release (sponsor 'positive'; ~50% of patients reached non-inferiority, no group CFA means) was public earlier than the 31 Mar 2021 OPTION 2 topline. Does a half-of-patients shortfall framed as positive count as the earliest public contra comparison under rule 6/7? I kept 2021."
  ]
 }

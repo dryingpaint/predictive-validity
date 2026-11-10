@@ -1,0 +1,57 @@
+{
+ "tile": "extranodal-nasal-nk-t-cell-lymphoma-anti-pdcd1-antibodies",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug=sintilimab, route=iv (track assignment)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2020->2019 (rule 6: EHA 2019 abstract S870, 2019-06-15); drug=sintilimab, route=iv; single-arm design noted"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug=tislelizumab, route=iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug=sintilimab, route=iv; note records that the model post-dates pembrolizumab's 2017 ENKTL result"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status same->retro, year 2020->2019: RULE QUESTION settled (efficacy retrodiction counts any same-target drug; Kwong 2017 predates Xue 2019); earliest date EHA 2019 abstract; drug=sintilimab, route=iv; tislelizumab split out"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "year 2024->2016 (rule 6 opener at model_first_use_year, checker adjudication); drug=tislelizumab, route=iv"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "tislelizumab opener on enktl-biopsy-pdl1-ihc, 2016 untested"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "tislelizumab on enktl-biopsy-pdl1-ihc, 2020 same (single-arm ORR 31.8%, EHA 2020 EP1268 / Bachy 2023)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "tislelizumab opener on el4-syngeneic-mouse-rmp1-14, 2019 untested"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "tislelizumab on el4-syngeneic-mouse-rmp1-14, 2020 retro (ORR 31.8%; same-target results public since 2017)"
+  }
+ ]
+}

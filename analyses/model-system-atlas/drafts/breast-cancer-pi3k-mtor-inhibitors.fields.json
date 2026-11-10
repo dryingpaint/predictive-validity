@@ -1,0 +1,31 @@
+{
+ "tile": "breast-cancer-pi3k-mtor-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: Yu 2014 xenograft PD post-dates patient PI3K/mTOR PD (voxtalisib ASCO 2009 / Exelixis press release 2009-06-01; apitolisib ASCO 2010); retrodiction ruling"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true, year 2016 -> 2011: apitolisib PRP pAKT inhibition public at ASCO 2010 (doi 10.1200/jco.2010.28.15_suppl.3079) before Wallin 2011 (epub 2011-10-13); comparison public 2011; retrodiction and earliest-date rulings"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "status contra -> untested (unsettled), imported_from removed: hyperglycaemia import from mixed solid-tumour phase I inadmissible because breast patients were measured for the class and for apitolisib (FERGI arm B, NCT01254526, unreported); imported-harm ruling"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "year 2016 -> 2018; src/quote pNET (Salazar 2018, NCT01628913) -> Rodon 2018 HER2+ breast cohort with trastuzumab (GI AEs); status contra unchanged; imported-harm ruling (this disease's patients set the status)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "model_id bez235-novartis-xenografts -> bt474-nki-lapatinib-resistance (Eichhorn 2008 is its own model system, per check adjudication); status untested unchanged"
+  }
+ ],
+ "added": []
+}

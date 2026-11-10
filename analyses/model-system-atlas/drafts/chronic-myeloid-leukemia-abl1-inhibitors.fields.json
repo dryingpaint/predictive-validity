@@ -1,0 +1,17 @@
+{
+ "tile": "chronic-myeloid-leukemia-abl1-inhibitors",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same->retro, retrodiction true: model (Luo 2010, epub 2010-08-12) post-dates nilotinib/dasatinib first-line MMR superiority over imatinib (NEJM June 2010), efficacy retrodiction rule (any drug, same target and action); drug flumbatinib, route oral; vamotinib phase 1 quote removed from patient_trials and split to efficacy 9"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "vamotinib track on bcr-abl-cell-xenograft (split from efficacy 3): 2014 untested, Mian 2015 T315I mouse survival; phase 1 (Turkina 2025) primary objective MTD/DLT, efficacy secondary, so untested_reason unsettled"
+  }
+ ]
+}

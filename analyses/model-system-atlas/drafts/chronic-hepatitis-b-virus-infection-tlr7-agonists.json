@@ -51,7 +51,11 @@
     "confidence": "medium",
     "epub_year": 2013,
     "print_year": 2013,
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1053/j.gastro.2013.02.003",
@@ -88,7 +92,11 @@
     "epub_year": 2013,
     "print_year": 2013,
     "readout_tier": "downstream",
-    "reason": "Human ISGs rose as in chimps"
+    "reason": "Human ISGs rose as in chimps",
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -97,7 +105,7 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "model_filed": null,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "within_2x",
     "magnitude_basis": "fold ISG induction, woodchuck vs human at tolerated doses (as stated, 'similar')",
@@ -110,13 +118,13 @@
     "source_tier": 1,
     "product_in_model": true,
     "model_kind": "animal",
-    "judgement": "The woodchuck study was designed after human PD was known, but the ISG match is the bridge, not a retrodiction of the efficacy result; scored same, not retro, because the woodchuck PD was measured prospectively against an exposure range rather than to reproduce a known patient outcome.",
+    "judgement": "2026-11-09 retrodiction ruling: post-dating alone makes a retrodiction. The woodchuck ISG comparison (epub 2015-01) followed Lopatin 2013 healthy-volunteer ISG induction for the same target and matched it, so retro, not same.",
     "model": "WHV-infected woodchucks",
     "model_id": "whv-woodchuck-cornell",
     "model_first_use_year": 2015,
     "year": 2015,
-    "status": "same",
-    "note": "Woodchuck ISG induction matched the magnitude seen in healthy volunteers at well-tolerated GS-9620 doses, stated side by side.",
+    "status": "retro",
+    "note": "Woodchuck ISG induction matched the magnitude seen in healthy volunteers at well-tolerated GS-9620 doses, stated side by side. Retrodiction: first public after the 2013 human ISG data it was compared with, and it reproduced them.",
     "short": "Woodchuck ISGs matched human magnitude",
     "src": "https://doi.org/10.1016/j.jhep.2014.12.026",
     "srcLabel": "Menne 2015",
@@ -125,7 +133,11 @@
     "epub_year": 2015,
     "print_year": 2015,
     "readout_tier": "downstream",
-    "reason": "ISG magnitude stated similar"
+    "reason": "ISG magnitude stated similar",
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -161,10 +173,14 @@
     "model": "Cynomolgus monkey and CD-1 mouse oral PK/PD (presystemic ISG induction)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "model_src": null,
     "model_src_tier": null,
@@ -180,11 +196,11 @@
     "comparison_stated": true,
     "source_tier": 1,
     "product_in_model": true,
-    "judgement": "Not a retrodiction: the monkey/mouse PK/PD is the IND-enabling work that set the presystemic concept before human dosing (Lanford 2013 already cites 'pre-systemic' trial doses); published after the human data, so medium confidence.",
+    "judgement": "2026-11-09 retrodiction ruling: the monkey/mouse presystemic ISG data were first public in Fosdick (epub 2013-10-16), after Lopatin 2013 (epub 2013-02-15) showed ISGs without serum IFN-α in volunteers; post-dating alone makes it a retrodiction, and it matched, so retro.",
     "year": 2013,
-    "status": "same",
+    "status": "retro",
     "readout_tier": "downstream",
-    "note": "The same paper shows healthy volunteers, like monkeys, raised whole-blood OAS1 and MX1 after oral GS-9620 without systemic IFN-α.",
+    "note": "The same paper shows healthy volunteers, like monkeys, raised whole-blood OAS1 and MX1 after oral GS-9620 without systemic IFN-α. Retrodiction: the paper (epub 2013-10) came after the Feb 2013 volunteer data it reproduces.",
     "short": "Human ISGs presystemic, as in monkeys",
     "src": "https://doi.org/10.1124/jpet.113.207878",
     "srcLabel": "Fosdick 2014",
@@ -198,7 +214,11 @@
     "model": "Cynomolgus monkey and CD-1 mouse oral PK/PD (presystemic ISG induction)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -234,7 +254,11 @@
     "model": "AAV/HBV mice",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "route": "oral",
+    "drug": "TQ-A3334",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": true,
@@ -257,7 +281,7 @@
     "year": 2021,
     "status": "retro",
     "readout_tier": "downstream",
-    "note": "In healthy adults JNJ-4964 dose-dependently raised serum IFN-α, IP-10 and MCP-1 and ISGs, the cytokines the mouse showed.",
+    "note": "In healthy adults JNJ-4964 dose-dependently raised serum IFN-α, IP-10 and MCP-1 and ISGs, the cytokines the mouse showed. JNJ-4964 is the same compound as TQ-A3334.",
     "short": "HV: IFN-α, IP-10, MCP-1 rose as in mice",
     "src": "https://doi.org/10.1177/13596535211056581",
     "srcLabel": "JNJ-4964 FIH 2021",
@@ -271,7 +295,11 @@
     "model": "AAV/HBV mice",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "route": "oral",
+    "drug": "TQ-A3334",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ],
   "dose": [
@@ -310,7 +338,11 @@
     "epub_year": 2013,
     "print_year": 2013,
     "untested_reason": "no_prediction",
-    "reason": "No human dose target stated"
+    "reason": "No human dose target stated",
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -321,24 +353,24 @@
     "model_filed": null,
     "retrodiction": false,
     "imported_from": null,
-    "magnitude": "direction_only",
-    "magnitude_basis": "ISG induction at efficacious woodchuck dose vs human tolerated doses",
-    "source_calls_it": "match",
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
     "population": "Unselected (HBeAg-positive or -negative CHB, viremic or NA-suppressed)",
     "confidence_note": "Full text read; the human comparator table (Supplementary Table 1) was not read. CHB patients later reached dose-dependent ISG15 induction at 1-4 mg weekly (Janssen 2018).",
     "prediction_level": "class",
-    "subjects": "healthy_volunteers",
+    "subjects": null,
     "comparison_stated": true,
     "source_tier": 1,
     "product_in_model": true,
     "model_kind": "animal",
-    "judgement": "Judgement call: read the ISG-magnitude statement as the model's dose target (a PD target, not mg/kg arithmetic). It was reached in humans without IFN-α toxicity; whether it worked is the efficacy entry. Woodchuck thrombocytopenia occurred at 5-10 mg/kg, above the ISG-matched dose, so no margin is scored.",
+    "judgement": "Dose rule: a target scores only on the model system that stated it. The ISG magnitude was read from prior human data (Lopatin 2013), not stated by the woodchuck system, and the 5 mg/kg efficacy regimen caused thrombocytopenia, so no tolerated margin was stated either. Untested, no_prediction.",
     "model": "WHV-infected woodchucks",
     "model_id": "whv-woodchuck-cornell",
     "model_first_use_year": 2015,
     "year": 2015,
-    "status": "same",
-    "note": "The woodchuck regimen was pitched at ISG levels humans reach at well-tolerated doses; those levels were reached in volunteers.",
+    "status": "untested",
+    "note": "The woodchuck regimen was pitched at ISG levels already seen in volunteers; that target came from human data, so the model stated no dose of its own.",
     "short": "ISG-matched exposure reachable in humans",
     "src": "https://doi.org/10.1016/j.jhep.2014.12.026",
     "srcLabel": "Menne 2015",
@@ -346,9 +378,13 @@
     "confidence": "low",
     "epub_year": 2015,
     "print_year": 2015,
-    "margin_stated": false,
-    "reason": "ISG target reached, tolerated",
-    "untested_reason": "no_prediction"
+    "margin_stated": null,
+    "reason": "ISG target taken from human data",
+    "untested_reason": "no_prediction",
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -383,10 +419,14 @@
     "model": "Cynomolgus monkey and CD-1 mouse oral PK/PD (presystemic ISG induction)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "model_src": "https://doi.org/10.1124/jpet.113.207878",
     "model_src_tier": 1,
@@ -402,11 +442,11 @@
     "comparison_stated": false,
     "source_tier": 1,
     "product_in_model": true,
-    "judgement": "Judgement call: read the model's presystemic window (ISGs without systemic IFN-α) as a stated regimen target plus a tolerability margin, not as mg/kg arithmetic. Humans were dosed to it without IFN-α toxicity, so same with margin_stated; whether it worked is efficacy, where this model made no antiviral prediction.",
+    "judgement": "2026-11-09 retrodiction ruling, settling the checker's rule question: the presystemic window was first public in Fosdick (epub 2013-10-16), stated alongside, and after, the same drug's healthy-volunteer data (Lopatin, epub 2013-02-15; HV PK counts for dose). A model first public after the same drug's human result that reproduces it is retro, not same and not untested. The chimp paper (Lanford 2013) framed pre-systemic dosing only as a hypothesis, so dose 1 stays untested.",
     "year": 2013,
-    "status": "same",
+    "status": "retro",
     "margin_stated": true,
-    "note": "Healthy volunteers induced ISGs from 2 mg, well below the doses giving serum IFN-α or adverse events: the presystemic window held.",
+    "note": "Healthy volunteers induced ISGs from 2 mg, well below the doses giving serum IFN-α or adverse events: the presystemic window held. Retrodiction: the model's window was first public (Fosdick, Oct 2013) after these volunteer data.",
     "short": "Presystemic window held in humans",
     "src": "https://doi.org/10.3851/imp2548",
     "srcLabel": "Lopatin 2013",
@@ -421,7 +461,11 @@
     "model_kind": "animal",
     "prediction_level": "class",
     "model_first_use_year": 2011,
-    "untested_reason": "no_prediction"
+    "untested_reason": null,
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ],
   "efficacy": [
@@ -445,13 +489,13 @@
     "source_tier": 1,
     "product_in_model": true,
     "model_kind": "animal",
-    "judgement": "Kept untested: the only patient efficacy source for TQ-A3334 (n=24, 2026) does not report the dual-therapy HBsAg effect in a quotable form; the conclusion credits the decline to adding the PD-L1 antibody.",
+    "judgement": "Kept untested: the only patient efficacy source for TQ-A3334 (n=24, 2026) does not report the dual-therapy HBsAg effect in a quotable form; the conclusion credits the decline to adding the PD-L1 antibody. Combination ruling considered: the trial is scorable on its primary endpoint (HBsAg reduction at end of treatment), but the abstract reports only that triple therapy was numerically greater, with no result for the TQ-A3334 arm, so the status stays untested (unsettled).",
     "model": "AAV/HBV mice",
     "model_id": "aav-hbv-mouse",
     "model_first_use_year": 2021,
     "year": 2021,
     "status": "untested",
-    "note": "Weekly JNJ-4964/TQ-A3334 at 20 mg/kg made plasma HBsAg and HBV DNA undetectable in AAV/HBV mice, with anti-HBs.",
+    "note": "Weekly JNJ-4964/TQ-A3334 at 20 mg/kg made plasma HBsAg and HBV DNA undetectable in AAV/HBV mice, with anti-HBs. OCEANcure05 (n=24) compared NA alone, NA + TQ-A3334 and NA + TQ-A3334 + anti-PD-L1; its abstract gives no NA + TQ-A3334 result against NA alone.",
     "short": "AAV/HBV mice: HBsAg cleared at 20 mg/kg",
     "src": "https://doi.org/10.1016/j.antiviral.2021.105196",
     "srcLabel": "Herschke 2021",
@@ -460,7 +504,11 @@
     "epub_year": 2021,
     "print_year": 2021,
     "untested_reason": "unsettled",
-    "reason": "TQ-A3334 patient HBsAg result unclear"
+    "reason": "TQ-A3334 patient HBsAg result unclear",
+    "route": "oral",
+    "drug": "TQ-A3334",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -495,7 +543,11 @@
     "quote": "Short-term oral administration of GS-9620 provided long-term suppression of serum and liver HBV DNA.",
     "confidence": "high",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1053/j.gastro.2013.02.003",
@@ -509,8 +561,8 @@
     "magnitude": "opposite",
     "magnitude_basis": "HBsAg change at week 24: predicted decline, observed none vs placebo",
     "source_calls_it": null,
-    "population": "Unselected (HBeAg-positive or -negative CHB, viremic or NA-suppressed)",
-    "confidence_note": "Abstract-level (J Hepatol paywalled); primary endpoint values confirmed in registry results NCT02166047 (posted 2020-09-02): mean change -0.08 to +0.03 log10 vs -0.16 to 0.00 on placebo.",
+    "population": "NA-suppressed CHB (HBV DNA <20 IU/mL on oral antivirals for at least 1 year)",
+    "confidence_note": "Abstract-level (J Hepatol paywalled); primary endpoint values confirmed in registry results NCT02166047 (posted 2020-09-02): mean change -0.08 to +0.03 log10 vs -0.16 to 0.00 on placebo. Earliest public date: AASLD 2016 poster (Hepatology 2016;64(S1):913A, abstract 1851) reported no HBsAg loss and no >0.5-log decline.",
     "prediction_level": "class",
     "subjects": "patients",
     "comparison_stated": false,
@@ -521,9 +573,9 @@
     "model": "Chronically HBV-infected chimpanzees",
     "model_id": "hbv-chimpanzee-texas",
     "model_first_use_year": 2012,
-    "year": 2017,
+    "year": 2016,
     "status": "contra",
-    "note": "Weekly vesatolimod 1-4 mg for up to 12 weeks did not lower HBsAg at week 24 in NA-suppressed CHB patients.",
+    "note": "Weekly vesatolimod 1-4 mg for up to 12 weeks did not lower HBsAg at week 24 in NA-suppressed CHB patients. Design: vesatolimod or placebo added to ongoing nucleos(t)ide analogue in all arms; primary endpoint HBsAg change at week 24.",
     "short": "No HBsAg decline in patients",
     "src": "https://doi.org/10.1016/j.jhep.2017.10.027",
     "srcLabel": "Janssen 2018",
@@ -547,7 +599,11 @@
       "quote": "No clinically significant changes in HBsAg or HBV DNA levels were observed."
      }
     ],
-    "reason": "HBsAg did not fall in patients"
+    "reason": "HBsAg did not fall in patients",
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": "nucleos(t)ide analogue",
+    "population_group": "stage_or_line"
    },
    {
     "model_src": null,
@@ -582,7 +638,11 @@
     "quote": "GS-9620 treatment induced rapid, marked and sustained reduction in serum viral DNA (mean maximal 6.2log10 reduction), and hepatic WHV DNA replicative intermediates, WHV cccDNA and WHV RNA, as well as loss of detectable serum WHV surface antigen (WHsAg).",
     "confidence": "high",
     "epub_year": 2015,
-    "print_year": 2015
+    "print_year": 2015,
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1016/j.jhep.2014.12.026",
@@ -596,8 +656,8 @@
     "magnitude": "opposite",
     "magnitude_basis": "HBsAg change at week 24: predicted loss, observed none vs placebo",
     "source_calls_it": null,
-    "population": "Unselected (HBeAg-positive or -negative CHB, viremic or NA-suppressed)",
-    "confidence_note": "Abstract-level; registry NCT02166047 results posted 2020-09-02. Agarwal 2018 (viremic, NCT02579382, posted 2020-05-18) likewise null.",
+    "population": "NA-suppressed CHB (HBV DNA <20 IU/mL on oral antivirals for at least 1 year)",
+    "confidence_note": "Abstract-level; registry NCT02166047 results posted 2020-09-02. Agarwal 2018 (viremic, NCT02579382, posted 2020-05-18) likewise null. Earliest public date: AASLD 2016 poster (Hepatology 2016;64(S1):913A, abstract 1851) reported no HBsAg loss and no >0.5-log decline.",
     "prediction_level": "class",
     "subjects": "patients",
     "comparison_stated": false,
@@ -608,9 +668,9 @@
     "model": "WHV-infected woodchucks",
     "model_id": "whv-woodchuck-cornell",
     "model_first_use_year": 2015,
-    "year": 2017,
+    "year": 2016,
     "status": "contra",
-    "note": "At ISG levels the woodchuck work matched, patients' HBsAg did not decline at week 24; no HBsAg loss in either phase 2.",
+    "note": "At ISG levels the woodchuck work matched, patients' HBsAg did not decline at week 24; no HBsAg loss in either phase 2. Design: vesatolimod or placebo added to ongoing nucleos(t)ide analogue in all arms; primary endpoint HBsAg change at week 24.",
     "short": "ISG-matched dosing, no HBsAg effect",
     "src": "https://doi.org/10.1016/j.jhep.2017.10.027",
     "srcLabel": "Janssen 2018",
@@ -634,7 +694,11 @@
       "quote": "No clinically significant changes in HBsAg or HBV DNA levels were observed."
      }
     ],
-    "reason": "No HBsAg decline at matched ISGs"
+    "reason": "No HBsAg decline at matched ISGs",
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": "nucleos(t)ide analogue",
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
@@ -669,7 +733,11 @@
     "model_id": "hbv-phh-pbmc-conditioned-media",
     "model": "HBV-infected primary human hepatocytes and dHepaRG with GS-9620-treated PBMC conditioned media",
     "prediction_level": "class",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": true,
@@ -683,18 +751,18 @@
     "magnitude": "opposite",
     "magnitude_basis": "HBsAg change: in vitro antigen reduction vs no HBsAg decline in NA-suppressed patients at week 24",
     "source_calls_it": null,
-    "population": "Unselected (HBeAg-positive or -negative CHB, viremic or NA-suppressed)",
+    "population": "NA-suppressed CHB (HBV DNA <20 IU/mL on oral antivirals for at least 1 year)",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
     "product_in_model": true,
-    "judgement": "Retrodiction: the in vitro system was run after Gane 2015 had already reported no HBsAg change in patients, and it did not reproduce that (it showed antigen reduction), so contra. Low confidence: the conditioned media mimic systemic IFN-α that presystemic patient dosing never produced, and GS-9620 alone had no activity in PHH.",
+    "judgement": "Retrodiction: the in vitro system was run after Gane 2015 had already reported no HBsAg change in patients, and it did not reproduce that (it showed antigen reduction), so contra. Low confidence: the conditioned media mimic systemic IFN-α that presystemic patient dosing never produced, and GS-9620 alone had no activity in PHH. Settles the checker's rule question under the 2026-11-09 retrodiction ruling: a retrodiction that fails to reproduce the known patient result is contra, whatever the exposure caveat.",
     "year": 2017,
     "status": "contra",
     "model_kind": "ex_vivo",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "note": "Weekly vesatolimod did not lower HBsAg in patients, against the antigen reduction this in vitro system showed.",
+    "note": "Weekly vesatolimod did not lower HBsAg in patients, against the antigen reduction this in vitro system showed. Design: vesatolimod or placebo added to ongoing nucleos(t)ide analogue in all arms; primary endpoint HBsAg change at week 24.",
     "short": "No HBsAg decline in patients",
     "src": "https://doi.org/10.1016/j.jhep.2017.10.027",
     "srcLabel": "Janssen 2018",
@@ -715,7 +783,11 @@
     "model_id": "hbv-phh-pbmc-conditioned-media",
     "model": "HBV-infected primary human hepatocytes and dHepaRG with GS-9620-treated PBMC conditioned media",
     "prediction_level": "class",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": "nucleos(t)ide analogue",
+    "population_group": "stage_or_line"
    }
   ],
   "safety": [
@@ -752,7 +824,11 @@
     "quote": "GS-9620 therapy was generally well tolerated, and no serious adverse events occurred during therapy.",
     "confidence": "medium",
     "epub_year": 2013,
-    "print_year": 2013
+    "print_year": 2013,
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1053/j.gastro.2013.02.003",
@@ -788,7 +864,11 @@
     "confidence": "medium",
     "epub_year": 2015,
     "print_year": 2015,
-    "reason": "Tolerated in patients as in chimps"
+    "reason": "Tolerated in patients as in chimps",
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -810,13 +890,13 @@
     "source_tier": 1,
     "product_in_model": true,
     "model_kind": "animal",
-    "judgement": "Judgement call: the woodchuck harms came at doses above the ISG-matched one and were never scaled to a human dose, so no checkable prediction for the 1-4 mg human range; not scored as a predicted harm that failed to appear.",
+    "judgement": "Opening entry; the named harm is scored in the next entry.",
     "model": "WHV-infected woodchucks",
     "model_id": "whv-woodchuck-cornell",
     "model_first_use_year": 2015,
     "year": 2015,
     "status": "untested",
-    "note": "Woodchucks showed dose-dependent reversible thrombocytopenia and liver-enzyme rises at 5-10 mg/kg, above the ISG-matched dose.",
+    "note": "Woodchucks showed reversible thrombocytopenia and liver-enzyme rises, chiefly at 5 mg/kg, the efficacious ISG-matched regimen.",
     "short": "Woodchucks: thrombocytopenia at high doses",
     "src": "https://doi.org/10.1016/j.jhep.2014.12.026",
     "srcLabel": "Menne 2015",
@@ -824,8 +904,52 @@
     "confidence": "medium",
     "epub_year": 2015,
     "print_year": 2015,
-    "untested_reason": "no_prediction",
-    "reason": "Harm only above human-equivalent dose"
+    "untested_reason": null,
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": null,
+    "population_group": "unselected"
+   },
+   {
+    "model_src": "https://doi.org/10.1016/j.jhep.2014.12.026",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "registry_date": "2020-09-02",
+    "model_filed": null,
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": "opposite",
+    "magnitude_basis": "thrombocytopenia at the ISG-matched regimen: predicted present, absent in patients",
+    "source_calls_it": null,
+    "population": "NA-suppressed CHB (HBV DNA <20 IU/mL on oral antivirals for at least 1 year)",
+    "confidence_note": "Abstract-level; lab tables unread. Registry AE tables (NCT02166047) list no thrombocytopenia row. First public as AASLD 2016 abstract 1851, which reported no dose-dependency in laboratory abnormalities.",
+    "prediction_level": "class",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "judgement": "Settles the checker's rule question: a harm the model showed at its efficacious dose is a named-harm prediction even when never scaled to a human dose; it did not appear in this disease's patients dosed to the matched ISG level, so contra, opposite. Low confidence: absence rests on the abstract and registry AE threshold.",
+    "model": "WHV-infected woodchucks",
+    "model_id": "whv-woodchuck-cornell",
+    "model_first_use_year": 2015,
+    "year": 2016,
+    "status": "contra",
+    "note": "Woodchucks had thrombocytopenia at the ISG-matched regimen; patients dosed weekly to matched ISG levels for up to 12 weeks were well tolerated, with no thrombocytopenia reported.",
+    "short": "Patients: no thrombocytopenia at matched ISGs",
+    "src": "https://doi.org/10.1016/j.jhep.2017.10.027",
+    "srcLabel": "Janssen 2018",
+    "quote": "Vesatolimod was safe and well-tolerated in patients with CHB, demonstrating consistent dose-dependent pharmacodynamic induction of ISG15 without significant systemic induction of IFNα expression or related symptoms.",
+    "confidence": "low",
+    "epub_year": 2017,
+    "print_year": 2018,
+    "untested_reason": null,
+    "reason": "Named harm absent in patients",
+    "route": "oral",
+    "drug": "vesatolimod",
+    "combination_with": "nucleos(t)ide analogue",
+    "population_group": "stage_or_line"
    }
   ]
  }

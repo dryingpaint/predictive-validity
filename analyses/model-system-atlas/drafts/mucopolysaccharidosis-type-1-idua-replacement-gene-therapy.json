@@ -50,7 +50,11 @@
     "srcLabel": "Visigalli 2010",
     "quote": "Interestingly, therapeutic efficacy of HSC gene therapy is strictly dependent on the achievement of supranormal enzyme activity in the hematopoietic system of transplanted mice, which allows enzyme delivery to the brain and skeleton for disease correction.",
     "confidence": "high",
-    "judgement": "Opening entry for the OTL-203 (azamidugene autotemcel) parent model; same San Raffaele group and vector design."
+    "judgement": "Opening entry for the OTL-203 (azamidugene autotemcel) parent model; same San Raffaele group and vector design.",
+    "drug": "azamidugene autotemcel",
+    "route": "ex_vivo_cells",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -84,7 +88,11 @@
     "srcLabel": "Boado 2011",
     "quote": "Treatment of the MPSI mice with the cTfRMAb-IDUA reduced intracellular lysosomal inclusion bodies by 73% in brain, as compared to the MPSI mice treated with saline.",
     "confidence": "medium",
-    "judgement": "Valanafusp alfa cannot be tested in mice (primate-specific insulin receptor), so the disease model used a mouse-TfR sibling fusion: product_in_model false."
+    "judgement": "Valanafusp alfa cannot be tested in mice (primate-specific insulin receptor), so the disease model used a mouse-TfR sibling fusion: product_in_model false.",
+    "drug": "valanafusp alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -108,7 +116,7 @@
     "product_in_model": true,
     "model_kind": "animal",
     "model_first_use_year": 2014,
-    "model": "MPS I cat and dog, intrathecal/intracisternal AAV9-hIDUA",
+    "model": "MPS I cat, intrathecal/intracisternal AAV9-hIDUA",
     "model_id": "mps1-cat-dog-aav9-it",
     "year": 2014,
     "status": "untested",
@@ -118,7 +126,11 @@
     "srcLabel": "Hinderer 2014",
     "quote": "Treated animals demonstrated virtually complete correction of biochemical and histological manifestations of the disease throughout the CNS.",
     "confidence": "high",
-    "judgement": "Penn group whose vector became RGX-111 (AAV9.CB7.hIDUA); treated as the RGX-111 parent model."
+    "judgement": "Penn group whose vector became RGX-111 (AAV9.CB7.hIDUA); treated as the RGX-111 parent model.",
+    "drug": "RGX-111",
+    "route": "intrathecal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -152,7 +164,11 @@
     "srcLabel": "Ou 2018",
     "quote": "A corrective copy of the IDUA gene is inserted at the albumin locus in hepatocytes, leading to sustained enzyme expression, secretion from the liver into circulation, and subsequent uptake systemically at levels sufficient for correction of metabolic disease",
     "confidence": "high",
-    "judgement": "Sangamo's proof-of-concept for SB-318 (devafidugene civaparvovec), published after the 2017 first dosing; it was the stated basis, not a retrodiction."
+    "judgement": "Sangamo's proof-of-concept for SB-318 (devafidugene civaparvovec), published after the 2017 first dosing; it was the stated basis, not a retrodiction.",
+    "drug": "devafidugene civaparvovec",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1021/mp200136x",
@@ -161,7 +177,7 @@
     "patient_signal_reversed": false,
     "registry_date": "2017-02-14",
     "model_filed": null,
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "urinary GAG vs tissue GAG",
     "source_calls_it": "partial",
@@ -179,16 +195,20 @@
     "model": "Idua-/- mouse, surrogate cTfRMAb-IDUA fusion",
     "model_id": "idua-ko-mouse-tfrmab-idua",
     "year": 2018,
-    "status": "same",
-    "note": "Urinary GAG stabilized or improved over 52 weeks of weekly valanafusp in 11 children, as the surrogate predicted for peripheral storage.",
+    "status": "retro",
+    "note": "Urinary GAG stabilized or improved over 52 weeks of weekly valanafusp in 11 children, as the surrogate predicted for peripheral storage. Retrodiction: IV laronidase had already cut urinary GAG 63% in MPS I patients (Kakkis 2001 NEJM, PMID 11172140) before the 2011 surrogate mouse, so the peripheral GAG claim post-dates a same-target patient result.",
     "short": "Urine GAG stabilized on valanafusp",
     "src": "https://doi.org/10.1186/s13023-018-0849-8",
     "srcLabel": "Giugliani 2018",
     "quote": "Somatic manifestations were stabilized, or improved, based on urinary glycosaminoglycan levels, hepatic and spleen volumes, and shoulder range of motion.",
     "confidence": "medium",
     "reason": "Urine GAG fell as in mice",
-    "judgement": "Paired by me with the surrogate mouse study. Only the peripheral readout has a human counterpart; brain inclusion bodies do not. Substrate GAG read as proximal.",
-    "readout_tier": "proximal"
+    "judgement": "Paired by me with the surrogate mouse study. Only the peripheral readout has a human counterpart; brain inclusion bodies do not. Substrate GAG read as proximal. Post-dated by Kakkis 2001 (same target and action, recombinant IDUA IV): retro.",
+    "readout_tier": "proximal",
+    "drug": "valanafusp alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1182/blood-2010-04-278234",
@@ -214,17 +234,21 @@
     "model_first_use_year": 2010,
     "model": "Idua-/- mouse, lentiviral HSC gene therapy",
     "model_id": "idua-ko-mouse-lv-hsc",
-    "year": 2021,
+    "year": 2020,
     "status": "same",
-    "note": "All eight Hurler children reached supraphysiologic blood IDUA within a month, sustained, as the mouse required.",
+    "note": "All eight Hurler children reached supraphysiologic blood IDUA within a month, sustained, as the mouse required. Orchard/SR-Tiget interim data at ASGCT, 15 May 2020, already reported supranormal blood IDUA in all treated patients and good tolerability; year set to that earliest public date (rule 6), NEJM 2021 stays the source.",
     "short": "Supraphysiologic blood IDUA in all patients",
     "src": "https://doi.org/10.1056/nejmoa2106596",
     "srcLabel": "Gentner 2021",
     "quote": "All the patients showed prompt and sustained engraftment of gene-corrected cells and had supraphysiologic blood IDUA activity within a month, which was maintained up to the latest follow-up.",
     "confidence": "high",
     "reason": "Blood IDUA supranormal as in mice",
-    "judgement": "Paired by me with Visigalli 2010. Blood IDUA is the transgene's own product, so proximal.",
-    "readout_tier": "proximal"
+    "judgement": "Paired by me with Visigalli 2010. Blood IDUA is the transgene's own product, so proximal. Allogeneic HSCT gave normal, not supranormal, leukocyte IDUA; the supranormal-from-autologous-cells claim had no earlier patient counterpart, so prospective.",
+    "readout_tier": "proximal",
+    "drug": "azamidugene autotemcel",
+    "route": "ex_vivo_cells",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1038/mt.2014.135",
@@ -248,7 +272,7 @@
     "product_in_model": true,
     "model_kind": "animal",
     "model_first_use_year": 2014,
-    "model": "MPS I cat and dog, intrathecal/intracisternal AAV9-hIDUA",
+    "model": "MPS I cat, intrathecal/intracisternal AAV9-hIDUA",
     "model_id": "mps1-cat-dog-aav9-it",
     "year": 2022,
     "status": "same",
@@ -259,8 +283,12 @@
     "quote": "In the Phase I/II trial, a decrease in HS in the CSF from baseline was observed through the last timepoint available in all four patients following administration of RGX-111.",
     "confidence": "medium",
     "reason": "CSF substrate fell as in cats",
-    "judgement": "Tier 5 patient side, model side Hinderer 2014. CSF HS is the enzyme's substrate, read as proximal like the cat CNS GAG readout.",
-    "readout_tier": "proximal"
+    "judgement": "Tier 5 patient side, model side Hinderer 2014. CSF HS is the enzyme's substrate, read as proximal like the cat CNS GAG readout. No patient CSF GAG fall with any IDUA replacement found public before the model (intrathecal laronidase reports are safety/immunity), so prospective.",
+    "readout_tier": "proximal",
+    "drug": "RGX-111",
+    "route": "intrathecal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1016/j.ymthe.2018.10.018",
@@ -288,7 +316,7 @@
     "model_id": "idua-ko-mouse-zfn-albumin",
     "year": 2022,
     "status": "contra",
-    "note": "Editing detected in liver but no sustained IDUA in blood; leukocyte IDUA rose only transiently in MPS I subjects.",
+    "note": "Editing detected in liver but no sustained IDUA in blood; leukocyte IDUA rose only transiently in MPS I subjects. Sangamo interim (7 Feb 2019) showed leukocyte IDUA rising but plasma IDUA unchanged; the no-sustained-expression result was first public in Harmatz 2022.",
     "short": "No lasting IDUA in patients",
     "src": "https://doi.org/10.1016/j.ymthe.2022.10.010",
     "srcLabel": "Harmatz 2022",
@@ -296,7 +324,11 @@
     "confidence": "high",
     "reason": "Mouse sustained expression not reproduced",
     "judgement": "Paired by me with Ou 2018. The mouse's core claim was sustained enzyme expression; patients had none, so contra.",
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "devafidugene civaparvovec",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -332,7 +364,11 @@
     "model": "MPS I dogs tolerized to human IDUA, intracisternal AAV9-hIDUA (clinical candidate vector)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "RGX-111",
+    "route": "intrathecal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -364,12 +400,16 @@
     "short": "CSF HS fell in 4/4 patients",
     "reason": "CSF biomarker moved in patients",
     "readout_tier": "proximal",
-    "judgement": "Pairing: the dog paper proposed CSF IDUA as the clinical readout; press release reports CSF HS and IDUA, not a stated comparison.",
+    "judgement": "Pairing: the dog paper proposed CSF IDUA as the clinical readout; press release reports CSF HS and IDUA, not a stated comparison. No patient CSF GAG fall with any IDUA replacement found public before the model (intrathecal laronidase reports are safety/immunity), so prospective.",
     "model_id": "mps1-dog-aav9-icm-tolerized",
     "model": "MPS I dogs tolerized to human IDUA, intracisternal AAV9-hIDUA (clinical candidate vector)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "RGX-111",
+    "route": "intrathecal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -407,7 +447,11 @@
     "model": "Rhesus monkey brain uptake of IV HIRMAb-IDUA (valanafusp) vs recombinant IDUA",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "drug": "valanafusp alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -443,7 +487,11 @@
     "model": "NSG mice engrafted with human (incl. MPS I patient) HSPCs transduced with clinical-grade IDUA lentiviral vector; GLP tox/biodistribution",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "azamidugene autotemcel",
+    "route": "ex_vivo_cells",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -464,23 +512,27 @@
     "source_tier": 1,
     "product_in_model": true,
     "confidence": "high",
-    "year": 2021,
+    "year": 2020,
     "status": "same",
     "epub_year": 2021,
     "print_year": 2021,
     "src": "https://doi.org/10.1056/nejmoa2106596",
     "srcLabel": "Gentner 2021",
     "quote": "All the patients showed prompt and sustained engraftment of gene-corrected cells and had supraphysiologic blood IDUA activity within a month, which was maintained up to the latest follow-up.",
-    "note": "All eight Hurler children engrafted and reached supraphysiologic blood IDUA, as human-cell xenografts predicted.",
+    "note": "All eight Hurler children engrafted and reached supraphysiologic blood IDUA, as human-cell xenografts predicted. Orchard/SR-Tiget interim data at ASGCT, 15 May 2020, already reported supranormal blood IDUA in all treated patients and good tolerability; year set to that earliest public date (rule 6), NEJM 2021 stays the source.",
     "short": "Supraphysiologic IDUA in 8/8",
     "reason": "above-normal IDUA reached in patients",
     "readout_tier": "proximal",
-    "judgement": "Pairing of the GLP xenograft paper with the trial; the NEJM abstract does not state the comparison.",
+    "judgement": "Pairing of the GLP xenograft paper with the trial; the NEJM abstract does not state the comparison. Allogeneic HSCT gave normal, not supranormal, leukocyte IDUA; the supranormal-from-autologous-cells claim had no earlier patient counterpart, so prospective.",
     "model_id": "nsg-human-hspc-lv-idua",
     "model": "NSG mice engrafted with human (incl. MPS I patient) HSPCs transduced with clinical-grade IDUA lentiviral vector; GLP tox/biodistribution",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "azamidugene autotemcel",
+    "route": "ex_vivo_cells",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -517,7 +569,11 @@
     "srcLabel": "Visigalli 2010",
     "quote": "Interestingly, therapeutic efficacy of HSC gene therapy is strictly dependent on the achievement of supranormal enzyme activity in the hematopoietic system of transplanted mice, which allows enzyme delivery to the brain and skeleton for disease correction.",
     "confidence": "high",
-    "judgement": "The model's stated exposure target is supranormal hematopoietic IDUA activity."
+    "judgement": "The model's stated exposure target is supranormal hematopoietic IDUA activity.",
+    "drug": "azamidugene autotemcel",
+    "route": "ex_vivo_cells",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1182/blood-2010-04-278234",
@@ -544,9 +600,9 @@
     "model": "Idua-/- mouse, lentiviral HSC gene therapy",
     "model_id": "idua-ko-mouse-lv-hsc",
     "modality": "gene therapy",
-    "year": 2021,
+    "year": 2020,
     "status": "same",
-    "note": "Supraphysiologic blood IDUA reached within a month in all eight children and sustained.",
+    "note": "Supraphysiologic blood IDUA reached within a month in all eight children and sustained. Orchard/SR-Tiget interim data at ASGCT, 15 May 2020, already reported supranormal blood IDUA in all treated patients and good tolerability; year set to that earliest public date (rule 6), NEJM 2021 stays the source.",
     "short": "Supranormal IDUA target reached",
     "src": "https://doi.org/10.1056/nejmoa2106596",
     "srcLabel": "Gentner 2021",
@@ -554,7 +610,11 @@
     "confidence": "high",
     "reason": "Stated IDUA target reached",
     "judgement": "Paired by me. The trial's co-primary end point (correction of blood IDUA up to supraphysiologic levels) is the mouse target; it was reached, so dose same. Whether it worked is efficacy.",
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "azamidugene autotemcel",
+    "route": "ex_vivo_cells",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -589,7 +649,11 @@
     "srcLabel": "Boado 2009",
     "quote": "Chronic AGT-181 dosing resulted in no toxicity at any dose, no changes in organ histology, no change in plasma or cerebrospinal fluid glucose, and no significant immune response.",
     "confidence": "high",
-    "judgement": "Stated tolerability margin; product_in_model true (AGT-181 is valanafusp alfa). Not a disease model."
+    "judgement": "Stated tolerability margin; product_in_model true (AGT-181 is valanafusp alfa). Not a disease model.",
+    "drug": "valanafusp alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1124/dmd.112.046375",
@@ -599,9 +663,9 @@
     "registry_date": "2017-02-14",
     "model_filed": null,
     "retrodiction": false,
-    "magnitude": "direction_only",
-    "magnitude_basis": "highest tolerated weekly dose, 6 mg/kg human vs 30 mg/kg monkey hypoglycemia threshold",
-    "source_calls_it": "partial",
+    "magnitude": "off_by_>5x",
+    "magnitude_basis": "monkey hypoglycemia dose 30 mg/kg (none to 20 mg/kg) vs drug-related hypoglycemia in children at 1-6 mg/kg",
+    "source_calls_it": "miss",
     "population": "Unselected",
     "confidence_note": "Abstract-level; whether infusions carried dextrose as the monkey study advised was not confirmed from the abstract.",
     "prediction_level": "class",
@@ -617,16 +681,21 @@
     "model_id": "rhesus-agt181-tox",
     "modality": "protein",
     "year": 2018,
-    "status": "same",
-    "note": "Children dosed weekly to 6 mg/kg, below the 30 mg/kg monkey hypoglycemia dose, completed 52 weeks; hypoglycemia transient.",
+    "status": "contra",
+    "note": "Children dosed weekly to 6 mg/kg, below the 30 mg/kg monkey hypoglycemia dose, completed 52 weeks; hypoglycemia transient. Decision 16: the monkey margin put hypoglycemia at 30 mg/kg, but children had drug-related hypoglycemia at 1-6 mg/kg; margin misplaced >5x, so contra. Dosing was not stopped, so blocked_by is null. The harm is counted here, not in safety.",
     "short": "Dosed to 6 mg/kg within margin",
     "src": "https://doi.org/10.1186/s13023-018-0849-8",
     "srcLabel": "Giugliani 2018",
     "quote": "Drug related adverse events included infusion related reactions, with an incidence of 1.7%, and transient hypoglycemia, with an incidence of 6.4%.",
     "confidence": "medium",
-    "reason": "Tolerated within monkey margin",
     "judgement": "Paired by me with Boado 2009/2012. Margin held in that dosing reached 6 mg/kg without being stopped; the hypoglycemia itself is counted once, in safety.",
-    "margin_stated": true
+    "margin_stated": true,
+    "drug": "valanafusp alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null,
+    "blocked_by": null,
+    "reason": "Hypoglycemia below the monkey margin"
    },
    {
     "retrodiction": false,
@@ -666,7 +735,11 @@
     "model": "MPS I dogs tolerized to human IDUA, intracisternal AAV9-hIDUA (clinical candidate vector)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "RGX-111",
+    "route": "intrathecal",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -702,7 +775,11 @@
     "srcLabel": "Visigalli 2010",
     "quote": "Interestingly, therapeutic efficacy of HSC gene therapy is strictly dependent on the achievement of supranormal enzyme activity in the hematopoietic system of transplanted mice, which allows enzyme delivery to the brain and skeleton for disease correction.",
     "confidence": "high",
-    "judgement": "Opening entry."
+    "judgement": "Opening entry.",
+    "drug": "azamidugene autotemcel",
+    "route": "ex_vivo_cells",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -736,7 +813,11 @@
     "srcLabel": "Boado 2011",
     "quote": "Treatment of the MPSI mice with the cTfRMAb-IDUA reduced intracellular lysosomal inclusion bodies by 73% in brain, as compared to the MPSI mice treated with saline.",
     "confidence": "medium",
-    "judgement": "Surrogate molecule; product_in_model false."
+    "judgement": "Surrogate molecule; product_in_model false.",
+    "drug": "valanafusp alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -760,7 +841,7 @@
     "product_in_model": true,
     "model_kind": "animal",
     "model_first_use_year": 2014,
-    "model": "MPS I cat and dog, intrathecal/intracisternal AAV9-hIDUA",
+    "model": "MPS I cat, intrathecal/intracisternal AAV9-hIDUA",
     "model_id": "mps1-cat-dog-aav9-it",
     "year": 2014,
     "status": "untested",
@@ -770,7 +851,11 @@
     "srcLabel": "Hinderer 2014",
     "quote": "Treated animals demonstrated virtually complete correction of biochemical and histological manifestations of the disease throughout the CNS.",
     "confidence": "high",
-    "judgement": "Opening entry for the RGX-111 parent model."
+    "judgement": "Opening entry for the RGX-111 parent model.",
+    "drug": "RGX-111",
+    "route": "intrathecal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": null,
@@ -804,7 +889,11 @@
     "srcLabel": "Ou 2018",
     "quote": "A corrective copy of the IDUA gene is inserted at the albumin locus in hepatocytes, leading to sustained enzyme expression, secretion from the liver into circulation, and subsequent uptake systemically at levels sufficient for correction of metabolic disease",
     "confidence": "high",
-    "judgement": "Opening entry."
+    "judgement": "Opening entry.",
+    "drug": "devafidugene civaparvovec",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1021/mp200136x",
@@ -814,9 +903,9 @@
     "registry_date": "2017-02-14",
     "model_filed": null,
     "retrodiction": false,
-    "magnitude": "direction_only",
+    "magnitude": null,
     "magnitude_basis": "brain storage reduction (mouse) vs DQ stabilization (patients)",
-    "source_calls_it": "partial",
+    "source_calls_it": null,
     "population": "Unselected",
     "confidence_note": "Abstract-level; uncontrolled single-arm comparison with baseline; the registered primary outcome was adverse events.",
     "prediction_level": "class",
@@ -831,8 +920,8 @@
     "model": "Idua-/- mouse, surrogate cTfRMAb-IDUA fusion",
     "model_id": "idua-ko-mouse-tfrmab-idua",
     "year": 2018,
-    "status": "same",
-    "note": "Developmental quotient and cortical grey matter stabilized over 52 weeks in cognitively impaired children.",
+    "status": "untested",
+    "note": "Developmental quotient and cortical grey matter stabilized over 52 weeks in cognitively impaired children. Single-arm trial whose registered primary endpoint is safety (plus engraftment/IDUA for OTL-203); no efficacy primary or PoC gate, so efficacy is untested (not_measured); the reported disease outcome stays in the note.",
     "short": "Cognition stabilized, uncontrolled",
     "src": "https://doi.org/10.1186/s13023-018-0849-8",
     "srcLabel": "Giugliani 2018",
@@ -841,7 +930,13 @@
     "judgement": "Paired by me. No efficacy primary or PoC gate existed (primary was safety); scored on the reported CNS outcome, so endpoint_role null and partial.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "valanafusp alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null,
+    "reason": "No efficacy primary endpoint",
+    "strengthens": true
    },
    {
     "model_src": "https://doi.org/10.1182/blood-2010-04-278234",
@@ -851,7 +946,7 @@
     "registry_date": "2018-04-05",
     "model_filed": null,
     "retrodiction": false,
-    "magnitude": "direction_only",
+    "magnitude": null,
     "magnitude_basis": "urinary/CSF GAG and neurodevelopment",
     "source_calls_it": null,
     "population": "Unselected",
@@ -867,9 +962,9 @@
     "model_first_use_year": 2010,
     "model": "Idua-/- mouse, lentiviral HSC gene therapy",
     "model_id": "idua-ko-mouse-lv-hsc",
-    "year": 2021,
-    "status": "same",
-    "note": "Urinary GAG normalized by 12 months in 4 of 5; cognition stable, growth normal, CSF GAG cleared.",
+    "year": 2020,
+    "status": "untested",
+    "note": "Urinary GAG normalized by 12 months in 4 of 5; cognition stable, growth normal, CSF GAG cleared. Orchard/SR-Tiget interim data at ASGCT, 15 May 2020, already reported supranormal blood IDUA in all treated patients and good tolerability; year set to that earliest public date (rule 6), NEJM 2021 stays the source. Single-arm trial whose registered primary endpoint is safety (plus engraftment/IDUA for OTL-203); no efficacy primary or PoC gate, so efficacy is untested (not_measured); the reported disease outcome stays in the note.",
     "short": "GAG normalized, cognition stable",
     "src": "https://doi.org/10.1056/nejmoa2106596",
     "srcLabel": "Gentner 2021",
@@ -878,7 +973,13 @@
     "judgement": "Paired by me. The efficacy primary does not exist (primaries were safety and blood IDUA); scored on GAG clearance and neurodevelopment, so endpoint_role null.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "azamidugene autotemcel",
+    "route": "ex_vivo_cells",
+    "population_group": "unselected",
+    "combination_with": null,
+    "reason": "No efficacy primary endpoint",
+    "strengthens": true
    },
    {
     "model_src": "https://doi.org/10.1038/mt.2014.135",
@@ -888,9 +989,9 @@
     "registry_date": "2018-07-09",
     "model_filed": null,
     "retrodiction": false,
-    "magnitude": "direction_only",
+    "magnitude": null,
     "magnitude_basis": "CNS storage correction (cat) vs neurodevelopmental trajectory",
-    "source_calls_it": "partial",
+    "source_calls_it": null,
     "population": "Unselected",
     "confidence_note": "Sponsor press release; few patients, some on ERT. Peer-reviewed single-patient IND report Wang 2026 agrees.",
     "prediction_level": "class",
@@ -902,11 +1003,11 @@
     "product_in_model": true,
     "model_kind": "animal",
     "model_first_use_year": 2014,
-    "model": "MPS I cat and dog, intrathecal/intracisternal AAV9-hIDUA",
+    "model": "MPS I cat, intrathecal/intracisternal AAV9-hIDUA",
     "model_id": "mps1-cat-dog-aav9-it",
     "year": 2022,
-    "status": "same",
-    "note": "Children dosed with RGX-111 kept acquiring skills within 2 SD of normal, above untransplanted Hurler natural history.",
+    "status": "untested",
+    "note": "Children dosed with RGX-111 kept acquiring skills within 2 SD of normal, above untransplanted Hurler natural history. Single-arm trial whose registered primary endpoint is safety (plus engraftment/IDUA for OTL-203); no efficacy primary or PoC gate, so efficacy is untested (not_measured); the reported disease outcome stays in the note.",
     "short": "Neurodevelopment continued",
     "src": "https://regenxbio.gcs-web.com/news-releases/news-release-details/regenxbio-presents-positive-initial-data-phase-iii-trial-rgx-111",
     "srcLabel": "REGENXBIO 2022",
@@ -923,7 +1024,13 @@
       "quote": "His neurodevelopment is significantly above the natural history of untransplanted Hurler syndrome patients."
      }
     ],
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "RGX-111",
+    "route": "intrathecal",
+    "population_group": "unselected",
+    "combination_with": null,
+    "reason": "No efficacy primary endpoint",
+    "strengthens": true
    },
    {
     "model_src": "https://doi.org/10.1016/j.ymthe.2018.10.018",
@@ -933,7 +1040,7 @@
     "registry_date": "2023-01-26",
     "model_filed": null,
     "retrodiction": false,
-    "magnitude": "opposite",
+    "magnitude": null,
     "magnitude_basis": "urine heparan sulfate change at 24 months",
     "source_calls_it": null,
     "population": "Unselected",
@@ -942,26 +1049,31 @@
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 3,
-    "epub_year": null,
+    "epub_year": 2022,
     "print_year": null,
     "product_in_model": true,
     "model_kind": "animal",
     "model_first_use_year": 2018,
     "model": "Idua-/- mouse, ZFN albumin-locus IDUA insertion",
     "model_id": "idua-ko-mouse-zfn-albumin",
-    "year": 2023,
-    "status": "contra",
-    "note": "At 24 months urine heparan sulfate and total GAG did not fall in either cohort (+30.2 and +3.6 HS).",
+    "year": 2022,
+    "status": "untested",
+    "note": "At 24 months urine heparan sulfate and total GAG did not fall in either cohort (+30.2 and +3.6 HS). Single-arm trial whose registered primary endpoint is safety (plus engraftment/IDUA for OTL-203); no efficacy primary or PoC gate, so efficacy is untested (not_measured); the reported disease outcome stays in the note. Harmatz 2022 (Mol Ther, Oct 2022, doi 10.1016/j.ymthe.2022.10.010) made the urine GAG result public before the 2023 registry posting; Sangamo interim (WORLDSymposium, 7 Feb 2019) showed no meaningful urine GAG change.",
     "short": "Urine GAG not reduced",
     "src": "https://clinicaltrials.gov/study/NCT02702115",
     "srcLabel": "NCT02702115 results",
     "quote": "Change from baseline in total GAG, Dermatan Sulfate GAG, and Heparan Sulfate GAG measured in urine at Month 24",
     "confidence": "medium",
-    "reason": "Mouse GAG correction not reproduced",
+    "reason": "No efficacy primary endpoint",
     "judgement": "Paired by me with Ou 2018. Primary was safety; scored on the registered urine GAG secondary, endpoint_role null. Background ERT blunts any GAG change.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "devafidugene civaparvovec",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null,
+    "strengthens": true
    }
   ],
   "safety": [
@@ -998,7 +1110,11 @@
     "srcLabel": "Boado 2012",
     "quote": "The results show that the HIRMAb has weak insulin agonist activity and causes hypoglycemia at the high dose, 30 mg/kg, after intravenous infusion in normal saline.",
     "confidence": "high",
-    "judgement": "Named harm, on-target to the HIR antibody but specific to the protein modality."
+    "judgement": "Named harm, on-target to the HIR antibody but specific to the protein modality.",
+    "drug": "valanafusp alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_src": "https://doi.org/10.1124/dmd.112.046375",
@@ -1008,9 +1124,9 @@
     "registry_date": "2017-02-14",
     "model_filed": null,
     "retrodiction": false,
-    "magnitude": "direction_only",
+    "magnitude": null,
     "magnitude_basis": "occurrence of hypoglycemia",
-    "source_calls_it": "partial",
+    "source_calls_it": null,
     "population": "Unselected",
     "confidence_note": "Abstract-level.",
     "prediction_level": "class",
@@ -1026,15 +1142,21 @@
     "model_id": "rhesus-agt181-tox",
     "modality": "protein",
     "year": 2018,
-    "status": "same",
-    "note": "Transient hypoglycemia was a drug-related event in patients (6.4% incidence), as the monkeys predicted.",
+    "status": "untested",
+    "note": "Transient hypoglycemia was a drug-related event in patients (6.4% incidence), as the monkeys predicted. Count-once rule: the model predicted hypoglycemia but misplaced its dose margin, so the harm is scored in dose (entry 4) and this safety entry no longer scores it.",
     "short": "Hypoglycemia appeared in patients",
     "src": "https://doi.org/10.1186/s13023-018-0849-8",
     "srcLabel": "Giugliani 2018",
     "quote": "Drug related adverse events included infusion related reactions, with an incidence of 1.7%, and transient hypoglycemia, with an incidence of 6.4%.",
     "confidence": "medium",
-    "reason": "Hypoglycemia predicted and seen",
-    "judgement": "Paired by me. Monkeys showed it only at 30 mg/kg in saline; patients had it at up to 6 mg/kg, so the harm matched in kind, partial on dose."
+    "reason": "Harm counted once, in dose",
+    "judgement": "Paired by me. Monkeys showed it only at 30 mg/kg in saline; patients had it at up to 6 mg/kg, so the harm matched in kind, partial on dose.",
+    "drug": "valanafusp alfa",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unsettled",
+    "strengthens": true
    },
    {
     "model_src": null,
@@ -1071,7 +1193,11 @@
     "confidence": "high",
     "reason": "DRG lesion not measured in patients",
     "untested_reason": "not_measured",
-    "judgement": "The predicted harm was histological and asymptomatic; no source reports sensory nerve conduction or DRG readouts in RGX-111 patients, so not compared rather than contradicted."
+    "judgement": "The predicted harm was histological and asymptomatic; no source reports sensory nerve conduction or DRG readouts in RGX-111 patients, so not compared rather than contradicted.",
+    "drug": "RGX-111",
+    "route": "intrathecal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1109,7 +1235,11 @@
     "model": "MPS I dogs tolerized to human IDUA, intracisternal AAV9-hIDUA (clinical candidate vector)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "RGX-111",
+    "route": "intrathecal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1144,7 +1274,11 @@
     "model": "NSG mice engrafted with human (incl. MPS I patient) HSPCs transduced with clinical-grade IDUA lentiviral vector; GLP tox/biodistribution",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "azamidugene autotemcel",
+    "route": "ex_vivo_cells",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1165,7 +1299,7 @@
     "source_tier": 1,
     "product_in_model": true,
     "confidence": "medium",
-    "year": 2021,
+    "year": 2020,
     "status": "same",
     "epub_year": 2021,
     "print_year": 2021,
@@ -1173,7 +1307,7 @@
     "srcLabel": "Gentner 2021",
     "modality": "gene therapy",
     "quote": "At a median follow-up of 2.10 years, the procedure had a safety profile similar to that known for autologous hematopoietic stem-cell transplantation.",
-    "note": "No harm beyond autologous transplant in eight children at 2.1 years, as the xenograft toxicology predicted.",
+    "note": "No harm beyond autologous transplant in eight children at 2.1 years, as the xenograft toxicology predicted. Orchard/SR-Tiget interim data at ASGCT, 15 May 2020, already reported supranormal blood IDUA in all treated patients and good tolerability; year set to that earliest public date (rule 6), NEJM 2021 stays the source.",
     "short": "Safety as autologous HSCT",
     "reason": "no vector or overexpression toxicity",
     "judgement": "Predicted absence of overexpression/vector toxicity scored as a stated prediction that held; follow-up is short for clonal events.",
@@ -1181,7 +1315,11 @@
     "model": "NSG mice engrafted with human (incl. MPS I patient) HSPCs transduced with clinical-grade IDUA lentiviral vector; GLP tox/biodistribution",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "azamidugene autotemcel",
+    "route": "ex_vivo_cells",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

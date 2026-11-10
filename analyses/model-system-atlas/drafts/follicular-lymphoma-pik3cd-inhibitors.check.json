@@ -62,7 +62,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Gopal 2014 resolves (PMID 24450858); quote verbatim; ORR is the primary (abstract and NCT01282424, results 2014-09-04). MedR FL 54% (39/72) verbatim. NCT01732913/926 results (2017-05-11) state 'prespecified analyses were not conducted', so outcome_tested null holds. TIDAL quote verbatim."
+   "note": "Gilead release dated 2013-06-17 re-read: 'overall response rate of 53.6 percent', so 2013 holds. Gopal quote verbatim (abstract). Single-arm design and primary ORR in note; idelalisib, oral, stage_or_line match 101-09.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -84,7 +85,9 @@
    "proposed_status": "untested",
    "proposed_year": 2007,
    "rule": "decision 7 (dating: a track opens at its first class use, proxy allowed)",
-   "note": "Quote verbatim in PharmR. 2008 is a proxy, but the same review dates rat PK (2007-08-08) and GLP rat and dog safety pharmacology (2007-10-23, 2007-11-04); the repeat-dose studies are undated. Open the rat/dog track at 2007. Status unchanged."
+   "note": "Quote verbatim in PharmR. 2008 is a proxy, but the same review dates rat PK (2007-08-08) and GLP rat and dog safety pharmacology (2007-10-23, 2007-11-04); the repeat-dose studies are undated. Open the rat/dog track at 2007. Status unchanged.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6 (cell opens at model_first_use_year): PharmR dates the 28-day rat (BHR00009) and dog (BHR00008) repeat-dose studies themselves to 2007-08-08, so the opener year is 2007, not the 2008 proxy. Status untested unchanged; track's latest entry is contra."
   },
   {
    "cell": "safety",
@@ -94,21 +97,19 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Label quote verbatim; Lampson 2016 and the EMA Article-20 sentences verbatim. The FDA 2016-03-14 alert is archived at web.archive.org/web/20160530173933/http://www.fda.gov/drugs/drugsafety/ucm490618.htm. Pairing with Okkenhaug (tier 1) holds; same, direction_only is right."
+   "note": "Gilead 2013-06-17 release re-read: grade>=3 diarrhea 10%, transaminase elevations 13%, so 2013 holds. Label quote verbatim in bundle 205858lbl.txt. drug 'class' right for D910A knock-in; oral, stage_or_line match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "decision 5 (a predicted harm that did not occur is contra, magnitude opposite; conflicts with decision 11 partial)",
-   "note": "Quote verbatim; label 13.2 states cardiac and pancreatic harms 'observed in animals and not reported in patients'. Decision 5 makes a predicted harm that never appeared contra, magnitude opposite, margin notwithstanding. Headline still follows the kinase-dead track (decision 6).",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: decision 5 (predicted harm absent, contra) against decision 11 (one-source partial, same); decision 16 treats a stated margin as a prediction at the dose ceiling only. Is a supra-clinical-only finding a prediction at the clinical dose?"
+   "status_supported": true,
+   "rule": "safety: a predicted harm that never appeared in patients is contra, magnitude opposite",
+   "note": "Label 13.2 sentence verbatim in bundle 205858lbl.txt; contra/opposite follows the brief; 2014 label is first public. Judgement still argues 'I score the track same': stale prose to remove, status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -137,15 +138,15 @@
    "index": 5,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": false,
+   "quote_found": "verbatim",
+   "status_supported": true,
    "proposed_status": "retro",
-   "proposed_year": 2024,
-   "rule": "10 (first prospective prediction afterwards; Crohn's anti-IL-23 adjudication: a confirmatory trial of the retrodicted claim stays retro) and #113",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "TIDAL registered 2018-12-07, started 2019-06-25, primary analysis announced 2021-11-30 (ORR 70.3%): designed and reported before the mouse, retesting the claim dose[4] retrodicted. No fresh prediction (Crohn's MOTIVATE reading): track stays retro; TIDAL belongs in patient_trials, not a new entry.",
+   "proposed_year": 2022,
+   "rule": "6 (earliest public date) with the same-drug retrodiction rule for dose",
+   "note": "Quote verbatim (Europe PMC record of Zelenetz 2024). Retro right: TIDAL regimen (2018) and topline (2021-11-30) predate the mouse (2022-05-04). But TIDAL safety was public at ASCO 2022 / EHA 2022, so year 2022, not 2024.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: TIDAL (registered 2018-12-07, topline 2021-11-30) pre-dates the mouse (2022-05) and retests the claim dose[4] retrodicted; design fixed before the model, so tier-1 timing is moot (MOTIVATE precedent). TIDAL to patient_trials (#113). retro."
+   "adjudication_note": "Rule 6 (earliest public date) with the same-drug retrodiction rule: TIDAL's regimen and topline predate the mouse (2022-05), so retro. The comparison was public at ASCO 2022 (JCO 40:16_suppl 7511), so year 2022, not 2024."
   },
   {
    "cell": "dose",
@@ -253,9 +254,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim; 'On this background' ties the assay to idelalisib's known autoimmune toxicities, so retro holds; comparison stated. imported_from MONDO:0004948 resolves to B-cell chronic lymphocytic leukemia; registry_date null right (abstract names no trial)."
+   "rule": "safety: this disease's patients measured, so not imported; same-drug retrodiction",
+   "note": "Gopal quote verbatim (abstract); 101-09 measured FL (72/125), so imported_from dropped correctly; Chellappa 2019 post-dates idelalisib's 2013 harms, retro. confidence_note and judgement still describe a CLL patient side: stale prose.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

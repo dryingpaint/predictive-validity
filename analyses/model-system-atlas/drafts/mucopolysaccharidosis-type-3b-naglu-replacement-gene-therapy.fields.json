@@ -1,0 +1,157 @@
+{
+ "tile": "mucopolysaccharidosis-type-3b-naglu-replacement-gene-therapy",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug lesinidase alfa, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug lesinidase alfa, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug tralesinidase alfa, route intracerebral"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "year 2023 -> 2021: earliest public patient result is the Muschol 2021 WORLDSymposium abstract (MGM 132:S75), JCI epub 2022-11; rule question settled: track = model x drug x route, so lesinidase alfa contra does not carry, status same kept; drug tralesinidase alfa, route intracerebral"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug tralesinidase alfa, route intracerebral"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "status same -> retro, retrodiction true, year 2023 -> 2022: dog data first public 2022 after the Feb 2021 patient abstract (retrodiction rule, engagement counts any earlier patient result for the target); drug tralesinidase alfa, route intracerebral"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug lesinidase alfa, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug tralesinidase alfa, route intracerebral"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "status untested -> retro, retrodiction true, margin_stated true; src/quote now Muschol JCI (patient side) with Pinkstaff 2023 as model_src: rule question settled, NHP margin (73 mg tolerated vs 30 mg ~ 300 mg human) first public 2023 after the drug's own 2021-2022 patient dose results; drug tralesinidase alfa, route intracerebral"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug tralesinidase alfa, route intracerebral"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true, year 2023 -> 2022: dog margin first public 2022 after the drug's own 2021 patient result (retrodiction rule for dose, same drug); JCI epub 2022; drug tralesinidase alfa, route intracerebral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug lesinidase alfa, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug lesinidase alfa, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug tralesinidase alfa, route intracerebral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug rAAV2/5-hNAGLU, route intracerebral"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug tralesinidase alfa, route intracerebral"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: NHP toxicology first public 2023 after tralesinidase alfa's own patient safety results (JCI epub 2022-11), retrodiction rule for safety; drug tralesinidase alfa, route intracerebral"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "opening untested entry 2016 (proxy) for the mps3b-dog-icv-ta safety track: dogs called 48 mg ICV well tolerated (passing tolerability claim ruling); drug tralesinidase alfa, route intracerebral"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "contra 2022 on mps3b-dog-icv-ta: dog well-tolerated claim vs drug-related CSF pleocytosis and fluctuating consciousness SAEs in patients (Muschol JCI epub 2022); drug tralesinidase alfa, route intracerebral"
+  }
+ ]
+}

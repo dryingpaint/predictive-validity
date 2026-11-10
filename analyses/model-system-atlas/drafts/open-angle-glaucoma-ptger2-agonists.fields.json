@@ -1,0 +1,96 @@
+{
+ "tile": "open-angle-glaucoma-ptger2-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug omidenepag isopropyl, route ocular_topical, population_group unselected set (fields were missing); status and year unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "year 2019 -> 2015: earlier public date (rule 6), Phase 2a ARVO 2015 abstract (IOVS 56:5708), presented alongside the animal IOP abstract (IOVS 56:5709), so prospective; status same unchanged; drug omidenepag isopropyl, route ocular_topical set"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug omidenepag isopropyl, route ocular_topical, population_group unselected set (fields were missing); status and year unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true, year 2019 -> 2018: dose retrodiction ruling, Kirihara 2018 regimen statement first public after omidenepag's own once-daily Phase 2a result (ARVO 2015, IOVS 56:5708); drug omidenepag isopropyl, route ocular_topical set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug omidenepag isopropyl, route ocular_topical, population_group unselected set (fields were missing); status and year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2020 -> 2018: earlier public date (rule 6), AYAME ARVO 2018 abstract (IOVS 59:1235); non-inferiority primary design noted, status same unchanged; drug omidenepag isopropyl, route ocular_topical set"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug omidenepag isopropyl, route ocular_topical, population_group unselected set (fields were missing); status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: safety retrodiction ruling, monkey corneal thickening first public 2022 (FDA PharmR), after omidenepag's own patient corneal thickening (AYAME ARVO 2018 abstract, 11.7% vs 1.0%); drug omidenepag isopropyl, route ocular_topical set"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug omidenepag isopropyl, route ocular_topical, population_group unselected set (fields were missing); status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "combination_with tafluprost: patient comparison is the omidenepag + tafluprost arm of study 33-001; status retro unchanged (same drug's patient signal public before the 2022 review); drug omidenepag isopropyl, route ocular_topical set"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug omidenepag isopropyl, route ocular_topical, population_group unselected set (fields were missing); status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug omidenepag isopropyl, route ocular_topical, population_group unselected set (fields were missing); status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug omidenepag isopropyl, route ocular_topical, population_group unselected set (fields were missing); status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "status same -> retro, retrodiction true: safety retrodiction ruling (check adjudication), 3T3-L1 assay first public 2020-01-14 after Nakakura 2020 switch series (PubMed entry 2020-01-09) and RENGE; drug omidenepag isopropyl, route ocular_topical set"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "drug omidenepag isopropyl, route ocular_topical, population_group unselected set (fields were missing); status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "drug omidenepag isopropyl, route ocular_topical, population_group unselected set (fields were missing); status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "what": "drug omidenepag isopropyl, route ocular_topical, population_group unselected set (fields were missing); status and year unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "what": "combination_with tafluprost: patient side is the tafluprost-combination inflammation behind the warning; status retro unchanged; drug omidenepag isopropyl, route ocular_topical set"
+  }
+ ],
+ "added": []
+}

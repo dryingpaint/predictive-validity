@@ -11,7 +11,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 15320963 resolves; quote verbatim in abstract. NCT01121731 (Digna, completed 2013-01) has no posted results; PD among aims. untested/unsettled fits."
+   "rule": "DRAFTER fields: drug, route, population_group; rule 5 unsettled",
+   "note": "Larrea 2004 (PMID 15320963) quote verbatim in abstract. NCT01121731: IFN-α5 s.c. TIW, genotype 1 relapsers after IFN/PegIFN+RBV, PD a secondary, no results: sc, stage_or_line, untested/unsettled stand. Opener could carry retrodiction:true, as its note says.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -20,7 +22,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 21985916 (epub 2011-10-08, print 2012) resolves; quote verbatim. Opening untested entry for the monkey track is correct."
+   "rule": "DRAFTER fields: drug, route, population_group",
+   "note": "Cai 2011 (PMID 21985916, epub 2011-10-08) quote verbatim in abstract; single s.c. dose. PEG-IFN-SA, sc, unselected (NCT01605513 treatment-naive HCV) fit; opener untested correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -29,7 +33,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Read PMC4386949 full text: quote verbatim; serum ex vivo antiviral bioassay (VSV/WISH) in both monkey and volunteers, so same readout. Paired correctly with model_src. Readout is drug bioactivity more than target engagement; direct is defensible."
+   "rule": "DRAFTER retrodiction: engagement counts any drug of the target",
+   "note": "Zheng quote verbatim (PMC4386949 full text); epub 2014-10-08, so year 2014. Single s.c. dose, healthy volunteers: sc, unselected right. IFN-α patient PD predates the 2011 monkey model, so retro with retrodiction:true.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -38,7 +44,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote is a verbatim truncation of an abstract sentence. Abstract states no human dose, exposure or margin; untested correct."
+   "rule": "DRAFTER dose: no stated target -> untested",
+   "note": "Cai 2011 quote is a verbatim truncation of an abstract sentence; no human dose, exposure or margin stated. PEG-IFN-SA, sc, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -47,7 +55,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 23394696 resolves; quote verbatim. The paper validates a bioassay, it does not show macaque PK was run; 'Macaque PK run, unpublished' is inference. Status untested/unpublished stands; I did not verify absence of a later macaque PK paper."
+   "rule": "DRAFTER fields: drug, route, population_group; rule 5 unpublished",
+   "note": "Arbillaga 2013 (PMID 23394696) quote verbatim from abstract background; macaque PK not published. interferon alfa-5, sc (registry s.c. TIW), stage_or_line (relapsers) fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -56,7 +66,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in full text. A PK resemblance is not a stated human exposure/regimen target; untested/no_prediction is right under the dose rule."
+   "rule": "DRAFTER dose: target must be stated by the model",
+   "note": "Zheng quote verbatim (full text). PK resemblance is no stated human target: untested/no_prediction right; no earlier PEG-IFN-SA patient result, so not a retrodiction. sc, unselected fit; population text should say healthy volunteers.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -65,7 +77,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim. Registry: NCT01121731 phase 1/2, 70 enrolled, primary 'Safe dose level', completed 2013-01, hasResults false; patient_trials quote matches brief summary. untested/unsettled fits."
+   "rule": "DRAFTER rule 5 unsettled",
+   "note": "Larrea quote verbatim (abstract). NCT01121731 phase II primary is preliminary antiviral efficacy, completed 2013-01, no results posted: untested/unsettled; sc, stage_or_line fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -74,7 +88,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim (abstract last sentence). Opening untested entry correct."
+   "rule": "DRAFTER fields: drug, route, population_group",
+   "note": "Cai 2011 quote verbatim (last abstract sentence). PEG-IFN-SA, sc, unselected fit; opener untested correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -85,10 +101,11 @@
    "status_supported": false,
    "proposed_status": "untested",
    "proposed_year": 2016,
-   "rule": "Checker brief 3: same/contra from a pairing whose trial result rests on conditions the model never tested -> untested; DRAFTER rule 5 no_prediction (readout with no HCV counterpart)",
-   "note": "Ding quote verbatim. Monkey model was a VSV serum bioassay in uninfected animals; it made no HCV RNA prediction. Also patient_trials NCT wrong: Ding's arms match NCT01605513 (Jilin, primary undetectable HCV RNA wk12), not NCT01903278.",
+   "rule": "CHECKER 3: pairing on conditions the model never tested -> untested; DRAFTER rule 5 no_prediction",
+   "note": "Ding 2016 quote verbatim; NCT01605513 primary is week-12 undetectable HCV RNA, arms monotherapy s.c., combination_with null right. But uninfected-monkey serum bioassay never tested HCV infection; no efficacy prediction to reproduce.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "DRAFTER rule 5 no_prediction; CHECKER 3: uninfected-monkey VSV serum bioassay never tested HCV infection or HCV RNA; its bioactivity readout is already scored under engagement, so no efficacy prediction to pair with Ding 2016."
+   "adjudication_note": "DRAFTER efficacy + rule 5 no_prediction: uninfected-monkey serum bioassay is an engagement readout; it stated no HCV RNA or primary-endpoint prediction, so Ding 2016 has nothing to reproduce. Untested, not retro."
   },
   {
    "cell": "safety",
@@ -97,9 +114,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "DRAFTER untested_reason unpublished: model never published a prediction",
-   "note": "DOI resolves to Cai 2011 Regul Pept (epub 2011-10-08, print 2012). Quote verbatim from abstract aims sentence; abstract covers PK, distribution, excretion, serum antiviral activity only, no toxicology. untested/unpublished stands.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "rule": "DRAFTER rule 5 unpublished",
+   "note": "Cai 2011 aims sentence verbatim (abstract); no toxicology published. PEG-IFN-SA, sc, unselected fit; untested/unpublished stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

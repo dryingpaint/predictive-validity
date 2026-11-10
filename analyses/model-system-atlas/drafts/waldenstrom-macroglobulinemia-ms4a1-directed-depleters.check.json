@@ -19,7 +19,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "ClinPharmR text has the 93%/91% BFR CD5+CD19+ decrease. The readout is malignant B-cell count, so calling it proximal is a fair call. CLL patients are admissible for engagement. Paired, so hatched."
+   "note": "ClinPharmR bundle line 757 has the 93%/91% quote; PharmR calls monkey B-cell depletion consistent with clinical observations. Rituximab human depletion (1990s) and Coiffier CLL (2007-11-14) predate FDA 2009: retro. ofatumumab, iv, other_disease (CLL) correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -46,21 +47,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Abstract: the primary endpoint is ORR (CR+PR+MR) and the quote is verbatim. Registry results posted 2012-04-30 for NCT00811733 (confirmed). The model's 'improved' superiority over rituximab was never tested, so I'd add source_calls_it 'partial'. Status stays same."
+   "note": "Furman 2017 abstract has the quote verbatim; single-arm, primary ORR, no preset bar. Teeling 2004 (Blood 2004-06) post-dates Dimopoulos JCO 2002-05: retro. DOI of ASH 2010 abstract 1795 resolves: year 2010. NCT01536067 3 enrolled, results 2016-06-10.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2014,
-   "rule": "Dating rule 6 (earliest public date: online 2014-12-31); rule 5 untested_reason order",
-   "note": "Quote is verbatim on the haematologica page. Status untested stands. Year should be 2014 (epub). Sawas 2017's full text lists only FL, MZL, MCL, DLBCL and CLL, with no WM patients, so untested_reason should be not_measured, not unsettled.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 5: untested stands; Sawas 2017 Table 1 enrols FL, MZL, CLL/SLL, MCL, DLBCL, no WM, so no trial measured the readout: not_measured. Rule 6: online 2014-12-31 sets year 2014."
+   "note": "Quote verbatim (PMC4380738); online 2014-12-31: year 2014. Sawas 2017 full text has no WM patient, so not_measured, though NCT01647971 lists WM. Fields: retrodiction should be true (post-dates rituximab WM responses); reason text stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -74,11 +72,12 @@
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "unverified",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "not_found",
    "status_supported": true,
-   "note": "PharmR states infection deaths were 'consistent with clinical observations' and that humans are more sensitive to infusion reactions, so same/partial with imported_from CLL is supported. Unscored predicted harms (haemolytic anaemia, brain arteritis at 3.5x) raise a rule question."
+   "note": "ASH 1795 DOI resolves to the WM ofatumumab phase II abstract but the page returned 403; quote not re-seen. Furman 2017 abstract (same trial) confirms infusion reactions, haemolysis in WM. Coiffier 2007-11-14 predates FDA 2009 tox: retro. Fields correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -117,8 +116,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "The 51%/59% ORR quote is verbatim in the Furman PMC text. ORR is primary, and the registry posting of 2012-04-30 sets the year. The model predates the 2009 trial, so this is prospective, not retro. Direction-only same is fine."
+   "note": "Bleeker BJH online 2007-11-27, after Dimopoulos 2002 rituximab WM responses: retro under target-level rule. Furman 2017 quote verbatim; ASH 2010 abstract DOI resolves, year 2010. Single-arm noted; ofatumumab, iv, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

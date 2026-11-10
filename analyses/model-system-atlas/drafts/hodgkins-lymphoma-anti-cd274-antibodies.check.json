@@ -11,16 +11,22 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "DOI resolves to Roemer JCO 2016 (PMID 27069084, epub 2016-04-11). Quote is verbatim from the abstract conclusion. The cohort got Stanford V, with no member drug, so the 2016 opening entry is correctly untested and product_in_model false."
+   "note": "Roemer JCO 2016 abstract quote verbatim. Untested opener. Drug sugemalimab/iv rather than 'class' opens the track efficacy 2 scores on (open rule question); stage_or_line fits R/R cHL.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Chen BMC Cancer 2022;22:9 (PMC8722342, published 2022-01-03). Quote verbatim from the Discussion. No ORR is given anywhere, so contra rests on a qualitative 'data not shown' statement; low confidence is right. NCT03505996: 82 enrolled, completed 2021-11, no results posted."
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "efficacy single-arm design (scored on primary endpoint with its value in note) + rule 5 untested_reason 'unsettled' (patients measured, result unreported)",
+   "note": "Chen 2022 quote verbatim (PMC8722342); drug sugemalimab, iv, stage_or_line correct; single-arm design now in note. EPAR lists CS1001-202 (n=81) but gives no ORR; 'limited' is not 'no response', so untested, unsettled.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Single-arm rule scores on the primary endpoint's value; CS1001-202 ORR is unreported and 'limited' is not 'no response'. Patients measured, result unreported: untested, rule 5 'unsettled'."
   },
   {
    "cell": "engagement",
@@ -29,23 +35,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "EPAR 2.6.2.2 quote verbatim. Untested opener at the assays' first use is right. The 2016 proxy cites codes BCG-PS-16033/0002-16010, but those are the in-vivo humanised-mouse studies, not the in-vitro assays; the year stays a proxy."
+   "note": "EPAR Cejemly in-vitro quote re-found verbatim. Untested opener; drug sugemalimab (listed member) and route iv match the track the assays were run for; other_disease fits the mixed phase 1. 2016 first-use year is a proxy.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2022,
-   "rule": "dated entry = first public report of the patient result (epub year)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim in EPAR (phase 1b). Gong et al. Cancer Immunol Immunother, epub 2022-01-05 (PMID 34984540), already reported it: 'CD3+ T cells from 7 evaluable patients showed 100% RO' at C2D1, 10 mg/kg and 1200 mg, in phase 1a, which included 5 cHL patients. Status same holds and is prospective, not retro; year should be 2022.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same agreed by both. Rule 6 (dating: earliest public date): Gong et al. CII epub 2022-01-05 (PMID 34984540) already reported 100% RO on CD3+ T cells at C2D1, so the entry dates 2022, not the 2024 EPAR."
+   "note": "Gong 2022 CII full text (PMC9293819, epub 2022-01-05): '7 evaluable patients showed 100% RO' verbatim. Year 2022 is the earliest public date. Sugemalimab iv, other_disease (mixed tumours, 5 cHL) match. same, prospective.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -54,23 +55,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "EPAR toxicology quote verbatim. The NOAEL of 200 mg/kg came before FIH, but the stated 21-26x Cmax margin is the regulator's comparison against clinical exposure, made after the trial. margin_stated true rests on the NOAEL lying above the 3-40 mg/kg doses. See rule question."
+   "note": "EPAR NOAEL 200 mg/kg quote re-found verbatim. Untested opener; sugemalimab, iv, other_disease (phase 1 population) correct. Exposure margin figures are the EPAR's computation; pre-trial NOAEL carries margin_stated (open rule question).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2022,
-   "rule": "dated entry = first public report of the patient result (epub year)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim in EPAR. Gong 2022 (PMID 34984540, epub 2022-01-05): 'No dose-limiting toxicities were observed in phase 1a, and the RP2D ... 1200 mg'. Doses ran 3-40 mg/kg in 29 patients, 5 of them cHL. same with margin_stated holds, but the year should be 2022.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same, margin_stated true, agreed. Rule 6 (dating: earliest public date): Gong et al. CII epub 2022-01-05 (PMID 34984540) abstract reports no DLT at 3-40 mg/kg and RP2D 1200 mg, so the entry dates 2022."
+   "note": "Gong 2022 full text: 'No DLTs were reported at any dose level, and the MTD was not reached' verbatim; epub 2022-01-05 so year 2022. Sugemalimab iv 3-40 mg/kg and 1200 mg, mixed tumours (other_disease). same with margin_stated holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -87,6 +83,7 @@
   "Can a single qualitative sentence in a third-party paper ('limited efficacy') score contra under 'data not shown scores at low confidence'? Or should it be untested with untested_reason 'unsettled' (primary result unreported)? I confirmed contra under the former reading.",
   "Lint counts empty cells as findings, but DRAFTER_BRIEF allows them. Should a draft whose only lint findings are empty cells go back unchecked?",
   "Dose margin_stated: the toxicology set a NOAEL (200 mg/kg) before the trial, but the exposure margin is quoted only in the 2024 EPAR, computed against clinical Cmax. Does a pre-trial NOAEL above every dose tested count as a margin the model stated before the trial?",
-  "model_kind for in-vitro cell-line binding and T-cell assays: the enum has no in_vitro value, and the drafter used ex_vivo."
+  "model_kind for in-vitro cell-line binding and T-cell assays: the enum has no in_vitro value, and the drafter used ex_vivo.",
+  "Efficacy opener of a human_genetic system: DRAFTER_BRIEF says drug 'class' for a system tied to no drug, yet tracks are per drug and route. Should a genetics opener carry the member drug of the track it opens (sugemalimab/iv here) or 'class'/not_applicable?"
  ]
 }

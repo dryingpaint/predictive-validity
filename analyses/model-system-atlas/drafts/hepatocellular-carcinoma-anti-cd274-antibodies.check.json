@@ -11,28 +11,33 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Stewart 2015 resolves (PMID 25943534, epub 2015-05-05); quote verbatim in abstract; ONC4736-0020 is listed in FDA PharmR so model_filed holds. The judgement's '3 ug/mL, 90% of maximal' figure is not in the bundle text; not load-bearing."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Stewart 2015 (PMID 25943534) quote in abstract. Durvalumab is the assayed product (ONC4736-0020), iv its clinical route, unselected opener; 2015 = model_first_use_year. Retrodiction dating of filed-then-published models raised as rule question."
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Kelley 2021 resolves (PMID 34292792, epub 2021-07-22); quote verbatim in abstract; registry results 2021-12-06 confirmed. Proliferating CD8+ readout moved in durvalumab-dosed HCC patients; partial and downstream are right since T300+D drove the peak."
-  },
-  {
-   "cell": "dose",
-   "index": 1,
    "verdict": "corrected",
    "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "6",
+   "note": "Quote in Kelley JCO abstract (epub 2021-07-22); durvalumab, iv, stage_or_line right. But ASCO 2020 abstract 4508 (online 2020-05-25) already reported responders 'exhibited high cytotoxic (CD8) counts'. Rule 6: year 2020.",
+   "proposed_year": 2020,
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: status same agreed; year stays 2021. ASCO 2020 abstract 4508 ties the proliferative CD8 profile and high-CD8 responders to the T300+D arm only; CD8 expansion with response across arms, durvalumab included, first appears in Kelley JCO 2021."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2012,
-   "rule": "7",
-   "note": "Quote verbatim in PharmR. The same monkey track opens at 2012 (proxy) in safety and model_first_use_year is 2012, but the dose cell opens at 2017; rule 7 opens each cell at first use. Redate to 2012, status unchanged."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PharmR quote verbatim in bundle text (19.7-fold over AUC 1773.2). Year 2012 now equals model_first_use_year and the monkey safety opener (rule 6). Durvalumab, iv right; untested holds (no HCC trial reported)."
   },
   {
    "cell": "dose",
@@ -41,7 +46,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Abou-Alfa 2022 resolves (PMID 38319892, epub 2022-06-06); quote verbatim; registry 2023-06-18 confirmed. PharmR states the 19.7-fold NOAEL margin verbatim, so margin_stated holds. 'Reached and worked' inherits the efficacy cell's combination-arm question."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in NEJM Evid abstract (PMID 38319892). AZ release dated 2021-10-15 re-opened: durvalumab alone non-inferior 'with ... an improved tolerability profile', so 2021 is earliest. Margin stated in PharmR before results; durvalumab, iv, stage_or_line right."
   },
   {
    "cell": "efficacy",
@@ -50,85 +56,97 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Morales-Kastresana 2013 resolves (PMID 24030703, epub 2013-09-12); quote verbatim. Abstract reports no single-agent anti-PD-L1 arm, so 'modest alone' is not in the quoted source. The sponsor relied on filed cross-indication models instead; see missing."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in Morales-Kastresana 2013 abstract (PMID 24030703). Opener 2013; drug durvalumab as the paired member, iv, unselected acceptable; no status or year change."
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Quote verbatim. HIMALAYA primary was STRIDE (durvalumab plus tremelimumab, non-member); durvalumab-alone OS a secondary per registry. EMERALD-1 verified: PFS HR 0.77 primary met, D+TACE HR 0.94 missed; final OS missed (HR 1.10, 0.93): add to patient_trials."
-  },
-  {
-   "cell": "safety",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Dong 2004 resolves (PMID 15030776, print 2004-03); quote verbatim. BLA cites PD-L1-knockout mice only for LCMV susceptibility (Mueller 2010), not the hepatitis phenotype, so model_filed is true for the system, not the prediction. Latchman 2004 resolves."
-  },
-  {
-   "cell": "safety",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim in SumR section 5.2 (also the label); 16/1414 (1.1%), one fatal, confirmed there. MONDO:0040679 is urothelial carcinoma (OLS). Direction-only match on an imported population is supported."
-  },
-  {
-   "cell": "safety",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim in PharmR. Proxy date plausible: PharmR dates the GLP tissue cross-reactivity study to 25 Aug 2011 and FIH NCT01693562 was posted 2012; the review gives no monkey study dates."
-  },
-  {
-   "cell": "safety",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim in PharmR; the reviewer's own sentence sets the monkey rash beside Study 1108 irAEs, so comparison_stated holds. Partial direction-only match imported from urothelial carcinoma is supported."
-  },
-  {
-   "cell": "safety",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Hepatology 2025 resolves (PMID 40384092, epub 2025-05-16); quote verbatim; registry 2023-06-18 confirmed. No status change: rule 7 writes entries only on change and reserves strengthens for a second miss; fold into the 2017 note. Could not verify 2022 full text."
-  },
-  {
-   "cell": "efficacy",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "PharmR (local bundle) carries the quote verbatim in the reviewer's Results/Conclusion for ONC4736-0006; report date 7 Feb 2012, non-GLP, MedImmune Cambridge confirmed. Model predates HIMALAYA, so not retro. Stewart 2015 (tier 1) also reports this co-implant system."
-  },
-  {
-   "cell": "efficacy",
-   "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "4",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim (PMID 38319892, epub 2022-06-06) but the source states durvalumab-alone OS non-inferiority was a secondary objective; primary was STRIDE with non-member tremelimumab. endpoint_role primary is mislabelled; no poc_gate (#64, #144). Not retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "CHECKER_BRIEF 3 / DRAFTER_BRIEF efficacy: pairing on conditions the model never tested; untested_reason not_measured",
+   "note": "Quote verbatim; 2021 and poc_gate right. But the mouse tested anti-PD-L1 only with anti-CD137+anti-OX40 (abstract, model text); the governing endpoint is durvalumab alone, the primary durvalumab+tremelimumab. Neither tested: untested. Abstract only.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "DRAFTER_BRIEF efficacy and rule 5: the 2013 mouse tested anti-PD-L1 only within anti-CD137+anti-OX40+anti-B7-H1; no trial tested that, nor did the model test monotherapy or anti-CTLA-4 pairing. Untested, not_measured."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dong 2004 quote in abstract (PMID 15030776). Knockout tied to no drug, so drug 'class' allowed; route iv the class route; opener 2004 unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "SumR/label quote verbatim (16/1414, 1.1%). Label 2017-05-01 preceded the first durvalumab HCC safety data (Study 1108 HCC cohort, ASCO 2017), so other_disease import holds; drug class, iv right."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PharmR quote verbatim in bundle. Opener, proxy 2012, durvalumab, iv, unselected; consistent with dose 1 on the same monkey track."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PharmR quote verbatim; reviewer sets monkey immune findings beside Study 1108 irAEs (comparison_stated true). Imported other_disease holds as safety 2 (no HCC safety data public May 2017); durvalumab, iv right."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "6",
+   "note": "Quote verbatim (Hepatology epub 2025-05-16); durvalumab, iv, stage_or_line right. But HCC patients' own durvalumab imAEs were public earlier: Kelley JCO epub 2021-07-22 (Study 22, imAEs 15.8% on D, PMC8445563), then NEJM Evid 2022. Year 2021.",
+   "proposed_year": 2021,
    "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: decision 12 (members only, #70) bars the STRIDE primary; decision 4 does not say whether an alpha-controlled member-only non-inferiority key secondary vs sorafenib is a poc_gate. Yes: same relabelled poc_gate; no: untested. Covers indices 2, 4, 6."
+   "adjudication_note": "Rule 6: status same agreed; year 2021. Kelley JCO (epub 2021-07-22) first reported HCC patients' immune-mediated AEs on durvalumab alone. Wainberg ASCO 2017 (HCC, durvalumab) gave treatment-related AEs without immune-mediated attribution."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PharmR quote verbatim in bundle ('up to 74% and 95%'). Opener on filed product-dosed co-implant system; durvalumab, iv, unselected, 2012 unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (NEJM Evid abstract). Durvalumab-alone NI was pre-specified with its own 95.67% CI and called key secondary by AZ 2021-10-15: poc_gate per the NI rule, same stands, 2021 right; model tested MEDI4736 alone; design in note."
   },
   {
    "cell": "efficacy",
@@ -137,22 +155,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Stewart 2015 resolves (PMID 25943534, epub 2015-05-05); quote verbatim in abstract. Fix the model text: PharmR table lists the oxaliplatin CT26 study as ONC4736-0011, 0018 is the anti-mouse CTLA-4 combination, 0019 the dose-level study; surrogate is 10F.9G2. No dates in the table, so 2015 stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Stewart quote in abstract. Model text matches PharmR table (10F.9G2 in 0009/0010; 0011 oxaliplatin combination; 0019 dose levels), identical on efficacy 6. Entry note still says 'ONC4736-0018/-0019' (0018 is the anti-CTLA-4 combination): align."
   },
   {
    "cell": "efficacy",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "4",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Same pairing as index 4: quote verbatim, model_src resolves, not retro (2015 predates HIMALAYA). Scored endpoint is the member-only non-inferiority secondary, labelled primary, without poc_gate (#64, #144); the met primary belongs to a non-member combination. EMERALD-1 sub-quote verbatim.",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: same HIMALAYA pairing as efficacy index 4, decided together. Decision 12 (members only) bars the non-member STRIDE primary; decision 4 leaves open whether the member-only non-inferiority key secondary is a poc_gate. Drafter's same stands."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim; CT26 surrogate tested anti-PD-L1 alone, matching the durvalumab-alone NI poc_gate; same direction only stands; 2021 per AZ release verified; durvalumab, iv, stage_or_line right. Model public 2015, before any member HCC result."
   }
  ],
  "missing": [
@@ -162,7 +176,8 @@
   "HIMALAYA long-term OS updates for the durvalumab-alone arm, patient_trials facts: four-year update (Ann Oncol 2024, doi 10.1016/j.annonc.2024.02.005) and five-year update (J Hepatol 2025, doi 10.1016/j.jhep.2025.03.033).",
   "Benmelstobart HCC patient data beyond the draft's phase 1b: ALTER-H006 adjuvant benmelstobart plus anlotinib phase II (Nat Commun 2025, doi 10.1038/s41467-025-66342-2); DEB-TACE plus transarterial TQB2450 plus anlotinib phase II (Front Immunol 2025, doi 10.3389/fimmu.2025.1667785); adjuvant HAIC plus anlotinib plus TQB2450 (Innovation 2025, doi 10.1016/j.xinn.2025.100910). All single-arm with a non-member TKI and no model comparison; note-only, no status change.",
   "Safety fact for the HCC note: EMERALD-1 reported three study-treatment-related deaths on durvalumab+TACE (arterial haemorrhage, liver injury, multiple organ dysfunction) vs three on placebo (Lancet abstract), and Lancet correspondence asked whether unexplained early deaths were liver failure (doi 10.1016/s0140-6736(25)01666-6; authors' reply 10.1016/s0140-6736(25)01667-8). Not attributed to durvalumab, so no status change, but the draft's 'no unpredicted harm appeared in HCC' should cite it.",
-  "Searched and not found (Europe PMC, title-restricted and free-text, 2026-11-05): no patient-derived HCC organoid or ex-vivo system compared with patients for a member drug; no humanized-mouse HCC study of durvalumab, sugemalimab or benmelstobart; no sugemalimab HCC preclinical model (only the BLU-554 + CS1001 phase Ib/II, NCT04194801, results 2023-02-06). The draft's 'no model comparison' for benmelstobart and sugemalimab stands."
+  "Searched and not found (Europe PMC, title-restricted and free-text, 2026-11-05): no patient-derived HCC organoid or ex-vivo system compared with patients for a member drug; no humanized-mouse HCC study of durvalumab, sugemalimab or benmelstobart; no sugemalimab HCC preclinical model (only the BLU-554 + CS1001 phase Ib/II, NCT04194801, results 2023-02-06). The draft's 'no model comparison' for benmelstobart and sugemalimab stands.",
+  "Study 22 HCC safety by arm, earlier than the HIMALAYA imAE paper: Kelley et al. JCO 2021 (doi 10.1200/JCO.20.03555, PMC8445563): 'imAEs were also reported at a higher frequency in the tremelimumab-containing arms (T300 + D: 31.1%, T: 24.6%, T75 + D: 26.8%) versus the D arm (15.8%; Data Supplement).' Candidate src for safety 5."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
@@ -171,6 +186,7 @@
   "Class membership: atezolizumab is an anti-CD274 antibody with the largest HCC patient record (IMbrave150 positive OS; IMbrave050 adjuvant RFS later lost significance) and the only stated model-vs-patient comparison for anti-PD-(L)1 in HCC (Pfister 2021 Nature, NASH mice plus trial meta-analysis), yet the tile's member list is benmelstobart, durvalumab, sugemalimab. If the reviewed class table is right the draft is correct to exclude it; if the table is wrong, both tracks and missing change materially. Please confirm the table.",
   "Opening-year consistency across cells of one model_id: the monkey track opens at 2012 (proxy) in safety but 2017 in dose with model_first_use_year 2012 on both. Rule 7 implies every cell opens at first use; a lint check for year-of-first-entry equal to model_first_use_year per cell would catch this.",
   "Confirmation entries: rule 7 writes a new entry only on a status change and reserves strengthens true for a second miss that removes the first miss's excuse. The draft's safety entry 5 uses strengthens true for a confirmation of same in the context's own disease. Is a confirming entry allowed, and if so should it carry a distinct flag so matrix counts do not treat it as a status change?",
-  "Models check (indices 4 and 6): the same HIMALAYA pairing is confirmed at efficacy index 2 and corrected to untested at indices 4 and 6 under decision 4 (#64/#144). One adjudication should cover all three: either a pre-specified, alpha-controlled member-only non-inferiority key secondary may carry endpoint_role poc_gate (same stands, relabelled), or a combination-arm primary with a non-member cannot carry a member-class same (untested)."
+  "Models check (indices 4 and 6): the same HIMALAYA pairing is confirmed at efficacy index 2 and corrected to untested at indices 4 and 6 under decision 4 (#64/#144). One adjudication should cover all three: either a pre-specified, alpha-controlled member-only non-inferiority key secondary may carry endpoint_role poc_gate (same stands, relabelled), or a combination-arm primary with a non-member cannot carry a member-class same (untested).",
+  "Retrodiction dating of a filed model published later: Stewart 2015 (in-vitro T-cell assay, CT26) and the monkey toxicology (public only in the 2017 FDA review) were run before durvalumab's first patient (2012) but first public after anti-PD-L1 patient results (BMS-936559 2012, atezolizumab 2014) and durvalumab's own Study 1108 data. Read literally ('first public'), engagement 2 and the monkey dose/safety same entries would be retro; read by run date (model_first_use_year 2012 proxy) they stand. The brief does not say which date governs."
  ]
 }

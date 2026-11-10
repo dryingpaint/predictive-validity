@@ -1,0 +1,21 @@
+{
+ "tile": "hepatocellular-carcinoma-anti-cd274-antibodies",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "drug durvalumab, route iv (opener; no status or year change)."},
+  {"cell": "engagement", "index": 2, "what": "drug durvalumab, route iv, population_group stage_or_line (Study 22, unresectable HCC); status same and year 2021 unchanged."},
+  {"cell": "dose", "index": 1, "what": "year 2017 -> 2012 (rule 6: the cell opens at the monkey track's model_first_use_year, as its safety opener already does; checker correction); drug durvalumab, route iv; status untested unchanged."},
+  {"cell": "dose", "index": 2, "what": "year 2022 -> 2021 (rule 6: HIMALAYA first public in AstraZeneca press release 2021-10-15, durvalumab alone non-inferior with improved tolerability vs sorafenib); drug durvalumab, route iv, population_group stage_or_line; status same unchanged, src/quote stay NEJM Evidence."},
+  {"cell": "efficacy", "index": 1, "what": "drug durvalumab (the member whose HCC result the surrogate track is compared with), route iv; opener unchanged."},
+  {"cell": "efficacy", "index": 2, "what": "year 2022 -> 2021 (rule 6: AstraZeneca press release 2021-10-15); endpoint_role primary -> poc_gate under the non-inferiority ruling (member-only, pre-specified, alpha-controlled NI vs sorafenib governs; STRIDE primary with tremelimumab noted); drug durvalumab, route iv, population_group stage_or_line; status same unchanged."},
+  {"cell": "efficacy", "index": 3, "what": "drug durvalumab, route iv; opener unchanged."},
+  {"cell": "efficacy", "index": 4, "what": "Settles RULE QUESTION (verdict efficacy 4): the non-inferiority ruling makes the member-only alpha-controlled NI objective the governing endpoint, endpoint_role primary -> poc_gate, status same stands; year 2022 -> 2021 (rule 6, AstraZeneca press release 2021-10-15); drug durvalumab, route iv, population_group stage_or_line."},
+  {"cell": "efficacy", "index": 5, "what": "drug durvalumab, route iv; model text corrected per FDA PharmR study table (surrogate 10F.9G2; ONC4736-0011 oxaliplatin, ONC4736-0019 dose levels), same text on efficacy 6."},
+  {"cell": "efficacy", "index": 6, "what": "Settles RULE QUESTION (verdict efficacy 6) as for efficacy 4: endpoint_role primary -> poc_gate, status same stands; year 2022 -> 2021 (rule 6, AstraZeneca press release 2021-10-15); drug durvalumab, route iv, population_group stage_or_line."},
+  {"cell": "safety", "index": 1, "what": "drug class (target knockout), route iv; opener unchanged."},
+  {"cell": "safety", "index": 2, "what": "drug class, route iv, population_group other_disease (imported-harm ruling: urothelial BLA safety database, no HCC class safety data public in May 2017); status same and year 2017 unchanged."},
+  {"cell": "safety", "index": 3, "what": "drug durvalumab, route iv; opener unchanged."},
+  {"cell": "safety", "index": 4, "what": "drug durvalumab, route iv, population_group other_disease (imported-harm ruling, as safety 2); status same and year 2017 unchanged."},
+  {"cell": "safety", "index": 5, "what": "drug durvalumab, route iv, population_group stage_or_line; HIMALAYA HCC patients' own imAE result sets the track (imported-harm ruling); status same and year 2025 unchanged."}
+ ],
+ "added": []
+}

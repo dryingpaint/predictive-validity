@@ -1,0 +1,66 @@
+{
+ "tile": "type-2-diabetes-mellitus-ccr2-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug jnj-41443532 (Weisberg 2005 opener as proxy for the JNJ-41443532 track), route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug jnj-41443532 (NCT01230749), route oral; strengthens prose -> true, text to note"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug ilacirnon, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug ilacirnon (CCX140-B in hCCR2 knock-in mice), route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug ilacirnon (Weisberg 2005 opener as proxy for the CCX140-B track), route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug ilacirnon, route oral, combination_with null: add-on to metformin in every arm, placebo-controlled, written into note"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug jnj-41443532, route oral; strengthens prose -> true, text to note"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug ilacirnon, route oral; RULE QUESTION settled: retro admits partial agreement as same does, so status stays retro with source_calls_it match -> partial (glucose reproduced, HOMA-IR/insulin not)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug ilacirnon, route oral (genotype stratifier in the CCX140-B trial)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug ilacirnon, route oral; strengthens prose -> true, text to note"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug ilacirnon, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug ilacirnon, route oral; retro stands under the dose/safety rule (rests on CCX140-B's own 2011 patient result)"
+  }
+ ],
+ "added": []
+}

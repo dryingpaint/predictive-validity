@@ -61,11 +61,17 @@
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Zhang CCR 2020 (epub 2020-09-14) verbatim; MMR6 is primary. Luo 2010 Leukemia (HH-GV-678) resolves, no abstract, prediction known only from title. Sharing model_id with ponatinib's model is a call; see rule questions."
+   "proposed_status": "retro",
+   "proposed_year": 2019,
+   "rule": "Evidence rule 6 (dating): year is the earliest public date, including a congress abstract",
+   "note": "Zhang CCR abstract verbatim (epub 2020-09-14), MMR6 primary. Retro right: Luo 2010 epub 2010-08-12 follows ENESTnd/DASISION (June 2010). FESTnd primary result public earlier as ASCO 2019 abstract (JCO 37:15_suppl 7004, 2019-05-20): year 2019. Drug, oral, stage_or_line right.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status retro agreed (retrodiction rule: Luo 2010 post-dates ENESTnd/DASISION). Rule 6: ASCO 2019 abstract (JCO 37:15_suppl 7004, online 2019-05-26) reports MMR6 primary met, so the entry year is 2019, not 2020."
   },
   {
    "cell": "efficacy",
@@ -168,6 +174,16 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Zabriskie 2014 (PMC4160372) intro carries quote (citation stripped in BioC). O'Hare 2009 full text (PMC2804470): T315I-start screen kept E255V/T315I to 320 nM, above 101 nM plasma level; 2009 screen predates 2014 failures, so prospective same, not retro."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mian quote verbatim in abstract (epub 2014-11-14, year 2014). Turkina 2025 PMC12141164: primary objective MTD/DLT verbatim, efficacy secondary, so untested/unsettled. Vamotinib, oral, stage_or_line right. Model post-dates ponatinib T315I patient data, so retrodiction should be true.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

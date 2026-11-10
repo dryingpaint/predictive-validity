@@ -22,7 +22,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Chest 2012 (PMID 22241764) resolves; quote verbatim (abstract only). NCT00606684 results posted 2013-09-17 confirmed on CT.gov. Downstream FEV1 readout moved in COPD patients: same holds."
+   "note": "Hanania 2012 Chest (PMID 22241764) abstract; quote verbatim. Model Procopiou 2010 (epub 2010-05-12). target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. Year 2012, vilanterol, inhaled, unselected COPD match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -32,7 +33,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "JPET online 2012-11-06 (PMID 23131596) resolves; quote verbatim (abstract only). comparison_stated rests on one abstract clause ('combined with clinical data'); acceptable but thin."
+   "note": "Slack 2013 JPET (PMID 23131596, epub 2012-11-06) abstract; quote verbatim. target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. Year 2012 = epub; vilanterol, inhaled, unselected match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -52,7 +54,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "J Clin Pharmacol 2014 (PMID 24989946) resolves; quote verbatim (abstract only). Healthy volunteers count for engagement; airway conductance is downstream. No registry record found either."
+   "note": "Timmer 2014 J Clin Pharmacol (epub 2014-07-08) abstract; quote verbatim, 48 healthy men. Model Aparici JPET 2012-08. target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. Abediterol, inhaled; healthy volunteers coded unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -62,7 +65,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "BMC Pulm Med 2016 (PMC4955259) resolves; quote verbatim in abstract and full text. NCT01425814 results 2017-04-10 confirmed. Same holds."
+   "note": "Beier 2016 BMC Pulm Med (epub 2016-07-20, PMC4955259) abstract; quote verbatim, 70 COPD patients. target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. Year 2016, abediterol, inhaled, unselected match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -82,7 +86,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Respir Res online 2013-06-03 (PMC3691744) resolves; quote verbatim. NCT00929708 results 2014-01-17 confirmed. Year 2014 follows rule 6 as drafted (model paper public 2014)."
+   "note": "Kuna 2013 Resp Res (epub 2013-06-03) abstract; quote verbatim. Model Stocks 2014 (epub 2014-02-08), so pairing public 2014. target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. AZD3199, inhaled, unselected COPD.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -102,7 +107,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "J PK/PD online 2012-09-23 (PMID 23001588) resolves; quote verbatim (abstract only). Observed FEV1 from 690 COPD patients moved with once-daily dosing: downstream engagement holds at medium confidence."
+   "note": "Nielsen 2012 JPKPD (epub 2012-09-23) abstract; quote verbatim (simulated trough, 690 COPD patients). target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. Fix source_tier 1 -> 4 to match efficacy 8 (same meta-analysis).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -172,7 +178,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Kuna 2013 quote verbatim (abstract and full text). Once-daily reached at every dose; exposure lower than healthy-volunteer prediction confirmed in full text and Hughes 2015 (PMID 25709399)."
+   "note": "Kuna 2013 quote verbatim. Stocks 2014 full text states once-a-day regimen from guinea-pig duration: a regimen target, reached. Kuna (2013-06-03) before Stocks (2014-02-08): same drug's own result, retro correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -212,7 +219,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Hanania 2012 quote verbatim. CT.gov confirms NCT00606684 primary = trough FEV1 day 29, 602 patients, results 2013-09-17. Primary met; same holds."
+   "note": "Hanania 2012 abstract; primary endpoint trough FEV1 day 28, quote verbatim. target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. Year 2012 (PMID 22241764 precedes 2013 registry posting); vilanterol, inhaled, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -232,7 +240,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Beier 2016 quote verbatim. CT.gov confirms NCT01425814 primary = change in trough FEV1 (single dose), results 2017-04-10. Primary met; same holds."
+   "note": "Beier 2016 abstract; primary trough FEV1 met (all p<0.0001); quote verbatim from conclusions. target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. Year 2016, abediterol, inhaled, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -252,7 +261,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Kuna 2013 quote verbatim. CT.gov confirms NCT00929708 primaries = FEV1 E0-4 and E24-26 at visit 5, results 2014-01-17. Both met; same holds."
+   "note": "Kuna 2013 abstract; co-primary peak and trough FEV1 both met, quote verbatim. target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. Year 2014 (model public 2014-02). AZD3199, inhaled, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -267,16 +277,13 @@
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2010,
-   "rule": "efficacy cell definition (trial primary endpoint) and evidence rule 3 (quote must support the status)",
-   "note": "Nielsen 2012 is a pooled K-PD simulation; NCT00808288 (trough FEV1 primary) never posted results. The entry's quote describes model fit, not a primary result. No admissible primary-endpoint comparison: untested.",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: does a model-based meta-analysis (Nielsen 2012 K-PD, 690 patients; simulated trough-FEV1 probabilities) count as the trial's primary endpoint responding under decision 4 when NCT00808288 never reported? Tier 4 admits meta-analyses but the result is simulated."
+   "status_supported": true,
+   "rule": null,
+   "note": "Nielsen 2012 calls itself a meta-analysis of four studies, 690 COPD patients: tier 4 fits, model_src Glossop 2010 tier 1. Quote verbatim but simulated. target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct; year 2012.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -291,12 +298,16 @@
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Breo label in bundle; quote verbatim (label txt line 762) with 7.8 and 17.1 bpm. Predicted on-target tachycardia seen dose-dependently in humans: same. Anoro MedR 10.5/22.3 bpm figures not found by grep."
+   "status_supported": false,
+   "proposed_status": "contra",
+   "rule": "safety: a predicted harm that never appeared in patients is contra (magnitude opposite); a retrodiction that failed to reproduce the human data is contra",
+   "note": "Breo label 204275 quote verbatim (TQT, healthy volunteers, up to 100 ug). Retrodiction right (Hanania 2012 before 2013 review). But Hanania COPD: no effect on pulse rate at 3-50 ug; COPD patients' result sets status: contra.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Safety rule: patients of the tile's own disease decide. Dog-predicted tachycardia did not appear in COPD patients (Hanania 2012, 3-50 ug; label COPD trials); healthy-volunteer TQT does not set status. Failed retrodiction is contra, magnitude opposite."
   },
   {
    "cell": "safety",
@@ -331,16 +342,13 @@
   {
    "cell": "safety",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "same",
-   "proposed_year": 2014,
-   "rule": "safety cell definition (model's stated prediction held) with imported_from transfer; evidence rule 1 (paired comparison)",
-   "note": "Stocks 2014 full text states guinea-pig plasma-potassium side effects 'no worse than formoterol'. Bjermer 2013 (PMID 23907810, NCT00736489, asthma) found less potassium suppression than formoterol at matched bronchodilation: same, imported_from MONDO:0004979.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Decision 4 safety: Stocks 2014 full text states the guinea-pig prediction (potassium side effects 'no worse than formoterol'); Bjermer 2013 (NCT00736489, asthma) found less potassium suppression than formoterol at matched bronchodilation. Decision 12 transfers safety with imported_from."
+   "status_supported": true,
+   "rule": null,
+   "note": "Kuna 2013 'No safety concerns were identified.' verbatim. Stocks 2014 full text: guinea-pig potassium effects 'no worse than formoterol', a stated prediction; held in COPD. Kuna before Stocks: retro. registry_date should be 2014-01-17 (NCT00929708).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -421,6 +429,7 @@
   "Does a pooled model-based (K-PD) analysis of a trial's primary-endpoint data (Nielsen 2012 for NCT00808288) count as the primary-endpoint result for the efficacy cell when the trial itself never reported?",
   "Does a medicinal-chemistry design claim resting on PK (rapid phase II clearance to minimise systemic effects, Glossop 2010) count as a model's stated safety prediction, or must the prediction come from a harm readout in a species?",
   "When the only patient-side safety comparison for a track is in another indication (AZD3199 potassium vs formoterol in asthma) and the context's own trial reports only 'no safety concerns', does imported_from permit same on the COPD track?",
-  "For a human_genetic patient-level track (ADRB2 genotype and vilanterol response, Condreay 2016) where no genotype effect was found, is the status contra (the genotype model predicted differential response) or same (the sponsor's null hypothesis held)? The rules do not define the prediction of a pharmacogenetic analysis."
+  "For a human_genetic patient-level track (ADRB2 genotype and vilanterol response, Condreay 2016) where no genotype effect was found, is the status contra (the genotype model predicted differential response) or same (the sponsor's null hypothesis held)? The rules do not define the prediction of a pharmacogenetic analysis.",
+  "Safety, vilanterol dog telemetry: does a heart-rate rise seen only in healthy volunteers at 4x the therapeutic dose (TQT, 100 ug) count as the predicted harm appearing, when COPD patients at 3-50 ug showed none?"
  ]
 }

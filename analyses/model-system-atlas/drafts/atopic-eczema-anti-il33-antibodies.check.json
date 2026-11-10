@@ -11,7 +11,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Imai 2013 PNAS resolves (PMID 23918359, epub 2013-08-05); quote verbatim in the abstract. Untested opener at model_first_use_year 2013 is right; no antibody binds mouse IL-33, product_in_model false correct."
+   "note": "Imai 2013 PNAS abstract (PMID 23918359) quote verbatim; untested opener 2013. K14-IL-33 transgenic tied to no member drug: class/not_applicable right; unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -20,34 +21,38 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Smith 2017 PLoS Genet resolves (PMID 28273074); quote verbatim in abstract. Phenotype is asthma/eosinophils; full-text check for an AD phenotype timed out, not verified. Track opening 2017 here vs model_first_use_year 2012 is tolerable."
+   "note": "Smith 2017 PLoS Genet abstract quote verbatim; untested opener 2017. Human-genetic system tied to no drug: class/not_applicable right; unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Chen 2019 STM resolves (PMID 31645451); quote verbatim, abstract only (paywalled). Direction-only same holds. Field fix: product_in_model must be false (etokimab never dosed in mice; entry 1 says so). No CT.gov record of the 12-patient study found."
+   "note": "Chen 2019 accepted MS: 'single intravenous 300mg dose of etokimab' in 12 AD patients; abstract quote near (EASI)50 wording. Drug etokimab, route iv, unselected right; same holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Same source, quote verbatim in abstract. Placebo-controlled HDM challenge inside the dosed-patient study: comparison_stated true, own human_challenge track, downstream readout all correct."
+   "note": "Chen 2019 MS: HDM challenge 'four days after receiving either placebo or etokimab (300mg IV)'; quote near ('compared to', 'atopic dermatitis'). Etokimab iv right; same, comparison_stated true holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Smith 2017 eosinophil prediction vs Chen 2019 eosinophil fall is admissible on direction. product_in_model has no meaning on a human_genetic track: set false. Would drop confidence to low (12 patients, no placebo for eosinophils)."
+   "note": "Etokimab 300 mg IV confirmed in Chen 2019 MS, which writes eosinophil reduction 'as predicted by genetic analysis of IL-33 loss-of-function', so comparison_stated could be true. Drug/route right; same holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -56,7 +61,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Kosloski 2024 CTS resolves (PMID 39077906, OA); quote verbatim. NCT03738423 results (2022-06-10) post functional-itepekimab PK only, no total IL-33 or eosinophils, so 2024 is the first date for this datum. strengthens on same-to-same is outside #127 (rule question)."
+   "note": "Kosloski 2024 abstract (PMID 39077906, epub 2024-08-01) quote verbatim. CT.gov: REGN3500 SC q2w/q4w; registry results carry no IL-33/eosinophil data, so 2024 holds. First on itepekimab sc track: strengthens dropped right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -65,7 +71,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Salimi 2013 JEM resolves (PMID 24323357, OA); quote verbatim. Untested opener: no mouse source states an antibody exposure target; product_in_model false correct."
+   "note": "Salimi 2013 JEM abstract quote verbatim; knockout system states no exposure target: untested no_prediction holds; class/not_applicable right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -74,7 +81,8 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "Hirota 2012 Nat Genet resolves (PMID 23042114, epub 2012-10-07); quote is the abstract clause with ellipses, near-verbatim. Admissible human_genetic opener; causal gene unresolved across IL1RL1/IL18R1/IL18RAP (rule question)."
+   "note": "Hirota 2012 Nat Genet abstract clause quoted with ellipses; untested opener 2012. GWAS tied to no drug: class/not_applicable right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -83,7 +91,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Salimi 2013 quote verbatim. Li 2017 (10.1038/cddis.2017.90, PMID 28383552) resolves and carries the quoted therapeutic-target sentence in its abstract. Mouse-track opener correct."
+   "note": "Salimi 2013 quote verbatim; untested opener 2013 on the MC903 knockout track; class/not_applicable right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -92,16 +101,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Release scraped, dated Nov. 08, 2019, quote verbatim. NCT03533751 results 2023-05-24: LS-mean differences 7.75/-6.32/1.97/4.82, p 0.45-0.83, placebo -49.4%, as stated. Pietka 2020 cites NCT03533751 as motivation: retro entry belongs here (see missing). 8-K date unverified."
+   "note": "Press release dated Nov. 08, 2019, quote verbatim; NCT03533751 all arms etokimab SC vs SC placebo, results 2023-05-24 agree. Drug etokimab, route sc right; contra, year 2019 hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Quote verbatim in abstract. Open-label EASI arm plus placebo-controlled challenge; untested opener on the human_challenge track in the same year with the model entry first (#30) is correct."
+   "note": "Chen 2019 MS quote near ('human disease, including atopic dermatitis'). Untested opener on HDM track; route sc follows the ATLAS SC comparison it opens (challenge ran on IV etokimab): acceptable.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -110,7 +121,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Same release and registry record as entry 3. Contra on this track holds: the 83% EASI50 arm had no placebo and ATLAS placebo fell 49%. Separate track from the mouse is right (different system)."
+   "note": "ATLAS press release quote verbatim, SC arms confirmed on CT.gov; contra on HDM-challenge track holds. Etokimab sc, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -119,21 +131,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Drafter's pairing; contra on direction is admissible for a human_genetic track (decision 8) at low confidence. Hirota's locus does not resolve to IL33/IL1RL1 and Smith 2017 is an asthma finding, so untested is the alternative (rule question). product_in_model false."
+   "note": "ATLAS quote verbatim, SC confirmed; contra on genetics track holds at low confidence. Etokimab sc right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2021,
-   "rule": "7",
-   "note": "Status right, year wrong: the second miss was public 2021-04-20 (NCT03831191 results, 'terminated for lack of efficacy after an interim analysis'), then NCT03736967 2021-11-01. Torudokimab's tier-1 report Laquer 2022 BJD (10.1111/bjd.21631, epub 2022-07-29) is missing from patient_trials (doi null).",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Both agree contra (second miss on a failed track, strengthens). Rule 6: year is the earliest public date of that second miss, NCT03831191 results 2021-04-20, not Kosloski 2024; add Laquer 2022 DOI to patient_trials."
+   "note": "Kosloski 2024 quote verbatim. NCT03736967: REGN3500 SC q2w monotherapy arm vs placebo, primary EASI % change wk16, whyStopped 'Lack of efficacy', results first posted 2021-11-01: year 2021, itepekimab sc, combination_with null right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -142,7 +151,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Okragly 2021 J Inflamm Res resolves (PMID 34408465, OA); quote verbatim. Abstract also states no binding to mouse, rat or rabbit IL-33 and cyno cross-reactivity engineered for unpublished NHP toxicity studies. Specificity panel is in vitro; model_kind rests on cyno PK."
+   "note": "Okragly 2021 quote verbatim; full text states only specificity and cyno cross-reactivity for later NHP tox, no harm or margin. Torudokimab sc (NCT03831191) right; untested no_prediction holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -151,12 +161,13 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": false,
-   "proposed_status": "same",
+   "proposed_status": "untested",
    "proposed_year": 2021,
-   "rule": "12",
-   "note": "Model side is torudokimab-specific (specificity, cyno PK), an off-target prediction that does not pool across members (decision 12); pair with torudokimab's own record, NCT03831191 AE table (2021-04-20; SAEs 0/33, 0/35, 0/34, 2/33) or Laquer 2022, not itepekimab. Low confidence; else untested.",
+   "rule": "Evidence rule 6 (dating: earliest public date incl. registry results posting)",
+   "note": "Kosloski 2024 quote verbatim; untested no_prediction right (torudokimab panel names no harm, never run for itepekimab), itepekimab sc right. But NCT03736967 posted itepekimab AE tables 2021-11-01, earlier than 2024 and than registry_date 2022-06-10.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Rule 5 no_prediction: a binding-specificity panel plus cyno PK names no harm and states no margin, so nothing checkable; 'clean antibody' is the drafter's inference. Torudokimab data also cannot predict itepekimab's tolerability."
+   "adjudication_note": "Evidence rule 6: status untested (no_prediction) stands; NCT03736967 itepekimab results with AE tables posted 2021-11-01, so the entry dates 2021, not 2024."
   },
   {
    "cell": "engagement",
@@ -165,8 +176,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Peng 2018 resolves (PMID 28952069; Crossref online 2017-09-26, print Feb 2018); quote verbatim, abstract only. Untested opener at 2017 correct under rule 7. Missed pairing: Chen 2019 full text reports no serum-IgE change in 12 dosed patients (see missing).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Peng 2018 Inflammation abstract (PMID 28952069) read; non-member anti-mouse IL-33 antibody, so class/not_applicable right. Untested opener 2017 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -175,8 +186,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Okragly 2021 resolves (PMID 34408465, PMC8364917, epub 2021-08-11); quote verbatim; full text: torudokimab 1 day before human IL-33 i.p., serum IL-5 at 6 h, n=5. Untested holds. Rule 7 proxy would allow a 2017 opener (paper dates FIH to Nov 2017); status unchanged.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Okragly 2021 (PMC full text) quote verbatim; NCT03831191 dosed LY3375880 SC Q4W: torudokimab sc right; no dosed-human IL-5, untested not_measured holds. retrodiction should be true (first public 2021, after Chen 2019 eosinophil result on IL-33).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -185,23 +196,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Chen 2019 resolves (PMID 31645451; ORA accepted manuscript read). Quote verbatim. Opener fine, but the system is healthy-donor neutrophils migrating to patients' blister fluid in transwells, run after the trial readout; see index 10. Study is EudraCT 2016-002539-14.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Chen 2019 MS quote verbatim; ex-vivo opener. Patients compared got etokimab 300 mg IV: drug etokimab, route iv right; untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 10,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2019,
-   "rule": "10",
-   "note": "Full text: 'Given the clinical trial data implicating a key role for IL-33 in granulocyte migration in vivo, we next tested whether etokimab could modulate neutrophil migration ex vivo', on trial blister fluid; inhibition partial (Fig. 7C). Motivated by the patient result: retro, retrodiction true.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: the transwell assay ran on trial blister fluid after, and 'given', the in-vivo neutrophil result, so it is a retrodiction; it reproduces the human direction (partial inhibition), hence retro, never same. retrodiction: true."
+   "status_supported": true,
+   "note": "Chen 2019 MS: 'Given the clinical trial data implicating ... in vivo, we next tested whether etokimab could modulate neutrophil migration ex vivo' (healthy-donor blood). Run after: retro, retrodiction true right; iv right. Judgement text still says 'Scored same': stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -210,8 +216,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Peng 2018 resolves; quote verbatim in abstract (14 s.c. doses over 33 days, tacrolimus comparator confirmed there). Crossref online 2017-09-26, PubMed entrez 2017-09-28, print Feb 2018: year 2017 is right under rule 7. Untested opener correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Peng 2018 abstract: 'blockade of IL-33 has a curative effect on AD' verbatim; non-member anti-mouse antibody: class/not_applicable right; untested opener 2017.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -220,8 +226,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Release scraped (Nov. 08, 2019), quote verbatim; NCT03533751 results 2023-05-24: LS-mean differences 7.75/-6.32/1.97/4.82, p 0.45-0.83, placebo -49.38%. Model predicted cure, patients no benefit: contra; tier 5 with model_src tier 1 per decision 2. Same src/tier question as efficacy 3.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "ATLAS quote verbatim; etokimab SC confirmed; Peng model public 2017, before any patient result, so prospective. Contra holds; etokimab sc right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -230,8 +236,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "NCT03831191 read via API v2: whyStopped verbatim, results first posted 2021-04-20, vIGA 0/1 9.5/5.0/5.9/4.8%. Second miss on the track, strengthens per #127; year 2021 under rule 7, consistent with the correction on efficacy 7.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "NCT03831191 whyStopped verbatim; LY3375880 SC Q4W vs SC placebo; results 2021-04-20. Torudokimab sc right; first on torudokimab track, strengthens dropped right; contra holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -240,8 +246,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "DaSilva-Arnold 2018 resolves (PMID 29368135, PMC6198812, epub 2018-01-24); quote verbatim; full text: modified-EASI scores higher or trending higher at every week 10-20, n=11/group. Untested opener at 2018 correct; the stated prediction is worsening (IL-33 attenuates), not a null.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "DaSilva-Arnold 2018 abstract (epub 2018-01-24) quote verbatim; Stat6VT x IL-33 knockout tied to no drug: class/not_applicable right; untested opener 2018.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -252,11 +258,11 @@
    "status_supported": false,
    "proposed_status": "contra",
    "proposed_year": 2019,
-   "rule": "4 (#58) / 5",
-   "note": "Model predicted worsening; ATLAS arms moved with placebo (differences +7.8 to -6.3, p 0.45-0.83). Null-null is same only when the null was predicted (#58); here the predicted effect was absent, which decision 4 calls failed. Contra at low confidence; same would set the cell headline matched.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "rule": "Status table: same needs agreement in direction; a predicted effect that never appeared is a wrong prediction (contra, magnitude opposite)",
+   "note": "ATLAS quote verbatim, etokimab SC confirmed: drug/route right. DaSilva-Arnold predicted worsening with IL-33 loss; ATLAS arms tracked placebo, no worsening. Direction not matched: contra, not same.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "contra",
-   "adjudication_note": "Decision 4 (#58): the model predicted worsening, not a null, and that effect was absent (arms tracked placebo); null-null is same only when the null was predicted. Decision 5 analogue: a conservative model is still wrong. magnitude: opposite."
+   "adjudication_note": "Status table (same needs agreement in direction): DaSilva-Arnold abstract says IL-33 loss made disease more severe; ATLAS arms tracked placebo, no worsening. Harm counted here, so unmet predicted effect is contra, magnitude opposite."
   },
   {
    "cell": "engagement",
@@ -265,8 +271,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Chen 2019 accepted manuscript (ORA uuid:5e031a33-1e4d...) quote verbatim: IgE 10101/9954/10321 kU/L, day 0/29/140. Peng 2018 abstract (online 2017-09-26): aIL-33Ab significantly reduced serum IgE in DNCB mice. Contra low confidence holds; Chen attributes the null to nothing.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Chen 2019 MS: serum IgE 10101 to 9954 (day 29) to 10321 (day 140) kU/L after one 300 mg IV dose; Peng DNCB mice lowered IgE. Etokimab iv right; contra low confidence unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

@@ -25,30 +25,22 @@
   {
    "cell": "dose",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2009,
-   "rule": "Evidence rule 6 (dating: cell opens at model_first_use_year)",
-   "note": "Quote verbatim. The PA-IC90 trough target (0.064 ug/mL) was public earlier: Min 2010 AAC healthy-volunteer abstract, epub 2009-11-02. Open at 2009, model_first_use_year 2009.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Status agreed; dispute is dating only. Rule 6 (cell opens at model_first_use_year): Min 2010 AAC (epub 2009-11-02) states the PA-IC90 0.064 ug/mL target, so the opening untested entry belongs at 2009."
+   "note": "Min 2010 AAC (PMID 19884365, epub 2009-11-02); quote verbatim in abstract, which itself states PA-IC90 0.064 ug/mL. Untested opener at 2009, dolutegravir, oral, unselected correct. Judgement's 'abstract gives PA-EC50 only' is stale prose.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "Evidence rule 6 (dating) with dose table row 'reached, drug worked'; healthy-volunteer PK counts",
-   "note": "FDA ClinPharm quote verbatim (bundle). But Min 2010 (2009) states HV 50 mg Ctau ~25x PA-IC90, and 2011 monotherapy/SPRING-1 showed it worked; earliest public pairing is 2011, not 2013.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose table 'target reached' is same; efficacy is not needed and HV PK counts. Rule 6: Min 2010 (epub 2009-11-02) shows HV 50 mg Ctau ~25x PA-IC90, so the comparison was public 2009, earlier than checker's 2011."
+   "note": "Min 2010 abstract quote verbatim: HV 50 mg Ctau 1.6 ug/mL ~25x PA-IC90. Target reached = same; HV PK counts; no earlier patient result for the drug, so not retro. Year 2009, oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -62,11 +54,17 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "SPRING-1 epub 2011-10-20, primary endpoint week-16 <50 copies; quote verbatim. NCT00951015 results posted 2013-11-11, matches. No member efficacy failure found."
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2011,
+   "rule": "Retrodiction rule: for efficacy a model first public after a patient result on the same target and action (member or not) is a retrodiction; one that reproduced the human data is retro, never same",
+   "note": "SPRING-1 (PMID 22018760, epub 2011-10-20) quote verbatim; combination_with and note correct. But the DTG cell-culture model (2010) post-dates raltegravir's patient efficacy (Phase 2/3 2007-2008) on the same target and action: retrodiction true, retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (efficacy is a target claim): the DTG cell-culture model (2010) post-dates raltegravir's patient efficacy on the same target and action (2007-2008); it reproduced SPRING-1, so retro, not same."
   },
   {
    "cell": "safety",
@@ -80,17 +78,12 @@
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2018,
-   "rule": "year = earliest public source showing the patient result (epub date)",
-   "note": "year: 2019 -> 2018 (epub_year 2018, print_year 2018; src 10.1056/NEJMc1807653, Zash 2018 NEJM letter, PMID 30037297, epub 2018-07-24). PMC6550482 text verbatim: 'Among the 426 infants ... 4 (0.94%) had a neural-tube defect.' Status contra unchanged. | superseded: confirmed (): Zash 2019 NEJM quote verbatim. Signal first public July 2018 (NEJM letter 10.1056/NEJMc1807653, epub 2018-07-24; no abstract to quote, FDA 2018 DSC page 404). 2019 dating kept per quote rule.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status agreed (contra; rat EFD silent on NTDs). Rule 6 dating: Zash 2018 NEJM letter (PMID 30037297, epub 2018-07-24) first showed 4/426 NTDs with DTG at conception; year 2018."
+   "note": "Zash 2018 NEJM letter (PMID 30037297, epub 2018-07-24); quote verbatim in PMC6550482. Contra, 2018, dolutegravir, oral, unselected correct. Judgement still carries a stale 'could not quote' sentence.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -100,11 +93,12 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "same",
-   "proposed_year": 2025,
-   "rule": "Decision 6(b) (patient_signal_reversed) with evidence rule 6 dating",
-   "note": "Zash 2026 quote verbatim; Crossref print 2026-11. Earlier tier 1 Tsepamo reanalysis, AIDS 2025 (10.1097/QAD.0000000000004326, epub 2025-08-26): 'This difference diminished with subsequent data, with updated estimates of 0.10% for DTG and 0.11% for non-DTG exposures.' Date reversal 2025.",
+   "proposed_year": 2022,
+   "rule": "Evidence rule 6 (year = earliest public date, congress abstract included, even when a later paper is the higher-tier source of the status)",
+   "note": "Brummel 2025 (PMID 40880283, epub 2025-08-26) quote verbatim; tier 1 attenuation supports same. But attenuation was public at AIDS 2022 poster PELBB02 (Zash): DTG 10/9,460 (0.11%) vs non-DTG 25/23,664 (0.11%) (i-base htb/43791). Year 2022.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "same",
-   "adjudication_note": "Status rule contra (patient_signal_reversed) with rule 6 dating: Brummel 2025 AIDS (PMID 40880283, epub 2025-08-26), tier 1, shows Tsepamo NTD signal fell to background (0.10% vs 0.11%). Same; year 2025."
+   "adjudication_note": "Evidence rule 6: status stands on Brummel 2025 (tier 1, attenuation to background), but the attenuation was first public at AIDS 2022 (Zash, DTG 0.11% vs non-DTG 0.11%), so the entry dates to 2022."
   },
   {
    "cell": "efficacy",
@@ -123,38 +117,33 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Eron VIKING (PMID 23225901) epub 2012-12-07, quote verbatim. Mutant panel predated the trial, so prospective: same, not retro. MedR: 'As expected, response was influenced by fold change susceptibility to DTG' (verbatim). registry_date belongs to VIKING-3; harmless.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "VIKING (PMID 23225901, epub 2012-12-07) quote verbatim; abstract confirms DTG with failing regimen (no RAL) to day 10, day-11 primary. biomarker_selected, oral, combination note correct. Not retro: no earlier patient result for DTG in RAL-resistant virus (see rule question).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "untested",
    "proposed_year": 2012,
-   "rule": "Evidence rule 6 (dating: earliest public date)",
-   "note": "ClinPharmR quote verbatim (bundle). But Koteff BJCP (PMID 22905856), which cites the in-vitro OCT2 data, was accepted 2012-08-11 and online 2012-08-22; open at 2012, model_first_use_year 2012.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "rule": "Evidence rule 2 (source_tier 1 = peer-reviewed paper) and rule 6 (epub_year)",
+   "note": "Koteff BJCP (PMID 22905856, online 2012-08) quote verbatim; untested opener 2012, oral, unselected right. Fields still inconsistent: src is a peer-reviewed paper so source_tier 1 not 2, epub_year 2012 not 2013 (as on safety 5).",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Status agreed; dating only. Rule 6: Koteff BJCP (PMID 22905856), online 2012-08, cites the in-vitro OCT2 data; opening untested entry and model_first_use_year move to 2012."
+   "adjudication_note": "Opener status untested agreed; correction is fields only (rule 2: Koteff BJCP is tier 1; rule 6: epub_year 2012). Not the track's latest entry, so no untested_reason."
   },
   {
    "cell": "safety",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2012,
-   "rule": "Evidence rule 6 (dating: epub_year)",
-   "note": "Quote verbatim in abstract. Iohexol GFR test was prospective for the model's new claim (no true GFR loss), so same, not retro. Online 2012-08-22 (print 2013): year and epub_year 2012.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status agreed (prospective iohexol test of the OCT2 claim, not retro). Rule 6 dating: year is earliest public date, Koteff online 2012-08; year and epub_year 2012."
+   "note": "Koteff abstract quote verbatim; iohexol/PAH unchanged, CLcr fall only, in healthy volunteers. Prospective test of the no-true-GFR-loss claim on the drug's own data, so same not retro; year 2012 (online 2012-08) correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -179,12 +168,17 @@
   {
    "cell": "safety",
    "index": 8,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Brummel AIDS (PMID 40880283) epub 2025-08-26, quote verbatim; contra/opposite holds. But the final Tsepamo data came after the 2020 model, so this is its first prospective test: retrodiction should be false; patient_signal_reversed is the turn-back flag, set false.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "proposed_status": "contra",
+   "proposed_year": 2022,
+   "rule": "Evidence rule 6 (year = earliest public date, congress abstract included)",
+   "note": "Brummel quote verbatim; contra/opposite and retrodiction false (2020-12 model precedes the update) hold. First public absence of the human signal is AIDS 2022 PELBB02 (DTG 0.11% vs non-DTG 0.11%), so year 2022. Judgement keeps stale 'Kept retrodiction true'.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Evidence rule 6: contra/opposite holds (2020 model precedes the attenuation, retrodiction false), dated to the first public absence of the signal, AIDS 2022 Zash (0.11% vs 0.11%), so year 2022."
   },
   {
    "cell": "safety",
@@ -223,13 +217,15 @@
   "Zash 2018 NEJM letter 10.1056/NEJMc1807653 (epub 2018-07-24) and the May 2018 FDA/EMA safety communications: first public NTD signal, a year before the scored entry.",
   "Zebrafish embryo DTG developmental-toxicity model (Cabrera et al. AIDS 2019, 10.1097/QAD.0000000000002289; Cabrera 2026 DMM 10.1242/dmm.052632): folate-receptor antagonism and NTD-type defects set against the Tsepamo signal; no track.",
   "Second mouse NTD model, SWV/Fnn and other strains dosed with DTG (Tukeman et al. AIDS 2024, 10.1097/QAD.0000000000003639; Gelineau-van Waes 2023 Front Cell Dev Biol 10.3389/fcell.2023.1175917): DTG-induced NTDs, folate-responsive; a separate model system from the C57BL/6J therapeutic-dose track.",
-  "Hypomagnesemic-mouse DTG NTD model (Gelineau-van Waes et al. 2023, Front Cell Dev Biol 10.3389/fcell.2023.1175917): low-Mg diet / LM/Bc strain sensitiser, folded into the low-folate track as a note; a different sensitiser, so arguably its own model_id."
+  "Hypomagnesemic-mouse DTG NTD model (Gelineau-van Waes et al. 2023, Front Cell Dev Biol 10.3389/fcell.2023.1175917): low-Mg diet / LM/Bc strain sensitiser, folded into the low-folate track as a note; a different sensitiser, so arguably its own model_id.",
+  "Tsepamo AIDS 2022 late-breaker poster PELBB02 (Zash et al., Montreal, Jul-Aug 2022; https://i-base.info/htb/43791): DTG-at-conception NTD 0.11% vs non-DTG 0.11%, the earliest public attenuation; dates safety 3 and 8 to 2022."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
   "When the first public patient signal is a tier 1 letter with no abstract (Zash 2018) and a tier 2 regulator communication exists but could not be retrieved, should the contra be dated to the first public signal (2018) or the first quotable source (2019)?",
   "For dose 'reached, drug worked', is the entry dated when both halves are public (HV PK reaching target 2009 + first efficacy 2011) via pairing, or does it need a source that states trough vs target and response together (FDA review 2013)?",
   "Class-wide harms not tested against tox packages (INSTI weight gain, DTG creatinine/OCT2, neuropsychiatric AEs): does rodent silence on weight gain count as a miss the species could have shown?",
-  "mouse-low-folate-dtg-ntd safety 11: the model predicts NTDs only under low folate; the patient source (Brummel 2025) does not report maternal folate status. Is contra allowed when the model's sensitising condition is inferred for the population rather than shown by the patient source, or must it be untested?"
+  "mouse-low-folate-dtg-ntd safety 11: the model predicts NTDs only under low folate; the patient source (Brummel 2025) does not report maternal folate status. Is contra allowed when the model's sensitising condition is inferred for the population rather than shown by the patient source, or must it be untested?",
+  "Retrodiction for patient-level efficacy tracks: the INSTI resistant-mutant panel (2010) post-dates raltegravir patient results on the same target, but no patient result had yet shown which RAL-resistant genotypes respond to dolutegravir. Does the target-level retrodiction rule cover a patient-level (genotype) prediction? Efficacy 1 and engagement 1-2 on hiv-cell-culture-replication also post-date raltegravir and carry retrodiction false."
  ]
 }

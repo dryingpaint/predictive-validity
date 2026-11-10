@@ -50,7 +50,12 @@
     "population": "Unselected",
     "model_first_use_year": 2005,
     "judgement": "Opening entry at the first published use of a member antibody (dalotuzumab parent h7C10) in an NSCLC xenograft.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "dalotuzumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "year": 2011,
@@ -87,7 +92,11 @@
     "source_calls_it": null,
     "population": "Advanced solid tumours expressing IGF-1R",
     "model_first_use_year": 2005,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "dalotuzumab",
+    "route": "iv",
+    "population_group": "other_disease",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -96,7 +105,7 @@
     "status": "untested",
     "model": "A549 NSCLC xenografts in nude mice",
     "model_id": "a549-xenograft-anti-igf1r",
-    "note": "The xenograft work stated no target exposure or tolerated margin; clinical doses came from phase I PK, and cixutumumab plus erlotinib proved hard to tolerate.",
+    "note": "The xenograft work stated no target exposure or tolerated margin; clinical doses came from phase I PK, and cixutumumab plus erlotinib proved hard to tolerate. Track scored for cixutumumab, whose patients the quote reports; the xenografts used h7C10 (dalotuzumab), so product not in model.",
     "short": "No model exposure target stated",
     "src": "https://doi.org/10.1097/JTO.0b013e31823c5b11",
     "srcLabel": "Weickhardt 2012",
@@ -116,7 +125,7 @@
     "print_year": 2012,
     "registry_date": null,
     "model_filed": null,
-    "product_in_model": true,
+    "product_in_model": false,
     "model_kind": "animal",
     "retrodiction": false,
     "imported_from": null,
@@ -128,7 +137,11 @@
     "blocked_by": null,
     "margin_stated": false,
     "prediction_level": "class",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "cixutumumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": "erlotinib"
    }
   ],
   "efficacy": [
@@ -165,14 +178,19 @@
     "population": "Unselected",
     "model_first_use_year": 2005,
     "judgement": "Chose the dalotuzumab-parent A549 xenograft as the class's NSCLC model: it is a member antibody in an NSCLC xenograft and tested the same add-on combinations the trials ran.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "dalotuzumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "year": 2011,
     "status": "contra",
     "model": "A549 NSCLC xenografts in nude mice",
     "model_id": "a549-xenograft-anti-igf1r",
-    "note": "Teprotumumab (R1507) added to erlotinib did not raise 12-week PFS (37% and 44% vs 39%) in unselected NSCLC.",
+    "note": "Teprotumumab (R1507) added to erlotinib did not raise 12-week PFS (37% and 44% vs 39%) in unselected NSCLC. Combination trial (R1507 plus erlotinib against erlotinib plus placebo), scored on its primary 12-week PFS rate.",
     "short": "R1507 + erlotinib: no PFS gain",
     "src": "https://doi.org/10.1200/JCO.2011.36.6799",
     "srcLabel": "Ramalingam 2011",
@@ -223,7 +241,11 @@
       "quote": "The addition of cixutumumab to CPB increased toxicity without improving efficacy and is not recommended for further development in non-small-cell lung cancer."
      }
     ],
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "teprotumumab",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": "erlotinib"
    },
    {
     "retrodiction": false,
@@ -261,14 +283,18 @@
     "model": "22-line NSCLC cell panel treated with R1507 (total IGF-1R as response marker)",
     "model_kind": "ex_vivo",
     "prediction_level": "patient",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "drug": "teprotumumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2011,
     "status": "contra",
-    "note": "In the randomized R1507+erlotinib trial (NO21160), tumour IGF-1R level defined no subgroup that benefited on the primary 12-week PFS rate, against the panel's prediction.",
+    "note": "In the randomized R1507+erlotinib trial (NO21160), tumour IGF-1R level defined no subgroup that benefited on the primary 12-week PFS rate, against the panel's prediction. Combination trial with erlotinib, scored on its primary endpoint within IGF1R subgroups.",
     "short": "Tumour IGF-1R did not pick R1507 responders",
     "src": "https://doi.org/10.1200/jco.2011.29.15_suppl.7584",
     "srcLabel": "Habben 2011 (ASCO)",
@@ -299,7 +325,61 @@
     "model": "22-line NSCLC cell panel treated with R1507 (total IGF-1R as response marker)",
     "model_kind": "ex_vivo",
     "prediction_level": "patient",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "drug": "teprotumumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": "erlotinib"
+   },
+   {
+    "year": 2014,
+    "status": "contra",
+    "model": "A549 NSCLC xenografts in nude mice",
+    "model_id": "a549-xenograft-anti-igf1r",
+    "note": "Dalotuzumab, the antibody the A549 model was run with, added to erlotinib did not lengthen PFS (2.5 vs 1.6 months, not significant). Combination trial, scored on its phase II primary endpoint (PFS).",
+    "short": "Dalotuzumab + erlotinib: no PFS gain",
+    "src": "https://doi.org/10.1186/2162-3619-3-26",
+    "srcLabel": "Moran 2014",
+    "quote": "The addition of dalotuzumab to erlotinib did not improve efficacy outcome in patients with refractory advanced NSCLC.",
+    "confidence": "medium",
+    "confidence_note": "Abstract-level reading (PMID 25414803); primary phase II endpoint (median PFS) from the ClinicalTrials.gov record NCT00654420. No earlier congress abstract checked.",
+    "reason": "Model's own antibody gave no PFS benefit",
+    "judgement": "Split the A549 track by drug: h7C10 is dalotuzumab, so this is the model's own drug (product in model), paired with its randomized NSCLC add-on trial. Huang 2016 (dalotuzumab plus pemetrexed/cisplatin) agrees and is listed as a patient trial.",
+    "endpoint_role": "primary",
+    "outcome_tested": null,
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1002/ijc.20543",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2014,
+    "print_year": 2014,
+    "registry_date": "2016-12-28",
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "PFS benefit of add-on vs near-complete xenograft growth inhibition, direction only",
+    "source_calls_it": null,
+    "population": "Unselected refractory advanced NSCLC (NCT00654420)",
+    "model_first_use_year": 2005,
+    "prediction_level": "class",
+    "patient_trials": [
+     {
+      "nct": "NCT00799240",
+      "registry_date": null,
+      "doi": "10.3389/fonc.2015.00301",
+      "quote": "PC + D had a similar response rate compared to PC, with a higher rate of hyperglycemia."
+     }
+    ],
+    "drug": "dalotuzumab",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": "erlotinib"
    }
   ],
   "safety": [
@@ -308,7 +388,7 @@
     "status": "untested",
     "model": "A549 NSCLC xenografts in nude mice",
     "model_id": "a549-xenograft-anti-igf1r",
-    "note": "Xenograft studies reported no host metabolic toxicity; patients on cixutumumab had more grade 3-4 hyperglycemia (9.4% vs 1.2%). No published tox-species prediction found.",
+    "note": "Xenograft studies reported no host metabolic toxicity; patients on cixutumumab had more grade 3-4 hyperglycemia (9.4% vs 1.2%). No published tox-species prediction found. Goetsch 2005 states no tolerability claim, so there is no passing safety prediction to score; xenografts used h7C10, not cixutumumab.",
     "short": "No stated harm prediction found",
     "src": "https://doi.org/10.1016/j.jtho.2016.07.013",
     "srcLabel": "Novello 2017",
@@ -328,7 +408,7 @@
     "print_year": 2017,
     "registry_date": "2018-06-12",
     "model_filed": null,
-    "product_in_model": true,
+    "product_in_model": false,
     "model_kind": "animal",
     "retrodiction": false,
     "imported_from": null,
@@ -337,7 +417,12 @@
     "source_calls_it": null,
     "population": "Stage IV nonsquamous NSCLC",
     "model_first_use_year": 2005,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "cixutumumab",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": "pemetrexed + cisplatin",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -372,43 +457,51 @@
     "model": "Cynomolgus monkey repeat-dose toxicology of R1507/teprotumumab",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2004
+    "model_first_use_year": 2004,
+    "drug": "teprotumumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2021,
     "status": "contra",
-    "note": "FDA: monkeys predicted weight loss and low ALP but not hyperglycemia, infusion reactions or IBD flares; hyperglycemia is an on-target harm also seen with members in NSCLC.",
+    "note": "NSCLC patients on R1507 plus erlotinib had hyperglycemia (grade 3-4 in 2% and 4% vs 0% on placebo); the monkey studies predicted none. This disease's patients were measured, so their result sets the status, not the TED harm. The monkey data were first public in the 2021 FDA review, after R1507's own patient hyperglycemia (2010-2011), so this is a retrodiction that failed to reproduce it: contra.",
     "short": "Monkeys missed hyperglycemia",
-    "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761143Orig1s000PharmR.pdf",
-    "srcLabel": "FDA PharmR BLA 761143",
-    "quote": "the monkey model predicted the clinical reduced weight gain/weight loss and decreased serum ALP, but not the clinical infusion reactions, exacerbation of inflammatory bowel disease, or hyperglycemia.",
+    "src": "https://doi.org/10.1200/JCO.2011.36.6799",
+    "srcLabel": "Ramalingam 2011",
+    "quote": "Notably, hyperglycemia was observed in only six patients treated with R1507.",
     "confidence": "medium",
-    "confidence_note": "Review dated January 2020 (approval Jan 2020) but filed under nda/2021, so dated to 2021 posting; exact posting date not verified. Comparison made in TED patients, imported.",
+    "confidence_note": "Ramalingam 2011 full text read on PMC (Table 2: hyperglycemia grade 3-4 in 2 and 4 percent of R1507 arms, none on placebo, P = .17). Monkey side from the FDA BLA 761143 pharmacology review, posted under nda/2021; exact posting date not verified.",
     "reason": "Monkeys silent on on-target hyperglycemia",
-    "judgement": "Monkeys can show glucose dysregulation, so their silence on hyperglycemia is a scored miss, not a species limit. Hyperglycemia is on-target (IGF1R/IR), so the harm pools across modality; also seen with cixutumumab (Novello 2017, Argiris 2017) and dalotuzumab (Huang 2016) in NSCLC. Partial match on weight/ALP noted.",
+    "judgement": "Monkeys can show glucose dysregulation, so their silence on hyperglycemia is a scored miss. FDA (TED patients) states: \"the monkey model predicted the clinical reduced weight gain/weight loss and decreased serum ALP, but not the clinical infusion reactions, exacerbation of inflammatory bowel disease, or hyperglycemia.\" Rulings applied: harm imported from TED only when this disease has no patient data, and NSCLC R1507 patients were measured; safety retrodiction counts only the same drug's own earlier patient result, which R1507 had (the R1507 phase I cited by Ramalingam 2011, and Ramalingam 2011 itself).",
     "subjects": "patients",
-    "comparison_stated": true,
-    "source_tier": 2,
-    "model_src": null,
-    "model_src_tier": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761143Orig1s000PharmR.pdf",
+    "model_src_tier": 2,
     "trial_unreported": false,
     "epub_year": 2021,
-    "print_year": null,
-    "registry_date": null,
+    "print_year": 2011,
+    "registry_date": "2021-01-05",
     "model_filed": true,
     "product_in_model": true,
-    "imported_from": "MONDO:0001509",
+    "imported_from": null,
     "magnitude": "direction_only",
-    "magnitude_basis": "presence of hyperglycemia, infusion reactions and IBD exacerbation in patients vs none in monkeys",
-    "source_calls_it": "miss",
-    "population": "Thyroid eye disease (teprotumumab BLA trials)",
+    "magnitude_basis": "presence of hyperglycemia in R1507-treated NSCLC patients vs none in monkeys",
+    "source_calls_it": null,
+    "population": "Advanced NSCLC after 1-2 prior regimens, R1507 plus erlotinib (NCT00760929)",
     "model_id": "cyno-tox-teprotumumab",
     "model": "Cynomolgus monkey repeat-dose toxicology of R1507/teprotumumab",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2004
+    "model_first_use_year": 2004,
+    "drug": "teprotumumab",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": "erlotinib"
    }
   ]
  }

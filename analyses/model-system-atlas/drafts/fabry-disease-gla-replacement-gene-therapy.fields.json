@@ -1,0 +1,51 @@
+{
+ "tile": "fabry-disease-gla-replacement-gene-therapy",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "year 2021 -> 2017: rule 6 earliest public date, AVROBIO press release 2017-10-12 (FACTs patient 1) reported normal plasma alpha-Gal A within 45 days; status same unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "year 2021 -> 2017: rule 6 earliest public date, AVROBIO press release 2017-10-12 (FACTs patient 1) \"No study related serious adverse events\"; status same unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2024 -> 2019: rule 6 earliest public date (AVROBIO press release, July 2019, 87% kidney Gb3 reduction in first FAB-201 biopsy); single-arm design ruling, status same unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "year 2026 -> 2021: rule 6 earliest public date, Sangamo press release 2021-11-04 (https://investor.sangamo.com/news-releases/news-release-details/sangamo-therapeutics-announces-preliminary-phase-12-data-showing) \"All four patients in the first two dose cohorts exhibited above normal α-Gal A activity\"; status same unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "year 2026 -> 2021: rule 6 earliest public date, Sangamo press release 2021-11-04 (https://investor.sangamo.com/news-releases/news-release-details/sangamo-therapeutics-announces-preliminary-phase-12-data-showing); status same unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "status same -> retro: retrodiction rule for dose/safety (same drug's own patient result public first: Schiffmann 2019, epub 2019; the animal margin and silence first public in the 2023 BLA 761161 review)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "status same -> retro: retrodiction rule for dose/safety (same drug's own patient result public first: Schiffmann 2019, epub 2019; the animal margin and silence first public in the 2023 BLA 761161 review)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status untested -> contra, retrodiction true: Jeyakumar 2023 states the starting dose was set to give normal-range plasma alpha-Gal A; FLT190's own patient levels (Freeline press 2021-11-09) were public first and fell short; quote changed to the dose sentence"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status untested -> contra, retrodiction true: NHP silence first public 2023-01-11, after FLT190's own patient myocarditis and liver-enzyme rise (Freeline press 2021-11-09); failed to reproduce them"
+  }
+ ],
+ "added": []
+}

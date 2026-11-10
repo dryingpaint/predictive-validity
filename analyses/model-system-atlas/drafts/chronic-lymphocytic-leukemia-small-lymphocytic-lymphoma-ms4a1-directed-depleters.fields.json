@@ -1,0 +1,86 @@
+{
+ "tile": "chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-ms4a1-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug=ublituximab, route=iv, population_group=biomarker_selected set from the entry's sources"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug=epcoritamab, route=sc, population_group=stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug=epcoritamab, route=sc, population_group=stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug=epcoritamab, route=sc, population_group=stage_or_line set from the entry's sources; status same -> retro (retrodiction rule: rituximab B-cell depletion in patients public 1994)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug=veltuzumab, route=sc, population_group=unselected set from the entry's sources"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug=veltuzumab, route=sc, population_group=unselected set from the entry's sources; status same -> retro (retrodiction rule: rituximab B-cell depletion in patients public 1994)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug=ublituximab, route=iv, population_group=biomarker_selected set from the entry's sources"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug=epcoritamab, route=sc, population_group=stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug=veltuzumab, route=sc, population_group=unselected set from the entry's sources"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug=ublituximab, route=iv, population_group=biomarker_selected set from the entry's sources"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug=ublituximab, route=iv, population_group=biomarker_selected set from the entry's sources; status same -> retro (retrodiction rule: rituximab CLL responses public 2001); year 2021 -> 2017 (rule 6: ASCO 2017 oral and press release 2017-06-03); combination_with ibrutinib"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug=epcoritamab, route=sc, population_group=stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug=epcoritamab, route=sc, population_group=stage_or_line set from the entry's sources; status same -> retro (retrodiction rule, adjudicated in check.json; EPCORE CLL-1 escalation responses public 2021 and rituximab CLL responses 2001); single-arm design noted"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug=veltuzumab, route=sc, population_group=unselected set from the entry's sources"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug=epcoritamab, route=sc, population_group=stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug=epcoritamab, route=sc, population_group=stage_or_line set from the entry's sources; year 2024 -> 2021, src/quote Danilov 2024 -> Kater 2021 ASH abstract (rule 6; check.json adjudication); status same unchanged"
+  }
+ ],
+ "added": []
+}

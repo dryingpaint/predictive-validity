@@ -53,7 +53,11 @@
     "population": "Unselected",
     "model_first_use_year": 2009,
     "readout_tier": "downstream",
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "crisaborole",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -91,7 +95,11 @@
     "population": "Unselected",
     "model_first_use_year": 2020,
     "readout_tier": "downstream",
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "leo-29102",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -130,7 +138,11 @@
     "population": "Unselected",
     "model_first_use_year": 2009,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "crisaborole",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2010,
@@ -167,7 +179,11 @@
     "population": "Unselected",
     "model_first_use_year": 2009,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "crisaborole",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -207,20 +223,24 @@
     "model_first_use_year": 2009,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "crisaborole",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2010,
-    "status": "same",
+    "status": "retro",
     "model": "Mouse phorbol-ester ear edema (topical ointment, 5%)",
-    "note": "Bilateral plaque trials responded: 5% ointment 68.6% vs 5.7% (2008) and 2% twice daily 54.1% vs 2.7% greater OTPSS decrease (P<0.001).",
+    "note": "Retrodiction (ruling: efficacy is a target claim; PDE4 inhibition had cleared plaques in 1979). Bilateral plaque trials responded: 2% twice daily 54.1% vs 2.7% (P<0.001).",
     "short": "Plaques cleared more than vehicle plaques",
     "src": "https://clinicaltrials.gov/study/NCT01029405?tab=results",
     "srcLabel": "NCT01029405 results 2017",
     "quote": "Percentage of Participants With Greater Decrease In Overall Target Plaque Severity Score (OTPSS): Ointment (2% Twice Daily), Vehicle: ointment treated plaque vs. vehicle treated plaque 54.1; vehicle treated plaque vs. ointment treated plaque 2.7; P<0.001.",
     "confidence": "medium",
     "confidence_note": "Registry tabular record quoted as fields; first public in Anacor's 15 June 2010 press release (https://www.news-medical.net/news/20100615/Positive-clinical-trial-results-for-Anacor-Pharmaceuticals-AN2728-announced.aspx: 'in the 2.0% AN2728 twice daily dosing group (P <0.001), which was the primary endpoint of the trial').",
-    "judgement": "Paired comparison: the mouse model predicts anti-inflammatory activity, not a psoriasis effect size, so magnitude is direction only. A third bilateral trial (NCT00755196, 5%, 12 weeks, n=30) missed (53.3% vs 30.0%, P=0.23) and does not change the call. Year is the June 2010 press release; the registry record (posted 2017-03-07) sets the status. Apremilast and roflumilast are not members of this tile and are not scored.",
+    "judgement": "Paired comparison: the mouse model predicts anti-inflammatory activity, not a psoriasis effect size, so magnitude is direction only. A third bilateral trial (NCT00755196, 5%, 12 weeks, n=30) missed (53.3% vs 30.0%, P=0.23) and does not change the call. Year is the June 2010 press release; the registry record (posted 2017-03-07) sets the status. Apremilast and roflumilast are not members of this tile and are not scored. Retrodiction ruling (2026-11-09): Stawiski 1979 (doi 10.1111/1523-1747.ep12531617, PMID 383851) had shown topical Ro 20-1724, a PDE4 inhibitor, improving psoriatic lesions versus vehicle in double-blind trials, thirty years before the mouse model was first public (2009); for efficacy any drug of the same target and action counts, so the match is retro, not same.",
     "model_id": "pde4-mouse-phorbol-ear-edema",
     "prediction_level": "class",
     "subjects": "patients",
@@ -236,7 +256,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "plaque responder rate vs per-cent ear-edema inhibition",
@@ -264,7 +284,11 @@
       "doi": null,
       "quote": "Percentage of Participants With Greater Decrease In Overall Target Plaque Severity Score (OTPSS): Ointment (2% Twice Daily), Vehicle: 54.1 vs 2.7; P<0.001."
      }
-    ]
+    ],
+    "drug": "crisaborole",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2011,
@@ -278,7 +302,7 @@
     "confidence": "medium",
     "confidence_note": "Registry tabular record quoted as fields; 68 subjects, 2:1, not powered, so the miss is itself uncertain.",
     "reason": "Mouse edema did not predict plaque clearance",
-    "judgement": "Called contra on the registry primary, not on the sponsor's 'positive preliminary results' 8-K of 27 June 2011 (decision 13); one drug's contra beats the earlier same on the track. Anacor filed an SPA for psoriasis Phase 3 (10-K 2012) but never ran it and took crisaborole to atopic dermatitis, where it was approved in 2016; Pfizer never pursued psoriasis. The sibling AN2898 was never taken into psoriasis. Year is the 8-K; the registry record (posted 2017-03-07) sets the status.",
+    "judgement": "Called contra on the registry primary, not on the sponsor's 'positive preliminary results' 8-K of 27 June 2011 (decision 13); one drug's contra beats the earlier same on the track. Anacor filed an SPA for psoriasis Phase 3 (10-K 2012) but never ran it and took crisaborole to atopic dermatitis, where it was approved in 2016; Pfizer never pursued psoriasis. The sibling AN2898 was never taken into psoriasis. Year is the 8-K; the registry record (posted 2017-03-07) sets the status. Retrodiction ruling (2026-11-09): Stawiski 1979 (doi 10.1111/1523-1747.ep12531617, PMID 383851) had shown topical Ro 20-1724, a PDE4 inhibitor, improving psoriatic lesions versus vehicle in double-blind trials before the model was public, so this is a failed retrodiction: the mouse model reproduced the class answer but crisaborole's own plaque trial missed, so contra stands.",
     "model_id": "pde4-mouse-phorbol-ear-edema",
     "prediction_level": "class",
     "subjects": "patients",
@@ -294,7 +318,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
@@ -310,7 +334,11 @@
       "doi": null,
       "quote": "Percentage of Participants Who Achieved Success in Physician's Global Assessment (PGA) of Disease Severity at Day 84: 17.4 vs 13.6; difference 3.8 (-14.3 to 21.8)."
      }
-    ]
+    ],
+    "drug": "crisaborole",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2014,
@@ -348,13 +376,17 @@
     "model_first_use_year": 2014,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "leo-29102",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2019,
-    "status": "same",
+    "status": "retro",
     "model": "In-vitro PDE4 enzyme and cellular assays with skin-delivery design (LEO soft-drug program)",
-    "note": "Plaque test: LEO 29102 cream cut total clinical score 3.04 vs 1.60 for vehicle (P<0.001) but less than betamethasone (4.96); no further psoriasis trial.",
+    "note": "Retrodiction (PDE4 inhibition had cleared plaques by 1979; assays public 2014). Plaque test: LEO 29102 cream total clinical score -3.04 vs -1.60 vehicle (P<0.001).",
     "short": "Plaque test beat vehicle, trailed steroid",
     "src": "https://clinicaltrials.gov/study/NCT00875277?tab=results",
     "srcLabel": "NCT00875277 results 2019",
@@ -362,7 +394,7 @@
     "confidence": "low",
     "confidence_note": "Model side abstract-level; patient side is a 24-subject, 4-week micro-plaque assay (registry tabular record quoted as fields), not a whole-body trial.",
     "reason": "Plaque test matched direction only",
-    "judgement": "The 2009 plaque test is the only psoriasis trial of LEO 29102 (NCT01466478, 2011, was a formulation study without posted results); its registered primary responded, so the track is same in direction, but the effect was well short of the steroid comparators (betamethasone -4.96, P<0.001 vs LEO 29102) and LEO took the compound to atopic dermatitis instead. Year is the registry posting (2019-12-11), the first public release of the result; the paired model side is Felding 2014.",
+    "judgement": "The 2009 plaque test is the only psoriasis trial of LEO 29102 (NCT01466478, 2011, was a formulation study without posted results); its registered primary responded, so the track is same in direction, but the effect was well short of the steroid comparators (betamethasone -4.96, P<0.001 vs LEO 29102) and LEO took the compound to atopic dermatitis instead. Year is the registry posting (2019-12-11), the first public release of the result; the paired model side is Felding 2014. Retrodiction ruling (2026-11-09): Stawiski 1979 (doi 10.1111/1523-1747.ep12531617, PMID 383851) had shown topical Ro 20-1724, a PDE4 inhibitor, improving psoriatic lesions versus vehicle in double-blind trials, and apremilast's psoriasis trials were public before 2014; the soft-drug assays reproduced the class answer for LEO 29102, so retro, not same.",
     "model_id": "pde4-leo-soft-drug-cell-assays",
     "prediction_level": "class",
     "subjects": "patients",
@@ -378,7 +410,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "total clinical score change vs vehicle",
@@ -394,7 +426,11 @@
       "doi": null,
       "quote": "Change in Total Clinical Score (TCS) of the Clinical Symptoms Compared to Baseline (Day 1): LEO 29102 Cream Vehicle -1.60; LEO 29102 Cream -3.04; P<0.001."
      }
-    ]
+    ],
+    "drug": "leo-29102",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2020,
@@ -408,7 +444,7 @@
     "confidence": "low",
     "confidence_note": "The 10-K pools the psoriasis, atopic dermatitis and rosacea proof-of-concept trials and gives no numbers; NCT01993433 (psoriasis, n=23, 2013-14, primary: change in Physician's Lesion Assessment at week 6) has no posted results. Model side abstract-level.",
     "reason": "Mouse psoriasiform model missed patient failure",
-    "judgement": "Retrodiction: the mouse paper (doi 10.1080/21688370.2020.1765633; 'DRM02 also decreased cutaneous clinical changes and expression of Th17 immune pathway cytokines in a mouse model of psoriasis evoked by repeated topical imiquimod application') appeared in 2020, after the 2014 trials; whether the mouse work predates the trials cannot be told from the abstract. It did not reproduce the human result, so contra by decision 10. Separate track from the phorbol-ester model because it is a psoriasis-specific (IL-23/Th17) system making a disease-specific prediction; the same paper's phorbol-ester result would score the same way. Patient side is tier 5 only, hence trial_unreported. epub_year and print_year are the model paper, which dates the comparison.",
+    "judgement": "Retrodiction: the mouse paper (doi 10.1080/21688370.2020.1765633; 'DRM02 also decreased cutaneous clinical changes and expression of Th17 immune pathway cytokines in a mouse model of psoriasis evoked by repeated topical imiquimod application') appeared in 2020, after the 2014 trials; whether the mouse work predates the trials cannot be told from the abstract. It did not reproduce the human result, so contra by decision 10. Separate track from the phorbol-ester model because it is a psoriasis-specific (IL-23/Th17) system making a disease-specific prediction; the same paper's phorbol-ester result would score the same way. Patient side is tier 5 only, hence trial_unreported. epub_year and print_year are the model paper, which dates the comparison. Retrodiction also holds against Stawiski 1979 (doi 10.1111/1523-1747.ep12531617, PMID 383851) had shown topical Ro 20-1724, a PDE4 inhibitor, improving psoriatic lesions versus vehicle in double-blind trials; DRM02's own failure is the result it did not reproduce, so contra on the DRM02 track.",
     "model_id": "pde4-mouse-imiquimod-psoriasiform",
     "prediction_level": "class",
     "subjects": "patients",
@@ -440,7 +476,11 @@
       "doi": null,
       "quote": "Change in Physician's Lesion Assessment (Week 6)."
      }
-    ]
+    ],
+    "drug": "DRM02",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -486,7 +526,11 @@
       "doi": null,
       "quote": "Change in Total Clinical Score (TCS) of the Clinical Symptoms Compared to Baseline (Day 1): LEO 29102 Cream Vehicle -1.60; LEO 29102 Cream -3.04; P<0.001."
      }
-    ]
+    ],
+    "drug": "leo-29102",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -494,7 +538,7 @@
     "year": 2022,
     "status": "contra",
     "model": "Imiquimod psoriasis-like mouse (topical DRM02), with phorbol-ester ear and Th2 contact-hypersensitivity models",
-    "note": "Crisaborole 2% cut ear and epidermal thickness, myeloid cells and itch in imiquimod mice (2022), predicting the plaque benefit crisaborole's Phase-3-design trial did not show.",
+    "note": "Crisaborole 2% cut ear and epidermal thickness in imiquimod mice (2022), predicting the plaque benefit crisaborole's own Phase-3-design trial did not show; scored on crisaborole's track only.",
     "short": "Imiquimod mouse ran crisaborole after its miss",
     "src": "https://clinicaltrials.gov/study/NCT01300052?tab=results",
     "srcLabel": "NCT01300052 results 2017",
@@ -502,7 +546,7 @@
     "confidence": "medium",
     "confidence_note": "Model side full text read (PMC10066830, NCBI efetch): 'We found that crisaborole treatment significantly reduced ear thickness and epidermal thickness compared to vehicle treatment (Figure 1B–D).' Inducer imiquimod 5% on both ear sides daily for four days. Patient side registry record confirmed via CT.gov API; Hashim 2020 (abstract via Europe PMC) is the positive result the paper cites.",
     "reason": "Crisaborole retrodiction contradicted by NCT01300052",
-    "judgement": "Same system as the track (imiquimod psoriasis-like mouse, topical PDE4 inhibitor), now with the member crisaborole, so a retrodiction entry, not a new model_id. Online 2022-12-19, after NCT01300052 (2011) and Hashim 2020 (online 2019-07-03). The paper states crisaborole 'has shown efficacy in patients with psoriasis' (its reference 14, Hashim 2020: 21 intertriginous/anogenital/facial patients, 66% vs 9%, P=.0011); against that it reproduces, but the track is already contra (DRM02, 2020) and crisaborole's own plaque-psoriasis primary missed, so contra by the track rule, paired by me (comparison_stated false). Hashim is kept as a patient_trials row; whether its site-specific population is in scope is rule question 10, and whether NCT01300052 is an admissible miss is rule question 1; if either flips, the checker may prefer retro with patient_signal_reversed considered. strengthens: true (decision 7, #127): the track's 2020 DRM02 miss rests on a tier-5 statement pooling three indications with no posted psoriasis result; this second miss, for a member drug run in the same system, rests on a posted registry primary and removes that excuse.",
+    "judgement": "Crisaborole track on the imiquimod psoriasis-like mouse, separate from the DRM02 track by the track rule (one model_id x drug x route), so DRM02's 2020 contra does not carry here. Retrodiction: online 2022-12-19, after NCT01300052 (2011), Hashim 2020 (online 2019-07-03) and Stawiski 1979 (doi 10.1111/1523-1747.ep12531617, PMID 383851) had shown topical Ro 20-1724, a PDE4 inhibitor, improving psoriatic lesions versus vehicle in double-blind trials. Against crisaborole's own plaque-psoriasis primary (NCT01300052, PGA success 17.4% vs 13.6%, CI -14.3 to 21.8) it failed to reproduce the miss, so contra, paired by me (comparison_stated false). The paper cites Hashim 2020 (21 intertriginous/anogenital/facial patients, 66% vs 9%, P=.0011) as crisaborole's psoriasis efficacy; that site-specific population is outside the tile's mild-to-moderate plaque population and stays a patient_trials row. The earlier draft's 'strengthens' flag rested on the DRM02 miss on a shared track; with the tracks split it no longer applies and is dropped.",
     "model_id": "pde4-mouse-imiquimod-psoriasiform",
     "prediction_level": "class",
     "subjects": "patients",
@@ -539,7 +583,96 @@
      }
     ],
     "magnitude_basis": null,
-    "strengthens": true
+    "drug": "crisaborole",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "model": "Imiquimod psoriasis-like mouse (topical DRM02), with phorbol-ester ear and Th2 contact-hypersensitivity models",
+    "model_id": "pde4-mouse-imiquimod-psoriasiform",
+    "prediction_level": "class",
+    "model_kind": "animal",
+    "model_first_use_year": 2020,
+    "year": 2020,
+    "status": "untested",
+    "note": "Opens DRM02's track on the imiquimod psoriasis-like mouse at its first public use (2020).",
+    "short": "Imiquimod mouse first public for DRM02",
+    "src": "https://doi.org/10.1080/21688370.2020.1765633",
+    "srcLabel": "Tissue Barriers 2020",
+    "quote": "DRM02 also decreased cutaneous clinical changes and expression of Th17 immune pathway cytokines in a mouse model of psoriasis evoked by repeated topical imiquimod application",
+    "confidence": "medium",
+    "confidence_note": "Abstract-level (PMID 32479135, online 2020-06-01).",
+    "judgement": "Track opener added under the track rule (one model_id x drug x route); the model was used for DRM02 and crisaborole. Publication is the proxy for first use; the contra comparison (efficacy entry 6) follows in the same year.",
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2020,
+    "print_year": 2020,
+    "registry_date": null,
+    "model_filed": false,
+    "product_in_model": true,
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Unselected",
+    "endpoint_role": null,
+    "outcome_tested": null,
+    "patient_trials": [],
+    "untested_reason": null,
+    "drug": "DRM02",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "model": "Imiquimod psoriasis-like mouse (topical DRM02), with phorbol-ester ear and Th2 contact-hypersensitivity models",
+    "model_id": "pde4-mouse-imiquimod-psoriasiform",
+    "prediction_level": "class",
+    "model_kind": "animal",
+    "model_first_use_year": 2020,
+    "year": 2022,
+    "status": "untested",
+    "note": "Opens crisaborole's track on the imiquimod psoriasis-like mouse at its first public use for crisaborole (online 2022-12-19).",
+    "short": "Imiquimod mouse first run with crisaborole",
+    "src": "https://doi.org/10.1111/exd.14722",
+    "srcLabel": "Youn 2023",
+    "quote": "We found that crisaborole treatment significantly reduced ear thickness and epidermal thickness compared to vehicle treatment (Figure 1B–D).",
+    "confidence": "medium",
+    "confidence_note": "Full text read by the models check (PMC10066830).",
+    "judgement": "Track opener added under the track rule: the imiquimod model was first public for DRM02 (2020) and for crisaborole only in Youn 2023 (online 2022-12-19); the contra comparison (efficacy entry 8) follows in the same year.",
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2022,
+    "print_year": 2023,
+    "registry_date": null,
+    "model_filed": false,
+    "product_in_model": true,
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Unselected",
+    "endpoint_role": null,
+    "outcome_tested": null,
+    "patient_trials": [],
+    "untested_reason": null,
+    "drug": "crisaborole",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -576,7 +709,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "drug": "crisaborole",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2011,
@@ -612,7 +749,11 @@
     "magnitude_basis": "application-site reaction incidence",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "drug": "crisaborole",
+    "route": "topical",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

@@ -1,0 +1,51 @@
+{
+ "tile": "psoriasis-rorc-inverse-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug gsk-2981278, route topical set (Smith 2016 ointment)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug gsk-2981278, route topical set; retrodiction true (explants public Feb 2016 after VTP-43742's 2015 healthy-volunteer IL-17 suppression, same target and action); status stays contra (failed to reproduce)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug VTP-43742, route oral set; year 2021 -> 2015 (rule 6 earliest public date: Vitae press release 18 Nov 2015, >90% whole-blood IL-17A suppression over 24 h)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug gsk-2981278, route topical set; model text aligned to model_id"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug VTP-43742, route oral set; year 2021 -> 2015 (Nov 2015 healthy-volunteer release shows the IC90 exposure reached); quote replaced with the protocol's IC90 exposure sentence"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug gsk-2981278, route topical set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug gsk-2981278, route topical set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug BI 730357, route oral set; status same -> retro, retrodiction true (minicircle data first public Harcken epub 2021-01-05, after VTP-43742's positive Phase 2a, Mar 2016); model_first_use_year null -> 2021; co-primary (PASI75 and sPGA 0/1, both met) written into note"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug AGN-242428, route oral set"
+  }
+ ],
+ "added": []
+}

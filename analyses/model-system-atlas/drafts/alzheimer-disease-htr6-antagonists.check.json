@@ -9,126 +9,120 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 20569520 resolves; quote verbatim in abstract. Opening untested at the first in-vivo occupancy paper is right."
+   "note": "Arnt 2010 resolves; quote verbatim in abstract. Idalopirdine, oral, unselected right; untested 2010 opener holds. Nit: note 'no human occupancy ever published' is now contradicted by engagement 5 (Schmidt 2014).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 36825693 resolves; quote verbatim (abstract). Proxy year 2011 consistent with NCT01258751 first posted 2010-12-13 and the Cornery 2011 AAIC abstract (Fullerton 2018 ref 13)."
+   "note": "Sawant-Basak 2023 resolves; quote verbatim in abstract. Drug sam-760, route oral right (humans dosed orally); untested 2011 proxy opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Resolves; quote verbatim (abstract). Opening entry for the rat brain-penetration track; the rat Cbu/Cpu 0.05 figure is the next abstract sentence."
+   "note": "Sawant-Basak 2023 quote verbatim in abstract. Drug sam-760, route oral right; untested 2011 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 28212021 resolves; quote verbatim (abstract). Microdialysis readout and the cognition battery are one rat system (Nirogi 2019 characterises both), so one model_id is right; harmonise the `model` label across cells."
+   "note": "Nirogi 2017 resolves; quote verbatim in abstract. Drug masupirdine, route oral right; untested 2017 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "same",
-   "proposed_year": 2018,
-   "rule": "4 (engagement: PD readout moved in dosed humans; healthy volunteers count) + 2 (data not shown scores at low confidence)",
-   "note": "Registry facts confirmed (posted 2017-10-12, terminated 2018-02-19, no results). But Atri 2018 Discussion reports a healthy-volunteer PET study: >80% 5-HT6 occupancy at 30 and 60 mg/d. Rat occupancy readout moved in humans: same, 2018, low confidence (data not shown).",
-   "adjudicated_status": "same",
-   "adjudication_note": "Decisions 2 and 3: Atri 2018 Discussion (verified) cites Schmidt 2014, Alzheimers Dement 10(4):P925, for >80% 5-HT6 occupancy at 30/60 mg in healthy men; conference-only clinical side, low confidence, admissible; the rat occupancy readout moved: same."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Schmidt 2014 AAIC P4-375 (online 2014-07-01) resolves; quote verbatim. >80% occupancy at 30-60 mg oral in healthy men; rat model 2010 precedes any human 5-HT6 PET (SAM-760 2011), so prospective same 2014.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "Year is the first public source stating the comparison (DOI-bearing supplement abstract, tier 1 under rule 2)",
-   "note": "Field year (epub_year/print_year) 2023 -> 2011; src -> https://doi.org/10.1016/j.jalz.2011.05.2278, srcLabel 'Comery 2011'. Crossref issued 2011-07; abstract re-read: NHP full blockade >10 nM free, human striatal RO >70% at 60 mg. Status stays same. | superseded: confirmed (): Resolves; quote verbatim (abstract). NCT01258751 completed 2011-05, before Phase 2, so not a retrodiction. The comparison was first public as the Cornery 2011 AAIC abstract; year could be 2011 if that supplement is admissible (rule question).",
-   "checked_by": "CHECKER_BRIEF / models (gap fix)",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: does a DOI-bearing journal-supplement conference abstract (Comery 2011, Alzheimers Dement 7:S794) count as rule-2 tier 1 for rule-6 dating? Status is same either way (both agree); year stays 2023 unless admissible, then 2011."
+   "note": "Comery 2011 AAIC P4-253 (online 2011-07-01) resolves; quote verbatim; human RO >70% after single oral 60 mg, NHP side by side. Same 2011, sam-760 oral right. Nit: population text says AD patients; compared subjects were healthy men.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Resolves; quote verbatim (abstract); the paper itself calls rat the wrong species, so comparison_stated true and contra on its own track are right."
+   "note": "Sawant-Basak 2023 quote verbatim in abstract (rat Cbu/Cpu 0.05 vs NHP 0.64). Drug sam-760, route oral right; contra 2023 unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Resolves; quote verbatim (abstract)."
+   "note": "Arnt 2010 quote verbatim in abstract (plasma EC50 20 ng/mL; >65% occupancy target stated). Drug idalopirdine, route oral right; untested 2010 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Resolves; quote verbatim (abstract); proxy year as engagement 2."
+   "note": "Sawant-Basak 2023 quote verbatim in abstract. Drug sam-760, route oral right; untested 2011 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Resolves; quote verbatim (abstract). Quote carries no exposure number but supports an untested opener."
+   "note": "Nirogi 2017 quote verbatim in abstract. Drug masupirdine, route oral right; untested 2017 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Quote verbatim in PMC5887246 full text; NCT01712074 results posted 2017-03-20, terminated 2015-10-23 for futility. Reached-failed-abandoned row applied correctly; model side (NHP, abstracted 2011, published 2023) paired by the drafter.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): 30 mg saturated 5-HT6 receptors, the occupancy the monkey targeted"
+   "note": "Fullerton 2018 (PMC5887246) quote in Discussion with citation '[13]' removed. Drug sam-760, route oral, donepezil add-on right; same 2017 (results posted 2017-03-20) unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2018,
-   "rule": "4 (dose row 3: reached, failed, abandoned -> contra with derived_from efficacy) + 2 (data not shown, low confidence)",
-   "note": "Quote verbatim (abstract). Atri 2018 Discussion states healthy-volunteer PET gave >80% 5-HT6 occupancy at 30 and 60 mg/d and guided Phase 3 doses; rat target was >65%. Reached, failed, abandoned: contra derived_from efficacy, 2018, low confidence (data not shown).",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Decision 4 case 3 (reached, failed, abandoned): rat target >65% occupancy; healthy-volunteer PET >80% at 30/60 mg (Atri 2018 citing Schmidt 2014, decisions 2-3, low confidence) guided Phase 3; failed, abandoned: contra, derived_from efficacy."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Arnt 2010 states >65% rat striatal occupancy as effective; Schmidt 2014 verbatim: >80% at 30-60 mg oral, EC50 used for Phase 3 dose selection. Target reached: same 2014; failure stays in efficacy. Idalopirdine oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -137,128 +131,133 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in PMC9157584 full text; NCT02580305 results 2023-06-09, epub 2022-06-01. Suven press release 2019-12-02 predates both (rule question on dating).",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): patient plasma met the rat efficacious concentrations"
+   "note": "Nirogi 2022 quote verbatim in full text (PMC9157584). Drug masupirdine, route oral, donepezil + memantine right; same 2022 holds (2019 release gave no exposure data).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Resolves; quote verbatim (abstract)."
+   "note": "Arnt 2010 quote verbatim in abstract. Drug idalopirdine, route oral right; untested 2010 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 25297016 resolves; quote verbatim (abstract); NCT01019421 has no results. Primary met; direction-level pairing with Arnt 2010 acceptable, the trial does not attribute the effect to conditions the model never tested."
+   "note": "Wilkinson 2014 quote verbatim in abstract. Lundbeck release dated 2012-05-29 states primary endpoint met, so year 2012 holds (note's 'June 2012' should read 29 May 2012). Prospective same, donepezil add-on, oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote and three patient_trials quotes verbatim (abstract); registry dates 2017-09-19 / 2018-02-20 / 2018-02-07 confirmed. Atri Discussion shows the occupancy target was reached, resolving the dose confound. Lundbeck press release 2016-09-22 predates registry (rule question)."
+   "note": "Atri 2018 quote verbatim in abstract. STARSHINE miss public via Lundbeck release 2016-09-22, so 2016 holds. Contra, cholinesterase-inhibitor add-on, idalopirdine oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Resolves; quote verbatim (abstract)."
+   "note": "Nirogi 2017 quote verbatim in abstract. Drug masupirdine, route oral right; untested 2017 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Quote and patient_trials quote verbatim in PMC9157584; sponsor states the miss, so comparison_stated true. Epub 2022-06-01 precedes registry 2023-06-09. Suven press release 2019-12-02 predates (rule question)."
+   "note": "Nirogi 2022 quote in full text (PMC9157584) with citation markers 25,26 removed. Suven release 2019-11-30: missed primary endpoint, so 2019 holds. Contra, donepezil + memantine add-on, masupirdine oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 1,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim (abstract). Untested is right: tox species unpublished, no NDA. Judgement overstates 'no patient harm': Atri 2018 reports ALT/AST >3x ULN in 0.7-3.3% idalopirdine vs 0-1.3% placebo, no Hy's law case; still unscorable without the tox species."
+   "note": "Status untested and idalopirdine oral right, but the hepatic harm was public before 2014: Lundbeck/Otsuka AAIC release 2013-07-16 reported asymptomatic ALT/AST/GGT rises. The 2012-05-29 release said only 'well tolerated'. Year 2013.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "untested",
+   "proposed_year": 2013,
+   "rule": "Evidence rule 6 (dating: earliest public date, press release or congress abstract)",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status untested (rule 5, unpublished tox) agreed. Rule 6: Otsuka/Lundbeck AAIC release 2013-07-17 already reported ALT/AST/GGT elevations, so the entry dates 2013, as the checker proposes."
   },
   {
    "cell": "engagement",
    "index": 8,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 27039041 resolves (epub 2016-03-31, print Aug 2016); quote verbatim (abstract). Untested right: no human ACh/EEG/fMRI readout of idalopirdine exists. Separate track from occupancy (different readout) is right; prediction_level class, readout_tier downstream fine.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Herrik 2013 AAIC P2-397 (online 2013-07-01) resolves; quote verbatim. Untested 2013, idalopirdine oral right. Nits: first public after LADDER (2012-05-29), so retrodiction true; latest untested lacks untested_reason (not_measured).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Same source; quote verbatim (abstract). Opener at first class use, epub 2016 (decision 7); same-year collision ordered model entry first, as decision 7 asks.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Herrik 2013 AAIC abstract resolves; quote verbatim. Untested 2013, idalopirdine oral right. Nits: first public after LADDER 2012-05-29 (abstract cites clinical benefit), so retrodiction true; judgement's 'epub 2016-03-31' is stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "10",
-   "note": "Quote verbatim; abstract opens 'A recent phase 2 trial showed ... idalopirdine improved cognition ... on donepezil' and closes with the quote, so the model post-dates (2016 vs Wilkinson epub 2014-10-05) and is motivated by LADDER: retro, never same. Mork 2017 abstract verbatim ('may provide a mechanistic model ... phase 2 studies (Wilkinson et al. 2014)'). No admissible pre-2014 source for the potentiation model. Wilkinson patient_trials quote verbatim (abstract). Direction-only right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Herrik 2016 quote verbatim in abstract. Retro holds: model first public 2013, after LADDER 2012-05-29. Donepezil add-on, idalopirdine oral right. Note's 'Run after LADDER (2014)' should read 2012.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 8,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 29318278: quote and all three patient_trials quotes verbatim (abstract). Registry results 2017-09-19 set year 2017 (decision 7). Decision 10: the model (public 2016-03) preceded the Phase 3 read-out (press release 2016-09-22, registry 2017-09), so its first prospective test is scored the usual way: contra. Dose confound closed by adjudicated engagement 5 / dose 5 (>80% occupancy at 30/60 mg). Nit: magnitude is the string \"null\", not JSON null (lint silent). Press-release dating rule question as efficacy 3.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Atri 2018 quote verbatim in abstract; STARSHINE miss public 2016-09-22, after the model (2013): prospective contra 2016. Cholinesterase-inhibitor add-on, idalopirdine oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 9,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "untested",
-   "rule": "2 (#125: a registry protocol narrative with no results is a sponsor statement, not a source; tier 3 needs posted outcome data)",
-   "note": "NCT01213355 confirmed: first posted 2010-10-04, 38 subjects, 5-way crossover, 5/20/60 mg vs donepezil 10 mg, GMLT primary, completed 2011-08, no results; quote verbatim in briefSummary. Status untested stands; source_tier 3 is wrong (no results posted) and no tier 1-3 source names the study (Fullerton 2018, Neurol Ther 2018 PMC5990506, Biomolecules 2023 PMC9953539 searched). Precedent: engagement 5 also rests on a no-results registry record at tier 3. Year 2010 survives as opener at first class use (#112).",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Drafter and checker agree: untested. Rules 3 and 5: the challenge result was never posted or published, so nothing compares; untested whether or not the no-results registry record is admissible (tier only differs). untested_reason unpublished."
+   "note": "NCT01213355 brief summary quote verbatim; first posted 2010-10-04, completed 2011-08, no results. Drug sam-760, route oral right; untested 2010 unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 10,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "doi resolves to Comery 2011 AAIC P4-253 (Alzheimers Dement 7(4S):S794); quote verbatim in Background. Untested opener right. Rodent data never published (PubMed SAM-760/PF-05212377: 4 papers, none efficacy); admissibility hangs on supplement-abstract rule question; low confidence apt.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Comery 2011 Background verbatim: 'SAM-760 has demonstrated pro-cognitive effects in multiple rodent assays.' Drug sam-760, route oral right; untested 2011 opener unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -267,8 +266,33 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Fullerton 2018 quote and patient_trials quote verbatim (abstract). NCT01712074 results first posted 2017-03-20 sets 2017; model 2011 predates registration 2012, so prospective contra. Nit: trial enrolled NPI>=10 patients, not 'unselected'; Fullerton's generic design/population hedge is not a model-untested condition.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Fullerton 2018 quote verbatim (abstract and PMC5887246). NCT01712074 terminated for futility 2015-10-23; results first posted 2017-03-20, so contra 2017. Donepezil add-on, sam-760 oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Fullerton 2018 quote verbatim (abstract and PMC5887246); NCT01712074 results posted 2017-03-20, the earliest public patient safety. Untested (unpublished): no SAM-760 toxicology public. Sam-760 oral, donepezil add-on right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Nirogi 2022 quote verbatim; untested (unpublished) and masupirdine oral right. But Suven's 2019-11-30 release already stated 'SUVN-502 was safe and well tolerated with no significant adverse events', so year 2019 (as efficacy 5).",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "rule": "Evidence rule 6 (dating: earliest public date, sponsor press release)",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status untested (rule 5, unpublished tox) agreed. Rule 6: Suven top-line release (2019) already stated SUVN-502 safe and well tolerated, so the entry dates 2019, as the checker proposes."
   }
  ],
  "missing": [

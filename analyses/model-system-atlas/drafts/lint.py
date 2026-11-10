@@ -3,7 +3,7 @@
     .venv/bin/python analyses/model-system-atlas/drafts/lint.py [draft.json ...]
 
 Findings: empty cells (no model relied on), consecutive same-status
-entries on one track, unknown keys, unsorted years, missing fields, values of the wrong type, a model system
+entries on one track (read in year order), unknown keys, missing fields, values of the wrong type, a model system
 described two ways, and a status without the fields its decision requires. A track is one model system's
 entries in a cell for one drug and one route (`model_id`, `drug`, `route`), kept apart per modality where a
 multi-modality tile splits dose and safety.
@@ -140,7 +140,8 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
                 issues.append((cid, q, "empty cell (no model relied on)"))
                 continue
             last: dict = {}
-            for i, e in enumerate(strip, 1):
+            # a track's entries are read in year order (ties in list order); their place in the list is free
+            for i, e in sorted(enumerate(strip, 1), key=lambda ie: (ie[1].get("year") if isinstance(ie[1].get("year"), int) else 0, ie[0])):
                 prev = last.get(track(e))
                 if e.get("modality") is not None and e["modality"] not in (groups or []):
                     issues.append((cid, q, f"entry {i}: modality {e['modality']!r} not in modality_groups"))
@@ -153,7 +154,9 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
                 if prev and e.get("status") == prev.get("status") and not e.get("strengthens"):
                     issues.append((cid, q, f"same-status entry {i} ({e['status']}) on one track without strengthens"))
                 issues += [(cid, q, f"entry {i}: {m}") for m in rule_findings(q, e, prev)]
-                if members and e.get("drug") not in (None, "class") and e["drug"].lower() not in members:
+                if not isinstance(e.get("drug"), str) or not e["drug"]:
+                    issues.append((cid, q, f"entry {i}: drug {e.get('drug')!r} must name a member or be 'class'"))
+                elif members and e["drug"] != "class" and e["drug"].lower() not in members:
                     issues.append((cid, q, f"entry {i}: drug {e['drug']!r} is not a member of the tile (or 'class')"))
                 seen = identity.setdefault(e.get("model_id"), tuple(e.get(k) for k in IDENTITY))
                 if seen != tuple(e.get(k) for k in IDENTITY):
@@ -161,16 +164,12 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
                                            f"({', '.join(k for k, a, b in zip(IDENTITY, seen, (e.get(k) for k in IDENTITY)) if a != b)})"))
                 last[track(e)] = e
                 extra.update(k for k in e if k not in KEYS)
-            for key in {track(e) for e in strip}:
-                ys = [e.get("year") for e in strip if track(e) == key]
-                if sorted(y for y in ys if isinstance(y, int)) != ys:
-                    issues.append((cid, q, f"years not sorted {key}"))
     return extra, issues
 
 
 def main():
     paths = sys.argv[1:] or sorted(p for p in glob.glob(os.path.join(HERE, "*-*.json"))
-                                   if not p.endswith((".check.json", ".models.json")))
+                                   if not p.endswith((".check.json", ".models.json", ".fields.json")))
     extra, issues = lint(paths)
     print("unknown keys:", dict(extra))
     for i in issues:

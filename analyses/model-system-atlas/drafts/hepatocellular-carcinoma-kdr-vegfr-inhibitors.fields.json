@@ -1,0 +1,67 @@
+{
+ "tile": "hepatocellular-carcinoma-kdr-vegfr-inhibitors",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "untested 2020 -> same 2021; src FDA 212904 Multidiscipline Review (tier 2, comparison stated); drug tivozanib. Settles RULE QUESTION: dose counts non-HCC patient PK like volunteer PK; axitinib and rivoceranib split to their own tracks"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2015 -> 2014 (ESMO 2014 congress presentation, rule 6); drug axitinib; contra unchanged (primary endpoint missed)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "contra 2021 -> same 2020: tracks are per drug (axitinib contra no longer carries), and AHELP first public as ASCO 2020 abstract 4507 (rule 6); drug rivoceranib; tivozanib trial moved to its own entry"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "same 2021 -> retro 2020: model published 2020-06-12 after AHELP ASCO abstract (2020-05-20); retrodiction by public date settles the check's submission-vs-publication question"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "year 2021 -> 2020 (AHELP ASCO 2020 abstract reports grade 3-4 hypertension); drug rivoceranib"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "untested 2019 -> retro 2019: model postdates rivoceranib's own HCC hypertension (Qin 2014 ASCO 4019, NCT01192971); rests on the same drug, not axitinib"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "same 2021 -> retro 2020: retrodiction on rivoceranib's own 2014 HCC result; AHELP first public at ASCO 2020"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "axitinib opener 2006 untested on the xenograft track (split from entry 2)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "axitinib same 2015 (McNamara 2015 DCE perfusion fall, downstream); split from entry 2, whose tivozanib patients had only plasma sVEGFR2"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "axitinib untested 2006 (no_prediction), split from entry 2"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "rivoceranib untested 2018 (no_prediction), split from entry 2"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "tivozanib untested 2020 (Fountzilas 2020 single-arm phase 1b/2 with a two-stage bar, outcome unsettled), split from entry 3"
+  }
+ ]
+}

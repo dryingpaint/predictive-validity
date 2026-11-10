@@ -9,158 +9,165 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "DOI resolves to Fritsch MCT 2014 (epub 2014-03-07, PMID 24608574); quote verbatim in the abstract; untested opener on the cell-panel/xenograft track; downstream (pAKT) readout tier is right."
+   "rule": "track (drug, route); 5; 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 24608574 (epub 2014-03-07) abstract: quote verbatim; NVP-BYL719 = alpelisib, oral; untested/not_measured opener holds at 2014; biomarker_selected fits PIK3CA-mutant models."
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "1, 3, 15",
-   "note": "Juric Cancer Discov 2017 (epub 2017-03-22); quote verbatim, comparison stated by the trial paper; NCT01296555 results 2024-07-31 confirmed. Mixed solid tumours is allowed for engagement. NEO-ORB (Mayer 2019) adds alpelisib's own pAKT fall in PIK3CA-mutant patient tumours: patient_trials candidate."
+   "rule": "track; population_group; 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Juric 2017 (PMID 28331003, epub 2017-03-22) abstract: quote verbatim. Taselisib oral capsule; 34 patients, mutant and wild-type, so unselected right; stated comparison, same holds. AACR 2013/2014 taselisib abstracts may predate 2017, unread."
   },
   {
    "cell": "engagement",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Bosch Sci Transl Med 2015 (2015-04-01, PMC4433148); quote verbatim; untested opener for the ER-feedback track."
+   "rule": "track; 5",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bosch 2015 (PMID 25877889) abstract: quote verbatim; BYL719 = alpelisib, oral; untested opener of ER-feedback track right."
   },
   {
    "cell": "engagement",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "1, 15",
-   "note": "Same paper, stated comparison: ER-induction signature seen in tumours from patients on BYL719; quote verbatim; downstream tier right; abstract-level so patient n unknown (medium confidence is fair)."
+   "rule": "track; evidence rule 1",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bosch 2015 abstract: quote verbatim; stated comparison in tumours of patients on oral BYL719 (PIK3CA-mutant ER+ trials), biomarker_selected; same 2015 holds."
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "16",
-   "note": "Fritsch 2014 abstract states efficacy and tolerability at the same mouse doses, which decision 16 accepts as a stated margin; untested opener is right."
+   "rule": "track; dose table; 5",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fritsch 2014 abstract: quote verbatim; alpelisib oral; no human exposure target stated, untested opener right."
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4 (row: reached, drug worked), 16",
-   "note": "André NEJM 2019; quote verbatim (Methods); NCT02437318 results 2019-08-13 confirmed. 300 mg deliverable and effective, MTD 400 mg above it, so same. No mouse-vs-human exposure comparison found in the FDA review, magnitude null stands. Literal decision-16 reading raised as rule question 2."
+   "rule": "retrodiction (dose: same drug's own earlier patient result); 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NEJM abstract quote verbatim. Retro right: Fritsch (2014-03) post-dates alpelisib phase 1 (AACR 2012 CT-01, Crossref 2012-04). Year 2018 right: mdy424.010 = Andre SOLAR-1, Oct 2018. Oral plus fulvestrant, PIK3CA-mutant cohort."
   },
   {
    "cell": "dose",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "16",
-   "note": "Bosch 2015; quote verbatim; no exposure target or margin in the abstract, so untested with margin_stated false is right."
+   "rule": "track; dose table row 1",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bosch 2015 abstract quote verbatim; alpelisib oral; no exposure target or margin, untested holds."
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Ndubaku J Med Chem 2013 (epub 2013-06-03, PMID 23662903); quote verbatim; untested opener at the class's first xenograft use."
+   "rule": "track; 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ndubaku 2013 (PMID 23662903, J Med Chem June 2013) is the GDC-0032 (taselisib) paper; quote verbatim; oral; untested opener 2013 right."
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "7, 8",
-   "note": "Fritsch 2014; quote verbatim; FDA review lines 1943-1945 confirm 65% of PIK3CA-mutant vs 23% of wild-type of 474 lines sensitive. strengthens:true is misapplied (decision 7 reserves it for a second miss); cosmetic."
+   "rule": "track; 5",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fritsch 2014 abstract: CCLE quote verbatim; alpelisib oral; biomarker_selected; untested strengthening entry holds."
   },
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2018,
-   "rule": "4 (failed = predicted effect absent), 6 (one drug's contra overrides same on the track), 7 (earliest public date)",
-   "note": "Quote verbatim; SOLAR-1 facts right. Missed NEO-ORB (NCT01923168, results 2018-09-14; Mayer CCR 2019): alpelisib 300 mg + letrozole failed its primary ORR in the PIK3CA-mutant cohort (43% vs 45%). Under decisions 4/6/7 the track opens contra in 2018; see rule question 1.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Decision 4 (#35): NEO-ORB (NCT01923168, results 2018-09-14, mutant ORR 43.3% vs 44.8%) failed, but Mayer 2019 attributes it to early-stage tumours' lower PI3K dependence and discontinuations, conditions the advanced-disease panel never tested: untested, not a 2018 contra; SOLAR-1 same stands."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "efficacy primary endpoint; combination_with; 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NEJM abstract quote verbatim (PFS 11.0 vs 5.7, primary, mutant cohort). Year 2018: Crossref confirms mdy424.010 = SOLAR-1, Ann Oncol Oct 2018. Alpelisib oral plus fulvestrant; biomarker_selected right."
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Bosch 2015; quote verbatim; untested opener for the ER-feedback track; FDA review cites Bosch 2015 for the fulvestrant combination (lines 1844, 1896)."
+   "rule": "track; 5",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bosch 2015 abstract quote verbatim; alpelisib oral; untested opener right."
   },
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2018,
-   "rule": "4, 6, 7; or #35/#72 (condition the model never tested) if letrozole is held outside the model's prediction",
-   "note": "Quote verbatim; SOLAR-1 supports same for fulvestrant. NEO-ORB tested the model's 'ER blockade + PI3Kα' on a letrozole backbone and failed; weaker case than track A (model used fulvestrant/tamoxifen). Queued so both tracks are adjudicated together under rule question 1.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Decision 4 (#35): NEO-ORB's letrozole backbone in endocrine-naive early-stage tumours is a condition the fulvestrant/tamoxifen ER-feedback model never tested, and Mayer 2019 attributes the null to that setting and discontinuations: untested, not contra; SOLAR-1 (fulvestrant) same stands. NEO-ORB to patient_trials."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "efficacy primary endpoint; combination_with; 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Same SOLAR-1 quote verbatim; 2018 (ESMO, Crossref) right; alpelisib oral plus fulvestrant, the model's own partner; same holds."
   },
   {
    "cell": "efficacy",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8, 10",
-   "note": "Song Cancer Discov (epub 2021-09-20, print 2022); quote verbatim; cited in the inavolisib review (lines 1210, 1213). Head-to-head INAVO121 (NCT05646862, inavolisib vs alpelisib + fulvestrant) has no results posted, so untested holds. Note the paper's own stated target is HER2-positive disease."
+   "rule": "track; 5 (unsettled)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Song 2022 (PMID 34544753, epub 2021) abstract: quote verbatim; inavolisib oral; no head-to-head result (INAVO121), untested holds."
   },
   {
    "cell": "safety",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4 (safety: stated prediction or askable silence)",
-   "note": "Fritsch 2014 abstract only (not in PMC; full text not read, so whether it reports glucose/insulin is still unverified). Untested is right because the sponsor's own mice predicted the harm on the toxicology track."
+   "rule": "safety (passing tolerability claim scored); retrodiction (safety: drug's own earlier result)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Juric 2018 JCO (PMID 29401002) abstract: DLT quote verbatim, NCT01219699, oral alpelisib, PIK3CA-altered escalation. Fritsch (2014) post-dates AACR 2012 hyperglycaemia, so retrodiction contra holds; SOLAR-1 breast patients agree."
   },
   {
    "cell": "safety",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4",
-   "note": "Bosch 2015; quote verbatim; abstract silent on tolerability; untested opener is right."
+   "rule": "track; 5",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bosch 2015 abstract silent on tolerability; alpelisib oral; untested opener right."
   },
   {
    "cell": "safety",
@@ -169,8 +176,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "1, 2, 4",
-   "note": "Quote verbatim at review line 1713 (bundle txt); mouse insulin/glucose tolerance study at lines 3070-3078. The nonclinical section (lines 2451-2512) also records oral mucosa/tongue/oesophagus epithelial changes in the rat/dog studies, so stomatitis (24.6% in SOLAR-1) was predicted too: the draft's open GI question is answered, not silent."
+   "rule": "retrodiction (safety); source rule 8",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in bundle text of NDA 212526 multidiscipline review; animal data first public 2019, after alpelisib's own phase 1 hyperglycaemia (2012), so retro; oral plus fulvestrant, biomarker_selected."
   },
   {
    "cell": "safety",
@@ -179,8 +187,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "4, 12 (on-target harm pooled)",
-   "note": "Quote verbatim at review lines 1054-1056; rat >=0.1x, dog >=0.8x AUC confirmed; NCT04191499 results 2024-10-09 confirmed. Caveat: the inavolisib nonclinical target organs are lymphoid, eye, pancreas, reproductive (line 1048), no oral mucosa, while patients had ~48-51% stomatitis; whether that member-level silence is contradicted on a pooled track is rule question 3."
+   "rule": "retrodiction (safety); track",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in bundle text of NDA 219249 review; INAVO120 hyperglycaemia public SABCS Dec 2023, before the 2024 review, so retro; inavolisib oral with palbociclib plus fulvestrant, own track."
   },
   {
    "cell": "efficacy",
@@ -189,9 +198,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7, 8",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Juric Nature (epub 2014-11-17, PMC4326538 author manuscript); quote verbatim; untested opener at the PDX track's first use, year 2014 by epub. prediction_level patient is right (PTEN-null genotype picks resisters)."
+   "rule": "track; 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Juric 2015 full text (PMC4326538): quote verbatim; epub 2014-11; BYL719 = alpelisib, oral in index patient; opener right."
   },
   {
    "cell": "efficacy",
@@ -200,67 +209,89 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim. PDX made from the autopsy lesion after documented clinical progression on BYL719 (NCT01219699, no registry results), tested at 25 mg/kg: post-dates and motivated by the patient result, so retro is right. Paper also adds one more BYL719 patient with acquired bi-allelic PTEN loss."
+   "rule": "retrodiction; evidence rule 1",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Full text: 'Consistent with the in vitro data, this patient-derived xenograft was resistant to BYL719...' verbatim; PDX built after clinical progression, retro right; oral alpelisib, biomarker_selected."
   },
   {
    "cell": "efficacy",
    "index": 9,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "7, 10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Razavi Nat Cancer (epub 2020-03-23, PMC7450824); quote verbatim (abstract); 8/32 and five acquired PTEN losses confirmed in text. Model (2014) preceded this result (new trial NCT01870505, results 2024-12-09), so a prospective same; Razavi cites 'consistent with preclinical studies' without restating the PDX, so paired with model_src Juric is right. No earlier abstract found, 2020 stands."
+   "rule": "track; combination_with; 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Razavi 2020 (PMID 32864625) abstract: PTEN quote verbatim; alpelisib oral plus aromatase inhibitor (NCT01870505); prospective same holds; population biomarker_selected."
   },
   {
    "cell": "efficacy",
    "index": 10,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "7, 8",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Vasan Science (epub 2019-11-01, PMC7173400); quote verbatim in the abstract; untested opener at first use. If index 11 is adjudicated retro, this opener's judgement line should say the first comparison is a retrodiction (cosmetic)."
+   "rule": "track; 5",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Vasan 2019 (PMID 31699932) abstract quote verbatim; alpelisib dosed in cells; alpelisib track latest untested holds."
   },
   {
    "cell": "efficacy",
    "index": 11,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote and numbers verbatim (ORR 30.2 vs 8.7, P=0.0493; single 18.1). But the model post-dates and was motivated by the NCT01870505 double-mutant PFS trend, and SANDPIPER (results 2019-01-25) was complete before the cells; Vasan calls the ctDNA split post hoc. Decision 10: retro, retrodiction true. See rule question 6.",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: decision 10 exempts only terminated-trial trends; is the completed phase 1 (NCT01870505, n=51) non-significant trend that motivated the model a patient result, and is a post-hoc ctDNA split of completed SANDPIPER a prospective test? Drafter's same kept."
+   "status_supported": true,
+   "rule": "track; product_in_model; retrodiction (first public after)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Full text (PMC7173400): quote verbatim; SANDPIPER ctDNA analysis of oral taselisib plus fulvestrant; product_in_model false right; split first public here, same per ruling. Readout is an exploratory subgroup, not primary (see rule question)."
   },
   {
    "cell": "efficacy",
    "index": 12,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "7, 8",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Razavi 2020; quote verbatim; the knock-in lines were built after the ctDNA ESR1 enrichment was seen ('To address this, we turned to experimental models'), so an untested opener followed by a retro entry in the same year is right (same-year collision, model entry first)."
+   "rule": "track; 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Razavi 2020; ESR1 knock-in model in full text (abstract-level confirmation of the paper); alpelisib oral; opener right."
   },
   {
    "cell": "efficacy",
    "index": 13,
    "verdict": "confirmed",
    "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "retrodiction; combination_with",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Razavi 2020; model built after the ctDNA finding, so retro right; alpelisib oral plus aromatase inhibitor; biomarker_selected."
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "6; efficacy primary endpoint; combination_with",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dent 2021 (PMID 33186740) abstract: quote verbatim, primary INV-PFS met HR 0.70. ASCO 2018 LBA1006 (Crossref 2018-06-20) so 2018 right. Taselisib oral plus fulvestrant. epub_year still null; should be 2020."
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "verdict": "corrected",
+   "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim (Results; Discussion cites Fig. 4d for the same data). Model built to explain the known ESR1 VAF expansion in 32 ctDNA-profiled patients and reproduced it: retro, comparison stated. The paper itself attributes the effect to the hormone component; patient-level status stands, note that in confidence_note."
+   "proposed_status": "untested",
+   "rule": "6 (track opens at model_first_use_year with untested); track order",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Status, year 2019, drug taselisib, oral, biomarker_selected and product_in_model false all right. Still placed after efficacy 11 in the list; move it before 11 so the track's latest reads same.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: taselisib track opens untested at model_first_use_year 2019; drafter and checker agree. It precedes efficacy 11 (same, 2019), so it is not the track's latest; no untested_reason. Reorder before 11."
   }
  ],
  "missing": [
@@ -280,6 +311,7 @@
   "3. Pooled on-target safety track with member-level silence: alpelisib's rat/dog package predicted oral-mucosal lesions (stomatitis 24.6% in SOLAR-1, same), but inavolisib's package lists no oral target organ while INAVO120 had ~48-51% stomatitis. Does the earlier member's prediction carry on the pooled track (decision 12), or is the later member's silence contradicted and contra (decision 6: one drug's contra overrides)?",
   "4. strengthens: true is used on an untested -> untested entry that adds a second prediction_level (patient) to a track; decision 7 defines it for a second miss. Is a second prediction level on one track its own opener entry, or a note on the existing one?",
   "5. A sponsor toxicology track whose first public source is the 2019 FDA review: may the untested opener at model_first_use_year (2010) be omitted, as drafted, or must a proxy opener be written with a confidence note?",
-  "6. (models check, Vasan 2019 double-mutant track, efficacy 11) Decision 10 exempts 'a non-significant trend in a terminated trial' from being a patient result. Is a non-significant trend in a completed small phase 1 (NCT01870505, n=51) that explicitly motivated the model a patient result, and is a post-hoc subgroup split of an already-completed phase 3 (SANDPIPER, results 2019-01-25) a prospective test of the model or part of the retrodiction? Checker proposes retro; drafter scored same."
+  "6. (models check, Vasan 2019 double-mutant track, efficacy 11) Decision 10 exempts 'a non-significant trend in a terminated trial' from being a patient result. Is a non-significant trend in a completed small phase 1 (NCT01870505, n=51) that explicitly motivated the model a patient result, and is a post-hoc subgroup split of an already-completed phase 3 (SANDPIPER, results 2019-01-25) a prospective test of the model or part of the retrodiction? Checker proposes retro; drafter scored same.",
+  "(fields check, efficacy 11, and likewise 8, 9, 13) Patient-level tracks are scored on exploratory subgroup or resistance analyses, not the trial's primary endpoint or a poc_gate. Does the efficacy primary-endpoint rule apply to prediction_level patient, making these untested with the result under patient_trials?"
  ]
 }

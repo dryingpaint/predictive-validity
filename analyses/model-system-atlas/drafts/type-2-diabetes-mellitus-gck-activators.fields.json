@@ -1,0 +1,33 @@
+{
+ "tile": "type-2-diabetes-mellitus-gck-activators",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "drug mk-0941, route oral set (rodent opener for the MK-0941 track); population_group unselected"},
+  {"cell": "engagement", "index": 2, "what": "drug mk-0941, route oral, combination_with insulin glargine, population_group stage_or_line (combination design written into note)"},
+  {"cell": "engagement", "index": 3, "what": "drug dorzagliatin, route oral set"},
+  {"cell": "engagement", "index": 4, "what": "status same -> retro, retrodiction true: retrodiction rule for engagement (Liu 2017 epub 2016, after MK-0941's 2011 patient glucose result); checker adjudication; drug dorzagliatin, route oral"},
+  {"cell": "dose", "index": 1, "what": "drug mk-0941, route oral; note tidied (MK-0941 detail attributed to Eiki 2011); untested_reason no_prediction"},
+  {"cell": "dose", "index": 2, "what": "status same -> retro, retrodiction true: dose retrodiction rule, LY2599506's own Phase 2 results posted 2011-10-26 before the model's 2012 publication; drug ly-2599506, route oral"},
+  {"cell": "dose", "index": 3, "what": "drug dorzagliatin, route oral set"},
+  {"cell": "dose", "index": 4, "what": "drug dorzagliatin, route oral; status stays same (checker's retro not adopted: under the dose ruling only dorzagliatin's own earlier public patient result counts, and none preceded the paper)"},
+  {"cell": "efficacy", "index": 1, "what": "drug mk-0941, route oral set (rodent opener for the MK-0941 track)"},
+  {"cell": "efficacy", "index": 2, "what": "drug mk-0941, route oral, combination_with insulin glargine (combination ruling, scored on the 14-week primary); AZD1656 patient_trial moved to the AZD1656 entry"},
+  {"cell": "efficacy", "index": 3, "what": "drug azd-1656, route oral; split to its own track; receives the AZD1656 add-on-to-metformin patient_trial (NCT01020123)"},
+  {"cell": "efficacy", "index": 4, "what": "year 2019 -> 2016 (rule 6: vTv press release 10 Aug 2016, AGATA primary met); drug cadisegliatin, route oral, combination_with metformin; model_first_use_year 2019 -> 2016; dorzagliatin patient_trials moved to the islet track (genetics model limited to the drug designed from it)"},
+  {"cell": "efficacy", "index": 5, "what": "drug dorzagliatin, route oral set"},
+  {"cell": "efficacy", "index": 6, "what": "drug dorzagliatin, route oral; receives SEED and DAWN patient_trials"},
+  {"cell": "safety", "index": 1, "what": "drug mk-0941, route oral set (rodent opener for the MK-0941 track)"},
+  {"cell": "safety", "index": 2, "what": "year 2013 -> 2012 (rule 6: De Ceuninck online 2012, checker adjudication); drug mk-0941, route oral, combination_with insulin glargine; status stays retro (MK-0941's own triglyceride result preceded it)"},
+  {"cell": "safety", "index": 3, "what": "year 2024 -> 2022 (rule 6: DAWN, online 2022-05-12, hyperlipidaemia 14% vs 9%); drug dorzagliatin, route oral; status stays same on its own track (checker's contra rests on MK-0941's track, which does not carry over; Baker 2014 appended there)"},
+  {"cell": "safety", "index": 4, "what": "drug mk-0941, route oral set"},
+  {"cell": "safety", "index": 5, "what": "drug mk-0941, route oral, combination_with insulin glargine set"},
+  {"cell": "safety", "index": 6, "what": "drug class (human-genetic proxy), route oral set"},
+  {"cell": "safety", "index": 7, "what": "drug class (human-genetic proxy), route oral set"}
+ ],
+ "added": [
+  {"cell": "efficacy", "index": 7, "what": "split track gka-rodent-t2d x azd-1656 x oral: opener untested 2012 (proxy, Grimsby 2003)"},
+  {"cell": "efficacy", "index": 8, "what": "split track human-islet-perifusion-gka x mk-0941 x oral: opener untested 2025 (Roman 2025)"},
+  {"cell": "efficacy", "index": 9, "what": "split track human-islet-perifusion-gka x mk-0941 x oral: retro 2025, islets reproduce MK-0941's met week-14 HbA1c primary (Meininger 2011), partial (durability not modelled); retrodiction rule"},
+  {"cell": "safety", "index": 8, "what": "gka-rodent-t2d x mk-0941 x oral: contra 2014, retrodiction true; Baker 2014 rodents showed no triglyceride rise after MK-0941's 2011 rise (checker adjudication on safety 3, settled per track)"},
+  {"cell": "safety", "index": 9, "what": "split track gka-rodent-t2d x dorzagliatin x oral: opener untested 2022 (HMS5552 T2D rat study, J Diabetes Res 2017; year held at the track's first comparison)"}
+ ]
+}

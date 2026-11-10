@@ -1,0 +1,66 @@
+{
+ "tile": "schizophrenia-pde10a-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug balipodect, route oral set (TAK-063 rodent cAMP/cGMP and human PET track)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug balipodect, route oral set (TAK-063 rodent cAMP/cGMP and human PET track)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug balipodect, route oral set (TAK-063 rat/monkey ketamine phMRI/EEG track)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug balipodect, route oral set (TAK-063 rat/monkey ketamine phMRI/EEG track)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug balipodect, route oral set; note limited to TAK-063 (mardepodect is its own track); untested_reason no_prediction added"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug mardepodect, route oral; year 2019->2013, src/quote DeMartinis 2019 -> Uthayathas 2014 (epub 2013-10, PMC3934827): rodent-effective Cp,u similar to Phase 2A exposures; status same unchanged (ruling: earliest public date; check adjudication)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug mardepodect, route oral set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug mardepodect, route oral; year 2016->2013, src/quote DeMartinis 2019 adjunctive -> Uthayathas 2014 statement that monotherapy Phase 2A (NCT01175135) missed its primary endpoint; adjunctive trial moved to patient_trials; status contra unchanged (ruling: earliest public date; 2012 SIRS poster unread so not used)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug balipodect, route oral set; judgement notes the challenge ran after mardepodect's failure"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug balipodect, route oral; retrodiction false->true (ruling: efficacy model first public after a same-target patient result is a retrodiction; it failed to reproduce, so status stays contra)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug balipodect, route oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug balipodect, route oral set"
+  }
+ ],
+ "added": []
+}

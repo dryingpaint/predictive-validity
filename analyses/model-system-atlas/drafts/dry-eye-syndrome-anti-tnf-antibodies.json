@@ -47,13 +47,17 @@
     "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
-    "readout_tier": "proximal",
+    "readout_tier": "direct",
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2013,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "tanfanercept",
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -91,7 +95,11 @@
     "confidence": "medium",
     "judgement": "Downstream readout (tear cytokines, not free TNF-alpha or a direct occupancy measure). Nobody has reported tear or conjunctival cytokines, or ocular-surface TNF-alpha, in tanfanercept-dosed people (the checker found none in Dong 2022, VELOS or Shettle 2022 either), so the comparison is untested. No dose or safety entries: the paper states no exposure target and makes no tolerability claim for the drops.",
     "reason": "No human tear-cytokine readout",
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "tanfanercept",
+    "population_group": "unselected"
    }
   ],
   "dose": [
@@ -102,7 +110,7 @@
     "model": "Rabbit topical ocular PK (ESBA105 eye drops)",
     "model_id": "rabbit-topical-ocular-pk",
     "prediction_level": "class",
-    "note": "Topical ESBA105 reached therapeutic concentrations in rabbit aqueous and vitreous, with systemic exposure 25,000-fold below the same dose given i.v.",
+    "note": "Topical ESBA105 reached therapeutic concentrations in rabbit aqueous and vitreous, with systemic exposure 25,000-fold below the same dose given i.v. ESBA105 is licaminlimab's development code; one molecule, one track.",
     "short": "Rabbit eye drops reach therapeutic levels",
     "src": "https://doi.org/10.1167/iovs.08-2370",
     "srcLabel": "Furrer 2009",
@@ -130,7 +138,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "licaminlimab",
+    "population_group": "unselected"
    },
    {
     "year": 2013,
@@ -139,7 +151,7 @@
     "model": "Rabbit topical ocular PK (ESBA105 eye drops)",
     "model_id": "rabbit-topical-ocular-pk",
     "prediction_level": "class",
-    "note": "Topical ESBA105 reached human aqueous-humour levels 96- to 359-fold above intraocular TNF-α, the therapeutic level the rabbit predicted; vitreous was undetectable in 5 of 6.",
+    "note": "Topical ESBA105 reached human aqueous-humour levels 96- to 359-fold above intraocular TNF-α, the therapeutic level the rabbit predicted; vitreous was undetectable in 5 of 6. Patients were cataract-surgery cohorts, coded other_disease. ESBA105 is licaminlimab's development code; one molecule, one track.",
     "short": "Human aqueous levels 96–359× over TNF-α",
     "src": "https://doi.org/10.1016/j.ophtha.2012.12.015",
     "srcLabel": "Thiel 2013",
@@ -167,8 +179,12 @@
     "magnitude": "direction_only",
     "magnitude_basis": "intraocular ESBA105 concentration relative to a therapeutic (TNF-α-neutralising) level",
     "source_calls_it": null,
-    "population": "Unselected",
-    "model_first_use_year": 2008
+    "population": "Cataract-surgery patients (otherwise healthy eyes), Thiel 2013",
+    "model_first_use_year": 2008,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "licaminlimab",
+    "population_group": "other_disease"
    },
    {
     "year": 2013,
@@ -206,7 +222,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "tanfanercept",
+    "population_group": "unselected"
    }
   ],
   "efficacy": [
@@ -244,7 +264,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "tanfanercept",
+    "population_group": "unselected"
    },
    {
     "year": 2018,
@@ -280,21 +304,25 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "tanfanercept",
+    "population_group": "unselected"
    },
    {
-    "year": 2022,
+    "year": 2020,
     "status": "contra",
     "model": "Desiccating-stress mouse dry eye (C57BL/6)",
     "model_id": "ded-mouse-desiccating-stress",
     "prediction_level": "class",
-    "note": "VELOS-2 (n=637) missed both co-primaries: inferior corneal staining LS-mean difference 0.08 (p=0.187) and ocular discomfort 0.05 (p=0.555); VELOS-3 repeated the miss in 2023.",
+    "note": "VELOS-2 (n=637) missed both co-primaries: inferior corneal staining LS-mean difference 0.08 (p=0.187) and ocular discomfort 0.05 (p=0.555); VELOS-3 repeated the miss in 2023. Design: two co-primaries (inferior corneal staining, ocular discomfort), both missed, so scored a failure as the sponsor called it. Dated to the 2020-01 topline press release, the earliest public date (rule 6).",
     "short": "Phase 3 corneal-sign co-primary missed twice",
     "src": "https://clinicaltrials.gov/study/NCT03846453",
     "srcLabel": "VELOS-2 registry 2022",
     "quote": "Coprimary Endpoint: Change From Baseline in Inferior Corneal Fluorescein Staining Score to Day 57 (Pre- to Post-CAE) — 0.25% HL036 vs Placebo: LS Mean Difference 0.08 (95% CI -0.04 to 0.21), P-Value 0.1871",
     "confidence": "high",
-    "confidence_note": "The registry record has no prose sentence; the quote is assembled from the posted outcome title and statistical-analysis fields (verified via the ClinicalTrials.gov v2 API, results first posted 2022-04-14). No peer-reviewed VELOS-2 or VELOS-3 paper was found.",
+    "confidence_note": "The registry record has no prose sentence; the quote is assembled from the posted outcome title and statistical-analysis fields (verified via the ClinicalTrials.gov v2 API, results first posted 2022-04-14). No peer-reviewed VELOS-2 or VELOS-3 paper was found. Earliest public date: HanAll/Daewoong VELOS-2 topline press release, 2020-01-28 (press conference 2020-01-21): \"The VELOS-2 study did not meet the primary endpoint of ICSS\". The release stresses secondary CCSS/TCSS wins; the registry posting (2022-04-14) is the higher-tier source of the status.",
     "judgement": "The mouse readout is a corneal sign, and the corneal-staining co-primary failed in both pivotal trials, so the model's prediction was contradicted; no source puts the mouse result beside the VELOS data (comparison_stated false, model_src Ji 2013). The miss was already visible in the Phase 2s: VELOS-1 (NCT03334539, results posted 2022-01-26) missed both registered co-primaries (ICSS p=0.29/0.34, ODS p=0.15/0.23) and the China Phase 2 (Dong 2022) reported its ICSS primary at p=0.65 under a positive title; the sponsor's 'Phase 2 signal' was a secondary central-staining score. VELOS-2 is used as the source because it is the pivotal record. Licaminlimab's Phase 2 symptom hit (Shettle 2022, global ocular discomfort p=0.041) is a symptom endpoint the mouse does not read out, so it neither confirms nor rescues the sign prediction. Harbour's China Phase 3 (NCT04633213, completed 2022-08) has no posted results. VELOS-4 (NCT06400589, Schirmer primary) is suspended.",
     "subjects": "patients",
     "comparison_stated": false,
@@ -336,21 +364,25 @@
      }
     ],
     "population": "Unselected",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "tanfanercept",
+    "population_group": "unselected"
    },
    {
-    "year": 2022,
+    "year": 2020,
     "status": "contra",
     "model": "Spontaneous canine keratoconjunctivitis sicca",
     "model_id": "ded-dog-spontaneous-kcs",
     "prediction_level": "class",
-    "note": "Dogs predicted sign and Schirmer benefit beyond cyclosporine; in VELOS-2 tanfanercept did not beat placebo on corneal staining (p=0.187) or discomfort (p=0.555).",
+    "note": "Dogs predicted sign and Schirmer benefit beyond cyclosporine; in VELOS-2 tanfanercept did not beat placebo on corneal staining (p=0.187) or discomfort (p=0.555). Design: two co-primaries (inferior corneal staining, ocular discomfort), both missed, so scored a failure as the sponsor called it. Dated to the 2020-01 topline press release, the earliest public date (rule 6).",
     "short": "Dog sign benefit; Phase 3 flat vs placebo",
     "src": "https://clinicaltrials.gov/study/NCT03846453",
     "srcLabel": "VELOS-2 registry 2022",
     "quote": "Coprimary Endpoint: Change From Baseline in Inferior Corneal Fluorescein Staining Score to Day 57 (Pre- to Post-CAE) — 0.25% HL036 vs Placebo: LS Mean Difference 0.08 (95% CI -0.04 to 0.21), P-Value 0.1871",
     "confidence": "medium",
-    "confidence_note": "Same registry source and composite quote as the mouse-track entry. The dog study had no placebo arm (HL036 vs 1% CsA, both improved from baseline), so the superiority-to-CsA prediction was never directly tested in patients; the contra rests on the sign prediction failing against placebo.",
+    "confidence_note": "Same registry source and composite quote as the mouse-track entry. The dog study had no placebo arm (HL036 vs 1% CsA, both improved from baseline), so the superiority-to-CsA prediction was never directly tested in patients; the contra rests on the sign prediction failing against placebo. Earliest public date: HanAll/Daewoong VELOS-2 topline press release, 2020-01-28 (press conference 2020-01-21): \"The VELOS-2 study did not meet the primary endpoint of ICSS\". The release stresses secondary CCSS/TCSS wins; the registry posting (2022-04-14) is the higher-tier source of the status.",
     "reason": "Both sign models missed; Phase 3 flat",
     "judgement": "Scored on the same VELOS-2 record because the dog prediction (sign improvement, more than an approved comparator) is at least as strong as the mouse one and the human sign endpoint did not move at all. VELOS-3's Schirmer secondary (reported p=0.002 in trade press, not verified in the registry) is the one patient datum pointing the dog's way; it is a secondary and does not change a primary-endpoint call.",
     "subjects": "patients",
@@ -373,7 +405,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "tanfanercept",
+    "population_group": "unselected"
    },
    {
     "year": 2024,
@@ -409,7 +445,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "TNFR1 rs1800693 genotype carriers",
-    "model_first_use_year": 2024
+    "model_first_use_year": 2024,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "licaminlimab",
+    "population_group": "biomarker_selected"
    },
    {
     "year": 2024,
@@ -460,7 +500,12 @@
      }
     ],
     "population": "TNFR1 rs1800693 genotype carriers",
-    "model_first_use_year": 2024
+    "model_first_use_year": 2024,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "licaminlimab",
+    "population_group": "biomarker_selected",
+    "untested_reason": "unsettled"
    },
    {
     "retrodiction": false,
@@ -498,7 +543,11 @@
     "judgement": "Its own track under this run's identity rule: a spontaneous, inflammaging-driven model (lacrimal-gland ectopic lymphoid structures, 12-14-month females, 8-week dosing) is a different system from the acute desiccating-stress mouse of Ji 2013, and it was the first and only test of a member drug in aged mice. Class-level: it predicts that topical TNF blockade helps age-related dry eye, not who responds. Opens untested at first use; the comparison with the VELOS trials is the next entry.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "tanfanercept",
+    "population_group": "unselected"
    },
    {
     "retrodiction": true,
@@ -521,13 +570,13 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "confidence_note": "Paired by the drafter: Kelagere 2023 cites only the 2019 VELOS-1 ARVO abstract as 'positive results' and says tanfanercept is 'currently in Phase III'; it does not mention VELOS-2 or VELOS-3. Registry quote is the same composite of posted outcome fields the checker verified on the mouse track (results first posted 2022-04-14). The model's readouts (goblet cell density, tear cytokines, lacrimal foci, marginal-zone B cells) were not VELOS endpoints; the mismatch is scored on the model's stated efficacy claim. Experiment dates are not given in the paper; the retrodiction flag rests on publication (2023-08-25) post-dating both misses.",
+    "confidence_note": "Paired by the drafter: Kelagere 2023 cites only the 2019 VELOS-1 ARVO abstract as 'positive results' and says tanfanercept is 'currently in Phase III'; it does not mention VELOS-2 or VELOS-3. Registry quote is the same composite of posted outcome fields the checker verified on the mouse track (results first posted 2022-04-14). The model's readouts (goblet cell density, tear cytokines, lacrimal foci, marginal-zone B cells) were not VELOS endpoints; the mismatch is scored on the model's stated efficacy claim. Experiment dates are not given in the paper; the retrodiction flag rests on publication (2023-08-25) post-dating both misses. VELOS-2 miss first public at the 2020-01-21 sponsor press conference (release 2020-01-28).",
     "year": 2023,
     "status": "contra",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 3,
-    "note": "Aged-mouse benefit was published after VELOS-2 and VELOS-3 had missed their corneal-staining and symptom primaries; the model reproduced neither miss.",
+    "note": "Aged-mouse benefit was published after VELOS-2 and VELOS-3 had missed their corneal-staining and symptom primaries; the model reproduced neither miss. Design: VELOS-2 co-primaries (corneal staining, discomfort) both missed; retrodiction because the model was first public (2023) after the 2020 VELOS-2 topline.",
     "short": "Aged-mouse benefit, both Phase 3s negative",
     "src": "https://clinicaltrials.gov/study/NCT03846453",
     "srcLabel": "VELOS-2 registry 2022",
@@ -550,7 +599,11 @@
       "doi": null,
       "quote": "Coprimary Endpoint: Change From Baseline in Inferior Corneal Staining Score to Day 57 (Pre-CAE) — 0.25% HL036 vs Placebo: LS Mean Difference 0.12 (95% CI -0.10 to 0.35), P-Value 0.2883"
      }
-    ]
+    ],
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "tanfanercept",
+    "population_group": "unselected"
    }
   ],
   "safety": [
@@ -558,10 +611,10 @@
     "year": 2008,
     "status": "untested",
     "modality": "antibody",
-    "model": "Rabbit topical ocular PK (systemic exposure margin)",
+    "model": "Rabbit topical ocular PK (ESBA105 eye drops)",
     "model_id": "rabbit-topical-ocular-pk",
     "prediction_level": "class",
-    "note": "Rabbit topical PK predicted negligible systemic anti-TNF exposure from eye drops; no GLP ocular toxicology for the class has been published.",
+    "note": "Rabbit topical PK predicted negligible systemic anti-TNF exposure from eye drops; no GLP ocular toxicology for the class has been published. ESBA105 is licaminlimab's development code; one molecule, one track.",
     "short": "Rabbit: negligible systemic exposure",
     "src": "https://doi.org/10.1167/iovs.08-2370",
     "srcLabel": "Furrer 2009",
@@ -588,16 +641,20 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "licaminlimab",
+    "population_group": "unselected"
    },
    {
     "year": 2013,
     "status": "same",
     "modality": "antibody",
-    "model": "Rabbit topical ocular PK (systemic exposure margin)",
+    "model": "Rabbit topical ocular PK (ESBA105 eye drops)",
     "model_id": "rabbit-topical-ocular-pk",
     "prediction_level": "class",
-    "note": "After up to 8 drops/day, ESBA105 was detectable in 17/55 pre-operative sera and 0/19 a day later; treatment-emergent AEs identical to placebo (2 eye irritations each).",
+    "note": "After up to 8 drops/day, ESBA105 was detectable in 17/55 pre-operative sera and 0/19 a day later; treatment-emergent AEs identical to placebo (2 eye irritations each). ESBA105 is licaminlimab's development code; one molecule, one track. Dry-eye patients were also measured in 2013 (NCT01338610, results posted 2013-04-19: no serious adverse events), so this disease's own result agrees and the status stands.",
     "short": "Serum transient, AEs same as placebo",
     "src": "https://doi.org/10.1016/j.ophtha.2012.12.015",
     "srcLabel": "Thiel 2013",
@@ -623,8 +680,12 @@
     "magnitude": "direction_only",
     "magnitude_basis": "systemic exposure after topical dosing",
     "source_calls_it": null,
-    "population": "Unselected",
-    "model_first_use_year": 2008
+    "population": "Cataract-surgery patients (otherwise healthy eyes), Thiel 2013",
+    "model_first_use_year": 2008,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "licaminlimab",
+    "population_group": "other_disease"
    },
    {
     "year": 2018,
@@ -660,22 +721,26 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "tanfanercept",
+    "population_group": "unselected"
    },
    {
-    "year": 2022,
+    "year": 2019,
     "status": "same",
     "modality": "protein",
     "model": "Spontaneous canine keratoconjunctivitis sicca",
     "model_id": "ded-dog-spontaneous-kcs",
     "prediction_level": "class",
-    "note": "Eight weeks of 0.25% tanfanercept in 100 Chinese dry-eye patients: no serious AEs; VELOS-2 serious AEs 5/318 vs 4/319 on placebo, none ocular.",
+    "note": "Eight weeks of 0.25% tanfanercept in 100 Chinese dry-eye patients: no serious AEs; VELOS-2 serious AEs 5/318 vs 4/319 on placebo, none ocular. Dated 2019: the VELOS-1 ARVO 2019 abstract (n=150) first reported no serious adverse events in dry-eye patients (rule 6, congress abstract).",
     "short": "No serious AEs in patients, as in dogs",
     "src": "https://doi.org/10.1007/s10792-022-02245-1",
     "srcLabel": "Dong 2022",
     "quote": "Tanfanercept was well tolerated with no serious adverse events occurring during the study.",
     "confidence": "medium",
-    "confidence_note": "Abstract-level reading (PMID 35192105, open access PMC9314282); the paper does not mention the dog study (comparison_stated false). VELOS-2 serious-AE counts are from the registry (results posted 2022-04-14); VELOS-3 posted 0/130 vs 1/130.",
+    "confidence_note": "Abstract-level reading (PMID 35192105, open access PMC9314282); the paper does not mention the dog study (comparison_stated false). VELOS-2 serious-AE counts are from the registry (results posted 2022-04-14); VELOS-3 posted 0/130 vs 1/130. Earliest public date: VELOS-1 ARVO 2019 abstract (IOVS 60(9) suppl, articleid 2740920): \"There were no serious adverse events. HL036 demonstrated excellent tolerability and drop comfort.\" Dong 2022 stays the status source.",
     "judgement": "Dong 2022 (epub 2022-02-22) is the earliest peer-reviewed tolerability record for tanfanercept in dry-eye patients and precedes the VELOS-2 registry posting by seven weeks, so it sets the year; the registry counts corroborate. The dog prediction was narrow and held; nothing the dog could have shown (local irritation, infection) appeared beyond instillation-site discomfort seen equally on placebo.",
     "subjects": "patients",
     "comparison_stated": false,
@@ -696,17 +761,21 @@
     "magnitude_basis": "serious adverse event incidence",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "tanfanercept",
+    "population_group": "unselected"
    },
    {
     "year": 2022,
     "status": "same",
     "strengthens": true,
     "modality": "antibody",
-    "model": "Rabbit topical ocular PK (systemic exposure margin)",
+    "model": "Rabbit topical ocular PK (ESBA105 eye drops)",
     "model_id": "rabbit-topical-ocular-pk",
     "prediction_level": "class",
-    "note": "In severe-DED patients on licaminlimab 60 mg/mL for 6 weeks, serum drug was mostly undetectable (max 8.47 ng/mL), with no IOP change and no safety issues.",
+    "note": "In severe-DED patients on licaminlimab 60 mg/mL for 6 weeks, serum drug was mostly undetectable (max 8.47 ng/mL), with no IOP change and no safety issues. ESBA105 is licaminlimab's development code; one molecule, one track.",
     "short": "Serum undetectable in dry-eye patients",
     "src": "https://doi.org/10.2147/OPTH.S366836",
     "srcLabel": "Shettle 2022",
@@ -734,7 +803,11 @@
     "magnitude_basis": "systemic exposure after topical dosing",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "route": "ocular_topical",
+    "combination_with": null,
+    "drug": "licaminlimab",
+    "population_group": "unselected"
    }
   ]
  }

@@ -18,9 +18,10 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "near",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim apart from the stripped citation marker. Human RO >80% is cited to ref 27, not shown in the paper: data-not-shown, so confidence should be low rather than medium. Status same/direct stands."
+   "note": "Lou 2021 full text (PMC8479189): quote verbatim bar citation '(27)'; epub 2021-09-15, after the phase Ia human RO and earlier anti-PD-1 occupancy, so retro (target-level engagement rule). Zimberelimab, iv, other_disease (pan-tumour phase Ia) right; low confidence apt.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -36,9 +37,10 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Liu 2021 abstract (PMID 33691262, epub 2021-03-07): 1/4/10 mg/kg Q2W and 240 mg, 'DLT was not observed in phase Ia part.' verbatim. Margin (no findings to 100 mg/kg weekly) was public only Sept 2021, after the trial; see rule question."
+   "note": "Liu 2021 abstract (PMID 33691262, epub 2021-03-07): 'DLT was not observed in phase Ia part.' verbatim. Monkey 26-week margin first public 2021-09-15, after the drug's own phase Ia: retro, year 2021. Zimberelimab, iv, other_disease right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -52,25 +54,27 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Xia 2023 abstract (PMID 37875323): ORR 27.6% verbatim; primary endpoint is IRC ORR (RECIST 1.1), so endpoint_role primary correct. NCT03972722 status unknown, no results posted. Colon-to-cervical pairing direction-only; same is defensible."
+   "proposed_status": "retro",
+   "proposed_year": 2022,
+   "rule": "Evidence rule 6: year is the earliest public date; the primary IRC ORR (27.8%, n=90) was public in SITC 2022 abstract 673, JITC 10(Suppl 2):A703, published 2022-11-07 (doi 10.1136/jitc-2022-SITC2022.0673)",
+   "note": "Xia 2023 abstract quote verbatim; primary RECIST ORR, single-arm in note. Retro right (MC38 public 2021-09, after pembrolizumab's cervical responses). Zimberelimab, iv, biomarker_selected right. Year and epub_year should be 2022 (SITC 2022-11-07).",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6: year is earliest public date, SITC 2022 abstract (2022-11-07) of the same phase II, so year 2022. Status unchanged: still post-dates MC38 (2021-09) and pembrolizumab cervical responses, retrodiction rule gives retro."
   },
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2018,
-   "rule": "Evidence rule 6: each cell opens at model_first_use_year; CAESURA (NCT03912402), prolgolimab's first cervical trial, started 2018-12-25 per ClinicalTrials.gov",
-   "note": "Gordeev 2024 abstract quote verbatim (PMID 39367001). untested/unsettled correct: FERMATA (NCT03912415) has no posted or published OS. Opening year and model_first_use_year should be 2018. Judgement's CAESURA ORR 63.8% conflicts with the quoted 70.7% (iRECIST vs RECIST).",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 5: untested/unsettled stands, FERMATA OS unreported. Rule 6: opening proxy year should be 2018, CAESURA (NCT03912402) actual start 2018-12-25 per ClinicalTrials.gov; status unchanged."
+   "note": "ClinicalTrials.gov NCT03912402: actual start 2018-12-25, first posted 2019-04-11, so year and model_first_use_year 2018 right. Gordeev 2024 abstract quote verbatim. untested/unsettled stands (FERMATA OS unreported). Prolgolimab, iv, stage_or_line right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -100,6 +104,31 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Quote verbatim. Model predicted 250 mg Ctrough comparable to 3 mg/kg Q3W, above 1 mg/kg Q2W; observed above both: target reached, same. Model run before FLAT dosing, so not retro. Epub 2024-09-04; registry first posted 2023-03-24, no results."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Fogt 2023 ASCO abstract (online 2023-05-31): RECIST 1.1 ORR is primary, 63.8% quote verbatim; single-arm, partners named. CT26 first public 2024-10-04, after it: retro, year 2024. CPS>=1 45/58 (<80%), so stage_or_line; prolgolimab, iv right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2022,
+   "rule": "Evidence rule 6: year is the earliest public date; cervical safety (TRAEs 78.1%, hypothyroidism 25.7%, 'acceptable safety profile') was public in SITC 2022 abstract 673, JITC published 2022-11-07",
+   "note": "Xia 2023 quote verbatim; Lou 2021 26-week 'No abnormal manifestation' verbatim. Retro right: Liu 2021 phase Ia safety (2021-03) preceded Lou (2021-09). Zimberelimab, iv, biomarker_selected right. Year should be 2022.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6: cervical safety first public in SITC 2022 abstract (2022-11-07), so year 2022. Status unchanged: zimberelimab phase Ia safety (2021-03) preceded the monkey claim (2021-09), retrodiction rule gives retro."
   }
  ],
  "missing": [

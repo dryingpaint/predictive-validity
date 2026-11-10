@@ -84,13 +84,14 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
+   "status_supported": true,
    "proposed_status": "retro",
-   "proposed_year": 2020,
-   "rule": "10",
-   "note": "Quote verbatim. Class-level UACR answer was public from ARTS-DN (2015) and esaxerenone's phase 2b completed 2016-07, before the mouse (2019-01); decision 10 makes the track a retrodiction, so retro not same. JAPIC id still unverified.",
+   "proposed_year": 2019,
+   "rule": "6",
+   "note": "Retro right: KK-Ay mouse epub 2019-01-21, after ARTS-DN 2015. Quote verbatim. ESAX-DN topline was public in a 2019-11-07 Daiichi/Exelixis release (UACR remission 22.1% vs 4.0%), and phase 2b online 2019-06-27, so the year is 2019.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10 under decision 12 class pooling: mouse (epub 2019-01) post-dates the class UACR answer (ARTS-DN 2015, index 2) and its abstract motivates from MR antagonists' shown clinical antialbuminuric effect; reproduces, not predicts. ESAX-DN already credited at index 3."
+   "adjudication_note": "Rule 6: status agreed (retro, decision on retrodiction); year is earliest public comparison, ESAX-DN topline 2019-11-07 (Exelixis/Daiichi release, Kidney Week abstract TH-PO1201, UACR remission 22.1% vs 4.0%), after the 2019-01 mouse, so 2019."
   },
   {
    "cell": "safety",
@@ -150,17 +151,12 @@
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2019,
-   "rule": "7",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract quote verbatim (PMC7051931). Crossref published-online 2019-10-04 (PubMed entrez 2019-10-05): epub_year 2019, so year and model_first_use_year 2019 under decision 7. Untested opening right; in-silico scope is a rule question.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Untested opener stands (not the track's latest; 2021 same follows). Rule 6 dating: Crossref online 2019-10-04, so year 2019. In-silico dose-choice models are in scope (MODELS_TASK, model_kind in_silico); no rule question."
+   "note": "Snelder resolves (PMID 31583611, PMC7051931); conclusion quote verbatim. Crossref online 2019-10-04, print 2020-03, so year 2019 by rule 6. Untested opener; finerenone, oral, unselected hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -232,17 +228,12 @@
   {
    "cell": "efficacy",
    "index": 11,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2025,
-   "rule": "7",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract quote and FIDELIO 18% intro sentence verbatim; retro by decision 10. Earliest source making the comparison is the OA Cells 2025 finerenone db/db paper (patient benefit stated as premise, kidney injury attenuated), so 2025; read its UACR before keeping direction_only. One track for both members is right.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: post-FIDELIO db/db finerenone run reproduces kidney protection, retro. Rule 6: earliest such comparison is Cells 2025 (PMID 40072066, epub 2025-02-26; premise 'renoprotective role...confirmed in DM and CKD patients'), so year 2025."
+   "note": "Li 2025 Cells resolves (PMID 40072066, 2025-02-26). Quote and the 'confirmed in DM and CKD patients' premise are verbatim. Post-FIDELIO, so retro. Hirohama 2021 is UNx-high-salt db/db, a separate system (see missing).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -263,6 +254,56 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Discussion quote verbatim; Results: no impact on BUN, UACR, glomerular/tubular injury or fibrosis. Run after FIDELIO/FIGARO, which the intro cites, so retrodiction; failed reproduction is contra by the retrodiction rule. Comparison is to rodent models only, so comparison_stated false is right; src could name FIDELIO-DKD as the patient side."
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Li 2025 abstract, quote verbatim, epub 2025-02-26. Untested opener for finerenone on plain db/db; finerenone, oral, unselected hold. Opener would move to 2021 only if Hirohama's UNx-HS db/db were pooled into this model_id.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Arai 2016 JPET resolves (PMID 27384074, epub 2016-07-06); quote verbatim. Untested opener for esaxerenone on the DOCA-salt rat; model_first_use_year 2014 is the shared model_id's value. Drug and route hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2019,
+   "rule": "6",
+   "note": "Retro right: rat 2016-07, after ARTS-DN 2015. ESAX-DN quote verbatim (epub 2020-11-25), but ESAX-DN topline release was 2019-11-07 and phase 2b met its UACR primary online 2019-06-27, so the year is 2019.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6: status agreed (retro); ESAX-DN UACR remission 22.1% vs 4.0% was public 2019-11-07 (sponsor release and Kidney Week 2019 abstract) before the 2020 CJASN paper, so the entry dates 2019."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2019,
+   "rule": "6",
+   "note": "Arai 2015 'no hyperkalemia (>5.5mEq/L)' and ESAX-DN 9% vs 2% are verbatim; contra, product-matched and prospective. The 2019-11-07 ESAX-DN release (hyperkalaemia 8.8% vs 2.2%) and phase 2b (2019-06-27, hyperkalemia dose proportional) date it 2019.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6: status agreed (contra, opposite); ESAX-DN hyperkalaemia 8.8% vs 2.2% was public 2019-11-07 in the sponsor release and Kidney Week 2019 abstract, earlier than the 2020 paper, so year 2019."
   }
  ],
  "missing": [
@@ -273,7 +314,8 @@
   "Patient datum omitted from efficacy patient_trials and relevant to the Dahl-rat contra dating: ARTS-DN Japan, n=96, nominally significant UACR reduction, 'no patients developed hyperkalemia'; Katayama 2017, J Diabetes Complications, doi:10.1016/j.jdiacomp.2016.11.021 (PMID 28025025), epub 2016-12-14.",
   "Healthy conscious dog natriuresis (urinary Na+/K+ up at >=10 mg/kg) in the FDA integrated review primary pharmacology, a second species on the natriuresis engagement track; descriptive, changes no status.",
   "ZSF1 obese hypertensive diabetic rat (standard T2D nephropathy model) with finerenone 10 mg/kg/day x12 weeks: UACR raised at baseline and 'Finerenone treatment did not impact kidney function but reduced renal hypertrophy'; Int J Mol Sci 2023, doi:10.3390/ijms24032536 (PMID 36768859, OA). Post-FIDELIO member use, HFpEF-framed: a retro-timed track whose kidney-function readout failed to reproduce (decision 10 contra candidate); no track and not in considered_not_added.",
-  "Not a new system, an earlier source for the dbdb-mouse track: finerenone in db/db mice, Cells 2025, doi:10.3390/cells14050337 (PMID 40072066, PMC11898422, OA, epub 2025-02-26), 'attenuated the kidney injuries in established DN in db/db mice' with the patient benefit stated as premise; precedes Yang 2025 (2025-10-09) and Wang 2026 as opener and as the retro source."
+  "Not a new system, an earlier source for the dbdb-mouse track: finerenone in db/db mice, Cells 2025, doi:10.3390/cells14050337 (PMID 40072066, PMC11898422, OA, epub 2025-02-26), 'attenuated the kidney injuries in established DN in db/db mice' with the patient benefit stated as premise; precedes Yang 2025 (2025-10-09) and Wang 2026 as opener and as the retro source.",
+  "Hirohama 2021 (Hypertension, doi 10.1161/HYPERTENSIONAHA.121.17263, epub 2021-06-01): finerenone ameliorated hypertension, albuminuria and glomerular injury in uninephrectomised high-salt db/db mice, post-FIDELIO; a finerenone UNx-HS db/db track (untested 2021, then retro vs FIDELIO-DKD) has none."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

@@ -9,65 +9,60 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "DOI resolves to Lin 2009 AAC (PMID 19171797, epub 2009-01). Quote verbatim in abstract. Untested opener fine; model_first_use_year 2009 is a late proxy (replicon used for the class well before simeprevir)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lin 2009 AAC (PMID 19171797, epub 2009-01-26) abstract quote verbatim. Untested opener 2009; simeprevir, oral, GT1 unselected right."
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Reesink 2010 Gastroenterology (PMID 19852962, epub 2009-10). Quote verbatim. Viral RNA proximal tier correct. Minor: note says 'within 5 days'; abstract gives median 6 days to maximal reduction (5 days dosing). n=6 patients."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Reesink 2010 abstract (epub 2009-10-21) quote verbatim. Lin epub 2009-01-26 post-dates telaprevir (2006) and simeprevir's own 2008 patient declines: retro by post-dating. Simeprevir, oral, unselected right."
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Lin 2009 abstract; rat plasma/liver above replicon EC99 is the stated exposure target."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lin 2009 abstract quote verbatim (plasma and liver above replicon EC99). Untested opener 2009; simeprevir, oral, unselected right."
   },
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "same",
-   "proposed_year": 2013,
-   "rule": "dose table row 'reached, drug worked'; evidence rule 7",
-   "note": "Quote verbatim, but abstract shows no exposure vs EC99, and 'drug worked' was only a 5-day viral decline in 2009; efficacy known from Olysio label 2013. Alternative: glecaprevir 70x NOAEL (209394 PharmR, verbatim) as margin_stated same, 2017.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose table row 'target reached' and rule 6: dose scores whether the stated once-daily/EC99 regimen was reached, not whether the drug worked (efficacy). Reesink 2009: 'pharmacokinetics supported a once daily dosing regimen'. Same, dated 2009, not 2013."
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Reesink 2010 abstract quote verbatim. Simeprevir's own patient monotherapy (EASL/AASLD 2008) predates Lin epub 2009-01-26: retro under the same-drug dose rule. Simeprevir, oral, unselected right."
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Lin 2009 abstract; replicon combination prediction, untested opener."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lin 2009 abstract quote verbatim (synergy with interferon, additive with ribavirin). Untested opener 2009; simeprevir, oral, unselected right."
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2012,
-   "rule": "efficacy dated at first member primary-endpoint result in patients (earliest public source)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field year: 2013 -> 2012. Manns 2012 Hepatology (doi:10.1002/hep.25743, PMID 22473713, epub 2012-07-17) vaniprevir+PR phase II, primary RVR 68.8-83.3% vs 5.6%, P<0.001 (abstract verbatim). SVR not significant; Q80K stays in judgement. | superseded: confirmed (): Bundle label: QUEST pooled SVR12 80% (419/521) vs 50% (132/264); Q80K 58% vs 84%; replicon Q80K FC 11 in 12.4; 5.1 cross-refs 12.4. NCT01289782 results posted 2014-06-04 confirmed. An earlier member 'same' exists (see missing).",
-   "adjudicated_status": "same",
-   "adjudication_note": "Both say same (status rule: matched for >=1 class drug). Rule 6 dating: Manns 2012 (epub 2012-07-17) primary endpoint RVR 68.8-83.3% vs 5.6% verified, so the track's first same dates 2012; Q80K label stays judgement."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Olysio label (Revised 11/2013) quote verbatim. Telaprevir PROVE SVR (EASL Apr 2008) predates Lin 2009: retro. Year 2013, combination with peginterferon+ribavirin on primary SVR12, oral, unselected right."
   },
   {
    "cell": "safety",
@@ -76,7 +71,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Label 13.2 quote verbatim; 28x dog and 0.2x rat testes figures verified in 13.1/13.2."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Olysio label 13.2 quote verbatim (2 of 6 dogs, 28x AUC). Untested 2013; simeprevir, oral, unselected right."
   },
   {
    "cell": "safety",
@@ -85,56 +81,48 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "208261 PharmR quote verbatim; FDA states the match (comparison_stated true). No hepatobiliary effect at >=3x clinical exposure verified; label 5.1: ALT elevation in 1% of subjects. Paritaprevir review (biliary target organ) does not contradict."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "208261 PharmR (bundle) quote verbatim. Same 2016; grazoprevir with elbasvir, oral, unselected right."
   },
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2010,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim (PMC3028818 full text): chimps fell >5 log10 at 5 mg/kg bid x7d. But vaniprevir patient monotherapy (4.6 log10 day 8, 700 mg bid) was public at AASLD Oct 2008 (natap.org/2008/AASLD/AASLD_09.htm); 'no patient comparison yet' is false in 2010.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "RULE QUESTION: decision 10 requires a model result that post-dates AND is motivated by the patient result. Olsen 2010 chimp work post-dates vaniprevir patient data (AASLD 2008) but targets combination cure; does post-dating alone make it retro?"
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Olsen AAC (PMID 21115793, epub 2010-11-29) abstract quote verbatim. Untested opener 2010; vaniprevir, oral, unselected right."
   },
   {
    "cell": "engagement",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Lawitz 2013 quote verbatim in abstract; direction matches (chimp >5 vs patient 1.8-4.6 log10, full text quantifies chimp side). Patient result public 2008, chimp record first 2010 (Liverton 2010 has only uninfected-chimp PK), so no prospective prediction is on record: retro.",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: decision 10 requires a model result that post-dates AND is motivated by the patient result. Olsen 2010 chimp work post-dates vaniprevir patient data (AASLD 2008) but targets combination cure; does post-dating alone make it retro?"
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lawitz 2013 abstract opens with the quoted sentence (truncated text seen). Chimp result 2010 post-dates vaniprevir patient monotherapy (AASLD 2008): retro, dated 2010 when both public. Vaniprevir, oral, unselected right."
   },
   {
    "cell": "efficacy",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Kan 2015 (PMID 26562322, epub 2015-11-12) quote verbatim in abstract; untested correct. Europe PMC search found no patient report of DCV+ASV response after simeprevir failure before Nov 2015 (first: Kan 2016; Hepatol Res Mar 2016, n=5)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "IMP3009 (Antivir Ther, epub 2015-11) resolves; abstract not re-read in full (PubMed rate-limited), title/excerpt match. Untested 2015; asunaprevir with daclatasvir, oral, stage_or_line right."
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Kan 2016 (PMID 27651415) quote verbatim in abstract; post-dates the 2015 mouse prediction, so same, not retro. The 2016 mouse arm is post hoc and correctly unscored. Caveat: retrospective single-centre cohort, not a trial primary endpoint."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "jiw437 (J Infect Dis 2016;214:1687) resolves; abstract excerpt matches 'virological response to daclatasvir plus asunaprevir treatment'. Same 2016 on the 2015 prospective mouse call; asunaprevir+daclatasvir, oral, stage_or_line right."
   },
   {
    "cell": "engagement",
@@ -143,19 +131,126 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Reddy 2012 AAC (PMID 22470110, PMC3370793, epub 2012-04-02) resolves; quote verbatim in abstract. Untested opener at first use is fine; in-silico VK model distinct from replicon and rat-PK tracks."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Reddy 2012 AAC (PMC3370793) full text; Table 2 lists ABT-450 with ritonavir booster. Opener untested 2012; paritaprevir, oral, unselected right."
   },
   {
    "cell": "engagement",
    "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Table 2 ABT-450 50/100/200 mg: observed -4.07/-3.89/-4.11 vs LPR-model predicted -1.9/-2.5/-3.1. Model predicted a decline and patients declined: direction agrees, under-predicted >5x. Retro, magnitude off_by_>5x, source_calls_it miss.",
+   "proposed_status": "retro",
+   "rule": "Status table: same/retro is agreement in direction, with how far off recorded in magnitude; contra is a wrong prediction. Precedent adjudications keep direction as the status test.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status table and retrodiction rule: model predicted a viral-load decline and paritaprevir patients declined; direction agrees, under-prediction (1.9 vs 4.07 log10) goes in magnitude off_by_>5x. Reproduced the known result: retro, as lomibuvir precedent."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "retrodiction that failed to reproduce human data is contra; one drug's contra beats another's same",
-   "note": "Full text read. Table 2 footnote d confirms predictions use the LPR model; ABT-450/r 50 mg -4.07 vs -1.9 verbatim. retro=true correct (all PI monotherapy data predated). 'perform significantly better' phrase not found; danoprevir misses are 1.7 log10 (day-2 data), not >2."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Reddy 2012 quote verbatim; Table 2 lists asunaprevir (BMS-650032). Opener untested 2012; asunaprevir, oral, unselected right."
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Table 2 asunaprevir 200/400/600 mg bid: observed -3.2/-3.4/-2.6 vs predicted -2.8/-3.0/-3.3 (max 0.7 log10). Retro 2012 (monotherapy predated model); asunaprevir, oral, unselected right."
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Reddy 2012 quote verbatim; Table 2 lists BI 201335. Opener untested 2012; faldaprevir, oral, unselected right."
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Table 2 BI 201335 20-240 mg qd: observed -2.9 to -4.0 vs predicted -3.0 to -4.6 (max 0.6 log10 at 120/240 mg). Retro 2012; faldaprevir, oral, unselected right."
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Reddy 2012 quote verbatim; Table 2 lists MK-7009. Opener untested 2012; vaniprevir, oral, unselected right."
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Table 2 MK-7009: 700 mg bid -4.05 vs -4.4; worst 125 mg qd -3.1 vs -2.2 (0.9 log10); all within 1 log10. Retro 2012; vaniprevir, oral, unselected right."
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Reddy 2012 quote verbatim; Table 2 lists TMC435350. Opener untested 2012; simeprevir, oral, unselected right."
+  },
+  {
+   "cell": "engagement",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Table 2 TMC435350 has one row: 200 mg qd -3.6 vs -4.9 (1.3 log10 over-predicted); note's 'lower doses over-predicted 0.6-0.7' is not in Table 2 and should go. Retro 2012; simeprevir, oral, unselected right."
+  },
+  {
+   "cell": "engagement",
+   "index": 15,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Reddy 2012 quote verbatim; Table 2 lists danoprevir. Opener untested 2012; danoprevir, oral, unselected right."
+  },
+  {
+   "cell": "engagement",
+   "index": 16,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim; Table 2 danoprevir 200 mg tid -3.9 vs -2.2 (other doses also under-predicted). Direction agrees; authors' 'poor candidate' is a magnitude miss. Retro, off_by_>5x, source_calls_it miss; drug, oral, unselected right.",
+   "proposed_status": "retro",
+   "rule": "Status table: same/retro is agreement in direction, with how far off recorded in magnitude; contra is a wrong prediction. Precedent adjudications keep direction as the status test.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status table and retrodiction rule: predicted decline (2.2 log10) matched danoprevir's observed decline (3.9) in direction; authors' 'poor candidate' is a magnitude miss, recorded as off_by_>5x. Retro, consistent with lomibuvir precedent."
   }
  ],
  "missing": [
@@ -168,6 +263,7 @@
   "Dose table 'reached, drug worked': does a phase 1 viral-load response count as 'worked', so the entry is dated at phase 1, or must the efficacy primary endpoint have read out first? Also, can a dose entry be 'same' when the source never reports exposure against the model's numeric target (EC99)?",
   "Q80K: the replicon fold change was measured on baseline clinical isolates at the same time as the phase 3 trials. Is this a prospective model prediction or a retrodiction (retro)?",
   "Hepatotoxicity seen only under a drug interaction (sovaprevir with atazanavir/r in healthy volunteers; paritaprevir with ethinyl estradiol): no rule says whether a DDI-driven harm the animals were never dosed under counts as the model's silence being contradicted or as untested.",
-  "Models check: a routine preclinical model (HCV chimpanzee monotherapy) whose run date is unstated and whose first record (2010) post-dates a public patient result (AASLD 2008), but which was not motivated by it. Rule 10 requires both 'post-dates' and 'motivated by'; scored retro here on the record date."
+  "Models check: a routine preclinical model (HCV chimpanzee monotherapy) whose run date is unstated and whose first record (2010) post-dates a public patient result (AASLD 2008), but which was not motivated by it. Rule 10 requires both 'post-dates' and 'motivated by'; scored retro here on the record date.",
+  "VK-model tracks (Reddy 2012): an in-silico magnitude prediction that is right in direction but under-predicts a potent drug by >1.5 log10 (danoprevir, paritaprevir) is scored contra because the authors call it a misjudged candidate, while simeprevir over-predicted by 1.3 log10 is retro. The rules define same/retro by direction only; confirm whether a source's own 'miss' call on magnitude makes contra."
  ]
 }

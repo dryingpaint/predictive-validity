@@ -71,7 +71,6 @@ ALTER TABLE preclin.atlas_track_entry
     ADD COLUMN confidence_note   text,
     ADD COLUMN patient_trials    jsonb,
     ADD FOREIGN KEY (mondo_id, mechanism_key, track_id) REFERENCES preclin.atlas_track (mondo_id, mechanism_key, track_id),
-    ADD CHECK (untested_reason IS NULL OR status = 'untested'),
     ADD CHECK (imported_from IS NULL OR population_group = 'other_disease');
 
 COMMENT ON TABLE preclin.atlas_track IS
@@ -83,6 +82,6 @@ COMMENT ON TABLE preclin.atlas_track_entry IS
 COMMENT ON COLUMN preclin.atlas_track_entry.population IS 'The patients compared, in words; population_group codes them.';
 COMMENT ON COLUMN preclin.atlas_track_entry.population_group IS 'unselected; biomarker_selected (genotype or biomarker); stage_or_line (disease stage or line of therapy); other_disease (a harm imported from another disease, imported_from names it).';
 COMMENT ON COLUMN preclin.atlas_track_entry.combination_with IS 'The partner drug when the patients compared got a member drug in combination with another active drug.';
-COMMENT ON COLUMN preclin.atlas_track_entry.untested_reason IS 'Why a track''s latest never-compared entry was never compared (drafter brief rule 5).';
+COMMENT ON COLUMN preclin.atlas_track_entry.untested_reason IS 'Why a track''s latest never-compared entry was never compared (drafter brief rule 5); also set where the verdict makes a drafted status untested.';
 COMMENT ON COLUMN preclin.atlas_track_entry.patient_trials IS 'Trials that change no status: a list of {nct, registry_date, doi, quote}.';
 COMMIT;

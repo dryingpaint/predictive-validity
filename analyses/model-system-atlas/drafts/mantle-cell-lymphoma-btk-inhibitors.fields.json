@@ -1,30 +1,127 @@
 {
  "tile": "mantle-cell-lymphoma-btk-inhibitors",
  "changed": [
-  {"cell": "engagement", "index": 1, "what": "year 2010 -> 2007, src/quote -> Honigberg ASH 2007 abstract (doi:10.1182/blood.V110.11.1592.1592): earlier public date of mouse probe occupancy; model_first_use_year 2007 on the probe track; drug ibrutinib, route oral"},
-  {"cell": "engagement", "index": 2, "what": "year 2012 -> 2009: earlier public date, Pollyea ASH 2009 abstract reported 89% occupancy in patient PBMCs; registry_date -> null (no results posted); drug ibrutinib, route oral"},
-  {"cell": "dose", "index": 1, "what": "year 2010 -> 2007, src/quote -> Honigberg ASH 2007 abstract: earlier public date of the probe dosing readout; drug ibrutinib, route oral"},
-  {"cell": "dose", "index": 2, "what": "registry_date -> null (no results posted); drug ibrutinib, route oral"},
-  {"cell": "efficacy", "index": 1, "what": "year 2010 -> 2009, src/quote -> Pollyea ASH 2009 abstract: canine NHL activity public Nov 2009, before first MCL responses (press release 8 Dec 2009); model_first_use_year 2009; drug ibrutinib, route oral"},
-  {"cell": "efficacy", "index": 2, "what": "year 2013 -> 2011: earlier public date, ASH 2011 PCYC-1104 interim abstract (ORR 67%); single-arm design written into note; acalabrutinib patient_trials moved to its own track; drug ibrutinib, route oral"},
-  {"cell": "efficacy", "index": 3, "what": "drug ibrutinib, route oral, population_group unselected"},
-  {"cell": "efficacy", "index": 4, "what": "drug acalabrutinib, route oral (readout taken in the acalabrutinib-alone lead-in of AVO, combination_with null)"},
-  {"cell": "efficacy", "index": 5, "what": "drug acalabrutinib, route oral, combination_with null (cycle-1 acalabrutinib monotherapy readout)"},
-  {"cell": "efficacy", "index": 6, "what": "drug ibrutinib, route oral, population_group biomarker_selected"},
-  {"cell": "efficacy", "index": 7, "what": "drug ibrutinib, route oral, population_group biomarker_selected"},
-  {"cell": "safety", "index": 1, "what": "drug ibrutinib, route oral"},
-  {"cell": "safety", "index": 2, "what": "drug ibrutinib, route oral"},
-  {"cell": "safety", "index": 3, "what": "drug zanubrutinib, route oral"},
-  {"cell": "safety", "index": 4, "what": "drug zanubrutinib, route oral"},
-  {"cell": "safety", "index": 5, "what": "drug acalabrutinib, route oral"},
-  {"cell": "safety", "index": 6, "what": "drug acalabrutinib, route oral"}
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "year 2010 -> 2007, src/quote -> Honigberg ASH 2007 abstract (doi:10.1182/blood.V110.11.1592.1592): earlier public date of mouse probe occupancy; model_first_use_year 2007 on the probe track; drug ibrutinib, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "year 2012 -> 2009: earlier public date, Pollyea ASH 2009 abstract reported 89% occupancy in patient PBMCs; registry_date -> null (no results posted); drug ibrutinib, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "year 2010 -> 2007, src/quote -> Honigberg ASH 2007 abstract: earlier public date of the probe dosing readout; drug ibrutinib, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "registry_date -> null (no results posted); drug ibrutinib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "year 2010 -> 2009, src/quote -> Pollyea ASH 2009 abstract: canine NHL activity public Nov 2009, before first MCL responses (press release 8 Dec 2009); model_first_use_year 2009; drug ibrutinib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2013 -> 2011: earlier public date, ASH 2011 PCYC-1104 interim abstract (ORR 67%); single-arm design written into note; acalabrutinib patient_trials moved to its own track; drug ibrutinib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug ibrutinib, route oral, population_group unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug acalabrutinib, route oral (readout taken in the acalabrutinib-alone lead-in of AVO, combination_with null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug acalabrutinib, route oral, combination_with null (cycle-1 acalabrutinib monotherapy readout)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug ibrutinib, route oral, population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug ibrutinib, route oral, population_group biomarker_selected; status same -> untested (untested_reason unsettled, strengthens true): Freeman 2022 reports the BIRC3 effect across both RAY arms incl. temsirolimus, so prognostic, not a test of ibrutinib insensitivity (checker adjudication)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug ibrutinib, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug ibrutinib, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug zanubrutinib, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug zanubrutinib, route oral; quote -> FDA MultiR 2019 dog-study sentence on bleeding and increased platelet levels; contra now rests on thrombocytopenia (28% in R/R MCL) vs raised dog platelets; atrial fibrillation dropped from the scored basis (pooled B-cell data, not MCL)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug acalabrutinib, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug acalabrutinib, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "retrodiction basis moved to acalabrutinib's own earlier patient tolerability (CLL, NEJM Dec 2015), not ibrutinib's: dose/safety retrodiction counts only the same drug's result; status retro unchanged"
+  }
  ],
  "added": [
-  {"cell": "efficacy", "index": 8, "what": "canine-spontaneous-bnhl x acalabrutinib x oral opener, untested 2016 (Harrington 2016 PLoS One, dog ORR 25%), split from efficacy 2"},
-  {"cell": "efficacy", "index": 9, "what": "canine x acalabrutinib retro 2017: ACE-LY-004 single-arm ORR 81% (Lancet 2017); retrodiction by post-dating (dog result 2016 after ibrutinib MCL responses 2011)"},
-  {"cell": "safety", "index": 7, "what": "canine x ibrutinib opener, untested 2009 (ASH 2009 abstract)"},
-  {"cell": "safety", "index": 8, "what": "canine x ibrutinib retro 2011: passing tolerability claim (PNAS 2010 'well-tolerated doses') now a safety prediction; MCL patients well tolerated (ASH 2011); post-dates phase 1 tolerability (ASH 2009)"},
-  {"cell": "safety", "index": 9, "what": "canine x acalabrutinib opener, untested 2016 (Harrington 2016 'generally well tolerated')"},
-  {"cell": "safety", "index": 10, "what": "canine x acalabrutinib retro 2017: tolerability claim vs ACE-LY-004 favourable safety profile; post-dated after ibrutinib MCL tolerability"}
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "canine-spontaneous-bnhl x acalabrutinib x oral opener, untested 2016 (Harrington 2016 PLoS One, dog ORR 25%), split from efficacy 2"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "canine x acalabrutinib retro 2017: ACE-LY-004 single-arm ORR 81% (Lancet 2017); retrodiction by post-dating (dog result 2016 after ibrutinib MCL responses 2011)"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "canine x ibrutinib opener, untested 2009 (ASH 2009 abstract)"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "canine x ibrutinib retro 2011: passing tolerability claim (PNAS 2010 'well-tolerated doses') now a safety prediction; MCL patients well tolerated (ASH 2011); post-dates phase 1 tolerability (ASH 2009)"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "canine x acalabrutinib opener, untested 2016 (Harrington 2016 'generally well tolerated')"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "canine x acalabrutinib retro 2017: tolerability claim vs ACE-LY-004 favourable safety profile; post-dated after ibrutinib MCL tolerability"
+  }
  ]
 }

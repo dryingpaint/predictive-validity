@@ -10,7 +10,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "DOI resolves to Kochenderfer 2010 Blood (PMID 20631379); quote verbatim in abstract. Same syngeneic lymphodepleted model the Tecartus SBRA describes. Opening untested correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kochenderfer 2010 (PMID 20631379, epub 2010-07-14) quote verbatim; opener untested 2010. brexucabtagene autoleucel, iv, stage_or_line (R/R MCL) correct."
   },
   {
    "cell": "engagement",
@@ -19,7 +20,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Zammarchi 2018 (PMID 29298756); quote verbatim in abstract. No tumour crosslink/gamma-H2AX readout in patients found; untested/not_measured fits."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Zammarchi 2018 abstract quote verbatim; no tumour crosslink readout in MCL patients, untested/not_measured. loncastuximab tesirine, iv, stage_or_line correct."
   },
   {
    "cell": "engagement",
@@ -28,7 +30,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "SBRA 125703 (dated 2020-07-23) states 'TECARTUS induced B cell aplasia in the majority' and describes the murine CD19 CAR model targeting normal B cells. readout_tier 'direct' is generous (cell depletion, arguably proximal); status unaffected."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "SBRA fda.gov/media/141093: B cell aplasia sentence verbatim; mouse model epub 2010-07-14 precedes the first CD19 CAR patient report (epub 2010-07-28), so prospective same 2020. brexucabtagene autoleucel, iv, stage_or_line correct."
   },
   {
    "cell": "dose",
@@ -37,7 +40,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in abstract. Mouse gave no human cell dose; ZUMA-2 dose carried from ZUMA-1. untested/no_prediction correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kochenderfer 2010 abstract quote verbatim; mouse stated no human cell dose, untested/no_prediction. brexucabtagene autoleucel, iv, stage_or_line correct."
   },
   {
    "cell": "dose",
@@ -46,48 +50,52 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in Zammarchi 2018 abstract; opening untested entry."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Zammarchi 2018 abstract quote verbatim; opener untested 2016 proxy. loncastuximab tesirine, iv, stage_or_line correct."
   },
   {
    "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote in BLA 761196 review. Quote itself shows no model margin, but review states monkey Cmax/AUC margins ~3x/45x vs 150 ug/kg and 1/6 HNSTD start; MTD not reached. Better quote: the margin sentence. Pre-trial timing of margin unclear."
-  },
-  {
-   "cell": "efficacy",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim in Kochenderfer 2010 abstract; opening untested."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Quote verbatim in Zammarchi 2018 abstract; FDA review lists Ramos/Daudi/WSU-DLCL2 etc., no MCL xenograft. Opening untested."
-  },
-  {
-   "cell": "efficacy",
    "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": false,
    "proposed_status": "untested",
-   "proposed_year": 2020,
-   "rule": "Efficacy follows the trial's primary endpoint; a secondary counts only with endpoint_role poc_gate (checker brief: efficacy scored on a secondary endpoint without poc_gate). untested_reason not_measured/unsettled.",
-   "note": "Hamadani 2021 quote verbatim (ORR 46.7% MCL). NCT02669017 primary outcomes are DLTs, RP2D and TEAEs; ORR secondary, n=15 MCL, endpoint_role null. Cannot score same; xenografts were not MCL either.",
+   "rule": "DRAFTER_BRIEF dose: an MTD is not a model target; CHECKER_BRIEF: margin_stated only where a model source stated the margin before the trial. untested_reason unpublished (rule 5).",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Review table cell (l.3804) near-verbatim, but states only MTD not reached; 1/6 HNSTD sets a starting dose, not a margin over an effective exposure, and monkey margins are computed in the 2021 review. Drug/route/population correct.",
    "adjudicated_status": "untested",
-   "adjudication_note": "Efficacy follows the trial's primary endpoint unless a secondary is a poc_gate (efficacy rule). LOTIS-1 primaries were DLT/RP2D/TEAEs; MCL ORR secondary, no poc_gate. Latest track entry: untested_reason not_measured (rule 5)."
+   "adjudication_note": "Dose rule: an MTD not reached and a 1/6-HNSTD starting dose are not a stated tolerability margin over an effective exposure; no model source stated one before the trial. untested, reason unpublished (rule 5: HNSTD value not public)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kochenderfer 2010 abstract quote verbatim; opener untested 2010. brexucabtagene autoleucel, iv, stage_or_line correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Zammarchi 2018 abstract quote verbatim; no MCL xenograft; opener untested. loncastuximab tesirine, iv, stage_or_line correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Hamadani 2021 quote verbatim. ClinicalTrials.gov NCT02669017: primaries DLTs, recommended dose, TEAEs; ORR secondary; results posted 2020-04-13. Single-arm ruling gives untested/not_measured, 2020. loncastuximab tesirine, iv, stage_or_line correct."
   },
   {
    "cell": "efficacy",
@@ -96,16 +104,18 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "Wang 2020 NEJM (PMID 32242358); abstract reads '95% confidence interval [CI], 84 to 98'. NCT02601313 primary = ORR, results posted 2020-09-10. Paired same, direction_only, fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NEJM abstract reads '95% confidence interval [CI]'. Gilead/Kite release 2019 (ASH 2019) reports 93% ORR, 67% CR: year 2019 correct. Mouse epub 2010-07-14 predates CD19 CAR patient data, so prospective same. brexucabtagene autoleucel, iv, stage_or_line correct."
   },
   {
    "cell": "efficacy",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Quote is Figure 5 legend in Tarantelli 2024 full text (haematologica.org). Combination model with no MCL patient result; untested/not_measured fits. model_filed null acceptable (not filed)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Tarantelli 2024 JEKO1 MCL xenograft sentence confirmed near-verbatim; no MCL patient combination result, untested/not_measured. loncastuximab tesirine, iv, stage_or_line correct."
   },
   {
    "cell": "safety",
@@ -114,7 +124,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Kochenderfer 2010 abstract; opening untested."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kochenderfer 2010 abstract quote verbatim; opener untested 2010. brexucabtagene autoleucel, iv, stage_or_line correct."
   },
   {
    "cell": "safety",
@@ -123,7 +134,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in Zammarchi 2018 abstract; opening untested."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Zammarchi 2018 abstract quote verbatim; opener untested. loncastuximab tesirine, iv, stage_or_line correct."
   },
   {
    "cell": "safety",
@@ -132,7 +144,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "SBRA quote verbatim; hypogammaglobulinemia 13/82 (16%) and B-cell loss reported. Mouse silence on CRS/ICANS correctly not scored. Judgement cites NEJM CRS 15%/neuro 31%; SBRA safety set shows 18%/37% grade>=3."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "SBRA quote verbatim; B-cell aplasia and hypogammaglobulinemia in ZUMA-2 MCL; mouse silence on CRS not scored. brexucabtagene autoleucel, iv, stage_or_line correct."
   },
   {
    "cell": "safety",
@@ -141,7 +154,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "BLA 761196 review: 'The toxicities observed in animals have generally been observed in patients', followed by lung/kidney inflammation caveat; partial same with imported_from DLBCL fits."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Review l.1714 quote verbatim. LOTIS-1 enrolled MCL (8.2%), Level 2 pool 'generally similar', so MCL patients measured; imported_from removal correct. Lung/kidney inflammation not seen supports partial. Lonca iv, stage_or_line correct."
   },
   {
    "cell": "efficacy",
@@ -150,18 +164,22 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "PubMed 26819453 (Clin Cancer Res, epub 2016-01-27); quote verbatim in abstract. CTL019 is a CD19 CAR (sibling product, product_in_model false). Opening untested 2016 correct; no MCL patient result then."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ruella 2016 (epub 2016-01-27) quote verbatim; opener untested. Drug/route/population correct. Model post-dates CD19 CAR lymphoma responses (Kochenderfer 2010, 2015 JCO; ZUMA-1 phase 1 2015), so retrodiction should be true."
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Wang 2020 NEJM quote near-verbatim (abstract reads '95% confidence interval [CI], 84 to 98'); primary endpoint ORR. Model published 2016, before ZUMA-2 results, so prospective: same, not retro. Direction-only pairing fine."
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "DRAFTER_BRIEF retrodiction: for efficacy a model result first public after a patient result for the same target and action, member drug or any other, is a retrodiction; one that reproduced the human data is retro, never same.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Wang 2020 quote verbatim; year 2019 confirmed (Kite release, ASH 2019). Ruella xenograft (2016) first public after CD19 CAR lymphoma responses, so it is a retrodiction that reproduced them. Drug/route/population correct.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: Ruella 2016 (epub 2016-01-27) post-dates CD19 CAR T patient responses in B-cell lymphoma (2010 on; its abstract builds on CTL019 outcomes); efficacy counts any drug, same target and action, so retro."
   },
   {
    "cell": "efficacy",
@@ -170,18 +188,22 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "SBRA BLA 125703 (dated 2020-07-23), section 4: quote verbatim. Product itself, filed. 2015 opening year is a proxy (allowed). Cell lines unnamed; model_kind ex_vivo is nearest enum for in vitro lines."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "SBRA co-culture sentence verbatim; proxy 2015 opener allowed. Drug/route/population correct. Co-culture (2015, filed 2019-20) post-dates CD19 CAR patient responses, so retrodiction should be true."
   },
   {
    "cell": "efficacy",
    "index": 9,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Same ZUMA-2 quote as index 7 (near-verbatim); co-culture ran before ZUMA-2 dosing, so not a retrodiction. Weak, direction-only pairing; target lines may not be MCL. Efficacy cell entries are no longer in year order after merge (2015 after 2020)."
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "DRAFTER_BRIEF retrodiction: for efficacy a model result first public after a patient result for the same target and action, member drug or any other, is a retrodiction; one that reproduced the human data is retro, never same.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Wang 2020 quote verbatim; year 2019 confirmed (Kite release, ASH 2019). KTE-X19 co-culture (2015 proxy) post-dates CD19 CAR lymphoma responses (2010-2015), so a retrodiction: retro, not same. Drug/route/population correct.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: the KTE-X19 co-culture was first public in the 2020 SBRA, after ZUMA-2 (Dec 2019) and earlier CD19 CAR lymphoma responses; post-dating alone makes it a retrodiction that reproduced them: retro."
   }
  ],
  "missing": [
@@ -191,6 +213,7 @@
  "overall": "accept_with_corrections",
  "rule_questions": [
   "Dose: does a monkey exposure margin (Cmax ~3x, AUC ~45x vs the 150 ug/kg clinical dose) stated in the BLA review, plus the 1/6-HNSTD starting-dose rule, count as a pre-trial stated margin (margin_stated) when the review computing it post-dates the phase 1?",
-  "Engagement: is depletion of normal CD19+ B cells by a depleter a 'direct' readout (target engagement) or 'proximal/downstream'?"
+  "Engagement: is depletion of normal CD19+ B cells by a depleter a 'direct' readout (target engagement) or 'proximal/downstream'?",
+  "Retrodiction for efficacy: does a CD19 patient result in another disease (CAR T in DLBCL/CLL/ALL, 2010-2015) make an MCL model first public later a retrodiction, or must the earlier patient result be in MCL? Also whether blinatumomab (CD19 engager, non-member) counts as same target and action."
  ]
 }

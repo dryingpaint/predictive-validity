@@ -10,7 +10,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Gurevich 2022 (PMID 35347281) abstract has the quote verbatim; SBRA s.4 confirms hypomorph mouse and xenograft studies. 2018 opening proxy acceptable."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in Gurevich 2022 abstract. B-VEC, topical, unselected correct; 2018 proxy opener."
   },
   {
    "cell": "engagement",
@@ -19,7 +20,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in abstract; paper reports mice/xenograft and patient C7/anchoring fibrils together, so comparison_stated true is fair. Proximal readout correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (Gurevich abstract, epub 2022-03-28). Retro right: pz-cel C7 at DEJ (JAMA 2016) precedes first public hypomorph/xenograft data. Year 2022, B-VEC, topical, unselected fine."
   },
   {
    "cell": "engagement",
@@ -28,7 +30,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Siprashvili 2010 (PMID 20497034) quote verbatim; SBRA 2025 confirms Col7 expression to 12 months in immunodeficient-mouse wound implants."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Siprashvili 2010 quote verbatim. pz-cel, ex_vivo_cells, biomarker_selected (NC1+ required in NCT01263379 and VIITAL) right."
   },
   {
    "cell": "engagement",
@@ -37,37 +40,28 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "JAMA 2016 quote verbatim; 90%->66%->42% C7 positivity vs 1-year xenograft persistence; same with source_calls_it partial is right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "JAMA 2016 quote verbatim (90% at 3 mo, 42% at 12 mo); same/partial stands. pz-cel, ex_vivo_cells, biomarker_selected right."
   },
   {
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "dating: an opener takes the year the model system was first used for the question; model_first_use_year is the earliest admissible use",
    "cell": "engagement",
    "index": 5,
-   "proposed_status": "untested",
-   "proposed_year": 2013,
-   "note": "Field year (and model_first_use_year) 2015 -> 2013. Woodley 2013 JID (PMID 23321924, doi:10.1038/jid.2013.10, epub 2013-01-15; PMC3890237 full text read): IV rC7 into athymic nude mice bearing C7-null skin grafts 'incorporated into the DEJ... and formed AF structures'. Still untested opener; quote could cite Woodley 2013. | superseded: confirmed (): Hou 2015 (PMID 26203639) quote verbatim. Earlier FB-rhC7 work in engrafted RDEB skin (cited in the abstract) is the same protein track's prior use; opening year could be earlier.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Dating rule 6: Woodley 2013 (PMC3890237, epub 2013-01-15) dosed IV rC7 to C7-null mouse skin grafted on nude mice, same knockout tissue, route and Lotus/PTR-01 lineage; model_first_use_year 2013 accepted. Opener stays untested."
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim. PTR-01, iv, product_in_model true (both CHO-derived rC7, Lotus lineage) fine. Hou 2015 abstract: CHO-rhC7 IV into newborn C7-null mice; earlier IV work (Woodley 2013) used fibroblast-derived rhC7 in nude/skin-graft mice, a different system, so 2015 first use stands."
   },
   {
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "dating: an opener takes the year the model system was first used for the question; model_first_use_year is the earliest admissible use",
    "cell": "engagement",
    "index": 6,
-   "proposed_status": "same",
-   "proposed_year": 2022,
-   "note": "Field model_first_use_year 2015 -> 2013 (Woodley 2013 IV rC7 in C7-null skin grafts, funded by Lotus Tissue Repair, PTR-01 lineage). Status same and year 2022 unchanged; model still predates the trial, so not retro. | superseded: confirmed (): BridgeBio release scraped; quote verbatim. NCT04599881 lists skin delivery (NC1/NC2 IF) as a secondary outcome; no posted results, so tier 5 with trial_unreported true is right.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dating rule 6: Woodley 2013 (PMC3890237, epub 2013-01-15) dosed IV rC7 to C7-null mouse skin grafted on nude mice, same knockout tissue, route and Lotus/PTR-01 lineage; model_first_use_year 2013 accepted. Status same, year 2022 unchanged; not retro."
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Release DEJ-deposition quote verbatim (2022-05-20). Same, proximal, tier 5, PTR-01/iv right. Hou 2015 abstract: CHO-rhC7 IV into newborn C7-null mice; earlier IV work (Woodley 2013) used fibroblast-derived rhC7 in nude/skin-graft mice, a different system, so 2015 first use stands."
   },
   {
    "cell": "dose",
@@ -76,7 +70,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "SBRA 169342 s.5 quote verbatim; mouse studies stated no human dose or margin. untested/no_prediction correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "SBRA quote verbatim (regimen set from phase 1/2); untested/no_prediction holds. B-VEC, topical correct."
   },
   {
    "cell": "dose",
@@ -85,22 +80,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "SBRA 186796 clinical pharmacology quote verbatim; nonclinical section states no human dose. untested/no_prediction correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "SBRA 2025 'no pharmacokinetic assessments' quote; fixed sheet graft, untested/no_prediction holds. pz-cel, ex_vivo_cells correct."
   },
   {
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "dating: an opener takes the year the model system was first used for the question; model_first_use_year is the earliest admissible use",
    "cell": "dose",
    "index": 3,
-   "proposed_status": "untested",
-   "proposed_year": 2013,
-   "note": "Field year (and model_first_use_year) 2015 -> 2013. Woodley 2013 IV rC7 graft model showed dose-dependent DEJ rC7, no adverse effects to 33 mg/kg; no human dose or margin stated, so untested holds. | superseded: confirmed (): Single newborn-mouse IV dose; no human dose/exposure/margin in abstract. PTR-01 phase 1/2 used 3.0 mg/kg weekly (registry), not a model-stated target.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Dating rule 6: Woodley 2013 (PMC3890237, epub 2013-01-15) dosed IV rC7 to C7-null mouse skin grafted on nude mice, same knockout tissue, route and Lotus/PTR-01 lineage; model_first_use_year 2013 accepted. No human dose/margin compared; untested holds."
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "No human dose, exposure or margin from newborn single-dose mice; untested/no_prediction holds. PTR-01, iv, product_in_model true fine; 2015 first use stands (Hou: earlier IV work used FB-rhC7)."
   },
   {
    "cell": "efficacy",
@@ -109,7 +100,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "SBRA 169342 s.4 quote verbatim."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "SBRA quote verbatim; B-VEC, topical, unselected correct. Opener untested 2018 proxy."
   },
   {
    "cell": "efficacy",
@@ -118,7 +110,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim; phase 1/2 primary objectives (C7, AF, wound area) met; GEM-3 NEJM 67% vs 22% is a consistent patient_trials entry."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim. Retro right: GEM-3 topline (primary met) 2021-11-29 and pz-cel 2016 precede the 2022-03-28 model publication. Year 2022, B-VEC, topical fine."
   },
   {
    "cell": "efficacy",
@@ -127,7 +120,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Siprashvili 2010 quote verbatim."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Siprashvili 2010 quote verbatim; opener untested 2010. pz-cel, ex_vivo_cells correct."
   },
   {
    "cell": "efficacy",
@@ -136,37 +130,28 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Tang 2025 (PMID 40570869) quote verbatim; coprimary endpoints (>=50% healing, pain) both met. Year 2025 holds whether dated by April 2025 label or June Lancet epub."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abeona release 2022-11-03 'Both Co-Primary Endpoints Met' found; 2022 is the earliest date. Lancet 2025 quote as before sets status same; co-primary design in note; model 2010 prospective."
   },
   {
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "dating: an opener takes the year the model system was first used for the question; model_first_use_year is the earliest admissible use",
    "cell": "efficacy",
    "index": 5,
-   "proposed_status": "untested",
-   "proposed_year": 2013,
-   "note": "Field year (and model_first_use_year) 2015 -> 2013. Woodley 2013: IV rC7 'corrected the dermal-epidermal separation' of grafted C7-null skin. Opener stays untested. Caveat: grafted adult skin, not newborn null mice; same IV-rC7 system. | superseded: confirmed (): Hou 2015 quote verbatim.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Dating rule 6: Woodley 2013 (PMC3890237, epub 2013-01-15) dosed IV rC7 to C7-null mouse skin grafted on nude mice, same knockout tissue, route and Lotus/PTR-01 lineage; model_first_use_year 2013 accepted. Opener stays untested."
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Hou 2015 quote verbatim; opener untested 2015. PTR-01, iv, product_in_model true fine. Hou 2015 abstract: CHO-rhC7 IV into newborn C7-null mice; earlier IV work (Woodley 2013) used fibroblast-derived rhC7 in nude/skin-graft mice, a different system, so 2015 first use stands."
   },
   {
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "dating: an opener takes the year the model system was first used for the question; model_first_use_year is the earliest admissible use",
    "cell": "efficacy",
    "index": 6,
-   "proposed_status": "same",
-   "proposed_year": 2022,
-   "note": "Field model_first_use_year 2015 -> 2013 (Woodley 2013, IV rC7 corrected separation in grafted C7-null skin). Status same and year 2022 unchanged (per adjudication); model predates trial, not retro. | superseded: corrected (): NCT04599881 primary efficacy endpoint is >=2-level 7-pt Global Impression of Change in a majority of lesions; quoted >=50% wound-area reduction is a registry secondary. Release: 4/6 patients responders on primary. Status stays same; swap quote.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dating rule 6: Woodley 2013 (PMC3890237, epub 2013-01-15) dosed IV rC7 to C7-null mouse skin grafted on nude mice, same knockout tissue, route and Lotus/PTR-01 lineage; model_first_use_year 2013 accepted. Status same, year 2022 unchanged; not retro."
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "BridgeBio 2022-05-20 release re-scraped; '4 of 6 responders' quote verbatim. Single-arm, no pre-set bar: response where healing predicted is same; design in note. PTR-01, iv right."
   },
   {
    "cell": "safety",
@@ -175,11 +160,13 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim, but these GLP studies used wild-type BALB/c mice (IV, ID, wounded skin), not the COL7 hypomorph/xenograft system; give the safety track its own model_id (e.g. bvec-balbc-glp-tox). Status unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "proposed_status": "untested",
+   "proposed_year": 2018,
    "rule": "one system per model_id: two systems sharing one is a failure",
+   "note": "Quote verbatim, but the SBRA GLP studies were in healthy BALB/c mice (IV, repeat ID, topical on wounds), not hypomorph mice or xenografts; untested opener holds on its own track. B-VEC, topical fine.",
    "adjudicated_status": "untested",
-   "adjudication_note": "One system per model_id: SBRA GLP tox used wild-type BALB/c mice, not COL7 hypomorphs/xenografts; move to its own track (e.g. bvec-balbc-glp-tox). Status untested unchanged."
+   "adjudication_note": "Status agreed; only the model_id split is disputed (one system per model_id). On a wild-type BALB/c GLP-tox track this opener stays untested; it is not that track's latest entry, so no untested_reason."
   },
   {
    "cell": "safety",
@@ -188,11 +175,13 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim; no grade>=2 related AEs matches the BALB/c GLP silence; status same holds but on a separate BALB/c GLP track, with model_src the SBRA.",
-   "proposed_status": "same",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "retro",
+   "proposed_year": 2023,
    "rule": "one system per model_id: two systems sharing one is a failure",
-   "adjudicated_status": "same",
-   "adjudication_note": "One system per model_id: pair belongs on the BALB/c GLP tox track (model_src SBRA). No grade>=2 related AEs or shedding matches clean GLP tox; status same."
+   "note": "Retro and 2023 right (Krystal 2018-10-15 tolerability precedes SBRA 2023; Gurevich abstract has no mouse safety). But SBRA's GLP tox was in wild-type BALB/c mice, still on the hypomorph/xenograft model_id; give it its own track.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status agreed. Safety is a drug claim: B-VEC's own tolerability (Oct 2018) preceded the first public mouse tox (SBRA 2023), so retro on the split BALB/c GLP-tox track (one system per model_id)."
   },
   {
    "cell": "safety",
@@ -201,7 +190,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim; SBRA 2025 confirms GLP tox/BD in immunodeficient-mouse implants with no gross/histopathological findings and no clonality - same system."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Siprashvili 2010 quote verbatim; opener untested 2010. pz-cel, ex_vivo_cells correct."
   },
   {
    "cell": "safety",
@@ -210,22 +200,18 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim. Anti-C7 antibodies (2/7) and tissue-bound antibodies (4/7) in phase 1/2a (SBRA) are harms immunodeficient mice cannot show, so not a miss."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "'All 24 grafts were well tolerated without serious adverse events' verbatim; same 2016, prospective (model 2010). pz-cel, ex_vivo_cells correct."
   },
   {
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "dating: an opener takes the year the model system was first used for the question; model_first_use_year is the earliest admissible use",
    "cell": "safety",
    "index": 5,
-   "proposed_status": "untested",
-   "proposed_year": 2013,
-   "note": "Field year (and model_first_use_year) 2015 -> 2013. Woodley 2013: 'we did not observe any adverse effects in mice receiving IV rC7 at doses as high as 33 mg/per kg'. Opener stays untested. | superseded: confirmed (): Quote verbatim. ADA is a registry primary outcome of NCT04599881 with no results posted; release says only 'well tolerated'. untested/unsettled correct.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Dating rule 6: Woodley 2013 (PMC3890237, epub 2013-01-15) dosed IV rC7 to C7-null mouse skin grafted on nude mice, same knockout tissue, route and Lotus/PTR-01 lineage; model_first_use_year 2013 accepted. Opener stays untested."
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Hou 2015 anti-C7 quote verbatim; no patient antibody data public, so untested/unsettled holds. PTR-01, iv, product_in_model true fine; 2015 first use stands."
   },
   {
    "cell": "engagement",
@@ -234,8 +220,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Woodley 2003 JID (Nov 2003) abstract has the quote verbatim; intradermal injection was into normal mouse skin plus regenerated RDEB skin. Model-only opener, untested 2003, class level, product_in_model false all correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Woodley 2003 quote verbatim; opener untested 2003, product_in_model false. Dabocemagene autoficel, intradermal correct."
   },
   {
    "cell": "engagement",
@@ -244,8 +230,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Castle Creek poster PDF (created 2020-01-16) read; quote verbatim. Model 2003 predates trial, so prospective, not retro. same with source_calls_it partial fits two subjects shown; proximal readout correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Castle Creek poster quote as before; same/partial 2020. Dabocemagene autoficel, intradermal correct."
   },
   {
    "cell": "efficacy",
@@ -254,8 +240,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim in Woodley 2003 abstract. Model-only opener, untested 2003, correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Woodley 2003 quote verbatim; opener untested 2003. Dabocemagene autoficel, intradermal correct."
   },
   {
    "cell": "efficacy",
@@ -264,8 +250,23 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "ClinicalTrials.gov API: NCT04213261 primary 'Complete Wound Closure of the First Wound Pair at Week 24', 1 vs 0, enrollment 6, results posted 2024-04-01. Brief's unsettled covers inconclusive; untested/unsettled, year 2024 supported."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ruling fits rule 5 'unsettled' (inconclusive): terminated, 6 enrolled, 1 vs 0 closures (registry 2024-04-01). untested/unsettled, 2024, dabocemagene autoficel, intradermal stand."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "same",
+   "proposed_year": 2022,
+   "rule": "one system per model_id: two systems sharing one is a failure",
+   "note": "Release 'well tolerated' quote verbatim. Woodley 2013 (no adverse effects to 33 mg/kg) dosed fibroblast-derived rhC7 to nude/C7-null-skin-graft mice (per Hou 2015), not CHO-rhC7 in C7-null mice; give it its own track, product_in_model false, first use 2013.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status agreed. Woodley 2013 nude/C7-null graft mice need their own model_id (one system per model_id); stated tolerability held in PTR-01 patients (2022), not retro, so same; product_in_model false."
   }
  ],
  "missing": [
@@ -277,6 +278,8 @@
  "rule_questions": [
   "Dating: Krystal's GEM-3 topline (Nov 2021) and Abeona's VIITAL topline (Nov 2022) press releases precede the tier-1 papers; rule 6 lists registry/epub/label/print but not tier-5 releases. Should a tier-5 release date an entry when a higher-tier record later sets its status?",
   "Product identity: PTR-01 is CHO-derived rC7 licensed from Shire; whether it is the exact CHO-rhC7 of Hou 2015 (product_in_model true vs false) is unconfirmed - does uncertainty default product_in_model to null, as drafted?",
-  "The DEFI-RDEB phase 3 (1 vs 0 closures, stopped early for vector supply) - is an underpowered terminated trial 'unsettled' (untested) or a contra for a model predicting healing?"
+  "The DEFI-RDEB phase 3 (1 vs 0 closures, stopped early for vector supply) - is an underpowered terminated trial 'unsettled' (untested) or a contra for a model predicting healing?",
+  "Retrodiction for engagement/efficacy counts 'any other drug' on the same target: do allogeneic or normal-fibroblast injections in RDEB patients (C7 at the DEJ, e.g. Wong 2008 JID) count as the same target and action, which would make the 2010-2015 pz-cel and rC7 models retrodictions?",
+  "PTR-01 track opening year: Hou 2015 distinguishes CHO-rhC7 from the fibroblast-derived rhC7 of Woodley 2013; is the earlier FB-rhC7 IV system the same model system as CHO-rhC7 in C7-null mice (opener 2013) or a separate one (2015)? This round's verdicts treat them as separate, reversing the earlier 2013 proposal."
  ]
 }

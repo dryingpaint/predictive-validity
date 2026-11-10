@@ -17,12 +17,16 @@
     {
       "cell": "engagement",
       "index": 2,
-      "verdict": "confirmed",
+      "verdict": "corrected",
       "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "rule": null,
-      "note": "Kazemi (PMID 29469601, epub 2018-02-22) quote verbatim; 11 healthy volunteers. +22% vs monkey +53% facility; aqueous flow -15% P=0.08 trend. same/partial, off_by_2-5x, downstream all hold."
+      "quote_found": "verbatim",
+      "status_supported": false,
+      "proposed_status": "retro",
+      "rule": "Retrodiction rule (engagement/efficacy: model first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced -> retro)",
+      "note": "Kazemi quote verbatim (PubMed); ARVO 2017 abstract read (facility +19%, EVP -9%), year 2017 holds. Monkey model (2012) post-dates AR-12286 patient IOP result (ARVO 2010, IOVS 51:1633); retro, retrodiction true.",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "retro",
+      "adjudication_note": "Retrodiction rule: engagement is a target claim; model first public 2012-13 (monkey) after AR-12286 (ROCK inhibitor) cut IOP in OHT/glaucoma patients (ARVO 2010-04, IOVS 51:1633, read). Rule needs same target/action, not same readout; reproduced direction, so retro."
     },
     {
       "cell": "dose",
@@ -39,14 +43,15 @@
       "index": 2,
       "verdict": "corrected",
       "source_resolves": true,
-      "quote_found": "abstract_only",
+      "quote_found": "verbatim",
       "status_supported": true,
       "proposed_status": "same",
-      "proposed_year": 2014,
-      "rule": "Evidence rule 6 (dating)",
-      "note": "Status ok: ClinPharmR quote on CS201 0.02% vs 0.04% verified; NCT01731002 results 2018-04-17 verified. Year: monkey paper was online 2013 (Crossref created 2013-07-16), trial epub 2014-09-27, so pairing public 2014, not 2015.",
+      "proposed_year": 2013,
+      "rule": "Evidence rule 6 (earliest public date: sponsor press release / SEC filing)",
+      "note": "Bacharach quote verbatim (PubMed, epub 2014-09-27). Aerie IPO prospectus (SEC 424B4, Oct 2013) already reported Phase 2b 0.02% IOP -5.7 mmHg; monkey paper online 2013-07. Pairing public 2013. Same, netarsudil/ocular_topical/unselected hold.",
+      "checked_by": "CHECKER_BRIEF / fields",
       "adjudicated_status": "same",
-      "adjudication_note": "Status same agreed (dose table: effective concentration reached). Rule 6: monkey paper online 2013, Bacharach epub 2014-09, so the pairing was public 2014; year 2014, not 2015."
+      "adjudication_note": "Rule 6: status same agreed; dose is a drug claim, no earlier netarsudil patient result, so not retro. Year should be 2013: Aerie S-1 (SEC, Sept 2013) reported Phase 2b 0.02% -5.7 mmHg; monkey paper online 2013-07."
     },
     {
       "cell": "efficacy",
@@ -64,13 +69,14 @@
       "verdict": "corrected",
       "source_resolves": true,
       "quote_found": "verbatim",
-      "status_supported": true,
-      "proposed_status": "same",
-      "proposed_year": 2014,
-      "rule": "Evidence rule 6 (dating)",
-      "note": "Bacharach primary endpoint (mean diurnal IOP day 28) responded; quote verbatim. Year 2014 as for dose 2. patient_trials quotes are from FDA MedR/SumR, not the cited Serle DOI; registry dates 2018-04-06 verified.",
-      "adjudicated_status": "same",
-      "adjudication_note": "Status same agreed (primary IOP endpoint responded). Rule 6: both sides public by Bacharach epub 2014-09 (monkey paper online 2013); year 2014, not 2015."
+      "status_supported": false,
+      "proposed_status": "retro",
+      "proposed_year": 2013,
+      "rule": "Retrodiction rule (engagement/efficacy: model first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced -> retro); Evidence rule 6",
+      "note": "Quote verbatim. AR-12286 (ROCK inhibitor) cut IOP in OHT/glaucoma patients, ARVO 2010 abstract (IOVS 51:1633, 2010-04-17), before the monkey model (2012). Retro, retrodiction true. Patient side first public in Aerie Oct 2013 prospectus: year 2013.",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "retro",
+      "adjudication_note": "Retrodiction rule: monkey IOP model (2012-13) post-dates AR-12286 patient IOP result (ARVO 2010-04, read); any-drug same-target rule, reproduced, so retro. Rule 6: year 2013, Aerie S-1 (Sept 2013) reported Phase 2b -5.7 mmHg."
     },
     {
       "cell": "safety",
@@ -108,15 +114,14 @@
       "index": 4,
       "verdict": "corrected",
       "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "proposed_status": "same",
-      "proposed_year": 2017,
-      "rule": "Evidence rule 6 (dating)",
-      "note": "Kazemi quote verbatim; same/partial holds (EVP vs vehicle n.s.). Human EVP first public in the ARVO 2017 abstract (-9%, p=0.01) of the same study, so the pairing opens 2017, not 2018. 35% vs 9-10% stays off_by_2-5x.",
-      "checked_by": "CHECKER_BRIEF_v3 / models",
-      "adjudicated_status": "same",
-      "adjudication_note": "Status same (partial) agreed. Year stays 2018: the ARVO 2017 abstract (IOVS 58(8):2112) has no DOI or PMID, so it is not an admissible tier 1 source (rule 2) to date the comparison under rule 6."
+      "quote_found": "verbatim",
+      "status_supported": false,
+      "proposed_status": "retro",
+      "rule": "Retrodiction rule (engagement/efficacy: model first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced -> retro)",
+      "note": "Kazemi EVP quote verbatim; ARVO 2017 abstract read, year 2017 holds. Rabbit EVP model (2015) post-dates the AR-12286 patient IOP result (ARVO 2010-04-17); reproduced direction, so retro, retrodiction true.",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "retro",
+      "adjudication_note": "Retrodiction rule: engagement is a target claim; model first public 2015 (rabbit EVP) after AR-12286 (ROCK inhibitor) cut IOP in OHT/glaucoma patients (ARVO 2010-04, IOVS 51:1633, read). Rule needs same target/action, not same readout; reproduced direction, so retro."
     },
     {
       "cell": "engagement",
@@ -134,15 +139,14 @@
       "index": 6,
       "verdict": "corrected",
       "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "proposed_status": "same",
-      "proposed_year": 2017,
-      "rule": "Evidence rule 6 (dating)",
-      "note": "Kazemi facility quote verbatim; same holds. Sit/Kazemi ARVO 2017 abstract (IOVS 2017;58(8), iovs.arvojournals.org articleid 2637454, June 2017; seen via search snippet, page 403) reported facility +19% (p=0.02), so the pairing opens 2017. 51% vs 19-22% stays off_by_2-5x.",
-      "checked_by": "CHECKER_BRIEF_v3 / models",
-      "adjudicated_status": "same",
-      "adjudication_note": "Status same agreed. Year stays 2018: the ARVO 2017 abstract (IOVS 58(8):2112) has no DOI or PMID, so it is not an admissible tier 1 source (rule 2) to date the comparison under rule 6."
+      "quote_found": "verbatim",
+      "status_supported": false,
+      "proposed_status": "retro",
+      "rule": "Retrodiction rule (engagement/efficacy: model first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced -> retro)",
+      "note": "Kazemi facility quote verbatim; ARVO 2017 abstract read, year 2017 holds. Ex-vivo donor-eye model (2016) post-dates the AR-12286 patient IOP result (ARVO 2010-04-17); retro, retrodiction true.",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "retro",
+      "adjudication_note": "Retrodiction rule: engagement is a target claim; model first public 2016 (donor eye) after AR-12286 (ROCK inhibitor) cut IOP in OHT/glaucoma patients (ARVO 2010-04, IOVS 51:1633, read). Rule needs same target/action, not same readout; reproduced direction, so retro."
     },
     {
       "cell": "engagement",
@@ -160,15 +164,14 @@
       "index": 8,
       "verdict": "corrected",
       "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "proposed_status": "same",
-      "proposed_year": 2017,
-      "rule": "Evidence rule 6 (dating)",
-      "note": "Kazemi quote verbatim; direction-only same holds. As for entries 4 and 6, the human facility rise was first public in the ARVO 2017 abstract, so year 2017.",
-      "checked_by": "CHECKER_BRIEF_v3 / models",
-      "adjudicated_status": "same",
-      "adjudication_note": "Status same (direction only) agreed. Year stays 2018: the ARVO 2017 abstract (IOVS 58(8):2112) has no DOI or PMID, so it is not an admissible tier 1 source (rule 2) for rule 6 dating."
+      "quote_found": "verbatim",
+      "status_supported": false,
+      "proposed_status": "retro",
+      "rule": "Retrodiction rule (engagement/efficacy: model first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced -> retro)",
+      "note": "Kazemi facility quote verbatim; ARVO 2017 abstract read, year 2017 holds. Mouse OCT model (2016) post-dates the AR-12286 patient IOP result (ARVO 2010-04-17); retro, retrodiction true.",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "retro",
+      "adjudication_note": "Retrodiction rule: engagement is a target claim; model first public 2016 (mouse OCT) after AR-12286 (ROCK inhibitor) cut IOP in OHT/glaucoma patients (ARVO 2010-04, IOVS 51:1633, read). Rule needs same target/action, not same readout; reproduced direction, so retro."
     },
     {
       "cell": "efficacy",
@@ -197,33 +200,36 @@
       "index": 5,
       "verdict": "confirmed",
       "source_resolves": true,
-      "quote_found": "abstract_only",
+      "quote_found": "verbatim",
       "status_supported": true,
-      "rule": "rule 6 (cell opens untested at model_first_use_year, proxy allowed)",
-      "note": "Van de Velde 2014 IOVS (epub 2014-02-18) abstract; quote verbatim in Conclusions. Opening untested at 2012 proxy (NCT01693315 start 2012-09) is acceptable.",
-      "checked_by": "CHECKER_BRIEF / models"
+      "rule": "Evidence rule 6 (opener at model_first_use_year)",
+      "note": "ARVO 2011 abstract read (IOVS 52(14):236, 2011-04-22: IOP -18% single, -14% TID). Van de Velde 2014 quote verbatim (IOVS 55:1006). Opener 2011 untested holds; track post-dates AR-12286 2010, so retrodiction should be true.",
+      "checked_by": "CHECKER_BRIEF / fields"
     },
     {
       "cell": "efficacy",
       "index": 6,
-      "verdict": "confirmed",
+      "verdict": "corrected",
       "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "rule": "retrodiction rule; tier 5 needs model_src tier 1-3",
-      "note": "Amakem PR 2013-11-14 reads: primary endpoint IOP, -3.7 mmHg p=0.020 vs placebo; investigator quote verbatim. Rabbit work preceded FIH (start 2012-09), so same not retro. NCT01693315 no posted results. Phase 3 NCT04863365 unreported.",
-      "checked_by": "CHECKER_BRIEF / models"
+      "quote_found": "near",
+      "status_supported": false,
+      "proposed_status": "retro",
+      "rule": "Retrodiction rule (engagement/efficacy: model first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced -> retro)",
+      "note": "Rabbit IOP public ARVO 2011-04-22, after AR-12286 cut IOP in patients (ARVO 2010-04-17, IOVS 51:1633). Retro, retrodiction true. Year 2013 (Amakem release 2013-11-14) holds; release quote not re-opened this pass.",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "retro",
+      "adjudication_note": "Retrodiction rule: rabbit IOP model first public ARVO 2011-04, after AR-12286 cut IOP in patients (ARVO 2010-04, read); any-drug same-target rule for efficacy, reproduced, so retro. Year 2013 unchanged."
     },
     {
       "cell": "safety",
       "index": 3,
       "verdict": "confirmed",
       "source_resolves": true,
-      "quote_found": "abstract_only",
+      "quote_found": "verbatim",
       "status_supported": true,
-      "rule": "rule 6",
-      "note": "Hyperemia sentence verbatim in the abstract Results; named harm with a checkable prediction. Opening untested at 2012 proxy is fine.",
-      "checked_by": "CHECKER_BRIEF / models"
+      "rule": "Evidence rule 6 (opener at model_first_use_year)",
+      "note": "Hyperemia quote verbatim (Van de Velde 2014, IOVS 55:1006). ARVO 2011 abstract (2011-04-22) dates first use; opener 2011 untested holds. Safety is drug-specific; no earlier sovesudil patient result, so not retro.",
+      "checked_by": "CHECKER_BRIEF / fields"
     },
     {
       "cell": "safety",
@@ -242,13 +248,16 @@
     "DE-104 Phase 2 trials NCT00650338, NCT00657579, NCT00656240, NCT00868894 are registered with no posted results. The discontinuation for a missed primary endpoint (late 2010) appears only in the review; no Santen tier 5 document was found in budget, and no DE-104 model data was found.",
     "Ripasudil (K-115, Kowa; approved Japan 2014) is a ROCK inhibitor for POAG/OHT with its own rabbit/monkey IOP models (e.g. Isobe 2014, Curr Eye Res) and Japanese patient trials (Tanihara 2013, Am J Ophthalmol); no track if it is in the class. Not verified in budget.",
     "AR-12286 (Aerie's earlier ROCK inhibitor) had monkey IOP data and a Phase 2 patient trial (Williams 2011, Am J Ophthalmol) before netarsudil; a member drug's own model with no track. Not verified in budget.",
-    "Sovesudil (PHP-201) Phase 3 in POAG/OHT, NCT04863365 (pH Pharma, completion 2023-11, status unknown, no posted results); no result found in a Firecrawl search. If it reports, it sets the patient side of the nzw-rabbit-iop-sovesudil efficacy and safety track above the 2013 tier 5 release."
+    "Sovesudil (PHP-201) Phase 3 in POAG/OHT, NCT04863365 (pH Pharma, completion 2023-11, status unknown, no posted results); no result found in a Firecrawl search. If it reports, it sets the patient side of the nzw-rabbit-iop-sovesudil efficacy and safety track above the 2013 tier 5 release.",
+    "AR-12286 (Aerie ROCK inhibitor) patient IOP result, ARVO 2010 (Williams, IOVS 51:1633, https://iovs.arvojournals.org/article.aspx?articleid=2370306; NCT00902200) precedes every model in this tile, which makes the netarsudil and sovesudil engagement/efficacy tracks retrodictions."
   ],
   "overall": "accept_with_corrections",
   "rule_questions": [
     "ROCKET-1 (Study 301) failed its primary endpoint, which was non-inferiority of mean IOP to timolol, although IOP fell significantly. The model predicted IOP lowering with no comparator margin. Does an active-comparator NI primary that fails while the absolute endpoint responds count as an efficacy 'contra', or is it untested for the model? The draft kept it as a status-neutral patient_trial.",
     "Decision 16 margin_stated: the 2017 PharmR states NOAEL margins of 8x/2x for the chronic studies but a corneal-haze NOEL margin of 1. Is margin_stated judged on the NOAEL or on the most sensitive finding? Neither margin was shown to be public before Phase 2. Status 'same' holds either way.",
     "When the system relied on is an IOP-lowering model in normotensive animals, should a failed sibling-member drug with model data only in a conference abstract (ATS907 ARVO 2011) be admissible on the model side (tier 1 needs DOI/PMID)?",
-    "efficacy 4: an undirected genotype hypothesis ('may influence response') meets an underpowered null (aOR 1.31, CI 0.42-4.10). Is that a failed prediction (contra) or no patient result (untested)? The rules decide neither undirected predictions nor underpowered nulls outside terminated trials."
+    "efficacy 4: an undirected genotype hypothesis ('may influence response') meets an underpowered null (aOR 1.31, CI 0.42-4.10). Is that a failed prediction (contra) or no patient result (untested)? The rules decide neither undirected predictions nor underpowered nulls outside terminated trials.",
+    "Tanihara 2008 (PMID 18332309) showed IOP lowering with the ROCK inhibitor SNJ-1656 (Y-39983) in healthy volunteers, before every model in this tile was public. Does a healthy-volunteer IOP result count as a prior 'patient result' for the retrodiction rule (efficacy 2/6, engagement IOP-linked readouts)? Scored here as not, since the rule says patient result.",
+    "Engagement retrodiction: the AR-12286 prior patient result (2010) was IOP, not the engagement readout (outflow facility/EVP, first measured in dosed humans 2017). Does any prior patient result on the target make an engagement model retro, or only one on the same readout? Checked literally as retro (engagement 2/4/6/8)."
   ]
 }

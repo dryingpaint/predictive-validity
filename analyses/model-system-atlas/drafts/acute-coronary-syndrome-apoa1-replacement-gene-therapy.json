@@ -51,7 +51,11 @@
     "srcLabel": "Shah 2001",
     "quote": "One hour after injection, the plasma cholesterol efflux-promoting capacity was nearly 2-fold higher in recombinant apoA-I(m)-treated mice compared with saline and DPPC-treated mice (P<0.01).",
     "confidence": "high",
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "MDCO-216",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -81,13 +85,17 @@
     "model_first_use_year": 2013,
     "epub_year": 2013,
     "print_year": 2013,
-    "note": "CSL112 infusion into rabbits immediately raised ABCA1-dependent plasma efflux and unesterified cholesterol.",
+    "note": "CSL112 infusion into rabbits immediately raised ABCA1-dependent plasma efflux and unesterified cholesterol. Model first public after reconstituted HDL raised plasma efflux in patients (Patel 2009), so its comparisons are retrodictions.",
     "short": "Rabbit ABCA1 efflux rose",
     "src": "https://doi.org/10.1161/ATVBAHA.113.301981",
     "srcLabel": "Diditchenko 2013",
     "quote": "Infusion of CSL112 into rabbits caused a strong and immediate increase in the ATP binding cassette transporter A1 (ABCA1)-dependent efflux capacity of plasma, an increase in plasma unesterified cholesterol and rapid subsequent cholesterol esterification.",
     "confidence": "high",
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "apolipoprotein a-i",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -117,7 +125,7 @@
     "model_first_use_year": 2013,
     "epub_year": 2013,
     "print_year": 2014,
-    "note": "CER-001 transiently mobilized unesterified cholesterol into HDL in mice; no peer-reviewed human efflux or mobilization data found.",
+    "note": "CER-001 transiently mobilized unesterified cholesterol into HDL in mice; no peer-reviewed human efflux or mobilization data found. Model first public after reconstituted HDL raised plasma efflux in patients (Patel 2009), so its comparisons are retrodictions.",
     "short": "Mouse cholesterol mobilization only",
     "src": "https://doi.org/10.1016/j.atherosclerosis.2013.10.018",
     "srcLabel": "Tardy 2014",
@@ -125,7 +133,11 @@
     "confidence": "low",
     "readout_tier": "downstream",
     "reason": "Human PD only in meeting abstracts",
-    "untested_reason": "unsettled"
+    "untested_reason": "unsettled",
+    "drug": "CER-001",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1161/ATVBAHA.113.301981",
@@ -134,12 +146,12 @@
     "patient_signal_reversed": false,
     "registry_date": null,
     "model_filed": null,
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "ABCA1-dependent plasma efflux capacity (human up to +630%)",
     "source_calls_it": null,
-    "population": "Unselected (recent acute coronary syndrome or acute MI)",
+    "population": "Healthy volunteers (single and multiple ascending dose)",
     "confidence_note": "Abstract-level (PubMed). AEGIS-I (Gibson 2016, doi:10.1161/CIRCULATIONAHA.116.025687) confirmed the efflux rise in acute MI patients. Easton 2014 MAD paper (epub Oct 2013) not read.",
     "prediction_level": "class",
     "subjects": "healthy_volunteers",
@@ -149,20 +161,24 @@
     "model_kind": "animal",
     "judgement": "Paired by me (same sponsor, separate papers). Rabbit fold-change not in the abstract, so direction only.",
     "year": 2014,
-    "status": "same",
+    "status": "retro",
     "model": "Rabbits infused with CSL112 (plasma efflux PD)",
     "model_id": "rabbit-csl112-efflux",
     "model_first_use_year": 2013,
     "epub_year": 2014,
     "print_year": 2014,
-    "note": "In single and multiple ascending dose trials CSL112 raised ABCA1-dependent efflux up to 630%, dose-proportionally, as in rabbits.",
+    "note": "In single and multiple ascending dose trials CSL112 raised ABCA1-dependent efflux up to 630%, dose-proportionally, as in rabbits. Retrodiction: reconstituted HDL had already raised plasma efflux capacity 40-60% in patients (Patel 2009, doi:10.1016/j.jacc.2008.12.008) before this model was public in 2013, so the match is retro.",
     "short": "CSL112 raised human ABCA1 efflux",
     "src": "https://doi.org/10.1161/ATVBAHA.114.303720",
     "srcLabel": "Gille 2014",
     "quote": "Underlying this movement of cholesterol was an immediate and strong rise in the ability of plasma to promote cholesterol efflux from cells ex vivo.",
     "confidence": "high",
     "readout_tier": "downstream",
-    "reason": "Human efflux rose as rabbits showed"
+    "reason": "Human efflux rose as rabbits showed",
+    "drug": "apolipoprotein a-i",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "model_src": "https://doi.org/10.1161/hc2501.092494",
@@ -176,13 +192,13 @@
     "magnitude": "direction_only",
     "magnitude_basis": "plasma ABCA1-mediated efflux capacity after a single infusion",
     "source_calls_it": null,
-    "population": "Unselected (recent acute coronary syndrome or acute MI)",
+    "population": "Healthy volunteers and stable coronary artery disease",
     "confidence_note": "Abstract-level (PubMed); epub Dec 2015. Kempen 2016 (doi:10.1016/j.atherosclerosis.2016.10.042) adds a dose-dependent free-cholesterol rise. SAD trial registry not looked up.",
     "prediction_level": "class",
     "subjects": "mixed",
     "comparison_stated": false,
     "source_tier": 1,
-    "product_in_model": true,
+    "product_in_model": false,
     "model_kind": "animal",
     "judgement": "Paired by me: efflux capacity is the readout both papers share; healthy volunteers count. Fold-change scales differ (mouse total efflux vs human ABCA1 efflux), so direction only.",
     "year": 2015,
@@ -199,7 +215,11 @@
     "quote": "Prominent and sustained increases in triglyceride, and decreases in HDL-C, endogenous ApoA-1 and ApoA-II occurred at doses >20 mg/kg and profound increases in ABCA1-mediated cholesterol efflux were observed.",
     "confidence": "medium",
     "readout_tier": "downstream",
-    "reason": "Human efflux rose as mice showed"
+    "reason": "Human efflux rose as mice showed",
+    "drug": "MDCO-216",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "retrodiction": false,
@@ -229,16 +249,20 @@
     "srcLabel": "Diditchenko 2013",
     "readout_tier": "downstream",
     "quote": "In the presence of human plasma, CSL112 was significantly more potent than native HDL at enhancing cholesterol efflux from macrophages, and the efflux elevation was predominantly via the ABCA1 transporter.",
-    "note": "CSL112 added to human plasma ex vivo raised macrophage cholesterol efflux, mainly via ABCA1.",
+    "note": "CSL112 added to human plasma ex vivo raised macrophage cholesterol efflux, mainly via ABCA1. Model first public after reconstituted HDL raised plasma efflux in patients (Patel 2009), so its comparisons are retrodictions.",
     "short": "Ex vivo ABCA1 efflux rose",
     "model_id": "human-plasma-csl112-exvivo",
     "model": "Human plasma and whole blood spiked with CSL112 ex vivo (macrophage efflux)",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "apolipoprotein a-i",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "model_src": "https://doi.org/10.1161/ATVBAHA.113.301981",
     "model_src_tier": 1,
@@ -249,7 +273,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "ABCA1-dependent plasma efflux capacity (human up to +630%)",
     "source_calls_it": null,
-    "population": "Unselected (recent acute coronary syndrome or acute MI)",
+    "population": "Healthy volunteers (single and multiple ascending dose)",
     "confidence_note": "Abstract-level (Europe PMC).",
     "subjects": "healthy_volunteers",
     "comparison_stated": false,
@@ -258,21 +282,67 @@
     "judgement": "Paired by me; same sponsor, separate papers.",
     "confidence": "high",
     "year": 2014,
-    "status": "same",
+    "status": "retro",
     "readout_tier": "downstream",
     "src": "https://doi.org/10.1161/ATVBAHA.114.303720",
     "srcLabel": "Gille 2014",
     "epub_year": 2014,
     "print_year": 2014,
     "quote": "Underlying this movement of cholesterol was an immediate and strong rise in the ability of plasma to promote cholesterol efflux from cells ex vivo.",
-    "note": "CSL112 dosed to volunteers raised ABCA1-dependent plasma efflux up to 630%, as spiked plasma predicted.",
+    "note": "CSL112 dosed to volunteers raised ABCA1-dependent plasma efflux up to 630%, as spiked plasma predicted. Retrodiction: reconstituted HDL had already raised plasma efflux capacity 40-60% in patients (Patel 2009, doi:10.1016/j.jacc.2008.12.008) before this model was public in 2013, so the match is retro.",
     "short": "Human ABCA1 efflux rose",
     "reason": "Dosed-human efflux rose as ex vivo",
     "model_id": "human-plasma-csl112-exvivo",
     "model": "Human plasma and whole blood spiked with CSL112 ex vivo (macrophage efflux)",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "apolipoprotein a-i",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "other_disease"
+   },
+   {
+    "model_src": "https://doi.org/10.1016/j.atherosclerosis.2013.10.018",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "registry_date": null,
+    "model_filed": null,
+    "retrodiction": true,
+    "imported_from": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "plasma cholesterol efflux capacity",
+    "source_calls_it": null,
+    "population": "Familial hypoalphalipoproteinemia (open-label, 7 patients)",
+    "confidence_note": "Abstract-level (PubMed, PMID 25561459); open-label, uncontrolled, n=7.",
+    "prediction_level": "class",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "judgement": "Engagement counts any dosed humans; FHA patients are another disease. Paired by me with Tardy 2014 mouse mobilization.",
+    "year": 2015,
+    "status": "retro",
+    "model": "Mice infused with CER-001 (C57Bl/6J, LDLr-/-)",
+    "model_id": "mouse-cer001",
+    "model_first_use_year": 2013,
+    "epub_year": 2015,
+    "print_year": 2015,
+    "note": "Open-label: 20 CER-001 infusions (8 mg/kg) raised plasma-mediated efflux 44% in seven FHA patients, as mice showed cholesterol mobilization. Retrodiction: rHDL had raised human efflux in 2009 (Patel 2009).",
+    "short": "CER-001 raised efflux 44% in FHA",
+    "src": "https://doi.org/10.1194/jlr.M055665",
+    "srcLabel": "Kootte 2015",
+    "quote": "CER-001 induced a 44% relative increase (P = 0.018) in in vitro cellular cholesterol efflux with a trend toward increased FSE (P = 0.068).",
+    "confidence": "medium",
+    "readout_tier": "downstream",
+    "reason": null,
+    "untested_reason": null,
+    "drug": "CER-001",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "other_disease"
    }
   ],
   "dose": [
@@ -311,7 +381,11 @@
     "quote": "Treated mice received 18 injections of either 40 mg/kg apo A-I(Milano)/PC (n=15) or PC only (n=5) intravenously every other day from 20 weeks until death at 25 weeks.",
     "confidence": "medium",
     "reason": "Mouse gave no human dose",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "MDCO-216",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -348,7 +422,11 @@
     "quote": "CSL112 is a disc-shaped particle that strongly elevates cholesterol esterification and shows good pharmacokinetics in rabbits.",
     "confidence": "medium",
     "reason": "Rabbit gave no human dose",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "apolipoprotein a-i",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -385,7 +463,11 @@
     "quote": "In a familial hypercholesterolemia mouse model (LDL-receptor deficient mice), the infusion of CER-001 caused 17% and 32% reductions in plaque size, 17% and 23% reductions in lipid content after 5 and 10 doses given every 2 days, respectively.",
     "confidence": "medium",
     "reason": "Mouse gave no human dose",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "CER-001",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -420,7 +502,11 @@
     "model": "CER-001 4-week repeat-dose animal toxicology (every second day)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "drug": "CER-001",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -434,7 +520,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "animal safe dose 20 mg/kg vs human single doses tolerated to 45 mg/kg",
     "source_calls_it": null,
-    "population": "Unselected (recent acute coronary syndrome or acute MI)",
+    "population": "Healthy volunteers (single ascending dose)",
     "confidence_note": "Abstract-level (Europe PMC).",
     "subjects": "healthy_volunteers",
     "comparison_stated": true,
@@ -458,7 +544,11 @@
     "model": "CER-001 4-week repeat-dose animal toxicology (every second day)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "drug": "CER-001",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "other_disease"
    }
   ],
   "efficacy": [
@@ -495,7 +585,11 @@
     "src": "https://doi.org/10.1161/01.cir.97.8.780",
     "srcLabel": "Shah 1998",
     "quote": "Recombinant A-I(Milano)/PC prevented progression of aortic atherosclerosis and reduced lipid and macrophage content of plaques in apo E-deficient mice despite severe hypercholesterolemia.",
-    "confidence": "high"
+    "confidence": "high",
+    "drug": "MDCO-216",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1161/hc2501.092494",
@@ -515,7 +609,7 @@
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
-    "product_in_model": true,
+    "product_in_model": false,
     "model_kind": "animal",
     "judgement": "ETC-216 counted as the member MDCO-216 (same apoA-I Milano/POPC complex, new manufacturing process). Same, partial: the prespecified within-group primary was met but not superiority over placebo. Paired by me; the trial only cites animal regression.",
     "year": 2003,
@@ -526,12 +620,16 @@
     "epub_year": 2003,
     "print_year": 2003,
     "endpoint_role": "primary",
-    "note": "ETC-216, the predecessor formulation of MDCO-216, regressed coronary atheroma volume after five weekly infusions in 47 ACS patients.",
+    "note": "ETC-216, the predecessor formulation of MDCO-216, regressed coronary atheroma volume after five weekly infusions in 47 ACS patients. ETC-216 is scored as MDCO-216, the same apoA-I Milano/POPC complex made by a newer process.",
     "short": "ETC-216 regressed coronary atheroma",
     "src": "https://doi.org/10.1001/jama.290.17.2292",
     "srcLabel": "Nissen 2003",
     "quote": "A recombinant ApoA-I Milano/phospholipid complex (ETC-216) administered intravenously for 5 doses at weekly intervals produced significant regression of coronary atherosclerosis as measured by IVUS.",
-    "confidence": "medium"
+    "confidence": "medium",
+    "drug": "MDCO-216",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -566,7 +664,11 @@
     "src": "https://doi.org/10.1016/j.atherosclerosis.2013.10.018",
     "srcLabel": "Tardy 2014",
     "quote": "These data demonstrate that CER-001 rapidly enhances reverse lipid transport in the mouse, reducing vascular inflammation and promoting regression of diet-induced atherosclerosis in LDLr(-/-) mice upon a short-term multiple dose treatment.",
-    "confidence": "high"
+    "confidence": "high",
+    "drug": "CER-001",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -596,7 +698,7 @@
     "model_first_use_year": 2013,
     "epub_year": 2013,
     "print_year": 2013,
-    "note": "The rabbit work measured efflux only, no plaque or events; AEGIS-II's null MACE result tests no model prediction.",
+    "note": "The rabbit work measured efflux only, no plaque or events; AEGIS-II's null MACE result tests no model prediction. The member apolipoprotein a-i is CSL112 here; CSL111 (ERASE) not scored.",
     "short": "Rabbit gave no efficacy readout",
     "src": "https://doi.org/10.1161/ATVBAHA.113.301981",
     "srcLabel": "Diditchenko 2013",
@@ -611,7 +713,11 @@
       "doi": "https://doi.org/10.1056/NEJMoa2400969",
       "quote": "There was no significant difference between the groups in the risk of a primary end-point event at 90 days of follow-up (439 patients [4.8%] in the CSL112 group vs. 472 patients [5.2%] in the placebo group"
      }
-    ]
+    ],
+    "drug": "apolipoprotein a-i",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1016/j.atherosclerosis.2013.10.018",
@@ -656,7 +762,11 @@
       "doi": "https://doi.org/10.1001/jamacardio.2018.2121",
       "quote": "The primary efficacy measure, PAV, decreased 0.41% with placebo (P = .005 compared with baseline), but not with CER-001 (-0.09%; P = .67 compared with baseline; between group differences, 0.32%; P = .15)."
      }
-    ]
+    ],
+    "drug": "CER-001",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": "https://doi.org/10.1161/hc2501.092494",
@@ -676,10 +786,10 @@
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
-    "product_in_model": true,
+    "product_in_model": false,
     "model_kind": "animal",
     "judgement": "Contra on the mouse track: the regression the mice predicted did not appear against placebo with background statins. One member's contra outranks the earlier ETC-216 same.",
-    "year": 2017,
+    "year": 2016,
     "status": "contra",
     "model": "ApoE-/- mice infused with apoA-I Milano/phospholipid",
     "model_id": "apoe-mouse-apoa1-milano",
@@ -687,13 +797,17 @@
     "epub_year": 2018,
     "print_year": 2018,
     "endpoint_role": "primary",
-    "note": "MILANO-PILOT: five weekly MDCO-216 infusions on statins did not regress coronary atheroma more than placebo in 122 ACS patients.",
+    "note": "MILANO-PILOT: five weekly MDCO-216 infusions on statins did not regress coronary atheroma more than placebo in 122 ACS patients. Dated 2016: results were presented at AHA and in a Cleveland Clinic release on 2016-11-15 (newsroom.clevelandclinic.org/2016/11/15), before the 2017 registry posting. Background statins in both arms are not a combination partner, so the trial scores as contra.",
     "short": "MDCO-216 no regression vs placebo",
     "src": "https://doi.org/10.1001/jamacardio.2018.2112",
     "srcLabel": "Nicholls 2018 (MILANO-PILOT)",
     "quote": "Among patients with an acute coronary syndrome, infusing MDCO-216 did not produce an incremental plaque regression in the setting of contemporary statin therapy.",
     "confidence": "high",
-    "reason": "MDCO-216 failed placebo-controlled IVUS"
+    "reason": "MDCO-216 failed placebo-controlled IVUS",
+    "drug": "MDCO-216",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -728,7 +842,11 @@
     "model": "Rabbits with perivascular-injury carotid plaques infused with apoA-I Milano/phospholipid (IVUS, MRI)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2002
+    "model_first_use_year": 2002,
+    "drug": "MDCO-216",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -758,13 +876,17 @@
     "print_year": 2003,
     "quote": "A recombinant ApoA-I Milano/phospholipid complex (ETC-216) administered intravenously for 5 doses at weekly intervals produced significant regression of coronary atherosclerosis as measured by IVUS.",
     "endpoint_role": "primary",
-    "note": "ETC-216 regressed coronary atheroma within-group after five weekly infusions in 47 ACS patients, as rabbit IVUS showed.",
+    "note": "ETC-216 regressed coronary atheroma within-group after five weekly infusions in 47 ACS patients, as rabbit IVUS showed. ETC-216 is scored as MDCO-216, the same apoA-I Milano/POPC complex made by a newer process.",
     "short": "ETC-216 regressed coronary atheroma",
     "model_id": "rabbit-carotid-apoa1-milano",
     "model": "Rabbits with perivascular-injury carotid plaques infused with apoA-I Milano/phospholipid (IVUS, MRI)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2002
+    "model_first_use_year": 2002,
+    "drug": "MDCO-216",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -786,7 +908,7 @@
     "product_in_model": true,
     "judgement": "Paired by me. Parolini 2008 (ETC-216 5-150 mg/kg x5) is the track's prospective prediction for MILANO-PILOT (20 mg/kg x5): reduced progression at low doses, regression at high. Statin background never tested in rabbits (rule question raised by checker).",
     "confidence": "high",
-    "year": 2017,
+    "year": 2016,
     "status": "contra",
     "src": "https://doi.org/10.1001/jamacardio.2018.2112",
     "srcLabel": "Nicholls 2018 (MILANO-PILOT)",
@@ -794,14 +916,18 @@
     "print_year": 2018,
     "quote": "Among patients with an acute coronary syndrome, infusing MDCO-216 did not produce an incremental plaque regression in the setting of contemporary statin therapy.",
     "endpoint_role": "primary",
-    "note": "Rabbits given repeated ETC-216 showed dose-related less progression or regression; MILANO-PILOT's MDCO-216 gave no regression versus placebo.",
+    "note": "Rabbits given repeated ETC-216 showed dose-related less progression or regression; MILANO-PILOT's MDCO-216 gave no regression versus placebo. Dated 2016: results were presented at AHA and in a Cleveland Clinic release on 2016-11-15 (newsroom.clevelandclinic.org/2016/11/15), before the 2017 registry posting. Background statins in both arms are not a combination partner, so the trial scores as contra.",
     "short": "MDCO-216 no regression vs placebo",
     "reason": "Rabbit regression not seen in patients",
     "model_id": "rabbit-carotid-apoa1-milano",
     "model": "Rabbits with perivascular-injury carotid plaques infused with apoA-I Milano/phospholipid (IVUS, MRI)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2002
+    "model_first_use_year": 2002,
+    "drug": "MDCO-216",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -836,7 +962,11 @@
     "model": "ApoA-I Milano carriers (Limone sul Garda kindred), carotid IMT",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2001
+    "model_first_use_year": 2001,
+    "drug": "class",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -866,13 +996,17 @@
     "print_year": 2003,
     "quote": "A recombinant ApoA-I Milano/phospholipid complex (ETC-216) administered intravenously for 5 doses at weekly intervals produced significant regression of coronary atherosclerosis as measured by IVUS.",
     "endpoint_role": "primary",
-    "note": "ETC-216 (recombinant apoA-I Milano) regressed coronary atheroma within-group in 47 ACS patients, as carriers' protection implied.",
+    "note": "ETC-216 (recombinant apoA-I Milano) regressed coronary atheroma within-group in 47 ACS patients, as carriers' protection implied. ETC-216 is scored as MDCO-216, the same apoA-I Milano/POPC complex made by a newer process.",
     "short": "ETC-216 regressed coronary atheroma",
     "model_id": "apoa1-milano-carriers",
     "model": "ApoA-I Milano carriers (Limone sul Garda kindred), carotid IMT",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2001
+    "model_first_use_year": 2001,
+    "drug": "class",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -894,7 +1028,7 @@
     "product_in_model": false,
     "judgement": "Paired by me. Kallend 2016 cites the carriers as the class's basis; contra because the infused variant gave no anti-atherosclerotic effect.",
     "confidence": "high",
-    "year": 2017,
+    "year": 2016,
     "status": "contra",
     "src": "https://doi.org/10.1001/jamacardio.2018.2112",
     "srcLabel": "Nicholls 2018 (MILANO-PILOT)",
@@ -902,14 +1036,18 @@
     "print_year": 2018,
     "quote": "Among patients with an acute coronary syndrome, infusing MDCO-216 did not produce an incremental plaque regression in the setting of contemporary statin therapy.",
     "endpoint_role": "primary",
-    "note": "MDCO-216 (apoA-I Milano/POPC) did not regress atheroma versus placebo in 122 ACS patients, against the carriers' implied protection.",
+    "note": "MDCO-216 (apoA-I Milano/POPC) did not regress atheroma versus placebo in 122 ACS patients, against the carriers' implied protection. Dated 2016: results were presented at AHA and in a Cleveland Clinic release on 2016-11-15 (newsroom.clevelandclinic.org/2016/11/15), before the 2017 registry posting. Background statins in both arms are not a combination partner, so the trial scores as contra.",
     "short": "MDCO-216 no regression vs placebo",
     "reason": "Carrier protection not reproduced by infusion",
     "model_id": "apoa1-milano-carriers",
     "model": "ApoA-I Milano carriers (Limone sul Garda kindred), carotid IMT",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2001
+    "model_first_use_year": 2001,
+    "drug": "class",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -944,7 +1082,11 @@
     "model": "Common APOA1 variants raising apoA-I (Copenhagen City Heart Study), IHD/MI risk",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "drug": "class",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -981,7 +1123,11 @@
     "model": "Common APOA1 variants raising apoA-I (Copenhagen City Heart Study), IHD/MI risk",
     "model_kind": "human_genetic",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "drug": "class",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ],
   "safety": [
@@ -1020,7 +1166,11 @@
     "quote": "Among patients with acute myocardial infarction, 4 weekly infusions of CSL112 are feasible, well tolerated, and not associated with any significant alterations in liver or kidney function or other safety concern.",
     "confidence": "medium",
     "reason": "Toxicology data not public",
-    "untested_reason": "unpublished"
+    "untested_reason": "unpublished",
+    "drug": "apolipoprotein a-i",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_src": null,
@@ -1056,7 +1206,11 @@
     "srcLabel": "Reijers 2017",
     "quote": "MDCO-216 did not induce adverse immunostimulation in HV and sCAD patients, in contrast to ETC-216.",
     "confidence": "medium",
-    "reason": "Reproduced known no-inflammation result"
+    "reason": "Reproduced known no-inflammation result",
+    "drug": "MDCO-216",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "other_disease"
    }
   ]
  }

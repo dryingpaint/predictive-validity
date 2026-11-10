@@ -9,9 +9,10 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Cross 2014 (PMID 24893891, epub 2014-06-03) abstract quote verbatim. Opening untested fine; AURA opened 2013-03-04, so model_first_use_year 2013 would be a slightly better proxy."
+   "note": "Cross 2014 (PMID 24893891, DOI resolves) abstract quote verbatim. Osimertinib dosed orally in xenograft/transgenic mice; biomarker_selected; untested opener 2014 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -20,7 +21,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Thress 2017 (PMID 28751247, epub 2017-07-24) abstract quote verbatim; full text not open. Abstract gives no pEGFR effect size, so direction_only/medium is right. AURA results posted 2016-10-06 confirmed."
+   "rule": "Retrodiction (engagement is a target claim): no earlier patient tumour pEGFR result for this class",
+   "note": "Thress 2017 (PMID 28751247) quote verbatim. AURA biopsies after oral osimertinib in T790M patients: drug, route, population_group right. Paired proximal pEGFR, prospective (model public before AURA data); same 2017.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -29,16 +32,19 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PharmR quote verbatim. Grepped PharmR/ClinPharmR/MedR and Cross 2014 full text (PMC4315625): no stated human efficacious exposure; dog tolerated 0.48x human AUC, so no margin. model_id reuses the xenograft slug although model text names rat/dog tox."
+   "rule": "Evidence rule 5 (untested_reason on a track's latest untested entry)",
+   "note": "PharmR quote verbatim (dog AUC 0.48X at 80 mg). Osimertinib/oral/biomarker_selected right; model text equals model_id's. Untested supported (no stated exposure target or margin); latest untested on track still lacks untested_reason (no_prediction).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Abstract quote verbatim. Cross 2014 also shows two 20 mg AURA responders as proof of principle (comparison stated), but anecdotal, not a primary endpoint, so untested in 2014 stands."
+   "note": "Cross 2014 abstract quote verbatim; osimertinib, oral, biomarker_selected right. Untested opener 2014 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -47,7 +53,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Janne 2015 (PMID 25923549, 2015-04) quote verbatim; NCT01802632 results first posted 2016-10-06. Paired same is right for the osimertinib model. EXCLAIM-2 quote verbatim (PMID 39879577). See missing/rule questions on other members' models."
+   "rule": "Track = one model_id x drug x route",
+   "note": "Janne 2015 (PMID 25923549) abstract quote verbatim; AURA ORR primary, oral osimertinib, T790M-selected. EXCLAIM-2 removed from patient_trials and scored on mobocertinib's own track (efficacy 7). AURA3 patient_trial unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -56,7 +64,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PharmR quote verbatim; 2013 proxy from AURA start date (2013-03-04) is sound."
+   "note": "PharmR sentence verbatim (bundle). Osimertinib, oral, biomarker_selected right; 2013 proxy from AURA start stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -65,7 +74,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PharmR quote verbatim; the review states hERG IC50 above clinical free drug and clean dog telemetry, then clinical QTc, so comparison_stated is right. Mobocertinib MultidisciplineR 'discrepancy ... unknown' sentence verified. Caveat: dog telemetry reached only ~0.5x human AUC."
+   "rule": "Track = one model_id x drug x route",
+   "note": "PharmR QTc sentences verbatim; review states the comparison. Osimertinib oral, T790M patients. Mobocertinib miss moved to its own track (safety 3-4); judgement cites it only. Contra 2015 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -74,8 +85,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Ballard 2016 (PMID 27435396, epub 2016-07-19) monkey PET sentence verbatim in abstract. Opening untested at 2016 sound: no human brain exposure measured until Varrone 2019.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Ballard 2016 (PMID 27435396, epub 2016-07-21) monkey PET sentence verbatim. [11C] microdose is intravenous, so route iv fits this brain-exposure track; untested opener 2016 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -84,8 +95,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Varrone 2019 (PMID 31006308, epub 2019-04-20) quote verbatim. Model ran before human PET, so prospective; paired, same, class-level, 2019 all supported.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Retrodiction (dose: only the same drug's earlier patient result)",
+   "note": "Varrone 2019 (PMID 31006308, epub 2019-04) quote verbatim. Intravenous [11C]osimertinib microdose in healthy volunteers: route iv, population_group unselected, subjects healthy_volunteers match. Same, prospective under the same-drug dose rule.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -94,8 +106,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in Ballard 2016 abstract. Mouse/NHP work predates CNS outcome data; AURA case reports anecdotal, so opening untested at 2016 is right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Ballard 2016 abstract quote verbatim. Mouse brain-metastasis model dosed orally; osimertinib, oral, biomarker_selected right; untested opener 2016.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -104,8 +116,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "BLOOM (PMID 31809241, epub 2019-12-06) quote verbatim; primary LM ORR 62% by BICR. Caveat: mouse modelled parenchymal disease at label-range dose, BLOOM is leptomeningeal at 160 mg; first BLOOM LM data were an ASCO 2016 abstract (not tier 1).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Retrodiction (efficacy is a target claim; any EGFR inhibitor's earlier patient result counts)",
+   "note": "BLOOM (PMID 31809241) quote and LM ORR 62% verbatim; single-arm ruling in note. Park 2012 (PMID 22677429, entrez 2012-06) abstract: gefitinib/erlotinib brain-metastasis PR 83%, before the 2016 model, so retro right. Oral osimertinib.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -114,8 +127,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Gonzalvez 2021 (PMID 33632773) quote verbatim. 2016 proxy from NCT02716116 start (June 2016, confirmed in Zhou 2021 abstract) is allowed by dating rule.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Gonzalvez 2021 (PMID 33632773) abstract quote verbatim. Mobocertinib is oral and a tile member; exon 20 biomarker_selected; 2016 proxy from NCT02716116 start stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -124,23 +137,20 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Zhou 2021 (PMID 34647988) quote and 28% IRC ORR primary endpoint verbatim. Model preceded the trial; same, class, 2021 supported (FDA accelerated approval Sept 2021 is same year).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Efficacy: single-arm trial scored on primary endpoint against the predicted direction",
+   "note": "Zhou 2021 (PMID 34647988) quote and 28% IRC confirmed ORR verbatim. Single-arm, no preset bar, response in predicted direction: same per the single-arm rule, design in note. Oral mobocertinib, exon 20 selected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2023,
-   "rule": "Evidence rule 6 (dating: earliest public date); rule 2 (tier 5 finds the failure)",
-   "note": "Status contra stands (quote verbatim, PMID 39879577). Takeda press release 2023-10-02 announced EXCLAIM-2 missed primary PFS and withdrawal (Healio, OncLive, BioCentury); earliest public date sets year 2023. Active-comparator rule question still open.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Both say contra: primary PFS endpoint failed (efficacy rule, table 'as the trial showed'). Rule 6 dates it to the earliest public date: Takeda release 2 Oct 2023 (takeda.com, verified), so year 2023, not 2025."
+   "rule": "Evidence rule 6 (earliest public date); efficacy primary endpoint",
+   "note": "JCO 2025 (PMID 39879577) quote verbatim; mobocertinib alone vs platinum chemo, primary PFS missed: contra. Takeda release 'did not meet its primary endpoint', dated 2 Oct 2023 (takeda.com; drugs.com), so year 2023 right; magnitude null.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -149,8 +159,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Robichaux 2021 full text (PMC8481125): PDX G719A sentence verbatim. Opening untested at 2021, patient-level (genotype selection) correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Robichaux 2021 (PMC8481125 full text) G719A PDX/osimertinib sentence verbatim. Drug osimertinib, oral, biomarker_selected fit the model run; untested opener 2021.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -159,8 +169,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "TTF sentence verbatim; abstract says groups 'retrospectively predict patient outcomes', so retro (not same) is right per decision 10. Third-generation arm pooled; osimertinib named as the 3rd-gen drug in text.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Retrodiction",
+   "note": "Robichaux full text TTF sentence verbatim; comparison stated. Third-generation arm coded osimertinib (oral), PACC biomarker-selected. Retro right: patients treated before the grouping was public.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -169,8 +180,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Wang 2023 full text (PMC9975107): osimertinib-cohort sentence verbatim. Opening untested at 2023 publication; enrolment dates not given beyond ethics no. GDREC2019323H.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Wang 2023 (PMC9975107 full text) osimertinib-cohort sentence verbatim. Patients then took oral osimertinib; EGFR-mutant selected; untested opener 2023.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -179,8 +190,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "AUC 0.94 sentence verbatim; organoids derived before next-line osimertinib and treatment chose by guidelines, so not retro. Low confidence warranted: Methods enrolled only patients whose 'concurrent or subsequent' response evaluations were 'consistent with the LCO-based drug test results'.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "AUC 0.94 sentence verbatim; drug osimertinib, oral, biomarker_selected right. Low-confidence same stands, but methods enrol only patients whose responses were 'consistent with the LCO-based drug test results' (selection-filtered); see rule question.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -189,9 +200,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Dating (6): cell opens at model_first_use_year, proxy allowed",
-   "note": "Le 2026 (PMID 42887497) abstract quote verbatim. Model public before readout: Nilsson AACR Apr 2024 poster (PACC cells + xenografts) and Musib 2022 cited in WCLC 2024 abstract; 2022 proxy supported, model_src could cite the 2024 poster.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "note": "Le 2026 (PMID 42887497) abstract quote verbatim. Firmonertinib is oral; PACC biomarker_selected; 2022 proxy from NCT05364073 start stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -200,9 +210,30 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Retrodiction: model public (AACR Apr 2024) before first PACC clinical data (WCLC 9 Sep 2024), so same not retro",
-   "note": "Abstract ORR 43%/68% verbatim; ORR is FURTHER Stage 2 primary endpoint (BICR). Not a retrodiction: preclinical PACC data shown Apr 2024, clinical first shown Sep 2024. Comparison was public at WCLC 2024 (cORR 34.8%/63.6%); year 2024 arguable.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "rule": "Retrodiction (efficacy target-level); evidence rule 6 (congress date)",
+   "note": "Quote verbatim; cORR is FURTHER's primary. IASLC release dated 9 Sep 2024 (cORR 34.8%/63.6%), so 2024 right. Yang 2015 (PMID 26051236) afatinib uncommon-mutation activity precedes the model: retro. Stale confidence_note still says retrodiction false.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA 215310 MultidisciplineR hERG IC50 sentence verbatim (bundle). Mobocertinib, oral, exon 20 selected. Untested opener 2016, proxy from NCT02716116 start; shared model_id fields (first use 2013) identical across tracks as required.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Safety: model's silence contradicted on a harm the species could show",
+   "note": "MultidisciplineR sentence verbatim, plus 'reason for the discrepancy ... is unknown': comparison stated. Prospective (package preceded any mobocertinib patient data). Contra 2021 at approval/review supported; oral, exon 20 patients.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -223,6 +254,7 @@
   "Rociletinib: regulatory rejection because unconfirmed responses overstated ORR, with no failed pre-specified primary endpoint. Is that an efficacy contra, a partial same, or unscored?",
   "Brain-metastasis pairing: a parenchymal brain-metastasis mouse model paired with a leptomeningeal-only trial at twice the label dose (BLOOM). Is LM disease 'a condition the model never tested' (untested) or the same CNS-activity question (same)?",
   "Organoid studies whose enrolment keeps only patients with response evaluations 'consistent with' the organoid test: is a selection-filtered cohort admissible as same, or should it score at most low-confidence same / untested?",
-  "efficacy 13 (FURTHER): does a conference presentation (WCLC 2024 abstract/press release, 9 Sep 2024, citing the preclinical PACC data) date a comparison under rule 6, making year 2024 rather than the 2026 Cancer Cell paper?"
+  "efficacy 13 (FURTHER): does a conference presentation (WCLC 2024 abstract/press release, 9 Sep 2024, citing the preclinical PACC data) date a comparison under rule 6, making year 2024 rather than the 2026 Cancer Cell paper?",
+  "efficacy 11 (organoid DST, 2023): for a patient-level model first public after the class's patient results, does the target-level retrodiction rule apply (retro), or only when the individual patients' responses preceded the organoid call?"
  ]
 }
