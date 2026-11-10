@@ -164,7 +164,32 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
                                            f"({', '.join(k for k, a, b in zip(IDENTITY, seen, (e.get(k) for k in IDENTITY)) if a != b)})"))
                 last[track(e)] = e
                 extra.update(k for k in e if k not in KEYS)
+        issues += [(cid, q, m) for q, m in reasonless(p, d, split)]
     return extra, issues
+
+
+def reasonless(path: str, d: dict, split: bool) -> list[tuple[str, str]]:
+    """Rule 5: a track's latest prospective entry, if it ends untested after the verdicts (adjudicated status,
+    else the checker's proposed one), carries untested_reason."""
+    check = path[:-5] + ".check.json"
+    verdicts = {}
+    if os.path.exists(check):
+        c = json.load(open(check))
+        base = int(c.get("index_base", 1))
+        verdicts = {(v.get("cell"), int(v["index"]) - base): v for v in c.get("entries", []) if "index" in v}
+    out = []
+    for q in QUESTIONS:
+        latest: dict = {}
+        strip = d.get("cells", {}).get(q) or []
+        for i, e in sorted(enumerate(strip), key=lambda ie: (ie[1].get("year") if isinstance(ie[1].get("year"), int) else 0, ie[0])):
+            v = verdicts.get((q, i), {})
+            final = v.get("adjudicated_status") or v.get("proposed_status") or e.get("status")
+            if final not in ("retro", "drop") and not e.get("retrodiction"):
+                key = (e.get("modality") if split and q in ("dose", "safety") else None, e.get("model_id"), e.get("drug"), e.get("route"))
+                latest[key] = (i, final, e)
+        out += [(q, f"entry {i + 1}: latest entry of its track is untested without untested_reason")
+                for i, final, e in latest.values() if final == "untested" and not e.get("untested_reason")]
+    return out
 
 
 def main():
