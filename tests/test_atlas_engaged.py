@@ -42,7 +42,12 @@ def test_the_three_files_cover_the_same_classes_once_each_and_the_figure_can_nam
         assert df.confidence.isin({"high", "medium", "low"}).all()
         assert (df.primary != "").all()
     assert slugs <= set(figure.SHORT)
-    assert CODES.resolution.isin({"agree", "coder1", "coder2", "rule"}).all()
+    assert CODES.resolution.isin({"agree", "coder1", "coder2", "evidence"}).all()
+    assert CODES.evidence.isin({"stated", "pattern", "none"}).all()
+    # an inference-only code is never a primary code: U carries the candidate as secondary, and only U is graded none
+    u = CODES[CODES.primary == "U"]
+    assert (CODES.evidence.eq("none") == CODES.primary.eq("U")).all()
+    assert (u.secondary != "").sum() >= len(u) - 1
 
 
 def test_the_resolution_column_is_true_to_the_two_codings():
@@ -53,8 +58,8 @@ def test_the_resolution_column_is_true_to_the_two_codings():
     assert (to1.primary == to1.primary_1).all() and (to1.primary_1 != to1.primary_2).all()
     to2 = m[m.resolution == "coder2"]
     assert (to2.primary == to2.primary_2).all() and (to2.primary_1 != to2.primary_2).all()
-    rule = m[m.resolution == "rule"]
-    assert (rule.primary_1 != rule.primary_2).all()
+    ev = m[m.resolution == "evidence"]
+    assert (ev.primary == "U").all() or (ev.primary != ev.primary_1).all()
     assert (CODES.secondary != CODES.primary).all()
 
 
@@ -69,8 +74,8 @@ def test_agreement_reported_in_the_legend_matches_the_files():
 
 
 def test_figure_draws_synthetic_rows_and_shows_the_draft_categories_even_when_empty(tmp_path):
-    codes = pd.DataFrame([{"slug": "a", "primary": "A1", "secondary": "", "confidence": "high", "resolution": "agree", "rationale": "x"},
-                          {"slug": "b", "primary": "B1", "secondary": "A5", "confidence": "low", "resolution": "coder2", "rationale": "y"}])
+    codes = pd.DataFrame([{"slug": "a", "primary": "A1", "secondary": "", "confidence": "high", "resolution": "agree", "evidence": "pattern", "rationale": "x"},
+                          {"slug": "b", "primary": "B1", "secondary": "A5", "confidence": "low", "resolution": "coder2", "evidence": "stated", "rationale": "y"}])
     tiles = pd.DataFrame([{"slug": "a", "furthest_phase": 2}, {"slug": "b", "furthest_phase": 4}])
     assert figure.rows_for(codes) == ["A1", "A2", "A3", "B1"]
     out = figure.draw(codes, tiles, str(tmp_path / "f"))

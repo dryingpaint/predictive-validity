@@ -41,11 +41,14 @@ points at the text.
 |---|---|---|
 | U | unclear | the text records the failure but gives no reason that fits A, B or C |
 
-Refinement after the two codings were compared (2026-11-09): A1 also covers saturating or near-complete target
-engagement (receptor occupancy by PET, complete enzyme block) with no disease effect, when the record shows the
-trial could have detected one (a positive-control arm that worked, or adequately powered trials). The first
-codebook required a named downstream output to have moved; the second coder read saturating occupancy alone as U,
-which was the main source of disagreement (see LEGEND.md).
+Evidence grade (added at the evidence pass, 2026-11-09). Every primary code carries one of three grades in
+`codes.csv`: `stated`, the record (a source, sponsor, regulator or the atlas judgement) names the reason; `pattern`,
+the code's defining observation is in the record (for A1: a named output beyond engagement itself moved in patients
+and the disease did not; for C3: the population is the only recorded difference between a positive and a negative
+trial); `none`, the code would rest on the coder's inference alone, in which case the primary code is U and the
+candidate code is kept as `secondary`. Receptor occupancy or exposure alone is engagement, not an output: a class
+with saturating occupancy, no disease effect and no stated reason is U, not A1. An earlier amendment that read
+saturating occupancy as A1 was withdrawn at the evidence pass.
 
 Rules: code what the entries say, not what you believe about the class. A class that failed for lack of
 efficacy with target engagement proven and no stated reason is U, not A1. When the text says "target reached,
