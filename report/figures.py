@@ -524,6 +524,118 @@ def evidence_translates():
     save(fig, "evidence_translates")
 
 
+# The evidence grid's rows (report.evidence_analysis.stop_risk columns), in order: evidence about the target, about the
+# drug, then the safety lines below a rule.
+GRID_ROWS = {"g3": "Human genetics", "somatic": "Tumour genetics", "altered_animal": "Mouse genetics shows the disease",
+             "expression": "RNA change in diseased tissue", "cat_precedent": "Earlier drugs on the same target",
+             "area_measured": "Drug binding measured", "area_lit_animal": "Published animal studies of the drug",
+             "lit_human_engagement": "Drug shown to engage its target in people",
+             "liability": "Standard genetic safety flags", "ko_vital_organ": "Mutant mice: vital-organ phenotype",
+             "earlier_safety_stop": "Earlier drug on the target stopped for safety",
+             "poor_selectivity": "Drug binds another protein within 10-fold"}
+# The model-system atlas's four questions, as stop outcomes (report.evidence_analysis.stop_outcomes)
+GRID_COLUMNS = [("stop_engagement", "Engagement"), ("stop_dose", "Dose"), ("stop_no_benefit", "Efficacy"),
+                ("stop_safety", "Safety")]
+FEWER, MORE, NEUTRAL = ACCENT, "#eb6834", "#f4f3ef"
+# Cells whose evidence is what the stop's label was read from: published human engagement is the evidence the
+# efficacy attribution judges engagement on, so it cannot be tested against engagement stops.
+CIRCULAR = {("lit_human_engagement", "stop_engagement")}
+
+
+def evidence_grid():
+    """Which evidence goes with fewer or more stops on each of the atlas's four questions: a cell is coloured when the
+    adjusted risk ratio's 95% interval clears 1 (report.evidence_analysis.stop_risk) and says by how much."""
+    df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "stop_risk.csv"))
+    df = df[df.estimated.eq(True)].set_index("column")
+    rows = [c for c in GRID_ROWS if c in df.index]
+    targetdrug = sum(1 for c in rows if df.at[c, "group"] == "area")
+    fig, ax = plt.subplots(figsize=(8.2, 0.48 * len(rows) + 1.0))
+    for i, c in enumerate(rows):
+        for j, (outcome, _) in enumerate(GRID_COLUMNS):
+            rr, lo, hi = (df.at[c, f"{outcome}_{k}"] for k in ("rr", "lo", "hi"))
+            if (c, outcome) in CIRCULAR:
+                color, text, ink = NEUTRAL, "not testable", MUTED
+            elif pd.isna(rr):
+                color, text, ink = NEUTRAL, "too few stops", MUTED
+            elif hi < 1:
+                color, text, ink = FEWER, f"{1 - rr:.0%} fewer", "white"
+            elif lo > 1:
+                color, text, ink = MORE, f"{rr - 1:.0%} more", "white"
+            else:
+                color, text, ink = NEUTRAL, "no clear effect", MUTED
+            ax.add_patch(matplotlib.patches.Rectangle((j, i), 0.96, 0.9, color=color, linewidth=0))
+            ax.text(j + 0.48, i + 0.45, text, ha="center", va="center", fontsize=9, color=ink,
+                    fontweight="bold" if ink == "white" else "normal")
+    ax.axhline(targetdrug - 0.05, color=INK2, linewidth=0.8)
+    ax.set_xlim(0, len(GRID_COLUMNS))
+    ax.set_ylim(len(rows), -0.1)
+    ax.set_xticks([j + 0.48 for j in range(len(GRID_COLUMNS))], [t for _, t in GRID_COLUMNS], fontsize=10.5,
+                  color=INK, fontweight="bold")
+    ax.xaxis.tick_top()
+    ax.tick_params(length=0)
+    ax.set_yticks([i + 0.45 for i in range(len(rows))], [GRID_ROWS[c] for c in rows], fontsize=10, color=INK)
+    for side in ax.spines.values():
+        side.set_visible(False)
+    save(fig, "evidence_grid")
+
+
+# The stop drill-down's segments: (key, label, colour); the first segment of each bar is the next bar's whole.
+DRILL = [
+    ("shown", "All Phase 2–3 stops", [("efficacy", "Efficacy", ACCENT), ("sponsor_decision", "Sponsor decision", "#8a8984"),
+                                     ("positive_not_advanced", "Positive result,\nnot taken forward", "#b9b8b0"),
+                                     ("operational", "Operational", GRID), ("safety", "Safety", "#eb6834"),
+                                     ("unknown", "", GRID)]),
+    ("efficacy", "Stopped for efficacy", [("engaged_no_benefit", "Engaged the target,\nno benefit", ACCENT),
+                                          ("not_engaged", "Never\nengaged", "#8a8984"),
+                                          ("trial_design", "Trial couldn't answer", "#b9b8b0"),
+                                          ("no_engagement_data", "Engagement\nnever measured", GRID),
+                                          ("not_examined", "Not examined", GRID)]),
+    ("engaged", "Engaged the target, no benefit", [
+        ("worked_elsewhere_only", "Target works, but only\nin other diseases", ACCENT),
+        ("worked_here", "Another drug on the target\nalready worked here", "#7fb0e8"),
+        ("worked_related", "Works in a related\nsubtype or stage", "#c6dbf4"),
+        ("never_worked_tried_again", "Never worked; tried again", "#8a8984"),
+        ("never_worked_single", "Never worked;\nonly attempt", GRID), ("no_target", "No target", GRID)]),
+]
+DRILL_LABEL_MIN = 0.075  # a segment narrower than this share is labelled below its bar
+
+
+def why_stop():
+    """Phase 2–3 stops among 2008–2019 entries broken down three times (report.stop_causes.drilldown): by cause, the
+    efficacy stops by what the evidence shows about engagement, and the engaged-without-benefit stops by what other
+    drugs on the target did."""
+    n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))["drilldown"]
+    fig, ax = plt.subplots(figsize=(12, 5.6))
+    height, gap = 0.8, 1.75
+    dark = {ACCENT, "#8a8984", "#eb6834"}
+    for i, (key, title, segments) in enumerate(DRILL):
+        part = n[key]
+        total = n["stops"] if key == "shown" else n[key]["stops"]
+        y, x, below = -i * gap, 0.0, 0
+        ax.text(0, y + height / 2 + 0.08, f"{title}  ({total:,})", color=INK, fontsize=11, fontweight="bold",
+                va="bottom")
+        for j, (k, label, color) in enumerate(segments):
+            w = part[k]["n"] / total
+            ax.barh(y, w - 0.003, left=x, height=height, color=color)
+            ink = "white" if color in dark else INK
+            if w >= DRILL_LABEL_MIN:
+                ax.text(x + 0.008, y + 0.17, f"{w:.0%}", color=ink, fontsize=12, fontweight="bold", va="center")
+                ax.text(x + 0.008, y - 0.02, label, color=ink, fontsize=8, va="top", linespacing=1.05)
+            elif label:
+                ax.text(x + w / 2, y - height / 2 - 0.06 - 0.2 * below, f"{label.replace(chr(10), ' ')} {w:.0%}",
+                        color=INK2, fontsize=8, ha="center", va="top")
+                below += 1
+            if j == 0 and i < len(DRILL) - 1:
+                top = -(i + 1) * gap + height / 2 + 0.4
+                ax.add_patch(matplotlib.patches.Polygon([(x, y - height / 2), (x + w, y - height / 2), (1, top), (0, top)],
+                                                        closed=True, color=ACCENT, alpha=0.08, linewidth=0))
+            x += w
+    ax.set_xlim(-0.01, 1.01)
+    ax.set_ylim(-(len(DRILL) - 1) * gap - 0.8, 1.0)
+    ax.axis("off")
+    save(fig, "why_stop")
+
+
 # Eras of drug discovery: (from, to, technology, unit of the biological hypothesis, examples).
 ERAS = [
     (1820, 1935, "Observation, natural products, physiology", "Therapeutic effect or organismal phenotype",
@@ -700,6 +812,7 @@ def main():
     if os.path.exists(os.path.join(OUT, "section2", "relative_success_by_area.csv")):
         genetics_by_area()
     if os.path.exists(os.path.join(OUT, "stop_causes", "numbers.json")):
+        why_stop()
         stop_causes_by_phase()
         registered_vs_traced()
     if os.path.exists(os.path.join(OUT, "section3", "rules.csv")):
@@ -709,6 +822,8 @@ def main():
         s3_hypotheses()
     if os.path.exists(os.path.join(OUT, "evidence_analysis", "lines.csv")):
         evidence_translates()
+    if os.path.exists(os.path.join(OUT, "evidence_analysis", "stop_risk.csv")):
+        evidence_grid()
 
 
 if __name__ == "__main__":

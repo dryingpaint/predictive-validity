@@ -129,6 +129,31 @@ def subcause_audit() -> dict:
             "kappa_max": max(c["kappa"] for c in causes), "agree_min": min(c["agree"] for c in causes)}
 
 
+DRILL_EFFICACY = {"engaged_no_benefit": "engaged_no_benefit", "not_engaged": "not_engaged",
+                  "trial_design": "trial_design", "toxicity_offset": "trial_design",
+                  "no_engagement_data": "no_engagement_data"}  # any other subcause: the stop was not examined
+TARGET_FATES = ["worked_elsewhere_only", "worked_here", "worked_related", "never_worked_tried_again", "never_worked_single",
+         "no_target"]  # pipeline.target_history, worked_here_selected counted with worked_here
+
+
+def drilldown(d: pd.DataFrame) -> dict:
+    """The headline stops broken down three times: by the cause shown, the efficacy stops by what the evidence shows
+    about engagement, and the engaged-without-benefit stops by what other drugs on the target did
+    (preclin.stop_target_history)."""
+    shown = d[d.shown.notna()]
+    eff = shown[shown.shown.eq("efficacy")]
+    kind = eff.subcause.map(DRILL_EFFICACY).fillna("not_examined")
+    h = frame.query("SELECT moiety_id, mondo_id, phase, target_fate FROM preclin.stop_target_history")
+    fate_of = dict(zip(keys(h), h.target_fate.replace({"worked_here_selected": "worked_here"})))
+    engaged = eff[kind.eq("engaged_no_benefit")]
+    fates = engaged.key.map(fate_of)
+    return {"stops": int(len(shown)), "shown": distribution(shown, "shown", list(SHOWN)),
+            "efficacy": {"stops": int(len(eff)), **distribution(kind.to_frame("k"), "k", [
+                "engaged_no_benefit", "not_engaged", "trial_design", "no_engagement_data", "not_examined"])},
+            "engaged": {"stops": int(len(engaged)), "traced": int(fates.notna().sum()),
+                        **distribution(fates.to_frame("f"), "f", TARGET_FATES)}}
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     traced = load()
@@ -181,7 +206,7 @@ def main() -> None:
                        "likely": float(g.subcause_support.eq("likely").mean())}
                    for c, g in d.groupby("cause") if c in SUBCAUSES},
          "positive_discontinued": float(d[d.cause.eq("positive_not_advanced")].subcause.isin(DISCONTINUED).mean()),
-         "validation": validation(), "subcause_audit": subcause_audit()}
+         "validation": validation(), "subcause_audit": subcause_audit(), "drilldown": drilldown(d)}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(n, f, indent=1, default=jsonable)
 

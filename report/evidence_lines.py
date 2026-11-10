@@ -53,6 +53,11 @@ POTENT_100NM, POTENT_10NM = 7.0, 8.0  # best pChEMBL at the primary target: the 
 BRAIN = ("neurology", "psychiatry")  # the bio_area values whose programs are scored for brain penetrance
 MAX_RO5_VIOLATIONS = 1
 BRAIN_TPSA, BRAIN_MW, BRAIN_HBD = 90.0, 450.0, 3  # brain-penetrant: TPSA < 90, MW < 450, donors <= 3
+# Mammalian Phenotype classes of the organs a drug's on-target harm most often reaches (the 2026-11-08 safety
+# amendment): a target whose mouse mutants show a phenotype in any of them counts.
+VITAL_ORGANS = {"MP:0005385": "cardiovascular", "MP:0005370": "liver and biliary", "MP:0005397": "haematopoietic",
+                "MP:0005387": "immune", "MP:0003631": "nervous"}
+SAFETY_STOP_GAP_YEARS = 1  # an earlier safety stop counts once its trials ended at least this long before entry
 
 
 @dataclass(frozen=True)
@@ -222,11 +227,8 @@ AREAS: dict[str, tuple[Line, list[Line]]] = {
     ]),
     "early_human": (Line("Published study of the drug acting on its target in people (exploratory)", "lit_human_engagement",
                          "phase_2_3"), []),
-    "safety_risk": (Line("Target safety risk", "liability", "target"), [
-        Line("Only: people rarely carry broken copies of the gene", "tier_constrained_only", "target"),
-        Line("Only: mice without the gene die young", "tier_lethal_only", "target"),
-        Line("Both", "tier_constrained_and_lethal", "target"),
-    ]),
+    "safety_risk": (Line("Target safety risk: people rarely carry broken copies of the gene, or mice without it "
+                         "die young", "liability", "target"), []),
     "precedent": (Line("Earlier drugs on the same target", "cat_precedent", "target"), [
         Line("Approved for a related disease", "b1", "target"),
         Line("Approved only for unrelated diseases", "approved_unrelated_only", "target"),
@@ -234,6 +236,18 @@ AREAS: dict[str, tuple[Line, list[Line]]] = {
              "from_2011"),
     ]),
 }
+
+
+# The safety lines of the 2026-11-08 amendment (exploratory): the standard genetic flags as one line, and three
+# chosen after the flags showed no association with safety stops, each tested against efficacy and safety stops.
+SAFETY = [
+    Line("Standard flags: people rarely carry broken copies of the gene, or mice without it die young", "liability",
+         "target"),
+    Line("Mutant mice show a phenotype in a vital organ (heart, liver, blood, immune or nervous system)",
+         "ko_vital_organ", "target"),
+    Line("An earlier drug on the same target stopped for safety", "earlier_safety_stop", "from_2011"),
+    Line("The drug binds another protein within 10-fold of its target", "poor_selectivity", "small_molecule"),
+]
 
 
 def area_lines() -> list[Line]:
@@ -262,9 +276,6 @@ def area_columns(d: pd.DataFrame) -> pd.DataFrame:
         "tier_strong_selective": flag(potent & d.selective.gt(0), small),
         "tier_strong_only": flag(potent & ~d.selective.gt(0), small),
         "tier_weaker": flag(measured & ~potent, small),
-        "tier_constrained_only": flag(d.constrained.gt(0) & ~d.ko_lethal.gt(0)),
-        "tier_lethal_only": flag(d.ko_lethal.gt(0) & ~d.constrained.gt(0)),
-        "tier_constrained_and_lethal": flag(d.constrained.gt(0) & d.ko_lethal.gt(0)),
         "tier_failure_only": flag(d.earlier_failure.gt(0) & ~d.precedent.gt(0), APPLIES["from_2011"](d)),
         "area_lit_animal": flag(d.lit_animal_disease.gt(0) | d.lit_animal_healthy.gt(0), screened),
         "tier_lit_healthy_only": flag(d.lit_animal_healthy.gt(0) & ~d.lit_animal_disease.gt(0), screened),
@@ -394,6 +405,31 @@ def literature_columns(d: pd.DataFrame, related, q: pd.DataFrame, screened: set[
     return pd.DataFrame(out, index=d.index)
 
 
+def vital_organ_genes() -> set[str]:
+    """Ensembl ids of the genes whose mouse mutants show a phenotype in any VITAL_ORGANS class."""
+    return set(frame.query("SELECT DISTINCT target_ensembl FROM preclin.ot_mouse_phenotype WHERE class_ids && %s",
+                           (list(VITAL_ORGANS),)).target_ensembl)
+
+
+def safety_stops() -> pd.DataFrame:
+    """Every traced stop whose cause, or likely cause where no source states one, is safety, with the date its
+    trials ended (pipeline.stop_causes)."""
+    return frame.query("""SELECT c.moiety_id, c.mondo_id, s.stopped_on AS ended FROM preclin.stop c
+                          JOIN preclin.stop_signal s USING (moiety_id, mondo_id, phase)
+                          WHERE (c.cause = 'safety' OR (c.cause = 'unknown' AND c.guess = 'safety'))
+                            AND s.stopped_on IS NOT NULL""")
+
+
+def earlier_safety_stop(by_gene: dict, moiety_id, genes, entry: pd.Timestamp) -> bool | None:
+    """Whether another entity on one of `genes`, in any disease, stopped for safety with its trials ended at least
+    SAFETY_STOP_GAP_YEARS before `entry`; None for entries before FAILURES_FROM, which the traced stops (entries
+    from 2008) cannot look back far enough for."""
+    if entry.year < FAILURES_FROM:
+        return None
+    cut = entry - pd.DateOffset(years=SAFETY_STOP_GAP_YEARS)
+    return any(mid != moiety_id and ended <= cut for g in genes for mid, _, ended in by_gene.get(g, ()))
+
+
 def build() -> pd.DataFrame:
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
@@ -412,6 +448,11 @@ def build() -> pd.DataFrame:
         earlier_failure(by_gene, r.moiety_id, ev.ent.at[r.moiety_id, "genes"], ev.nb.terms(r.mondo_id, RELATED),
                         pd.Timestamp(r.entry)) if r.has_target_disease else None for r in d.itertuples()],
         index=d.index, dtype=object).map({True: 1.0, False: 0.0})
+
+    unsafe = failures_by_gene(safety_stops(), dict(zip(ev.ent.index, ev.ent.genes)))
+    d["earlier_safety_stop"] = pd.Series([
+        earlier_safety_stop(unsafe, r.moiety_id, ev.ent.at[r.moiety_id, "genes"], pd.Timestamp(r.entry))
+        if r.has_target_disease else None for r in d.itertuples()], index=d.index, dtype=object).map({True: 1.0, False: 0.0})
 
     d = d.join(literature_columns(d, lambda m: ev.nb.terms(m, RELATED),
                                   *literature_inputs(sorted({int(m) for m in d.moiety_id}))))
@@ -445,6 +486,10 @@ def build() -> pd.DataFrame:
     d["animal_close"] = flag((d.mgi_strong > 0) | (d.impc_strong > 0))
     d["animal_concordant"] = flag(d.mouse_direction.eq("concordant"))
     d["approved_unrelated_only"] = flag((d.precedent > 0) & ~(d.b1 > 0))
+    vital = vital_organ_genes()
+    d["ko_vital_organ"] = flag(pd.Series([any(g in vital for g in ev.ent.at[m, "genes"]) if t else False
+                                          for m, t in zip(d.moiety_id, d.has_target_disease)], index=d.index))
+    d["poor_selectivity"] = 1.0 - d.selective
     d = d.join(category_columns(d))
     d = d.join(area_columns(d))
     d["biomarker_selected"] = biomarker_selected(
@@ -454,7 +499,8 @@ def build() -> pd.DataFrame:
     keep = ["moiety_id", "mondo_id", "phase", "program_id", "entry_date", "entry_year", "era", "regime", "bio_area",
             "modality", "novel", "precedent", "target", "sign", "event", "s4", "has_target_disease", "assay_best",
             "assay_margin",
-            *(ln.column for ln in lines() if ln.column), *(ln.column for ln in area_lines())]
+            *(ln.column for ln in lines() if ln.column), *(ln.column for ln in area_lines()),
+            *(ln.column for ln in SAFETY)]
     return d[list(dict.fromkeys(keep))].sort_values(["moiety_id", "mondo_id", "phase"]).reset_index(drop=True)
 
 
