@@ -41,9 +41,11 @@ patients or genotypes respond). Three cases that are all in scope:
   data): the cell is an **empty list**, which the figure draws blank. `untested` means a model existed
   and nobody compared it. Keep the two apart.
 A model built or run after the clinic already knew the answer is a **retrodiction**: record it with
-`retrodiction: true`. Post-dating alone makes it one: a model result first public after a patient result
-for the same target was public is a retrodiction, whether or not the source says the patient result
-motivated it, and whether that patient result was for a member drug or for another drug on the same target. If it reproduced the human data its status is `retro`, never `same`; if it failed to
+`retrodiction: true`. Post-dating alone makes it one, whether or not the source says the patient result
+motivated it. Which patient result counts depends on the question. Engagement and efficacy are claims about
+the target: a model result first public after a patient result for the same target and action, from a
+member drug or any other drug, is a retrodiction. Dose and safety are claims about the drug: there only the
+same drug's own patient result, public earlier, makes a model a retrodiction. If it reproduced the human data its status is `retro`, never `same`; if it failed to
 reproduce them, `contra`. Its first prospective prediction afterwards is a fresh entry scored as usual
 .
 

@@ -1,0 +1,132 @@
+{
+ "tile": "asthma-anti-il13-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "year 2012 -> 2011: May 2012 was online 2011-09-08 (rule 6, earliest public date)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "year 2012 -> 2011: May 2012 was online 2011-09-08 (rule 6, earliest public date)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "year 2012 -> 2011: May 2012 was online 2011-09-08 (rule 6, earliest public date)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "year 2012 -> 2011: proxy opener dated to the 2011-09-08 online date of May 2012 (rule 6)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "year 2018 -> 2017: STRATOS 1 primary miss first public in AstraZeneca press release 2017-05-10 (rule 6)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "what": "year 2018 -> 2017: STRATOS 1 primary miss first public in AstraZeneca press release 2017-05-10 (rule 6)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "status same -> retro, year 2018 -> 2017: model first public after the STRATOS 1 press release (post-dating ruling; rule 6)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "year 2018 -> 2017 and retrodiction true: model first public after STRATOS 1 press release 2017-05-10; contra kept"
+  },
+  {
+   "cell": "efficacy",
+   "index": 17,
+   "what": "retrodiction true (challenge public 2013-10-18 after Noonan 2013-05-29 and MILLY 2011); status contra kept as a failed retrodiction"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> retro (tox statement first public 2022, after asthma safety data: post-dating ruling); imported_from removed because asthma patients were measured (imported-harm ruling, settles RULE QUESTION)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 12,
+   "what": "opener, hbe-il13-signature x lebrikizumab sc, untested 2007 (track split from entry 4)"
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "what": "same 2013, hbe-il13-signature x lebrikizumab sc: Scheerens 2014 Th2 markers fell (split from entry 4)"
+  },
+  {
+   "cell": "engagement",
+   "index": 14,
+   "what": "opener, hbe-il13-signature x tralokinumab sc, untested 2007 (track split from entry 4)"
+  },
+  {
+   "cell": "engagement",
+   "index": 15,
+   "what": "same 2018, hbe-il13-signature x tralokinumab sc: MESOS FeNO and IgE fell (split from entry 4)"
+  },
+  {
+   "cell": "engagement",
+   "index": 16,
+   "what": "opener, il13-eos-qsp-model x lebrikizumab sc, untested 2016 (split from entry 10)"
+  },
+  {
+   "cell": "engagement",
+   "index": 17,
+   "what": "retro 2016, il13-eos-qsp-model x lebrikizumab sc (split from entry 10)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 19,
+   "what": "contra 2013, ova-mouse-il13 x lebrikizumab sc: Noonan 2013 FEV1 primary missed (split from entry 6)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 20,
+   "what": "opener, cyno-antigen-challenge x lebrikizumab sc, untested 2011"
+  },
+  {
+   "cell": "efficacy",
+   "index": 21,
+   "what": "retro 2011, cyno-antigen-challenge x lebrikizumab sc: model first public after MILLY (post-dating ruling)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 22,
+   "what": "opener, il13-humanised-ova-mouse x lebrikizumab sc, untested 2011"
+  },
+  {
+   "cell": "efficacy",
+   "index": 23,
+   "what": "retro 2011, il13-humanised-ova-mouse x lebrikizumab sc: model first public after MILLY (post-dating ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "opener, cyno-repeat-dose-tox x lebrikizumab sc, untested 2011 (proxy; split from entry 2)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "retro 2024, cyno-repeat-dose-tox x lebrikizumab sc: FDA 761306 NOAEL vs LAVOLTA safety (split from entry 2)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "opener, human-allergen-challenge-lar x lebrikizumab sc, untested 2008 (passing-tolerability ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "retro 2016, human-allergen-challenge-lar x lebrikizumab sc: 'well tolerated' vs LAVOLTA safety (passing-tolerability ruling)"
+  }
+ ]
+}

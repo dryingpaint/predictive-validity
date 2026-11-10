@@ -8,54 +8,60 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Honigberg 2010 PNAS (PMID 20615965) resolves; quote verbatim in abstract. Opening untested entry at 2010 fine; FDA PharmR confirms dog 100 mg/kg complete occupancy 24 h."
+   "note": "Crossref abstract of Honigberg ASH 2007 (Blood 110:1592, 16 Nov 2007) has the quote verbatim; mouse probe occupancy public before any human dosing. Opener untested 2007, ibrutinib, oral correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Advani JCO (PMID 23045577) epub 2012-10-08; quote verbatim. Same probe, direct readout, full occupancy in patients. registry_date 2009-02-24 is first-posting; NCT00849654 has no results, so field should be null."
+   "note": "Quote verbatim in Advani 2013 abstract. Pollyea ASH 2009 abstract (20 Nov 2009) reports 89% PBMC occupancy at 4 h in first cohort (2 MCL of 7), so year 2009 holds; direct readout, same.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Honigberg abstract; occupancy-tied-to-efficacy is a model-stated target, borderline but the phase 1 escalated against it. Untested opening fine."
+   "note": "Quote verbatim in Honigberg ASH 2007 abstract; occupancy readout stated before the phase 1, no human dose target yet. Untested opener 2007 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Advani quote verbatim (design sentence; the occupancy-reached sentence would be the stronger quote). Target reached -> same; margin_stated false correct (dog tolerability unpublished pre-trial). registry_date should be null as above."
+   "note": "Quote verbatim (Advani abstract). Year 2012 holds: Pollyea 2009 showed 89% (<90% target) at cohort 1 and the ASH 2010 Fowler abstract states no occupancy; full occupancy at 2.5 mg/kg first in JCO epub 2012-10-08.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in Honigberg abstract. Canine B-NHL is cross-histology (DLBCL-like) model; opening untested fine."
+   "note": "Quote verbatim in Pollyea ASH 2009 abstract (20 Nov 2009), before the 8 Dec 2009 first MCL responses; canine opener 2009 untested, ibrutinib oral correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Wang NEJM (PMID 23782157) epub 2013-06-19, ORR primary endpoint, quote verbatim; NCT01236391 results first posted 2015-03-13 confirmed. ACE-LY-004 quote verbatim; Harrington dog ORR 25% (5/20) confirmed."
+   "note": "Quote verbatim (Wang 2013 NEJM abstract); ASH 2011 abstract (18 Nov 2011) verified: ORR 67% (16/24). Single-arm, primary ORR, response predicted and seen: same 2011 per single-arm rule.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -64,7 +70,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Zhang CCR 2017 (PMID 28348046) quote verbatim but generic: abstract does not show MCL-specific ibrutinib donor/PDX pairs. Retro, patient-level reasonable; keep low confidence."
+   "note": "Quote verbatim in Zhang 2017 CCR abstract; PDX first public 2017 after ibrutinib MCL results, so retro. Donors are mixed B-cell lymphomas incl. MCL; per-MCL pairs not read.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -73,7 +80,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in bundled PharmR text (Reference ID 3360071). Opening proxy at 2009 first-in-human acceptable."
+   "note": "Quote verbatim in bundled 205552 PharmR text. Opener untested, proxy year 2009 from FIH start; ibrutinib oral correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -82,7 +90,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim; review states platelets rose in rats/dogs. AF is not in the review text; it is in the 2013 MCL label, so the AF miss is drafter pairing. Contra holds on thrombocytopenia alone."
+   "note": "Quote verbatim in bundled PharmR text ('increased platelet counts were seen in rats and dogs'); thrombocytopenia in MCL patients the animals reversed: contra, opposite.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -91,8 +100,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Zhang 2025 Sci Adv (PMC12680032) full text read; quote verbatim from abstract. Opening untested entry at 2025, first MCL use; patient-level fine."
+   "note": "Quote verbatim in Zhang 2025 Sci Adv abstract (epub 2025-12-05). Acalabrutinib monotherapy lead-in readout, combination_with null fits; untested opener not_measured.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -101,32 +110,32 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Full text: 4 AVO patients (1 R/R, 3 untreated) classed by circulating-lymphocyte kinetics after cycle-1 acalabrutinib, then assayed; retro correct, not same. Readout is not the trial endpoint and mostly outside R/R; low confidence apt."
+   "note": "Quote verbatim. Acalabrutinib cycle-1 monotherapy, combination_with null correct. Comparison is per-patient WBC kinetics in 4 patients, not AVO's primary endpoint; kept retro as a patient-level readout (see rule question).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Rahal 2014 Nat Med (PMID 24362935, epub 2013-12-22); quote verbatim in abstract. Opening untested 2013, patient-level prediction of ibrutinib insensitivity."
+   "note": "Quote verbatim in Rahal 2014 abstract (epub 2013-12-22). Biomarker-selected (TRAF2/BIRC3) ibrutinib prediction, untested not_measured correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 7,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "untested",
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "same/contra from a pairing whose trial source attributes the result to conditions the model never tested -> untested (untested_reason unsettled)",
-   "note": "Freeman 2022 abstract: BIRC3 harm shown 'in this cohort', pooled over ibrutinib and temsirolimus arms; no ibrutinib-arm result, so prognostic, not ibrutinib insensitivity. Propose untested/unsettled unless full text shows arm-specific effect.",
+   "rule": "Status table (same needs the model's prediction to agree for a drug of this class) and evidence rule 5 untested_reason unsettled",
+   "note": "Freeman 2022 quote verbatim, but the BIRC3 effect is for the whole RAY cohort (ibrutinib and temsirolimus arms), not shown for ibrutinib alone: prognostic, not a test of ibrutinib insensitivity. Entry already carries untested_reason unsettled.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Checker's rule (trial attributes result to conditions model never tested) and rule 5: Freeman reports BIRC3 harm pooled over ibrutinib and temsirolimus arms (abstract; full text paywalled), so ibrutinib-specific insensitivity is unsettled."
+   "adjudication_note": "Status table: same needs agreement for a class drug; Freeman 2022 reports the BIRC3 effect across both RAY arms (incl. temsirolimus), not for ibrutinib alone. Rule 5: untested, unsettled (already set on draft)."
   },
   {
    "cell": "safety",
@@ -135,8 +144,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim in bundled 213217 MultidisciplineR (line ~1103). Opening untested at first-in-human proxy 2014; model_filed true supported."
+   "note": "Quote verbatim in bundled 213217 MultidisciplineR text. Zanubrutinib is a member; opener untested unpublished, proxy 2014.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -145,8 +154,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Telemetry quote verbatim; review shows multi-organ hemorrhage in animals, dog platelets rising, patient AF/flutter 2% and thrombocytopenia. Contra consistent with ibrutinib track judgement. registry_date 2022 postdates year; year 2019 fine."
+   "note": "Quote verbatim. Contra holds on thrombocytopenia (R/R MCL 28%, animals raised platelets); AF basis is the pooled B-cell population (review: none or 1.6% in R/R MCL), so note should drop AF as an MCL harm.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -155,8 +164,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Bundled 210259 MultidisciplineR (Ref ID 4173186): quote verbatim in the toxicology overview. Rat 26-week, dog 91-day/39-week and dog telemetry filed; untested opening at the 2014 first-in-human proxy year is fine."
+   "note": "Quote verbatim in bundled 210259 MultidisciplineR text. Acalabrutinib opener untested unpublished, proxy 2014 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -165,8 +174,68 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim. Review confirms dog 39-week red-cell decreases only, rat heart hemorrhage only in moribund 300/200 mg/kg females; ACE-LY-004 hemorrhage 31.5% (major 0.8%), platelets decreased 44.4%, AF 0. Contra judgement consistent with sibling tracks."
+   "note": "Quote verbatim in bundled 210259 text. Animals showed no platelet or bleeding signal; ACE-LY-004 bleeding and platelet decreases in MCL patients: contra stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Harrington 2016 quote verbatim (PLoS One epub 2016-07-19). Own acalabrutinib track on the canine model is right. Dog run post-dates ibrutinib MCL responses, so retrodiction could be true on the opener; no status effect.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lancet abstract quote verbatim (epub 2017-12-11; label Oct 2017 also 2017). Single-arm ORR 81%, response as dogs showed; retro by post-dating ibrutinib MCL 2011, correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Pollyea ASH 2009 abstract; it shows the canine system in use for ibrutinib in 2009 (an efficacy sentence, adequate for an untested opener).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Patient quote verbatim in Wang ASH 2011 abstract. PNAS 2010 'well-tolerated' is not in the abstract (drafter read full text). Dog claim (Jul 2010) post-dates Pollyea 2009 'extremely well tolerated', so retro is right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Harrington 2016 quote verbatim in abstract; passing tolerability claim is a scorable safety prediction; untested opener 2016 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lancet abstract quote verbatim. Dog tolerability (2016) post-dates ibrutinib MCL and acalabrutinib CLL tolerability, so retro; bleeding is scored on the tox track.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -183,6 +252,7 @@
   "Safety year when the FDA review was signed 2013 (MCL approval Nov 2013, NDA 205552 Orig1) but the bundled copy sits in the 2014 Orig2 folder: does the year follow the earliest public posting of any copy of the review (possibly 2013 under Orig1)?",
   "Is 'occupancy correlated with efficacy' in a mouse paper a model-stated dose target for the dose cell, or only an engagement prediction, given the brief bars targets the model never stated?",
   "magnitude 'opposite' on a silence-contradicted harm where animals moved the lab value the other way (platelets rose): the brief defines 'opposite' for a predicted harm that never appeared.",
-  "Is a biomarker's pooled prognostic effect across a randomized trial's in-class and out-of-class arms (RAY: ibrutinib vs temsirolimus) admissible as a same for a model predicting in-class insensitivity, or untested?"
+  "Is a biomarker's pooled prognostic effect across a randomized trial's in-class and out-of-class arms (RAY: ibrutinib vs temsirolimus) admissible as a same for a model predicting in-class insensitivity, or untested?",
+  "Efficacy, patient-level models (efficacy 5): when a per-patient ex-vivo prediction is compared with per-patient sensitivity on a non-endpoint measure (cycle-1 WBC kinetics in AVO), does the primary-endpoint rule demote it to untested, or does a patient-level readout stand on its own?"
  ]
 }

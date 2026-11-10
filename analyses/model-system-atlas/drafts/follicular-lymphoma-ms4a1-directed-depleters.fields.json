@@ -1,0 +1,67 @@
+{
+ "tile": "follicular-lymphoma-ms4a1-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "status untested->retro (retrodiction ruling: monkey data public Oct 2008, after veltuzumab phase I and rituximab B-cell depletion in patients; abstract states the comparison); quote changed to the comparison sentence of the same abstract"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same->retro (retrodiction ruling: monkey model post-dates patient B-cell depletion by veltuzumab phase I and rituximab); registry_date 2006-02-02"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "status same->retro (retrodiction ruling: Li 2022 model post-dates the 48-mg RP2D from patient escalation data)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same->untested (single-arm design ruling: primary endpoint safety/tolerance per NCT00285428, ORR secondary); registry_date 2006-02-02"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status same->retro (same-target retrodiction ruling: humanized-mouse data public Jan 2020, after rituximab/mosunetuzumab FL results); year 2024->2023 (earliest public: AbbVie/Genmab topline press release 2023-06-27)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "status same->retro (same-target retrodiction ruling: ex-vivo data public Feb 2021, after rituximab/mosunetuzumab FL results); year 2024->2023 (earliest public: AbbVie/Genmab topline press release 2023-06-27)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "status same->retro (same-target retrodiction ruling: model fit to escalation patients, published 2022, after rituximab/mosunetuzumab FL results); year 2024->2023 (earliest public: AbbVie/Genmab topline press release 2023-06-27)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "status same->retro; RULE QUESTION settled by the combination ruling (scored, combination_with lenalidomide) and the same-target retrodiction ruling"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same->retro (same-target retrodiction ruling: CD20-directed cytokine release in patients public before Jan 2020)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "status same->retro (post-dating ruling: assay first public 2023, after epcoritamab CRS reported 2020-21)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "opening untested entry for the epcoritamab (SC) track of the cynomolgus model, Engelberts 2020"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "epcoritamab (SC) track comparison, Hutchings 2021 B-cell depletion; retro under the same-target retrodiction ruling"
+  }
+ ]
+}

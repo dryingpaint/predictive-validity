@@ -29,7 +29,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PMID 21895629 (open access); quote verbatim. FDA 761180 integrated review lists the cynomolgus antigen-challenge study CAT354Rp038 (BAL eosinophil influx inhibited), so model_filed true holds."
+   "note": "PMID 21895629 entrez 2011-09-08 (Crossref record created 2011-09-06); print May 2012. Quote verbatim in abstract. Year 2011 is the earliest public date (rule 6); untested opener, tralokinumab sc, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -70,7 +71,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "May 2012 abstract states affinity and in-vivo efficacy, no exposure target or margin; untested is right (decision 16: no stated margin)."
+   "note": "PMID 21895629 entrez 2011-09-08 (Crossref record created 2011-09-06); print May 2012. Affinity sentence verbatim; abstract states no exposure target or margin, so untested/no_prediction holds; year 2011 right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -115,7 +117,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "May 2012 abstract, verbatim; CAT354Rp038 in the FDA review confirms model_filed. Separate primate track is right."
+   "note": "PMID 21895629 entrez 2011-09-08 (Crossref record created 2011-09-06); print May 2012. Conclusion sentence verbatim. Opener year 2011 right under rule 6; drug, route, population right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -188,7 +191,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PMID 29792288; both primaries missed (all-comers RR 0.93; FeNO-high RR 0.84) and the source calls the mechanism failed; no FEV1 secondary seen in the abstract, so #32 not applied. Add TROPOS (NCT02281357) to patient_trials."
+   "note": "AstraZeneca release 2017-05-10 (astrazeneca.com .../100517) reports STRATOS 1 missed its AAER primary, so year 2017 (rule 6). Panettieri quote verbatim (PMID 29792288); contra, sc, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -197,7 +201,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "May 2012 abstract, verbatim; proxy opener. FDA 761180 confirms 13-week and 26-week cynomolgus studies; FDA 761306 (lebrikizumab) line 1759: NOAEL was the highest dose tested in all three monkey studies, so the pooled model label holds."
+   "note": "PMID 21895629 entrez 2011-09-08 (Crossref record created 2011-09-06); print May 2012. Sentence verbatim; proxy opener for the monkey tox track dated to the species' first public use with the product, 2011, allowed by rule 6.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -205,13 +210,14 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2022,
-   "rule": "12 (symmetric safety transfer) with 4 (askable silence)",
-   "note": "Quote verbatim at 761180 integrated review p.116 (NOAEL 90 mg/kg/week). Same document: AD conjunctivitis 7.4% vs 3.0% and monkey ophthalmoscopy 'no treatment related changes', an askable silence. Decision 12 transfers cross-indication harms symmetrically; the draft imported the clean reconciliation but not the harm. Asthma pools show no excess; see rule question 3.",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: decision 12 imports cross-indication harms symmetrically but does not rank an import against in-context patient data. Over 4,000 asthma patients show no conjunctivitis excess: does the in-context null govern, or does AD conjunctivitis score contra with imported_from?"
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2021,
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date (label, regulator document)",
+   "note": "Retro and removing imported_from are right. But EMA Adtralza EPAR (EMA/266138/2021, CHMP 2021-04-22): 'Tralokinumab was well tolerated in all repeat dose studies', so model first public 2021. FDA quote verbatim. Stale 'hence imported_from' in confidence_note.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6: status agreed (post-dated retrodiction, asthma patients set it). Year should be 2021: the Adtralza EPAR (CHMP 2021-04-22) made the monkey tolerability statement public before the 2022 FDA review."
   },
   {
    "cell": "engagement",
@@ -280,10 +286,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PMID 29792288 verbatim; registry 2018-03-21/04-17 confirmed. Case 3 (reached, failed, abandoned) gives the derived contra. NCT02161757 results: the model's own readout moved at 300 mg q2w (pre-BD FEV1 week 52 +6.03%, 95% CI 2.34-9.73); see rule question.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): the model's 300 mg q2w dose was given and its FEV1 readout moved"
+   "note": "Baverel cpt.803 accepted online 2017-07-31 (Crossref), after the 2017-05-10 STRATOS 1 release: retrodiction; 300 mg q2w given, so retro, 2017. confidence_note and judgement still describe a contra; update that prose.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -312,8 +316,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PMID 29792288 verbatim; STRATOS 1/2 primaries missed, TROPOS OCS primary missed (p=0.271, NCT02281357 results 2018-05-16); source calls the IL-13 role unsupported. Strengthens right; Brightling 2015 in patient_trials only, consistent with the efficacy-10 adjudication.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Same 2017-05-10 STRATOS 1 release dates the entry (rule 6); Panettieri quote verbatim; contra on the humanised-mouse tralokinumab track right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -333,12 +337,16 @@
   {
    "cell": "efficacy",
    "index": 17,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Noonan verbatim (epub 2013-05-29); Scheerens online 2013-10-18, so 2013. Challenge ran 2008-12 to 2009-11, before MOLLY finished (2010-12): prospective, not retro. Source calls the n.s. 48% a reduction (#10 mirror); Noonan is the model's own no-ICS population, MILLY's is not. Contra holds; see rule questions.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "proposed_status": "contra",
+   "rule": "DRAFTER_BRIEF retrodiction: a model result first public after a patient result for the same target (rule 6 earliest public date)",
+   "note": "Challenge result was public before MILLY: AAAAI March 2011 abstract (JACI 2011 suppl, S0091-6749(10)02592-3; cited by Corren 2011 and Thomson 2012, LAR -48%). Not post-dated, so retrodiction false; contra vs Noonan, 2013, stands.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Retrodiction rule: the challenge result was public as an AAAAI 2011 abstract (JACI suppl, S0091-6749(10)02592-3, title confirmed) before MILLY, so retrodiction false; failing to predict Noonan's 2013 miss is contra either way."
   },
   {
    "cell": "efficacy",
@@ -357,12 +365,177 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": false,
-   "proposed_status": "same",
-   "rule": "DRAFTER_BRIEF dose: whether the reached dose worked is the efficacy question, never this one; a drug that reached its target and failed is an efficacy failure only",
-   "note": "PMID 29792288 abstract, quote verbatim. 300 mg q2w (the model's regimen) was given, so the target was reached: same, not contra. That duplicates dose 3 with no strengthens; fold into dose 3 and delete.",
-   "checked_by": "CHECKER_BRIEF / models",
+   "proposed_status": "retro",
+   "rule": "DRAFTER_BRIEF dose: whether the reached dose worked is the efficacy question, never this one; one entry per change of status",
+   "note": "Retrodiction and 2017 right, but contra rests on the reached dose failing, which is efficacy's alone; target reached in a retrodiction is retro, duplicating dose 3 (same track, source, year). Drop it.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "drop",
-   "adjudication_note": "Dose table 'target reached' gives same, not contra (efficacy failure only). Dose 3 already scores that same on this track from the same source and year; one entry per status change, so this duplicate is dropped."
+   "adjudication_note": "Dose table: the stated regimen was reached; that it failed is efficacy's question only, so contra is wrong. Reached in a retrodiction is retro, which dose 3 already records (same track, source, year): one entry per change of status, drop."
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 17898169, epub 2007-09-26; quote verbatim. Opener 2007 on the lebrikizumab track is right; biomarker_selected on an opener compares no patients, harmless.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2011,
+   "rule": "DRAFTER_BRIEF rule 6: earliest date the comparison was public",
+   "note": "Scheerens quote verbatim (online 2013-10-18). Same holds, but IL-13 downstream readouts fell in lebrikizumab patients earlier: MILLY (epub 2011-08-03) FeNO -19% vs +10% placebo, P<0.001; the challenge PD data were an AAAAI 2011 abstract.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: same agreed. Track turns same at the earliest public patient readout: MILLY (epub 2011-08-03) FeNO -19% vs +10%, P<0.001, a downstream readout (decision 15). Year 2011, not 2013."
+  },
+  {
+   "cell": "engagement",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Woodruff 2007 verbatim (epub 2007-09-26); opener of the tralokinumab track at the model's first use is right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 15,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 29793857 (epub 2018-05-21) interpretation sentence verbatim; FeNO 0.78 and IgE 0.86 ratios, p<0.05. Same, 2018, sc right. Earlier tralokinumab FeNO data (Brightling 2015 full text) not checked; MESOS is ICS-treated moderate-severe, arguably stage_or_line.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 16,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 27885827, online 2016-11-25; abstract sentence verbatim. Opener 2016 on the lebrikizumab QSP track right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 17,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "'All model-based predictions were consistent with published clinical observations' verbatim; model built after phase 2 blood-eosinophil rises were public, so retro 2016 right; comparison stated.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 19,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Noonan PMID 23726041, epub 2013-05-29; conclusion verbatim. FEV1 primary missed in ICS-free mild-moderate asthma; the mouse had no ICS, so not untested; contra 2013, sc, stage_or_line right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 20,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "May 2012 conclusion verbatim, online 2011-09-08. Lebrikizumab track opener 2011; product_in_model false right (model dosed with tralokinumab).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 21,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Corren PMID 21812663 epub 2011-08-03, quote verbatim; model public 2011-09-08 after it, so retro 2011. Missing: the track's next prospective comparisons (Noonan 2013 miss, LAVOLTA 2016) have no entry.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 22,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "May 2012 conclusion verbatim, online 2011-09-08; lebrikizumab opener on the humanised-mouse track, product_in_model false, right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 23,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "MILLY quote verbatim (epub 2011-08-03), model public 2011-09-08: retro 2011 right. As for efficacy 21, Noonan 2013 and LAVOLTA 2016 prospective comparisons on this track are missing.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA 761306 multidiscipline review: 'No lebrikizumab-related adverse effects (including effects on the immune system) were observed.' verbatim. Proxy opener 2011 at the model's first public use, allowed by rule 6.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2023,
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date",
+   "note": "Hanania quote verbatim (PMID 27616196). Retro right. But the model statement was public earlier in EMA Ebglyss EPAR (EMA/453942/2023, CHMP 2023-09-14): NOAEL 25 mg/kg IV QW, no ocular effects in repeat-dose studies.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6: retro agreed. The lebrikizumab monkey statement was first public in the Ebglyss EPAR (CHMP 2023-09-14), before the 2024 FDA review, so year 2023."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT00781443 official title verbatim; first posted 2008-10-29, start 2008-12, no results posted. Opener 2008 right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2013,
+   "rule": "DRAFTER_BRIEF rule 6: earliest date the comparison was public",
+   "note": "Hanania quote verbatim. Model claim ('Lebrikizumab was well tolerated', online 2013-10-18) and earlier asthma safety (MILLY 2011, Noonan 2013) were public in 2013, so the comparison dates 2013. MILLY musculoskeletal excess 13.2% vs 5.4% (P=0.045) needs noting.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6: retro agreed. The cited model claim ('well tolerated', online 2013-10-18) followed MILLY's 2011 asthma safety, so the comparison was public in 2013, not 2016; MILLY's musculoskeletal excess belongs in note."
   }
  ],
  "missing": [
@@ -370,7 +543,9 @@
   "TROPOS (NCT02281357, phase 3 OCS-sparing, registry results 2018-05-16; Busse 2019 Eur Respir J, PMID 30442714, doi:10.1183/13993003.00948-2018): primary missed (OCS reduction 37.6% vs 29.9%, p=0.271) with no secondary met. A member phase 3 failure absent from the draft and from the STRATOS entry's patient_trials.",
   "Korenblat 2018 (Respir Med, PMID 29413502, doi:10.1016/j.rmed.2017.12.006, epub 2017-12-13): second lebrikizumab trial in ICS-free mild-to-moderate asthma, FEV1 primary missed (83 mL, p=0.06), 'inhibiting IL-13 in this population was not sufficient to improve lung function'. Replicates Noonan 2013 on the hbe-il13-signature and WT-mouse tracks; absent.",
   "IL-13-humanised OVA mouse dosed with tralokinumab (May 2012, doi:10.1111/j.1476-5381.2011.01659.x; FDA 761180 nonclinical pharmacology): the only mouse the product itself was dosed in and a genetically distinct system from Wills-Karp's WT OVA mouse; it needs its own model_id (decision 8) rather than sharing ova-mouse-il13.",
-  "Out of class, for the record: Gauvreau 2011 (PMID 21057005, doi:10.1164/rccm.201008-1210OC) IMA-638/IMA-026 allergen challenge is the class's human-challenge precedent, but anrukinzumab is not a listed member, so it is not scorable."
+  "Out of class, for the record: Gauvreau 2011 (PMID 21057005, doi:10.1164/rccm.201008-1210OC) IMA-638/IMA-026 allergen challenge is the class's human-challenge precedent, but anrukinzumab is not a listed member, so it is not scorable.",
+  "[fields] Lebrikizumab tracks on cyno-antigen-challenge and il13-humanised-ova-mouse stop at the 2011 retro: the first prospective comparisons, Noonan 2013 (PMID 23726041, FEV1 primary missed) and LAVOLTA I/II 2016 (PMID 27616196), have no entries.",
+  "[fields] human-allergen-challenge-lar x lebrikizumab: the challenge result was public as an AAAAI March 2011 abstract (JACI 2011 suppl, jacionline.org/article/S0091-6749(10)02592-3; cited in Corren 2011), before MILLY; MILLY's same (2011) is then a prospective comparison on this track."
  ],
  "could_not_verify": [
   "Panettieri 2018 FEV1 secondary significance (not in the abstract; full text paywalled).",
@@ -387,6 +562,7 @@
   "Engagement readout substitution: when the model's own readout (serum periostin) has a patient-side source but the drafter scored a different downstream readout (FeNO) as same, does the track carry same, or must the entry cite the model's readout (decision 4 'the PD readout the model used')?",
   "[models] A human-challenge model whose own primary missed significance (LAR -48%, 95% CI -19 to 90, n=29) but whose source calls it a reduction: is the source's call a stated positive prediction (mirror of #10), or is a non-significant model primary no prediction, leaving the track untested?",
   "[models] One drug, two populations on one track: does a contra in the population the model tested (no ICS; Noonan 2013, Korenblat 2018) outrank the same drug's same in a population the model never tested (ICS-treated MILLY)? Decision 6 (#3) ranks only across drugs.",
-  "[models] Dose case 3 when the model's own readout was met: the tralokinumab PK/PD model predicted near-maximal FEV1 at 300 mg q2w and STRATOS 1 pre-BD FEV1 rose 6.03% (95% CI 2.34-9.73) at that regimen while AAER failed. Derived contra (decision 4) or a decision-9 surrogate-matched same with outcome_tested negative?"
+  "[models] Dose case 3 when the model's own readout was met: the tralokinumab PK/PD model predicted near-maximal FEV1 at 300 mg q2w and STRATOS 1 pre-BD FEV1 rose 6.03% (95% CI 2.34-9.73) at that regimen while AAER failed. Derived contra (decision 4) or a decision-9 surrogate-matched same with outcome_tested negative?",
+  "[fields] Safety on a human-challenge track: if the 2011 congress abstract already stated tolerability (not verified), the claim is prospective; does MILLY's musculoskeletal excess (13.2% vs 5.4%, P=0.045), not replicated in LAVOLTA, make the 2011 comparison contra?"
  ]
 }

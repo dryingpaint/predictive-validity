@@ -17,8 +17,9 @@ For EVERY entry in every cell:
      tested (should be `untested`), except a combination with another active drug, which is scored on the
      primary endpoint with `combination_with` set (DRAFTER_BRIEF, efficacy);
    - efficacy scored on a secondary endpoint without `endpoint_role: poc_gate`;
-   - a retrodiction scored `same` (should be `retro`), or a prospective model marked `retrodiction`; a model
-     first public after a patient result on the same target (member or not) is a retrodiction;
+   - a retrodiction scored `same` (should be `retro`), or a prospective model marked `retrodiction`; for engagement
+     and efficacy a model first public after a patient result on the same target (member or not) is a
+     retrodiction; for dose and safety only the same drug's own earlier patient result makes it one;
    - a `year` later than the earliest public date (registry posting, congress abstract, press release,
      epub, label, print);
    - `drug`, `route` or `population_group` that does not match the patients compared; a harm imported from
