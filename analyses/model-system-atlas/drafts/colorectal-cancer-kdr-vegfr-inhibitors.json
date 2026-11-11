@@ -55,7 +55,8 @@
     "combination_with": null,
     "route": "oral",
     "drug": "tivozanib",
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "crc-xenograft-rodent",
@@ -265,7 +266,8 @@
     "combination_with": null,
     "route": "oral",
     "drug": "fruquintinib",
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": true,
@@ -701,7 +703,7 @@
     "population_group": "unselected",
     "year": 2011,
     "status": "untested",
-    "untested_reason": null,
+    "untested_reason": "no_prediction",
     "source_tier": 1,
     "model_src": "https://doi.org/10.1111/j.1349-7006.2011.01939.x",
     "model_src_tier": 1,

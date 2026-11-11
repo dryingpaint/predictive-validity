@@ -133,7 +133,8 @@
     "drug": "voxtalisib",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2014,
@@ -212,7 +213,8 @@
     "drug": "apitolisib",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2011,
@@ -292,7 +294,8 @@
     "drug": "apitolisib",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -413,7 +416,7 @@
     "source_calls_it": null,
     "population": "advanced solid tumours incl. HER2-positive breast cancer with trastuzumab",
     "model_first_use_year": 2008,
-    "untested_reason": null,
+    "untested_reason": "unsettled",
     "drug": "dactolisib",
     "route": "oral",
     "combination_with": null,
@@ -758,7 +761,8 @@
     "drug": "apitolisib",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unsettled"
    },
    {
     "year": 2011,
@@ -807,7 +811,8 @@
     "drug": "pf-04691502",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "not_measured"
    },
    {
     "year": 2017,
@@ -856,7 +861,8 @@
     "drug": "bimiralisib",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unsettled"
    },
    {
     "retrodiction": false,
@@ -912,7 +918,8 @@
     "drug": "apitolisib",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unsettled"
    }
   ],
   "safety": [

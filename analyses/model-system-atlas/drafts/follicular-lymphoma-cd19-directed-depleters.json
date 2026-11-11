@@ -827,6 +827,7 @@
     "confidence_note": "Abstract-level; J Immunol full text paywalled (OUP), so the CAR names and toxic cell doses are unseen.",
     "year": 2014,
     "status": "untested",
+    "untested_reason": "no_prediction",
     "model_id": "syngeneic-balbc-a20-mcd19-cd28z-car-toxicity-mouse",
     "model": "Syngeneic BALB/c A20 lymphoma, second-generation anti-mouse-CD19 CD28-CD3zeta CAR T cells in preconditioned mice (acute cytokine-toxicity model)",
     "model_kind": "animal",

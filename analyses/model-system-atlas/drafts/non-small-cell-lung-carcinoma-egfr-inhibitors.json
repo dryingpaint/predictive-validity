@@ -138,7 +138,8 @@
     "combination_with": null,
     "population_group": "biomarker_selected",
     "route": "oral",
-    "drug": "osimertinib"
+    "drug": "osimertinib",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -347,7 +348,8 @@
     "combination_with": null,
     "population_group": "biomarker_selected",
     "route": "oral",
-    "drug": "osimertinib"
+    "drug": "osimertinib",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -567,7 +569,8 @@
     "combination_with": null,
     "population_group": "biomarker_selected",
     "route": "oral",
-    "drug": "osimertinib"
+    "drug": "osimertinib",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -729,7 +732,8 @@
     "combination_with": null,
     "population_group": "biomarker_selected",
     "route": "oral",
-    "drug": "firmonertinib"
+    "drug": "firmonertinib",
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,

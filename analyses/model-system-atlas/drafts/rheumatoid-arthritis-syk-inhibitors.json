@@ -55,7 +55,8 @@
     "drug": "mk-8457",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "rat-aia-cia-mk8457",
@@ -137,7 +138,8 @@
     "drug": "cevidoplenib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": false,
@@ -178,7 +180,8 @@
     "drug": "lanraplenib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -347,7 +350,8 @@
     "drug": "cevidoplenib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": false,
@@ -517,7 +521,8 @@
     "drug": "mk-8457",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "rat-aia-cia-mk8457",
@@ -615,7 +620,8 @@
     "drug": "cevidoplenib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "mouse-kbxn-serum-transfer-cevidoplenib",
@@ -924,7 +930,8 @@
     "drug": "lanraplenib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    }
   ]
  }

@@ -53,7 +53,8 @@
     "drug": "ofatumumab",
     "route": "iv",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "cynomolgus-ofatumumab",
@@ -258,7 +259,8 @@
     "drug": "ofatumumab",
     "route": "iv",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "cd20-cdc-invitro-ofatumumab",
@@ -386,7 +388,8 @@
     "drug": "ofatumumab",
     "route": "iv",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -476,7 +479,8 @@
     "drug": "ofatumumab",
     "route": "iv",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "cynomolgus-ofatumumab",

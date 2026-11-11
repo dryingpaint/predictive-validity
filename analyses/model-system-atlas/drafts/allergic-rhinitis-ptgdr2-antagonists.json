@@ -351,7 +351,8 @@
     "drug": "setipiprant",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "crth2-internalisation-pkpd-model",
@@ -632,7 +633,8 @@
     "drug": "setipiprant",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "setipiprant-asthma-allergen-challenge",

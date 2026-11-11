@@ -209,7 +209,8 @@
     "drug": "class",
     "route": "not_applicable",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -533,7 +534,8 @@
     "drug": "adriforant",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "subjects": "patients",

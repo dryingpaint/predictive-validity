@@ -53,7 +53,8 @@
     "drug": "quizartinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2013,
@@ -215,7 +216,8 @@
     "drug": "quizartinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2018,
@@ -334,6 +336,7 @@
     "confidence": "high",
     "confidence_note": "Abstract-level reading. model_kind is ex_vivo because the enum has no in-vitro cell-line value; the system is an engineered murine cell line, not patient cells.",
     "judgement": "Opening entry at the screen's first use; the comparison appears in the same paper.",
+    "untested_reason": "no_prediction",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "subjects": "patients",
@@ -467,6 +470,7 @@
     "confidence": "high",
     "confidence_note": "Abstract-level reading.",
     "judgement": "Opening entry of the crenolanib track on this screen.",
+    "untested_reason": "no_prediction",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "subjects": null,

@@ -55,7 +55,8 @@
     "drug": "relugolix",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2013,
@@ -95,7 +96,8 @@
     "drug": "relugolix",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2015,
@@ -217,7 +219,8 @@
     "drug": "linzagolix",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -301,7 +304,8 @@
     "drug": "relugolix",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2013,
@@ -343,7 +347,8 @@
     "drug": "relugolix",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2021,
@@ -597,7 +602,7 @@
     "route": "oral",
     "population_group": "unselected",
     "combination_with": null,
-    "untested_reason": null
+    "untested_reason": "unpublished"
    }
   ],
   "efficacy": [
@@ -641,7 +646,8 @@
     "drug": "relugolix",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2013,
@@ -682,7 +688,8 @@
     "drug": "relugolix",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2015,
@@ -723,7 +730,8 @@
     "drug": "linzagolix",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "year": 2020,
@@ -889,7 +897,8 @@
     "drug": "linzagolix",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "retrodiction": true,
@@ -982,7 +991,8 @@
     "drug": "class",
     "route": "not_applicable",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    }
   ],
   "safety": [

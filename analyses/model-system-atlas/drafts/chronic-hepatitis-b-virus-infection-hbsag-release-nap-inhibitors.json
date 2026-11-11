@@ -55,7 +55,8 @@
     "drug": "REP 2055",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "dhbv-pekin-duck",
@@ -380,7 +381,8 @@
     "drug": "REP 2055",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -461,7 +463,8 @@
     "drug": "REP 2165",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "dhbv-pekin-duck",
@@ -501,7 +504,8 @@
     "drug": "REP 2139",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "dhbv-pekin-duck",
@@ -629,7 +633,8 @@
     "drug": "REP 2165",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "cyno-mouse-pk-tox",
@@ -713,7 +718,8 @@
     "drug": "REP 2139",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "cyno-mouse-pk-tox",
@@ -798,7 +804,8 @@
     "drug": "REP 2055",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "dhbv-pekin-duck",
@@ -901,7 +908,8 @@
     "drug": "REP 2139",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "dhbv-pekin-duck",
@@ -983,7 +991,8 @@
     "drug": "REP 2165",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "dhbv-pekin-duck",
@@ -1108,7 +1117,8 @@
     "drug": "REP 2165",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "cyno-mouse-pk-tox",
@@ -1188,7 +1198,8 @@
     "drug": "REP 2139",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -1268,7 +1279,8 @@
     "drug": "REP 2139",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "cyno-mouse-pk-tox",

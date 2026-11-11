@@ -43,7 +43,7 @@ breast-cancer-pi3k-pan-inhibitors,oncology,3,same,same,same,contra,False,proxima
 breast-cancer-pi3k-mtor-inhibitors,oncology,2,untested,contra,same,contra,False,proximal,xenograft_cell_line
 breast-cancer-pik3ca-inhibitors,oncology,4,untested,same,same,untested,True,downstream,xenograft_cell_line
 breast-cancer-anti-igf1r-antibodies,oncology,2,untested,same,same,untested,False,direct,xenograft_cell_line
-breast-cancer-pan-her-inhibitors,oncology,3,untested,untested,untested,untested,False,proximal,xenograft_cell_line
+breast-cancer-pan-her-inhibitors,oncology,3,untested,untested,untested,contra,False,proximal,xenograft_cell_line
 colorectal-cancer-kdr-vegfr-inhibitors,oncology,4,same,same,same,contra,True,,xenograft_cell_line
 colorectal-cancer-vegfr-multikinase-inhibitors,oncology,3,same,same,same,retro,False,downstream,pkpd_occupancy_animal
 colorectal-cancer-anti-egfr-antibodies,oncology,2,untested,contra,same,same,False,downstream,xenograft_cell_line
@@ -60,7 +60,7 @@ melanoma-braf-inhibitors,oncology,4,same,same,same,same,True,downstream,xenograf
 melanoma-anti-pdcd1-antibodies,oncology,3,same,retro,untested,contra,False,direct,humanised_mouse
 myelodysplastic-syndrome-hdac-pan-inhibitors,oncology,3,untested,contra,retro,untested,False,proximal,xenograft_cell_line
 non-small-cell-lung-carcinoma-alk-inhibitors,oncology,4,same,same,same,same,True,downstream,patient_material_ex_vivo
-non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,oncology,3,untested,same,untested,same,False,,tox_repeat_dose
+non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,oncology,3,same,same,untested,same,False,proximal,tox_repeat_dose
 non-small-cell-lung-carcinoma-met-inhibitors,oncology,4,same,same,same,same,True,proximal,xenograft_pdx
 non-small-cell-lung-carcinoma-vegfr-multikinase-inhibitors,oncology,3,untested,same,untested,same,False,,syngeneic_tumour
 non-small-cell-lung-carcinoma-anti-ctla4-antibodies,oncology,4,untested,contra,untested,same,True,,syngeneic_tumour
@@ -69,7 +69,7 @@ non-small-cell-lung-carcinoma-pan-her-inhibitors,oncology,4,untested,same,same,s
 plasma-cell-myeloma-psmb5-inhibitors,oncology,4,same,untested,retro,contra,True,direct,xenograft_cell_line
 prostate-cancer-cyp17a1-ar-inhibitors,oncology,3,contra,contra,same,same,False,proximal,biochemical_assay
 prostate-cancer-ezh2-inhibitors,oncology,2,untested,contra,same,same,False,proximal,tox_repeat_dose
-prostate-cancer-folh1-directed-depleters,oncology,4,untested,retro,untested,same,True,,syngeneic_tumour
+prostate-cancer-folh1-directed-depleters,oncology,4,untested,retro,retro,same,True,downstream,xenograft_cell_line
 prostate-cancer-parp1-2-inhibitors,oncology,4,same,same,same,same,True,proximal,xenograft_cell_line
 small-cell-lung-carcinoma-anti-pdcd1-antibodies,oncology,4,same,same,retro,same,True,direct,donor_primary_human
 diabetic-macular-edema-anti-vegfa-antibodies,ophthalmology,4,same,same,same,contra,True,downstream,metabolic_disease_model
@@ -80,7 +80,7 @@ diabetic-kidney-disease-nr3c2-antagonists,other,4,same,same,same,same,True,proxi
 osteoarthritis-mapk14-inhibitors,other,2,untested,same,same,untested,False,downstream,inflammatory_disease_model
 osteoarthritis-ntrk1-inhibitors,other,2,untested,same,untested,contra,False,,inflammatory_disease_model
 schizophrenia-chrna7-agonists,psychiatry,2,untested,contra,untested,same,False,direct,pkpd_occupancy_animal
-schizophrenia-slc6a9-inhibitors,psychiatry,3,same,neg,same,untested,False,proximal,pkpd_occupancy_animal
+schizophrenia-slc6a9-inhibitors,psychiatry,3,same,neg,same,same,False,proximal,pkpd_occupancy_animal
 asthma-adrb2-agonists,respiratory,2,same,untested,retro,same,False,downstream,biochemical_assay
 asthma-nr3c1-agonists,respiratory,2,untested,untested,retro,same,False,downstream,inflammatory_disease_model
 asthma-anti-il13-antibodies,respiratory,3,untested,contra,same,retro,False,downstream,patient_material_ex_vivo
@@ -94,7 +94,7 @@ acute-myeloid-leukemia-flt3-inhibitors,oncology,4,same,contra,retro,contra,True,
 age-related-macular-degeneration-anti-vegfa-antibodies,ophthalmology,4,contra,untested,retro,same,True,proximal,organ_pharmacology_animal
 alzheimer-disease-anti-app-antibodies,neurology,4,untested,untested,contra,same,True,proximal,genetic_disease_model
 alzheimer-disease-bace1-inhibitors,neurology,3,untested,contra,retro,same,False,proximal,genetic_disease_model
-asthma-ptgdr2-antagonists,respiratory,3,untested,untested,untested,untested,False,,donor_primary_human
+asthma-ptgdr2-antagonists,respiratory,3,untested,untested,untested,untested,False,downstream,donor_primary_human
 atopic-eczema-pde4-inhibitors,other,4,retro,untested,same,retro,True,downstream,donor_primary_human
 b-cell-non-hodgkin-lymphoma-ms4a1-directed-depleters,oncology,2,untested,untested,untested,untested,False,proximal,cell_line_assay
 breast-cancer-cdk4-6-inhibitors,oncology,4,same,contra,same,same,True,proximal,xenograft_cell_line
@@ -144,7 +144,7 @@ open-angle-glaucoma-rock-inhibitors,ophthalmology,4,same,contra,retro,same,True,
 opioid-induced-constipation-oprm1-antagonists,gastroenterology,4,untested,retro,untested,untested,True,downstream,organ_pharmacology_animal
 osteoporosis-anti-sost-antibodies,other,4,untested,same,same,same,True,downstream,humanised_mouse
 ovarian-cancer-parp1-2-inhibitors,oncology,4,same,retro,retro,contra,True,proximal,xenograft_cell_line
-paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies,hematology,4,same,untested,same,same,True,direct,biochemical_assay
+paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies,hematology,4,same,retro,same,same,True,direct,biochemical_assay
 pituitary-dwarfism-ghr-agonists,endocrine,4,same,untested,retro,same,True,proximal,poppk_exposure_response
 plasma-cell-myeloma-tnfrsf17-directed-depleters,oncology,4,untested,same,same,same,True,downstream,xenograft_cell_line
 primary-erythermalgia-scn9a-blockers,neurology,2,same,same,untested,untested,False,,patient_material_ex_vivo
@@ -160,7 +160,7 @@ schizophrenia-pde10a-inhibitors,psychiatry,2,same,contra,same,contra,False,downs
 sjogren-syndrome-btk-inhibitors,autoimmune,2,untested,same,retro,untested,False,direct,inflammatory_disease_model
 sjogren-syndrome-pik3cd-inhibitors,autoimmune,2,untested,untested,retro,untested,False,downstream,inflammatory_disease_model
 systemic-lupus-erythematosus-btk-inhibitors,autoimmune,2,same,contra,same,untested,False,direct,poppk_exposure_response
-type-2-diabetes-mellitus-gck-activators,endocrine,3,same,same,same,untested,False,downstream,metabolic_disease_model
+type-2-diabetes-mellitus-gck-activators,endocrine,3,same,same,same,contra,False,downstream,metabolic_disease_model
 type-2-diabetes-mellitus-glp1r-agonists,endocrine,4,same,same,retro,same,True,downstream,metabolic_disease_model
 ulcerative-colitis-s1pr1-agonists,autoimmune,4,same,untested,retro,same,True,downstream,genetic_disease_model
 waldenstrom-macroglobulinemia-ms4a1-directed-depleters,oncology,3,same,untested,retro,retro,False,proximal,tox_repeat_dose

@@ -53,7 +53,8 @@
     "drug": "crovalimab",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2018,
@@ -254,7 +255,7 @@
     "route": "iv",
     "population_group": "unselected",
     "combination_with": null,
-    "untested_reason": null
+    "untested_reason": "no_prediction"
    }
   ],
   "dose": [
@@ -492,7 +493,8 @@
     "drug": "crovalimab",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -573,7 +575,8 @@
     "drug": "crovalimab",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2018,
@@ -722,7 +725,7 @@
     "route": "iv",
     "population_group": "unselected",
     "combination_with": null,
-    "untested_reason": null
+    "untested_reason": "no_prediction"
    }
   ],
   "safety": [

@@ -136,7 +136,8 @@
     "drug": "efruxifermin",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "obese-diabetic-cyno-monkey",
@@ -259,7 +260,7 @@
     "route": "sc",
     "population_group": "unselected",
     "combination_with": null,
-    "untested_reason": null
+    "untested_reason": "no_prediction"
    }
   ],
   "dose": [
@@ -387,7 +388,8 @@
     "drug": "pegbelfermin",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "obese-diabetic-cyno-monkey",
@@ -428,7 +430,8 @@
     "drug": "efruxifermin",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "obese-diabetic-cyno-monkey",
@@ -1081,7 +1084,8 @@
     "drug": "pegbelfermin",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -1160,7 +1164,8 @@
     "drug": "efruxifermin",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,

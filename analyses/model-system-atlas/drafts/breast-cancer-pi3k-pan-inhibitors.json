@@ -454,7 +454,8 @@
     "drug": "pictilisib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -551,7 +552,8 @@
     "drug": "buparlisib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,

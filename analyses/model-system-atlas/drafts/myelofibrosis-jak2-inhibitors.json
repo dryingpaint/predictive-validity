@@ -486,7 +486,8 @@
     "short": "BMS-911543 mice: limited activity",
     "quote": "Collectively, these results show that BMS-911543 has limited activity in this murine model of JAK2(V617F)-driven MPN and suggest that targeting JAK2 alone may be insufficient to achieve effective disease control.",
     "endpoint_role": "primary",
-    "outcome_tested": null
+    "outcome_tested": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1016/j.exphem.2015.03.006",
@@ -569,7 +570,8 @@
     "short": "BMS-911543: patient progenitors inhibited",
     "quote": "BMS-911543 also displayed anti-proliferative responses in colony growth assays using primary progenitor cells isolated from patients with JAK2(V617F)-positive myeloproliferative neoplasms (MPNs).",
     "endpoint_role": "primary",
-    "outcome_tested": null
+    "outcome_tested": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1038/leu.2011.292",
@@ -810,7 +812,8 @@
     "drug": "fedratinib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -889,7 +892,8 @@
     "drug": "fedratinib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,

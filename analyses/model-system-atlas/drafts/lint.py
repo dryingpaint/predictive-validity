@@ -140,8 +140,8 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
                 issues.append((cid, q, "empty cell (no model relied on)"))
                 continue
             last: dict = {}
-            # a track's entries are read in year order (ties in list order); their place in the list is free
-            for i, e in sorted(enumerate(strip, 1), key=lambda ie: (ie[1].get("year") if isinstance(ie[1].get("year"), int) else 0, ie[0])):
+            # a track's entries are read in year order; their place in the list is free
+            for i, e in sorted(enumerate(strip, 1), key=lambda ie: order(ie[1], ie[0])):
                 prev = last.get(track(e))
                 if e.get("modality") is not None and e["modality"] not in (groups or []):
                     issues.append((cid, q, f"entry {i}: modality {e['modality']!r} not in modality_groups"))
@@ -168,6 +168,11 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
     return extra, issues
 
 
+def order(e: dict, i: int) -> tuple:
+    """A track's reading order: by year; within a year a never-compared opener before a comparison; then list order."""
+    return (e.get("year") if isinstance(e.get("year"), int) else 0, e.get("status") != "untested", i)
+
+
 def reasonless(path: str, d: dict, split: bool) -> list[tuple[str, str]]:
     """Rule 5: a track's latest prospective entry, if it ends untested after the verdicts (adjudicated status,
     else the checker's proposed one), carries untested_reason."""
@@ -181,7 +186,7 @@ def reasonless(path: str, d: dict, split: bool) -> list[tuple[str, str]]:
     for q in QUESTIONS:
         latest: dict = {}
         strip = d.get("cells", {}).get(q) or []
-        for i, e in sorted(enumerate(strip), key=lambda ie: (ie[1].get("year") if isinstance(ie[1].get("year"), int) else 0, ie[0])):
+        for i, e in sorted(enumerate(strip), key=lambda ie: order(ie[1], ie[0])):
             v = verdicts.get((q, i), {})
             final = v.get("adjudicated_status") or v.get("proposed_status") or e.get("status")
             if final not in ("retro", "drop") and not e.get("retrodiction"):

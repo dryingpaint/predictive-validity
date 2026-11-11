@@ -172,21 +172,6 @@
    "note": "Price 2022 quote verbatim; tirabrutinib 40 mg oral; results 2020-01-22. Model side Ariza 2019 (iMedPub page, no DOI/PMID) is not tier 1-3, so contra cannot stand (efficacy 6 already records untested). population_group should be biomarker_selected.",
    "adjudicated_status": "untested",
    "adjudication_note": "Rule 2: a paired comparison needs model_src tier 1-3; Ariza 2019 (iMedPub, no DOI/PMID) and the 2012 ACR abstract are not, and Europe PMC shows no tier-1 tirabrutinib CIA paper. Contra cannot stand; efficacy 6 records untested."
-  },
-  {
-   "cell": "efficacy",
-   "index": 6,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2020,
-   "rule": "population_group: the patients compared, coded; remibrutinib's anti-Ro-required trial is coded biomarker_selected, and this trial also required anti-SSA/SSB seropositivity",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Price quote verbatim; results 2020-01-22; tirabrutinib oral; untested/unpublished stands (no admissible model source). Trial required anti-SSA/SSB seropositivity: population_group biomarker_selected, not unselected.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Status untested/unpublished stands (rule 2, no admissible model source); correction is population_group only (anti-SSA/SSB required, biomarker_selected), which does not change the status."
   }
  ],
  "missing": [

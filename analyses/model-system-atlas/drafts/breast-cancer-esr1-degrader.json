@@ -55,7 +55,8 @@
     "drug": "brilanestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -177,7 +178,8 @@
     "drug": "brilanestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "biomarker_selected"
+    "population_group": "biomarker_selected",
+    "untested_reason": "not_measured"
    },
    {
     "subjects": "mixed",
@@ -423,7 +425,8 @@
     "drug": "brilanestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "biomarker_selected"
+    "population_group": "biomarker_selected",
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -505,7 +508,8 @@
     "drug": "vepdegestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -630,7 +634,8 @@
     "drug": "vepdegestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -713,7 +718,8 @@
     "drug": "vepdegestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -798,7 +804,8 @@
     "drug": "brilanestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "not_measured"
    },
    {
     "subjects": "patients",
@@ -959,7 +966,8 @@
     "drug": "brilanestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "biomarker_selected"
+    "population_group": "biomarker_selected",
+    "untested_reason": "not_measured"
    },
    {
     "subjects": "patients",
@@ -1115,7 +1123,7 @@
     "route": "oral",
     "combination_with": null,
     "population_group": "unselected",
-    "untested_reason": null,
+    "untested_reason": "no_prediction",
     "judgement": "Opening entry at the model's first use for vepdegestrant (SABCS 2018)."
    },
    {
@@ -1200,7 +1208,8 @@
     "drug": "brilanestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -1240,7 +1249,8 @@
     "drug": "giredestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unpublished"
    },
    {
     "subjects": "patients",
@@ -1362,7 +1372,8 @@
     "drug": "vepdegestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -1443,7 +1454,8 @@
     "drug": "giredestrant",
     "route": "oral",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -1523,7 +1535,8 @@
     "route": "oral",
     "combination_with": null,
     "population_group": "unselected",
-    "judgement": "Opening entry at the model's first use for amcenestrant."
+    "judgement": "Opening entry at the model's first use for amcenestrant.",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,

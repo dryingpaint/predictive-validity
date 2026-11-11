@@ -139,7 +139,8 @@
     "drug": "abicipar pegol",
     "route": "intravitreal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -395,7 +396,8 @@
     "drug": "aflibercept",
     "route": "intravitreal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -532,7 +534,8 @@
     "population_group": "unselected",
     "combination_with": null,
     "strengthens": false,
-    "patient_trials": null
+    "patient_trials": null,
+    "untested_reason": "unpublished"
    }
   ],
   "efficacy": [
@@ -737,7 +740,8 @@
     "route": "intravitreal",
     "population_group": "unselected",
     "combination_with": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "untested_reason": "no_prediction"
    }
   ],
   "safety": [
@@ -944,7 +948,8 @@
     "route": "intravitreal",
     "population_group": "unselected",
     "combination_with": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "untested_reason": "unpublished"
    }
   ]
  }

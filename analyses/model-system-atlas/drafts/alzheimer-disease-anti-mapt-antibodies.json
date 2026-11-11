@@ -54,7 +54,8 @@
     "drug": "zagotenemab",
     "route": "iv",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "year": 2021,
@@ -492,7 +493,8 @@
     "drug": "zagotenemab",
     "route": "iv",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2022,
@@ -1070,7 +1072,8 @@
     "drug": "semorinemab",
     "route": "iv",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,

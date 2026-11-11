@@ -54,7 +54,8 @@
     "drug": "somavaratan",
     "route": "sc",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1002/jps.23229",
@@ -133,7 +134,8 @@
     "drug": "somapacitan",
     "route": "sc",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unpublished"
    },
    {
     "model_src": "https://doi.org/10.1016/j.ghir.2017.05.006",
@@ -214,7 +216,8 @@
     "drug": "somapacitan",
     "route": "sc",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -377,7 +380,8 @@
     "drug": "somapacitan",
     "route": "sc",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unpublished"
    },
    {
     "model_src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2020/761156Orig1s000SumR.pdf",
@@ -542,7 +546,8 @@
     "drug": "somatropin pegol",
     "route": "sc",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -625,7 +630,8 @@
     "drug": "somavaratan",
     "route": "sc",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1002/jps.23229",
@@ -749,7 +755,7 @@
     "route": "sc",
     "combination_with": null,
     "population_group": "unselected",
-    "untested_reason": null
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1016/j.ghir.2017.05.006",
@@ -919,7 +925,8 @@
     "drug": "somapacitan",
     "route": "sc",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unpublished"
    },
    {
     "model_src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2020/761156Orig1s000SumR.pdf",
@@ -998,7 +1005,8 @@
     "drug": "somatropin pegol",
     "route": "sc",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,

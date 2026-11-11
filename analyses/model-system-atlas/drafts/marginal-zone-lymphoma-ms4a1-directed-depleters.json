@@ -54,7 +54,8 @@
     "drug": "epcoritamab",
     "route": "sc",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1016/j.ebiom.2019.102625",
@@ -176,7 +177,8 @@
     "route": "iv",
     "combination_with": null,
     "population_group": "unselected",
-    "imported_from": null
+    "imported_from": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -505,7 +507,8 @@
     "drug": "ublituximab",
     "route": "iv",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1111/j.1365-2141.2007.06974.x",

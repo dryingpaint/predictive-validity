@@ -55,7 +55,8 @@
     "drug": "remibrutinib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1021/acs.jmedchem.9b01916",
@@ -136,7 +137,8 @@
     "drug": "bms-986142",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1371/journal.pone.0181782",
@@ -539,56 +541,6 @@
     "prediction_level": "class",
     "model_first_use_year": 2012,
     "untested_reason": "unpublished",
-    "drug": "tirabrutinib",
-    "route": "oral",
-    "population_group": "unselected",
-    "combination_with": null
-   },
-   {
-    "retrodiction": false,
-    "patient_signal_reversed": false,
-    "year": 2020,
-    "status": "untested",
-    "model": "Mouse collagen-induced arthritis (DBA/1J) dosed with tirabrutinib (ONO-4059)",
-    "note": "Mouse CIA efficacy led Ono to call for clinical testing in inflammatory disease; tirabrutinib 40 mg missed the week-12 composite primary in Sjogren (34.7% vs 26.7%, P=0.33).",
-    "short": "Sjogren phase 2 primary not met",
-    "src": "https://doi.org/10.1093/rheumatology/keac167",
-    "srcLabel": "Price 2022",
-    "quote": "Three drugs with disparate mechanisms were tested, but no significant differences vs placebo in primary or secondary end points were observed.",
-    "confidence": "low",
-    "confidence_note": "Abstract-level. The only tirabrutinib model sources (Ariza 2019, J Mol Sci, iMedPub; Yoshizawa 2012 ACR abstract) have no DOI or PMID, so no admissible model side (rule 2); cross-disease model (RA arthritis model for a Sjogren trial).",
-    "judgement": "Patients were measured (NCT03100942 primary missed, results posted 2020-01-22), but with no tier 1-3 model source the pairing cannot stand; untested, unpublished, per the checker's adjudication of efficacy 5.",
-    "subjects": "patients",
-    "comparison_stated": false,
-    "source_tier": 1,
-    "model_src": null,
-    "model_src_tier": null,
-    "trial_unreported": false,
-    "epub_year": 2022,
-    "print_year": 2022,
-    "registry_date": "2020-01-22",
-    "model_filed": null,
-    "product_in_model": true,
-    "imported_from": null,
-    "magnitude": null,
-    "magnitude_basis": "week-12 composite responder rate, tirabrutinib 34.7% vs placebo 26.7% (P=0.33)",
-    "source_calls_it": "miss",
-    "population": "Unselected (active primary or secondary Sjogren syndrome, ESSDAI >= 5)",
-    "endpoint_role": "primary",
-    "outcome_tested": null,
-    "patient_trials": [
-     {
-      "nct": "NCT03100942",
-      "registry_date": "2020-01-22",
-      "doi": "10.1093/rheumatology/keac167",
-      "quote": "At week 12, 43.3% of the filgotinib group achieved the primary end point (P = 0.17 vs placebo) vs 42.3% (P = 0.16), 34.7% (P = 0.33), and 26.7% of lanraplenib, tirabrutinib, and placebo groups, respectively."
-     }
-    ],
-    "untested_reason": "unpublished",
-    "model_id": "mouse-cia-tirabrutinib",
-    "model_kind": "animal",
-    "prediction_level": "class",
-    "model_first_use_year": 2012,
     "drug": "tirabrutinib",
     "route": "oral",
     "population_group": "unselected",

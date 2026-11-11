@@ -54,7 +54,8 @@
     "drug": "seletalisib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "adv5-sialadenitis-mouse",
@@ -135,7 +136,8 @@
     "drug": "seletalisib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -216,7 +218,8 @@
     "drug": "leniolisib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -565,7 +568,8 @@
     "short": "Mice: no infection or weight loss",
     "src": "https://doi.org/10.1136/annrheumdis-2017-212619",
     "srcLabel": "Nayar 2019",
-    "quote": "Importantly and in agreement with previous publications in human, including a recent study in pSS, the mice did not show any sign of infection or unexplained weight loss."
+    "quote": "Importantly and in agreement with previous publications in human, including a recent study in pSS, the mice did not show any sign of infection or unexplained weight loss.",
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "adv5-sialadenitis-mouse",

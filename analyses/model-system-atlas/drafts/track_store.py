@@ -19,7 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "..", "..")))
 sys.path.insert(0, HERE)
 
-from lint import KEYS, lint  # noqa: E402
+from lint import KEYS, lint, order  # noqa: E402
 from pipeline import llm  # noqa: E402
 from psycopg2.extras import Json, execute_values  # noqa: E402
 
@@ -45,12 +45,13 @@ assert set(ENTRY) | set(TRACK) | {"modality"} == KEYS, "every key the brief list
 
 
 def rows(d: dict) -> list[tuple]:
-    """(question, modality, seq, json_index, entry) per entry; seq counts within the question and modality in year
-    order (ties in list order), so a track's entries are ordered by year wherever they sit in the list."""
+    """(question, modality, seq, json_index, entry) per entry; seq counts within the question and modality in lint's
+    reading order (year, a never-compared opener before a comparison in the same year, list order), so a track's
+    entries are ordered by year wherever they sit in the list."""
     out = []
     for q in QUESTIONS:
         seen: dict[str, int] = {}
-        for i, e in sorted(enumerate(d["cells"][q], 1), key=lambda ie: (ie[1]["year"], ie[0])):
+        for i, e in sorted(enumerate(d["cells"][q], 1), key=lambda ie: order(ie[1], ie[0])):
             mod = e.get("modality") or ""
             seen[mod] = seen.get(mod, 0) + 1
             out.append((q, mod, seen[mod], i, e))

@@ -57,7 +57,8 @@
     "drug": "vadastuximab talirine",
     "route": "iv",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "not_measured"
    },
    {
     "subjects": null,
@@ -138,7 +139,8 @@
     "drug": "anti-CD33 CAR-NK cells",
     "route": "iv",
     "combination_with": null,
-    "population_group": "stage_or_line"
+    "population_group": "stage_or_line",
+    "untested_reason": "unpublished"
    },
    {
     "subjects": "patients",
@@ -260,7 +262,8 @@
     "drug": "anti-CD33 CAR-NK cells",
     "route": "iv",
     "combination_with": null,
-    "population_group": "stage_or_line"
+    "population_group": "stage_or_line",
+    "untested_reason": "no_prediction"
    }
   ],
   "dose": [
@@ -383,7 +386,8 @@
     "drug": "bi-836858",
     "route": "iv",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -422,7 +426,8 @@
     "drug": "anti-CD33 CAR-NK cells",
     "route": "iv",
     "combination_with": null,
-    "population_group": "stage_or_line"
+    "population_group": "stage_or_line",
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": false,
@@ -507,7 +512,8 @@
     "drug": "anti-CD33 CAR-NK cells",
     "route": "iv",
     "combination_with": null,
-    "population_group": "stage_or_line"
+    "population_group": "stage_or_line",
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [
@@ -599,7 +605,8 @@
     "route": "iv",
     "combination_with": null,
     "population_group": "stage_or_line",
-    "strengthens": true
+    "strengthens": true,
+    "untested_reason": "not_measured"
    },
    {
     "subjects": "patients",
@@ -787,7 +794,8 @@
     "drug": "anti-CD33 CAR-NK cells",
     "route": "iv",
     "combination_with": null,
-    "population_group": "stage_or_line"
+    "population_group": "stage_or_line",
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -828,7 +836,8 @@
     "drug": "class",
     "route": "not_applicable",
     "combination_with": null,
-    "population_group": "stage_or_line"
+    "population_group": "stage_or_line",
+    "untested_reason": "unsettled"
    },
    {
     "retrodiction": false,
@@ -920,7 +929,8 @@
     "drug": "anti-CD33 CAR-NK cells",
     "route": "iv",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -1011,7 +1021,8 @@
     "drug": "vadastuximab talirine",
     "route": "iv",
     "combination_with": null,
-    "population_group": "stage_or_line"
+    "population_group": "stage_or_line",
+    "untested_reason": "not_measured"
    }
   ],
   "safety": [
@@ -1094,7 +1105,8 @@
     "drug": "vadastuximab talirine",
     "route": "iv",
     "combination_with": "azacitidine or decitabine",
-    "population_group": "stage_or_line"
+    "population_group": "stage_or_line",
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -1134,7 +1146,8 @@
     "drug": "bi-836858",
     "route": "iv",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -1174,7 +1187,8 @@
     "drug": "anti-CD33 CAR-NK cells",
     "route": "iv",
     "combination_with": null,
-    "population_group": "stage_or_line"
+    "population_group": "stage_or_line",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -1214,7 +1228,8 @@
     "drug": "anti-CD33 CAR-NK cells",
     "route": "iv",
     "combination_with": null,
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,

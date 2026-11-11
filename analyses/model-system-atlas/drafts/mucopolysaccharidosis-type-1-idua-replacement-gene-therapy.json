@@ -92,7 +92,8 @@
     "drug": "valanafusp alfa",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": null,
@@ -130,7 +131,8 @@
     "drug": "RGX-111",
     "route": "intrathecal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": null,
@@ -368,7 +370,8 @@
     "drug": "RGX-111",
     "route": "intrathecal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,

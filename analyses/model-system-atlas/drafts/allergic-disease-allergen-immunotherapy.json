@@ -174,7 +174,8 @@
     "drug": "hdmASIT+",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "cat-pad-nasal-allergen-challenge",
@@ -377,7 +378,8 @@
     "drug": "Cat-PAD",
     "route": "intradermal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -417,7 +419,8 @@
     "drug": "cat allergen extract",
     "route": "sublingual",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -500,7 +503,8 @@
     "drug": "hdmASIT+",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -623,7 +627,8 @@
     "drug": "Cat-PAD",
     "route": "intradermal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "cat-pad-nasal-allergen-challenge",
@@ -701,7 +706,8 @@
     "drug": "hdmASIT+",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -881,7 +887,8 @@
     "drug": "Cat-PAD",
     "route": "intradermal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -970,7 +977,8 @@
     "drug": "tree pollen allergen extract",
     "route": "sublingual",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -1144,7 +1152,8 @@
     "drug": "cat allergen extract",
     "route": "sublingual",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "cat-pad-blood-basophil-histamine-release",
@@ -1224,7 +1233,8 @@
     "drug": "hdmASIT+",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "allergen-exposure-chamber",

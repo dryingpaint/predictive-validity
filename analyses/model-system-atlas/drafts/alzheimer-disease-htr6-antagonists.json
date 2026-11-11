@@ -176,7 +176,8 @@
     "drug": "masupirdine",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "subjects": "healthy_volunteers",
@@ -341,7 +342,8 @@
     "drug": "idalopirdine",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [

@@ -217,7 +217,8 @@
     "drug": "somatrogon",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": false,
@@ -747,7 +748,7 @@
     "confidence_note": "Abstract only; whether the monkey studies examined injection-site lipoatrophy is not known. Toxicology detail and FDA/EMA nonclinical reviews not checked.",
     "reason": "Tox named no checkable harm",
     "judgement": "Opener at the model's first public use. Under the ruling a general tolerability statement is a safety prediction, scored in safety entry 4; the 2025 lipoatrophy case series (3 children, no denominator) is not scored.",
-    "untested_reason": null,
+    "untested_reason": "unpublished",
     "subjects": null,
     "comparison_stated": false,
     "source_tier": 1,

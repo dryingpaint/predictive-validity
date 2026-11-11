@@ -55,7 +55,8 @@
     "drug": "apalutamide",
     "route": "oral",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "lncap-ar-castrate-xenograft-mouse",
@@ -222,7 +223,8 @@
     "drug": "apalutamide",
     "route": "oral",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "lncap-ar-castrate-xenograft-mouse",
@@ -323,7 +325,8 @@
     "drug": "darolutamide",
     "route": "oral",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,

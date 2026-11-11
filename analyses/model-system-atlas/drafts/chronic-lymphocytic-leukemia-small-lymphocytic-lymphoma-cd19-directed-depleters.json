@@ -332,7 +332,8 @@
     "drug": "tafasitamab",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2020/761163Orig1s000MultidisciplineR.pdf",
@@ -624,7 +625,8 @@
     "drug": "CD19 CAR-T cells",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": "ibrutinib"
+    "combination_with": "ibrutinib",
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1182/blood-2015-11-679134",
@@ -795,7 +797,8 @@
     "drug": "CD19 CAR-T cells",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -918,7 +921,8 @@
     "drug": "lisocabtagene maraleucel",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1038/leu.2015.247",
@@ -1008,7 +1012,8 @@
     "drug": "tafasitamab",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2020/761163Orig1s000MultidisciplineR.pdf",

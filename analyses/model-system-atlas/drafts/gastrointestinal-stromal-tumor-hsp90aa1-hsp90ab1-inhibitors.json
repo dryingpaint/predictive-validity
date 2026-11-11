@@ -54,7 +54,8 @@
     "drug": "biib-021",
     "route": "oral",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "gist-xenograft-at13387",
@@ -93,7 +94,8 @@
     "drug": "onalespib",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "biib021-xenograft-mouse",
@@ -340,7 +342,8 @@
     "drug": "biib-021",
     "route": "oral",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "gist-xenograft-at13387",
@@ -379,7 +382,8 @@
     "drug": "onalespib",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "biib021-xenograft-mouse",
@@ -684,7 +688,8 @@
     "drug": "ganetespib",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -768,7 +773,7 @@
     "route": "iv",
     "population_group": "stage_or_line",
     "combination_with": null,
-    "untested_reason": null
+    "untested_reason": "no_prediction"
    }
   ],
   "safety": [

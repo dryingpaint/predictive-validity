@@ -52,7 +52,8 @@
     "drug": "evacetrapib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2014,
@@ -209,7 +210,8 @@
     "drug": "rocacetrapib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -288,7 +290,8 @@
     "drug": "evacetrapib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2011,
@@ -381,7 +384,8 @@
     "drug": "class",
     "route": "not_applicable",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,

@@ -54,7 +54,8 @@
     "combination_with": null,
     "population_group": "unselected",
     "route": "oral",
-    "drug": "ozanimod"
+    "drug": "ozanimod",
+    "untested_reason": "no_prediction"
    },
    {
     "population": "Unselected",
@@ -374,7 +375,7 @@
     "population_group": "unselected",
     "route": "oral",
     "drug": "ozanimod",
-    "untested_reason": null
+    "untested_reason": "no_prediction"
    },
    {
     "population": "Unselected",
@@ -416,7 +417,7 @@
     "population_group": "unselected",
     "route": "oral",
     "drug": "etrasimod",
-    "untested_reason": null
+    "untested_reason": "unpublished"
    },
    {
     "population": "Unselected",

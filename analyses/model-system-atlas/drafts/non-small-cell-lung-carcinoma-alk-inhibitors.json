@@ -676,7 +676,8 @@
     "drug": "alectinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -759,7 +760,8 @@
     "drug": "lorlatinib",
     "route": "oral",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -886,7 +888,8 @@
     "drug": "brigatinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,

@@ -444,6 +444,7 @@
     "judgement": "Stays untested: the sponsor stated the genotype-by-response objective and never published its result anywhere found, so there is no comparison to score. Not trial_unreported, because the trial itself is reported at tier 3; only the stratifier analysis is missing. An unreported stratifier is not a contra. Dated 2022, the first time the objective and the stratification were public.",
     "year": 2022,
     "status": "untested",
+    "untested_reason": "unsettled",
     "model": "T2D patients genotyped for an MCP-1 (CCL2) promoter polymorphism, used as a randomisation stratifier in the CCX140-B trial",
     "model_id": "mcp1-ccl2-promoter-genotype-t2d-patients",
     "note": "CSR synopsis posted to EU CTR (Mar 2022) lists 'Assessment of MCP-1 polymorphism on efficacy responses' as an objective and reports no genotype result. Adds the patient-side look: the genotype objective existed and no result was ever published.",

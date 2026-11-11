@@ -55,7 +55,8 @@
     "drug": "otilimab",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "mouse-gmcsf-irf4-ccl17-pain-axis",
@@ -642,7 +643,8 @@
     "drug": "otilimab",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "mouse-gmcsf-null-pap",
@@ -920,7 +922,8 @@
     "drug": "otilimab",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "mouse-gmcsf-null-pap",

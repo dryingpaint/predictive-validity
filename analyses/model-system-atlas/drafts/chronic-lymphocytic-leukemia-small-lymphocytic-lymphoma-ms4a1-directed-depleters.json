@@ -96,7 +96,8 @@
     "drug": "epcoritamab",
     "route": "sc",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": null,
@@ -218,7 +219,8 @@
     "drug": "veltuzumab",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -430,7 +432,8 @@
     "drug": "ublituximab",
     "route": "iv",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1111/j.1365-2141.2007.06974.x",
@@ -524,7 +527,8 @@
     "drug": "epcoritamab",
     "route": "sc",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1182/bloodadvances.2022009517",

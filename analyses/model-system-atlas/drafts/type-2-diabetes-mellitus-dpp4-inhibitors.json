@@ -55,7 +55,8 @@
     "drug": "teneligliptin",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "rodent-dpp4-ogtt",
@@ -387,7 +388,8 @@
     "drug": "cofrogliptin",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -471,7 +473,8 @@
     "drug": "teneligliptin",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "rodent-dpp4-ogtt",
@@ -708,7 +711,8 @@
     "drug": "prusogliptin",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": false,

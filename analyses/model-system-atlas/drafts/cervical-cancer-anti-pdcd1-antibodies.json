@@ -54,7 +54,8 @@
     "route": "iv",
     "population_group": "biomarker_selected",
     "combination_with": null,
-    "imported_from": null
+    "imported_from": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "cyno-pd1-ro",
@@ -136,7 +137,8 @@
     "route": "iv",
     "population_group": "biomarker_selected",
     "combination_with": null,
-    "imported_from": null
+    "imported_from": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "cyno-ro-tox-margin",
@@ -301,7 +303,8 @@
     "route": "iv",
     "population_group": "biomarker_selected",
     "combination_with": null,
-    "imported_from": null
+    "imported_from": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "hpd1-ki-mc38",

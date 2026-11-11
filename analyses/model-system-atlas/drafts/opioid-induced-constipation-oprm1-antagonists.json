@@ -100,7 +100,8 @@
     "drug": "naldemedine",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "rat-gi-transit-vs-tailflick-window",
@@ -180,7 +181,7 @@
     "model_first_use_year": 2010,
     "margin_stated": true,
     "blocked_by": null,
-    "untested_reason": null,
+    "untested_reason": "unpublished",
     "drug": "axelopran",
     "route": "oral",
     "population_group": "unselected",
@@ -259,6 +260,7 @@
     "model": "Rat opioid-induced small-intestinal transit inhibition",
     "year": 2011,
     "status": "untested",
+    "untested_reason": "no_prediction",
     "note": "Rat transit and castor-oil diarrhoea models predicted that naldemedine would relieve opioid-induced constipation.",
     "short": "Rat transit predicts OIC relief",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/208854Orig1s000PharmR.pdf",
@@ -353,7 +355,7 @@
     "note": "Oral axelopran reversed loperamide-delayed gastric emptying and castor-oil diarrhoea in rats, predicting OIC relief.",
     "short": "Rat loperamide gastric emptying reversed",
     "model_first_use_year": 2010,
-    "untested_reason": null,
+    "untested_reason": "unpublished",
     "drug": "axelopran",
     "route": "oral",
     "population_group": "unselected",
@@ -443,7 +445,7 @@
     "note": "Oral axelopran (19i) reversed morphine-inhibited intestinal transit and gastric emptying in mice, ID50 0.35 and 0.087 mg/kg.",
     "short": "Mouse morphine transit reversed",
     "model_first_use_year": 2010,
-    "untested_reason": null,
+    "untested_reason": "no_prediction",
     "drug": "axelopran",
     "route": "oral",
     "population_group": "unselected",
@@ -538,7 +540,8 @@
     "drug": "naldemedine",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "rat-morphine-dependent-withdrawal",
@@ -614,7 +617,7 @@
     "note": "Axelopran, unlike naltrexone, evoked no CNS withdrawal in morphine-dependent mice, predicting no central withdrawal in patients.",
     "short": "No CNS withdrawal in dependent mice",
     "model_first_use_year": 2010,
-    "untested_reason": null,
+    "untested_reason": "unpublished",
     "drug": "axelopran",
     "route": "oral",
     "population_group": "unselected",

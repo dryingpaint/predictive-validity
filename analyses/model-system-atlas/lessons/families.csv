@@ -129,7 +129,7 @@ breast-cancer-cdk4-6-inhibitors,efficacy,,breast-cell-line-panel,ex_vivo,cell_li
 breast-cancer-pi3k-mtor-inhibitors,efficacy,,bt474-nki-lapatinib-resistance,animal,cell_line_assay,rule,untested,yes,"NKI BT474 HER2+ breast cancer lines with PTEN knockdown or mutant PIK3CA conferring lapatinib resistance, treated with BEZ235"
 breast-cancer-pi3k-pan-inhibitors,efficacy,,breast-line-panel-pik3ca-genotype,animal,cell_line_assay,rule,contra,yes,Breast cancer cell-line panel with genotype: PIK3CA-mutant and HER2-amplified lines most sensitive
 breast-cancer-pik3ca-inhibitors,efficacy,,double-pik3ca-cis-mutant-isogenic-cells,ex_vivo,cell_line_assay,rule,untested,yes,"Isogenic MCF10A cells engineered with cis double PIK3CA mutations versus single-hotspot mutants (alpelisib, GDC-0077 sensitivity)"
-breast-cancer-pik3ca-inhibitors,efficacy,,double-pik3ca-cis-mutant-isogenic-cells,ex_vivo,cell_line_assay,rule,untested,yes,"Isogenic MCF10A cells engineered with cis double PIK3CA mutations versus single-hotspot mutants (alpelisib, GDC-0077 sensitivity)"
+breast-cancer-pik3ca-inhibitors,efficacy,,double-pik3ca-cis-mutant-isogenic-cells,ex_vivo,cell_line_assay,rule,same,yes,"Isogenic MCF10A cells engineered with cis double PIK3CA mutations versus single-hotspot mutants (alpelisib, GDC-0077 sensitivity)"
 chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors,engagement,,hepg2215-hbsag-secretion,ex_vivo,cell_line_assay,rule,retro,yes,HepG2.2.15 HBsAg-secretion assay (with UNC7938 endosomal release)
 chronic-hepatitis-b-virus-infection-hbv-rna-antisense-sirna,safety,,hbv-hepg2215-offtarget-rnaseq,ex_vivo,cell_line_assay,rule,retro,safety,"HepG2.2.15 HBV-transfected hepatoma cells, transcriptome-wide off-target (RNA-seq) profiling"
 chronic-myeloid-leukemia-abl1-inhibitors,dose,,baf3-bcr-abl-mutagenesis-screen,ex_vivo,cell_line_assay,rule,same,yes,Ba/F3 BCR-ABL cell-based mutagenesis screen
@@ -141,7 +141,7 @@ cystic-fibrosis-cftr-correctors,engagement,,frt-cftr-variant,ex_vivo,cell_line_a
 cystic-fibrosis-cftr-correctors,engagement,,frt-cftr-variant,ex_vivo,cell_line_assay,rule,untested,yes,Fischer rat thyroid cells expressing CFTR variants (Ussing chamber)
 cystic-fibrosis-cftr-potentiators,efficacy,,cf-frt-ussing,ex_vivo,cell_line_assay,rule,retro,yes,FRT cells carrying each CFTR variant (Ussing chamber)
 cystic-fibrosis-cftr-potentiators,efficacy,,cftr-mutant-cell-potentiator-assay,ex_vivo,cell_line_assay,override,untested,yes,Mutant-CFTR cell assays (sponsor discovery papers)
-cystic-fibrosis-cftr-potentiators,efficacy,,cftr-mutant-cell-potentiator-assay,ex_vivo,cell_line_assay,override,untested,yes,Mutant-CFTR cell assays (sponsor discovery papers)
+cystic-fibrosis-cftr-potentiators,efficacy,,cftr-mutant-cell-potentiator-assay,ex_vivo,cell_line_assay,override,retro,yes,Mutant-CFTR cell assays (sponsor discovery papers)
 cystic-fibrosis-cftr-potentiators,engagement,,cftr-mutant-cell-potentiator-assay,ex_vivo,cell_line_assay,override,retro,yes,Mutant-CFTR cell assays (sponsor discovery papers)
 diffuse-large-b-cell-lymphoma-ms4a1-directed-depleters,efficacy,,exvivo-bnhl-primary-cells-epcoritamab,ex_vivo,cell_line_assay,rule,retro,yes,Ex vivo cytotoxicity against primary lymph-node B-NHL tumour cells (epcoritamab)
 gastric-cancer-parp1-2-inhibitors,dose,,gastric-cell-lines-atm-low,ex_vivo,cell_line_assay,rule,untested,yes,"Gastric cancer cell-line panel, ATM-low (NUGC4) most olaparib-sensitive"
@@ -248,10 +248,10 @@ age-related-macular-degeneration-anti-vegfa-antibodies,safety,antibody,pbmc-tcel
 allergic-rhinitis-ptgdr2-antagonists,engagement,,whole-blood-eosinophil-shape-change,ex_vivo,donor_primary_human,rule,same,yes,Human whole-blood PGD2 eosinophil shape-change assay
 alzheimer-disease-bace1-inhibitors,safety,,atabecestat-diat-hla-tcell-clones,ex_vivo,donor_primary_human,override,retro,safety,DIAT-specific T-cell clones from HLA-typed drug-naive donors
 asthma-ptgdr2-antagonists,dose,,human-eos-th2-dp2-assays,ex_vivo,donor_primary_human,rule,untested,yes,Human eosinophils and Th2 cells in vitro
-asthma-ptgdr2-antagonists,dose,,human-eos-th2-dp2-assays,ex_vivo,donor_primary_human,rule,untested,yes,Human eosinophils and Th2 cells in vitro
+asthma-ptgdr2-antagonists,dose,,human-eos-th2-dp2-assays,ex_vivo,donor_primary_human,rule,retro,yes,Human eosinophils and Th2 cells in vitro
 asthma-ptgdr2-antagonists,engagement,,human-eos-th2-dp2-assays,ex_vivo,donor_primary_human,rule,retro,yes,Human eosinophils and Th2 cells in vitro
 asthma-ptgdr2-antagonists,engagement,,human-eos-th2-dp2-assays,ex_vivo,donor_primary_human,rule,untested,yes,Human eosinophils and Th2 cells in vitro
-asthma-ptgdr2-antagonists,engagement,,human-eos-th2-dp2-assays,ex_vivo,donor_primary_human,rule,untested,yes,Human eosinophils and Th2 cells in vitro
+asthma-ptgdr2-antagonists,engagement,,human-eos-th2-dp2-assays,ex_vivo,donor_primary_human,rule,retro,yes,Human eosinophils and Th2 cells in vitro
 atopic-eczema-anti-il33-antibodies,engagement,,etokimab-neutrophil-migration-ex-vivo,ex_vivo,donor_primary_human,rule,retro,yes,In-vitro neutrophil migration to skin interstitial fluid (etokimab)
 atopic-eczema-pde4-inhibitors,efficacy,small molecule,human-skin-explant-dofm-camp,ex_vivo,donor_primary_human,override,contra,yes,Human skin explants: dermal open-flow microperfusion with tissue cAMP
 atopic-eczema-pde4-inhibitors,engagement,small molecule,pbmc-cytokine-release,ex_vivo,donor_primary_human,rule,same,yes,Stimulated human blood cells (PBMC cytokine release)
@@ -277,7 +277,7 @@ follicular-lymphoma-ms4a1-directed-depleters,safety,,human-whole-blood-cytokine-
 follicular-lymphoma-pik3cd-inhibitors,dose,,zandelisib-basophil-activation-hv-pd,ex_vivo,donor_primary_human,rule,same,yes,Healthy-volunteer whole-blood basophil activation test (ex-vivo PI3Kδ PD assay for ME-401 dose setting)
 follicular-lymphoma-pik3cd-inhibitors,safety,,idelalisib-human-treg-ex-vivo,ex_vivo,donor_primary_human,override,retro,safety,Human regulatory T-cell ex-vivo suppression and proliferation assay (idelalisib on healthy-donor Treg vs effector T cells)
 gastrointestinal-stromal-tumor-hsp90aa1-hsp90ab1-inhibitors,efficacy,,gist-cell-lines-17aag,ex_vivo,donor_primary_human,rule,same,yes,"Imatinib-sensitive and -resistant GIST cell lines (GIST882, GIST430, GIST48) treated with 17-AAG"
-gastrointestinal-stromal-tumor-hsp90aa1-hsp90ab1-inhibitors,efficacy,,gist-cell-lines-17aag,ex_vivo,donor_primary_human,rule,untested,yes,"Imatinib-sensitive and -resistant GIST cell lines (GIST882, GIST430, GIST48) treated with 17-AAG"
+gastrointestinal-stromal-tumor-hsp90aa1-hsp90ab1-inhibitors,efficacy,,gist-cell-lines-17aag,ex_vivo,donor_primary_human,rule,contra,yes,"Imatinib-sensitive and -resistant GIST cell lines (GIST882, GIST430, GIST48) treated with 17-AAG"
 glycogen-storage-disease-ii-gaa-replacement-gene-therapy,engagement,,miglustat-blood-stability-ex-vivo,ex_vivo,donor_primary_human,rule,same,yes,Human whole-blood / neutral-pH enzyme stability assay (cipaglucosidase alfa with miglustat)
 gout-slc22a12-inhibitors,efficacy,,hurat1-cell-urate-uptake,ex_vivo,donor_primary_human,rule,retro,yes,Human URAT1-expressing cells (HEK293/oocyte urate uptake)
 gout-slc22a12-inhibitors,engagement,,hurat1-cell-urate-uptake,ex_vivo,donor_primary_human,rule,retro,yes,Human URAT1-expressing cells (HEK293/oocyte urate uptake)
@@ -305,9 +305,9 @@ open-angle-glaucoma-rock-inhibitors,engagement,,human-enucleated-eye-perfusion-n
 osteoporosis-anti-sost-antibodies,safety,,human-coronary-artery-rings-ex-vivo,ex_vivo,donor_primary_human,rule,contra,safety,"Isolated healthy human coronary artery rings in myograph baths (Amgen Study 150483, non-GLP)"
 osteoporosis-anti-sost-antibodies,safety,,human-whole-blood-platelet-activation,ex_vivo,donor_primary_human,rule,contra,safety,"Human whole blood platelet activation assay by flow cytometry (Amgen Study 125269, non-GLP)"
 paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies,efficacy,,c5-hemolysis-assay-human-serum,ex_vivo,donor_primary_human,rule,retro,yes,In-vitro complement hemolysis assay in human serum
-paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies,efficacy,,c5-hemolysis-assay-human-serum,ex_vivo,donor_primary_human,rule,untested,yes,In-vitro complement hemolysis assay in human serum
+paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies,efficacy,,c5-hemolysis-assay-human-serum,ex_vivo,donor_primary_human,rule,retro,yes,In-vitro complement hemolysis assay in human serum
 paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies,engagement,,c5-hemolysis-assay-human-serum,ex_vivo,donor_primary_human,rule,retro,yes,In-vitro complement hemolysis assay in human serum
-paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies,engagement,,c5-hemolysis-assay-human-serum,ex_vivo,donor_primary_human,rule,untested,yes,In-vitro complement hemolysis assay in human serum
+paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies,engagement,,c5-hemolysis-assay-human-serum,ex_vivo,donor_primary_human,rule,retro,yes,In-vitro complement hemolysis assay in human serum
 psoriasis-anti-il17a-antibodies,engagement,,kc-il17-tnf-geneset,ex_vivo,donor_primary_human,rule,same,yes,Primary human keratinocytes stimulated with IL-17 and TNF (synergistic gene set)
 psoriasis-jak1-inhibitors,engagement,,jak1-human-whole-blood-pstat,ex_vivo,donor_primary_human,rule,retro,yes,Human whole-blood cytokine-induced STAT phosphorylation (JAK1 potency and selectivity assay)
 psoriasis-jak1-inhibitors,safety,,jak1-human-whole-blood-pstat,ex_vivo,donor_primary_human,rule,contra,safety,Human whole-blood cytokine-induced STAT phosphorylation (JAK1 potency and selectivity assay)
@@ -336,7 +336,7 @@ extranodal-nasal-nk-t-cell-lymphoma-anti-pdcd1-antibodies,efficacy,,enktl-biopsy
 extranodal-nasal-nk-t-cell-lymphoma-anti-pdcd1-antibodies,efficacy,,enktl-biopsy-pdl1-selector,ex_vivo,expression_classifier,override,untested,yes,ENKTL tumour PD-L1 IHC as a responder selector
 hepatocellular-carcinoma-kdr-vegfr-inhibitors,efficacy,,hcc-lcsc-signature-in-silico-drug-sensitivity,in_silico,expression_classifier,rule,untested,yes,"Patient-derived liver-cancer stem-cell clones (MEF-feeder culture) supplying a 12-gene prognostic signature; TCGA-LIHC C1/C2 subtypes with axitinib sensitivity imputed in silico (oncoPredict, GDSC-trained)"
 non-small-cell-lung-carcinoma-pan-her-inhibitors,efficacy,,egfr-structure-function-classification-insilico,in_silico,expression_classifier,rule,retro,yes,Structure-based (in silico) classification of EGFR mutations with Ba/F3 sensitivity panels (MD Anderson: classical-like / T790M-like / Ex20ins-L near- vs far-loop / PACC)
-breast-cancer-parp1-2-inhibitors,efficacy,,brca1-gemm-k14cre-azd2281,animal,gemm_tumour,rule,untested,yes,BRCA1-deficient K14cre;Brca1F/F;p53F/F mammary-tumour GEMM dosed with olaparib (AZD2281) alone and with platinum
+breast-cancer-parp1-2-inhibitors,efficacy,,brca1-gemm-k14cre-azd2281,animal,gemm_tumour,rule,same,yes,BRCA1-deficient K14cre;Brca1F/F;p53F/F mammary-tumour GEMM dosed with olaparib (AZD2281) alone and with platinum
 breast-cancer-parp1-2-inhibitors,efficacy,,brca1-gemm-k14cre-azd2281,animal,gemm_tumour,rule,same,yes,BRCA1-deficient K14cre;Brca1F/F;p53F/F mammary-tumour GEMM dosed with olaparib (AZD2281) alone and with platinum
 breast-cancer-parp1-2-inhibitors,safety,,brca1-gemm-k14cre-azd2281,animal,gemm_tumour,rule,contra,safety,BRCA1-deficient K14cre;Brca1F/F;p53F/F mammary-tumour GEMM dosed with olaparib (AZD2281) alone and with platinum
 hepatocellular-carcinoma-anti-cd274-antibodies,efficacy,,hcc-mouse-anti-pdl1-surrogate,animal,gemm_tumour,rule,untested,yes,Transgenic c-myc/OVA multifocal mouse HCC dosed with rat anti-mouse PD-L1 (B7-H1) antibody in combination with anti-CD137 and anti-OX40
@@ -484,7 +484,7 @@ chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors,efficacy,,dhbv-
 chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors,engagement,,dhbv-duck-aligos,animal,infected_or_chimeric_liver,rule,retro,yes,"Optimised DHBV duck model (Aligos, subcutaneous NAP dosing)"
 chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors,engagement,,dhbv-pekin-duck,animal,infected_or_chimeric_liver,rule,retro,yes,DHBV-infected Pekin ducks
 chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors,engagement,,dhbv-pekin-duck,animal,infected_or_chimeric_liver,rule,retro,yes,DHBV-infected Pekin ducks
-chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors,engagement,,dhbv-pekin-duck,animal,infected_or_chimeric_liver,rule,untested,yes,DHBV-infected Pekin ducks
+chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors,engagement,,dhbv-pekin-duck,animal,infected_or_chimeric_liver,rule,retro,yes,DHBV-infected Pekin ducks
 chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors,engagement,,hbv-human-liver-chimeric-mouse,animal,infected_or_chimeric_liver,rule,contra,yes,HBV-infected human liver-chimeric (SCID-Hu) mice
 chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors,engagement,,hbv-transgenic-mouse,animal,infected_or_chimeric_liver,rule,contra,yes,HBV-transgenic mice
 chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors,engagement,,whv-woodchuck,animal,infected_or_chimeric_liver,rule,contra,yes,WHV-infected woodchucks
@@ -641,8 +641,8 @@ osteoarthritis-ntrk1-inhibitors,safety,,rat-mia-knee-oa,animal,inflammatory_dise
 osteoporosis-anti-sost-antibodies,safety,,ovx-rat-periodontitis-onj,animal,inflammatory_disease_model,override,contra,safety,Ovariectomized rat with experimental periodontitis (sclerostin antibody)
 psoriasis-anti-il23a-antibodies,efficacy,,mouse-surrogate-colitis,animal,inflammatory_disease_model,rule,untested,yes,Mouse colitis with surrogate anti-mouse p19 (SCH 900598 for tildrakizumab; LSN2479016 for mirikizumab)
 psoriasis-pde4-inhibitors,dose,,pde4-mouse-phorbol-ear-edema,animal,inflammatory_disease_model,rule,same,yes,"Mouse phorbol-ester ear edema (topical ointment, 5%)"
-psoriasis-pde4-inhibitors,efficacy,,pde4-mouse-imiquimod-psoriasiform,animal,inflammatory_disease_model,rule,untested,yes,"Imiquimod psoriasis-like mouse (topical DRM02), with phorbol-ester ear and Th2 contact-hypersensitivity models"
-psoriasis-pde4-inhibitors,efficacy,,pde4-mouse-imiquimod-psoriasiform,animal,inflammatory_disease_model,rule,untested,yes,"Imiquimod psoriasis-like mouse (topical DRM02), with phorbol-ester ear and Th2 contact-hypersensitivity models"
+psoriasis-pde4-inhibitors,efficacy,,pde4-mouse-imiquimod-psoriasiform,animal,inflammatory_disease_model,rule,contra,yes,"Imiquimod psoriasis-like mouse (topical DRM02), with phorbol-ester ear and Th2 contact-hypersensitivity models"
+psoriasis-pde4-inhibitors,efficacy,,pde4-mouse-imiquimod-psoriasiform,animal,inflammatory_disease_model,rule,contra,yes,"Imiquimod psoriasis-like mouse (topical DRM02), with phorbol-ester ear and Th2 contact-hypersensitivity models"
 psoriasis-pde4-inhibitors,efficacy,,pde4-mouse-phorbol-ear-edema,animal,inflammatory_disease_model,rule,contra,yes,"Mouse phorbol-ester ear edema (topical ointment, 5%)"
 psoriasis-rorc-inverse-agonists,efficacy,,gsk-imq-mouse,animal,inflammatory_disease_model,rule,untested,yes,"Imiquimod mouse, topical GSK2981278"
 psoriasis-rorc-inverse-agonists,efficacy,,il23-minicircle-mouse-bi,animal,inflammatory_disease_model,rule,retro,yes,"IL-23 minicircle mouse, oral BI 730357"
@@ -684,10 +684,10 @@ sjogren-syndrome-pik3cd-inhibitors,efficacy,,adv5-sialadenitis-mouse,animal,infl
 sjogren-syndrome-pik3cd-inhibitors,engagement,,adv5-sialadenitis-mouse,animal,inflammatory_disease_model,override,retro,yes,AdV5 cannulation focal sialadenitis mouse (seletalisib)
 sjogren-syndrome-pik3cd-inhibitors,safety,,adv5-sialadenitis-mouse,animal,inflammatory_disease_model,override,contra,safety,AdV5 cannulation focal sialadenitis mouse (seletalisib)
 ulcerative-colitis-s1pr1-agonists,efficacy,,mouse-tnbs-transfer-colitis,animal,inflammatory_disease_model,rule,retro,yes,TNBS and CD4+CD45RBhi transfer colitis mice
-ulcerative-colitis-s1pr1-agonists,efficacy,,mouse-tnbs-transfer-colitis,animal,inflammatory_disease_model,rule,untested,yes,TNBS and CD4+CD45RBhi transfer colitis mice
+ulcerative-colitis-s1pr1-agonists,efficacy,,mouse-tnbs-transfer-colitis,animal,inflammatory_disease_model,rule,retro,yes,TNBS and CD4+CD45RBhi transfer colitis mice
 diabetic-kidney-disease-nr3c2-antagonists,dose,,docasalt-unx-rat,animal,metabolic_disease_model,rule,same,yes,Uninephrectomised DOCA-salt rat
 diabetic-kidney-disease-nr3c2-antagonists,efficacy,,dbdb-mouse,animal,metabolic_disease_model,rule,untested,yes,db/db type 2 diabetic mouse
-diabetic-kidney-disease-nr3c2-antagonists,efficacy,,dbdb-mouse,animal,metabolic_disease_model,rule,untested,yes,db/db type 2 diabetic mouse
+diabetic-kidney-disease-nr3c2-antagonists,efficacy,,dbdb-mouse,animal,metabolic_disease_model,rule,retro,yes,db/db type 2 diabetic mouse
 diabetic-kidney-disease-nr3c2-antagonists,efficacy,,docasalt-unx-rat,animal,metabolic_disease_model,rule,retro,yes,Uninephrectomised DOCA-salt rat
 diabetic-kidney-disease-nr3c2-antagonists,efficacy,,docasalt-unx-rat,animal,metabolic_disease_model,rule,same,yes,Uninephrectomised DOCA-salt rat
 diabetic-kidney-disease-nr3c2-antagonists,efficacy,,kkay-hs-diabetic-mouse,animal,metabolic_disease_model,rule,retro,yes,High-salt KK-Ay type 2 diabetic mouse
@@ -700,7 +700,7 @@ diabetic-kidney-disease-nr3c2-antagonists,safety,,dahl-ss-rat,animal,metabolic_d
 diabetic-macular-edema-anti-vegfa-antibodies,efficacy,,diabetic-rat-brb-evans-blue,animal,metabolic_disease_model,rule,same,yes,"STZ-diabetic rat, Evans-blue blood-retinal-barrier leak"
 diabetic-macular-edema-anti-vegfa-antibodies,efficacy,,diabetic-rat-brb-evans-blue,animal,metabolic_disease_model,rule,retro,yes,"STZ-diabetic rat, Evans-blue blood-retinal-barrier leak"
 diabetic-macular-edema-anti-vegfa-antibodies,engagement,,diabetic-rat-brb-evans-blue,animal,metabolic_disease_model,rule,same,yes,"STZ-diabetic rat, Evans-blue blood-retinal-barrier leak"
-endometriosis-gnrhr-antagonists,dose,,cyno-monkey-hpg,animal,metabolic_disease_model,rule,untested,yes,Cynomolgus monkey HPG axis (castrated/OVX LH; intact-female E2 and menses)
+endometriosis-gnrhr-antagonists,dose,,cyno-monkey-hpg,animal,metabolic_disease_model,rule,retro,yes,Cynomolgus monkey HPG axis (castrated/OVX LH; intact-female E2 and menses)
 endometriosis-gnrhr-antagonists,dose,,cyno-monkey-hpg,animal,metabolic_disease_model,rule,untested,yes,Cynomolgus monkey HPG axis (castrated/OVX LH; intact-female E2 and menses)
 endometriosis-gnrhr-antagonists,dose,,rat-autotransplant-endometriosis,animal,metabolic_disease_model,rule,untested,yes,"Rat surgically induced (autotransplant) endometriosis, implant volume"
 endometriosis-gnrhr-antagonists,efficacy,,cyno-monkey-hpg,animal,metabolic_disease_model,rule,untested,yes,Cynomolgus monkey HPG axis (castrated/OVX LH; intact-female E2 and menses)
@@ -731,7 +731,7 @@ metabolic-dysfunction-associated-steatohepatitis-fgf21-analogue-fgfr1c-klb-agoni
 metabolic-dysfunction-associated-steatohepatitis-fgf21-analogue-fgfr1c-klb-agonists,efficacy,,obese-diabetic-cyno-monkey,animal,metabolic_disease_model,rule,same,yes,Obese/diabetic cynomolgus monkeys
 metabolic-dysfunction-associated-steatohepatitis-fgf21-analogue-fgfr1c-klb-agonists,efficacy,,obese-diabetic-mouse,animal,metabolic_disease_model,rule,same,yes,db/db and diet-induced obese mice
 metabolic-dysfunction-associated-steatohepatitis-fgf21-analogue-fgfr1c-klb-agonists,engagement,,obese-diabetic-cyno-monkey,animal,metabolic_disease_model,rule,retro,yes,Obese/diabetic cynomolgus monkeys
-metabolic-dysfunction-associated-steatohepatitis-fgf21-analogue-fgfr1c-klb-agonists,engagement,,obese-diabetic-cyno-monkey,animal,metabolic_disease_model,rule,untested,yes,Obese/diabetic cynomolgus monkeys
+metabolic-dysfunction-associated-steatohepatitis-fgf21-analogue-fgfr1c-klb-agonists,engagement,,obese-diabetic-cyno-monkey,animal,metabolic_disease_model,rule,retro,yes,Obese/diabetic cynomolgus monkeys
 metabolic-dysfunction-associated-steatohepatitis-fgf21-analogue-fgfr1c-klb-agonists,engagement,,obese-diabetic-mouse,animal,metabolic_disease_model,rule,same,yes,db/db and diet-induced obese mice
 metabolic-dysfunction-associated-steatohepatitis-fgf21-analogue-fgfr1c-klb-agonists,safety,,dio-mouse-rhfgf21-bone,animal,metabolic_disease_model,rule,same,safety,"Diet-induced obese mice given recombinant human FGF21 (bone, Amgen)"
 metabolic-dysfunction-associated-steatohepatitis-nr1h4-agonists,dose,,stam-amln-mouse-tropifexor,animal,metabolic_disease_model,rule,untested,yes,STAM and AMLN-diet NASH mice (tropifexor)
@@ -802,10 +802,10 @@ type-2-diabetes-mellitus-gcgr-glp1r-agonists,engagement,,dio-mouse,animal,metabo
 type-2-diabetes-mellitus-gcgr-glp1r-agonists,engagement,,dio-mouse,animal,metabolic_disease_model,rule,retro,yes,Diet-induced obese (DIO) C57BL/6 mouse
 type-2-diabetes-mellitus-gcgr-glp1r-agonists,safety,,dio-mouse,animal,metabolic_disease_model,rule,same,safety,Diet-induced obese (DIO) C57BL/6 mouse
 type-2-diabetes-mellitus-gck-activators,dose,,gka-rodent-t2d,animal,metabolic_disease_model,rule,untested,yes,Rodent models of type 2 diabetes
-type-2-diabetes-mellitus-gck-activators,efficacy,,gka-rodent-t2d,animal,metabolic_disease_model,rule,untested,yes,Rodent models of type 2 diabetes
+type-2-diabetes-mellitus-gck-activators,efficacy,,gka-rodent-t2d,animal,metabolic_disease_model,rule,contra,yes,Rodent models of type 2 diabetes
 type-2-diabetes-mellitus-gck-activators,efficacy,,gka-rodent-t2d,animal,metabolic_disease_model,rule,same,yes,Rodent models of type 2 diabetes
 type-2-diabetes-mellitus-gck-activators,engagement,,gka-rodent-t2d,animal,metabolic_disease_model,rule,same,yes,Rodent models of type 2 diabetes
-type-2-diabetes-mellitus-gck-activators,safety,,gka-rodent-t2d,animal,metabolic_disease_model,rule,untested,safety,Rodent models of type 2 diabetes
+type-2-diabetes-mellitus-gck-activators,safety,,gka-rodent-t2d,animal,metabolic_disease_model,rule,contra,safety,Rodent models of type 2 diabetes
 type-2-diabetes-mellitus-gck-activators,safety,,gka-rodent-t2d,animal,metabolic_disease_model,rule,contra,safety,Rodent models of type 2 diabetes
 type-2-diabetes-mellitus-glp1r-agonists,efficacy,,dula-diabetic-mouse-cyno,animal,metabolic_disease_model,rule,retro,yes,Diabetic mice and cynomolgus monkeys (dulaglutide)
 type-2-diabetes-mellitus-glp1r-agonists,engagement,,dula-cyno-insulin,animal,metabolic_disease_model,rule,retro,yes,Cynomolgus monkeys and rat islets (dulaglutide)
@@ -944,7 +944,7 @@ chronic-obstructive-pulmonary-disease-chrm3-antagonists,safety,,az-guinea-pig-br
 chronic-obstructive-pulmonary-disease-chrm3-antagonists,safety,,pfizer-guinea-pig-trachea-duration,animal,organ_pharmacology_animal,rule,untested,safety,Pfizer guinea-pig tracheal-strip relaxation (slow M3 off-rate) and in vivo duration-of-action models
 chronic-obstructive-pulmonary-disease-chrm3-antagonists,safety,,revefenacin-rat-dog-bronchoprotection,animal,organ_pharmacology_animal,rule,same,safety,Rat methacholine bronchoprotection (Einthoven) and pilocarpine antisialagogue; dog acetylcholine bronchoconstriction
 diabetic-macular-edema-anti-vegfa-antibodies,dose,,rabbit-chronic-rnv-leak,animal,organ_pharmacology_animal,rule,untested,yes,Rabbit chronic retinal-neovascularisation leak model
-diabetic-macular-edema-anti-vegfa-antibodies,dose,,rabbit-chronic-rnv-leak,animal,organ_pharmacology_animal,rule,untested,yes,Rabbit chronic retinal-neovascularisation leak model
+diabetic-macular-edema-anti-vegfa-antibodies,dose,,rabbit-chronic-rnv-leak,animal,organ_pharmacology_animal,rule,retro,yes,Rabbit chronic retinal-neovascularisation leak model
 hyperlipidemia-cetp-inhibitors,safety,,rat-bp-h295r,animal,organ_pharmacology_animal,rule,same,safety,Rat blood pressure + human adrenal H295R cells
 hyperlipidemia-hcar2-agonists,engagement,,mouse-dermal-bloodflow-merck,animal,organ_pharmacology_animal,override,retro,yes,"Wild-type mouse dermal blood-flow (vasodilation / flushing) model after oral agonist, Merck"
 hyperlipidemia-hcar2-agonists,safety,,gp-ear-flush-gsk,animal,organ_pharmacology_animal,override,retro,safety,Guinea pig ear-temperature flush model (GSK)
@@ -1124,7 +1124,7 @@ hiv-infectious-disease-hiv-rt-nnrti-inhibitors,dose,,dor-cyp3a-induction-pk-mode
 hyperlipidemia-cetp-inhibitors,dose,,ckd519-allometric-pkpd,in_silico,pbpk_translational,rule,contra,yes,"Animal allometric PK/PD model (hamster, rat, monkey PK + in-vitro potency), rocacetrapib"
 insomnia-hcrtr1-2-antagonists,dose,,daridorexant-pbpk-pd-ox2-occupancy,in_silico,pbpk_translational,rule,same,yes,"PBPK-PD model of brain OX2 receptor occupancy (daridorexant, 65% occupancy threshold)"
 marginal-zone-lymphoma-ms4a1-directed-depleters,dose,,epcoritamab-pbpk-pd-trimer,in_silico,pbpk_translational,rule,same,yes,Semi-mechanistic PBPK/PD model of epcoritamab trimer formation and tumour response (Genmab)
-myelodysplastic-syndrome-hdac-pan-inhibitors,dose,,pracinostat-allometry-simcyp-pk,in_silico,pbpk_translational,rule,untested,yes,"Multi-species allometric scaling plus Simcyp PBPK prediction of pracinostat human oral PK, from mouse/rat/dog in-vivo PK and human in-vitro ADME (S*BIO, Jayaraman 2011)"
+myelodysplastic-syndrome-hdac-pan-inhibitors,dose,,pracinostat-allometry-simcyp-pk,in_silico,pbpk_translational,rule,retro,yes,"Multi-species allometric scaling plus Simcyp PBPK prediction of pracinostat human oral PK, from mouse/rat/dog in-vivo PK and human in-vitro ADME (S*BIO, Jayaraman 2011)"
 non-small-cell-lung-carcinoma-alk-inhibitors,dose,,alk-pbpk-ddi,in_silico,pbpk_translational,rule,retro,yes,PBPK (Simcyp/GastroPlus) drug-interaction models used to set CYP3A co-medication dose adjustments
 non-small-cell-lung-carcinoma-alk-inhibitors,dose,,alk-pbpk-ddi,in_silico,pbpk_translational,rule,untested,yes,PBPK (Simcyp/GastroPlus) drug-interaction models used to set CYP3A co-medication dose adjustments
 non-small-cell-lung-carcinoma-alk-inhibitors,dose,,alk-pbpk-ddi,in_silico,pbpk_translational,rule,retro,yes,PBPK (Simcyp/GastroPlus) drug-interaction models used to set CYP3A co-medication dose adjustments
@@ -1217,7 +1217,7 @@ schizophrenia-slc6a9-inhibitors,dose,,rat-csf-glycine-microdialysis,animal,pkpd_
 schizophrenia-slc6a9-inhibitors,dose,,rodent-occupancy-efficacy-window,animal,pkpd_occupancy_animal,rule,retro,yes,Rodent occupancy-efficacy window (inverted U)
 schizophrenia-slc6a9-inhibitors,engagement,,baboon-glyt1-pet-occupancy,animal,pkpd_occupancy_animal,rule,same,yes,Baboon [11C]RO5013853 GlyT1 PET occupancy
 schizophrenia-slc6a9-inhibitors,engagement,,rat-csf-glycine-microdialysis,animal,pkpd_occupancy_animal,rule,same,yes,Rat CSF/striatal glycine by microdialysis
-schizophrenia-slc6a9-inhibitors,engagement,,rat-csf-glycine-microdialysis,animal,pkpd_occupancy_animal,rule,untested,yes,Rat CSF/striatal glycine by microdialysis
+schizophrenia-slc6a9-inhibitors,engagement,,rat-csf-glycine-microdialysis,animal,pkpd_occupancy_animal,rule,retro,yes,Rat CSF/striatal glycine by microdialysis
 systemic-lupus-erythematosus-btk-inhibitors,dose,,mouse-btk-occupancy-pkpd,animal,pkpd_occupancy_animal,rule,same,yes,Mouse BTK-occupancy PK/PD (blood occupancy vs lupus disease score)
 systemic-lupus-erythematosus-btk-inhibitors,engagement,,mouse-btk-occupancy-pkpd,animal,pkpd_occupancy_animal,rule,retro,yes,Mouse BTK-occupancy PK/PD (blood occupancy vs lupus disease score)
 type-2-diabetes-mellitus-dpp4-inhibitors,dose,,nonrodent-pk-allometry,animal,pkpd_occupancy_animal,rule,retro,yes,"Dog and monkey pharmacokinetics scaled allometrically to a human half-life and dosing interval (once-weekly omarigliptin, biweekly cofrogliptin)"
@@ -1343,9 +1343,9 @@ non-small-cell-lung-carcinoma-vegfr-multikinase-inhibitors,engagement,,llc-synge
 prostate-cancer-folh1-directed-depleters,dose,other,psma-pos-neg-xenograft,animal,syngeneic_tumour,rule,untested,yes,"PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)"
 prostate-cancer-folh1-directed-depleters,efficacy,,psma-pos-neg-xenograft,animal,syngeneic_tumour,rule,retro,yes,"PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)"
 prostate-cancer-folh1-directed-depleters,efficacy,,psma-pos-neg-xenograft,animal,syngeneic_tumour,rule,retro,yes,"PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)"
-prostate-cancer-folh1-directed-depleters,engagement,,psma-pos-neg-xenograft,animal,syngeneic_tumour,rule,untested,yes,"PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)"
 prostate-cancer-folh1-directed-depleters,engagement,,psma-pos-neg-xenograft,animal,syngeneic_tumour,rule,retro,yes,"PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)"
-prostate-cancer-folh1-directed-depleters,safety,other,psma-pos-neg-xenograft,animal,syngeneic_tumour,rule,untested,safety,"PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)"
+prostate-cancer-folh1-directed-depleters,engagement,,psma-pos-neg-xenograft,animal,syngeneic_tumour,rule,retro,yes,"PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)"
+prostate-cancer-folh1-directed-depleters,safety,other,psma-pos-neg-xenograft,animal,syngeneic_tumour,rule,contra,safety,"PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)"
 prostate-cancer-folh1-directed-depleters,safety,other,psma-pos-neg-xenograft,animal,syngeneic_tumour,rule,contra,safety,"PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)"
 renal-cell-carcinoma-vegfr-multikinase-inhibitors,efficacy,,renca-syngeneic-mouse,animal,syngeneic_tumour,rule,retro,yes,Renca syngeneic mouse RCC
 renal-cell-carcinoma-vegfr-multikinase-inhibitors,efficacy,,syngeneic-mouse-lenvatinib-anti-pd1,animal,syngeneic_tumour,rule,retro,yes,"Syngeneic mouse tumours (CT26, Hepa1-6, LL/2) treated with lenvatinib plus anti-PD-1"
@@ -1487,7 +1487,7 @@ non-small-cell-lung-carcinoma-egfr-inhibitors,safety,,herg-rat-dog-tox,animal,to
 ovarian-cancer-parp1-2-inhibitors,safety,,dog-cv-safety-pharm,animal,tox_cv_safety_pharm,rule,retro,safety,Dog cardiovascular safety pharmacology (niraparib)
 rheumatoid-arthritis-syk-inhibitors,engagement,,cynomolgus-bleeding-time-lanraplenib,animal,tox_cv_safety_pharm,rule,untested,yes,Cynomolgus monkey platelet/bleeding-time (lanraplenib)
 rheumatoid-arthritis-syk-inhibitors,safety,,cynomolgus-bleeding-time-lanraplenib,animal,tox_cv_safety_pharm,rule,same,safety,Cynomolgus monkey platelet/bleeding-time (lanraplenib)
-type-2-diabetes-mellitus-dpp4-inhibitors,safety,,herg-nonrodent-telemetry-qt,animal,tox_cv_safety_pharm,rule,untested,safety,hERG channel assay plus dog and monkey ECG/telemetry (QTc) safety pharmacology
+type-2-diabetes-mellitus-dpp4-inhibitors,safety,,herg-nonrodent-telemetry-qt,animal,tox_cv_safety_pharm,rule,same,safety,hERG channel assay plus dog and monkey ECG/telemetry (QTc) safety pharmacology
 type-2-diabetes-mellitus-dpp4-inhibitors,safety,,herg-nonrodent-telemetry-qt,animal,tox_cv_safety_pharm,rule,same,safety,hERG channel assay plus dog and monkey ECG/telemetry (QTc) safety pharmacology
 ulcerative-colitis-s1pr1-agonists,safety,,dog-cv-telemetry-etrasimod,animal,tox_cv_safety_pharm,rule,contra,safety,Dog cardiovascular safety pharmacology (etrasimod)
 ulcerative-colitis-s1pr1-agonists,safety,,monkey-cv-safety-ozanimod,animal,tox_cv_safety_pharm,rule,same,safety,Cynomolgus monkey cardiovascular safety study (ozanimod)
@@ -1550,7 +1550,7 @@ cystic-fibrosis-cftr-correctors,safety,,lumacaftor-rat-dog-tox,animal,tox_repeat
 cystic-fibrosis-cftr-correctors,safety,,vanzacaftor-rat-dog-tox,animal,tox_repeat_dose,rule,untested,safety,Rat and dog toxicology (vanzacaftor)
 cystic-fibrosis-cftr-potentiators,safety,,rat-toxicology,animal,tox_repeat_dose,rule,same,safety,"Rat toxicology (juvenile and adult, ivacaftor program)"
 diabetic-kidney-disease-nr3c2-antagonists,safety,,rat-dog-chronic-tox,animal,tox_repeat_dose,rule,same,safety,Rat 6-month and dog 9-month chronic toxicology
-diabetic-macular-edema-anti-vegfa-antibodies,safety,,ivt-repeat-dose-toxicology,animal,tox_repeat_dose,rule,untested,safety,"Repeat-dose intravitreal toxicology in rabbit, dog and cynomolgus monkey"
+diabetic-macular-edema-anti-vegfa-antibodies,safety,,ivt-repeat-dose-toxicology,animal,tox_repeat_dose,rule,retro,safety,"Repeat-dose intravitreal toxicology in rabbit, dog and cynomolgus monkey"
 diabetic-macular-edema-anti-vegfa-antibodies,safety,,ivt-repeat-dose-toxicology,animal,tox_repeat_dose,rule,contra,safety,"Repeat-dose intravitreal toxicology in rabbit, dog and cynomolgus monkey"
 diffuse-large-b-cell-lymphoma-cd19-directed-depleters,dose,ADC,adct402-cyno-tox,animal,tox_repeat_dose,rule,untested,yes,Cynomolgus monkey repeat-dose toxicology (loncastuximab tesirine)
 diffuse-large-b-cell-lymphoma-cd19-directed-depleters,dose,ADC,sar3419-nonclinical-tox,animal,tox_repeat_dose,rule,untested,yes,Nonclinical toxicology of SAR3419
@@ -1690,16 +1690,16 @@ non-small-cell-lung-carcinoma-egfr-inhibitors,efficacy,,egfr-pacc-cells-xenograf
 non-small-cell-lung-carcinoma-egfr-inhibitors,efficacy,,egfrm-t790m-xenograft-transgenic,animal,tox_repeat_dose,rule,same,yes,"T790M/sensitising-mutant NSCLC cells, xenografts and transgenic mice"
 non-small-cell-lung-carcinoma-egfr-inhibitors,engagement,,egfrm-t790m-xenograft-transgenic,animal,tox_repeat_dose,rule,same,yes,"T790M/sensitising-mutant NSCLC cells, xenografts and transgenic mice"
 non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,dose,,nsclc-xenograft-panel,animal,tox_repeat_dose,rule,untested,yes,Genotype-defined NSCLC cell lines and xenografts (H1975 and others)
-non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,dose,,nsclc-xenograft-panel,animal,tox_repeat_dose,rule,untested,yes,Genotype-defined NSCLC cell lines and xenografts (H1975 and others)
+non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,dose,,nsclc-xenograft-panel,animal,tox_repeat_dose,rule,same,yes,Genotype-defined NSCLC cell lines and xenografts (H1975 and others)
 non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,efficacy,,alk-nsclc-xenograft,animal,tox_repeat_dose,rule,retro,yes,ALK-driven NSCLC cells and xenografts (ganetespib vs crizotinib)
 non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,efficacy,,nsclc-xenograft-panel,animal,tox_repeat_dose,rule,contra,yes,Genotype-defined NSCLC cell lines and xenografts (H1975 and others)
 non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,engagement,,nsclc-xenograft-panel,animal,tox_repeat_dose,rule,untested,yes,Genotype-defined NSCLC cell lines and xenografts (H1975 and others)
-non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,engagement,,nsclc-xenograft-panel,animal,tox_repeat_dose,rule,untested,yes,Genotype-defined NSCLC cell lines and xenografts (H1975 and others)
+non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,engagement,,nsclc-xenograft-panel,animal,tox_repeat_dose,rule,retro,yes,Genotype-defined NSCLC cell lines and xenografts (H1975 and others)
 non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,safety,,beagle-dog-retina-model,animal,tox_repeat_dose,rule,contra,safety,"Beagle dog repeat-dose retinal toxicity model (ERG, pupillary light reflex, photoreceptor histology; Chugai HSP90 inhibitors CH5164840 and CH5449302)"
 non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,safety,,beagle-dog-retina-model,animal,tox_repeat_dose,rule,same,safety,"Beagle dog repeat-dose retinal toxicity model (ERG, pupillary light reflex, photoreceptor histology; Chugai HSP90 inhibitors CH5164840 and CH5449302)"
 non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,safety,,ganetespib-mouse-tox,animal,tox_repeat_dose,rule,contra,safety,Mouse xenograft studies with cardiac and liver readouts (ganetespib)
-non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,safety,,rat-retina-model,animal,tox_repeat_dose,rule,untested,safety,"Rat retinal damage model (photoreceptor histology, retinal Hsp70, retina/plasma exposure)"
-non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,safety,,rat-retina-model,animal,tox_repeat_dose,rule,untested,safety,"Rat retinal damage model (photoreceptor histology, retinal Hsp70, retina/plasma exposure)"
+non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,safety,,rat-retina-model,animal,tox_repeat_dose,rule,retro,safety,"Rat retinal damage model (photoreceptor histology, retinal Hsp70, retina/plasma exposure)"
+non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,safety,,rat-retina-model,animal,tox_repeat_dose,rule,retro,safety,"Rat retinal damage model (photoreceptor histology, retinal Hsp70, retina/plasma exposure)"
 non-small-cell-lung-carcinoma-met-inhibitors,safety,,rat-dog-tox,animal,tox_repeat_dose,rule,same,safety,Mouse xenograft tolerability; GLP rat (26-week) and beagle dog (39-week) toxicology; pigmented-rat phototoxicity (tepotinib)
 non-small-cell-lung-carcinoma-met-inhibitors,safety,,rat-monkey-tox,animal,tox_repeat_dose,rule,contra,safety,"Mouse tolerability at efficacious doses; GLP rat and cynomolgus monkey toxicology, 3T3 and mouse UV phototoxicity assays (capmatinib)"
 non-small-cell-lung-carcinoma-pan-her-inhibitors,safety,,rat-dog-toxicology-dacomitinib,animal,tox_repeat_dose,rule,same,safety,"Rat (6-month) and dog (9-month) repeat-dose toxicology, dacomitinib"
@@ -1755,10 +1755,10 @@ rheumatoid-arthritis-anti-csf2-antibodies,safety,,cyno-tox-otilimab-26wk,animal,
 rheumatoid-arthritis-btk-inhibitors,safety,,mouse-28d-tox,animal,tox_repeat_dose,rule,untested,safety,28-day mouse toxicology
 schizophrenia-slc6a9-inhibitors,safety,,rat-erg-oscillatory-potentials,animal,tox_repeat_dose,override,untested,safety,Rat scotopic ERG oscillatory potentials
 schizophrenia-slc6a9-inhibitors,safety,,rodent-hematology-hb,animal,tox_repeat_dose,rule,untested,safety,Rodent haematology (haemoglobin) in pharmacology and toxicology
-schizophrenia-slc6a9-inhibitors,safety,,rodent-hematology-hb,animal,tox_repeat_dose,rule,untested,safety,Rodent haematology (haemoglobin) in pharmacology and toxicology
+schizophrenia-slc6a9-inhibitors,safety,,rodent-hematology-hb,animal,tox_repeat_dose,rule,same,safety,Rodent haematology (haemoglobin) in pharmacology and toxicology
 secondary-hyperparathyroidism-casr-positive-modulators,dose,peptide,rat-pkpd-tox,animal,tox_repeat_dose,rule,contra,yes,Rat PK/PD and rat toxicology
 secondary-hyperparathyroidism-casr-positive-modulators,safety,,gi-rat-marmoset,animal,tox_repeat_dose,rule,retro,safety,Rat gastric emptying and marmoset emesis vs cinacalcet
-secondary-hyperparathyroidism-casr-positive-modulators,safety,,gi-rat-marmoset,animal,tox_repeat_dose,rule,untested,safety,Rat gastric emptying and marmoset emesis vs cinacalcet
+secondary-hyperparathyroidism-casr-positive-modulators,safety,,gi-rat-marmoset,animal,tox_repeat_dose,rule,retro,safety,Rat gastric emptying and marmoset emesis vs cinacalcet
 secondary-hyperparathyroidism-casr-positive-modulators,safety,,rat-dog-tox,animal,tox_repeat_dose,rule,same,safety,Rat PD and rat/dog toxicology
 secondary-hyperparathyroidism-casr-positive-modulators,safety,small molecule,evocalcet-monkey-tox,animal,tox_repeat_dose,rule,same,safety,Cynomolgus monkey safety pharmacology and 4-39 week toxicology (evocalcet)
 sjogren-syndrome-btk-inhibitors,safety,,remibrutinib-rat-dog-tox,animal,tox_repeat_dose,rule,contra,safety,Rat and dog repeat-dose toxicology (remibrutinib)
@@ -1774,7 +1774,7 @@ type-2-diabetes-mellitus-glp1r-agonists,dose,small molecule,danu-hglp1r-mouse,an
 type-2-diabetes-mellitus-glp1r-agonists,safety,,glp1ra-cyno-thyroid-ccell,animal,tox_repeat_dose,rule,same,safety,1-year cynomolgus thyroid C-cell study (dulaglutide)
 type-2-diabetes-mellitus-glp1r-agonists,safety,,glp1ra-rodent-carcinogenicity,animal,tox_repeat_dose,rule,untested,safety,2-year rat carcinogenicity bioassay
 type-2-diabetes-mellitus-gpr119-agonists,dose,,t2d-rodent-gpr119-ogtt,animal,tox_repeat_dose,rule,untested,yes,"GPR119-agonist-dosed mice (OGTT; insulin, GLP-1/GIP release)"
-type-2-diabetes-mellitus-gpr119-agonists,efficacy,,t2d-rodent-gpr119-ogtt,animal,tox_repeat_dose,rule,untested,yes,"GPR119-agonist-dosed mice (OGTT; insulin, GLP-1/GIP release)"
+type-2-diabetes-mellitus-gpr119-agonists,efficacy,,t2d-rodent-gpr119-ogtt,animal,tox_repeat_dose,rule,contra,yes,"GPR119-agonist-dosed mice (OGTT; insulin, GLP-1/GIP release)"
 type-2-diabetes-mellitus-gpr119-agonists,efficacy,,t2d-rodent-gpr119-ogtt,animal,tox_repeat_dose,rule,contra,yes,"GPR119-agonist-dosed mice (OGTT; insulin, GLP-1/GIP release)"
 type-2-diabetes-mellitus-gpr119-agonists,engagement,,t2d-rodent-gpr119-ogtt,animal,tox_repeat_dose,rule,contra,yes,"GPR119-agonist-dosed mice (OGTT; insulin, GLP-1/GIP release)"
 type-2-diabetes-mellitus-gpr119-agonists,safety,,t2d-rodent-gpr119-ogtt,animal,tox_repeat_dose,rule,same,safety,"GPR119-agonist-dosed mice (OGTT; insulin, GLP-1/GIP release)"
@@ -1833,25 +1833,25 @@ breast-cancer-hsp90aa1-hsp90ab1-inhibitors,efficacy,,er-resistance-emergence-xen
 breast-cancer-hsp90aa1-hsp90ab1-inhibitors,efficacy,,her2-breast-xenograft,animal,xenograft_cell_line,rule,untested,yes,"HER2-positive breast cancer xenografts (BT-474, JIMT-1) with HER2, p-AKT and HSP70 readouts"
 breast-cancer-hsp90aa1-hsp90ab1-inhibitors,efficacy,,her2-breast-xenograft,animal,xenograft_cell_line,rule,contra,yes,"HER2-positive breast cancer xenografts (BT-474, JIMT-1) with HER2, p-AKT and HSP70 readouts"
 breast-cancer-hsp90aa1-hsp90ab1-inhibitors,efficacy,,tnbc-xenograft,animal,xenograft_cell_line,rule,untested,yes,Triple-negative breast cancer xenografts (MDA-MB-231 and others; orthotopic and metastasis readouts)
-breast-cancer-hsp90aa1-hsp90ab1-inhibitors,efficacy,,tnbc-xenograft,animal,xenograft_cell_line,rule,untested,yes,Triple-negative breast cancer xenografts (MDA-MB-231 and others; orthotopic and metastasis readouts)
+breast-cancer-hsp90aa1-hsp90ab1-inhibitors,efficacy,,tnbc-xenograft,animal,xenograft_cell_line,rule,contra,yes,Triple-negative breast cancer xenografts (MDA-MB-231 and others; orthotopic and metastasis readouts)
 breast-cancer-hsp90aa1-hsp90ab1-inhibitors,engagement,,her2-breast-xenograft,animal,xenograft_cell_line,rule,retro,yes,"HER2-positive breast cancer xenografts (BT-474, JIMT-1) with HER2, p-AKT and HSP70 readouts"
 breast-cancer-hsp90aa1-hsp90ab1-inhibitors,engagement,,her2-breast-xenograft,animal,xenograft_cell_line,rule,untested,yes,"HER2-positive breast cancer xenografts (BT-474, JIMT-1) with HER2, p-AKT and HSP70 readouts"
 breast-cancer-hsp90aa1-hsp90ab1-inhibitors,engagement,,her2-pet-xenograft,animal,xenograft_cell_line,rule,same,yes,HER2-overexpressing SKOV-3 xenograft with 89Zr-trastuzumab PET readout of luminespib-induced HER2 downregulation (Oude Munnink 2010)
 breast-cancer-pan-her-inhibitors,dose,,azd8931-her2-low-xenograft-panel,animal,xenograft_cell_line,rule,untested,yes,AZD8931 xenograft panel incl. HER2 non-overexpressing tumours
 breast-cancer-pan-her-inhibitors,dose,,er-pos-tamres-mcf7-xenograft,animal,xenograft_cell_line,rule,untested,yes,ER+/HER2-negative tamoxifen-resistant MCF7 and T47D lines and MCF7/TamRes xenografts under tamoxifen or fulvestrant
 breast-cancer-pan-her-inhibitors,dose,,her2-amplified-breast-xenografts,animal,xenograft_cell_line,rule,untested,yes,"HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)"
-breast-cancer-pan-her-inhibitors,dose,,her2-amplified-breast-xenografts,animal,xenograft_cell_line,rule,untested,yes,"HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)"
+breast-cancer-pan-her-inhibitors,dose,,her2-amplified-breast-xenografts,animal,xenograft_cell_line,rule,retro,yes,"HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)"
 breast-cancer-pan-her-inhibitors,efficacy,,azd8931-her2-low-xenograft-panel,animal,xenograft_cell_line,rule,untested,yes,AZD8931 xenograft panel incl. HER2 non-overexpressing tumours
 breast-cancer-pan-her-inhibitors,efficacy,,er-pos-tamres-mcf7-xenograft,animal,xenograft_cell_line,rule,untested,yes,ER+/HER2-negative tamoxifen-resistant MCF7 and T47D lines and MCF7/TamRes xenografts under tamoxifen or fulvestrant
 breast-cancer-pan-her-inhibitors,efficacy,,her2-amplified-breast-xenografts,animal,xenograft_cell_line,rule,retro,yes,"HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)"
-breast-cancer-pan-her-inhibitors,efficacy,,her2-amplified-breast-xenografts,animal,xenograft_cell_line,rule,untested,yes,"HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)"
+breast-cancer-pan-her-inhibitors,efficacy,,her2-amplified-breast-xenografts,animal,xenograft_cell_line,rule,retro,yes,"HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)"
 breast-cancer-pan-her-inhibitors,engagement,,azd8931-her2-low-xenograft-panel,animal,xenograft_cell_line,rule,untested,yes,AZD8931 xenograft panel incl. HER2 non-overexpressing tumours
 breast-cancer-pan-her-inhibitors,engagement,,er-pos-tamres-mcf7-xenograft,animal,xenograft_cell_line,rule,untested,yes,ER+/HER2-negative tamoxifen-resistant MCF7 and T47D lines and MCF7/TamRes xenografts under tamoxifen or fulvestrant
 breast-cancer-pan-her-inhibitors,engagement,,her2-amplified-breast-xenografts,animal,xenograft_cell_line,rule,untested,yes,"HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)"
 breast-cancer-pan-her-inhibitors,safety,,azd8931-her2-low-xenograft-panel,animal,xenograft_cell_line,rule,untested,safety,AZD8931 xenograft panel incl. HER2 non-overexpressing tumours
 breast-cancer-pan-her-inhibitors,safety,,er-pos-tamres-mcf7-xenograft,animal,xenograft_cell_line,rule,contra,safety,ER+/HER2-negative tamoxifen-resistant MCF7 and T47D lines and MCF7/TamRes xenografts under tamoxifen or fulvestrant
 breast-cancer-pan-her-inhibitors,safety,,her2-amplified-breast-xenografts,animal,xenograft_cell_line,rule,untested,safety,"HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)"
-breast-cancer-pan-her-inhibitors,safety,,her2-amplified-breast-xenografts,animal,xenograft_cell_line,rule,untested,safety,"HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)"
+breast-cancer-pan-her-inhibitors,safety,,her2-amplified-breast-xenografts,animal,xenograft_cell_line,rule,contra,safety,"HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)"
 breast-cancer-parp1-2-inhibitors,dose,,e7449-brca-deficient-xenografts,animal,xenograft_cell_line,rule,retro,yes,"2X-121 (E7449) BRCA-deficient xenografts: single-agent MDA-MB-436 (BRCA1-mutant TNBC) with tumour PAR pharmacodynamics, plus MX-1 carboplatin and temozolomide potentiation"
 breast-cancer-parp1-2-inhibitors,dose,,pamiparib-mda-mb-436-xenograft,animal,xenograft_cell_line,rule,retro,yes,Pamiparib's own BRCA1-mutant MDA-MB-436 TNBC xenograft with tumour PAR pharmacodynamics and a mouse PK/PD model (head-to-head vs olaparib)
 breast-cancer-parp1-2-inhibitors,efficacy,,e7449-brca-deficient-xenografts,animal,xenograft_cell_line,rule,untested,yes,"2X-121 (E7449) BRCA-deficient xenografts: single-agent MDA-MB-436 (BRCA1-mutant TNBC) with tumour PAR pharmacodynamics, plus MX-1 carboplatin and temozolomide potentiation"
@@ -2059,7 +2059,7 @@ recessive-dystrophic-epidermolysis-bullosa-col7a1-replacement-gene-therapy,safet
 recessive-dystrophic-epidermolysis-bullosa-col7a1-replacement-gene-therapy,safety,gene therapy,rdeb-keratinocyte-xenograft-immunodeficient-mouse,animal,xenograft_cell_line,rule,same,safety,Gene-corrected RDEB keratinocyte skin regenerated on immunodeficient mice
 renal-cell-carcinoma-vegfr-multikinase-inhibitors,dose,,rcc-xenograft-786o-a498-caki,animal,xenograft_cell_line,rule,untested,yes,Human xenografts in nude mice (786-O renal and others)
 renal-cell-carcinoma-vegfr-multikinase-inhibitors,efficacy,,lenvatinib-xenograft-vascular-score,animal,xenograft_cell_line,rule,untested,yes,Lenvatinib 19-model human xenograft panel with vascular score (MVD + pericyte coverage) biomarker
-renal-cell-carcinoma-vegfr-multikinase-inhibitors,efficacy,,rcc-xenograft-786o-a498-caki,animal,xenograft_cell_line,rule,untested,yes,Human xenografts in nude mice (786-O renal and others)
+renal-cell-carcinoma-vegfr-multikinase-inhibitors,efficacy,,rcc-xenograft-786o-a498-caki,animal,xenograft_cell_line,rule,retro,yes,Human xenografts in nude mice (786-O renal and others)
 renal-cell-carcinoma-vegfr-multikinase-inhibitors,efficacy,,rcc-xenograft-786o-a498-caki,animal,xenograft_cell_line,rule,retro,yes,Human xenografts in nude mice (786-O renal and others)
 renal-cell-carcinoma-vegfr-multikinase-inhibitors,safety,,rcc-xenograft-786o-a498-caki,animal,xenograft_cell_line,rule,contra,safety,Human xenografts in nude mice (786-O renal and others)
 waldenstrom-macroglobulinemia-ms4a1-directed-depleters,dose,,scid-xenograft-ofatumumab,animal,xenograft_cell_line,rule,same,yes,SCID mice bearing CD20+ human B-cell tumour xenografts dosed with ofatumumab (tumour growth vs plasma concentration)

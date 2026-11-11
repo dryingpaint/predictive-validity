@@ -54,7 +54,8 @@
     "drug": "pracinostat",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -173,7 +174,8 @@
     "drug": "panobinostat",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2014,
@@ -632,7 +634,8 @@
     "drug": "panobinostat",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "year": 2015,

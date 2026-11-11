@@ -138,7 +138,8 @@
     "route": "oral",
     "population_group": "unselected",
     "combination_with": null,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "no_prediction"
    },
    {
     "prediction_level": "class",
@@ -556,7 +557,8 @@
     "drug": "axitinib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -598,7 +600,8 @@
     "drug": "rivoceranib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -697,7 +700,8 @@
     "drug": "axitinib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "prediction_level": "class",
@@ -783,7 +787,8 @@
     "drug": "tivozanib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "prediction_level": "class",

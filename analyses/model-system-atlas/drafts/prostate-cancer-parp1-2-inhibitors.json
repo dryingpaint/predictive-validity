@@ -132,7 +132,8 @@
     "drug": "olaparib",
     "population_group": "unselected",
     "combination_with": null,
-    "route": "oral"
+    "route": "oral",
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -334,7 +335,8 @@
     "drug": "olaparib",
     "population_group": "other_disease",
     "combination_with": null,
-    "route": "oral"
+    "route": "oral",
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -785,7 +787,8 @@
     "drug": "olaparib",
     "population_group": "biomarker_selected",
     "combination_with": null,
-    "route": "oral"
+    "route": "oral",
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -876,7 +879,8 @@
     "drug": "olaparib",
     "population_group": "biomarker_selected",
     "combination_with": null,
-    "route": "oral"
+    "route": "oral",
+    "untested_reason": "unsettled"
    },
    {
     "subjects": null,
@@ -1095,7 +1099,8 @@
     "drug": "olaparib",
     "population_group": "biomarker_selected",
     "combination_with": null,
-    "route": "oral"
+    "route": "oral",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,

@@ -255,7 +255,8 @@
     "drug": "tezacaftor",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": "ivacaftor"
+    "combination_with": "ivacaftor",
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": false,
@@ -336,7 +337,8 @@
     "drug": "lumacaftor",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -657,7 +659,8 @@
     "drug": "tezacaftor",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": "ivacaftor"
+    "combination_with": "ivacaftor",
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,

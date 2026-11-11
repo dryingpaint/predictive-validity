@@ -53,7 +53,8 @@
     "population_group": "unselected",
     "combination_with": null,
     "drug": "gsk-2981278",
-    "route": "topical"
+    "route": "topical",
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "gsk-srica-human-skin",
@@ -172,7 +173,8 @@
     "population_group": "unselected",
     "combination_with": null,
     "drug": "gsk-2981278",
-    "route": "topical"
+    "route": "topical",
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "human-whole-blood-il17-vtp",

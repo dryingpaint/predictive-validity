@@ -285,7 +285,7 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "readout_tier": "proximal",
-    "untested_reason": null,
+    "untested_reason": "unpublished",
     "model_id": "cyno-monkey-exon51-skipping",
     "model": "Cynomolgus monkey dosed IV/SC with eteplirsen, exon 51 skipping read by PCR (12-week GLP study 4658-GLP-0901)",
     "model_kind": "animal",
@@ -375,7 +375,8 @@
     "drug": "eteplirsen",
     "route": "im",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,

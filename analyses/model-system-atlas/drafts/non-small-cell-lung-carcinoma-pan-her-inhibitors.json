@@ -56,7 +56,8 @@
     "drug": "dacomitinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "subjects": null,
@@ -179,7 +180,8 @@
     "drug": "poziotinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "subjects": null,
@@ -220,7 +222,8 @@
     "drug": "pyrotinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "subjects": null,
@@ -261,7 +264,8 @@
     "drug": "tarloxotinib",
     "route": "iv",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -302,7 +306,8 @@
     "drug": "dacomitinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -346,7 +351,8 @@
     "drug": "dacomitinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -558,7 +564,8 @@
     "drug": "pyrotinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -1088,7 +1095,8 @@
     "drug": "pyrotinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -1368,7 +1376,8 @@
     "drug": "poziotinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -1459,7 +1468,8 @@
     "drug": "dacomitinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -1499,7 +1509,8 @@
     "drug": "dacomitinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -1619,7 +1630,8 @@
     "drug": "poziotinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -1820,7 +1832,8 @@
     "drug": "dacomitinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    }
   ]
  }

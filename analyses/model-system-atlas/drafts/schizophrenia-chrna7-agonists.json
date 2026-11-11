@@ -222,7 +222,8 @@
     "drug": "azd-0328",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "rodent-schizophrenia-screens",
@@ -719,7 +720,8 @@
     "drug": "azd-0328",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "rodent-schizophrenia-screens",

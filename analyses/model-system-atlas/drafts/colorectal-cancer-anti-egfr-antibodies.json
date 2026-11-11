@@ -177,7 +177,8 @@
     "drug": "imgatuzumab",
     "combination_with": null,
     "route": "iv",
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "ga201-adcc-orthotopic-xenograft",
@@ -259,7 +260,8 @@
     "drug": "zalutumumab",
     "combination_with": null,
     "route": "iv",
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -299,7 +301,8 @@
     "drug": "imgatuzumab",
     "combination_with": null,
     "route": "iv",
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -381,7 +384,8 @@
     "drug": "futuximab",
     "combination_with": "modotuximab",
     "route": "iv",
-    "population_group": "stage_or_line"
+    "population_group": "stage_or_line",
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -592,7 +596,8 @@
     "drug": "zalutumumab",
     "combination_with": null,
     "route": "iv",
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -1103,7 +1108,8 @@
     "drug": "zalutumumab",
     "combination_with": null,
     "route": "iv",
-    "population_group": "unselected"
+    "population_group": "unselected",
+    "untested_reason": "unsettled"
    },
    {
     "retrodiction": false,
@@ -1457,7 +1463,7 @@
     "confidence": "medium",
     "confidence_note": "Full text read (PMC5620195). Non-binding to murine EGFR is from the Sym004 preclinical package (cynomolgus chosen as the relevant species), not restated in this paper.",
     "judgement": "Opens the safety track of this model at its first public use (online 2017-06-27). Sym004 is a fixed mixture of futuximab and modotuximab, entered on the futuximab track with modotuximab as partner.",
-    "untested_reason": null
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "sym004-crc-acquired-cetuximab-resistance-met-xenograft",

@@ -180,7 +180,8 @@
     "drug": "sapitinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -217,7 +218,8 @@
     "drug": "poziotinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -299,7 +301,8 @@
     "drug": "sapitinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -339,7 +342,8 @@
     "combination_with": null,
     "margin_stated": true,
     "blocked_by": null,
-    "judgement": "Opening entry at the model's first public use for pyrotinib (track split, 2026-11-09 rulings)."
+    "judgement": "Opening entry at the model's first public use for pyrotinib (track split, 2026-11-09 rulings).",
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [
@@ -417,7 +421,8 @@
     "drug": "poziotinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -569,7 +574,8 @@
     "drug": "sapitinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": true,
@@ -709,7 +715,8 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": null,
-    "judgement": "Opening entry at the model's first public use for pyrotinib (track split, 2026-11-09 rulings)."
+    "judgement": "Opening entry at the model's first public use for pyrotinib (track split, 2026-11-09 rulings).",
+    "untested_reason": "no_prediction"
    }
   ],
   "safety": [
@@ -750,7 +757,8 @@
     "drug": "sapitinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -787,7 +795,8 @@
     "drug": "poziotinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -867,7 +876,8 @@
     "drug": "sapitinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -947,7 +957,8 @@
     "population_group": "biomarker_selected",
     "combination_with": null,
     "imported_from": null,
-    "judgement": "Opening entry at the model's first public use for pyrotinib (track split, 2026-11-09 rulings)."
+    "judgement": "Opening entry at the model's first public use for pyrotinib (track split, 2026-11-09 rulings).",
+    "untested_reason": "no_prediction"
    }
   ]
  }

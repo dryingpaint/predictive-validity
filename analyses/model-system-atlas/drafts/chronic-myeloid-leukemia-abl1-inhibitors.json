@@ -425,7 +425,8 @@
     "drug": "ponatinib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -637,7 +638,7 @@
     "epub_year": 2017,
     "print_year": 2017,
     "population": "Patients on ponatinib (CML and Ph+ ALL)",
-    "untested_reason": null,
+    "untested_reason": "no_prediction",
     "drug": "ponatinib",
     "route": "oral",
     "population_group": "stage_or_line",

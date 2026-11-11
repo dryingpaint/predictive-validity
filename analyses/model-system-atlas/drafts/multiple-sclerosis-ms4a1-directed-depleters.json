@@ -54,7 +54,8 @@
     "drug": "ofatumumab",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "cyno-bcell-depletion-tox",
@@ -136,7 +137,8 @@
     "drug": "ofatumumab",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "cyno-bcell-depletion-tox",
@@ -216,7 +218,8 @@
     "drug": "ofatumumab",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -296,7 +299,8 @@
     "drug": "ocrelizumab",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "eae-rmog-mouse-anti-cd20",
@@ -435,7 +439,7 @@
     "src": "https://doi.org/10.4049/jimmunol.1001393",
     "srcLabel": "Kap 2010",
     "quote": "Whereas all of the control monkeys developed clinically evident EAE, overt neurologic deficits were reduced substantially in three HuMab 7D8-treated monkeys, and four HuMab 7D8-treated monkeys remained completely asymptomatic.",
-    "untested_reason": null,
+    "untested_reason": "no_prediction",
     "judgement": "Treatment started 21 days after immunisation, so it predicts therapeutic depletion in ongoing disease; the 2014 follow-up (Kap 2014, doi 10.4049/jimmunol.1303125) is mechanism only and adds no new comparison.",
     "model_id": "eae-marmoset-humab7d8",
     "model": "Marmoset EAE (rhMOG/CFA) with late B-cell depletion by HuMab 7D8, a human anti-CD20",
@@ -527,7 +531,8 @@
     "drug": "ocrelizumab",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -747,7 +752,8 @@
     "drug": "ofatumumab",
     "route": "sc",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "model_id": "cyno-bcell-depletion-tox",

@@ -54,7 +54,8 @@
     "drug": "delanzomib",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2010,
@@ -93,7 +94,8 @@
     "drug": "ixazomib",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2015,
@@ -212,7 +214,8 @@
     "route": "oral",
     "population_group": "stage_or_line",
     "combination_with": null,
-    "judgement": "The rodent/dog proteasome-inhibition readout is the model readout the oprozomib patient PD (Infante 2016) later measured in red cells and PBMCs."
+    "judgement": "The rodent/dog proteasome-inhibition readout is the model readout the oprozomib patient PD (Infante 2016) later measured in red cells and PBMCs.",
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2016,
@@ -499,7 +502,8 @@
     "route": "oral",
     "population_group": "stage_or_line",
     "combination_with": null,
-    "judgement": "Split from dose entry 3, which carried this system's margin on the xenograft track; a stated margin scores on the stating system's track."
+    "judgement": "Split from dose entry 3, which carried this system's margin on the xenograft track; a stated margin scores on the stating system's track.",
+    "untested_reason": "unpublished"
    },
    {
     "year": 2015,
@@ -582,7 +586,8 @@
     "drug": "delanzomib",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2010,
@@ -623,7 +628,8 @@
     "drug": "ixazomib",
     "route": "oral",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2015,
@@ -869,7 +875,8 @@
     "drug": "delanzomib",
     "route": "iv",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -1002,7 +1009,8 @@
     "drug": "oprozomib",
     "route": "oral",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2019,
@@ -1131,7 +1139,8 @@
     "drug": "ixazomib",
     "route": "oral",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "year": 2009,

@@ -219,7 +219,8 @@
     "drug": "azd-7624",
     "route": "inhaled",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -387,7 +388,8 @@
     "drug": "acumapimod",
     "route": "oral",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -767,7 +769,8 @@
     "drug": "pha-797804",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "year": 2015,
@@ -1396,7 +1399,8 @@
     "drug": "pha-797804",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2018,
@@ -1475,7 +1479,8 @@
     "drug": "acumapimod",
     "route": "oral",
     "population_group": "stage_or_line",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,

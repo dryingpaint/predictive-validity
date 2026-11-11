@@ -227,7 +227,8 @@
     "drug": "crisaborole",
     "route": "topical",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2010,
@@ -380,7 +381,8 @@
     "drug": "leo-29102",
     "route": "topical",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2019,
@@ -625,7 +627,7 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [],
-    "untested_reason": null,
+    "untested_reason": "unsettled",
     "drug": "DRM02",
     "route": "topical",
     "population_group": "unselected",
@@ -668,7 +670,7 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [],
-    "untested_reason": null,
+    "untested_reason": "no_prediction",
     "drug": "crisaborole",
     "route": "topical",
     "population_group": "unselected",

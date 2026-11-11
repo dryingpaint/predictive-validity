@@ -55,7 +55,8 @@
     "drug": "regorafenib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1002/ijc.25864",
@@ -180,7 +181,8 @@
     "drug": "regorafenib",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1002/ijc.25864",
@@ -445,7 +447,7 @@
     "epub_year": 2019,
     "print_year": 2019,
     "registry_date": null,
-    "untested_reason": null,
+    "untested_reason": "no_prediction",
     "population": "Advanced RCC",
     "drug": "lenvatinib",
     "route": "oral",

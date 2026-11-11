@@ -58,7 +58,8 @@
     "drug": "brolucizumab",
     "route": "intravitreal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761125Orig1s000PharmR.pdf",
@@ -138,7 +139,8 @@
     "drug": "surabgene lomparvovec",
     "route": "subretinal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -219,7 +221,8 @@
     "drug": "conbercept",
     "route": "intravitreal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -468,7 +471,8 @@
     "drug": "abicipar pegol",
     "route": "intravitreal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -550,7 +554,8 @@
     "drug": "conbercept",
     "route": "intravitreal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": null,
@@ -589,7 +594,8 @@
     "drug": "brolucizumab",
     "route": "intravitreal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_src": null,
@@ -628,7 +634,8 @@
     "drug": "abicipar pegol",
     "route": "intravitreal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_src": "https://pubmed.ncbi.nlm.nih.gov/18246030/",
@@ -800,7 +807,8 @@
     "drug": "abicipar pegol",
     "route": "intravitreal",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,

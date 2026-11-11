@@ -289,6 +289,7 @@
     "model": "BCMA+ human myeloma xenografts in immunodeficient (NSG) mice, CAR-T",
     "model_id": "bcma-myeloma-xenograft-nsg-cart",
     "note": "Anti-BCMA CAR T cells eradicated established human myeloma xenografts in immunodeficient mice; no patient comparison yet.",
+    "untested_reason": "unsettled",
     "short": "CAR-T eradicates mouse xenografts",
     "src": "https://doi.org/10.1158/1078-0432.CCR-12-2422",
     "srcLabel": "Carpenter 2013",
