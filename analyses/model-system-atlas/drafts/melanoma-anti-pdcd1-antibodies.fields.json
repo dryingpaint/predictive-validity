@@ -1,0 +1,46 @@
+{
+ "tile": "melanoma-anti-pdcd1-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: monkey occupancy (Fu 2017) first public after nivolumab patient PD-1 occupancy (Brahmer 2010); engagement is a target claim (retrodiction ruling); drug toripalimab, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true: hPD-1 mouse immuno-PET (Huang 2020) first public after 89Zr-nivolumab tumour uptake in patients (Niemeijer 2018); retrodiction ruling; drug toripalimab, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro (retrodiction ruling: knock-in MC38 work post-dates nivolumab melanoma responses, Topalian 2012); year 2020 -> 2018 (POLARIS-01 ASCO 2018 abstract, rule 6); single-arm ORR design written into note; drug toripalimab, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug prolgolimab, route iv; status retro 2024 unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro (retrodiction ruling, as entry 2 on the track); year 2026 -> 2023 (Junshi press release 2023-09-25, MELATORCH PFS primary met, rule 6); drug toripalimab, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status same -> retro (retrodiction ruling: NSG work post-dates nivolumab 2012 melanoma responses); year 2020 -> 2018 (ASCO 2018 abstract, rule 6); single-arm ORR design in note; drug toripalimab, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug pucotenlimab, route iv: first entry on its own pucotenlimab track, strengthens dropped; status same -> retro (Zhang 2020 post-dates nivolumab 2012 melanoma responses; retrodiction ruling); year 2023 -> 2021 (Lian 2021 ASCO abstract 9554, rule 6); single-arm design with pre-set 10% bar in note"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2019 -> 2018: POLARIS-01 ASCO 2018 abstract first reported hypothyroidism 13% in melanoma patients (rule 6); status contra unchanged; drug toripalimab, route iv"
+  }
+ ],
+ "added": []
+}

@@ -11,16 +11,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Europe PMC: PMID 21085185, epub 2010-11-18, print 2011. Quote is the abstract's last sentence verbatim. Untested opening entry at the model's first use is correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Europe PMC 21085185, epub 2010-11-18; quote is the abstract's last sentence. Untested opener at model first use; ixekizumab/sc names the track compared later; unselected right."
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "PMID 22677045 epub 2012-06-05; quote verbatim in abstract. Full text (PMC BioC) confirms stated comparison: 'shown in vitro that many genes... coregulated by IL-17 and TNF... not yet been established in vivo'. Downstream tier correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abstract (PMID 22677045) has the sentence verbatim; full text (PMC3470466): Phase 1 sc arms 5-150 mg analysed, IV arm not reported, so route sc. Same, 2012, downstream, unselected confirmed."
   },
   {
    "cell": "dose",
@@ -29,7 +31,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PharmR (bundle) has the NOAEL sentence verbatim and 'does not bind to mouse or rat IL-17A'. MedR confirms IND 100834 submitted Nov 1, 2007 as the year proxy."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PharmR: 'the NOAEL for this 9-month study was 5 mg/kg/week' verbatim; IND 100834, 2007 proxy. Untested opener with margin_stated; ixekizumab, sc, unselected fine."
   },
   {
    "cell": "dose",
@@ -38,7 +41,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Label ISR sentence verbatim; PharmR gives MRHD 2.67 mg/kg. Margin held, patients dosed to regimen. Only public statement of the margin is the 2015 review; see rule question on 'stated before the trial'. UNCOVER-1 results posted 2016-05-27 confirmed."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Label ISR sentence verbatim; PharmR MRHD (2 x 80 mg)/60 kg = 2.67 mg/kg. NOAEL first public in 2015 review (posted 2016), after Leonardi 2012 (ixekizumab sc, own drug): retro, 2016; margin held.",
+   "rule": "DRAFTER_BRIEF retrodiction: dose uses the same drug's earlier patient result"
   },
   {
    "cell": "efficacy",
@@ -47,7 +52,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PharmR quote verbatim, following the bTDR80 description; it is the reviewer's paraphrase of the sponsor rationale. Only psoriasis-specific filed system (surrogate-antibody EAE/CIA mice otherwise). Model choice defensible, confidence medium appropriate."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PharmR: bTDR80 patient-cell description followed by 'Thus neutralization of IL-17 may be an effective treatment for psoriasis.' verbatim. Untested opener at 2007 proxy; ixekizumab, sc, unselected fine."
   },
   {
    "cell": "efficacy",
@@ -56,7 +62,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PMID 22455413, NCT01107457 (results posted 2017-07-25, confirmed on ClinicalTrials.gov). PASI 75 at wk 12 is the stated primary endpoint. Dating at 2016, when the model side became public, follows rule 6. Izokibep PASI 90 quote verbatim (PMID 37697683)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Leonardi 2012 (PMID 22455413) abstract: sc dosing, PASI 75 wk12 primary, quote verbatim. Model data first public in 2016 FDA review, after the 2012 same-target result: retro, 2016.",
+   "rule": "DRAFTER_BRIEF retrodiction: engagement/efficacy post-dating by same-target patient result"
   },
   {
    "cell": "safety",
@@ -65,7 +73,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PMID 21350122 epub 2011-02-24; quote is the abstract's last sentence verbatim. FDA clinical review cites Puel (footnote 21) for the Candida expectation, so the class did rely on it."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Europe PMC 21350122, epub 2011-02-24; quote is the abstract's last sentence. Human genetic system tied to no drug, so drug 'class'; untested opener; route sc arguable vs not_applicable at an opener."
   },
   {
    "cell": "safety",
@@ -74,7 +83,8 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "MedR quote verbatim but split by a page break and footnote; it opens with the human Th17/IL-17 genetic defects, so the comparison is stated. Oral candidiasis 0.7% confirmed in MedR table; the 1.4% vs 0.5% Candida figure was not located in the label."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "MedR bundle: quote verbatim, closing a sentence opened by human IL-17 genetic defects (split by page header). Patients compared received ixekizumab sc in psoriasis, unselected; same, 2016 confirmed."
   },
   {
    "cell": "engagement",
@@ -83,8 +93,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "PharmR (bundle) lines 413-417: hIL-17 raises plasma KC in C57BL/6NHsd mice, ixekizumab decreased it (bTDR08); quote verbatim. Untested opening at the 2007 IND proxy matches the other filed ixekizumab studies."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PharmR bundle text: 'Ixekizumab administration decreased hIL-17 induced KC secretion in C57BL/6NHsd mice (Report bTDR08)' verbatim. Untested opener at 2007 IND proxy; ixekizumab, sc, unselected fine."
   },
   {
    "cell": "engagement",
@@ -93,8 +103,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Krueger 2012 full text (PMC3470466) has the >6-fold IL-8/CXCL1 sentence verbatim. Mouse study ran 2007, before patients, so prospective, not retro; dated 2016 when the model side became public. Downstream tier right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMC3470466 full text: '>6-fold ... IL-8 and CXCL1' sentence verbatim; patients dosed sc. Mouse KC first public in 2015/2016 FDA review, after Krueger 2012 same-target result: retro, year 2016 correct.",
+   "rule": "DRAFTER_BRIEF retrodiction: engagement/efficacy post-dating by same-target patient result"
   },
   {
    "cell": "dose",
@@ -103,8 +114,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Klint 2023 (PMC10187109) NOAEL sentence verbatim, with 28-day, 13-week and 26-week cyno studies. Year 2015 (EudraCT) fits the 28-day study; the 26-week study likely ran later, so confidence should be medium, not high."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Klint 2023 (PMC10187109) full text: NOAEL 20 mg/kg/week sentence verbatim, HED 6.5 mg/kg. EudraCT 2015-004531-13 year proxy. Untested opener; izokibep, sc, protein modality fine."
   },
   {
    "cell": "dose",
@@ -113,8 +124,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Gerdes 2023 abstract (PMID 37697683) quote verbatim; 160 mg q2w is about 1 mg/kg/week, 6.5-fold under the HED. Margin first stated publicly in Klint 2023, after AFFIRM-35; same decision-16 question as dose 2."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Gerdes 2023 abstract quote verbatim. Affibody 2020-06-15 top-line release found ('ABY-035 treatment appeared tolerable and safe'), before Klint 2023 margin: retro, 2023. AFFIRM-35 enrolled inadequate responders to >=2 therapies; unselected kept.",
+   "rule": "DRAFTER_BRIEF retrodiction: dose uses the same drug's earlier patient result"
   },
   {
    "cell": "efficacy",
@@ -123,8 +135,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Klint 2023 full text: 30- and 50-fold sentence verbatim; paper calls these 'preclinical in vitro and in vivo psoriasis models' and places them before the 2016 FIH. Prospective; 2016 proxy reasonable."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Klint 2023 full text: '30- and 50-fold superior efficacy in reducing KC secretion' verbatim; calls them preclinical psoriasis models. Untested opener at 2016 FIH proxy; izokibep, sc, unselected fine."
   },
   {
    "cell": "efficacy",
@@ -133,8 +145,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract: PASI 90 at wk12 is the primary endpoint; quote verbatim. Direction same. The 30-fold mg/kg potency claim missed: patients needed 80 mg q2w, the ixekizumab dose; consider magnitude off_by_>5x on dose."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Gerdes 2023 abstract: PASI 90 wk12 is primary, quote verbatim. Izokibep mouse data first public 2023, after 2012 IL-17A efficacy and the 2020-06-15 top-line: retro, 2023. Prior-therapy entry criterion noted; unselected kept.",
+   "rule": "DRAFTER_BRIEF retrodiction: engagement/efficacy post-dating by same-target patient result"
   }
  ],
  "missing": [

@@ -1,0 +1,147 @@
+{
+ "tile": "chronic-hepatitis-b-virus-infection-hbv-rna-antisense-sirna",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug tomligisiran, route sc, population_group unselected set from the entry's source; status unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug tomligisiran, route sc, population_group unselected set from the entry's source; status unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "year 2022 -> 2018: rule 6 earliest public date, Arrowhead press release 2018-09-06 on AROHBV1001 HBsAg reductions (same trial as Yuen 2022); drug tomligisiran, route sc"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug tomligisiran, route sc, population_group unselected set from the entry's source; status unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug elebsiran, route sc: opener of the elebsiran chimeric-mouse track (proxy ARB-1740), status unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug elebsiran, route sc; retro unchanged (model first public 2026 after elebsiran's own patient HBsAg data, registry 2021-12-13)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug elebsiran, route sc (opener)"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "drug elebsiran, route sc; retro unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug tomligisiran, route sc, population_group unselected set from the entry's source; status unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> untested (no_prediction): dose ruling, the drafter's mg/kg mapping is not a model-stated target; drug tomligisiran, route sc"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug elebsiran, route sc, population_group unselected set from the entry's source; status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug tomligisiran, route sc, population_group unselected set from the entry's source; status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug tomligisiran, route sc, population_group unselected set from the entry's source; status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug elebsiran, route sc, population_group unselected set from the entry's source; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug tomligisiran, route sc, population_group unselected set from the entry's source; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug elebsiran, route sc, population_group unselected set from the entry's source; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "status same -> retro: safety retrodiction ruling, mouse ALT data first public 2023 after elebsiran's own registry safety results 2021-12-13; drug elebsiran, route sc"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug elebsiran, route sc, population_group unselected set from the entry's source; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "status same -> retro: safety retrodiction ruling on public date, Schlegel 2022 (epub 2022-07-01) after elebsiran's own registry results 2021-12-13; drug elebsiran, route sc"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 9,
+   "what": "opener untested 2013 for ARB-001467 iv on hbv-genome-mouse (track split)"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "ARB-001467 iv same 2016: Arbutus press release 2016-12-12 (tier 5) paired with Wooddell 2013 mouse"
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "what": "opener untested 2013 for elebsiran sc on hbv-genome-mouse (track split)"
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "what": "elebsiran sc same 2021: NCT03672188 registry results 2021-12-13 / Gane 2023 paired with Wooddell 2013 mouse"
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "what": "elebsiran sc retro 2026: Noack 2026 AAV-HBV mice dosed with elebsiran, published after the patient data"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "opener untested 2013 for elebsiran sc on hbv-genome-mouse (track split)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "elebsiran sc same 2025: combination ruling, NCT05970289 elebsiran + PEG-IFN co-primary HBsAg loss (Wong 2025 Nat Med) paired with Wooddell 2013 mouse"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "opener untested 2013 for elebsiran sc on hbv-genome-mouse safety (track split)"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "elebsiran sc retro 2026: tolerability ruling, Noack 2026 'ALT unaltered' in AAV-HBV mice vs volunteer ALT (registry 2021-12-13)"
+  }
+ ]
+}

@@ -6,7 +6,8 @@
   "ClinicalTrials.gov NCT03092895 sponsor protocol Prot_000.pdf (curl + pdftotext): sections 1.5.1-1.5.5 read (camrelizumab affinity, PD-1/PD-L1 blocking, monkey acute and 4-week toxicology, monkey PK, human PD-1 transgenic MC38(PD-L1) efficacy); CT.gov API v2 for the document date (protocol 2018-05-12, uploaded 2023-07-04)",
   "PubMed efetch PMID 28317872 (Fu 2017, Acta Pharmacol Sin) abstract: whether the huPBMC-NSG or CTL-engrafted MC38 systems were public before the 2023 FDA review (they were not: in vitro, vaccinated-monkey PD and monkey PK only)",
   "PubMed esearch: (toripalimab OR camrelizumab OR dostarlimab OR spartalizumab OR JS001 OR SHR-1210) AND (peripheral blood OR circulating) AND (effector memory OR T cell expansion OR Ki-67 OR T-cell proliferation) - 7 hits, 6 new abstracts read (PMIDs 41583476, 40421181, 40355717, 38990554, 37533997, 36822161)",
-  "PubMed esearch: (spartalizumab OR PDR001) AND (mice OR mouse OR xenograft OR cynomolgus OR preclinical) NOT review - 8 hits, all clinical papers, no preclinical in-vivo package found"
+  "PubMed esearch: (spartalizumab OR PDR001) AND (mice OR mouse OR xenograft OR cynomolgus OR preclinical) NOT review - 8 hits, all clinical papers, no preclinical in-vivo package found",
+  "Gap pass: Europe PMC (PDR001 OR spartalizumab) AND (mouse OR monkey OR cynomolgus OR preclinical OR organoid), first 25 of 1715 hits: combination trials and reviews only, no spartalizumab model-to-patient comparison."
  ],
  "added_models": [
   {
@@ -288,5 +289,22 @@
   "Spartalizumab: no preclinical in-vivo paper found on PubMed (8 hits, all clinical) and no randomised NSCLC result exists (Phase 1b combinations only), so there is no model-patient comparison to add.",
   "NSCLC patient-derived organoids, PBMC co-cultures or humanized PDX compared with response to camrelizumab, toripalimab, dostarlimab or spartalizumab: none found in the two FDA reviews or the PubMed sweeps; the draft's pdtf-ex-vivo track (Voabil 2021, non-members only) stands.",
   "Nivolumab, pembrolizumab and cemiplimab models and patient data: not members of this tile, not scored."
+ ],
+ "gaps": [
+  {
+   "lead": "Camrelizumab's own hPD-1-transgenic MC38 mouse model (NCT03092895 sponsor protocol s1.5.5)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored. The checker's efficacy 2 verdict (confirmed) already flags the wrong judgement text 'camrelizumab has no public in-vivo model'; that is a note, not a field. The camrelizumab hPD-1-transgenic MC38 data (20.40% TGI, not significant) became public only when the NCT03092895 protocol was uploaded 2023-07-04, so efficacy 2 (2021) keeps product_in_model false; a 2023 product_in_model true datum on mc38-mouse-pd1-blockade adds no status change, since efficacy 4 (2023, same, product_in_model true) already carries it. Whether the under-call should be contra and the protocol's tier are open rule questions in the check file, not a fix."
+  },
+  {
+   "lead": "Toripalimab NSG+MC38+allogeneic CD8 CTL and huPBMC-NSG systems (BLA 761240 review pp.43, 49)",
+   "outcome": "tracked",
+   "detail": "nsg-mc38-allogeneic-ctl (efficacy entries 5-6) and nsg-hupbmc-tcell-expansion (engagement entries 3-4) in added_models."
+  },
+  {
+   "lead": "Not found: NSCLC patient-level models for members, other member Phase 3 NSCLC failures, spartalizumab preclinical package",
+   "outcome": "none",
+   "detail": "Searched in models pass and again on Europe PMC for spartalizumab models: no member-drug patient-level model compared with response; spartalizumab has no preclinical paper and only Phase 1b NSCLC combinations, so no comparison."
+  }
  ]
 }

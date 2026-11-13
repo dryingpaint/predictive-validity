@@ -19,17 +19,17 @@
   "engagement": [
    {
     "year": 2009,
-    "status": "same",
+    "status": "retro",
     "model": "Rat and cynomolgus endotoxin-induced TNF-alpha PD model (PH-797804)",
-    "note": "PH-797804 blocked endotoxin-induced TNF in rat and monkey; in human endotoxin studies it cut TNF-alpha and IL-6 dose-dependently, paralleling enzyme inhibition.",
-    "short": "Human endotoxin TNF fell as rat predicted",
+    "note": "Retrodiction: human endotoxin TNF fell on p38 inhibitors from 2001 (Fijen 2001, Branger 2002); PH-797804 rat/monkey and human endotoxin TNF then agreed in 2009.",
+    "short": "Rat endotoxin PD reproduced known human result",
     "src": "https://doi.org/10.1124/jpet.109.158329",
     "srcLabel": "Hope 2009",
     "quote": "Finally, PH-797804 reduced tumor necrosis factor-alpha and interleukin-6 production in clinical studies after endotoxin administration in a dose-dependent manner, paralleling inhibition of the target enzyme.",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading of Hope 2009 (JPET 331:882); the human endotoxin numbers are in the full text, which was not read. Healthy volunteers, not OA patients.",
-    "reason": "Endotoxin TNF fell in volunteers",
-    "judgement": "Scored same because the source itself puts the rat/monkey endotoxin PD data beside the human endotoxin study and reports the same dose-dependent TNF inhibition. Readout is downstream (cytokine output), not p38 occupancy. Magnitude is direction-only because the abstract gives no human numbers.",
+    "reason": "Reproduced known human endotoxin result",
+    "judgement": "Scored same because the source itself puts the rat/monkey endotoxin PD data beside the human endotoxin study and reports the same dose-dependent TNF inhibition. Readout is downstream (cytokine output), not p38 occupancy. Magnitude is direction-only because the abstract gives no human numbers. Ruling 2026-11-09 (retrodiction by post-dating): engagement is a target claim, and human endotoxin TNF/IL-6 suppression by oral p38 inhibitors was public in 2001 (Fijen 2001, RWJ-67657, doi 10.1046/j.1365-2249.2001.01485.x) and 2002 (Branger 2002, BIRB 796, doi 10.4049/jimmunol.168.8.4070), so the 2009 rat/monkey result is a retrodiction that reproduced it: same -> retro.",
     "model_id": "rat-endotoxin-tnf-pd",
     "prediction_level": "class",
     "subjects": "healthy_volunteers",
@@ -45,14 +45,18 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "endotoxin-induced TNF-alpha inhibition (abstract reports direction and dose-dependence only)",
     "source_calls_it": "match",
-    "population": "Unselected",
+    "population": "Healthy volunteers (endotoxin challenge)",
     "model_first_use_year": 2009,
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "pha-797804",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -68,6 +72,7 @@
     "confidence": "low",
     "confidence_note": "Sponsor conference abstract (Inflamm Res 2007;56 Suppl 3:S376-S377, abstract-book DOI, PMC7095932); only the title was retrievable, the body is not online. Dated June 2007 (ResearchGate record).",
     "judgement": "Opens the track at its first public use (2007). The model is an RA model used for an OA context, so model_kind is cross_indication rather than animal; it was the only disease model ARRY-797 went into OA patients on.",
+    "untested_reason": "no_prediction",
     "model_id": "rodent-ra-arthritis-exvivo-wb",
     "prediction_level": "class",
     "subjects": null,
@@ -88,23 +93,27 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2007,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "emprumapimod",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2007,
-    "status": "same",
+    "status": "retro",
     "model": "Rodent rheumatoid-arthritis models with ex-vivo LPS whole-blood cytokine PD (ARRY-797)",
-    "note": "ARRY-797, active in rodent RA models, blocked ex-vivo IL-1, PGE2 and TNF production in blood from dosed healthy subjects; Mavers 2009 relays up to 100% inhibition.",
-    "short": "Ex-vivo cytokine blockade seen in dosed volunteers",
+    "note": "Retrodiction: p38 inhibitors had cut human LPS cytokines since 2001 (Fijen 2001); ARRY-797 rodent RA activity and human ex-vivo cytokine blockade followed in 2007.",
+    "short": "Ex-vivo cytokine blockade reproduced known result",
     "src": "https://doi.org/10.1007/BF03353884",
     "srcLabel": "Koch 2007",
     "quote": "ARRY-797, a selective, potent inhibitor of p38 active in animal models of rheumatoid arthritis, inhibits ex vivo IL-1, PGE2 and TNF production in normal human subjects",
     "confidence": "low",
     "confidence_note": "Title-only reading: the abstract body could not be retrieved (PMC and Springer PDFs blocked; ResearchGate metadata only). The 'up to 100% inhibition' figure comes from the Mavers 2009 review (doi 10.1007/s11926-009-0054-9), which is a pointer, not a source. Healthy volunteers, not OA patients. Conference-abstract tier is the checker's open rule question; scored tier 1 on the DOI/PMC record.",
-    "reason": "Ex-vivo cytokine inhibition in volunteers",
-    "judgement": "Scored same because the source itself puts rodent-model activity and the human ex-vivo result side by side (comparison_stated true). Readout tier direct: ex-vivo blockade of an LPS stimulus in dosed subjects. Magnitude direction_only because the title gives no number. Two years before Hope 2009, so this is the class's first member-drug engagement comparison.",
+    "reason": "Reproduced known human cytokine result",
+    "judgement": "Scored same because the source itself puts rodent-model activity and the human ex-vivo result side by side (comparison_stated true). Readout tier direct: ex-vivo blockade of an LPS stimulus in dosed subjects. Magnitude direction_only because the title gives no number. Two years before Hope 2009, so this is the class's first member-drug engagement comparison. Ruling 2026-11-09 (retrodiction by post-dating): human LPS cytokine suppression by p38 inhibitors was public from 2001 (Fijen 2001, doi 10.1046/j.1365-2249.2001.01485.x), before this 2007 model result, so same -> retro. The checker adjudicated this entry untested (no rodent cytokine readout in the title); that adjudication is not a rule question and is left for the reviewer: if applied, it replaces retro.",
     "model_id": "rodent-ra-arthritis-exvivo-wb",
     "prediction_level": "class",
     "subjects": "healthy_volunteers",
@@ -123,9 +132,14 @@
     "magnitude": "direction_only",
     "magnitude_basis": "ex-vivo IL-1/PGE2/TNF inhibition in dosed healthy subjects (title reports direction only)",
     "source_calls_it": "match",
-    "population": "Unselected",
+    "population": "Healthy volunteers (ex-vivo LPS whole blood)",
     "model_first_use_year": 2007,
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "drug": "emprumapimod",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -161,7 +175,11 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2008,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "emprumapimod",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -196,9 +214,13 @@
     "magnitude": "direction_only",
     "magnitude_basis": "serum COMP (-10%) and CTX-I (-38%) vs placebo at week 4 against rat % joint-damage inhibition; not commensurable",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Knee OA, NSAID-refractory pain",
     "model_first_use_year": 2008,
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "emprumapimod",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -235,11 +257,15 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Healthy volunteers (endotoxin challenge)",
     "model_first_use_year": 2009,
     "blocked_by": null,
     "margin_stated": false,
-    "untested_reason": "unsettled"
+    "untested_reason": "unsettled",
+    "drug": "pha-797804",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -279,7 +305,11 @@
     "model_first_use_year": 2008,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "emprumapimod",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2012,
@@ -293,7 +323,7 @@
     "confidence": "low",
     "confidence_note": "Sponsor-authored ACR 2012 late-breaking abstract and Array press release only; no peer-reviewed paper or registry results for NCT01366014. One-sided p=0.0247 is about two-sided 0.05. FX005's press-release significance claim carries an unresolved footnote and the S-1 gives no p-value. PH-797804's OA crossover result (F645, EFIC 2011) could not be retrieved; a negative there would turn this track contra.",
     "reason": "Two members reported 4-week WOMAC wins",
-    "judgement": "Paired comparison (comparison_stated false): model side Brown 2008, patient side the ARRY-797 Phase 2 primary endpoint. Scored same in direction only: the model measured % joint-damage inhibition and paw-withdrawal latency, the trial a 0-10 WOMAC NRS, so magnitude is direction_only. Source tier set to 5 because an unreviewed sponsor abstract is evidentially a press release, so trial_unreported is true. FX005 (NCT01291914) supports the direction but is weaker (press release plus S-1, no p-value); PH-797804 (NCT01102660) is unresolved and is the main risk to this status.",
+    "judgement": "Paired comparison (comparison_stated false): model side Brown 2008, patient side the ARRY-797 Phase 2 primary endpoint. Scored same in direction only: the model measured % joint-damage inhibition and paw-withdrawal latency, the trial a 0-10 WOMAC NRS, so magnitude is direction_only. Source tier set to 5 because an unreviewed sponsor abstract is evidentially a press release, so trial_unreported is true. FX005 (NCT01291914) supports the direction but is weaker (press release plus S-1, no p-value); PH-797804 (NCT01102660) is unresolved and is the main risk to this status. Not split by drug: FX005 (intra-articular, NCT01291914) also reported 4-week pain relief, the same direction, so its patients do not differ in result and it stays in patient_trials; PH-797804 (oral, alone or with naproxen, NCT01102660) has no reported result.",
     "model_id": "rat-iodoacetate-carrageenan",
     "prediction_level": "class",
     "subjects": "patients",
@@ -314,7 +344,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "WOMAC pain change vs placebo (0-10 NRS) against rat % joint-damage inhibition and paw-withdrawal latency; not commensurable",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Knee OA, NSAID-refractory pain",
     "model_first_use_year": 2008,
     "endpoint_role": "primary",
     "outcome_tested": null,
@@ -337,7 +367,11 @@
       "doi": "10.1016/s1754-3207(11)70625-3",
       "quote": "F645 A TWO PERIOD FOUR TREATMENT CROSSOVER TRIAL OF PH-797804 ALONE OR WITH NAPROXEN IN SUBJECTS WITH PAINFUL KNEE OSTEOARTHRITIS"
      }
-    ]
+    ],
+    "drug": "emprumapimod",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -375,7 +409,11 @@
     "model_first_use_year": 2007,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "emprumapimod",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -410,7 +448,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "WOMAC pain change vs placebo (0-10 NRS) against rodent RA-model activity; not commensurable",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Knee OA, NSAID-refractory pain",
     "model_first_use_year": 2007,
     "endpoint_role": "primary",
     "outcome_tested": null,
@@ -421,7 +459,11 @@
       "doi": null,
       "quote": "Improvement in WOMAC pain for Oxy ER (-0.71) was comparable to that seen with ARRY-797 (-0.68) when LOCF was used for imputation of missing data."
      }
-    ]
+    ],
+    "drug": "emprumapimod",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -458,9 +500,13 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "Knee OA (45 mg single IA dose, Phase 2a)",
     "model_first_use_year": 2013,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "FX005",
+    "route": "intra_articular",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

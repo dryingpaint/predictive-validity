@@ -51,7 +51,12 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "bitopertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "year": 2016,
@@ -87,12 +92,16 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "bitopertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "year": 2018,
     "status": "same",
-    "strengthens": true,
     "model": "Rat CSF/striatal glycine by microdialysis",
     "note": "Iclepertin: rat CSF glycine +30-78% (0.2-2 mg/kg); healthy volunteers +50% at 10 mg, the dose later taken into phase 3.",
     "short": "Iclepertin CSF glycine translated rat to human",
@@ -102,7 +111,7 @@
     "confidence": "high",
     "confidence_note": null,
     "reason": "CSF glycine rose in humans as in rats",
-    "judgement": "Second member on the same track, so strengthens rather than a status change. Registry record of the human CSF study (NCT02362516) posted results only on 2026-03-30; the paper (online 23 Aug 2018) sets the year.",
+    "judgement": "Iclepertin is its own track on the rat CSF-glycine system (opener appended as engagement 8); first comparison on that track. Registry record of the human CSF study (NCT02362516) posted results only on 2026-03-30; the paper (online 23 Aug 2018) sets the year.",
     "model_id": "rat-csf-glycine-microdialysis",
     "prediction_level": "class",
     "subjects": "healthy_volunteers",
@@ -125,7 +134,12 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "iclepertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "year": 2011,
@@ -161,7 +175,12 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "drug": "bitopertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "year": 2012,
@@ -198,7 +217,12 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "drug": "bitopertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "retrodiction": false,
@@ -233,7 +257,12 @@
     "model": "Rhesus monkey ketamine-induced spatial working-memory deficit",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "drug": "pf-03463275",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "retrodiction": false,
@@ -269,7 +298,53 @@
     "model": "Rhesus monkey ketamine-induced spatial working-memory deficit",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "drug": "pf-03463275",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
+   },
+   {
+    "year": 2018,
+    "status": "untested",
+    "model": "Rat CSF/striatal glycine by microdialysis",
+    "note": "Iclepertin (BI 425809) raised rat CSF glycine 30-78% at 0.2-2 mg/kg; the rat PD that opens the iclepertin track.",
+    "short": "Rat CSF glycine up with iclepertin",
+    "src": "https://doi.org/10.1111/cts.12578",
+    "srcLabel": "Rosenbrock 2018",
+    "quote": "Oral administration of BI 425809 in rats induced a dose-dependent increase of glycine CSF levels from 30% (0.2 mg/kg, not significant) to 78% (2 mg/kg, P < 0.01), relative to vehicle.",
+    "confidence": "high",
+    "confidence_note": null,
+    "judgement": "Opener for the iclepertin track of the rat CSF-glycine system, at its first public use for that drug (Rosenbrock 2018, online 23 Aug 2018); same paper as the human comparison (engagement 3).",
+    "model_id": "rat-csf-glycine-microdialysis",
+    "prediction_level": "class",
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2018,
+    "print_year": 2018,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Unselected",
+    "model_first_use_year": 2011,
+    "readout_tier": "proximal",
+    "drug": "iclepertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unpublished"
    }
   ],
   "dose": [
@@ -306,7 +381,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "bitopertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "year": 2014,
@@ -343,20 +423,25 @@
     "population": "Unselected",
     "model_first_use_year": 2011,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "bitopertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "year": 2011,
     "status": "untested",
     "model": "Rat CSF/striatal glycine by microdialysis",
-    "note": "Rat CSF-glycine rise is the exposure target Boehringer later used to pick the iclepertin dose; first used for bitopertin.",
+    "note": "Rat CSF-glycine rise for bitopertin (RG1678); Roche set bitopertin doses from the occupancy window, so this system stated no bitopertin dose target.",
     "short": "Rat CSF glycine as dose target",
     "src": "https://doi.org/10.1016/j.neuropharm.2011.11.008",
     "srcLabel": "Alberati 2012",
     "quote": "In vivo, RG1678 dose-dependently increased cerebrospinal fluid and striatal levels of glycine measured by microdialysis in rats.",
     "confidence": "high",
     "confidence_note": null,
-    "judgement": "Separate dose track from the occupancy window: a different model (CSF glycine PD) and a different prediction (a PD-defined dose for iclepertin, 10 mg).",
+    "judgement": "Separate dose track from the occupancy window: a different model (CSF glycine PD) and a different prediction (a PD-defined dose for iclepertin, 10 mg). Split by drug: this entry is the bitopertin track (its quote is RG1678); the iclepertin dose track opens at dose 7.",
     "model_id": "rat-csf-glycine-microdialysis",
     "prediction_level": "class",
     "subjects": null,
@@ -378,7 +463,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "bitopertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2018,
@@ -415,7 +505,12 @@
     "population": "Unselected",
     "model_first_use_year": 2011,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "iclepertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -449,7 +544,12 @@
     "model": "Human visual-evoked-potential LTP (EEG neuroplasticity) in schizophrenia patients",
     "model_kind": "human_challenge",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "pf-03463275",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "retrodiction": false,
@@ -486,7 +586,54 @@
     "model": "Human visual-evoked-potential LTP (EEG neuroplasticity) in schizophrenia patients",
     "model_kind": "human_challenge",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "pf-03463275",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
+   },
+   {
+    "year": 2018,
+    "status": "untested",
+    "model": "Rat CSF/striatal glycine by microdialysis",
+    "note": "Rat CSF-glycine rise with iclepertin defined the PD target (~50% rise) later used to pick the 10 mg human dose.",
+    "short": "Rat CSF glycine sets iclepertin PD target",
+    "src": "https://doi.org/10.1111/cts.12578",
+    "srcLabel": "Rosenbrock 2018",
+    "quote": "Oral administration of BI 425809 in rats induced a dose-dependent increase of glycine CSF levels from 30% (0.2 mg/kg, not significant) to 78% (2 mg/kg, P < 0.01), relative to vehicle.",
+    "confidence": "high",
+    "confidence_note": null,
+    "judgement": "Opener for the iclepertin dose track of the rat CSF-glycine system (Rosenbrock 2018); the bitopertin track of this system is dose 3.",
+    "model_id": "rat-csf-glycine-microdialysis",
+    "prediction_level": "class",
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2018,
+    "print_year": 2018,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Unselected",
+    "model_first_use_year": 2011,
+    "blocked_by": null,
+    "margin_stated": null,
+    "drug": "iclepertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [
@@ -523,7 +670,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "bitopertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "year": 2014,
@@ -574,13 +726,18 @@
       "doi": "10.1016/j.euroneuro.2014.03.007",
       "quote": "In summary, this study failed due to lack of statistical separation of either bitopertin or olanzapine (active control) from placebo on the primary endpoint."
      }
-    ]
+    ],
+    "drug": "bitopertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
-    "year": 2016,
+    "year": 2014,
     "status": "contra",
     "model": "Rodent NMDA-antagonist / psychostimulant hyperlocomotion",
-    "note": "Phase 3 FlashLyte/DayLyte (n=1199): no dose separated on PANSS negative factor; SearchLyte missed in 5/6 arms; AMG 747 missed its primary.",
+    "note": "Phase 3 FlashLyte/DayLyte (n=1199): no dose separated on PANSS negative factor; first public in Roche's 21 Jan 2014 release, so dated 2014 (earliest public date; the 2016 paper sets the status).",
     "short": "Three phase 3s and AMG 747 failed",
     "src": "https://doi.org/10.1016/j.biopsych.2016.11.014",
     "srcLabel": "Bugarski-Kirola 2017",
@@ -588,7 +745,7 @@
     "confidence": "high",
     "confidence_note": null,
     "reason": "Rodent screens positive; phase 3s failed",
-    "judgement": "FlashLyte/DayLyte chosen because they re-tested the exact 2014 prediction, powered, at the same doses. Year 2016 by its online date (15 Dec 2016); Dunayevich (AMG 747, online 24 Oct 2016) and SearchLyte (2 Nov 2016) are earlier contras in the same year. No bitopertin registry record carries results. AMG 747's two trials were terminated early for TEN, so its primary miss is underpowered and is listed, not status-setting. PF-03463275's negative-symptom trial NCT00977522 was terminated in 2010 with no results. Which of NCT01192867/NCT01192880/NCT01192906 is SunLyte, DayLyte or FlashLyte is not stated in the abstract.",
+    "judgement": "FlashLyte/DayLyte chosen because they re-tested the exact 2014 prediction, powered, at the same doses. Year 2014 under the earliest-public-date ruling: Roche's media release of 21 Jan 2014 said FlashLyte and DayLyte 'failed to meet their primary endpoints'; Bugarski-Kirola (online 15 Dec 2016, tier 1) sets the status. Dunayevich (AMG 747, online 24 Oct 2016) and SearchLyte (2 Nov 2016) are later contras. No bitopertin registry record carries results. AMG 747's two trials were terminated early for TEN, so its primary miss is underpowered and is listed, not status-setting. PF-03463275's negative-symptom trial NCT00977522 was terminated in 2010 with no results. Which of NCT01192867/NCT01192880/NCT01192906 is SunLyte, DayLyte or FlashLyte is not stated in the abstract.",
     "model_id": "rodent-nmda-antagonist-behaviour",
     "prediction_level": "class",
     "subjects": "patients",
@@ -662,7 +819,12 @@
       "doi": "10.1016/j.schres.2016.10.027",
       "quote": "Studies were terminated early after a report of Stevens-Johnson Syndrome/Toxic Epidermal Necrolysis (SJS/TEN) in one participant (40-mg AMG 747)."
      }
-    ]
+    ],
+    "drug": "bitopertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "year": 2022,
@@ -707,13 +869,18 @@
       "doi": "10.1016/S2215-0366(20)30513-7",
       "quote": "BI 425809 improved cognition after 12 weeks in patients with schizophrenia; doses of 10 mg and 25 mg showed the largest separation from placebo."
      }
-    ]
+    ],
+    "drug": "iclepertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "year": 2025,
     "status": "contra",
     "model": "Rodent MK-801 cognition and EEG (T-maze, social recognition, ASSR)",
-    "note": "CONNEX-1/2/3 (n=1835, 10 mg, 26 weeks): MCCB composite difference 0.13 T-score points, p=0.63; programme terminated.",
+    "note": "CONNEX-1/2/3 (n=1835, 10 mg, 26 weeks): MCCB composite difference 0.13 T-score points, p=0.63; programme terminated. Topline first public in Boehringer's January 2025 release; year unchanged.",
     "short": "Three phase 3s flat on MCCB",
     "src": "https://doi.org/10.1016/S2215-0366(25)00296-2",
     "srcLabel": "Keefe 2025",
@@ -765,7 +932,12 @@
       "doi": "10.1016/S2215-0366(25)00296-2",
       "quote": "At week 26, there was no significant difference between treatment groups in the primary endpoint."
      }
-    ]
+    ],
+    "drug": "iclepertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "retrodiction": false,
@@ -802,7 +974,12 @@
     "model": "Human visual-evoked-potential LTP (EEG neuroplasticity) in schizophrenia patients",
     "model_kind": "human_challenge",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "pf-03463275",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "retrodiction": false,
@@ -839,7 +1016,7 @@
       "quote": "Despite these controls, neither dose of the study drug improved MCCB scores in patients receiving CT."
      }
     ],
-    "note": "NCT01911676 (n=71 crossover, 5 weeks plus CT): neither 40 nor 60 mg bid improved the primary MCCB composite over CT alone.",
+    "note": "NCT01911676 (n=71 crossover, 5 weeks plus CT): neither 40 nor 60 mg bid improved the primary MCCB composite over CT alone. Design: drug vs placebo, both arms with cognitive training (not a drug partner), scored on the primary.",
     "short": "LTP-guided trial missed MCCB primary",
     "reason": "Human LTP positive; MCCB trial flat",
     "judgement": "A member's own human model with a prospective dose and efficacy test: it said 40 mg bid enhances neuroplasticity and should augment CT; the primary MCCB composite did not move at 40 or 60 mg. The source leaves the LTP-to-cognition link open ('further research is necessary to directly and conclusively link GLYT1 occupancy and/or LTP with the primary outcome'), hence unresolved. The trial's own day-7 LTP replication is 'to be reported elsewhere', so no engagement entry. Separate track from the rodent systems: different model and a different prediction (neuroplasticity augmenting CT, not symptom reversal).",
@@ -847,7 +1024,12 @@
     "model": "Human visual-evoked-potential LTP (EEG neuroplasticity) in schizophrenia patients",
     "model_kind": "human_challenge",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "pf-03463275",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "retrodiction": false,
@@ -884,7 +1066,12 @@
     "model": "Human ketamine-challenge working-memory fMRI in healthy volunteers",
     "model_kind": "human_challenge",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "pf-03463275",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "retrodiction": false,
@@ -903,9 +1090,9 @@
     "source_calls_it": null,
     "population": "Unselected",
     "confidence": "medium",
-    "confidence_note": "Paired by us: Surti 2023 lists the ketamine fMRI among its dose-selection inputs but does not set the null result beside the trial outcome. neg rests on the assay's own positive-call bar because the class has no successful drug to define class_threshold; same + direction_only is the alternative reading.",
+    "confidence_note": "Paired by us: Surti 2023 lists the ketamine fMRI among its dose-selection inputs but does not set the null result beside the trial outcome.",
     "year": 2023,
-    "status": "neg",
+    "status": "same",
     "src": "https://doi.org/10.1016/j.schres.2023.04.010",
     "srcLabel": "Surti 2023",
     "quote": "PF-03463275 in combination with CT was feasible, safe, and well-tolerated at the doses prescribed but did not produce greater improvement in CIAS compared to CT alone.",
@@ -921,17 +1108,22 @@
       "quote": "Despite these controls, neither dose of the study drug improved MCCB scores in patients receiving CT."
      }
     ],
-    "effect_size": "0: no attenuation of any ketamine-induced effect (working-memory activation, accuracy, reaction time, PANSS) at 10-40 mg bid in healthy volunteers",
-    "class_threshold": "attenuation of ketamine-induced working-memory disruption, the assay's positive call; no member drug has met it in humans, so the bar is the assay's own criterion rather than a successful member's effect size",
-    "note": "The assay flagged PF-03463275 as inactive on NMDA-R facilitation; the drug then gave no MCCB benefit over CT alone in NCT01911676.",
+    "effect_size": null,
+    "class_threshold": null,
+    "note": "The assay flagged PF-03463275 as inactive on NMDA-R facilitation; the drug then gave no MCCB benefit over CT alone in NCT01911676. Ruling: neg needs a bar a class drug cleared in this model; none did, so there is no bar and the match is same, direction only.",
     "short": "Assay said inactive; trial flat",
     "reason": "Ketamine assay null; trial null",
-    "judgement": "A model that predicted no effect for a drug that then failed: neg (matched, including a known failure), judged on what the data showed (decision 13). The ketamine-independent accuracy gain at 40 mg pointed the other way and is why the programme continued, but it is not the assay's primary readout. Org 25935's human ketamine challenge (D'Souza 2012) is the same system on a non-member and is not scored.",
+    "judgement": "A model that predicted no effect for a drug that then failed matched in direction. It is not neg: neg needs a bar that a drug of the class cleared in this model, and no member ever attenuated the ketamine effect, so there is no bar; same with magnitude direction_only. The ketamine-independent accuracy gain at 40 mg pointed the other way but is not the assay's primary readout. Org 25935's human ketamine challenge (D'Souza 2012) is a non-member and is not scored.",
     "model_id": "human-ketamine-challenge-fmri-wm",
     "model": "Human ketamine-challenge working-memory fMRI in healthy volunteers",
     "model_kind": "human_challenge",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "pf-03463275",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "retrodiction": false,
@@ -968,7 +1160,12 @@
     "model": "Rhesus monkey ketamine-induced spatial working-memory deficit",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "drug": "pf-03463275",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    },
    {
     "retrodiction": false,
@@ -1005,7 +1202,7 @@
       "quote": "Despite these controls, neither dose of the study drug improved MCCB scores in patients receiving CT."
      }
     ],
-    "note": "PF-03463275 at 40 or 60 mg bid plus cognitive training gave no MCCB benefit over CT alone (NCT01911676, n=71).",
+    "note": "PF-03463275 at 40 or 60 mg bid plus cognitive training gave no MCCB benefit over CT alone (NCT01911676, n=71). Design: drug vs placebo, both arms with cognitive training (not a drug partner), scored on the primary.",
     "short": "Monkey positive; MCCB trial flat",
     "reason": "Monkey WM reversal; patients no gain",
     "judgement": "Different system from the rodent NMDA-antagonist tracks (primate, ketamine, delayed-response working memory, member drug dosed) and a prospective prediction from 2010, so its own track under this run's rule. Its human translation was already contradicted in 2018; the patient trial confirms.",
@@ -1013,27 +1210,32 @@
     "model": "Rhesus monkey ketamine-induced spatial working-memory deficit",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "drug": "pf-03463275",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
    }
   ],
   "safety": [
    {
     "year": 2013,
-    "status": "retro",
+    "status": "untested",
     "model": "Rat scotopic ERG oscillatory potentials",
-    "note": "After visual disturbances appeared in GlyT1-inhibitor trials, PF-03463275 cut rat ERG oscillatory potentials up to ~70%, tracking vitreous drug level.",
+    "note": "PF-03463275 cut rat ERG oscillatory potentials up to ~70%, tracking vitreous level; predicts visual disturbance. No PF-03463275 patient visual data found.",
     "short": "Rat ERG reproduced visual disturbance",
     "src": "https://doi.org/10.3109/15569527.2013.833937",
     "srcLabel": "Liu 2013",
     "quote": "We conclude that inhibition of the GlyT1 transporter in the retina causes ERG changes which may underlie recent reports of visual disturbance with GlyT1 inhibitors in clinical trials.",
     "confidence": "medium",
     "confidence_note": "Abstract-level; the clinical reports it refers to are not named, so subjects is null.",
-    "reason": "Rat ERG reproduced visual disturbance",
-    "judgement": "A retrodiction by the paper's own framing (built to explain clinical reports), so retro, not same. Its own track: a different system and harm from the haematology track. No prospective ERG prediction was found afterwards.",
+    "reason": "Visual harm not reported for PF-03463275",
+    "judgement": "Was retro. Ruling: for safety only the same drug's own earlier patient result makes a retrodiction; the source cites visual disturbance with 'GlyT1 inhibitors' in trials without naming PF-03463275, so it rests on other drugs and is undone. As a prospective harm prediction for PF-03463275 it is untested: Surti 2023 reports no AE-rate difference vs placebo (Table S3) but no visual-event count.",
     "model_id": "rat-erg-oscillatory-potentials",
     "prediction_level": "class",
     "subjects": null,
-    "comparison_stated": true,
+    "comparison_stated": false,
     "source_tier": 1,
     "model_src": "https://doi.org/10.3109/15569527.2013.833937",
     "model_src_tier": 1,
@@ -1045,13 +1247,18 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": true,
+    "retrodiction": false,
     "imported_from": null,
-    "magnitude": "direction_only",
+    "magnitude": null,
     "magnitude_basis": "presence of a visual/retinal effect",
-    "source_calls_it": "match",
+    "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "pf-03463275",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "year": 2016,
@@ -1086,7 +1293,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "bitopertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "year": 2026,
@@ -1122,7 +1334,52 @@
     "magnitude_basis": "haemoglobin fall (rodent reversible reduction, unnumbered; patients -2.4 g/L)",
     "source_calls_it": "match",
     "population": "Unselected",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "drug": "iclepertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": null
+   },
+   {
+    "year": 2026,
+    "status": "untested",
+    "model": "Rodent haematology (haemoglobin) in pharmacology and toxicology",
+    "note": "Iclepertin rodent studies showed a reversible haemoglobin fall; first public in Nagy 2026, though run before the 2014 first-in-human.",
+    "short": "Rodent Hb fall with iclepertin",
+    "src": "https://doi.org/10.1002/jcph.70184",
+    "srcLabel": "Nagy 2026",
+    "quote": "Nonclinical studies of iclepertin-treated rodents demonstrated a reversible reduction in hemoglobin versus vehicle-control animals.",
+    "confidence": "medium",
+    "confidence_note": "Abstract-level; the rodent magnitude is not numbered, so direction only. Two verbatim spans joined by an ellipsis.",
+    "judgement": "Opener for the iclepertin track of the rodent haematology system; the rodent iclepertin data are first public in Nagy 2026 (May 2026 issue), the same source as the comparison (safety 3). The bitopertin track is safety 2.",
+    "model_id": "rodent-hematology-hb",
+    "prediction_level": "class",
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": null,
+    "print_year": 2026,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Unselected",
+    "model_first_use_year": 2016,
+    "drug": "iclepertin",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unpublished"
    }
   ]
  }

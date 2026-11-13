@@ -50,7 +50,11 @@
     "src": "https://doi.org/10.1053/j.gastro.2007.03.104",
     "srcLabel": "Elson 2007",
     "quote": "Monoclonal anti-IL-23p19 prevented and treated active colitis, with down-regulation of a broad array of inflammatory cytokines and chemokines in the colon.",
-    "judgement": "Abstract-level reading (PMID 17570211). The antibody was an anti-mouse p19 mAb, not a class member (product_in_model false). Model first use 2007 for an anti-p19 antibody; p19-knockout work (Yen 2006, doi:10.1172/JCI21404) is genetic, not antibody, and is not opened as a track."
+    "judgement": "Abstract-level reading (PMID 17570211). The antibody was an anti-mouse p19 mAb, not a class member (product_in_model false). Model first use 2007 for an anti-p19 antibody; p19-knockout work (Yen 2006, doi:10.1172/JCI21404) is genetic, not antibody, and is not opened as a track.",
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -87,7 +91,11 @@
     "quote": "Differentiated expression of genes associated with the IL-23/IL-17 axis was observed in the colon and ileum 12 weeks after risankizumab treatment.",
     "reason": "Colonic IL-23/IL-17 readout fell in patients",
     "judgement": "Paired comparison (comparison_stated false): Visvanathan does not cite the mouse data. Readout is downstream (axis transcripts, not IL-23 occupancy). Direction only; the quantities are not commensurable. Feagan 2017 CRP/calprotectin falls would give the same call a year earlier but are not the mouse readout.",
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -124,7 +132,12 @@
     "src": "https://doi.org/10.1053/j.gastro.2007.03.104",
     "srcLabel": "Elson 2007",
     "quote": "Monoclonal anti-IL-23p19 was administered at the same time as or 4 weeks after pathogenic CD4 T-cell transfer.",
-    "judgement": "Not an empty cell: a model existed and was used, but a surrogate antibody dosed at 15 mg/kg IP (FDA BLA 761262 review) cannot translate to a human regimen. The FDA review says the phase 2 study, not any model, 'supported the dose selection for induction treatment in phase 3'."
+    "judgement": "Not an empty cell: a model existed and was used, but a surrogate antibody dosed at 15 mg/kg IP (FDA BLA 761262 review) cannot translate to a human regimen. The FDA review says the phase 2 study, not any model, 'supported the dose selection for induction treatment in phase 3'.",
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -159,7 +172,11 @@
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761105Orig1s000MultidisciplineR.pdf",
     "srcLabel": "FDA 2019 (BLA 761105 review)",
     "quote": "There were no treatment-related effects on respiratory rate or body temperature in Cynomolgus monkeys subcutaneously treated with doses up to 50 mg/kg/week risankizumab for 6 months.",
-    "judgement": "Opener for the toxicology track at its first public date (psoriasis BLA review, April 2019); the monkey studies predate it but were unpublished."
+    "judgement": "Opener for the toxicology track at its first public date (psoriasis BLA review, April 2019); the monkey studies predate it but were unpublished.",
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -196,7 +213,11 @@
     "quote": "The 50 mg/kg dose in monkeys provides approximately 1.3 times the exposure (AUC) in humans administered the 600 mg induction regimen, and 3.1 times the exposure in humans administered the 360 mg maintenance regimen for CD.",
     "reason": "Dosed to target within the monkey margin",
     "judgement": "Decision 16: a stated tolerability margin that held. The reviewer approved 600 mg IV as 'the lowest effective dosage'; no toxicity block. A stricter reader could call the 1.3x margin misplaced and score contra with blocked_by toxicity, but the dose was never lowered, so I did not.",
-    "margin_stated": true
+    "margin_stated": true,
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -233,7 +254,11 @@
     "quote": "A two-compartment model with first-order absorption and elimination described the pharmacokinetics of risankizumab.",
     "judgement": "Opens the in-silico track at its first public date (PubMed 2018-08-21; print March 2019). One track for the sponsors' phase 2 popPK/exposure-response dose models (AbbVie risankizumab; Lilly mirikizumab, CTS 2025) under the identity rule: same system class, same prediction (the phase 2 exposure plateau fixes the induction dose). Surrogate mouse dosing (15 mg/kg IP) set no human target, so this is the only model that stated one.",
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -271,7 +296,11 @@
     "reason": "600 mg IV reached; phase 3 confirmed plateau",
     "judgement": "Dose table case 'reached, drug worked': the regimen the phase 2 exposure-response read chose (600 mg IV at weeks 0, 4, 8) was given in ADVANCE/MOTIVATE (registry 2022-06-14 and 2022-07-06), met both coprimaries, and the 1200 mg arm showed no added benefit, so the target was enough. Maintenance was not model-chosen (no phase 2 dose-ranging; 180 vs 360 mg SC showed no dose-response). The hepatotoxicity at this exposure is counted once, in safety on the cynomolgus track, because this model stated no margin. Tier-1 corroboration that changes no status: Suleiman 2023 CPT (doi 10.1002/cpt.2831, epub 2023-01-20, abstract-level) says the same from phase 2+3 data, and Lilly's mirikizumab model (doi 10.1111/cts.70320, 2025) found VIVID-1's 900 mg result 'aligned with SERENITY'.",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -308,7 +337,11 @@
     "src": "https://doi.org/10.1126/science.1135245",
     "srcLabel": "Duerr 2006",
     "quote": "An uncommon coding variant (rs11209026, c.1142G>A, p.Arg381Gln) confers strong protection against Crohn's disease, and additional noncoding IL23R variants are independently associated.",
-    "judgement": "Human genetic track (model_kind human_genetic), separate from the mouse because it is a different system with its own prediction (receptor loss of function protects, so blocking the ligand should treat). model_filed true: the mirikizumab BLA 761279 review cites this GWAS in its background; the risankizumab Crohn's review does not."
+    "judgement": "Human genetic track (model_kind human_genetic), separate from the mouse because it is a different system with its own prediction (receptor loss of function protects, so blocking the ligand should treat). model_filed true: the mirikizumab BLA 761279 review cites this GWAS in its background; the risankizumab Crohn's review does not.",
+    "drug": "class",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -343,7 +376,11 @@
     "src": "https://doi.org/10.1053/j.gastro.2007.03.104",
     "srcLabel": "Elson 2007",
     "quote": "Inhibition of IL-23p19 was effective in both prevention and treatment of active colitis.",
-    "judgement": "One track for the sponsors' mouse colitis models (T-cell transfer and anti-CD40, risankizumab surrogate PR-963484 in BLA 761262; two unnamed murine IBD models with mirikizumab surrogate LSN2479016 in BLA 761279): same system class, same prediction."
+    "judgement": "One track for the sponsors' mouse colitis models (T-cell transfer and anti-CD40, risankizumab surrogate PR-963484 in BLA 761262; two unnamed murine IBD models with mirikizumab surrogate LSN2479016 in BLA 761279): same system class, same prediction.",
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -424,7 +461,11 @@
       "doi": null,
       "quote": "The study was early terminated and development of brazikumab stopped."
      }
-    ]
+    ],
+    "drug": "class",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -506,7 +547,11 @@
       "doi": null,
       "quote": "The study was early terminated and development of brazikumab stopped."
      }
-    ]
+    ],
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -536,6 +581,7 @@
     "confidence_note": "Full text read (PMC6580782). The ex-vivo antibody was a commercial anti-IL23p19 (R&D Systems), not a class member.",
     "year": 2018,
     "status": "untested",
+    "untested_reason": "no_prediction",
     "note": "Apoptosis-resistant TNFR2+IL23R+ T cells expand in anti-TNF non-responders; ex-vivo anti-IL23p19 induced their apoptosis, naming IL-23 as the target in that group.",
     "short": "IL-23 named as target in anti-TNF failures",
     "src": "https://doi.org/10.1136/gutjnl-2017-315671",
@@ -543,7 +589,11 @@
     "quote": "These findings identify IL-23 as a suitable molecular target in patients with Crohn's disease refractory to anti-TNF therapy.",
     "judgement": "Opener at first use (epub 2018-05-30). A patient-level system: patient mucosal organ cultures and LPMCs sorted by anti-TNF response, with anti-IL23p19 and IL-23 added ex vivo. Separate from the mouse and genetic tracks because it is a different system with its own prediction (which patients, not whether the class works). model_filed false: neither bundled FDA review cites it.",
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -594,10 +644,14 @@
       "doi": "10.1053/j.gastro.2017.03.049",
       "quote": "The primary outcome, clinical response (either a 100-point decrease in CD Activity Index score from baseline or clinical remission, defined as CD Activity Index score <150) at week 8 occurred in 49.2% of patients receiving MEDI2070 (n = 59) compared with 26.7% receiving placebo (n = 60; absolute difference, 22.5%; 95% confidence interval, 5.6%-39.5%; P = .010)."
      }
-    ]
+    ],
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "model_id": "cd-patient-lpmc-anti-tnf-refractory-exvivo",
     "model": "Crohn's patient mucosal organ cultures and lamina propria T cells from anti-TNF non-responders (anti-IL23p19 ex vivo)",
@@ -623,14 +677,14 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level reading of D'Haens 2022 (Europe PMC rendering; the abstract CI dashes are written as hyphens there). Paired by me; D'Haens does not cite the ex-vivo work.",
     "year": 2022,
-    "status": "same",
-    "note": "MOTIVATE, run only in biologic (mostly anti-TNF) failures, met both coprimaries with risankizumab 600 mg: remission 42% vs 20%, endoscopic response 29% vs 11%.",
+    "status": "retro",
+    "note": "MOTIVATE (biologic failures, risankizumab 600 mg IV) met both coprimaries; it retests the claim the 2018 model drew from the 2017 phase 2 results, so the track stays retro.",
     "short": "Anti-TNF failures responded as predicted",
     "src": "https://doi.org/10.1016/S0140-6736(22)00467-6",
     "srcLabel": "D'Haens 2022",
     "quote": "In MOTIVATE, CDAI clinical remission rate was 42% (22%, 13-31; 80/191) with risankizumab 600 mg and 40% (21%, 12-29; 77/191) with risankizumab 1200 mg versus 20% (37/187) with placebo",
     "reason": "Anti-TNF-refractory patients responded as predicted",
-    "judgement": "The first prospective test after the retrodiction (decision 10): MOTIVATE's result (registry 2022-06-14, Lancet May 2022) postdates the 2018 prediction, and its population is exactly the one the model named. Scored same, patient-level, but weakly: the cellular marker (TNFR2+IL23R+ expansion) was never measured in trial patients, and the model's prediction was itself shaped by the phase 2 data, so this is population-level concordance, direction only. Mirikizumab VIVID-1 (2024) and ADVANCE's biologic-failure stratum would add nothing to the status.",
+    "judgement": "The first prospective test after the retrodiction (decision 10): MOTIVATE's result (registry 2022-06-14, Lancet May 2022) postdates the 2018 prediction, and its population is exactly the one the model named. Scored same, patient-level, but weakly: the cellular marker (TNFR2+IL23R+ expansion) was never measured in trial patients, and the model's prediction was itself shaped by the phase 2 data, so this is population-level concordance, direction only. Mirikizumab VIVID-1 (2024) and ADVANCE's biologic-failure stratum would add nothing to the status. Ruling (decision 10, check adjudication): MOTIVATE was registered 2017-04-07, its biologic-failure design fixed before the 2018 model, and it retests the phase 2 result the model was framed on; no fresh prospective prediction, so retro, not same, with strengthens true on the retro track.",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
@@ -652,7 +706,12 @@
       "doi": "10.1016/S0140-6736(22)00467-6",
       "quote": "In MOTIVATE, CDAI clinical remission rate was 42% (22%, 13-31; 80/191) with risankizumab 600 mg and 40% (21%, 12-29; 77/191) with risankizumab 1200 mg versus 20% (37/187) with placebo"
      }
-    ]
+    ],
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "stage_or_line",
+    "combination_with": null,
+    "strengthens": true
    }
   ],
   "safety": [
@@ -689,7 +748,11 @@
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761105Orig1s000MultidisciplineR.pdf",
     "srcLabel": "FDA 2019 (BLA 761105 review)",
     "quote": "There were no treatment-related effects on respiratory rate or body temperature in Cynomolgus monkeys subcutaneously treated with doses up to 50 mg/kg/week risankizumab for 6 months.",
-    "judgement": "Opener at the toxicology track's first public date. The monkey ePPND study did predict dose-dependent fetal/infant loss, which no human pregnancy dataset has tested, so it stays uncompared."
+    "judgement": "Opener at the toxicology track's first public date. The monkey ePPND study did predict dose-dependent fetal/infant loss, which no human pregnancy dataset has tested, so it stays uncompared.",
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -725,7 +788,11 @@
     "srcLabel": "FDA 2022 (BLA 761262 review)",
     "quote": "However, a risk of hepatotoxicity related to risankizumab exposure emerged during the safety review of this marketing application that may be attributed to the higher dosage and route of administration proposed for the CD indication.",
     "reason": "Missed the Crohn's induction hepatotoxicity",
-    "judgement": "Silence contradicted on a harm the species could have shown (clinical pathology was measured and normal at 1.3x the human AUC). Paired within the review, which never states the comparison, so comparison_stated false with the psoriasis-BLA monkey data as model_src. Counted here, not in dose, because the monkey did not predict it. Class corroboration: the mirikizumab UC review (BLA 761279, 2023) also found 'A risk of hepatotoxicity related to mirikizumab' with clean monkeys; being another indication it would be imported and changes nothing. magnitude null: a missed harm has no model number."
+    "judgement": "Silence contradicted on a harm the species could have shown (clinical pathology was measured and normal at 1.3x the human AUC). Paired within the review, which never states the comparison, so comparison_stated false with the psoriasis-BLA monkey data as model_src. Counted here, not in dose, because the monkey did not predict it. Class corroboration: the mirikizumab UC review (BLA 761279, 2023) also found 'A risk of hepatotoxicity related to mirikizumab' with clean monkeys; being another indication it would be imported and changes nothing. magnitude null: a missed harm has no model number.",
+    "drug": "risankizumab",
+    "route": "iv",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

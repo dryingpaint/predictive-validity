@@ -52,7 +52,11 @@
     "quote": "In vivo, AZD8931 inhibited xenograft growth in a range of models while significantly affecting EGFR, erbB2, and erbB3 phosphorylation and downstream signaling pathways, apoptosis, and proliferation.",
     "reason": "No human erbB phosphorylation readout found",
     "judgement": "The model's PD readout was ex-vivo erbB phosphorylation. MINT's rash and diarrhoea show EGFR-class pharmacology in patients but are not that readout, so the track stays untested.",
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "sapitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -89,7 +93,11 @@
     "quote": "It reduced the level of p-HER2, p-AKT, p-ERK, and p-STAT3.",
     "reason": "No patient p-HER2 readout published",
     "judgement": "Ma 2017 (pyrotinib phase 1) sequenced ctDNA for predictive mutations and reported no target-phosphorylation readout; nothing paired the cell-line p-HER2 drop with dosed patients for any member, so untested, not an empty cell.",
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -127,7 +135,11 @@
     "judgement": "The model's PD readout is tumour HER-pathway phosphorylation; no sapitinib trial reported one, so engagement stays untested on this track.",
     "reason": "No patient HER-phosphorylation readout exists",
     "patient_trials": null,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "sapitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -164,7 +176,12 @@
     "short": "No exposure-vs-model comparison published",
     "quote": "AZD8931 provides the opportunity to investigate whether simultaneous inhibition of erbB receptor signaling could be of utility in the clinic, particularly in the majority of solid tumors that do not overexpress erbB2.",
     "reason": "No exposure-vs-model comparison published",
-    "judgement": "MINT failed on efficacy, but the rule's 'reached, failed, abandoned' row needs evidence the model's exposure target was reached; I found none at abstract level, so dose stays untested rather than a derived contra."
+    "judgement": "MINT failed on efficacy, but the rule's 'reached, failed, abandoned' row needs evidence the model's exposure target was reached; I found none at abstract level, so dose stays untested rather than a derived contra.",
+    "drug": "sapitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -197,7 +214,12 @@
     "srcLabel": "Kim 2012",
     "note": "Nanomolar IC50s in HER2-amplified breast lines; no exposure target stated for patients.",
     "short": "Nanomolar IC50 in HER2-amplified lines",
-    "quote": "The HER2-amplified cells (SK-BR-3, BT474, and MDA-MB-453) were sensitive to HM781-36B (IC50=0.001 μmol/l, 0.0012 μmol/l, and 0.0095 μmol/l, respectively)."
+    "quote": "The HER2-amplified cells (SK-BR-3, BT474, and MDA-MB-453) were sensitive to HM781-36B (IC50=0.001 μmol/l, 0.0012 μmol/l, and 0.0095 μmol/l, respectively).",
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -233,7 +255,11 @@
     "quote": "The dose-limiting toxicity was grade 3 diarrhea, which occurred in two patients administered 480 mg of pyrotinib; thus, the maximum tolerated dose was 400 mg.",
     "margin_stated": true,
     "reason": "Effective dose reached; margin held",
-    "judgement": "Li 2017 stated 'sufficiently safety windows in animals' and favourable human PK (margin_stated). 400 mg was deliverable and became the phase 2/3 dose that beat lapatinib, so 'reached, drug worked' = same. DLT diarrhoea sat at 480 mg, 1.2x the effective dose, and 31% had grade 3 diarrhoea at 400 mg in PHOEBE; the unpredicted harm is counted once, in safety. Phase 1 NCT not located; registry_date null."
+    "judgement": "Li 2017 stated 'sufficiently safety windows in animals' and favourable human PK (margin_stated). 400 mg was deliverable and became the phase 2/3 dose that beat lapatinib, so 'reached, drug worked' = same. DLT diarrhoea sat at 480 mg, 1.2x the effective dose, and 31% had grade 3 diarrhoea at 400 mg in PHOEBE; the unpredicted harm is counted once, in safety. Phase 1 NCT not located; registry_date null.",
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -271,7 +297,53 @@
     "model_first_use_year": 2014,
     "judgement": "No exposure target or margin in the model paper, so neither the 'reached' rows nor decision 16 can be applied; mirrors the checker-confirmed call on the Hickinson 2010 track.",
     "reason": "No exposure-vs-model comparison possible",
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "sapitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
+   },
+   {
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2017,
+    "print_year": 2017,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "HER2-positive",
+    "model_first_use_year": 2012,
+    "confidence": "medium",
+    "confidence_note": "Li 2017 read at abstract level only (paywalled); the animal toxicology tables were not read.",
+    "prediction_level": "class",
+    "year": 2017,
+    "status": "untested",
+    "model": "HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)",
+    "model_id": "her2-amplified-breast-xenografts",
+    "src": "https://doi.org/10.1016/j.ejps.2017.01.021",
+    "srcLabel": "Li 2017",
+    "note": "Opening entry for pyrotinib on this model: animal safety windows and human PK stated as supporting the clinical dose.",
+    "short": "Animal window stated for pyrotinib",
+    "quote": "Overall, the potent and selective EGFR/HER2 dual inhibitor, pyrotinib, displayed robust anti-tumor effects on HER2-overexpressing xenograft models and sufficiently safety windows in animals as well as favorable pharmacokinetic properties in human, which substantially ensures current clinical development.",
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "margin_stated": true,
+    "blocked_by": null,
+    "judgement": "Opening entry at the model's first public use for pyrotinib (track split, 2026-11-09 rulings).",
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [
@@ -307,7 +379,11 @@
     "note": "AZD8931's equipotent EGFR/HER2/HER3 blockade was pitched for the majority of solid tumours that do not overexpress HER2.",
     "short": "Pitched for HER2-non-overexpressing tumours",
     "quote": "AZD8931 provides the opportunity to investigate whether simultaneous inhibition of erbB receptor signaling could be of utility in the clinic, particularly in the majority of solid tumors that do not overexpress erbB2.",
-    "endpoint_role": null
+    "endpoint_role": null,
+    "drug": "sapitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -341,7 +417,12 @@
     "note": "Poziotinib arrested HER2-amplified breast lines at nanomolar IC50; pyrotinib later regressed HER2-overexpressing xenografts.",
     "short": "HER2-amplified lines sensitive at nanomolar",
     "quote": "HM781-36B could be a promising treatment for HER2-amplified breast cancer as a single agent or in combination with cytotoxic agents and can be a candidate for treatment of HER2-nonamplified breast cancer in combination with cytotoxic agents.",
-    "endpoint_role": null
+    "endpoint_role": null,
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -364,15 +445,15 @@
     "population": "HR+ HER2-low/negative, endocrine-naive",
     "model_first_use_year": 2010,
     "confidence": "medium",
-    "confidence_note": "Abstract-level. Year is the NCT01151215 results posting (2014-05-08); the paper is the status-setting tier 1 record. THYME (NCT00900627, paclitaxel +/- AZD8931 in HER2-low, results posted 2014-09-29) was not read.",
+    "confidence_note": "Year is the ASCO 2013 abstract (J Clin Oncol 31 suppl 531, https://doi.org/10.1200/jco.2013.31.15_suppl.531, 2013-05-20: 'Co-blockade of EGFR, HER2, HER3 in combination with aromatase inhibition does not appear to delay endocrine resistance'), before the NCT01151215 results posting (2014-05-08); the paper is the status-setting tier 1 record, read at abstract level. THYME (NCT00900627, paclitaxel +/- AZD8931 in HER2-low, results posted 2014-09-29) was not read.",
     "prediction_level": "patient",
-    "year": 2014,
+    "year": 2013,
     "status": "contra",
     "model": "AZD8931 xenograft panel incl. HER2 non-overexpressing tumours",
     "model_id": "azd8931-her2-low-xenograft-panel",
     "src": "https://doi.org/10.1007/s10549-016-3979-5",
     "srcLabel": "Johnston 2016",
-    "note": "MINT: adding AZD8931 to anastrozole in HR+, HER2-non-amplified advanced breast cancer did not improve PFS (HR 1.37 and 1.16 vs placebo).",
+    "note": "Combination design: AZD8931 added to anastrozole vs anastrozole plus placebo, scored on PFS. MINT (HER2-negative, endocrine-naive) did not improve PFS (HR 1.37 and 1.16); first public as ASCO 2013 abstract 531 (2013-05-20).",
     "short": "Sapitinib fails in HER2-low breast cancer",
     "quote": "AZD8931, in combination with endocrine therapy, does not appear to enhance endocrine responsiveness and is associated with greater skin and gastrointestinal toxicity.",
     "endpoint_role": "primary",
@@ -386,7 +467,12 @@
      }
     ],
     "reason": "Model's HER2-low prediction failed in MINT",
-    "judgement": "Patient-level prediction: the panel predicted benefit where HER2 is not overexpressed, and the randomised phase 2 primary endpoint (PFS) went numerically the wrong way at both doses. A different model system from track A, so it does not pull the HER2-positive track down. MINT's population sits outside the context population, which is why the entry carries its own population."
+    "judgement": "Patient-level prediction: the panel predicted benefit where HER2 is not overexpressed, and the randomised phase 2 primary endpoint (PFS) went numerically the wrong way at both doses. A different model system from track A, so it does not pull the HER2-positive track down. MINT's population sits outside the context population, which is why the entry carries its own population.",
+    "drug": "sapitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "anastrozole",
+    "untested_reason": "not_measured"
    },
    {
     "subjects": "patients",
@@ -402,22 +488,22 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "xenograft regression vs 21-point ORR gain",
     "source_calls_it": null,
     "population": "HER2-positive",
     "model_first_use_year": 2012,
     "confidence": "high",
-    "confidence_note": "Abstract-level. NCT02422199 first posted 2015-04-21, no results posted, so registry_date is null. model_filed null: pyrotinib was approved by China's NMPA, whose review is not in the bundle; no FDA NDA exists.",
+    "confidence_note": "Abstract-level. Year is SABCS 2017 abstract PD3-08 (2017 Dec 5-9; Cancer Res 2018;78(4 Suppl)), which reported ORR 78.5% vs 57.1%, before Ma 2019's epub (2019-08-20). NCT02422199 first posted 2015-04-21, no results posted, so registry_date is null. model_filed null: pyrotinib was approved by China's NMPA, whose review is not in the bundle; no FDA NDA exists.",
     "prediction_level": "class",
-    "year": 2019,
-    "status": "same",
+    "year": 2017,
+    "status": "retro",
     "model": "HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)",
     "model_id": "her2-amplified-breast-xenografts",
     "src": "https://doi.org/10.1200/jco.19.00108",
     "srcLabel": "Ma 2019",
-    "note": "Randomised phase 2: pyrotinib + capecitabine beat lapatinib + capecitabine on the primary ORR endpoint (78.5% vs 57.1%) and on PFS (18.1 vs 7.0 months).",
+    "note": "Combination design: pyrotinib + capecitabine vs lapatinib + capecitabine, scored on primary ORR (78.5% vs 57.1%). Retrodiction: neratinib had already shown HER2-positive breast activity in 2010; first public at SABCS 2017 (PD3-08).",
     "short": "Pyrotinib beats lapatinib on ORR and PFS",
     "quote": "The overall response rate was 78.5% (95% CI, 68.5% to 88.5%) with pyrotinib and 57.1% (95% CI, 44.9% to 69.4%) with lapatinib (treatment difference, 21.3%; 95% CI, 4.0% to 38.7%; P = .01).",
     "endpoint_role": "primary",
@@ -428,12 +514,6 @@
       "registry_date": null,
       "doi": "10.1200/jco.2016.69.6179",
       "quote": "The overall response rate was 50.0% (18 of 36), and the clinical benefit rate (complete response + partial response + stable disease ≥ 24 weeks) was 61.1% (22 of 36)."
-     },
-     {
-      "nct": "NCT02418689",
-      "registry_date": null,
-      "doi": "10.1002/ijc.31651",
-      "quote": "The median PFS was 4.04 months (95% confidence interval [CI], 2.94-4.40 months), and median overall survival has not been reached."
      },
      {
       "nct": "NCT03080805",
@@ -448,8 +528,12 @@
       "quote": "The ORR was 30% in both groups (p = 0.98)."
      }
     ],
-    "reason": "Xenograft activity held in HER2+ patients",
-    "judgement": "Direction matched, magnitude not (xenograft regression vs a 21-point ORR gain), so direction_only. PHOEBE (phase 3, PFS HR 0.39, 2021) and PHENIX (NCT02973737, no results posted, not read) confirm; one entry per status change so they sit in patient_trials. Poziotinib on the same track showed activity (ORR ~30%, PFS 4.0 months, single-arm) in heavily pretreated HER2+ patients, so no member contradicts the model here; it stopped for toxicity, scored in safety. Earlier phase 1 (Ma 2017, ORR 50%) matched in direction but was not a primary-endpoint efficacy trial."
+    "reason": "Reproduces known HER2-TKI benefit in HER2+",
+    "judgement": "Rule question settled by the 2026-11-09 rulings: tracks are per drug, so Park 2018 (poziotinib, single-arm, scored against the predicted direction) is its own appended entry and does not date this pyrotinib track; this track's first public match is SABCS 2017. Engagement and efficacy are target claims: Neratinib (pan-HER, irreversible) showed HER2-positive breast activity in patients in Burstein 2010 (JCO, epub 2010-02-08, doi 10.1200/JCO.2009.25.8707), before Kim 2012 or Li 2017 were public, so the xenograft prediction reproduces a known result: retro, direction_only (xenograft regression vs a 21-point ORR gain). PHOEBE (phase 3, PFS HR 0.39, 2021) confirms and sits in patient_trials.",
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "capecitabine"
    },
    {
     "retrodiction": false,
@@ -486,7 +570,12 @@
     "population": "ER+/HER2-negative, acquired tamoxifen resistance",
     "model_first_use_year": 2014,
     "judgement": "Opening entry at first use. The in-vivo prediction (benefit in tamoxifen-resistant ER+/HER2-negative disease) was never taken into a trial of endocrine-resistant patients.",
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "sapitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": true,
@@ -531,7 +620,103 @@
       "doi": "10.1007/s10549-016-3979-5",
       "quote": "AZD8931, in combination with endocrine therapy, does not appear to enhance endocrine responsiveness and is associated with greater skin and gastrointestinal toxicity."
      }
-    ]
+    ],
+    "drug": "sapitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "anastrozole",
+    "untested_reason": "not_measured"
+   },
+   {
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1097/cad.0b013e32834e7d9b",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2018,
+    "print_year": 2018,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": true,
+    "magnitude": "direction_only",
+    "magnitude_basis": "nanomolar IC50 in HER2-amplified lines vs median PFS 4.04 months, single arm",
+    "source_calls_it": null,
+    "population": "HER2-positive metastatic breast cancer after at least two HER2-directed regimens",
+    "model_first_use_year": 2012,
+    "confidence": "medium",
+    "confidence_note": "Abstract-level (Europe PMC). No earlier congress abstract of NOV120101-203 found; no registry results posted for NCT02418689. ORR not given in the abstract.",
+    "prediction_level": "class",
+    "year": 2018,
+    "status": "retro",
+    "model": "HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)",
+    "model_id": "her2-amplified-breast-xenografts",
+    "src": "https://doi.org/10.1002/ijc.31651",
+    "srcLabel": "Park 2018",
+    "note": "Single-arm phase 2 (NOV120101-203) with no success bar set in advance, scored on primary PFS against the predicted direction: median PFS 4.04 months, activity as the cell lines predicted. Retrodiction: neratinib was earlier.",
+    "short": "Poziotinib active in pretreated HER2+ disease",
+    "quote": "Poziotinib showed meaningful activity in these heavily treated HER2-positive mBCs.",
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "endpoint_role": "primary",
+    "outcome_tested": null,
+    "patient_trials": [
+     {
+      "nct": "NCT02418689",
+      "registry_date": null,
+      "doi": "10.1002/ijc.31651",
+      "quote": "The median PFS was 4.04 months (95% confidence interval [CI], 2.94-4.40 months), and median overall survival has not been reached."
+     }
+    ],
+    "reason": "Reproduces known HER2-TKI activity",
+    "judgement": "Split from the pyrotinib entry (efficacy 4): poziotinib is its own track on this model. Single-arm ruling: no pre-set bar, so scored on direction; the authors call PFS 4.04 months meaningful activity, a response where Kim 2012 predicted one. Neratinib (pan-HER, irreversible) showed HER2-positive breast activity in patients in Burstein 2010 (JCO, epub 2010-02-08, doi 10.1200/JCO.2009.25.8707), before Kim 2012 or Li 2017 were public, so retro rather than same. This settles the checker rule question on Park 2018."
+   },
+   {
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2017,
+    "print_year": 2017,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "HER2-positive",
+    "model_first_use_year": 2012,
+    "confidence": "medium",
+    "confidence_note": "Li 2017 read at abstract level only (paywalled); the animal toxicology tables were not read.",
+    "prediction_level": "class",
+    "year": 2017,
+    "status": "untested",
+    "model": "HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)",
+    "model_id": "her2-amplified-breast-xenografts",
+    "src": "https://doi.org/10.1016/j.ejps.2017.01.021",
+    "srcLabel": "Li 2017",
+    "note": "Opening entry for pyrotinib on this model: HER2-overexpressing xenografts regressed on pyrotinib.",
+    "short": "Pyrotinib xenograft activity in HER2+",
+    "quote": "Overall, the potent and selective EGFR/HER2 dual inhibitor, pyrotinib, displayed robust anti-tumor effects on HER2-overexpressing xenograft models and sufficiently safety windows in animals as well as favorable pharmacokinetic properties in human, which substantially ensures current clinical development.",
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "endpoint_role": null,
+    "outcome_tested": null,
+    "patient_trials": null,
+    "judgement": "Opening entry at the model's first public use for pyrotinib (track split, 2026-11-09 rulings).",
+    "untested_reason": "no_prediction"
    }
   ],
   "safety": [
@@ -568,7 +753,12 @@
     "short": "Model tolerability not stated",
     "quote": "In vivo, AZD8931 inhibited xenograft growth in a range of models while significantly affecting EGFR, erbB2, and erbB3 phosphorylation and downstream signaling pathways, apoptosis, and proliferation.",
     "reason": "No stated model prediction to score",
-    "judgement": "I could not confirm what AZD8931's rodent or dog toxicology said about GI or skin harm, so the class toxicities seen in MINT are not scored against this track."
+    "judgement": "I could not confirm what AZD8931's rodent or dog toxicology said about GI or skin harm, so the class toxicities seen in MINT are not scored against this track.",
+    "drug": "sapitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -601,7 +791,12 @@
     "srcLabel": "Kim 2012",
     "note": "Cell lines cannot show the EGFR-driven diarrhoea and stomatitis the class produces.",
     "short": "Cell lines blind to GI harm",
-    "quote": "It reduced the level of p-HER2, p-AKT, p-ERK, and p-STAT3."
+    "quote": "It reduced the level of p-HER2, p-AKT, p-ERK, and p-STAT3.",
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -632,12 +827,16 @@
     "model_id": "her2-amplified-breast-xenografts",
     "src": "https://doi.org/10.1200/jco.2016.69.6179",
     "srcLabel": "Ma 2017",
-    "note": "Grade 3 diarrhoea was pyrotinib's DLT at 480 mg (44.7% any grade), after the discovery paper claimed sufficient animal safety windows; 31% grade 3 in PHOEBE.",
+    "note": "Li 2017's claim of 'sufficiently safety windows in animals' is a tolerability prediction (ruling: passing claims scored); grade 3 diarrhoea was the DLT at 480 mg and 31% grade 3 in PHOEBE.",
     "short": "Diarrhoea DLT despite stated animal window",
     "quote": "The only grade 3 adverse event was diarrhea.",
     "imported_from": null,
     "reason": "Animal window silent on diarrhoea DLT",
-    "judgement": "Rodents and dogs can show EGFR-TKI diarrhoea, so the abstract's 'sufficiently safety windows in animals' is scored as silence contradicted: diarrhoea set the MTD at 1.2x the effective dose and was the dominant grade 3 event in every pyrotinib trial. Class-consistent: poziotinib 96% diarrhoea (14% grade 3) in NOV120101-203 and 32-33% grade 3-4 in the 2024 phase 2, which concluded toxicity may preclude further breast studies; sapitinib 40-51% diarrhoea in MINT. Counted once, here, because no member's model predicted it."
+    "judgement": "Rodents and dogs can show EGFR-TKI diarrhoea, so the abstract's 'sufficiently safety windows in animals' is scored as silence contradicted: diarrhoea set the MTD at 1.2x the effective dose and was the dominant grade 3 event in every pyrotinib trial. Class-consistent: poziotinib 96% diarrhoea (14% grade 3) in NOV120101-203 and 32-33% grade 3-4 in the 2024 phase 2, which concluded toxicity may preclude further breast studies; sapitinib 40-51% diarrhoea in MINT. Counted once, here, because no member's model predicted it.",
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -673,17 +872,22 @@
     "population": "ER+/HER2-negative, acquired tamoxifen resistance",
     "model_first_use_year": 2014,
     "judgement": "Opening entry: the model made no tolerability statement.",
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "sapitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2014,
     "status": "contra",
     "model": "ER+/HER2-negative tamoxifen-resistant MCF7 and T47D lines and MCF7/TamRes xenografts under tamoxifen or fulvestrant",
     "model_id": "er-pos-tamres-mcf7-xenograft",
     "prediction_level": "patient",
-    "note": "Mice can show EGFR-TKI diarrhoea and the model was silent; MINT: diarrhoea 40 and 51 % vs 12 %, rash 32 and 48 % vs 12 %.",
+    "note": "Retrodiction: sapitinib's own patient harms (phase 1 rash/diarrhoea DLTs, epub 2013-04-16; MINT ASCO 2013) were public before Morrison 2014, whose mice stayed silent; MINT: diarrhoea 40/51 vs 12%, rash 32/48 vs 12%.",
     "short": "Silence on diarrhoea contradicted in MINT",
     "src": "https://doi.org/10.1007/s10549-016-3979-5",
     "srcLabel": "Johnston 2016",
@@ -708,9 +912,53 @@
     "source_calls_it": null,
     "population": "HR+ HER2-non-amplified, endocrine-naive advanced breast cancer (MINT)",
     "model_first_use_year": 2014,
-    "judgement": "Same rule the checker applied to the Hickinson 2010 track: a mouse dosed daily for weeks could have shown diarrhoea or weight loss, the paper reports neither, and MINT's diarrhoea and rash are the class harm. Sibling population transfers for safety (decision 12).",
+    "judgement": "Same rule the checker applied to the Hickinson 2010 track: a mouse dosed daily for weeks could have shown diarrhoea or weight loss, the paper reports neither, and MINT's diarrhoea and rash are the class harm. Sibling population transfers for safety (decision 12). Safety is a claim about the drug, and sapitinib's own patient harms (Tjulandin 2014, epub 2013-04-16; MINT ASCO 2013 abstract, grade >=3 rash 8% at 40 mg) were public before Morrison 2014 (epub 2014-02-20), so this is a retrodiction that failed to reproduce the human harm: contra stands with retrodiction true.",
     "reason": "Mouse silent on class GI/skin harm",
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "sapitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "anastrozole"
+   },
+   {
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2017,
+    "print_year": 2017,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "HER2-positive",
+    "model_first_use_year": 2012,
+    "confidence": "medium",
+    "confidence_note": "Li 2017 read at abstract level only (paywalled); the animal toxicology tables were not read.",
+    "prediction_level": "class",
+    "year": 2017,
+    "status": "untested",
+    "model": "HER2-amplified breast lines and xenografts (BT-474, SK-BR-3)",
+    "model_id": "her2-amplified-breast-xenografts",
+    "src": "https://doi.org/10.1016/j.ejps.2017.01.021",
+    "srcLabel": "Li 2017",
+    "note": "Opening entry for pyrotinib on this model: the paper claims sufficient safety windows in animals.",
+    "short": "Animal safety window claimed",
+    "quote": "Overall, the potent and selective EGFR/HER2 dual inhibitor, pyrotinib, displayed robust anti-tumor effects on HER2-overexpressing xenograft models and sufficiently safety windows in animals as well as favorable pharmacokinetic properties in human, which substantially ensures current clinical development.",
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "imported_from": null,
+    "judgement": "Opening entry at the model's first public use for pyrotinib (track split, 2026-11-09 rulings).",
+    "untested_reason": "no_prediction"
    }
   ]
  }

@@ -11,16 +11,23 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Mu 2012 (PMC3266413) resolves; quote verbatim in full text. Paper names Ambrx PEG30-Q108, never BMS-986036; identity inference is reasonable and flagged by the draft."
+   "note": "Mu 2012 quote verbatim; PEG-Q108 is the pegbelfermin molecule, so drug pegbelfermin, route sc fit; opener untested 2012 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Charles 2019 (PMC6587787) full text. Its stated comparison cites native-FGF21 papers (refs 6 Kharitonenkov 2007 monkeys, 20 Xu 2009, 21 Coskun 2008 mice), not Mu 2012: model_src mismatch. Partial match -> same per v3; see rule question 3."
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "evidence rule 6 (year = earliest public date: congress abstract, sponsor press release or filing)",
+   "note": "Charles 2019 quote verbatim; obese T2D, other_disease right; Mu 2012 prospective. But pegbelfermin T2D phase 2 adiponectin/lipid PD was public at AASLD Nov 2016 (Healio 2016-11-16; BMS 2017 release calls T2D data 'previously announced'): year 2016.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: drafter and checker agree on same; year only disputed. Pegbelfermin T2D adiponectin/TG PD public at AASLD 2016, after Mu 2012 mice, so prospective and same holds at 2016."
   },
   {
    "cell": "engagement",
@@ -29,7 +36,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Stanislaus 2017 (PMID 28324011) resolves; quote verbatim in abstract; paywalled."
+   "note": "Stanislaus 2017 abstract quote verbatim; efruxifermin (Fc-FGF21(RGE)), sc; opener 2017 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -38,10 +46,13 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2020,
-   "rule": "evidence rule 6 (year = earliest public comparison); one entry per change of status",
-   "note": "Rosenstock 2023 quote verbatim (abstract). But the monkey track's own drug, efruxifermin, already reproduced the adiponectin/lipid PD in T2D patients in Kaufman 2020 (10.1016/j.xcrm.2020.100057, pairing with Stanislaus 2017): track turns same in 2020."
+   "proposed_status": "retro",
+   "proposed_year": 2019,
+   "rule": "evidence rule 6 (year = earliest public date: congress abstract, sponsor press release or filing); retrodiction rule for engagement",
+   "note": "Retro right: monkey data post-date LY2405319/pegbelfermin/efruxifermin patient lipid PD. But 89bio's EASL April 2019 monkey poster and 2019 SAD topline release (TG up to -51%, HDL +36%) made the comparison public in 2019.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement): both agree retro. Monkey data first public EASL 2019 (cited in Loomba 2023 NEJM), still after LY2405319/pegbelfermin patient lipid PD, so retro at 2019 per rule 6."
   },
   {
    "cell": "dose",
@@ -50,7 +61,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Mu 2012 abstract sentence verbatim; no exposure target or margin stated."
+   "note": "Mu 2012 abstract sentence verbatim; no exposure target or margin; drug pegbelfermin, sc.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -59,7 +71,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Sanyal 2019 (PMID 30554783) quote verbatim in abstract; NCT02413372 results posted 2020-01-28 confirmed. 'Reached, drug worked' applied with no model exposure target; see rule question 2."
+   "note": "Sanyal 2019 abstract quote verbatim; db/db mouse stated no exposure target or margin: untested/no_prediction. Year 2017 confirmed: BMS press release 2017-04-22 (EASL late-breaker), primary liver-fat endpoint met. Drug pegbelfermin, sc.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -68,7 +81,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Charles 2019 ref 8 is the Krupinski 2016 AASLD abstract (Hepatology 64 Suppl 1), no DOI/PMID, not openable. Congress abstract is not a rule-2 tier; model_src_tier 1 is wrong. Untested is safe. Rule question 1."
+   "note": "Drug pegbelfermin, sc fit. Model side remains the Krupinski 2016 AASLD abstract cited by Charles 2019, unopenable; untested is safe.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -77,7 +91,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Stanislaus 2017 abstract quote verbatim; no human target stated at abstract level."
+   "note": "Stanislaus 2017 abstract quote verbatim; drug efruxifermin, sc. Only (latest) untested entry on the efruxifermin track yet untested_reason is null; should be no_prediction.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -86,10 +101,13 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2021,
-   "rule": "evidence rule 6 (dating) and the dose table row 'reached, drug worked'",
-   "note": "ENLIVEN (PMID 37356033) quote verbatim; NCT04929483 results 2026-01-06 confirmed. Same track already scores BALANCED 2021 (Harrison 2021, efruxifermin, liver-fat primary met at reached doses) in efficacy; dose should turn same in 2021, not 2023."
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "rule": "evidence rule 6; each track opens at the model's first public use",
+   "note": "ENLIVEN quote verbatim; no monkey exposure target or margin, so untested/no_prediction right; drug pegozafermin, sc. Sole entry on the track, so it opens at the 2019 EASL monkey poster, not 2023.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5/6: both agree untested, no_prediction (no monkey exposure target or margin). Sole entry on the pegozafermin-monkey dose track; untested_reason already set."
   },
   {
    "cell": "efficacy",
@@ -98,7 +116,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Mu 2012 full-text sentence verbatim; db/db steatosis prediction only."
+   "note": "Mu 2012 quote verbatim; drug pegbelfermin, sc; steatosis-only opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -107,7 +126,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Sanyal 2019 abstract quote verbatim; registry primary = MRI-PDFF change at week 16 (confirmed); endpoint_role primary correct; year 2018 (epub 2018-12-13) correct."
+   "note": "Sanyal 2019 abstract quote verbatim. Year 2017 confirmed from BMS release 2017-04-22: 'Primary endpoint of significant reduction in liver fat achieved' (6.8%/5.2% vs 1.3%). Drug pegbelfermin, sc, unselected (F1-F3).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -116,7 +136,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Stanislaus 2017 abstract quote verbatim."
+   "note": "Stanislaus 2017 abstract quote verbatim; drug efruxifermin, sc.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -125,7 +146,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Harrison 2021 (PMID 34239138) abstract quote verbatim; NCT03976401 results 2022-08-04 not re-checked. Pairing is loose: Stanislaus abstract lists only 'metabolic parameters', liver fat in monkeys unconfirmed at abstract level."
+   "note": "Harrison 2021 quote verbatim. Year 2020 confirmed: Akero Q1 2020 results release says BALANCED's three dose groups met the week-12 liver-fat primary during Q1 2020. Drug efruxifermin, sc.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -134,7 +156,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Charles 2019 sentence verbatim and its ref 8 is the 2016 congress abstract; the model side itself cannot be opened and is not a rule-2 tier. Rule question 1."
+   "note": "Drug pegbelfermin, sc fit. Charles 2019 sentence verbatim; model side is the 2016 AASLD abstract, unopenable.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -143,7 +166,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "FALCON 1 quote verbatim (abstract); all four patient_trials quotes verbatim in abstracts and all registry dates confirmed via CT.gov API. Contra holds only if the congress-abstract model side is admissible (rule question 1)."
+   "note": "FALCON 1 quote verbatim (abstract); enrolled stage 3 fibrosis only, so stage_or_line fits; drug pegbelfermin, sc. Contra holds only if the congress-abstract model side is admissible.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -152,7 +176,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Wei 2012 (PMID 22315431) abstract quote verbatim; native FGF21, product_in_model false correctly set."
+   "note": "Wei 2012 abstract quote verbatim; native FGF21 (product_in_model false) on a track compared with pegbelfermin patients, so drug pegbelfermin, sc consistent.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -161,7 +186,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Charles 2019 full text: sentence is DXA BMD at femoral neck/hip/spine, 'data not shown'. NCT02413372 registry (2020-01-28) shows femoral-neck -2.79% (10 mg QD) vs -0.11% placebo, SD 4.3, untested: low confidence is right."
+   "note": "Charles 2019 'data not shown' BMD sentence verbatim; no MASH-patient BMD public in 2018, so T2D import (other_disease) allowed; drug pegbelfermin, sc. Whether the Nov 2016 AASLD T2D abstract reported BMD not checked.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -170,7 +196,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Kaufman 2020 (PMC7659583) full text: quote verbatim; the paper itself sets DIO-mouse bone loss (ref 26) beside pegbelfermin BMD, so comparison_stated true holds; it also cites a DIO-mouse rhFGF21 study with no bone loss (ref 27)."
+   "note": "Kaufman 2020 quote verbatim; MASH patients, unselected; drug pegbelfermin, sc. Caveat: NCT02413372 registry shows femoral BMD -2.79% (10 mg QD) vs -0.11% placebo, so 'no change' rests on the paper's reading.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -179,8 +206,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "CPT 2023 (PMID 37696614) abstract quote verbatim; abstract says simulations 'provide the rationale for dose selection' for ENLIVEN, so 2021 proxy first-use (ENLIVEN start 2021-06-04, CT.gov) holds. Paywalled; abstract only.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "CPT 2023 popPK/PD abstract quote verbatim; drug pegozafermin, sc; opener 2021 proxy (ENLIVEN start) stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -189,8 +216,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "NEJM abstract quote verbatim. Model fitted to NCT04048135 (primary completion 2020-08-28) and chose ENLIVEN's 30 mg QW/44 mg Q2W before the trial, so prospective, not retro; both arms met fibrosis primary. Registry results date 2026-01-06 confirmed.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Loomba 2023 quote verbatim; ENLIVEN dosed the simulated 30 mg QW / 44 mg Q2W regimens: same. Drug pegozafermin, sc.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -199,8 +226,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Same CPT 2023 abstract, quote verbatim. HFF >=30% at 30 mg QW is the model's own readout; 2021 proxy year consistent with ENLIVEN start. Abstract only.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "CPT 2023 abstract quote verbatim; drug pegozafermin, sc; opener 2021.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -209,8 +236,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "NEJM abstract quote verbatim; fibrosis primary met at 30 mg QW (26%) and 44 mg Q2W (27%). Prediction preceded the result, so same. ENLIVEN HFF responder data not retrievable (PMC full text unavailable); direction_only stands.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "NEJM abstract quote verbatim; fibrosis primary met at both simulated regimens; prospective, same. Drug pegozafermin, sc.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -219,8 +246,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Toxicol Appl Pharmacol 2021 (PMID 34364948, online 2021-08-06) abstract quote verbatim; 0.7-2.2x human AUC at 20 mg QW margin stated. Abstract only; no GI or clinical-sign data in it.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "TAAP 2021 abstract quote verbatim; drug pegbelfermin, sc; opener 2021.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -229,8 +256,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Kaufman 2020 full text (PMC7659583) quote verbatim. Retro is right: monkey doses benchmarked to the 20 mg QW dose fixed after phase 2a, and the 12-week (NCT02097277, completed 2015-09) and 16-week (NCT02413372, 2017-01) BMD data predate any plausible 1-year study; run dates unverifiable (paywalled).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Kaufman 2020 quote verbatim; retro right under the drug-only safety rule: pegbelfermin's own 12-16-week BMD was public before the 2021 monkey paper. Drug pegbelfermin, sc.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -239,8 +266,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Tillman 2022 (PMC9306736) full text read; quote verbatim in abstract. Studies at Charles River, undated; no NOAEL/margin stated, so no dose entry is correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Tillman 2022 abstract quote verbatim; drug efruxifermin, sc; opener 2022.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -249,8 +276,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (abstract and conclusions). Retro holds: the efruxifermin phase 1 MAD is Amgen's NCT01856881 (2013-03 to 2015-03, terminated, no results posted), years before Akero's rat tox; draft note that Kaufman cites no CT.gov record is wrong, but registry_date null still stands (no results posted).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Tillman 2022 stated-comparison quote verbatim; efruxifermin's own BP/cortisol data (Kaufman 2020) predate it, so retro under the drug-only rule. Drug efruxifermin, sc.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -259,8 +286,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Frayling 2018 (PMC5912948) abstract quote verbatim; full text also reports three protein-truncating FGF21 variants from exome data, so the combined model name is supported. Year 2018 correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Frayling 2018 abstract quote verbatim; drug class (human genetics) per brief; route sc matches the patients compared on safety 9 (not_applicable also defensible).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -269,8 +296,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Kaufman 2020 full text quote verbatim; the source explicitly states the comparison. Frayling 2018 was not motivated by AKR-001 and the phase 1 BP data (NCT01856881, 2013-15) were unpublished until 2020, so same rather than retro under decision 10; see rule question.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Kaufman 2020 stated comparison verbatim; after Frayling 2018, so same not retro. T2D patients, no MASH BP public in 2020: other_disease import holds; drug class, sc.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -279,8 +306,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Li 2017 JBMR (PMID 27505721) abstract quote verbatim; online 2016-09-09, print 2017 as recorded. rhFGF21 proxy, product_in_model false, is allowed.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Li 2017 JBMR abstract quote verbatim (online 2016); rhFGF21 proxy, drug pegbelfermin, sc for the compared patients.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -291,9 +318,41 @@
    "status_supported": true,
    "proposed_status": "same",
    "proposed_year": 2018,
-   "rule": "7 (dating: earliest date the comparison was public; decision 1 allows a drafter-made comparison)",
-   "note": "Kaufman 2020 quote verbatim and ref 27 (Li 2017) sits beside the pegbelfermin BMD sentence; same holds. Year should be 2018: the identical 12-week BMD datum dates the Wei track's safety 2 to 2018 (Charles, Obesity, epub 2018; registry 2019-05-09), and a drafter-made comparison with Li 2016 was possible then.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "evidence rule 6 (earliest date the comparison was public); evidence rule 1 (paired comparison admissible)",
+   "note": "Quote verbatim, same holds, drug pegbelfermin sc. Pegbelfermin 12-week BMD was public 2018 (Charles 2019 epub), as safety 2 dates it; pairing with Li 2016 possible then (population other_disease at that date).",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 and rule 1: both agree same; pairing Li 2016 with pegbelfermin 12-week BMD was possible once that was public (2018), status unchanged."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2019,
+   "rule": "evidence rule 6 (year = earliest public date: congress abstract, sponsor press release or filing); retrodiction rule for engagement",
+   "note": "Kaufman 2020 quote verbatim (PMC7659583); retro, other_disease (T2D), efruxifermin sc correct. Akero's 2019 S-1/A (SEC) already reported AKR-001 phase 1b T2D triglycerides down up to 69%, so earliest public 2019.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement): both agree retro. Akero 2019 SEC filings reported phase 1b T2D TG up to -69%, so earliest public 2019 under rule 6; still post-dates other analogues' lipid PD."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "rule": "evidence rule 6; each track opens at the model's first public use",
+   "note": "Rosenstock 2023 abstract quote verbatim, but pegozafermin (BIO89-100) diabetic cynomolgus data were first public at EASL April 2019 (89bio poster, press release); opener belongs at 2019. Also list order 4/5/6 not in year order.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6 opener: both agree untested. Pegozafermin diabetic-monkey data first public EASL 2019 poster, so the opener belongs at 2019. Not the track's latest entry, so no untested_reason needed."
   }
  ],
  "missing": [

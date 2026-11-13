@@ -53,7 +53,11 @@
     "readout_tier": "downstream",
     "reason": "PD marker never measured in humans",
     "judgement": "The model's PD read-outs (cortical dopamine release; ex-vivo alpha7 up-regulation in Werkheiser 2011, 10.1016/j.neuroscience.2011.04.033) have no human counterpart; the patient study NCT00669903 measured cognition only, which is efficacy, not engagement.",
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "azd-0328",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rodent-schizophrenia-screens",
@@ -91,7 +95,11 @@
     "readout_tier": "downstream",
     "reason": "Gating read-out not taken in patients",
     "judgement": "Human P50 gating data for alpha7 agonists exist only for DMXB-A (GTS-21), which is not a member of this class, so they cannot score here; Hashimoto 2015 (review) lists no gating study for the three members.",
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "bradanicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "pig-pet-alpha7-occupancy",
@@ -129,7 +137,11 @@
     "readout_tier": "direct",
     "reason": "No human occupancy to compare",
     "judgement": "A post-hoc occupancy model (2024) with no human occupancy datum for TC-5619, ABT-126 or AZD0328; it is a model that exists and was never compared, not a retrodiction, because it reproduces no human result.",
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "bradanicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -166,7 +178,11 @@
     "src": "https://doi.org/10.1016/j.bcp.2009.05.030",
     "srcLabel": "Hauser 2009",
     "quote": "In the dose–response study, the minimum effective dose to produce cognitive-enhancing activity was determined to be 0.3 mg/kg (data not shown).",
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "bradanicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "az-trace-dose-cognition",
@@ -202,7 +218,12 @@
     "srcLabel": "Sydserff 2009",
     "quote": "Compound-stimulated dopamine release showed an inverted dose effect relation that was maximal at the lowest dose tested (0.00178 mg/kg).",
     "margin_stated": false,
-    "judgement": "Castner 2011 (10.1016/j.biopsych.2010.08.006, epub 2010-10) titrated the rhesus dose from the rodent range and found working-memory gains at 0.0016 and 0.00048 mg/kg; that paper defines the human target but appeared after the trial posted."
+    "judgement": "Castner 2011 (10.1016/j.biopsych.2010.08.006, epub 2010-10) titrated the rhesus dose from the rodent range and found working-memory gains at 0.0016 and 0.00048 mg/kg; that paper defines the human target but appeared after the trial posted.",
+    "drug": "azd-0328",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "rodent-schizophrenia-screens",
@@ -229,16 +250,23 @@
     "prediction_level": "class",
     "confidence": "low",
     "confidence_note": "Abstract-level reading; no PK in the abstract and NCT01003379 has no posted results. 'Reached' is mg/kg arithmetic, not a stated exposure target.",
-    "year": 2012,
-    "status": "same",
+    "year": 2011,
+    "status": "untested",
     "model": "Rodent schizophrenia screens: th(tk-)/th(tk-) mouse PPI and social behaviour, rat apomorphine-PPI, rat novel object recognition",
-    "note": "TC-5619 titrated 1→25 mg/day (about 0.35 mg/kg at the top), on the rat 0.3 mg/kg minimum; the exploratory primary endpoint favoured drug.",
-    "short": "Rat-effective dose range reached, signal seen",
+    "note": "TC-5619 titrated 1-25 mg/day around the rat 0.3 mg/kg minimum; the model stated no exposure, occupancy or margin, so the dose question is untested.",
+    "short": "No stated exposure target to check",
     "src": "https://doi.org/10.1038/npp.2012.259",
     "srcLabel": "Lieberman 2013",
     "quote": "GMLT statistically favored TC-5619 (P=0.036) in this exploratory trial.",
     "margin_stated": false,
-    "judgement": "Scored same because the trial dosed through the rat-effective range and its primary endpoint responded; it is provisional, as the 2015 phase 2 at 5 and 50 mg reversed it."
+    "judgement": "Ruling (dose table): mg/kg arithmetic bracketing the rat effective dose is not a stated target, so untested, no_prediction. Year 2011 is the first public patient result (Targacept 8-K, 2011-01-19).",
+    "untested_reason": "no_prediction",
+    "drug": "bradanicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "reason": "Model stated no human exposure target",
+    "strengthens": true
    }
   ],
   "efficacy": [
@@ -275,7 +303,11 @@
     "src": "https://doi.org/10.1016/j.bcp.2009.05.030",
     "srcLabel": "Hauser 2009",
     "quote": "In these mice TC-5619 acted both alone and synergistically with the antipsychotic clozapine to correct impaired pre-pulse inhibition (PPI) and social behavior which model positive and negative symptoms, respectively.",
-    "endpoint_role": null
+    "endpoint_role": null,
+    "drug": "bradanicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "az-trace-dose-cognition",
@@ -310,7 +342,11 @@
     "src": "https://doi.org/10.1016/j.bcp.2009.07.005",
     "srcLabel": "Sydserff 2009",
     "quote": "AZD0328 improved novel object recognition in mice over a broad range of doses (0.00178-1.78 mg/kg) and the compound effect was found to be absent in homozygous alpha7 KO animals.",
-    "endpoint_role": null
+    "endpoint_role": null,
+    "drug": "azd-0328",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "az-trace-dose-cognition",
@@ -356,7 +392,11 @@
      }
     ],
     "reason": "Trace-dose cognition gain absent in patients",
-    "judgement": "Call: the registry is the only patient record; all three AZD0328 arms sat below placebo on the primary composite and the sponsor's stated reason for stopping was failure to meet the target profile. Castner 2011 was published two months after the results posted, so the pairing is dated by the registry with Sydserff 2009 as the public model side at that date."
+    "judgement": "Call: the registry is the only patient record; all three AZD0328 arms sat below placebo on the primary composite and the sponsor's stated reason for stopping was failure to meet the target profile. Castner 2011 was published two months after the results posted, so the pairing is dated by the registry with Sydserff 2009 as the public model side at that date.",
+    "drug": "azd-0328",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rodent-schizophrenia-screens",
@@ -383,10 +423,10 @@
     "prediction_level": "class",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading; NCT01003379 has no posted results; Mazurov 2012 (10.1021/jm301048a) states the animal-to-clinic match in one sentence but exceeds the 40-word quote limit.",
-    "year": 2012,
+    "year": 2011,
     "status": "same",
     "model": "Rodent schizophrenia screens: th(tk-)/th(tk-) mouse PPI and social behaviour, rat apomorphine-PPI, rat novel object recognition",
-    "note": "Exploratory 12-week trial (n=185): primary GMLT favoured TC-5619 (P=0.036) and SANS too (P=0.030), mainly in tobacco users.",
+    "note": "Exploratory 12-week trial (n=185): primary GMLT favoured TC-5619 (P=0.036) and SANS too (P=0.030), mainly in tobacco users. First public in the Targacept 8-K of 2011-01-19 (primary met a one-sided p<0.10 bar).",
     "short": "Exploratory trial: primary endpoint favoured drug",
     "src": "https://doi.org/10.1038/npp.2012.259",
     "srcLabel": "Lieberman 2013",
@@ -401,7 +441,11 @@
       "quote": "GMLT statistically favored TC-5619 (P=0.036) in this exploratory trial."
      }
     ],
-    "judgement": "Scored same on the primary endpoint of an exploratory trial with a P=0.036 result and no multiplicity control; the same track turns contra in 2015."
+    "judgement": "Scored same on the primary endpoint of an exploratory trial with a P=0.036 result and no multiplicity control; the same track turns contra in 2015.",
+    "drug": "bradanicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "pcp-nest-building-mouse",
@@ -429,15 +473,19 @@
     "confidence": "high",
     "confidence_note": null,
     "year": 2014,
-    "status": "retro",
+    "status": "contra",
     "model": "Sub-chronic PCP mouse nest-building / social interaction (Lundbeck back-translation)",
-    "note": "Lundbeck built the PCP nest-building assay as a back-translation of the reported TC-5619/EVP-6124 negative-symptom signal; both reversed the deficit, risperidone did not.",
-    "short": "Back-translated model reproduced the 2012 signal",
+    "note": "Retrodiction built on the Lieberman SANS signal after the TC-5619 phase 2b SANS primary had already failed in public (2013-12-16); it reproduced the refuted signal, so contra.",
+    "short": "Back-translation of a refuted signal",
     "src": "https://doi.org/10.1016/j.bbr.2014.07.023",
     "srcLabel": "Pedersen 2014",
     "quote": "Sub-chronic PCP treatment resulted in a significant nest building deficit in mice and treatment with EVP-6124 and TC-5619 reversed this PCP-induced deficit.",
     "endpoint_role": null,
-    "judgement": "A retrodiction by definition: the paper says the drugs were chosen because they 'were reported to exert some beneficial effect on negative symptoms', so the model was validated against the Lieberman 2013 SANS signal, not predictive of it. EVP-6124 is not a member and does not score; TC-5619 does."
+    "judgement": "A retrodiction by definition: the paper says the drugs were chosen because they 'were reported to exert some beneficial effect on negative symptoms', so the model was validated against the Lieberman 2013 SANS signal, not predictive of it. EVP-6124 is not a member and does not score; TC-5619 does. Ruling: the primary endpoint governs efficacy, and the SANS-primary miss of NCT01488929 was public (Targacept press release 2013-12-16) before this paper (2014-07-24), so the model failed to reproduce the known patient result: contra, not retro.",
+    "drug": "bradanicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "rodent-schizophrenia-screens",
@@ -464,10 +512,10 @@
     "prediction_level": "class",
     "confidence": "high",
     "confidence_note": "Abstract-level reading of Walling; NCT01488929 has no posted results.",
-    "year": 2015,
+    "year": 2013,
     "status": "contra",
     "model": "Rodent schizophrenia screens: th(tk-)/th(tk-) mouse PPI and social behaviour, rat apomorphine-PPI, rat novel object recognition",
-    "note": "24-week phase 2 (n=477): SANS primary and all cognitive secondaries negative at 5 and 50 mg; TC-5619 development ended.",
+    "note": "24-week phase 2 (n=477): SANS primary and all cognitive secondaries negative at 5 and 50 mg; TC-5619 development ended. First public in Targacept's press release of 2013-12-16.",
     "short": "Phase 2 negative on SANS and cognition",
     "src": "https://doi.org/10.1093/schbul/sbv072",
     "srcLabel": "Walling 2016",
@@ -482,7 +530,11 @@
       "quote": "SANS score showed no statistical benefit for TC-5619 vs placebo at week 24 (5 mg, 2-tailed P = .159; 50 mg, P = .689)."
      }
     ],
-    "judgement": "Call: the rodent screens predicted benefit across positive, negative and cognitive domains; the adequately powered trial found none on its primary (negative symptoms) or on cognition, so the 2012 same is overturned. Dated 2015 by online publication (June 2015; print 2016)."
+    "judgement": "Call: the rodent screens predicted benefit across positive, negative and cognitive domains; the adequately powered trial found none on its primary (negative symptoms) or on cognition, so the 2012 same is overturned. Dated 2015 by online publication (June 2015; print 2016).",
+    "drug": "bradanicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "pcp-nest-building-mouse",
@@ -499,7 +551,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "direction of SANS change vs placebo",
@@ -508,11 +560,11 @@
     "model_first_use_year": 2014,
     "prediction_level": "class",
     "confidence": "medium",
-    "confidence_note": "The phase 2 began (Dec 2011) before the model paper (2014), but its result was public only after it, so it is the model's first prospective comparison under decision 10.",
+    "confidence_note": "The phase 2b SANS result was public in a Targacept press release on 2013-12-16, before the model paper (2014-07-24), so this is not a prospective test; it is the tier-1 patient record of the comparison in entry 5.",
     "year": 2015,
     "status": "contra",
     "model": "Sub-chronic PCP mouse nest-building / social interaction (Lundbeck back-translation)",
-    "note": "The model's first prospective test: TC-5619 did not improve SANS at 5 or 50 mg over 24 weeks.",
+    "note": "Walling 2016 is the tier-1 record of the SANS-primary miss the nest-building retrodiction failed to reproduce: no SANS benefit at 5 or 50 mg.",
     "short": "Negative-symptom prediction failed in phase 2",
     "src": "https://doi.org/10.1093/schbul/sbv072",
     "srcLabel": "Walling 2016",
@@ -520,7 +572,12 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "reason": "Back-translated model, then phase 2 failed",
-    "judgement": "Decision 10: a retrodiction's first prospective comparison is scored as usual; the model predicted a negative-symptom benefit for TC-5619 that the SANS primary did not show."
+    "judgement": "Contra stands as the peer-reviewed record of the failed retrodiction (entry 5): the model predicted a negative-symptom benefit that the SANS primary did not show.",
+    "drug": "bradanicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "strengthens": true
    },
    {
     "model_id": "rodent-schizophrenia-screens",
@@ -579,7 +636,11 @@
      }
     ],
     "reason": "Three drugs, no primary endpoint met",
-    "judgement": "Strengthens the 2015 contra with a second member: Haig 2016 AJP (phase 2, 10/25 mg) fell short on MCCB with a nonsmoker subgroup signal that the 432-patient nonsmoker phase 2b then failed to confirm; the extension NCT01834638 was terminated because 'Study endpoint in preceding base study M10-855 not met.' Encenicline is excluded as a non-member."
+    "judgement": "Strengthens the 2015 contra with a second member: Haig 2016 AJP (phase 2, 10/25 mg) fell short on MCCB with a nonsmoker subgroup signal that the 432-patient nonsmoker phase 2b then failed to confirm; the extension NCT01834638 was terminated because 'Study endpoint in preceding base study M10-855 not met.' Encenicline is excluded as a non-member.",
+    "drug": "nelonicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -615,7 +676,11 @@
     "short": "Predicted few nicotinic side effects",
     "src": "https://doi.org/10.1016/j.bcp.2009.05.030",
     "srcLabel": "Hauser 2009",
-    "quote": "The lack of interaction with muscle and ganglionic-type receptors suggests low potential for nicotinic side effects with TC-5619."
+    "quote": "The lack of interaction with muscle and ganglionic-type receptors suggests low potential for nicotinic side effects with TC-5619.",
+    "drug": "bradanicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "az-trace-dose-cognition",
@@ -651,7 +716,12 @@
     "srcLabel": "Castner 2011",
     "quote": "Acute AZD0328 improved cognitive performance when the dose was titrated down to .0016 and .00048 mg/kg from a cognitively impairing dose of .48 mg/kg.",
     "reason": "Predicted harm outside the dosed range",
-    "judgement": "The registry lists dyspepsia (9/23, 10/37, 5/18 vs 4/22) and nausea (4/18 high dose vs 0) above placebo, but the model made no GI prediction and a rhesus working-memory task cannot show dyspepsia, so its silence is not a miss."
+    "judgement": "The registry lists dyspepsia (9/23, 10/37, 5/18 vs 4/22) and nausea (4/18 high dose vs 0) above placebo, but the model made no GI prediction and a rhesus working-memory task cannot show dyspepsia, so its silence is not a miss.",
+    "drug": "azd-0328",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "rodent-schizophrenia-screens",
@@ -678,16 +748,20 @@
     "prediction_level": "class",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading. Walling 2016: 'TC-5619 was generally well tolerated.' Haig 2018: constipation 5.8% vs 0% on ABT-126; AZD0328 registry shows dyspepsia above placebo; none was called a safety signal.",
-    "year": 2012,
+    "year": 2011,
     "status": "same",
     "model": "Rodent schizophrenia screens: th(tk-)/th(tk-) mouse PPI and social behaviour, rat apomorphine-PPI, rat novel object recognition",
-    "note": "12-week trial: no clinically noteworthy safety findings; the 24-week phase 2 (2015) and ABT-126 trials also reported tolerability like placebo.",
+    "note": "12-week trial: no clinically noteworthy safety findings; the 24-week phase 2 (2015) and ABT-126 trials also reported tolerability like placebo. First public in the Targacept 8-K of 2011-01-19 ('was well tolerated').",
     "short": "Well tolerated, as the selectivity screen predicted",
     "src": "https://doi.org/10.1038/npp.2012.259",
     "srcLabel": "Lieberman 2013",
     "quote": "TC-5619 was generally well tolerated with no clinically noteworthy safety findings.",
     "reason": "Tolerability prediction held in three trials",
-    "judgement": "Call: the model's stated prediction (no peripheral nicotinic harms) held; GI complaints (constipation with ABT-126, dyspepsia with AZD0328) were mild, not nicotinic in the muscle/ganglionic sense the paper meant, and no trial reported a safety concern. A reader who treats constipation 5.8% vs 0% as a contradicted silence could score contra; rodents could in principle show GI motility effects, which were not reported."
+    "judgement": "Call: the model's stated prediction (no peripheral nicotinic harms) held; GI complaints (constipation with ABT-126, dyspepsia with AZD0328) were mild, not nicotinic in the muscle/ganglionic sense the paper meant, and no trial reported a safety concern. A reader who treats constipation 5.8% vs 0% as a contradicted silence could score contra; rodents could in principle show GI motility effects, which were not reported.",
+    "drug": "bradanicline",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

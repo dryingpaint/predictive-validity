@@ -11,17 +11,19 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "",
-   "note": "Schmidt 2013 (PMID 23146091) quote verbatim in abstract. Europe PMC gives only 2013-04 print; epub 2012 inferred from accepted-article timing, plausible. QAV680 used the same human eosinophil/Th2 assays before 2009 trials, so the opening year could be earlier."
+   "note": "Schmidt 2013 (PMID 23146091) quote verbatim. azd-1981, oral, unselected fit the AZD1981 opener. Latest entry on its track, so it still needs untested_reason (no_prediction).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
    "rule": "",
-   "note": "Gonem 2016 (PMID 27503237, epub 2016-08-05) quote verbatim. Sputum eosinophils were the trial's primary outcome; downstream tier is right. NCT01545726 has no posted results, as the draft says."
+   "note": "Gonem 2016 (epub 2016-08-05) quote verbatim; Sykes 2016 (epub 2016-02-25) post-dates OC000459 patient eosinophil data, so retro holds. fevipiprant oral; biomarker_selected fits (sputum eos >=2%) but population text says Unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -31,17 +33,23 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "",
-   "note": "Quote verbatim from Schmidt 2013 conclusions. Untested opening entry for the potency-to-exposure model is fine."
+   "note": "Schmidt 2013 quote verbatim; azd-1981 oral untested opener fine. Latest untested entry on its track, so it needs untested_reason (no_prediction: no stated human exposure target).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "",
-   "note": "Erpenbeck 2016a (PMID 27310331, epub 2016-03-28) quote verbatim. 'Enough' rests on Gonem 2016's positive primary (sputum eosinophils), not Bateman 2017; Erpenbeck 2016b missed its FEV1 primary that year. Defensible, but see the rule question."
+   "proposed_status": "retro",
+   "proposed_year": 2016,
+   "rule": "Dose/safety retrodiction: the same drug's own earlier patient result makes a model a retrodiction; a retrodiction that reproduced is retro",
+   "note": "Erpenbeck 2016a (epub 2016-03-28) quote verbatim. Sykes 2016 (2016-02-25) post-dates fevipiprant's own patient result (NCT01253603, ERJ 46 Suppl 59 PA2125, Sept 2015): retrodiction true, retro. Target is sponsor-derived from in-vitro potency; see rule question.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (dose: same drug's own earlier patient result): fevipiprant's NCT01253603 result was public at ERS Sept 2015 (ERJ 46 Suppl 59), before Sykes 2016 (epub 2016-02); target reached, so retro, not same."
   },
   {
    "cell": "efficacy",
@@ -52,8 +60,11 @@
    "status_supported": true,
    "proposed_status": "untested",
    "proposed_year": 2009,
-   "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
-   "note": "Sandham 2013 (PMID 24021582, epub 2013-08-22) quote verbatim. The entry sets model_first_use_year 2009 but year 2013. The opening untested entry should sit at the model_first_use_year proxy, 2009."
+   "rule": "Evidence rule 6 (each cell opens at model_first_use_year)",
+   "note": "Sandham 2013 (epub 2013-08-22) quote verbatim; qav-680 oral fits. Year 2013 should be the 2009 proxy (model_first_use_year). Latest QAV680 entry lacks untested_reason (unsettled: NCT00814216 posted no results).",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: cell opens untested at model_first_use_year (2009 proxy), not 2013. Rule 5: NCT00814216 measured QAV680 patients but posted no results, so untested_reason unsettled."
   },
   {
    "cell": "efficacy",
@@ -63,7 +74,8 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "",
-   "note": "Bateman 2018 (PMID 29765200) quote verbatim; primary was pre-BD FEV1. NCT01197794 results first posted 2013-09-10 (ct.gov API). Contra holds, but the draft missed ARRY-502's July 2013 positive FEV1 primary, a 'same' that came first (see missing)."
+   "note": "Bateman 2018 quote verbatim; NCT01197794 results posted 2013-09-10. Sandham 2013 (2013-08-22) post-dates OC000459 FEV1 data (Barnes 2011/12), so retrodiction true and contra right; azd-1981 oral, ICS/LABA background not a combination.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -73,7 +85,30 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "",
-   "note": "Ullah 2024 (PMID 39592603, epub 2024-11-26) quote verbatim. The model was built after phase 3 and explicitly set against the human trials, so retro under decision 10 is right."
+   "note": "Ullah 2024 quote verbatim in abstract; post-LUSTER model set beside corticosteroid-background trials, retro right. Antagonist unnamed in abstract; the trials it sets beside are fevipiprant's phase 3, so fevipiprant oral fits.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "NCT01343407 title verbatim; start 2011-04-19 matches year and model_first_use_year. MK-1029 oral fits the challenge opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Bateman 2018 quote verbatim; Diamant 2014 (entrez 2014-06-26) post-dates AZD1981's 2013-09-10 posting and OC000459 FEV1 data, so retrodiction true and contra right; azd-1981 oral, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -83,33 +118,82 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "",
-   "note": "Quote verbatim. The manifest lists no NDA/BLA for any member. Moss 2022 confirms the GB001 60 mg liver-injury risk. Untested is defensible with no public tox. model_kind 'animal' is odd for an in-vitro selectivity panel."
+   "note": "Schmidt 2013 selectivity quote verbatim; no member filed with FDA/EMA, so untested/unpublished stands. azd-1981 oral, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
-   "cell": "efficacy",
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Sykes 2016 (PMID 26916831, epub 2016-02-25) quote in abstract. Fevipiprant opener untested 2016, oral. Same year as entry 2 on the same track; list it before entry 2.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2006,
-   "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
-   "note": "NCT01343407 title verbatim, start 2011-04-19. But a member used the model earlier: OC000459 bronchial allergen challenge NCT01056692 started 2006-02 (LAR primary; Singh 2013 ERJ, PMID 22496329). Opening entry and model_first_use_year should be 2006.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "",
+   "note": "Wenzel 2014 ERJ 44 Suppl 58:4836 quote verbatim (prior read). Th2-high subgroup, so biomarker_selected fits; model side Schmidt 2013 post-dates OC000459 patient data, retro right; arry-502 oral.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Sykes 2016 quote in abstract; untested fevipiprant dose opener 2016, oral. Sykes states potency and slow off-rate, no human exposure target.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
-   "index": 5,
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2013,
+   "rule": "Status table, contra: the model predicted wrongly for a drug in this context; rule 6 dating (later of model and patient public dates)",
+   "note": "Hall 2015 (epub 2015-04-08) quote verbatim, both its trials met. But registry_date's trial NCT01090024 (4-week ICS add-on, results 2022-05-11) missed FEV1: p=0.14-0.45 vs placebo; first public ERJ 40 Suppl 56 (Sept 2012). Contra, dated 2013 (Sandham).",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status table contra; failed track stays failed. BI 671800 ICS add-on crossover (NCT01090024; ERJ 2012 Suppl 56 abstract, cited in Hall 2015) missed FEV1 (p=0.14-0.45); public before Hall's two successes. Rule 6: dated 2013 (model public)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "contra",
-   "proposed_year": 2013,
-   "rule": "Evidence rule 6 (dating) / decision 10 (prospective, not retro)",
-   "note": "Bateman 2018 quote verbatim; Diamant 2014 abstract confirms setipiprant LAR study. Not retro: challenges ran 2006-2011, before AZD1981 read out. OC000459 cut LAR 25.4% (epub 2012-04-10), so the model side was public before AZD1981's 2013-09-10 posting: date 2013. Track lacks an earlier OC000459 'same' (see missing).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "proposed_year": 2015,
+   "rule": "Evidence rule 6 (dating: congress abstract)",
+   "note": "Erpenbeck 2016b (epub 2016-06-21) quote verbatim; contra and retrodiction right. NCT01253603 was first public as ERJ 46 Suppl 59 PA2125 (Sept 2015), so year 2016 -> 2015. Abstract body not read.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Both agree contra (failed retrodiction). Rule 6 dating: NCT01253603 first public as ERS 2015 congress abstract (ERJ 46 Suppl 59), so year 2015, not 2016."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "Registry: NCT01624974 +0.047 L, p=0.282 (posted 2018-11-23); NCT02720081 +0.107 L, p=0.023; challenge posted 2019-02-08. Montelukast combination noted; retrodiction and contra hold. Quote describes the measure, not the result.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

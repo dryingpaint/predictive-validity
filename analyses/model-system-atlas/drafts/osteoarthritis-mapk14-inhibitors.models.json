@@ -181,7 +181,12 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT01366014", "registry_date": null, "doi": null, "quote": "Improvement in WOMAC pain for Oxy ER (-0.71) was comparable to that seen with ARRY-797 (-0.68) when LOCF was used for imputation of missing data."}
+       {
+        "nct": "NCT01366014",
+        "registry_date": null,
+        "doi": null,
+        "quote": "Improvement in WOMAC pain for Oxy ER (-0.71) was comparable to that seen with ARRY-797 (-0.68) when LOCF was used for imputation of missing data."
+       }
       ]
      }
     ]
@@ -282,5 +287,32 @@
   "Human genetic model (MAPK14 loss-of-function carriers) and human challenge model in OA: none found for this class in OA; the endotoxin challenge in healthy volunteers is already the draft's engagement track.",
   "Emprumapimod (ARRY-371797) Lmna H222P mouse cardiomyopathy model: another indication (LMNA dilated cardiomyopathy); no safety harm compared across indications, so nothing to import into the OA safety cell.",
   "Regulator reliance: no member has an NDA/BLA (manifest rows 'no NDA/BLA'), so no FDA/EMA review relies on model data."
+ ],
+ "gaps": [
+  {
+   "lead": "ARRY-797's own model (Koch 2007, Inflamm Res 56 Suppl 3:S376, rodent RA models + ex-vivo LPS whole-blood PD in healthy subjects)",
+   "outcome": "tracked",
+   "detail": "rodent-ra-arthritis-exvivo-wb: engagement 2007 untested + 2007 same (Koch 2007), efficacy 2007 untested + 2012 same (Kivitz 2012)"
+  },
+  {
+   "lead": "Patient-side engagement on the rat-iodoacetate track (Kivitz 2012 ACR abstract: ARRY-797 COMP -10%, CTX-I -38% vs placebo at week 4)",
+   "outcome": "tracked",
+   "detail": "rat-iodoacetate-carrageenan engagement: 2008 untested (Brown 2008) opening entry + 2012 same (Kivitz 2012 ACR abstract)"
+  },
+  {
+   "lead": "Pfizer pipeline PDF 2011-11-10 lists PH-797804 for COPD only (OA dropped without stated result)",
+   "outcome": "covered",
+   "detail": "Covered: not a model and changes nothing scored. The checker's dose verdict (dose index 1, rat-endotoxin-tnf-pd, 2009 untested) already cites the Pfizer 2011-11-10 pipeline (PH-797804 listed for COPD only) and keeps untested; the OA result was never stated, so no status, year or field changes."
+  },
+  {
+   "lead": "No further model system; ARRY-797 Blood 2006 myeloma LPS-IL-6 abstract",
+   "outcome": "none",
+   "detail": "Oncology in-vitro/xenograft abstract with no patient comparison; at most an extra model_src for rat-endotoxin-tnf-pd, not a new system"
+  },
+  {
+   "lead": "pha-797804",
+   "outcome": "tracked",
+   "detail": "Same compound as PH-797804 (PubChem CID 22049997 lists PHA-797804 as synonym): rat-endotoxin-tnf-pd engagement 2009 same and dose 2009 untested (Hope 2009); its OA trial NCT01102660 still has no reported result (CT.gov, DrugBank, web search)"
+  }
  ]
 }

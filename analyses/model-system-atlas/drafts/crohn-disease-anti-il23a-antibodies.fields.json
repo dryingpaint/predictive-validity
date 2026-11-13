@@ -1,0 +1,86 @@
+{
+ "tile": "crohn-disease-anti-il23a-antibodies",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "status same -> retro, retrodiction true, strengthens true: decision 10 ruling (check adjudication) - MOTIVATE retests the phase 2 claim the 2018 ex-vivo model retrodicted; drug risankizumab, route iv, population_group stage_or_line"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug and route set (risankizumab, iv) from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug and route set (risankizumab, iv) from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug and route set (risankizumab, iv) from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug and route set (risankizumab, iv) from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug and route set (risankizumab, iv) from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug and route set (risankizumab, iv) from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug and route set (risankizumab, iv) from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug and route set (risankizumab, iv) from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug and route set (risankizumab, iv) from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug 'class' (human genetics, tied to no drug), route iv to match the risankizumab IV induction comparison on this track; no status change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug risankizumab, route iv; no status change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug 'class', route iv (Feagan 2017 IV induction); no status change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug risankizumab, route iv (Feagan 2017); no status change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug risankizumab, route iv, population_group stage_or_line; no status change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug risankizumab, route iv, population_group stage_or_line (risankizumab and brazikumab phase 2 both positive, no split); no status change"
+  }
+ ],
+ "added": []
+}

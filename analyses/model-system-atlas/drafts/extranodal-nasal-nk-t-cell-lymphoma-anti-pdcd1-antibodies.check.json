@@ -1,0 +1,127 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/extranodal-nasal-nk-t-cell-lymphoma-anti-pdcd1-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "2 findings, both informational: engagement and dose are empty cells (no model relied on); accepted as the brief's empty-list case, not sent back.",
+ "entries": [
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kim 2016 Ann Hematol (epub 2016-10-03) quote verbatim in abstract. Untested opener 2016 on the sintilimab track; drug=sintilimab, route=iv (ORIENT-4: 200 mg IV Q3W) fit the track.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tao 2021 quote verbatim in abstract; ORR primary, single-arm, sintilimab 200 mg IV, asparaginase-failed (stage_or_line). EHA 2019 S870 page dated Jun 15 2019 (Fan L), so year 2019; its ORR 68% not seen (JS page).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Bachy 2023 full text: 'No significant correlation...ORR' verbatim, with 'no firm conclusions' caveat, so untested/unsettled stands. Tislelizumab 200 mg IV Q3W; r/r cohort, stage_or_line fits.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2015,
+   "rule": "Evidence rule 6: each cell opens at model_first_use_year with status untested (proxy allowed); the repeat-dose monkey study ran before the 2015-06-02 first-in-human start.",
+   "note": "Label quote verbatim across a line break in bundled 761232 label. Untested/no_prediction holds, but the monkey GLP study precedes tislelizumab first-in-human NCT02407990 (start 2015-06-02), so opener year and model_first_use_year should be 2015.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: opener stays untested (no_prediction, rule 5). GLP monkey tox precedes tislelizumab first-in-human NCT02407990 (start 2015-06-02, registry verified), so the opener year and model_first_use_year should be 2015, per checker."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Xue 2019 (epub 2019-03-19) quote verbatim in abstract; methods confirm EL4 in C57BL/6 with RMP1-14. Untested opener; sintilimab/iv fit the track; note on post-dating Kwong 2017 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Retro correct under the efficacy rule (any same-target patient result): Kwong 2017 predates Xue 2019-03-19. Earliest comparison EHA S870 2019-06-15, so year 2019; sintilimab IV, stage_or_line; single-arm noted.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tislelizumab opener on enktl-biopsy-pdl1-ihc at 2016, untested; Kim 2016 quote verbatim in abstract; drug=tislelizumab, route=iv correct; model fields match index 1.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Bachy 2023: 'In cohort 1, ORR was 31.8% (95% CI, 13.9-54.9), including CR in 18.2%'; draft wording is EP1268's (page dated Jun 12 2020, not readable). ORR primary, single-arm; IDMC stop for modest efficacy, no preset bar, so same.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tislelizumab opener on el4-syngeneic-mouse-rmp1-14 at Xue's 2019 epub; quote verbatim in abstract; untested opener; model fields identical to index 4; drug/route fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Retro correct: Kwong 2017 and sintilimab EHA 2019 predate; year 2020 from EP1268 (dated Jun 12 2020). Quote near-verbatim in Bachy 2023. Tislelizumab IV, r/r ENKTL stage_or_line; registry results 2022-05-04 confirmed.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "NK/T-cell-line tumour-bearing mouse model treated with anti-PD-1 (Wang/others 2019, Onco Targets Ther, doi:10.2147/OTT.S187280, PMID 30962691): improved survival in vivo, published 2019 before ORIENT-4 results; a candidate efficacy track (product_in_model likely false; antibody identity not checked) that could pair with ORIENT-4 (2020) as same.",
+  "ENKTL cell lines with STAT3-driven PD-L1 expression (Song et al. 2018, Blood) as an in-vitro rationale model; not verified in this check, likely no member drug dosed.",
+  "PD-L1 genomic structural alterations as a responder selector in NKTCL (Lim et al., Leukemia 2020) were tested on pembrolizumab only, outside the member list; noted so the drafter can record why it does not score.",
+  "Sintilimab plus chidamide in r/r ENKTL (STTT 2024, doi:10.1038/s41392-024-01825-0) not reviewed by the draft; check for any biomarker-vs-response comparison on a member drug (combination therapy, may fall outside the class)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "The same system (ENKTL biopsy PD-L1 IHC) appears under two model_ids, enktl-biopsy-pdl1-ihc (class) and enktl-biopsy-pdl1-selector (patient). The brief says one system keeps one slug, but prediction_level differs; should class-level and patient-level uses of one system share a track?",
+  "Is patient tumour tissue IHC (no drug applied) a 'model system' for the efficacy question, or only a rationale? The rules allow ex_vivo patient material but do not say whether undosed tissue qualifies.",
+  "When a model predicted only direction (susceptibility), does a sibling member's trial stopped early by an IDMC for 'modest efficacy' (tislelizumab ORR 31.8%, no prespecified bar) count as contra for that drug, given 'one drug's contra beats another's same'?",
+  "ORIENT-4 interim results appeared as conference abstracts (ASH 2019) before the 2020-12-17 registry posting; do Blood supplement abstracts count as tier 1 for dating?",
+  "ENKTL anti-PD-1: does patient efficacy of a non-member anti-PD-1 (pembrolizumab, Kwong 2017) known before a model was run make that model a retrodiction for the member class (camrelizumab/sintilimab/tislelizumab)? Checker proposed retro for the EL4/RMP1-14 track; the member trial (ORIENT-4) had also completed enrolment before the model was published."
+ ]
+}

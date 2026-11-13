@@ -1,0 +1,132 @@
+{
+ "tile": "sjogren-syndrome-btk-inhibitors",
+ "searched": [
+  "Read draft, checker verdicts (missing list used as leads) and tiles.json spec (members bms-986142, remibrutinib, tirabrutinib)",
+  "manifest.csv: only remibrutinib (NDA 218436 label + integrated review) bundled; BMS-986142 and tirabrutinib 'no NDA/BLA'",
+  "NDA 218436 integrated review grep: PBPK (88 hits; DDI and TMDD/occupancy PBPK built on clinical PK), Sjogren (no hits)",
+  "Europe PMC: (tirabrutinib OR ONO-4059 OR GS-4059) AND (arthritis OR collagen OR Sjogren OR NOD OR mouse OR rat) -- reviews only",
+  "Europe PMC: (remibrutinib OR LOU064) AND (Sjogren OR sialadenitis OR NOD OR salivary) -- Dorner 2024 trial only, no Sjogren animal model",
+  "Europe PMC: BMS-986142 AND (liver OR hepat* OR toxicity OR rheumatoid) -- RA phase 2 (38251590), Gillooly 2017 (28742141)",
+  "Europe PMC: Sjogren AND (BTK inhibitor OR Bruton) AND (mouse OR NOD OR model) AND (sialadenitis OR salivary) -- no member-drug Sjogren model",
+  "Europe PMC: DOI 10.1093/rheumatology/keac167 (Price 2022, PMID 35377447) abstract",
+  "Europe PMC full text PMC5423977 (Lee 2017 BMS-986142 phase 1) for toxicology/NOAEL/liver -- no full-text XML returned",
+  "imedpub.com: Ariza 2019 J Mol Sci 3:2 tirabrutinib CIA full text (no DOI or PMID found on the page)",
+  "fc.py search: tirabrutinib ONO-4059 collagen-induced arthritis mouse; '\"ONO-4059\" \"Collagen Induced Arthritis\" acrabstracts' -- Yoshizawa ACR 2012 abstract",
+  "acrabstracts.org: Yoshizawa 2012 ONO-4059 CIA abstract text",
+  "ClinicalTrials.gov API NCT03100942: results first posted 2020-01-22, start 2017-05-01",
+  "Europe PMC fullTextXML and PMC page for PMC5423977 (Lee 2017 BMS-986142 phase 1): no toxicology/NOAEL/liver text retrieved; Europe PMC abstract PMID 38251590 (RA phase 2, 350 mg arm stopped for elevated liver enzymes)"
+ ],
+ "added_models": [
+  {
+   "model_id": "mouse-cia-tirabrutinib",
+   "model": "Mouse collagen-induced arthritis (DBA/1J) dosed with tirabrutinib (ONO-4059)",
+   "model_kind": "animal",
+   "model_first_use_year": 2012,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "year": 2012,
+      "status": "untested",
+      "model": "Mouse collagen-induced arthritis (DBA/1J) dosed with tirabrutinib (ONO-4059)",
+      "note": "Ono's mouse CIA study: oral ONO-4059 dose-dependently reduced arthritis score and bone damage; no Sjogren model reported for tirabrutinib.",
+      "short": "Mouse CIA responded to tirabrutinib",
+      "src": "https://acrabstracts.org/abstract/development-of-a-brutons-tyrosine-kinase-btk-inhibitor-ono-4059-efficacy-in-a-collagen-induced-arthritis-cia-model-indicates-potential-treatment-for-rheumatoid-arthritis-ra/",
+      "srcLabel": "Yoshizawa 2012 (ACR abstract)",
+      "quote": "Treatment with ONO-4059 resulted in a dose-dependent inhibition of arthritis severity and bone damage in the CIA model.",
+      "confidence": "medium",
+      "confidence_note": "ACR 2012 meeting abstract (Arthritis Rheum supplement), no DOI or PMID, so not tier 1 (checker efficacy 4); used only to date the model's first use.",
+      "judgement": "Opening entry dated to the first public CIA data for this drug, before the 2017 Sjogren trial start.",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2012,
+      "print_year": 2012,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected (active primary or secondary Sjogren syndrome, ESSDAI >= 5)",
+      "endpoint_role": "primary",
+      "outcome_tested": null
+     },
+     {
+      "year": 2020,
+      "status": "untested",
+      "model": "Mouse collagen-induced arthritis (DBA/1J) dosed with tirabrutinib (ONO-4059)",
+      "note": "Mouse CIA efficacy led Ono to call for clinical testing in inflammatory disease; tirabrutinib 40 mg missed the week-12 composite primary in Sjogren (34.7% vs 26.7%, P=0.33).",
+      "short": "Sjogren phase 2 primary not met",
+      "src": "https://doi.org/10.1093/rheumatology/keac167",
+      "srcLabel": "Price 2022",
+      "quote": "Three drugs with disparate mechanisms were tested, but no significant differences vs placebo in primary or secondary end points were observed.",
+      "confidence": "low",
+      "confidence_note": "Abstract-level. The only tirabrutinib model sources (Ariza 2019, J Mol Sci, iMedPub; Yoshizawa 2012 ACR abstract) have no DOI or PMID, so no admissible model side (rule 2); cross-disease model (RA arthritis model for a Sjogren trial).",
+      "judgement": "Patients were measured (NCT03100942 primary missed, results posted 2020-01-22), but with no tier 1-3 model source the pairing cannot stand; untested, unpublished, per the checker's adjudication of efficacy 5.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2022,
+      "print_year": 2022,
+      "registry_date": "2020-01-22",
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": "week-12 composite responder rate, tirabrutinib 34.7% vs placebo 26.7% (P=0.33)",
+      "source_calls_it": "miss",
+      "population": "Unselected (active primary or secondary Sjogren syndrome, ESSDAI >= 5)",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [
+       {
+        "nct": "NCT03100942",
+        "registry_date": "2020-01-22",
+        "doi": "10.1093/rheumatology/keac167",
+        "quote": "At week 12, 43.3% of the filgotinib group achieved the primary end point (P = 0.17 vs placebo) vs 42.3% (P = 0.16), 34.7% (P = 0.33), and 26.7% of lanraplenib, tirabrutinib, and placebo groups, respectively."
+       }
+      ],
+      "untested_reason": "unpublished"
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Tirabrutinib TNP-Ficoll mouse (Ariza 2019): showed once-daily dosing did not give continuous B-cell BTK inhibition, but stated no human exposure or occupancy target, and the same paper found once daily sufficient in CIA; no checkable human dose prediction, and no Sjogren occupancy was measured (draft's tirabrutinib-pkpd-occupancy track already covers dose).",
+  "BMS-986142 rat/dog toxicology: RA phase 2 dropped the 350 mg arm for elevated liver enzymes (Lancet Rheumatol 2023, PMID 38251590), but no BMS-986142 nonclinical toxicology is public (Lee 2017 full text not retrieved), so no comparison can be made; a track would be untested/unpublished only.",
+  "Remibrutinib PBPK model (NDA 218436 review section 14.5.3): built and verified on clinical PK and used for CYP3A DDI labeling, not for a Sjogren dose, efficacy or safety prediction; retrodictive PK only, outside the four questions.",
+  "Sjogren-specific animal models (NOD, IL-14alpha transgenic, sialadenitis) dosed with a member drug: none found for remibrutinib, tirabrutinib or BMS-986142.",
+  "Patient-derived cells, ex-vivo salivary gland, organoid, human challenge or genetic models (XLA) compared with Sjogren BTK-inhibitor outcomes: none found.",
+  "BMS-986142 human in-vitro B-cell assays (Gillooly 2017): already inside the draft's mouse-cia-caia-bms986142 track (checker flagged the lumping as a rule question, not a missing system)."
+ ],
+ "gaps": [
+  {
+   "lead": "Tirabrutinib mouse CIA track (Ariza 2019 / Yoshizawa 2012 ACR abstract) paired with NCT03100942",
+   "outcome": "added",
+   "detail": "mouse-cia-tirabrutinib, efficacy 2012 untested and 2020 entry; 2020 set to untested/unpublished per checker adjudication of efficacy 5 (no DOI/PMID model source, rule 2)"
+  },
+  {
+   "lead": "Tirabrutinib TNP-Ficoll once-daily vs twice-daily BTK inhibition vs 40 mg once-daily Sjogren dosing",
+   "outcome": "none",
+   "detail": "Rule 5 no_prediction: the mouse study states no human exposure, occupancy or dose target, and no Sjogren occupancy was measured; dose already on tirabrutinib-pkpd-occupancy (dose, untested not_measured)"
+  },
+  {
+   "lead": "BMS-986142 safety (RA phase 2 NCT02638948 350 mg arm stopped for elevated liver enzymes, PMID 38251590)",
+   "outcome": "none",
+   "detail": "No BMS-986142 nonclinical toxicology is public (no NDA, Gillooly 2017 and Lee 2017 give none), so no model side exists to compare"
+  }
+ ]
+}

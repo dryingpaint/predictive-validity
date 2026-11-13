@@ -1,0 +1,37 @@
+{
+ "tile": "psoriasis-pde4-inhibitors",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: model first public 2009 after Ro 20-1724's 1979 double-blind psoriasis result (Stawiski 1979, PMID 383851); efficacy retrodiction counts any drug of the same target and action"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "retrodiction false -> true (same 1979 Ro 20-1724 result); contra kept as a failed retrodiction against NCT01300052"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true: LEO soft-drug assays public 2014, after Ro 20-1724 1979 and apremilast psoriasis results"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug DRM02 -> crisaborole: entry re-scored on crisaborole's own imiquimod-mouse track (contra kept against NCT01300052); strengthens dropped since the DRM02 miss no longer shares the track"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "untested opener for DRM02 on pde4-mouse-imiquimod-psoriasiform, 2020 (Tissue Barriers 2020)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "untested opener for crisaborole on pde4-mouse-imiquimod-psoriasiform, 2022 (Youn 2023, online 2022-12-19)"
+  }
+ ]
+}

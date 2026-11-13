@@ -1,0 +1,137 @@
+{
+ "tile": "exocrine-pancreatic-insufficiency-pnlip-replacement-gene-therapy",
+ "searched": [
+  "Source manifest: all three members (SLV339, adrulipase alfa, burlulipase) have no NDA/BLA, so no FDA/EMA review text exists",
+  "Firecrawl web: burlulipase exocrine pancreatic insufficiency",
+  "Firecrawl web: SLV339 lipase exocrine pancreatic insufficiency",
+  "Firecrawl web: MS1819 adrulipase in vitro digestion model predicts clinical",
+  "Firecrawl web: recombinant lipase Yarrowia YLLIP2 dog pancreatic insufficiency",
+  "Europe PMC: burlulipase; \"NM-BL\" lipase; SLV339; \"Burkholderia plantarii\" lipase pancreatic; YLLIP2 OR MS1819 OR adrulipase; \"bacterial lipase\" pancreatic insufficiency pig fat absorption",
+  "Europe PMC full text PMC11256127 (Szkopek 2024 review): NM-BL in vitro and dog-model references",
+  "Europe PMC abstracts: Suzuki 1997 (PMID 9178698), Suzuki 1999 (PMID 9922325), Raimondo 1994 (PMID 8020666), Heubi 2016 (PMID 27297209)",
+  "Firecrawl web: DiMagno bacterial lipase Burkholderia plantarii dogs; NM-BL burlulipase preclinical dogs Nordmark; SLV339 Solvay recombinant lipase preclinical",
+  "Firecrawl scrape of Suzuki 1997 full text (gastrojournal PDF): lipase identified as B. plantarii lipase from Knoll AG",
+  "ClinicalTrials.gov API v2: burlulipase OR NM-BL OR SLV339 (NCT01710644 found, no posted results)",
+  "Firecrawl scrape of Heubi 2016 full text (jpeds.com): blocked, abstract only",
+  "Europe PMC (gap pass): \"SLV339\" OR \"SLV 339\" (no lipase hits); MS1819 AND (combination OR add-on) (no primary paper)"
+ ],
+ "added_models": [
+  {
+   "model_id": "canine-pancreatic-duct-ligation-mayo",
+   "model": "Pancreatic duct-ligated dogs (Mayo Clinic, DiMagno), dosed with Burkholderia plantarii bacterial lipase",
+   "model_kind": "animal",
+   "model_first_use_year": 1997,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "year": 1997,
+      "status": "untested",
+      "note": "B. plantarii lipase cut steatorrhea dose-dependently in duct-ligated dogs; liquid beat powder; authors predicted it may abolish human steatorrhea.",
+      "short": "Bacterial lipase corrected canine steatorrhea",
+      "src": "https://doi.org/10.1053/gast.1997.v112.pm9178698",
+      "srcLabel": "Suzuki 1997",
+      "quote": "The combination of adequate mixing of small amounts (milligrams) of bacterial lipase and high-fat meals abolishes canine steatorrhea and may abolish human pancreatic steatorrhea.",
+      "confidence": "medium",
+      "confidence_note": "Abstract plus full-text methods (scraped PDF): lipase was B. plantarii lipase from Knoll AG, the enzyme later developed as burlulipase; not the NM-BL liquid formulation itself.",
+      "judgement": "Opening entry. The dog enzyme is the same bacterial lipase (B. plantarii) that became burlulipase, so product_in_model true at medium confidence; the dog readout is CFA, the human primary endpoint.",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 1997,
+      "print_year": 1997,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected (EPI due to cystic fibrosis)",
+      "endpoint_role": "primary",
+      "outcome_tested": null
+     },
+     {
+      "year": 2016,
+      "status": "same",
+      "note": "Phase 2a crossover in CF-EPI (NCT01710644): CFA 72.7% on burlulipase (NM-BL, liquid) vs 53.8% on placebo, as the dogs predicted in direction.",
+      "short": "CFA rose vs placebo in CF patients",
+      "src": "https://doi.org/10.1016/j.jpeds.2016.05.049",
+      "srcLabel": "Heubi 2016",
+      "quote": "During treatment with NM-BL, the coefficient of fat absorption was significantly greater (72.7%) compared with placebo (53.8%) with a difference between groups of 18.8% (P < .001).",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level (Europe PMC); full text blocked. Registry NCT01710644 (first posted 2012-10-19) has no posted results.",
+      "reason": "Burlulipase raised CFA as dogs predicted",
+      "judgement": "Paired by me; the trial abstract does not cite the dog work. Direction matched, but the dogs' near-abolition of steatorrhea was not reproduced (72.7% CFA is far from normal), so magnitude is direction_only. CF-EPI counts as the EPI disease, as in the draft.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1053/gast.1997.v112.pm9178698",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2016,
+      "print_year": 2016,
+      "registry_date": "2012-10-19",
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "CFA: dogs near-normal at 300,000-600,000 IU (240 mg); patients 72.7% vs 53.8% placebo",
+      "source_calls_it": null,
+      "population": "Unselected (EPI due to cystic fibrosis)",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": []
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Ex-vivo human gastric/duodenal juice survival assay (Raimondo & DiMagno 1994, B. plantarii vs porcine lipase): predicted bacterial lipase would be more effective than porcine lipase; no head-to-head burlulipase vs porcine PERT trial was found (Heubi 2016 was placebo-controlled), so no patient comparison.",
+  "In-vitro test-meal assay for YLLIP2 (Aloulou 2015: 10 mg = 1200 mg pancreatin): a potency ratio, not a human regimen; MS1819-SD lipase content in the 2.2 g/d clinical dose is undisclosed, so no admissible comparison (the draft already folds it into the minipig dose entry).",
+  "Duct-ligated dog dose statement (Suzuki 1997: 300,000-600,000 IU = 120-240 mg in humans): the NM-BL dose in Heubi 2016 could not be read (full text blocked), so no dose-cell comparison was entered.",
+  "Suzuki 1999 dog finding that porcine lipase gave more fat absorption than bacterial lipase on a standard diet: no burlulipase vs PERT patient trial found to compare it with.",
+  "SLV339 (Solvay): no published preclinical or disease-model data found; dose-ranging trial in chronic pancreatitis has no public results.",
+  "Patient-derived cells/organoids, PDX, human genetic or in-silico/QSP models: none found for any member; not applicable to an oral lumen-acting enzyme."
+ ],
+ "gaps": [
+  {
+   "lead": "OPTION 2 topline press release, 31 Mar 2021",
+   "outcome": "covered",
+   "detail": "The check verdict on efficacy 2 (pei-minipig-duct-ligation) already proposes year 2021 from this 31 Mar 2021 topline, adjudicated contra; same cell, index and change."
+  },
+  {
+   "lead": "Sponsor's 25 Sep 2019 OPTION release (~50% reached non-inferiority)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored. Re-opened AzurRx 10-K FY2019 R7: the 25 Sep 2019 release gives no arm-level CFA vs PERT, calls the study positive and not powered (\"approximately 50% of the patients showing CFAs high enough to reach non-inferiority\"); at most an untested/unsettled point on a track already untested, so the adjudicated 2021 contra on efficacy 2 stands."
+  },
+  {
+   "lead": "Phase 2 MS1819 + PERT combination trial in CF (CFA +6.57%)",
+   "outcome": "none",
+   "detail": "Add-on to PERT; the minipig tested MS1819 monotherapy vs pancreatin, so no model stated a prediction for combination use (no model-to-patient pairing)."
+  },
+  {
+   "lead": "In-vitro test-meal assay (Aloulou 2015, 10 mg YLLIP2 = 1200 mg pancreatin)",
+   "outcome": "none",
+   "detail": "Adrulipase already has a track and the assay has no patient comparison (MS1819-SD lipase content undisclosed); stays folded in dose entry 1, see considered_not_added."
+  },
+  {
+   "lead": "No public disease-model data for burlulipase or SLV339",
+   "outcome": "tracked",
+   "detail": "Burlulipase: canine-pancreatic-duct-ligation-mayo, efficacy entries 3-4 (untested 1997, same 2016); SLV339: none, Europe PMC/ClinicalTrials.gov/web give no model or patient results."
+  },
+  {
+   "lead": "Burlulipase follow-on (larger phase 2 dose-ranging trial)",
+   "outcome": "none",
+   "detail": "No later burlulipase patient result found (Anthera 10-K 2017 lists only completed phase 1/2); canine track has no further comparison."
+  }
+ ]
+}

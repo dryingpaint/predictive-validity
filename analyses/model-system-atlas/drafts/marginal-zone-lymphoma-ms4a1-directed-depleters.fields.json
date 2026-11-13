@@ -1,0 +1,32 @@
+{
+ "tile": "marginal-zone-lymphoma-ms4a1-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (engagement is a target claim; rituximab B-cell depletion in lymphoma patients, Maloney 1994, predates the monkey model); drug epcoritamab, route sc"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "status contra -> retro, retrodiction true, source_calls_it partial: rituximab depletion predates the model, and RA/SLE patients depleted B cells less deeply (direction held; checker adjudication); drug imvotamab, route iv, population_group other_disease"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (efficacy is a target claim; rituximab responses in MALT-type MZL, Conconi 2003 PMID 12842999, predate the 2008 ex-vivo model); drug ublituximab, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2021 -> 2019, src/quote -> Hutchings 2019 ASH abstract (doi 10.1182/blood-2019-121460), comparison_stated true: rule 6 earliest public date; the abstract states monkey SC cytokine data beside non-severe patient CRS; status same unchanged; drug epcoritamab, route sc"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "ublituximab-exvivo-adcc, ublituximab iv, 2017 retro: Sawas 2017 rapid circulating-lymphocyte depletion in all CLL patients (checker verdict engagement #3, adjudicated same), retrodiction because rituximab depletion predates the 2008 model"
+  }
+ ]
+}

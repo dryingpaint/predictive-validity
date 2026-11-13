@@ -276,5 +276,37 @@
   "Regulator reliance: no FDA/EMA review exists for any member (manifest has no rows; pyrotinib's NMPA review is not public), so no label-expansion-on-model-data case to score.",
   "Human challenge, human genetic and ex-vivo drug-sensitivity systems: none found for pan-HER TKIs in breast cancer.",
   "Hickinson 2010's HER2-non-overexpressing LoVo, FaDu and PC-9 xenografts: same system as the draft's track A."
+ ],
+ "gaps": [
+  {
+   "lead": "Morrison 2014 (10.1007/s10549-014-2878-x) MCF7/TamRes xenografts behind MINT",
+   "outcome": "tracked",
+   "detail": "er-pos-tamres-mcf7-xenograft, efficacy 2014 (opening untested + retro vs NCT01151215) plus engagement/dose/safety cells; checker's 'contra, prospective' reading vs the draft's retro (MINT reported at ASCO 2013, before Morrison's epub) is a status question for the verdict."
+  },
+  {
+   "lead": "THYME, NCT00900627 (AZD8931 + paclitaxel, HER2-low, PFS HR 1.08)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: efficacy 3 (azd8931-her2-low-xenograft-panel) is adjudicated untested because HR+/HER2-non-amplified trials are a sibling population of the HER2-positive context (decision 12, efficacy does not transfer); THYME (HER2-low, results posted 2014-09-29, PFS HR 1.08) is the same sibling population, so adding its result to patient_trials leaves the status untested. Its safety data post-date MINT (2014-05-08) and move no year."
+  },
+  {
+   "lead": "Kim 2018 poziotinib phase 1 (10.4143/crt.2017.303)",
+   "outcome": "covered",
+   "detail": "Checker dose index 2 verdict already cites Kim 2018 (MTD 24/18 mg, DLT diarrhoea) and holds untested; the safety contra on her2-amplified-breast-xenografts (index 3) is already dated 2017 from Ma 2017 (epub 2017-05-12), earlier than Kim 2018 (epub 2017-08-29), so no year moves."
+  },
+  {
+   "lead": "Tjulandin 2014 AZD8931 phase 1 (10.1007/s10637-013-9963-6)",
+   "outcome": "fix",
+   "detail": "Dose: covered by checker dose index 1 (untested holds). Safety: cell safety, index 1 (azd8931-her2-low-xenograft-panel), field year of the contra the checker proposes and adjudicated for this entry: current proposed 2014 (MINT registry 2014-05-08); source supports 2013. Tjulandin 2014, Invest New Drugs, https://doi.org/10.1007/s10637-013-9963-6 (PMID 23589215, epub 2013-04-16, print 2014), advanced solid tumours incl. breast, imported_from applies: 'The most frequent adverse events were treatment-emergent cutaneous (n = 27) and diarrhea (n = 21).' DLTs grade 3 rash (240 mg bid) and grade 3-4 diarrhoea (300 mg bid). The askable silence of Hickinson 2010's dosed mice was first contradicted in patients 2013-04-16; src should be Tjulandin 2014 with epub_year 2013, print_year 2014, registry_date null (NCT00637039)."
+  },
+  {
+   "lead": "Hickinson 2010 full text: breast xenograft was HER2-amplified BT474c",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the checker's engagement index 1 and efficacy index 1 notes already record that the breast xenograft was HER2-amplified BT474c and the HER2-non-overexpressing models were LoVo, FaDu and PC-9; both statuses (untested) stand. Model-description wording only."
+  },
+  {
+   "lead": "No patient-derived organoid/PDX comparison or public regulator document for any member in breast cancer",
+   "outcome": "none",
+   "detail": "Europe PMC pyrotinib/poziotinib + organoid/PDX + breast returned only reviews; the one PDX hit (10.1002/ctm2.148) is gastric; no FDA/EMA review exists and NMPA's is not public."
+  }
  ]
 }

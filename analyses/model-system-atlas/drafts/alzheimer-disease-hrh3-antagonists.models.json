@@ -14,7 +14,8 @@
   "Europe PMC full text PMC5651361 (Delay-Goyet 2016): all sentences on sleep, insomnia, wake, EEG, vigilance, clinical trials",
   "curl + pdftotext: Sanofi DRI10734 results summary (issue date 11-Nov-2014), safety and efficacy paragraphs",
   "fc.py scrape: EU CTR results record 2010-022596-64 (first version publication date 10 May 2016; adverse-event tables not returned by the scrape)",
-  "doi.org HEAD 10.1016/j.bbr.2012.04.033 resolves to Elsevier S016643281200294X (Griebel 2012 Behav Brain Res)"
+  "doi.org HEAD 10.1016/j.bbr.2012.04.033 resolves to Elsevier S016643281200294X (Griebel 2012 Behav Brain Res)",
+  "fc.py search: Stemmelin SAR110894 CTAD 2013 phase 2 cognition daily function apathy sleep (only citations of the abstract title returned; abstract text not retrievable)"
  ],
  "added_models": [
   {
@@ -118,5 +119,32 @@
   "Nathan 2013 GSK239512 phase 1b bridging study in AD (NCT00675090): patient-side data with no model side",
   "Delay-Goyet 2016 THY-Tau22 chronic-dosing model: already tracked as thy-tau22-mouse",
   "Alhusaini 2022 Front Pharmacol review of preclinical H3 antagonist observations: a review, not a source; it names no model system beyond those tracked"
+ ],
+ "gaps": [
+  {
+   "lead": "ABT-288 schizophrenia safety (Haig 2014 Schizophr Bull; Othman 2014 BJCP), importable with imported_from MONDO:0005090",
+   "outcome": "none",
+   "detail": "Not a new model system: a patient-side import onto the existing rat-safety-pharm-eeg safety track against a generic 'wide CNS safety margin'; admissibility is the open rule question (generic margin as prediction; susceptible-population import), not an addition"
+  },
+  {
+   "lead": "EU CTR results record 2010-022596-64 (SAR110894, NCT01266525), results v1 2016-05-10",
+   "outcome": "covered",
+   "detail": "Covered: the checker verdict for efficacy 4 (rodent-cognition-battery, Delay-Goyet 2016 contra) already states registry_date should be 2016-05-10; the change is to registry_date only, the entry year stays 2016 and status contra is unchanged, so nothing scored moves. Safety 3 and 4 already carry 2016-05-10."
+  },
+  {
+   "lead": "GSK239512 PET occupancy protocol NCT00474513",
+   "outcome": "covered",
+   "detail": "Covered: the checker verdict for engagement 2 (gsk239512-pig-pet, Ashworth 2014) already records NCT00474513 from the paper; the change is to confidence_note (and a registry lookup), status same and year 2014 unchanged, nothing scored."
+  },
+  {
+   "lead": "GSK239512 product-in-model model side: EU CTR 2007-004117-33 'active in animal cognition models'",
+   "outcome": "covered",
+   "detail": "Covered (changes nothing scored). Source re-opened: EU CTR 2007-004117-33 summary report 109689 (https://www.clinicaltrialsregister.eu/ctr-search/rest/download/result/attachment/2007-004117-33/1/10899, first version published 2016-07-02) says 'Pre-clinical studies show GSK239512 to be a highly potent ... histamine H3 receptor antagonist which is active in animal models of cognition.' It gives no data or model, and was public only in 2016, after efficacy 2's 2013 date; the current sibling model_src (Medhurst 2007, product_in_model false) is admissible under the brief, and swapping it changes neither status (same) nor year. Not a wrong field, so no fix."
+  },
+  {
+   "lead": "Stemmelin 2013 CTAD oral OC42 (J Nutr Health Aging 17(9), 10.1007/s12603-013-0399-7)",
+   "outcome": "covered",
+   "detail": "Covered (no supportable change). Re-searched via fc.py (Stemmelin SAR110894 CTAD 2013; CTAD 2013 oral communications): the OC42 abstract text is still not retrievable, so whether it reports the sleep adverse events is unverified and no earlier year can be quoted; safety 3 (rat-safety-pharm-eeg) stays 2014. The supplement-DOI admissibility is already lodged in check.json rule_questions (Rule 7 dating)."
+  }
  ]
 }

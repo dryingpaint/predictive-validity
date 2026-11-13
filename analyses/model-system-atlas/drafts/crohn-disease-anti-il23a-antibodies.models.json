@@ -275,5 +275,27 @@
   "Patient-derived organoids, mucosal explants dosed with a member, and humanized-mouse colitis: no member study found in any sweep; IL-23 acts on immune cells, so no epithelial organoid track is expected.",
   "Cross-indication bridging (psoriasis and UC PK used for the Crohn's regimen): a patient result in another indication, not a model system; the draft's dose cell already records that Crohn's dosing came from psoriasis PK and the human phase 2.",
   "Mouse colonic IL-23/IL-17 cytokine PD versus Visvanathan 2018 patient biopsies: already the mouse track's engagement entry; the ex-vivo track's apoptosis readout was never measured in dosed patients, so it gets no engagement entry."
+ ],
+ "gaps": [
+  {
+   "lead": "No model system beyond the three tracks (organoid, explant/ex vivo, humanized mouse, IL23R genotype for brazikumab/mirikizumab/risankizumab)",
+   "outcome": "none",
+   "detail": "Re-searched Europe PMC (members AND Crohn AND organoid/explant/ex vivo/humanized/predict response, reviews excluded): only trials, real-world and guideline papers; the ex vivo track is already cd-patient-lpmc-anti-tnf-refractory-exvivo (efficacy 5-7)."
+  },
+  {
+   "lead": "Steere 2023 J Pharmacol Exp Ther (doi 10.1124/jpet.122.001512) as tier-1 model_src for the LSN2479016 surrogate colitis data",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the mouse track's efficacy entries (2 opener, 4 same) cite Elson 2007 as src/model_src, a valid tier-1 source for the anti-p19 surrogate colitis prediction; Steere 2023 (mirikizumab surrogate LSN2479016) would be an additional source for the same system and claim, no field is wrong and no status changes."
+  },
+  {
+   "lead": "IL23R pharmacogenetic prediction of ustekinumab response (doi 10.3390/ph19091428)",
+   "outcome": "none",
+   "detail": "Outside the rules: ustekinumab is anti-p40, not a tile member (decision 13); no p19-member equivalent found."
+  },
+  {
+   "lead": "AstraZeneca press release 2023-06-01 as earlier public source for the brazikumab stop",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: NCT03759288 sits only in patient_trials of efficacy entries 3 and 4 (lists that change no status); its registry_date 2026-06-23 is the registry posting date that field records, and checker verdict efficacy[4] already notes the 2023-06-01 AstraZeneca strategic stop with no safety concern."
+  }
  ]
 }

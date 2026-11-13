@@ -11,7 +11,8 @@
   "Europe PMC: EZH2 AND inhibitor AND prostate AND (predict OR correlat) AND (clinical response OR patient response): reviews only",
   "ClinicalTrials.gov API v2: intervention tazemetostat / EPZ-6438 / CPI-1205 / lirametostat / SHR2554 / zeprumetostat / EZH2 x condition prostate; full records of NCT03741712, NCT07230106, NCT07407283, NCT04846478 read for NE / small-cell / RB1 / TP53 selection",
   "Firecrawl search (fc.py): SHR2554 EZH2 inhibitor prostate cancer preclinical xenograft rezvilutamide SHR3680 combination: no primary preclinical source, only trial listings and reviews",
-  "PubMed E-utilities esearch/efetch were attempted first and returned non-JSON errors; Europe PMC was used instead"
+  "PubMed E-utilities esearch/efetch were attempted first and returned non-JSON errors; Europe PMC was used instead",
+  "SEC EDGAR Constellation 10-K FY2020 (cnst-10k_20201231.htm) fetched: 'In June 2020, we announced that we plan to discontinue development of CPI-1205 after completion of ProSTAR and to prioritize further clinical development of CPI-0209. The decision was based on a review of ProSTAR data' verified verbatim"
  ],
  "added_models": [
   {
@@ -75,5 +76,27 @@
   "In-silico dose models: the tazemetostat skin H3K27me3 Emax model (EC50 734 ng.h/mL) is fitted to patient data, not a preclinical model, and the FDA review contains no PBPK for CYP3A inducers (effect 'has not been evaluated'); CELLO-1's 1200 mg BID with enzalutamide came from its own phase 1b. No in-silico track.",
   "ESMO 2024 CELLO-1 abstract 1603P (doi 10.1016/j.annonc.2024.08.1684) and the Constellation FY2020 10-K ProSTAR discontinuation: both belong to the existing crpc-ezh2-xenograft track (re-dating and patient_trials) and are left to the adjudicator.",
   "Human genetic, human challenge and ex-vivo patient-cell sensitivity-versus-response models: none found for EZH2 inhibitors in prostate cancer."
+ ],
+ "gaps": [
+  {
+   "lead": "zeprumetostat (SHR2554) member never named in the draft note",
+   "outcome": "none",
+   "detail": "No model-to-patient comparison: only mCRPC trial NCT03741712 (SHR2554 +/- SHR3680) terminated 2019-09-30 at n=9, no results; NCT07230106/NCT07407283 have no results; no peer-reviewed SHR2554 prostate model (Europe PMC, fc.py). Already named in nepc-patient-organoid efficacy[5] judgement; tile note's member list (mevrometostat for zeprumetostat) is a note fix for the adjudicator, not a system"
+  },
+  {
+   "lead": "Puca 2018 NEPC patient-derived organoid track",
+   "outcome": "tracked",
+   "detail": "nepc-patient-organoid, efficacy entry 5 (2018 untested, ex_vivo, patient level), confirmed by checker"
+  },
+  {
+   "lead": "ESMO 2024 CELLO-1 abstract 1603P",
+   "outcome": "covered",
+   "detail": "check.json efficacy index 4 (crpc-ezh2-xenograft, CELLO-1) already proposes and adjudicates status untested, year 2024, citing 1603P 'Median rPFS by BCR was 16.6 and 13.8 months'; same cell, index and change."
+  },
+  {
+   "lead": "Constellation FY2020 10-K ProSTAR discontinuation",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: a portfolio decision that would only add a tier-5 source to the ProSTAR (NCT03480646) patient_trials item of crpc-ezh2-xenograft efficacy[4]; patient_trials change no status, and efficacy[4] status is set by the check.json verdict (untested 2024)."
+  }
  ]
 }

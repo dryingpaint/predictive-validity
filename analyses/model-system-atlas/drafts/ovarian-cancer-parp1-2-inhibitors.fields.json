@@ -1,0 +1,77 @@
+{
+ "tile": "ovarian-cancer-parp1-2-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug veliparib, route oral, population_group unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: Kinders 2008 (Nov) post-dates patient PARP inhibition (Yap ASCO 2007; Fong ASCO 2008 abstract 5510); drug veliparib, route oral, population_group other_disease"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug niraparib, route oral, population_group biomarker_selected; tolerability claim now scored in safety"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug niraparib, route oral, population_group other_disease"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug niraparib, route oral, population_group stage_or_line"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug niraparib, route oral, population_group stage_or_line"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug niraparib, route oral, population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: Jones 2009 post-dates olaparib BRCA ovarian responses (Fong ASCO 2008; NEJM 2009); outcome_tested negative and NOVA OS patient_trial per checker adjudication; drug niraparib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug rucaparib, route oral, population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2022 -> 2016, status same -> retro, src/quote ARIEL4 -> ARIEL2 Part 1 (Swisher 2017, epub 2016-11-29, NCT01891344 results 2021-07-13): single-arm ruling and rule 6 earliest date (checker proposed ARIEL3 2017); retrodiction (Drew 2011 post-dates olaparib BRCA responses); ARIEL4 moved to patient_trials; drug rucaparib, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "status same -> retro, retrodiction true: toxicology first public in the Dec 2016 review after ARIEL2 reported rucaparib anaemia and ALT/AST rises (epub 2016-11-29); drug rucaparib, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: dog CV study first public in the 2017 review after NOVA (2016-10) reported niraparib hypertension; drug niraparib, route oral"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "niraparib-xenograft-pkpd safety opener, 2009 untested (Jones 2009 'well tolerated in vivo': passing tolerability claim ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "niraparib-xenograft-pkpd safety 2016 contra: NOVA grade 3-4 thrombocytopenia 33.8%, anaemia 25.3%, neutropenia 19.6% (Mirza 2016) against mice's 'well tolerated'"
+  }
+ ]
+}

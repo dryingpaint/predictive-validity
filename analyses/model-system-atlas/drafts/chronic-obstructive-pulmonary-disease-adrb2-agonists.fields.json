@@ -1,0 +1,71 @@
+{
+ "tile": "chronic-obstructive-pulmonary-disease-adrb2-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same->retro, retrodiction true: model first public after earlier COPD patient results for beta2 agonism (salmeterol, formoterol); engagement and efficacy retrodiction counts any drug of the same target and action; drug=vilanterol, route=inhaled set"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same->retro, retrodiction true: model first public after earlier COPD patient results for beta2 agonism (salmeterol, formoterol); engagement and efficacy retrodiction counts any drug of the same target and action; drug=vilanterol, route=inhaled set"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "status same->retro, retrodiction true: model first public after earlier COPD patient results for beta2 agonism (salmeterol, formoterol); engagement and efficacy retrodiction counts any drug of the same target and action; drug=abediterol, route=inhaled set"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "status same->retro, retrodiction true: model first public after earlier COPD patient results for beta2 agonism (salmeterol, formoterol); engagement and efficacy retrodiction counts any drug of the same target and action; drug=abediterol, route=inhaled set"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "status same->retro, retrodiction true: model first public after earlier COPD patient results for beta2 agonism (salmeterol, formoterol); engagement and efficacy retrodiction counts any drug of the same target and action; drug=azd-3199, route=inhaled set"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "status same->retro, retrodiction true: model first public after earlier COPD patient results for beta2 agonism (salmeterol, formoterol); engagement and efficacy retrodiction counts any drug of the same target and action; drug=pf-00610355, route=inhaled set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same->retro, retrodiction true: model first public after earlier COPD patient results for beta2 agonism (salmeterol, formoterol); engagement and efficacy retrodiction counts any drug of the same target and action; drug=vilanterol, route=inhaled set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same->retro, retrodiction true: model first public after earlier COPD patient results for beta2 agonism (salmeterol, formoterol); engagement and efficacy retrodiction counts any drug of the same target and action; drug=abediterol, route=inhaled set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status same->retro, retrodiction true: model first public after earlier COPD patient results for beta2 agonism (salmeterol, formoterol); engagement and efficacy retrodiction counts any drug of the same target and action; drug=azd-3199, route=inhaled set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "status same->retro, retrodiction true, source_tier 1->4, quote replaced with the trough-FEV1 sentence: RULE QUESTION settled (pooled K-PD meta-analysis of 690 COPD patients is a tier 4 patient source); target-level retrodiction (salmeterol/formoterol earlier)"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "status same->retro, retrodiction true: dose model first public (Stocks 2014) after the same drug's own COPD result (Kuna 2013, epub 2013-06-03)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same->retro, retrodiction true: dog telemetry first public in the 2013 FDA review after vilanterol's own COPD pulse/BP/QTcF data (Hanania 2012)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "status untested->retro, retrodiction true, src/quote -> Kuna 2013 ('No safety concerns were identified.'), model_src Stocks 2014: passing tolerability claim is a safety prediction; COPD patients measured so asthma (Bjermer 2013) not imported; model public after the drug's own 2013 COPD result"
+  }
+ ],
+ "added": []
+}

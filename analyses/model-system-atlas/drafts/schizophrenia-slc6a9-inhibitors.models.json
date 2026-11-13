@@ -69,7 +69,7 @@
       "confidence": "high",
       "confidence_note": null,
       "year": 2023,
-      "status": "contra",
+      "status": "same",
       "src": "https://doi.org/10.1016/j.schres.2023.04.010",
       "srcLabel": "Surti 2023",
       "quote": "PF-03463275 treatment, at doses demonstrated to engage the target, was safe and well-tolerated but did not produce a greater improvement in CIAS compared to CT alone.",
@@ -78,9 +78,9 @@
       "blocked_by": null,
       "margin_stated": null,
       "note": "40 and 60 mg bid, chosen from the LTP peak and highest occupancy, dosed with adherence checks; no MCCB gain over CT alone; programme ended.",
-      "short": "LTP-chosen doses reached; no efficacy",
+      "short": "LTP- and occupancy-chosen doses reached",
       "reason": "LTP-chosen doses reached; failed",
-      "judgement": "Reached, failed, abandoned: contra derived from efficacy, counted once. The trial paper sets its dose rationale beside the result ('Despite these controls, neither dose of the study drug improved MCCB scores'), so the comparison is stated. Registry results (2023-02-27) precede the epub (2 May 2023); year 2023 either way."
+      "judgement": "Dose scored on its own prediction (rule v4): 40 and 60 mg bid, chosen from the LTP peak and occupancy, were dosed. Reached, failed, abandoned: contra derived from efficacy, counted once. The trial paper sets its dose rationale beside the result ('Despite these controls, neither dose of the study drug improved MCCB scores'), so the comparison is stated. Registry results (2023-02-27) precede the epub (2 May 2023); year 2023 either way."
      }
     ],
     "efficacy": [
@@ -401,5 +401,32 @@
   "Mouse TUNL working-memory / NMDA-antagonist network paper (Psychopharmacology 2026, PMID 42405981): a rodent NMDA-antagonist cognition system of the kind the draft already tracks (rodent-mk801-cognition-eeg), and post-CONNEX",
   "Iclepertin patient EEG/MMN substudy (Surti 2023 cites 'improvements in cognition with BI 425809 were not correlated with MMN changes'): the engagement comparison for the existing rodent-mk801-cognition-eeg track, not a new system; not verified here",
   "LTP track engagement cell: the trial's own day-7 VEP-LTP replication is 'to be reported elsewhere' (Surti 2023), so no engagement entry was written for human-vep-ltp-neuroplasticity"
+ ],
+ "gaps": [
+  {
+   "lead": "Human VEP-LTP neuroplasticity in patients with PF-03463275 (D'Souza 2018; Surti 2023)",
+   "outcome": "tracked",
+   "detail": "human-vep-ltp-neuroplasticity: dose 5-6 and efficacy 6-7 (2018 untested, 2023 contra), already in added_models and merged into the draft"
+  },
+  {
+   "lead": "Human ketamine-challenge fMRI working memory in healthy volunteers with PF-03463275 (D'Souza 2018)",
+   "outcome": "tracked",
+   "detail": "human-ketamine-challenge-fmri-wm: efficacy 8-9 (2018 untested, 2023 neg); checker verdict on efficacy 9 (same + direction_only) and rule question 4 cover how it is scored"
+  },
+  {
+   "lead": "Roche media release 21 Jan 2014 (bitopertin FlashLyte/DayLyte phase 3 miss)",
+   "outcome": "covered",
+   "detail": "efficacy 3 (rodent-nmda-antagonist-behaviour, contra): check.json verdict 'corrected' proposes year 2014 from this release (decision 7 with decision 2), same cell, index and change; dose 2 (Umbricht 2014) is same, target reached, so nothing else to redate"
+  },
+  {
+   "lead": "Boehringer Ingelheim CONNEX topline release, Jan 2025",
+   "outcome": "covered",
+   "detail": "efficacy 5 (rodent-mk801-cognition-eeg, contra 2025): release is Jan 2025, same year and status as the entry; changes nothing scored; check.json verdict 'confirmed'"
+  },
+  {
+   "lead": "Org 25935 human ketamine challenge (D'Souza 2012)",
+   "outcome": "none",
+   "detail": "Org 25935 is not a member drug (reviewed member list); same system tracked through PF-03463275 as human-ketamine-challenge-fmri-wm; non-member proxy is checker rule question 5"
+  }
  ]
 }

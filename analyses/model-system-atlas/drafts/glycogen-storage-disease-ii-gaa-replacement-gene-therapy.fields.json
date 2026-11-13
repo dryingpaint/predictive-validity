@@ -1,0 +1,18 @@
+{
+ "tile": "glycogen-storage-disease-ii-gaa-replacement-gene-therapy",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "drug reveglucosidase alfa, route iv; opener untested 2012 unchanged; untested_reason not_measured added"},
+  {"cell": "engagement", "index": 2, "what": "drug cipaglucosidase alfa, route iv, combination_with miglustat; year 2023 -> 2021 (rule 6: PROPEL Hex4/CK vs alglucosidase first public in Schoser 2021, checker adjudication); status same unchanged"},
+  {"cell": "engagement", "index": 3, "what": "drug cipaglucosidase alfa, route iv, combination_with miglustat; opener untested 2016 unchanged"},
+  {"cell": "engagement", "index": 4, "what": "drug cipaglucosidase alfa, route iv, combination_with miglustat (with vs without miglustat design); same 2023 unchanged"},
+  {"cell": "dose", "index": 1, "what": "drug cipaglucosidase alfa, route iv, combination_with miglustat; untested 2016 unchanged"},
+  {"cell": "dose", "index": 2, "what": "drug cipaglucosidase alfa, route iv, combination_with miglustat; same 2023 unchanged"},
+  {"cell": "efficacy", "index": 1, "what": "drug reveglucosidase alfa, route iv; opener untested 2012 unchanged"},
+  {"cell": "efficacy", "index": 2, "what": "model_id gaa-ko-mouse-plethysmography merged into gaa-ko-mouse (same strain); drug reveglucosidase alfa, route iv, population_group stage_or_line; src/quote/year 2016 -> INSPIRE NCT01924845 registry results 2018-06-14 (single-arm ruling: primary MIP +2.2 (SD 8.3) % predicted scored against the model's direction; Peng's exploratory phase 1/2 MIP/MEP match not admissible under the primary-endpoint rule); status retro kept, magnitude off_by_>5x, source_tier 3, model_src Peng 2017"},
+  {"cell": "efficacy", "index": 3, "what": "drug cipaglucosidase alfa, route iv, combination_with miglustat (combination ruling: scored on PROPEL 6MWD primary); same/partial 2021 unchanged"},
+  {"cell": "safety", "index": 1, "what": "drug cipaglucosidase alfa, route iv, combination_with miglustat; untested 2016 unchanged"},
+  {"cell": "safety", "index": 2, "what": "drug reveglucosidase alfa, route iv; untested/unpublished 2017 unchanged"},
+  {"cell": "safety", "index": 3, "what": "drug cipaglucosidase alfa, route iv, combination_with miglustat; same 2023 unchanged"}
+ ],
+ "added": []
+}

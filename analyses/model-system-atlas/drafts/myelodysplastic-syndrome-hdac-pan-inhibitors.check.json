@@ -11,162 +11,204 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Novotny-Diermayr MCT 2010 resolves (epub 2010-03-02); quote verbatim in the abstract, its own 'inhibition of histone acetylation' wording. Opener untested is right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 20197387 (epub 2010-03-02) quote verbatim in abstract. Opener untested 2010; drug pracinostat, route oral match the patients later compared."
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "same",
-   "proposed_year": 2017,
-   "rule": "4",
-   "note": "Abaza 2017 full text (PMC5901648): pracinostat 'induced histone acetylation in a non-dose dependent fashion'. Readout moved in dosed patients: decision 4 gives same, source_calls_it partial (decision 11) for lost dose-dependence. Abaza ref 10 cites the mouse data; still a pairing.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Same under decision 4: the model's PD readout moved (Abaza 2017: 'sustained elevation of AcH3 levels across all doses'). Only the exposure relationship failed, a scaling miss: same + bin / source_calls_it partial under decision 11, not contra."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 21586629 (epub 2011-05-17) quote verbatim. Retro right: same-target patient acetylation public earlier (Giles 2006 panobinostat). 30 solid-tumour phase 1 patients: other_disease, pracinostat, oral right."
   },
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2004,
-   "rule": "7",
-   "note": "Fiskus 2009 resolves, quote verbatim. Status stands; date only: the ex vivo leukemia-cell system was first used for panobinostat in George 2004 (Blood, 10.1182/blood-2004-09-3413), so the track opens at 2004."
-  },
-  {
-   "cell": "engagement",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2006,
-   "rule": "7",
-   "note": "Tan 2014 quote verbatim (OA abstract). Same holds, but the earliest public comparison is Giles 2006 (CCR, tier 1): H3/H2B acetylation rose in CD34+ blasts, 13 AML + 1 MDS. Dimicoli 2011 (MDS-only) saw induction in 2/5: partial."
-  },
-  {
-   "cell": "dose",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim in the 2010 abstract; mouse efficacy at MTD, no margin stated. Opener untested is right."
-  },
-  {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2004,
-   "rule": "7",
-   "note": "Fiskus 2009 quote verbatim. Date only: track first use is George 2004 (see engagement 3)."
-  },
-  {
-   "cell": "efficacy",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Novotny-Diermayr BCJ 2012 (OA, epub 2012-05-04) quote verbatim. No MDS-specific pracinostat model found in a title search of all 33 pracinostat/SB939 papers."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Primary endpoint CR by cycle 6, 18% vs 33%, verbatim in the abstract; contra, magnitude opposite, is right. NCT01873703 no results; NCT03151304 phase 2 single-group, 64 patients, terminated, results 2022-03-02, whyStopped verbatim; Yalniz 2020 quote verbatim."
-  },
-  {
-   "cell": "efficacy",
-   "index": 3,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2004,
-   "rule": "7",
-   "note": "Fiskus 2009 quote verbatim. Date only: track first use is George 2004 (see engagement 3)."
-  },
-  {
-   "cell": "efficacy",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Dimicoli quote verbatim; 1/13 HI on a single-arm primary ORR endpoint. All four patient_trials verified: registry dates and whyStopped verbatim; Leukemia 2017 abstract gives composite CR 27.5% vs 14.3% (overlapping CIs) and the OS sentence verbatim. Contra holds (decision 6)."
-  },
-  {
-   "cell": "safety",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Giles CCR 2006 resolves; quote verbatim including the abstract's own 'Four ... four and one' count. Proxy opener for the IND toxicology package is acceptable under rule 6."
-  },
-  {
-   "cell": "safety",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "note": "PharmR read via WebFetch + pdftotext: quote at lines 75-77 across a line break. Label 13.2 calls thyroid/marrow/skin findings 'not reported (or reported with low incidence)', yet AE tables list hypothyroidism, rash and thrombocytopenia: decision 11 same+partial, not decision 5."
-  },
-  {
-   "cell": "safety",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim (abstract). Untested at low confidence is the honest call; the abstract reports a mouse MTD, so toxicity was observed but not readable here."
-  },
-  {
-   "cell": "dose",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Jayaraman DMD 2011 (PMID 21873472, epub 2011-08-26) resolves; quote verbatim in abstract, full text Cloudflare-blocked. Split holds (decision 8): different system and different prediction (human PK, not tumour response). Opener untested at 2011 publication proxy is right."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "retro",
-   "proposed_year": 2011,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "First check (before the re-key, same entry): Jayaraman DMD 2011 resolves; quote verbatim, abstract only, no fold given. The match is predicted-vs-observed human PK from mouse/rat/dog allometry plus Simcyp, not a model-stated effective exposure; that system shares the xenograft model_id (rule question). | Models check: Re-key to pracinostat-allometry-simcyp-pk agreed; second verdict. Quote verbatim. Published comparison (epub 2011-08-26) postdates phase 1 PK (Razak 2011-02-01, Yong 2011-03-08; FIH 2007); prediction run date not public. Decision 10 and famitinib precedent: retro, retrodiction true, year 2011.",
+   "proposed_year": 2017,
+   "rule": "engagement question (did the PD readout move in dosed humans); status table: partial agreement is same + partial, on a retrodiction retro",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abaza 2017 (PMID 28841236) quote verbatim; full text says acetylation induced non-dose-dependently. Readout moved: partial agreement on a retrodiction is retro + partial. Also 25 AML/14 MDS of 44: population_group other_disease, not unselected.",
    "adjudicated_status": "retro",
-   "adjudication_note": "retro (decision 10): the only admissible model result (Jayaraman, epub 2011-08) post-dates the phase 1 PK (Feb/Mar 2011) and reports the prediction against observed data; no source dates the prediction before FIH (decisions 2, 7). Matches famitinib-pbpk."
+   "adjudication_note": "Engagement asks whether the PD readout moved in dosed humans; acetylation rose, though not with dose. Status table: partial agreement on a retrodiction is retro, source_calls_it partial, not contra. Field fix: population_group other_disease (AML+MDS)."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2004,
+   "rule": "6 (each cell opens at model_first_use_year)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fiskus 2009 (PMID 19279403) quote verbatim; panobinostat, oral right. Year: same K562/primary-AML-cell system ran LBH589 H3/H4 acetylation in George 2004 (PMID 15514006, epub 2004-10-28); opener 2004.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: cell opens untested at model_first_use_year; George 2004 ran LBH589 acetylation in the same Bhalla-lab K562/primary AML cell system, so opener year 2004. Status unchanged."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2011,
+   "rule": "6 (earliest public comparison on the track)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Tan 2014 (PMID 24413064) quote verbatim; retro and combination_with azacitidine right. Earliest oral comparison on this track is Dimicoli (epub 2011-11-10, acetylation 'not consistently' induced): retro + partial, 2011. Tan cohort 29 AML/10 MDS.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6: entry dated at the earliest public comparison on the oral track, Dimicoli 2011 (acetylation inconsistently induced): retro, source_calls_it partial, year 2011. Retrodiction holds: patient HDAC-inhibitor acetylation public before the cell data."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (PMID 20197387). Opener untested, no_prediction: efficacy at the mouse MTD, no human exposure or margin stated. pracinostat, oral right."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Jayaraman (PMID 21873472, epub 2011-08-26) quote verbatim. Own phase 1 PK public earlier (2011-02/03): retro by the dose retrodiction rule. other_disease right; population text 'Unselected' should name solid tumours."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2004,
+   "rule": "6 (each cell opens at model_first_use_year)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fiskus 2009 quote verbatim; panobinostat, oral, no_prediction right. Year only: same system first run for LBH589 in George 2004 (PMID 15514006); opener 2004.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: opener at model_first_use_year 2004 (George 2004, same leukemia-cell system). Status untested, untested_reason no_prediction (rule 5) unchanged: cell concentrations only, no human exposure target."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in Jayaraman abstract. Opener of the allometry/Simcyp track at 2011 publication proxy, no_prediction; pracinostat, oral right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Novotny-Diermayr BCJ 2012 (PMID 22829971, epub 2012-05-04) quote verbatim. Opener untested; pracinostat, oral right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 28094841 primary CR 18% vs 33% verbatim. Year 2015 confirmed: MEI top-line release 2015-03-23 (FierceBiotech, 1stOncology) 'no difference in the rate of complete remission'. Combination, azacitidine, untreated higher-risk MDS (stage_or_line) right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2004,
+   "rule": "6 (each cell opens at model_first_use_year)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fiskus 2009 quote verbatim; panobinostat, oral right. Year only: same system first run for LBH589 in George 2004 (PMID 15514006); opener 2004.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: opener at model_first_use_year 2004 (George 2004, same leukemia-cell system); status untested unchanged, only the year moves."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dimicoli (PMID 22072492, epub 2011-11-10) quote verbatim. Single-arm, 1/13 HI, no preset bar: contra by the single-arm rule, design in note. Oral monotherapy, lower-risk MDS (stage_or_line) right."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Giles 2006 (PMID 16899611) quote verbatim. Proxy opener of the IV track (toxicology unpublished until 2015); panobinostat, iv right."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "FDA PharmR 205353 re-downloaded: dog QTc quote verbatim. MDS measured (Dimicoli: drug withheld for QTc prolongation, oral), so not imported. Retro: own QTcF DLTs public 2006. panobinostat, oral right."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (abstract). Abstract names no harm or margin, only efficacy at the MTD, and no 'well tolerated' claim; untested, no_prediction right. pracinostat, oral right."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2015,
+   "rule": "population_group codes the patients compared (other_disease)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Giles quote verbatim; FDA dog QTc quote verbatim (model_src). Retro right: own patient DLTs 2006, dog data public 2015. Patients compared are 13 AML, 1 ALL, 1 MDS: population_group other_disease, not unselected.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Ruled: MDS patients were measured orally, so the mostly-AML IV cohort is not imported; untested, untested_reason unsettled, population_group other_disease."
   }
  ],
  "missing": [
   "Engagement, pracinostat-mouse-xenograft track: Mol Cancer Ther 2011 tissue-acH3 PD paper (doi 10.1158/1535-7163.mct-11-0044, PMID 21586629, epub 2011-05-17) is a stated comparison the draft lacks: acH3 tracked SB939 dose in HCT-116 xenograft and HL-60 orthotopic SCID tissues (r2 0.76-0.94), then rose dose-dependently (10-80 mg) in PBMCs of 30 solid-tumour phase 1 patients (r=0.97 with Cmax/AUC); the abstract states the PK/PD 'are translated from preclinical models to patients'. A 2011 same, comparison_stated true, subjects patients (solid tumour; decision 3 admits any subjects for engagement), ahead of the adjudicated 2017 Abaza same; whether the 2017 same+partial entry remains a status change under decision 7 is the adjudicator's call.",
-  "Engagement, panobinostat-leukemia-cells track: Int J Oncol 2014 (doi 10.3892/ijo.2014.2555, PMID 25051119, epub 2014-07-22) compares HL-60 cells treated with azacitidine plus panobinostat (caspase-3, Nor-1, NUR77, p15, p21 up; Bcl-xL down) with PBMCs from the Tan 2014 phase Ib/II: NUR77 and p21 rose after cycle 1 and more in responders than non-responders. Makes the 2014 Tan entry a stated comparison (comparison_stated true, this paper as src or model_src) instead of a drafter pairing; the checker's Giles 2006 re-dating still sets the track's first comparison."
+  "Engagement, panobinostat-leukemia-cells track: Int J Oncol 2014 (doi 10.3892/ijo.2014.2555, PMID 25051119, epub 2014-07-22) compares HL-60 cells treated with azacitidine plus panobinostat (caspase-3, Nor-1, NUR77, p15, p21 up; Bcl-xL down) with PBMCs from the Tan 2014 phase Ib/II: NUR77 and p21 rose after cycle 1 and more in responders than non-responders. Makes the 2014 Tan entry a stated comparison (comparison_stated true, this paper as src or model_src) instead of a drafter pairing; the checker's Giles 2006 re-dating still sets the track's first comparison.",
+  "Engagement, panobinostat-leukemia-cells x panobinostat x iv: Giles 2006 (PMID 16899611) H3/H2B acetylation rose in CD34+ blasts of IV-dosed AML/MDS patients; an IV engagement track (retro, 2006) is absent now that the oral entry is re-dated to its own route."
  ],
  "checker_notes": [
   "No model compared with MDS patients for any member was found. Candidates checked and rejected: ATF3 as marker of pracinostat response (MCT 2016, 10.1158/1535-7163.mct-15-0890; solid-tumour cells, no MDS patient comparison); ex vivo synergy screening in hematologic malignancies (SLAS Discov 2024, 10.1016/j.slasd.2023.12.001; no patient-outcome comparison for this class, post-result); PDX MDS/AML azacitidine-venetoclax resistance (Front Oncol 2024; panobinostat not the subject).",
@@ -185,6 +227,7 @@
   "Safety: animal findings the label says were 'not reported (or reported with low incidence)' in patients, where the AE tables do list them at low incidence. Decision 11 (right hazard, wrong incidence, same) rather than decision 5 (never came, contra)? And one entry same+partial, or one entry per harm, when a single package matches one harm and over-predicts another?",
   "Efficacy: a randomized phase 2b whose primary endpoint (composite CR 27.5% vs 14.3%) was numerically higher with overlapping CIs, no OS/TTP difference, and the sponsor abandoned the regimen. Does it add a same+partial entry on a track already contra, or change nothing?",
   "Dating: the earliest patient comparison (Giles 2006) predates the drafter's chosen model paper (Fiskus 2009) but follows the system's first use (George 2004). Rule 6/decision 7 is read here as opening the track at 2004 and dating the comparison 2006; confirm that the opener follows the system, not the paper the drafter picked.",
-  "In-silico PK prediction whose run date is not public (Jayaraman 2011): the published predicted-vs-observed comparison (epub 2011-08) postdates the phase 1 PK reports (2011-02/03) and the 2007 FIH, but IND-enabling allometry/Simcyp ordinarily precedes FIH. Decision 10 requires 'post-dates and is motivated by the patient result'; scored retro here for consistency with famitinib-pbpk-rat-monkey-human-pk. Does an unverifiable run date default to retro, or does an IND-enabling presumption give same?"
+  "In-silico PK prediction whose run date is not public (Jayaraman 2011): the published predicted-vs-observed comparison (epub 2011-08) postdates the phase 1 PK reports (2011-02/03) and the 2007 FIH, but IND-enabling allometry/Simcyp ordinarily precedes FIH. Decision 10 requires 'post-dates and is motivated by the patient result'; scored retro here for consistency with famitinib-pbpk-rat-monkey-human-pk. Does an unverifiable run date default to retro, or does an IND-enabling presumption give same?",
+  "Safety on a mixed hematologic phase 1 (13 AML, 1 ALL, 1 MDS) when MDS patients were measured on another route of the same drug: is the IV track's comparison other_disease (as proposed) and still scored, or untested (unsettled) because the MDS-only result is not separable?"
  ]
 }

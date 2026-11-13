@@ -1,0 +1,57 @@
+{
+ "tile": "breast-cancer-pi3k-pan-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug pictilisib, route oral; comparison_stated true and source_calls_it partial (checker: Sarker 2015 states the comparison)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "year 2016 -> 2014 (FERGI at SABCS Dec 2014, rule 6); model_src Raynaud -> Sarker 2015 (checker correction); drug pictilisib, combination_with fulvestrant"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2016 -> 2014 (FERGI at SABCS Dec 2014, rule 6); drug pictilisib, combination_with fulvestrant (combination design scored); buparlisib split to its own track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2016 -> 2014 (SABCS Dec 2014 reported PIK3CA not predictive); drug pictilisib, combination_with fulvestrant"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "retrodiction false -> true (biobank first public Sept 2016, after FERGI's PIK3CA result Dec 2014); status stays contra (failed to reproduce)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug buparlisib; strengthens dropped (now opener of buparlisib's track); passing tolerability claim scored as safety prediction"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "year 2017 -> 2015 (BELLE-2 at SABCS Dec 2015, abstract S6-01, transaminitis reported); drug buparlisib, combination_with fulvestrant"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "untested 2011 opener of buparlisib's track on pi3k-driven-breast-xenografts (Maira 2012)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "same (partial) 2015, buparlisib + fulvestrant BELLE-2 met PFS primary; split from the pictilisib contra track"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "contra 2016, pictilisib: Raynaud 2009 passing tolerability claim ('well tolerated') vs FERGI grade 3+ AEs 61% vs 28%"
+  }
+ ]
+}

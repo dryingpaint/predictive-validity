@@ -1,0 +1,344 @@
+{
+  "draft": "analyses/model-system-atlas/drafts/mucopolysaccharidosis-type-3b-naglu-replacement-gene-therapy.json",
+  "index_base": 1,
+  "checked_by": "CHECKER_BRIEF",
+  "entries": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Ellinwood 2011 abstract (PMID 21139569) quote verbatim; rAAV2/5-hNAGLU intracerebral, unselected match the trial; untested opener 2010 right."
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Tardieu 2017 Lancet Neurol abstract (2017-07-14) quote verbatim; CSF NAGLU proximal readout moved in intracerebral rAAV2/5-hNAGLU children; dog 2010 prospective, same 2017 right."
+    },
+    {
+      "cell": "engagement",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "near",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Rutkowski 2014 meeting abstract; quote is its title (no abstract text indexed). SBC-103 = lesinidase alfa, iv, unselected; untested opener 2014 right."
+    },
+    {
+      "cell": "engagement",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Whitley 2019 abstract (epub 2018-12-06) quote verbatim; IV lesinidase alfa CSF HS change small and not maintained vs mouse CNS HS reduction: contra 2018 holds; drug/route right."
+    },
+    {
+      "cell": "engagement",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Kan 2014 PNAS abstract quote verbatim (ends '10 d.'); tralesinidase alfa ICV coded intracerebral; untested opener 2014 right."
+    },
+    {
+      "cell": "engagement",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "JCI full text (PMC9843052) quote verbatim. Muschol 2021 MGM 132:S75 (Feb 2021) confirmed and cited by JPET for 300 mg CSF HS normalization, so year 2021; mouse model prospective; own drug x route track, same."
+    },
+    {
+      "cell": "engagement",
+      "index": 7,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Ellinwood 2022 JPET (epub 2022-06-18) quote verbatim; tralesinidase alfa intracerebral; untested opener at 2016 proxy allowed."
+    },
+    {
+      "cell": "engagement",
+      "index": 8,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "JCI sentence verbatim. Dog data first public 2022-06 after the Feb 2021 patient abstract on the same target; engagement retrodiction rule makes it retro 2022, as drafted."
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Ellinwood 2011 abstract quote verbatim; no human vector dose, exposure or margin stated: untested (no_prediction). rAAV2/5-hNAGLU intracerebral right."
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "near",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Title-only meeting abstract; no human exposure target or margin: untested. lesinidase alfa iv right."
+    },
+    {
+      "cell": "dose",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Aoyagi-Scharber 2017 abstract quote verbatim; mouse states no human dose or exposure target: untested. tralesinidase alfa intracerebral right."
+    },
+    {
+      "cell": "dose",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "JCI 300 mg sentence verbatim (patient side); Pinkstaff 2023 (2023-03-01) NHP 73 mg tolerated vs 30 mg brain-mass equivalent of 300 mg. Margin public after the drug's own 2021-22 patient dose results: retro, margin_stated true, 2023."
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Ellinwood 2011 abstract quote verbatim; untested opener 2010 right; rAAV2/5-hNAGLU intracerebral."
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": false,
+      "proposed_status": "untested",
+      "rule": "efficacy scored on a secondary endpoint without endpoint_role: poc_gate; single-arm trial scored on its primary endpoint",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Quote verbatim, but it is a neurocognitive secondary of a single-arm trial whose registered primary is safety; no poc_gate. Draft note itself says untested (not_measured) yet status is same.",
+      "adjudicated_status": "untested",
+      "adjudication_note": "Efficacy rule, single-arm trial with no advance success bar: scored on its primary endpoint, here safety; the neurocognitive secondary has no poc_gate, so the dog prediction was not measured. Untested, not_measured (rule 5)."
+    },
+    {
+      "cell": "efficacy",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "near",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Title-only meeting abstract; untested opener 2014 right; lesinidase alfa iv."
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": false,
+      "proposed_status": "untested",
+      "rule": "efficacy scored on a secondary endpoint without endpoint_role: poc_gate; single-arm trial scored on its primary endpoint",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Whitley 2019 quote verbatim, but neurocognition is a secondary of a single-arm safety-primary trial with no poc_gate; draft note says untested yet status is contra.",
+      "adjudicated_status": "untested",
+      "adjudication_note": "Efficacy rule, single-arm trial: scored on its primary endpoint (safety); neurocognition is a secondary without poc_gate, so it does not score. Untested, not_measured (rule 5), as the drafter note already says."
+    },
+    {
+      "cell": "efficacy",
+      "index": 5,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "proposed_status": "untested",
+      "proposed_year": 2016,
+      "rule": "Dating: each cell opens at model_first_use_year with status untested",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "JPET quote verbatim; status untested (unsettled: DQ co-primary unreported) right, but this is the track's only efficacy entry, so it opens at model_first_use_year 2016, not 2023.",
+      "adjudicated_status": "untested",
+      "adjudication_note": "Status untested (unsettled, DQ co-primary unreported) agreed. Rule 6 dating: the cell opens at model_first_use_year; as the track's only efficacy entry and no status change, it is dated 2016, per checker."
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Ellinwood 2011 abstract quote verbatim; immunosuppression need is the opening prediction; rAAV2/5-hNAGLU intracerebral right."
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Tardieu 2017 quote verbatim; under immunosuppression only transient anti-NAGLU response, no neuroinflammation reported; same 2017 holds; drug/route/population right."
+    },
+    {
+      "cell": "safety",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Pinkstaff 2023 abstract quote verbatim; untested opener at 2016 proxy allowed; tralesinidase alfa intracerebral."
+    },
+    {
+      "cell": "safety",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "JCI SAE sentence verbatim. NHP first public 2023-03, after the drug's own patient safety results (Feb 2021 abstract; JCI 2022-23); NHP CSF infiltrates reproduced as pleocytosis: retro 2023."
+    },
+    {
+      "cell": "engagement",
+      "index": 9,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Cressant 2004 J Neurosci abstract quote verbatim; intraputaminal AAV5 matches intracerebral rAAV2/5-hNAGLU; untested opener 2004 right."
+    },
+    {
+      "cell": "engagement",
+      "index": 10,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Tardieu 2017 quote verbatim; mouse 2004 predates the trial, same 2017 not retro; drug/route/population right."
+    },
+    {
+      "cell": "efficacy",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Cressant 2004 abstract closing sentence verbatim; untested opener 2004 right; rAAV2/5-hNAGLU intracerebral."
+    },
+    {
+      "cell": "efficacy",
+      "index": 7,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": false,
+      "proposed_status": "untested",
+      "rule": "efficacy scored on a secondary endpoint without endpoint_role: poc_gate; single-arm trial scored on its primary endpoint",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Tardieu 2017 quote verbatim; neurocognitive secondary of a safety-primary single-arm trial, no poc_gate; draft note says untested yet status is same.",
+      "adjudicated_status": "untested",
+      "adjudication_note": "Efficacy rule, single-arm trial: scored on its primary endpoint (safety); the 30-month neurocognitive secondary has no poc_gate and does not score. Untested."
+    },
+    {
+      "cell": "efficacy",
+      "index": 8,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": false,
+      "proposed_status": "untested",
+      "rule": "efficacy scored on a secondary endpoint without endpoint_role: poc_gate; single-arm trial scored on its primary endpoint",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Deiva 2021 abstract quote verbatim; same secondary-endpoint problem (safety-primary single-arm, no poc_gate); draft note says untested yet status is contra.",
+      "adjudicated_status": "untested",
+      "adjudication_note": "Efficacy rule, single-arm trial: primary endpoint was safety; the 5.5-year neurocognitive follow-up is a secondary without poc_gate, so it does not score. Latest track entry untested, not_measured (rule 5)."
+    },
+    {
+      "cell": "dose",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "JPET brain-mass scaling sentence verbatim in full text (PMC9426762); untested opener at 2016 proxy; tralesinidase alfa intracerebral right."
+    },
+    {
+      "cell": "dose",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "JCI quote verbatim; JPET states 48 mg 'sufficient safety margin over the clinical dose (300 mg weekly)', citing Muschol 2021. First public 2022-06 after the drug's own Feb 2021 patient dose result: retro 2022; dosing not blocked by toxicity."
+    },
+    {
+      "cell": "safety",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "JPET 'well tolerated and did not generate clinical signs of CNS or systemic toxicity' verbatim; passing tolerability claim is a scored safety prediction; untested opener 2016 proxy right."
+    },
+    {
+      "cell": "safety",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "JCI SAE sentence verbatim; dogs well tolerated at 48 mg vs drug-related CSF pleocytosis and fluctuating consciousness in patients, harms dogs could show: contra 2022. Dog paper postdates Feb 2021 patient abstract; retrodiction flag arguably true, status unchanged."
+    }
+  ],
+  "missing": [
+    "Deiva et al. 2021, Hum Gene Ther 32:1251, doi 10.1089/hum.2021.135 (PMID 34405688), the 5.5-year follow-up of rAAV2/5-hNAGLU. In 3 of 4 patients brain atrophy and neurocognition 'did not differ from untreated Sanfilippo A/B children'. This is a 2021 efficacy entry on mps3b-dog-aav5-intracerebral (contra if secondaries are admitted). It also adds an engagement datum (CSF NAGLU 18%) and a safety datum (no acquired tolerance).",
+    "No dose entry for the mps3b-dog-icv-ta track. Ellinwood 2022 (PMC9426762) states the 48 mg dog dose 'provides a sufficient safety margin over the clinical dose (300 mg weekly)'. Dogs tolerated it and patients were dosed at 300 mg, so this is a candidate same with margin_stated.",
+    "Regulator reliance is pending. Spruce Biosciences reports positive Type B and pre-BLA meetings with FDA (investors.sprucebio.com news releases; BLA planned Q4 2026) on CSF HS-NRE as the endpoint, which rests partly on the dog CSF/brain HS-NRE correlation. There is no label yet, so regulatory_reliance stays false for now.",
+    "SBC-103 (IV protein) nonclinical toxicology has no dose or safety track; the data are presumably unpublished. An untested/unpublished opening entry would show that the model existed.",
+    "ABO-101 (AAV9-NAGLU, Abeona, NCT03315182) and its Naglu-/- mouse data are outside the given member list, so they are not scored. I am flagging this only so the class table can be checked."
+  ],
+  "overall": "accept_with_corrections",
+  "rule_questions": [
+    "Every class member's phase 1/2 trial has safety as its only registered primary, except TA, where DQ is co-primary. Is efficacy then untested, or may the efficacy secondary be scored without a pre-specified poc_gate?",
+    "Is a track the animal colony (the MPS IIIB dog, the Naglu-/- mouse) whatever the product and route (intraparenchymal AAV vs ICV enzyme; IV vs ICV enzyme), or the animal crossed with the delivery route? The answer decides the merges and therefore engagement 6.",
+    "An NHP or dog study was run before the trial (IND-enabling) but published after it. Does its stated tolerability margin count as 'stated before the trial' for margin_stated?",
+    "Member 'lesinidase alfa' is assumed to be SBC-103 (Alexion/Synageva rhNAGLU). I did not confirm the INN mapping.",
+    "Models check: efficacy 7-8 on naglu-ko-mouse-aav-intracerebral rest on rule question 1 (secondary efficacy). If admitted, does Deiva 2021's age-dependent outcome (youngest patient benefited; mice treated at 6 weeks) make the 2021 entry contra or untested (condition not tested)?",
+    "Models check: dose 6 (mps3b-dog-icv-ta) proposed retro because Ellinwood 2022 states the 300 mg margin while citing Muschol 2021 patient CSF HS normalization; if the dog dosing ran pre-trial, does a margin first stated after patient results count as margin_stated (rule question 3) or only as retro?"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+ "tile": "huntington-disease-htt-antisense-sirna",
+ "searched": [
+  "Draft, check.json (missing list) and tiles.json spec read; manifest.csv rows for all four members say 'no NDA/BLA', so no FDA bundle",
+  "fc search: tominersen pharmacokinetic pharmacodynamic model nonhuman primate CSF brain translational modeling",
+  "fc search: AAV5-miHTT patient-derived iPSC neurons huntingtin lowering Keskin 2019",
+  "fc search: tominersen brain region exposure model deep structures caudate NHP PET",
+  "fc search: HTT lowering antisense mouse model predicts clinical CSF mutant huntingtin Southwell",
+  "Europe PMC core records: PMC11255113 (Iwamoto 2024), PMID 28829437 (Iwamoto 2017 NBT), PMID 37221972 (tominersen PopPK), PMID 31737741 (Keskin 2019)",
+  "fc search: AMT-130 CSF mutant huntingtin 24 months high dose variable uniQure 2023 update",
+  "Gap pass: class_members.csv (ifezuntirgene inilparvovec = AMT-130, rAAV5-miHTT, NCT04120493); fc scrape PMC11255113 (Iwamoto 2024) for HTT-2723/tominersen"
+ ],
+ "added_models": [
+  {
+   "model_id": "hd-ipsc-neuron-aav5-mihtt",
+   "model": "HD patient iPSC-derived neurons and astrocytes (HD71, HD180) on AAV5-miHTT",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2019,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2019,
+      "print_year": 2019,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": true,
+      "model_kind": "ex_vivo",
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Huntington disease (CAG-expanded HTT; allele-selective members restricted to SNP carriers)",
+      "model_first_use_year": 2019,
+      "confidence": "medium",
+      "confidence_note": "Abstract-level (Europe PMC, PMID 31737741).",
+      "judgement": "Opening entry: published 4 Oct 2019, the month the first AMT-130 patient was dosed (NCT04120493), before any patient HTT readout.",
+      "prediction_level": "class",
+      "year": 2019,
+      "status": "untested",
+      "model": "HD patient iPSC-derived neurons and astrocytes (HD71, HD180) on AAV5-miHTT",
+      "model_id": "hd-ipsc-neuron-aav5-mihtt",
+      "note": "AAV5-miHTT lowered HTT mRNA 57% and protein 68% in HD patient iPSC neurons, without off-target effects.",
+      "short": "Patient neurons: HTT protein down 68%",
+      "src": "https://doi.org/10.1016/j.omtm.2019.09.010",
+      "srcLabel": "Keskin 2019",
+      "quote": "One-time AAV5-miHTT treatment significantly reduced human HTT mRNA by 57% and Htt protein by 68% in neurons.",
+      "readout_tier": "proximal"
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 5,
+      "model_src": "https://doi.org/10.1016/j.omtm.2019.09.010",
+      "model_src_tier": 1,
+      "trial_unreported": true,
+      "patient_signal_reversed": false,
+      "epub_year": 2022,
+      "print_year": null,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": true,
+      "model_kind": "ex_vivo",
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "patient CSF mHTT % change vs HTT protein lowering in iPSC neurons",
+      "source_calls_it": null,
+      "population": "Huntington disease (CAG-expanded HTT; allele-selective members restricted to SNP carriers)",
+      "model_first_use_year": 2019,
+      "confidence": "low",
+      "confidence_note": "Press release only; n=4 vs 3 sham; NCT04120493 has no posted results. June 2023 update (CGTLive) still showed lowering but smaller: low dose -8.1% at 24 months, high dose -39.7% at 12 months.",
+      "judgement": "Paired by me: in-vitro neuronal HTT lowering vs patient CSF mHTT, the same patient datum the draft uses for the minipig track. Tier 5, so trial_unreported.",
+      "prediction_level": "class",
+      "year": 2022,
+      "status": "same",
+      "model": "HD patient iPSC-derived neurons and astrocytes (HD71, HD180) on AAV5-miHTT",
+      "model_id": "hd-ipsc-neuron-aav5-mihtt",
+      "note": "Low-dose AMT-130: CSF mHTT fell 53.8% at 12 months in four evaluable patients vs 16.8% in three sham controls.",
+      "short": "CSF mHTT fell in four patients",
+      "src": "https://www.globenewswire.com/news-release/2022/08/08/2493736/0/en/uniQure-Announces-Second-Quarter-2022-Financial-Results-and-Highlights-Recent-Company-Progress.html",
+      "srcLabel": "uniQure Aug 2022",
+      "quote": "In the four treated patients with evaluable data from this cohort, mean levels of mutant Huntingtin protein (mHTT) in the cerebral spinal fluid (CSF) declined at all timepoints compared to baseline and decreased by 53.8% at 12 months of follow-up.",
+      "readout_tier": "proximal",
+      "reason": "CSF mHTT fell, n=4, press release"
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Tominersen population PK model (2023; doi:10.1002/psp4.13001): in silico, built on 750 patients' CSF/plasma PK and used to choose GENERATION HD2 doses; no published comparison of its prediction with a later trial result, and it is fitted to patient data rather than a preclinical model.",
+  "Iwamoto 2024 tominersen-surrogate (HTT-2723) in patient iPSC neurons: same system as the draft's hd-ipsc-neuron-snp-aso track, so not a new model; a possible second retro entry on that track (checker missing list).",
+  "Southwell 2015 Hu97/18 humanized mouse (CSF HTT tracks brain HTT lowering): the same HD mouse/NHP ASO system as hd-mouse-nhp-aso-htt; better used as model_src for engagement 4 than as a new track.",
+  "Caron 2022 (Neurobiol Dis) mouse CSF mHTT biomarker study: tests whether CSF mHTT reflects striatal lowering in mice; no comparison with a member drug's patient result.",
+  "Wave published preclinical data for WVE-120101/120102 before PRECISION-HD: none found; Iwamoto 2017 (Nat Biotechnol, doi:10.1038/nbt.3948) is about stereopure mipomersen, not HTT. Wave's model stays unpublished.",
+  "Human genetic HTT loss-of-function / haploinsufficiency carriers: no source compares them with a member drug's patient engagement, dose or safety result.",
+  "Patient-derived cells or PDX-style co-clinical selection, human challenge, regulator reliance on model data: none exist for this class (no NDA/BLA; FDA declined the external control for AMT-130 in Nov 2025)."
+ ],
+ "gaps": [
+  {
+   "lead": "uniQure regulatory update Nov 2025 (FDA no longer accepts Enroll-HD external control)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: FDA's Nov 2025 refusal of the Enroll-HD external control is a note on efficacy 5 (hd-rodent-aav5-mihtt, same 2025); the checker's missing item records it."
+  },
+  {
+   "lead": "NCT03225833 (WVE-120101, rovanersen) registry results posted 2022-02-10",
+   "outcome": "fix",
+   "detail": "engagement 2, dose 2, efficacy 2, safety 2 (wave-snp12-preclinical): field registry_date, current 2022-04-25 (NCT03225846), source supports 2022-02-10, the earlier results posting of sister trial NCT03225833 (WVE-120101; ClinicalTrials.gov API resultsFirstPostDate 2022-02-10, ACTUAL); src may cite https://clinicaltrials.gov/study/NCT03225833. Status untested/unpublished unchanged."
+  },
+  {
+   "lead": "Iwamoto 2024 tominersen-surrogate HTT-2723 in patient iPSC neurons",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: HTT-2723 is a tominersen-designed surrogate (product_in_model false) on the same track as engagement 6 (hd-ipsc-neuron-snp-aso), whose 2024 retro entry from the same paper (Iwamoto 2024, doi:10.1016/j.omtn.2024.102246) already scores the track; a second retro the same year adds no status."
+  },
+  {
+   "lead": "Southwell 2015 (CSF mHTT tracks brain HTT lowering in mice/NHP)",
+   "outcome": "fix",
+   "detail": "engagement 4 (hd-mouse-nhp-aso-htt, same 2019): field model_src, current null, source supports https://doi.org/10.1038/srep12166 (Southwell 2015 Sci Rep, PMID 26174131: 'mutant huntingtin levels in cerebrospinal fluid reflect brain levels, increasing with disease stage and decreasing following brain huntingtin suppression'); model_src_tier null -> 1."
+  },
+  {
+   "lead": "ifezuntirgene inilparvovec",
+   "outcome": "tracked",
+   "detail": "INN of AMT-130 (rAAV5-miHTT, class_members.csv); tracked as tghd-minipig-aav5-mihtt (engagement 3, 5), hd-ipsc-neuron-aav5-mihtt (engagement 7, 8), hd-rodent-minipig-aav5-dose (dose 3), hd-rodent-aav5-mihtt (efficacy 3, 5), nhp-rat-aav5-tox (safety 3, 4)."
+  }
+ ]
+}

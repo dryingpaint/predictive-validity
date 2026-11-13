@@ -1,0 +1,51 @@
+{
+ "tile": "open-angle-glaucoma-rock-inhibitors",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "year 2015 -> 2014: rule 6 earliest public date (monkey paper online 2013, Bacharach 2014 epub 2014-09-27), as adjudicated in check.json; status same unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2015 -> 2014: rule 6 earliest public date (monkey paper online 2013, Bacharach 2014 epub 2014-09-27), as adjudicated in check.json; status same unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "year 2018 -> 2017: rule 6 earliest public date now counts congress abstracts; the human result (facility +19%, p=0.02) was public in the ARVO 2017 abstract (IOVS 58(8):2112); status same unchanged, src stays Kazemi 2018"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "year 2018 -> 2017: rule 6 earliest public date now counts congress abstracts; the human result (EVP -9%, p=0.01) was public in the ARVO 2017 abstract (IOVS 58(8):2112); status same unchanged, src stays Kazemi 2018"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "year 2018 -> 2017: rule 6 earliest public date now counts congress abstracts; the human result (facility +19%, p=0.02) was public in the ARVO 2017 abstract (IOVS 58(8):2112); status same unchanged, src stays Kazemi 2018"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "year 2018 -> 2017: rule 6 earliest public date now counts congress abstracts; the human result (facility +19%, p=0.02) was public in the ARVO 2017 abstract (IOVS 58(8):2112); status same unchanged, src stays Kazemi 2018"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "year 2012 -> 2011: opener moved to the model's first public use, the ARVO 2011 congress abstract (IOVS 52:236); model_first_use_year 2011 on every nzw-rabbit-iop-sovesudil entry; status untested unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "year 2012 -> 2011: opener moved to the model's first public use, the ARVO 2011 congress abstract (IOVS 52:236); model_first_use_year 2011 on every nzw-rabbit-iop-sovesudil entry; status untested unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2014 -> 2013: rule 6 earliest public date; the rabbit model side was public in the ARVO 2011 congress abstract, the patient side in the Amakem release 2013-11-14; status same unchanged"
+  }
+ ],
+ "added": []
+}

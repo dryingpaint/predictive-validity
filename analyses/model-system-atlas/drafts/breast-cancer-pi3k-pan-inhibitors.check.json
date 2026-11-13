@@ -17,12 +17,17 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "1",
-   "note": "Sarker 2015 (PMID 25370471, epub 2014-11-04) quote verbatim; tumour pAkt >90% supports same. Full text itself states the comparison (preclinical PK 'reproduced'; MDA-MB-361 PK-PD target AUC 6 uM.h reached at >80 mg; effects 'not exactly reproduced'): set comparison_stated true, source_calls_it partial."
+   "proposed_status": "same",
+   "proposed_year": 2011,
+   "rule": "6",
+   "note": "Sarker 2015 (PMID 25370471, epub 2014-11-04) quote verbatim; comparison_stated true, partial, pictilisib/oral/other_disease fine. ASCO 2011 abstract 3021 (online 2011-05-20) already reported pAKT/pS6 decreases correlating with exposure: year 2011, not 2014.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: status same is undisputed; ASCO 2011 abstract 3021 (GDC4254g, same trial, online 2011-05-20) already reported PRP pAKT falling with exposure and pS6 decreases, so the entry year is 2011, not 2014."
   },
   {
    "cell": "dose",
@@ -37,16 +42,13 @@
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2016,
-   "rule": "16",
-   "note": "Krop 2016 (PMID 27155741) quote verbatim and it attributes the miss to toxicity-limited dosing (45% dose modifications, 34% non-progression discontinuations, part 2 cut to 260 mg). With Raynaud's stated margin this is an independent window contra: blocked_by toxicity, margin_stated true, derived_from null, not derived_from efficacy.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): 340 mg was at or above the 330 mg where tumour pAkt fell >90%"
+   "status_supported": true,
+   "rule": "6",
+   "note": "Krop 2016 quote verbatim (PMID 27155741); part 1 dosed 340 mg, above Sarker's stated MDA-MB-361 target (Sarker epub 2014-11, before SABCS 2014-12-10): same, year 2014. Judgement still says 'contra derived from efficacy' and 'Raynaud stated no margin': stale prose.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -75,8 +77,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "4",
-   "note": "FERGI primary PFS missed (HR 0.74, p=0.096) at 340 mg, above the 330 mg RP2D, so contra holds; NCT01437566 has no results posted. Caveat raised as a rule question: Krop attributes the miss partly to toxicity-limited dose intensity. NeoPHOEBE and Tolaney 2015 in patient_trials are HER2+, outside the tile population (no status effect)."
+   "rule": "combination_with",
+   "note": "Krop quote verbatim. Co-primary (ITT and PIK3CA-mutant, part 1) both missed; AACR blog 2014-12-12 reports SABCS 2014-12-10 result not significant: contra 2014, pictilisib + fulvestrant correct. Note should state co-primary design; confidence_note 'year is the 2016 epub' stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -85,8 +88,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "8",
-   "note": "Quote is the verbatim leading fragment; HR 0.73 mutant vs 0.72 wild-type, part 2 HR 1.07: no enrichment, contra supported. All seven patient_trials quotes and registry dates verified (PEGGY, BELLE-2/3/4, NeoPHOEBE, Blackwell 2015, Tolaney 2015). Belongs on the merged track (see efficacy 2)."
+   "rule": "6",
+   "note": "Quote verbatim fragment of Krop abstract; PIK3CA-mutant PFS was a part-1 primary endpoint, so primary scoring right. AACR blog 2014-12-12: PIK3CA 'was not predictive of benefit from pictilisib' at SABCS 2014: year 2014; biomarker_selected, fulvestrant correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -103,10 +107,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4",
-   "note": "Maira 2012 (PMID 22188813, epub 2011-12-21, print 2012) quote verbatim. 'Preclinical safety profile supports' names no species or study, so it is a weak stated prediction (#111 borderline); treated as askable silence, untested strengthening entry is fine."
+   "rule": "passing tolerability claim",
+   "note": "Maira 2012 (PMID 22188813, epub 2011-12-21, not OA) quote verbatim in abstract; buparlisib/oral untested opener right. The 'preclinical safety profile' is likely the GLP toxicology package, not the xenograft system: arguably a separate model_id; status unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -115,8 +120,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "4",
-   "note": "Baselga 2017 (PMID 28576675, PMC5549667, epub 2017-05-30) quote verbatim; full text: ALT/AST led discontinuations (10%/7%), 'no further studies ... because of the toxicity'. Rodents can show transaminase rise, so contra holds. Earlier weaker member signals (pilaralisib grade >=3 AST 5%, Blackwell epub 2015-10-24; FERGI ALT/AST discontinuations 3%, 2016) could date a class-wide track earlier; raised as a rule question."
+   "rule": "6",
+   "note": "Baselga 2017 quote verbatim. SABCS 2015 abstract S6-01 (Cancer Res 76(4 Suppl), Dec 8-12 2015) reports grade 3/4 ALT 26% vs 1%, AST 18% vs 3%: year 2015 holds; buparlisib + fulvestrant, stage_or_line correct; contra.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -134,11 +140,11 @@
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "note": "Krop 2016 quote verbatim in abstract (full text not open). No PIK3CA enrichment (HR 0.73 vs 0.72; PEGGY 1.06) contradicts Bruna's call: contra. Bruna was submitted 2016-02-05 without citing FERGI, so retrodiction false is defensible; contra either way.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction",
+   "note": "Krop quote verbatim; Bruna 2016 (epub 2016-09-15) post-dates FERGI's same-target PIK3CA result (SABCS 2014-12), so retrodiction true; it failed to reproduce it, so contra. confidence_note still says 'retrodiction is left false': stale, remove.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -166,6 +172,43 @@
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "adjudicated_status": "untested",
    "adjudication_note": "Decision 4: efficacy scores the primary endpoint or a pre-specified PoC gate; Mayer 2014's primary was MTD, no gate, and the PAM50 luminal-A correlate is post-hoc and non-significant. Nothing for the retrodiction to reproduce (decision 10)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "6",
+   "note": "Maira 2012 quote verbatim in abstract (epub 2011-12-21); buparlisib/oral opener untested 2011 right. Bendell phase 1 responses (epub 2011-12-12) are not a primary efficacy result, so retrodiction false holds; untested_reason null fine (not latest).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "co-primary",
+   "note": "Baselga quote verbatim; S6-01 confirms SABCS Dec 2015, so 2015. Co-primary (full and PI3K-activated); S6-01 says activated group 'did not meet the planned endpoint'; authors call trial effective, so same/partial stands. Note should state co-primary; Maira non-breast model side is weak.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2014,
+   "rule": "6",
+   "note": "Krop 2016 quote verbatim. FERGI toxicity was public at SABCS 2014 (CURE 2014-12-11: diarrhoea 63% vs 9%, serious AEs 31% vs 20%), contradicting Raynaud's 'well tolerated'. Contra holds; year 2014, not 2016.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6: contra is undisputed; FERGI toxicity (diarrhoea 63% vs 9%) was public at SABCS 2014 (abstract S2-02, December 2014), contradicting the mice's 'well tolerated', so the entry year is 2014, not 2016."
   }
  ],
  "missing": [
@@ -173,7 +216,8 @@
   "Gao 2015, Nat Med (doi 10.1038/nm.3954, PMID 26479923): Novartis ~1,000-PDX 'PDX clinical trial' built to predict clinical trial response, 62 treatments across six indications including breast; buparlisib is a Novartis compound of that era. Full text not open access, so the BKM120/breast comparison is unverified; a member drug's own PDX model with a stated translatability claim and no track.",
   "Sachs 2018, Cell (doi 10.1016/j.cell.2017.11.010, PMID 29224780): breast organoid biobank whose drug screens were 'consistent with in vivo xeno-transplantations and patient response'; whether pictilisib or another pan-PI3K member was in the panel could not be verified (abstract only).",
   "Same-track model-side gaps, not new tracks: (a) the Genentech MDA-MB-361 breast-xenograft PK-PD model cited as ref 9 of Sarker 2015, which set the 6 uM.h target AUC for >=90% TGI, is the real dose-target source rather than Raynaud's exposure sentence; (b) ref 17 of Baselga 2017 (buparlisib plus fulvestrant regressed ER+ breast xenografts) is the buparlisib model side for the BELLE-2 comparison, which the draft scores only via Sanchez 2011 in vitro.",
-  "(models check) Sachs 2018 Cell (doi 10.1016/j.cell.2017.11.010, epub 2017-12-07), full text read via cell.com PDF (PII S0092-8674(17)31319-3; earlier attempts used a wrong PII): pictilisib was in the organoid drug panel ('Pictilisib PI3K'; dose-response curves of afatinib and pictilisib for lines 10T and 27T, Fig. 7A), but in-vivo validation was afatinib only and the patient comparison tamoxifen only ('Tamoxifen was the only drug that resulted in differential responses'). A breast-organoid track opening untested in 2017 for pictilisib; no pan-PI3K comparison with patients in the paper."
+  "(models check) Sachs 2018 Cell (doi 10.1016/j.cell.2017.11.010, epub 2017-12-07), full text read via cell.com PDF (PII S0092-8674(17)31319-3; earlier attempts used a wrong PII): pictilisib was in the organoid drug panel ('Pictilisib PI3K'; dose-response curves of afatinib and pictilisib for lines 10T and 27T, Fig. 7A), but in-vivo validation was afatinib only and the patient comparison tamoxifen only ('Tamoxifen was the only drug that resulted in differential responses'). A breast-organoid track opening untested in 2017 for pictilisib; no pan-PI3K comparison with patients in the paper.",
+  "Buparlisib patient-level genotype track: Maira 2012 (doi 10.1158/1535-7163.MCT-11-0474) 353-line panel showed 'preferential inhibition of tumor cells bearing PIK3CA mutations'; BELLE-2 ctDNA PIK3CA-mutant PFS benefit (SABCS 2015 abstract S6-01; Baselga 2017) would be a buparlisib same on its own track, not a partial on pictilisib's contra track."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
@@ -182,6 +226,8 @@
   "Decision 8: a genotype-annotated line panel from one paper (O'Brien 2010) scored as two model_ids by prediction_level. The rule puts prediction_level on the entry, so one track seems intended; confirm, since the split affects the headline computation.",
   "Dating a class-wide track's safety contra: does the first weak appearance of the harm on another member (pilaralisib grade >=3 AST 5%, 2015) set the year, or the decisive signal on the drug whose package is scored (BELLE-2 25%, 2017)?",
   "Decision 8: a PDX/organoid biobank that screens a member drug and claims translatability but never pairs with a named trial (Bruna 2016, Sachs 2018): is it a track opening at untested, or not a comparison at all?",
-  "(models check) Decision 10 / decision 4: can a retrodiction be scored retro against a post-hoc, non-significant subgroup correlate (Nixon 2019: 3/3 clinical-benefit patients luminal A among 14 PAM50-typed, p = 0.07 one-tailed only when pooled with alpelisib, a non-member) from a phase Ib whose primary endpoint was MTD and which pre-specified no PoC gate? The brief's 'non-significant trend ... is not a patient result' is written for terminated trials; read broadly it makes efficacy 8 untested, read narrowly retro."
+  "(models check) Decision 10 / decision 4: can a retrodiction be scored retro against a post-hoc, non-significant subgroup correlate (Nixon 2019: 3/3 clinical-benefit patients luminal A among 14 PAM50-typed, p = 0.07 one-tailed only when pooled with alpelisib, a non-member) from a phase Ib whose primary endpoint was MTD and which pre-specified no PoC gate? The brief's 'non-significant trend ... is not a patient result' is written for terminated trials; read broadly it makes efficacy 8 untested, read narrowly retro.",
+  "Safety retrodiction by public date: Maira 2012's buparlisib safety claim (epub 2011-12-21) post-dates buparlisib's own phase 1 safety result (Bendell, epub 2011-12-12; ASCO abstracts earlier), though the liver harm was not in that phase 1. Does post-dating alone make the buparlisib safety track a retrodiction? Status contra either way.",
+  "Dose vs safety for pictilisib: safety 4 scores Raynaud's 'well tolerated' at the effective dose as a stated tolerability claim, while dose 2 says Raynaud stated no margin. Is that claim a stated margin (dose contra, blocked_by toxicity, since FERGI cut to 260 mg), or a missed harm counted once in safety?"
  ]
 }

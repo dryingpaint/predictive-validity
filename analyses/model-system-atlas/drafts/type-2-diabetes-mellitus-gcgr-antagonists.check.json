@@ -29,8 +29,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "15",
-   "note": "Peng 2014 (AAPS J, PMID 25160589) names MK-3577, 36 healthy subjects; quote verbatim. Same supported (healthy volunteers count). readout_tier direct is arguable: readout is glucose production, so decision 15 may read it downstream."
+   "rule": "retrodiction (engagement: any same-target earlier result)",
+   "note": "Peng 2014 (PMID 25160589, epub 2014-08-27) quote verbatim; MK-3577, 36 healthy subjects, oral. Petersen 2001 (PMID 11719833) Bay 27-9955 blunted human glucagon challenge before Mu 2012: retro right. Judgement text still says 'Called same'.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -39,8 +40,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "2",
-   "note": "Trade-press item dated 2015-11-19 carries the sentence verbatim; it reproduces REMD Bio's release, so the tier-5 source should be the release itself. Status same, low confidence, trial_unreported is right."
+   "rule": "retrodiction (engagement: any same-target earlier result)",
+   "note": "Clinical Trials Arena quote verbatim (tier 5, trial_unreported). Yan 2009 (PMID 19129372) post-dates Petersen 2001 human GCGR blockade: retro. Volagidemab, sc, healthy volunteers coded unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -105,8 +107,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4",
-   "note": "Kazda 2016 (Diabetes Care, PMID 26681715) online 2015-12-17 (draft says 12-19); quote verbatim; HbA1c is the stated efficacy measure. Registry dates all confirmed (2018-04-24, 2017-01-11, 2017-08-07). NCT00868790 is TERMINATED; note it. Same, not neg, is right."
+   "rule": "retrodiction (efficacy: any same-target earlier result)",
+   "note": "Kazda 2016 (PMID 26681715, epub 2015-12-17) quote verbatim, primary HbA1c met. MK-0893 12-week Phase 2 HbA1c -0.6 to -1.5 at ADA June 2011 (CEN 2011-10-01), before Mu 2012: retro. No earlier LY2409021 12-week report found.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -133,8 +136,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "5",
-   "note": "Kelly 2015 (DOM, PMID 25656305) resolves; quote verbatim; 28-day multiple dosing was in 47 T2D patients. Contra via a sibling-sponsor package is allowed. On-target harm carries modality; see rule question."
+   "rule": "6 (earliest public date)",
+   "note": "Kelly 2015 quote verbatim. CEN 2011-10-01 confirms LY2409021 reversible transaminase rises at EASD 2011; model claim 'excellent overall in vivo safety' Guzman-Perez 2013 (epub 2013-03-13): year 2013 right, contra stands, oral, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -152,8 +156,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7",
-   "note": "Pettus 2018 quote verbatim in PMC6181222 full text (BioC). Imported T1D same supported; full text also reports no lipid, BP or weight change. Dating: Crossref online 2018-01-22, DOI created 2017-12-28; year 2017 holds only if the accepted-article posting counts."
+   "rule": "safety: in-disease patients decide, import only when none",
+   "note": "Pettus 2018 quote verbatim (PMC6181222). T1D-only; T2D patients measured for the class (Kelly 2015, Kazda 2016, Kazierad 2018); NCT02455011 has no results: untested. sc, other_disease fit. Judgement still says 'Scored same'.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -162,7 +167,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Pettus 2022 (Nat Med, PMID 36192552) online 2022-10-03; quote verbatim; NCT03117998 results 2023-05-25 confirmed. Contra by silence on transaminases, LDL-C and BP is supported; mice could show all three."
+   "rule": "safety: in-disease patients decide, import only when none",
+   "note": "Pettus 2022 (PMID 36192552) quote verbatim. T1D import set aside, T2D measured for the class; NCT02455011 unreported: untested, unsettled. sc, other_disease fit. Stale judgement/reason prose still describe a contra.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -314,9 +321,79 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "12",
-   "note": "Pettus 2022 (PMID 36192552, PMC9872851, epub 2022-10-03) quote verbatim; NCT03117998 results 2023-05-25 verified. Imported from T1D (MONDO:0005147) for safety only, as decision 12 allows; third member, antibody modality, on-target pooling holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "safety: in-disease patients decide, import only when none",
+   "note": "Pettus 2022 quote verbatim; untested (unsettled) under the in-disease rule, sc, other_disease right. population says 'Unselected T2D' but the patients are T1D; reason 'held for three members' is stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6 (opener at model_first_use_year)",
+   "note": "Mu 2012 (PMID 23185367, epub 2012-11-19) abstract quote verbatim. Opener untested 2012 for adomeglivant, sibling GRA1-dosed (product_in_model false); oral, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2012,
+   "rule": "6 (earliest public date)",
+   "note": "Kelly 2015 quote verbatim, retro right. But Clinical Endocrinology News 2011-10-01 (EASD 2011) reports LY2409021 HbA1c fall and fasting glucagon up 0.6-4.2-fold, so the pairing with Mu 2012 was public in 2012; confidence_note's claim is wrong.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6: Clin Endocrinol News 2011-10-01 (EASD 2011) reports LY2409021 HbA1c fall and fasting glucagon up 0.6-4.2-fold, so the pairing with Mu 2012 was public in 2012; year 2012. Status stays retro (retrodiction rule)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6 (opener at model_first_use_year)",
+   "note": "Mu 2012 abstract quote verbatim; opener untested 2012 for mk-3577, sibling-dosed; oral, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "retrodiction (efficacy: any same-target earlier result)",
+   "note": "NCT00868790 (TERMINATED) results first posted 2017-01-11; quote is the registry primary-outcome description verbatim; WMG -18.8/-25.0 vs -1.6 placebo, p=0.013/<0.001. Retro after MK-0893 2011. Metformin is a comparator arm.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6 (opener at model's first use for the drug)",
+   "note": "Guzman-Perez 2013 (PMID 23562063, epub 2013-03-13) quote verbatim; PF-06291874 dosed (product_in_model true); oral, unselected fit. Pfizer rat challenge shares model_id with Merck hGCGR mouse/monkey system; see rule question.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "retrodiction (efficacy: any same-target earlier result)",
+   "note": "Kazierad 2018 (PMID 29923286, epub 2018-07-30) quote verbatim; NCT02554877 results 2017-08-07, primary HbA1c; no earlier congress report found. Retro after MK-0893 2011. Background metformin in every arm, not a combination.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -341,6 +418,9 @@
   "Decision 4 (models check): does askable silence apply to a genetic characterisation model (Gcgr-/- knockout) as to a dosed tox package? ALT was measurable in mice and the knockout papers never reported it; patients showed dose-dependent aminotransferase rises (Kelly 2015). The draft leaves the knockout uncharged (safety 8) because its stated predictions govern.",
   "Decision 7: may strengthens: true carry a second match on a track (same after same, safety 9/15/16), or is it reserved for a second miss that removes the first miss's excuse, with further matches going into patient_trials?",
   "Decision 10 vs the member list: a class patient result from a same-mechanism, same-modality programme outside the tile's four members (MK-0893 LDL-C) motivated Guan 2015; the models check proposes retro for safety 13 on that reading, the drafter untested because MK-0893 is a non-member.",
-  "Decision 10 (models check): on an in-silico track built after the result (Tan 2025), should the opening untested entry carry retrodiction: true as well, or only the comparison entry?"
+  "Decision 10 (models check): on an in-silico track built after the result (Tan 2025), should the opening untested entry carry retrodiction: true as well, or only the comparison entry?",
+  "Retrodiction anchor: Merck's hGCGR-mouse system published glucose lowering in 2004 (Qureshi 2004, doi:10.2337/diabetes.53.12.3267; Dallas-Yang 2004, doi:10.1016/j.ejphar.2004.08.023), before MK-0893's 2011 Phase 2, but the tracks pair Mu 2012. Does post-dating follow the paired model paper or the system's first public prediction (which would make efficacy 3/9/11 prospective same and model_first_use_year 2004)?",
+  "Safety retrodiction for a sibling-dosed model: safety 3's model claim (Guzman-Perez 2013, PF-06291874) post-dates the track drug LY2409021's own 2011 liver-enzyme result. Does 'the same drug's own patient result' mean the track's drug (retrodiction true) or the drug dosed in the model (false, as drafted)? Status is contra either way.",
+  "Model identity: Pfizer's rat glucagon challenge (Guzman-Perez 2013, PF-06291874) and Merck's hGCGR mouse/rhesus challenge (Mu 2012, GRA1) share model_id gcgr-sm-rodent-monkey-challenge; one system per sponsor package, or one small-molecule challenge system?"
  ]
 }

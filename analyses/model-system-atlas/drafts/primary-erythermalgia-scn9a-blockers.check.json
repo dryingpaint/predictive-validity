@@ -1,0 +1,175 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/primary-erythermalgia-scn9a-blockers.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Cao 2016 (PMID 27099175) quote verbatim in abstract. NCT01769274 intervention is a single oral 1600 mg PF-05089771 solution: drug/route correct. Neuronal excitability not measured in patients: untested/not_measured holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT01769274 intervention text verbatim; results first posted 2019-11-19. Oral PF-05089771 1600 mg, mutation-carrying IEM patients: drug/route/biomarker_selected correct. iPSC model stated no exposure target: untested/no_prediction.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Cox 2006 (PMID 17167479) quote verbatim. Opener of genetics x oral funapide at model_first_use_year 2006; NCT01090622 gives XPF-001 as oral capsule, inherited EM. drug/route/population correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Goldberg 2012 (PMID 22035805, epub 2011-10-28) quote verbatim; oral XEN402 400 mg BID, 4 SCN9A mutation-proven patients; registry primary is pain intensity difference, matching the abstract's primary aim. same 2011 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Cao 2016 quote verbatim. iPSC lines from the trial's own subjects, published with the result; funapide's 2011 same-target result also predates them, so retro holds. Oral PF-05089771, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT01769274 brief summary verbatim; 0/5 SAE in both sessions. PF-05089771 toxicology unpublished: untested/unpublished. Year 2010 = model_first_use_year opener per rule 6; oral, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Rule 6: opener at model_first_use_year, proxy allowed",
+   "note": "Jones 2016 (PMID 26895021) quote verbatim. PBPK built for oral PF-05089771 (1 g for ~12x IC50 at Cmax); drug/route correct. Opener 2010 at microdose start is an allowed rule 6 proxy.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Dose: target reached = same; healthy-volunteer PK counts",
+   "note": "Quote verbatim in Jones 2016 abstract; SAD oral PK in healthy volunteers matched the PBPK prediction, prospectively (no earlier PF-05089771 patient result). subjects healthy_volunteers, population_group unselected is the nearest code. same 2016 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "rule": "Fields: population_group codes the patients compared",
+   "note": "Cox quote verbatim; untested correct. population_group should be unselected: NCT01486446 enrols 'primary or inherited erythromelalgia' with no SCN9A criterion, as efficacy 5 and safety 3 code it. Opener year 2011 vs model_first_use_year 2006: rule question.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status agreed: untested opener (rule 6). Field fix only: population_group unselected, NCT01486446 has no SCN9A criterion. Not the track's latest entry, so no untested_reason. Opener year 2011 vs 2006 left to checker's rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "Efficacy: a biomarker-unselected trial counts only when the biomarker is >=80% of the trial population",
+   "note": "Quote verbatim (protocol primary outcome; results posted 2014-04-14, caveat says no primary). No genotype criterion, SCN9A share unknown, so the trial cannot score for the SCN9A context; n=1 placebo, no test. untested, untested_reason unsettled.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy rule: unselected trial counts for the SCN9A context only if SCN9A carriers are >=80%; no genotype criterion, share unknown. No primary outcome, 1 placebo patient. untested, untested_reason unsettled (rule 5)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "rule": "Fields: population keeps the words for the patients compared",
+   "note": "Cox quote verbatim; NCT01769274 start 2012-10-22, so untested 2012 opener holds. Field error: population is '2012-10' and note/judgement repeat garbled text; should read 'SCN9A mutation-confirmed inherited erythromelalgia (NCT01769274)'.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status agreed: untested opener (rule 6). Field fix only: population should name SCN9A mutation-confirmed IEM patients of NCT01769274, not '2012-10'. Not the track's latest entry, so no untested_reason."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "rule": "Fields: population keeps the words for the patients compared",
+   "note": "Cao 2016 quote verbatim; registry primary PI-NRS 0-4 h 2.08 vs 2.73 and 1.95 vs 2.04, no test; same/partial 2016 (epub before 2019 posting) holds. Field error only: population '2012-10' should name the NCT01769274 IEM patients.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status agreed: same/partial, 2016 (rule 6, epub before 2019 posting); prospective, genetics model predates. Field fix only: population should name NCT01769274 IEM patients, not '2012-10'."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Goldberg 2012 quote verbatim (oral XEN402 400 mg BID). Funapide toxicology not public; opener 2010 = NCT01090622 start 2010-04. untested/unpublished, oral, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry title verbatim; AE table 1/7 SAE on XPF-002, 0/1 placebo; start 2011-12. 8% ointment, topical; no genotype criterion, unselected. No public dermal/systemic toxicology: untested/unpublished.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "Dose track: PBPK model from a healthy-volunteer microdose study (Jones et al. 2016, Clin Pharmacokinet, doi:10.1007/s40262-015-0365-0, PMID 26895021; model_kind in_silico, product_in_model true). Stated: 'PBPK model for PF-05089771 predicted a 1 g oral dose would be required to achieve exposures of approximately 12x Nav1.7 IC50 at Cmax'; 'In a subsequent single ascending oral dose clinical study, the predictions for PF-05089771 compared well with observed data.' Healthy-volunteer PK counts: dose same, comparison_stated true, 2016. This model, not iPSC neurons, set the IEM dose (1600 mg). Whether Cao 2016 reports IEM-patient exposure vs the IC50 multiple was not checked (paywalled).",
+  "Possible dose/engagement context: Siebenga et al. 2020 (Clin Transl Sci, PMC7070789) healthy-volunteer evoked-pain battery found no PF-05089771 analgesia. It is a human readout, not a model compared with patients, so likely no new track; listed for the drafter to rule out."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Patient-level genotype-to-drug-response predictions in IEM (structural modelling plus iPSC/DRG functional profiling predicting carbamazepine response of Nav1.7-V400M/S241T; Yang 2012 Nat Commun, Geha 2016 JAMA Neurol) use a non-selective drug outside the member list. Under the class rule they do not score, but the brief does not say whether a patient-level model validated only on a non-member drug should be listed as an untested track for the class.",
+  "Funapide (XEN402) is described in some sources as a broader Nav blocker (Nav1.7 plus other subtypes). The tile lists it as a member; checker accepted the given class table without re-deciding selectivity.",
+  "A drug-independent model (SCN9A genetics, 2006) opening a track for a later member drug/route: rule 6 says open at model_first_use_year, but efficacy 4 and 6 open at the drug's first IEM trial start (2011, 2012). Which year should a per-drug opener carry?"
+ ]
+}

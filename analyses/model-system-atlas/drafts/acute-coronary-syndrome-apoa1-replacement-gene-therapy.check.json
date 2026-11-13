@@ -1,0 +1,316 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/acute-coronary-syndrome-apoa1-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Shah 2001 (PMID 11425766) abstract; quote matches up to '(P' where the abstract's p-value is truncated. Opener; MDCO-216 iv, product_in_model false (DPPC sibling formulation) correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Diditchenko 2013 (PMID 23868939) abstract; quote verbatim. Opener; member apolipoprotein a-i = CSL112, iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tardy 2014 (epub 2013-11-08) abstract; quote verbatim. Opener; CER-001 iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Gille 2014 (epub 2014-06-26) quote verbatim. Patel 2009 JACC (PMID 19281927, 2009-03) abstract: rHDL infusion enhanced plasma efflux in T2D patients, before the 2013 rabbit model: retro/retrodiction true. Easton 2013 MAD abstract reports no efflux, so 2014 stands. CSL112 iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kallend 2016 (epub 2015-12-11) quote verbatim. MDCO-216 iv; HV and stable CAD coded other_disease; product_in_model false matches Shah 2001 DPPC formulation. Mouse (2001) predates Patel 2009, so prospective same stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Shah 1998 (PMID 9498542) abstract; quote verbatim. Opener, no human target; MDCO-216 iv with sibling-dosed mice.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Diditchenko 2013 abstract; quote verbatim. Opener; CSL112 iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tardy 2014 abstract; quote verbatim. Opener; CER-001 iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Shah 1998 abstract; quote verbatim. Opener; MDCO-216 iv, product_in_model false.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Nissen 2003 (PMID 14600188) quote verbatim; within-group primary met, same/partial. ETC-216 scored as MDCO-216 (open rule question); iv; product_in_model false matches the DPPC mouse formulation.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tardy 2014 abstract; quote verbatim. Opener; CER-001 iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Diditchenko 2013 quote verbatim; efflux-only model, untested holds. CSL112 iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "CHI-SQUARE (PMID 24780501, epub 2014-04-29) quote verbatim. CER-001 iv; mouse paper 2013-11 preceded results: prospective contra 2014 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "MILANO-PILOT abstract (PMID 30046837) quote verbatim; 5x20 mg/kg iv, statin-treated ACS. Cleveland Clinic release dated 2016-11-15 (AHA) re-found: year 2016 per rule 6. Statins in both arms are background, not a partner: contra stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "AEGIS-I (PMID 27881559, epub 2016-11-15) quote verbatim. CSL112 iv in AMI patients; untested stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Reijers 2017 (PMID 28844118) conclusion verbatim. MDCO-216 iv; patients compared were HV and sCAD, so other_disease matches imported_from. ACS (MILANO-PILOT) safety was measured but its immune readouts are not in the abstract; retro stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Diditchenko 2013 abstract; quote verbatim. Opener of ex vivo human-plasma track; CSL112 iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Gille 2014 quote verbatim. Ex vivo spiking (Diditchenko, epub 2013-07-18) post-dates Patel 2009 rHDL efflux rise in patients: retro, retrodiction true. CSL112 iv; volunteers coded other_disease.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Keyserling 2017 (PMID 28213743) abstract; quote verbatim. Opener with stated 20 mg/kg animal safe dose; CER-001 iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Keyserling 2017 abstract; quote verbatim. CER-001 iv, single ascending dose in healthy volunteers: other_disease correct. Same stands; no earlier CER-001 patient result, so not a retrodiction.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Chiesa 2002 (PMID 12016263) abstract; quote verbatim. Opener; MDCO-216 iv, product_in_model false.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Nissen 2003 quote verbatim; ETC-216 scored as MDCO-216 (open rule question), iv; prospective same/partial stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "MILANO-PILOT quote verbatim; Cleveland Clinic release 2016-11-15 confirms year 2016 (rule 6). Model side Parolini 2008 (PMID 18342229) resolves. MDCO-216 iv; contra stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Sirtori 2001 (PMID 11306522) abstract; quote verbatim. Human genetic opener tied to no drug: drug 'class'; route iv is the route the class was given.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Nissen 2003 quote verbatim; carrier track, drug 'class', iv; same/partial stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "MILANO-PILOT quote verbatim; year 2016 per the 2016-11-15 release. Carrier track tied to no drug, so drug 'class'; route iv as patients were dosed. Contra stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Haase 2010 (PMID 20826588, epub 2010-09-08) abstract; quote verbatim. Genetic opener, drug 'class', iv.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "AEGIS-II (PMID 38587254, epub 2024-04-06) quote verbatim. Genetic track, drug 'class', iv CSL112 infusions; same stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kootte 2015 (PMID 25561459, epub 2015-01-05) quote verbatim. CER-001 iv in 7 FHA patients (other_disease). Mouse model (2013) post-dates Patel 2009 rHDL efflux rise in patients: retro 2015, retrodiction true.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "CER-001 human engagement: Kootte 2015 J Lipid Res doi:10.1194/jlr.M055665 (FHA patients, efflux +44%, cholesterol mobilization) - a same entry on the mouse-cer001 engagement track.",
+  "Rabbit IVUS/MRI track for apoA-I Milano/POPC: Parolini 2008 JACC doi:10.1016/j.jacc.2007.12.010 (ETC-216 regressed rabbit carotid atheroma on IVUS, dose guidance); a retrodiction of Nissen 2003 and a prospective prediction for MILANO-PILOT efficacy (and possibly dose).",
+  "MILANO-PILOT failure public 2016-11-15: Cleveland Clinic release https://newsroom.clevelandclinic.org/2016/11/15/cleveland-clinic-researchers-find-no-benefit-hdl-raising-injection-regression-coronary-heart-disease and MedCo discontinuation (firstwordpharma.com/story/4261668).",
+  "Human genetic track (not verified): ApoA-I Milano carriers (Sirtori 2001 Circulation, Limone sul Garda study) cited by Kallend 2016 as the basis for the class; a human_genetic model compared with MILANO-PILOT.",
+  "Ex vivo human plasma/whole-blood CSL112 efflux (Diditchenko 2013, same paper) is a separate ex_vivo system from the rabbit; could be its own engagement track paired with Gille 2014.",
+  "If 'apolipoprotein a-i' includes CSL111 (plasma-derived apoA-I/soy PC): ERASE (Tardif 2007 JAMA, doi:10.1001/jama.297.15.jama70004) failed its placebo-controlled IVUS primary; not verified here.",
+  "Ex vivo MDCO-216 serum incubation track: Kempen 2014 (doi:10.1155/2014/923903, epub 2014-11-12) MDCO-216 in human serum potentiated ABCA1 efflux; paired with Kallend 2016 it is a retro engagement entry (post-dates Patel 2009)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "MILANO-PILOT concludes no incremental regression 'in the setting of contemporary statin therapy'; the apoE-/- mice were never on statins. Does that framing count as the trial attributing the result to a condition the model never tested (-> untested) or is it background (-> contra)?",
+  "Does ETC-216 (Esperion apoA-I Milano/POPC, older manufacturing with host-cell proteins) score as the member MDCO-216, or is it a different product outside the class list?",
+  "Is a sponsor/academic press release or congress presentation date admissible for an entry's year when the dating rule lists registry, epub, label and print only?",
+  "Which drug(s) does the member 'apolipoprotein a-i' denote: CSL112 only, or also CSL111?",
+  "models: a human genetic model that predicted NO benefit (Haase 2010 APOA1 variants) and that the class did not rely on - is it admissible as a track, and is a null-matches-null pairing scored 'same'?",
+  "models: MILANO-PILOT attributes its null to 'the setting of contemporary statin therapy', a condition neither the rabbit nor the carrier model tested - contra or untested (efficacy 9, 12)?",
+  "Safety 2: Reijers 2017 imports a no-immunostimulation result from HV/sCAD while MILANO-PILOT measured ACS patient safety; does 'this disease's patients set the status' apply to a predicted absence of harm?"
+ ]
+}

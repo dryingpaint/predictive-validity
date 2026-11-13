@@ -2,7 +2,7 @@
  "draft": "analyses/model-system-atlas/drafts/v3/non-small-cell-lung-carcinoma-met-inhibitors.json",
  "index_base": 1,
  "checked_by": "CHECKER_BRIEF_v3",
- "lint": "0 findings",
+ "lint": "4 findings (years not sorted on tracks met-driven-xenograft/tepotinib in engagement and dose, met-driven-xenograft/sar-125844 and baf3-engineered-met-panel/capmatinib in efficacy: added openers appended after later entries)",
  "entries": [
   {
    "cell": "engagement",
@@ -16,14 +16,13 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2019,
-   "rule": "decision 7 (dating)",
-   "note": "Quote verbatim in 213591 review (applicant narrative, as drafter notes). Status same holds. Bang 2020 (10.1111/cas.14254, tier 1, epub 2019-12-30) already put model EC90 beside a patient biopsy phospho-MET result: earliest public date is 2019."
+   "rule": "dating rule 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in 213591 review beside S114 IC95. Bang 2020 (PMID 31778267) epub 2019-12-30 sets biopsy phospho-MET beside animal EC90, so 2019 holds. Capmatinib, oral, MET-positive phase 1 (biomarker_selected) correct."
   },
   {
    "cell": "engagement",
@@ -32,7 +31,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in 214096 review 'Data:' block; FDA assessment endorses it. Strengthens only, no status change. Falchook 2020 (epub 2019-12-10, tier 1) is the earlier record of the same biopsy/xenograft integration."
+   "rule": "dating rule 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in 214096 review. Falchook 2020 (PMID 31822497) epub 2019-12-10 integrates tumour-biopsy PD in translational model; year 2019, tepotinib, oral, unselected FIH patients correct."
   },
   {
    "cell": "dose",
@@ -55,11 +56,17 @@
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote is FDA's own assessment sentence (verbatim). MTD not reached to 1400 mg and 26-week rat at 0.04-0.13x human AUC verified. Strengthens only; tier-1 record would date it 2020 (Falchook 2019-12-10 + Paik 2020-05-29)."
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "population_group: the patients compared (DRAFTER_BRIEF fields); dating rule 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (214096 review); Falchook epub 2019-12-10 gives 500 mg for >=95% MET inhibition, MTD not reached: same/2019 hold. But 2019 patients are unselected FIH (EMR200095-001), not VISION: population_group should be unselected.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Both sides agree on same/2019 (decision 16 case 2, dating rule 6). Dispute is field-level only: per DRAFTER_BRIEF fields, population_group is the patients compared; Falchook 2019 FIH patients were unselected. Status unchanged."
   },
   {
    "cell": "efficacy",
@@ -75,9 +82,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Angevin 2017 and Egile 2015 resolve; quotes verbatim. Weak same: Egile abstract shows only gastric xenografts (no NSCLC model), trial reports no response-GCN correlation, and registry phase 2 NCT02435121 enrolled 1 patient. poc_gate on a phase 1 expansion is a rule question."
+   "rule": "retrodiction rule (engagement/efficacy are target claims)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Angevin quote in abstract; Egile epub 2014-12-10 post-dates crizotinib MET-amplified NSCLC responses (Ou 2011): target-level retrodiction, retro holds; sar-125844 iv correct. Judgement still says 'Scored same': stale prose. Earlier congress abstract not checked."
   },
   {
    "cell": "efficacy",
@@ -86,7 +95,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Wolf 2020 quote verbatim; registry results 2024-03-20 verified; Baltschukat 2019 resolves and supports biomarker-defined activity; FDA review sentence 'These studies support ... activity in the proposed patient population' verified. Missing patient_trials: GEOMETRY-III, VISION cohort B."
+   "rule": "retrodiction rule; dating rule 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Wolf 2020 quote verbatim. Baltschukat (PMID 30674502) epub 2019-01-23, after crizotinib METex14 responses (Paik 2015) and GEOMETRY ESMO 2018 interim: retro, dated 2019 when both halves public. Capmatinib oral biomarker_selected correct."
   },
   {
    "cell": "safety",
@@ -141,24 +152,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim. NCT02143466 named; D1228V detected in the patient on savolitinib + osimertinib, then built into TPR-MET Ba/F3, which lost savolitinib sensitivity. Post-dates and is motivated by the patient result: retro holds."
+   "rule": "efficacy: combination with another active drug",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bahcall 2016 abstract quote verbatim; patient progressed on savolitinib + osimertinib (TATTON), so combination_with osimertinib correct; savolitinib oral; retro unchanged."
   },
   {
    "cell": "efficacy",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2022,
-   "rule": "decision 10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim. D1228/Y1230 were patient-known before the 2019 ENU screen (Heist 2016 D1228N, Ou 2016 Y1230C on crizotinib; Bahcall 2016 D1228V on member savolitinib); Fujino 2022 tallies 17 such patients. Post-hoc reproduction: retro, retrodiction true. Fujino 2019 paywalled, so 2022 stands.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Decision 12 pools efficacy at the mechanism, so 'patient result' is class-level, not per member. D1228V type I resistance was known on member savolitinib (Bahcall 2016) before the 2019 screen; decision 10 scores the reproduction retro, retrodiction true."
+   "status_supported": true,
+   "rule": "retrodiction rule (target-level)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fujino 2022 quote verbatim. Fujino 2019 (epub 2019-07-03) itself cites D1228V on savolitinib (Bahcall 2016) and Y1230 on crizotinib (Ou/Schrock 2017): retro under target-level rule. Capmatinib oral correct; Recondo 2020 may date pairing earlier."
   },
   {
    "cell": "efficacy",
@@ -177,8 +184,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim. P-60 combination IC50 1.32/0.71/0.25/0.24 vs osimertinib 1.82/1.15/0.25/1.30 uM, savolitinib alone 11.6/17.6; drug chosen on FISH-confirmed MET amplification, DST 'later confirmed' (prospective). Table S6: P-86 bozitinib (SD), P-105 crizotinib (PD), no member METex14 case. Thin n=1 same holds."
+   "rule": "efficacy: combination with another active drug",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Wang 2023 quote verbatim (full text earlier); P-60 got osimertinib plus savolitinib, so drug savolitinib, combination_with osimertinib correct; prospective same unchanged."
   },
   {
    "cell": "dose",
@@ -210,6 +218,46 @@
    "rule": "decision 10",
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "Quote verbatim. Virtual METex14 trials calibrated on Wolf/Paik/Drilon 2020 ORRs; savolitinib (Lu 2021) and MET-amplified capmatinib out of sample; every trial read out before the 2025 model. Retro holds; class level fits."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bladt 2013 (PMID 23553846, epub 2013-04-03) quote verbatim in abstract (sentence covers in vitro and in vivo); EMD 1214063 = tepotinib; untested opener 2013, oral, proximal correct. Lint now clean."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bladt 2013 abstract quote verbatim; tolerated at regressing doses without weight loss is a stated margin (margin_stated true); untested opener 2013, tepotinib oral correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Egile 2015 (PMID 25504634) epub 2014-12-10, print 2015; quote verbatim; gastric xenografts only, intravenous; untested sar-125844 iv opener 2014 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fujino 2019 (PMID 31279006) epub 2019-07-03; quote verbatim. Abstract and JTO page do not name the eight TKIs, so capmatinib's inclusion stays unconfirmed; untested capmatinib opener 2019 otherwise correct."
   }
  ],
  "missing": [

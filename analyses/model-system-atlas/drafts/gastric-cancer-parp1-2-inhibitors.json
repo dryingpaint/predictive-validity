@@ -50,9 +50,13 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "ATM-low gastric cancer",
-    "model_first_use_year": 2014,
+    "model_first_use_year": 2010,
     "readout_tier": null,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "paclitaxel"
    },
    {
     "retrodiction": false,
@@ -89,7 +93,11 @@
     "model_kind": "ex_vivo",
     "prediction_level": "class",
     "model_first_use_year": 2010,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "ramucirumab"
    },
    {
     "retrodiction": false,
@@ -126,7 +134,11 @@
     "model_kind": "animal",
     "prediction_level": "patient",
     "model_first_use_year": 2023,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -163,10 +175,14 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "ATM-low gastric cancer",
-    "model_first_use_year": 2014,
+    "model_first_use_year": 2010,
     "blocked_by": null,
     "margin_stated": null,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "paclitaxel"
    },
    {
     "retrodiction": false,
@@ -203,7 +219,11 @@
     "model_kind": "ex_vivo",
     "prediction_level": "class",
     "model_first_use_year": 2010,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "ramucirumab"
    },
    {
     "retrodiction": false,
@@ -240,12 +260,16 @@
     "model_kind": "animal",
     "prediction_level": "patient",
     "model_first_use_year": 2023,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "efficacy": [
    {
-    "year": 2014,
+    "year": 2010,
     "status": "untested",
     "model": "Gastric cancer cell-line panel, ATM-low (NUGC4) most olaparib-sensitive",
     "note": "ATM-low gastric cancer cell line NUGC4 was the most olaparib-sensitive; ATM proposed as a predictive biomarker, no patient comparison yet.",
@@ -255,7 +279,7 @@
     "quote": "Our results demonstrate that ATM is a potential predictive biomarker for PARP-1 inhibitor activity in gastric cancer harboring disruption of p53, and that combined inhibition of ATM and PARP-1 is a rational strategy",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading. The same hypothesis was already in AstraZeneca's Study 39 registry record (NCT01063517, first posted 2010-02-05, ATM-negative PFS co-primary), so the model was in use before this first public paper.",
-    "judgement": "Opened at the first public model paper (2014) although the registry shows the ATM-low prediction in use from 2010; no earlier citable gastric model source was found.",
+    "judgement": "Opened at 2010, the model's first use: the ATM-low cell-line prediction is public in the Study 39 registry record (NCT01063517, first posted 2010-02-05, ATM-negative PFS co-primary) and the 2013 ASCO abstract cites the 'initial preclinical data'. Kubota 2014 is the first full model paper; the prediction predates every patient result, so it is not a retrodiction.",
     "model_id": "gastric-cell-lines-atm-low",
     "prediction_level": "patient",
     "subjects": null,
@@ -276,23 +300,27 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "ATM-low gastric cancer",
-    "model_first_use_year": 2014,
+    "model_first_use_year": 2010,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
-    "year": 2015,
+    "year": 2013,
     "status": "contra",
     "model": "Gastric cancer cell-line panel, ATM-low (NUGC4) most olaparib-sensitive",
-    "note": "Primary PFS missed overall (HR 0.80) and in ATM-low (HR 0.74); OS, a secondary, improved (HR 0.56; ATM-low 0.35).",
+    "note": "Combination with paclitaxel; co-primary PFS (all, ATM-low) both missed, OS secondary improved. First public at ASCO 2013 (abstract 4013).",
     "short": "Phase 2 PFS missed, OS signal",
     "src": "https://doi.org/10.1200/JCO.2014.60.0320",
     "srcLabel": "Bang 2015",
     "quote": "Olaparib/paclitaxel did not lead to a significant improvement in PFS versus placebo/paclitaxel (overall population: hazard ratio [HR], 0.80; median PFS, 3.91 v 3.55 months, respectively; ATMlow population: HR, 0.74; median PFS, 5.29 v 3.68 months, respectively).",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading (JCO paywalled). The abstract itself states the cell-line rationale and the ATM-predictiveness test, so the comparison is stated.",
-    "judgement": "Primary endpoint governs under v3: PFS was pre-specified primary (registry co-primaries: overall and ATM-negative PFS) and missed in both populations, so contra even though OS, a secondary, was significant and larger in ATM-low. The source reads the OS result as supporting the hypothesis, recorded as source_calls_it partial. The trial combined olaparib with paclitaxel at 100 mg BID whereas the model tested olaparib alone.",
+    "judgement": "Primary endpoint governs under v3: PFS was pre-specified primary (registry co-primaries: overall and ATM-negative PFS) and missed in both populations, so contra even though OS, a secondary, was significant and larger in ATM-low. The source reads the OS result as supporting the hypothesis, recorded as source_calls_it partial. The trial combined olaparib with paclitaxel at 100 mg BID whereas the model tested olaparib alone. Year is the ASCO 2013 abstract (doi:10.1200/jco.2013.31.15_suppl.4013), the earliest public date under rule 6; it states the cell-line rationale and the same PFS HRs (0.80 all, 0.74 ATM-negative, both non-significant). Combination design scored on its primary endpoint; both co-primary endpoints missed and the authors call PFS not improved, so a failure.",
     "model_id": "gastric-cell-lines-atm-low",
     "prediction_level": "patient",
     "subjects": "patients",
@@ -313,7 +341,7 @@
     "magnitude_basis": null,
     "source_calls_it": "partial",
     "population": "Unselected, enriched to 50% ATM-low; second-line, Korean",
-    "model_first_use_year": 2014,
+    "model_first_use_year": 2010,
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
@@ -323,22 +351,26 @@
       "doi": "10.1200/JCO.2014.60.0320",
       "quote": "However, olaparib/paclitaxel significantly improved overall survival (OS) versus placebo/paclitaxel in both the overall population (HR, 0.56; 80% CI, 0.41 to 0.75; P = .005; median OS, 13.1 v 8.3 months, respectively)"
      }
-    ]
+    ],
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": "paclitaxel"
    },
    {
-    "year": 2017,
+    "year": 2016,
     "status": "contra",
     "strengthens": true,
     "model": "Gastric cancer cell-line panel, ATM-low (NUGC4) most olaparib-sensitive",
-    "note": "Phase 3 OS missed in both co-primary populations: overall HR 0.79 (p=0.026 vs 0.025 bar) and ATM-negative HR 0.73 (p=0.25).",
+    "note": "Combination with paclitaxel; co-primary OS missed in all (HR 0.79) and ATM-negative (HR 0.73). First public in AstraZeneca's 2016-05-18 press release.",
     "short": "GOLD missed OS, ATM-negative too",
     "src": "https://doi.org/10.1016/S1470-2045(17)30682-4",
     "srcLabel": "Bang 2017",
     "quote": "The GOLD study did not meet its primary objective of showing a significant improvement in overall survival with olaparib in the overall or ATM-negative population of Asian patients with advanced gastric cancer.",
     "confidence": "high",
-    "confidence_note": "Abstract-level reading (Lancet Oncol paywalled); the abstract carries the primary result for both populations. Registry results posted 2018-11-07, after the 2017 epub.",
+    "confidence_note": "Abstract-level reading (Lancet Oncol paywalled); the abstract carries the primary result for both populations. Registry results posted 2018-11-07, after the 2017 epub. Press release: https://www.astrazeneca.com/media-centre/press-releases/2016/astrazeneca-provides-top-line-results-from-lynparza-gold-trial-in-advanced-gastric-cancer-1805206.html",
     "reason": "ATM-low enrichment failed in phase 3",
-    "judgement": "The model's patient-level call (ATM loss picks responders) is the one contradicted: the ATM-negative HR (0.73, p=0.25) was no better than the overall HR (0.79), which itself narrowly missed its 0.025 bar. The track stays contra; the overall near-miss is recorded in the note, not scored. Paired comparison: GOLD cites only the phase 2, not the cell-line paper.",
+    "judgement": "The model's patient-level call (ATM loss picks responders) is the one contradicted: the ATM-negative HR (0.73, p=0.25) was no better than the overall HR (0.79), which itself narrowly missed its 0.025 bar. The track stays contra; the overall near-miss is recorded in the note, not scored. Paired comparison: GOLD cites only the phase 2, not the cell-line paper. Year 2016: AstraZeneca's press release of 2016-05-18 announced the OS miss in both co-primary populations, the earliest public date under rule 6; the Lancet Oncology paper sets the status. The sponsor attributed the miss to 'a low dose and in combination with chemotherapy'.",
     "model_id": "gastric-cell-lines-atm-low",
     "prediction_level": "patient",
     "subjects": "patients",
@@ -359,7 +391,7 @@
     "magnitude_basis": null,
     "source_calls_it": "miss",
     "population": "Unselected second-line, Asian; ATM-negative co-primary (18%)",
-    "model_first_use_year": 2014,
+    "model_first_use_year": 2010,
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
@@ -369,21 +401,25 @@
       "doi": "10.1016/S1470-2045(17)30682-4",
       "quote": "Overall survival did not differ between treatment groups in the overall patient population (median overall survival 8·8 months [95% CI 7·4-9·6] in the olaparib group vs 6·9 months [6·3-7·9] in the placebo group; HR 0·79 [97·5% CI 0·63-1·00]; p=0·026)"
      }
-    ]
+    ],
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": "paclitaxel"
    },
    {
-    "year": 2023,
+    "year": 2021,
     "status": "contra",
     "model": "Cross-indication inference: PARP-inhibitor activity in HR-deficient tumours applied to platinum-responsive gastric cancer (pamiparib)",
-    "note": "Pamiparib maintenance after platinum response missed PFS (HR 0.8, p=0.14); OS numerically favoured placebo.",
+    "note": "Pamiparib monotherapy maintenance missed primary PFS (HR 0.8, p=0.14). First public in BeiGene's 2021-06-04 release of the ASCO 2021 poster.",
     "short": "Pamiparib maintenance missed PFS",
     "src": "https://doi.org/10.1002/cam4.5997",
     "srcLabel": "Ciardiello 2023",
     "quote": "Maintenance pamiparib did not meet statistical significance for superiority versus placebo for PFS, but was well tolerated with few treatment discontinuations; no unexpected safety signals were identified.",
     "confidence": "medium",
-    "confidence_note": "Abstract-level reading (open access, not read in full). No gastric-specific preclinical model for pamiparib was found; the trial paper's rationale is PARPi approvals in other tumours plus HR-pathway mutation frequency in gastric cancer.",
+    "confidence_note": "Abstract-level reading (open access, not read in full). No gastric-specific preclinical model for pamiparib was found; the trial paper's rationale is PARPi approvals in other tumours plus HR-pathway mutation frequency in gastric cancer. Press release: https://www.businesswire.com/news/home/20210604005079/en/",
     "reason": "HRD inference failed in gastric maintenance",
-    "judgement": "Second member drug, separate track: pamiparib went into gastric cancer on other indications' PARPi data and the frequency of HR-gene mutations, not on a gastric disease model, so this is a cross_indication track rather than part of the cell-line track. Scored contra at class level because the primary endpoint (investigator PFS) missed. A reviewer who prefers to keep cross-indication inferences out of the figure can drop this entry; the olaparib track is unaffected.",
+    "judgement": "Second member drug, separate track: pamiparib went into gastric cancer on other indications' PARPi data and the frequency of HR-gene mutations, not on a gastric disease model, so this is a cross_indication track rather than part of the cell-line track. Scored contra at class level because the primary endpoint (investigator PFS) missed. A reviewer who prefers to keep cross-indication inferences out of the figure can drop this entry; the olaparib track is unaffected. Year 2021: BeiGene's press release of 2021-06-04 (ASCO 2021 poster; HR 0.799, p=0.1428) is the earliest public date under rule 6; the 2023 paper sets the status. The trial closed at 136 of ~540 planned for slow enrolment.",
     "model_id": "parpi-cross-indication-hrd",
     "prediction_level": "class",
     "subjects": "patients",
@@ -414,7 +450,11 @@
       "doi": "10.1002/cam4.5997",
       "quote": "Median PFS was numerically longer with pamiparib versus placebo but did not reach statistical significance (3.7 months [95% confidence interval (CI): 1.9, 5.3] vs. 2.1 months [95% CI: 1.9, 3.8]; hazard ratio 0.8 [95% CI: 0.5, 1.2]; p = 0.1428)."
      }
-    ]
+    ],
+    "drug": "pamiparib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -452,7 +492,11 @@
     "model": "Hypoxia-induced HRD (contextual synthetic lethality): hypoxic human cancer cells with RAD51/BRCA1 down-regulation sensitised to PARP inhibition",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -480,10 +524,10 @@
     "src": "https://doi.org/10.1038/s41416-023-02534-1",
     "srcLabel": "Cecchini 2023",
     "quote": "For the six patients with PRs, two had HRD-positive tumours, one HRD-negative cancer, and three did not have genomic results.",
-    "note": "Phase 2 go-rule needed >=4 responses in HRD-negative tumours; one seen (ORR 6/43, 14%, CI 4.7-25.6 spans the 5% null).",
+    "note": "Single-arm combination with ramucirumab; pre-set go rule needed >=4 responses in HRD-negative tumours, one seen (ORR 6/43, 14%).",
     "short": "Hypoxia-sensitisation bar missed in HRD-negative gastric",
     "reason": "Pre-specified HRD-negative response bar missed",
-    "judgement": "The paper states the comparison itself ('Our preclinical work revealed tumour hypoxia induces HRD... We aimed to induce tumour hypoxia with ramucirumab thereby sensitising tumours to olaparib'). The hypoxia mechanism is tested in HR-proficient tumours, where the pre-specified rule required >=4 responses and one occurred; the overall ORR CI includes the <=5% null. The authors call the regimen active versus historical ramucirumab (14% vs 3%), so source_calls_it is partial and the status is contra on the primary endpoint rule, not same. Single-arm phase 1/2 with three responders unsequenced, hence medium confidence. Dose and engagement unchanged.",
+    "judgement": "The paper states the comparison itself ('Our preclinical work revealed tumour hypoxia induces HRD... We aimed to induce tumour hypoxia with ramucirumab thereby sensitising tumours to olaparib'). The hypoxia mechanism is tested in HR-proficient tumours, where the pre-specified rule required >=4 responses and one occurred; the overall ORR CI includes the <=5% null. The authors call the regimen active versus historical ramucirumab (14% vs 3%), so source_calls_it is partial and the status is contra on the primary endpoint rule, not same. Single-arm phase 1/2 with three responders unsequenced, hence medium confidence. Dose and engagement unchanged. Design: single-arm phase 1/2 of olaparib plus ramucirumab with a success bar set in advance, so the pre-specified rule decides the status.",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
@@ -498,7 +542,12 @@
     "model": "Hypoxia-induced HRD (contextual synthetic lethality): hypoxic human cancer cells with RAD51/BRCA1 down-regulation sensitised to PARP inhibition",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": "ramucirumab",
+    "untested_reason": "unsettled"
    },
    {
     "retrodiction": false,
@@ -536,7 +585,11 @@
     "model": "Gastroesophageal adenocarcinoma PDX platform and PDX-derived primary cells, BRCA2 germline-mutant with loss of the wild-type allele, olaparib/rucaparib/niraparib xenotrials",
     "model_kind": "animal",
     "prediction_level": "patient",
-    "model_first_use_year": 2023
+    "model_first_use_year": 2023,
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -564,7 +617,7 @@
     "src": "https://doi.org/10.3390/curroncol31110496",
     "srcLabel": "Hayashi 2024",
     "quote": "Results showed that the olaparib plus paclitaxel group had a significantly longer overall survival (OS) than the paclitaxel alone group.",
-    "note": "HR-gene-PV gastric cancer (germline BRCA1/2 enriched to 50%): OS HR 0.57 with olaparib + paclitaxel, 0.36 in the HRD-positive subset.",
+    "note": "Combination with paclitaxel. HR-gene-PV gastric cancer: OS HR 0.57 with olaparib + paclitaxel, 0.36 in the HRD-positive subset.",
     "short": "HR-mutant gastric patients benefit from olaparib",
     "judgement": "Paired comparison I made: the PDX model (model_src) predicted PARPi benefit confined to BRCA2-driven gastric cancers; this Kyoto series reports longer OS with olaparib plus paclitaxel in HR-gene-mutant gastric cancer, direction only. The population (pathogenic variants in any of 10 HR genes) is broader than the model's BRCA2-plus-LOH genotype, and the report is internally inconsistent, so confidence is low; a later genotype-exact case strengthens it (next entry).",
     "endpoint_role": "primary",
@@ -574,7 +627,11 @@
     "model": "Gastroesophageal adenocarcinoma PDX platform and PDX-derived primary cells, BRCA2 germline-mutant with loss of the wild-type allele, olaparib/rucaparib/niraparib xenotrials",
     "model_kind": "animal",
     "prediction_level": "patient",
-    "model_first_use_year": 2023
+    "model_first_use_year": 2023,
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "paclitaxel"
    },
    {
     "retrodiction": false,
@@ -614,7 +671,11 @@
     "model": "Gastroesophageal adenocarcinoma PDX platform and PDX-derived primary cells, BRCA2 germline-mutant with loss of the wild-type allele, olaparib/rucaparib/niraparib xenotrials",
     "model_kind": "animal",
     "prediction_level": "patient",
-    "model_first_use_year": 2023
+    "model_first_use_year": 2023,
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -622,14 +683,14 @@
     "year": 2014,
     "status": "same",
     "model": "Rat and dog general toxicology, up to 26 weeks (olaparib)",
-    "note": "Rat/dog hematopoietic toxicity matched anemia and neutropenia in olaparib patients; the FDA comparison is in ovarian/mixed tumours, imported.",
+    "note": "Rat/dog marrow toxicity matched olaparib cytopenias; gastric patients were measured (Study 39: grade 3+ neutropenia 56% vs 39%), so not imported.",
     "short": "Marrow toxicity predicted, seen in patients",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2014/206162Orig1s000PharmR.pdf",
     "srcLabel": "FDA Pharmacology Review 2014",
     "quote": "In general toxicology studies, the major target organ of toxicity was the hematopoietic system, which is consistent with adverse reactions reported in patients treated with olaparib.",
     "confidence": "high",
-    "confidence_note": "Read from the bundled review text (sources/206162/206162Orig1s000PharmR.txt). The patient side of the FDA statement is the olaparib clinical programme at the 2014 ovarian approval, not gastric patients.",
-    "judgement": "On-target class harm, so it pools across indications; imported from ovarian cancer (MONDO:0008170) because the regulator's stated comparison was made there. Magnitude is direction only: cytopenias appeared in rats and dogs at 2-4% of clinical exposure, so the animals over-predicted sensitivity while the harm itself held. model_first_use_year is null: the review does not date the studies.",
+    "confidence_note": "Read from the bundled review text (sources/206162/206162Orig1s000PharmR.txt). The patient side of the FDA statement is the olaparib clinical programme at the 2014 ovarian approval, not gastric patients. Gastric safety: ASCO 2013 abstract 4013 (doi:10.1200/jco.2013.31.15_suppl.4013) and the MedR safety-database section (206162Orig1s000MedR.txt line 1845).",
+    "judgement": "On-target class harm. Gastric patients were measured: Study 39 is in the FDA's 2034-patient safety database (gastric named) and its ASCO 2013 abstract reported grade 3+ neutropenia 56% vs 39% with paclitaxel alone, so this disease's patients set the status (same) and the entry is no longer imported. Magnitude direction only: cytopenias appeared in rats and dogs at 2-4% of clinical exposure. model_first_use_year is null: the review does not date the studies.",
     "model_id": "olaparib-rat-dog-tox",
     "prediction_level": "class",
     "subjects": "patients",
@@ -646,12 +707,16 @@
     "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
-    "imported_from": "MONDO:0008170",
+    "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "harm present in both; animal cytopenias at 2-4% of clinical exposure",
     "source_calls_it": "match",
-    "population": "Olaparib-treated patients, mostly ovarian cancer",
-    "model_first_use_year": null
+    "population": "Olaparib-treated patients across tumours in the FDA safety database, including second-line gastric cancer (Study 39)",
+    "model_first_use_year": null,
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "year": 2017,
@@ -688,7 +753,11 @@
     "magnitude_basis": "harm present; 7-point excess in grade 3+ neutropenia over placebo plus paclitaxel",
     "source_calls_it": null,
     "population": "Unselected second-line gastric cancer, Asian",
-    "model_first_use_year": null
+    "model_first_use_year": null,
+    "drug": "olaparib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": "paclitaxel"
    }
   ]
  }

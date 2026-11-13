@@ -1,0 +1,41 @@
+{
+ "tile": "hyperlipidemia-cetp-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (target claim; Cao 2011 mouse result public after JTT-705 cut CETP activity in people, de Grooth 2002)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (Cao 2011 after JTT-705 2002 / torcetrapib 2004 HDL-C rises in people); co-primary design (both met) written into judgement; drug evacetrapib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2008 -> 1989, src Thompson 2008 -> Brown 1989 (doi 10.1038/342448a0) with new quote; model_first_use_year 1989 on the genetics track; drug class, route not_applicable (check adjudication, rule 6 earliest date)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "model_src -> Brown 1989; model_first_use_year 1989; status same kept (genetic model predates all CETP-inhibitor patient results, so prospective)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2014 -> 2011, src Suico 2014 -> Nicholls 2011 (dyslipidaemia patients, 'no adverse effects'), subjects patients: this disease's patients decide and earliest public date; status same kept"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug rocacetrapib, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug rocacetrapib, route oral; retrodiction false -> true (dose ruling: rocacetrapib's own phase 1 PK, Kim 2016, public before Choi 2019); status contra kept as a failed retrodiction"
+  }
+ ],
+ "added": []
+}

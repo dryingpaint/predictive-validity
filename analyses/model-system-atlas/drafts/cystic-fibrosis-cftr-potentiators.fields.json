@@ -1,0 +1,137 @@
+{
+ "tile": "cystic-fibrosis-cftr-potentiators",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same -> retro (retrodiction true, source_calls_it partial): GLPG1837 assay result (2018) public after ivacaftor lowered sweat chloride in G551D patients (2010); target-level retrodiction rule. drug glpg-1837, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro, year 2025 -> 2024: 2024-12-20 label carries HBE and SKYLINE sweat chloride (rule 6, checker adjudication); HBE data for deutivacaftor public after potentiators' patient results (retrodiction rule). drug deutivacaftor, oral, combination vanzacaftor/tezacaftor"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "year 2024 -> 2022: NCT03911713 results posted 2022-01-25 (rule 6, checker adjudication). drug deutivacaftor, oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same -> retro (retrodiction true, source_calls_it partial): in-vitro icenticaftor data first public 2021 after its own trial (2017) and ivacaftor; F508del-homozygous arm null noted (rule question 1). drug icenticaftor, oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro: HBE result for deutivacaftor first public 2024 after ivacaftor and ELX/TEZ/IVA worked in patients; combination non-inferiority design written into note. drug deutivacaftor, oral, combination vanzacaftor/tezacaftor"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status same -> retro: FRT results for the deutivacaftor triple public 2024 after the subgroup's genotypes had responded to ELX/TEZ/IVA. drug deutivacaftor, oral, combination vanzacaftor/tezacaftor"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug dirocaftor, route oral, combination_with posenacaftor/nesolicaftor; strengthens prose moved to judgement and set true; status untested unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug and route set (deutivacaftor, oral) from the entry's sources; no status change"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug glpg-1837, route oral; no status change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug glpg-1837, route oral, untested_reason not_measured; no status change"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "what": "drug icenticaftor, route oral; no status change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug dirocaftor (the organoid efficacy track's member), route oral; no status change"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "untested opener for the icenticaftor track on cftr-mutant-cell-potentiator-assay, 2021 (Grand 2021, first public use for icenticaftor; the assays preceded the 2012 trial)"
+  }
+ ]
+}

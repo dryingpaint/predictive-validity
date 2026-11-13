@@ -206,5 +206,42 @@
   "Niraparib/abiraterone population PK and exposure-response (NDA 216793, 2023): descriptive of MAGNITUDE data with no prior prediction to compare.",
   "Talazoparib (Shen 2013 MX-1/Capan-1), niraparib (Jones 2009 MDA-MB-436) and fuzuloparib BRCA-mutant xenografts: same synthetic-lethality system and prediction as the brca2-null-synthetic-lethality track; not widened into separate tracks.",
   "MURAL PDX collection (Risbridger 2021) and the 2025-2026 PDO drug-screening platforms surfaced by search: no PARP-inhibitor arm with a patient comparison identified at abstract level; not pursued within budget."
+ ],
+ "gaps": [
+  {
+   "lead": "FDA ODAC 2023-04-28 on sNDA 208558/S-025 (PROpel)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: a second, tier-2 patient-side source for efficacy 15 (ar-parp-crosstalk-xenografts contra 2023, Chi 2023) in the same year, so status and year stay; the efficacy 14 PROpel same (2022) is not moved either, since the ODAC restriction is the 2023 contra the track already carries."
+  },
+  {
+   "lead": "EMA Lynparza II/0036 EPAR (2020, BRCA1/2-only mCRPC indication)",
+   "outcome": "fix",
+   "detail": "(a) efficacy 7 (hrr-gene-panel-cell-screen contra): field year, current 2021 (Carreira 2021), source supports 2020; with it src -> EMA II/0036 assessment report EMA/541236/2020, CHMP opinion 17 September 2020 (https://www.ema.europa.eu/en/documents/variation-report/lynparza-h-c-3726-ii-0036-epar-assessment-report-variation_en.pdf), source_tier 2, comparison_stated true (the EPAR itself sets the non-clinical data against PROfound), epub_year 2020, quote (p.161): 'the available non-clinical data on sensitivity of tumour cells harbouring particular non-BRCA HRR gene alterations to olaparib are reported mainly for a gene/protein loss and do not appear to translate into clinical setting'. Status contra unchanged; Carreira 2021 can stay as a later supporting source. (b) efficacy 10 (atm-null-prostate-isogenic; check.json proposes retro, year 2023): field year, current 2023 (pooled non-BRCA quote from FDA Akeega review), source supports 2020 with an ATM-specific datum: src -> same EMA II/0036 report, source_tier 2, comparison_stated false, model_src Rafiei 2020 unchanged, quote (p.113): 'No difference of median rPFS between olaparib (5.36 months, 95% CI 3.61, 6.21) compared to NHA (4.70 months, 95% CI 1.84, 7.26) in ATM subgroup was shown with HR = 1.04 (95% CI 0.61-1.87)'. Status per the existing retro verdict; only year/source change. Source re-opened: PDF downloaded and read via pdftotext."
+  },
+  {
+   "lead": "Beshiri 2018 Clin Cancer Res LuCaP PDX-derived organoids",
+   "outcome": "tracked",
+   "detail": "lucap-pdx-organoids, efficacy untested 2018 + retro 2018 (Beshiri 2018), already in added_models and merged as efficacy 16-17."
+  },
+  {
+   "lead": "Karkampouna 2021 Nat Commun PDX/organoids (PMID 33602919)",
+   "outcome": "none",
+   "detail": "Full text (PMC7892572) has no PARP-inhibitor arm; olaparib only in discussion/reference, so no model-to-patient comparison."
+  },
+  {
+   "lead": "Fuzuloparib (member) FUZUPRO NCT04691804",
+   "outcome": "none",
+   "detail": "No fuzuloparib-specific prostate model found; its BRCA-mutant xenograft and AR-PARP basis are the brca2-null-synthetic-lethality and ar-parp-crosstalk-xenografts systems; FUZUPRO has only a meeting abstract (inadmissible tier), so no patient-side entry yet."
+  },
+  {
+   "lead": "Janssen 2022-02-15 MAGNITUDE futility and AstraZeneca 2021-09-24 PROpel press releases",
+   "outcome": "covered",
+   "detail": "Changes nothing scored under the brief as written: rule 6 dates an entry by registry posting, online publication, label or print, and tier 5 is a patient-side fallback that carries trial_unreported true only where no higher-tier record exists; here Chi 2023 (efficacy 15) and Clarke 2022 (efficacy 14) are the higher-tier records, so years stay 2023 and 2022. If rule question 4 is answered the other way, efficacy 15 would move to 2022 and efficacy 14 to 2021."
+  },
+  {
+   "lead": "Niraparib DAT binding / dog blood-pressure (Zejula 2017 review) vs MAGNITUDE hypertension",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the parpi-rat-dog-toxicology safety track is already same at 2017 (safety 2) and 2023 (safety 3); a hypertension match adds a datum to a same track with no status or year change (check.json safety 2 calls it an unscored same)."
+  }
  ]
 }

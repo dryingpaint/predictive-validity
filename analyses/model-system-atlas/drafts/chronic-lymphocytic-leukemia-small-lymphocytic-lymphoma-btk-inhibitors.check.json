@@ -1,0 +1,252 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-btk-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Track fields (drug, route); retrodiction (engagement)",
+   "note": "Herman 2017 PMC5548968 full text: quote verbatim. Epub 2016-11-30, after ibrutinib and acalabrutinib patient occupancy; retro holds. Compared ACE-CL-001 R/R CLL took oral acalabrutinib: drug, route, stage_or_line right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (engagement: any drug of same target and action)",
+   "note": "NDA 210259 bundle: quote verbatim. Mouse PD first public 2015 at earliest, after ibrutinib (2013) and acalabrutinib (Byrd 2015) patient occupancy, so retro, not same. Oral acalabrutinib, R/R CLL: fields right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Retrodiction (engagement: any drug of same target and action)",
+   "note": "Tam 2019 abstract (epub 2019-07-24): quote verbatim. Guo 2019 model side epub 2019-08-19, after ibrutinib/acalabrutinib and Tam's own occupancy, so retro. Oral zanubrutinib; mixed B-cell phase 1 coded unselected is fine.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Rule 5 no_prediction (no model-stated human target)",
+   "note": "NDA 210259 bundle: quote verbatim. Mouse PD gave mg/kg ED50s only; 100 mg BID set on ACE-CL-001 patient occupancy. Untested holds; drug=acalabrutinib, route=oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Rule 5 no_prediction (no model-stated human target)",
+   "note": "Tam 2019 abstract: quote verbatim (italic P only). 160 mg BID chosen on patient lymph-node occupancy, no mouse-derived target. drug=zanubrutinib, route=oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Efficacy scored on primary endpoint",
+   "note": "Byrd 2016 PMC4862586 full text: quote verbatim. ACE-CL-001 primary endpoint safety, so ORR does not score; untested opener right. drug=acalabrutinib, route=oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (efficacy: any drug of same target and action)",
+   "note": "Herman 2017 full text: corrected quote now verbatim incl. 'compared to vehicle treatment'. Mouse data post-date ibrutinib and acalabrutinib CLL responses: retro. drug=acalabrutinib, route=oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Retrodiction (efficacy) and rule 6 dating",
+   "note": "Ghia 2020 abstract quote verbatim. AstraZeneca release of 7 May 2019 confirms ASCEND met IRC-PFS primary, so year 2019. Canine data (2014) after ibrutinib CLL responses (2013): retro. Monotherapy, oral acalabrutinib, R/R: fields right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Track fields (drug, route)",
+   "note": "Byrd 2016 full text: both sentences verbatim. Ex-vivo platelet data and first acalabrutinib patient safety public together, so not a retrodiction; same holds. drug=acalabrutinib, route=oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Track fields (drug, route)",
+   "note": "Byrd 2021 abstract/PMC8547923: conclusion verbatim. ELEVATE-RR all del(17p)/del(11q), biomarker_selected right; prospective head-to-head, same holds. drug=acalabrutinib, route=oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Rule 6 (earliest public date)",
+   "note": "BeiGene release 28 Apr 2021 (CancerNetwork) reports significantly lower AF/flutter vs ibrutinib in ALPINE interim, so year 2021. Brown 2023 quote verbatim. Head-to-head result unknown before, so same not retro. Oral zanubrutinib right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "Safety: passing tolerability claim scored; retrodiction that failed is contra",
+   "note": "NDA 210259 bundle: n=612 bleeding sentence verbatim across a page break; dog tox 'Toxicities were limited to...' verbatim, dog platelet aggregation unremarkable. Own CLL data public 2015: retro that failed, contra. Oral acalabrutinib right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Track fields; rule 6 opener",
+   "note": "Demin 2025 (PMC12001278, epub 2025-02-12): quote verbatim in abstract. Zanubrutinib track opener at model first use, untested no_prediction. drug=zanubrutinib, route=oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (retro, never same)",
+   "note": "Demin 2025 abstract and full text: quote verbatim; QSP fitted/validated on known clinical occupancy, so retro. Oral zanubrutinib 160 mg BID: drug and route right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Track fields; rule 6 opener",
+   "note": "NDA 210259 bundle: PBPK sentence verbatim. Sponsor Simcyp model opener 2017, untested. drug=acalabrutinib, route=oral right; healthy-volunteer DDI coded unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (dose: same drug's own earlier result)",
+   "note": "NDA 210259 bundle: rifampin sentence verbatim; fmCYP3A fitted to itraconazole study and rifampin study already run, so retro. drug=acalabrutinib, route=oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (dose: same drug's own earlier result)",
+   "note": "NDA 213217 bundle: quote verbatim; PBPK verified on zanubrutinib's own DDI data already in hand, so retro. drug=zanubrutinib, route=oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Dose: model-stated exposure target reached (prospective)",
+   "note": "Tariq 2022 abstract (epub 2022-12-08): quote verbatim. Prospective patient test of PBPK-based reduced dose; search found no earlier congress date. drug=zanubrutinib, route=oral, R/R stage_or_line right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (safety: same drug's own earlier result)",
+   "note": "NDA 213217 bundle: quote verbatim; rat/dog tox shows multi-organ hemorrhage and bleeding-related RBC loss. Tox first public Nov 2019, after Tam 2019 own bleeding data (Jul 2019), so retro. Oral zanubrutinib right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Track split by drug; rule 6 opener",
+   "note": "Demin 2025 full text: quote verbatim. Acalabrutinib track opener at 2025 first use, untested no_prediction; split from zanubrutinib track correct. drug=acalabrutinib, route=oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (retro, never same)",
+   "note": "Demin 2025 abstract/full text: 'validated using available clinical BTK occupancy data' verbatim; reproduces acalabrutinib's lower trough occupancy already known, so retro. drug=acalabrutinib, route=oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "Murine in-vivo thrombosis model with human platelets (Byrd 2016 NEJM, Methods ref 19; https://doi.org/10.1056/NEJMoa1509981) is folded into the btk-selectivity-offtarget-assays track rather than its own system.",
+  "Zanubrutinib nonclinical toxicology (FDA NDA 213217 multidisciplinary review, in the bundle) has no safety track; the rat/dog GLP tox track covers acalabrutinib only.",
+  "Zanubrutinib CLL supplemental approval review (NDA 213217/218785, 2023) not in bundle (manifest error) and not consulted by draft or checker.",
+  "QSP target-occupancy model for zanubrutinib/acalabrutinib compared with patient occupancy and PFS (CPT Pharmacometrics Syst Pharmacol, https://doi.org/10.1002/psp4.13307); likely a retrodiction, in_silico track."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Rat/dog GLP tox: dogs reported unremarkable platelet aggregation and no bleeding at exposures above clinical, yet ~50% of patients had bleeding events and AF 3%. Is that a silence a dog 'could have shown' (contra) or unsettled because ibrutinib-class harms were already expected?",
+  "Can one selectivity-panel track (and one mouse-PD track) span two member drugs whose panels were run by different sponsors (Acerta vs BeiGene), or does each sponsor's assay count as a separate model system?",
+  "Must each track open with a model_first_use_year untested entry (rule 6) when its first comparison came later? The mouse-PD (2015) and selectivity tracks open directly with same; lint does not flag it."
+ ],
+ "unverified": "Byrd 2016 supplement (mouse PD that could date the engagement pairing to 2015) not read; registry_date values not re-checked."
+}

@@ -9,277 +9,337 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Dunford 2007 (PMID 17208599) resolves; quote verbatim in abstract; epub 2006-10-13, print 2007-01 as recorded. Track opening, untested, sibling JNJ 7777120."
+   "rule": "Fields: drug at an opener; rule 6",
+   "note": "Dunford 2007 (PMID 17208599) quote verbatim. Opener of the JNJ-39758979 track compared in engagement 3; oral, unselected, no partner correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Cowden 2010 (PMID 19907432) resolves; quote verbatim; epub 2009-11-12, print 2010-04. Separate FITC Th2 track is justified: different system and prediction."
+   "rule": "Fields: drug at an opener; rule 6",
+   "note": "Cowden 2010 (PMID 19907432) quote verbatim. Opener of the JNJ-39758979 track compared in engagement 4; oral, unselected, no partner correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "3, 15",
-   "note": "Kollmeier 2014 (PMID 24817035) resolves; quote verbatim (abstract); NCT01068223 confirmed, no results posted. Same supported (volunteers count). readout_tier direct is arguable: in-vivo challenge itch is physiology, decision 15 names ex-vivo blockade; rule question."
+   "rule": "Engagement: healthy volunteers count",
+   "note": "Kollmeier 2014 (PMID 24817035) quote verbatim; NCT01068223 oral JNJ-39758979, volunteers, itch-score primary. Drug, oral, unselected (no volunteer code) correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "15",
-   "note": "Thurmond 2014 (PMID 24549371) resolves; quote verbatim; epub 2014-02-18. Eosinophil shape change ex vivo in dosed volunteers fits direct. comparison_stated true accepted on abstract only (one paper reports both sides)."
+   "rule": "Engagement; fields",
+   "note": "Thurmond 2014 (PMID 24549371) quote verbatim; ex-vivo eosinophil shape change in volunteers dosed orally with JNJ-39758979. Drug, route, population correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4",
-   "note": "Cowden 2010 quote verbatim; untested opening on the dermatitis track. No exposure target stated anywhere in the abstracts checked."
+   "rule": "Dose table row 1; rule 5",
+   "note": "Cowden 2010 quote verbatim; no exposure target stated, untested no_prediction. JNJ-39758979, oral, unselected correct for the opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Dunford 2007 clinical-implications sentence verbatim; untested opening of the pruritus track; prediction correctly read as itch relief."
+   "rule": "Fields: drug at an opener",
+   "note": "Dunford 2007 quote verbatim. Opener of the adriforant pruritus track (efficacy 4); oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Cowden 2010 closing sentence verbatim; untested opening of the dermatitis track; prediction correctly read as anti-inflammatory benefit judged on EASI/IGA primaries."
+   "rule": "Fields; rule 6",
+   "note": "Cowden 2010 quote verbatim. Opener of the JNJ-39758979 FITC track (efficacy 3); oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "4",
-   "note": "Murata 2015 quote verbatim; abstract names week-6 EASI as primary; registry lists EASI among primaries, stopped for 2 agranulocytosis cases, 88/105 randomised. Contra on the stated primary; whether an underpowered safety-terminated trial is a patient result is a rule question."
+   "rule": "Efficacy: co-primary scored as authors call it",
+   "note": "Murata 2015 (PMID 25491792, epub 2014-12-09) quote found. NCT01497119 primaries re-verified: five safety measures plus EASI; authors call primary not met; design in note. Contra holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4",
-   "note": "Werfel 2019 (PMID 30414855) quote verbatim. NCT02424253 verified: sole primary worst-itch NRS, LS diff -0.35 (CI -1.21 to 0.51), P = 0.249; EASI secondary -5.06, P = 0.01; results 2021-05-13. No sign EASI was a pre-specified PoC gate; contra stands."
+   "rule": "Rule 6: earliest public date",
+   "note": "Werfel quote verbatim; NCT02424253 primary worst-itch NRS verified. 2016 supported: FierceBiotech 2016-05-19 (Ziarco chairman: 2a 'missed its primary endpoint' of pruritus NRS). Adriforant, oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "4, 2, 6",
-   "note": "ZEST record verified as in dose 3. NCT03948334 whyStopped reads 'Core terminated due to lack of efficacy' (patient_trials quote near, not verbatim). Werfel EASI hit rightly kept out of status as a secondary."
+   "proposed_status": "contra",
+   "proposed_year": 2016,
+   "rule": "Efficacy primary endpoint; rule 6",
+   "note": "NCT03517566 re-verified (IGA wk16 primary, 'Lack of efficacy', results 2021-07-20). But Cowden predicted itch relief too; adriforant 2a missed its itch primary, public 2016-05-19, so this adriforant track turns contra 2016; ZEST then strengthens.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Efficacy primary endpoint; rule 6: Cowden also predicted pruritus relief, and the adriforant 2a itch NRS primary missed, first public May 2016. This track's first contra is 2016, not 2021; ZEST strengthens it."
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2023,
-   "rule": "8",
-   "note": "Uluckan 2023 (PMID 36690055) quote verbatim. Contra holds either way, but MC903 calcipotriol dermatitis is a different system from FITC hapten Th2 dermatitis: own model_id, and the histamine-itch half belongs on h4-mouse-pruritus. 'During the Ph2b' makes retrodiction false defensible."
+   "rule": "Retrodiction: failed to reproduce is contra",
+   "note": "Uluckan 2023 (PMID 36690055, epub 2023-01-21) quote verbatim. Post-dates same-target misses (2014, 2016, 2021), retrodiction true; model positive, patients not, so contra. Adriforant oral correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Thurmond 2014 quote verbatim; proxy source for a 2010 opening is acceptable (Phase 1 NCT01081821 started 2010-02). Abstract is silent on the 2012 agranulocytosis."
+   "rule": "Fields; rule 6",
+   "note": "Thurmond 2014 quote verbatim; tox on JNJ-39758979 itself; opener 2010 by Phase 1 proxy. Drug, oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "4 (safety), 16",
-   "note": "Murata 2015 quote verbatim; registry whyStopped matches. Thurmond 2017 (doi 10.1007/164_2016_130) confirms termination for drug-induced agranulocytosis and that toreforant lacks it, so compound-specific. Contra rests on a stated 'excellent safety profile' failing; idiosyncrasy exemption is a rule question."
+   "rule": "Safety: this disease's patients decide",
+   "note": "Murata quote found; NCT01497119 whyStopped '2 cases of agranulocytosis' verified. AD patients measured, not imported; drug, oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8, 5",
-   "note": "Glatzer 2013 (PMID 23932072) resolves; quote verbatim in abstract; epub 2013-08-09, print 2013-12. A never-compared patient ex-vivo system is untested by definition; engagement placement and class level fine. readout_tier absent (lint silent); subjects null vs patients (#56) raised.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Fields: drug 'class'",
+   "note": "Glatzer 2013 (PMID 23932072) quote verbatim. Run only with non-member JNJ 7777120 and never compared with dosed patients, so drug class, route not_applicable fits.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 6,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "7 (#112), 10",
-   "note": "Uluckan 2023 (PMID 36690055) quote verbatim. 'During the Ph2b trial' (ZEST 2018-11 to 2020-08) supports a prospective run; 2018 is the earliest bound of that interval, not a documented date. Own MC903 track correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "proposed_status": "untested",
+   "rule": "Retrodiction: engagement/efficacy model run after a same-target patient result",
+   "note": "Uluckan 2023 quote verbatim; untested, adriforant, oral fine. MC903 run (2b period, 2018-2020) post-dates the 2014 Murata and 2016 2a misses, so retrodiction should be true, as on efficacy 7.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Opener status untested holds (rule 6). Retrodiction rule: the MC903 run (2018-2020) and its 2023 publication post-date same-target misses (Murata 2014, adriforant 2a 2016), so retrodiction should be true, as on efficacy 7."
   },
   {
    "cell": "efficacy",
    "index": 8,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Baumer 2011 (PMID 21521369) resolves; quote verbatim; epub 2011-04-27, print 2011-07. Six Df-sensitised atopic beagles, blinded, placebo and triamcinolone controlled; the stated null is a prediction (#58). Siblings dosed, product_in_model false correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Fields: drug at an opener",
+   "note": "Baumer 2011 (PMID 21521369) quote verbatim. Opener of the JNJ-39758979 dog track; oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 9,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "4 (#58), 13, 7",
-   "note": "Murata 2015 (PMID 25491792) quote verbatim; week-6 EASI primary per abstract. Null-null same with direction_only holds; neg unearnable twice over: no class bar, and JNJ 7777120/28307474 never reached patients. Terminated-trial anchor remains the first check's rule question 1.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Efficacy: co-primary scored as authors call it",
+   "note": "Murata quote found; NCT01497119 co-primaries verified, authors call primary not met. Null prediction matched, same direction_only; design in note.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 10,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "7 (#127), 2",
-   "note": "NCT03517566 verified: whyStopped 'Lack of efficacy' verbatim, results 2021-07-20, IGA 1.9 vs 3.3/7.2/0.8/6.9 %. strengthens on a same reads #127 (written for a second miss) by analogy; patient_trials Werfel quote verbatim.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Track = model x drug x route",
+   "note": "ZEST registry verified. Own adriforant dog track; dog predicted lesions only, so the 2a itch primary does not bear on it; same, strengthens false correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 11,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8, 7",
-   "note": "Rossbach 2009 (PMID 18647342) resolves; quote verbatim (H(4) rendering); epub 2008-07-17, print 2009-01, so year 2008 correct. Split prediction (itch yes, inflammation no) read correctly; ACD haptens, but the authors extend it to AD pruritus.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Fields: drug at an opener",
+   "note": "Rossbach 2009 (PMID 18647342) quote verbatim. Opener of the JNJ-39758979 hapten track; oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 12,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "4, 11",
-   "note": "Murata quote verbatim; scored on the EASI primary, which the inflammation null predicted. Nominally positive itch PRO secondaries rightly unscored. Same terminated-trial caveat as efficacy 9; dates from 2021 if it resolves against Murata.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Efficacy: co-primary scored as authors call it",
+   "note": "Murata quote found; co-primaries verified. EASI miss matches the inflammation null; same, design in note.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 13,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "6 (#3), 4",
-   "note": "Werfel 2019 (PMID 30414855) quote verbatim; NCT02424253 sole primary worst-itch NRS, results 2021-05-13. Itch half failed on a primary, so contra under decision 6. Alternative, same + source_calls_it partial, raised as a rule question.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Rule 6: earliest public date",
+   "note": "Werfel quote verbatim; itch half failed on the 2a primary. 2016 supported: FierceBiotech 2016-05-19 (Ziarco chairman: 2a 'missed its primary endpoint' of pruritus NRS). Own adriforant track, oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 14,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Ohsawa 2012 (PMID 22686688) resolves; quote verbatim; epub 2012-06-12, print 2012-08. Monotherapy JNJ 7777120 improved clinical scores, pathology and cytokines on repeated dosing; positive prediction read correctly despite the combination headline.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Fields: drug at an opener",
+   "note": "Ohsawa 2012 (PMID 22686688) quote verbatim. Opener of the JNJ-39758979 NC/Nga track; oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 15,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "4, 2",
-   "note": "Murata quote verbatim; the model's positive clinical-score prediction missed the EASI primary, contra as on the FITC track. Ohsawa & Hirasawa 2014 review rightly kept out of comparison_stated (decision 2). Terminated-trial caveat and the #32 literal reading raised.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Efficacy: co-primary scored as authors call it",
+   "note": "Murata quote found; co-primaries verified, authors call primary not met; contra with design in note.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 16,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "7 (#127), 2",
-   "note": "ZEST record verified as above; strengthens the 2014 contra with a powered second-member trial. patient_trials Werfel itch quote verbatim. Nothing changes status.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "proposed_status": "contra",
+   "proposed_year": 2016,
+   "rule": "Efficacy primary endpoint; rule 6",
+   "note": "ZEST verified. Ohsawa also predicted reduced scratching, and the drafter counts the 2a itch-primary miss as a failure of this track; public 2016-05-19 (FierceBiotech), so the adriforant track turns contra 2016; ZEST strengthens.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Efficacy primary endpoint; rule 6: Ohsawa predicted reduced scratching, and the adriforant 2a itch NRS primary missed, first public May 2016. The adriforant track turns contra 2016; ZEST 2021 strengthens it."
   },
   {
    "cell": "efficacy",
    "index": 17,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "untested",
-   "proposed_year": 2010,
-   "rule": "7 (#112), 8 (#122, #84)",
-   "note": "Kollmeier 2014 (PMID 24817035) quote verbatim; NCT01068223 ran 2010-02 to 2010-05, no results. Human challenge is in scope for efficacy (#122, #84). First class use was 2010, and safety 1 dates a 2010 opening by the same proxy: open 2010.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Rule 5: untested_reason, first that fits",
+   "note": "Kollmeier quote verbatim; NCT01068223 2010-02 to 2010-05 verified, opener 2010 right. Murata did measure itch (secondary, trial stopped early), so not_measured does not fit; unsettled does. Status untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5, first fit: Murata measured itch (PRO secondaries, trial stopped early), so not_measured fails; the result is inconclusive, so untested_reason is unsettled."
   },
   {
    "cell": "efficacy",
    "index": 18,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "6, 3, 8",
-   "note": "Werfel quote verbatim; worst-itch NRS primary missed (LS diff -0.35, P = .249). Class-level antipruritic prediction failed for a sibling member; contra with product_in_model false correct. Shifting the opener to 2010 changes nothing here.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "Rule 6: earliest public date",
+   "note": "Werfel quote verbatim; contra on the 2a itch primary for adriforant, oral, unselected. 2016 supported: FierceBiotech 2016-05-19 (Ziarco chairman: 2a 'missed its primary endpoint' of pruritus NRS).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 19,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Fields: drug at an opener",
+   "note": "Seike 2010 (PMID 19886918, epub 2009) quote verbatim. Opener of the JNJ-39758979 TNCB track; oral, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 20,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "Efficacy: co-primary scored as authors call it",
+   "note": "Murata quote found; NCT01497119 co-primaries verified, authors call primary not met; contra with design in note.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 21,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2016,
+   "rule": "Efficacy primary endpoint; rule 6",
+   "note": "ZEST verified. Track carries Suwa 2011's itch prediction (drafter says so); the 2a itch-primary miss, public 2016-05-19 (FierceBiotech), is the adriforant track's first contra; ZEST strengthens.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Efficacy primary endpoint; rule 6: the track carries Suwa 2011's itch prediction, and the adriforant 2a itch NRS primary missed, first public May 2016. The adriforant track turns contra 2016; ZEST strengthens it."
   }
  ],
  "missing": [
@@ -292,7 +352,8 @@
   "Register, member list: pf-5212372 is CHEMBL4650312 (synonyms PLA-950, ZPL-521), a cPLA2-alpha inhibitor (Hewson 2012, JPET, doi 10.1124/jpet.111.186379, PMID 22160268), ChEMBL has no H4R mechanism or activity for it. It is not a member of HRH4|antagonist and contributes nothing; class_programs 3 is really 2 (3 with izuforant).",
   "[models check] Mouse chronic allergic contact dermatitis by repeated hapten challenge, JNJ 7777120 reduced inflammation: Seike 2010, Allergy, doi 10.1111/j.1398-9995.2009.02240.x (PMID 19886918, epub 2009-11-02; same group's H4+H1 follow-up Matsushita 2012, doi 10.1111/j.1600-0625.2012.01559.x, PMID 22897580). A positive inflammation prediction distinct from Rossbach's acute null, so its own track: untested 2009, contra 2014 on Murata. Title-level only, abstract not read.",
   "[models check] Hapten-induced dermal inflammation and pruritus model, Suwa 2011, Eur J Pharmacol, doi 10.1016/j.ejphar.2011.05.037 (PMID 21664903): an H4R antagonist reduced both; check hapten and regimen before deciding whether it is the Seike 2010 system or its own. Title-level only.",
-  "[models check] Th2-dependent antigen-specific (OVA) skin inflammation with H1R/H4R blockade, Mahapatra 2014, PLoS One, doi 10.1371/journal.pone.0087296 (PMID 24503582), Hannover group: another positive inflammation system never compared with the clinic in the draft. Title-level only."
+  "[models check] Th2-dependent antigen-specific (OVA) skin inflammation with H1R/H4R blockade, Mahapatra 2014, PLoS One, doi 10.1371/journal.pone.0087296 (PMID 24503582), Hannover group: another positive inflammation system never compared with the clinic in the draft. Title-level only.",
+  "[models check 2] Suwa 2011 (doi 10.1016/j.ejphar.2011.05.037) resolved: repeated-TNCB HR-1 mouse system, correctly folded into h4-mouse-tncb-chronic-dermatitis. Still untracked: Mahapatra 2014 OVA Th2 skin inflammation (doi 10.1371/journal.pone.0087296)."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

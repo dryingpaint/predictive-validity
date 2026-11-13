@@ -1,0 +1,23 @@
+{
+ "tile": "prostate-cancer-ezh2-inhibitors",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "drug lirametostat, route oral: opener of the crpc-ezh2-xenograft x lirametostat track; status untested 2012 unchanged"},
+  {"cell": "engagement", "index": 2, "what": "drug lirametostat, route oral, combination_with enzalutamide or abiraterone/prednisone (combination design noted); status same 2019 unchanged"},
+  {"cell": "engagement", "index": 3, "what": "drug null (mevrometostat not a tile member; entry stays adjudicated drop), route oral; strengthens dropped (own track); status unchanged"},
+  {"cell": "dose", "index": 1, "what": "drug tazemetostat, route oral; status untested 2012 unchanged"},
+  {"cell": "dose", "index": 2, "what": "drug null (mevrometostat, adjudicated drop), route oral; status unchanged"},
+  {"cell": "efficacy", "index": 1, "what": "drug tazemetostat, route oral: opener of the crpc-ezh2-xenograft x tazemetostat track; status untested 2012 unchanged"},
+  {"cell": "efficacy", "index": 2, "what": "drug tazemetostat (EPZ6438 dosed in Ku 2017), route oral, population_group biomarker_selected; status untested 2017 unchanged"},
+  {"cell": "efficacy", "index": 3, "what": "drug null (mevrometostat, adjudicated drop), route oral; status unchanged"},
+  {"cell": "efficacy", "index": 4, "what": "drug tazemetostat, route oral, combination_with enzalutamide; combination ruling written into note (scored on rPFS primary); status/year left to the existing adjudication (untested 2024)"},
+  {"cell": "efficacy", "index": 5, "what": "drug class (only tool inhibitors GSK343/GSK503 run), route oral, population_group biomarker_selected; status untested 2018 unchanged"},
+  {"cell": "safety", "index": 1, "what": "drug tazemetostat, route oral; status untested 2013 unchanged"},
+  {"cell": "safety", "index": 2, "what": "drug tazemetostat, route oral, population_group other_disease (import stands: no prostate tazemetostat safety public in 2020); status same 2020 unchanged"},
+  {"cell": "safety", "index": 3, "what": "drug null (mevrometostat, adjudicated drop), route oral; strengthens dropped; status unchanged"},
+  {"cell": "safety", "index": 4, "what": "year 2026 -> 2022; src/quote moved from the follicular-lymphoma SYMPHONY-1 commentary (CCR 2026) to the CELLO-1 phase 1b SUO 2022 abstract, imported_from dropped, population_group stage_or_line, source_calls_it partial: imported-harm ruling (mCRPC patients on tazemetostat were measured: GI/marrow harms seen, no haematologic SPM in 63 men, registry 2026-03-10); status same (strengthens) unchanged"}
+ ],
+ "added": [
+  {"cell": "efficacy", "index": 6, "what": "opener, crpc-ezh2-xenograft x lirametostat oral, untested 2012"},
+  {"cell": "efficacy", "index": 7, "what": "same 2025, crpc-ezh2-xenograft x lirametostat oral + abiraterone/prednisone: ProSTAR phase 2 single-arm composite response 21.4% (6/28), registry 2025-10-29; single-arm and combination rulings, source_calls_it partial, low confidence"}
+ ]
+}

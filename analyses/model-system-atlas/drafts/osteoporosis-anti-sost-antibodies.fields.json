@@ -1,0 +1,32 @@
+{
+ "tile": "osteoporosis-anti-sost-antibodies",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2014 -> 2011: rule 6 earliest public date, Amgen/UCB topline press release 2011-04-21 (phase 2 met its lumbar spine BMD primary endpoint); status same unchanged; drug romosozumab, route sc set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2014 -> 2011: rule 6 earliest public date, Amgen/UCB topline press release 2011-04-21 (phase 2 met its lumbar spine BMD primary endpoint); status same unchanged; drug romosozumab, route sc set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2014 -> 2011: rule 6 earliest public date, Amgen/UCB topline press release 2011-04-21 (phase 2 met its lumbar spine BMD primary endpoint); status same unchanged; drug romosozumab, route sc set"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 16,
+   "what": "new opener untested 2016, ovx-cyno-romosozumab-12mo, romosozumab sc: Ominsky 2017 passing bone-safety claim scored as a safety prediction (2026-11-09 ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 17,
+   "what": "new retro 2016 (partial), ovx-cyno-romosozumab-12mo, romosozumab sc: FRAME (Cosman 2016) skeletal AEs balanced, 1 AFF and 2 ONJ; same drug's own result public earlier, so retrodiction"
+  }
+ ]
+}

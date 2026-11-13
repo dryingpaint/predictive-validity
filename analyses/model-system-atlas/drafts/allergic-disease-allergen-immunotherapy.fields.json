@@ -1,0 +1,26 @@
+{
+ "tile": "allergic-disease-allergen-immunotherapy",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "retrodiction false -> true, status contra kept: Moldaver epub 2018-06-12 post-dates the Cat-PAD Phase 3 failure (PR 2016-06-20); post-dating ruling, efficacy counts any earlier patient result for the target; failed to reproduce, so contra"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "status same -> retro, year 2019 -> 2018, retrodiction true: chamber dose pick first public 2018-11-22 (Couroux epub), after the tree tablet's own Phase 3 result (ALK press release 2017-09-14); drug tree pollen allergen extract, route sublingual"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "status same -> retro, year 2019 -> 2018, retrodiction true: chamber tolerability first public 2018-11-22 after the tree tablet's own Phase 3 tolerability (ALK press release 2017-09-14); drug tree pollen allergen extract, route sublingual"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "model_src NCT01033344 -> Hafner 2013 WAO J abstract (doi:10.1186/1939-4551-6-S1-P150): the chamber's passing tolerability claim is the scored safety prediction (ruling); status same kept, confidence low -> medium"
+  }
+ ],
+ "added": []
+}

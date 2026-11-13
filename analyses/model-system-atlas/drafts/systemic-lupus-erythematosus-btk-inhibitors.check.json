@@ -1,0 +1,215 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/systemic-lupus-erythematosus-btk-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Katewa 2017 abstract (PMID 28405610) quote verbatim. drug fenebrutinib (G-744 sibling, product_in_model false), oral, unselected SLE: right. Opener untested 2017 stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Isenberg 2021 quote verbatim. Year 2019 from the ACR/ARP 2019 abstract (2019-10-23) reporting lower anti-dsDNA, IgG, plasmablast signature: rule 6 right; precedes registry 2020-07-07. fenebrutinib, oral, unselected right."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Wallace 2022 quote verbatim; evobrutinib, oral, unselected right, contra on the evobrutinib track only. Registry (2020-12-17) posts IgG only, not anti-dsDNA or complement, so 2022 stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "rule": "one system split across two model_ids: each model system is one track sharing one model_id (adjudicated 2026-11-09 for engagement 4 / dose 1: model_id nzbw-lupus-mouse)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Haselmayer 2019 abstract (epub 2019-04-15) quote verbatim; evobrutinib, oral, untested 2019 right. Occupancy PK/PD fitted in the same NZB/W mice: model_id nzbw-lupus-mouse (adjudicated); keep as evobrutinib engagement opener, not a repeat of fenebrutinib's entry 1.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status not disputed; only model_id moves to nzbw-lupus-mouse (one system, one model_id). Evobrutinib engagement opener, untested 2019; not the track's latest entry (engagement 3 contra 2022), so no untested_reason (rule 5)."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "rule": "one system split across two model_ids: each model system is one track sharing one model_id (adjudicated 2026-11-09 for engagement 4 / dose 1: model_id nzbw-lupus-mouse)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Becker 2019 abstract (PMID 31654487, epub 2019-11-29) quote verbatim; HV count. Retro right: ibrutinib and fenebrutinib (Herman 2018) human BTK blockade public before the April 2019 mouse result. evobrutinib, oral right; model_id nzbw-lupus-mouse.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status not disputed; model_id nzbw-lupus-mouse. Engagement is a target claim: fenebrutinib human BTK inhibition (Herman 2018) public before Haselmayer's April 2019 mouse occupancy, so retrodiction reproducing human data is retro."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Herman 2018 abstract (PMID 29484638, epub 2018-03-23) quote verbatim. fenebrutinib, oral, unselected right; opener untested 2018 stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Isenberg 2021 full text states patient pBTK matched the HV PK/PD prediction; the ACR 2019 abstract lacks pBTK, so 2021 is earliest. fenebrutinib, oral, unselected right."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "rule": "one system split across two model_ids: each model system is one track sharing one model_id (adjudicated 2026-11-09 for engagement 4 / dose 1: model_id nzbw-lupus-mouse)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Haselmayer 2019 abstract quote verbatim: stated 80% blood-occupancy target, no margin. evobrutinib, oral, untested 2019 right; model_id nzbw-lupus-mouse (adjudicated, target derived in IFN-a NZB/W mice).",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status not disputed; model_id nzbw-lupus-mouse. Stated 80% occupancy target, no human comparison yet: opener untested 2019. Track's latest entry is dose 2 (same), so no untested_reason (rule 5)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "rule": "one system split across two model_ids: each model system is one track sharing one model_id (adjudicated 2026-11-09 for engagement 4 / dose 1: model_id nzbw-lupus-mouse)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Becker 2019 (epub 2019-11-29) quote verbatim: full occupancy at 25 mg/day exceeds 80% target; same 2019, within_2x, prospective (evobrutinib's own human occupancy first public after April 2019). evobrutinib, oral right; model_id nzbw-lupus-mouse.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status not disputed; model_id nzbw-lupus-mouse. Dose is a drug claim: evobrutinib's own human occupancy (Becker, Nov 2019) post-dates the model, so prospective; target reached gives same, margin_stated false (dose table)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Herman 2018 abstract quote verbatim; regimen target stated, no margin. fenebrutinib, oral, untested 2018 right."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Isenberg 2021: model-chosen regimens reached predicted pBTK reduction; same 2021, SRI-4 failure kept to efficacy. fenebrutinib, oral, unselected right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Katewa 2017 abstract quote verbatim. fenebrutinib (G-744 sibling opener), oral, unselected right; untested 2017."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Isenberg quote verbatim; primary SRI-4 missed. ACR/ARP 2019 abstract (2019-10-23) precedes registry 2020-07-07 (NCT02908100), so contra 2019 right. fenebrutinib, oral, unselected right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Haselmayer 2019 abstract (epub 2019-04-15) quote verbatim; evobrutinib dosed in NZB/W SLE mice, prospective. Opener untested 2019, evobrutinib, oral right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Wallace 2022 conclusion verbatim. Registry NCT02975336 results 2020-12-17 with co-primary SRI-4/SRI-6; ACR Convergence 2020 earlier: year 2020. Both missed, co-primary design in note. evobrutinib, oral, unselected right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Goess 2018 abstract (PMID 29862859, epub 2018-07-23) quote verbatim; ABBV-105 = elsubrutinib in IFN-a NZB/W nephritis. Opener untested 2018, elsubrutinib, oral right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Merrill 2024 abstract quote verbatim. AbbVie press release 2023-05-31 and EULAR 2023 precede registry 2023-07-21 (NCT03978520): year 2023 unchanged; confidence_note should cite them. Monotherapy arm, combination_with null right."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Wallace 2022 liver AESI quote verbatim (7.7% vs 2.6%) in SLE patients. evobrutinib, oral, unselected right; untested/unpublished stands, no member toxicology public."
+  }
+ ],
+ "missing": [
+  "No new model track found. Additional engagement data, status-neutral: elsubrutinib arm biomarkers in the SLEek study (Lupus Sci Med 2026, doi 10.1136/lupus-2026-002162, epub 2026-10-29; abstract not available) set against ABBV-105 NZB/W data (Goess 2018); same nzbw-lupus-mouse track.",
+  "Healthy-volunteer occupancy for evobrutinib (Becker 2019, doi 10.1111/cts.12713) is missing as the earliest engagement/dose comparison; see engagement 5 and dose 2.",
+  "Wallace 2022 (doi 10.1002/acr2.11511) states the mouse-to-patient efficacy comparison itself ('Several studies have demonstrated that BTK inhibitors are effective in murine models of SLE; this effectiveness, however, has not translated'): could be cited as a comparison_stated:true efficacy entry; status unchanged."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Is a PK/PD occupancy-efficacy model fitted in the same NZB/W mice a separate track from the efficacy readouts in those mice? I treated it as the same system (one model_id).",
+  "The engagement track pools a direct readout (BTK occupancy: matched) and a downstream readout (autoantibodies: contradicted, evobrutinib). Under 'contra beats same' the cell shows contra although target engagement held; should engagement be scored per readout_tier?",
+  "The 80% occupancy target was published (Haselmayer, April 2019) after the member SLE trials started (Jan 2017) but before any readout. Does the 'stated before the trial' requirement apply to dose targets as well as to margins?",
+  "Fenebrutinib SLE regimen: the HV PK/PD model (fenebrutinib-hv-pkpd) stated the regimen, but the BTK-inhibition level it aimed at came from NZB/W mice (Isenberg 2021 dose rationale, ref 16). Does the dose target score on both the HV-model and mouse-btk-occupancy-pkpd tracks, or only one?"
+ ]
+}

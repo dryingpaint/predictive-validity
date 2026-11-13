@@ -1,0 +1,19 @@
+{
+ "tile": "prostate-cancer-parp1-2-inhibitors",
+ "changed": [
+  {"cell": "efficacy", "index": 3, "what": "year 2020 -> 2019: PROfound primary first public in the AstraZeneca press release 2019-08-07 and ESMO 2019 (rule 6, press release / congress dating); status same unchanged; drug olaparib, route oral"},
+  {"cell": "efficacy", "index": 4, "what": "year 2023 -> 2022: MAGNITUDE BRCA1/2 rPFS HR 0.53 first public at ASCO GU 2022 (JCO 40:6_suppl 012) (rule 6); drug niraparib, route oral, combination_with abiraterone acetate + prednisone (combination design); strengthens -> false, first entry of the niraparib track"},
+  {"cell": "efficacy", "index": 7, "what": "year 2021 -> 2020, src/quote -> EMA Lynparza II/0036 EPAR (CHMP Sept 2020, tier 2, comparison_stated true) per adjudicated verdict (rule 6); status contra unchanged; drug olaparib, route oral"},
+  {"cell": "efficacy", "index": 8, "what": "drug niraparib, route oral, combination_with abiraterone acetate + prednisone (combination design); strengthens -> false, first entry of the niraparib track; status/year unchanged"},
+  {"cell": "efficacy", "index": 10, "what": "status same -> retro, retrodiction true (Rafiei 2020 post-dates and cites TOPARP-B ATM and PROfound: retrodiction ruling, adjudicated verdict); year 2023 -> 2020 and src/quote -> EMA II/0036 EPAR ATM subgroup rPFS HR 1.04 (rule 6, ATM-specific datum); drug olaparib, route oral"},
+  {"cell": "efficacy", "index": 14, "what": "year 2022 -> 2021: PROpel primary met first public in AstraZeneca press release 2021-09-24 (rule 6); drug olaparib, route oral, combination_with abiraterone acetate + prednisone"},
+  {"cell": "efficacy", "index": 15, "what": "year 2023 -> 2022: MAGNITUDE Cohort 2 futility first public in Janssen press release 2022-02-15 (rule 6); drug niraparib, route oral, combination_with abiraterone acetate + prednisone; futility-gate design written into note; status contra unchanged"},
+  {"cell": "efficacy", "index": 13, "what": "drug olaparib, route oral, combination_with abiraterone (combination design noted); status/year unchanged"},
+  {"cell": "dose", "index": 4, "what": "drug olaparib, route oral, combination_with abiraterone; status/year unchanged"},
+  {"cell": "safety", "index": 2, "what": "drug niraparib, route oral, population_group other_disease (ovarian import); strengthens -> false, first entry of the niraparib track"},
+  {"cell": "safety", "index": 3, "what": "drug niraparib, route oral, combination_with abiraterone acetate + prednisone; status/year unchanged"},
+  {"cell": "safety", "index": 4, "what": "drug pamiparib, route oral; body-weight 'no effect' claim noted as a scored tolerability prediction (passing tolerability claim ruling); status unchanged"},
+  {"cell": "safety", "index": 5, "what": "year 2022 -> 2021, src/quote -> NCT03712930 registry results (posted 2021-11-17, tier 3): prostate patients on pamiparib measured (anaemia 7/13), so the breast import (Xu 2023) is replaced and imported_from cleared (imported-harm ruling); status contra unchanged; drug pamiparib, route oral, population_group biomarker_selected"}
+ ],
+ "added": []
+}

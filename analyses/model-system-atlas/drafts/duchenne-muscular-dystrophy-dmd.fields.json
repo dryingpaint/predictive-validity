@@ -1,0 +1,111 @@
+{
+ "tile": "duchenne-muscular-dystrophy-dmd",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "status same -> retro, retrodiction true: GLP-0901 monkey study (test article May 2009) ran after Study 33 patient dosing (Dec 2008) and was first public in the 2016 review (retrodiction rule, engagement). Route set im (Study 33 patients)."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug eteplirsen, route im set; note says the track's later comparison is a retrodiction (an untested opener cannot carry retrodiction true)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: NOAEL margins first public in the 2016 FDA review, after eteplirsen's own patient tolerability (Mendell 2013); retrodiction rule for dose (same drug only). Drug eteplirsen, route iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true: viltolarsen patient-cell result first public Sep 2018 (Watanabe 2018), after exon-skipping dystrophin in patients (Cirak 2011); retrodiction rule for efficacy (any drug, same target). Drug viltolarsen, route iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set viltolarsen, route iv (RACER53); own track on the mdx surrogate model; status contra unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set golodirsen, route iv; status contra unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set viltolarsen, route iv; retrodiction true (FDA review Aug 2020 after Clemens 2020 patient tolerability); status contra unchanged (failed to reproduce)."
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug eteplirsen, route iv set"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug eteplirsen, route iv set (Cirak 2011 IV)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug eteplirsen, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug eteplirsen, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug eteplirsen, route im"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug eteplirsen, route im (Kinali 2009 EDB injection)"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "what": "drug eteplirsen, route im"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "drug eteplirsen, route im"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug eteplirsen, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug eteplirsen, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug eteplirsen, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug eteplirsen, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug eteplirsen, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug eteplirsen, route iv set; note records that the model was first public after eteplirsen patient tolerability."
+  }
+ ],
+ "added": []
+}

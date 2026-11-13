@@ -11,7 +11,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "Wooddell 2013 (PMID 23439496) resolves; quote is the abstract sentence cut at 'proteins' (continues ', and viral DNA with long duration of effect'); the Europe PMC record is not cut as confidence_note claims. Opener untested stands."
+   "rule": "track definition (drug, route); 6 (opener at model_first_use_year)",
+   "note": "Wooddell 2013 (PMID 23439496) abstract re-read: quote is the abstract sentence cut at 'proteins'. Opener untested 2013 stands; drug tomligisiran, route sc, unselected fit the JNJ-3989 patients this track pairs with.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -20,19 +22,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Wooddell 2017 (PMID 28954926) abstract verbatim. ARC-520 is not a member so untested stands. The abstract says the chimp work investigated a patient result already seen, so retrodiction should be true (decision 10); status unchanged."
+   "rule": "track definition; do-not-widen (ARC-520 non-member)",
+   "note": "Wooddell 2017 abstract quote as before. Chimps got ARC-520, so untested opener stands; tomligisiran sc unselected matches the AROHBV1001 patients engagement 4 compares.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2016,
-   "rule": "7 (dating: earliest public comparison) with 2 (tier 5 admissible patient-side)",
-   "note": "Yuen 2022 verbatim, NCT03365947 results 2024-06-04 confirmed. But member ARB-1467 HBsAg reductions were public 2016-12-12 (Arbutus PR, tier 5) and elebsiran -1.03 to -1.65 log10 in NCT03672188 results posted 2021-12-13 (tier 3). Year 2022 is late."
+   "rule": "6 (earliest public date)",
+   "note": "Arrowhead release 2018-09-06 confirmed: 'Mean reduction of HBsAg was 2.0 log10 (99%) on day 85 in cohort 2b (100 mg)', called the first ARO-HBV clinical data. Year 2018 right; Yuen 2022 quote verbatim; same, tomligisiran sc holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -40,12 +43,14 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "12 (do not widen) with checker brief item 3: pairing scores conditions the model never tested",
-   "note": "Chimps were dosed only with ARC-520 (non-member); the stated prediction concerns ARC-520. That an integrant-covering siRNA restores HBeAg-negative response is the drafter's inference, and Yuen 2022 does not attribute the similar response to integrant coverage.",
+   "status_supported": true,
+   "rule": "6 (earliest public date: sponsor press release)",
+   "note": "Yuen 2022 quote verbatim; same holds (chimp model 2017 precedes). But Arrowhead AASLD release 2018-11-09 already reported HBsAg nadir similar by HBeAg status (-2.1 positive n=11, -1.8 negative n=13): year 2018.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "same",
+   "proposed_year": 2018,
    "adjudicated_status": "same",
-   "adjudication_note": "Decisions 1(b), 8 (proxy), 10: checker's 'never tested' premise fails on the source. Wooddell 2017 full text dosed HBeAg-negative chimps with siHBV-75 (integrant-covering) and knockdown matched HBeAg-positive; JNJ-3989 targets all HBV transcripts (JPET 2022). same."
+   "adjudication_note": "Rule 6: status same agreed; year is earliest public comparison. Arrowhead AASLD release 2018-11-09 gave similar HBsAg nadir by HBeAg status (-2.1 vs -1.8 log10), predating Yuen 2022. Same, year 2018."
   },
   {
    "cell": "dose",
@@ -54,38 +59,46 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "Same truncated Wooddell 2013 abstract sentence as engagement 1. No human target stated; untested opener stands."
+   "rule": "dose: no stated target -> untested",
+   "note": "Wooddell 2013 (PMID 23439496) abstract re-read; no human exposure or regimen target stated. Opener untested; tomligisiran sc unselected fine.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "dose: a target scores only where the model source stated it; drafter mg/kg arithmetic is not one",
+   "note": "Yuen 2022 quote verbatim; JPET 2022 mouse PK states no human target. untested, untested_reason no_prediction is right and matches the prior adjudication.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "6 (opener)",
+   "note": "Wooddell 2013 (PMID 23439496) abstract re-read; abstract says 'long duration of effect', not rebound (note's 'rebound' unsupported at abstract level). Untested opener, tomligisiran sc, stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
    "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "4 (dose asks whether the model's stated exposure/regimen target was reached) with evidence rule 3 (no quotable model-side target)",
-   "note": "JPET 2022 (PMID 36041884) abstract is mouse PK only (>42-day liver exposure), states no human exposure or regimen target; the 1-10 mg/kg to 100-400 mg mapping is the drafter's. The patient quote shows a plateau, not a reached target.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 dose: scores the model's stated exposure/regimen target. JPET 2022 (epub after the trial) gives mouse PK only, no human target; the mg/kg mapping is drafter-made, so post-hoc scaling, source_calls_it scaling. untested."
-  },
-  {
-   "cell": "efficacy",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "near",
    "status_supported": true,
-   "note": "Same truncated abstract sentence. The note's 'rebound' claim is not in the abstract (it says 'long duration of effect'); full text not checked. Untested opener stands."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "REEF-1 (PMID 37442152) abstract verbatim; primary endpoint = NA-stopping criteria at wk 48 (paper and NCT03982186, results 2024-07-10). same/partial holds. Draft omits REEF-2's 0/130 functional-cure miss (see missing); NCT04667104 registry_date is 2024-07-03, not null."
+   "rule": "6 (earliest public date: congress/sponsor press release)",
+   "note": "Yuen 2023 quote verbatim; primary NA-stopping endpoint, same/partial holds. Arrowhead release 2021-11-15 (AASLD 2021) already gave REEF-1 week-48 primary: 19.1% met NA-stopping criteria at 200 mg. Year 2021, not 2023.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "same",
+   "proposed_year": 2021,
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: same/partial agreed; Arrowhead AASLD 2021 release (2021-11-15) reported the REEF-1 week-48 primary (19.1% met NA-stopping criteria at 200 mg) before Yuen 2023. Same, year 2021."
   },
   {
    "cell": "safety",
@@ -94,7 +107,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim but it concerns NAG-MLP + chol-siF7 (DPC platform), not the members' GalNAc or LNP platforms, so it binds no member. Patient ALT signals (elebsiran 2/15 monotherapy; ARB-1467 2016 transaminase discontinuation; REEF-1 ALT/AST SAE) have no model-side comparison; untested stands."
+   "rule": "safety: stated prediction binds the platform tested",
+   "note": "Wooddell 2013 (PMID 23439496) abstract re-read: quote verbatim, about chol-siF7 on NAG-MLP, not a member platform. untested no_prediction, tomligisiran sc, stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -103,9 +118,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7 (opener at first class use, proxy allowed), 8",
-   "note": "Thi 2019 (PMID 30403127, epub 2018-11-19, print 2019) abstract verbatim; full text closed. Abstract names 'human chimeric mouse model' without strain. ARB-1740 is not a member, product_in_model false is right. Untested opener stands.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "6 (opener, proxy allowed)",
+   "note": "Thi 2019 abstract quote verbatim. ARB-1740 (LNP sibling) as proxy opener for the elebsiran chimeric-mouse track is allowed; product_in_model false; untested 2018 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -114,9 +129,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10 (retrodiction) with 7 (dating)",
-   "note": "Noack 2026 (PMID 41586499, PMC12959159) full text verbatim; received 2025-07-24, published 2026-01-26, after NCT03672188 results (2021-12-13) and Gane 2023. No elebsiran-only PXB arm; ~1-log increment over muHBC34 vs 1.65 log patients is within 2x. retro stands.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction (engagement: first public after a patient result on the target)",
+   "note": "Noack 2026 PMC12959159 full text: quote verbatim; published 2026-01-26. Elebsiran patient HBsAg data were public earlier still (Vir release 2020-04-15), so retro holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -125,9 +140,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7, 8",
-   "note": "Noack 2026 full text verbatim (HBV-infected PHH, EC50 1.4 nM HBsAg, 2.5 nM HBeAg, no cytotoxicity). model_first_use_year 2026 is unverifiable earlier: Thi 2019 full text (closed) may have used PHH for ARB-1740. Untested opener stands.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "6 (opener)",
+   "note": "Noack 2026 full text: PHH EC50 quote verbatim. Untested opener, drug elebsiran sc, stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -136,9 +151,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10 with 7",
-   "note": "Same Noack 2026 sentence verbatim; publication postdates the patient HBsAg data, experiment dates not stated, so retrodiction holds. direction_only is right: an in-vitro EC50 has no patient counterpart. retro stands.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction",
+   "note": "Same Noack 2026 sentence verbatim; public 2026 after elebsiran patient HBsAg data (2020 release, 2021 registry). retro, direction_only stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -147,9 +162,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "4 (no stated exposure or regimen target)",
-   "note": "Thi 2019 abstract verbatim; it states no dose, exposure or human target. Noack 2026 full text gives 3 mg/kg mouse doses with no human mapping. Untested stands; the drafter's 2.9 mg/kg mapping is rightly not scored.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "dose: no stated target",
+   "note": "Thi 2019 abstract verbatim; Noack 2026 gives 3 mg/kg with no human mapping. untested no_prediction stands; elebsiran sc.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -158,9 +173,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "3 (efficacy = trial primary endpoint)",
-   "note": "Thi 2019 abstract verbatim; chimeric mice read liver/serum HBsAg only. No member primary endpoint (NA-stopping criteria, functional cure) is expressible in an immunodeficient model, so untested rather than contra is right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "efficacy: model has no read-out for the primary endpoint",
+   "note": "Thi 2019 abstract verbatim; untested no_prediction stands; elebsiran sc unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -169,9 +184,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "3 (safety: stated prediction or askable silence)",
-   "note": "Thi 2019 abstract verbatim; it carries no tolerability statement for the chimeric mice, and ARB-1740 is not a member, so no silence is scored. Untested opener stands.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "6 (opener)",
+   "note": "Thi 2019 abstract verbatim, no tolerability statement. Untested opener, elebsiran sc.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -180,9 +195,138 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "3 (stated prediction), 10 (not a retrodiction for the member)",
-   "note": "Gane 2023 (PMID 37290591) full text read (SGUL OA copy). Mice were uninfected PXB cDNA-uPA/SCID (PhoenixBio), 12-100 mg/kg x5, hALT1; paper says the model 'was used to predict the safety of VIR-2218' and findings were 'first demonstrated preclinically'. same holds; experiment date not stated.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction (dose and safety: same drug's own earlier patient result)",
+   "note": "Gane 2023 abstract quote verbatim (epub 2023-06-07). Elebsiran's own human data were public from 2020-04-15 (Vir release) and in the registry 2021-12-13, before the mouse ALT data were public, so retro is right. subjects healthy_volunteers; population_group unselected is the nearest code.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6 (opener)",
+   "note": "Schlegel 2022 (PMC9262600) quote as previously verified. Untested opener at 2022, elebsiran sc, stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "retrodiction on public date (safety)",
+   "note": "Schlegel 2022 Discussion quote previously verified verbatim; epub 2022-07-01, after elebsiran's own human data (2020 release; registry 2021-12-13). retro under the public-date ruling.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "track split per drug and route; 6 (opener, proxy)",
+   "note": "Wooddell 2013 (PMID 23439496) abstract re-read. ARB-001467 iv opener at 2013, untested, proxy (sibling chol-siRNA) allowed; no tier 1-3 ARB-1467 mouse source found.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "2 (tier 5 patient side with tier 1 model_src); 6",
+   "note": "Release quote confirmed via search snippet (investor page 403). Earlier Arbutus release 2016-09-29 already reported >=1 log HBsAg after three 0.4 mg/kg doses, so year 2016 holds. HBeAg-negative cohorts: biomarker_selected, iv, NA background right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "track split; 6 (opener)",
+   "note": "Wooddell 2013 (PMID 23439496) abstract re-read. Elebsiran sc opener 2013, untested, stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6 (earliest public date: sponsor press release)",
+   "note": "Gane 2023 quote verbatim; same holds. Vir release 2020-04-15 re-found: dose-dependent HBsAg reduction to week 24 in NCT03672188, all 200 mg patients >=1 log10, before the 2021-12-13 registry posting. Year 2020.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "same",
+   "proposed_year": 2020,
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: same agreed; Vir release 2020-04-15 reported dose-dependent elebsiran HBsAg reduction (all 200 mg patients >=1 log10) before the 2021-12-13 registry posting. Same, year 2020."
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "retrodiction (engagement)",
+   "note": "Noack 2026 full text: quote verbatim. retro stands. magnitude_basis is off: 0.79-log is muHBC34i monotherapy; elebsiran gave 0.89 log (combination study) and 1.2-2.8 log with repeated dosing; still within 2x of 1.03-1.65.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "track split; 6 (opener)",
+   "note": "Wooddell 2013 (PMID 23439496) abstract re-read. Elebsiran efficacy opener 2013, untested, stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6 (earliest public date) with co-primary design written in note",
+   "note": "Wong 2025 quote verbatim; co-primary HBsAg loss EOT and 24 wk post-EOT both favour combination, same holds. Brii release 2024-11-19 re-found: EOT 26.3%/33.3% vs 5.6%. Year 2024; note should carry EOT values.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "same",
+   "proposed_year": 2024,
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 and co-primary rule: same agreed. AASLD 2024 LBA and Brii release 2024-11-19 re-found: EOT HBsAg loss 26.3%/33.3% vs 5.6%, one co-primary favouring combination. Same, year 2024."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "track split; 6 (opener)",
+   "note": "Wooddell 2013 (PMID 23439496) abstract re-read: F7 clinical-chemistry quote verbatim. Elebsiran safety opener 2013, untested, stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "tolerability ruling; retrodiction (same drug's earlier patient result)",
+   "note": "Noack 2026 full text: ALT quote verbatim, published 2026 after elebsiran's volunteer ALT data. retro stands; patient side is healthy volunteers while chronic HBV patients on elebsiran had ALT rises read as flares (see rule question).",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -205,6 +349,8 @@
   "Do combination trials in which every arm includes a non-member class (MARCH: tobevibart + elebsiran) score for the member, and if so on whose primary endpoint?",
   "Are HBV-transgenic, hydrodynamic pHBV and AAV-HBV mice one track (hbv-genome-mouse) or three systems needing separate model_ids (decision 8)?",
   "Safety 3 (Gane 2023 PXB hALT1): the mouse run was motivated by the ALN-HBV volunteer ALT elevations already seen (2016) but predicted the member VIR-2218's volunteer result before it was known. Is a model that retrodicts the comparator and predicts the member 'same' (as drafted) or 'retro' under decision 10?",
-  "Noack 2026 (engagement 6, 8): experiment dates are not stated and could predate the 2021 patient data. Does decision 10 turn on when the model result was run, or on when it was public (decision 7)? The drafter and this check used public date."
+  "Noack 2026 (engagement 6, 8): experiment dates are not stated and could predate the 2021 patient data. Does decision 10 turn on when the model result was run, or on when it was public (decision 7)? The drafter and this check used public date.",
+  "Safety 3, 5, 7: the patient side is healthy volunteers, while chronic HBV patients on elebsiran were measured and had ALT elevations read as immune flares. Do volunteers decide a safety status when the tile's own patients were measured, and which population_group codes volunteers?",
+  "Efficacy 5 vs efficacy 3: a mouse that cannot express HBsAg loss is untested no_prediction on the chimeric track, yet same on the HBV-genome-mouse track under the combination ruling. Does the combination ruling override the no-read-out rule?"
  ]
 }

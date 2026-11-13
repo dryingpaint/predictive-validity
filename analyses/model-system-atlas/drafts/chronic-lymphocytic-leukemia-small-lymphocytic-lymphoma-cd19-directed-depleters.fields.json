@@ -1,0 +1,47 @@
+{
+ "tile": "chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-cd19-directed-depleters",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status contra -> untested, year 2017 -> 2011, drug -> inebilizumab, src/quote -> Ward 2011: became the opener of the inebilizumab track (track split, rule: one model x drug x route); the NCT01466153 comparison is re-entered as efficacy 11"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2023 -> 2019 (rule 6, adjudicated: NCT01747486 results posted 2019-02-26); drug -> CD19 CAR-T cells; src/quote -> Frey 2020 (CTL019 randomised dose trial); model_src -> Milone 2009; status same kept (single-arm design ruling). TRANSCEND CLL 004 split to the liso-cel track (efficacy 12-13)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2022 -> 2018 (rule 6: ASH 2018 abstract 298); status same kept under the combination and single-arm rulings (checker had proposed untested); combination_with ibrutinib"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro (retrodiction: monkey toxicology first public in the 2020 FDA review, after tafasitamab's own 2014 CLL patient result)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> retro (retrodiction: monkey toxicology first public in the 2020 FDA review, after tafasitamab's own 2014 CLL patient result)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "inebilizumab x ex-vivo ADCC track: contra 2017, NCT01466153 (inebilizumab + bendamustine vs rituximab + bendamustine, primary ORR), moved here from efficacy 2; combination_with bendamustine"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "opener, liso-cel x cart19-nsg-xenograft: untested 2015, Sommermeyer 2016 (epub 2015-09-15)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "liso-cel x cart19-nsg-xenograft: retro 2022 (TRANSCEND CLL 004 primary CR/CRi met; dated to ASCO 2022 abstract 7501; retrodiction because CD19 CAR-T CLL remissions were public before the 2015 liso-cel xenograft); moved from efficacy 4"
+  }
+ ]
+}

@@ -11,7 +11,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Cook 2001 (PMID 11549370, OA) resolves; quote verbatim in abstract. Opening untested at first 22E9 use is right. Serum biomarkers in Genovese 2020 are another compartment than joint washout; see rule question 6."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener on 22E9 track; otilimab sc is the drug its patient readouts (Genovese 2020) used; unselected right for an opener. Cook 2001 quote verbatim; untested 2001 unchanged."
   },
   {
    "cell": "engagement",
@@ -20,7 +21,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Achuthan 2016 (PMID 27525438, epub 2016-08-15) resolves; quote verbatim. Separate track justified: GSK's Phase 2a was built around the GM-CSF-CCL17 axis (paper title), so the class relied on it."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener of CCL17-axis track; otilimab sc matches engagement 3. Achuthan 2016 quote verbatim; unselected right for an opener."
   },
   {
    "cell": "engagement",
@@ -29,7 +31,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Genovese 2020 (PMID 38279363) resolves; quote verbatim in abstract. Registry NCT02799472 (2018-11-16) reports CCL17 vs placebo ratio 0.56 wk8 p=0.017, 0.52 wk12 p=0.026, so 2018 and same hold; downstream tier right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Genovese 2020: sc otilimab 180 mg in stable-MTX active RA, no inadequate-response criterion, so sc and unselected hold. Quote in abstract; same 2018 (NCT02799472 results 2018-11-16) unchanged."
   },
   {
    "cell": "dose",
@@ -38,7 +41,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Cook 2001 resolves; quote verbatim. Opening untested; no human exposure target in any 22E9 paper (Koch 2012 abstract confirms a mouse-only PK/PD model, pre-clinic, not post-hoc)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener on 22E9 dose track, otilimab sc matching dose 2; unselected right. Cook 2001 quote verbatim."
   },
   {
    "cell": "dose",
@@ -47,7 +51,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in abstract; model_src Koch 2012 resolves. Target not sustained on every-other-week maintenance is decision 4 case 1 (never reached) more than case 4; dose contra holds either way, but case 1 makes BAROQUE efficacy untested (efficacy 3)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Genovese 2020 abstract: sc otilimab weekly x5 then every other week, stable-MTX RA without IR criterion; sc, unselected hold. Quote in abstract; contra (target never reached) unchanged."
   },
   {
    "cell": "efficacy",
@@ -56,7 +61,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Cook 2001 resolves; quote verbatim. Opening entry. NCT00995449 (9 patients, 'Program refocus', results 2012-09-25) and NCT01023256 (2014-05-08) dates verified; correctly no-status facts."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener of the namilumab sc track (efficacy 2 is NEXUS namilumab sc); unselected right. Cook 2001 quote verbatim."
   },
   {
    "cell": "efficacy",
@@ -65,72 +71,73 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Taylor 2019 (PMID 30999929, OA) resolves; quote verbatim; registry NCT02379091 (2018-09-14) primary -0.92 p=0.010 at 150 mg. Full text cites 22E9 as a bare citation, so comparison_stated false is right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NEXUS namilumab sc in MTX-IR or one-TNFi-IR patients: sc, stage_or_line hold. Quote verbatim; same 2018 (registry 2018-09-14 posts the primary) unchanged."
   },
   {
    "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Untested matches the dose-table 'target never reached' row with dose 2 contra on the same track; unsettled fits. BAROQUE otilimab sc, MTX-IR: sc, stage_or_line hold. Quote verbatim in Buckley 2020 abstract."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Year 2022 from GSK release 2022-10-27 (contRAst-3 missed ACR20) precedes registry 2023-07-17 and epub 2023-09-11. Quote verbatim in Taylor 2023 abstract; otilimab sc, stage_or_line hold; first contra, strengthens dropped right."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener of knockout x otilimab sc track; Dranoff 1994 quote in abstract; unselected right for an opener."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener of 22E9 safety track, otilimab sc; Cook 2001 quote verbatim; unselected right."
+  },
+  {
+   "cell": "safety",
    "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "untested",
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "contra",
    "proposed_year": 2019,
-   "rule": "decision 4 (#32: missed primary + significant secondary is untested unless the source calls it a match; and case 1 of the dose tie)",
-   "note": "Quote verbatim. Missed primary plus significant secondaries (registry, 90 mg: DAS28-CRP change p=0.022, EULAR p=0.033, CDAI p=0.032, pain p=0.039) is untested unless the source calls it a match; Buckley calls it neither. Dose case 1 agrees. Fold into patient_trials.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 #32: DAS28-CRP remission primary missed at all five doses, secondaries significant at 90 mg, Buckley's interpretation calls it neither match nor miss; the rule has no dose-count carve-out. Untested; efficacy 4 becomes the track's first contra, drop strengthens."
-  },
-  {
-   "cell": "efficacy",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2022,
-   "rule": "decision 7 (dating: earliest admissible source) with decision 2 (tier 5 patient-side)",
-   "note": "Taylor 2023 (PMID 37696589, OA) resolves; quote verbatim; contra holds (primary and all secondaries missed, not an active-comparator ranking miss). GSK release 2022-10-27 made the miss public first. If efficacy 3 is corrected this is the status change: drop strengthens."
-  },
-  {
-   "cell": "safety",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Dranoff 1994 (PMID 8171324) resolves; quote verbatim in abstract. Own track for the germline null and opening untested are right."
-  },
-  {
-   "cell": "safety",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Cook 2001 resolves; quote verbatim. Silence with no patient harm to test it stays untested; the entry changes nothing and is harmless."
-  },
-  {
-   "cell": "safety",
-   "index": 3,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "decision 5 (dated to the first patient dataset that could have shown the harm) with decision 7",
-   "note": "Quote verbatim; contra/opposite follows decision 5. Behrens 2015 (epub 2014-02-17, PMC4431325) states 'Surfactant D levels remained normal and there was no overall pattern of PFT alterations in MOR103-treated subjects'; NEXUS 2019 full text reports no KL-6/SP-D trend. Earliest dataset 2014, fallback 2018."
+   "rule": "rule 6 (dating: earliest public comparison, registry results posting counts)",
+   "note": "BAROQUE otilimab sc, MTX-IR: sc, stage_or_line, contra hold; quote verbatim in Buckley abstract. But registry NCT02504671 posted 'Number of Participants With Pulmonary Events' (cough, dyspnea, DLCO; similar to placebo) on 2019-04-04: re-date 2019.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6: status contra holds; registry NCT02504671 posted 'Number of Participants With Pulmonary Events' (cough, dyspnea, DLCO, no excess vs placebo) 2019-04-04, so the comparison dates 2019, not 2020."
   },
   {
    "cell": "safety",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Weinblatt 2025 (PMID 40044198, OA) resolves; quote verbatim; NCT04333147 results 2024-02-07, 2915 exposed, terminated for the programme decision. Strengthens is right; registry AE tables could date it 2024 but carry no quotable sentence."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "contRAst X otilimab sc, IR populations: sc, stage_or_line hold; registry names no PAP outcome, so 2025 paper dates it. Quote in abstract; contra strengthens unchanged."
   },
   {
    "cell": "safety",
@@ -139,8 +146,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Kitamura 1999 (PMID 10499925) resolves; quote verbatim in abstract. Own track and opening untested right; Uchida 2004/2009 threshold predates every trial, so not retro. human_genetic is the nearest enum for an acquired state (rule question 5)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener of human-autoantibody x otilimab iv track (safety 6 MOR103 IV); Kitamura 1999 quote in abstract; unselected right. The namilumab sc and otilimab sc tracks of this model have no 1999 opener."
   },
   {
    "cell": "safety",
@@ -149,28 +156,38 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Behrens 2015 full text: quote verbatim; SP-D measured 'because high levels of GM-CSF autoantibodies have been associated with' PAP, so comparison_stated holds. Same accepted on #51/#58: null predicted below threshold, CCL17 only halved (engagement 3). Hinge stays rule question 5."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Behrens 2015 (epub 2014-02-17): IV MOR103 (otilimab) in 'patients with active RA', no IR criterion; iv, unselected, 2014 hold. Quote verbatim in OA full text; same rests on the conditional-prediction rule question."
   },
   {
    "cell": "safety",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Taylor 2019 PMC6471864: quote verbatim; lungs monitored 'because of the theoretical risk of developing PAP' citing Inoue 2008 autoimmune cohort. Registry NCT02379091 results 2018-09-14 verified; strengthens, still sub-threshold."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "same",
+   "proposed_year": 2015,
+   "rule": "rule 6 (dating: earliest public comparison, registry results posting counts)",
+   "note": "sc right, but PRIORA (namilumab sc, stable-MTX RA; NCT01317797 results 2015-08-20; Huizinga 2017 'no abnormal respiratory signals were detected', cites Kitamura) is this track's first comparison: re-date 2015, src PRIORA, unselected. NEXUS registry has no lung outcome.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: same holds, but PRIORA (namilumab sc, stable-MTX RA, unselected) registry NCT01317797 posted clinically significant PFT outcome (0 namilumab) 2015-08-20; track's first comparison dates 2015, NEXUS strengthens."
   },
   {
    "cell": "safety",
    "index": 8,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Weinblatt 2025 (PMID 40044198): quote verbatim in abstract; NCT04333147 results 2024-02-07 verified, registry AE tables carry no PAP sentence (as safety 4). Same strengthens holds on the same conditional reading; turns contra only if neutralisation shown complete."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "rule 6 (dating: earliest public comparison, registry results posting counts)",
+   "note": "contRAst X sc, stage_or_line and quote hold, but BAROQUE (otilimab sc, registry pulmonary-events outcome 2019-04-04; Buckley 2020 'no ... pulmonary events of clinical concern') is this track's first dataset: first same at 2019, this entry strengthens.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: same holds; BAROQUE registry pulmonary-events outcome (2019-04-04, no excess vs placebo) is this otilimab sc track's first comparison, so first same dates 2019; contRAst X strengthens."
   },
   {
    "cell": "safety",
@@ -179,8 +196,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Protocol PDF (NCT04134728, approved 2020-01-21, uploaded 2023-01-31) pp. 20-21: quote verbatim, split by the page break after '26-week IV'. Untested keeps the held ceiling counted once in dose (decision 16); #58 could read it same (new rule question)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener of cyno-tox safety track, otilimab sc as dosed under the protocol margin; unselected right. Quote verbatim across page break."
   },
   {
    "cell": "dose",
@@ -189,18 +206,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Protocol p. 36: margin sentence verbatim, intact. 26-week GLP study predates BAROQUE, so first use precedes 2020 but is unsourced; 2020 is the approval date, as an EPAR carries its opinion year. Registry-hosted protocol as tier 3: new rule question."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener on cyno-tox track; protocol margin is for otilimab 150 mg sc weekly, so otilimab sc right; unselected right for an opener. Quote verbatim in protocol."
   },
   {
    "cell": "dose",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Taylor 2023 (PMID 37696589): quote verbatim in abstract, general AE sentence rather than lung-specific; registry results 2023-07-17 verified. Decision 16 same: NOEL margin stated for 150 mg weekly before contRAst, patients dosed to it, no toxicity; not retro."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "contRAst 3: otilimab 90/150 mg sc weekly in bDMARD/JAKi-IR patients; sc, stage_or_line hold. Quote verbatim in Taylor 2023 abstract (PMID 37696589); same 2023 unchanged."
   },
   {
    "cell": "dose",
@@ -209,8 +226,53 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Weinblatt 2025: PAP-specific sentence verbatim in abstract; 2915 patients up to 896 days at the covered dose. Strengthens the held ceiling; harm counted once, in dose, per decision 16. Year 2025 as on safety 4/8."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "contRAst X extension of IR populations at sc weekly dosing; sc, stage_or_line hold. Registry NCT04333147 has no PAP outcome, so the 2025 paper dates it. Quote in Weinblatt 2025 abstract."
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener for knockout x otilimab iv at 1994, per the per-drug/route track rule; Dranoff quote in abstract; unselected right."
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "IV MOR103 (otilimab), active RA, epub 2014-02-17: iv, unselected, contra 2014 hold; quote verbatim. Fix magnitude_basis, copied from BAROQUE ('222 patients ... 50 weeks'): MOR103 was four weekly IV doses. comparison_stated true is generous."
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener for knockout x namilumab sc at 1994, consistent with safety 10; Dranoff quote in abstract; unselected right."
+  },
+  {
+   "cell": "safety",
+   "index": 13,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "contra",
+   "proposed_year": 2015,
+   "rule": "rule 6 (dating: earliest public comparison, registry results posting counts)",
+   "note": "Contra/opposite right, but PRIORA (namilumab sc, stable-MTX RA, PFTs; NCT01317797 results 2015-08-20; 'no abnormal respiratory signals were detected') is earlier: re-date 2015, src PRIORA, unselected, comparison_stated false. magnitude_basis wrongly copied from BAROQUE.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6: contra/opposite holds; PRIORA registry NCT01317797 PFT outcome (0 clinically significant, namilumab sc) posted 2015-08-20 predates NEXUS, so this namilumab sc track's contra dates 2015."
   }
  ],
  "missing": [

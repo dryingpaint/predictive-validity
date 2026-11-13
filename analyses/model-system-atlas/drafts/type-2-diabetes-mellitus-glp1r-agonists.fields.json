@@ -1,0 +1,52 @@
+{
+ "tile": "type-2-diabetes-mellitus-glp1r-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: model first public (2010) after human GLP-1R agonist insulin-secretion results (exenatide), target-level retrodiction rule"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: model first public 2010 after exenatide/liraglutide HbA1c results (target-level retrodiction rule)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2023 -> 2022: online-first Dec 2022 precedes print (rule 6, earliest public date; checker correction)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, year 2017 -> 2015, src/quote -> Kapitza 2015 (doi:10.1002/jcph.443): earlier own-drug patient PK (rule 6) predates the minipig paper (Sept 2015), so retrodiction (dose: same drug's own result)"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "what": "status same -> retro, retrodiction true: dog oral BA data first public 2019 (FDA review) after oral semaglutide's own human results (dose: same drug's earlier result)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true: SUSTAIN-6 topline press release (2016-04-28) preceded Scott 2016 publication (2016-06-01); post-dating alone makes a retrodiction (settles checker rule question 4)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "REWIND (dulaglutide, 2018 press release / Lancet 2019): first prospective comparison of the Ala316Thr CV-safety prediction, same"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "opener: Glaesner 2010 monkey 'well tolerated' claim scored as a safety prediction (dulaglutide, sc), untested 2010"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "EGO 2011 (T2D): dulaglutide relatively well tolerated, same/partial (passing tolerability claim ruling)"
+  }
+ ]
+}

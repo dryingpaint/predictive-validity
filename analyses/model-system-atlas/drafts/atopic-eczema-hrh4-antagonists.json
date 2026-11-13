@@ -49,7 +49,11 @@
     "short": "H4 blockade abolishes histamine itch in mice",
     "src": "https://doi.org/10.1016/j.jaci.2006.08.034",
     "srcLabel": "Dunford 2007",
-    "quote": "Histamine and a selective histamine H4 receptor agonist caused scratching responses in mice, which were almost completely attenuated in histamine H4 receptor knockout mice or by pretreatment with the selective histamine H4 receptor antagonist, JNJ 7777120."
+    "quote": "Histamine and a selective histamine H4 receptor agonist caused scratching responses in mice, which were almost completely attenuated in histamine H4 receptor knockout mice or by pretreatment with the selective histamine H4 receptor antagonist, JNJ 7777120.",
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -83,7 +87,11 @@
     "short": "H4 antagonists cut Th2 dermatitis in mice",
     "src": "https://doi.org/10.1038/jid.2009.358",
     "srcLabel": "Cowden 2010",
-    "quote": "Treatment with two specific H4R antagonists before challenge with FITC led to a significant reduction in ear edema, inflammation, mast cell, and eosinophil infiltration."
+    "quote": "Treatment with two specific H4R antagonists before challenge with FITC led to a significant reduction in ear edema, inflammation, mast cell, and eosinophil infiltration.",
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "healthy_volunteers",
@@ -119,7 +127,11 @@
     "srcLabel": "Kollmeier 2014",
     "quote": "Compared with placebo, the reduction of the AUC of pruritus score was significant for JNJ 39758979 at 2 hours (P = 0.0248) and 6 hours (P = 0.0060), and for cetirizine at 6 hours (P = 0.0417).",
     "reason": "Histamine itch fell in dosed volunteers",
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "healthy_volunteers",
@@ -155,7 +167,11 @@
     "srcLabel": "Thurmond 2014",
     "quote": "In addition, dose-dependent inhibition of histamine-induced eosinophil shape change was detected, suggesting that the H4R was inhibited in vivo.",
     "reason": "Eosinophil H4 read-out blocked in volunteers",
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -189,7 +205,12 @@
     "short": "Patient keratinocytes: H4 proliferation blocked, untested",
     "src": "https://doi.org/10.1016/j.jaci.2013.06.023",
     "srcLabel": "Glatzer 2013",
-    "quote": "Stimulation of foreskin keratinocytes, atopic dermatitis outer root sheath keratinocytes, and H4R-transfected HaCaT cells with histamine and H4R agonist resulted in an increase in proliferation, which was blocked with the H4R-specific antagonist JNJ7777120."
+    "quote": "Stimulation of foreskin keratinocytes, atopic dermatitis outer root sheath keratinocytes, and H4R-transfected HaCaT cells with histamine and H4R agonist resulted in an increase in proliferation, which was blocked with the H4R-specific antagonist JNJ7777120.",
+    "drug": "class",
+    "route": "not_applicable",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -226,7 +247,11 @@
     "src": "https://doi.org/10.1038/jid.2009.358",
     "srcLabel": "Cowden 2010",
     "quote": "Treatment with two specific H4R antagonists before challenge with FITC led to a significant reduction in ear edema, inflammation, mast cell, and eosinophil infiltration.",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -265,7 +290,11 @@
     "quote": "Histamine H4 receptor antagonists may have therapeutic utility for treating chronic pruritic diseases in humans where histamine H1 receptor antagonists are not effective.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "adriforant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -302,7 +331,11 @@
     "quote": "Therefore, the dual effects of H4R antagonists on pruritus and Th2-cell-mediated inflammation point to their therapeutic potential for the treatment of Th2-mediated skin disorders, including atopic dermatitis.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -332,7 +365,7 @@
     "status": "contra",
     "model": "Mouse FITC Th2 dermatitis, H4R antagonists",
     "model_id": "h4-mouse-th2-dermatitis",
-    "note": "JNJ-39758979 100/300 mg for 6 weeks in 88 Japanese adults missed the EASI primary (median change -3.7/-3.0 vs -1.3); stopped early.",
+    "note": "JNJ-39758979 100/300 mg for 6 weeks in 88 Japanese adults missed the EASI primary (median change -3.7/-3.0 vs -1.3); stopped early. Design: registry lists safety measures and EASI as co-primaries; EASI missed, and the authors call the primary not met, so scored a failure.",
     "short": "JNJ-39758979 missed EASI primary",
     "src": "https://doi.org/10.1111/1346-8138.12726",
     "srcLabel": "Murata 2015",
@@ -346,7 +379,11 @@
       "doi": "10.1111/1346-8138.12726",
       "quote": "This study was terminated prematurely due to 2 cases of agranulocytosis."
      }
-    ]
+    ],
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -369,14 +406,14 @@
     "population": "Unselected",
     "model_first_use_year": 2007,
     "confidence": "high",
-    "confidence_note": "Abstract plus the NCT02424253 results record (posted 2021-05-13). The paper's framing makes EASI the headline, but the registry lists 'Change From Baseline in the NRS for Pruritus (Worst Itch)' as the sole primary outcome and EASI as the secondary, and the official title says the study was run 'on Pruritus'.",
+    "confidence_note": "Abstract plus the NCT02424253 results record (posted 2021-05-13). The paper's framing makes EASI the headline, but the registry lists 'Change From Baseline in the NRS for Pruritus (Worst Itch)' as the sole primary outcome and EASI as the secondary, and the official title says the study was run 'on Pruritus'. Year 2018 -> 2016 under rule 6 (earliest public date): Ziarco's chairman told FierceBiotech on 2016-05-19 (https://www.fiercebiotech.com/biotech/ziarco-gears-up-for-series-c-phiib-to-advance-atopic-dermatitis-drug) that 'The study missed its primary endpoint of improvement in Numerical Rating Scale for pruritus' while EASI, a secondary, was hit (50% vs 27%). Werfel 2019 stays the source of the status.",
     "prediction_level": "class",
     "judgement": "Judgement call: scored on the registry primary (pruritus), not the paper's headline (EASI). The earlier JNJ-39758979 trial (NCT01497119, Murata 2015) reported nominally significant itch PROs at 300 mg, but those were secondaries in a trial stopped early and unblinded, so under the primary-endpoint rule they change no status and sit in patient_trials. Adriforant was never reported in the mouse scratching model before this trial (its mouse itch data came in 2023, doi:10.1016/j.ejphar.2023.175533, where the authors say the mouse effects did not translate), so product_in_model is false. The 2b (NCT03517566) carried no itch primary.",
-    "year": 2018,
+    "year": 2016,
     "status": "contra",
     "model": "Mouse histamine-induced scratching, H4R knockout + JNJ 7777120",
     "model_id": "h4-mouse-pruritus",
-    "note": "Adriforant 30 mg for 8 weeks: the registry primary, worst-itch NRS change, was -3.03 vs -2.66 on placebo (LS difference -0.35, P = .249).",
+    "note": "Adriforant 30 mg for 8 weeks: the registry primary, worst-itch NRS change, was -3.03 vs -2.66 on placebo (LS difference -0.35, P = .249). Dated 2016 (rule 6): Ziarco said in May 2016 the 2a missed its itch NRS primary.",
     "short": "Itch primary failed; EASI secondary hit",
     "src": "https://doi.org/10.1016/j.jaci.2018.07.047",
     "srcLabel": "Werfel 2019",
@@ -397,7 +434,11 @@
       "doi": "10.1016/j.jaci.2018.07.047",
       "quote": "Patient-reported pruritus subscores obtained from SCORAD were reduced with ZPL-3893787 compared with placebo at week 8 (nonsignificant)."
      }
-    ]
+    ],
+    "drug": "adriforant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -422,12 +463,12 @@
     "confidence": "high",
     "confidence_note": "Registry results record posted by Novartis (sponsor; Ziarco's ZPL389 was acquired by Novartis, not Pfizer, which only originated PF-3893787); the quote is the record's 'why stopped' field. No peer-reviewed report of ZEST was found. The companion add-on trial NCT03948334 (ZPL389 with TCS/TCI) was terminated the same month.",
     "prediction_level": "class",
-    "judgement": "Strengthens the 2014 contra. Between the two misses the adriforant 2a (NCT02424253, Werfel 2019) hit EASI as a secondary (LS difference -5.06, 95% CI -8.66 to -1.46, P = .01), the track's only patient match; it was on a secondary endpoint, and the same 30 mg dose gave the lowest IGA response of any ZEST arm, so it is recorded here rather than as a status change (one drug's contra beats another's same on one track, and a contra track turns back only on patient_signal_reversed).",
+    "judgement": "Strengthens the 2014 contra. Between the two misses the adriforant 2a (NCT02424253, Werfel 2019) hit EASI as a secondary (LS difference -5.06, 95% CI -8.66 to -1.46, P = .01), the track's only patient match; it was on a secondary endpoint, and the same 30 mg dose gave the lowest IGA response of any ZEST arm, so it is recorded here rather than as a status change (one drug's contra beats another's same on one track, and a contra track turns back only on patient_signal_reversed). Track split 2026-11-09: now the first comparison on this model's adriforant track, so it no longer strengthens the JNJ-39758979 entry; no adriforant opener appended (it would precede this entry out of year order).",
     "year": 2021,
     "status": "contra",
     "model": "Mouse FITC Th2 dermatitis, H4R antagonists",
     "model_id": "h4-mouse-th2-dermatitis",
-    "strengthens": true,
+    "strengthens": false,
     "note": "Adriforant 2b (ZEST, 293 patients, 3-50 mg): IGA 0/1 at week 16 was 0.8-7.2% vs 1.9% on placebo; terminated for lack of efficacy.",
     "short": "Adriforant 2b failed at every dose",
     "src": "https://clinicaltrials.gov/study/NCT03517566",
@@ -448,7 +489,11 @@
       "doi": null,
       "quote": "Lack of efficacy"
      }
-    ]
+    ],
+    "drug": "adriforant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -485,7 +530,12 @@
     "quote": "In addition, adriforant ameliorates inflammation in the mouse MC903 model.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "adriforant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "subjects": "patients",
@@ -501,7 +551,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": "miss",
@@ -510,12 +560,12 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level reading (paywalled Eur J Pharmacol); author string verified against the Europe PMC record. The abstract says the experiments were performed 'during the Ph2b trial', i.e. before its result was known, so retrodiction is false; if the full text shows they post-date the July 2020 read-out it should become a retrodiction scored contra.",
     "prediction_level": "class",
-    "judgement": "Stated, product-in-model comparison: the paper sets its mouse result beside the failed 2b. Re-keyed at the model-sweep merge from h4-mouse-th2-dermatitis to its own MC903 track (checker correction, efficacy 6): calcipotriol dermatitis is a different system from FITC hapten Th2 dermatitis; the 2018 opener comes from the sweep.",
+    "judgement": "Stated, product-in-model comparison: the paper sets its mouse result beside the failed 2b. Re-keyed at the model-sweep merge from h4-mouse-th2-dermatitis to its own MC903 track (checker correction, efficacy 6): calcipotriol dermatitis is a different system from FITC hapten Th2 dermatitis; the 2018 opener comes from the sweep. Retrodiction ruling 2026-11-09: post-dating alone makes it one. The mouse data were first public 2023-01-21, after the same target's patient efficacy results (JNJ-39758979 EASI miss 2014, adriforant itch-primary miss 2016, ZEST registry results 2021-07-20); having failed to reproduce them, it stays contra with retrodiction true.",
     "year": 2023,
     "status": "contra",
     "model": "Mouse MC903 (calcipotriol) dermatitis, adriforant",
     "model_id": "h4-mouse-mc903-dermatitis",
-    "note": "Run during the 2b, adriforant itself reduced MC903 skin inflammation and histamine itch in mice; the authors say it did not translate.",
+    "note": "Run during the 2b, adriforant itself reduced MC903 skin inflammation and histamine itch in mice; the authors say it did not translate. Retrodiction rule: first public January 2023, after adriforant's 2a and 2b misses; it failed to reproduce them, so contra.",
     "short": "Adriforant worked in mice, not in patients",
     "src": "https://doi.org/10.1016/j.ejphar.2023.175533",
     "srcLabel": "Uluckan 2023",
@@ -523,7 +573,11 @@
     "reason": "Mice responded; patients did not",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "adriforant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -560,7 +614,11 @@
     "quote": "In conclusion, the preventive administration of H1R or H4R antagonists has no impact on the development of acute skin lesions in this experimental canine atopic dermatitis model.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -590,7 +648,7 @@
     "status": "same",
     "model": "Dog acute atopic dermatitis (Df house-dust-mite-sensitised atopic Maltese-beagles), topical/oral JNJ 7777120 and JNJ 28307474",
     "model_id": "h4-dog-hdm-atopic-dermatitis",
-    "note": "JNJ-39758979 100/300 mg missed the week-6 EASI primary, as the dog model's null predicted; itch secondaries not scored.",
+    "note": "JNJ-39758979 100/300 mg missed the week-6 EASI primary, as the dog model's null predicted; itch secondaries not scored. Design: registry lists safety measures and EASI as co-primaries; EASI missed, and the authors call the primary not met, so scored a failure.",
     "short": "Dog null matched EASI miss",
     "src": "https://doi.org/10.1111/1346-8138.12726",
     "srcLabel": "Murata 2015",
@@ -604,7 +662,11 @@
       "doi": "10.1111/1346-8138.12726",
       "quote": "This study was terminated prematurely due to 2 cases of agranulocytosis."
      }
-    ]
+    ],
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -629,8 +691,8 @@
     "confidence": "high",
     "confidence_note": "Registry results record (Novartis, posted 2021-07-20); the quote is the record's 'why stopped' field. No peer-reviewed ZEST report was found. Adriforant was never run in the dog model (product_in_model false).",
     "prediction_level": "class",
-    "strengthens": true,
-    "judgement": "Strengthens the 2014 same with a powered, completed trial of a second member across a 17-fold dose range, which removes the under-powering caveat on Murata. The adriforant 2a EASI hit (Werfel 2019, LS difference -5.06, P = .01) was a secondary endpoint and changes no status; it is the one patient datum against the dog's null and sits in patient_trials.",
+    "strengthens": false,
+    "judgement": "Strengthens the 2014 same with a powered, completed trial of a second member across a 17-fold dose range, which removes the under-powering caveat on Murata. The adriforant 2a EASI hit (Werfel 2019, LS difference -5.06, P = .01) was a secondary endpoint and changes no status; it is the one patient datum against the dog's null and sits in patient_trials. Track split 2026-11-09: now the first comparison on this model's adriforant track, so it no longer strengthens the JNJ-39758979 entry; no adriforant opener appended (it would precede this entry out of year order).",
     "year": 2021,
     "status": "same",
     "model": "Dog acute atopic dermatitis (Df house-dust-mite-sensitised atopic Maltese-beagles), topical/oral JNJ 7777120 and JNJ 28307474",
@@ -650,7 +712,11 @@
       "doi": "10.1016/j.jaci.2018.07.047",
       "quote": "Treatment with oral ZPL-3893787 showed a 50% reduction in EASI score compared with 27% for placebo."
      }
-    ]
+    ],
+    "drug": "adriforant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -687,7 +753,11 @@
     "quote": "These results indicate that H(4) receptor antagonism fails to reduce the allergic inflammatory response but strongly inhibits allergen-induced itch.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -717,7 +787,7 @@
     "status": "same",
     "model": "Mouse DNCB (Th1) / TDI (Th2) hapten contact dermatitis, ear swelling and scratching, JNJ 7777120",
     "model_id": "h4-mouse-hapten-contact-dermatitis",
-    "note": "JNJ-39758979 missed the week-6 EASI primary, as the model's no-inflammation half predicted; its itch half was not yet tested on a primary.",
+    "note": "JNJ-39758979 missed the week-6 EASI primary, as the model's no-inflammation half predicted; its itch half was not yet tested on a primary. Design: registry lists safety measures and EASI as co-primaries; EASI missed, and the authors call the primary not met, so scored a failure.",
     "short": "Inflammation null matched EASI miss",
     "src": "https://doi.org/10.1111/1346-8138.12726",
     "srcLabel": "Murata 2015",
@@ -731,7 +801,11 @@
       "doi": "10.1111/1346-8138.12726",
       "quote": "Nominally significant improvements across PRO PCRS, PNRS and SGICP assessments were consistently observed, particularly with JNJ-39758979 300 mg."
      }
-    ]
+    ],
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -754,14 +828,14 @@
     "population": "Unselected",
     "model_first_use_year": 2008,
     "confidence": "high",
-    "confidence_note": "Abstract plus the NCT02424253 results record (posted 2021-05-13): the sole primary is worst-itch NRS change, EASI a secondary. Adriforant was never run in the hapten model (product_in_model false).",
+    "confidence_note": "Abstract plus the NCT02424253 results record (posted 2021-05-13): the sole primary is worst-itch NRS change, EASI a secondary. Adriforant was never run in the hapten model (product_in_model false). Year 2018 -> 2016 under rule 6 (earliest public date): Ziarco's chairman told FierceBiotech on 2016-05-19 (https://www.fiercebiotech.com/biotech/ziarco-gears-up-for-series-c-phiib-to-advance-atopic-dermatitis-drug) that 'The study missed its primary endpoint of improvement in Numerical Rating Scale for pruritus' while EASI, a secondary, was hit (50% vs 27%). Werfel 2019 stays the source of the status.",
     "prediction_level": "class",
-    "judgement": "The track's itch half ('strongly inhibits allergen-induced itch') met a pruritus primary for the first time here and failed, so the track turns contra; a contra beats the 2014 same on the same track. The 2a EASI secondary hit (50% vs 27%) is the one patient datum against the no-inflammation half but changes no status. ZEST 2021 (IGA 0.8-7.2% vs 1.9%) later agreed again with the no-inflammation half; a contra track does not turn back on it.",
-    "year": 2018,
+    "judgement": "The track's itch half ('strongly inhibits allergen-induced itch') met a pruritus primary for the first time here and failed, so the track turns contra; a contra beats the 2014 same on the same track. The 2a EASI secondary hit (50% vs 27%) is the one patient datum against the no-inflammation half but changes no status. ZEST 2021 (IGA 0.8-7.2% vs 1.9%) later agreed again with the no-inflammation half; a contra track does not turn back on it. Track split 2026-11-09: JNJ-39758979's Murata entry is now its own track, so this is the first comparison on the adriforant track; no adriforant opener appended (it would break year order).",
+    "year": 2016,
     "status": "contra",
     "model": "Mouse DNCB (Th1) / TDI (Th2) hapten contact dermatitis, ear swelling and scratching, JNJ 7777120",
     "model_id": "h4-mouse-hapten-contact-dermatitis",
-    "note": "Adriforant 30 mg for 8 weeks missed the worst-itch NRS primary (-3.03 vs -2.66 placebo, P = .249): the model's itch half failed.",
+    "note": "Adriforant 30 mg for 8 weeks missed the worst-itch NRS primary (-3.03 vs -2.66 placebo, P = .249): the model's itch half failed. Dated 2016 (rule 6): Ziarco said in May 2016 the 2a missed its itch NRS primary.",
     "short": "Itch half failed on pruritus primary",
     "src": "https://doi.org/10.1016/j.jaci.2018.07.047",
     "srcLabel": "Werfel 2019",
@@ -782,7 +856,11 @@
       "doi": null,
       "quote": "Lack of efficacy"
      }
-    ]
+    ],
+    "drug": "adriforant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -819,7 +897,11 @@
     "quote": "JNJ7777120 attenuated scratching behavior after a single administration and improved dermatitis, as assessed with clinical scores, pathology, and cytokine levels in skin lesions when administered repeatedly.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -849,7 +931,7 @@
     "status": "contra",
     "model": "NC/Nga mouse chronic picryl-chloride dermatitis, therapeutic JNJ 7777120 (alone and with olopatadine)",
     "model_id": "h4-ncnga-chronic-dermatitis",
-    "note": "JNJ-39758979 100/300 mg missed the week-6 EASI primary; the model had predicted improved clinical scores on repeated dosing.",
+    "note": "JNJ-39758979 100/300 mg missed the week-6 EASI primary; the model had predicted improved clinical scores on repeated dosing. Design: registry lists safety measures and EASI as co-primaries; EASI missed, and the authors call the primary not met, so scored a failure.",
     "short": "NC/Nga clinical-score gain, EASI missed",
     "src": "https://doi.org/10.1111/1346-8138.12726",
     "srcLabel": "Murata 2015",
@@ -863,7 +945,11 @@
       "doi": "10.1111/1346-8138.12726",
       "quote": "Nominally significant improvements across PRO PCRS, PNRS and SGICP assessments were consistently observed, particularly with JNJ-39758979 300 mg."
      }
-    ]
+    ],
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -888,8 +974,8 @@
     "confidence": "high",
     "confidence_note": "Registry results record (Novartis, posted 2021-07-20); the quote is the record's 'why stopped' field. No peer-reviewed ZEST report was found. Adriforant was never run in NC/Nga (product_in_model false).",
     "prediction_level": "class",
-    "strengthens": true,
-    "judgement": "Strengthens the 2014 contra with a powered, completed trial of a second member. Both halves of the model's prediction have now failed on primaries: inflammation (Murata EASI, ZEST IGA) and itch (Werfel 2019 worst-itch NRS, in patient_trials). The 2a EASI secondary hit is the only patient datum in the model's favour and changes no status.",
+    "strengthens": false,
+    "judgement": "Strengthens the 2014 contra with a powered, completed trial of a second member. Both halves of the model's prediction have now failed on primaries: inflammation (Murata EASI, ZEST IGA) and itch (Werfel 2019 worst-itch NRS, in patient_trials). The 2a EASI secondary hit is the only patient datum in the model's favour and changes no status. Track split 2026-11-09: now the first comparison on this model's adriforant track, so it no longer strengthens the JNJ-39758979 entry; no adriforant opener appended (it would precede this entry out of year order).",
     "year": 2021,
     "status": "contra",
     "model": "NC/Nga mouse chronic picryl-chloride dermatitis, therapeutic JNJ 7777120 (alone and with olopatadine)",
@@ -909,7 +995,11 @@
       "doi": "10.1016/j.jaci.2018.07.047",
       "quote": "There was a 3-point reduction (scale, 1-10) in pruritus with ZPL-3893787, but there was a similar reduction with placebo, resulting in a nonsignificant difference (P = .249)."
      }
-    ]
+    ],
+    "drug": "adriforant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -930,12 +1020,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2014,
+    "model_first_use_year": 2010,
     "confidence": "high",
     "confidence_note": "Abstract-level reading (paywalled). Carry-over meant only treatment period 1 was analysed (about 8 per arm). NCT01068223 has no posted results, so registry_date is null. The same study is the human side of the mouse pruritus track's engagement entry; here it is a model in its own right, asking whether healthy-skin histamine itch predicts AD itch.",
     "prediction_level": "class",
-    "judgement": "Own track: a human challenge system (brief: a non-animal system is allowed with model_kind), distinct from the mouse scratching model though it uses the same stimulus. Its prediction, antipruritic benefit in AD, is judged on pruritus primaries. Opened the year the challenge was published (epub 2014-05-09).",
-    "year": 2014,
+    "judgement": "Own track: a human challenge system (brief: a non-animal system is allowed with model_kind), distinct from the mouse scratching model though it uses the same stimulus. Its prediction, antipruritic benefit in AD, is judged on pruritus primaries. Opened the year the challenge was published (epub 2014-05-09). Opener moved 2014 -> 2010 (rule 6, check correction): the challenge study NCT01068223 ran February-May 2010, the model's first use; proxy-dated, data public 2014. JNJ-39758979's only AD trial (Murata) had an EASI primary, so its itch prediction was never met by a pruritus primary for this drug (untested_reason not_measured); adriforant's track is scored in entry 18.",
+    "year": 2010,
     "status": "untested",
     "model": "Human histamine-iontophoresis itch challenge in healthy volunteers, JNJ 39758979 600 mg",
     "model_id": "h4-human-histamine-itch-challenge",
@@ -946,7 +1036,12 @@
     "quote": "In conclusion, JNJ 39758979 was effective in inhibiting histamine-induced pruritus in healthy subjects.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "retrodiction": false,
@@ -967,16 +1062,16 @@
     "magnitude_basis": "placebo-adjusted change in worst-itch NRS at week 8: -0.35 (95% CI -1.21 to 0.51), P = .249",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2014,
+    "model_first_use_year": 2010,
     "confidence": "high",
-    "confidence_note": "Abstract plus the NCT02424253 results record (posted 2021-05-13): sole primary worst-itch NRS change, EASI a secondary. No histamine-challenge study of adriforant was found, so product_in_model is false. JNJ-39758979's own AD trial (Murata 2015) had an EASI primary, so its nominally positive itch secondaries change no status and sit in patient_trials.",
+    "confidence_note": "Abstract plus the NCT02424253 results record (posted 2021-05-13): sole primary worst-itch NRS change, EASI a secondary. No histamine-challenge study of adriforant was found, so product_in_model is false. JNJ-39758979's own AD trial (Murata 2015) had an EASI primary, so its nominally positive itch secondaries change no status and sit in patient_trials. Year 2018 -> 2016 under rule 6 (earliest public date): Ziarco's chairman told FierceBiotech on 2016-05-19 (https://www.fiercebiotech.com/biotech/ziarco-gears-up-for-series-c-phiib-to-advance-atopic-dermatitis-drug) that 'The study missed its primary endpoint of improvement in Numerical Rating Scale for pruritus' while EASI, a secondary, was hit (50% vs 27%). Werfel 2019 stays the source of the status.",
     "prediction_level": "class",
     "judgement": "Contra: the only pruritus-primary trial of a member failed. The pairing with Kollmeier 2014 is mine (Werfel does not set the challenge beside the trial); a sibling-drug pairing is allowed by the brief. Histamine-evoked itch in healthy skin is histaminergic and AD itch largely is not, which is the simplest reading of the miss.",
-    "year": 2018,
+    "year": 2016,
     "status": "contra",
     "model": "Human histamine-iontophoresis itch challenge in healthy volunteers, JNJ 39758979 600 mg",
     "model_id": "h4-human-histamine-itch-challenge",
-    "note": "Adriforant 30 mg for 8 weeks missed the worst-itch NRS primary (-3.03 vs -2.66 placebo, P = .249): challenge itch did not predict AD itch.",
+    "note": "Adriforant 30 mg for 8 weeks missed the worst-itch NRS primary (-3.03 vs -2.66 placebo, P = .249): challenge itch did not predict AD itch. Dated 2016 (rule 6): Ziarco said in May 2016 the 2a missed its itch NRS primary.",
     "short": "AD itch primary missed",
     "src": "https://doi.org/10.1016/j.jaci.2018.07.047",
     "srcLabel": "Werfel 2019",
@@ -997,7 +1092,150 @@
       "doi": "10.1016/j.jaci.2018.07.047",
       "quote": "Patient-reported pruritus subscores obtained from SCORAD were reduced with ZPL-3893787 compared with placebo at week 8 (nonsignificant)."
      }
-    ]
+    ],
+    "drug": "adriforant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": false,
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "epub_year": 2009,
+    "print_year": 2010,
+    "registry_date": null,
+    "model_filed": false,
+    "product_in_model": false,
+    "model_kind": "animal",
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Unselected",
+    "model_first_use_year": 2009,
+    "confidence": "high",
+    "confidence_note": "Abstract-level reading (Europe PMC record; epub 2009-11-02, print March 2010). Suwa 2011 (Eur J Pharmacol, doi 10.1016/j.ejphar.2011.05.037, PMID 21664903) ran the same repeated-TNCB system in HR-1 mice for 99 days and added an itch read-out: JNJ 7777120 cut scratching and lesions; it is the same system, so it extends this track rather than opening another.",
+    "prediction_level": "class",
+    "judgement": "Own track: chronic eczematous lesions from repeated TNCB challenge, unlike the single-challenge acute hapten model (Rossbach) where H4R antagonism did nothing, and unlike FITC Th2 or NC/Nga. Prediction: anti-inflammatory benefit (Seike), plus antipruritic benefit (Suwa 2011, which names atopic dermatitis patients). Judged on EASI/IGA primaries, itch on pruritus primaries. Sibling antagonist, product_in_model false.",
+    "year": 2009,
+    "status": "untested",
+    "model": "Mouse chronic allergic contact dermatitis by repeated TNCB challenge (wild-type and HR-1 mice), JNJ 7777120",
+    "model_id": "h4-mouse-tncb-chronic-dermatitis",
+    "note": "JNJ 7777120 ameliorated eczematous lesions from repeated TNCB challenge and lowered lesional IL-4/5/6 and serum IgE; Suwa 2011 added reduced scratching.",
+    "short": "Chronic TNCB lesions improved",
+    "src": "https://doi.org/10.1111/j.1398-9995.2009.02240.x",
+    "srcLabel": "Seike 2010",
+    "quote": "H(4) receptor antagonist ameliorated skin eczematous lesions induced by repeated TNCB challenge in HDC (+/+) mice.",
+    "endpoint_role": null,
+    "outcome_tested": null,
+    "patient_trials": [],
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": false,
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1111/j.1398-9995.2009.02240.x",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "epub_year": 2014,
+    "print_year": 2015,
+    "registry_date": null,
+    "model_filed": false,
+    "product_in_model": false,
+    "model_kind": "animal",
+    "magnitude": null,
+    "magnitude_basis": "median EASI change at week 6: -3.0 (300 mg) and -3.7 (100 mg) vs -1.3 placebo, not significant",
+    "source_calls_it": null,
+    "population": "Unselected",
+    "model_first_use_year": 2009,
+    "confidence": "medium",
+    "confidence_note": "Abstract-level reading (Murata paywalled). Underpowered, safety-terminated trial (88/105): if the pending rule question excludes it, the contra dates from 2021 (ZEST). JNJ-39758979 was never run in the TNCB model (product_in_model false).",
+    "prediction_level": "class",
+    "judgement": "Contra on the inflammation primary: the model predicted lesion improvement on repeated dosing and the 6-week trial showed none on EASI. Itch PROs were secondaries and sit in patient_trials. Year is Murata's online date (2014-12-09).",
+    "year": 2014,
+    "status": "contra",
+    "model": "Mouse chronic allergic contact dermatitis by repeated TNCB challenge (wild-type and HR-1 mice), JNJ 7777120",
+    "model_id": "h4-mouse-tncb-chronic-dermatitis",
+    "note": "JNJ-39758979 100/300 mg missed the week-6 EASI primary; the model had predicted improvement of chronic eczematous lesions. Design: registry lists safety measures and EASI as co-primaries; EASI missed, and the authors call the primary not met, so scored a failure.",
+    "short": "TNCB lesion gain, EASI missed",
+    "src": "https://doi.org/10.1111/1346-8138.12726",
+    "srcLabel": "Murata 2015",
+    "quote": "The study did not meet the primary end-point.",
+    "endpoint_role": "primary",
+    "outcome_tested": null,
+    "patient_trials": [
+     {
+      "nct": "NCT01497119",
+      "registry_date": null,
+      "doi": "10.1111/1346-8138.12726",
+      "quote": "Nominally significant improvements across PRO PCRS, PNRS and SGICP assessments were consistently observed, particularly with JNJ-39758979 300 mg."
+     }
+    ],
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": false,
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 3,
+    "model_src": "https://doi.org/10.1111/j.1398-9995.2009.02240.x",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "epub_year": null,
+    "print_year": null,
+    "registry_date": "2021-07-20",
+    "model_filed": false,
+    "product_in_model": false,
+    "model_kind": "animal",
+    "magnitude": null,
+    "magnitude_basis": "IGA 0/1 responders at week 16: 3.3, 7.2, 0.8, 6.9% at 3, 10, 30, 50 mg vs 1.9% placebo",
+    "source_calls_it": null,
+    "population": "Unselected",
+    "model_first_use_year": 2009,
+    "confidence": "high",
+    "confidence_note": "Registry results record (Novartis, posted 2021-07-20); the quote is the record's 'why stopped' field. Adriforant was never run in the TNCB model (product_in_model false).",
+    "prediction_level": "class",
+    "strengthens": false,
+    "judgement": "Strengthens the 2014 contra with a powered, completed trial of a second member. Both halves of the prediction have failed on primaries: inflammation (Murata EASI, ZEST IGA) and the Suwa 2011 itch half (Werfel 2019 worst-itch NRS, in patient_trials). Track split 2026-11-09: now the first comparison on this model's adriforant track, so it no longer strengthens the JNJ-39758979 entry; no adriforant opener appended (it would precede this entry out of year order).",
+    "year": 2021,
+    "status": "contra",
+    "model": "Mouse chronic allergic contact dermatitis by repeated TNCB challenge (wild-type and HR-1 mice), JNJ 7777120",
+    "model_id": "h4-mouse-tncb-chronic-dermatitis",
+    "note": "Adriforant 2b (ZEST, 3-50 mg): IGA 0/1 0.8-7.2% vs 1.9% placebo, terminated for lack of efficacy; the 2a itch primary had also failed.",
+    "short": "Second drug failed on IGA too",
+    "src": "https://clinicaltrials.gov/study/NCT03517566",
+    "srcLabel": "NCT03517566 results 2021",
+    "quote": "Lack of efficacy",
+    "reason": "Mouse chronic-lesion gain, no patient benefit",
+    "endpoint_role": "primary",
+    "outcome_tested": null,
+    "patient_trials": [
+     {
+      "nct": "NCT02424253",
+      "registry_date": "2021-05-13",
+      "doi": "10.1016/j.jaci.2018.07.047",
+      "quote": "There was a 3-point reduction (scale, 1-10) in pruritus with ZPL-3893787, but there was a similar reduction with placebo, resulting in a nonsignificant difference (P = .249)."
+     }
+    ],
+    "drug": "adriforant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -1034,7 +1272,11 @@
     "src": "https://doi.org/10.1124/jpet.113.211714",
     "srcLabel": "Thurmond 2014",
     "quote": "Preclinical toxicity studies of up to 6 months in rats and 9 months in monkeys indicated an excellent safety profile, supporting the clinical testing of the compound.",
-    "imported_from": null
+    "imported_from": null,
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -1070,7 +1312,11 @@
     "srcLabel": "Murata 2015",
     "quote": "Safety, including adverse events (AE), was comparable between JNJ-39758979 and placebo with the exception of two patients (both receiving JNJ-39758979 300 mg) with serious AE of neutropenia, leading to premature study discontinuation.",
     "reason": "Tox species missed agranulocytosis",
-    "imported_from": null
+    "imported_from": null,
+    "drug": "jnj-39758979",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

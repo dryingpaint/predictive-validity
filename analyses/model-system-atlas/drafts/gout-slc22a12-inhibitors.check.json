@@ -1,0 +1,189 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/gout-slc22a12-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to Enomoto 2002 Nature (PMID 12024214); quote verbatim in abstract (prefixed 'Moreover,'). Opening untested at 2002 fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Miner 2016 (PMC5048659) quote matches, FEUA subscript flattened. Retro holds: benzbromarone/probenecid (URAT1) lowered urate before the 2002 genotype. Ardea 8-K EX-99.1 filed 11 Jun 2009 names EULAR volunteer sUA poster: year 2009. class, oral, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "PharmR text: 'transport of [14C]uric acid into human embryonic kidney-293 cells expressing URAT1 or OAT4 with IC50 values of 7.3 and 3.7 uM'. Proxy year 2008 acceptable; model_filed true correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Miner 2016 quote verbatim. Ardea 8-K 11 Jun 2009 lists both EULAR posters (volunteer sUA lowering; 'RDEA594: A Potent URAT1 Inhibitor'), so both sides public 2009. Retro holds (benzbromarone, probenecid, RDEA806). lesinurad, oral, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PharmR and SumR. Kidney and GI named target organs; proxy year 2010 fine."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "ClinPharmR quote verbatim (bundle). Status contra and year 2015 unchanged; no dose retrodiction. combination_with fits CLEAR/CRYSTAL data, but label boxed warning says renal failure 'more common when ZURAMPIC was given alone'; note should say so.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Same PharmR sentence as engagement 3; opening untested fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Label 14.2 quote verbatim (bundle). Ardea release 6-7 Jan 2011: phase 2b RDEA594+allopurinol, primary sUA % reduction at week 4 'primary and key secondary endpoints were achieved': year 2011. Retro holds; combination_with allopurinol, lesinurad, oral fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR quote verbatim. Flares were key secondary, not primary nor a pre-specified poc_gate, so untested/not_measured holds."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Ichida 2004 JASN (PMID 14694169); quote verbatim in abstract."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Boxed-warning sentence verbatim in label and ODMemo. Organ/direction match; FDA reviews never cite renal hypouricemia (grep), so pairing is the drafter's. Double-counting with dose 2 raised as rule question."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Ahn 2016 JPET (PMID 26907620, epub Feb 2016) abstract has the quote verbatim; capuchin FEUA up, plasma urate down. UR-1102 = epaminurad (Jun 2025 ref 10). Opening untested at 2013 proxy is allowed.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Lee 2019 abstract (Europe PMC) quote verbatim; healthy males, print Nov 2019. Retro holds: capuchin data (EULAR 2013, JPET 2016) after lesinurad's 2009 human urate lowering. No earlier URC102 volunteer release found. epaminurad, oral fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Ahn 2016 abstract quote verbatim; monkey plasma urate lowering is the prediction for sUA, the gout trials' primary endpoint. Year 2013 proxy acceptable.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2021,
+   "rule": "DRAFTER_BRIEF rule 6 (Dating): year is the earliest public date, including a sponsor press release",
+   "note": "Jun 2025 quote verbatim, primary endpoint; retro holds, epaminurad/oral fit. But JW Pharmaceutical announced the same phase 2b primary result (88.89/71.79/54.05% vs 0%) on 18 Mar 2021 (thebigdata.co.kr/view.php?ud=202103181011516063d0a8833aad_23): year 2025 -> 2021.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status retro stands (retrodiction: capuchin data 2016 post-date lesinurad sUA results). Rule 6: JW Pharmaceutical announced the same phase 2b primary result 18 Mar 2021 (verified), so year 2021, not 2025."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Ahn 2016 abstract quote verbatim (in vitro hepatotoxicity-mechanism assays vs benzbromarone). ex_vivo is the closest model_kind enum value. Year 2013 proxy allowed.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMC full text Discussion has the quote verbatim; authors state the match. Note 3 pts on 9 mg vs 1 placebo had ALT/AST >3x ULN (one possibly related), so low confidence is right; same stands as stated by source.",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "Fleischmann 2014 Rheumatology, lesinurad + febuxostat in gout patients, 100% reached sUA <6 (doi 10.1093/rheumatology/ket487): earlier human PD for the genotype track (engagement).",
+  "Zurampic label 2015 sections 12.1-12.2 state hURAT1 IC50 and gout-patient FEUA/sUA side by side: stated comparison for hurat1-cell-urate-uptake track, 2015.",
+  "Verinurad: hURAT1 IC50 25 nM (Tan 2017 Sci Rep, doi 10.1038/s41598-017-00706-7) vs sUA lowering in gout patients (phase IIa, doi 10.1136/rmdopen-2017-000584; febuxostat combo doi 10.1136/rmdopen-2018-000647): second member drug on the hURAT1-cell track.",
+  "Epaminurad (URC102): hURAT1 inhibitor with healthy-volunteer sUA lowering (doi 10.1093/rheumatology/kez140) and phase 2b gout trial meeting sUA <0.36 mmol/L primary (doi 10.1186/s13075-025-03577-w): third member drug on the hURAT1-cell / efficacy track.",
+  "Other model systems exist but no member-drug patient comparison found: tufted capuchin monkey uricosuric model (UR-1102, PMID 26907620, non-member) and hURAT1 knock-in mouse (PMID 39740040, 2024-25, would be retrodiction for lesinurad).",
+  "Not verified: whether verinurad or D-0120 gout programmes reported renal adverse events (safety track) or discontinuation for failure; no press release or SEC search done within budget."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose 2: rats and monkeys carry uricase, so they could not show urate nephropathy; their kidney NOAEL concerned a different lesion. Does a stated margin for a harm the species cannot show count as margin_stated (dose contra) or as model silence (no miss, dose untested)?",
+  "Renal failure is scored in dose (tox track, contra) and again in safety (genotype track, same). Does 'count the harm once' apply across different tracks, or only within one model system?",
+  "Safety 2 pairs a genotype no sponsor or regulator used as a safety model; does check rule 4 ('the system the class relied on') bar such a track, or does the drafter brief's 'every model system compared with patients' admit it?"
+ ]
+}

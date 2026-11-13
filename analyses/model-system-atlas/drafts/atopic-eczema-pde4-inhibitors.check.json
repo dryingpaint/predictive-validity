@@ -38,7 +38,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim; minipig AUCs 1,080-1,450 ng·h/mL. NOAEL 5% (above 2% clinical strength) existed pre-Phase 3; the AUC margin itself is stated only in the 2016 review, after the trials. See rule question."
+   "rule": "DRAFTER_BRIEF retrodiction (dose: same drug's own earlier patient result)",
+   "note": "PharmR bundle line 479 quote verbatim (minipig NOAEL AUC 1,330-1,450 vs pediatric 1,320). Margin first public in the Dec 2016 review, after crisaborole's own Phase 3 (Jul 2015 release, Paller epub Jul 2016): retro, 2016.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -56,7 +58,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Paller 2016 (PMID 27417017, epub 2016-07-11) quote verbatim; label table matches 32.8/25.4/31.4/18.0. Primary endpoint. LEO 29102 indeed went in on mouse allergic contact dermatitis, difamilast on mouse chronic contact dermatitis, so neither lands on this model."
+   "rule": "DRAFTER_BRIEF retrodiction (efficacy: any same-target patient result); rule 6",
+   "note": "Paller 2016 (PMID 27417017) results sentence verbatim. Anacor press release 13 Jul 2015 reports identical ISGA primaries: year 2015. Akama 2009 and PharmR ear edema (74%) postdate Hanifin 1996 (PMID 8752839): retro. Crisaborole, topical, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -74,7 +78,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Label line 436 verbatim (patient information). Application-site pain is the common adverse reaction; partial is fair since rabbits graded erythema/edema."
+   "rule": "DRAFTER_BRIEF retrodiction (safety: same drug's own earlier patient result)",
+   "note": "Label line 436 quote verbatim; PharmR line 464 rabbit ointment mild-to-moderate irritant. Rabbit data first public Dec 2016, after Paller 2016 (epub 11 Jul 2016) safety results: retro, 2016. Crisaborole, topical, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -93,8 +99,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "CT.gov API re-read: NCT01037881 primary EASI LOCF, p=0.27/0.83/0.08/0.16/0.14 vs vehicle, Elidel p=0.04; results first posted 2019-10-14. Model predated trial, so prospective contra, not retro.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "DRAFTER_BRIEF retrodiction: failed to reproduce = contra",
+   "note": "NCT01037881 primary (EASI LOCF) verbatim; results first posted 2019-10-14. Felding 2014 model first public after Hanifin 1996, so retrodiction true; it failed to reproduce LEO 29102's miss, contra stands. Drug, topical, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -113,8 +120,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Hiyama 2023 (PMID 37041087) quote verbatim. Model was run before the trials (summarised in OPA-15406 protocols, filed as primary pharmacology), so prospective same, not retro. Crisaborole comparator arm undated but does not change difamilast's pairing.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "DRAFTER_BRIEF retrodiction (judged on first public date)",
+   "note": "Hiyama 2023 (PMID 37041087, epub 2023-04-11) quote verbatim in abstract; mouse chronic ACD data first public after Hanifin 1996 and crisaborole Phase 3: retro, 2023. Difamilast, topical, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -154,9 +162,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "10",
-   "note": "Quote verbatim. Post-approval run reproducing known efficacy: retro, not same (decision 10). Calama 2024 crisaborole oxazolone grouped under same model_id is reasonable.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "DRAFTER_BRIEF tracks per model x drug x route",
+   "note": "Takahashi JID (PMID 37827277, epub 2023-10-11, print 2024) is a difamilast-only oxazolone study; quote verbatim. Drug difamilast correct after the crisaborole split; retro, year 2023. One model_id shared with the crisaborole track is right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -178,6 +186,28 @@
    "rule": "10",
    "note": "Quote verbatim; paper opens on known clinical efficacy and reproduces it in MC903 mice after approval: retro (decision 10).",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF: each track opens untested at first use",
+   "note": "Calama 2024 (PMID 39715989, Exp Dermatol Dec 2024) aim sentence verbatim. Opening untested of the crisaborole track at first use, 2024; system fields (model_first_use_year 2023) match efficacy 10. Not the latest entry, so no untested_reason needed.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF retrodiction",
+   "note": "Calama 2024 abstract quote verbatim; authors call the model responsive to human AD standard-of-care incl. crisaborole (stated comparison). Run after 2016 approval: retro, 2024. Crisaborole, topical, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

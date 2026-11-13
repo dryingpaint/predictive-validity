@@ -178,7 +178,12 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT02880956", "registry_date": "2022-08-26", "doi": "10.1093/brain/awad024", "quote": "Tilavonemab was generally well tolerated but did not demonstrate efficacy in treating patients with early Alzheimer's disease."}
+       {
+        "nct": "NCT02880956",
+        "registry_date": "2022-08-26",
+        "doi": "10.1093/brain/awad024",
+        "quote": "Tilavonemab was generally well tolerated but did not demonstrate efficacy in treating patients with early Alzheimer's disease."
+       }
       ],
       "population": "Amyloid-positive early-to-moderate AD (zagotenemab: intermediate tau-PET)",
       "model_first_use_year": 2013
@@ -231,7 +236,7 @@
      },
      {
       "year": 2020,
-      "status": "same",
+      "status": "retro",
       "model": "Gosuranemab immunodepletion of AD/PSP brain homogenate, mouse ISF and patient CSF (biosensor cells, primary neurons)",
       "model_id": "ad-lysate-immunodepletion-gosuranemab",
       "note": "Ex-vivo depletion of unbound N-terminal tau in PSP/AD patient CSF matched the >90% CSF suppression seen in dosed cohorts.",
@@ -242,7 +247,7 @@
       "confidence": "low",
       "confidence_note": "Abstract-level. The paper postdates the clinical CSF data it cites (Qureshi 2018 healthy volunteers 67-97%; Boxer 2019 PSP 90-96%); whether the ex-vivo CSF experiment was run before those readouts is not stated, so a checker may rule this a retrodiction.",
       "reason": "Patient-CSF depletion matched dosed cohorts",
-      "judgement": "Stated comparison in the model paper itself: ex-vivo depletion of unbound N-terminal tau in patient CSF against the dosed cohorts' CSF suppression. Readout direct (free target). subjects mixed: healthy volunteers (phase 1) and PSP patients; AD patients' CSF engagement followed in TANGO (Shulman 2023, all doses P < 0.0001). Scored same rather than retro because the ex-vivo unbound-tau assay is the bench form of the clinical PD assay and plausibly preceded it; flagged low confidence.",
+      "judgement": "Stated comparison in the model paper itself, but a retrodiction (decision 10): the pooled-CSF depletion is first public in 2020, after the 2018 healthy-volunteer and 2019 PSP CSF suppression it reconciles with, so it reproduces a known result: retro, retrodiction true. Readout direct (free target). subjects mixed (healthy volunteers and PSP patients).",
       "subjects": "mixed",
       "comparison_stated": true,
       "source_tier": 1,
@@ -256,9 +261,44 @@
       "model_filed": null,
       "product_in_model": true,
       "model_kind": "ex_vivo",
-      "retrodiction": false,
+      "retrodiction": true,
       "magnitude": "direction_only",
       "magnitude_basis": "direction and extent of unbound N-terminal tau depletion (ex-vivo patient CSF vs dosed-cohort CSF, >90%)",
+      "source_calls_it": "match",
+      "prediction_level": "class",
+      "readout_tier": "direct",
+      "population": "Amyloid-positive early-to-moderate AD (zagotenemab: intermediate tau-PET)",
+      "model_first_use_year": 2020
+     },
+     {
+      "year": 2023,
+      "status": "same",
+      "model": "Gosuranemab immunodepletion of AD/PSP brain homogenate, mouse ISF and patient CSF (biosensor cells, primary neurons)",
+      "model_id": "ad-lysate-immunodepletion-gosuranemab",
+      "note": "The AD-patient CSF depletion predicted engagement in AD; in TANGO unbound N-terminal tau in CSF fell at every gosuranemab dose and not on placebo.",
+      "short": "AD-patient CSF tau captured, as predicted",
+      "src": "https://doi.org/10.1038/s43587-023-00523-w",
+      "srcLabel": "Shulman 2023",
+      "quote": "A robust decrease in the CSF levels of unbound N-terminal tau compared to baseline was observed in all gosuranemab groups but not in the placebo group, confirming target engagement of gosuranemab",
+      "confidence": "medium",
+      "confidence_note": "Paired comparison: Shulman 2023 (PMC10724064, full text read) reports the AD CSF readout and cites Sopko 2020 (ref 18) for preclinical binding and seed removal, not for the CSF depletion; the CSF tau outcome is not among the outcomes posted on the registry (2022-11-08), so the patient side dates to the paper.",
+      "judgement": "The track's first prospective prediction after its 2020 retrodiction (decision 10): Sopko's ex-vivo depletion of unbound N-terminal tau included pooled AD-patient CSF, before any AD patient had been dosed in a CSF-sampled trial. TANGO then showed decreases in CSF unbound N-terminal tau at week 76 in all dose groups versus placebo (P < 0.0001). Same direction on the free target: same, readout direct. comparison_stated false (no paper puts the two side by side).",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1016/j.nbd.2020.105120",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2023,
+      "print_year": 2023,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": true,
+      "model_kind": "ex_vivo",
+      "retrodiction": false,
+      "magnitude": "direction_only",
+      "magnitude_basis": "direction of unbound N-terminal tau change in AD-patient CSF: depleted ex vivo, decreased at all doses in TANGO",
       "source_calls_it": "match",
       "prediction_level": "class",
       "readout_tier": "direct",
@@ -339,7 +379,12 @@
       "endpoint_role": "poc_gate",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT03352557", "registry_date": "2022-11-08", "doi": "10.1038/s43587-023-00523-w", "quote": "No significant effects were identified in cognitive and functional tests as no dose resulted in a favorable change from the baseline CDR-SB score at week 78 compared to placebo control"}
+       {
+        "nct": "NCT03352557",
+        "registry_date": "2022-11-08",
+        "doi": "10.1038/s43587-023-00523-w",
+        "quote": "No significant effects were identified in cognitive and functional tests as no dose resulted in a favorable change from the baseline CDR-SB score at week 78 compared to placebo control"
+       }
       ],
       "population": "Amyloid-positive early-to-moderate AD (zagotenemab: intermediate tau-PET)",
       "model_first_use_year": 2020
@@ -426,7 +471,12 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT03289143", "registry_date": "2022-03-16", "doi": "10.1001/jamaneurol.2022.1375", "quote": "semorinemab did not slow clinical AD progression compared with placebo throughout the 73-week study period"}
+       {
+        "nct": "NCT03289143",
+        "registry_date": "2022-03-16",
+        "doi": "10.1001/jamaneurol.2022.1375",
+        "quote": "semorinemab did not slow clinical AD progression compared with placebo throughout the 73-week study period"
+       }
       ],
       "population": "Amyloid-positive early-to-moderate AD (zagotenemab: intermediate tau-PET)",
       "model_first_use_year": 2023
@@ -467,7 +517,12 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT03289143", "registry_date": "2022-03-16", "doi": "10.1001/jamaneurol.2022.1375", "quote": "semorinemab did not slow clinical AD progression compared with placebo throughout the 73-week study period"}
+       {
+        "nct": "NCT03289143",
+        "registry_date": "2022-03-16",
+        "doi": "10.1001/jamaneurol.2022.1375",
+        "quote": "semorinemab did not slow clinical AD progression compared with placebo throughout the 73-week study period"
+       }
       ],
       "population": "Amyloid-positive early-to-moderate AD (zagotenemab: intermediate tau-PET)",
       "model_first_use_year": 2023
@@ -491,5 +546,37 @@
   "Human genetic models (MAPT mutation carriers, H1/H2 haplotype): no anti-MAPT antibody patient comparison in AD.",
   "Biogen press release 2021-06-16 (TANGO discontinuation, tier 5): a dating question on the existing tracks, not a model system; not cited here.",
   "Cynomolgus PK/PD (Ayalon 2021): the existing nhp-pkpd safety track."
+ ],
+ "gaps": [
+  {
+   "lead": "Engagement, P301 track, 2017: Yanamandra 2017 (HJ8.5 P301S mice beside ABBV-8E12 PSP plasma tau); Qureshi 2018 + Bright 2015",
+   "outcome": "covered",
+   "detail": "Checker verdict on draft engagement #2 (tau-tg-mice-p301, Ayalon 2021) is 'corrected' with proposed_year 2017 under rule 6 (Yanamandra 2017, doi 10.1126/scitranslmed.aal2029); same cell, index and change, no new system."
+  },
+  {
+   "lead": "iPierian eTau model (Bright 2015) vs TANGO CSF Abeta42",
+   "outcome": "tracked",
+   "detail": "etau-ad-neuron-media-htau-mice: engagement #4 (2014 untested, Bright 2015) and #5 (2023 contra, Shulman 2023)."
+  },
+  {
+   "lead": "Mouse-seed biosensor assay (Yanamandra 2013) selecting HJ8.5, tilavonemab failed",
+   "outcome": "tracked",
+   "detail": "p301s-seed-biosensor-assay: efficacy #6 (2013 untested, Yanamandra 2013) and #7 (2022 contra, Florian 2023)."
+  },
+  {
+   "lead": "Biogen press release 2021-06-16 (TANGO missed CDR-SB, discontinued)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: TANGO statuses (efficacy #4/#5, #9) are unchanged and tier 1 governs; a sponsor press release is not a rule-6 year anchor (registry posting, online publication, label, print), so the 2022-11-08 registry date stands; logged as a checker rule question."
+  },
+  {
+   "lead": "Courade 2018 antibody F (zagotenemab MC-1 V-region, partial activity on AD tau)",
+   "outcome": "covered",
+   "detail": "Checker verdicts on efficacy #2 and #4 (ad-tau-seeding-assay) already carry antibody F (Lilly WO2016137811A1, MC-1, zagotenemab, partial activity); #4 is adjudicated neg->same, so effect_size/class_threshold no longer score and the remaining change is note text only."
+  },
+  {
+   "lead": "Immunodepletion track, engagement, prospective entry (Sopko 2020 AD CSF vs TANGO AD CSF)",
+   "outcome": "entry",
+   "detail": "Written as added_models ad-lysate-immunodepletion-gosuranemab engagement: 2023 same, Shulman 2023 (doi 10.1038/s43587-023-00523-w, PMC10724064 full text, quote verified verbatim), model_src Sopko 2020, comparison_stated false, readout direct; follows the checker's 2020 retro verdict on draft engagement #7."
+  }
  ]
 }

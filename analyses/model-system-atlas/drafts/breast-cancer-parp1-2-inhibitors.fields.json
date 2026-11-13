@@ -1,0 +1,82 @@
+{
+ "tile": "breast-cancer-parp1-2-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same->retro, year 2020->2018, drug 2x-121: retrodiction rule (veliparib patient PAR inhibition 2009 precedes the 2015 model); earliest public date ASCO 2018 abstract 2505"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "status same->retro, year 2021->2020, drug pamiparib: retrodiction rule (patient PAR inhibition public 2009 and ASCO 2016 before the 2020 model); comparison public when the model was (2020)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "year 2020->2018: earlier public date, ASCO 2018 abstract 2505 (MTD 600 mg QD, ~90% PAR inhibition)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "status same->retro, year 2021->2020: pamiparib's own MTD (ASCO 2016) and RP2D (ESMO 2017 press release) preceded the 2020 model"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2016->2013 (SABCS 2013 abstract S5-02); RULE QUESTION settled: combination design scored on primary endpoint, same stands; combination_with carboplatin"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2018->2017 (ASCO 2017 presentation); combination design noted"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "year 2017->2015 (ASCO 2015 abstract 520); single-arm design scored as same"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2020->2019 (ESMO 2019); combination design noted"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "track split: drug pamiparib (GEMM pamiparib track), strengthens removed; year 2022->2021 (ASCO 2021 abstract 1087); single-arm design"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "year 2020->2018 and model_first_use_year 2018: DRP first public at ASCO 2018 abstract 2505"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "year 2017->2014 (SABCS 2014 abstract P3-06-05); RULE QUESTION settled: combination arm scored, same stands"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "status same->retro, year 2022->2021: model (2020) followed gBRCA breast PARP-inhibitor responses; ASCO 2021 abstract 1087"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2022->2021 (ASCO 2021 abstract 1087); passing no-toxicity claim scored as a safety prediction; drug pamiparib"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "retrodiction true (contra kept), year 2022->2021: pamiparib's own grade 3-4 anaemia public at ASCO 2016 before the 2020 model; breast data ASCO 2021"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "what": "untested opener for the pamiparib track of the olaparib BRCA1 GEMM (brca1-gemm-k14cre-azd2281), proxy year 2021"
+  }
+ ]
+}

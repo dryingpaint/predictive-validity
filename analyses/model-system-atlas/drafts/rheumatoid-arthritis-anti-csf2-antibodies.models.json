@@ -339,5 +339,27 @@
   "Sponsor DAS28-CRP exposure-response model used to pick 90/150 mg weekly (contRAst protocol: '150 mg is predicted to provide greater clinical benefit'): fitted to BAROQUE patient data, structure and parameters unpublished, so not a preclinical system and no model source beyond one protocol paragraph; flagged for the adjudicator as a possible in_silico track if sponsor dose-selection models are wanted",
   "Ex-vivo human whole-blood / monocyte GM-CSF neutralisation assays used as clinical PD readouts: clinical assays on dosed patients, not a model system with a prediction to compare; no source pairing one with trial outcome found",
   "Mouse PK/PD model (Koch 2012): already the model_src of the 22E9 dose track; same system"
+ ],
+ "gaps": [
+  {
+   "lead": "Human anti-GM-CSF-autoantibody PAP as the human loss-of-function analogue (Kitamura 1999, Uchida 2004, Behrens 2015 monitoring rationale)",
+   "outcome": "added",
+   "detail": "human-anti-gmcsf-autoantibody-pap in added_models: safety untested 1999 (Kitamura 1999), same 2014 (Behrens 2015), same 2018 (Taylor 2019), same 2025 (Weinblatt 2025)"
+  },
+  {
+   "lead": "MOR103 Phase 1b/2a (Behrens 2015) and NEXUS (Taylor 2019) as earlier patient datasets on the knockout PAP track",
+   "outcome": "covered",
+   "detail": "check.json safety 3 (corrected) already proposes contra dated 2014 from Behrens 2015 (epub 2014-02-17), fallback 2018 NEXUS; same cell, index and change"
+  },
+  {
+   "lead": "GSK press release 2022-10-27 on contRAst programme (contRAst 3 missed ACR20, no regulatory submission)",
+   "outcome": "covered",
+   "detail": "check.json efficacy 4 (corrected) already proposes contra dated 2022 from the GSK release of 2022-10-27; same cell, index and change"
+  },
+  {
+   "lead": "Lenzilumab LIVE-AIR (Temesgen 2022) and namilumab CATALYST (Fisher 2022) COVID-19 safety datasets",
+   "outcome": "none",
+   "detail": "imported strengthens-only datasets for the existing knockout track (safety 3/4, mouse-gmcsf-null-pap); no new system and no status change; a single short COVID course cannot test the human-autoantibody threshold prediction"
+  }
  ]
 }

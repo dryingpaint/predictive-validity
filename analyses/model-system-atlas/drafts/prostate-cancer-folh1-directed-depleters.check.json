@@ -9,75 +9,91 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Hillier 2009 (PMID 19706750, epub 2009-08-25) abstract carries the quote verbatim; LNCaP/PC3 opener, untested."
+   "note": "Hillier 2009 (PMID 19706750, epub 2009-08-25) abstract verbatim; mip-1095 iv biomarker_selected fit. Untested opener stands; it post-dates J591 patient targeting (Milowsky 2004, Bander 2005), and the judgement still says MIP-1095 and PSMA-617 share one track.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Zechmann 2014 (PMID 24577951, epub 2014-02-28) abstract verbatim; 124I-MIP-1095 PET tumour uptake is a direct readout pairing with Hillier 2009."
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "retrodiction (engagement/efficacy: any same-target patient result)",
+   "note": "Zechmann 2014 (PMID 24577951) verbatim; mip-1095 iv fit. 177Lu-J591 (FOLH1 depleter) targeted all known metastases in 30 patients in 2005 (Bander, PMID 15837970), before Hillier 2009: retrodiction that reproduced it, so retro, retrodiction true.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement: any same-target patient result): 177Lu-J591 targeted all known metastases in 30 patients (Bander 2005, PMID 15837970), before Hillier 2009; the model reproduced uptake, so retro."
   },
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Kratochwil 2016 (PMID 26985056) verbatim but the sentence shows selection, not the readout; 'Mean tumor-absorbed dose ranged from 6 to 22 Gy/GBq during cycle 1' supports same. No PSMA-negative patients dosed, so prediction_level should be class, not patient; model_src Benesova 2015 has no PSMA-negative arm (Umbricht 2017 does)."
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2015,
+   "rule": "retrodiction; rule 6",
+   "note": "Kratochwil 2016 (PMID 26985056) verbatim; lutetium iv, class level fit. Model side Benesova 2015 (epub 2015-04-16) post-dates J591 and Zechmann 2014 uptake: retro. Lutetium uptake first public in Delker 2015 (PMID 26318602, epub 2015-08-29): year 2015.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: Benesova 2015 lutetium mouse data post-date same-target patient uptake (J591 2005, Zechmann 2014) and reproduced it, so retro. Rule 6: year 2015 if Delker 2015 (epub 2015-08-29) is the earliest public patient uptake."
   },
   {
    "cell": "engagement",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "near",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Wang 2011 (PMID 21750220) abstract; only the <= glyph differs. ADC-track opener, untested."
+   "note": "Wang 2011 (PMID 21750220, epub 2011-07-12) verbatim; PSMA ADC iv, stage_or_line (PSMA-unselected post-abi/enz, NCT01695044) fit. ADC opener untested stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 5,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
    "proposed_year": 2019,
-   "rule": "7",
-   "note": "Petrylak 2020 (PMID 31742767, epub 2019-11-19) verbatim; same holds. NCT01695044 results (posted 2017-02-23) report PSA/CTC/radiologic response only, not the PSMA-expression association, so the comparison was first public at epub: year 2019."
+   "rule": "retrodiction; rule 6",
+   "note": "Petrylak 2020 (PMID 31742767, epub 2019-11-19) verbatim; drug/route/stage_or_line fit. Wang 2011 post-dates J591 patient targeting: retro. The 2017-02-23 registry results lack the PSMA-expression association this entry scores, so year 2019.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: Wang 2011 ADC mouse data post-date same-target patient results (177Lu-J591 targeting and PSA falls, Bander 2005); PSMA-expression association reproduced, so retro. Rule 6: 2019, registry record lacks the association."
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Benesova 2015 (PMID 25883127) abstract verbatim; LNCaP-only biodistribution, no activity target or tolerated dose stated; untested with margin_stated false is right."
+   "note": "Benesova 2015 (PMID 25883127) verbatim; lutetium iv; model text and model_first_use_year 2009 now match the model_id. Untested opener with margin_stated false is right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "16",
-   "note": "Kratochwil 2016 verbatim, but 'rapid clearance from the kidneys' is a PK property, not a NOAEL/MTD or tolerated-dose-at-effective margin, and the mouse stated no human-unit activity target; margin_stated true and comparison_stated true unsupported. Decision 16: no stated margin -> untested.",
+   "rule": "decision 16 (dose scored only on a stated exposure target or tolerability margin)",
+   "note": "Kratochwil 2016 verbatim; lutetium iv fit. 'Low kidney uptake' is a PK property, not a NOAEL/MTD/tolerated-at-effective margin, and the mice gave no human activity target: the 'no target nor margin' row, untested (dose 1 itself has margin_stated false).",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 16: 'low kidney uptake' is a qualitative PK property, not a NOAEL/MTD or tolerated-dose margin, and the mouse stated no human-unit target (decision 4 floor); no stated margin or target is untested."
+   "adjudication_note": "Decision 16 and dose table row 1: 'low kidney uptake' is a PK property, not a NOAEL, MTD or tolerated-at-effective dose, and the mice stated no human activity target; untested (not the track's latest entry)."
   },
   {
    "cell": "dose",
@@ -87,123 +103,145 @@
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "16",
-   "note": "FDA review NDA 215833 p.41-42 verbatim (kidneys 0.43 Gy/GBq, 19 Gy); the review says the regimen came from human dosimetry and literature models were 'not used for labeling'. Same objection as dose 2. If a margin is wanted, Fendler 2017 (120 MBq effective 'without subacute hematologic toxicity') is the only stated one, and mouse MBq does not scale (#50/#99).",
+   "rule": "decision 16",
+   "note": "FDA review NDA 215833 bundle text verbatim; lutetium iv fit. The 7.4 GBq x6 regimen and 23 Gy kidney bar came from human dosimetry, not the mice; no stated margin, so untested; the entry already carries untested_reason no_prediction against status same.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 16: the 23 Gy kidney convention and 7.4 GBq x 6 regimen come from human dosimetry, which the FDA review says literature models did not inform; no model-stated margin or human-unit target, so untested (decision 4 scaling)."
+   "adjudication_note": "Decision 16: the 7.4 GBq x6 regimen and 23 Gy kidney bar came from human dosimetry; the mice stated no exposure target nor tolerability margin, so untested; untested_reason no_prediction already set."
   },
   {
    "cell": "dose",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4",
-   "note": "Wang 2011 verbatim; DiPippo 2015 (PMID 25327986) 1-6 mg/kg weekly x4, no tolerated dose; phase 1 (PMID 30663074) MTD 2.5 mg/kg q3w, NCT01414283 no results. untested is right, but the judgement invokes the 'never reached because of toxicity' row, whose efficacy column is untested (see efficacy 5)."
+   "rule": null,
+   "note": "Wang 2011 verbatim; PSMA ADC iv. Mouse 1-6 mg/kg weekly is no human target and no margin was stated: the 'no target nor margin' row, dose untested, efficacy scored as the trial showed. Consistent.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Hillier 2009 abstract verbatim; opener. FDA review p.38 confirms RM1-hPSMA (Fendler 2017) up-to-85% growth inhibition and improved survival at 120 MBq."
+   "note": "Hillier 2009 verbatim; mip-1095 iv opener untested. Judgement still describes lutetium therapy models (Fendler 2017, Muller 2019); the lutetium efficacy track has no untested opener of its own.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "4",
-   "note": "Sartor 2021 (PMID 34161051, epub 2021-06-23) verbatim; VISION NCT03511664 results posted 2022-05-09; rPFS/OS alternate primaries met. patient_trials verified: PSMAfore NCT04689828 results 2025-10-09 and ARROW NCT03939689 results 2025-10-14 (COMPLETED, PSA50 primary 62.9% vs 31.3%, Clin Cancer Res 2026 PMID 41779000), TheraP no CT.gov results, Hofman 2018 ANZCTR. ARROW not contra under #53 (primary met; rPFS/OS unpowered secondaries): agree with the drafter."
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "retrodiction (engagement/efficacy: any same-target patient result)",
+   "note": "Sartor 2021 (PMID 34161051) verbatim; lutetium iv biomarker_selected, rPFS/OS primaries (NCT03511664, results 2022-05-09) fit; ARROW moved out. Model side Fendler 2017 (epub 2017-05-25) post-dates PSMA-depleter PSA responses (J591 2005, Zechmann 2014): retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (efficacy: any same-target patient result): the lutetium mouse models (Benesova 2015, Fendler 2017) post-date PSMA-depleter PSA responses (Bander 2005; Zechmann 2014); VISION matched, so retro."
   },
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "7",
-   "note": "Buteau 2022 (PMID 36261050) verbatim; PSA RR is TheraP's primary endpoint stratified by a prespecified SUVmean cutoff, so endpoint_role should be primary, not null. Umbricht 2017 model side is binary PSMA+/- (PC-3 PIP/flu), so direction_only is right. A same-after-same entry with strengthens is outside rule 7 unless the class->patient prediction_level change counts as a status change (rule question)."
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "retrodiction (engagement/efficacy: any same-target patient result)",
+   "note": "Buteau 2022 (PMID 36261050) verbatim; PSA response is TheraP's primary, class level fit. Model side Umbricht 2017 post-dates same-target patient responses: retro. A retro after efficacy 2's retro is no status change.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: Umbricht 2017 isogenic PSMA mice post-date same-target patient responses (J591 2005, Zechmann 2014, Kratochwil 2016); TheraP's PSA-response primary reproduced the uptake-tracks-PSMA rule, so retro."
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Wang 2011 verbatim; DiPippo 2015 abstract confirms complete regression in LuCaP 96CR, unimpeded LuCaP 58, 'considerable variability in effects despite PSMA expression'. Opener, untested."
+   "note": "Wang 2011 verbatim; PSMA ADC iv stage_or_line opener, untested.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 5,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "16",
-   "note": "Petrylak 2020 verbatim; NCT01695044 co-primaries are PSA, CTC and radiologic response (results posted 2017-02-23, so year 2017 stands). The draft's own dose entry says the model's regimen was never reached because of toxicity with no stated margin; decision 16 / decision 4 case 1 then make efficacy untested, not contra. Also CTC50 was 78% and the source calls it 'some activity'. Alternative: keep contra and re-word dose 4 as 'no human-unit target stated'.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 case 1 / decision 16: the draft's dose 4 says the ADC was toxicity-capped below the model regimen with no stated margin, so never tested at an effective exposure; efficacy untested (run precedent; split co-primaries also bar contra)."
+   "proposed_status": "retro",
+   "rule": "retrodiction; single-arm and co-primary rulings",
+   "note": "Petrylak 2020 verbatim; registry lists three co-primaries (PSA, CTC, radiologic), single-arm, no pre-set bar; 'some activity', so same-partial in direction. But Wang 2011 post-dates J591 PSA declines (Bander 2005, 4 patients >=50%): retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule plus single-arm and co-primary rulings: same-partial in direction ('some activity'), but Wang 2011 post-dates 177Lu-J591 PSA declines (Bander 2005, 4 patients >=50%), so retro."
   },
   {
    "cell": "safety",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Hillier 2009 verbatim; opener. The cold-ligand rat/minipig toxicology the judgement sets aside is quotable in the FDA review (see missing) and should be a track."
+   "note": "Hillier 2009 verbatim; mip-1095 iv opener untested. Judgement still says the cold-ligand toxicology is not a track; it now is (safety 6-7).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4",
-   "note": "Zechmann 2014 verbatim (salivary 3.8 mSv/MBq highest, 25% dry mouth). Salivary uptake is measurable in mice (Roy 2020 in vivo rodent biodistribution), so the mouse's low ranking is an askable miss under #13/#54; contra stands, with the species-expression rule question below."
+   "rule": null,
+   "note": "Zechmann 2014 verbatim (salivary 3.8 mSv/MBq highest); mip-1095 iv biomarker_selected fit. Safety retrodiction needs the drug's own earlier result; none before Hillier 2009, so contra stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "7",
-   "note": "Roy 2020 (PMID 32074455, epub 2020-02-19) verbatim; a stated species-tissue comparison, not a patient-outcome comparison, so comparison_stated true is generous but acceptable as the reconciliation (#79). VISION dry mouth 38.8% vs 0.5% and lacrimal 2.1 / salivary 0.63 Gy/GBq confirmed in the FDA review. strengthens on contra->contra supplies the excuse rather than removing it; harmless."
+   "proposed_status": "contra",
+   "proposed_year": 2015,
+   "rule": "rule 6 (earliest public date)",
+   "note": "Kratochwil 2016 verbatim, contra right, drug/route fit. Lutetium's own salivary dose was public earlier: Delker 2016 (PMID 26318602, epub 2015-08-29) salivary 1.4 vs kidney 0.6 Gy/GBq. Year 2015, Delker as src; Benesova (April 2015) still precedes it.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Safety contra stands (salivary dose highest, mice silent); not a retrodiction, Benesova (April 2015) precedes the drug's own patient dosimetry. Rule 6: year 2015 with Delker 2015 (epub 2015-08-29) as earliest public source."
   },
   {
    "cell": "safety",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Wang 2011 verbatim; efficacy xenografts with no toxicology readout; ADC-modality opener, untested."
+   "note": "Wang 2011 verbatim; PSMA ADC iv opener, untested.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "13",
-   "note": "Petrylak 2020 verbatim (two sepsis deaths at 2.5 mg/kg); Younes 2010 (PMID 21047225) abstract names neutropenia and peripheral neuropathy for brentuximab vedotin, so other (same vc-MMAE platform) holds. imported_from should be MONDO:0004952 (Hodgkin lymphoma, the Younes 2010 population; OLS-verified), not null."
+   "rule": null,
+   "note": "Petrylak 2020 verbatim (two sepsis deaths at 2.5 mg/kg); PSMA ADC iv stage_or_line; 'other' via brentuximab vedotin vc-MMAE stands. imported_from still null.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -212,42 +250,86 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "8",
-   "note": "FDA review 5.1 under 'The FDA's Assessment' (bundle l.1133; PDF p.35) verbatim. Separate system from the xenograft track (healthy rat/minipig, cold ligand, ligand-mediated harm), so its own model_id is right under decisions 6/8. Year 2021 is the NDA-receipt proxy; the GLP package necessarily predates VISION's 2018 IND, but no source dates it, so no change.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": null,
+   "note": "FDA review NDA 215833 bundle text verbatim; lutetium iv; separate cold-ligand rat/minipig system, untested opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "58",
-   "note": "Fragment verbatim, but the fetched 17 MB PDF (210 pp.) lacks pp. 36, 40 and 42-50 (footers run 35->37, 41->51), so the sentence end is unrecoverable from FDA. EMA EPAR EMA/871459/2022 settles the null: 'At single iv doses up to 4.0 mg/kg in the rat and 1.8 mg/kg in the minipig, no mortality and no major adverse effects were observed'; NOAEL rat 4.0 mg/kg (150x), minipig 1.8 mg/kg (~400x), 4-week rat 0.4 mg/kg (15x); 'Rats and minipigs were shown to exhibit little toxicity'. Caveats: one high-dose rat nephroblastoma (EMA: nephrotoxicity 'cannot be excluded', framed as a PSMA/radiation concern) and minipig injection-site inflammation; direction_only same holds under #58. comparison_stated true is generous: 5.1 (FDA) and 8.2.1 (Applicant's section) never cite each other. Suggest the EPAR sentence as the quote.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": null,
+   "note": "FDA review fragment 'caused no toxicologic' verbatim but truncated at a page break in the bundle text; lutetium iv fit; null prediction held (harms attributed to radiation), same stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 8,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Abstract (PMID 30737300, epub 2019-02-08) and jnm.snmjournals.org full text verbatim; untested opener, ex_vivo track separate from the mice is right. Wording error in model/note: the SMG specimens came from neck-dissection patients (some with chronic sialadenitis/atrophy), not the PET-imaged prostate patients; the authors call it an 'indirect comparison'. 'Same patients' holds only for the PCA-tissue arm.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": null,
+   "note": "Rupp 2019 (PMID 30737300) verbatim; lutetium iv opener (177Lu-PSMA-617 autoradiography); population_group unselected fits 60 recurrent plus 9 primary PCa PET patients. Model text now says indirect comparison; correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 9,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "10",
-   "note": "Verbatim (abstract and full text). contra under the letter of decision 10: a post-hoc ex-vivo system built after the salivary harm was known (retrodiction true) that could not reproduce the in-vivo gland uptake; 2019 and magnitude opposite supported. Fix 'same men's glands': the comparison is indirect (neck-dissection SMG tissue vs 60 recurrent-PCA PET scans). source_calls_it miss is a stretch: Rupp reads it as non-PSMA uptake, not a model failure. Whether an assay that cannot show non-PSMA in-vivo accumulation is contra or outside scope is the rule question below; it does not reach the headline either way.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": null,
+   "note": "Rupp 2019 verbatim; lutetium's own salivary dose was public before 2019 (Delker 2015 epub 2015-08-29, earlier than Kratochwil 2016), so retrodiction true and contra stand; Rupp's direct comparator is 68Ga-PSMA-11 PET (rule question).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2015,
+   "rule": "rule 6 (earliest public date)",
+   "note": "Benesova 2015 verbatim; lutetium iv opener, untested right. Year 2016 is later than the source's first public date (epub 2015-04-16); 2015 still precedes engagement 3.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Opener untested agreed by both. Rule 6: dated 2015, Benesova 2015 epub 2015-04-16, the model's first use for this drug; still precedes engagement 3."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "retrodiction; combination ruling",
+   "note": "ARROW (CCR 2026, PMID 41779000) quote verbatim; PSA50 primary met (NCT03939689, results 2025-10-14), combination_with enzalutamide fits. ESMO 2024 date not re-verified (search tool down). Hillier 2009 post-dates J591 PSA declines (2005): retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule and combination ruling: ARROW PSA50 primary met with enzalutamide, but Hillier 2009 post-dates 177Lu-J591 PSA declines (Bander 2005), so reproduction of a known same-target result: retro."
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2015,
+   "rule": "rule 6 (earliest public date)",
+   "note": "Benesova 2015 verbatim; lutetium iv opener untested right, but first public 2015-04-16, before safety 3; year 2016 is later than the source.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Opener untested agreed by both. Rule 6: dated 2015, Benesova 2015 epub 2015-04-16, the model's first use for this drug; precedes safety 3."
   }
  ],
  "missing": [
@@ -269,6 +351,9 @@
   "(models check) Decision 10 vs decision 4 'conditions the model never tested': when a retrodiction's own source reads the discordance as a mechanism the assay cannot measure (frozen-section autoradiography cannot show non-PSMA-mediated in-vivo gland accumulation, Rupp 2019), is the failed reproduction contra (literal decision 10, as drafted) or untested/outside scope, like CRS in a mouse (rule question 4 above)?",
   "(models check) #58 with a truncated regulator sentence: the FDA fragment's end sits on a page withheld from the published PDF; may the entry's quote be replaced by a second regulator's full statement (EMA EPAR EMA/871459/2022, 'little toxicity', NOAELs), or must it stay on the fragment at medium confidence?",
   "(models check) comparison_stated within one regulator document: do a nonclinical null (FDA's Assessment, 5.1) and a clinical attribution to radiation (Applicant's Position, 8.2.1) in the same review count as a stated comparison when neither section cites the other?",
-  "(models check) Decision 16: the EPAR states ligand-mass NOAEL margins for the cold ligand (15x repeat-dose rat, 150x/400x single-dose rat/minipig vs 275 ug). Is a ligand-mass margin a 'stated margin' for the dose cell of a radioligand whose clinical ceiling is radiation absorbed dose (dose 3 adjudicated untested), or does it belong to the tox track only?"
+  "(models check) Decision 16: the EPAR states ligand-mass NOAEL margins for the cold ligand (15x repeat-dose rat, 150x/400x single-dose rat/minipig vs 275 ug). Is a ligand-mass margin a 'stated margin' for the dose cell of a radioligand whose clinical ceiling is radiation absorbed dose (dose 3 adjudicated untested), or does it belong to the tox track only?",
+  "(fields check) Retrodiction across modalities: J591 radioimmunotherapy (a non-member FOLH1-directed depleter, antibody) showed tumour targeting and PSA declines in 2004-2005, before every model in this tile. Does it make all engagement/efficacy entries here retro, as the any-same-target ruling reads?",
+  "(fields check) Track per drug: does a model_id's prospective first use for one drug (2009, MIP-1095) carry to a sibling drug's track whose own model run (Benesova 2015, Fendler 2017) post-dates patient results on the target?",
+  "(fields check) Safety 9: the patient side of Rupp 2019 is 68Ga-PSMA-11 PET gland uptake (a non-member diagnostic); does a member drug's own earlier salivary dosimetry let the entry carry drug lutetium?"
  ]
 }

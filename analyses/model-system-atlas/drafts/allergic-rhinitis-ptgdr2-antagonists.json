@@ -52,7 +52,12 @@
     "population": "Unselected",
     "model_first_use_year": 2008,
     "prediction_level": "class",
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "qav-680",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -89,14 +94,18 @@
     "population": "Unselected",
     "model_first_use_year": 2008,
     "prediction_level": "class",
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "bi-671800",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "whole-blood-eosinophil-shape-change",
     "year": 2009,
     "status": "untested",
     "model": "Human whole-blood PGD2 eosinophil shape-change assay",
-    "note": "Class compounds were ranked on blockade of PGD2-induced eosinophil shape change in human whole blood; no dosed-human comparison yet.",
+    "note": "Class compounds were ranked on blockade of PGD2-induced eosinophil shape change in human whole blood; no dosed-human comparison yet. Opens the BI 671800 track (Krug 2014 ex vivo); the compounds dosed were non-member Amira DP2 antagonists.",
     "short": "Whole-blood shape-change assay opens",
     "src": "https://doi.org/10.1016/j.bmcl.2009.06.085",
     "srcLabel": "Stearns 2009",
@@ -126,7 +135,11 @@
     "population": "Unselected",
     "model_first_use_year": 2009,
     "prediction_level": "class",
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "bi-671800",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "whole-blood-eosinophil-shape-change",
@@ -163,7 +176,11 @@
     "population": "Unselected",
     "model_first_use_year": 2009,
     "prediction_level": "class",
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "drug": "bi-671800",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -203,7 +220,12 @@
     "model_first_use_year": 2008,
     "prediction_level": "class",
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "qav-680",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "model_id": "setipiprant-asthma-allergen-challenge",
@@ -241,14 +263,18 @@
     "model_first_use_year": 2014,
     "prediction_level": "class",
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "setipiprant-asthma-allergen-challenge",
     "year": 2017,
     "status": "same",
     "model": "Bronchial allergen challenge in mild allergic asthmatics (setipiprant proof-of-mechanism)",
-    "note": "1000 mg b.i.d. was given in both field trials, worked in Phase 2 (-0.15 DNSS, p=0.030), failed in Phase 3 (-0.02, p=0.652); programme dropped.",
+    "note": "1000 mg b.i.d. was given in both field trials, worked in Phase 2 (-0.15 DNSS, p=0.030), failed in Phase 3 (-0.02, p=0.652); programme dropped. Dose scores the regimen reached and tolerated (same); the Phase 3 failure counts once, in efficacy.",
     "short": "Challenge regimen reached and tolerated",
     "src": "https://doi.org/10.1186/s13223-017-0183-z",
     "srcLabel": "Ratner 2017",
@@ -256,7 +282,7 @@
     "confidence": "medium",
     "confidence_note": "Full text read (open access, PMC5379543). Phase 3 trough exposure was lower than Phase 2 on the same nominal regimen (median 1120 vs 1540-1920 ng/mL; 250 mg capsules replaced by 500 mg tablets), which a re-scorer could read as 'target not reached'.",
     "reason": "Regimen reached, Phase 3 failed, dropped",
-    "judgement": "Dose scored on its own prediction (rule v4): the challenge regimen, 1000 mg b.i.d., was dosed and tolerated. Scored on the 'reached, failed, abandoned' row: the model gave a regimen, not an exposure target, and that regimen was dosed in 579 + 630 patients. The model also stated the regimen was tolerated ('setipiprant was well tolerated and no clinically relevant adverse events occurred') and it was, so margin_stated is true, but the efficacy failure makes the dose call contra, derived_from efficacy so the failure is counted once. Ratner states the comparison (the dose 'was selected ... based on findings from a Phase 2 proof-of-mechanism study') and calls the Phase 2/3 discrepancy 'not fully known', hence unresolved. Earliest public date: the Phase 3 completed 2012-02 and no results were ever posted; a 2012 sponsor announcement was not found by search, so the entry is dated to the paper (online 2017-04-04).",
+    "judgement": "Dose scored on its own prediction: the challenge regimen, 1000 mg b.i.d., was dosed in 579 + 630 field patients and tolerated, so target reached and stated margin held: same. Whether that dose worked is the efficacy question, scored contra there once. Ratner states the comparison (the dose 'was selected ... based on findings from a Phase 2 proof-of-mechanism study') and calls the Phase 2/3 discrepancy 'not fully known', hence unresolved. Year stays 2017: the 2012-04-02 Actelion release (via RTTNews) reports only the efficacy miss, not the regimen dosed or its tolerability, which are first public in Ratner 2017; Diamant 2014 predates that, so not a retrodiction.",
     "subjects": "patients",
     "comparison_stated": true,
     "source_tier": 1,
@@ -279,7 +305,11 @@
     "model_first_use_year": 2014,
     "prediction_level": "class",
     "blocked_by": null,
-    "margin_stated": true
+    "margin_stated": true,
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "crth2-internalisation-pkpd-model",
@@ -317,14 +347,19 @@
     "model_first_use_year": 2015,
     "prediction_level": "class",
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "crth2-internalisation-pkpd-model",
     "year": 2017,
     "status": "retro",
     "model": "PK/PD model of CRTH2 internalisation blockade (in silico occupancy target)",
-    "note": "Model put under 30% of subjects at >=90% trough blockade on 1000 mg b.i.d.; the Phase 3 at that dose was null, as it implies.",
+    "note": "Model put under 30% of subjects at >=90% trough blockade on 1000 mg b.i.d.; the Phase 3 at that dose was null, as it implies. Retrodiction under the dose rule: built on setipiprant's own clinical PK/PD after its Phase 3 miss (public 2012-04-02).",
     "short": "Occupancy model reproduces the Phase 3 null",
     "src": "https://doi.org/10.1186/s13223-017-0183-z",
     "srcLabel": "Ratner 2017",
@@ -355,7 +390,12 @@
     "model_first_use_year": 2015,
     "prediction_level": "class",
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    }
   ],
   "efficacy": [
@@ -396,14 +436,19 @@
     "prediction_level": "class",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "qav-680",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "model_id": "allergen-exposure-chamber",
-    "year": 2017,
+    "year": 2012,
     "status": "contra",
     "model": "Allergen exposure chamber (EEC), pollen",
-    "note": "Chamber said the class relieves SAR symptoms (BI 671800 TNSS AUC -17%); setipiprant's 630-patient field Phase 3 found none on DNSS (-0.02) while cetirizine worked.",
+    "note": "Chamber said CRTH2 antagonism relieves SAR symptoms (OC000459, Horak 2012; BI 671800 TNSS AUC -17%), but setipiprant's field Phase 3 (miss public 2012-04-02) found none. Retrodiction: chamber result public after that miss; it failed to reproduce it.",
     "short": "Chamber said yes; field Phase 3 null",
     "src": "https://doi.org/10.1186/s13223-017-0183-z",
     "srcLabel": "Ratner 2017",
@@ -411,11 +456,11 @@
     "confidence": "medium",
     "confidence_note": "Full text read (open access, PMC5379543). Neither field trial has posted registry results. Setipiprant was never run in the rhinitis chamber, so the class prediction comes from sibling members (BI 671800 in Krug 2014; QAV680 in a congress abstract).",
     "reason": "Chamber-positive class failed field Phase 3",
-    "judgement": "Contra because the chamber predicted class efficacy and the only adequately powered field Phase 3 of a member (95% power for a 0.20 DNSS difference) found nothing on the primary or any secondary endpoint, and development stopped. Ratner itself puts the chamber evidence beside its results ('in line with the growing clinical evidence from several CRHT2 antagonists investigated in allergen challenge trials'), so comparison_stated is true, but it draws that line only for the positive Phase 2 and calls the Phase 3 reasons 'not fully known', hence unresolved. The positive Phase 2 (NCT01241214, n=579, -0.15, p=0.030, no multiplicity correction) is the same-year 'same' that the Phase 3 contra outranks; a re-scorer who requires a same-drug chamber-vs-field pair would leave this untested. Dated to the paper: no 2012 sponsor announcement was found.",
+    "judgement": "Contra because the chamber predicted class efficacy and the only adequately powered field Phase 3 of a member (95% power for a 0.20 DNSS difference) found nothing on the primary or any secondary endpoint, and development stopped. Ratner itself puts the chamber evidence beside its results ('in line with the growing clinical evidence from several CRHT2 antagonists investigated in allergen challenge trials'), so comparison_stated is true, but it draws that line only for the positive Phase 2 and calls the Phase 3 reasons 'not fully known', hence unresolved. The positive Phase 2 (NCT01241214, n=579, -0.15, p=0.030, no multiplicity correction) is the same-year 'same' that the Phase 3 contra outranks; a re-scorer who requires a same-drug chamber-vs-field pair would leave this untested. Dated to the paper: no 2012 sponsor announcement was found. Rulings 2026-11-09: year 2012 by rule 6 (Phase 3 miss public 2012-04-02 in Actelion's release via RTTNews, tier 5; earliest chamber result Horak 2012, OC000459, epub 2012-10-01, sibling model side). Efficacy is a target claim, so a chamber result first public after another CRTH2 antagonist's patient result is a retrodiction; it predicted benefit where the field showed none, so contra with retrodiction true.",
     "subjects": "patients",
     "comparison_stated": true,
     "source_tier": 1,
-    "model_src": "https://doi.org/10.1016/j.jaci.2013.10.013",
+    "model_src": "https://doi.org/10.1111/all.12042",
     "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
@@ -425,7 +470,7 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "human_challenge",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": "chamber TNSS AUC(0-6h) -17% vs placebo (BI 671800 200 mg b.i.d., p=0.0026) against field DNSS -0.02 (p=0.652) in Phase 3 and -0.15 (p=0.030) in Phase 2; the chamber gives no field effect-size prediction",
@@ -448,14 +493,18 @@
       "doi": "10.1186/s13223-017-0183-z",
       "quote": "Setipiprant dose-related efficacy in the Phase 2 trial was not confirmed during Phase 3."
      }
-    ]
+    ],
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "ova-mouse-allergic-rhinitis",
     "year": 2009,
     "status": "untested",
     "model": "OVA-sensitised mouse allergic rhinitis (sneezing, nasal rubs, nasal obstruction)",
-    "note": "Selective DP2 antagonists relieved sneezing and nasal rubs in sensitised mice; only non-member class compounds were ever reported in it.",
+    "note": "Selective DP2 antagonists relieved sneezing and nasal rubs in sensitised mice; only non-member class compounds were ever reported in it. Opens the setipiprant track (the only member scored against this model); the compounds dosed were siblings.",
     "short": "DP2 antagonists work in mouse rhinitis",
     "src": "https://doi.org/10.1016/j.bmcl.2009.06.085",
     "srcLabel": "Stearns 2009",
@@ -487,14 +536,18 @@
     "prediction_level": "class",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "ova-mouse-allergic-rhinitis",
-    "year": 2017,
+    "year": 2012,
     "status": "contra",
     "model": "OVA-sensitised mouse allergic rhinitis (sneezing, nasal rubs, nasal obstruction)",
-    "note": "Mouse said selective DP2 antagonism stops sneezing and nasal rubs; the class's one field Phase 3 (setipiprant) moved no nasal symptom.",
+    "note": "Mouse said selective DP2 antagonism stops sneezing and nasal rubs; the class's one field Phase 3 (setipiprant) moved no nasal symptom. Dated 2012: Stebbins 2010 model side; Phase 3 miss public 2012-04-02 (Actelion release).",
     "short": "Mouse nasal-symptom relief absent in Phase 3",
     "src": "https://doi.org/10.1186/s13223-017-0183-z",
     "srcLabel": "Ratner 2017",
@@ -502,7 +555,7 @@
     "confidence": "low",
     "confidence_note": "Paired by me: no source puts the mouse model beside a member's field trial, and no member was ever reported in the model. Low confidence for that reason, not for the trial data (full text read).",
     "reason": "Mouse-predicted class effect absent in Phase 3",
-    "judgement": "Allowed under v3 as a sibling-dosed model (product_in_model false) compared with a member's trial. The model side named is AM156 (Stebbins 2010), the explicit sneezing/nasal-rub result. Contra beats the Phase 2 'same' on the same track. A re-scorer who sets aside sibling-dosed animal evidence would leave this track untested.",
+    "judgement": "Allowed under v3 as a sibling-dosed model (product_in_model false) compared with a member's trial. The model side named is AM156 (Stebbins 2010), the explicit sneezing/nasal-rub result. Contra beats the Phase 2 'same' on the same track. A re-scorer who sets aside sibling-dosed animal evidence would leave this track untested. Rule 6: year 2012 (Actelion release 2012-04-02 via RTTNews, tier 5), not the 2017 paper; Stebbins 2010 predates it, so prospective.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -533,7 +586,11 @@
       "doi": "10.1186/s13223-017-0183-z",
       "quote": "Setipiprant dose-related efficacy in the Phase 2 trial was not confirmed during Phase 3."
      }
-    ]
+    ],
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "setipiprant-asthma-allergen-challenge",
@@ -572,14 +629,19 @@
     "prediction_level": "class",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "setipiprant-asthma-allergen-challenge",
-    "year": 2017,
+    "year": 2014,
     "status": "contra",
     "model": "Bronchial allergen challenge in mild allergic asthmatics (setipiprant proof-of-mechanism)",
-    "note": "Same drug, same regimen: positive Phase 2 primary (-0.15 DNSS, p=0.030) then a null Phase 3 (-0.02, p=0.652) with cetirizine positive in both.",
+    "note": "Same drug, same regimen: positive Phase 2 (-0.15 DNSS) then null Phase 3 (miss public 2012-04-02). Challenge first public 2014, after the miss: a retrodiction that failed to reproduce it.",
     "short": "PoM-backed regimen failed Phase 3 primary",
     "src": "https://doi.org/10.1186/s13223-017-0183-z",
     "srcLabel": "Ratner 2017",
@@ -587,7 +649,7 @@
     "confidence": "medium",
     "confidence_note": "Full text read (open access). No registry results for either trial.",
     "reason": "PoM-backed regimen failed Phase 3 primary",
-    "judgement": "Contra on the primary (DNSS, fixed-sequence multiplicity control in Phase 3). Ratner states the comparison (dose chosen on the PoM) and leaves the discrepancy 'not fully known', so unresolved. Phase 2 was the same-year 'same' that the Phase 3 outranks.",
+    "judgement": "Contra on the primary (DNSS, fixed-sequence multiplicity control in Phase 3). Ratner states the comparison (dose chosen on the PoM) and leaves the discrepancy 'not fully known', so unresolved. Phase 2 was the same-year 'same' that the Phase 3 outranks. Rule 6: the comparison was public once both halves were, Diamant 2014 (2014-08-01) after the 2012-04-02 release, so year 2014. Post-dating alone makes it a retrodiction; it predicted benefit the Phase 3 did not show, so contra, retrodiction true. No earlier congress abstract of the challenge study was found.",
     "subjects": "patients",
     "comparison_stated": true,
     "source_tier": 1,
@@ -601,7 +663,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "cross_indication",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": "LAR AUC -25.6% in the challenge against field DNSS -0.02 (p=0.652) in Phase 3; no common quantity",
@@ -624,7 +686,11 @@
       "doi": "10.1186/s13223-017-0183-z",
       "quote": "Setipiprant 1000 mg b.i.d. had no significant effect on this endpoint in the Phase 3 trial (−0.02 [95% CI −0.12, 0.07]; p = 0.652)."
      }
-    ]
+    ],
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -662,7 +728,12 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2008,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "qav-680",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -698,7 +769,11 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2008,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "setipiprant-asthma-allergen-challenge",
@@ -734,7 +809,11 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2014,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "setipiprant-asthma-allergen-challenge",
@@ -770,7 +849,11 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "model_first_use_year": 2014,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "setipiprant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

@@ -9,7 +9,8 @@
   "WebSearch: R1507 erlotinib NSCLC IGF-1R expression immunohistochemistry biomarker analysis phase II outcome (found Habben 2011 ASCO abstract 7584)",
   "Crossref + Europe PMC + ascopubs + ASCO meeting library for Habben 2011 abstract text (doi:10.1200/jco.2011.29.15_suppl.7584): metadata only, abstract text not retrievable (403)",
   "WebSearch: verbatim phrase search for the Habben 2011 IGF1R H-score result (not found)",
-  "OLS MONDO lookup: thyroid eye disease = MONDO:0001509 (endocrine exophthalmos; synonyms TED, Graves ophthalmopathy)"
+  "OLS MONDO lookup: thyroid eye disease = MONDO:0001509 (endocrine exophthalmos; synonyms TED, Graves ophthalmopathy)",
+  "fc.py scrape ascopubs doi:10.1200/jco.2011.29.15_suppl.7584 (Habben 2011 abstract, verbatim text read); ClinicalTrials.gov API: NO21160 = NCT00760929, results posted 2021-01-05"
  ],
  "added_models": [
   {
@@ -21,32 +22,61 @@
    "cells": {
     "safety": [
      {
-      "year": 2004, "status": "untested",
+      "year": 2004,
+      "status": "untested",
       "note": "Roche's GLP monkey toxicology of R1507 (teprotumumab) began November 2004 and supported its oncology trials; no comparison with patients yet.",
       "short": "Monkey GLP toxicology of R1507 begins",
-      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761143Orig1s000PharmR.pdf", "srcLabel": "FDA PharmR BLA 761143",
+      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761143Orig1s000PharmR.pdf",
+      "srcLabel": "FDA PharmR BLA 761143",
       "quote": "Ro 485-8696/F01-01(huMAb-IGF-1R): A 7-Week Intermittent Intravenous Toxicity, Toxicokinetic, and Immunogenicity Study with Ro 485-8696/F01-01 (huMAb-IGF-1R) in Cynomolgus Monkeys with an 8-Week Recovery Period",
-      "confidence": "high", "confidence_note": "Study title and initiation date (November 3, 2004) read in the FDA pharmacology/toxicology review text.",
+      "confidence": "high",
+      "confidence_note": "Study title and initiation date (November 3, 2004) read in the FDA pharmacology/toxicology review text.",
       "judgement": "Opening entry at the first GLP monkey study of a member antibody (R1507 = teprotumumab, Ro 485-8696).",
-      "subjects": null, "comparison_stated": false, "source_tier": 2, "model_src": null, "model_src_tier": null,
-      "trial_unreported": false, "epub_year": null, "print_year": null, "registry_date": null,
-      "model_filed": true, "product_in_model": true, "imported_from": null, "magnitude": null, "magnitude_basis": null,
-      "source_calls_it": null, "population": "Unselected"
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 2,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "epub_year": null,
+      "print_year": null,
+      "registry_date": null,
+      "model_filed": true,
+      "product_in_model": true,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected"
      },
      {
-      "year": 2021, "status": "contra",
+      "year": 2021,
+      "status": "contra",
       "note": "FDA: monkeys predicted weight loss and low ALP but not hyperglycemia, infusion reactions or IBD flares; hyperglycemia is an on-target harm also seen with members in NSCLC.",
       "short": "Monkeys missed hyperglycemia",
-      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761143Orig1s000PharmR.pdf", "srcLabel": "FDA PharmR BLA 761143",
+      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761143Orig1s000PharmR.pdf",
+      "srcLabel": "FDA PharmR BLA 761143",
       "quote": "the monkey model predicted the clinical reduced weight gain/weight loss and decreased serum ALP, but not the clinical infusion reactions, exacerbation of inflammatory bowel disease, or hyperglycemia.",
-      "confidence": "medium", "confidence_note": "Review dated January 2020 (approval Jan 2020) but filed under nda/2021, so dated to 2021 posting; exact posting date not verified. Comparison made in TED patients, imported.",
+      "confidence": "medium",
+      "confidence_note": "Review dated January 2020 (approval Jan 2020) but filed under nda/2021, so dated to 2021 posting; exact posting date not verified. Comparison made in TED patients, imported.",
       "reason": "Monkeys silent on on-target hyperglycemia",
       "judgement": "Monkeys can show glucose dysregulation, so their silence on hyperglycemia is a scored miss, not a species limit. Hyperglycemia is on-target (IGF1R/IR), so the harm pools across modality; also seen with cixutumumab (Novello 2017, Argiris 2017) and dalotuzumab (Huang 2016) in NSCLC. Partial match on weight/ALP noted.",
-      "subjects": "patients", "comparison_stated": true, "source_tier": 2, "model_src": null, "model_src_tier": null,
-      "trial_unreported": false, "epub_year": 2021, "print_year": null, "registry_date": null,
-      "model_filed": true, "product_in_model": true, "imported_from": "MONDO:0001509",
-      "magnitude": "direction_only", "magnitude_basis": "presence of hyperglycemia, infusion reactions and IBD exacerbation in patients vs none in monkeys",
-      "source_calls_it": "miss", "population": "Thyroid eye disease (teprotumumab BLA trials)"
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 2,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "epub_year": 2021,
+      "print_year": null,
+      "registry_date": null,
+      "model_filed": true,
+      "product_in_model": true,
+      "imported_from": "MONDO:0001509",
+      "magnitude": "direction_only",
+      "magnitude_basis": "presence of hyperglycemia, infusion reactions and IBD exacerbation in patients vs none in monkeys",
+      "source_calls_it": "miss",
+      "population": "Thyroid eye disease (teprotumumab BLA trials)"
      }
     ]
    }
@@ -60,19 +90,67 @@
    "cells": {
     "efficacy": [
      {
-      "year": 2009, "status": "untested",
-      "note": "Panel predicted high total tumour IGF-1R picks R1507 responders; Roche's biomarker analysis of the R1507+erlotinib trial (Habben 2011) could not be read verbatim.",
+      "year": 2009,
+      "status": "untested",
+      "note": "Panel predicted that high total tumour IGF-1R picks R1507 responders; untested until Roche's biomarker analysis of the R1507+erlotinib trial (Habben 2011).",
       "short": "Total IGF-1R predicts R1507 sensitivity",
-      "src": "https://doi.org/10.1371/journal.pone.0007273", "srcLabel": "Gong 2009",
+      "src": "https://doi.org/10.1371/journal.pone.0007273",
+      "srcLabel": "Gong 2009",
       "quote": "In NSCLC cell lines, high levels of total IGF-1R are associated with moderate sensitivity to R1507. These results suggest a possible enrichment strategy for clinical trials with anti-IGF-1R therapy.",
-      "confidence": "low", "confidence_note": "Abstract-level reading. Patient-side test is Habben et al., J Clin Oncol 29:15_suppl 7584 (ASCO 2011, doi:10.1200/jco.2011.29.15_suppl.7584): a search summary says IGF1R H-score subgroups showed no PFS difference, which would make this contra, but the abstract text was not retrievable (403), so no quote and the status stays untested.",
-      "reason": "Patient biomarker test not verifiable",
+      "confidence": "low",
+      "confidence_note": "Abstract-level reading of Gong 2009.",
       "judgement": "Cell lines in vitro are not an enum kind; ex_vivo used as the closest non-animal kind. Ramalingam 2011 cites this panel but does not compare it with trial biomarker data (biomarkers 'reported separately'), so it is not a stated comparison.",
-      "subjects": null, "comparison_stated": false, "source_tier": 1, "model_src": null, "model_src_tier": null,
-      "trial_unreported": false, "epub_year": 2009, "print_year": 2009, "registry_date": null,
-      "model_filed": null, "product_in_model": true, "imported_from": null, "magnitude": null, "magnitude_basis": null,
-      "source_calls_it": null, "population": "NSCLC, total IGF-1R high vs low",
-      "endpoint_role": "primary", "outcome_tested": null
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "epub_year": 2009,
+      "print_year": 2009,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": true,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "NSCLC, total IGF-1R high vs low",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "untested_reason": "not_measured"
+     },
+     {
+      "year": 2011,
+      "status": "contra",
+      "note": "In the randomized R1507+erlotinib trial (NO21160), tumour IGF-1R level defined no subgroup that benefited on the primary 12-week PFS rate, against the panel's prediction.",
+      "short": "Tumour IGF-1R did not pick R1507 responders",
+      "src": "https://doi.org/10.1200/jco.2011.29.15_suppl.7584",
+      "srcLabel": "Habben 2011 (ASCO)",
+      "quote": "No significant impact on the treatment was observed when the PFS rates of patient subgroups defined by other biomarkers, including IGF1R level, were compared within each treatment arm and between placebo and treatment arms.",
+      "confidence": "medium",
+      "confidence_note": "ASCO 2011 meeting abstract (J Clin Oncol 29:15_suppl 7584), read verbatim on ascopubs; no full paper. IGF1R measured as membrane IHC H-score, Gong used total IGF-1R in cell lines.",
+      "reason": "Total IGF-1R did not enrich for R1507 benefit",
+      "judgement": "Paired comparison: Gong 2009 predicted high total IGF-1R marks sensitivity; the trial's IGF1R-level subgroups showed no PFS effect on the primary endpoint. Abstract does not cite the panel, so comparison_stated false.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1371/journal.pone.0007273",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2011,
+      "print_year": 2011,
+      "registry_date": "2021-01-05",
+      "model_filed": null,
+      "product_in_model": true,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "PFS rate at 12 weeks by IGF1R-level subgroup vs predicted sensitivity of IGF-1R-high tumours",
+      "source_calls_it": null,
+      "population": "NSCLC, IGF1R H-score subgroups (NCT00760929)",
+      "endpoint_role": "primary",
+      "outcome_tested": null
      }
     ]
    }
@@ -87,5 +165,27 @@
   "LUMVOA (BLA 761530) review in the bundle: not a member drug of this tile.",
   "In-silico/QSP dose models, patient-derived organoids or ex-vivo patient tumour sensitivity, PDX co-clinical trials, human genetic IGF1R models: none found for member drugs in NSCLC.",
   "Gong 2009 panel read as a class-level prediction (only 5/22 lines sensitive, so little benefit in unselected NSCLC): the paper frames it as an enrichment strategy, not a prediction of no unselected benefit, so not scored at class level."
+ ],
+ "gaps": [
+  {
+   "lead": "safety: contra entry, cynomolgus monkey repeat-dose toxicology of R1507/teprotumumab (FDA BLA 761143 PharmR)",
+   "outcome": "tracked",
+   "detail": "cyno-tox-teprotumumab, safety cell, entry 2 (2021 contra, imported_from MONDO:0001509) after 2004 untested opening"
+  },
+  {
+   "lead": "efficacy (candidate competing model): Gong 2009 R1507 22-line NSCLC panel",
+   "outcome": "tracked",
+   "detail": "r1507-nsclc-cell-line-panel, efficacy cell, 2009 untested opening (prediction_level patient); best-model choice is the checker's rule question 3"
+  },
+  {
+   "lead": "No press release, SEC filing or EMA document reporting an additional member-drug NSCLC failure",
+   "outcome": "none",
+   "detail": "checker note, not a system; figitumumab is not a member (tile members only)"
+  },
+  {
+   "lead": "efficacy (parallel track r1507-nsclc-cell-line-panel): Habben 2011 ASCO 7584 contra",
+   "outcome": "entry",
+   "detail": "r1507-nsclc-cell-line-panel efficacy 2011 contra in added_models (after 2009 untested opening); Habben 2011 ASCO 7584 abstract re-read verbatim on ascopubs (fc.py scrape); no check.json verdict covers efficacy index 4"
+  }
  ]
 }

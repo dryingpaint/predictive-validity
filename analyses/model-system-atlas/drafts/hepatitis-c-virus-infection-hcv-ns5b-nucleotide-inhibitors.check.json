@@ -20,11 +20,14 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
+   "status_supported": false,
+   "proposed_status": "retro",
    "proposed_year": 2012,
-   "rule": "7",
-   "note": "FDA ClinPharm quote verbatim (3-day GS-9851 MAD). Comparison was public earlier: Rodriguez-Torres J Hepatol epub 2012-11-23 (doi 10.1016/j.jhep.2012.11.018, tier 1) reports -5.3 vs -2.8 log10 at 28 days; paired with Lam 2012 (epub 2012-03-19) the entry dates 2012."
+   "rule": "Retrodiction: engagement is a target claim; a model result first public after any drug's patient result on the same target and action is retro",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "ClinPharmR quote verbatim (bundle). 2012 right: Rodriguez-Torres J Hepatol epub 2012-11-23 (PMID 23183528). But R1626 NS5B nucleoside HCV RNA falls (Hepatology 2008, PMID 18553458) precede the 2010 replicon result: retro, not same.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement is a target claim): R1626, an NS5B nucleoside inhibitor, cut HCV RNA in patients (Roberts 2008, PMID 18553458) before the 2010 sofosbuvir replicon result, so the reproduction is retro, not same; retrodiction flag should be true."
   },
   {
    "cell": "dose",
@@ -44,7 +47,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": "16",
-   "note": "PharmR section 1.2 quote verbatim (two consecutive sentences). Decision 16 ceiling: NOAEL margins 9/27/41x stated, patients dosed to 400 mg without the harm; same with margin_stated true is right. Floor untested on the replicon track is accepted."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PharmR 1.2 sentences verbatim in bundle. Stated NOAEL margins held at 400 mg: same, margin_stated true. combination_with ribavirin ± peginterferon fits NEUTRINO/FISSION; drug sofosbuvir, oral, unselected match."
   },
   {
    "cell": "efficacy",
@@ -63,8 +67,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "11",
-   "note": "ClinPharmR quote verbatim; FISSION/NEUTRINO registry dates 2014-04-02/2014-05-08 confirmed; Lawitz 2013 NEJM is doi 10.1056/NEJMoa1214853 (PMID 23607594, epub 2013-04-23), add to patient_trials. Label Table 10: GT3 SVR12 56% vs GT2 95%; no source calls the replicon match partial, same direction_only stands."
+   "rule": "efficacy: combination, single-arm and non-inferiority rulings",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "ClinPharmR quote verbatim (bundle). Scored on primary SVR12 with combination_with set; NEUTRINO single-arm and FISSION non-inferiority designs written into note. Oral, unselected match. Retrodiction via earlier class SVR data not found."
   },
   {
    "cell": "safety",
@@ -83,32 +88,31 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "5",
-   "note": "CrossR quote verbatim. Status same accepted under decision 5 #51: rat myocardial degeneration at 14x (7-day GS-9851) with clean 6-month NOAEL at 9x, patients clean. magnitude should be off_by_>5x on the exposure multiple, not direction_only. See rule question."
+   "rule": "safety: tolerability claims are predictions",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "CrossR quote verbatim (bundle). Clean rodent/dog cardiac call held in Phase 3 (PharmR: no clear cardiovascular signal): same. combination_with ribavirin ± peginterferon, oral, unselected match the Phase 3 patients."
   },
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2013,
-   "rule": "7",
-   "note": "Gill 2016 resolves (PMID 27864544); quote verbatim. Contra right, year not: FDA Sovaldi MedR (Dec 2013, tier 2) quotes the 2012-08-23 release 'unexpected events, which involve heart and kidney toxicity'; paired with Vernachio 2011 (doi 10.1128/AAC.01335-10) it dates 2013."
+   "rule": "safety silence rule; 6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Gill 2016 abstract quote verbatim (PMID 27864544, epub 2016-11-17). Contra 2016 as first admissible model-side statement. NCT01425970 Part B confirms daclatasvir and/or ribavirin partner; oral, unselected match."
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2014,
-   "rule": "7",
-   "note": "Gill 2016 quote verbatim; retro right. Comparison was public earlier: Ahmad, Hepatology (doi 10.1002/hep.27488, PubMed 2014-09-25, print 2015) states patient pathology 'consistent with some results of recent primate studies'; tier 1, low confidence (primate data then unpublished)."
+   "rule": "6; retrodiction (dose/safety: own drug)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ahmad abstract quote verbatim (PMID 25251156; accepted 2014-09-18, PubMed 2014-09-25), so 2014 holds; print 2015. Primate data not shown: low confidence right. Retro: BMS-986094's own 2012 harm precedes. Gill 2016 as model_src fine."
   },
   {
    "cell": "safety",
@@ -117,8 +121,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "note": "Regan 2016 resolves (PMID 27474787, epub 2016-08-23, print 64(5):1430); quote verbatim in abstract. Retro right; patient side (nine cases, 2015 FDA/EMA warnings) is in the same abstract. MK-3682 negative prediction correctly left unscored."
+   "rule": "retrodiction (dose/safety: own drug)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Regan 2016 abstract quote verbatim (PMID 27474787, epub 2016-08-23). Retro: sofosbuvir's own 2015 bradycardia cases precede. Amiodarone as co-medication with ledipasvir/daclatasvir; drug, oral, unselected match."
   },
   {
    "cell": "safety",
@@ -127,18 +132,24 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "note": "Millard 2016 resolves (PMID 27503387, epub 2016-08-07); quote verbatim in abstract. Retro right. Yu 2018 (PMID 29847141) confirmed for the line-dependence caveat."
+   "rule": "retrodiction (dose/safety: own drug)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Millard 2016 abstract quote verbatim (PMID 27503387, epub 2016-08-07). Retro on the same grounds as safety 5; combination_with, oral, unselected match the 2015 cases."
   },
   {
    "cell": "safety",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7",
-   "note": "Yanagida 2021 resolves (PMID 34334557, J Toxicol Sci 46(8):359); quote verbatim. Retro supported, but no status change on the track: #113/#127 reserve strengthens for a second miss, so this belongs in entry 6's note, not a new entry."
+   "proposed_status": "retro",
+   "proposed_year": 2021,
+   "rule": "Fields: drug/route/population_group/combination_with must match the patients compared",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Yanagida 2021 abstract quote verbatim (PMID 34334557). Retro right for BMS-986094 (own 2012 harm precedes). combination_with still null; should be 'daclatasvir ± ribavirin' as in safety 3/4/10/12. Judgement still says 'strengthens'.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: BMS-986094's own 2012 patient harm precedes the 2021 hiPSC-CM result, so retro holds. Fields rule: combination_with should read 'daclatasvir ± ribavirin'; that is a field fix, not a status change."
   },
   {
    "cell": "safety",
@@ -158,20 +169,24 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "4",
-   "note": "CrossR quote verbatim (line-broken, p.371-372 of text). MedR 2.4 class-motivated cardiac review confirmed. Null-null is same under #58 because Lam 2010/PharmR made the null a prediction; same-package convention already accepted at safety 2. Same-year contra (index 10) governs the track.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "4; safety: tolerability claims are predictions",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "CrossR quote verbatim (bundle). Clean mitochondrial assays, clean Phase 3 cardiac review: same 2013. combination_with ribavirin ± peginterferon and FISSION registry date fit; oral, unselected match."
   },
   {
    "cell": "safety",
    "index": 10,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7",
-   "note": "MedR quote verbatim (quoting 2012-08-23 release); Vernachio 2011 model_src sentence verbatim (abstract only). Contra holds as a stated prediction: Feng 2016 later found BMS-986094 CC50 1.1 uM in HepG2 (galactose) and 6.7 uM in primary hepatocytes, so the IND-era HepG2/CEM clean call failed in its own cells. 2013 dating follows safety 3; adjudication may prefer 2015 since Ahmad 2015 disputes the mitochondrial mechanism.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "proposed_status": "contra",
+   "proposed_year": 2012,
+   "rule": "Rule 6 dating: earliest public date, including a sponsor press release",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "MedR quote verbatim (bundle), itself the BMS 2012-08-23 release. Contra holds (stated clean prediction, Vernachio 2011, wrong). Both halves were public 2012-08-23, so year 2012, not 2013. Drug, oral, partner (NCT01425970) match.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status rule: Vernachio 2011 stated no mitochondrial toxicity and BMS-986094 then proved cardiotoxic, so contra. Rule 6: both halves were public on 2012-08-23 (BMS release), so the year should be 2012, not 2013."
   },
   {
    "cell": "safety",
@@ -191,9 +206,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "note": "Feng 2016 resolves (PMID 26596942, epub 2015-11-23, print AAC 60(2):806); quote verbatim. Retro right: run after and citing the halt; PolRMT 92% vs 0.45% and PC-3 CC50 0.68 vs >100 uM confirmed in Tables. Mechanism contested (Feng notes Ahmad 2015 found direct mitochondrial toxicity unlikely), fine for direction_only.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction (dose/safety: own drug)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Feng 2016 abstract quote verbatim (PMID 26596942, epub 2015-11-23). Retro for BMS-986094 (own 2012 harm precedes); sofosbuvir half now entry 17. combination_with daclatasvir ± ribavirin matches registry."
   },
   {
    "cell": "safety",
@@ -202,9 +217,56 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "note": "Quote verbatim. Contra upheld: the panel ran PSI-938 in primary human hepatocytes, Huh-7, HepG2 (all >89-100 uM) and PolRMT (1.6%), so the hepatic harm was asked and answered clean, and nucleoside hepatotoxicity is the harm class such panels exist to flag. Alternative (#90 tested-could-not-resolve -> untested/unresolved; Good 2020 CYP3A4 O6-ethylguanine 'likely' mechanism) raised as a rule question.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction that failed to reproduce is contra",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Feng 2016 full text (PMC4750701) quote verbatim. Panel cleared PSI-938 despite hepatocyte assays; own Dec 2011 ALT stop precedes, so contra. MedR confirms QUANTUM (SOF with GS-0938 and/or RBV); combination_with, oral fit."
+  },
+  {
+   "cell": "safety",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Good 2020 PLoS One full text (PMC6949113) abstract carries the quote verbatim. Opener untested at first published use (2020) for a member; distinct CYP3A4 metabolite system from the mitochondrial tracks."
+  },
+  {
+   "cell": "safety",
+   "index": 15,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2020,
+   "rule": "Fields: drug/route/population_group/combination_with must match the patients compared",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Good 2020 full text (PMC6949113) quote near-verbatim ('O6-alkylated'). Retro right (PSI-938's 2011 ALT stop precedes). combination_with still null; patients compared are QUANTUM's, so set as in safety 13.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: PSI-938's 2011 patient ALT signal precedes Good 2020, so retro holds. Fields rule: combination_with should match QUANTUM as in safety 13; a field fix, not a status change."
+  },
+  {
+   "cell": "safety",
+   "index": 16,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abstract quote verbatim (PMID 42826065, epub 2026-10-02). NCT05904470 results first posted 2025-10-21, bemnifosbuvir+ruzasvir, so 2025. Tidy: patient_trials registry_date null; judgement still says dated 2026."
+  },
+  {
+   "cell": "safety",
+   "index": 17,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "retrodiction (dose/safety: own drug)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Feng 2016 abstract quote verbatim. Sofosbuvir's own clean Phase 3 safety record (FDA 2013) precedes the panel: retro 2015. Opener safety 11 (2012) on the track; combination_with, oral, unselected match."
   }
  ],
  "missing": [
@@ -221,6 +283,7 @@
   "Retrodiction dating when the patient paper (Ahmad, PubMed 2014-09-25) cites unpublished model data ('consistent with some results of recent primate studies', data not shown): does that tier-1 statement set the retro entry's year at low confidence, or does the model paper (Gill 2016) govern?",
   "Track identity for IND toxicology across members: the draft runs one track for sofosbuvir (rat/dog/mouse), BMS-986094 (rat/cynomolgus) and would for IDX-184 (mouse/rat/cynomolgus); is 'standard repeat-dose toxicology' one system per decision 13 (#48), or one track per species set? And is Gill's cynomolgus study with echocardiography a 'newer model' (second track, decision 6) or the same monkey model re-run (retro on the IND track)?",
   "Second matched retrodiction on one track (Yanagida 2021 after Millard 2016): #113/#127 permit a new entry only on a status change or a second miss; may strengthens: true carry a second match, or does it fold into the note?",
-  "Decision 5 for a terminated member: IDX-184's animals predicted heart/kidney/muscle harm; patients dosed up to 12 weeks before the class hold showed none. Is a predicted harm absent from a short, truncated patient dataset contra/opposite, or untested because the dataset could not have shown it?"
+  "Decision 5 for a terminated member: IDX-184's animals predicted heart/kidney/muscle harm; patients dosed up to 12 weeks before the class hold showed none. Is a predicted harm absent from a short, truncated patient dataset contra/opposite, or untested because the dataset could not have shown it?",
+  "Engagement/efficacy retrodiction across nucleoside vs nucleotide NS5B drugs: R1626 (2008), valopicitabine and mericitabine patient viral-load/SVR results precede the sofosbuvir replicon data (2010, 2012). Does 'same target' include nucleoside NS5B drugs outside the member list? Applied to engagement 2; efficacy 2 left same pending this."
  ]
 }

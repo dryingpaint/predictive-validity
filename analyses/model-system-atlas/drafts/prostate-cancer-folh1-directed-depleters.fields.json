@@ -1,0 +1,137 @@
+{
+ "tile": "prostate-cancer-folh1-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug mip-1095, route iv (track split: MIP-1095 vs lutetium on the PSMA+/- mouse system)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug mip-1095, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug lutetium lu-177 vipivotide tetraxetan, route iv; prediction_level patient -> class (checker; one value per model_id)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug PSMA ADC, route iv, population_group stage_or_line (PSMA-unselected post-abi/enz mCRPC)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug PSMA ADC, route iv, population_group stage_or_line"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug lutetium lu-177 vipivotide tetraxetan, route iv; model text and model_first_use_year 2015 -> 2009 aligned with model_id"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug lutetium lu-177 vipivotide tetraxetan, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug lutetium lu-177 vipivotide tetraxetan, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug PSMA ADC, route iv; judgement re-read as the 'no target nor margin' row (efficacy scored as trial showed)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug mip-1095, route iv (opens the MIP-1095 efficacy track)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug lutetium lu-177 vipivotide tetraxetan, route iv; ARROW (MIP-1095) moved out of patient_trials to its own track entry"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug lutetium lu-177 vipivotide tetraxetan, route iv; endpoint_role null -> primary; prediction_level patient -> class"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug PSMA ADC, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status contra -> same (source_calls_it partial), quote replaced with the authors' 'some activity' conclusion: single-arm design and split co-primary rulings (scored as the authors call it; responses in the predicted direction)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug mip-1095, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug mip-1095, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug lutetium lu-177 vipivotide tetraxetan, route iv; year 2020 -> 2016 (rule 6 earliest public date), src/quote Roy 2020 -> Kratochwil 2016 (drug's own salivary dosimetry), model_src Benesova 2015, product_in_model true; Roy 2020 kept in judgement"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug PSMA ADC, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug PSMA ADC, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug lutetium lu-177 vipivotide tetraxetan, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug lutetium lu-177 vipivotide tetraxetan, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "drug lutetium lu-177 vipivotide tetraxetan, route iv, population_group unselected; model text corrected to an indirect comparison"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "drug lutetium lu-177 vipivotide tetraxetan, route iv; retrodiction now rests on the drug's own earlier result (Kratochwil 2016), not MIP-1095's (Zechmann 2014); status contra unchanged"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "opener, psma-pos-neg-xenograft x lutetium lu-177 vipivotide tetraxetan iv, untested 2016 (proxy year; first use Benesova 2015)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "ARROW: 131I-MIP-1095 + enzalutamide vs enzalutamide, PSA50 62.9% vs 31.3%, same 2024 (ESMO 2024; combination ruling), combination_with enzalutamide"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "opener, psma-pos-neg-xenograft x lutetium lu-177 vipivotide tetraxetan iv, untested 2016 (proxy year; first use Benesova 2015)"
+  }
+ ]
+}

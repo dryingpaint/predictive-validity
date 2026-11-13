@@ -206,5 +206,37 @@
   "Patient-derived organoids, precision-cut lung slices, ex-vivo drug sensitivity, human challenge (methacholine/allergen) for any member drug in COPD: none found in the Europe PMC sweeps; abediterol's asthma bronchodilation (Singh 2014, PMID 25398689) is a patient trial, not a challenge model.",
   "Program-stop records (NCT04199598 abediterol termination 2020 for business prioritisation; PF-00610355 and AZD3199 stops): registry/business records, not model systems; nothing to add here.",
   "Checker attribution note: doi:10.1002/psp4.12270 is Hendrickx, Lamm Bergstrom, Janzen, Friden, Eriksson, Grime and Ferguson (CPT Pharmacometrics Syst Pharmacol 2018), not 'Boger & Friden 2018'; cited under the resolved authorship."
+ ],
+ "gaps": [
+  {
+   "lead": "Condreay 2016 (Respir Med, PMID 27109822): ADRB2 genotype vs vilanterol trough-FEV1 response",
+   "outcome": "added",
+   "detail": "adrb2-genotype-pharmacogenetics (human_genetic, patient level): efficacy untested 2016 opening entry, then contra 2016 (no ADRB2 variant associated in 1795 VI-treated patients)"
+  },
+  {
+   "lead": "Boger & Friden 2018 = Hendrickx et al. 2018 (CPT PSP, doi:10.1002/psp4.12270): translational lung-PK model incl. AZD3199",
+   "outcome": "added",
+   "detail": "az-translational-lung-pk-in-silico (in_silico): efficacy untested 2017 opening entry, then retro 2017 (AZD3199 Kuna 2013 FEV1 vs predicted lung 0.41-1.6x guinea-pig IC50); authorship corrected to Hendrickx"
+  },
+  {
+   "lead": "Aparici 2016 (Eur J Pharmacol, PMID 26656755): dog safety index / guinea-pig t1/2 for vilanterol",
+   "outcome": "tracked",
+   "detail": "Same Almirall guinea-pig/dog system as almirall-guinea-pig-dog-bronchoprotection-heart-rate (safety 3, engagement 4); vilanterol's dog heart-rate vs human heart-rate comparison is gsk-dog-cardiovascular-telemetry safety 1-2; the 2016 post-approval rerun adds no new system"
+  },
+  {
+   "lead": "Bjermer 2013 (PMID 23907810, NCT00736489): AZD3199 potassium/heart rate/QTc vs formoterol",
+   "outcome": "covered",
+   "detail": "check.json safety 6 (az-guinea-pig-histamine-bronchoconstriction) already proposes untested -> same, year 2014, imported_from MONDO:0004979 on Bjermer 2013 (NCT00736489); adjudicated same"
+  },
+  {
+   "lead": "Program stops (abediterol NCT04199598 business prioritisation; PF-00610355 strategic 2011; AZD3199 unknown)",
+   "outcome": "none",
+   "detail": "Outside the rules for added_models: registry/business termination records are not model-to-patient comparisons; the NCT04199598 reason belongs in the draft tile note, not the models file"
+  },
+  {
+   "lead": "Hughes 2015 (Drug Des Devel Ther, PMID 25709399): AZD3199 lower systemic availability in COPD",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: check.json dose 7 is confirmed (same 2014, Kuna 2013) and its note already cites Hughes 2015 (PMID 25709399) for the lower COPD exposure; optional supporting citation only"
+  }
  ]
 }

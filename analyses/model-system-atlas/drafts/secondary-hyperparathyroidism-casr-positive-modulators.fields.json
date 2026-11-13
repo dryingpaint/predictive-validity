@@ -1,0 +1,122 @@
+{
+ "tile": "secondary-hyperparathyroidism-casr-positive-modulators",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "year 2015 -> 2013 (rule 6: Martin 2014 NDT, online Nov 2013, healthy-volunteer iPTH fall); drug etelcalcetide, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> contra, retrodiction true, margin_stated true, source_calls_it over_predicted; quote swapped from fertility NOAEL to FDA PharmR 'these safety margins significantly over-predict human risk' (settles RULE QUESTION, decision 16; margin public after 2014 patient data); drug etelcalcetide, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true (evocalcet's own phase 3 result announced 2017-01-31 / ASN Nov 2017, before rat dose data public 2018); drug evocalcet, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true (Chen 2016 regimen claim first public after etelcalcetide's own 2014 phase 3 announcements); drug etelcalcetide, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2017 -> 2014 (rule 6: Amgen press release 2014-08-18, 74.0% vs 8.3%); drug etelcalcetide, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true (final PKPD model fit on phase 3, first public after 2014 results; checker adjudication); drug etelcalcetide, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2017 -> 2014 (rule 6: Amgen press release 2014-08-18, blood calcium decreased 61.0% vs 8.3%); heart-failure RULE QUESTION settled: not a missed harm, label ties it to calcium lowering; status same kept; drug etelcalcetide, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true (evocalcet's own upper-GI result announced 2017-01-31, before Kawata 2018); drug evocalcet, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true (upacicalcet phase I/II patients online 2022-06-28 before Goto 2023 rat data, online 2023-08-02); drug upacicalcet, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "status same -> retro, retrodiction true (Chen 2016 calcium prediction first public after etelcalcetide's own 2014 patient calcium data); drug etelcalcetide, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug etelcalcetide, route iv set"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug etelcalcetide, route iv set"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug etelcalcetide, route iv set"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug evocalcet, route oral set; model_first_use_year 2018 -> 2013 to match uremic-rat"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug etelcalcetide, route iv set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug etelcalcetide, route iv set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug etelcalcetide, route iv set"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug etelcalcetide, route iv set"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug evocalcet, route oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug etelcalcetide, route iv set"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "drug evocalcet, route oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "drug evocalcet, route oral set"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "untested opener of the gi-rat-marmoset x upacicalcet x iv track, 2023, Goto 2023 (doi 10.1016/j.ejphar.2023.175936), rat gastric emptying unaffected at 300x the PTH dose"
+  }
+ ]
+}

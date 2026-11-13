@@ -12,7 +12,11 @@
   "Europe PMC: vonsetamig / REGN5459; WebSearch + OncLive + Crossref for AACR 2023 abstract CT013 (low-CD3-affinity design vs CRS)",
   "Europe PMC: belantamab / ide-cel ex vivo patient-derived myeloma cells predicting clinical response",
   "Europe PMC: P-BCMA-101 preclinical / clinical",
-  "ClinicalTrials.gov API: results-first-posted dates for NCT02658929, NCT04246047, NCT04484623"
+  "ClinicalTrials.gov API: results-first-posted dates for NCT02658929, NCT04246047, NCT04484623",
+  "Gap pass: Europe PMC (idecabtagene OR ide-cel OR bb2121) AND T-cell lymphoma/malignancy AND CAR-positive/integration; EMA 38-case review (PMID 41430400, PMC13226032) full text grep for Abecma/idecabtagene",
+  "Gap pass: Europe PMC orvacabtagene/orva-cel/JCARH125 preclinical; full text of orva-cel immunogenicity paper (PMC13312103, Mol Ther Adv 2026) grep EpiMatrix/MAPPs/predicted",
+  "Gap pass: Europe PMC zevorcabtagene/zevor-cel/CT053 preclinical and phase 2 (PMID 41029877, 41160798); B-NDG delayed-toxicity study (PMID 39606226)",
+  "Gap pass: Europe PMC BCMA CAR-NK-92 myeloma clinical / NCT03940833; in-vitro CAR-NK-92 study (PMID 42682210)"
  ],
  "added_models": [
   {
@@ -172,6 +176,39 @@
   "Belantamab exposure-response analyses (DREAMM-2/7/8; Br J Cancer 2026, Target Oncol 2025, Haematologica 2026) and the sBCMA/M-protein PopPKPD (CPT:PSP 2026): analyses of the trials' own patient data, not model systems with a prior prediction.",
   "Ex vivo patient myeloma cells (belantamab ADCC/killing in Tai 2014; CAR-T product phenotype): no study found using ex vivo sensitivity to predict or select responders for a member drug.",
   "Orva-cel, zevor-cel, P-BCMA-101, BCMA CAR-NK-92: their preclinical systems are BCMA+ xenografts in immunodeficient mice, the system the draft already tracks; no other model with a patient comparison found.",
-  "Teclistamab ex vivo EC90 dose model and cilta-cel data: not members of this tile."
+  "Teclistamab ex vivo EC90 dose model and cilta-cel data: not members of this tile.",
+  "Orva-cel EpiMatrix in-silico score (-35.19, 'low immunogenicity risk') and MAPPs vs 44.6% anti-CAR antibodies in EVOLVE (PMC13312103, 2026): an immunogenicity readout with no patient harm (ATA did not affect expansion or PFS), so not one of the four questions; the in-silico run date is not stated and the paper is a post-trial characterisation."
+ ],
+ "gaps": [
+  {
+   "lead": "DREAMM-3 primary PFS miss public 2022-11-07 (GSK / SEC 6-K); patient_trials cites only the 2026 final analysis",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: corrects efficacy[2] (bcma-myeloma-xenograft-adc) patient_trials[2] citation/date to the 2022-11-07 GSK/SEC 6-K record (https://www.sec.gov/Archives/edgar/data/1131399/000165495422014760/a4558f.htm); status unchanged. Already proposed in check.json 'missing' item 1; the score question (active-comparator miss) is open in check.json rule_questions."
+  },
+  {
+   "lead": "Ide-cel integration-site / IL-2-independent growth assay vs class T-cell malignancy boxed warning",
+   "outcome": "none",
+   "detail": "No product-level comparison: FDA and EMA (PMID 41430400) pool CAR+ cases across BCMA lentiviral products (ide-cel + cilta-cel, cilta-cel not a member); no ide-cel CAR+ case published; rule 7/quote rule cannot score a class-pooled signal."
+  },
+  {
+   "lead": "idecabtagene vicleucel",
+   "outcome": "tracked",
+   "detail": "Tracked as ide-cel/bb2121: bcma-myeloma-xenograft-nsg-cart dose[1] and safety[1] (FDA Abecma SBRA), efficacy[2] judgement (KarMMa), bb2121-bcma-density-cell-panel efficacy[3]-[4] (Friedman 2018, Raje 2019)."
+  },
+  {
+   "lead": "orvacabtagene autoleucel",
+   "outcome": "none",
+   "detail": "Preclinical system is BCMA+ xenograft (draft's class track); only other model found is EpiMatrix/MAPPs immunogenicity vs ATA (PMC13312103), not one of the four questions and no patient harm; searched Europe PMC orva-cel/JCARH125."
+  },
+  {
+   "lead": "zevorcabtagene autoleucel",
+   "outcome": "none",
+   "detail": "Searched Europe PMC zevor-cel/CT053 preclinical + LUMMICAR/phase 2 (PMID 41029877); only BCMA+ xenograft / B-NDG toxicity work (class xenograft track), no stated model-to-patient comparison."
+  },
+  {
+   "lead": "BCMA CAR-NK 92 cells",
+   "outcome": "none",
+   "detail": "Only in-vitro CAR-NK-92 cytotoxicity (PMID 42682210, 2026); no published patient results for NCT03940833 found, so no comparison exists."
+  }
  ]
 }

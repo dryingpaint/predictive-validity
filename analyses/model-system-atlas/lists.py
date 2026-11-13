@@ -1,5 +1,4 @@
-"""Draw the atlas lists from the database (issue #76, task 2): the named indications and the
-long-tail program sample.
+"""Draw the atlas disease list from the database (issue #76, task 2).
 
     .venv/bin/python analyses/model-system-atlas/lists.py
 
@@ -8,18 +7,13 @@ Cohort: programs entering Phase 2 in 2008-2019 under the report's own definition
 lifecycle programs excluded; phases credited by skipping are not entries). Each program is
 one (entity, MONDO disease); its area is preclin.mondo_bio_area.
 
-Named indications: the top 15 diseases in oncology and the top 4 in every other area, after
-the cleaning rules in the issue, applied here as code so a re-run after #70 reproduces them:
-  MERGE   parent/child duplicates (child counted under the parent);
-  DROP    mapping errors and supportive-care conditions;
-  then rank, so the next-ranked disease backfills each dropped one.
+Diseases: every disease with a Phase 2 entry, after the cleaning rules, applied here as code:
+  MERGE   two terms for the same patients (the duplicate counted under the term kept);
+  DROP    mapping errors and supportive-care conditions.
+A disease's rank is its place in its area by programs.
 
-Long tail: SAMPLE_N programs drawn without replacement, seed SEED, from entries whose disease is
-not a named indication.
-
-Writes lists/named_indications.csv, lists/volumes.json (shape of volumes_pre_rebuild.json) and
-lists/sample.csv, and prints the issue's table for comparison. Read-only. Each named indication's
-mechanism (its tile) is drawn by class_audit.py into lists/named_contexts.csv.
+Writes lists/named_indications.csv and lists/provenance.json. Read-only. Each disease's tracked
+mechanisms (its tiles) are drawn by class_audit.py into lists/named_contexts.csv.
 """
 import json
 import os
@@ -36,18 +30,28 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "lists")
 WINDOW = (date(2008, 1, 1), date(2019, 12, 31))
 PHASE = 2
-TOP = {"oncology": 15}
-TOP_DEFAULT = 4
-SAMPLE_N = 200
-SEED = 20261102
-
-# child -> parent (issue #76: "merged parent/child duplicates")
+# duplicate term -> the term counted. Two terms merge only when they name the same patients; a subtype with
+# its own patients (triple-negative breast cancer, DLBCL, psoriatic arthritis) stays a disease of its own.
+# The term kept is the one a tracked tile already uses where there is one, so no stored track record moves.
 MERGE = {
     "MONDO:0005416": "MONDO:0005178",  # knee osteoarthritis -> osteoarthritis
     "MONDO:0005015": "MONDO:0005148",  # diabetes mellitus -> type 2 diabetes mellitus
     "MONDO:0013209": "MONDO:0007027",  # MASLD -> MASH
     "MONDO:0005324": "MONDO:0011786",  # seasonal allergic rhinitis -> allergic rhinitis
     "MONDO:0002050": "MONDO:0002009",  # depressive disorder -> major depressive disorder
+    "MONDO:0009348": "MONDO:0004952",  # classic Hodgkin lymphoma -> Hodgkins lymphoma
+    "MONDO:0004948": "MONDO:0003864",  # B-cell chronic lymphocytic leukemia -> CLL/SLL
+    "MONDO:0004947": "MONDO:0004967",  # B-cell acute lymphoblastic leukemia -> acute lymphoblastic leukemia
+    "MONDO:0020511": "MONDO:0004967",  # precursor B-cell acute lymphoblastic leukemia -> acute lymphoblastic leukemia
+    "MONDO:0005417": "MONDO:0005150",  # wet macular degeneration -> age-related macular degeneration
+    "MONDO:0003004": "MONDO:0005150",  # macular degeneration -> age-related macular degeneration
+    "MONDO:0000432": "MONDO:0100280",  # lymphoplasmacytic lymphoma -> Waldenstrom macroglobulinemia
+    "MONDO:0006543": "MONDO:0009179",  # epidermolysis bullosa dystrophica -> recessive dystrophic EB
+    "MONDO:0011758": "MONDO:0001586",  # Hurler syndrome -> mucopolysaccharidosis type 1
+    "MONDO:0004784": "MONDO:0004979",  # allergic asthma -> asthma
+    "MONDO:0005344": "MONDO:0005366",  # hepatitis B virus infection -> chronic hepatitis B virus infection
+    "MONDO:0005041": "MONDO:0005338",  # glaucoma -> open-angle glaucoma
+    "MONDO:0005354": "MONDO:0005231",  # chronic hepatitis C virus infection -> hepatitis C virus infection
 }
 # dropped outright (issue #76): a mapping error and supportive-care conditions
 DROP = {
@@ -76,40 +80,19 @@ def main() -> None:
     name = labels(sorted(ent.disease.unique()))
 
     counts = ent.groupby(["bio_area", "disease"]).program_id.nunique().reset_index(name="n")
-    named, areas = [], []
-    for area, g in counts.groupby("bio_area"):
-        g = g.sort_values("n", ascending=False)
-        k = TOP.get(area, TOP_DEFAULT)
-        head = g.head(k)
-        for rank, r in enumerate(head.itertuples(), 1):
-            named.append({"area": area, "rank": rank, "mondo_id": r.disease, "label": name.get(r.disease, r.disease), "n": int(r.n),
-                          "merged_from": ";".join(c for c, p in MERGE.items() if p == r.disease)})
-        areas.append({"area": area,
-                      "indications": [{"mondo_id": r.disease, "label": name.get(r.disease, r.disease), "n": int(r.n)} for r in head.itertuples()],
-                      "rest": int(g.n[k:].sum()), "n_rest_indications": int(len(g) - k)})
-    named_df = pd.DataFrame(named)
-    named_df.to_csv(os.path.join(OUT, "named_indications.csv"), index=False)
-    json.dump(areas, open(os.path.join(OUT, "volumes.json"), "w"), indent=1)
-
-
-    tail = ent[~ent.disease.isin(set(named_df.mondo_id))]
-    sample = tail.sample(n=min(SAMPLE_N, len(tail)), random_state=SEED)[["program_id", "moiety_id", "mondo_id", "disease", "bio_area", "modality", "entry_year"]]
-    sample["label"] = sample.disease.map(name)
-    sample.to_csv(os.path.join(OUT, "sample.csv"), index=False)
+    counts = counts.sort_values(["n", "disease"], ascending=[False, True]).drop_duplicates("disease")  # a disease in two areas counts in its larger
+    counts["rank"] = counts.groupby("bio_area").n.rank(ascending=False, method="first").astype(int)
+    named = pd.DataFrame({"area": counts.bio_area, "rank": counts["rank"], "mondo_id": counts.disease,
+                          "label": counts.disease.map(lambda d: name.get(d, d)), "n": counts.n,
+                          "merged_from": counts.disease.map(lambda d: ";".join(c for c, p in MERGE.items() if p == d))})
+    named = named.sort_values(["area", "rank"])
+    named.to_csv(os.path.join(OUT, "named_indications.csv"), index=False)
 
     total = int(ent.program_id.nunique())
-    simple = int(frame.query("SELECT count(*) AS n FROM preclin.dev_program WHERE ph2_start BETWEEN %s AND %s", (WINDOW[0], WINDOW[1])).n[0])
-    print(f"(for comparison: {simple:,} programs have dev_program.ph2_start in the window, the pre-rebuild treemap's simpler count)")
-    print(f"snapshot {snap}; Phase {PHASE} entries {WINDOW[0].year}-{WINDOW[1].year}: {total:,} programs, "
-          f"{ent.disease.nunique():,} diseases; named {len(named_df)} cover {named_df.n.sum() / total:.0%}; "
-          f"sample {len(sample)} (seed {SEED})")
-    print("\n| Area | Indications |\n|---|---|")
-    for a in sorted(areas, key=lambda a: -(sum(i['n'] for i in a['indications']) + a['rest'])):
-        print(f"| {a['area']} ({len(a['indications'])}) | " + ", ".join(f"{i['label']} ({i['n']})" for i in a["indications"]) + " |")
+    print(f"snapshot {snap}; Phase {PHASE} entries {WINDOW[0].year}-{WINDOW[1].year}: {total:,} programs in {len(named):,} diseases")
     json.dump({"snapshot": str(snap), "window": [str(w) for w in WINDOW], "phase": PHASE, "programs": total,
-               "diseases": int(ent.disease.nunique()), "seed": SEED, "sample_n": len(sample), "merge": MERGE, "drop": DROP},
+               "diseases": len(named), "merge": MERGE, "drop": DROP},
               open(os.path.join(OUT, "provenance.json"), "w"), indent=1)
-
 
 
 # Label for a (target, action) mechanism, e.g. "BTK inhibitors".

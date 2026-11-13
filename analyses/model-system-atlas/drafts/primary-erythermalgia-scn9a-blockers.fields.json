@@ -1,0 +1,77 @@
+{
+ "tile": "primary-erythermalgia-scn9a-blockers",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug pf-05089771, route oral set (type/identity only)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug pf-05089771, route oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug pf-05089771, route oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug pf-05089771, route oral set; population coded healthy volunteers"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug funapide, route oral set: genetics opener now the funapide-oral track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug funapide, route oral set; topical funapide and PF-05089771 trials moved from patient_trials into their own appended tracks"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug pf-05089771, route oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "year 2019 -> 2010 (rule 6 opener at model_first_use_year, check adjudication); drug pf-05089771, route oral; funapide split out"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "genetics x funapide topical opener, untested 2011 (NCT01486446 start)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "genetics x funapide topical, same 2014 (registry results 0.24 vs 2.4 cooling uses/day; no primary endpoint, scored in predicted direction per single-arm ruling)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "genetics x pf-05089771 oral opener, untested 2012 (NCT01769274 start)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "genetics x pf-05089771 oral, same (partial) 2016 (Cao 2016; registry 2019-11-19)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "tox x funapide oral, untested 2010 (unpublished)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "tox x funapide topical, untested 2011 (unpublished; 1/7 SAE)"
+  }
+ ]
+}

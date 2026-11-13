@@ -10,7 +10,8 @@
   "Europe PMC search: melanoma ex vivo / organoid / short-term culture + vemurafenib/dabrafenib/encorafenib + clinical or patient response",
   "Europe PMC search: intermittent + melanoma + vemurafenib/dabrafenib/encorafenib + randomized or phase 2 (other tests of the drug-addiction prediction): found Gonzalez-Cao 2021 Nat Commun 10.1038/s41467-021-26572-6 and INTERIM, Dayimu 2023 Eur J Cancer 10.1016/j.ejca.2023.113455",
   "Europe PMC search: physiologically based / quantitative systems / in silico + vemurafenib/dabrafenib/encorafenib + melanoma + dose",
-  "ClinicalTrials.gov API v2: NCT02196181 (S1320; first posted 2014-07-21, PFS primary, no results posted), NCT02583516 (first posted 2015-10-22, PFS primary, no results), NCT03352947 (INTERIM; first posted 2017-11-24, no results); term search intermittent dabrafenib trametinib continuous melanoma"
+  "ClinicalTrials.gov API v2: NCT02196181 (S1320; first posted 2014-07-21, PFS primary, no results posted), NCT02583516 (first posted 2015-10-22, PFS primary, no results), NCT03352947 (INTERIM; first posted 2017-11-24, no results); term search intermittent dabrafenib trametinib continuous melanoma",
+  "Gap pass: Europe PMC core record for Gao 2015 (10.1038/nm.3954; not open access); nature.com scrape via fc.py (references only); fc.py search for PCT melanoma BRAF response; PMC5821416 (Gao & Williams, Mol Cell Oncol) read via fc.py scrape; Crossref dates for both"
  ],
  "added_models": [
   {
@@ -365,6 +366,141 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "novartis-pdx-clinical-trial",
+   "model": "Novartis PDX clinical trial (PCT): ~1,000 PDXs, one mouse per model per treatment, population response rate",
+   "model_kind": "animal",
+   "model_first_use_year": 2015,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "model_id": "novartis-pdx-clinical-trial",
+      "model": "Novartis PDX clinical trial (PCT): ~1,000 PDXs, one mouse per model per treatment, population response rate",
+      "model_kind": "animal",
+      "prediction_level": "class",
+      "model_first_use_year": 2015,
+      "subjects": "patients",
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": false,
+      "imported_from": null,
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [],
+      "product_in_model": true,
+      "registry_date": null,
+      "population": "BRAF V600-mutant melanoma",
+      "retrodiction": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "confidence_note": "Abstract-level reading (PMID 26479923, epub 2015-10-19); body paywalled (nature.com served references only). The abstract names no drug; the BRAF-mutant melanoma encorafenib arm is described in the authors' 2018 commentary.",
+      "year": 2015,
+      "status": "untested",
+      "comparison_stated": false,
+      "epub_year": 2015,
+      "print_year": 2015,
+      "note": "Novartis ran population-level 'PDX clinical trials' (62 treatments, six indications), including encorafenib alone and with binimetinib in BRAF-mutant melanoma PDX.",
+      "short": "Novartis PDX clinical trial includes encorafenib",
+      "src": "https://doi.org/10.1038/nm.3954",
+      "srcLabel": "Gao 2015",
+      "quote": "We demonstrate both the reproducibility and the clinical translatability of this approach by identifying associations between a genotype and drug response, and established mechanisms of resistance.",
+      "confidence": "medium",
+      "judgement": "Own track: a population-level PDX screen (one mouse per model) giving a class response rate, distinct from the donor-matched PDX track (patient level) and from cell-line xenografts. Encorafenib, a member, was dosed (product_in_model true)."
+     },
+     {
+      "model_id": "novartis-pdx-clinical-trial",
+      "model": "Novartis PDX clinical trial (PCT): ~1,000 PDXs, one mouse per model per treatment, population response rate",
+      "model_kind": "animal",
+      "prediction_level": "class",
+      "model_first_use_year": 2015,
+      "subjects": "patients",
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": false,
+      "imported_from": null,
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [],
+      "product_in_model": true,
+      "registry_date": null,
+      "population": "BRAF V600-mutant melanoma",
+      "retrodiction": true,
+      "magnitude": "within_2x",
+      "magnitude_basis": "objective response rate: ~65% of BRAF-mutant melanoma PDX on encorafenib vs 53% (vemurafenib, BRIM-2) and 59% (dabrafenib, BREAK-2) in patients",
+      "source_calls_it": "match",
+      "confidence_note": "Full text read on PMC (PMC5821416), Mol Cell Oncol 5(2), epub 2018-02-09 (Crossref). Gao 2015's paywalled body cites the same trials (Sosman 2012, BREAK-2) and likely states this comparison first, which would move the date to 2015; not verified. Patient comparators' response rates (53%, 59%) taken from the cited trials, not re-read here.",
+      "year": 2018,
+      "status": "retro",
+      "comparison_stated": true,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "note": "Authors set the PCT encorafenib response (~65%, BRAF-mutant; 0 NRAS-mutant responders) beside vemurafenib and dabrafenib clinical response rates; BRAF+MEK raised PDX response to 100%.",
+      "short": "PCT encorafenib response matched clinic rates",
+      "src": "https://doi.org/10.1080/23723556.2016.1162895",
+      "srcLabel": "Gao & Williams 2018",
+      "quote": "the BRAF inhibitor encorafenib demonstrated an approximately 65% response rate among BRAF-mutant melanomas, which is consistent with the response rates reported for vemurafenib and dabrefinib in the clinic.",
+      "confidence": "medium",
+      "judgement": "Retro: the vemurafenib (2011-12) and dabrafenib (2012-13) response rates were public before the 2015 PCT, so the match is a reproduction of known results. Class level: the comparison is a population response rate. No prospective comparison with encorafenib's own patient response rate (COLUMBUS, PFS primary) was stated, so none is scored."
+     }
+    ]
+   }
+  },
+  {
+   "model_id": "rat-dog-toxicology",
+   "model": "Rat and dog toxicology (IND package)",
+   "model_kind": "animal",
+   "prediction_level": "class",
+   "model_first_use_year": 2006,
+   "cells": {
+    "safety": [
+     {
+      "model_id": "rat-dog-toxicology",
+      "model": "Rat and dog toxicology (IND package)",
+      "model_kind": "animal",
+      "prediction_level": "class",
+      "model_first_use_year": 2006,
+      "year": 2018,
+      "status": "contra",
+      "strengthens": true,
+      "note": "Encorafenib's 13-week rat study showed skin abnormalities and paw hyperkeratosis, matching clinical skin toxicity, but no neoplasia; cuSCC reached 7.8% on encorafenib monotherapy.",
+      "short": "Rat skin toxicity matched; cuSCC still missed",
+      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210496Orig1s000MultidisciplineR.pdf",
+      "srcLabel": "FDA multidisciplinary review 2018",
+      "quote": "The incidence of cuSCC in the COLUMBUS Part 1 encorafenib monotherapy was 7.8%.",
+      "confidence": "medium",
+      "confidence_note": "Bundle text of the NDA 210496 review: p.35 rat skin abnormalities at all doses incl. 6 mg/kg (~11x clinical exposure) and 'Skin toxicity is the most common adverse event noted clinically with encorafenib treatment'; rat gross pathology table: hind-paw thickening 'correlates with hyper keratosis of the skin'; COLUMBUS hyperkeratosis 57.3% on encorafenib. Carcinogenicity studies not conducted.",
+      "reason": "Rat/dog skin silent on cuSCC for two members",
+      "judgement": "Second member's own rat package on the same track. The review states the skin-toxicity match (hyperkeratosis predicted and seen), so source_calls_it partial; it never pairs the rat with cuSCC, which the 13-week rat did not show, so the cuSCC miss is my pairing and the entry is contra, strengthening the 2010 contra (one drug's contra beats another's same; the encorafenib cuSCC miss keeps it contra regardless). Dated to the 2018 review; COLUMBUS NCT01909453 results first posted 2021-07-12.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 2,
+      "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210496Orig1s000MultidisciplineR.pdf",
+      "model_src_tier": 2,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "registry_date": "2021-07-12",
+      "model_filed": true,
+      "product_in_model": true,
+      "retrodiction": false,
+      "magnitude": "direction_only",
+      "magnitude_basis": "cuSCC 7.8% on encorafenib monotherapy vs no neoplastic skin finding in the 13-week rat; hyperkeratosis predicted and seen (57.3%)",
+      "source_calls_it": "partial",
+      "population": "BRAF V600-mutant",
+      "imported_from": null
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -377,7 +513,33 @@
   "Zebrafish BRAF V600E melanoma: no paper comparing a member drug's zebrafish effect with clinical response; no patient comparison found.",
   "Melanoma ex-vivo organoids / short-term cultures for members: search returned only an immune-organoid feasibility study and a glioma series; no stated comparison with clinical response to a member drug.",
   "In-silico models: encorafenib food/PPI PBPK (Mol Pharm 2023) is an absorption model, not a dose-selecting disease model compared with patients; the BRAF-MEK-ERK ODE model (npj Syst Biol 2024) has no patient comparison. Not added.",
-  "IMPemBra (NCT02625337; short-term dabrafenib+trametinib added to pembrolizumab): tests immunotherapy priming, not the drug-addiction schedule prediction; not a test of this track.",
-  "Novartis 1x1x1 PDX clinical-trial simulation (Gao 2015, 67 melanoma PDX): population-level translatability claim, not a donor-matched comparison for a member drug; not fetched within budget, so not verified."
+  "IMPemBra (NCT02625337; short-term dabrafenib+trametinib added to pembrolizumab): tests immunotherapy priming, not the drug-addiction schedule prediction; not a test of this track."
+ ],
+ "gaps": [
+  {
+   "lead": "Encorafenib 13-week rat skin toxicology (NDA 210496 review pp.35, 50)",
+   "outcome": "entry",
+   "detail": "Added safety entry on rat-dog-toxicology, 2018 contra (strengthens): encorafenib rat predicted skin toxicity/hyperkeratosis (stated match in NDA 210496 review p.35) but no neoplasia; cuSCC 7.8% on encorafenib monotherapy (COLUMBUS); source_calls_it partial."
+  },
+  {
+   "lead": "Vemurafenib-resistant xenograft / intermittent dosing (Das Thakur 2013) vs SWOG S1320",
+   "outcome": "tracked",
+   "detail": "vemurafenib-resistant-xenograft-intermittent, efficacy 4 (untested 2013) and efficacy 5 (contra 2020, S1320), with efficacy 6-7 strengthening"
+  },
+  {
+   "lead": "Melanoma PDX vs donor BRAF/MEK-inhibitor response (Krepler 2017; Ice 2019 Br J Cancer)",
+   "outcome": "tracked",
+   "detail": "melanoma-pdx-donor-response, efficacy 10 (Krepler 2017, retro) and efficacy 11 (Ice 2019, retro)"
+  },
+  {
+   "lead": "NDA 202429 executive summary dog paw 'wart-like growth'",
+   "outcome": "covered",
+   "detail": "Note-only change (hedged n=1 dog paw growth), no status change; already proposed in check.json safety 1, 2 and 4 verdict notes."
+  },
+  {
+   "lead": "Gao 2015 Novartis PDX clinical trial (nm.3954)",
+   "outcome": "added",
+   "detail": "novartis-pdx-clinical-trial, efficacy: untested 2015 (Gao 2015) then retro 2018 (Gao & Williams 2018: encorafenib ~65% PDX response consistent with vemurafenib/dabrafenib clinic rates)"
+  }
  ]
 }

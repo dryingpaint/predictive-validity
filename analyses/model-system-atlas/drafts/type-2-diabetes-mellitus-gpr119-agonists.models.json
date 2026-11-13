@@ -12,7 +12,8 @@
   "Europe PMC: GPR119 AND (organoid OR enteroid OR \"primary human\") AND GLP-1",
   "Europe PMC: GPR119 agonist AND (PK/PD OR pharmacokinetic/pharmacodynamic OR translational) AND (predict OR clinical)",
   "ClinicalTrials.gov API v2: 'GSK1292263 simvastatin' (NCT01101568, healthy subjects, 2010, no results), GSK1292263, MBX-2982 (NCT01035879 no results; NCT04432090 T1D), PSN821 (NCT01386099 no results)",
-  "Matsumoto 2018 full text: Unpaywall/Semantic Scholar (bronze OA PDF at jpet.aspetjournals.org, HTTP 403), doi.org -> ScienceDirect S002235652426729X via fc.py scrape (abstract and introduction only, Results paywalled), Wayback Machine capture 2022-06-16 of jpet.aspetjournals.org/content/367/3/509 (full text incl. Results, read)"
+  "Matsumoto 2018 full text: Unpaywall/Semantic Scholar (bronze OA PDF at jpet.aspetjournals.org, HTTP 403), doi.org -> ScienceDirect S002235652426729X via fc.py scrape (abstract and introduction only, Results paywalled), Wayback Machine capture 2022-06-16 of jpet.aspetjournals.org/content/367/3/509 (full text incl. Results, read)",
+  "fc.py search 'Metabolex MBX-2982 phase 2 results press release glucose' -> Metabolex Phase 1 releases (BioSpace/FierceBiotech) and CymaBay Form 10 Amendment No. 2 (SEC, 2013, sec.gov/Archives/edgar/data/1042074/000119312513401450/d569374d1012ga.htm) summarising the 4-week T2D Phase 2 (read)"
  ],
  "added_models": [
   {
@@ -183,8 +184,18 @@
       "endpoint_role": "poc_gate",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT01119846", "registry_date": "2018-01-17", "doi": "10.1371/journal.pone.0092494", "quote": "After 13 days or 14 days of dosing, the BID and QD doses of GSK263 did not reduce plasma fasting glucose (data not shown) or glucose WM-AUC (0-24 h) in subjects with T2D, when compared with placebo."},
-       {"nct": "NCT01035879", "registry_date": null, "doi": null, "quote": null}
+       {
+        "nct": "NCT01119846",
+        "registry_date": "2018-01-17",
+        "doi": "10.1371/journal.pone.0092494",
+        "quote": "After 13 days or 14 days of dosing, the BID and QD doses of GSK263 did not reduce plasma fasting glucose (data not shown) or glucose WM-AUC (0-24 h) in subjects with T2D, when compared with placebo."
+       },
+       {
+        "nct": "NCT01035879",
+        "registry_date": null,
+        "doi": null,
+        "quote": null
+       }
       ]
      }
     ]
@@ -285,5 +296,37 @@
   "Human duodenal/colonic organoid cultures (Gribble lab, 2024-25): successor to Habib's primary cultures; no member or tool GPR119 agonist result set beside patient data found.",
   "Daiichi's May 2017 DS-8500a discontinuation and Inagaki 2017 (NCT02222350): patient-side items from the checker's missing list that belong to the draft's existing rodent track, not a new model system; outside this file's remit.",
   "MBX-2982 Phase 2 NCT01035879 and PSN821 NCT01386099: no posted results and no peer-reviewed report (tier 5 at best), so neither anchors a status; the nSTZ retro rests on GSK1292263 (Nunez 2014) alone."
+ ],
+ "gaps": [
+  {
+   "lead": "Human primary colonic L-cell cultures (Habib 2013)",
+   "outcome": "tracked",
+   "detail": "t2d-human-primary-colonic-lcell, engagement: 2013 untested (Habib 2013) then 2014 same (Nunez 2014, GSK1292263 GLP-1 flat); checker-confirmed"
+  },
+  {
+   "lead": "Rat nSTZ repeat-dose OGTT retrodiction (Matsumoto 2018)",
+   "outcome": "tracked",
+   "detail": "t2d-nstz-rat-repeat-ogtt, efficacy: 2018 untested then 2018 retro (retrodiction: true); Results show GSK1292263/MBX-2982 did NOT significantly lower OGTT AUC, so retro not contra; checker-confirmed (decision 10)"
+  },
+  {
+   "lead": "In-vitro transporter/CYP panel vs clinical statin DDI for GSK1292263 (Polli 2013)",
+   "outcome": "tracked",
+   "detail": "t2d-invitro-transporter-cyp-panel, safety: 2012 untested then 2012 same (partial, BCRP held, OATP1B1 did not); checker-confirmed; headline-scope question left in rule_questions"
+  },
+  {
+   "lead": "Daiichi Sankyo DS-8500a discontinuation May 2017",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: a tier 5 portfolio cut for firuglipel, patient-side note only; draft efficacy index 3 (rodent track) is already contra from 2014 and its 2018 entry is set by the NCT02647320 registry results; check.json efficacy 3 note already records it."
+  },
+  {
+   "lead": "Inagaki 2017 NCT02222350 (doi:10.1136/bmjdrc-2017-000424)",
+   "outcome": "covered",
+   "detail": "Already proposed: check.json safety index 2 verdict 'corrected', proposed_year 2017 (Inagaki 2017, 2017-09-29) with Chu 2007 as model side; filling the null doi/quote row of efficacy index 3 patient_trials is an extra patient trial with status unchanged (contra; Inagaki met its WMG primary, as did the other Japanese trials already listed), and check.json efficacy 3 note names it."
+  },
+  {
+   "lead": "MBX-2982 Phase 2 NCT01035879 (no posted results)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: tier 5 (CymaBay Form 10/A 2013, trial_unreported) and its own wording, glucose lowered 'not always to a statistically significant degree and not to the extent of sitagliptin', is inconclusive (unsettled); as an extra patient_trials row it leaves the rodent efficacy track contra (2014, GSK1292263) and the nSTZ retro (rests on GSK1292263, Nunez 2014) unchanged. Re-scrape of the SEC filing via fc.py truncated before the MBX-2982 trial paragraph, so the quote rests on the gap pass's read."
+  }
  ]
 }

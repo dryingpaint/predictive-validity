@@ -1,0 +1,25 @@
+{
+ "tile": "alzheimer-disease-bace1-inhibitors",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "drug ly-2886721, route oral (opener of the pdapp-mouse-beagle-csf-abeta x ly-2886721 x oral track); status untested 2012 unchanged"},
+  {"cell": "engagement", "index": 2, "what": "status same -> retro, retrodiction true: the PDAPP/dog Aβ lowering was first public in 2015, after LY2811376 lowered human CSF Aβ (May 2011 J Neurosci, epub 2011-11-01), same target and action (retrodiction rule); drug ly-2886721, route oral"},
+  {"cell": "dose", "index": 1, "what": "drug ly-2886721, route oral; untested 2012 unchanged"},
+  {"cell": "dose", "index": 2, "what": "drug ly-2886721, route oral; status same 2015 unchanged (checker's adjudicated untested is not a RULE QUESTION and was not applied here)"},
+  {"cell": "efficacy", "index": 1, "what": "drug ly-2886721, route oral; untested 2012 unchanged"},
+  {"cell": "efficacy", "index": 2, "what": "drug atabecestat, route oral, population_group biomarker_selected; product_in_model true -> false (sibling LY2886721 in the mice, per checker); patient_trials reduced to EARLY, the elenbecestat and LY3202626 trials moved to their own tracks (efficacy 5-8); contra 2019 unchanged"},
+  {"cell": "efficacy", "index": 3, "what": "drug class, route oral (human genetics tied to no drug); untested 2012 unchanged"},
+  {"cell": "efficacy", "index": 4, "what": "drug class, route oral; contra 2019 unchanged"},
+  {"cell": "safety", "index": 1, "what": "drug ly-2886721, route oral; untested 2012 unchanged"},
+  {"cell": "safety", "index": 2, "what": "drug ly-2886721, route oral, population_group stage_or_line; contra 2015 unchanged (Lilly's 13 June 2013 press release gave the liver stop but not the toxicology result, so no earlier date)"},
+  {"cell": "safety", "index": 3, "what": "drug atabecestat, route oral (mice dosed with siblings; the track's patient result is atabecestat's); untested 2014 unchanged"},
+  {"cell": "safety", "index": 4, "what": "drug atabecestat, route oral; same 2019 unchanged (prospective: no earlier atabecestat cognitive result)"},
+  {"cell": "safety", "index": 5, "what": "drug atabecestat, route oral; untested 2024 unchanged"},
+  {"cell": "safety", "index": 6, "what": "drug atabecestat, route oral; retro 2024 unchanged (atabecestat's own earlier HLA result)"}
+ ],
+ "added": [
+  {"cell": "efficacy", "index": 5, "what": "opener untested 2012 for the pdapp-mouse x elenbecestat x oral track (sibling LY2886721 in the mice, May 2015 quote)"},
+  {"cell": "efficacy", "index": 6, "what": "contra 2019 on the pdapp-mouse x elenbecestat x oral track, split from efficacy 2: MISSION AD stopped on DSMB advice, no evidence of efficacy (NCT02956486 registry quote, tier 3; dated to the Eisai/Biogen press release 13 Sept 2019)"},
+  {"cell": "efficacy", "index": 7, "what": "opener untested 2012 for the pdapp-mouse x ly-3202626 x oral track"},
+  {"cell": "efficacy", "index": 8, "what": "contra 2021 on the pdapp-mouse x ly-3202626 x oral track, split from efficacy 2: NAVIGATE-AD tau PET primary unchanged (Lo 2021, registry results 2021-04-19)"}
+ ]
+}

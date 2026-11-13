@@ -1,0 +1,147 @@
+{
+ "tile": "endometriosis-gnrhr-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug relugolix, route oral, population_group unselected (no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug relugolix, route oral, population_group unselected (no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: monkey 2011 model result first public after elagolix gonadotropin suppression in women (Struthers 2008); post-dating ruling; drug relugolix, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: knock-in mouse 2013 model result first public after elagolix gonadotropin suppression in women (Struthers 2008); post-dating ruling; drug relugolix, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug linzagolix, route oral, population_group unselected (no status change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true: rat EPAR 2022 model result first public after elagolix gonadotropin suppression in women (Struthers 2008); post-dating ruling; drug linzagolix, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug relugolix, route oral, population_group unselected (no status change)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug relugolix, route oral, population_group unselected (no status change)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: tox margin first public 2021 (FDA review) after relugolix's own endometriosis patients (Osuga 2020 epub); drug relugolix, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: monkey Clast target first public 2022 (EPAR) after linzagolix's own patient E2 data (Donnez 2020); drug linzagolix (split from the relugolix monkey track), route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true: tox margin first public 2022 (EPAR) after linzagolix's own patients (Donnez 2020); drug linzagolix, own track (strengthens dropped), route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug linzagolix, route oral, population_group unselected (no status change)"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "drug linzagolix, route oral, population_group unselected (no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug relugolix, route oral, population_group unselected (no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug relugolix, route oral, population_group unselected (no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug linzagolix (proxy SKI2670 opener of the rat x linzagolix track), route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: knock-in mouse result (2013) post-dates cetrorelix symptom relief in endometriosis patients (Kupker 2002); post-dating ruling; drug relugolix, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true: rat linzagolix result first public 2022 (EPAR), after Kupker 2002 and linzagolix's own phase 2 (Donnez 2020); drug linzagolix, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug linzagolix, route oral, population_group unselected (no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "status same -> retro, year 2024 -> 2022, retrodiction true: Pohl 2022 epub 2022-01-13 after the ObsEva EDELWEISS 3 topline release 2022-01-06 (post-dating ruling; rule 6 earliest date); co-primary ruling: authors do not call 75 mg a failure, partial kept; drug linzagolix, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug class, route not_applicable, population_group unselected (no status change)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "retrodiction true (mouse bone datum public 2021 after Osuga 2020); contra kept; drug relugolix, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "retrodiction true (FDA review 2021 after Osuga 2020); contra kept; drug relugolix, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "retrodiction true (EPAR 2022 after Donnez 2020); contra kept; drug linzagolix, own track (strengthens dropped), route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug linzagolix, route oral, population_group unselected (no status change)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "dose",
+   "index": 8,
+   "what": "opener, cyno-monkey-hpg x linzagolix oral, untested 2022 (EPAR Clast threshold; split ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "opener, rat-autotransplant-endometriosis x linzagolix oral, untested 2015: Kim 2015 'without bone loss' (passing-tolerability ruling; proxy SKI2670)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "contra 2020, rat-autotransplant-endometriosis x linzagolix oral: Kim 2015 no-bone-loss claim vs Donnez 2020 dose-graded BMD loss (passing-tolerability ruling)"
+  }
+ ]
+}

@@ -168,5 +168,47 @@
   "Gombos 2018 (AGEN1884/zalifrelimab monkey toxicology and human T-cell assays): the monkey system is already tracked as cynomolgus-toxicology, the paper states no patient comparison, and zalifrelimab has no NSCLC patient result (only cervical cancer trials surfaced).",
   "Quavonlimab (MK-1308): no preclinical model paper surfaced; Perets 2021 (NSCLC Phase 1) is already discussed in the draft's engagement judgement.",
   "Humanised-PDX NSCLC mice, patient-derived organoids / tumour fragments and QSP virtual trials: searches returned anti-PD-1-only NSCLC work (Meraz, NPRL2 2025), HCC and breast QSP models, or reviews; no NSCLC system dosed with an anti-CTLA-4 member and compared with patients was found."
+ ],
+ "gaps": [
+  {
+   "lead": "KEYNOTE-598 (NCT03302234)",
+   "outcome": "covered",
+   "detail": "Efficacy 6 verdict proposes contra 2020 on syngeneic-mouse-dual-blockade (adjudicated contra, decision 6), which the glance applies; dose 4 unchanged: 1 mg/kg q6w was reached and failed, an efficacy failure only (dose table)."
+  },
+  {
+   "lead": "Lung-MAP S1400I (NCT02785952)",
+   "outcome": "covered",
+   "detail": "Second contra on syngeneic-mouse-dual-blockade efficacy after the efficacy 6 adjudicated contra (2020); no status change, a new entry is written only on a status change, so it changes nothing scored."
+  },
+  {
+   "lead": "CheckMate 73L (NCT04026412)",
+   "outcome": "covered",
+   "detail": "2024 failure on syngeneic-mouse-dual-blockade efficacy, a track already contra from 2020 (efficacy 6 adjudicated contra); contra is sticky, so whatever rule question 5 decides, nothing scored changes."
+  },
+  {
+   "lead": "Du 2018 Cell Res (Ctla4h/h knock-in mice dosed with ipilimumab)",
+   "outcome": "tracked",
+   "detail": "ctla4-humanised-knockin-mouse, safety 7 (retro 2018, product_in_model true), opened by safety 6 (Lute 2005)."
+  },
+  {
+   "lead": "Selby 2016 PLoS One (cynomolgus combination toxicology + human-PBL assays)",
+   "outcome": "covered",
+   "detail": "Safety 4 verdict already rules on it: Selby 2016 combination GI findings do not flip the contra cynomolgus-toxicology track; human-PBL assays stated only a melanoma efficacy comparison. Nothing scored changes."
+  },
+  {
+   "lead": "FDA PharmR BLA 125377 hCTLA-4 transgenic tumour mice",
+   "outcome": "tracked",
+   "detail": "Folded into syngeneic-mouse-surrogate-ctla4 (engagement 1 verdict notes the filed SA1/N, MC-38, CT-26 hCTLA-4 studies); same prediction and same NSCLC comparisons, track identity is rule question 4."
+  },
+  {
+   "lead": "Ji 2019 Clin Cancer Res (cynomolgus nivolumab+ipilimumab myocarditis)",
+   "outcome": "covered",
+   "detail": "2019 retrodiction on cynomolgus-toxicology, a track contra since 2011 (safety 4 confirmed); a failed model stays failed on its track and a new entry is written only on a status change, so nothing scored changes."
+  },
+  {
+   "lead": "Axelrod 2022 Nature (alpha-myosin T cells in Pdcd1-/- Ctla4+/- mice)",
+   "outcome": "covered",
+   "detail": "Safety 9 verdict note names it a later retro entry on ctla4-het-pdcd1-null-mouse with status unchanged (track already retro 2020); nothing scored changes."
+  }
  ]
 }

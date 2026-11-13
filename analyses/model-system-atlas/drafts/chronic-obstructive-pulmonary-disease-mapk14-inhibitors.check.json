@@ -11,8 +11,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 1 (stated comparison); engagement definition (healthy volunteers count)",
-   "note": "DOI resolves to Hope 2009 JPET 331:882 (PMID 19720877). Quote verbatim in abstract. Rat/monkey endotoxin PD is set beside the human endotoxin TNF/IL-6 fall in the same paper; downstream tier and direction-only magnitude are right."
+   "rule": "retrodiction (engagement/efficacy: any drug's earlier patient result on the target); retro row",
+   "note": "Hope 2009 abstract re-read (PMID 19720877): quote verbatim. Branger 2002 (PMID 11937566) BIRB 796 endotoxin TNF-alpha fall in volunteers came first, so retro. Oral PH-797804 right. Judgement prose still says 'Scored same': stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -21,8 +22,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (opening entry at model_first_use_year); sibling drug allowed with product_in_model false",
-   "note": "DOI resolves (PMID 11053025, Am J Physiol Lung 279:L895). Quote verbatim. Non-member SB 239063, no human readout: untested opening entry is right. Species of the inhaled-LPS arm is indeed absent from the abstract."
+   "rule": "evidence rule 6 (opening entry); track = model x drug x route",
+   "note": "Underwood 2000 abstract re-read: quote verbatim; sibling SB 239063 given orally. Opener of the PH-797804 oral track at 2000 is right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -31,8 +33,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 1 (paired comparison, model_src = Underwood 2000)",
-   "note": "Full text PMC4564450 read: quote is the first Discussion sentence, verbatim. Same readout (post-LPS airway neutrophils) in two member drugs; NCT02084485/NCT01314885/NCT01364519 confirmed with no results posted. Study 1 ran Sep 2006-Mar 2008 as stated."
+   "rule": "evidence rule 1 (paired); engagement (healthy volunteers count)",
+   "note": "Singh 2015 full text (PMC4564450, epub 2015-08-13) quote verbatim; NCT02084485 confirms single oral 30 mg PH-797804. Inhaled PF-03715455 belongs on its own drug-route track (see missing), not this entry.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -41,8 +44,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 1 (stated comparison); readout_tier direct = ex-vivo blockade of a stimulus",
-   "note": "DOI resolves (PMID 29549158, JPET 365:567, epub 2018-03-16). Quote verbatim in abstract; in vitro whole-blood pIC50u 8.7 vs ex vivo 8.8 supports within_2x. Abstract reports rat PK only, no rat LPS model, so the separate track is consistent."
+   "rule": "retrodiction (engagement/efficacy: any drug's earlier patient result on the target); retro row",
+   "note": "Pehrson 2018 abstract (epub 2018-03-16) quote verbatim. Branger 2002 and Hope 2009 precede, so retro; azd-7624 inhaled right. Judgement prose still says 'Scored same': stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -51,8 +55,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "untested = model existed, no admissible comparison",
-   "note": "DOI resolves (PMID 16953188, PMC1978438). Quote verbatim. Macrophages from smokers/emphysema patients with non-member SB239063/SD-282; Patel 2018 full text confirms no sputum biomarkers were collected in the COPD trial, so untested holds."
+   "rule": "untested = model existed, no admissible comparison; track = model x drug x route",
+   "note": "Smith 2006 abstract quote verbatim. AZD7624 inhaled is the member later run here; Patel 2018 full text has no sputum readout in dosed COPD patients, so untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -62,7 +67,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": "evidence rule 6 (opening entry)",
-   "note": "Quote verbatim in Hope 2009 abstract. Opens the track; the projected human exposure is only in the paywalled full text, so an untested opening entry is correct."
+   "note": "Hope 2009 abstract quote verbatim; PH-797804 oral. Abstract claims confidence in dose projections but states no exposure or margin; untested opener right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -71,20 +77,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "dose table row 'reached, drug worked'",
-   "note": "Quote verbatim in MacNee 2013 abstract (PMID 23539534, epub 2013-03-28). 'Same' follows the table, but no source read states the model's projected exposure or that 3-6 mg reached it; inferred from the dose range. Paywalled full texts not opened."
+   "rule": "dose: a target scores only on the track of the model that stated it",
+   "note": "MacNee 2013 abstract quote verbatim; drug/route right; judgement reworded correctly. But no projected exposure or dose range appears in Hope 2009's abstract, so the stated target is unshown; the quote is an efficacy result.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "unverified",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "dose table row 'reached, failed, abandoned' with derived_from efficacy; healthy-volunteer PK counts",
-   "note": "Patel 2018 full text (PMC5877500): quote verbatim in Discussion; challenge dose 1,200 ug lung-deposited, trial 1.0 mg delivered once daily for 12 weeks, no sputum PD in patients. Target shown reached in volunteers, trial failed, program dropped.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): the lung PD target was shown reached in volunteers"
+   "rule": "evidence rule 3 (quote supports the status); dose: target reached = same",
+   "note": "Patel 2018 full text: quote verbatim, azd-7624 inhaled right, judgement no longer describes a contra. Quote reports the efficacy failure, not the target reached; the 56.6%/85.4% sputum challenge sentence would support same.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -94,7 +100,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": "untested = prediction made, no admissible comparison",
-   "note": "DOI resolves (PMID 26904383, PMC4759708, epub 2015-11-09). Quote verbatim. Registry confirms NCT01332097 and NCT02700919 used single or repeated single doses with no continuous-dosing arm, so the regimen prediction was never tested."
+   "note": "De Buck 2015 abstract (epub 2015-11-09) quote verbatim. Acumapimod oral; stage_or_line fits the AECOPD trials; neither trial had a continuous-dosing arm.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -103,8 +110,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (opening entry); sibling drug allowed",
-   "note": "Underwood 2000 abstract: quote verbatim (final sentence). Non-member drug, inflammatory readouts only, no COPD patient result in 2000: untested opening is right."
+   "rule": "evidence rule 6 (opening entry)",
+   "note": "Underwood 2000 abstract quote verbatim; opener of the PH-797804 oral track.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -113,8 +121,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "same = agreement in direction for >=1 member; endpoint_role primary",
-   "note": "MacNee 2013 abstract: quote verbatim; paper states trough FEV1 at week 6 was the primary endpoint (registry NCT00559910 lists only generic spirometry/safety, no results). Direction-only pairing with Underwood 2000 is sound; no later knowledge used."
+   "rule": "same in direction; endpoint_role primary",
+   "note": "MacNee 2013 abstract quote verbatim; 6-week trough FEV1 primary; oral PH-797804 right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -123,8 +132,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "dose/efficacy table 'reached, failed, abandoned'; decision 13 (judge on data) — see rule question 1",
-   "note": "EudraCT record verified (11 Jul 2015): 32-60 mL, CIs exclude zero, sponsor criteria missed, drug dropped. NCT01321463 synopsis (2016-06-02) quote verified verbatim: 27 mL, C1 met 0.927, C2a 0.104. Direction agreed, so same+partial is arguable; raised as rule question."
+   "rule": "efficacy: combination with another active drug scored on the primary, combination_with set; rule question 1",
+   "note": "EudraCT 2011-005864-11 re-read: first version 11 Jul 2015, title 'on a background of tiotropium bromide', quote verbatim. combination_with tiotropium and design note fit; contra still rests on rule question 1.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -133,8 +143,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "contra; one drug's contra beats another's same on the track",
-   "note": "Patel 2018 abstract: quote verbatim. NCT02238483 results posted 2018-04-18: HR 1.39 (0.81-2.40), p 0.2371 confirmed. Pairing with Underwood 2000 at product_in_model false is consistent, since Pehrson 2018 reports rat PK only."
+   "rule": "contra; track = model x drug x route",
+   "note": "Patel 2018 abstract quote verbatim; ExDo primary. Background was maintenance therapy, combination_with null right; azd-7624 inhaled own track.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -143,8 +154,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "contra on the registered primary (Novartis NCT01332097); see rule question 2 for AETHER",
-   "note": "Strâmbu 2019 abstract (PMID 31682162, epub 2019-11-04): quote verbatim except subscript and truncation. NCT01332097 results 2023-03-21 confirmed. AETHER reading is contestable: registered primary is within-arm Day-7 change, declared met in Mereo's 2017-12-11 RNS; vs-placebo contrasts null."
+   "rule": "contra on the registered primary; rule question 2 (AETHER)",
+   "note": "Strambu 2019 abstract quote verbatim but for markup; acumapimod oral, AECOPD stage_or_line right. Mereo 11 Dec 2017 release declared AETHER's within-arm primary met; unscored pending rule question 2.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -153,32 +165,31 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (opening at model_first_use_year, proxy allowed)",
-   "note": "Registry record confirmed: Pfizer, first posted 2014-03-12, study 2006-09 to 2008-03, n=24, no results. Brief title quoted verbatim. Opening the human-challenge track at 2006 by proxy is within rule 6."
+   "rule": "evidence rule 6 (opening entry, proxy allowed)",
+   "note": "NCT02084485 API re-read: Pfizer A6631010, single oral 30 mg PH-797804, 2006-09 to 2008-03, posted 2014-03-12; brief title quoted verbatim. Oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2015,
-   "rule": "status table, contra row ('one drug's contra still beats another drug's same on the same track'); evidence rule 7 (what was known at the entry's date)",
-   "note": "Quote verbatim in Singh 2015 Discussion. The same drug's 12-week miss (EudraCT 11 Jul 2015) was public before epub 2015-08-13 and is scored contra on the rodent track; the same datum cannot be same here. Tracks rule question 1.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Evidence rule 7 and decision 6: at the 2015-08-13 epub the 12-week PH-797804 miss (EudraCT 2015-07-11) was public and contra is permanent on a track, so the track reads contra in 2015; Singh's 6-week match stays as provenance."
+   "status_supported": true,
+   "rule": "retrodiction (engagement/efficacy: any drug's earlier patient result on the target); a failed retrodiction is contra; evidence rule 7",
+   "note": "EudraCT quote verbatim (11 Jul 2015); Singh epub 2015-08-13 is after MacNee 2013 and the 12-week miss, so retrodiction; predicted benefit, miss not reproduced: contra. Judgement prose stale (says same, not retro, stated).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 8,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "contra with comparison_stated true, source_calls_it miss",
-   "note": "Patel 2018 Discussion: quote verbatim; the model's own authors call the challenge a poor predictor. NCT01937338 no results; NCT02238483 results 2018-04-18; NCT02366637 termination quote verified (n=13, results 2016-07-06, -0.047 vs +0.080 L). No reversal source."
+   "rule": "retrodiction (engagement/efficacy: any drug's earlier patient result on the target); a failed retrodiction is contra",
+   "note": "Patel 2018 full text: quote present with citation numbers 31-33 inside. AZD7624 challenge first public 2018, after PH-797804's COPD results, so retrodiction true; contra stays. azd-7624 inhaled right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -187,8 +198,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "contra with comparison_stated true; distinct model system gets its own model_id",
-   "note": "Verified as two consecutive Discussion sentences in Patel 2018; Table-3 patient_trials quote also verbatim. Human-cell/rat-PK system is a different model from the volunteer challenge, so a separate track is defensible."
+   "rule": "retrodiction (engagement/efficacy: any drug's earlier patient result on the target); a failed retrodiction is contra",
+   "note": "Patel 2018 full text: two consecutive Discussion sentences verbatim. Cell model first public 2018 (Pehrson epub 2018-03-16), after earlier COPD results; contra stands. azd-7624 inhaled.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -197,8 +209,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "safety: silence on a harm is not a prediction; no stated margin",
-   "note": "Hope 2009 abstract: quote verbatim, no toxicology or margin stated. NCT01321463 synopsis confirms drug-related AE discontinuations 13 (6.9%) vs 5 (2.7%). Untested holds. The EudraCT 19/182 at 6 mg figure was not re-checked."
+   "rule": "safety: silence on a harm is not a prediction",
+   "note": "Hope 2009 abstract quote verbatim; no tolerability claim in the abstract; PH-797804 oral right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -207,8 +220,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "safety: stated prediction held (comparison_stated true) — see rule question 3",
-   "note": "Pehrson 2018 abstract: quote verbatim; 0.3 nM unbound plasma below pIC50u held in volunteers, SAEs balanced in Patel 2018. An exposure claim rather than a named harm; whether it belongs in safety or dose is a rule question."
+   "rule": "safety: this disease's patients measured set the status; rule question 3",
+   "note": "Patel 2018 full text quote verbatim; 213 COPD patients measured, so the src switch is right; azd-7624 inhaled. Judgement prose still claims comparison_stated true and 'the source itself compares': stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -217,9 +231,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 / decision 7 (opening entry at model_first_use_year, proxy allowed); decision 8 (distinct system, own model_id)",
-   "note": "PMC7825188 full text: quote verbatim in Introduction (hyphens normalised). Model verified on MBCT102 (completed 2016-10) and applied before MBCT103 began 2018-03-19, so the 2017 proxy holds. Distinct from the De Buck 2015 tolerance model.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "evidence rule 6 (opening entry, proxy year)",
+   "note": "Agyemang 2021 full text (PMC7825188, epub 2020-12-30) quote verbatim. Acumapimod oral right; unselected acceptable for healthy-volunteer DDI work.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -228,9 +242,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "dose: exposure prediction held in healthy volunteers (subjects recorded); decision 16 (margin_stated); decision 11 (magnitude, partial agreement)",
-   "note": "Quote verbatim in Discussion. Table 3 confirms predicted AUC GMR 1.31/1.69 and Cmax 1.03/1.04 vs observed 1.10/0.99: within_2x holds; model applied prospectively (MBCT103 run 2018-03-19 to 2018-05-11). Source also says the predicted AUC CI fell outside 80-125%, so source_calls_it 'partial' fits better than 'match'; status unchanged.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "dose: margin_stated same; prospective, no earlier same-drug DDI result",
+   "note": "Agyemang 2021 full text quote verbatim; prediction preceded MBCT103, so not a retrodiction. Acumapimod oral, healthy volunteers, right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -239,20 +253,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (opening entry, untested); decision 8 (own model_id)",
-   "note": "DOI resolves to J Med Microbiol 67:452 (PMID 29458547); quote verbatim in the abstract and on the journal page (received 2017-08-18, accepted 2018-01-10, online 2018-01-24). Full text paywalled; experiments undated. Opening at the 2018 public first use is within rule 7.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "evidence rule 6 (opening entry)",
+   "note": "Growcott 2018 abstract (epub 2018-01-24) quote verbatim. Acumapimod oral; AECOPD stage_or_line right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "unverified",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 10 (retro = a model result that post-dates and is motivated by the patient result); drafter brief: built or run after the clinic knew",
-   "note": "Strambu 2019 abstract: quote verbatim, no infection-AE data, so the pairing is thin. Growcott was received 2017-08-18, four years after NCT01332097 completed (2013-05), but the run date is unstated and the abstract's stated motivation is viral replication, not the trial. Retro is the conservative reading; 'same' if the run preceded 2013. Not decidable from the sources; rule question added.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction (dose/safety: same drug's own earlier patient result); evidence rule 6 (dating)",
+   "note": "Mereo release re-read: dated London, 11 December 2017; 'Reported to be safe and well tolerated' verbatim. Precedes Growcott epub 2018-01-24: retro, 2018. Judgement prose still names Strambu as patient side: stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -261,9 +275,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (opening entry); sibling drug allowed with product_in_model false; decision 8 (distinct from rodent LPS)",
-   "note": "DOI resolves (JPET 324:921, PMID 18056868, epub 2007-12-04). Quote verbatim as the abstract's last sentence (PubMed renders 'p38alpha'). Scios SD-282 only, no member drug, no patient result in 2007: untested opening at 2007 is right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "evidence rule 6 (opening entry); sibling drug allowed",
+   "note": "Medicherla 2008 abstract (epub 2007-12-04) quote verbatim (PubMed renders p38alpha). Opener of the PH-797804 oral track.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -272,9 +286,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "same = agreement in direction for >=1 member; paired comparison with model_src (comparison_stated false); endpoint_role primary",
-   "note": "MacNee 2013 abstract (epub 2013-03-28): quote verbatim including the '0·166' middle dot; primary endpoint trough FEV1 at week 6 stated. NCT00559910 (Pfizer, 2008-2009, n=230) has no posted results. Direction-only pairing mirrors the confirmed rodent-LPS entry on the same trial; no source states the smoke-model comparison, so the track stays hatched.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "same in direction; paired comparison",
+   "note": "MacNee 2013 abstract quote verbatim; oral PH-797804 right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -283,16 +297,83 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "dose/efficacy table 'reached, failed, abandoned'; one drug's contra beats another's same on the track; inherits rule question 1",
-   "note": "EudraCT 2011-005864-11 re-read via fc.py: first version 11 Jul 2015, Pfizer A6631033, NCT01543919; quote verbatim in the end-point footnote. Contra at 2015 is consistent with the adjudicated efficacy 7 and the rodent-LPS efficacy 3; same+partial stays the open alternative under rule question 1.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "efficacy: combination_with; track = model x drug x route; rule question 1",
+   "note": "EudraCT 2011-005864-11 quote verbatim; tiotropium background, combination_with right. Splitting AZD7624 and acumapimod to entries 15-18 is what the track rule requires.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 6 (opening entry)",
+   "note": "Smith 2006 abstract quote verbatim; opener of the PH-797804 oral track that entry 14 scores.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "efficacy: co-primary rule ('as the authors call the trial'); rule question 1",
+   "note": "Synopsis (EudraCT attachment 9871, A6631029) quote verbatim; SFC background right. One primary with two decision criteria, not co-primaries; conclusion says 'achieved 1 of 2', no failure call, so note's 'Pfizer called it a failure' is unsupported.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 6 (opening entry); track = model x drug x route",
+   "note": "Medicherla 2008 abstract quote verbatim; opener of the azd-7624 inhaled track at 2007, product_in_model false.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "contra on the primary; paired comparison",
+   "note": "Patel 2018 abstract quote verbatim; ExDo primary, HR 1.39. Model 2007 predates, not a retrodiction. Maintenance background only, combination_with null right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 17,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 6 (opening entry); track = model x drug x route",
+   "note": "Medicherla 2008 abstract quote verbatim; opener of the acumapimod oral track, AECOPD stage_or_line.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 18,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "contra on the registered primary; rule question 2 (AETHER)",
+   "note": "Strambu 2019 abstract quote verbatim but for markup; Day-10 FEV1 primary missed. Not a retrodiction. Mereo's 11 Dec 2017 within-arm AETHER 'primary met' is earlier and unscored, pending rule question 2.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
   "Armstrong 2011, doi:10.1124/jpet.111.180737 (JPET 338:732, PMID 21610141): COPD-patient alveolar macrophages ex vivo; non-member sibling BIRB-796 synergises with dexamethasone on LPS-induced cytokines, predicting add-on benefit of a p38 inhibitor over a corticosteroid. Tested by PH-797804 6 mg on salmeterol/fluticasone background (NCT01321463; EudraCT 2010-024219-15 Public Disclosure Synopsis published 2016-06-02: 27 mL, C1 met at 0.927, C2a missed at 0.104). The draft's copd-ex-vivo-alveolar-macrophages track has no efficacy entry; this pairing gives it one (class level, product_in_model false, comparison_stated false, year 2016).",
   "Mereo BioPharma RNS 2017-12-11 'Positive results from Phase 2 trial with BCT-197' (https://www.lse.co.uk/rns/positive-results-from-phase-2-trial-with-bct-197-xivpowfecz8pva2.html; also mereobiopharma.com news): tier-5 source declaring AETHER's registered within-arm Day-7 FEV1 primary met (p=0.012 high dose, p<=0.001 low dose; placebo p=0.102) three years before the registry posting of 2020-11-30. The draft's note reads AETHER as a miss on the vs-placebo contrasts (+27/+58 mL, p 0.51/0.15, confirmed on NCT02700919) without showing this; it should be listed with trial_unreported handling and the rule question below.",
   "Yu 2022, doi:10.3389/fphar.2022.950035 (Front Pharmacol, PMC9554617): tier-4 meta-analysis of 10 p38-inhibitor COPD RCTs (n=1,751) finding no efficacy or safety difference versus placebo. It pools non-members (losmapimod) so it cannot set a member-only status, but it is a patient-side record the draft should cite with that caveat.",
-  "Millan 2011, doi:10.1021/jm200677b (J Med Chem, PMID 21888439): PF-03715455 design paper states 'efficacy and safety profiles confirming its potential as an inhaled agent'. If it carries a rodent LPS result for this member, the rodent-lps-lung-neutrophilia track should record product_in_model true for PF-03715455. Abstract-level only; the model data were not verified."
+  "Millan 2011, doi:10.1021/jm200677b (J Med Chem, PMID 21888439): PF-03715455 design paper states 'efficacy and safety profiles confirming its potential as an inhaled agent'. If it carries a rodent LPS result for this member, the rodent-lps-lung-neutrophilia track should record product_in_model true for PF-03715455. Abstract-level only; the model data were not verified.",
+  "PF-03715455 inhaled on rodent-lps-lung-neutrophilia (engagement): Singh 2015 (doi:10.1007/s00228-015-1920-1, PMC4564450) shows inhaled PF-03715455 20 mg cut post-LPS sputum neutrophils in volunteers; a separate drug-route track per DRAFTER_BRIEF, not folded into engagement 3."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
@@ -300,6 +381,7 @@
   "When the registered primary endpoint is a within-arm change from baseline with no placebo contrast (AETHER NCT02700919: declared met by the sponsor, p=0.012/<0.001 within arm; vs-placebo +27/+58 mL, p=0.51/0.15), does the atlas score the registered primary as met or the placebo-corrected effect as null?",
   "A model statement that systemic exposure will be sub-pharmacological (Pehrson 2018, AZD7624) is an exposure claim, not a named harm. Does it score in safety as the draft does, as a dose margin (margin_stated), or not at all?",
   "When a source states a comparison with one trial (Singh 2015 -> 6-week PH-797804 win) while a higher-tier record of a later trial of the same drug on the same track was already public at the entry date (12-week miss, 11 Jul 2015), does rule 7 require the entry's status to reflect the whole record as of that date, or does the stated comparison stand with the miss as a separate same-year entry?",
-  "A sponsor-authored model paper (Growcott 2018, all-Novartis authors, received 2017-08-18) appeared after the sponsor's own trial completed (NCT01332097, 2013-05) but before any public patient record (Strambu 2019 epub 2019-11-04; registry 2023-03-21), and neither dates its experiments nor cites the trial result as motivation. Does decision 10 date a retrodiction by the sponsor's private knowledge (retro, as drafted) or by the public record (same), and who carries the burden when the run date is unknown? Decides safety entry 4 of bct197-mouse-influenza-infection."
+  "A sponsor-authored model paper (Growcott 2018, all-Novartis authors, received 2017-08-18) appeared after the sponsor's own trial completed (NCT01332097, 2013-05) but before any public patient record (Strambu 2019 epub 2019-11-04; registry 2023-03-21), and neither dates its experiments nor cites the trial result as motivation. Does decision 10 date a retrodiction by the sponsor's private knowledge (retro, as drafted) or by the public record (same), and who carries the burden when the run date is unknown? Decides safety entry 4 of bct197-mouse-influenza-infection.",
+  "efficacy 14 (copd-ex-vivo-alveolar-macrophages): Armstrong 2011 predicts cytokine-level synergy with a corticosteroid, while the trial reads trough FEV1 and shows a small positive (+27 mL, lower bound >0, C1 met) that missed the sponsor's 50 mL bar; whether that is contra or untested-by-readout depends on rule question 1."
  ]
 }

@@ -1,8 +1,9 @@
 # Model-system atlas (issue #76)
 
-For each disease × mechanism (a tile), whether the preclinical models the drug class relied on predicted what
+For each disease × mechanism (a tile) in every disease with a Phase 2 entrant in 2008–2019, with two names
+for the same patients merged into one, whether the preclinical models the drug class relied on predicted what
 happened in patients, on four questions (engagement, dose, efficacy, safety), stored as dated tracks in
-`preclin.atlas_*` (migrations `db/133_atlas.sql`, `db/135_atlas_tracks.sql`, `db/137_atlas_comments.sql`). The main paper figure is
+`preclin.atlas_*` (migrations `db/133_atlas.sql`, `db/135_atlas_tracks.sql`, `db/137_atlas_comments.sql`, `db/138_atlas_all_diseases.sql`, `db/141_atlas_track_columns.sql`). The main paper figure is
 `atlas_glance_main.*`; the supplementary figure is `atlas_glance_supplement_p1..p4.*`. `lessons/` is an exploratory
 drill-down over the stored tiles (model families, engagement held against efficacy, the safety contradictions typed
 by hand; `lessons/LESSONS.md`, `lessons/robustness.md`); its figures are not paper figures.
@@ -11,7 +12,7 @@ by hand; `lessons/LESSONS.md`, `lessons/robustness.md`); its figures are not pap
 `drafts/route_store.py` (through `drafts/track_store.py`) write to the database, each replacing its own unit.
 
 ```
-.venv/bin/python analyses/model-system-atlas/lists.py                      # named indications
+.venv/bin/python analyses/model-system-atlas/lists.py                      # the disease list
 .venv/bin/python analyses/model-system-atlas/class_audit.py [store]        # register and tracked tiles
 .venv/bin/python analyses/model-system-atlas/fetch_sources.py [store]      # FDA review texts
 # per tile, the agent passes in drafts/{DRAFT,CHECK,ADJ,MODELS,MODELS_CHECK}_TASK.md, then:

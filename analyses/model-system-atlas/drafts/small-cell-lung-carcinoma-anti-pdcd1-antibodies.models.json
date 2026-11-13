@@ -228,6 +228,54 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "mtb-infected-pd1-knockout-mouse",
+   "model": "Mycobacterium tuberculosis aerosol-infected PD-1 knockout (C57BL/6) mice read for survival, lung bacterial burden and inflammatory cytokines against wild-type controls; carried into the Opdivo label section 13.2",
+   "model_kind": "animal",
+   "model_first_use_year": 2010,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "prediction_level": "class",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1073/pnas.1007394107",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2017,
+      "print_year": 2018,
+      "registry_date": null,
+      "model_filed": true,
+      "product_in_model": false,
+      "model_kind": "animal",
+      "retrodiction": false,
+      "imported_from": "MONDO:0005233",
+      "magnitude": "direction_only",
+      "magnitude_basis": "mouse: markedly reduced survival and uncontrolled lung bacterial growth after aerosol Mtb in PD-1 knockouts; patients: 5 tuberculosis cases (4 reactivations within 3 months) on nivolumab or pembrolizumab, about 1 per 1000 treated; no common quantity",
+      "source_calls_it": "partial",
+      "population": "Unselected (imported: metastatic NSCLC in 3 of 5 cases, plus melanoma and Hodgkin lymphoma)",
+      "confidence_note": "Full text read via ScienceDirect scrape (Clin Microbiol Infect 24:216-218, epub 2017-12-18, print 2018-03, PMID 29269089). Case series of 5 (2 REISAMIC registry cases, 3 from the literature), no SCLC patient; the authors note reactivation could also stem from the cancer and prior chemotherapy. No registry record applies. Patient-side reports are reactivation of latent infection, the mouse modelled primary aerosol infection.",
+      "year": 2017,
+      "status": "same",
+      "model": "Mycobacterium tuberculosis aerosol-infected PD-1 knockout (C57BL/6) mice read for survival, lung bacterial burden and inflammatory cytokines against wild-type controls; carried into the Opdivo label section 13.2",
+      "model_id": "mtb-infected-pd1-knockout-mouse",
+      "note": "Imported from NSCLC, melanoma and lymphoma: five tuberculosis cases on nivolumab or pembrolizumab, mostly reactivation within 3 months, the infection harm PD-1 knockout mice had foretold.",
+      "short": "Anti-PD-1 reactivates TB in patients",
+      "src": "https://doi.org/10.1016/j.cmi.2017.12.003",
+      "srcLabel": "Picchi 2018",
+      "quote": "Moreover, the five cases reported here show that an anti-PD1 agent per se might favour tuberculosis reactivation.",
+      "confidence": "low",
+      "reason": "Imported TB reactivation on anti-PD-1",
+      "judgement": "Scored same under the safety transfer rule with imported_from NSCLC (3 of 5 cases; melanoma and Hodgkin lymphoma the rest): the knockout predicted that PD-1 loss worsens Mtb control, and patients on members developed tuberculosis. Partial and low confidence because the evidence is five uncontrolled cases, the human event is reactivation rather than primary infection, and the authors leave cancer and chemotherapy as alternative causes. Dated 2017 from the e-publication. Paired by us with Lazar-Molnar 2010; Picchi cites knockout mechanism data (Sakai 2016) but not this model's survival result.",
+      "model_first_use_year": 2010,
+      "modality": null
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -243,5 +291,37 @@
   "BMS 2018 press release / ESMO IO 2018 dating of CheckMate 331 and 451: dating of existing entries (dose 3, efficacy 4), not a model system; not touched.",
   "Taniguchi 2022 (PMC9449677): same system as Sen 2019 (RPP syngeneic, anti-PD-L1), folded into the sclc-rpp-syngeneic-mouse-anti-pdl1 track's model text and confidence_note rather than opened as its own track.",
   "Hiatt 2022 RP-48 syngeneic model and Mahadevan 2021: already tracked (sclc-rp-syngeneic-mouse) or excluded by the draft's own judgement; skipped."
+ ],
+ "gaps": [
+  {
+   "lead": "CheckMate 331 OS miss public 2018-10-12 (BMS release, ESMO IO 2018 LBA); CheckMate 451 miss announced Nov 2018",
+   "outcome": "covered",
+   "detail": "check.json efficacy 4 verdict 'corrected' already proposes year 2020 -> 2018 (status contra unchanged) from the 2018-10-12 BMS release / ESMO IO 2018 LBA; dose 3 is the PopPK track, not a CheckMate 331 entry, so nothing further."
+  },
+  {
+   "lead": "Toripalimab human-PD-1 knock-in MC38 model (FDA 761240 review 2023) as its own track",
+   "outcome": "added",
+   "detail": "Already in added_models as hpd1-knockin-mc38 (efficacy untested 2019; merged draft efficacy 7); EXTENTORCH is a chemotherapy combination, so no status change"
+  },
+  {
+   "lead": "Mtb-infected PD-1 knockout: imported TB reactivation on anti-PD-1 (Picchi 2018, PMID 29269089)",
+   "outcome": "entry",
+   "detail": "No verdict proposes it (check.json confirms safety 2 untested; lead only in 'missing'). Added to added_models on track mtb-infected-pd1-knockout-mouse: safety 2017 same, imported_from MONDO:0005233, src Picchi 2018 doi 10.1016/j.cmi.2017.12.003 (epub 2017-12-18), paired with Lazar-Molnar 2010, low confidence, source_calls_it partial."
+  },
+  {
+   "lead": "Sen 2019 / Taniguchi 2022 anti-PD-L1 in RPP syngeneic SCLC mice",
+   "outcome": "added",
+   "detail": "Already in added_models as sclc-rpp-syngeneic-mouse-anti-pdl1 (efficacy untested 2019, merged draft efficacy 10); sibling-class surrogate held untested under decisions 12/13, reviewer may drop"
+  },
+  {
+   "lead": "2024 Rb1/Trp53/Msh2 MMR-deficient SCLC mouse (PMC11564195)",
+   "outcome": "added",
+   "detail": "Already in added_models as sclc-rpm-msh2-gemm (efficacy untested 2024 then retro 2024; merged draft efficacy 8-9)"
+  },
+  {
+   "lead": "PASSION (Fan 2021, PMID 33166719; NCT03417895 results 2024-08-07)",
+   "outcome": "none",
+   "detail": "Camrelizumab plus apatinib single-arm combination: combination rule (model dosed the antibody alone) gives no status change; belongs in efficacy patient_trials, not a model system"
+  }
  ]
 }

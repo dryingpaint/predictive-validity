@@ -11,7 +11,8 @@
   "NCT03339999 protocol (AGN-242428) pdftotext: grepped for mouse/rat/dog/monkey/imiquimod/nonclinical/thymus/lymphoma/whole blood",
   "WebSearch: Delic Krueger RORgamma inhibition plaque psoriasis BI 730357 skin transcriptome",
   "WebSearch: RORgt inhibitor trial candidiasis/infections vs human RORC deficiency (Okada 2015) for BI 730357 or VTP-43742",
-  "WebSearch: GSK2981278 ointment lack of efficacy, skin penetration, explant, Kang 2018 plaque test"
+  "WebSearch: GSK2981278 ointment lack of efficacy, skin penetration, explant, Kang 2018 plaque test",
+  "Gap pass: Europe PMC '\"VTP-43742\"' (25 hits; no healthy-volunteer PK/PD paper indexed); ClinicalTrials.gov API NCT03835481 status (TERMINATED, whyStopped 'Due to company decision.')"
  ],
  "added_models": [],
  "considered_not_added": [
@@ -23,5 +24,22 @@
   "JNJ-54271074 human psoriatic epidermal cell + skin-homing T cell co-culture and IL-23 mouse (Xue 2016 Sci Rep): compound is not a class member, and no member was run in it with a patient comparison.",
   "VTP-43742 nonclinical models (patent-only, Expert Opin Ther Pat 2016/2017) and AGN-242428 nonclinical package (protocol defers to the IB): no published model data, nothing to compare.",
   "GSK2981278 post-hoc skin penetration work: none found beyond the sRICA explants and IMQ mouse the draft already tracks; Sci Rep 2021 (PMC8080595) notes skin exposure was never disclosed but runs a different compound."
+ ],
+ "gaps": [
+  {
+   "lead": "Engagement, VTP-43742 healthy-volunteer PK/PD paper (whole-blood IL-17 readout, c. 2022-23)",
+   "outcome": "tracked",
+   "detail": "Same system as human-whole-blood-il17-vtp, engagement entry 3 (same, 2021 registry date); the paper post-dates 2021 and is not indexed in Europe PMC, so no new system and no status or date change."
+  },
+  {
+   "lead": "Efficacy patient_trials: NCT03835481 (BI 730357 extension) terminated 'Due to company decision'",
+   "outcome": "none",
+   "detail": "Program stop, not an efficacy result (decision 4: development stopped is not failed); registry confirms whyStopped 'Due to company decision.', so nothing to add to il23-minicircle-mouse-bi efficacy entry 3."
+  },
+  {
+   "lead": "Safety: NCT03339999 whyStopped 'safety reason', signal unnamed",
+   "outcome": "tracked",
+   "detail": "rorc-tox-undisclosed, safety entry 1 (untested, untested_reason unpublished) already records the safety stop and the 700 mg transaminase rise; no source names the signal or a model prediction to compare."
+  }
  ]
 }

@@ -18,9 +18,10 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Quote verbatim in bundle BLA 761108 review; model side 'no pharmacologic inhibition ... in sera from 4 nonhuman primates and 5 non-primate species' also verbatim. Registry 2019-02-12 confirmed for NCT02946463. Free C5 is direct tier."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bundle 761108 review: quote near-verbatim (column text inserts 'effectiveness'). Assay first public 2018, after eculizumab's PNH C5 blockade (2004): retro, retrodiction true. Ravulizumab, iv, unselected correct."
   },
   {
    "cell": "dose",
@@ -38,7 +39,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Both quotes verbatim in BLA 761108 review; human t1/2 49.7 d confirmed. Status same holds. Fields: model_change true with no preceding contra misuses the flag; magnitude could be within_2x (mouse >3x vs human ~4.4x half-life ratio)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bundle 761108: quote and NOD-scid '>3-fold longer half-life' verbatim. Sheridan 2018 PLoS One epub 12 Apr 2018, after ravulizumab's own PNH dose data (EHA/ASH 2016): retro under the dose rule. Ravulizumab, iv correct."
   },
   {
    "cell": "dose",
@@ -47,7 +49,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Röth 2020 quote verbatim in abstract (full text not retrievable). FDA 761388 'above approximately 100 μg/mL' verbatim. Fukuzawa's 'much lower trough' claim missed; see rule question. model_change true is wrong: same model_id as entry 1. Note 'weekly' understates: up to every-4-week SC."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Röth 2020 abstract quote verbatim. Chugai release 6 Dec 2018: complete inhibition in all patients, IV load then weekly SC from day 36, so year 2018 holds; prospective (Fukuzawa 2017 predates own patient data). Crovalimab, sc correct."
   },
   {
    "cell": "efficacy",
@@ -65,7 +68,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in BLA 761108 review; co-primaries (transfusion avoidance, LDH normalization) met non-inferiority. No member failed in PNH. patient_trials NCT04434092 quote is from the FDA 761388 review, not doi 10.1002/ajh.27412; fix the citation."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bundle 761108 review quote verbatim (FDA's assessment). Study 301 NI co-primaries (transfusion avoidance, LDH normalisation) both met; design in note. Eculizumab's PNH efficacy predates the assay: retro. Ravulizumab, iv, unselected correct."
   },
   {
    "cell": "safety",
@@ -111,8 +115,8 @@
    "source_resolves": true,
    "quote_found": "not_found",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "DOI resolves to Nishimura 2022 BJH (PMID 35608260, no abstract). Wiley, ResearchGate and ASH abstracts were blocked (403). Search snippets agree: complete, sustained inhibition in 4 R885H carriers. Prospective (assay 2017), so same rather than retro. Quote unconfirmed."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Chugai release 6 Dec 2018 verified: Part 2 'including two C5 SNP patients', 'Complete complement inhibition was achieved for all PNH patients treated'; year 2018 holds. Nishimura 2022 (PMID 35608260) has no abstract, Wiley 403: quote unseen. Crovalimab, sc, biomarker_selected right."
   },
   {
    "cell": "dose",
@@ -150,14 +154,54 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
+   "status_supported": true,
    "proposed_status": "retro",
    "proposed_year": 2024,
-   "rule": "10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "The 92.8%/91.4% come from the final PopPK model fitted to pooled data including Phase 3 (Cosson methods; FDA 2024 review: subjects 'included in the model development'). That is a retrodiction. Set retrodiction true. The pre-Phase 3 MIDD prediction was never reported.",
+   "rule": "Evidence rule 6 (dating: earliest public date, label/regulator review)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Cosson 2025 (epub 21 Jan 2025) quote verbatim; final PopPK fitted to Phase 3, retro right. But FDA BLA 761388 integrated review (June 2024, bundle) already gives the 92.8%/91.4% simulations and observed 94.8%/91.2% above 100 µg/mL: year 2024.",
    "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: the 92.8%/91.4% come from the final PopPK model fitted to Phase 3 PNH subjects (FDA review: n=210 'included in the model development'); it reproduces observed attainment, so retro with retrodiction true."
+   "adjudication_note": "Both agree retro (rule 4: final PopPK fitted to COMMODORE data). Rule 6: FDA BLA 761388 integrated review (2024) already sets 92.8%/91.4% simulated against 94.8%/91.2% observed, so year should be 2024, not 2025."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Röth 2020 abstract (PMID 31978221) quote verbatim. Chugai release 6 Dec 2018 verified ('Complete complement inhibition was achieved for all PNH patients treated'): year 2018. Post-eculizumab model: retro. Crovalimab, sc (IV load, SC maintenance), unselected correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in bundle 761108 review (pharmacology). Opener of the ravulizumab track, untested before its patient comparison; year 2018 is a proxy (model_id first use 2017). Not the latest on track, so no untested_reason needed. Ravulizumab, iv correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Roche release 11 Dec 2022 quote as given; single-arm COMMODORE 3, co-primaries met, design in note. Higher-tier records (ASH 2022 abstract, Liu 2023) give the same status, still 2022. Post-eculizumab: retro. Crovalimab, sc, unselected correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Same verbatim 761108 pharmacology sentence as engagement 6. Opener of the ravulizumab efficacy track, untested before Study 301/302; year 2018 proxy. Ravulizumab, iv, unselected correct."
   }
  ],
  "missing": [

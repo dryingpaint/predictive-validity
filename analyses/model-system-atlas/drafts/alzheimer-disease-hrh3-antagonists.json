@@ -20,8 +20,8 @@
    {
     "year": 2012,
     "status": "untested",
-    "model": "Rat ex-vivo H3 receptor occupancy tied to procognitive doses (ABT-288)",
-    "note": "ABT-288 occupancy in rat brain was related to the doses and exposures active in rat behavioural tests; no human occupancy study was ever run.",
+    "model": "Rodent procognitive battery with exposure-response and ex-vivo H3 occupancy (rat inhibitory avoidance, social recognition, water maze; rat/mouse object recognition with scopolamine or Abeta25-35 deficits)",
+    "note": "ABT-288 occupancy in rat brain was related to the doses and exposures active in rat behavioural tests; no human occupancy study was ever run. Model here: Rat ex-vivo H3 receptor occupancy tied to procognitive doses (ABT-288).",
     "short": "Rat occupancy set the target; no human PET",
     "src": "https://doi.org/10.1124/jpet.112.194126",
     "srcLabel": "Esbenshade 2012",
@@ -52,7 +52,12 @@
     "model_first_use_year": 2012,
     "prediction_level": "class",
     "readout_tier": "direct",
-    "model_id": "rodent-cognition-battery"
+    "model_id": "rodent-cognition-battery",
+    "drug": "abt-288",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "year": 2014,
@@ -64,7 +69,7 @@
     "srcLabel": "Ashworth 2014",
     "quote": "The affinity of GSK239512 for brain H3 receptors in humans in vivo is much higher than that expected from studies in vitro, and higher than that observed in PET studies in pigs.",
     "confidence": "high",
-    "confidence_note": "Seven healthy male volunteers, single oral doses of 6, 14 or 120 ug; pig PET data are cited as unpublished. Full text read (PMC3952801). No NCT number found for the PET study; registry lookup not possible.",
+    "confidence_note": "Seven healthy male volunteers, single oral doses of 6, 14 or 120 ug; pig PET data are cited as unpublished. Full text read (PMC3952801). No NCT number found for the PET study; registry lookup not possible. model_first_use_year 2007 is a proxy: the pig PET preceded the human PET study, whose protocol is NCT00474513 (registered 2007, per Ashworth 2014 Methods).",
     "reason": "Occupancy reached; models under-called affinity",
     "judgement": "Separate track from the ABT-288 rat system (different model, different prediction). Scored same because the readout the preclinical system used (H3 occupancy) moved in dosed humans, at every dose down to 6 ug. Magnitude off_by_>5x on the in-vivo KD: human 4.50e-12 M vs pig PET 3.98e-11 M (8.8x) and in vitro 1.26-2.00e-10 M (28-44x); source_calls_it scaling because the authors say dose selection without the human PET 'would be erroneously high'. The AD phase 2 doses (10-80 ug, Grove 2014) sit above the 6 ug dose that already gave 62-70 % occupancy.",
     "subjects": "healthy_volunteers",
@@ -85,19 +90,23 @@
     "magnitude": "off_by_>5x",
     "magnitude_basis": "in-vivo KD for 50 % H3 occupancy: human 4.50e-12 M vs pig PET 3.98e-11 M and in vitro 1.26-2.00e-10 M",
     "source_calls_it": "scaling",
-    "population": "Unselected mild-to-moderate AD (clinical diagnosis, no biomarker selection)",
-    "model_first_use_year": null,
+    "population": "Healthy male volunteers (n=7, single oral doses; PET occupancy)",
+    "model_first_use_year": 2007,
     "prediction_level": "class",
     "readout_tier": "direct",
-    "model_id": "gsk239512-pig-pet"
+    "model_id": "gsk239512-pig-pet",
+    "drug": "gsk-239512",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
    {
     "year": 2012,
     "status": "untested",
-    "model": "Rat five-trial inhibitory avoidance (SHR pups) exposure-response (ABT-288)",
-    "note": "ABT-288 plasma 0.1-2 ng/mL (~10-40 % occupancy) was procognitive in rat pups; this exposure band became the human target.",
+    "model": "Rodent procognitive battery with exposure-response and ex-vivo H3 occupancy (rat inhibitory avoidance, social recognition, water maze; rat/mouse object recognition with scopolamine or Abeta25-35 deficits)",
+    "note": "ABT-288 plasma 0.1-2 ng/mL (~10-40 % occupancy) was procognitive in rat pups; this exposure band became the human target. Model here: Rat five-trial inhibitory avoidance (SHR pups) exposure-response (ABT-288).",
     "short": "Rat-efficacious plasma 0.1-2 ng/mL set target",
     "src": "https://doi.org/10.1124/jpet.112.194126",
     "srcLabel": "Esbenshade 2012",
@@ -129,13 +138,17 @@
     "prediction_level": "class",
     "blocked_by": null,
     "margin_stated": null,
-    "model_id": "rodent-cognition-battery"
+    "model_id": "rodent-cognition-battery",
+    "drug": "abt-288",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "year": 2013,
+    "year": 2012,
     "status": "same",
-    "model": "Rat five-trial inhibitory avoidance (SHR pups) exposure-response (ABT-288)",
-    "note": "Healthy volunteers reached and exceeded the rat band at the tolerated 3 mg (steady-state Cmax ~5 ng/mL); sleep AEs capped dosing only at 5-6 mg.",
+    "model": "Rodent procognitive battery with exposure-response and ex-vivo H3 occupancy (rat inhibitory avoidance, social recognition, water maze; rat/mouse object recognition with scopolamine or Abeta25-35 deficits)",
+    "note": "Healthy volunteers reached and exceeded the rat band at the tolerated 3 mg (steady-state Cmax ~5 ng/mL); sleep AEs capped dosing only at 5-6 mg. Model here: Rat five-trial inhibitory avoidance (SHR pups) exposure-response (ABT-288). Dated 2012: the paper was online as an Accepted Article (PubMed 2012-09-29) before its 2013 print issue (rule 6, earliest public date).",
     "short": "Rat exposure reached and tolerated at 3 mg",
     "src": "https://doi.org/10.1111/j.1365-2125.2012.04472.x",
     "srcLabel": "Othman 2013",
@@ -151,7 +164,7 @@
     "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "epub_year": null,
+    "epub_year": 2012,
     "print_year": 2013,
     "registry_date": null,
     "model_filed": null,
@@ -162,20 +175,24 @@
     "magnitude": "within_2x",
     "magnitude_basis": "steady-state plasma concentration at 1-3 mg vs the rat-efficacious 0.1-2 ng/mL band",
     "source_calls_it": "match",
-    "population": "Unselected mild-to-moderate AD (clinical diagnosis, no biomarker selection)",
+    "population": "Healthy young and elderly volunteers (ABT-288 phase 1)",
     "model_first_use_year": 2012,
     "prediction_level": "class",
     "blocked_by": null,
     "margin_stated": true,
-    "model_id": "rodent-cognition-battery"
+    "model_id": "rodent-cognition-battery",
+    "drug": "abt-288",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
    {
     "year": 2012,
     "status": "untested",
-    "model": "Rodent procognitive battery (rat inhibitory avoidance, social recognition, water maze; rat/mouse object recognition with scopolamine or Abeta25-35 deficits)",
-    "note": "ABT-288 and SAR110894 were procognitive across rat and mouse memory tests, including scopolamine and Abeta25-35 deficit models; GSK239512 rode on sibling GSK189254 data.",
+    "model": "Rodent procognitive battery with exposure-response and ex-vivo H3 occupancy (rat inhibitory avoidance, social recognition, water maze; rat/mouse object recognition with scopolamine or Abeta25-35 deficits)",
+    "note": "ABT-288 and SAR110894 were procognitive across rat and mouse memory tests, including scopolamine and Abeta25-35 deficit models; GSK239512 rode on sibling GSK189254 data. Model here: Rodent procognitive battery (rat inhibitory avoidance, social recognition, water maze; rat/mouse object recognition with scopolamine or Abeta25-35 deficits).",
     "short": "Procognitive in rat and mouse memory tests",
     "src": "https://doi.org/10.1124/jpet.112.194126",
     "srcLabel": "Esbenshade 2012",
@@ -208,21 +225,25 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": null,
-    "model_id": "rodent-cognition-battery"
+    "model_id": "rodent-cognition-battery",
+    "drug": "abt-288",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2013,
-    "status": "same",
-    "model": "Rodent procognitive battery (GSK189254 sibling data for GSK239512)",
-    "note": "GSK239512 10-80 ug hit one co-primary (CogState episodic memory, ES 0.35, p=0.0495) but not executive/working memory or ADAS-Cog in 196 untreated AD patients.",
-    "short": "One of two co-primaries, marginal",
+    "status": "contra",
+    "model": "Rodent procognitive battery with exposure-response and ex-vivo H3 occupancy (rat inhibitory avoidance, social recognition, water maze; rat/mouse object recognition with scopolamine or Abeta25-35 deficits)",
+    "note": "Co-primary design, scored as the authors call it: episodic memory met (ES 0.35, p=0.0495), executive/working memory and ADAS-Cog did not; authors say GSK239512 failed to show benefit, so contra. Model here: rodent battery via sibling GSK189254.",
+    "short": "Co-primary design; authors call it a failure",
     "src": "https://doi.org/10.2174/1567205010666131212110148",
     "srcLabel": "Grove 2014",
     "quote": "Compared to placebo, GSK239512 improved Episodic Memory at Week 16 (Effect Size [ES] =0.35; p=0.0495). No statistically significant differences were observed on other cognitive domains or on clinical measures including the Alzheimer's Disease Assessment Scale-Cognitive Subscale (ADASCog).",
     "confidence": "medium",
     "confidence_note": "Abstract-level (Bentham paywall). Online date 2013-12-12 is read from the Bentham DOI timestamp, print 2014. NCT01009255 has no posted results. GSK's own rodent data on GSK239512 are not published; the model side is the sibling GSK189254 paper, so product_in_model is false.",
     "reason": null,
-    "judgement": "Co-primary design: one endpoint met at p=0.0495, the other and ADAS-Cog did not, and GSK did not take the drug further in AD. By the v3 rule partial agreement is same with source_calls_it partial; I would call this a failure by the usual co-primary convention and say so here, but the status follows the rule. Nathan 2013 phase 1b (https://doi.org/10.2174/1567205011310030003) reported larger effect sizes (0.56-1.37) in 24 patients that did not hold.",
+    "judgement": "Co-primary ruling (2026-11-09): a co-primary trial with one endpoint met is scored as the authors call it; Grove 2014 concludes GSK239512 'failed to show benefit', so the earlier same/partial is now contra. Settles the check's RULE QUESTION on this entry. Nathan 2013 phase 1b (https://doi.org/10.2174/1567205011310030003) reported larger effect sizes (0.56-1.37) in 24 patients that did not hold. Own track (gsk-239512 x oral); no opener appended because a 2007-2012 opener appended after this 2013 entry would break the track's year order.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -238,9 +259,9 @@
     "model_kind": "animal",
     "retrodiction": false,
     "imported_from": null,
-    "magnitude": "direction_only",
-    "magnitude_basis": "CogState episodic memory composite effect size 0.35 vs placebo; executive/working memory co-primary and ADAS-Cog null",
-    "source_calls_it": "partial",
+    "magnitude": "null",
+    "magnitude_basis": "co-primary Executive Function/Working Memory composite and ADAS-Cog null at week 16; Episodic Memory co-primary ES 0.35, p=0.0495 unadjusted",
+    "source_calls_it": "miss",
     "population": "Unselected mild-to-moderate AD (clinical diagnosis, no biomarker selection)",
     "model_first_use_year": 2012,
     "prediction_level": "class",
@@ -254,13 +275,17 @@
       "quote": "Co-primary efficacy endpoints were change from baseline in Episodic Memory and Executive Function/Working Memory composite scores from the CogState neuropsychological test battery (NTB) at Week 16."
      }
     ],
-    "model_id": "rodent-cognition-battery"
+    "model_id": "rodent-cognition-battery",
+    "drug": "gsk-239512",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "year": 2014,
     "status": "contra",
-    "model": "Rodent procognitive battery (ABT-288 in rat inhibitory avoidance, social recognition, water maze)",
-    "note": "ABT-288 1 and 3 mg were numerically worse than placebo on ADAS-Cog13 in 242 patients; stopped for futility while donepezil worked.",
+    "model": "Rodent procognitive battery with exposure-response and ex-vivo H3 occupancy (rat inhibitory avoidance, social recognition, water maze; rat/mouse object recognition with scopolamine or Abeta25-35 deficits)",
+    "note": "ABT-288 1 and 3 mg were numerically worse than placebo on ADAS-Cog13 in 242 patients; stopped for futility while donepezil worked. Model here: Rodent procognitive battery (ABT-288 in rat inhibitory avoidance, social recognition, water maze).",
     "short": "Rat-procognitive ABT-288 failed ADAS-Cog, futility",
     "src": "https://doi.org/10.3233/JAD-140291",
     "srcLabel": "Haig 2014",
@@ -300,14 +325,18 @@
       "quote": "The study was prematurely terminated because futility criteria were met."
      }
     ],
-    "model_id": "rodent-cognition-battery"
+    "model_id": "rodent-cognition-battery",
+    "drug": "abt-288",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "year": 2016,
+    "year": 2014,
     "status": "contra",
-    "strengthens": true,
-    "model": "Rodent procognitive battery (SAR110894 in rat/mouse object recognition, scopolamine, Abeta25-35)",
-    "note": "Sanofi's own scientists: no sustained symptomatic efficacy in any 4-24-week AD trial despite robust rodent procognition; SAR110894 0.5-5 mg was worse than placebo on ADAS-Cog11.",
+    "strengthens": false,
+    "model": "Rodent procognitive battery with exposure-response and ex-vivo H3 occupancy (rat inhibitory avoidance, social recognition, water maze; rat/mouse object recognition with scopolamine or Abeta25-35 deficits)",
+    "note": "Add-on to donepezil (all arms): SAR110894 0.5-5 mg was worse than placebo on ADAS-Cog11; Sanofi scientists later state no sustained efficacy in any 4-24-week AD trial despite robust rodent procognition. Dated 2014, the Sanofi results summary.",
     "short": "Three rodent successes, three AD failures",
     "src": "https://doi.org/10.1016/j.trci.2016.10.002",
     "srcLabel": "Delay-Goyet 2016",
@@ -315,7 +344,7 @@
     "confidence": "medium",
     "confidence_note": "Full text read (PMC5651361). The SAR110894 trial (NCT01266525, DRI10734) has no peer-reviewed report: the result is in Sanofi's results summary (issue date 2014-11-11, tier 5, https://www.sanofi.com/assets/dotcom/content-app/clinical-studies/pharma/Letter-H/DRI10734_summary.pdf), a 2013 CTAD abstract (Stemmelin, J Nutr Health Aging 17:804-805), and an EU CTR results record (2010-022596-64, results version dated 2016-05-10 per a search snippet; the page itself returned 244 bytes to curl, so unread). ClinicalTrials.gov has no results.",
     "reason": "Rodents procognitive; three AD trials failed",
-    "judgement": "Strengthens the 2014 contra with the class-wide, explicitly stated comparison from the SAR110894 sponsor, covering the third member. The patient numbers come from the Sanofi summary: ADAS-Cog11 estimated differences from placebo +0.26, +0.62, +0.72 (worse) at 0.5, 2, 5 mg, p=0.77/0.47/0.42, so magnitude opposite. A nominal ADCS-ADL win at 5 mg (p=0.02, unadjusted) is a secondary and changes nothing. Year is the earliest tier 1-3 date I could read; the comparison was public earlier in the tier 5 summary (2014).",
+    "judgement": "Own track (SAR110894 x oral), so it no longer strengthens the ABT-288 contra. Combination ruling: the trial (DRI10734, NCT01266525) gave SAR110894 on top of donepezil in every arm and is scored on its primary endpoint like any other trial, combination_with donepezil. Rule 6: year 2014 is the Sanofi results summary (issued 2014-11-11, ADAS-Cog11 differences from placebo +0.26, +0.62, +0.72 at 0.5, 2, 5 mg, p=0.77/0.47/0.42), earlier than Delay-Goyet 2016 (epub 2016-11-03), which stays the tier 1 source of the stated comparison; registry_date is the EU CTR results posting 2010-022596-64 (2016-05-10). A 2013 CTAD abstract (Stemmelin) may date it 2013 but could not be read. A nominal ADCS-ADL win at 5 mg (p=0.02, unadjusted) is a secondary and changes nothing. No 2012 opener appended: it would follow this 2014 entry and break year order.",
     "subjects": "patients",
     "comparison_stated": true,
     "source_tier": 1,
@@ -325,7 +354,7 @@
     "patient_signal_reversed": false,
     "epub_year": 2016,
     "print_year": 2016,
-    "registry_date": null,
+    "registry_date": "2016-05-10",
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
@@ -347,7 +376,11 @@
       "quote": "resulting in estimated difference from placebo of 0.26, 0.62, and 0.72, all statistically non-significant (nominal 2-sided p-value of respectively 0.77, 0.47, and 0.42)."
      }
     ],
-    "model_id": "rodent-cognition-battery"
+    "model_id": "rodent-cognition-battery",
+    "drug": "SAR110894",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "donepezil"
    },
    {
     "year": 2016,
@@ -361,7 +394,7 @@
     "confidence": "high",
     "confidence_note": "Full text read (PMC5651361). No registry entry for any disease-modification trial of an H3 antagonist in AD was found.",
     "reason": "Disease-modifying claim never tested",
-    "judgement": "Separate track under the identity rule: a different model (tau transgenic, chronic 6-month dosing) making a different prediction (slowed tau pathology) from the symptomatic rodent battery. Published after the 2013 symptomatic trial failed, but it is not a retrodiction of that result, so retrodiction false; Sanofi filed a use patent (PCT/EP2013/057241) and ran no trial.",
+    "judgement": "Separate track under the identity rule: a different model (tau transgenic, chronic 6-month dosing) making a different prediction (slowed tau pathology) from the symptomatic rodent battery. Published after the 2013 symptomatic trial failed, but it is not a retrodiction of that result, so retrodiction false; Sanofi filed a use patent (PCT/EP2013/057241) and ran no trial. Retrodiction ruling considered (2026-11-09): the model is first public after the 2014 SAR110894 and ABT-288 failures, but those trials measured symptomatic cognition over 4-24 weeks, while this model's prediction is slowed tau pathology and prevented decline after 6 months of dosing (2 weeks did nothing); no trial measured that readout, so it stays untested (not_measured) rather than becoming a retrodiction.",
     "subjects": null,
     "comparison_stated": false,
     "source_tier": 1,
@@ -386,14 +419,19 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": null,
-    "model_id": "thy-tau22-mouse"
+    "model_id": "thy-tau22-mouse",
+    "drug": "SAR110894",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    }
   ],
   "safety": [
    {
     "year": 2012,
     "status": "untested",
-    "model": "Rat safety pharmacology and EEG, monkey toxicology (ABT-288)",
+    "model": "Rat safety pharmacology and sleep-wake EEG (with monkey toxicology for ABT-288)",
     "note": "Rodent safety pharmacology claimed a wide CNS and cardiovascular margin; rat EEG put wake-promoting exposures above procognitive ones. Sanofi's rat sleep-wake EEG (Griebel 2012) is the same assay; its 2012 opener folds here.",
     "short": "Wide CNS margin claimed; wake above efficacy",
     "src": "https://doi.org/10.1124/jpet.112.194126",
@@ -424,13 +462,17 @@
     "population": "Unselected mild-to-moderate AD (clinical diagnosis, no biomarker selection)",
     "model_first_use_year": 2012,
     "prediction_level": "class",
-    "model_id": "rat-safety-pharm-eeg"
+    "model_id": "rat-safety-pharm-eeg",
+    "drug": "abt-288",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
-    "year": 2013,
+    "year": 2012,
     "status": "same",
-    "model": "Rat safety pharmacology and EEG, monkey toxicology (ABT-288)",
-    "note": "Insomnia and abnormal dreams were dose-limiting at 5-6 mg, above the rat-efficacious exposure, as rat EEG predicted; AEs at 1-3 mg in AD were mild.",
+    "model": "Rat safety pharmacology and sleep-wake EEG (with monkey toxicology for ABT-288)",
+    "note": "Insomnia and abnormal dreams were dose-limiting at 5-6 mg, above the rat-efficacious exposure, as rat EEG predicted; AEs at 1-3 mg in AD were mild. Dated 2012: online Accepted Article (PubMed 2012-09-29) before 2013 print (rule 6).",
     "short": "Sleep AEs where rat EEG predicted",
     "src": "https://doi.org/10.1111/j.1365-2125.2012.04472.x",
     "srcLabel": "Othman 2013",
@@ -438,7 +480,7 @@
     "confidence": "medium",
     "confidence_note": "Full text read (PMC3635600); 'H3' is set as 'H 3' and a citation bracket follows in the source. Healthy young and elderly volunteers, not patients. The matching sentence: 'The incidence and severity of insomnia observed at the intolerable doses of ABT-288 ... suggest that these doses already have high H3 receptor occupancy'.",
     "reason": "Sleep AEs where rat EEG predicted",
-    "judgement": "On-target harm the model predicted in kind and in order (wake-promotion above procognitive exposure): same, direction_only. Counted here, not in dose, because the stated margin held (3 mg tolerated, above the rat band). Class-consistent: Grove 2014 (sleep disturbance, mostly at 10-20 ug titration), Sanofi DRI10734 summary (insomnia signal at 2-5 mg SAR110894), Delay-Goyet 2016 ('dose-dependent sleep disturbances was frequent across trials'). Not scored: the Sanofi summary's new findings for SAR110894 (dose-related depressed mood; LOCS-III lens opacities of undetermined significance) have no published model prediction I could check, and the ABT-288 schizophrenia psychosis-related AEs belong to another indication.",
+    "judgement": "On-target harm the model predicted in kind and in order (wake-promotion above procognitive exposure): same, direction_only. Counted here, not in dose, because the stated margin held (3 mg tolerated, above the rat band). Class-consistent: Grove 2014 (sleep disturbance, mostly at 10-20 ug titration), Sanofi DRI10734 summary (insomnia signal at 2-5 mg SAR110894), Delay-Goyet 2016 ('dose-dependent sleep disturbances was frequent across trials'). Not scored: the Sanofi summary's new findings for SAR110894 (dose-related depressed mood; LOCS-III lens opacities of undetermined significance) have no published model prediction I could check, and the ABT-288 schizophrenia psychosis-related AEs belong to another indication. ABT-288's AD trial (Gault 2015) measured this disease's patients, so the schizophrenia psychosis-related AEs (Haig 2014) are not imported (imported-harm ruling).",
     "subjects": "healthy_volunteers",
     "comparison_stated": true,
     "source_tier": 1,
@@ -446,7 +488,7 @@
     "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "epub_year": null,
+    "epub_year": 2012,
     "print_year": 2013,
     "registry_date": null,
     "model_filed": null,
@@ -457,18 +499,22 @@
     "magnitude": "direction_only",
     "magnitude_basis": "sleep-related AEs dose-limiting at 5-6 mg vs 3 mg tolerated, against rat EEG wake exposure > procognitive exposure",
     "source_calls_it": "match",
-    "population": "Unselected mild-to-moderate AD (clinical diagnosis, no biomarker selection)",
+    "population": "Healthy young and elderly volunteers (ABT-288 phase 1)",
     "model_first_use_year": 2012,
     "prediction_level": "class",
-    "model_id": "rat-safety-pharm-eeg"
+    "model_id": "rat-safety-pharm-eeg",
+    "drug": "abt-288",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2014,
     "status": "contra",
-    "model": "Rat safety pharmacology and EEG, monkey toxicology (ABT-288)",
-    "note": "In 291 AD patients on donepezil, sleep-initiation/maintenance disturbance was flagged as a safety signal, higher at 2-5 mg; three insomnia discontinuations at 5 mg.",
+    "model": "Rat safety pharmacology and sleep-wake EEG (with monkey toxicology for ABT-288)",
+    "note": "Add-on to donepezil: in 291 AD patients, sleep-initiation/maintenance disturbance was flagged as a safety signal, higher at 2-5 mg SAR110894; three insomnia discontinuations at 5 mg. Rat EEG had shown no wake-promotion.",
     "short": "Insomnia signal the rat EEG missed",
     "src": "https://www.sanofi.com/assets/dotcom/content-app/clinical-studies/pharma/Letter-H/DRI10734_summary.pdf",
     "srcLabel": "Sanofi DRI10734 summary 2014",
@@ -476,7 +522,7 @@
     "confidence": "medium",
     "confidence_note": "Sponsor results summary (tier 5, issue date 11-Nov-2014) read in full via pdftotext; no peer-reviewed report of NCT01266525 exists. The summary attributes insomnia and muscle spasm to 'possible cholinergic origin' (all patients on donepezil), but reports a trend to higher incidence at 2 and 5 mg and 3 insomnia discontinuations in the 5 mg arm. The EU CTR results record (2010-022596-64, v1 2016-05-10) is the tier 3 record; its adverse-event tables were not returned by the scrape, so arm-level insomnia counts are unverified.",
     "reason": null,
-    "judgement": "Paired comparison (comparison_stated false): the model side is Griebel 2012 BBR (no wake-promotion at 3-30 mg/kg), the patient side Sanofi's own summary flagging a dose-trending sleep-disturbance signal at the 2-5 mg doses whose exposures were procognitive in rodents. A predicted absence of an on-target harm that then appeared is contra, magnitude opposite. Year 2014 is the earliest public date of the patient side (rule 6); the tier 5 source carries trial_unreported true and registry_date is the later EU CTR posting. Not scored here: depressed mood and LOCS-III lens opacities (no model prediction found).",
+    "judgement": "Paired comparison (comparison_stated false): the model side is Sanofi's own rat sleep-wake EEG for SAR110894 (Griebel 2012 BBR: no wake-promotion at 3-30 mg/kg), the patient side Sanofi's summary flagging a dose-trending sleep-disturbance signal at 2-5 mg. Now its own track (SAR110894 x oral), separate from ABT-288's same on the rat EEG system, so neither overrides the other. Combination ruling: every arm took donepezil; the add-on trial is scored like any other, and the summary's 'possible cholinergic origin' is recorded, not used to set the result aside, since the same sleep harm appeared with ABT-288 alone in healthy volunteers. A predicted absence of an on-target harm that then appeared is contra, magnitude opposite. Year 2014 is the earliest public date of the patient side (rule 6); a 2013 CTAD abstract could not be read. Not scored: depressed mood and LOCS-III lens opacities (no model prediction found). No 2012 opener appended: it would follow this entry and break year order.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 5,
@@ -496,7 +542,11 @@
     "population": "Unselected mild-to-moderate AD (clinical diagnosis, no biomarker selection)",
     "model_first_use_year": 2012,
     "prediction_level": "class",
-    "model_id": "rat-safety-pharm-eeg"
+    "model_id": "rat-safety-pharm-eeg",
+    "drug": "SAR110894",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "donepezil"
    },
    {
     "retrodiction": false,
@@ -504,7 +554,7 @@
     "year": 2016,
     "status": "contra",
     "strengthens": true,
-    "model": "Rat safety pharmacology and EEG, monkey toxicology (ABT-288)",
+    "model": "Rat safety pharmacology and sleep-wake EEG (with monkey toxicology for ABT-288)",
     "note": "Sanofi's own scientists, citing the SAR110894 trial among the H3 AD trials, record dose-dependent sleep disturbance as frequent across them.",
     "short": "Sponsor confirms dose-dependent sleep disturbance",
     "src": "https://doi.org/10.1016/j.trci.2016.10.002",
@@ -513,7 +563,7 @@
     "confidence": "medium",
     "confidence_note": "Full text read (PMC5651361, epub 2016-11-03). The sentence is class-wide, covering refs 35-39 which include the SAR110894 phase 2 abstract (Stemmelin 2013, J Nutr Health Aging 17:804-805); the paper does not mention its own 2012 rat EEG result, so the comparison is paired, not stated. Registry date is the EU CTR results posting for 2010-022596-64.",
     "reason": "Rat EEG predicted no insomnia; signal appeared",
-    "judgement": "Strengthens the 2014 contra with a tier 1 peer-reviewed patient-side statement from the SAR110894 sponsor; status unchanged. The class-wide wording is why confidence stays medium rather than high.",
+    "judgement": "Strengthens the 2014 contra with a tier 1 peer-reviewed patient-side statement from the SAR110894 sponsor; status unchanged. The class-wide wording is why confidence stays medium rather than high. Same SAR110894 track as entry 3; combination_with left null because the statement covers several Sanofi trials, not only the donepezil add-on.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -533,7 +583,11 @@
     "population": "Unselected mild-to-moderate AD (clinical diagnosis, no biomarker selection)",
     "model_first_use_year": 2012,
     "prediction_level": "class",
-    "model_id": "rat-safety-pharm-eeg"
+    "model_id": "rat-safety-pharm-eeg",
+    "drug": "SAR110894",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

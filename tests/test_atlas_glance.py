@@ -12,11 +12,13 @@ import glance  # noqa: E402
 import glance_nature  # noqa: E402
 
 
-def entry(model_id, year, status, seq=1, modality="", adjudicated=None, retrodiction=None, **fields):
+def entry(model_id, year, status, seq=1, modality="", adjudicated=None, retrodiction=None, drug="d1", route="oral", **fields):
     return {"mondo_id": "MONDO:1", "mechanism_key": "X|inhibitor", "question": "efficacy", "modality": modality, "seq": seq,
-            "year": year, "status": status, "model_id": model_id, "model": model_id.replace("-", " "),
-            "src_label": "", "retrodiction": status == "retro" if retrodiction is None else retrodiction, "fields": {"short": f"{model_id} {status}", **fields},
-            "adjudicated_status": adjudicated, "final": adjudicated or status, "short": f"{model_id} {status}"}
+            "year": year, "status": status, "track_id": f"{model_id} / {drug} / {route}", "model_id": model_id,
+            "model": model_id.replace("-", " "), "drug": drug, "route": route, "src_label": "",
+            "retrodiction": status == "retro" if retrodiction is None else retrodiction, "outcome_tested": None,
+            "untested_reason": None, "adjudicated_status": adjudicated, "final": adjudicated or status,
+            "short": f"{model_id} {status}", **fields}
 
 
 def cell(*entries):
@@ -29,6 +31,13 @@ def test_best_track_sets_the_headline_over_a_contradicted_track():
     assert st == "same"
     assert pick["model_id"] == "b" and pick["year"] == 2018
     assert {v["model_id"]: v["final"] for v in last.values()} == {"a": "contra", "b": "same"}
+
+
+def test_one_model_used_for_two_drugs_is_two_tracks():
+    st, pick, last = glance.headline_entry(cell(entry("mouse", 2010, "untested", drug="d1"), entry("mouse", 2015, "contra", seq=2, drug="d1"),
+                                                entry("mouse", 2011, "untested", seq=3, drug="d2"), entry("mouse", 2018, "same", seq=4, drug="d2")))
+    assert st == "same" and pick["drug"] == "d2"
+    assert sorted(v["final"] for v in last.values()) == ["contra", "same"]
 
 
 def test_a_retrodiction_never_sets_the_headline_and_an_all_retro_cell_is_marked():

@@ -1,0 +1,101 @@
+{
+ "tile": "mantle-cell-lymphoma-cd19-directed-depleters",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2020 -> 2019: ZUMA-2 primary results first public at ASH 2019 / Kite press release 2019-12-09 (rule 6, earlier public date); drug brexucabtagene autoleucel, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "year 2020 -> 2019: ZUMA-2 primary results first public at ASH 2019 / Kite press release 2019-12-09 (rule 6, earlier public date); drug brexucabtagene autoleucel, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "year 2020 -> 2019: ZUMA-2 primary results first public at ASH 2019 / Kite press release 2019-12-09 (rule 6, earlier public date); drug brexucabtagene autoleucel, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same -> untested (not_measured): single-arm ruling scores LOTIS-1 on its primary endpoint (DLT/RP2D, NCT02669017); MCL ORR was secondary. Settles check verdict efficacy 3. drug loncastuximab tesirine, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "imported_from MONDO:0018905 removed, population now pooled B-NHL incl. MCL: imported-harm ruling (MCL patients measured in LOTIS-1); status same/partial unchanged; drug loncastuximab tesirine, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to brexucabtagene autoleucel, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to loncastuximab tesirine, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to brexucabtagene autoleucel, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to brexucabtagene autoleucel, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to loncastuximab tesirine, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to loncastuximab tesirine, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to brexucabtagene autoleucel, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to loncastuximab tesirine, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to loncastuximab tesirine, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug set to brexucabtagene autoleucel, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug set to brexucabtagene autoleucel, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to brexucabtagene autoleucel, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to loncastuximab tesirine, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to brexucabtagene autoleucel, route iv, population_group stage_or_line (R/R MCL); no status or year change"
+  }
+ ],
+ "added": []
+}

@@ -51,7 +51,11 @@
     "src": "https://clinicaltrials.gov/study/NCT00729508",
     "srcLabel": "NCT00729508 (2008)",
     "quote": "This study will investigate the efficacy of 4 treatment regimens of Cat-PAD in cat allergic subjects following challenge to cat allergen in an environmental exposure chamber (EEC).",
-    "judgement": "Model first use is the first member-drug chamber trial (NCT00729508, start 2008-08, first posted 2008-08-07). The chamber is one track across the cat, ragweed and birch products: same system, same prediction (symptom score under challenge predicts field symptom score)."
+    "judgement": "Model first use is the first member-drug chamber trial (NCT00729508, start 2008-08, first posted 2008-08-07). The chamber is one track across the cat, ragweed and birch products: same system, same prediction (symptom score under challenge predicts field symptom score).",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "cat-pad-nasal-allergen-challenge",
@@ -86,7 +90,11 @@
     "src": "https://clinicaltrials.gov/study/NCT01383590",
     "srcLabel": "NCT01383590 (2011)",
     "quote": "Identification of potential plasma biomarkers of response to peptide immunotherapy",
-    "judgement": "A different system from the chamber (titrated nasal challenge at a single visit, symptom score over 6 h, no placebo arm) so it gets its own track; model first use is the start of NCT01383590/NCT01383603 (2011-10). The later placebo-controlled NIAID NAC study (NCT02311413, start 2015-03) never reported its TNSS AUC primary."
+    "judgement": "A different system from the chamber (titrated nasal challenge at a single visit, symptom score over 6 h, no placebo arm) so it gets its own track; model first use is the start of NCT01383590/NCT01383603 (2011-10). The later placebo-controlled NIAID NAC study (NCT02311413, start 2015-03) never reported its TNSS AUC primary.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -123,7 +131,11 @@
     "srcLabel": "Patel 2013",
     "quote": "The treatment effect of 6 nmol persisted 1 year after the start of treatment and was significantly different from that of 3 nmol (P = .0342) and placebo (P = .0104).",
     "reason": "Chamber symptom readout moved in dosed patients",
-    "judgement": "For a human-challenge model engagement is near-tautological: the chamber subjects are the dosed patients. Scored on the chamber's own downstream readout (symptom score under challenge), as the sibling allergic-rhinitis tile does for grass-SPIRE. Year is the online date (2012), not the print year."
+    "judgement": "For a human-challenge model engagement is near-tautological: the chamber subjects are the dosed patients. Scored on the chamber's own downstream readout (symptom score under challenge), as the sibling allergic-rhinitis tile does for grass-SPIRE. Year is the online date (2012), not the print year.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "hdmasit-conjunctival-provocation-test",
@@ -158,7 +170,12 @@
     "src": "https://clinicaltrials.gov/study/NCT03094845",
     "srcLabel": "NCT03094845 (2016)",
     "quote": "The purpose of this study is to assess the safety and clinical tolerability of subcutaneous immunotherapy with hdmASIT+TM in patients with house dust mite-induced allergic rhinoconjunctivitis compared to placebo.",
-    "judgement": "Its own untested track: the CPT was used for this member but no field trial followed (the DB holds one trial, highest phase 2), so there is nothing to compare. The press-reported CPT result does not score."
+    "judgement": "Its own untested track: the CPT was used for this member but no field trial followed (the DB holds one trial, highest phase 2), so there is nothing to compare. The press-reported CPT result does not score.",
+    "drug": "hdmASIT+",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "cat-pad-nasal-allergen-challenge",
@@ -195,7 +212,11 @@
     "srcLabel": "Ellis 2018",
     "quote": "Four injections of Cat-PAD resulted in a significant reduction in TNSS responses generated via NAC following allergen challenge (15 min p < 0.05, 30 min p < 0.05, 1 h p < 0.01, 2 h p < 0.05).",
     "reason": "NAC symptom readout moved in dosed patients",
-    "judgement": "Engagement on a human-challenge model is near-tautological; scored on the model's own downstream readout. Open-label and uncontrolled, so confidence medium rather than high despite full-text reading."
+    "judgement": "Engagement on a human-challenge model is near-tautological; scored on the model's own downstream readout. Open-label and uncontrolled, so confidence medium rather than high despite full-text reading.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -230,7 +251,11 @@
     "model": "Patient PBMC Fel d 1-specific CD4+ T cells (ex vivo), Cat-PAD",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -267,7 +292,11 @@
     "model": "Patient PBMC Fel d 1-specific CD4+ T cells (ex vivo), Cat-PAD",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -305,7 +334,11 @@
     "src": "https://clinicaltrials.gov/study/NCT00729508",
     "srcLabel": "NCT00729508 (2008)",
     "quote": "This study will investigate the efficacy of 4 treatment regimens of Cat-PAD in cat allergic subjects following challenge to cat allergen in an environmental exposure chamber (EEC).",
-    "judgement": "Model first use is the first member-drug chamber trial (NCT00729508, start 2008-08). Dose is split by modality: this opens the chamber track's peptide strip."
+    "judgement": "Model first use is the first member-drug chamber trial (NCT00729508, start 2008-08). Dose is split by modality: this opens the chamber track's peptide strip.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "cat-pad-late-phase-skin-response",
@@ -341,7 +374,12 @@
     "src": "https://clinicaltrials.gov/study/NCT00685711",
     "srcLabel": "NCT00685711 (2008)",
     "quote": "Late-Phase Skin Reaction (LPSR) 8 hours after intradermal challenge with whole cat allergen.",
-    "judgement": "Untested, not contra: Worm 2011 (doi:10.1016/j.jaci.2010.11.029) picked 3 nmol on LPSR, the chamber then preferred 4 x 6 nmol over 8 x 3 nmol, and no field trial ever dosed 3 nmol, so the LPSR pick was superseded by another model rather than compared with patients. A separate track because it is a different system (skin challenge, single dose) from the chamber."
+    "judgement": "Untested, not contra: Worm 2011 (doi:10.1016/j.jaci.2010.11.029) picked 3 nmol on LPSR, the chamber then preferred 4 x 6 nmol over 8 x 3 nmol, and no field trial ever dosed 3 nmol, so the LPSR pick was superseded by another model rather than compared with patients. A separate track because it is a different system (skin challenge, single dose) from the chamber.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -377,7 +415,12 @@
     "src": "https://clinicaltrials.gov/study/NCT00987909",
     "srcLabel": "NCT00987909 (2009)",
     "quote": "The main purpose of this trial is to investigate if any of three different doses of cat hair immunotherapy is safe for treatment of cat allergic patients.",
-    "judgement": "Modality split: this opens the chamber track's 'other' strip (model_first_use_year stays 2008, the track's first use with Cat-PAD). No publication of US-C-01 was found (Europe PMC search) and no later trial exists, so the member never reached a field comparison."
+    "judgement": "Modality split: this opens the chamber track's 'other' strip (model_first_use_year stays 2008, the track's first use with Cat-PAD). No publication of US-C-01 was found (Europe PMC search) and no later trial exists, so the member never reached a field comparison.",
+    "drug": "cat allergen extract",
+    "route": "sublingual",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -416,7 +459,11 @@
     "srcLabel": "Circassia PR 2016",
     "quote": "All groups had greatly improved Combined Score vs baseline (4 x 6nmol reduction = 58.2%; 8 x 6 nmol reduction = 59.8%; placebo reduction = 58.5%).",
     "reason": "Chamber regimen failed in the field",
-    "judgement": "Dose scored on its own prediction (rule v4): the chamber's 4 x 6 nmol course was dosed in the field Phase 3. Rule row 'reached, failed, abandoned': dose contra derived from efficacy. The 8 x 6 nmol escalation also failed, so this is not a too-low target. Decision 16 does not apply: the chamber stated no tolerability margin. Ragweed-SPIRE's chamber dosing never reached a field trial (this release stopped its dose-ranging preparation)."
+    "judgement": "Dose scored on its own prediction (rule v4): the chamber's 4 x 6 nmol course was dosed in the field Phase 3. Rule row 'reached, failed, abandoned': dose contra derived from efficacy. The 8 x 6 nmol escalation also failed, so this is not a too-low target. Decision 16 does not apply: the chamber stated no tolerability margin. Ragweed-SPIRE's chamber dosing never reached a field trial (this release stopped its dose-ranging preparation).",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "hdmasit-conjunctival-provocation-test",
@@ -452,7 +499,12 @@
     "src": "https://clinicaltrials.gov/study/NCT03094845",
     "srcLabel": "NCT03094845 (2016)",
     "quote": "The purpose of this study is to assess the safety and clinical tolerability of subcutaneous immunotherapy with hdmASIT+TM in patients with house dust mite-induced allergic rhinoconjunctivitis compared to placebo.",
-    "judgement": "Its own untested track: the CPT was used for this member but the programme went no further, so no dose prediction was ever compared with a field trial."
+    "judgement": "Its own untested track: the CPT was used for this member but the programme went no further, so no dose prediction was ever compared with a field trial.",
+    "drug": "hdmASIT+",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -469,7 +521,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "human_challenge",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "within_2x",
     "magnitude_basis": "dose: 12 DU chosen in the chamber = 12 DU dosed in the Phase 3",
@@ -480,18 +532,22 @@
     "population": "Unselected (sensitized to the product's allergen)",
     "model_first_use_year": 2008,
     "confidence": "high",
-    "confidence_note": "Couroux 2019 full text read via Europe PMC (PMC6588091; epub 2018-11-22; chamber trial NCT02481856, start 2015-06); Biedermann 2019 abstract (epub 2019-01-15). The member's own field Phase 2 (EudraCT 2012-000031-59, NCT01675791) showed no dose response in a short season, which is why the chamber was run. No NCT found for the Phase 3, so registry_date is null.",
+    "confidence_note": "Couroux 2019 full text read via Europe PMC (PMC6588091; epub 2018-11-22; chamber trial NCT02481856, start 2015-06); Biedermann 2019 abstract (epub 2019-01-15). The member's own field Phase 2 (EudraCT 2012-000031-59, NCT01675791) showed no dose response in a short season, which is why the chamber was run. No NCT found for the Phase 3, so registry_date is null. ALK press release 2017-09-14 announced the Phase 3 primary met (TCS -39.6%, p<0.0001) before the chamber dose-finding was published (Couroux epub 2018-11-22); dose counts the same drug's own earlier patient result, so retrodiction by post-dating. Year is the earliest date both sides were public (2018).",
     "prediction_level": "class",
-    "year": 2019,
-    "status": "same",
+    "year": 2018,
+    "status": "retro",
     "model": "Allergen exposure chamber (EEC)",
-    "note": "Chamber dose-finding picked 12 DU as effective and tolerated; the Phase 3 dosed 12 DU and cut birch-season TCS 40% (P<.0001).",
-    "short": "Chamber-chosen 12 DU worked in field",
+    "note": "Chamber picked 12 DU as effective and tolerated (Couroux, online 2018-11-22), after ALK announced the 12 DU Phase 3 met its primary (2017-09-14): retro by post-dating.",
+    "short": "Chamber 12 DU reproduces field dose",
     "src": "https://doi.org/10.1016/j.jaci.2018.12.1001",
     "srcLabel": "Biedermann 2019",
     "quote": "For the BPS, absolute (relative) differences from placebo were 3.02 (40%) for TCS, 1.32 (37%) for DSS, and 1.58 (49%) for DMS (all P < .0001).",
-    "reason": "Chamber dose was enough in the field",
-    "judgement": "Paired comparison: Couroux 2019 states 'a double blind, placebo-controlled, in-field phase III trial has been initiated with the SQ tree SLIT-tablet (12 DU) (EudraCT: 2015-004821-15)', the number Biedermann 2019 reports. Decision 16: the chamber stated 12 DU was well tolerated and the field reached it without that toxicity, so margin_stated true. Same ALK tablet as the sibling tile's 'birch pollen allergen extract'; re-verified here, not copied. Sits on the 'other' strip, so the peptide contra of 2016 does not block it."
+    "reason": "Chamber dose public after field result",
+    "judgement": "Paired comparison: Couroux 2019 states 'a double blind, placebo-controlled, in-field phase III trial has been initiated with the SQ tree SLIT-tablet (12 DU) (EudraCT: 2015-004821-15)', the number Biedermann 2019 reports. Decision 16: the chamber stated 12 DU was well tolerated and the field reached it without that toxicity, so margin_stated true. Same ALK tablet as the sibling tile's 'birch pollen allergen extract'; re-verified here, not copied. Sits on the 'other' strip, so the peptide contra of 2016 does not block it. Ruling 2026-11-09 (retrodiction by post-dating, dose: same drug's own result): ALK's 2017-09-14 release made the Phase 3 result public before the chamber's dose pick, so same -> retro and 2019 -> 2018.",
+    "drug": "tree pollen allergen extract",
+    "route": "sublingual",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -528,7 +584,11 @@
     "src": "https://clinicaltrials.gov/study/NCT00729508",
     "srcLabel": "NCT00729508 (2008)",
     "quote": "This study will investigate the efficacy of 4 treatment regimens of Cat-PAD in cat allergic subjects following challenge to cat allergen in an environmental exposure chamber (EEC).",
-    "judgement": "Model first use is the first member-drug chamber trial (NCT00729508, start 2008-08). One chamber track across cat, ragweed and birch products: same system, same prediction."
+    "judgement": "Model first use is the first member-drug chamber trial (NCT00729508, start 2008-08). One chamber track across cat, ragweed and birch products: same system, same prediction.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "cat-pad-late-phase-skin-response",
@@ -563,7 +623,12 @@
     "src": "https://clinicaltrials.gov/study/NCT00685711",
     "srcLabel": "NCT00685711 (2008)",
     "quote": "Late-Phase Skin Reaction (LPSR) 8 hours after intradermal challenge with whole cat allergen.",
-    "judgement": "Same system as the dose entry; its 3 nmol pick was superseded by the chamber's 4 x 6 nmol and no field trial dosed it, so untested rather than contra."
+    "judgement": "Same system as the dose entry; its 3 nmol pick was superseded by the chamber's 4 x 6 nmol and no field trial dosed it, so untested rather than contra.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "cat-pad-nasal-allergen-challenge",
@@ -598,7 +663,11 @@
     "src": "https://clinicaltrials.gov/study/NCT01383590",
     "srcLabel": "NCT01383590 (2011)",
     "quote": "Identification of potential plasma biomarkers of response to peptide immunotherapy",
-    "judgement": "Separate track from the chamber (different system, single-visit nasal challenge without placebo); first use is the start of NCT01383590/NCT01383603 (2011-10)."
+    "judgement": "Separate track from the chamber (different system, single-visit nasal challenge without placebo); first use is the start of NCT01383590/NCT01383603 (2011-10).",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "hdmasit-conjunctival-provocation-test",
@@ -633,7 +702,12 @@
     "src": "https://clinicaltrials.gov/study/NCT03094845",
     "srcLabel": "NCT03094845 (2016)",
     "quote": "The purpose of this study is to assess the safety and clinical tolerability of subcutaneous immunotherapy with hdmASIT+TM in patients with house dust mite-induced allergic rhinoconjunctivitis compared to placebo.",
-    "judgement": "Its own untested track: the CPT was used for this member but no field trial followed (the DB holds one trial, highest phase 2), so there is nothing to compare."
+    "judgement": "Its own untested track: the CPT was used for this member but no field trial followed (the DB holds one trial, highest phase 2), so there is nothing to compare.",
+    "drug": "hdmASIT+",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -684,7 +758,11 @@
     "src": "https://investors.niox.com/media/press-releases/circassia-announces-top-line-results-from-cat-allergy-phase-iii-study/",
     "srcLabel": "Circassia PR 2016",
     "quote": "As a result of the very marked placebo effect the treatment did not meet the study's primary endpoint.",
-    "judgement": "Sponsor states the comparison ('Such a dramatic placebo effect was not a feature of our earlier phase II studies'). Track stays contra after the tree tablet's 2019 Phase 3 success (recorded in patient_trials): one drug's contra beats another's same on the same track and no source shows the cat signal reversed. Ragweed-SPIRE never went to field (this release stopped its dose-ranging preparation) and ALK's cat SLIT chamber study was never published, so neither scores."
+    "judgement": "Sponsor states the comparison ('Such a dramatic placebo effect was not a feature of our earlier phase II studies'). Track stays contra after the tree tablet's 2019 Phase 3 success (recorded in patient_trials): one drug's contra beats another's same on the same track and no source shows the cat signal reversed. Ragweed-SPIRE never went to field (this release stopped its dose-ranging preparation) and ALK's cat SLIT chamber study was never published, so neither scores.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -723,7 +801,11 @@
     "srcLabel": "NCT01620762 results (2018)",
     "quote": "Mean Combined Score in Cat-PAD Treatment Groups Compared With Placebo: Cat-PAD Treatment 1 (1 Course) 1.04; Cat-PAD Treatment 2 (2 Courses) 1.00; Placebo 1.05",
     "reason": "Chamber predicted an effect placebo erased",
-    "judgement": "Same status, higher tier: the registry results record (tier 3) sets the status per the 'higher-tier record' rule, so strengthens true. Paired with the Patel 2013 chamber paper; the record itself makes no model comparison."
+    "judgement": "Same status, higher tier: the registry results record (tier 3) sets the status per the 'higher-tier record' rule, so strengthens true. Paired with the Patel 2013 chamber paper; the record itself makes no model comparison.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "cat-pad-nasal-allergen-challenge",
@@ -761,7 +843,12 @@
     "srcLabel": "NCT01620762 results (2018)",
     "quote": "Mean Combined Score in Cat-PAD Treatment Groups Compared With Placebo: Cat-PAD Treatment 1 (1 Course) 1.04; Cat-PAD Treatment 2 (2 Courses) 1.00; Placebo 1.05",
     "reason": "NAC read an effect placebo erased",
-    "judgement": "Paired comparison: Ellis 2018 reports the NAC effect and cites the chamber trials but not the 2016 field failure. Scored contra because the paper takes its readout as detecting clinical efficacy ('the model was able to detect clinical efficacy of a therapeutic AR agent') and the field found none against placebo; a checker may prefer untested since the NAC studies had no placebo arm and the authors add 'no firm conclusions of efficacy can be drawn'. Not a retrodiction: the NAC studies ran 2011-2012."
+    "judgement": "Paired comparison: Ellis 2018 reports the NAC effect and cites the chamber trials but not the 2016 field failure. Scored contra because the paper takes its readout as detecting clinical efficacy ('the model was able to detect clinical efficacy of a therapeutic AR agent') and the field found none against placebo; a checker may prefer untested since the NAC studies had no placebo arm and the authors add 'no firm conclusions of efficacy can be drawn'. Not a retrodiction: the NAC studies ran 2011-2012.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -776,17 +863,17 @@
     "print_year": 2019,
     "registry_date": null,
     "model_filed": null,
-    "product_in_model": null,
+    "product_in_model": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected (sensitized to the product's allergen)",
     "confidence": "low",
-    "confidence_note": "Abstract-level only (JACI paywalled; Europe PMC and fc.py returned no full text). Which Fel d 1 peptides were dosed (the Cat-PAD mix or the lab's own) and the mouse strain are not in the abstract; no earlier conference abstract found (CSACI 2015/2016 and AllerGen 2016 proceedings searched).",
+    "confidence_note": "Abstract-level only (JACI paywalled; Europe PMC and fc.py returned no full text). Which Fel d 1 peptides were dosed (the Cat-PAD mix or the lab's own) and the mouse strain are not in the abstract; no earlier conference abstract found (CSACI 2015/2016 and AllerGen 2016 proceedings searched). product_in_model false: the abstract names Fel d 1-derived peptides, not Cat-PAD itself (full text paywalled).",
     "year": 2018,
     "status": "untested",
-    "note": "Larché-lab mouse model: Fel d 1 peptide treatment protected dually sensitised mice from airway eosinophilia and TH2 infiltration on cat allergen challenge.",
+    "note": "Larché-lab mouse model: Fel d 1 peptide treatment protected dually sensitised mice from airway eosinophilia and TH2 infiltration on cat allergen challenge. First public 2018, after the 2016 field failure.",
     "short": "Mouse Fel d 1 peptide model published",
     "src": "https://doi.org/10.1016/j.jaci.2018.03.023",
     "srcLabel": "Moldaver 2019",
@@ -796,10 +883,15 @@
     "model": "Mouse allergic airways disease after Fel d 1 peptide immunotherapy (dual OVA/Fel d 1 sensitisation)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -811,14 +903,14 @@
     "print_year": 2019,
     "registry_date": "2018-05-14",
     "model_filed": null,
-    "product_in_model": null,
+    "product_in_model": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": "mouse: protection from eosinophilia, goblet cell hyperplasia and TH2 infiltration on cat allergen challenge; field Phase 3 Combined Score 1.04 and 1.00 vs 1.05 placebo (SE 0.068), n 467/470/470",
     "source_calls_it": null,
     "population": "Unselected (sensitized to the product's allergen)",
     "confidence": "low",
-    "confidence_note": "Paired by us: model side is the abstract only (JACI paywalled), patient side is the posted registry results. The model paper went online 2018-06-12, two years after the Phase 3 top-line failure (2016-06-20); whether the mouse work was run before or after that readout is not stated, so this may be a failed retrodiction, which is also contra (decision 10).",
+    "confidence_note": "Paired by us: model side is the abstract only (JACI paywalled), patient side is the posted registry results. The model paper went online 2018-06-12, two years after the Phase 3 top-line failure (2016-06-20); whether the mouse work was run before or after that readout is not stated, so this may be a failed retrodiction, which is also contra (decision 10). product_in_model false: the abstract names Fel d 1-derived peptides, not Cat-PAD itself (full text paywalled).",
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
@@ -831,7 +923,7 @@
     ],
     "year": 2018,
     "status": "contra",
-    "note": "Mouse model showed peptide-induced protection; the 1,408-patient field Phase 3 found Combined Score 1.04/1.00 vs 1.05 placebo, no treatment effect.",
+    "note": "Mouse model first public 2018-06-12, after the 2016-06-20 Cat-PAD field failure: a retrodiction by post-dating; it showed protection, failing to reproduce the null, so contra.",
     "short": "Mouse protection, field loss to placebo",
     "src": "https://clinicaltrials.gov/study/NCT01620762",
     "srcLabel": "NCT01620762 results (2018)",
@@ -842,7 +934,11 @@
     "model": "Mouse allergic airways disease after Fel d 1 peptide immunotherapy (dual OVA/Fel d 1 sensitisation)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -877,7 +973,12 @@
     "model": "Birch-homologous-group cross-reactivity ex vivo (patient sera IgE/IgG4/IgE-blocking factor, passive-sensitisation BAT, T-cell lines), SQ tree SLIT-tablet",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "tree pollen allergen extract",
+    "route": "sublingual",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -900,7 +1001,7 @@
     "population": "Unselected (sensitized to the product's allergen)",
     "confidence": "medium",
     "confidence_note": "Full text read (PMC7984359); the comparison is to the Phase 3 tree-pollen-season (alder/hazel) key secondary, not the birch-season primary, so endpoint_role is null. Phase 3 has only a EudraCT number (2015-004821-15).",
-    "endpoint_role": null,
+    "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [
      {
@@ -912,7 +1013,7 @@
     ],
     "year": 2020,
     "status": "retro",
-    "note": "After the Phase 3 showed alder/hazel-season efficacy, the ex-vivo panel reproduced it: IgE, IgG4, blocking and T-cell responses cross-react across the homologous group.",
+    "note": "After the Phase 3 showed alder/hazel-season efficacy, the ex-vivo panel reproduced it: IgE, IgG4, blocking and T-cell responses cross-react across the homologous group. Phase 3 primary (birch-season TCS, -40%) and key secondary (whole tree season) were both met; retro either way.",
     "short": "Cross-reactivity panel reproduces alder/hazel effect",
     "src": "https://doi.org/10.1111/cea.13788",
     "srcLabel": "Würtzen 2021",
@@ -922,7 +1023,11 @@
     "model": "Birch-homologous-group cross-reactivity ex vivo (patient sera IgE/IgG4/IgE-blocking factor, passive-sensitisation BAT, T-cell lines), SQ tree SLIT-tablet",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "tree pollen allergen extract",
+    "route": "sublingual",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": true,
@@ -946,11 +1051,11 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level reading (Front Immunol, OA, PMC10702988); the same 29 untreated T-cell lines as Würtzen 2021, extended to oak peptides and tetramers. The tablet is not in this T-cell-line arm (product_in_model false). Strengthens, no status change.",
     "strengthens": true,
-    "endpoint_role": null,
+    "endpoint_role": "primary",
     "outcome_tested": null,
     "year": 2023,
     "status": "retro",
-    "note": "Same T-cell lines re-read with Bet v 1-homologous peptides and tetramers: cross-reactivity extends to oak, matching the oak-season effect.",
+    "note": "Same T-cell lines re-read with Bet v 1-homologous peptides and tetramers: cross-reactivity extends to oak, matching the oak-season effect. Phase 3 primary (birch-season TCS, -40%) and key secondary (whole tree season) were both met; retro either way.",
     "short": "T-cell cross-reactivity extends to oak",
     "src": "https://doi.org/10.3389/fimmu.2023.1291666",
     "srcLabel": "Lund 2023",
@@ -961,7 +1066,11 @@
     "model": "Birch-homologous-group cross-reactivity ex vivo (patient sera IgE/IgG4/IgE-blocking factor, passive-sensitisation BAT, T-cell lines), SQ tree SLIT-tablet",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "drug": "tree pollen allergen extract",
+    "route": "sublingual",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -999,7 +1108,11 @@
     "src": "https://clinicaltrials.gov/study/NCT00729508",
     "srcLabel": "NCT00729508 (2008)",
     "quote": "This study will investigate the efficacy of 4 treatment regimens of Cat-PAD in cat allergic subjects following challenge to cat allergen in an environmental exposure chamber (EEC).",
-    "judgement": "Model first use is the first member-drug chamber trial (NCT00729508, start 2008-08). Safety is split by modality: this opens the chamber track's peptide strip."
+    "judgement": "Model first use is the first member-drug chamber trial (NCT00729508, start 2008-08). Safety is split by modality: this opens the chamber track's peptide strip.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -1035,7 +1148,12 @@
     "src": "https://clinicaltrials.gov/study/NCT00987909",
     "srcLabel": "NCT00987909 (2009)",
     "quote": "The main purpose of this trial is to investigate if any of three different doses of cat hair immunotherapy is safe for treatment of cat allergic patients.",
-    "judgement": "Modality split: this opens the chamber track's 'other' strip (model_first_use_year stays 2008, the track's first use). No publication of US-C-01 was found and no later trial exists, so the member never reached a field comparison."
+    "judgement": "Modality split: this opens the chamber track's 'other' strip (model_first_use_year stays 2008, the track's first use). No publication of US-C-01 was found and no later trial exists, so the member never reached a field comparison.",
+    "drug": "cat allergen extract",
+    "route": "sublingual",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "model_id": "cat-pad-blood-basophil-histamine-release",
@@ -1071,7 +1189,11 @@
     "src": "https://doi.org/10.1016/j.jaci.2010.11.029",
     "srcLabel": "Worm 2011",
     "quote": "Cat allergen extract, but not peptides, induced histamine release in blood basophils.",
-    "judgement": "A non-clinical ex-vivo system distinct from the challenge models, so its own track; opens untested at its publication."
+    "judgement": "A non-clinical ex-vivo system distinct from the challenge models, so its own track; opens untested at its publication.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "hdmasit-conjunctival-provocation-test",
@@ -1107,15 +1229,20 @@
     "src": "https://clinicaltrials.gov/study/NCT03094845",
     "srcLabel": "NCT03094845 (2016)",
     "quote": "The purpose of this study is to assess the safety and clinical tolerability of subcutaneous immunotherapy with hdmASIT+TM in patients with house dust mite-induced allergic rhinoconjunctivitis compared to placebo.",
-    "judgement": "Its own untested track: the one trial is itself the safety population; no field trial followed, so no prediction was compared."
+    "judgement": "Its own untested track: the one trial is itself the safety population; no field trial followed, so no prediction was compared.",
+    "drug": "hdmASIT+",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "allergen-exposure-chamber",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 5,
-    "model_src": "https://clinicaltrials.gov/study/NCT01033344",
-    "model_src_tier": 3,
+    "model_src": "https://doi.org/10.1186/1939-4551-6-S1-P150",
+    "model_src_tier": 1,
     "trial_unreported": true,
     "patient_signal_reversed": false,
     "epub_year": null,
@@ -1132,19 +1259,23 @@
     "modality": "peptide",
     "population": "Unselected (sensitized to the product's allergen)",
     "model_first_use_year": 2008,
-    "confidence": "low",
-    "confidence_note": "Press release 2016-06-20 (tier 5). Model side is the CP005 registry record (AEs a secondary outcome, no results posted); the chamber papers' tolerability text was not read. SAE counts from the registry results posted 2018-05-14.",
+    "confidence": "medium",
+    "confidence_note": "Model side: Hafner 2013 WAO J congress abstract (WISC 2012, Dec 2012; PMC3643727) of the Cat-PAD chamber study: 'Cat-PAD was safe and well tolerated and improved TRSS.' Patient side: press release 2016-06-20 (tier 5); SAE counts from the registry results posted 2018-05-14.",
     "prediction_level": "class",
     "year": 2016,
     "status": "same",
     "model": "Allergen exposure chamber (EEC)",
-    "note": "Chamber studies of intradermal Cat-PAD reported no safety signal; the 1,407-patient field Phase 3 was well tolerated.",
+    "note": "Chamber abstract stated Cat-PAD was safe and well tolerated, a scored safety prediction; the 1,407-patient intradermal field Phase 3 was well tolerated.",
     "short": "Peptide tolerability held in field",
     "src": "https://investors.niox.com/media/press-releases/circassia-announces-top-line-results-from-cat-allergy-phase-iii-study/",
     "srcLabel": "Circassia PR 2016",
     "quote": "The treatment was well tolerated with a highly favourable safety profile.",
     "reason": "No harm predicted, none seen",
-    "judgement": "Safety split by modality (intradermal peptide vs sublingual tablet). Scored same, not other, because the comparison is absence of harm, not a shared harm."
+    "judgement": "Safety split by modality (intradermal peptide vs sublingual tablet). Scored same, not other, because the comparison is absence of harm, not a shared harm. Ruling 2026-11-09: a passing tolerability claim is a safety prediction; the chamber study's own sentence (Hafner 2013) now carries the model side, settling the checker's unverified verdict.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "cat-pad-blood-basophil-histamine-release",
@@ -1181,7 +1312,11 @@
     "srcLabel": "Circassia PR 2016",
     "quote": "The treatment was well tolerated with a highly favourable safety profile.",
     "reason": "No histamine release, none clinically",
-    "judgement": "Paired comparison of the Worm 2011 basophil assay with the field Phase 3. A negative prediction (no IgE-mediated reactions) that held."
+    "judgement": "Paired comparison of the Worm 2011 basophil assay with the field Phase 3. A negative prediction (no IgE-mediated reactions) that held.",
+    "drug": "Cat-PAD",
+    "route": "intradermal",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "allergen-exposure-chamber",
@@ -1198,7 +1333,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "human_challenge",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "nature and severity of the most frequent adverse reaction; frequencies not compared",
@@ -1207,18 +1342,22 @@
     "population": "Unselected (sensitized to the product's allergen)",
     "model_first_use_year": 2008,
     "confidence": "high",
-    "confidence_note": "Couroux 2019 full text (PMC6588091) and Biedermann 2019 abstract (epub 2019-01-15). Phase 3 identified by EudraCT 2015-004821-15 only.",
+    "confidence_note": "Couroux 2019 full text (PMC6588091) and Biedermann 2019 abstract (epub 2019-01-15). Phase 3 identified by EudraCT 2015-004821-15 only. ALK press release 2017-09-14: Phase 3 'treatment was well-tolerated by patients'; chamber paper epub 2018-11-22, so the tablet's own patient result came first (safety retrodiction).",
     "prediction_level": "class",
-    "year": 2019,
-    "status": "same",
+    "year": 2018,
+    "status": "retro",
     "model": "Allergen exposure chamber (EEC)",
-    "note": "Chamber study predicted mild-to-moderate local oral reactions as the main adverse reaction of the tree tablet; the Phase 3 found the same.",
-    "short": "Local oral reactions as predicted",
+    "note": "Chamber tolerability (mild-to-moderate local oral reactions; Couroux online 2018-11-22) was public after ALK reported the Phase 3 well tolerated (2017-09-14): retro by post-dating.",
+    "short": "Chamber tolerability reproduces field",
     "src": "https://doi.org/10.1016/j.jaci.2018.12.1001",
     "srcLabel": "Biedermann 2019",
     "quote": "The most frequently reported treatment-related adverse events were mild or moderate local reactions related to sublingual administration.",
-    "reason": "Oral reactions as predicted",
-    "judgement": "Paired comparison between the chamber dose-finding (Couroux 2019: 'the most frequently reported adverse reactions being the local reactions in the oral cavity of mild-to-moderate severity') and the field Phase 3 of the same tablet. Sits on the 'other' strip."
+    "reason": "Chamber safety public after field result",
+    "judgement": "Paired comparison between the chamber dose-finding (Couroux 2019: 'the most frequently reported adverse reactions being the local reactions in the oral cavity of mild-to-moderate severity') and the field Phase 3 of the same tablet. Sits on the 'other' strip. Ruling 2026-11-09: for safety only the same drug's own earlier patient result counts; the tree tablet's own Phase 3 tolerability was public 2017-09-14, before the chamber paper, so same -> retro, 2019 -> 2018.",
+    "drug": "tree pollen allergen extract",
+    "route": "sublingual",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

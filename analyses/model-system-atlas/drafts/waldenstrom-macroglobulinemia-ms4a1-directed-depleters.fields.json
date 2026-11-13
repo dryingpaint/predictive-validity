@@ -1,0 +1,31 @@
+{
+ "tile": "waldenstrom-macroglobulinemia-ms4a1-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: rituximab (same target/action) and ofatumumab's own CLL B-cell depletion were public before the monkey data (retrodiction rule); drug ofatumumab, route iv, population_group other_disease (CLL)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro (rituximab WM responses 1999-2002 predate Teeling 2004; retrodiction rule); year 2012 -> 2010 (ASH 2010 abstract 1795, earliest public date); single-arm design noted; NCT01536067 combination added to patient_trials (0 analysed, no status change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2015 -> 2014 (online 2014-12-31, rule 6, per check.json adjudication); untested_reason unsettled -> not_measured (no WM patients in Sawas 2017); drug ublituximab, route iv; model_first_use_year 2014"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status same -> retro (rituximab WM responses predate the 2007 xenograft; retrodiction rule); year 2012 -> 2010 (ASH 2010 abstract 1795); single-arm design noted; NCT01536067 added to patient_trials"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "imported CLL harm replaced by WM patients (imported-harm ruling): src/quote -> Furman 2010 ASH abstract (infusion reactions, infections in WM), year 2009 -> 2010, imported_from removed; status same -> retro (ofatumumab's own CLL harms public 2007 before monkey tox public 2009; safety retrodiction rule, same drug)"
+  }
+ ],
+ "added": []
+}

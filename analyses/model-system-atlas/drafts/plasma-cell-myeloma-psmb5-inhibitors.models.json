@@ -301,6 +301,56 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "mm1s-scid-xenograft",
+   "model": "Human MM.1S myeloma xenografts in CB-17 SCID mice; tumour 20S beta5 inhibition + unfolded-protein-response markers (ixazomib)",
+   "model_kind": "animal",
+   "prediction_level": "class",
+   "model_first_use_year": 2010,
+   "cells": {
+    "efficacy": [
+     {
+      "year": 2020,
+      "status": "contra",
+      "model": "Human MM.1S myeloma xenografts in CB-17 SCID mice; tumour 20S beta5 inhibition + unfolded-protein-response markers (ixazomib)",
+      "note": "TOURMALINE-MM2 missed its primary endpoint: PFS 35.3 vs 21.8 months, HR 0.830, p=0.073, adding ixazomib to lenalidomide-dexamethasone in transplant-ineligible newly diagnosed myeloma.",
+      "short": "Frontline PFS primary missed",
+      "src": "https://doi.org/10.1182/blood.2020008787",
+      "srcLabel": "Facon 2021",
+      "quote": "Median PFS was 35.3 vs 21.8 months with ixazomib-Rd vs placebo-Rd, respectively (hazard ratio [HR], 0.830; 95% confidence interval, 0.676-1.018; P = .073; median follow-up, 53.3 and 55.8 months).",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level. The primary was numerically favourable but missed significance; scored contra on 'did the primary endpoint respond as predicted' (checker rule question 4 is open). Topline was public in Takeda's 2020-03-10 release ('did not meet the threshold for statistical significance').",
+      "model_id": "mm1s-scid-xenograft",
+      "prediction_level": "class",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/208462Orig1s000PharmR.pdf",
+      "model_src_tier": 2,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2021,
+      "print_year": 2021,
+      "registry_date": "2021-02-01",
+      "model_filed": true,
+      "product_in_model": true,
+      "model_kind": "animal",
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": "PFS hazard ratio 0.830 (p=0.073) against a single-agent mouse tumour-growth prediction; no commensurable quantity",
+      "source_calls_it": "miss",
+      "population": "Transplant-ineligible newly diagnosed myeloma (TOURMALINE-MM2, NCT01850524)",
+      "model_first_use_year": 2010,
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [],
+      "reason": "Frontline PFS primary missed",
+      "judgement": "Population is genotype/biomarker/pathogen else Unselected (brief), so line of therapy is not a split and newly diagnosed patients are in context. Dated 2020: Takeda's topline release (2020-03-10) made the miss public before the registry results (2021-02-01) and Facon 2021 (PubMed entry 2021-03-25), which is the tier-1 record that sets the status. A contra on the same track outranks the 2015 TOURMALINE-MM1 same. TOURMALINE-MM3/MM4 (positive maintenance PFS) change no status."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -314,5 +364,37 @@
   "Exposure-response logistic model for maintenance dose selection (Gupta 2016, doi 10.1007/s10637-016-0346-7; 3 mg to 4 mg titration for TOURMALINE-MM3/MM4): a different in-silico model whose patient side is newly diagnosed maintenance, outside the tile's relapsed/refractory population until rule question 3 is settled. PBPK CYP3A DDI model and the ORR-to-PFS model-based meta-analysis (Gupta 2019, doi 10.1002/cpt.1047): not dose-target or disease-model predictions.",
   "Berenson 2012 LAGκ/RPMI8226 delanzomib + dexamethasone/lenalidomide xenografts (doi 10.1016/j.leukres.2012.07.018): same LAGκ system; its combination trial NCT01348919 (ORR 40% at MTD, 5 patients, results 2023-06-28) is recorded as patient_trials on the LAGκ track and changes no status.",
   "Oprozomib in Waldenström macroglobulinaemia xenografts (Roccaro 2010): different disease. Solid-tumour and lymphoma phase 1 PD (Smith 2015): already the draft's engagement entry. Patient PBMC proteasome-inhibition assays: patient-side readouts, not a model system."
+ ],
+ "gaps": [
+  {
+   "lead": "Gallerani 2013 delanzomib patient PD (doi 10.1016/j.ejca.2012.09.009)",
+   "outcome": "tracked",
+   "detail": "delanzomib-mm-xenograft, engagement entry 4 (2012 same, direction_only); its rash datum is the safety-5 verdict (corrected to 2012 contra) and its RD/MTD datum is checker rule question 1 on the dose cell"
+  },
+  {
+   "lead": "TOURMALINE-MM2 (NCT01850524; Facon 2021, doi 10.1182/blood.2020008787, PMID 33763699): missed PFS primary, HR 0.830, p=0.073",
+   "outcome": "entry",
+   "detail": "Added a 2020 contra efficacy entry on mm1s-scid-xenograft (Facon 2021, doi 10.1182/blood.2020008787; registry results 2021-02-01; topline release 2020-03-10). The efficacy-3 verdict only flagged it as missing; NDMM is in context since population is not split by line of therapy."
+  },
+  {
+   "lead": "TOURMALINE-MM3 (doi 10.1016/S0140-6736(18)33003-4, epub 2018-12-10) and TOURMALINE-MM4 (doi 10.1200/JCO.20.02060, epub 2020-10-06): positive PFS maintenance trials",
+   "outcome": "covered",
+   "detail": "Positive same-direction maintenance trials; patient_trials material that changes no status on the mm1s-scid-xenograft efficacy track."
+  },
+  {
+   "lead": "EMA CHMP negative opinion 2016-05-26, positive on re-examination 2016-09-15, conditional MA 2016-11-21 (EPAR EMEA/H/C/003844)",
+   "outcome": "covered",
+   "detail": "Same trial (TOURMALINE-MM1) whose data efficacy-3 already scores; the negative opinion was an interpretation of the final PFS analysis (HR 0.82, p=0.0548) already in efficacy-3's confidence_note and reversed by the regulator's final decision; status follows the pre-specified primary, so nothing scored changes (rule question 5 open)."
+  },
+  {
+   "lead": "Patient-derived ex vivo MM cells (Piva 2008; Chauhan 2010, 2011)",
+   "outcome": "tracked",
+   "detail": "mm-patient-cells-ex-vivo, efficacy entries 5 (2007 untested) and 6 (Kumar 2014, adjudicated untested under decision 4 by the efficacy-6 verdict)"
+  },
+  {
+   "lead": "Oprozomib halt source: NCT01416428 whyStopped carries the program-evaluation statement",
+   "outcome": "covered",
+   "detail": "Citation note only; the safety-6 verdict already records NCT01416428's whyStopped and proposes the 2016 year correction."
+  }
  ]
 }

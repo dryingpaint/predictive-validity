@@ -11,7 +11,8 @@
   "Europe PMC / PMC full text: Papazyan 2018 (PMC5983391), Younis 2023 (PMC10014688)",
   "ClinicalTrials.gov API: NCT02854605 outcome measures (no lipid outcomes registered)",
   "WebSearch: cilofexor Px-102 high-fat-diet mouse ALT cholesterol screen; Patel 2020 cilofexor lipid changes",
-  "Abstracts: Patel 2020 (cilofexor), Ratziu 2022 (EDP-305), Ratziu 2023 (vonafexor), Hollenback 2024 (cilofexor development)"
+  "Abstracts: Patel 2020 (cilofexor), Ratziu 2022 (EDP-305), Ratziu 2023 (vonafexor), Hollenback 2024 (cilofexor development)",
+  "PubMed efetch: Badman 2020 tropifexor first-in-human abstract (PMID 31823525): 'No changes in serum lipids were observed in tropifexor- vs placebo-treated obese subjects'"
  ],
  "added_models": [
   {
@@ -225,5 +226,32 @@
   "Neonatal piglet parenteral-nutrition model (tropifexor, 2025): different indication, no patient comparison",
   "Mdr2-/- mouse (cilofexor, PSC): different disease (PSC), not this tile",
   "Healthy-volunteer exposure-response for tropifexor dose escalation (FLIGHT-FXR): a human analysis, not a model system"
+ ],
+ "gaps": [
+  {
+   "lead": "Reiberger 2016 Z Gastroenterol abstract (GS-9674 rodent fibrosis model first public)",
+   "outcome": "covered",
+   "detail": "Checker verdict efficacy 2 (cdhfd-nitrite-rat-cilofexor) already proposes contra, year 2020, retrodiction false, and its note sets model_first_use_year ~2016 from Reiberger 2016 (doi:10.1055/s-0036-1583977); no further change."
+  },
+  {
+   "lead": "EDP-305 ARGON-2 (NCT04378010) stopped after 12-week interim",
+   "outcome": "none",
+   "detail": "Strategic development stop, no histology result read out; decision 4 (a stop is not 'failed'), so no model-to-patient comparison and no status change; bdl-rat-cdahfd-mouse-edp305 stays untested"
+  },
+  {
+   "lead": "Cilofexor phase 2 non-cirrhotic NASH (NCT02854605, Patel 2020)",
+   "outcome": "none",
+   "detail": "Primary endpoint was safety only; liver-fat fall was secondary, so no efficacy comparison for cdhfd-nitrite-rat-cilofexor (decision 9); patient-trial row only, changes no status"
+  },
+  {
+   "lead": "PXB track, tropifexor healthy volunteers (Badman 2016 abstract, lipid-neutral)",
+   "outcome": "covered",
+   "detail": "Checker verdict safety 5 (pxb-humanized-liver-mouse-lipids) already proposes contra 2018 as a retrodiction against lipid-neutral healthy-volunteer data; the tropifexor HV result (Badman 2016 abstract / Badman 2020 PMID 31823525) gives the same status and year on the same track, so it changes nothing scored."
+  },
+  {
+   "lead": "PXB track, cilofexor in NASH patients (Patel 2020, no LDL/HDL change)",
+   "outcome": "covered",
+   "detail": "Track pxb-humanized-liver-mouse-lipids is already contra from 2018 under checker verdict safety 5; a 2020 cilofexor NASH-patient contra (Patel 2020, lipid sentence paywalled) would not change the track's status, so nothing scored changes."
+  }
  ]
 }

@@ -42,11 +42,17 @@
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Lynch 2012 (PMID 22547592, epub 2012-04-30) resolves; quote verbatim; NCT00527735 results posted 2012-07-16 confirmed. Scored by the efficacy-tied rule although the mouse stated no target (rule question 3). Same holds under that rule."
+   "proposed_status": "untested",
+   "proposed_year": 2010,
+   "rule": "evidence rule 6 (earliest public date, incl. congress abstract); dose table row 1",
+   "note": "Lynch 2012 quote verbatim (abstract). Untested/no_prediction right: Leach 1996 stated no exposure, regimen or margin. ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20, full abstract read) already reported the 10 mg/kg q3w regimen with results: year 2010. Drop stray strengthens:true.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose table row 1: Leach 1996 mice stated no exposure, regimen or margin, so untested/no_prediction stands; checker's ASCO 2010 abstract dating (rule 6) changes the year, not the status."
   },
   {
    "cell": "dose",
@@ -55,10 +61,13 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
+   "proposed_status": "untested",
    "proposed_year": 2018,
-   "rule": "evidence rule 6 (year = earliest public date of the comparison); dose table row 'reached, drug worked'",
-   "note": "Hellmann 2019 resolves; quote verbatim; NCT02477826 results 2025-10-30 confirmed. The same 1 mg/kg q6w regimen met CheckMate 227's TMB>=10 PFS co-primary in Hellmann 2018 (10.1056/NEJMoa1801946, epub 2018-04-16): earlier public comparison. KEYNOTE-598 later reached it and failed."
+   "rule": "evidence rule 6 (earliest public date); dose table row 1",
+   "note": "Hellmann 2019 quote verbatim (abstract). Untested/no_prediction right. The same ipilimumab 1 mg/kg q6w regimen was first public with CheckMate 227 in Hellmann 2018 (epub 2018-04-16): year 2018. confidence_note names 9LA; should be CheckMate 227.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose table row 1: dual-blockade mice stated no exposure or margin, so untested/no_prediction stands; the regimen was first public in CheckMate 227 2018 (rule 6), a year change only."
   },
   {
    "cell": "efficacy",
@@ -81,11 +90,17 @@
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Lynch 2012 resolves; quote verbatim; irPFS was the registered primary endpoint (NCT00527735, results 2012-07-16). Phased schedule only, P=.05: same with partial is right; Leach 1996 as model side (generic rejection model) is acceptable."
+   "proposed_status": "same",
+   "proposed_year": 2010,
+   "rule": "evidence rule 6 (earliest public date, incl. congress abstract)",
+   "note": "Lynch 2012 quote verbatim; irPFS primary met, combination_with, iv, unselected right: same. ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20, full abstract read) reported irPFS for both schedules vs P/C (SEQ HR 0.686, p=0.026; CON HR 0.775, p=0.094, one-sided alpha 0.1): year 2010.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Efficacy, combination design: phased ipilimumab met the irPFS primary, so same holds; rule 6 dates it to the ASCO 2010 abstract 7531, which already reported the irPFS result. Status unchanged."
   },
   {
    "cell": "efficacy",
@@ -94,19 +109,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Govindan 2017 resolves; quote verbatim; OS primary, registry results 2016-06-23 confirmed. Contra rather than neg is right: the mouse held no below-bar lung datum. Year 2016 from the registry posting is right."
+   "note": "Govindan 2017 (PMID 28854067, epub 2017-08-30) quote verbatim; OS primary failed (HR 0.91). Registry results 2016-06-23 precede the paper. Contra 2016, ipilimumab, iv, unselected, combination_with carboplatin + paclitaxel right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2018,
-   "rule": "evidence rule 6 (year = earliest public date of the comparison)",
-   "note": "Hellmann 2019 resolves; quote verbatim. CheckMate 227's first positive co-primary (PFS in TMB>=10, HR 0.58, P<0.001) was public in Hellmann 2018 (10.1056/NEJMoa1801946, epub 2018-04-16); by the draft's own acceptance of biomarker-defined co-primaries, the same opens 2018 (rule question 1)."
+   "note": "Hellmann 2018 (10.1056/NEJMoa1801946, epub 2018-04-16) quote verbatim in abstract. TMB>=10 PFS co-primary met: same 2018 under the co-primary ruling; biomarker_selected, combination_with nivolumab, iv right. 'short' still describes the 2019 OS result.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -115,12 +129,23 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2020,
-   "rule": "status table 'contra': one drug's contra still beats another drug's same on the same track; evidence rule 2: a Phase 3 failure known only from a press release must be found",
-   "note": "Paz-Ares 2021 resolves; quote verbatim; NCT03215706 results 2020-09-16 confirmed; 9LA same holds as of 2020-09. But ipilimumab added to anti-PD-1, the dual-blockade mice's actual prediction, failed KEYNOTE-598 (halt 2020-11-10, OS HR 1.08) and S1400I (2021): track latest is contra.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Decision 6 (sticky contra, #3) with decision 4: KEYNOTE-598 (Boyer 2021, OS HR 1.08) and S1400I (Gettinger 2021) directly tested ipilimumab-adds-to-anti-PD-1 and failed their primary endpoints; a chemotherapy-comparator win cannot outrank them. New entry; RQ1/RQ2 set only the year."
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "evidence rule 6 (earliest public date, incl. sponsor press release)",
+   "note": "Paz-Ares 2021 quote verbatim; OS primary met: same/strengthens and combination right. BMS press release (news.bms.com/news/details/2019/CheckMate--9LA ... Meets Primary Endpoint) announced the OS win in 2019, before the 2020 registry posting and approval: year 2019.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "CheckMate 9LA met its OS primary endpoint: same. Rule 6 counts a sponsor press release, so the 2019 BMS topline announcement sets the year; status unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Boyer 2021 (epub 2021-01-29) quote verbatim; OS and PFS co-primaries failed. Merck release says 'previously announced in Nov. 2020' futility stop: year 2020. Add-on tests the dual-blockade prediction: contra, pembrolizumab, PD-L1>=50% biomarker_selected, iv right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -143,29 +168,47 @@
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (PharmR p.3); pairing with Tivol 1995 is the drafter's, imported from melanoma, direction-only: same holds. Dating caveat: tier-1 melanoma irAE reports (Phan 2003 PNAS) predate the 2011 review; not verified within budget (rule question 6)."
+   "proposed_status": "same",
+   "proposed_year": 2010,
+   "rule": "evidence rule 6 (earliest public date, incl. congress abstract)",
+   "note": "Lynch 2012 quote verbatim; NSCLC patients measured, so no import: same (direction) holds. ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20, full abstract read) already reported grade 3/4 immune-related AEs of 20% and 15% on ipilimumab arms: year 2010.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Safety: NSCLC patients measured, so they set the status (no import); grade 3-4 irAEs match the knockout's autoimmunity in direction: same. Rule 6 moves the year to the ASCO 2010 abstract."
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim fragment (PharmR executive summary); the review itself states the comparison and the 3-fold weaker monkey affinity. Contra with comparison_stated true holds; Selby 2016 combination GI findings do not flip a contra track."
+   "proposed_status": "contra",
+   "proposed_year": 2010,
+   "rule": "evidence rule 6 (earliest public date, incl. congress abstract)",
+   "note": "Lynch 2012 quote verbatim; monkey's near-silence contradicted by NSCLC grade 3-4 irAEs: contra, pairing (comparison_stated false), FDA PharmR model_src right. ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20, full abstract read) reported grade 3/4 irAEs 20%/15%: year 2010.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Safety: the monkey's near-silence on autoimmune harm was contradicted by grade 3-4 irAEs in NSCLC patients: contra. Rule 6 dates it to the ASCO 2010 abstract; status unchanged."
   },
   {
    "cell": "safety",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (PharmR, study 930031040 key finding, BMS-863019 surrogate). Colitis models run 2008, after melanoma enterocolitis was known; reviewer states comparability. Retro with comparison_stated true holds."
+   "proposed_status": "retro",
+   "proposed_year": 2010,
+   "rule": "evidence rule 6 (earliest public date, incl. congress abstract)",
+   "note": "Lynch 2012 quote verbatim; colitis models (2008) post-date ipilimumab's own melanoma enterocolitis: retro right. NSCLC patient side first public in ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20, full abstract read) (grade 3/4 irAEs 20%/15%): year 2010.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: colitis models post-date ipilimumab's own melanoma enterocolitis, so retro. Rule 6 dates the NSCLC patient side to the ASCO 2010 abstract; status unchanged."
   },
   {
    "cell": "safety",
@@ -184,8 +227,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Du 2018 (PMC5939041, epub 2018-02-20) resolves; quote verbatim in abstract and full text. Results heading 'faithfully recapitulates irAE of combination therapy' and intro cite CheckMate 012 NSCLC grade 3-4 SAEs (ref 8): comparison stated, no import. Perinatal dosing days 10-19 confirmed. Retrodiction, so retro not same; year 2018 from epub holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Du 2018 (Cell Res, epub 2018) quote verbatim in abstract. Paper cites CheckMate 012 NSCLC (nivolumab plus ipilimumab, unselected) as its patient side: ipilimumab, iv, unselected, combination_with nivolumab, retro 2018 right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -200,12 +243,17 @@
   {
    "cell": "safety",
    "index": 9,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in abstract; the source states the patient comparison (organ, histology, ECG) and the patient side is pan-cancer ICI myocarditis plus an abatacept case series, so imported_from cancer is right. Built after Johnson 2016: retro, never same; no antibody dosed, product_in_model false holds. Axelrod 2022 Nature (10.1038/s41586-022-05432-3) is a later retro entry on this track, status unchanged.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "proposed_status": "retro",
+   "proposed_year": 2020,
+   "rule": "safety: a harm is imported only when this disease has no patient safety data (imported-harm ruling)",
+   "note": "Wei 2021 (epub 2020-11-30) quote verbatim; retro 2020 holds. But NSCLC patients were measured: Hellmann 2019 (CheckMate 227) reports a treatment-related myocarditis death on nivolumab plus ipilimumab (N=576, both PD-L1 strata). No import: imported_from null, population_group unselected, comparison_stated false, src Hellmann 2019.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Imported-harm rule: CheckMate 227 (Hellmann 2019) reports a myocarditis death on nivolumab-ipilimumab in NSCLC, so no import; the 2020 model post-dates it: retro stands, population unselected."
   }
  ],
  "missing": [
@@ -225,6 +273,7 @@
   "Dose when the model stated no exposure, occupancy or regimen target at all (dose entries 3-5): does the efficacy-tied table still score same/contra as drafted, or is the cell untested because nothing was carried into patients?",
   "Track identity: wild-type mice with a hamster surrogate (Leach 1996) versus hCTLA-4 transgenic mice dosed with ipilimumab (BLA 125377) on the same tumour lines, one model_id or two? The brief says a different system gets a new slug but does not say whether the antibody or the host genotype defines the system.",
   "A failed multi-component regimen (CheckMate 73L: concurrent nivolumab with chemoradiation plus ipilimumab consolidation vs durvalumab consolidation): does it score contra for the anti-CTLA-4 class when the class's contribution cannot be isolated from the design?",
-  "Dating a paired (comparison_stated false) safety comparison: the year of the patient-side source the drafter chose (FDA review 2011) or the earliest tier-1 patient source showing the harm (melanoma irAE reports from 2003), given rule 6 says the earliest date the comparison was public?"
+  "Dating a paired (comparison_stated false) safety comparison: the year of the patient-side source the drafter chose (FDA review 2011) or the earliest tier-1 patient source showing the harm (melanoma irAE reports from 2003), given rule 6 says the earliest date the comparison was public?",
+  "Dose entries 3 and 4 are untested after untested openers on the same tracks (no change of status); keep them as the dated carriers of untested_reason, or drop them under 'one entry per change of status'? [CHECKER_BRIEF / fields]"
  ]
 }

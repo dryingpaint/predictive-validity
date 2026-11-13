@@ -39,7 +39,7 @@
     "source_calls_it": null,
     "population": "Unselected",
     "confidence": "high",
-    "confidence_note": "Abstract-level (PMC open access). The antagonist is not named in the abstract and is not a member; product_in_model false.",
+    "confidence_note": "Abstract-level (PMC open access). The antagonist is not named in the abstract and is not a member; product_in_model false. Weisberg opener stands for the JNJ-41443532 track (proxy source; no JNJ-41443532 model paper exists).",
     "judgement": null,
     "year": 2005,
     "status": "untested",
@@ -51,7 +51,11 @@
     "srcLabel": "Weisberg 2006",
     "quote": "In mice with established obesity, short-term treatment with a pharmacological antagonist of CCR2 lowered macrophage content of adipose tissue and improved insulin sensitivity without significantly altering body mass or improving hepatic steatosis.",
     "model_first_use_year": 2005,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "jnj-41443532",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -81,7 +85,7 @@
     "status": "untested",
     "model": "Diet-induced obese / db/db mice dosed with a CCR2 antagonist",
     "model_id": "dio-dbdb-mouse-ccr2-antagonist",
-    "note": "JNJ-41443532 and CCX140-B trials reported no adipose-macrophage, occupancy or CCL2 engagement readout in T2D patients; IL-6, IL-18 and CRP did not move.",
+    "note": "JNJ-41443532 and CCX140-B trials reported no adipose-macrophage, occupancy or CCL2 engagement readout in T2D patients; IL-6, IL-18 and CRP did not move. Adds the first patient-side look: no member trial measured the mouse's readout.",
     "short": "Model PD readout never measured in patients",
     "src": "https://clinicaltrials.gov/study/NCT01230749",
     "srcLabel": "NCT01230749 results 2013",
@@ -89,8 +93,12 @@
     "model_first_use_year": 2005,
     "readout_tier": null,
     "reason": "PD readout of the mouse never measured in patients",
-    "strengthens": "Adds the first patient-side look: no member trial measured the mouse's readout",
-    "untested_reason": "not_measured"
+    "strengthens": true,
+    "untested_reason": "not_measured",
+    "drug": "jnj-41443532",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -128,7 +136,11 @@
     "srcLabel": "Weisberg 2006",
     "quote": "In mice with established obesity, short-term treatment with a pharmacological antagonist of CCR2 lowered macrophage content of adipose tissue and improved insulin sensitivity without significantly altering body mass or improving hepatic steatosis.",
     "model_first_use_year": 2005,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "ilacirnon",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -165,7 +177,11 @@
     "quote": "The trough plasma level of CCX140 in mice treated with 30 mg/kg CCX140-B was 170 nM.",
     "model_first_use_year": 2013,
     "reason": "No stated target; 1000 mg JNJ no better than 250 mg",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "ilacirnon",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -191,7 +207,7 @@
     "source_calls_it": null,
     "population": "Unselected",
     "confidence": "high",
-    "confidence_note": "Abstract-level (PMC open access).",
+    "confidence_note": "Abstract-level (PMC open access). Weisberg opener stands for the ilacirnon (CCX140-B) track (proxy source).",
     "judgement": null,
     "year": 2005,
     "status": "untested",
@@ -205,7 +221,11 @@
     "model_first_use_year": 2005,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "ilacirnon",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -235,7 +255,7 @@
     "status": "same",
     "model": "Diet-induced obese / db/db mice dosed with a CCR2 antagonist",
     "model_id": "dio-dbdb-mouse-ccr2-antagonist",
-    "note": "CCX140-B 10 mg for 4 weeks on metformin: HbA1c fell vs placebo (p=0.045), 5 mg did not; fasting glucose fell dose-dependently. Small, direction only.",
+    "note": "CCX140-B 10 mg for 4 weeks on metformin: HbA1c fell vs placebo (p=0.045), 5 mg did not; fasting glucose fell dose-dependently. Small, direction only. Add-on to metformin in every arm, placebo-controlled: not a combination trial.",
     "short": "CCX140-B 10 mg lowered HbA1c at 4 weeks",
     "src": "https://www.biospace.com/chemocentryx-inc-reports-ccx140-b-meets-primary-endpoint-and-demonstrates-clinical-efficacy-in-phase-ii-study-in-type-2-diabetes",
     "srcLabel": "ChemoCentryx 2011",
@@ -250,7 +270,12 @@
       "doi": null,
       "quote": "Randomized subjects received double-blind placebo QD, 5 mg CCX140-B QD, 10 mg CCX140-B QD, or open label pioglitazone hydrochloride 30 mg for 4 weeks."
      }
-    ]
+    ],
+    "drug": "ilacirnon",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "subjects": "patients",
@@ -280,7 +305,7 @@
     "status": "same",
     "model": "Diet-induced obese / db/db mice dosed with a CCR2 antagonist",
     "model_id": "dio-dbdb-mouse-ccr2-antagonist",
-    "note": "JNJ-41443532 4-week PoC: 24-h glucose -20 mg/dL vs placebo at 250 mg bid (p=0.038), -13 at 1000 mg (ns); HOMA-IR unchanged; sponsor called it modest and stopped.",
+    "note": "JNJ-41443532 4-week PoC: 24-h glucose -20 mg/dL vs placebo at 250 mg bid (p=0.038), -13 at 1000 mg (ns); HOMA-IR unchanged; sponsor called it modest and stopped. Second member, tier 1 with registry results; direction held, HOMA-IR did not.",
     "short": "JNJ-41443532: modest glucose fall, no dose response",
     "src": "https://doi.org/10.1111/dom.12309",
     "srcLabel": "Di Prospero 2014",
@@ -303,7 +328,11 @@
       "quote": "The purpose of the study is to determine whether a CCR2 antagonist (BMS-741672) improves glucose homeostasis in drug-naive type 2 diabetic patients"
      }
     ],
-    "strengthens": "Second member, tier 1 with registry results; direction held, HOMA-IR did not"
+    "strengthens": true,
+    "drug": "jnj-41443532",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -324,16 +353,16 @@
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "fasting glucose direction; mouse HOMA-IR normalised versus a 0.14-point HbA1c separation in patients",
-    "source_calls_it": "match",
+    "source_calls_it": "partial",
     "population": "Unselected",
     "confidence": "medium",
     "confidence_note": "Sponsor-authored (ChemoCentryx). The paper states the clinical reduction in HbA1c and fasting glucose and reports the mouse glycaemic data alongside, so comparison_stated is true; the human numbers it cites are the unverified Hanefeld presentation.",
-    "judgement": "Scored retro, not same: the knock-in model was generated for CCX140-B and its glycaemic data appeared (received June 2013) after the September 2011 clinical result the paper itself cites, so by decision 10 it reproduces a known answer. No prospective prediction from this model followed in T2D; its later use was diabetic nephropathy (a different disease, not scored here). The Metabolism 2013 companion paper used a mouse-active analogue in DIO/db/db mice and is a sibling of the Weisberg track, not a new system.",
+    "judgement": "Scored retro, not same: the knock-in model was generated for CCX140-B and its glycaemic data appeared (received June 2013) after the September 2011 clinical result the paper itself cites, so by decision 10 it reproduces a known answer. No prospective prediction from this model followed in T2D; its later use was diabetic nephropathy (a different disease, not scored here). The Metabolism 2013 companion paper used a mouse-active analogue in DIO/db/db mice and is a sibling of the Weisberg track, not a new system. Rule question settled (2026-11-09): retro admits partial agreement exactly as same does; glucose direction reproduced (CCX140-B HbA1c, JNJ-41443532 24-h glucose), HOMA-IR and fasting insulin not, so retro with source_calls_it partial, not contra.",
     "year": 2013,
     "status": "retro",
     "model": "Human-CCR2 knock-in DIO / db/db mice dosed with CCX140-B",
     "model_id": "hccr2-ki-dio-dbdb-mouse",
-    "note": "hCCR2 knock-in DIO mice built because CCX140-B does not bind mouse CCR2: fasting glucose and insulin fell, HOMA-IR normalised, published two years after the clinical HbA1c result it cites.",
+    "note": "hCCR2 knock-in DIO mice built because CCX140-B does not bind mouse CCR2: fasting glucose and insulin fell, HOMA-IR normalised, published two years after the clinical HbA1c result it cites. Ruling: glucose reproduced, HOMA-IR not, so retro, partial.",
     "short": "Knock-in mouse reproduced the clinical glucose fall",
     "src": "https://doi.org/10.1152/ajprenal.00316.2013",
     "srcLabel": "Sullivan 2013",
@@ -341,7 +370,11 @@
     "model_first_use_year": 2013,
     "endpoint_role": "poc_gate",
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "ilacirnon",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -379,7 +412,11 @@
     "model_first_use_year": 2010,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "ilacirnon",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -407,9 +444,10 @@
     "judgement": "Stays untested: the sponsor stated the genotype-by-response objective and never published its result anywhere found, so there is no comparison to score. Not trial_unreported, because the trial itself is reported at tier 3; only the stratifier analysis is missing. An unreported stratifier is not a contra. Dated 2022, the first time the objective and the stratification were public.",
     "year": 2022,
     "status": "untested",
+    "untested_reason": "unsettled",
     "model": "T2D patients genotyped for an MCP-1 (CCL2) promoter polymorphism, used as a randomisation stratifier in the CCX140-B trial",
     "model_id": "mcp1-ccl2-promoter-genotype-t2d-patients",
-    "note": "CSR synopsis posted to EU CTR (Mar 2022) lists 'Assessment of MCP-1 polymorphism on efficacy responses' as an objective and reports no genotype result.",
+    "note": "CSR synopsis posted to EU CTR (Mar 2022) lists 'Assessment of MCP-1 polymorphism on efficacy responses' as an objective and reports no genotype result. Adds the patient-side look: the genotype objective existed and no result was ever published.",
     "short": "Genotype-by-response objective stated, never reported",
     "src": "https://www.clinicaltrialsregister.eu/ctr-search/trial/2009-016051-22/results",
     "srcLabel": "EU CTR 2009-016051-22 CSR synopsis",
@@ -418,7 +456,7 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "reason": "Genotype-by-response analysis never reported",
-    "strengthens": "Adds the patient-side look: the genotype objective existed and no result was ever published",
+    "strengthens": true,
     "patient_trials": [
      {
       "nct": "NCT01028963",
@@ -426,7 +464,11 @@
       "doi": null,
       "quote": "A Randomized, Double-Blind, Placebo- and Active-Controlled, Phase 2 Study to Evaluate the Safety and Efficacy of CCX140-B in Subjects with Type 2 Diabetes Mellitus"
      }
-    ]
+    ],
+    "drug": "ilacirnon",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -464,7 +506,11 @@
     "srcLabel": "Weisberg 2006",
     "quote": "In mice with established obesity, short-term treatment with a pharmacological antagonist of CCR2 lowered macrophage content of adipose tissue and improved insulin sensitivity without significantly altering body mass or improving hepatic steatosis.",
     "model_first_use_year": 2005,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "ilacirnon",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -500,7 +546,11 @@
     "srcLabel": "ChemoCentryx 2011",
     "quote": "No detrimental effects were observed on plasma MCP-1 or blood monocyte levels, and once daily oral CCX140-B provided excellent plasma coverage.",
     "model_first_use_year": 2013,
-    "reason": "Mouse matched patients, but only after the fact"
+    "reason": "Mouse matched patients, but only after the fact",
+    "drug": "ilacirnon",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

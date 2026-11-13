@@ -12,7 +12,8 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "PubMed abstract re-read; quote verbatim. Burtrum 2003 has no DOI, the PMID record resolves. Opening untested entry at first use is correct."
+   "note": "Burtrum PMID 14695208 abstract (Europe PMC) quote verbatim. Proxy opener (IMC-A12, product_in_model false) for the dalotuzumab track allowed; Goetsch 2004 is dalotuzumab's own MCF-7 use. iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -22,17 +23,19 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Abstract re-read; quote verbatim; epub 2011-08-02. Paired tumour biopsies, direct readout. Same holds; subjects are other-indication patients, not volunteers (rule question 5)."
+   "note": "Atzori 2011 (PMID 21810918, epub 2011-08-02) quote verbatim; dalotuzumab iv, mixed solid tumours: other_disease right. Same holds. Year may be 2008: Atzori ASCO 2008 PK/PD abstract (doi 10.1200/jco.2008.26.15_suppl.3519) unread. product_in_model true but model_src is A12 (Burtrum).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Full text (PMC4520534) re-read; quote verbatim. No dosed-patient IGF1R readout was paired; untested correct."
+   "note": "Fagan 2012 (epub 2012-05-09) quote verbatim; untested/not_measured stands. Dalotuzumab iv, stage_or_line fine. retrodiction should be true: patient IGF-IR downregulation public first (Lacy 2008 figitumumab; Atzori 2011); status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -42,7 +45,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Abstract quote verbatim. Full text (PMC5705197) names the models: MCF7 and H2122 cells in vitro and a primary NSCLC-derived xenograft LXFA629; no breast in-vivo model. Rename the track; untested stands."
+   "note": "Di Cosimo (epub 2014-10-15) abstract quote verbatim; rename to MCF7 in vitro plus NSCLC PDX LXFA629 matches the full text. Dalotuzumab iv, ER+ biomarker_selected, partner ridaforolimus correct. retrodiction should be true (post-2008 patient PD); untested unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -52,7 +56,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Full text quote verbatim. Untested stands, but retrodiction should be true: received 2015-06-29, after the R+D vs exemestane null was shown at SABCS Dec 2013 (stated in Baselga 2017)."
+   "note": "Becker 2016 (epub 2016-10-20) abstract quote verbatim; untested/not_measured stands. Dalotuzumab iv, ER+ biomarker_selected fine. retrodiction should be true (patient PD public since 2008); status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -62,17 +67,19 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Abstract verbatim; no exposure target stated. Untested correct."
+   "note": "Burtrum abstract verbatim; no exposure target or margin; untested/no_prediction right. Cixutumumab (A12) iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Full text verbatim. Resistance model with no exposure target; untested correct."
+   "note": "Fagan abstract verbatim; no exposure target; untested/no_prediction right. Dalotuzumab iv, stage_or_line fine. retrodiction should be true (dalotuzumab's own patient PK public 2008/2011); status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -82,7 +89,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Abstract verbatim. In-vivo model is an NSCLC PDX (see engagement 4). No margin stated, so decision 16's 'no stated margin' row gives untested; correct."
+   "note": "Di Cosimo abstract verbatim; no stated margin, so untested. Dalotuzumab iv, biomarker_selected, partner ridaforolimus correct. retrodiction should be true (dalotuzumab's own Atzori PK earlier); untested unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -92,7 +100,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Full text verbatim. No exposure target; untested correct. Retrodiction flag should be true (see engagement 5)."
+   "note": "Becker abstract verbatim; no exposure or margin target; untested/no_prediction right. Dalotuzumab iv, biomarker_selected fine; retrodiction should be true (own patient PK earlier), status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -102,7 +111,8 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Abstract verbatim; opening entry correct."
+   "note": "Burtrum abstract verbatim; opener untested 2003 on cixutumumab x MCF-7 track; iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -112,7 +122,8 @@
    "quote_found": "near",
    "status_supported": true,
    "rule": null,
-   "note": "Registry re-read: PFS 6.0 (4.3-8.6) vs 4.9 (2.9-8.5), HR 1.04 (0.58-1.89), p=.89; results posted 2014-10-06 (estimated). Quote renders the table faithfully. HER2+ add-on is a weak test of an ER+ model; class-level contra accepted."
+   "note": "Registry v2 re-read: PFS 6.0 (4.3-8.6) vs 4.9 (2.9-8.5), HR 1.04 (0.58-1.89), p=.89; results posted 2014-10-06. Cixutumumab iv (registry 'Given IV'), HER2+ biomarker_selected, partner capecitabine + lapatinib and design note correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -122,31 +133,30 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Abstract verbatim; epub 2015-08-31; registry 2018-06-06. All four patient_trials quotes and dates verified (NCT00699491 TRR 0, posted 2015-05-21; NCT00796107 posted 2020-11-13). Contra stands."
+   "note": "Gradishar (PMID 26324738, epub 2015-08-31) quote verbatim; PFS primary, two cixutumumab arms, no control, design noted. Cixutumumab iv, stage_or_line, strengthens correct; dalotuzumab split right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Full text verbatim; opening entry correct."
+   "note": "Fagan abstract verbatim; opener untested 2012 on TamR x dalotuzumab; iv, stage_or_line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2012,
-   "rule": "v3 class definition (members-only) with decision 10",
-   "note": "Quote verbatim, but the 'early reports' Fagan cites are the AMG 479 (ganitumab) randomised phase 2 abstract, not a member; no member datum was public by May 2012 (R+D null first shown SABCS Dec 2013). See rule question 1.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "RULE QUESTION: decision 10 'patient result' when the only prior null is ganitumab's: same mechanism but absent from this tile's member list (decision 12; MET efficacy 6 keyed class-level, CETP efficacy 4 excluded non-members). Fagan states the comparison; retro kept."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Fagan abstract 'early reports show no benefit' sentence verbatim, comparison stated; retrodiction ruling (ganitumab null earlier) gives retro 2012. Dalotuzumab iv, stage_or_line, partner exemestane or fulvestrant accepted.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -156,7 +166,8 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Abstract verbatim. Fresh prediction (result public 2015, after the May 2012 model). Same in direction holds; Gradishar found IGF-1R expression not associated with outcome, so the IGF1R-loss mechanism is unconfirmed: suggest source_calls_it partial."
+   "note": "Gradishar abstract verbatim; first cixutumumab result after the 2012 model, prospective: same. Paired, product_in_model false, iv, stage_or_line correct. Track has no 2012 untested opener (rule 6).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -166,11 +177,12 @@
    "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "same",
-   "proposed_year": 2017,
-   "rule": "neg definition / decision 13 (class_threshold must be a bar the class's successful drugs cleared)",
-   "note": "Abstract verbatim; registry 2019-03-25. Direction matches, but class_threshold is an intra-paper bar (no successful member in breast cancer) and effect_size is qualitative; Rugo's lowered-ridaforolimus confounder also hedges the null. Same, not neg.",
+   "proposed_year": 2014,
+   "rule": "neg definition (class_threshold a bar the class's successful drugs cleared); evidence rule 6 (congress abstract dates the entry)",
+   "note": "Rugo (epub 2017-07-05) quote verbatim. neg fails: class_threshold is Fagan's parental-cell bar, no member succeeded in breast cancer. R/D/E vs R/E first public SABCS Dec 2014 (PD5-1, doi 10.1158/1538-7445.SABCS14-PD5-1). Drug, iv, stage_or_line, partners correct.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "same",
-   "adjudication_note": "Decision 13 as ruled (anti-MAPT efficacy 4): neg needs a class_threshold the class's successful drugs cleared; none exists in breast cancer and the bar is Fagan's own parental-cell control. Null predicted, null observed (#58): same."
+   "adjudication_note": "neg definition: class_threshold must be the class's usual bar in this model; drafter's is dalotuzumab's own parental-cell effect, and the class is inert in TamR. Predicted no benefit, R/D/E failed: same. Rule 6: dated SABCS 2014-12."
   },
   {
    "cell": "efficacy",
@@ -180,31 +192,34 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Abstract verbatim. Model is MCF7 in vitro plus an NSCLC PDX; the preclinical work underlies the 2008 phase 1, so not a retrodiction. Untested opening correct."
+   "note": "Baselga abstract verbatim; full text (PMC5448790) states SABCS Dec 10-14 2013 presentation, before Di Cosimo epub 2014-10-15: retrodiction failing to reproduce, contra 2014. Dalotuzumab iv, stage_or_line, partner ridaforolimus correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 9,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Abstract verbatim; registry 2019-03-25. Contra accepted with a caveat: Rugo attributes the null 'possibly' to lower-dose ridaforolimus (untested by the model) and Baselga's R+D vs E does not isolate dalotuzumab. See rule question 3."
+   "proposed_status": "contra",
+   "proposed_year": 2014,
+   "rule": "evidence rule 6 (earliest public date incl. congress abstract)",
+   "note": "Contra stands (R/D/E HR 1.18; Rugo only hedges the ridaforolimus dose). Year: first public SABCS Dec 2014 (PD5-1, Crossref-confirmed abstract), after Di Cosimo 2014-10-15, so prospective and dated 2014, not 2017.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Contra stands. Rule 6: R/D/E vs R/E null first public at SABCS 2014-12 (PD5-1, verified; HR 1.18), after Di Cosimo 2014-10-15, so prospective; year 2014, not 2017."
   },
   {
    "cell": "efficacy",
    "index": 10,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2016,
-   "rule": "decision 10 (retrodiction)",
-   "note": "Becker (received 2015-06-29) was run after the R+D vs exemestane null (SABCS Dec 2013) and Robertson 2013; its Conclusions say 'similar to clinical trials, IGF-1R inhibition (via MK-0646) does not enhance hormonal therapy'. A stated retrodiction: retro, comparison_stated true.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: Becker (received 2015-06-29) post-dates NCT01234857's 2013-10 completion and SABCS 2013 read-out, cites the completed MK-0646/MK-8669 trials, and concludes 'similar to clinical trials' MK-0646 does not enhance hormonal therapy. Reproduces the known null: retro."
+   "status_supported": true,
+   "rule": null,
+   "note": "Becker full text (PMC5073873) Conclusions sentence verbatim; first public after SABCS 2013 R+D null: retro 2016, comparison_stated true. Dalotuzumab iv fine; the matched trials enrolled NSAI-pretreated patients, so stage_or_line fits better than biomarker_selected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -214,11 +229,12 @@
    "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "retro",
-   "proposed_year": 2017,
-   "rule": "decision 10 (retrodiction); neg definition",
-   "note": "Model is a retrodiction (entry 10), so the Rugo comparison is retro, not neg. NCT01605396 reportedly shown SABCS Dec 2014 (unconfirmed in the paper); if its result postdates 2016-10-20 it is the first fresh prediction and scores same, class_threshold unanchored.",
+   "proposed_year": 2016,
+   "rule": "retrodiction (model first public after the patient result); neg definition",
+   "note": "Rugo abstract verbatim, but the R/D/E null was public at SABCS Dec 2014 (PD5-1), before Becker (epub 2016-10-20); the xenograft (no add of dalotuzumab) reproduced it: retro, retrodiction true, year 2016. neg also lacks a successful-drug class_threshold.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: NCT01605396 primary completion 2014-02-19 precedes Becker's receipt (2015-06-29), and Becker names both completed MK-0646/MK-8669 trials; no earlier public Rugo abstract found, but the clinic knew (pan-HER efficacy 8 ruling). Not neg: bar unanchored. Duplicates entry 10."
+   "adjudication_note": "Retrodiction rule: the triple-regimen null was public at SABCS Dec 2014 (PD5-1, verified) before Becker (epub 2016); the xenograft reproduced it, so retro, retrodiction true, year 2016, not neg."
   },
   {
    "cell": "safety",
@@ -228,17 +244,19 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Abstract verbatim. No tolerability statement; mouse cross-reactivity unverified at abstract level; untested correct."
+   "note": "Burtrum abstract verbatim; no tolerability statement; untested/no_prediction correct. Cixutumumab iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Full text verbatim; no tolerability content; untested correct."
+   "note": "Fagan abstract verbatim; no tolerability content; untested/no_prediction correct. Dalotuzumab iv, stage_or_line fine.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -248,7 +266,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Abstract verbatim; the DLTs are clinical observations, the model is silent; untested correct."
+   "note": "Di Cosimo abstract verbatim; model silent on tolerability, DLTs are clinical; untested correct. Dalotuzumab iv, biomarker_selected, partner ridaforolimus correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -258,17 +277,19 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Full text verbatim. Draft note is wrong in detail: Becker does report tolerability ('all agents ... were well tolerated, as bodyweight did not significantly differ', data not shown). Human-specific antibody, so hyperglycaemia silence is unscorable; untested stands."
+   "note": "Becker full text re-read: 'all agents (both alone and in combination) were well tolerated ... (data not shown)'; corrected note accurate. Opener untested 2016 with claim scored in safety 6 consistent; dalotuzumab iv, biomarker_selected fine.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
    "rule": null,
-   "note": "Bundle text verbatim (PharmR line 894, after the three-warnings sentence). Label 8/84 (10%) vs 1/87 hyperglycaemia and 8 vs 0 hearing impairment verified; approval 2020-01-21; MONDO:0001509 carries synonym 'thyroid eye disease'. Imported contra stands."
+   "note": "Registry v2: NCT00796107 results posted 2020-11-13, Hyperglycaemia 1/6 (2 events), R1507 + letrozole, letrozole-failure part: stage_or_line right. Teprotumumab is a tile member; iv; retrodiction true correct. model_first_use_year is null; should be filled.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -278,8 +299,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Registry re-read: hypothesis sentence verbatim in the brief summary; first posted 2008-09-25, start 2008-09-30, results 2017, so prospective. Opening untested at first use correct. Model-side derivation is patent-only, as the draft says.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Registry v2 re-read: hypothesis sentence verbatim in brief summary; first posted 2008-09-25. Dalotuzumab iv, ER+ luminal B / TN biomarker_selected correct. retrodiction should be true (figitumumab granulocyte IGF-IR fall, Lacy 2008 epub 2008-05-12); untested unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -288,13 +309,13 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": false,
-   "proposed_status": "same",
+   "proposed_status": "retro",
    "proposed_year": 2017,
-   "rule": "decision 4 'Also' clause (contra requires the model's own prediction to have failed) with decisions 11 and 13 (bar must be the model's number; direction held with a magnitude miss is same + bin); #90 as the alternative",
-   "note": "Quote faithful (80% CI); H-score is a mean, not median. 40% bar is the sponsor's, not the model's; ER+ 4/14 (13.1-49.2) cannot exclude it, TN 3/17 only at 80%. Direction held in a minority: same + direction_only, else untested/unresolved (#90).",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "contra",
-   "adjudication_note": "RULE QUESTION: under decision 4, is a sponsor-set proof-of-biology threshold (GFS fall in \u226540%) the model's prediction, so the point-estimate miss (28.6%/17.6%; ER+ 80% CI spans 40%) is contra, or a sponsor bar, so same + direction_only (decision 11)?"
+   "rule": "retrodiction: engagement model first public after any drug's patient result on the same target is retro, never same",
+   "note": "Registry v2: results first posted 2017-04-14, ER+ 28.6 (13.1-49.2), TN 17.6 (6.7-35.2); 40% bar ruling applied. But the GFS track opened 2008-09, after patient IGF-IR engagement was public (Lacy 2008, doi 10.1200/JCO.2007.15.9319), so a retrodiction reproducing it: retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement counts any drug on the target): GFS model first used 2008-09, after patient IGF-1R engagement was public (Lacy 2008, epub 2008-05-12); readout moved, so retro, never same."
   },
   {
    "cell": "efficacy",
@@ -304,14 +325,48 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Brief-summary sentence verbatim; first posted 2008-09-25. NCT01220570 re-read: completed 2012-12, 63 enrolled, no results, primary is day-15 mean GFS change (PD, not response). PubMed has no report of either trial. Untested correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Registry v2 brief-summary sentence verbatim; first posted 2008-09-25. Untested/not_measured correct; dalotuzumab iv, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Goetsch (PMID 15386423) abstract quote verbatim; online 2004 (print 2005-01). h7C10 = dalotuzumab, product_in_model true; opener untested, iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Baselga abstract verbatim (HR 1.00, PFS primary, R+D vs exemestane); full text dates SABCS Dec 2013, so 2013 holds; Goetsch 2004 precedes, prospective. Dalotuzumab iv, stage_or_line, partner ridaforolimus, design note correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Baselga abstract quote verbatim; full text: stomatitis 89.7%, hyperglycaemia 31% on R30+D. Becker's tolerability claim postdates SABCS 2013: failed retrodiction, contra 2016. Note Rugo shows these harms mostly ridaforolimus-driven. Drug, iv, stage_or_line, partner correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
   "Ganitumab in breast cancer, same mechanism but absent from this tile's member list (it is a register member on the NSCLC tile): Robertson 2013 Lancet Oncol randomised phase 2 ganitumab + exemestane/fulvestrant, negative (doi 10.1016/S1470-2045(13)70026-3, PMID 23414585); I-SPY 2 neoadjuvant ganitumab + metformin, did not graduate (Yee 2021 npj Breast Cancer, doi 10.1038/s41523-021-00337-2, PMID 34611148, NCT01042379). Both are the human data Fagan 2012 and Becker 2016 retrodict; whether they score is rule question 1.",
   "IGF-I gene-transcription signature (Creighton 2008 J Clin Oncol, doi 10.1200/JCO.2007.13.4429, PMID 18757322): an in-silico, MCF-7-derived patient-level model used as the primary endpoint of the dalotuzumab presurgical trial NCT00759785 (GFS decrease in 28.6% ER+ / 17.6% TN; results 2017-04-14). It is its own in_silico track (untested: no efficacy comparison), not a footnote on the MCF-7 xenograft track.",
-  "Model identity, not a missed model: Di Cosimo 2015's only in-vivo system is the primary human NSCLC-derived xenograft LXFA629 (full text PMC5705197); the breast-cancer prediction rests on MCF7 in vitro. The track name 'Merck in-vitro and xenograft models' should say so, or the in-vivo arm be marked imported from NSCLC."
+  "Model identity, not a missed model: Di Cosimo 2015's only in-vivo system is the primary human NSCLC-derived xenograft LXFA629 (full text PMC5705197); the breast-cancer prediction rests on MCF7 in vitro. The track name 'Merck in-vitro and xenograft models' should say so, or the in-vivo arm be marked imported from NSCLC.",
+  "SABCS 2014 abstract PD5-1 (Rugo et al., Cancer Res 2015;75(9 Suppl):PD5-1, doi 10.1158/1538-7445.SABCS14-PD5-1): first public report of NCT01605396 (R/D/E vs R/E), which dates efficacy 7 and 9 to 2014 and makes efficacy 11 a retrodiction."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
@@ -320,6 +375,7 @@
   "A trial source that hedge-attributes a null to a condition the model never tested ('it is possible that lower-dose ridaforolimus ... contributed', Rugo 2017): does a hedged attribution demote contra/same to untested, or only a stated one?",
   "Conference abstracts (SABCS 2013 for NCT01234857, reportedly SABCS 2014 for NCT01605396) are not a listed source tier, yet they make a later model a retrodiction under decision 10. Do they count for 'the clinic already knew the answer', and for rule-6 dating?",
   "Engagement from patients of other indications (Atzori 2011, mixed solid tumours): the engagement rule admits healthy volunteers; does it admit other-disease patients without imported_from?",
-  "(models check) A registry-only proof-of-biology trial whose pre-specified bar (GFS decrease in >=40% of participants) is the sponsor's decision threshold, not a number the model stated, and whose ER+ 80% CI (13.1-49.2) spans the bar: is the point-estimate miss contra, same + direction_only (direction held in 4/14 and 3/17), or untested with source_calls_it: unresolved (#90) when the source itself makes no call? Also, prediction_level for the GFS track: the signature is a tumour classifier (patient) but its only use in NCT00759785 is a class-level PD readout."
+  "(models check) A registry-only proof-of-biology trial whose pre-specified bar (GFS decrease in >=40% of participants) is the sponsor's decision threshold, not a number the model stated, and whose ER+ 80% CI (13.1-49.2) spans the bar: is the point-estimate miss contra, same + direction_only (direction held in 4/14 and 3/17), or untested with source_calls_it: unresolved (#90) when the source itself makes no call? Also, prediction_level for the GFS track: the signature is a tumour classifier (patient) but its only use in NCT00759785 is a class-level PD readout.",
+  "(fields check) Under the engagement retrodiction ruling (any drug's earlier patient result on the target), figitumumab's patient IGF-1R downregulation (Haluska 2007) predates the GFS track (2008) and every later engagement model; does a prior patient PD on a different readout make a new-readout model (the GFS) a retrodiction, turning engagement 7 same into retro?"
  ]
 }

@@ -1,0 +1,166 @@
+{
+ "tile": "mucopolysaccharidosis-type-1-idua-replacement-gene-therapy",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true: laronidase cut urinary GAG in patients (Kakkis 2001 NEJM, PMID 11172140) before the 2011 surrogate mouse; drug valanafusp alfa, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "year 2021 -> 2020: Orchard ASGCT interim press release 2020-05-15 reported supranormal blood IDUA (rule 6); drug azamidugene autotemcel, ex_vivo_cells"
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "what": "year 2021 -> 2020: Orchard ASGCT interim 2020-05-15 (rule 6); drug azamidugene autotemcel, ex_vivo_cells"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "year 2021 -> 2020: Orchard ASGCT interim 2020-05-15 (rule 6); drug azamidugene autotemcel, ex_vivo_cells"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "status same -> contra, margin_stated true, magnitude off_by_>5x: decision 16, monkey hypoglycemia margin 30 mg/kg vs patient hypoglycemia at 1-6 mg/kg (check adjudication, rule question 2); drug valanafusp alfa, iv"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> untested (unsettled): count-once rule, hypoglycemia scored in dose 4 (rule question 2); drug valanafusp alfa, iv"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "year 2021 -> 2020: Orchard ASGCT interim 2020-05-15 reported good tolerability (rule 6); drug azamidugene autotemcel, ex_vivo_cells"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status same -> untested (not_measured): single-arm trial, safety-only primary, no PoC gate (rule question 1); drug valanafusp alfa, iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status same -> untested (not_measured), year 2021 -> 2020: primaries safety/engraftment/IDUA only (rule question 1); Orchard interim 2020-05-15; drug azamidugene autotemcel, ex_vivo_cells"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "status same -> untested (not_measured): safety-only primary (rule question 1); drug RGX-111, intrathecal"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "status contra -> untested (not_measured), year 2023 -> 2022: safety-only primary (rule question 1); Harmatz 2022 earlier than registry posting; drug devafidugene civaparvovec, iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug azamidugene autotemcel, route ex_vivo_cells (track fields)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug valanafusp alfa, route iv (track fields)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug RGX-111, route intrathecal (track fields)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug devafidugene civaparvovec, route iv (track fields)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug RGX-111, route intrathecal (track fields)"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "drug devafidugene civaparvovec, route iv (track fields)"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "what": "drug RGX-111, route intrathecal (track fields)"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "drug RGX-111, route intrathecal (track fields)"
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "what": "drug valanafusp alfa, route iv (track fields)"
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "what": "drug azamidugene autotemcel, route ex_vivo_cells (track fields)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug azamidugene autotemcel, route ex_vivo_cells (track fields)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug valanafusp alfa, route iv (track fields)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug RGX-111, route intrathecal (track fields)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug azamidugene autotemcel, route ex_vivo_cells (track fields)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug valanafusp alfa, route iv (track fields)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug RGX-111, route intrathecal (track fields)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug devafidugene civaparvovec, route iv (track fields)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug valanafusp alfa, route iv (track fields)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug RGX-111, route intrathecal (track fields)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug RGX-111, route intrathecal (track fields)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug azamidugene autotemcel, route ex_vivo_cells (track fields)"
+  }
+ ],
+ "added": []
+}

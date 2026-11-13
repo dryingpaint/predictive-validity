@@ -1,0 +1,67 @@
+{
+ "tile": "non-small-cell-lung-carcinoma-met-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "year 2020->2019 (earliest public date: Bang 2020 epub 2019-12-30); drug capmatinib, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "year 2021->2019 (earliest public date: Falchook 2020 epub 2019-12-10); drug tepotinib, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "year 2021->2019 (earliest public date: Falchook 2020 epub 2019-12-10); drug tepotinib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same->retro, retrodiction true: SAR125844 xenografts (epub 2014-12) post-date crizotinib MET-amplified NSCLC responses (Ou 2011, Camidge ASCO 2014); drug sar-125844, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same->retro, retrodiction true, year 2020->2019: METex14 PDX (Baltschukat epub 2019-01) post-date crizotinib METex14 responses (2015); dated when both halves public; drug capmatinib"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status same->retro, retrodiction true: D1228/Y1230 resistance known in patients (crizotinib, savolitinib 2016) before the 2019 screen (target-level retrodiction rule; checker adjudication); drug capmatinib"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug savolitinib, combination_with osimertinib"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug savolitinib, combination_with osimertinib"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "tepotinib track opener, met-driven-xenograft, 2013 untested (Bladt 2013)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "tepotinib track opener, met-driven-xenograft, 2013 untested, margin stated (Bladt 2013)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "sar-125844 track opener, met-driven-xenograft, 2014 untested, iv (Egile 2015 epub 2014-12-10)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "capmatinib track opener, baf3-engineered-met-panel, 2019 untested (Fujino 2019)"
+  }
+ ]
+}

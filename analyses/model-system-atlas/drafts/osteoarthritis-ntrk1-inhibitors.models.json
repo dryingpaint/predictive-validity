@@ -94,8 +94,18 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT02611466", "registry_date": "2018-06-20", "doi": "10.1016/j.joca.2019.05.029", "quote": "Four-week treatment with ASP7962 (100 mg BID) did not improve pain or physical function in individuals with painful knee osteoarthritis."},
-       {"nct": "NCT02845271", "registry_date": null, "doi": "10.1016/j.joca.2019.05.028", "quote": "Human genetic mutations of TrkA are linked to congenital pain insensitivity."}
+       {
+        "nct": "NCT02611466",
+        "registry_date": "2018-06-20",
+        "doi": "10.1016/j.joca.2019.05.029",
+        "quote": "Four-week treatment with ASP7962 (100 mg BID) did not improve pain or physical function in individuals with painful knee osteoarthritis."
+       },
+       {
+        "nct": "NCT02845271",
+        "registry_date": null,
+        "doi": "10.1016/j.joca.2019.05.028",
+        "quote": "Human genetic mutations of TrkA are linked to congenital pain insensitivity."
+       }
       ],
       "population": "Unselected",
       "model_first_use_year": 1996
@@ -183,7 +193,12 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT02611466", "registry_date": "2018-06-20", "doi": "10.1016/j.joca.2019.05.029", "quote": "Four-week treatment with ASP7962 (100 mg BID) did not improve pain or physical function in individuals with painful knee osteoarthritis."}
+       {
+        "nct": "NCT02611466",
+        "registry_date": "2018-06-20",
+        "doi": "10.1016/j.joca.2019.05.029",
+        "quote": "Four-week treatment with ASP7962 (100 mg BID) did not improve pain or physical function in individuals with painful knee osteoarthritis."
+       }
       ],
       "population": "Unselected",
       "model_first_use_year": 1994
@@ -271,7 +286,12 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT02611466", "registry_date": "2018-06-20", "doi": "10.1016/j.joca.2019.05.029", "quote": "Four-week treatment with ASP7962 (100 mg BID) did not improve pain or physical function in individuals with painful knee osteoarthritis."}
+       {
+        "nct": "NCT02611466",
+        "registry_date": "2018-06-20",
+        "doi": "10.1016/j.joca.2019.05.029",
+        "quote": "Four-week treatment with ASP7962 (100 mg BID) did not improve pain or physical function in individuals with painful knee osteoarthritis."
+       }
       ],
       "population": "Unselected",
       "model_first_use_year": 1998
@@ -359,7 +379,12 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT02845271", "registry_date": null, "doi": "10.1016/j.joca.2019.05.028", "quote": "The secondary outcome on WOMAC A1 changes over 12 weeks had a between-group difference of −6.78 (P = 0.064)."}
+       {
+        "nct": "NCT02845271",
+        "registry_date": null,
+        "doi": "10.1016/j.joca.2019.05.028",
+        "quote": "The secondary outcome on WOMAC A1 changes over 12 weeks had a between-group difference of −6.78 (P = 0.064)."
+       }
       ],
       "population": "Unselected",
       "model_first_use_year": 2015
@@ -460,5 +485,37 @@
   "Patient-derived synovial fluid on DRG neurons and other OA ex-vivo systems: exist for OA pain generally but never run with a member drug; no comparison possible.",
   "Sensory-neuron-specific TrkA deletion mouse (2022, PMC9602682): a later genetic model not compared with any member's patient result as far as the search showed; not read (budget).",
   "VM902A (Purdue, NCT02847702): no preclinical publication and the trial was terminated by company decision with no results, so no model and no patient result to pair."
+ ],
+ "gaps": [
+  {
+   "lead": "Flannery 2015 OARSI abstract (GZ389988 rat MIA, rat PGPS flare, rat IA biocompatibility)",
+   "outcome": "tracked",
+   "detail": "PGPS: rat-pgps-knee-flare efficacy 2015 untested / 2019 same (Krupka); biocompatibility: rat-naive-knee-ia-tolerability safety 2015 untested / 2019 contra; MIA arm is the same system as rat-mia-knee-oa, where Flannery as the member-side opening source is the checker's verdict on engagement 1 / efficacy 1"
+  },
+  {
+   "lead": "Human NTRK1 loss-of-function (HSAN IV / CIPA) as a human_genetic track",
+   "outcome": "tracked",
+   "detail": "human-ntrk1-lof-cipa efficacy 1996 untested (Indo 1996) / 2019 contra (Watt 2019); rule question 3 (untested vs contra) left to the checker"
+  },
+  {
+   "lead": "NGF-receptor knockout mouse (Watt 2019 ref 7)",
+   "outcome": "tracked",
+   "detail": "trka-null-mouse efficacy 1994 untested / 2019 contra and p75ntr-null-mouse efficacy 1998 untested / 2019 contra (Watt 2019)"
+  },
+  {
+   "lead": "GZ389988 first-in-human NCT02424942 (IA ascending dose, plasma/synovial PK, no results)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: NCT02424942 has no posted results or publication, so no patient PK/engagement readout exists; the checker verdict on engagement 2 (rat-mia-knee-oa 2019 untested, not_measured) already records it as unreported and confirms untested."
+  },
+  {
+   "lead": "ASP7962 Phase 1 healthy-volunteer studies NCT01981928 / NCT02136316",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: healthy-volunteer PK with no results posted or published, citation only; the checker verdict on dose 2 (rat-mia-knee-oa 2019 untested) confirms the status, and no model stated an exposure target these studies could test."
+  },
+  {
+   "lead": "Astellas / Sanofi / Purdue discontinuation notices for ASP7962, GZ389988A, VM902A",
+   "outcome": "none",
+   "detail": "tier-5 sources carry no model-to-patient comparison and cannot change statuses set by tier-1 trial papers and registry records"
+  }
  ]
 }

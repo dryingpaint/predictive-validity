@@ -52,7 +52,12 @@
     "quote": "As shown in Figure 2B, daily oral administration of 7.5 or 15 mg/kg of dacomitinib resulted in inhibition of EGFR phosphorylation (phosphor-erbB-1) that persisted up to the 26-hour time-point in some tumors, particularly at the high dose of 15 mg/kg.",
     "judgement": "Janne 2011 showed exposure-dependent target inhibition in skin biopsies, but skin carries wild-type EGFR; the T790M track's readout was pEGFR in a T790M tumour, and Reckamp 2014 itself raised incomplete EGFR inhibition in T790M tumours as a possible cause of non-response, so this track stays untested rather than borrowing the skin result.",
     "reason": "Skin readout is wild-type, not T790M",
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "subjects": null,
@@ -89,7 +94,11 @@
     "quote": "The results from these studies show that PF00299804 is a potent inhibitor of EGFR-activating mutations as well as the EGFR T790M resistance mutation both in vitro and in vivo.",
     "judgement": null,
     "reason": null,
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -110,7 +119,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "target inhibition in skin vs tumour pEGFR in xenografts",
     "source_calls_it": null,
-    "population": "EGFR exon 19 deletion / L858R",
+    "population": "Advanced solid tumours, mostly NSCLC (first-in-human phase 1)",
     "model_first_use_year": 2007,
     "confidence": "medium",
     "confidence_note": "Abstract-level reading; the degree of skin target inhibition is not quantified in the abstract.",
@@ -126,7 +135,11 @@
     "quote": "Pharmacokinetic analyses revealed dose-dependent increases in PF299804 exposure associated with target inhibition in skin biopsy samples.",
     "judgement": "Paired comparison I made: the model's PD readout was pEGFR loss in tumour; the human readout was target inhibition in skin (wild-type EGFR), a proximal readout of the same enzyme, so direction_only.",
     "reason": "Human skin showed dose-dependent EGFR inhibition",
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -148,22 +161,27 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "EGFR or HER2 exon 20 insertion",
-    "model_first_use_year": 2018,
+    "model_first_use_year": 2017,
     "confidence": "high",
     "confidence_note": null,
     "prediction_level": "patient",
-    "year": 2018,
+    "year": 2017,
     "status": "untested",
     "model": "EGFR/HER2 exon 20 insertion Ba/F3 lines, PDX and GEMM (poziotinib, in-silico pocket model)",
     "model_id": "exon20-baf3-pdx-gemm-poziotinib",
     "src": "https://doi.org/10.1038/s41591-018-0007-9",
     "srcLabel": "Robichaux 2018",
-    "note": "Model PD readout was exon-20 mutant EGFR/HER2 phosphorylation in Ba/F3 cells and PDX; no patient tumour phospho-readout was reported in ZENITH20 or the MD Anderson trial.",
+    "note": "Model PD readout was exon-20 mutant EGFR/HER2 phosphorylation in Ba/F3 cells and PDX; no patient tumour phospho-readout was reported in ZENITH20 or the MD Anderson trial. Model first public with the first exon-20 patients at WCLC October 2017 (Elamin, J Thorac Oncol 2017 OA 12.01), so the track opens in 2017 (rule 6, earliest date).",
     "short": "No patient exon-20 phospho-readout published",
     "quote": "Poziotinib demonstrated greater activity than approved EGFR TKIs in vitro and in patient-derived xenograft models of EGFR or HER2 exon 20 mutant NSCLC and in genetically engineered mouse models of NSCLC.",
     "judgement": "Rash and diarrhoea in ZENITH20 show wild-type EGFR pharmacology in patients but are not the model's readout, so untested, not an empty cell.",
     "reason": "No patient phospho-EGFR/HER2 readout found",
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "subjects": null,
@@ -200,7 +218,12 @@
     "quote": "Moreover, pyrotinib showed a robust ability to inhibit pHER2, pERK and pAkt.",
     "judgement": null,
     "reason": "No patient pHER2 readout published",
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "subjects": null,
@@ -237,7 +260,12 @@
     "quote": "Pharmacokinetic analysis confirmed markedly higher levels of tarloxotinib-E in tumor tissue than plasma or skin.",
     "judgement": null,
     "reason": "No patient PD or tumour-drug readout",
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "tarloxotinib",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -274,7 +302,12 @@
     "note": "Dacomitinib inhibited the gefitinib-resistant ERBB2 insertion mutant in cells; no HER2-mutant patient tumour PD readout was ever taken.",
     "short": "No HER2-mutant tumour PD readout in patients",
     "judgement": "The cell model's readout is ERBB2 kinase inhibition; the HER2 cohort of NCT00818441 (Kris 2015) measured response, survival and toxicity only, so engagement was never compared.",
-    "reason": "No patient HER2 phospho-readout exists"
+    "reason": "No patient HER2 phospho-readout exists",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -314,7 +347,12 @@
     "judgement": null,
     "reason": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -352,7 +390,11 @@
     "judgement": null,
     "reason": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -390,7 +432,12 @@
     "judgement": "Row 'reached, drug worked' = same. No model stated a tolerability margin (margin_stated false): the FDA review records rat toxicity at an AUC about half the clinical AUC and dog at 0.14x, so patients were dosed above the animal-toxic exposure and carried the predicted epithelial toxicity (scored same in safety, not here).",
     "reason": "Effective dose reached; drug worked",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -412,23 +459,27 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "EGFR or HER2 exon 20 insertion",
-    "model_first_use_year": 2018,
+    "model_first_use_year": 2017,
     "confidence": "high",
     "confidence_note": "Full text read (PMC5964608).",
     "prediction_level": "patient",
-    "year": 2018,
+    "year": 2017,
     "status": "untested",
     "model": "EGFR/HER2 exon 20 insertion Ba/F3 lines, PDX and GEMM (poziotinib, in-silico pocket model)",
     "model_id": "exon20-baf3-pdx-gemm-poziotinib",
     "src": "https://doi.org/10.1038/s41591-018-0007-9",
     "srcLabel": "Robichaux 2018",
-    "note": "The model paper stated 16 mg/day is tolerable and gives 150 nM plasma, >125x the exon-20 IC50, while already noting 55% of its own patients needed dose reduction.",
+    "note": "The model paper stated 16 mg/day is tolerable and gives 150 nM plasma, >125x the exon-20 IC50, while already noting 55% of its own patients needed dose reduction. Model first public with the first exon-20 patients at WCLC October 2017 (Elamin, J Thorac Oncol 2017 OA 12.01), so the track opens in 2017 (rule 6, earliest date).",
     "short": "16 mg stated tolerable, 125x IC50",
     "quote": "Although many patients required dose reduction, results from phase 1 and 2 clinical testing of poziotinib demonstrate that 16 mg/day doses are tolerable and that a plasma concentration of 150 nM can be achieved",
     "judgement": null,
     "reason": null,
     "blocked_by": null,
-    "margin_stated": true
+    "margin_stated": true,
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -450,7 +501,7 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "EGFR or HER2 exon 20 insertion",
-    "model_first_use_year": 2018,
+    "model_first_use_year": 2017,
     "confidence": "medium",
     "confidence_note": "Abstract-level reading of ZENITH20-2; ZENITH20-1 dose-reduction rate (68%) from the 2025 Nature Communications paper, full text read.",
     "prediction_level": "patient",
@@ -466,7 +517,12 @@
     "judgement": "Decision 16: the model paper stated the effective exposure (16 mg/day, 150 nM) was tolerated; patients could not stay on it (median relative dose intensity 71.5%, 76.7% reductions), so this is contra with blocked_by toxicity and margin_stated true, an independent dose failure counted here and not in safety. Dated to the first tier-1 trial paper (ZENITH20-2, online 2021-11-29); the HER2 phase 2 (JCO 21.01113, online 2021-09-22) reports grade 3 rash 47% but not the reduction rate.",
     "reason": "Stated tolerable dose not sustainable",
     "blocked_by": "toxicity",
-    "margin_stated": true
+    "margin_stated": true,
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "subjects": null,
@@ -504,7 +560,12 @@
     "judgement": "No stated exposure target or margin in the model paper, so neither the 'reached' rows nor decision 16 can be applied.",
     "reason": "No exposure-vs-model comparison possible",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -542,7 +603,11 @@
     "judgement": null,
     "reason": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "tarloxotinib",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -580,7 +645,12 @@
     "judgement": "Dose scored on its own prediction (rule v4): the trial dosed the regimen the model mirrored. Row 'reached, failed, abandoned': the model was explicitly run at the mouse equivalent of the clinical regimen, the trial used that regimen, cohort A gave no responses and the sponsor discontinued tarloxotinib (2021 S-1, not fetched). Derived from efficacy, counted once.",
     "reason": "Human regimen matched model; drug failed",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "tarloxotinib",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -617,7 +687,11 @@
     "confidence_note": "Abstract-level reading of Engelman 2007 (not open access); the ERBB2-mutant work is reported as cell-based, no HER2-mutant xenograft is described in the abstract, hence model_kind ex_vivo (no cell-line enum value).",
     "note": "Cell potency against the ERBB2 mutant stated; no exposure target or tolerated-dose margin was given for HER2-mutant tumours.",
     "short": "No exposure target stated for HER2 mutant",
-    "judgement": "Opening entry at first use; the cell model gives IC50-level potency only, so the dose cell can be scored only by the efficacy row once patients were dosed."
+    "judgement": "Opening entry at first use; the cell model gives IC50-level potency only, so the dose cell can be scored only by the efficacy row once patients were dosed.",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -655,7 +729,12 @@
     "note": "Dacomitinib 30-45 mg daily (the MTD regimen) was delivered to the HER2 cohort of NCT00818441; durable responses occurred in 3/26 HER2 exon-20-mutant patients.",
     "short": "MTD regimen given; 12% HER2-mutant responses",
     "judgement": "Table row 'reached, drug worked': the regimen the EGFR-mutant cohort used was given in full and responses occurred, but the model stated no exposure target, so margin_stated is false and magnitude is direction only.",
-    "reason": "MTD regimen reached; responses in HER2-mutant cohort"
+    "reason": "MTD regimen reached; responses in HER2-mutant cohort",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [
@@ -696,7 +775,11 @@
     "reason": null,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -748,7 +831,11 @@
       "doi": "10.1016/s1470-2045(14)70472-3",
       "quote": "Dacomitinib did not improve overall survival compared with placebo (median 6·83 months [95% CI 6·08-7·49] for dacomitinib vs 6·31 months [5·32-7·52] for placebo; hazard ratio [HR] 1·00 [95% CI 0·83-1·21]; p=0·506)."
      }
-    ]
+    ],
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -787,7 +874,11 @@
     "reason": null,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -839,7 +930,11 @@
       "doi": "10.1002/cncr.28561",
       "quote": "Responders included: 2 of 25 EGFR mutation-positive tumors; 1 of 3 EGFR wild-type with HER2 amplification."
      }
-    ]
+    ],
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -861,17 +956,17 @@
     "magnitude_basis": "PDX regression >85% vs confirmed ORR",
     "source_calls_it": "match",
     "population": "EGFR or HER2 exon 20 insertion",
-    "model_first_use_year": 2018,
+    "model_first_use_year": 2017,
     "confidence": "medium",
     "confidence_note": "Full text read; the 11-patient result is an interim cut of NCT03066206, whose primary endpoint is ORR.",
     "prediction_level": "patient",
-    "year": 2018,
+    "year": 2017,
     "status": "same",
     "model": "EGFR/HER2 exon 20 insertion Ba/F3 lines, PDX and GEMM (poziotinib, in-silico pocket model)",
     "model_id": "exon20-baf3-pdx-gemm-poziotinib",
     "src": "https://doi.org/10.1038/s41591-018-0007-9",
     "srcLabel": "Robichaux 2018",
-    "note": "The model paper paired its PDX/GEMM regressions with the first 11 exon-20 patients (ORR 64%); the full MD Anderson cohort later met its ORR endpoint (32%) and HER2 cohorts hit 27-28%.",
+    "note": "The model paper paired its PDX/GEMM regressions with the first 11 exon-20 patients (ORR 64%); the full MD Anderson cohort later met its ORR endpoint (32%) and HER2 cohorts hit 27-28%. Single-arm phase 2 with responses where the model predicted them: same. Year 2017: the WCLC abstract (Elamin OA 12.01) first put preclinical and clinical activity side by side, the model shown alongside, not after, the patients.",
     "short": "Exon-20 model matched 64% interim ORR",
     "quote": "In a phase 2 trial, the first 11 patients with NSCLC with EGFR exon 20 mutations receiving poziotinib had a confirmed objective response rate of 64%.",
     "judgement": null,
@@ -897,7 +992,11 @@
       "doi": "10.1200/jco.21.01323",
       "quote": "With a median follow-up of 9.0 months, objective response rate was 27.8% (95% CI, 18.9 to 38.2); 25 of 90 patients achieved a partial response."
      }
-    ]
+    ],
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -919,17 +1018,17 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "EGFR or HER2 exon 20 insertion",
-    "model_first_use_year": 2018,
+    "model_first_use_year": 2017,
     "confidence": "medium",
     "confidence_note": "Full text read (PMC12460621); design rejected a 17% ORR. The miss was public by sponsor press release in Dec 2019 (not fetched, so not cited) and the registry posted 13.9% in June 2026.",
     "prediction_level": "patient",
-    "year": 2025,
+    "year": 2019,
     "status": "contra",
     "model": "EGFR/HER2 exon 20 insertion Ba/F3 lines, PDX and GEMM (poziotinib, in-silico pocket model)",
     "model_id": "exon20-baf3-pdx-gemm-poziotinib",
     "src": "https://doi.org/10.1038/s41467-025-61817-8",
     "srcLabel": "Le 2025 (ZENITH20-1)",
-    "note": "ZENITH20-1, the registrational EGFR exon-20 cohort (n=115), missed its primary ORR endpoint (14.8% against a 17% null) with 68% dose reductions; FDA issued a complete response letter for the HER2 cohort in 2022.",
+    "note": "ZENITH20-1, the registrational EGFR exon-20 cohort (n=115), missed its primary ORR endpoint (14.8% against a 17% null) with 68% dose reductions; FDA issued a complete response letter for the HER2 cohort in 2022. Single-arm cohort with a pre-set bar (ORR null 17%) that it missed: contra. Year 2019: Spectrum announced the missed primary endpoint on 26 Dec 2019 (press release; GenomeWeb 2019-12-27); rule 6 takes the earliest public date, while the tier-1 Le 2025 paper stays the source of the status.",
     "short": "Registrational exon-20 cohort missed ORR bar",
     "quote": "Although the study’s primary efficacy endpoint was not met in the overall cohort, the exploratory analysis indicates poziotinib has superior benefit in EGFR ex20 near- versus far-insertions",
     "judgement": "One drug, one track: the registrational cohort for the population the model picked failed its primary endpoint, so contra, even though the MD Anderson cohort (32%) and the HER2 cohorts (27-39%) met theirs; those sit in patient_trials. Dated to the first tier-1 record of the miss (online 2025-09-24); the sponsor announced it in December 2019 and the registry posted 13.9% in 2026, so the strip under-states how early the miss was known. Insertion location (near- vs far-loop) is the model's own post-hoc explanation and does not rescue the prospective claim.",
@@ -949,7 +1048,11 @@
       "doi": null,
       "quote": "Objective Response Rate (ORR): Cohort 1: Poziotinib 16 mg 13.9 (95% CI 8.2 to 21.6); Cohort 2 27.8 (18.9 to 38.2); Cohort 4 39 (28 to 50)"
      }
-    ]
+    ],
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -988,7 +1091,12 @@
     "reason": null,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",
@@ -1020,7 +1128,7 @@
     "model_id": "her2-ex20-pdo-pdx-pyrotinib",
     "src": "https://doi.org/10.1093/annonc/mdy542",
     "srcLabel": "Wang 2019",
-    "note": "The model paper paired PDX regression with 15 HER2-mutant patients (ORR 53%); the 60-patient phase 2 then gave IRC ORR 30% and PFS 6.9 months.",
+    "note": "The model paper paired PDX regression with 15 HER2-mutant patients (ORR 53%); the 60-patient phase 2 then gave IRC ORR 30% and PFS 6.9 months. Single-arm cohort with no pre-set bar: responses where the model predicted them score same; model and patients first public together in one paper, so not a retrodiction.",
     "short": "PDX regression matched 53% then 30% ORR",
     "quote": "In the phase II cohort of 15 patients with HER2-mutant NSCLC, pyrotinib 400 mg resulted in a objective response rate of 53.3% and a median progression-free survival of 6.4 months.",
     "judgement": "Stated comparison. The phase 2 (Zhou 2020) does not state its pre-specified bar in the abstract, so it is logged as a confirming trial rather than a status change; direction_only because a 52% PDX volume drop versus a 30-53% ORR is not a quantitative match. Pyrotinib is not approved for NSCLC; the ORR fell by half from the model paper's cohort to the full phase 2.",
@@ -1040,7 +1148,11 @@
       "doi": "10.1200/jco.20.00297",
       "quote": "As of data cutoff on June 20, 2019, IRC-assessed objective response rate was 30.0% (95% CI, 18.8% to 43.2%)."
      }
-    ]
+    ],
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -1079,7 +1191,11 @@
     "reason": null,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": null
+    "patient_trials": null,
+    "drug": "tarloxotinib",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -1111,7 +1227,7 @@
     "model_id": "hypoxia-activated-exon20-xenografts-tarloxotinib",
     "src": "https://clinicaltrials.gov/study/NCT03805841",
     "srcLabel": "NCT03805841 results (RAIN-701)",
-    "note": "RAIN-701: 0 of 11 EGFR exon-20 patients and 3 of 22 HER2-mutant patients responded; the model paper's one dramatic HER2 responder was the exception, and the programme was dropped.",
+    "note": "RAIN-701: 0 of 11 EGFR exon-20 patients and 3 of 22 HER2-mutant patients responded; the model paper's one dramatic HER2 responder was the exception, and the programme was dropped. Single-arm phase 2 scored on its primary ORR: no EGFR exon-20 responses where the model predicted them, so contra.",
     "short": "0/11 exon-20 responses; HER2 14%",
     "quote": "ORR: Cohort A (N=11) 0 [95% CI 0.00 to 28.49]; Cohort B (N=22) 13.6 [2.91 to 34.91]; Cohort C (N=8) 0 [0.00 to 36.94]",
     "judgement": "Patient-level prediction (exon-20 and HER2-mutant patients respond) failed on the primary ORR endpoint in both cohorts; the single HER2 responder reported in the model paper is a stated comparison on n=1 and does not outweigh the trial. Registry record is tier 3; the ESMO abstract would be tier 1 but I could not read it.",
@@ -1125,7 +1241,11 @@
       "doi": "10.1016/j.annonc.2020.08.2294",
       "quote": null
      }
-    ]
+    ],
+    "drug": "tarloxotinib",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1162,7 +1282,11 @@
     "confidence_note": "Abstract-level reading of Engelman 2007 (not open access); the ERBB2-mutant work is reported as cell-based, no HER2-mutant xenograft is described in the abstract, hence model_kind ex_vivo (no cell-line enum value). The dacomitinib FDA review cites Engelman 2007 only for the EGFR (H1975, HCC827-Del/T790M) xenograft figures and mentions HER2 only as the ARCHER 1017 cohort B eligibility, so the HER2-mutant cell model was not relied on in the filing (model_filed false).",
     "note": "Cell models with the gefitinib-resistant ERBB2 insertion predicted dacomitinib activity in HER2-mutant lung cancer; no patients yet.",
     "short": "Cell model predicted HER2-mutant activity",
-    "judgement": "Opening entry at first use (2007); Engelman 2007 names ERBB2-mutant lung cancer as a development population for PF00299804."
+    "judgement": "Opening entry at first use (2007); Engelman 2007 names ERBB2-mutant lung cancer as a development population for PF00299804.",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1202,12 +1326,16 @@
     "print_year": 2015,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "confidence": "low",
+    "confidence": "medium",
     "confidence_note": "Abstract only (paywalled; PDF fetch denied): the HER2 cohort's pre-specified response bar is not readable, so the primary-endpoint rule cannot be applied strictly. Registry (results posted 2016-06-01): cohort B 4-month PFS 24.9%, median PFS 2.6 months, 3 PR of 30. The checker's open rule question 2 (below-bar response: contra or same with magnitude) applies; rescoring to contra would carry the 2015 dose entry with it.",
-    "note": "HER2 cohort of NCT00818441: 3/26 HER2 exon-20-mutant patients responded (12%, CI 2-30%), 0/4 amplified; authors call the insertions validated actionable targets.",
+    "note": "HER2 cohort of NCT00818441: 3/26 HER2 exon-20-mutant patients responded (12%, CI 2-30%), 0/4 amplified; authors call the insertions validated actionable targets. Exploratory single-arm HER2 cohort with no primary endpoint or success bar: scored on its response rate (3/26, 12%) in the direction the model predicted, so same (single-arm ruling).",
     "short": "12% ORR in HER2 exon 20 patients",
     "judgement": "Stated comparison: Kris 2015 names the cell-line models as the premise and calls the exon-20 responses a validation. Direction agreed (durable PRs only in insertion-mutant tumours, none in amplified) but 12% ORR with a 2% lower CI is 4-5x below what the same system predicted and delivered for del19/L858R; scored same with magnitude rather than contra because no pre-specified bar is readable and the predicted effect was present, not absent (decision 4).",
-    "reason": "Durable responses but only 12% ORR"
+    "reason": "Durable responses but only 12% ORR",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1244,7 +1372,12 @@
     "confidence_note": "Full text read (PMC8481125). Poziotinib and tarloxotinib-E are in the Ba/F3 panel (Ex20ins-L 'sensitive only to select second-generation TKIs (that is, poziotinib and tarlox-TKI)'); the retrospective patient validation is afatinib ORR/DOT (Uncommon EGFR Database) and pooled second-generation TTF, and the only member-drug patient datum is one poziotinib-treated L858R/L718V case (Extended Data Fig. 9b).",
     "note": "Classification built on 16,715 patients' mutations and Ba/F3 panels; its patient validation used afatinib (non-member) ORR/DOT and pooled second-generation TTF.",
     "short": "Validated on afatinib, not a member drug",
-    "judgement": "Opening entry: the model's own retrospective patient comparison is for a non-member drug, so under the member-drug rule the track stays untested until a member drug is compared (Elamin 2022)."
+    "judgement": "Opening entry: the model's own retrospective patient comparison is for a non-member drug, so under the member-drug rule the track stays untested until a member drug is compared (Elamin 2022).",
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -1289,7 +1422,11 @@
     "note": "Near- vs far-loop split (Ba/F3 plus in silico/MD modelling) matched poziotinib ORR 46% vs 0% in NCT03066206 patients already treated; a retrodiction.",
     "short": "Near-loop 46% vs far-loop 0% ORR reproduced",
     "judgement": "Stated comparison on a member drug at patient level: the structure-based insertion-location prediction reproduced the known poziotinib responses by subgroup of the primary ORR measure (primary endpoint itself met, 32%). Retro, never same, because the classification was built after those patients' responses were known; no prospective member-drug trial on the classification was found (the PACC trials are afatinib).",
-    "reason": "Insertion-location prediction reproduced known poziotinib responses"
+    "reason": "Insertion-location prediction reproduced known poziotinib responses",
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -1327,7 +1464,12 @@
     "short": "Xenografts silent; see toxicology track",
     "quote": "The results from these studies show that PF00299804 is a potent inhibitor of EGFR-activating mutations as well as the EGFR T790M resistance mutation both in vitro and in vivo.",
     "judgement": null,
-    "reason": "No tolerability prediction to score"
+    "reason": "No tolerability prediction to score",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -1363,7 +1505,12 @@
     "short": "Xenografts silent; see toxicology track",
     "quote": "These preclinical evaluations support further clinical development of PF00299804 for cancers with mutations and/or amplifications of ERBB family members.",
     "judgement": null,
-    "reason": "No tolerability prediction to score"
+    "reason": "No tolerability prediction to score",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -1399,7 +1546,11 @@
     "short": "Rat/dog tox predicted skin, gut, eye harm",
     "quote": "Pfizer evaluated the toxicity of dacomitinib in GLP-compliant repeated-dose toxicity studies in rats and dogs.",
     "judgement": null,
-    "reason": null
+    "reason": null,
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -1435,7 +1586,11 @@
     "short": "Skin/gut/eye harm predicted; ILD not",
     "quote": "Dermatologic, gastrointestinal, and ocular toxicities are also common clinical findings.",
     "judgement": "Stated comparison by the regulator, and the animals showed the toxicity at exposures below the clinical AUC (rat 0.5x, dog 0.14x), so the harm was predicted but the margin was not: that margin failure is recorded on the dose track (margin_stated false), the harm itself here as same. Partial because grade 3-4 ILD (0.5%) and two fatal untreated diarrhoea cases in ARCHER 1050 were not predicted; safety pharmacology found no pulmonary effect at 500 mg/kg, a silence the species could have broken, but at 0.5% I did not let it override a correct prediction of the dominant harms.",
-    "reason": "Animals predicted the dominant harms"
+    "reason": "Animals predicted the dominant harms",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -1457,21 +1612,26 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "EGFR or HER2 exon 20 insertion",
-    "model_first_use_year": 2018,
+    "model_first_use_year": 2017,
     "confidence": "high",
     "confidence_note": "Full text read.",
     "prediction_level": "patient",
-    "year": 2018,
+    "year": 2017,
     "status": "untested",
     "model": "EGFR/HER2 exon 20 insertion Ba/F3 lines, PDX and GEMM (poziotinib, in-silico pocket model)",
     "model_id": "exon20-baf3-pdx-gemm-poziotinib",
     "src": "https://doi.org/10.1038/s41591-018-0007-9",
     "srcLabel": "Robichaux 2018",
-    "note": "Mice got 5-10 mg/kg with no tolerability finding reported; the paper calls rash and diarrhoea known EGFR-TKI harms and misplaced the margin, so the harm is counted on the dose track.",
+    "note": "Mice got 5-10 mg/kg with no tolerability finding reported; the paper calls rash and diarrhoea known EGFR-TKI harms and misplaced the margin, so the harm is counted on the dose track. Model first public with the first exon-20 patients at WCLC October 2017 (Elamin, J Thorac Oncol 2017 OA 12.01), so the track opens in 2017 (rule 6, earliest date).",
     "short": "Rash/diarrhoea counted on dose track",
     "quote": "The majority (55%) of patients received a dose reduction, with the two most common adverse events being known EGFR-inhibitor-related toxicities: skin rash and diarrhea.",
     "judgement": "Decision 16: the model predicted the harm but misplaced the margin (16 mg stated tolerable), so the harm is counted once, in dose, and safety stays untested rather than contra. Grade 3+ rash 48.9% and diarrhoea 25.6% in ZENITH20-2 for the record.",
-    "reason": "Harm counted once, on dose track"
+    "reason": "Harm counted once, on dose track",
+    "drug": "poziotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -1507,7 +1667,11 @@
     "short": "PDX silent on tolerability",
     "quote": "Pyrotinib showed activity against NSCLC with HER2 exon 20 mutations in both patient-derived organoids and a PDX model.",
     "judgement": null,
-    "reason": null
+    "reason": null,
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -1543,7 +1707,11 @@
     "short": "PDX silent on 20% grade 3 diarrhoea",
     "quote": "Treatment-related adverse events of grade 3 or 4 occurred in 28.3% of patients, with the most common being diarrhea (20.0%; all grade 3).",
     "judgement": "Same rule as the breast pan-HER tile: a mouse dosed daily to tumour regression could have shown diarrhoea or weight loss, the paper reports neither, and diarrhoea was the dominant grade 3 harm. The breast-cancer finding for pyrotinib (Ma 2017, diarrhoea DLT) would import to the same conclusion, so no imported entry is added.",
-    "reason": "Mouse silent on class diarrhoea"
+    "reason": "Mouse silent on class diarrhoea",
+    "drug": "pyrotinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": null,
@@ -1579,7 +1747,11 @@
     "short": "Predicted skin-sparing from tumour activation",
     "quote": "This tumor-selective delivery mechanism was designed to minimize the dose-limiting toxicities that are characteristic of systemic inhibition of wild-type EGFR.",
     "judgement": null,
-    "reason": null
+    "reason": null,
+    "drug": "tarloxotinib",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -1615,7 +1787,11 @@
     "short": "Skin-sparing held; QTc not a mouse harm",
     "quote": "This tumor response occurred with minimal on-target EGFR-related toxicity, exemplified by the absence of diarrhea and only a mild rash.",
     "judgement": "The stated prediction (less wild-type EGFR toxicity) held in direction: no serious rash or diarrhoea events in the registry record versus 48.9% grade 3+ rash for poziotinib. Partial because the comparison the source states is n=1 and QT prolongation dominated the AE table; I did not score QTc against a mouse xenograft model, which cannot show it. Low confidence.",
-    "reason": "Skin-sparing prediction held, n small"
+    "reason": "Skin-sparing prediction held, n small",
+    "drug": "tarloxotinib",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1652,7 +1828,12 @@
     "note": "Cell model silent on tolerability; the diarrhoea, dermatitis and one interaction death in Kris 2015 are harms a cell line cannot show.",
     "short": "Cell model cannot show GI or skin toxicity",
     "judgement": "A cell line cannot show diarrhoea, rash or drug interactions, so its silence is not a miss (v3 safety rule); the species comparison lives on the rat/dog toxicology track.",
-    "reason": "Cell line cannot show diarrhoea or rash"
+    "reason": "Cell line cannot show diarrhoea or rash",
+    "drug": "dacomitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    }
   ]
  }

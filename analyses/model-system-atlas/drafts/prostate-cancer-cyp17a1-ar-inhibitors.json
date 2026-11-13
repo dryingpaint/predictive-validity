@@ -49,7 +49,12 @@
     "source_calls_it": null,
     "population": "Castration-resistant",
     "model_first_use_year": 2005,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2013,
@@ -85,7 +90,12 @@
     "source_calls_it": null,
     "population": "AR-V7-positive castration-resistant",
     "model_first_use_year": 2013,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "year": 2014,
@@ -119,13 +129,18 @@
     "source_calls_it": null,
     "population": "Castration-resistant, post-enzalutamide",
     "model_first_use_year": 2014,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "seviteronel",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2015,
-    "status": "same",
+    "status": "retro",
     "model": "LAPC4 androgen-dependent xenografts in SCID mice (galeterone, then VN/124-1)",
-    "note": "PSA fell at least 50% in 11/49 (ARMOR1) and 12/25 (ARMOR2 part 1); authors call the PD changes consistent with AR-signalling inhibition.",
+    "note": "PSA fell at least 50% in 11/49 (ARMOR1) and 12/25 (ARMOR2 part 1); authors call the PD changes consistent with AR-signalling inhibition.  Retrodiction rule: CYP17A1 inhibition lowering androgens in patients was public from abiraterone (O'Donnell 2004, doi 10.1038/sj.bjc.6601879) before this model, so a reproduction scores retro.",
     "short": "PSA fell 50% or more in 22-48% of patients",
     "src": "https://doi.org/10.1158/1078-0432.CCR-15-1432",
     "srcLabel": "Montgomery 2016",
@@ -149,19 +164,23 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "PSA decline as the AR-output read-out",
     "source_calls_it": "match",
     "population": "Castration-resistant",
     "model_first_use_year": 2005,
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "year": 2016,
-    "status": "same",
+    "status": "retro",
     "model": "Enzalutamide-resistant LNCaP-derived (MR49F) and MDA-PCa-133 patient-derived xenografts in castrate mice",
-    "note": "One mCRPC patient on VT-464 showed DHEA and PSA falls reported beside the MDA-PCa-133 PDX result; the lyase-product read-out moved in a human.",
+    "note": "One mCRPC patient on VT-464 showed DHEA and PSA falls reported beside the MDA-PCa-133 PDX result; the lyase-product read-out moved in a human.  Retrodiction rule: CYP17A1 inhibition lowering androgens in patients was public from abiraterone (O'Donnell 2004, doi 10.1038/sj.bjc.6601879) before this model, so a reproduction scores retro.",
     "short": "DHEA and PSA fell in one patient",
     "src": "https://doi.org/10.1038/srep35354",
     "srcLabel": "Maity 2016",
@@ -185,28 +204,32 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "DHEA fall, single patient",
     "source_calls_it": "match",
     "population": "Castration-resistant",
     "model_first_use_year": 2014,
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "seviteronel",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "year": 2018,
-    "status": "same",
-    "model": "VCaP xenografts in mice plus cynomolgus monkey and rat steroidogenesis",
-    "note": "Monkeys and rats showed dose-dependent adrenal and testicular steroid suppression after ODM-204; castrate mCRPC patients showed further testosterone falls.",
+    "status": "retro",
+    "model": "Cynomolgus monkey and hCG-treated rat adrenal/testicular steroidogenesis, with rodent and primate tolerability",
+    "note": "Monkeys and rats showed dose-dependent adrenal and testicular steroid suppression after ODM-204; castrate mCRPC patients showed further testosterone falls. Re-keyed from the VCaP xenograft track: the read-out is the monkey and rat steroidogenesis system.  Retrodiction rule: CYP17A1 inhibition lowering androgens in patients was public from abiraterone (O'Donnell 2004, doi 10.1038/sj.bjc.6601879) before this model, so a reproduction scores retro.",
     "short": "Testosterone fell as in monkeys",
     "src": "https://doi.org/10.1016/j.euf.2018.08.022",
     "srcLabel": "Peltola 2020",
     "quote": "Decreases in testosterone levels were seen with ODM-204 treatment confirming androgen deprivation.",
     "confidence": "medium",
-    "confidence_note": "Abstract-level; the size of the testosterone fall is not in the abstract.",
+    "confidence_note": "Abstract-level; the size of the testosterone fall is not in the abstract. Model first public 2018 (Oksala epub 2018-02-10); NCT02344017 started 2015-02, so first use was earlier but undated.",
     "reason": "Testosterone fell in patients",
     "judgement": "No untested opener: the model paper (Oksala, epub Feb 2018) and the trial paper (epub Sep 2018) share the year. Testosterone is the product of the CYP17 pathway, so the read-out is proximal; the comparison is mine, the trial paper does not cite the monkey data.",
-    "model_id": "odm204-vcap-xenograft",
+    "model_id": "odm204-primate-steroidogenesis",
     "prediction_level": "class",
     "subjects": "patients",
     "comparison_stated": false,
@@ -221,13 +244,17 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "serum testosterone fall",
     "source_calls_it": "match",
     "population": "Castration-resistant",
     "model_first_use_year": 2018,
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "odm-204",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": "prednisone"
    },
    {
     "retrodiction": false,
@@ -263,7 +290,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": null,
-    "readout_tier": null
+    "readout_tier": null,
+    "drug": "seviteronel",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -300,7 +331,11 @@
     "magnitude_basis": "plasma adrenal androgens vs cortisol under treatment, one patient",
     "source_calls_it": "match",
     "population": "mCRPC with bone metastases, VT-464 without prednisone",
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "drug": "seviteronel",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -339,7 +374,12 @@
     "population": "Castration-resistant",
     "model_first_use_year": 2005,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2013,
@@ -374,7 +414,12 @@
     "population": "AR-V7-positive castration-resistant",
     "model_first_use_year": 2013,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2014,
@@ -409,19 +454,24 @@
     "population": "Castration-resistant, post-enzalutamide",
     "model_first_use_year": 2014,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "seviteronel",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2018,
     "status": "contra",
-    "model": "VCaP xenografts in mice plus cynomolgus monkey and rat steroidogenesis",
+    "model": "VCaP xenografts in mice",
     "note": "Exposure rose only up to 300 mg twice daily and fell on repeat dosing from 200 mg; PK, not toxicity, stopped ODM-204.",
     "short": "Exposure plateaued; PK stopped development",
     "src": "https://doi.org/10.1016/j.euf.2018.08.022",
     "srcLabel": "Peltola 2020",
     "quote": "The pharmacokinetic properties of the molecule, however, prevent further development.",
     "confidence": "medium",
-    "confidence_note": "Abstract-level; the monkey-effective exposure is not quoted, so the shortfall is inferred from the sponsor's PK verdict and the AUC plateau at 300 mg with loss on day 8.",
+    "confidence_note": "Abstract-level; the monkey-effective exposure is not quoted, so the shortfall is inferred from the sponsor's PK verdict and the AUC plateau at 300 mg with loss on day 8. Model first public 2018 (Oksala epub 2018-02-10); NCT02344017 started 2015-02, so first use was earlier but undated.",
     "reason": "Exposure target never reached",
     "judgement": "Table row 'target never reached in humans (PK)': dose contra, efficacy untested. The 13% PSA50 (3 of 23, with prednisone) is recorded in the efficacy note and not scored. NCT02344017 (DUALIDES) posted no results.",
     "model_id": "odm204-vcap-xenograft",
@@ -446,7 +496,11 @@
     "population": "Castration-resistant",
     "model_first_use_year": 2018,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "odm-204",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": "prednisone"
    },
    {
     "retrodiction": false,
@@ -483,7 +537,12 @@
     "source_calls_it": null,
     "population": "mCRPC, phase 1 DUALIDES (NCT02344017), ODM-204 50-500 mg twice daily with prednisone",
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "odm-204",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": "prednisone",
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -521,7 +580,11 @@
     "source_calls_it": "partial",
     "population": "mCRPC, phase 1 DUALIDES (NCT02344017), ODM-204 50-500 mg twice daily with prednisone",
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "odm-204",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": "prednisone"
    }
   ],
   "efficacy": [
@@ -558,7 +621,12 @@
     "population": "Castration-resistant",
     "model_first_use_year": 2005,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2013,
@@ -593,7 +661,11 @@
     "population": "AR-V7-positive castration-resistant",
     "model_first_use_year": 2013,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2014,
@@ -628,13 +700,18 @@
     "population": "Castration-resistant, post-enzalutamide",
     "model_first_use_year": 2014,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "drug": "seviteronel",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2015,
-    "status": "same",
+    "status": "retro",
     "model": "LAPC4 androgen-dependent xenografts in SCID mice (galeterone, then VN/124-1)",
-    "note": "Treatment-naive CRPC: PSA50 22% in ARMOR1 and 48% in ARMOR2 part 1, 55% at 2,550 mg; the class-level activity the xenografts foresaw.",
+    "note": "Treatment-naive CRPC: PSA50 22% in ARMOR1 and 48% in ARMOR2 part 1, 55% at 2,550 mg; the class-level activity the xenografts foresaw. Retrodiction rule: CYP17 inhibition with AR blockade lowering PSA in castration-resistant patients was public from ketoconazole and abiraterone (O'Donnell 2004) before the 2005 LAPC4 paper, so retro.",
     "short": "PSA50 in 48% of naive CRPC",
     "src": "https://doi.org/10.1158/1078-0432.CCR-15-1432",
     "srcLabel": "Montgomery 2016",
@@ -658,7 +735,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "tumour regression in mice vs PSA50 rate in patients",
     "source_calls_it": "match",
@@ -679,19 +756,23 @@
       "doi": "10.1158/1078-0432.CCR-15-1432",
       "quote": "In the 2,550-mg dose cohort, PSA30 was 72.7% (8/11) and PSA50 was 54.5% (6/11)."
      }
-    ]
+    ],
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "year": 2018,
     "status": "untested",
-    "model": "VCaP xenografts in mice plus cynomolgus monkey and rat steroidogenesis",
+    "model": "VCaP xenografts in mice",
     "note": "VCaP xenografts shrank on ODM-204; the phase 1/2 saw 13% PSA50 but exposure never reached target, so efficacy is not scored.",
     "short": "PK-limited; 13% PSA50 not scored",
     "src": "https://doi.org/10.1016/j.jsbmb.2018.02.004",
     "srcLabel": "Oksala 2019",
     "quote": "In our study, ODM-204 inhibited the proliferation of androgen-dependent VCaP and LNCaP cells in vitro and reduced significantly tumour growth in a murine VCaP xenograft model in vivo.",
     "confidence": "medium",
-    "confidence_note": "Abstract-level reading of both the model and the trial paper.",
+    "confidence_note": "Abstract-level reading of both the model and the trial paper. Model first public 2018 (Oksala epub 2018-02-10); NCT02344017 started 2015-02, so first use was earlier but undated.",
     "reason": "Exposure never reached; not scored",
     "judgement": "By the dose table a PK failure withholds the efficacy verdict; the 13% PSA50 at week 12 (Peltola 2020, doi 10.1016/j.euf.2018.08.022) came in 23 patients dosed with prednisone and is recorded here only as a note.",
     "model_id": "odm204-vcap-xenograft",
@@ -716,13 +797,18 @@
     "population": "Castration-resistant",
     "model_first_use_year": 2018,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "untested_reason": "unsettled",
+    "drug": "odm-204",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
-    "year": 2019,
+    "year": 2016,
     "status": "contra",
     "model": "CWR22Rv1 cells and castration-resistant xenografts (full-length and AR-V7 degradation)",
-    "note": "AR-V7+ mCRPC: trial stopped for futility; PSA50 2/16 (13%) on galeterone vs 8/19 (42%) on enzalutamide, against the degradation prediction.",
+    "note": "AR-V7+ mCRPC: trial stopped for futility; PSA50 2/16 (13%) on galeterone vs 8/19 (42%) on enzalutamide, against the degradation prediction. Dated 2016: Tokai's 2016-07-26 release announced the monitoring committee's futility call; Taplin 2019 is the tier-1 record that sets the status.",
     "short": "AR-V7+ futility; PSA50 13% vs 42%",
     "src": "https://doi.org/10.1016/j.eururo.2019.08.034",
     "srcLabel": "Taplin 2019",
@@ -761,13 +847,17 @@
       "doi": "10.1016/j.eururo.2019.08.034",
       "quote": "The PSA50 values were 2/16 (13%) and 8/19 (42%) for galeterone and enzalutamide respectively (proportion difference=-0.278, 95% CI -0.490 to 0.097)."
      }
-    ]
+    ],
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2020,
     "status": "contra",
     "model": "Enzalutamide-resistant LNCaP-derived (MR49F) and MDA-PCa-133 patient-derived xenografts in castrate mice",
-    "note": "Post-enzalutamide mCRPC: 1/17 (6%) PSA50 at the primary 12-week read and closure for toxicity; the enzalutamide-resistant xenograft prediction failed.",
+    "note": "Post-enzalutamide mCRPC: 1/17 (6%) PSA50 at the primary 12-week read and closure for toxicity; the enzalutamide-resistant xenograft prediction failed. Retrodiction: abiraterone after enzalutamide had already shown little activity (2013), so the model ran after a patient result and failed to reproduce it; contra stands.",
     "short": "1/17 PSA50 after enzalutamide; closed",
     "src": "https://doi.org/10.1016/j.clgc.2019.11.002",
     "srcLabel": "Madan 2020",
@@ -791,7 +881,7 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "PSA50 1/17 vs xenograft tumour growth inhibition",
     "source_calls_it": "miss",
@@ -801,24 +891,28 @@
     "outcome_tested": null,
     "patient_trials": [
      {
-      "nct": "NCT02445976",
+      "nct": "NCT02130700",
       "registry_date": null,
       "doi": "10.1016/j.clgc.2019.11.002",
       "quote": "One (6%) of 17 patients experienced a significant decline in prostate-specific antigen."
      }
-    ]
+    ],
+    "drug": "seviteronel",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "year": 2015,
+    "year": 2014,
     "status": "untested",
     "model_id": "galeterone-ctc-ar-variant-assay",
     "model": "Circulating-tumour-cell AR-variant assays in patients (Epic Sciences AR C-terminal-loss protein in ARMOR2; Johns Hopkins AdnaTest AR-V7 mRNA in ARMOR3-SV) used to choose galeterone recipients",
     "model_kind": "ex_vivo",
-    "model_first_use_year": 2015,
+    "model_first_use_year": 2014,
     "prediction_level": "patient",
-    "note": "Tokai's retrospective ARMOR2 analysis: 6/7 CRPC patients with CTC AR C-terminal loss had PSA50 responses; the prospective AR-V7-selected test had not run.",
+    "note": "Tokai's retrospective ARMOR2 analysis: 6/7 CRPC patients with CTC AR C-terminal loss had PSA50 responses; the prospective AR-V7-selected test had not run. Dated 2014: the CTC AR-variant subset (6/7 PSA responders) was first presented at EORTC-NCI-AACR, 19 Nov 2014, alongside the ARMOR2 PSA results, so not a retrodiction.",
     "short": "CTC AR-variant subset 6/7 responders",
     "src": "https://doi.org/10.18632/oncotarget.4578",
     "srcLabel": "Kwegyir-Afful 2015",
@@ -843,19 +937,23 @@
     "source_calls_it": null,
     "population": "CRPC with CTC AR C-terminal loss (AR-V7) in ARMOR2 (NCT01709734, no results posted)",
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "year": 2019,
+    "year": 2016,
     "status": "contra",
     "model_id": "galeterone-ctc-ar-variant-assay",
     "model": "Circulating-tumour-cell AR-variant assays in patients (Epic Sciences AR C-terminal-loss protein in ARMOR2; Johns Hopkins AdnaTest AR-V7 mRNA in ARMOR3-SV) used to choose galeterone recipients",
     "model_kind": "ex_vivo",
-    "model_first_use_year": 2015,
+    "model_first_use_year": 2014,
     "prediction_level": "patient",
-    "note": "ARMOR3-SV: 953 prescreened by CTC AR-V7 mRNA, 38 randomised; DMC closed for futility, PSA50 2/16 galeterone vs 8/19 enzalutamide.",
+    "note": "ARMOR3-SV: 953 prescreened by CTC AR-V7 mRNA, 38 randomised; DMC closed for futility, PSA50 2/16 galeterone vs 8/19 enzalutamide. Dated 2016: Tokai's 2016-07-26 release announced the monitoring committee's futility call; Taplin 2019 is the tier-1 record that sets the status.",
     "short": "AR-V7-selected phase 3 stopped for futility",
     "src": "https://doi.org/10.1016/j.eururo.2019.08.034",
     "srcLabel": "Taplin 2019",
@@ -889,7 +987,11 @@
       "doi": "10.1016/j.eururo.2019.08.034",
       "quote": "The PSA50 values were 2/16 (13%) and 8/19 (42%) for galeterone and enzalutamide respectively (proportion difference=-0.278, 95% CI -0.490 to 0.097)."
      }
-    ]
+    ],
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -905,7 +1007,7 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level reading.",
     "model_id": "galeterone-cwr22rv1-arv7",
-    "prediction_level": "class",
+    "prediction_level": "patient",
     "subjects": null,
     "comparison_stated": false,
     "source_tier": 1,
@@ -925,7 +1027,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Castration-resistant",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "year": 2014,
@@ -959,7 +1065,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Castration-resistant",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "seviteronel",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "year": 2015,
@@ -975,7 +1085,7 @@
     "reason": "Tolerated, no mineralocorticoid excess; ALT unflagged",
     "judgement": "Same, not contra: the model's stated prediction (no host toxicity at effective doses, Kwegyir-Afful 2015) matched clinical tolerability, including steroid-free dosing with no apparent mineralocorticoid excess, and the ARMOR3-SV DMC cited no safety concern (Tokai 2016-07-26). Scored partial because mouse silence on liver enzymes was contradicted by a harm mice could show, though it was mostly mild and required no action.",
     "model_id": "galeterone-cwr22rv1-arv7",
-    "prediction_level": "class",
+    "prediction_level": "patient",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -995,17 +1105,21 @@
     "magnitude_basis": "tolerability at effective dose; mineralocorticoid excess absent",
     "source_calls_it": "partial",
     "population": "Castration-resistant",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "drug": "galeterone",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "year": 2018,
-    "status": "contra",
+    "status": "untested",
     "model": "Enzalutamide-resistant LNCaP-derived (MR49F) and MDA-PCa-133 patient-derived xenografts in castrate mice",
-    "note": "Breast-cancer phase 1 at the prostate phase 2 start dose: confusion and delirium were dose-limiting, a CNS harm the mouse work never flagged.",
-    "short": "Delirium dose-limiting; unflagged in mice",
-    "src": "https://doi.org/10.1007/s10549-018-4813-z",
-    "srcLabel": "Bardia 2018",
-    "quote": "DLTs were observed at 750 mg (Gr 3 confusional state with paranoia) and 600 mg (Gr 3 mental status change and Gr 3 delirium) QD, with none at 450 mg QD.",
+    "note": "Imported-harm ruling: prostate patients were measured in 2018 (no DLT through 750 mg, mostly grade 1-2 fatigue, dizziness, blurred vision), so the breast-cancer delirium DLTs (Bardia 2018) no longer set this entry; the silent model is not contradicted yet.",
+    "short": "Prostate phase 1: generally well tolerated",
+    "src": "https://doi.org/10.1158/1078-0432.CCR-18-0564",
+    "srcLabel": "Gupta 2018",
+    "quote": "Once-daily seviteronel was generally well tolerated in this phase I study of men with CRPC, a majority of which had progressed on prior AA or enzalutamide, or both.",
     "confidence": "medium",
     "confidence_note": "Imported from breast cancer; the prostate phase 1 (Gupta 2018, doi 10.1158/1078-0432.CCR-18-0564) the same year reported dizziness 52% and blurred vision 38% without DLTs through 750 mg.",
     "model_id": "seviteronel-crpc-xenografts",
@@ -1024,27 +1138,33 @@
     "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
-    "imported_from": "MONDO:0007254",
-    "magnitude": "direction_only",
+    "imported_from": null,
+    "magnitude": null,
     "magnitude_basis": "CNS dose-limiting toxicity vs model silence",
-    "source_calls_it": "miss",
-    "population": "Castration-resistant",
-    "model_first_use_year": 2014
+    "source_calls_it": null,
+    "population": "Chemotherapy-naive CRPC, most after abiraterone or enzalutamide",
+    "model_first_use_year": 2014,
+    "population_group": "stage_or_line",
+    "untested_reason": "no_prediction",
+    "drug": "seviteronel",
+    "route": "oral",
+    "combination_with": null,
+    "strengthens": true
    },
    {
     "year": 2018,
     "status": "same",
-    "model": "VCaP xenografts in mice plus cynomolgus monkey and rat steroidogenesis",
-    "note": "Rodents and primates tolerated ODM-204; patients had mild fatigue, appetite change and nausea up to 500 mg twice daily, with prednisone on board.",
+    "model": "Cynomolgus monkey and hCG-treated rat adrenal/testicular steroidogenesis, with rodent and primate tolerability",
+    "note": "Rodents and primates tolerated ODM-204; patients had mild fatigue, appetite change and nausea up to 500 mg twice daily, with prednisone on board. Re-keyed from the VCaP xenograft track: the read-out is the monkey and rat steroidogenesis system.",
     "short": "Well tolerated, as in monkeys",
     "src": "https://doi.org/10.1016/j.euf.2018.08.022",
     "srcLabel": "Peltola 2020",
     "quote": "ODM-204 was well tolerated up to the highest evaluated dose.",
     "confidence": "medium",
-    "confidence_note": "Prednisone was co-administered throughout, so mineralocorticoid excess was not testable; abstract-level reading.",
+    "confidence_note": "Prednisone was co-administered throughout, so mineralocorticoid excess was not testable; abstract-level reading. Model first public 2018 (Oksala epub 2018-02-10); NCT02344017 started 2015-02, so first use was earlier but undated.",
     "reason": "Tolerated in monkeys and patients",
     "judgement": "Oksala 2019 states 'ODM-204 was well tolerated in both rodents and primates'; 23 patients up to 500 mg twice daily matched it. Same-year model and trial papers, so no untested opener.",
-    "model_id": "odm204-vcap-xenograft",
+    "model_id": "odm204-primate-steroidogenesis",
     "prediction_level": "class",
     "subjects": "patients",
     "comparison_stated": false,
@@ -1065,12 +1185,16 @@
     "magnitude_basis": "tolerability at the highest dose",
     "source_calls_it": "match",
     "population": "Castration-resistant",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "drug": "odm-204",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": "prednisone"
    },
    {
     "year": 2020,
     "status": "contra",
-    "strengthens": true,
+    "strengthens": false,
     "model": "Enzalutamide-resistant LNCaP-derived (MR49F) and MDA-PCa-133 patient-derived xenografts in castrate mice",
     "note": "In mCRPC itself, concentration impairment, tremor and fatigue drove discontinuation after a median of 2 cycles and closed the phase 2.",
     "short": "CNS toxicity closed the prostate phase 2",
@@ -1102,7 +1226,11 @@
     "magnitude_basis": "trial closure for CNS toxicity vs model silence",
     "source_calls_it": "miss",
     "population": "Castration-resistant, post-enzalutamide",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "seviteronel",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1137,7 +1265,11 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": null
+    "population": null,
+    "drug": "seviteronel",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1173,7 +1305,11 @@
     "magnitude": "direction_only",
     "magnitude_basis": "plasma cortisol under 40 months of steroid-free treatment, one patient",
     "source_calls_it": "match",
-    "population": "mCRPC with bone metastases, VT-464 without prednisone"
+    "population": "mCRPC with bone metastases, VT-464 without prednisone",
+    "drug": "seviteronel",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    }
   ]
  }

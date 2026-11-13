@@ -1,0 +1,87 @@
+{
+ "tile": "hepatitis-c-virus-infection-hcv-ns5b-nucleotide-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug sofosbuvir, route oral; year 2013 -> 2012 (rule 6 earliest public date: Rodriguez-Torres J Hepatol epub 2012-11-23, doi 10.1016/j.jhep.2012.11.018; check.json adjudication)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug sofosbuvir, route oral, combination_with ribavirin ± peginterferon (Phase 3 regimens); status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug sofosbuvir, route oral, combination_with ribavirin ± peginterferon; status same unchanged under the combination, single-arm (NEUTRINO) and non-inferiority (FISSION) rulings, written into note"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug sofosbuvir, route oral, combination_with ribavirin ± peginterferon; status same unchanged (passing tolerability claim ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug BMS-986094, route oral, combination_with daclatasvir ± ribavirin; status contra and year 2016 unchanged (check.json adjudication: Gill 2016 first admissible model-side statement)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug BMS-986094; year 2016 -> 2014, src/quote -> Ahmad Hepatology 2014 (doi 10.1002/hep.27488), Gill 2016 moved to model_src, low confidence (rule 6 earliest public date; check.json adjudication); model_first_use_year 2014"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug sofosbuvir, route oral, combination_with set; status retro unchanged (sofosbuvir's own 2015 patient result precedes the model)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug sofosbuvir, route oral, combination_with set; status retro unchanged (sofosbuvir's own 2015 patient result precedes the model)"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug BMS-986094 (split from the sofosbuvir hiPSC track; first entry on the BMS-986094 track, so strengthens dropped); status retro unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "drug sofosbuvir, route oral, combination_with ribavirin ± peginterferon; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "drug BMS-986094, route oral; status contra 2013 unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "what": "drug BMS-986094 (track split; sofosbuvir half appended); status retro unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 13,
+   "what": "drug psi-352938, route oral; status contra (retrodiction; PSI-352938's own Dec 2011 ALT stop precedes the panel) unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 15,
+   "what": "drug psi-352938, route oral; status retro unchanged (own drug's 2011 result precedes the assay)"
+  },
+  {
+   "cell": "safety",
+   "index": 16,
+   "what": "drug bemnifosbuvir, combination_with ruzasvir; year 2026 -> 2025, registry_date 2025-10-21 (rule 6, NCT05904470 results posting; check.json adjudication)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 17,
+   "what": "retro 2015 for sofosbuvir on polrmt-mito-panel-retro (Feng 2016 abstract: sofosbuvir's active form a poor PolRMT substrate, no mitochondrial toxicity), split from entry 12 (BMS-986094)"
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "tile": "malignant-pancreatic-neoplasm-map2k1-2-inhibitors",
+ "changed": [
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "status contra -> same, src/quote PharmR -> Infante 2014 (NCT01231581 AE tables), drug trametinib, imported_from cleared: imported-harm ruling, pancreatic patients measured"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug pimasertib, combination_with gemcitabine; model_src Vena 2015 (checker), comparison_stated false; strengthens false after track split"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug refametinib; strengthens false after track split; source_calls_it miss -> unresolved (source calls it a trend, names no model)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug pimasertib; strengthens false after track split"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug trametinib, combination_with gemcitabine; combination ruling settles rule question 1, contra stands; note no longer claims refametinib repeated the null"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug trametinib, combination_with hydroxychloroquine; single-arm ruling noted, contra stands"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "refametinib xenograft track: same 2016 (Van Laethem 2017, single-arm ORR 23%) under the single-arm and combination rulings"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "pimasertib tox-species opener, untested 2010 (sibling-drug package, NDA 204114)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "pimasertib tox-species track: contra 2017 (Van Cutsem 2018 / NCT01016483 ocular events 28.9% vs 4.8%)"
+  }
+ ]
+}

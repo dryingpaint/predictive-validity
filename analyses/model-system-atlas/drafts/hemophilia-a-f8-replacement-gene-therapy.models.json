@@ -13,7 +13,11 @@
   "Europe PMC search: 'BAY 2599023' AND hemophilia; AAVhu37 AND (patients OR first-in-human); valoctocogene AND seropositive/AAV5 antibodies; valoctocogene AND 'prophylactic corticosteroids'; title search for Butterfield 2022",
   "Europe PMC full text: Pipe 2023 Curr Gene Ther (PMC10186383) and Blood Adv 2024 meta-analysis (PMC11629206) grep BAY 2599023 / AAVhu37 clinical numbers and NHP comparison (none; meta-analysis table: FVIII 'NR')",
   "ClinicalTrials.gov v2: NCT03588299 (BAY 2599023; completed 2026-09-15, hasResults false); all valoctocogene records with results dates; NCT03520712 full results section (AAV5-antibody-positive study 270-203, posted 2025-08-22)",
-  "Lint rules read from drafts/lint.py (required v3 fields, pairing needs model_src, retrodiction only retro/contra, same-status entries need strengthens, contra cannot turn back without patient_signal_reversed)"
+  "Lint rules read from drafts/lint.py (required v3 fields, pairing needs model_src, retrodiction only retro/contra, same-status entries need strengthens, contra cannot turn back without patient_signal_reversed)",
+  "Gap pass: PubMed 'SB-525 OR giroctocogene OR PF-07055480' -> Alta 104-week (Leavitt 2024, no animal comparison in abstract); Europe PMC '\"SB-525\"' -> Cao 2022 Gene Ther (AAV6 NAb cutoff, mouse passive transfer, Alta patients; full text read on PMC9935387)",
+  "Gap pass: PubMed 'SPK-8011 OR dirloctocogene OR Spark200 factor VIII' -> Elkouby 2022 (mice+NHP), George 2021 NEJM, Sternberg 2026 Blood (mice vs SPK-8011 participants, OSA/CSA)",
+  "Gap pass: PubMed and Europe PMC 'SPK-8016' -> reviews only (Valentino 2023 JTH, Young 2025 Blood Adv); ClinicalTrials.gov NCT03734588 (SPK-8016 dose-finding in non-inhibitor patients, completed 2023-01-19, results posted) and NCT03432520 (long-term follow-up, no results)",
+  "Gap pass: Europe PMC 'giroctocogene AND (primate OR mice OR preclinical)' -> Fong 2026 Ther Adv Hematol review, TAK-754 preclinical (not a member); ClinicalTrials.gov NCT04323098 (GENEr8-3) primary outcome for the Kistner 2024 lead"
  ],
  "added_models": [
   {
@@ -550,6 +554,155 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "hema-mouse-aav6-nab-passive-transfer",
+   "model": "C57BL/6 mice given human serum then AAV6-hF9 (passive-transfer neutralization model) setting the anti-AAV6 antibody enrollment cutoff for giroctocogene fitelparvovec (SB-525)",
+   "model_kind": "animal",
+   "model_first_use_year": 2022,
+   "prediction_level": "patient",
+   "cells": {
+    "engagement": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2022,
+      "print_year": 2023,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": false,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Severe hemophilia A (FVIII ≤1 IU/dL)",
+      "confidence": "medium",
+      "confidence_note": "Full text (PMC9935387, epub 2022-07-01), Sangamo authors; the mice received an AAV6-hF9 vector, not the product, so product_in_model false. Date of the mouse runs is not given; dated to publication.",
+      "judgement": "Patient-level track: the model picks who can respond by pre-existing AAV6 antibody titre. Opening untested entry at first published use.",
+      "year": 2022,
+      "status": "untested",
+      "readout_tier": "proximal",
+      "note": "Mice given human sera with AAV6 transduction-inhibition NR >0.33 still made therapeutic hFIX; only NR <0.1 fully blocked expression, supporting a 0.34 enrollment cutoff.",
+      "short": "Mice: NR >0.33 serum still allows expression",
+      "src": "https://doi.org/10.1038/s41434-022-00353-2",
+      "srcLabel": "Cao 2022",
+      "quote": "Though the results are highly variable, animals exposed to human serum with NR > 0.33 on average still produced levels of hFIX (>150 ng/mL) that are considered therapeutic"
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2022,
+      "print_year": 2023,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": false,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "Mice: serum NR >0.33 permits therapeutic transgene expression; Alta (NCT03061201) patients enrolled at NR 0.38-1.11 all showed dose-dependent FVIII activity, normal range in cohort 4 (3e13 vg/kg)",
+      "source_calls_it": "match",
+      "population": "Severe hemophilia A (FVIII ≤1 IU/dL)",
+      "confidence": "medium",
+      "confidence_note": "Sponsor states the comparison in the same paper. Only the antibody-low half of the prediction was tested: no patient below the 0.34 cutoff was dosed, so the threshold itself is untested.",
+      "judgement": "Same: every patient the model-set cutoff admitted expressed FVIII, as the mice predicted; the prediction was set before Alta enrolled, so not a retrodiction.",
+      "year": 2022,
+      "status": "same",
+      "strengthens": true,
+      "readout_tier": "proximal",
+      "note": "All 11 Alta participants, enrolled at NR 0.38-1.11 under the mouse-supported cutoff, expressed FVIII dose-dependently with giroctocogene.",
+      "short": "Cutoff-admitted patients all expressed FVIII",
+      "src": "https://doi.org/10.1038/s41434-022-00353-2",
+      "srcLabel": "Cao 2022",
+      "quote": "The cutoff of 0.34 thus led to enrollment of hemophilia A subjects that responded to AAV6 gene therapy treatment.",
+      "reason": "Antibody-low patients expressed, as mice predicted"
+     }
+    ]
+   }
+  },
+  {
+   "model_id": "hema-f8ko-mouse-aav-fviii-sq-assay-retro",
+   "model": "Hemophilia A mice given AAV-FVIII-SQ: post-clinic model of the one-stage vs chromogenic assay discrepancy and FVIII-SQ activation (Sternberg 2026, SPK-8011 comparison)",
+   "model_kind": "animal",
+   "model_first_use_year": 2026,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2026,
+      "print_year": 2026,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": false,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Severe hemophilia A (FVIII ≤1 IU/dL)",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level reading (PMID 42371804, epub 2026-06-29); CHOP/Roche authors; vector identity in mice not stated in the abstract, so product_in_model false.",
+      "judgement": "Opening entry for a retrodiction track (decision 10); the flag sits on the scored entry.",
+      "year": 2026,
+      "status": "untested",
+      "readout_tier": "proximal",
+      "note": "Mouse model built after AAV trials showed one-stage FVIII-SQ activity 1.5-2x chromogenic values; tests cofactor function and thrombin activation of AAV-derived FVIII-SQ.",
+      "short": "Post-clinic mouse of FVIII-SQ assay gap",
+      "src": "https://doi.org/10.1182/blood.2025032890",
+      "srcLabel": "Sternberg 2026",
+      "quote": "In vivo evaluation of AAV-FVIII-SQ in mice demonstrated that OSA activity better correlated with hemostatic function and corresponded to rFVIII-SQ function."
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2026,
+      "print_year": 2026,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": false,
+      "retrodiction": true,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "Enhanced thrombin-mediated activation of AAV-FVIII-SQ, seen by one-stage but not chromogenic assay, in mice and in SPK-8011 (dirloctocogene) participants; 23 participants, 99 patient-years",
+      "source_calls_it": "match",
+      "population": "Severe hemophilia A (FVIII ≤1 IU/dL)",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level reading. The patient assay discrepancy was known from the trials before the mouse work, hence a retrodiction; the ABR association in patients was only a trend.",
+      "judgement": "Status retro, never same: the clinic already knew one-stage exceeded chromogenic activity; the mouse reproduces the patient biochemistry.",
+      "year": 2026,
+      "status": "retro",
+      "readout_tier": "proximal",
+      "note": "Mice and SPK-8011 participants both showed normal cofactor function and enhanced thrombin activation of AAV-derived FVIII-SQ.",
+      "short": "Mice reproduce patient FVIII-SQ activation",
+      "src": "https://doi.org/10.1182/blood.2025032890",
+      "srcLabel": "Sternberg 2026",
+      "quote": "Both species demonstrated enhanced thrombin-mediated activation of AAV-FVIII-SQ, detectable by OSA but not CSA.",
+      "reason": "Retrodiction of the patient assay discrepancy"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -560,6 +713,66 @@
   "BAY 2599023 patient FVIII data: exist only as ASH/ISTH conference abstracts ('stable and sustained expression of FVIII over 2 years'), NR in the 2024 meta-analysis, no registry results; the AAVhu37 track is therefore added as untested rather than scored",
   "Gil-Farina 2016 NHP and patient AAV integration (cited by Fong 2022): hemophilia B AAV2-FIX patients, cross-class evidence set aside (decision 13)",
   "Efanesoctocog alfa population-PK / in-silico dose models: not searched within budget (clinical PK models, not a preclinical system)",
-  "The ER-stress and FVIII-decline mice could be argued onto the draft's pooled hema-f8ko-mouse-nhp track; kept as their own tracks because that track's safety strip is contra (ALT) and cannot take a later same, and because each system was built to ask a different question (decision 10 for the retrodiction)"
+  "The ER-stress and FVIII-decline mice could be argued onto the draft's pooled hema-f8ko-mouse-nhp track; kept as their own tracks because that track's safety strip is contra (ALT) and cannot take a later same, and because each system was built to ask a different question (decision 10 for the retrodiction)",
+  "SPK-8016: no published preclinical model for the product; the inhibitor-dog tolerance work (Finn 2010) was never compared with SPK-8016 patients because the inhibitor study it was to support never ran; NCT03734588 results are non-inhibitor dose-finding with no model named",
+  "Giroctocogene (SB-525) mouse/NHP potency studies: conference abstracts only, no peer-reviewed model-to-patient comparison found",
+  "Kistner 2024 macaque steroid/rapamycin regimens (AAVrh10): GENEr8-3 (NCT04323098) was designed and enrolled before Kistner and is single-arm (FVIII change at week 52, no steroid-free comparator), so the model's 'not sustained upon taper' prediction has no clean patient test; no source states the comparison"
+ ],
+ "gaps": [
+  {
+   "lead": "Mouse ER-stress / UPR prediction (Lange 2016) vs Fong 2022 patient biopsies",
+   "outcome": "tracked",
+   "detail": "hema-f8ko-mouse-er-stress, safety 2022 same (added_models)"
+  },
+  {
+   "lead": "Dog on-target safety: no long-term FVIII inhibitor (Sabatino 2011) vs GENEr8-1",
+   "outcome": "tracked",
+   "detail": "hema-dog-chapel-hill, safety 2010 untested -> 2017 same (added_models)"
+  },
+  {
+   "lead": "Dog genotoxicity: clonal expansion in dogs (Nguyen 2021) vs no hepatic tumours in patients",
+   "outcome": "tracked",
+   "detail": "hema-dog-chapel-hill, safety 2023 same 'No HCC or inhibitors at licensure' (added_models)"
+  },
+  {
+   "lead": "Post-clinic NHP model of AAV-FVIII expression loss (IL-15 blockade + rapamycin)",
+   "outcome": "tracked",
+   "detail": "the review's pointer resolves to Butterfield 2022 mice: hema-f8ko-mouse-fviii-decline-retro, engagement 2022 retro; no NHP primary paper found"
+  },
+  {
+   "lead": "Peboctocogene camaparvovec (BAY 2599023 / DTX201)",
+   "outcome": "tracked",
+   "detail": "hema-aavhu37-mouse-nhp, engagement/dose/safety untested (no peer-reviewed patient FVIII data; NCT03588299 has no results)"
+  },
+  {
+   "lead": "FDA CRL Aug 2020 and 2025 US withdrawal of valoctocogene",
+   "outcome": "covered",
+   "detail": "Note-only: the Aug 2020 CRL (tier 5) and 2025 US withdrawal change no scored status; the checker's 'missing' item already routes both to the efficacy note, and efficacy #4 is adjudicated same (decision 4, primary endpoints met)."
+  },
+  {
+   "lead": "Program stops: giroctocogene (Pfizer), SPK-8011 phase 3 and SPK-8016 (Roche)",
+   "outcome": "none",
+   "detail": "business discontinuations, not patient results of a model comparison; note-only (decision 4 scores the primary endpoint, which AFFINE met)"
+  },
+  {
+   "lead": "Kistner 2024 macaque prophylactic immunosuppression (AAVrh10)",
+   "outcome": "none",
+   "detail": "GENEr8-3 single-arm with no steroid-free comparator and enrolled before Kistner; no clean patient test of the regimen prediction, no stated comparison"
+  },
+  {
+   "lead": "SPK-8016",
+   "outcome": "none",
+   "detail": "PubMed/Europe PMC/CT.gov: no published product model; NCT03734588 non-inhibitor dose-finding names no model; inhibitor-tolerance (dog) prediction never tested in SPK-8016 patients"
+  },
+  {
+   "lead": "dirloctocogene samoparvovec (SPK-8011)",
+   "outcome": "added",
+   "detail": "hema-f8ko-mouse-aav-fviii-sq-assay-retro, engagement 2026 retro (Sternberg 2026, mice vs SPK-8011 participants); its development model (Elkouby 2022 mice+NHP) is the draft's hema-f8ko-mouse-nhp track"
+  },
+  {
+   "lead": "giroctocogene fitelparvovec (SB-525)",
+   "outcome": "added",
+   "detail": "hema-mouse-aav6-nab-passive-transfer, engagement 2022 same, patient level (Cao 2022: mouse-supported AAV6 antibody cutoff, all Alta enrollees expressed)"
+  }
  ]
 }

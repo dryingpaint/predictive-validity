@@ -1,0 +1,162 @@
+{
+ "tile": "breast-cancer-anti-igf1r-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to dalotuzumab (opens the dalotuzumab track by proxy, IMC-A12 in the model's first use; product_in_model false), route iv, population_group unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to dalotuzumab, route iv, population_group other_disease (mixed solid tumours)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to dalotuzumab, route iv, population_group stage_or_line"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug set to dalotuzumab, route iv, population_group biomarker_selected, combination_with ridaforolimus; model renamed to MCF7 in vitro plus NSCLC PDX LXFA629 (checker identity finding)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug set to dalotuzumab, route iv, population_group biomarker_selected"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug set to dalotuzumab, route iv, population_group biomarker_selected"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "status contra -> same (2017), magnitude direction_only, confidence low: RULE QUESTION settled, the 40% GFS bar is the sponsor's hypothesis, not the model's number, and the signature fell in 28.6% ER+ / 17.6% TN; drug dalotuzumab, route iv, biomarker_selected"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to cixutumumab (IMC-A12), route iv, population_group unselected"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to dalotuzumab, route iv, population_group stage_or_line"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to dalotuzumab, route iv, population_group biomarker_selected, combination_with ridaforolimus"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug set to dalotuzumab, route iv, population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to cixutumumab, route iv, population_group unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to cixutumumab, route iv, population_group biomarker_selected (HER2+), combination_with capecitabine + lapatinib; combination design noted"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set to cixutumumab, route iv, population_group stage_or_line; design noted; dalotuzumab split to its own track (efficacy 13-14)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to dalotuzumab, route iv, population_group stage_or_line"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "retro kept: RULE QUESTION settled by the ruling that any drug's earlier result for the same target and action (ganitumab) makes an efficacy model a retrodiction; drug dalotuzumab, route iv, stage_or_line, combination_with exemestane or fulvestrant"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug set to cixutumumab (paired, product_in_model false), route iv, population_group stage_or_line"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to dalotuzumab, route iv, stage_or_line, combination_with ridaforolimus + exemestane; combination design noted"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "status untested -> contra (year 2014), retrodiction true, src Baselga 2017 with model_src Di Cosimo 2015: retrodiction ruling, model first public 2014-10 after the R+D vs exemestane null at SABCS 2013, which it failed to reproduce; drug dalotuzumab, combination_with ridaforolimus; model renamed"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "strengthens true (second contra on the track); drug dalotuzumab, route iv, stage_or_line, combination_with ridaforolimus + exemestane"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "status untested -> retro (2016), retrodiction true, comparison_stated true, quote replaced with Becker's 'similar to clinical trials' conclusion: retrodiction ruling (first public after SABCS 2013 member null); drug dalotuzumab, route iv, biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug set to dalotuzumab, route iv, stage_or_line, combination_with ridaforolimus + exemestane; status left neg (check adjudicated retro; note added)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "drug set to dalotuzumab, route iv, population_group biomarker_selected"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to cixutumumab, route iv, population_group unselected"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to dalotuzumab, route iv, population_group stage_or_line"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to dalotuzumab, route iv, biomarker_selected, combination_with ridaforolimus"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "note corrected (Becker does state tolerability); drug dalotuzumab, route iv, biomarker_selected; the passing claim is scored in safety 6"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "contra 2020 kept; src changed from FDA PharmR (now model_src) to NCT00796107 registry results (teprotumumab + letrozole in breast cancer, hyperglycaemia 1/6): imported-harm ruling, this disease's patients were measured; imported_from cleared, retrodiction true (TED hyperglycaemia public 2017); drug teprotumumab, route iv, stage_or_line, combination_with letrozole"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "opener, mcf7-er-pos-xenograft x dalotuzumab x iv, untested 2004 (Goetsch 2005, h7C10 in MCF-7 xenografts); split from efficacy 3"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "mcf7-er-pos-xenograft x dalotuzumab x iv, contra 2013: Baselga 2017 (NCT01234857, R+D vs exemestane HR 1.00, shown SABCS Dec 2013), combination design with ridaforolimus; split from efficacy 3"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "mcf7-ac1-aromatase-xenograft x dalotuzumab x iv, contra 2016, retrodiction true: Becker's 'all agents ... were well tolerated' (passing tolerability ruling) vs Baselga 2017 unacceptable toxicity of dalotuzumab plus ridaforolimus"
+  }
+ ]
+}

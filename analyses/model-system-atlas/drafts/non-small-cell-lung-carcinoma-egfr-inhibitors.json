@@ -49,7 +49,11 @@
     "source_calls_it": null,
     "population": "EGFR-mutant NSCLC models",
     "model_first_use_year": 2014,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib"
    },
    {
     "year": 2017,
@@ -86,16 +90,20 @@
     "source_calls_it": null,
     "population": "EGFR T790M-positive, TKI-pretreated NSCLC",
     "model_first_use_year": 2014,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib"
    }
   ],
   "dose": [
    {
     "year": 2015,
     "status": "untested",
-    "model": "Rat and dog toxicology with mouse xenograft efficacy",
+    "model": "T790M/sensitising-mutant NSCLC cells, xenografts and transgenic mice",
     "model_id": "egfrm-t790m-xenograft-transgenic",
-    "note": "No model-stated human efficacious exposure found; the dog's highest tolerated exposure was half the 80 mg exposure, yet patients had no DLT to 240 mg.",
+    "note": "No model-stated human efficacious exposure found; the dog's highest tolerated exposure was half the 80 mg exposure, yet patients had no DLT to 240 mg. Model side is the xenograft system, with its rat and dog toxicology.",
     "short": "No stated human exposure target",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/208065Orig1s000PharmR.pdf",
     "srcLabel": "FDA pharmacology review 2015",
@@ -126,7 +134,12 @@
     "model_first_use_year": 2014,
     "blocked_by": null,
     "margin_stated": false,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -161,7 +174,11 @@
     "model": "EGFR-mutant PC9 mouse brain-metastasis model with cynomolgus [11C]osimertinib microdose PET",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "iv",
+    "drug": "osimertinib"
    },
    {
     "retrodiction": false,
@@ -197,7 +214,11 @@
     "model": "EGFR-mutant PC9 mouse brain-metastasis model with cynomolgus [11C]osimertinib microdose PET",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "combination_with": null,
+    "population_group": "unselected",
+    "route": "iv",
+    "drug": "osimertinib"
    }
   ],
   "efficacy": [
@@ -233,7 +254,11 @@
     "source_calls_it": null,
     "population": "EGFR-mutant NSCLC models",
     "model_first_use_year": 2014,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib"
    },
    {
     "year": 2015,
@@ -248,7 +273,7 @@
     "confidence": "high",
     "confidence_note": "Abstract-level reading of Janne 2015; primary endpoint (ORR, dose-expansion population) from the NCT01802632 registry record.",
     "reason": "T790M response predicted and seen",
-    "judgement": "Paired (model Cross 2014, patients AURA): the trial paper cites the preclinical work but does not compare. Regression in mice vs 61% ORR is a directional match. Kept 'same' through mobocertinib's EXCLAIM-2 failure because its exon 20 Ba/F3/PDX models are a different system and the status follows the best model; a stricter class-wide reading would turn the cell contra in 2025. Rociletinib's overstated response (FDA rejection 2016) was not scored: no trial failed its primary endpoint against a model prediction.",
+    "judgement": "Paired (model Cross 2014, patients AURA): the trial paper cites the preclinical work but does not compare. Regression in mice vs 61% ORR is a directional match. This track is osimertinib, oral; mobocertinib's EXCLAIM-2 failure is scored on its own exon 20 model track (efficacy 7), not here. Rociletinib's overstated response (FDA rejection 2016) was not scored: no trial failed its primary endpoint against a model prediction.",
     "endpoint_role": "primary",
     "outcome_tested": "positive",
     "patient_trials": [
@@ -257,12 +282,6 @@
       "registry_date": "2017-07-21",
       "doi": "https://doi.org/10.1056/NEJMoa1612674",
       "quote": "The median duration of progression-free survival was significantly longer with osimertinib than with platinum therapy plus pemetrexed (10.1 months vs. 4.4 months; hazard ratio; 0.30; 95% confidence interval [CI], 0.23 to 0.41; P<0.001)."
-     },
-     {
-      "nct": "NCT04129502",
-      "registry_date": null,
-      "doi": "https://doi.org/10.1200/JCO-24-01269",
-      "quote": "The EXCLAIM-2 trial did not meet its primary end point. The efficacy of mobocertinib was not superior to platinum-based chemotherapy for first-line treatment of patients with EGFR ex20ins+ advanced/metastatic NSCLC."
      }
     ],
     "subjects": "patients",
@@ -285,7 +304,11 @@
     "source_calls_it": null,
     "population": "EGFR T790M-positive, TKI-pretreated NSCLC",
     "model_first_use_year": 2014,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib"
    },
    {
     "retrodiction": false,
@@ -321,10 +344,15 @@
     "model": "EGFR-mutant PC9 mouse brain-metastasis model with cynomolgus [11C]osimertinib microdose PET",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib",
+    "untested_reason": "no_prediction"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -342,11 +370,11 @@
     "magnitude_basis": "mouse brain-metastasis regression vs leptomeningeal ORR by BICR",
     "source_calls_it": null,
     "confidence": "medium",
-    "confidence_note": "Abstract-level reading. NCT02228369 has no posted results (checked 2026-11-05). BLOOM is single-arm and dosed 160 mg, twice the label dose; the mouse model modelled parenchymal, not leptomeningeal, disease.",
+    "confidence_note": "Abstract-level reading. NCT02228369 has no posted results (checked 2026-11-05). BLOOM is single-arm and dosed 160 mg, twice the label dose; the mouse model modelled parenchymal, not leptomeningeal, disease. Retrodiction rests on Park 2012 (Lung Cancer 77:556, PMID 22677429, doi 10.1016/j.lungcan.2012.05.092, epub 2012-06-05), abstract-level.",
     "year": 2019,
-    "status": "same",
+    "status": "retro",
     "population": "EGFR-mutant NSCLC with leptomeningeal metastases after prior EGFR-TKI (T790M not required)",
-    "note": "BLOOM's primary objective, leptomeningeal ORR by blinded central review, was 62% on osimertinib 160 mg, matching the brain-metastasis model's predicted CNS activity.",
+    "note": "BLOOM's primary objective, leptomeningeal ORR by blinded central review, was 62% on osimertinib 160 mg, matching the brain-metastasis model's predicted CNS activity. Single-arm trial with no preset success bar, scored on its primary endpoint (LM ORR 62%) in the predicted direction. Scored retro: EGFR TKIs had already shrunk brain metastases in EGFR-mutant patients (gefitinib/erlotinib phase 2, ORR 83%, Park 2012) before the mouse model was public in 2016.",
     "short": "BLOOM: 62% leptomeningeal response",
     "src": "https://doi.org/10.1200/JCO.19.00457",
     "srcLabel": "Yang 2019 (BLOOM)",
@@ -361,13 +389,17 @@
       "quote": "LM ORR and DoR by neuroradiologic BICR were 62% (95% CI, 45% to 78%) and 15.2 months (95% CI, 7.5 to 17.5 months), respectively."
      }
     ],
-    "reason": "CNS response as predicted",
-    "judgement": "Population: BLOOM's LM cohort is EGFR-sensitising-mutant after TKI, mostly not T790M-selected, so it sits at the edge of the draft's T790M/exon 20 population; kept because the tile's class is all EGFR inhibitors and the draft's narrowing is an open rule question. Paired, not stated: BLOOM does not cite the mouse result as a prediction.",
+    "reason": "Reproduces known EGFR-TKI CNS response",
+    "judgement": "Population: BLOOM's LM cohort is EGFR-sensitising-mutant after TKI, mostly not T790M-selected, so it sits at the edge of the draft's T790M/exon 20 population; kept because the tile's class is all EGFR inhibitors and the draft's narrowing is an open rule question. Paired, not stated: BLOOM does not cite the mouse result as a prediction. Under the retrodiction rule (efficacy is a target claim; any EGFR inhibitor's earlier patient result counts), the 2016 model post-dates EGFR-TKI CNS responses, so same became retro.",
     "model_id": "egfrm-brain-met-mouse-nhp-pet",
     "model": "EGFR-mutant PC9 mouse brain-metastasis model with cynomolgus [11C]osimertinib microdose PET",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib"
    },
    {
     "retrodiction": false,
@@ -403,7 +435,11 @@
     "model": "EGFR exon 20 insertion Ba/F3 lines, patient-derived xenografts and orthotopic mice (mobocertinib)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "mobocertinib"
    },
    {
     "retrodiction": false,
@@ -428,7 +464,7 @@
     "year": 2021,
     "status": "same",
     "population": "Platinum-pretreated EGFR exon 20 insertion NSCLC",
-    "note": "The PPP cohort's primary endpoint, confirmed ORR by independent review, was 28% at 160 mg, enough for accelerated approval: activity as the models predicted.",
+    "note": "The PPP cohort's primary endpoint, confirmed ORR by independent review, was 28% at 160 mg, enough for accelerated approval: activity as the models predicted. Single-arm phase 1/2 with no preset success bar: scored on its primary endpoint (confirmed ORR 28%), a response in the direction predicted.",
     "short": "Single-arm ORR 28% (PPP cohort)",
     "src": "https://doi.org/10.1001/jamaoncol.2021.4761",
     "srcLabel": "Zhou 2021",
@@ -448,7 +484,11 @@
     "model": "EGFR exon 20 insertion Ba/F3 lines, patient-derived xenografts and orthotopic mice (mobocertinib)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "mobocertinib"
    },
    {
     "retrodiction": false,
@@ -465,27 +505,31 @@
     "model_filed": false,
     "product_in_model": true,
     "imported_from": null,
-    "magnitude": "null",
+    "magnitude": null,
     "magnitude_basis": "PFS hazard ratio vs platinum chemotherapy",
     "source_calls_it": null,
     "confidence": "medium",
-    "confidence_note": "Abstract-level reading. NCT04129502 has no posted results (checked 2026-11-05). The failure was first announced by Takeda press release in October 2023 (tier 5); that release was not verified here, so the entry is dated to the JCO paper.",
-    "year": 2025,
+    "confidence_note": "Abstract-level reading. NCT04129502 has no posted results (checked 2026-11-05). Year from the Takeda press release (2023-10-02), verified at adjudication, not re-read here.",
+    "year": 2023,
     "status": "contra",
     "population": "Treatment-naive EGFR exon 20 insertion NSCLC",
-    "note": "EXCLAIM-2 crossed futility: PFS 9.6 months in each arm (HR 1.04) against platinum chemotherapy; Takeda withdrew mobocertinib.",
+    "note": "EXCLAIM-2 crossed futility: PFS 9.6 months in each arm (HR 1.04) against platinum chemotherapy; Takeda withdrew mobocertinib. Mobocertinib alone against active chemotherapy, scored on the trial's primary endpoint. Dated to Takeda's press release of 2 Oct 2023 announcing the miss, the earliest public date.",
     "short": "EXCLAIM-2 fails primary PFS",
     "src": "https://doi.org/10.1200/JCO-24-01269",
     "srcLabel": "Janne 2025 (EXCLAIM-2)",
     "quote": "The EXCLAIM-2 trial did not meet its primary end point. The efficacy of mobocertinib was not superior to platinum-based chemotherapy for first-line treatment of patients with EGFR ex20ins+ advanced/metastatic NSCLC.",
     "endpoint_role": "primary",
     "reason": "Phase 3 failed vs chemotherapy",
-    "judgement": "Scored contra per the dose/efficacy table (reached, failed, abandoned). The models never tested an active comparator, which the checker raised as an open rule question; if the ruling is 'untested', this entry changes. Year may move to 2023 once the press release is verified.",
+    "judgement": "Scored contra on the primary PFS endpoint (efficacy rule: as the trial showed; an active comparator is scored like any other trial). Year 2023 from the Takeda press release (2 Oct 2023, verified by the adjudicator); the JCO 2025 paper is the higher-tier source of the status.",
     "model_id": "egfr-ex20ins-bafs-pdx",
     "model": "EGFR exon 20 insertion Ba/F3 lines, patient-derived xenografts and orthotopic mice (mobocertinib)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "mobocertinib"
    },
    {
     "retrodiction": false,
@@ -521,7 +565,12 @@
     "model": "Ba/F3 panel of 76 EGFR mutants grouped by structure (classical-like, T790M-like, Ex20ins-L, PACC), with PDX",
     "model_kind": "animal",
     "prediction_level": "patient",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -558,7 +607,11 @@
     "model": "Ba/F3 panel of 76 EGFR mutants grouped by structure (classical-like, T790M-like, Ex20ins-L, PACC), with PDX",
     "model_kind": "animal",
     "prediction_level": "patient",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib"
    },
    {
     "retrodiction": false,
@@ -594,7 +647,11 @@
     "model": "Patient-derived lung cancer organoids from malignant effusions, drug sensitivity test",
     "model_kind": "ex_vivo",
     "prediction_level": "patient",
-    "model_first_use_year": 2023
+    "model_first_use_year": 2023,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib"
    },
    {
     "retrodiction": false,
@@ -631,7 +688,101 @@
     "model": "Patient-derived lung cancer organoids from malignant effusions, drug sensitivity test",
     "model_kind": "ex_vivo",
     "prediction_level": "patient",
-    "model_first_use_year": 2023
+    "model_first_use_year": 2023,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib"
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": false,
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "registry_date": null,
+    "model_filed": false,
+    "product_in_model": true,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "epub_year": 2026,
+    "print_year": 2026,
+    "confidence": "medium",
+    "confidence_note": "Abstract-level reading; full text not open. 2022 is a proxy from the FURTHER start (NCT05364073, 2022-06-30): the PACC cell and xenograft data were the trial's rationale, but their first peer-reviewed publication is the 2026 paper.",
+    "year": 2022,
+    "status": "untested",
+    "population": "EGFR PACC-mutant NSCLC",
+    "note": "Firmonertinib's own PACC-mutant cell lines and xenografts predicted activity, unlike the structure-group prediction of third-generation resistance made for osimertinib.",
+    "short": "PACC cells and xenografts respond",
+    "src": "https://doi.org/10.1016/j.ccell.2026.09.011",
+    "srcLabel": "Le 2026",
+    "quote": "Firmonertinib had high anti-proliferative efficacy in EGFR PACC-mutant cells and xenografts.",
+    "endpoint_role": null,
+    "judgement": "Opens at the first-in-human PACC study, since the model must have preceded it.",
+    "model_id": "egfr-pacc-cells-xenograft-firmonertinib",
+    "model": "EGFR PACC-mutant cell lines and xenografts (firmonertinib)",
+    "model_kind": "animal",
+    "prediction_level": "class",
+    "model_first_use_year": 2022,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "firmonertinib",
+    "untested_reason": "unpublished"
+   },
+   {
+    "retrodiction": true,
+    "patient_signal_reversed": false,
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1016/j.ccell.2026.09.011",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "registry_date": null,
+    "model_filed": false,
+    "product_in_model": true,
+    "imported_from": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "cell/xenograft regression vs confirmed ORR",
+    "source_calls_it": null,
+    "epub_year": 2026,
+    "print_year": 2026,
+    "confidence": "low",
+    "confidence_note": "Abstract-level reading. Phase 1b dose-randomised, no comparator; Stage 2 primary outcome is ORR (registry). NCT05364073 has no posted results (checked 2026-11-07). Whether every preclinical experiment preceded the clinical readout is not stated in the abstract, so retrodiction is left false. WCLC 2024 date from IASLC press release and the ArriVent oral-presentation PDF (2024-09-08), search-level. Prior patient result: Yang 2015 Lancet Oncol (PMID 26051236, doi 10.1016/S1470-2045(15)00026-1), abstract-level.",
+    "year": 2024,
+    "status": "retro",
+    "population": "Treatment-naive metastatic EGFR PACC-mutant NSCLC",
+    "note": "In FURTHER, first-line firmonertinib gave confirmed ORRs of 43% (160 mg) and 68% (240 mg) in PACC-mutant NSCLC, matching the drug's own preclinical prediction. Dose-randomised phase 1b with no comparator or preset bar, scored on its primary endpoint (confirmed ORR) in the predicted direction. First public at WCLC on 8-9 Sep 2024 (IASLC press release; cORR 34.8% and 63.6%), so dated 2024. Scored retro: afatinib, an EGFR inhibitor, had already produced responses in PACC-type uncommon mutations (G719X, L861Q, S768I; Yang 2015) before this model was public in 2024.",
+    "short": "FURTHER: ORR 43-68% in PACC",
+    "src": "https://doi.org/10.1016/j.ccell.2026.09.011",
+    "srcLabel": "Le 2026 (FURTHER)",
+    "quote": "patients with metastatic EGFR PACC-mutant NSCLC randomized to receive first-line firmonertinib 160 mg (n = 25) or 240 mg (n = 22) had confirmed objective response rates (ORRs) of 43% and 68%",
+    "endpoint_role": "primary",
+    "reason": "Reproduces known PACC response to EGFR TKI",
+    "patient_trials": [
+     {
+      "nct": "NCT05364073",
+      "registry_date": null,
+      "doi": "https://doi.org/10.1016/j.ccell.2026.09.011",
+      "quote": "Intracranial ORR among patients with brain metastases at baseline was 47% (8/17)."
+     }
+    ],
+    "judgement": "Paired, not stated: the paper reports both but does not frame the preclinical data as a prediction. PACC first-line lies outside the draft's T790M/exon 20 population; kept for the same reason as egfr-bafs-structure-groups (population is an open rule question). Retrodiction rule: efficacy is a target claim, and afatinib's 2015 response data in uncommon (PACC-type) mutations came first and the firmonertinib model (AACR 2024) after, so same became retro.",
+    "model_id": "egfr-pacc-cells-xenograft-firmonertinib",
+    "model": "EGFR PACC-mutant cell lines and xenografts (firmonertinib)",
+    "model_kind": "animal",
+    "prediction_level": "class",
+    "model_first_use_year": 2022,
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "firmonertinib"
    }
   ],
   "safety": [
@@ -667,7 +818,11 @@
     "source_calls_it": null,
     "population": "EGFR T790M-positive, TKI-pretreated NSCLC",
     "model_first_use_year": 2013,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib"
    },
    {
     "year": 2015,
@@ -682,7 +837,7 @@
     "confidence": "medium",
     "confidence_note": "Dog exposures at tolerated doses reached only about half the human AUC, so the telemetry could not test the clinical exposure; the hERG margin call was made at the clinical free Cmax.",
     "reason": "Missed QT prolongation, twice",
-    "judgement": "Scored contra on QT, not on ILD: rats and dogs showed only alveolar macrophage infiltrates, not pneumonitis, so their silence on the 3.3% ILD is not clearly a harm the species could show. Mobocertinib repeated the miss (FDA 2021 multidisciplinary review: hERG >5 uM and clean dog ECGs, then a boxed QTc/torsades warning; 'The reason for the discrepancy between the nonclinical and clinical QT data is unknown'), which keeps the cell contra. Cardiomyopathy (1.4%) was hinted at by equivocal reduced contractility in dogs and guinea pigs, so it is not counted as a miss.",
+    "judgement": "Scored contra on QT, not on ILD: rats and dogs showed only alveolar macrophage infiltrates, not pneumonitis, so their silence on the 3.3% ILD is not clearly a harm the species could show. Mobocertinib repeated the miss (FDA 2021 multidisciplinary review: hERG >5 uM and clean dog ECGs, then a boxed QTc/torsades warning; 'The reason for the discrepancy between the nonclinical and clinical QT data is unknown'), now scored on its own mobocertinib track (safety 3-4). Cardiomyopathy (1.4%) was hinted at by equivocal reduced contractility in dogs and guinea pigs, so it is not counted as a miss.",
     "subjects": "patients",
     "comparison_stated": true,
     "source_tier": 2,
@@ -703,7 +858,89 @@
     "source_calls_it": "miss",
     "population": "EGFR T790M-positive, TKI-pretreated NSCLC",
     "model_first_use_year": 2013,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "osimertinib"
+   },
+   {
+    "year": 2016,
+    "status": "untested",
+    "model": "hERG assay with rat and dog toxicology and dog cardiovascular telemetry",
+    "model_id": "herg-rat-dog-tox",
+    "note": "Mobocertinib's hERG assay and 3-month rat and dog toxicology with cardiovascular safety pharmacology ran before its phase 1/2 (NCT02716116) opened in June 2016.",
+    "short": "Mobocertinib hERG and dog package",
+    "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/215310Orig1s000MultidisciplineR.pdf",
+    "srcLabel": "FDA multidisciplinary review 2021",
+    "quote": "Mobocertinib, AP32960, and AP32914 inhibited the hERG current in a concentration-dependent manner with IC50 values of 10, 10, and 5.1 µM, respectively.",
+    "confidence": "medium",
+    "confidence_note": "Opening year is a proxy from the first-in-human start (NCT02716116, June 2016); the package must have preceded it.",
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 2,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2021,
+    "print_year": 2021,
+    "registry_date": null,
+    "model_filed": true,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Platinum-pretreated EGFR exon 20 insertion NSCLC",
+    "model_first_use_year": 2013,
+    "prediction_level": "class",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "mobocertinib"
+   },
+   {
+    "year": 2021,
+    "status": "contra",
+    "model": "hERG assay with rat and dog toxicology and dog cardiovascular telemetry",
+    "model_id": "herg-rat-dog-tox",
+    "note": "hERG IC50s above 5 µM and dog ECGs without QT effect, yet patients had QTc prolongation with life-threatening arrhythmias (boxed warning). Split from the osimertinib entry, whose judgement cited it.",
+    "short": "QT prolongation the package cleared",
+    "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/215310Orig1s000MultidisciplineR.pdf",
+    "srcLabel": "FDA multidisciplinary review 2021",
+    "quote": "the in vivo assessments included in the toxicology studies in dogs did not show QT prolongation or any other cardiac electrophysiologic effects, although QT prolongation, including resultant life-threatening arrhythmias, occurred in patients treated with mobocertinib.",
+    "confidence": "high",
+    "confidence_note": "FDA review read in the source bundle; it states the comparison and adds 'The reason for the discrepancy between the nonclinical and clinical QT data is unknown.'",
+    "subjects": "patients",
+    "comparison_stated": true,
+    "source_tier": 2,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2021,
+    "print_year": 2021,
+    "registry_date": null,
+    "model_filed": true,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "QTc effect: none predicted (hERG >5 uM, clean dog ECG) vs boxed QTc/torsades warning",
+    "source_calls_it": "miss",
+    "population": "Platinum-pretreated EGFR exon 20 insertion NSCLC",
+    "model_first_use_year": 2013,
+    "prediction_level": "class",
+    "combination_with": null,
+    "population_group": "biomarker_selected",
+    "route": "oral",
+    "drug": "mobocertinib",
+    "reason": "Missed QT prolongation",
+    "judgement": "Own track (mobocertinib, oral) on the same hERG/rat/dog system; the review states model and patient results side by side. Prospective: the package ran before any mobocertinib patient data."
    }
   ]
  }

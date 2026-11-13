@@ -10,7 +10,8 @@
   "Europe PMC core records for PMC5955814 (Mundt 2018 Cancer Res, TNBC PDX buparlisib resistance) and PMC7943556 (alpelisib review)",
   "Europe PMC full text of Nixon 2019 npj Breast Cancer (PMC6757060, DOI 10.1038/s41523-019-0126-6): PDX buparlisib/alpelisib response by luminal A, PIK3CA, MAP3K1 vs clinical benefit; reference 22 confirmed as Gao 2015, reference 25 as Mayer 2014 JCO",
   "Europe PMC DOI lookup 10.1200/JCO.2013.54.0518 (Mayer 2014, buparlisib + letrozole phase Ib; PMID 24663045)",
-  "ClinicalTrials.gov API v2: NCT01248494 (buparlisib + letrozole phase Ib; no results posted) and NCT01437566 (FERGI; no results posted); BELLE-2 NCT01610284 and PEGGY NCT01740336 registry dates taken from the draft"
+  "ClinicalTrials.gov API v2: NCT01248494 (buparlisib + letrozole phase Ib; no results posted) and NCT01437566 (FERGI; no results posted); BELLE-2 NCT01610284 and PEGGY NCT01740336 registry dates taken from the draft",
+  "Gap pass: fc.py scrape of cell.com PDF pii S0092-8674(17)31319-3 (Sachs 2018 full text): pictilisib sits in the HER-pathway panel (Fig 6A, Fig 7A 10T HER2+ vs 27T HER2-); in-vivo check afatinib only, patient comparison tamoxifen only"
  ],
  "added_models": [
   {
@@ -230,5 +231,32 @@
   "Pan-cancer pharmacogenomic cell-line panels (GDSC, GDC-0941): same system as the existing genotype line-panel track; not searched further.",
   "PIK3CA-H1047R mammary GEMMs: no comparison with pan-PI3K-inhibitor patient results surfaced in the searches run; not exhaustively searched.",
   "OPPORTUNE window trial (pictilisib Ki67 by luminal A/B) and the BELLE-2 ctDNA PIK3CA analysis: patient-side data, not model systems."
+ ],
+ "gaps": [
+  {
+   "lead": "Bruna 2016 Cell breast PDTX/PDTC biobank (pictilisib ex vivo, buparlisib in vivo)",
+   "outcome": "tracked",
+   "detail": "breast-pdtx-pdtc-biobank: efficacy 5 (2016 untested, Bruna 2016) and efficacy 6 (2016 contra, paired with Krop 2016 FERGI)"
+  },
+  {
+   "lead": "Gao 2015 Nat Med Novartis PDX clinical trial (buparlisib)",
+   "outcome": "tracked",
+   "detail": "novartis-pdx-encyclopedia-pct: efficacy 7 (2015 untested, Gao 2015) and efficacy 8 (Nixon 2019; checker verdict corrected retro to untested, adjudicated untested)"
+  },
+  {
+   "lead": "Sachs 2018 Cell breast organoid biobank (abstract-only item)",
+   "outcome": "none",
+   "detail": "Superseded by the full-text read below: pictilisib screened, but never compared with a patient result"
+  },
+  {
+   "lead": "Same-track model-side gaps: (a) Genentech MDA-MB-361 PK-PD target AUC 6 uM.h (Sarker 2015 ref 9); (b) buparlisib + fulvestrant ER+ xenografts (Baselga 2017 ref 17)",
+   "outcome": "fix",
+   "detail": "dose, index 1-based 2, field model_src: current https://doi.org/10.1158/1535-7163.MCT-08-1200 (Raynaud 2009, Sarker 2015 ref 9); source supports the MDA-MB-361 breast-xenograft PK-PD model as the exposure target's model side. Re-opened Sarker 2015 full text (PMC4287394): 'Preclinical pharmacokinetic-pharmacodynamic modeling based on MDA-MB-361 ... predicted the minimal target plasma AUC to be 6uM*hr (3000 ng*hr/ml) in order to achieve >=90% tumor growth inhibition; this target AUC was achieved in most patients treated at doses >80mg' - that sentence carries no citation (ref 9 is Raynaud 2009, which used U87MG/IGROV1, not MDA-MB-361). Proposed value: https://doi.org/10.3109/00498254.2011.603386 (Salphati 2011 Xenobiotica, PMID 21838594, epub 2011-08-13: 'The human efficacious doses were predicted based on results from preclinical pharmacokinetic studies and xenograft models'), model_src_tier 1, abstract only - MDA-MB-361 not verified in it (full text paywalled); if the checker cannot confirm it, model_src null with the target attributed in-source to Sarker 2015 (comparison_stated true). Same track (breast xenograft), status same unchanged (target reached at >80 mg; FERGI 340 mg). Engagement 2 model_src Raynaud 2009 stays: Sarker cites ref 9 for the >=90% pAkt postulate the engagement entry scores. (b) Safety 3: no fix - its model_src is already Maira 2012 (doi 10.1158/1535-7163.MCT-11-0474), the buparlisib in-vivo xenograft paper, not Sanchez 2011 in vitro; Baselga 2017 ref 17 (fulvestrant combination efficacy) adds no safety prediction."
+  },
+  {
+   "lead": "Sachs 2018 Cell organoid biobank, full text (pictilisib in drug panel)",
+   "outcome": "none",
+   "detail": "Full text read: pictilisib is a HER-pathway panel drug whose call is HER2 status (Fig 7A 10T vs 27T), outside the HR+/HER2- population; in-vivo validation afatinib only, patient comparison tamoxifen only; no member-drug comparison with patients (GAP_TASK added rule; Decision 8 biobank question left to the adjudicator)"
+  }
  ]
 }

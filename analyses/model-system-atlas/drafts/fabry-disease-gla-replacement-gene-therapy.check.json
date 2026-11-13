@@ -1,0 +1,231 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/fabry-disease-gla-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kizhner 2015 (PMID 25155442, epub 2014-08-10, print 2015-02) resolves; quote verbatim in abstract. Opening untested entry fine. FDA primuline 'nonspecific and nonquantitative' criticism confirmed in bundle."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "source_calls_it enum (unresolved); a tier-2 regulator source on the model's comparison",
+   "note": "Field source_calls_it: null -> 'unresolved'. Bundled BLA 761161 review (nonclinical, resubmission): mouse GL3 methods 'were unable to provide independent nonclinical confirmation of the clinical results' (primuline TLC nonspecific). Status same, year 2019 unchanged. | superseded: confirmed (): Schiffmann 2019 (PMID 30834538, epub 2019-04-08) quote verbatim; NCT01678898 results posted 2020-01-27 confirmed. Mouse 64% residual vs -84% PTC: direction_only reasonable. FDA says the mouse lipid assay could not confirm Gb3 specifically; see rule question.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status rule (same): mouse tissue Gb3 fell and patient renal PTC Gb3 fell 84%, same direction; drafter pairing admissible (evidence rule 1). FDA assay-specificity caveat changes source_calls_it to unresolved, not the status."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NOAEL quote verbatim in bundled BLA 761161 review. Schiffmann 2019 (PMID 30834538, epub 2019-04-08) gave pegunigalsidase's own patient results before the margin was public (2023); margin held at 1 mg/kg, so retro.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Jeyakumar 2023 (PMC10284695, epub 2023-01-11) dose sentence verbatim, normal range 4.0-21.9. Freeline 6-K 2021-11-09: patient 2 averaged 3.9; patient 1 'subtherapeutic' at 0.8-1.3 nmol/hr/mL (stated, not inferred). Retrodiction contra holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Kizhner 2015 quote, verbatim. Opening entry fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "source_calls_it enum (unresolved); a tier-2 regulator source on the model's comparison",
+   "note": "Field source_calls_it: null -> 'unresolved'. Same BLA 761161 passage; FDA adds the KO mouse 'does not exhibit clinical signs' so could not assess eGFR. Status same, year 2019 unchanged. | superseded: confirmed (): Quote verbatim. Registry confirms F01/02 primary = AEs, no registered secondaries; FDA review treats renal PTC Gb3 (BLISS) as the efficacy surrogate and F20/BALANCE eGFR slope as primary. poc_gate is a drafter call, not a sponsor pre-specification; see rule question.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status rule (same): mouse Gb3 clearance prediction agreed in direction with patient PTC Gb3 reduction; evidence rule 1 admits the pairing. FDA nonspecific-assay and no-clinical-signs caveats set source_calls_it unresolved only; status unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundled BLA 761161 review. Drug's own patient safety (Schiffmann 2019) public before the animal silence (2023); non-immune silence reproduced, immune harms outside species scope: retro.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NHP quote verbatim (epub 2023-01-11). Freeline 6-K 2021-11-09 states myocarditis in patient 2 and patient 1's 'previously reported in 2019'; patient 1 liver-enzyme rise not stated there, so note should cite myocarditis. Failed retrodiction: contra.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "ClinicalTrials.gov API: SAE 'Transaminase increase' 1/1 in each arm (0.75e12, 1.5e12 vg/kg), 'Myocarditis' 1 in low arm; results first posted 2026-08-06. Quote is a table term, not a sentence. Contra defensible; see rule question on immune AAV hepatitis."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Pacienza 2012 abstract (PMID 22472949): quote verbatim; sibling LV-alpha-gal A/IRES/hCD25 vector so product_in_model false is right; no patient data in 2012, untested/not_measured."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "DRAFTER_BRIEF retrodiction: engagement and efficacy are claims about the target; a model result first public after a patient result for the same target and action, from any drug, is a retrodiction; reproduced -> retro",
+   "note": "Year 2017 confirmed: AVROBIO release 2017-10-12 read (normal plasma alpha-Gal A within 45 days); Khan 2021 quote verbatim. Huang 2017 postdates GLA-replacement patient enzyme data (agalsidase ERT, 2001), so retrodiction: retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: engagement is a target claim; Huang 2017 NSF xenograft result postdates agalsidase ERT patient alpha-Gal A data (2001) for GLA replacement, and it reproduced them, so retro not same. Draft retrodiction flag should be true."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Pacienza 2012 abstract: heart/kidney Gb3 quote verbatim; opening untested entry, year 2012 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "DRAFTER_BRIEF retrodiction: engagement and efficacy are claims about the target; a model result first public after a patient result for the same target and action, from any drug, is a retrodiction; reproduced -> retro",
+   "note": "Year 2019 confirmed: AVROBIO 8-K exhibit 2019-07-15 (87% PTC Gb3 reduction, 3.55 to 0.47, first FAB-201 biopsy). Registry quote verbatim, posted 2024-01-05. Kidney Gb3 clearance by GLA replacement public since 2001 ERT, before Huang 2017: retro. Single-arm design noted correctly.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: efficacy is a target claim; kidney Gb3 clearance by GLA replacement was public from agalsidase ERT trials (2001), before Huang 2017; model reproduced it, so retro not same. Draft retrodiction flag should be true."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Huang 2017 abstract (PMID 28603745) quote verbatim on NSF xenograft tox; untested/unsettled at 2017 since FACTs reported no safety until 2021."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "AVROBIO 2017-10-12 release read: 'No study related serious adverse events were reported'. Khan 2021 quote verbatim. Huang 2017 (epub 2017-05-12) preceded the drug's own patient result, so same stands; year 2017 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "PubMed 32775495 abstract has the quote verbatim; Yasuda 2020 (epub Jul 2020) precedes any STAAR result (first posted 2026), so prospective, not retro. Untested until patient data; product_in_model true (ST-920 itself)."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "DRAFTER_BRIEF retrodiction: engagement and efficacy are claims about the target; a model result first public after a patient result for the same target and action, from any drug, is a retrodiction; reproduced -> retro",
+   "note": "Year 2021 confirmed via Sangamo 8-K exhibit 2021-11-04 (release itself 403): 'All four patients exhibited above normal alpha-Gal A activity'. Registry quote verbatim. Yasuda 2020 postdates ERT and pegunigalsidase patient enzyme data, so retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: engagement is a target claim; Yasuda 2020 ST-920 mouse result postdates ERT (2001) and pegunigalsidase (2019) patient alpha-Gal A data; it reproduced them, so retro. IND-enabling timing versus own trial does not matter."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in abstract ('good safety profile'); no patient safety results public in 2020, so untested is right. Not the track's latest entry, so untested_reason is informational."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry quote verbatim (posted 2026-04-14). Sangamo 8-K 2021-11-04: ST-920 'generally well tolerated'; release's SAE/steroid sentence not seen (403). Mouse tox (2020) preceded ST-920's own patient data, so same; year 2021 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "ST-920 (isaralgagene civaparvovec) safety track (gene therapy modality): NCT04046224 results posted 2026-04-14 list no transaminase/hepatic SAEs (SAEs: sepsis, stroke, chest pain, enthesopathy) at doses far above FLT190's; its preclinical mouse/NHP tox (Sangamo; model-side source not located in this check, possibly unpublished) would be a separate model_id whose silence held.",
+  "AVR-RD-01 (voxeralgagene autotemcel) has no safety or dose track: lentiviral HSC product with conditioning, nonclinical mouse studies vs FACTs/FAB-201 patients (Khan 2021, doi 10.1038/s41467-021-21371-5; NCT03454893 results 2024-01-05). Model-side source not verified here.",
+  "FDA BLA 761161 review (tier 2) itself states the Fabry-mouse lipid data 'were unable to provide independent nonclinical confirmation of the clinical results' (primuline TLC nonspecific). This is a comparison_stated regulator source on the gla-ko-mouse track that the draft uses only in confidence_note; it could be its own entry with source_calls_it 'unresolved'.",
+  "Sangamo topline press release (STAAR registrational, positive eGFR slope at 52 weeks; investor.sangamo.com) and PTC acquisition release: tier 5 patient-side outcome data for ST-920 not cited in patient_trials."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Efficacy: when the trial that measured the model's surrogate registered only an AE primary and no secondaries, may the regulator-relied surrogate (renal PTC Gb3) be scored as poc_gate, or must efficacy follow the first trial with an efficacy primary (BALANCE eGFR slope, 2023)? The status would stay same but the year would move from 2019 to 2023.",
+  "Engagement/efficacy: does a regulator's statement that the model readout was nonspecific (lipid by primuline TLC, not Gb3) and could not confirm the clinical result downgrade a drafter-paired 'same' to source_calls_it 'unresolved' or 'partial'?",
+  "Safety: AAV transaminase rises in patients are usually capsid T-cell mediated and rarely reproduced in NHPs. Is NHP silence on immune-mediated AAV hepatitis a harm 'the species could have shown' (contra), or out of scope like CRS in a mouse?",
+  "Dose: a tox margin (NOAEL multiple of MRHD) first made public in the 2023 BLA review but generated before or alongside the 2012 first-in-patient trial: does it count as 'stated before the trial' for margin_stated?",
+  "Dose: when a stated NHP margin was broken in patients 20-40x below the clean dose but NHPs showed no such harm, is the dose entry untested (harm counted in safety) correct even though margin_stated is true and Decision 16 says toxicity at or below the effective exposure is dose contra?"
+ ]
+}

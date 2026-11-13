@@ -9,18 +9,20 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Smith 2016 PLoS One (PMID 26870941, PMC4752338) full text: quote verbatim in abstract. sRICA explant is GSK's pre-clinic engagement model; untested opener at 2016 fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Smith 2016 PubMed (PMID 26870941, epub 2016-02-12): quote verbatim in abstract. Topical gsk-2981278 ointment, unselected. Untested opener fine; retrodiction false sits oddly beside entry 2's true (same public date)."
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "SID 2017 abstract 249 (JID) found by search; text reads 'Additionally, no meaningful changes in IL-17 related biomarkers...' (near). Biopsies of treated fields, so engagement failed where explants predicted it. Kang 2018 BJD (PMID 29150844) has no abstract; not read."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "SID 2017 abstract (academia.edu copy) has the quote verbatim; 4% topical plaques. Explants public Feb 2016 after Vitae's Sep/Nov 2015 whole-blood IL-17 suppression (same target, action), so retrodiction true; failed to reproduce, contra holds."
   },
   {
    "cell": "engagement",
@@ -29,16 +31,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "NCT03339999 Prot_000.pdf (Amd 2, 21-Dec-2017) has the quote verbatim and 'formerly Vitae Pharmaceuticals compound VTP-43742'. Results posted 2021-04-06. Different model and drug, so model_change turn-back is allowed under decision 6."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Protocol (Amd 2, 21-Dec-2017) quote verbatim; AGN-242428 'formerly VTP-43742', oral. Vitae release 18 Nov 2015 read: >90% ex vivo whole-blood IL-17A suppression over 24 h in volunteers (SAD Sep 2015). Year 2015 right."
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote verbatim in Smith 2016. No skin exposure measured in patients (as far as abstract-level sources show), so untested is right; the topical failure is already counted once in engagement."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Smith 2016 strength sentence is full-text (abstract read, prior check saw verbatim). Topical gsk-2981278; model text matches gsk-srica-human-skin. Untested holds (skin exposure never measured); lacks untested_reason (not_measured)."
   },
   {
    "cell": "dose",
@@ -47,30 +51,33 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Protocol quote verbatim; same section says the dose was 'efficacious and to not have a liver function test (LFT) signal'. Doses redacted. Reached-and-worked = same; margin_stated false is right (no NOAEL margin public)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Protocol IC90 exposure sentence verbatim. Nov 2015 release: >90% suppression sustained 24 h in all but lowest cohort, so the model's IC90 target was reached in 2015. Oral VTP-43742; margin_stated false right."
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "IMQ mouse quote verbatim in Smith 2016 results (1% ointment, 23% epidermal thickness reduction)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "23% epidermal-thickness quote in Smith 2016 (full text, prior check verbatim). Topical gsk-2981278, IMQ mouse. Public Feb 2016, before VTP-43742's Mar 2016 patient efficacy result, so not a retrodiction; untested opener fine."
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": false,
    "proposed_status": "untested",
    "proposed_year": 2017,
-   "rule": "4",
-   "note": "Quote near-verbatim in SID abstract, primary endpoint confirmed (NCT02548052). But engagement (entry 2) shows IL-17 never moved in treated plaques, and the abstract attributes the null to non-penetration. Target not reached → efficacy untested; count the failure once in engagement.",
+   "rule": "CHECKER_BRIEF 3: trial source attributes result to conditions the model never tested -> untested; DRAFTER dose table: target never reached -> efficacy untested",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in SID abstract; primary endpoint infiltrate thickness; topical right. Authors attribute the null to no dermal penetration, small test fields, short duration, and engagement 2 shows IL-17 unmoved: target not reached, so efficacy untested; miss counted once in engagement.",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4: contra needs the model's own prediction to fail; the source blames non-penetration of human plaque, which the IMQ mouse never tested. Target not reached, so efficacy untested; the miss counts once, in engagement (sRICA explant)."
+   "adjudication_note": "CHECKER_BRIEF 3 and DRAFTER dose table: trial authors attribute the null to no dermal penetration, and plaque biopsies show IL-17 unmoved (engagement contra), so the IMQ mouse efficacy prediction was never tested; miss counted once in engagement."
   },
   {
    "cell": "efficacy",
@@ -79,7 +86,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Gooderham 2025 abstract (PMID 39848568) quote verbatim; co-primary met. Harcken 2021 (PMC7812678) shows BI 730357 in IL-23 minicircle mouse, skin IL-17A up to 109%, S100a8/9 95%. NCT03635099 results 2022-06-02. model_first_use_year null; ~2018 (pre-trial) would fit."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Gooderham 2025 abstract quote verbatim; co-primary PASI75 and sPGA 0/1 both met, in note. Harcken online 2021-01-05 (abstract only) post-dates VTP-43742 Mar 2016 PASI result, so retro right. Oral BI 730357. Judgement prose still says 'so same'."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Protocol IB sentence verbatim. Registry: AGN-242428 oral capsules, plaque psoriasis, whyStopped 'safety reason'. Drug, route, population right; tox unpublished, so untested/unpublished stands."
   }
  ],
  "missing": [

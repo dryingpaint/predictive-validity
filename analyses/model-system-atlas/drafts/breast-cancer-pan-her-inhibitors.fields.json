@@ -1,0 +1,29 @@
+{
+ "tile": "breast-cancer-pan-her-inhibitors",
+ "changed": [
+  {"cell": "efficacy", "index": 3, "what": "year 2014 -> 2013 (rule 6: MINT first public as ASCO 2013 abstract 531, 2013-05-20, doi 10.1200/jco.2013.31.15_suppl.531); combination design (AZD8931 + anastrozole) scored, combination_with anastrozole; drug sapitinib, route oral. Status contra left as drafted (checker's population adjudication to untested is not a rule question)."},
+  {"cell": "efficacy", "index": 4, "what": "status same -> retro, retrodiction true, year 2019 -> 2017 (rule 6: SABCS 2017 abstract PD3-08 reported ORR 78.5% vs 57.1%); retrodiction ruling: neratinib's HER2-positive breast activity (Burstein 2010, doi 10.1200/JCO.2009.25.8707) was public before the model; combination design scored, combination_with capecitabine; drug pyrotinib. Settles RULE QUESTION: Park 2018 belongs to the poziotinib track (appended efficacy 7), not this one."},
+  {"cell": "safety", "index": 5, "what": "retrodiction false -> true (safety retrodiction rests on sapitinib's own earlier patient harms: Tjulandin 2014 epub 2013-04-16, MINT ASCO 2013); failed to reproduce, so contra stands; combination_with anastrozole; drug sapitinib."},
+  {"cell": "safety", "index": 3, "what": "status unchanged (contra); note rewritten under the passing-tolerability-claim ruling (Li 2017 'sufficiently safety windows in animals' scored as a safety prediction); drug pyrotinib."},
+  {"cell": "engagement", "index": 1, "what": "drug sapitinib, route oral"},
+  {"cell": "engagement", "index": 2, "what": "drug poziotinib, route oral"},
+  {"cell": "engagement", "index": 3, "what": "drug sapitinib, route oral"},
+  {"cell": "dose", "index": 1, "what": "drug sapitinib, route oral"},
+  {"cell": "dose", "index": 2, "what": "drug poziotinib, route oral"},
+  {"cell": "dose", "index": 3, "what": "drug pyrotinib, route oral"},
+  {"cell": "dose", "index": 4, "what": "drug sapitinib, route oral"},
+  {"cell": "efficacy", "index": 1, "what": "drug sapitinib, route oral"},
+  {"cell": "efficacy", "index": 2, "what": "drug poziotinib, route oral"},
+  {"cell": "efficacy", "index": 5, "what": "drug sapitinib, route oral"},
+  {"cell": "efficacy", "index": 6, "what": "drug sapitinib, route oral, combination_with anastrozole"},
+  {"cell": "safety", "index": 1, "what": "drug sapitinib, route oral"},
+  {"cell": "safety", "index": 2, "what": "drug poziotinib, route oral"},
+  {"cell": "safety", "index": 4, "what": "drug sapitinib, route oral"}
+ ],
+ "added": [
+  {"cell": "efficacy", "index": 7, "what": "poziotinib track split from efficacy 4: Park 2018 (doi 10.1002/ijc.31651, NCT02418689) single-arm phase 2, no pre-set bar, median PFS 4.04 months, 'meaningful activity'; scored on direction per single-arm ruling; retro 2018 (neratinib 2010 earlier)."},
+  {"cell": "efficacy", "index": 8, "what": "pyrotinib opener on her2-amplified-breast-xenografts: untested 2017, Li 2017 (doi 10.1016/j.ejps.2017.01.021, 2017-01-21)."},
+  {"cell": "dose", "index": 5, "what": "pyrotinib opener on her2-amplified-breast-xenografts: untested 2017, Li 2017."},
+  {"cell": "safety", "index": 6, "what": "pyrotinib opener on her2-amplified-breast-xenografts: untested 2017, Li 2017."}
+ ]
+}

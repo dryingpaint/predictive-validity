@@ -10,7 +10,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Metzner 2009 (PMID 19806248) abstract has the quote verbatim; opening untested entry for rodent PK model is correct."
+   "note": "Metzner 2009 (PMID 19806248) abstract quote verbatim; untested opener 2009; albutrepenonacog alfa, iv, unselected match PROLONG-9FP patients.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -19,7 +20,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Santagostino 2012 (PMID 22859609) quote verbatim in abstract; Nolte 2012 states dog/monkey PK and defers to clinic, so prospective. Phase 1 registry_date (NCT01233440) still not looked up; no status effect."
+   "note": "Santagostino 2012 (PMID 22859609) quote verbatim; Nolte 2012 dog/monkey PK paired. Retro right: FIX replacement raised FIX in patients decades before 2012 (target-level rule). Drug/route/population correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -28,7 +30,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in George 2017 full text (PMC6029626 HTML), citing refs 13/24. BAX 335 expression loss is a mouse-model (different system) miss; best-model rule keeps same, but see rule question."
+   "note": "George 2017 PMC6029626 full text: quote verbatim, cites preclinical refs. Retro right: Nathwani 2011 AAV-FIX expression preceded Crudele 2015. fidanacogene elaparvovec, iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -37,16 +40,22 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Nolte 2012 aPTT quote verbatim in abstract (PMID 22726310). Untested opener correct."
+   "note": "Nolte 2012 (PMID 22726310) aPTT quote verbatim; untested opener; albutrepenonacog alfa, iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Santagostino 2016 trough quote verbatim in abstract (PMID 26755710). Dogs gave no explicit human regimen target, so direction_only same is a fair 'reached, drug worked' call."
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "Dose: a target scores only on the model that stated it; a sponsor trough is not one (dose table row 1)",
+   "note": "Santagostino 2016 trough quote verbatim, but Nolte 2012 states no human regimen, exposure or trough target ('Clinical studies will test...'). The 20/12 IU/dL troughs are the sponsor's: untested, untested_reason no_prediction. Drug/route/population correct.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose rule (table row 1; sponsor trough not a model target): Nolte 2012 abstract states only prolonged dog/monkey PK and 'Clinical studies will test'; no human regimen or trough. untested, no_prediction."
   },
   {
    "cell": "dose",
@@ -55,16 +64,22 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Crudele 2015 (PMID 25568350) quote verbatim. model_filed: true is doubtful: the SBRA names an AAVRh74var-cFIX-R338L surrogate in juvenile dogs, not Crudele's AAV8 vector."
+   "note": "Crudele 2015 (PMID 25568350) quote verbatim; untested opener; fidanacogene elaparvovec, iv, unselected; product_in_model false right (AAV8 cFIX-Padua).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "George 2017 33.7% quote verbatim. Same direction holds. FDA's filed model was the Rh74var surrogate dog (SBRA, 5e11-5e12 vg/kg), arguably a better model_src than Crudele AAV8; status unchanged."
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "Dose: a target scores only if the model stated it; not the drafter's arithmetic",
+   "note": "George 2017 FIX 33.7% quote verbatim. Crudele states dog FIX 25-40% at 1-3e12 vg/kg AAV8, no human dose or exposure target; matching ranges is drafter arithmetic: untested (no_prediction). If kept same, year 2016 (ASH 2016 abstract).",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose rule (table row 1; drafter arithmetic not a target): Crudele 2015 abstract gives dog FIX 25-40% at 1-3e12 vg/kg, no human dose, exposure or margin. untested, no_prediction."
   },
   {
    "cell": "efficacy",
@@ -73,7 +88,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Metzner 2009 tail-tip quote verbatim in abstract."
+   "note": "Metzner 2009 tail-tip quote verbatim in abstract; opener 2009; drug/route/population correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -82,7 +98,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Santagostino 2016 AsBR quote verbatim in abstract; AsBR is the trial's primary efficacy endpoint per abstract framing. Pairing with acute-bleeding mouse model is direction only; acceptable."
+   "note": "Santagostino 2016 (PMID 26755710) AsBR quote verbatim; primary endpoint. 2009 mouse post-dates decades of FIX replacement efficacy: retro under target-level rule. Drug/route/population correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -91,7 +108,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "'The primary efficacy endpoint in this study was met.' verbatim in PMC8359950; primary endpoint is FIX >=12%. Dog paper (Oct 2020) predates the Phase 2b and describes pre-Phase 1/2 work, so not retro. Dogs reached normal, patients mild range: over-predicted magnitude, direction holds."
+   "note": "Mahlangu 2021 PMC8359950 full text: quote verbatim. Dog paper epub 2020-10-28 after Catalyst release 2020-06-15 (all >12% primary bar): retro, year 2020 right. Single-arm with pre-set FIX bar noted. dalcinonacog alfa, sc, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -100,7 +118,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "SBRA (fda.gov/media/178688, 25 Apr 2024) has both quotes verbatim and the surrogate-dog model. Pfizer topline press release 29 Dec 2022 (BusinessWire) reported the primary endpoint met, but the model side was public only in 2024, so year 2024 stands."
+   "note": "SBRA (fda.gov/media/178688) quote verbatim; dog side 'No bleeds were observed in recipient animals' present. Surrogate dogs first public 2024 after FIX efficacy in patients: retro. NI ABR primary noted; year 2024 per rule question 3.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -109,16 +128,23 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Crudele 2015 mouse thrombogenicity quote verbatim in abstract. Untested opener correct."
+   "note": "Crudele 2015 thrombogenicity quote verbatim in abstract; opener 2015; fidanacogene elaparvovec, iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "George 2017 intro sentence verbatim (fragment of a longer sentence) and results 'no development of factor IX inhibitors, no thrombosis' verbatim. Setting aside capsid-directed transaminase rises is backed by George's 'lack of animal models' sentence."
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "Evidence rule 6 (dating: congress abstract earliest public)",
+   "note": "George 2017 full-text quote verbatim (stated comparison). Dogs 2015 precede fidanacogene's own patient data: prospective same right. Year: ASH 2016 abstract (2016-12) already reported no FIX inhibitor in any subject.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: same stands (dogs 2015 precede fidanacogene's own patient data). Year 2016: SPK-9001 WFH/ASH 2016 abstracts reported no FIX inhibitor or thrombosis."
   },
   {
    "cell": "safety",
@@ -127,7 +153,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Nichols 2020 (PMC7592742) quote matches the abstract/results; untested opener correct."
+   "note": "Nichols 2020 PMC7592742 full text: quote verbatim; opener 2020; dalcinonacog alfa, sc, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -136,7 +163,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Mahlangu 2021 thrombogenicity quote verbatim in abstract. Transient early rises make this partial; source_calls_it 'partial' would fit better. ADA set-aside is reasonable."
+   "note": "Mahlangu 2021 quote verbatim. Catalyst 2020-06-15 release: no thrombotic events, no prothrombotic marker signal, before dog paper (Oct 2020): drug-level retrodiction, retro, year 2020 right. Drug/route/population correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -145,8 +173,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Monahan 2015 (PMID 25419787) abstract has the quote verbatim; PubMed entry 2014-11-25 (online ahead of editing) supports year 2014. Opening untested, class level, correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Monahan 2015 (PMID 25419787) abstract quote verbatim; untested opener 2014; AskBio009 (BAX 335), iv, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -155,28 +183,28 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Konkle (PMID 33067633, PubMed 2020-10-17) quote verbatim. Same vector dosed in mice held expression 8-10 months; patients lost it by 5-11 weeks, so contra, not untested. Year may be 2015 (ISTH 2015 / Baxalta release), unverified.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Konkle 2021 abstract quote verbatim. Year 2015 holds: Baxalta ISTH 2015 release reported immune response decreasing FIX. Mouse Nov 2014 post-dates Nathwani 2011: retrodiction that failed, contra stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Majowicz 2019 (PMC6586596) full text: quote verbatim; NAB-stratified NHP analysis first public here. Opening untested, patient level, fine.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Majowicz 2019 (PMID 31276009) quote verbatim; opener 2019; AAV5-hFIX (AMT-060), iv; trial enrolled regardless of NAB, unselected fits.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Full text: 'Pre-treatment serum samples of 14 NHPs were re-analyzed' after the AMT-060 patient re-test found NAB+ responders, so retro (not same) is right; patient level correct.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Majowicz 2019 quote verbatim; NHP analysis reported after the AMT-060 patient NAB result, retro right; drug/route/population correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -185,18 +213,23 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Monahan 2015 abstract: necropsy quote verbatim (no thrombosis at FIX 100-500%, no FIX antibodies). Opening untested, year 2014 per PubMed entry.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Monahan 2015 necropsy quote verbatim in abstract; opener 2014; AskBio009, iv, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 6,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Konkle abstract quote verbatim; no thrombosis/inhibitors in 8 patients as mice predicted. Prospective (mice 2014, trial after), so same not retro. Weak test (patient FIX 32-58%), as noted.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "proposed_status": "same",
+   "proposed_year": 2015,
+   "rule": "Evidence rule 6 (dating: sponsor release earliest public)",
+   "note": "Konkle quote verbatim; mice (Nov 2014) precede patients: prospective same right. Year: Baxter EAHAD release Feb 2015 already reported no FIX inhibitors in dosed patients, the mouse's predicted immunity harm.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: same stands (mice 2014 precede BAX 335 patients). Year 2015: Baxter release 2015-02-12 states 'No patients have developed FIX inhibitors to date' (verified)."
   },
   {
    "cell": "safety",
@@ -205,8 +238,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "FDA SBRA Beqvez (STN 125786) quote verbatim; NHP GLP tox with predecessor AAVRh74var-hFIX-Padua at 1-5e12 vg/kg, FIX 2-4x normal, no thrombosis. product_in_model false and proxy year 2015 fine.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "SBRA NHP tox quote verbatim (1-5e12 vg/kg, 2-10x clinical dose, no thrombosis); opener with 2015 proxy; fidanacogene elaparvovec, iv, unselected; product_in_model false (predecessor vector).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -215,8 +248,53 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "SBRA quote verbatim: no thromboembolic events or FIX inhibitors in either trial. NHP data first public in the 2024 SBRA, so year 2024 correct; prospective, same, class level.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "SBRA quote verbatim. NHP tox first public 2024 after fidanacogene's own patient safety (ASH 2016 / George 2017): drug-level retrodiction, retro right. Drug/route/population correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "not_found",
+   "status_supported": true,
+   "note": "Dane 2018 ASH abstract (doi 10.1182/blood-2018-99-117969) not reopened this pass (not in PubMed); quote matches prior verified reading. Opener 2018; verbrinacogene setparvovec, iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2020,
+   "rule": "Evidence rule 6 (dating: congress abstract earliest public)",
+   "note": "Chowdary 2022 abstract quote verbatim; retro right (Nathwani 2011 precedes Dane 2018). Year: B-AMAZE FIX levels first public at ISTH 2020 (Chowdary LB/CO01.1, July 2020, ASH Clinical News). Judgement text still says 'so same'.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule and rule 6: retro stands (Nathwani 2011 precedes Dane 2018). Year 2020: B-AMAZE FIX levels first public at ISTH 2020 (ASH Clinical News, ISTH site); judgement's 'so same' wording is stale."
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "SBRA healthy-mouse quote verbatim (6 of 110 deaths test-article related, doses 2-10x below human); opener with 2015 proxy; drug/route/population correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "SBRA quote verbatim; mouse tox first public 2024 after fidanacogene patient safety: retrodiction; predicted lethal harm absent in patients, contra/opposite per brief and settled rule question 4. FDA attributes deaths to endogenous FIX plus blood draws.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -224,12 +302,14 @@
   "AskBio009/BAX 335 (Konkle 2021, PMID 33067633): FIX not sustained beyond 5-11 weeks in 7 of 8 patients; first public in Baxalta 2015-2016 releases and ASH abstracts. Only mentioned in judgement/patient_trials; a dated engagement/dose entry against its own preclinical model (Monahan 2015 mice/NHP) would show the miss even if the best-model rule leaves the cell at same.",
   "verbrinacogene setparvovec (FLT180a, Chowdary 2022 NEJM 10.1056/NEJMoa2119913): needed glucocorticoids +/- tacrolimus, one AV-fistula thrombosis at FIX 260%; development paused 2022 (Freeline). Its preclinical (NHP) model was not read by the drafter or by me.",
   "AAV5-hFIX (AMT-060, Miesbach 2018 Blood 10.1182/blood-2017-09-804419): FIX 4.4-6.9 IU/dL; no comparison with its NHP predictions was looked for (dose cell, gene therapy).",
-  "Fidanacogene predecessor (AAVRh74var-hFIX-Padua) GLP toxicology in healthy mice: 6 test-article-related unscheduled deaths (brain/skin pathology, read as exacerbated tissue/vascular injury in animals with endogenous FIX) at doses 2-10x below the human dose; no such harm in patients. Safety track absent from the draft (FDA SBRA Beqvez, https://www.fda.gov/media/178688/download, nonclinical section)."
+  "Fidanacogene predecessor (AAVRh74var-hFIX-Padua) GLP toxicology in healthy mice: 6 test-article-related unscheduled deaths (brain/skin pathology, read as exacerbated tissue/vascular injury in animals with endogenous FIX) at doses 2-10x below the human dose; no such harm in patients. Safety track absent from the draft (FDA SBRA Beqvez, https://www.fda.gov/media/178688/download, nonclinical section).",
+  "Humanised (chimeric human-murine) liver mouse and primary human hepatocyte cultures for AAVS3/FLT180a (Dane 2018 ASH, doi 10.1182/blood-2018-99-117969): AAVS3 6-fold more efficient than AAV8 on human hepatocytes; a human-hepatocyte potency track that the macaque track's underprediction of patient FIX would test (Chowdary 2022)."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
   "Best-model rule vs class members on different models: when one member (BAX 335, mouse model) is contradicted and another (fidanacogene, dog model) matches in the same cell and same year range, the cell shows only the dog's same. Should a different member's contra on a different model of the same kind (AAV8 FIX-Padua, liver) be shown?",
   "Two dog systems for fidanacogene: Crudele 2015 AAV8-cFIX-Padua (cited by George 2017) vs the AAVRh74var-cFIX-R338L surrogate FDA reviewed. Are these one model_id (same species, transgene, route) or two, and which is 'the model the class relied on' for dose?",
-  "Year of a pairing whose patient side was public first by press release (Dec 2022) and model side only in the SBRA (Apr 2024): rule 6 does not say whether the year is the later of the two dates."
+  "Year of a pairing whose patient side was public first by press release (Dec 2022) and model side only in the SBRA (Apr 2024): rule 6 does not say whether the year is the later of the two dates.",
+  "safety 10 (healthy-mouse AAVRh74var-hFIX-Padua tox): FDA attributes the deaths to endogenous FIX plus repeated blood draws, conditions patients lack. Does a model harm explained by a model-only condition stay contra/opposite, or become untested?"
  ]
 }

@@ -34,22 +34,27 @@
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
-    "source_calls_it": "match",
+    "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2007,
     "confidence": "high",
     "confidence_note": "Abstract-level reading (Europe PMC).",
     "year": 2007,
     "status": "untested",
-    "model": "Rat and dog sleep EEG/EMG in the active phase",
+    "model": "Rat, dog and rhesus sleep EEG/EMG in the active phase, watched for cataplexy",
     "model_id": "rat-dog-sleep-eeg",
-    "note": "Almorexant, a non-member DORA, cut wake and raised NREM/REM sleep in rats and dogs; its human arm does not score here.",
+    "note": "Almorexant, a non-member DORA, cut wake and raised NREM/REM sleep in rats and dogs; its human arm does not score here. Opens suvorexant's oral track on this model with a sibling drug (product_in_model false).",
     "short": "Rat and dog EEG sleep; sibling drug",
     "src": "https://doi.org/10.1038/nm1544",
     "srcLabel": "Brisbare-Roch 2007",
     "quote": "Here we report that in rats, dogs and humans, somnolence is induced by pharmacological blockade of both orexin OX(1) and OX(2) receptors.",
     "judgement": "The rat/dog sleep-EEG model opens with almorexant, which is not a member of this class, so product_in_model is false and the paper's healthy-volunteer arm cannot score; the model itself is the one Merck reused for suvorexant (Winrow 2011).",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "suvorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "subjects": "healthy_volunteers",
@@ -75,7 +80,7 @@
     "confidence_note": "Abstract-level reading of both papers (Europe PMC); comparison is my pairing.",
     "year": 2013,
     "status": "same",
-    "model": "Rat, dog and rhesus sleep EEG/EMG (suvorexant)",
+    "model": "Rat, dog and rhesus sleep EEG/EMG in the active phase, watched for cataplexy",
     "model_id": "rat-dog-sleep-eeg",
     "note": "Suvorexant promoted PSG sleep in healthy men at 10-100 mg, as it cut active wake in rats, dogs and rhesus.",
     "short": "Healthy men slept more, as animals did",
@@ -85,7 +90,11 @@
     "reason": "Human PSG sleep moved as animal EEG did",
     "judgement": "No human orexin-receptor PET tracer exists, so the engagement readout is the one the model used: EEG-defined sleep after a dose (downstream). I paired Winrow 2011 (suvorexant in rat, dog, rhesus, the EEG package the FDA pharmacology review lists) with the healthy-volunteer PSG study rather than with Herring 2012 (patients, Nov 2012), to keep engagement apart from the efficacy endpoint; dated by Sun 2013. Partial: animals showed more slow-wave/delta sleep, but Sun found no significant effect on EEG delta power.",
     "readout_tier": "downstream",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "suvorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -121,7 +130,11 @@
     "srcLabel": "Winrow 2011",
     "quote": "Examination of Suvorexant in radioligand binding assays using tissue from transgenic rats expressing the human OX(2)R found nearly full receptor occupancy (>90%) at plasma exposures of 1.1 μM.",
     "judgement": "The 0.4 uM C4h target 'based on preclinical EEG data' is stated in the FDA clinical-pharmacology review, not in Winrow 2011; Winrow is the first public use of the suvorexant dose model.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "suvorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "mixed",
@@ -156,7 +169,11 @@
     "quote": "The target concentration for C4hr on day 14 was attained at doses ranging from 40 mg to 100 mg (attainment of the target is based on the lower bound of the CI)",
     "judgement": "Scored same under the table row 'reached, drug worked': Phase 3 dosed 40 mg (30 mg elderly) to the target and it worked. But the FDA summary review found suvorexant 'effective ... at doses of 10 mg, 15 mg, 20 mg, 30 mg, 40 mg, and 80 mg' and the driving studies found 15 mg 'the only suvorexant dose, which did not cause next-day impairment', so the sponsor withdrew 30/40 mg. The model over-stated the needed exposure (~4x by dose, 10 vs 40 mg), and that overshoot is what the FDA cut. A re-scorer who reads the next-day impairment at the target dose as decision 16 toxicity could make this contra; I did not, because the model stated no tolerability margin for next-day effects. Gotter 2013 (rat 65% occupancy scaled to 0.33 uM) is a post-Phase-2b revision and is not used.",
     "margin_stated": false,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "suvorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "subjects": "patients",
@@ -177,14 +194,14 @@
     "magnitude_basis": "dog NOAEL Cmax/AUC vs human Cmax/AUC at 50 mg (3x margin)",
     "source_calls_it": "match",
     "population": "Unselected",
-    "model_first_use_year": null,
+    "model_first_use_year": 2014,
     "confidence": "high",
-    "confidence_note": "FDA integrated review read in full text from the local bundle; registry dates for NCT03545191/NCT03575104 not looked up.",
+    "confidence_note": "FDA integrated review read in full text from the local bundle; registry dates for NCT03545191/NCT03575104 not looked up. model_first_use_year 2014 is a proxy from study number T-14.067 (13-week dog study).",
     "year": 2022,
     "status": "same",
     "model": "13-week dog toxicology: cataplexy NOAEL (daridorexant)",
     "model_id": "dog-tox-cataplexy-noael",
-    "note": "Dog cataplexy NOAEL gave a 3-fold margin over the 50 mg maximum dose; no cataplexy appeared at 50 mg in Phase 3.",
+    "note": "Dog cataplexy NOAEL gave a 3-fold margin over the 50 mg maximum dose; no cataplexy appeared at 50 mg in Phase 3. Retrodiction rule (dose: same drug only): no earlier daridorexant patient report of cataplexy found at abstract level, so prospective.",
     "short": "Dog 3x cataplexy margin held",
     "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2022/214985Orig1s000IntegratedR.pdf",
     "srcLabel": "FDA daridorexant review 2022",
@@ -192,7 +209,11 @@
     "reason": "Stated tolerability margin held in patients",
     "judgement": "Decision 16 entry: the dog study stated a tolerated exposure (NOAEL 20 mg/kg/day, 3x the 50 mg MRHD by Cmax and AUC) and patients were dosed to 50 mg without that toxicity; cataplexy-like reactions appeared only at a supratherapeutic 200 mg. A different model from the suvorexant PK target, hence model_change. The FDA review puts both sides together, so comparison_stated is true.",
     "margin_stated": true,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "daridorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -229,7 +250,11 @@
     "model": "PBPK-PD model of brain OX2 receptor occupancy (daridorexant, 65% occupancy threshold)",
     "model_kind": "in_silico",
     "prediction_level": "class",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "daridorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -267,7 +292,11 @@
     "model": "PBPK-PD model of brain OX2 receptor occupancy (daridorexant, 65% occupancy threshold)",
     "model_kind": "in_silico",
     "prediction_level": "class",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "drug": "daridorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -295,16 +324,21 @@
     "confidence_note": "Abstract-level reading (Europe PMC).",
     "year": 2007,
     "status": "untested",
-    "model": "Rat and dog sleep EEG/EMG in the active phase",
+    "model": "Rat, dog and rhesus sleep EEG/EMG in the active phase, watched for cataplexy",
     "model_id": "rat-dog-sleep-eeg",
-    "note": "Healthy rats and dogs dosed in their active phase; no animal model of insomnia itself. First used with sibling almorexant.",
+    "note": "Healthy rats and dogs dosed in their active phase; no animal model of insomnia itself. First used with sibling almorexant. Opens suvorexant's oral track on this model with a sibling drug (product_in_model false).",
     "short": "Healthy rats and dogs, no insomnia model",
     "src": "https://doi.org/10.1038/nm1544",
     "srcLabel": "Brisbare-Roch 2007",
     "quote": "When administered orally during the active period of the circadian cycle, a dual antagonist increased, in rats, electrophysiological indices of both non-REM and, particularly, REM sleep, in contrast to GABA(A) receptor modulators",
     "judgement": "Almorexant is not a member, so product_in_model is false and its 2012 insomnia trial (Hoever 2012) does not score. Suvorexant entered the same model in Winrow 2011.",
     "endpoint_role": null,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "suvorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "subjects": "patients",
@@ -330,7 +364,7 @@
     "confidence_note": "Abstract-level reading (Europe PMC); comparison is my pairing.",
     "year": 2012,
     "status": "same",
-    "model": "Rat, dog and rhesus sleep EEG/EMG (suvorexant)",
+    "model": "Rat, dog and rhesus sleep EEG/EMG in the active phase, watched for cataplexy",
     "model_id": "rat-dog-sleep-eeg",
     "note": "Suvorexant raised PSG sleep efficiency dose-dependently in 254 primary-insomnia patients, as it promoted sleep in three species.",
     "short": "Insomnia patients slept more, as predicted",
@@ -355,7 +389,11 @@
       "quote": null
      }
     ],
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "suvorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -383,15 +421,20 @@
     "confidence_note": "Abstract-level reading (Europe PMC).",
     "year": 2007,
     "status": "untested",
-    "model": "Rat and dog dosing watched for cataplexy, against orexin-deficient narcolepsy",
+    "model": "Rat, dog and rhesus sleep EEG/EMG in the active phase, watched for cataplexy",
     "model_id": "rat-dog-sleep-eeg",
-    "note": "Orexin loss causes narcolepsy-cataplexy in dogs, mice and people; acute almorexant gave no cataplexy in rats or dogs.",
+    "note": "Orexin loss causes narcolepsy-cataplexy in dogs, mice and people; acute almorexant gave no cataplexy in rats or dogs. Opens suvorexant's track on this model with sibling almorexant; no suvorexant entry follows on it.",
     "short": "Narcolepsy genetics flag cataplexy; none seen",
     "src": "https://doi.org/10.1038/nm1544",
     "srcLabel": "Brisbare-Roch 2007",
     "quote": "No signs of cataplexy were observed, in contrast to the rodent, dog or human narcolepsy syndromes.",
     "judgement": "Sibling drug (almorexant, non-member), so product_in_model is false and nothing scores until a member's animal and patient data meet.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "suvorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unsettled"
    },
    {
     "subjects": "patients",
@@ -427,7 +470,11 @@
     "reason": "Dog cataplexy signal recurred in patients",
     "judgement": "The review sets the nonclinical finding ('nonclinical studies suggested a theoretical safety concern for cataplexy') beside the patient cases, so comparison_stated is true. The sponsor's adjudication found no confirmed cataplexy; the CDTL overruled that for one patient and listed others at 40-80 mg, and the label (5.6) warns of dose-related cataplexy-like symptoms. Daridorexant (2022) and lemborexant (2019, one adjudicated event; mouse chocolate-cataplexy model) agree. Next-day impairment, the harm behind the FDA dose cut, was not tested in the animal package; I score it under dose, not here.",
     "imported_from": null,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "drug": "suvorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -462,7 +509,11 @@
     "model": "Rhesus IV self-administration, rat zolpidem drug discrimination and rat withdrawal (abuse liability battery)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "drug": "suvorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -471,34 +522,38 @@
     "model_filed": null,
     "imported_from": null,
     "year": 2014,
-    "status": "contra",
-    "subjects": "healthy_volunteers",
+    "status": "same",
+    "subjects": "patients",
     "comparison_stated": true,
     "source_tier": 2,
-    "model_src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2014/204569Orig1s000MedR.pdf",
+    "model_src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2014/204569Orig1s000PharmR.pdf",
     "model_src_tier": 2,
-    "registry_date": null,
+    "registry_date": "2014-09-01",
     "epub_year": 2014,
     "print_year": 2014,
     "product_in_model": true,
-    "magnitude": null,
-    "magnitude_basis": "Drug Liking VAS peak vs placebo: animals showed no reinforcement; humans liked suvorexant as much as zolpidem",
-    "source_calls_it": "miss",
-    "population": "Healthy recreational polydrug users (human abuse potential trial P025)",
+    "magnitude": "direction_only",
+    "magnitude_basis": "Abuse-related ECIs in insomnia Phase 3, 0-3 months: suvorexant HD 2.0%, LD 3.2%, placebo 2.2%; no withdrawal syndrome",
+    "source_calls_it": "match",
+    "population": "Adults with insomnia (suvorexant Phase 3 pool P028, P029, P009)",
     "confidence": "medium",
-    "confidence_note": "The review states the sponsor's 'lack of nonclinical evidence of abuse potential' beside Trial P025. The 2019 lemborexant review repeats the pattern ('Nonclinical findings were less suggestive of abuse liability'), and daridorexant's 2022 HAP study matched zolpidem; both are scheduled C-IV.",
-    "note": "Animals showed no reinforcement or dependence, yet recreational users liked suvorexant as much as zolpidem; it was scheduled C-IV.",
-    "short": "Animals no abuse; humans liked it",
+    "confidence_note": "FDA medical review read from the local bundle: it sets the sponsor's 'lack of nonclinical evidence of abuse potential' beside the Phase 3 ECI data and HAP trial P025. Phase 3 rebound insomnia was suggested; abuse ECIs are a coarse readout of liking.",
+    "note": "Imported-harm ruling: insomnia patients were measured and showed no excess abuse-related events or withdrawal, matching the animals; recreational users' drug liking (C-IV) is kept as context only.",
+    "short": "No abuse signal in insomnia patients",
     "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2014/204569Orig1s000MedR.pdf",
     "srcLabel": "FDA medical review 2014",
-    "quote": "suvorexant in all tested doses (40 mg, 80 mg, and 150 mg) showed greater abuse potential than placebo in recreational polydrug users.",
-    "reason": "Animals missed human drug liking",
-    "judgement": "Model silent on a harm the species battery is built to show (reinforcement); the human abuse potential trial found liking like zolpidem, so contra. The human side is healthy recreational users, the regulator's standard population for this harm.",
+    "quote": "In the Combined Phase 3 Population 0-3 months, the incidence of any ECI potentially relevant to abuse potential was comparable across treatment groups",
+    "reason": "Insomnia patients showed no abuse signal",
+    "judgement": "Was contra on the human abuse potential trial in healthy recreational polydrug users (P025: liking like zolpidem, C-IV). Under the ruling that this disease's patients decide where they were measured, the Phase 3 insomnia pool sets the status: abuse-related ECIs comparable to placebo and no clear withdrawal, as the animal battery predicted, so same.",
     "model_id": "rhesus-rat-abuse-liability-battery",
     "model": "Rhesus IV self-administration, rat zolpidem drug discrimination and rat withdrawal (abuse liability battery)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "drug": "suvorexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -533,7 +588,11 @@
     "model": "Mouse emotion-induced (chocolate) cataplexy, wild-type vs preproorexin knockout (lemborexant)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "lemborexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -558,7 +617,7 @@
     "population": "Adults with insomnia disorder (lemborexant Phase 3 pool)",
     "confidence": "medium",
     "confidence_note": "The reviewer judged cataplexy-related term incidence 'similar in all groups'; one LEM10 case resembled cataplexy but the adjudication committee did not agree. The label nonetheless warns of mild cataplexy-like symptoms.",
-    "note": "The label warns that mild cataplexy-like leg weakness can occur on lemborexant, as the mouse model showed; no adjudicated cataplexy.",
+    "note": "The label warns that mild cataplexy-like leg weakness can occur on lemborexant, as the mouse model showed; no adjudicated cataplexy. Retrodiction rule (safety: same drug only): run in 2014 before lemborexant patients; suvorexant's earlier cataplexy-like events do not count, so prospective.",
     "short": "Mild cataplexy-like symptoms, labelled",
     "src": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/212028s000lbl.pdf",
     "srcLabel": "DAYVIGO label 2019",
@@ -569,7 +628,11 @@
     "model": "Mouse emotion-induced (chocolate) cataplexy, wild-type vs preproorexin knockout (lemborexant)",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "lemborexant",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

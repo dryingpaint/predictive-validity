@@ -1,0 +1,205 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/chronic-myeloid-leukemia-abl1-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "O'Hare 2009 Cancer Cell (PMID 19878872) resolves; quote verbatim in abstract. Opening untested entry at 2009 is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cortes 2012 NEJM (PMC3777383) full text has the pCRKL sentence verbatim. Model-side CRKL readout seen only at abstract level (O'Hare full text rate-limited); proximal tier fine."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim but abstract does not state 40 nM; the 40 nM screen threshold is confirmed by Cortes 2012 full text ('ponatinib suppressed the emergence of any mutation at a concentration of 40 nM')."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Cortes 2012 full text; source itself sets trough against the 40 nM screen threshold, so comparison_stated true is right. margin_stated null correct (FDA PharmR states no margin)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Abstract verbatim; opening entry correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PACE abstract (PMID 24180494) verbatim; MCyR in CP-CML is the primary endpoint. NCT01207440 results first posted 2020-01-29, matches registry_date; year 2013 from epub is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2019,
+   "rule": "Evidence rule 6 (dating): year is the earliest public date, including a congress abstract",
+   "note": "Zhang CCR abstract verbatim (epub 2020-09-14), MMR6 primary. Retro right: Luo 2010 epub 2010-08-12 follows ENESTnd/DASISION (June 2010). FESTnd primary result public earlier as ASCO 2019 abstract (JCO 37:15_suppl 7004, 2019-05-20): year 2019. Drug, oral, stage_or_line right.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status retro agreed (retrodiction rule: Luo 2010 post-dates ENESTnd/DASISION). Rule 6: ASCO 2019 abstract (JCO 37:15_suppl 7004, online 2019-05-26) reports MMR6 primary met, so the entry year is 2019, not 2020."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Abstract verbatim; patient-level opening entry fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PACE abstract verbatim; also 'Responses were observed regardless of the baseline BCR-ABL kinase domain mutation status'. Same holds for 2013, but Zabriskie 2014 compound-mutation resistance is a missing later entry on this track (see missing)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2012,
+   "rule": "safety: 'did the model's stated prediction hold, or was its silence contradicted on a harm the species could have shown'; one contra beats a same on the track",
+   "note": "Quote verbatim in bundled PharmR. PharmR has zero hits for thromb/occlus; 2012 label boxes ARTERIAL THROMBOSIS (8%). Rat/monkey could show vascular occlusion, so silence on the boxed harm is a miss, not partial.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Safety rule: silence on a harm the species could have shown is a miss. Arterial thrombosis, boxed on the 2012 label, is absent from the rat/monkey PharmR and observable in those species; a missed boxed harm outweighs partial organ matches."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Zabriskie 2014 Cancer Cell (PMC4160372) highlights carry the quote verbatim; opening untested entry at the panel's first use, 2014, patient level. Confirmed.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PMC4160372 highlights. Mutants were picked from clinically reported cases with outcomes already known, so retro (retrodiction true), not same. Confirmed.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Sharma 2017 Sci Transl Med (PMC5409837) quote verbatim. Opening untested entry fine; note Talbert 2015 hiPSC-CM ponatinib screen predates it, so first use year could be 2015.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PMC5409837. Ponatinib vascular toxicity was known (2013 label/PACE) before the hiPSC-EC assay, so retro is right; class-level prediction. Confirmed.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mian 2015 Leukemia (epub 2014-11-14) abstract carries the quote verbatim; selectivity-for-safety design stated before vamotinib's trial. Opening untested entry, 2014. Confirmed.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Turkina 2025 (PMC12141164) quote verbatim; phase 1 reported no vascular occlusive or arterial events, ABI normal. Prediction (2014) preceded trial, so same, not retro; low confidence apt (n=51, ~6 months).",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Zabriskie 2014 (PMC4160372) intro carries quote (citation stripped in BioC). O'Hare 2009 full text (PMC2804470): T315I-start screen kept E255V/T315I to 320 nM, above 101 nM plasma level; 2009 screen predates 2014 failures, so prospective same, not retro."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mian quote verbatim in abstract (epub 2014-11-14, year 2014). Turkina 2025 PMC12141164: primary objective MTD/DLT verbatim, efficacy secondary, so untested/unsettled. Vamotinib, oral, stage_or_line right. Model post-dates ponatinib T315I patient data, so retrodiction should be true.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "Patient-level track, later entry: Zabriskie 2014 Cancer Cell (doi:10.1016/j.ccr.2014.07.006, PMC4160372) shows T315I-inclusive compound mutants (E255V/T315I IC50 659.5 nM, >6.5x mean 45 mg plasma level) caused clinical ponatinib resistance, against the 2009 screen's 'completely abrogated resistance' at 40 nM; candidate contra (or same/partial, since the paper says preclinical studies had flagged compound-mutant vulnerability) in 2014.",
+  "Missing track: Ba/F3 compound-mutant in-vitro resistance profiling (Zabriskie 2014: 'In vitro resistance profiling was predictive of treatment outcomes in Ph(+) leukemia patients'), patient-level; largely a retrodiction since built on clinically reported mutants.",
+  "Missing track: ex vivo drug-sensitivity profiling of patient leukemia cells, 'Drug response profiling can predict response to ponatinib in a patient' (Blood Cancer J 2015, https://www.nature.com/articles/bcj201513), patient-level, single case.",
+  "Missing failure: EPIC phase 3 ponatinib vs imatinib first-line (NCT01650805; Lipton 2016 Lancet Oncol, doi:10.1016/S1470-2045(16)00080-2, PMID 27083332) terminated early for arterial occlusive events (7% vs 2%); primary endpoint not evaluable. Bears on safety (thrombosis) and should be noted in efficacy.",
+  "Missing dose evidence: OPTIC dose-ranging (Cortes 2021 Blood, PMC9728404) kept responses after reduction to 15 mg, whose trough is below the 40 nM screen threshold; relevant to whether the screen's exposure target was over-stated.",
+  "Vamotinib's own preclinical model (Mian 2015 Leukemia, PF-114 in Ba/F3 T315I and mouse) is cited by Turkina 2025; draft records vamotinib only under patient_trials without naming this model source."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Safety: when an animal study matches some clinical organ toxicities (heart, liver, pancreas) but is silent on the boxed harm (arterial thrombosis) the species could show, is the cell same+partial or contra?",
+  "Does a member drug's own preclinical model (flumatinib's HH-GV-678 cell/mouse work, vamotinib's PF-114 work) share the track of another member's model of the same type, or is it its own track ('a member drug's own model' is listed as a missing-track type)?",
+  "Dose: a screen-stated exposure target was reached (same), but a later trial (OPTIC) showed efficacy below it. Is that an over-prediction (source_calls_it over_predicted / magnitude) on the dose track or out of scope because the target was reached?",
+  "Patient-level mutation track: when the screen flagged compound-mutant vulnerability but its headline claim was complete suppression at 40 nM, does later clinical compound-mutant escape at above-40 nM exposure score contra or same/partial?",
+  "Can a short (median ~6 months, n=51) phase 1 with no arterial occlusive events score `same` for a vascular-safety prediction when the reference drug's events accrued over years (vamotinib safety 5)?"
+ ]
+}

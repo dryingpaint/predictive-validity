@@ -1,0 +1,56 @@
+{
+ "tile": "hepatitis-c-virus-infection-ifnar1-ifnar2-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug=interferon alfa-5, route=sc (NCT01121731 s.c. TIW), population_group=stage_or_line (genotype 1 relapsers); note: model post-dates IFN-α patient data"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug=PEG-IFN-SA, route=sc, population_group=unselected"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same->retro, retrodiction=true: monkey serum antiviral readout (2011) post-dates IFN-α/peginterferon patient engagement data for IFNAR agonism; drug=PEG-IFN-SA, route=sc, population_group=unselected (healthy volunteers)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug=PEG-IFN-SA, route=sc, population_group=unselected"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug=interferon alfa-5, route=sc, population_group=stage_or_line"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug=PEG-IFN-SA, route=sc, population_group=unselected; strengthens prose moved to note, set true"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug=interferon alfa-5, route=sc, population_group=stage_or_line; note: model post-dates IFN-α patient data"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug=PEG-IFN-SA, route=sc, population_group=unselected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same->retro, retrodiction=true: HCV RNA decline on IFN-α was public long before the 2011 monkey model (retrodiction rule, efficacy counts any drug of the target); drug=PEG-IFN-SA, route=sc, population_group=unselected, combination_with=null (Ding arms monotherapy); patient_trials NCT corrected to NCT01605513, NCT01903278 kept as later phase 3"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug=PEG-IFN-SA, route=sc, population_group=unselected"
+  }
+ ],
+ "added": []
+}

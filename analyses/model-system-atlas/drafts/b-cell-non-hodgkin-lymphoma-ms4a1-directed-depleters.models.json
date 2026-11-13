@@ -1,0 +1,44 @@
+{
+ "tile": "b-cell-non-hodgkin-lymphoma-ms4a1-directed-depleters",
+ "searched": [
+  "Draft tracks: daudi-scid-disseminated-lymphoma (DI-Leu16-IL2) and mb-cart20-1-target-coculture (MB-CART20.1); checker missing list (ASH 2022 MB-CART20.1 abstract, melanoma trial cross-indication safety, CART20 construct) read as leads",
+  "tiles.json: members CART20, MB-CART20.1, di-leu16-il2; none has an NDA/BLA, so no FDA text bundle rows in sources/manifest.csv",
+  "PubMed esearch: DI-Leu16-IL2 OR Leu16-IL2 OR anti-CD20-IL2 immunocytokine (titles read; only Gillies 2005 is member-specific primary data)",
+  "PubMed esearch: MB-CART20.1 OR MB-CART2019.1 OR (CD20 CAR AND Miltenyi) (Kutsch 2026 lymphoma, Balke-Want 2026 melanoma, Aleksandrova 2024)",
+  "PubMed esearch: CD20 chimeric antigen receptor T cells lymphoma xenograft clinical (no member-construct xenograft paper)",
+  "PubMed efetch abstracts: Kutsch 2026 (PMID 42906410), Balke-Want 2026 (PMID 42913258), Gillies 2005 (PMID 15692062), Aleksandrova 2024 (PMID 39386211)",
+  "Europe PMC: \"DI-Leu16-IL2\" OR \"DI-Leu16-IL-2\" OR \"Leu16-IL2\" (reviews and Gillies 2005 only; no full clinical paper)",
+  "Europe PMC: \"NCT02965157\" OR (CART20 AND Biohealthcare) (reviews listing the trial only)",
+  "ClinicalTrials.gov API v2: NCT02965157 (CD28-zeta retroviral CAR, status unknown, no results), NCT00720135 (IV DI-Leu16-IL2 phase I, completed, no results, no references), NCT01874288 (results 2020-11-24; anti-drug antibody outcome not collected)",
+  "fc.py search: DI-Leu16-IL2 phase I lymphoma results cynomolgus OR pharmacokinetics OR ADCC patients (ASH abstracts only)",
+  "fc.py search: Beijing Biohealthcare CD20 CAR-T NCT02965157 (AdisInsight: discontinued phase I/II; trial listings only; no construct source or preclinical paper named)"
+ ],
+ "added_models": [],
+ "considered_not_added": [
+  "In-vitro ADCC with human effector cells (Gillies 2005, DI-Leu16-IL2 vs rituximab): no trial measured ADCC on patient samples; no comparison, and the draft's Daudi track already notes it.",
+  "In-silico MHC class II T-cell epitope deimmunization (Gillies 2005), predicting low immunogenicity: NCT01874288 listed anti-DI-Leu16-IL2 antibodies as a secondary outcome but the posted results say the data were not collected because of early termination; no comparison.",
+  "DI-Leu16-IL2 ARH77:luc and other mouse models (ASH abstracts, e.g. Blood S0006497118671861): conference abstracts are not an admissible tier, and no peer-reviewed paper reports them.",
+  "DI-Leu16-IL2 non-human primate toxicology or PK model: none public; the IV phase I NCT00720135 has no posted results or publication.",
+  "MB-CART20.1 xenograft or nonclinical package behind EudraCT 2017-000121-12: not public; Kutsch 2026 abstract cites none; a track would be untested/unpublished with no comparison.",
+  "MB-CART20.1 melanoma phase I (Balke-Want 2026) as cross-indication safety: it is patient data, not a model system; the co-culture track made no safety prediction to compare it with.",
+  "Chinese PLA General Hospital CD20 CAR (Wang 2014, Zhang 2016; NCT01735955): not shown to be the CART20 product; NCT02965157 (Beijing Biohealthcare) describes a CD28-zeta retroviral CAR and names no source construct, so the PLA patient data cannot be assigned to a member (construct identity not verified).",
+  "CART20 (NCT02965157) own preclinical model: none published; trial status unknown with no results."
+ ],
+ "gaps": [
+  {
+   "lead": "ASH 2022 abstract (Blood 140 Suppl 1:12980) fixes MB-CART20.1 co-culture as a retrodiction",
+   "outcome": "covered",
+   "detail": "Covered by check.json verdicts: engagement[2] (corrected, retrodiction: true, status untested) and engagement[3] (corrected, same -> retro, 2026) on mb-cart20-1-target-coculture; no new entry or fix."
+  },
+  {
+   "lead": "No cell-therapy entry in dose or safety (MB-CART20.1 nonclinical basis unpublished; melanoma trial toxicities)",
+   "outcome": "none",
+   "detail": "No published MB-CART20.1 dose/safety model exists to compare with patients (EudraCT 2017-000121-12 package not public); the melanoma phase I (Balke-Want 2026) is patient data, not a model system, so nothing to add."
+  },
+  {
+   "lead": "CART20 (NCT02965157) may share construct with PLA General Hospital CD20 CAR (Zhang 2016, NCT01735955)",
+   "outcome": "none",
+   "detail": "Construct identity not verified: registry and AdisInsight name no source construct and no CART20 preclinical model is published, so PLA patient data cannot be assigned to a member (product_in_model rule); no model-to-patient comparison."
+  }
+ ]
+}

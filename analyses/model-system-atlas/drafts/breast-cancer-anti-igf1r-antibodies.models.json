@@ -147,5 +147,22 @@
   "NCT01220570 (GFS as an intermediate biomarker of response; ridaforolimus, dalotuzumab or both in ER+/HER2- breast cancer; 63 patients; completed 2012-12): same GFS system, but no results were posted and no publication was found, so nothing to score; noted on the added track.",
   "Laron syndrome / GHR-deficiency human genetic model: searches returned only reviews; no source compares it with member-antibody trial results in breast cancer.",
   "Patient-derived xenografts, organoids, ex-vivo explants and PK/PD or QSP dose models for cixutumumab or dalotuzumab in breast cancer: no paper with a patient comparison found in Europe PMC."
+ ],
+ "gaps": [
+  {
+   "lead": "Ganitumab in breast cancer (Robertson 2013 Lancet Oncol; I-SPY 2 ganitumab+metformin, Yee 2021)",
+   "outcome": "none",
+   "detail": "Outside the rules: ganitumab is not on this tile's member list (v3 members-only class definition, decision 12); its use as the prior null behind Fagan 2012's retro is rule question 1, already flagged on efficacy 5."
+  },
+  {
+   "lead": "IGF-I gene-transcription signature (Creighton 2008) as the NCT00759785 endpoint, own in_silico track",
+   "outcome": "tracked",
+   "detail": "merck-gfs-101-gene-signature: engagement 6 (untested, 2008), engagement 7 (2017 GFS result) and efficacy 12 (untested); the trial's GFS is Merck's 101-gene signature, not Creighton's, which was never compared with member-dosed patients."
+  },
+  {
+   "lead": "Di Cosimo 2015 model identity (in-vivo arm is NSCLC PDX LXFA629; breast rests on MCF7 in vitro)",
+   "outcome": "covered",
+   "detail": "Covered by check.json verdict engagement 4 ('Rename the track'; untested stands): a track-name/model-identity change on ridaforolimus-dalotuzumab-pathway-models (engagement 4, dose 3, efficacy 8) with no status, year or source change, so nothing scored moves and no new entry or fix is owed."
+  }
  ]
 }

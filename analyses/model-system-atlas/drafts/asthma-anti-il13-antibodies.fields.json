@@ -1,0 +1,162 @@
+{
+ "tile": "asthma-anti-il13-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "year 2012 -> 2011: May 2012 was online 2011-09-08 (rule 6, earliest public date)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "year 2012 -> 2011: May 2012 was online 2011-09-08 (rule 6, earliest public date)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "year 2012 -> 2011: May 2012 was online 2011-09-08 (rule 6, earliest public date)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "year 2012 -> 2011: proxy opener dated to the 2011-09-08 online date of May 2012 (rule 6)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "year 2018 -> 2017: STRATOS 1 primary miss first public in AstraZeneca press release 2017-05-10 (rule 6)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "what": "year 2018 -> 2017: STRATOS 1 primary miss first public in AstraZeneca press release 2017-05-10 (rule 6)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "status same -> retro, year 2018 -> 2017: model first public after the STRATOS 1 press release (post-dating ruling; rule 6)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "year 2018 -> 2017 and retrodiction true: model first public after STRATOS 1 press release 2017-05-10; contra kept"
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "what": "year 2013 -> 2011, src/quote Scheerens 2014 -> Corren 2011 (MILLY FeNO -19% vs +10%): earliest public patient readout (rule 6; checker adjudication)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "what": "src/quote NCT00781443 -> Scheerens 2014 (results-free registry record is no source); year stays 2008 as model-first-use proxy"
+  },
+  {
+   "cell": "efficacy",
+   "index": 17,
+   "what": "retrodiction true -> false: challenge public as AAAAI March 2011 abstract before MILLY (post-dating ruling, earliest date); contra 2013 kept"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> retro (post-dating ruling); imported_from removed because asthma patients were measured (imported-harm ruling); year 2022 -> 2021: monkey statement first public in Adtralza EPAR, CHMP 2021-04-22 (rule 6)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "year 2024 -> 2023: lebrikizumab monkey statement first public in Ebglyss EPAR, CHMP 2023-09-14 (rule 6); retro kept"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "year 2016 -> 2013, src/quote Hanania 2016 -> Noonan 2013: 'well tolerated' claim (2013-10-18) compared with asthma safety already public in 2013 (rule 6); retro kept"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 12,
+   "what": "opener, hbe-il13-signature x lebrikizumab sc, untested 2007 (track split from entry 4)"
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "what": "same 2013, hbe-il13-signature x lebrikizumab sc: Scheerens 2014 Th2 markers fell (split from entry 4)"
+  },
+  {
+   "cell": "engagement",
+   "index": 14,
+   "what": "opener, hbe-il13-signature x tralokinumab sc, untested 2007 (track split from entry 4)"
+  },
+  {
+   "cell": "engagement",
+   "index": 15,
+   "what": "same 2018, hbe-il13-signature x tralokinumab sc: MESOS FeNO and IgE fell (split from entry 4)"
+  },
+  {
+   "cell": "engagement",
+   "index": 16,
+   "what": "opener, il13-eos-qsp-model x lebrikizumab sc, untested 2016 (split from entry 10)"
+  },
+  {
+   "cell": "engagement",
+   "index": 17,
+   "what": "retro 2016, il13-eos-qsp-model x lebrikizumab sc (split from entry 10)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 19,
+   "what": "contra 2013, ova-mouse-il13 x lebrikizumab sc: Noonan 2013 FEV1 primary missed (split from entry 6)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 20,
+   "what": "opener, cyno-antigen-challenge x lebrikizumab sc, untested 2011"
+  },
+  {
+   "cell": "efficacy",
+   "index": 21,
+   "what": "retro 2011, cyno-antigen-challenge x lebrikizumab sc: model first public after MILLY (post-dating ruling)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 22,
+   "what": "opener, il13-humanised-ova-mouse x lebrikizumab sc, untested 2011"
+  },
+  {
+   "cell": "efficacy",
+   "index": 23,
+   "what": "retro 2011, il13-humanised-ova-mouse x lebrikizumab sc: model first public after MILLY (post-dating ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "opener, cyno-repeat-dose-tox x lebrikizumab sc, untested 2011 (proxy; split from entry 2)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "retro 2024, cyno-repeat-dose-tox x lebrikizumab sc: FDA 761306 NOAEL vs LAVOLTA safety (split from entry 2)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "opener, human-allergen-challenge-lar x lebrikizumab sc, untested 2008 (passing-tolerability ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "retro 2016, human-allergen-challenge-lar x lebrikizumab sc: 'well tolerated' vs LAVOLTA safety (passing-tolerability ruling)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 24,
+   "what": "contra 2013, cyno-antigen-challenge x lebrikizumab sc: Noonan 2013 FEV1 primary missed, first prospective comparison after the 2011 retro"
+  },
+  {
+   "cell": "efficacy",
+   "index": 25,
+   "what": "contra 2013, il13-humanised-ova-mouse x lebrikizumab sc: Noonan 2013 FEV1 primary missed, first prospective comparison after the 2011 retro"
+  }
+ ]
+}

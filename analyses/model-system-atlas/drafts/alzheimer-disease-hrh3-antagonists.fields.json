@@ -1,0 +1,71 @@
+{
+ "tile": "alzheimer-disease-hrh3-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug abt-288, route oral (track rodent-cognition-battery x abt-288 x oral); untested 2012 unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug gsk-239512, route oral; model_first_use_year null -> 2007 (proxy, PET protocol NCT00474513); same 2014 unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug abt-288, route oral; untested 2012 unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "year 2013 -> 2012: Othman 2013 online as Accepted Article 2012-09-29 (rule 6 earliest public date); drug abt-288, route oral; same unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug abt-288, route oral; opener untested 2012 unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> contra: co-primary ruling, scored as authors call it (Grove 2014 'failed to show benefit'); settles RULE QUESTION; drug gsk-239512, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug abt-288, route oral; contra 2014 unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2016 -> 2014: Sanofi DRI10734 results summary (2014-11-11) is the earliest public date (rule 6); drug SAR110894, route oral, combination_with donepezil (combination ruling); own track so strengthens -> false; registry_date 2016-05-10 (EU CTR 2010-022596-64); contra unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug SAR110894, route oral; retrodiction ruling considered, stays untested (not_measured: disease-modification readout never trialled)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug abt-288, route oral; untested 2012 unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2013 -> 2012: Othman 2013 online 2012-09-29 (rule 6); drug abt-288, route oral; same unchanged; schizophrenia AEs not imported because AD patients were measured"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug SAR110894, route oral, combination_with donepezil (combination ruling); now its own track, no longer overriding ABT-288's same; contra 2014 unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug SAR110894, route oral; strengthens the SAR110894 contra; contra 2016 unchanged"
+  }
+ ],
+ "added": []
+}

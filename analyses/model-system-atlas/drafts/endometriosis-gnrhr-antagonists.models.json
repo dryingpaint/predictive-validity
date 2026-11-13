@@ -291,6 +291,51 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "rat-autotransplant-endometriosis",
+   "model": "Rat surgically induced (autotransplant) endometriosis, implant volume",
+   "model_kind": "animal",
+   "model_first_use_year": 2015,
+   "prediction_level": "class",
+   "cells": {
+    "dose": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": true,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected",
+      "confidence_note": "Abstract-level (Wiley paywall). The EPAR (p.18) carries the rat endometriosis study, so model_filed true, but not the ~1 umol/L free target. No endometriosis trial reports free linzagolix concentrations to set against it; human unbound fraction is ~0.1% (EPAR hepatic-impairment study), so any comparison would be my own arithmetic.",
+      "year": 2023,
+      "status": "untested",
+      "note": "Rat autotransplant model stated an effective free last-observed linzagolix concentration of ~1 umol/L; no patient free-exposure comparison has been published.",
+      "short": "Rat states ~1 umol/L free effective level",
+      "src": "https://doi.org/10.1111/1440-1681.13778",
+      "srcLabel": "Tezuka 2023",
+      "quote": "The effective concentration of linzagolix, calculated as the free form of the last-observed drug concentration, was ~1 μmol/L in endometriosis model rats.",
+      "confidence": "medium",
+      "reason": "Free-drug target stated, never compared",
+      "judgement": "Opening dose entry on the existing rat track: the model states an exposure target, but no source compares it with human free exposure, so untested rather than same; deriving human free Clast from total levels and fu would be my own arithmetic.",
+      "blocked_by": null,
+      "margin_stated": null,
+      "untested_reason": "not_measured",
+      "epub_year": 2023,
+      "print_year": 2023
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -307,5 +352,27 @@
   "Opigolix (ASP1707): no public preclinical model, confirming the checker.",
   "Elagolix models (mouse, PK-PD): elagolix is not a member; not widened.",
   "FDA review text for relugolix (NDA 214846 / 214621): not in the source bundle for this context, so not grepped for further systems; the draft's citations were taken as given."
+ ],
+ "gaps": [
+  {
+   "lead": "Patient-derived endometrioma xenograft 'murine avatar' in NOD/SCID mice dosed with cetrorelix (Flores 2025, PMID 39393571)",
+   "outcome": "tracked",
+   "detail": "endometrioma-pdx-avatar-mouse, efficacy cell (merged efficacy 8; untested 2024, product_in_model false), already in added_models"
+  },
+  {
+   "lead": "Rat autotransplant track has no dose entry; Tezuka 2023 (PMID 37186405) states free Clast ~1 umol/L effective",
+   "outcome": "entry",
+   "detail": "rat-autotransplant-endometriosis, dose cell: untested 2023 opening entry (Tezuka 2023, 10.1111/1440-1681.13778, free Clast ~1 umol/L effective); no source compares it with human free exposure, so not same."
+  },
+  {
+   "lead": "Knock-in mouse reversibility (Nakata 2014, recovery within 14 days) vs faster menses return on relugolix than leuprorelin (Osuga 2022, PMID 34895700)",
+   "outcome": "covered",
+   "detail": "changes nothing scored: a held reversibility prediction on hgnrhr-knockin-mouse safety cannot lift the track's 2021 bone contra (a failed model stays failed), so it adds no change of status."
+  },
+  {
+   "lead": "Nothing missed on failures; opigolix/ASP1707 has no preclinical model",
+   "outcome": "none",
+   "detail": "checker's own null finding: no endometriosis failure for relugolix/linzagolix beyond EDELWEISS 2 termination, and no public opigolix model (Europe PMC search in searched list)"
+  }
  ]
 }

@@ -1,0 +1,137 @@
+{
+ "tile": "breast-cancer-pik3ca-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug=taselisib, route=oral set from the entry's source; taselisib phase 1 enrolled PIK3CA-mutant and wild-type solid tumours; no taselisib opener appended because an opener at 2013 after this 2017 entry would break the track's year order"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug=alpelisib, route=oral set from the entry's source; status same->retro (retrodiction rule for dose: Fritsch 2014's tolerated-efficacious-dose claim was first public after alpelisib's own phase 1 MTD, ASCO 2013); year 2019->2018 (SOLAR-1 ESMO 2018 abstract, doi 10.1093/annonc/mdy424.010)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug=taselisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug=alpelisib, route=oral set from the entry's source; year 2019->2018: SOLAR-1 first public at ESMO 2018 (LBA3_PR, doi 10.1093/annonc/mdy424.010)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug=alpelisib, route=oral set from the entry's source; year 2019->2018: SOLAR-1 first public at ESMO 2018 (doi 10.1093/annonc/mdy424.010)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug=inavolisib, route=oral set from the entry's source; model also run for taselisib; neither drug has a later entry on this track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug=taselisib, route=oral set from the entry's source; drug=taselisib (SANDPIPER), product_in_model false (cells were dosed with alpelisib and GDC-0077); RULE QUESTION settled: same kept"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug=alpelisib, route=oral set from the entry's source; status untested->contra with retrodiction true (ruling: a passing tolerability claim is a safety prediction; Fritsch 2014's 'tolerability' claim was first public after alpelisib's own phase 1 hyperglycaemia DLTs, ASCO 2013, and did not reproduce them); src/quote -> Juric 2018 JCO (NCT01219699)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug=alpelisib, route=oral set from the entry's source"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug=alpelisib, route=oral set from the entry's source; status same->retro with retrodiction true (dose/safety retrodiction rule: the animal hyperglycaemia was first public in the 2019 FDA review, after alpelisib's own phase 1 hyperglycaemia DLTs, ASCO 2013)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug=inavolisib, route=oral set from the entry's source; status same->retro with retrodiction true (animal data first public in the 2024 FDA review, after inavolisib's own INAVO120 hyperglycaemia, SABCS 2023); now its own inavolisib track; no inavolisib opener appended because one at the tox model's first use would precede this 2024 entry out of year order"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "taselisib track on pik3ca-mutant-cell-panel-xenografts: same 2018, SANDPIPER primary PFS met (Dent 2021; ASCO 2018 earliest), split from efficacy 3"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "what": "taselisib opener on double-pik3ca-cis-mutant-isogenic-cells: untested 2019 (track of efficacy 11)"
+  }
+ ]
+}

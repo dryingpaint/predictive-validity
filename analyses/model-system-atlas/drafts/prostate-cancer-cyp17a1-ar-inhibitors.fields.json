@@ -1,0 +1,51 @@
+{
+ "tile": "prostate-cancer-cyp17a1-ar-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro: model post-dates abiraterone patient androgen suppression (O'Donnell 2004), same target and action, ruling on retrodiction for engagement"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "status same -> retro: model post-dates abiraterone patient androgen suppression (O'Donnell 2004), same target and action, ruling on retrodiction for engagement"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "status same -> retro: model post-dates abiraterone patient androgen suppression (O'Donnell 2004), same target and action, ruling on retrodiction for engagement"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro: LAPC4 model (2005) post-dates patient CYP17-inhibitor results (ketoconazole; abiraterone, O'Donnell 2004), retrodiction rule for efficacy"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "retrodiction false -> true, status contra unchanged (model failed to reproduce the earlier abiraterone-after-enzalutamide result); patient_trials NCT corrected to NCT02130700"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2019 -> 2016: futility first public in Tokai press release 2016-07-26 (earliest-date ruling); status contra from Taplin 2019"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "year 2019 -> 2016: futility first public in Tokai press release 2016-07-26 (earliest-date ruling); status contra from Taplin 2019"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "year 2015 -> 2014: CTC AR-variant subset first public at EORTC-NCI-AACR 2014 congress (earliest-date ruling); opener kept untested, model result and patient result public together so not retro"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "status contra -> untested; src Bardia 2018 (breast, imported) -> Gupta 2018 (prostate phase 1, generally well tolerated): imported-harm ruling, this disease's patients were measured"
+  }
+ ],
+ "added": []
+}

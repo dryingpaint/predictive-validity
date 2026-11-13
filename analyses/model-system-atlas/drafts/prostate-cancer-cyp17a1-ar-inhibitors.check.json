@@ -42,7 +42,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Montgomery 2016 (epub 2015-11-02) resolves; PD sentence verbatim in abstract. Model_src Vasaitis 2008 resolves (AR down-regulation in LAPC4). Downstream PSA read-out, paired; abstract-level as declared."
+   "note": "Montgomery 2016 (epub 2015-11-02) PD sentence verbatim in abstract. Retro right: O'Donnell 2004 (Br J Cancer, June 2004) abiraterone testosterone suppression predates Handratta (April 2005). Galeterone, oral, castration-resistant stage_or_line match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -52,7 +53,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Maity 2016 (Sci Rep, open access) resolves; DHEA/PSA single-patient sentence verbatim in abstract; the paper itself holds model and patient data, so comparison_stated true is right. n=1, low confidence appropriate."
+   "note": "Maity 2016 (Sci Rep, 2016-10-17) DHEA/PSA sentence verbatim in abstract. Model (Toren epub 2014) post-dates O'Donnell 2004 abiraterone androgen suppression, same target and action: retro. Seviteronel, oral, mCRPC stage_or_line match; n=1.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -62,7 +64,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Peltola (epub 2018-09-05, print 2020) resolves; testosterone sentence verbatim. Oksala model_src resolves (epub 2018-02-10). Castrate patients on prednisone, so proximal read-out is a further fall; direction_only is fair. No untested opener (rule question 5)."
+   "note": "Peltola (epub 2018-09-05) testosterone sentence verbatim; abstract confirms oral ODM-204 with prednisone in mCRPC. Oksala model (epub 2018-02-10) post-dates O'Donnell 2004, so retro holds; drug, route, population_group, combination_with match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -97,12 +100,17 @@
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Peltola abstract verbatim: AUC rose only to 300 mg, fell on day 8, PK prevents development. Sponsor-stated PK failure with no model-stated human target (rule question 1). NCT02344017 has no results."
+   "proposed_status": "contra",
+   "proposed_year": 2018,
+   "rule": "rule 6 (cell opens at model_first_use_year, proxy allowed)",
+   "note": "Field model_first_use_year: 2018 -> 2015. ClinicalTrials.gov NCT02344017 start 2015-02 (first posted 2015-01-22); Oksala 2018 describes the preclinical package that preceded first-in-human, so the registry start is the proxy. Status and year unchanged. | superseded: confirmed (): Peltola abstract verbatim: AUC rose only to 300 mg, fell on day 8, PK prevents development. Sponsor-stated PK failure with no model-stated human target (rule question 1). NCT02344017 has no results.",
+   "checked_by": "CHECKER_BRIEF / models (gap fix)",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6 proxy: model_first_use_year 2015 (NCT02344017 start). Status contra unchanged; a 2015 untested opener is owed on this dose track."
   },
   {
    "cell": "efficacy",
@@ -142,17 +150,23 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "ARMOR2 part 1 PSA50 48% verbatim; NCT01709734 registered primary includes PSA response, so endpoint_role primary holds; no results posted (registry_date null correct). Registry later marks the study terminated for lack of efficacy (see missing); rule 7 keeps the 2015 same."
+   "note": "ARMOR2 PSA50 48% sentence verbatim (Montgomery 2016). Retro holds through ketoconazole: CALGB 9583 (JCO 2004-03-15) reported 27% PSA responses in CRPC before Handratta April 2005; O'Donnell 2004 is hormonal only, so the note should lean on ketoconazole.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Oksala VCaP sentence verbatim. Untested follows the PK row of dose[4]; 13% PSA50 (3/23, with prednisone) correctly left as a note. Stands only while dose[4] stays contra."
+   "proposed_status": "untested",
+   "proposed_year": 2018,
+   "rule": "rule 6 (cell opens at model_first_use_year, proxy allowed)",
+   "note": "Field model_first_use_year: 2018 -> 2015. ClinicalTrials.gov NCT02344017 start 2015-02 (first posted 2015-01-22); Oksala 2018 describes the preclinical package that preceded first-in-human, so the registry start is the proxy. Status and year unchanged. | superseded: confirmed (): Oksala VCaP sentence verbatim. Untested follows the PK row of dose[4]; 13% PSA50 (3/23, with prednisone) correctly left as a note. Stands only while dose[4] stays contra.",
+   "checked_by": "CHECKER_BRIEF / models (gap fix)",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6 proxy: model_first_use_year 2015 (NCT02344017 start). Status untested unchanged (dose table: PK never reached, efficacy untested); untested_reason unsettled under rule 5."
   },
   {
    "cell": "efficacy",
@@ -162,7 +176,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Taplin 2019 (PMID 31542304) DMC sentence and PSA50 2/16 vs 8/19 verbatim in the PubMed abstract (Europe PMC copy truncated). Contra supported. comparison_stated true doubtful: hypothesis stated, no model data shown (question 3). 2016 vs 2019: question 2."
+   "note": "Year 2016 confirmed: Tokai 8-K filed 2016-07-26 (EDGAR) on the ARMOR3-SV futility call. Taplin 2019 DMC sentence verbatim; contra, galeterone oral, biomarker_selected right. Judgement still says the 2019 paper sets the year: stale text, fix.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -172,7 +187,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Madan 2020 (PMID 32327394) quotes verbatim; primary PSA50 at 12 weeks 1/17. Registry record is more likely NCT02130700 (17 enrolled, BID-titration + QD arms, 12-week PSA primary) than NCT02445976 (197, once-daily); neither posted results. Rule question 4."
+   "note": "Madan 2020 quote verbatim. NCT02130700 confirmed (Innocrin, post-enzalutamide CRPC, 17 actual, 12-week PSA50 primary, no results). Retrodiction true right (abiraterone-after-enzalutamide 2013 predates Toren epub 2014); contra stands. Judgement still names NCT02445976: stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -212,17 +228,23 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Bardia 2018 (epub 2018-05-09) DLT sentence verbatim; imported_from MONDO:0007254 correct. Gupta 2018 (prostate, epub 2018-07-16) is an in-indication source the same year: no DLT through 750 mg but dizziness 52%, blurred vision 38%; contra holds either way (rule question 7)."
+   "note": "Gupta 2018 (epub 2018-07-16) quote verbatim; prostate patients measured, so the Bardia breast import is set aside and untested holds (model silent, no harm contradicting it). confidence_note and magnitude_basis still describe the breast import: stale, fix.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Peltola 'well tolerated up to the highest evaluated dose' and Oksala 'well tolerated in both rodents and primates' both verbatim. Prednisone co-administration limits the mineralocorticoid test, as the draft says."
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "one system per model_id (checker brief item 3)",
+   "note": "Field model_id: odm204-vcap-xenograft -> odm204-primate-steroidogenesis. Oksala abstract (PMID 29438723): cynomolgus monkey and hCG-rat adrenal/testicular steroid inhibition; the tolerability quote is 'well tolerated in both rodents and primates', not VCaP growth. New track needs untested openers. | superseded: confirmed (): Peltola 'well tolerated up to the highest evaluated dose' and Oksala 'well tolerated in both rodents and primates' both verbatim. Prednisone co-administration limits the mineralocorticoid test, as the draft says. ; corrected (CHECKER_BRIEF / models (gap fix)): Field model_first_use_year: 2018 -> 2015. ClinicalTrials.gov NCT02344017 start 2015-02 (first posted 2015-01-22); Oksala 2018 describes the preclinical package that preceded first-in-human, so the registry start is the proxy. Status and year unchanged.",
+   "checked_by": "CHECKER_BRIEF / models (gap fix)",
+   "adjudicated_status": "same",
+   "adjudication_note": "Checker brief item 3: 'well tolerated in both rodents and primates' is the tox/steroidogenesis system, not VCaP xenografts; move to odm204-primate-steroidogenesis. Status same unchanged; openers owed (rule 6)."
   },
   {
    "cell": "safety",
@@ -308,19 +330,19 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Kwegyir-Afful 2015 (PMC4695001, Oncotarget) resolves; sentence verbatim in Discussion, citing Tokai conference reports. Untested opener accepted; whether a retrospective banked-sample subset is instead retro (decision 10) is a rule question. Patient level, ex_vivo CTCs.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Kwegyir-Afful 2015 (PMC4695001) Tokai 6/7 sentence verbatim in full text. Year 2014 supported: Tokai 8-K 2014-11-10 carries the C-terminal-loss data (EORTC-NCI-AACR Nov 2014). Untested opener, not retro. Judgement 'first admissible record is 2015' is stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 9,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Taplin 2019 (PMID 31542304, epub 2019-09-18) resolves; DMC sentence and PSA50 2/16 vs 8/19 verbatim in abstract. Contra, opposite, paired with model_src Kwegyir-Afful (resolves). 2016 tier-5 dating is question 2; assay switch Epic protein to AdnaTest mRNA raised as a rule question.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Year 2016 confirmed by Tokai 8-K (filed 2016-07-26). Taplin 2019 DMC sentence verbatim; contra on its own CTC-assay track, galeterone oral, biomarker_selected correct. confidence_note's 'draft dating convention' wording is now stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

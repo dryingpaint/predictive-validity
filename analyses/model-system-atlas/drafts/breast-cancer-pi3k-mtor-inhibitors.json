@@ -50,7 +50,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "drug": "dactolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "year": 2018,
@@ -86,7 +90,11 @@
     "magnitude_basis": "tumour pS6 change from baseline",
     "source_calls_it": null,
     "population": "advanced solid tumours, single-agent dose escalation",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "drug": "dactolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "year": 2014,
@@ -121,24 +129,29 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "voxtalisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2014,
-    "status": "same",
+    "status": "retro",
     "model": "Exelixis XL765 xenograft panel with dose-dependent pAKT/p70S6K/S6 inhibition",
     "model_id": "xl765-exelixis-xenografts",
     "prediction_level": "class",
-    "note": "Voxtalisib 50 mg BID inhibited PI3K/mTOR and ERK signalling in the tumour of one responding lymphoma patient; breast trial PD was glucose only.",
+    "note": "Retrodiction: the xenograft PD paper (Yu 2014) appeared after patients had shown PI3K/mTOR pathway inhibition (voxtalisib ASCO 2009; apitolisib ASCO 2010); one lymphoma tumour later matched it.",
     "short": "Pathway inhibition in one patient tumour",
     "src": "https://doi.org/10.3109/10428194.2014.974040",
     "srcLabel": "Papadopoulos 2015",
     "quote": "In a patient with mantle cell lymphoma achieving PR, SAR245409 was associated with significant inhibition of PI3K/mTOR and extracellular signal-related kinase",
     "readout_tier": "proximal",
-    "reason": "Tumour pathway inhibition seen, n=1",
+    "reason": "Retrodiction; tumour pathway inhibition, n=1",
     "confidence": "low",
-    "confidence_note": "Abstract-level reading (paywalled); the quote is a verbatim leading fragment of the abstract's PD sentence. One patient, lymphoma not breast; epub 2014-11-19 sets the year, print 2015.",
-    "judgement": "Engagement admits any dosed human, so the lymphoma expansion cohort counts; direction matched in one tumour, hence same at low confidence. Blackwell 2015 reported only glucose homeostasis (a downstream readout) for the breast combination and found voxtalisib's PD impact weaker than pilaralisib's, which is why confidence stays low rather than medium.",
+    "confidence_note": "Abstract-level reading (paywalled); the quote is a verbatim leading fragment of the abstract's PD sentence. One patient, lymphoma not breast; epub 2014-11-19 sets the year, print 2015. Earlier patient PD: Exelixis press release 2009-06-01 (https://ir.exelixis.com/news-releases/news-release-details/exelixis-reports-encouraging-phase-1-data-be-presented-asco-1), ASCO 2009 abstract 3502. The press release says XL765 preclinical xenograft data existed before, so model_first_use_year 2014 remains a publication proxy (rule question 5).",
+    "judgement": "Engagement admits any dosed human, so the lymphoma expansion cohort counts; direction matched in one tumour, hence same at low confidence. Blackwell 2015 reported only glucose homeostasis (a downstream readout) for the breast combination and found voxtalisib's PD impact weaker than pilaralisib's, which is why confidence stays low rather than medium. Retrodiction ruling (2026-11-09): engagement counts any drug of the target, and voxtalisib's own tumour PD was public at ASCO on 1 June 2009 (Exelixis press release), before Yu 2014, so this is retro, not same.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -152,12 +165,16 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "tumour PI3K/mTOR pathway phosphoprotein inhibition",
     "source_calls_it": null,
     "population": "relapsed/refractory lymphoma expansion cohort",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "voxtalisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "year": 2011,
@@ -192,24 +209,29 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "apitolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
-    "year": 2016,
-    "status": "same",
+    "year": 2011,
+    "status": "retro",
     "model": "Genentech GDC-0980 PI3K-pathway-activated xenografts with exposure-linked PD biomarkers",
     "model_id": "gdc0980-genentech-xenografts",
     "prediction_level": "class",
-    "note": "Apitolisib suppressed pAKT S473 by at least 90% in platelet-rich plasma at the MTD and cut FDG uptake over 25% in 66% at 40 mg.",
+    "note": "Retrodiction: patients showed >50% PRP pAKT inhibition at ASCO 2010, before Wallin 2011 published the xenograft PD; Dolly 2016 confirmed ≥90% suppression at the MTD.",
     "short": "pAKT down 90% in patients at MTD",
     "src": "https://doi.org/10.1158/1078-0432.CCR-15-2225",
     "srcLabel": "Dolly 2016",
     "quote": "Phosphorylated serine-473 AKT levels were suppressed by ≥90% in platelet-rich plasma within 4 hours at the MTD (50 mg).",
     "readout_tier": "proximal",
-    "reason": "Dose-related pAKT suppression held in patients",
+    "reason": "Retrodiction; pAKT suppression seen in patients first",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading; PRP pAKT is a surrogate tissue, not tumour, and the model side gives no number to scale against.",
-    "judgement": "Wallin's exposure-related PD decrease reproduced in dosed patients (target modulation from 16 mg, 90% pAKT S473 suppression at the MTD), so same; pAKT S473 is mTORC2's direct product, hence proximal. Mixed solid-tumour phase I, admissible for engagement. Comparison is my pairing, not stated.",
+    "judgement": "Wallin's exposure-related PD decrease reproduced in dosed patients (target modulation from 16 mg, 90% pAKT S473 suppression at the MTD), so same; pAKT S473 is mTORC2's direct product, hence proximal. Mixed solid-tumour phase I, admissible for engagement. Comparison is my pairing, not stated. Retrodiction ruling (2026-11-09): Dolly ASCO 2010 abstract (doi 10.1200/jco.2010.28.15_suppl.3079, 2010-05-20) reported '>50% inhibition of pAKT levels assayed in PRP' before Wallin 2011 (epub 2011-10-13), so retro; year is when both sides were public, 2011; Dolly 2016 stays the higher-tier source.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -223,12 +245,16 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "pAKT S473 suppression in platelet-rich plasma",
     "source_calls_it": null,
     "population": "advanced solid tumours, first-in-human",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "apitolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -264,7 +290,12 @@
     "quote": "Parameters estimated from the pharmacokinetic/pharmacodynamic modeling of the MCF7-neo/HER2 xenograft data indicated that the GDC-0980 plasma concentration required for tumor stasis was approximately 0.5 μM.",
     "note": "Mouse PK/PD model tied tumour pAkt suppression to MCF7-neo/HER2 stasis at about 0.5 µM; no human PD comparison yet.",
     "short": "Xenograft pAkt-to-stasis model, untested in humans",
-    "judgement": "Opens the in-silico track. The PK/PD model is a different system from the Wallin 2011 efficacy panel: it predicts a quantitative human exposure, clearance and dose, which the xenograft panel does not."
+    "judgement": "Opens the in-silico track. The PK/PD model is a different system from the Wallin 2011 efficacy panel: it predicts a quantitative human exposure, clearance and dose, which the xenograft panel does not.",
+    "drug": "apitolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,
@@ -301,7 +332,11 @@
     "note": "Retrospective integrated PK-PD-efficacy models fit to xenograft and phase 1 data gave the same steep pAkt-to-tumour-shrinkage curve and stasis threshold.",
     "short": "Xenograft pAkt-efficacy curve reproduced in patients",
     "reason": "Retrodiction: stasis threshold 61% vs 65%",
-    "judgement": "Retro, not same: the clinical model was built after the phase 1 answer was known (decision 10). Direction and the stasis threshold agree within 2x; the 43-fold IC50 gap sits in the concentration-to-pAkt link, so the source's own framing is partial."
+    "judgement": "Retro, not same: the clinical model was built after the phase 1 answer was known (decision 10). Direction and the stasis threshold agree within 2x; the 43-fold IC50 gap sits in the concentration-to-pAkt link, so the source's own framing is partial.",
+    "drug": "apitolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ],
   "dose": [
@@ -339,7 +374,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "drug": "dactolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "year": 2018,
@@ -377,7 +416,11 @@
     "source_calls_it": null,
     "population": "advanced solid tumours incl. HER2-positive breast cancer with trastuzumab",
     "model_first_use_year": 2008,
-    "untested_reason": "no_prediction"
+    "untested_reason": "unsettled",
+    "drug": "dactolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "year": 2014,
@@ -414,7 +457,11 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2014,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "voxtalisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "year": 2011,
@@ -452,7 +499,11 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "apitolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -491,15 +542,19 @@
     "short": "Predicted 55 mg QD efficacious dose",
     "reason": "55 mg never tolerated; no stated margin",
     "judgement": "Later knowledge recorded without changing status: Dolly 2016 (doi 10.1158/1078-0432.CCR-15-2225) found MTD 50 mg and RP2D 40 mg once daily with fasting hyperglycaemia dose-limiting at 40 and 70 mg, and Moein 2024 population CL/F of 0.304 L/h/kg (5.07 mL/min/kg) matched the 5.1 mL/min/kg prediction. The predicted regimen was never a tolerated dose and the model stated no margin, so decision 16's no-margin row keeps the cell untested rather than contra with blocked_by toxicity.",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "apitolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    }
   ],
   "efficacy": [
    {
     "year": 2008,
     "status": "untested",
-    "model": "Novartis BEZ235 xenografts with ex-vivo tumour PI3K/Akt pathway readout",
-    "model_id": "bez235-novartis-xenografts",
+    "model": "NKI BT474 HER2+ breast cancer lines with PTEN knockdown or mutant PIK3CA conferring lapatinib resistance, treated with BEZ235",
+    "model_id": "bt474-nki-lapatinib-resistance",
     "prediction_level": "patient",
     "note": "BEZ235 reversed PTEN-loss and PIK3CA-mutant lapatinib resistance in HER2+ breast models; no breast trial ever read a primary efficacy endpoint.",
     "short": "PI3K-altered HER2+ models respond; no trial readout",
@@ -536,7 +591,7 @@
     ],
     "reason": "No breast primary efficacy endpoint read",
     "confidence": "medium",
-    "confidence_note": "Eichhorn 2008 read at abstract level; Rodon 2018 full text. None of the four breast registrations posted results; NCT01471847 (phase Ib/II with trastuzumab, PFS primary) enrolled 5 and NCT01495247 was terminated without an RP2D, so no phase II started.",
+    "confidence_note": "Eichhorn 2008 read at abstract level; Rodon 2018 full text. None of the four breast registrations posted results; NCT01471847 (phase Ib/II with trastuzumab, PFS primary) enrolled 5 and NCT01495247 was terminated without an RP2D, so no phase II started. Separate model system from the Novartis xenograft panel (checker adjudication); whether BEZ235 was dosed in vivo is unverified at abstract level, so model_kind animal is unverified.",
     "judgement": "The only breast efficacy data are 4/30 partial responses (DCR 47%) in a phase Ib cohort of PI3K-pathway-altered HER2+ patients whose primary endpoint was DLT, so the efficacy question is unscored; under the dose table (target blocked by toxicity) it stays untested. Eichhorn's patient-level prediction is consistent with those responses but was never tested on an efficacy endpoint.",
     "subjects": null,
     "comparison_stated": false,
@@ -556,7 +611,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "HER2-positive, PI3K-pathway-altered",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "untested_reason": "unsettled",
+    "drug": "dactolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "biomarker_selected"
    },
    {
     "year": 2014,
@@ -593,7 +653,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "voxtalisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "year": 2015,
@@ -601,7 +665,7 @@
     "model": "Exelixis XL765 xenograft panel with dose-dependent pAKT/p70S6K/S6 inhibition",
     "model_id": "xl765-exelixis-xenografts",
     "prediction_level": "class",
-    "note": "Phase II voxtalisib plus letrozole: no partial responses, 6-month PFS 8%, no link between PI3K-pathway alterations and benefit.",
+    "note": "Voxtalisib with letrozole, an uncontrolled phase II arm (primary PFS at 3 months): no responses, 6-month PFS 8%, no PI3K-pathway link to benefit. Combination scored on its primary endpoint.",
     "short": "No responses, PFS6 8% in phase II",
     "src": "https://doi.org/10.1007/s10549-015-3615-9",
     "srcLabel": "Blackwell 2015",
@@ -619,7 +683,7 @@
     "reason": "Xenograft growth inhibition, no patient benefit",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading (paywalled). The registry's phase II primary is PFS at 3 months; the abstract reports PFS at 6 months (8%) and no responders in the voxtalisib arm. No results posted on NCT01082068.",
-    "judgement": "Class-level miss: the xenografts predicted growth inhibition and the HR+/HER2-negative phase II found no responses and PFS6 of 8% with letrozole, which the sponsor did not pursue. The patient-level claim also failed ('no association between molecular alterations in the PI3K pathway and efficacy'). Pairing of Yu 2014 with the trial is mine; the trial does not cite the model. Only member with a breast phase II readout, so this entry sets the class cell; neg is unreachable because the model data for voxtalisib were not below the class bar.",
+    "judgement": "Class-level miss: the xenografts predicted growth inhibition and the HR+/HER2-negative phase II found no responses and PFS6 of 8% with letrozole, which the sponsor did not pursue. The patient-level claim also failed ('no association between molecular alterations in the PI3K pathway and efficacy'). Pairing of Yu 2014 with the trial is mine; the trial does not cite the model. Only member with a breast phase II readout, so this entry sets the class cell; neg is unreachable because the model data for voxtalisib were not below the class bar. Combination and single-arm rulings (2026-11-09): a member drug combined with letrozole is scored on the trial's primary endpoint, and with no success bar set in advance the result is read against the model's predicted growth inhibition; status unchanged.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -638,7 +702,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "HR-positive, HER2-negative metastatic breast cancer refractory to a non-steroidal aromatase inhibitor",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "drug": "voxtalisib",
+    "route": "oral",
+    "combination_with": "letrozole",
+    "population_group": "biomarker_selected"
    },
    {
     "year": 2011,
@@ -689,7 +757,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "apitolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected",
+    "untested_reason": "unsettled"
    },
    {
     "year": 2011,
@@ -734,7 +807,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "pf-04691502",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected",
+    "untested_reason": "not_measured"
    },
    {
     "year": 2017,
@@ -779,7 +857,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "drug": "bimiralisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected",
+    "untested_reason": "unsettled"
    },
    {
     "retrodiction": false,
@@ -831,7 +914,12 @@
     "note": "Model predicted tumour stasis at 55 mg once daily; FERGI arm B and the paclitaxel combination never reported a breast endpoint.",
     "short": "Stasis predicted; no breast readout",
     "reason": "No breast efficacy endpoint read",
-    "judgement": "The stasis prediction came from an MCF7-neo/HER2 breast xenograft, so it bears on this tile, but the only breast trials (NCT01437566 arm B, NCT01254526) completed without results and the 55 mg regimen was never given, so nothing can be scored."
+    "judgement": "The stasis prediction came from an MCF7-neo/HER2 breast xenograft, so it bears on this tile, but the only breast trials (NCT01437566 arm B, NCT01254526) completed without results and the 55 mg regimen was never given, so nothing can be scored.",
+    "drug": "apitolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected",
+    "untested_reason": "unsettled"
    }
   ],
   "safety": [
@@ -841,7 +929,7 @@
     "model": "Novartis BEZ235 xenografts with ex-vivo tumour PI3K/Akt pathway readout",
     "model_id": "bez235-novartis-xenografts",
     "prediction_level": "class",
-    "note": "The model said well tolerated; the GI harm that broke that is counted in dose, and class harms (hyperglycaemia, rash, pneumonitis) were not prevalent.",
+    "note": "The model said well tolerated; GI harm in HER2+ breast patients contradicted it (safety entry 4); hyperglycaemia, rash, pneumonitis were not prevalent.",
     "short": "GI harm counted in dose cell",
     "src": "https://doi.org/10.1158/1535-7163.MCT-08-0017",
     "srcLabel": "Maira 2008",
@@ -869,7 +957,11 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "drug": "dactolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "year": 2011,
@@ -904,24 +996,28 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "apitolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "year": 2016,
-    "status": "contra",
+    "status": "untested",
     "model": "Genentech GDC-0980 PI3K-pathway-activated xenografts with exposure-linked PD biomarkers",
     "model_id": "gdc0980-genentech-xenografts",
     "prediction_level": "class",
-    "note": "Fasting hyperglycaemia was dose-limiting at 40 and 70 mg and pneumonitis hit 8% at RP2D; mice show PI3K-inhibitor hyperglycaemia and the model was silent.",
+    "note": "Hyperglycaemia DLTs came from a mixed solid-tumour phase I; apitolisib breast trials (FERGI arm B, NCT01254526) never reported safety, so no admissible comparison.",
     "short": "Hyperglycaemia DLT; model silent",
     "src": "https://doi.org/10.1158/1078-0432.CCR-15-2225",
     "srcLabel": "Dolly 2016",
     "quote": "Dose-limiting toxicities (1 patient each) were G4 fasting hyperglycemia at 40 mg (21/28 schedule) and G3 maculopapular rash and G3 fasting hyperglycemia at 70 mg (21/28 schedule).",
-    "imported_from": "MONDO:0004992",
-    "reason": "Silence on hyperglycaemia contradicted",
+    "imported_from": null,
+    "reason": "Breast safety unreported; import not admissible",
     "confidence": "low",
-    "confidence_note": "Abstract-level on both sides. The comparison is imported from a mixed solid-tumour phase I (no breast safety readout for apitolisib exists). If Wallin 2011's full text reports mouse glucose, this becomes a predicted harm and belongs in dose as a margin call, not here.",
-    "judgement": "On-target hyperglycaemia is a harm mice can show (PI3K inhibition raises glucose in mice), so the model's silence is scored as contradicted; pneumonitis is left out of the call because rodents do not reliably show mTOR-inhibitor pneumonitis. Class-consistent: bimiralisib hyperglycaemia in at least 30% with a G3 hyperglycaemia DLT (Wicki 2018) and voxtalisib glucose effects (Blackwell 2015). Dactolisib's track differs: its class harms were not prevalent, so no contra is drawn there.",
+    "confidence_note": "Abstract-level on both sides. Dolly 2016 enrolled solid tumours or lymphoma; breast patients were not identified in the abstract. strengthens marks this second untested entry on the track as the record of the inadmissible import.",
+    "judgement": "Imported-harm ruling (2026-11-09): a harm from another disease is imported only when this disease has no patient safety data for the class; breast patients were measured for the class (dactolisib, voxtalisib) and on apitolisib itself in FERGI arm B and NCT01254526, which never reported. The mixed solid-tumour contra is set aside: untested, unsettled. The draft scored model silence on hyperglycaemia as contra from Dolly 2016.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -940,7 +1036,53 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "advanced solid tumours, first-in-human",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "apitolisib",
+    "route": "oral",
+    "combination_with": null,
+    "population_group": "other_disease",
+    "untested_reason": "unsettled",
+    "strengthens": true
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": false,
+    "model_id": "bez235-novartis-xenografts",
+    "model": "Novartis BEZ235 xenografts with ex-vivo tumour PI3K/Akt pathway readout",
+    "model_kind": "animal",
+    "prediction_level": "class",
+    "model_first_use_year": 2008,
+    "year": 2018,
+    "status": "contra",
+    "note": "Mice tolerated the effective dose; HER2+ breast patients on dactolisib plus trastuzumab had nausea 93%, diarrhoea 80%, vomiting 63%, MTD 600 mg/day. Combination trial, scored on its safety readout.",
+    "short": "Well-tolerated claim broken by GI harm in breast",
+    "src": "https://doi.org/10.1007/s00280-018-3610-z",
+    "srcLabel": "Rodon 2018",
+    "quote": "Most frequent AEs in single agent and combination cohorts included nausea (80.3 and 93.3%), diarrhea (75.4 and 80.0%), and vomiting (63.9 and 63.3%).",
+    "imported_from": null,
+    "reason": "Well-tolerated claim contradicted in HER2+ breast",
+    "confidence": "low",
+    "confidence_note": "Abstract-level reading of Rodon 2018 (full text PMC6286256 read earlier for dose); Rodon attributes the GI toxicity partly to drug precipitation at high doses, so whether mice could show this harm is uncertain. Partner trastuzumab is not known for GI toxicity of this size.",
+    "judgement": "Imported-harm ruling (2026-11-09): breast patients were measured (Rodon 2018 HER2+ aBC cohort with trastuzumab), so their result sets the status in place of the pancreatic NET import (Salazar 2018, doi 10.1634/theoncologist.2017-0144: diarrhoea 90%, stomatitis 74%). Maira 2008 stated the compound was well tolerated at the effective dose; frequent GI harm contradicted it. The checker adjudicated dose entry 2 to untested, so the GI harm is counted here, not in dose.",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1158/1535-7163.MCT-08-0017",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "epub_year": 2018,
+    "print_year": 2018,
+    "registry_date": null,
+    "model_filed": false,
+    "product_in_model": true,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "HER2-positive advanced breast cancer, dactolisib with trastuzumab (NCT00620594 combination cohort, n=30)",
+    "drug": "dactolisib",
+    "route": "oral",
+    "combination_with": "trastuzumab",
+    "population_group": "biomarker_selected"
    }
   ]
  }

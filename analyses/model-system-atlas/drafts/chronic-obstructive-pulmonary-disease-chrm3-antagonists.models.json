@@ -511,5 +511,37 @@
   "QAX028 and CHF5992: no model paper in Europe PMC under either code; NCT01068613 has no results; the only CHF hit (NCT01584505) is CHF5993 triple therapy, not CHF5992.",
   "Patient-derived organoids, PDX co-clinical, ex-vivo drug-sensitivity and human genetic (CHRM3 loss-of-function) models: no use found for any member; the class is scored at class level only.",
   "THRX-195518 (revefenacin metabolite) rat isolated trachea study (PharmR 07-195518-PH-04): metabolite characterisation, no patient comparison; the parent's rat/dog in vivo work is already the draft's revefenacin-rat-dog-bronchoprotection track."
+ ],
+ "gaps": [
+  {
+   "lead": "PF-03635659 Pfizer model side (Glossop 2011, NCT01033487)",
+   "outcome": "added",
+   "detail": "pfizer-guinea-pig-trachea-duration: untested 2011 (Glossop 2011) then same 2016 (NCT01033487 results) on engagement, dose, efficacy; safety untested 2011"
+  },
+  {
+   "lead": "Revefenacin human isolated bronchial tissue (Hegde 2018, FDA PharmR)",
+   "outcome": "added",
+   "detail": "revefenacin-human-bronchus-ex-vivo (ex_vivo): untested 2014 (IND memo in FDA PharmR) then same 2018 (Hegde 2018, comparison stated) on engagement, dose, efficacy"
+  },
+  {
+   "lead": "AZD8683 on the AstraZeneca guinea-pig track (Mete 2013, NCT01205269, NCT01708057)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: AZD8683's 2013 registry FEV1 results (NCT01205269, NCT01708057) are a second drug's same on az-guinea-pig-bronchoprotection, whose engagement 2, dose 2, efficacy 2 are already same (check.json corrects their year to 2011); safety on the track is already contra (safety 2, 3) and a contra track stays contra, so an AZD8683 AE entry would not change its status."
+  },
+  {
+   "lead": "Revefenacin patient-side sources before the 2018 FDA review (NCT02040792 2016-12-07, Quinn 2017, Pudi 2017)",
+   "outcome": "covered",
+   "detail": "check.json already proposes the same change on these entries: engagement 4, dose 4, efficacy 4 and safety 5 (revefenacin-rat-dog-bronchoprotection) corrected to year 2016 under rule 6 (NCT02040792 results 2016-12-07); status unchanged, no new system."
+  },
+  {
+   "lead": "QAX028 and CHF5992",
+   "outcome": "none",
+   "detail": "No model paper in PubMed or Europe PMC under either code; NCT01068613 and NCT00568503 have no posted results; nothing to compare, the draft's unscored call stands"
+  },
+  {
+   "lead": "Hegde 2018 rat isolated trachea and guinea-pig trachea EFS ex-vivo models",
+   "outcome": "none",
+   "detail": "Same paper, same drug and same 'consistent with emerging clinical data' comparison as revefenacin-human-bronchus-ex-vivo (whose opening quote already names the rat tracheal tissue); one comparison is one track, so not tracked separately"
+  }
  ]
 }

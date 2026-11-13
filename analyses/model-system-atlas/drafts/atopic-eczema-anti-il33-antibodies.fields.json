@@ -1,0 +1,136 @@
+{
+ "tile": "atopic-eczema-anti-il33-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug class, route not_applicable (system tied to no member drug: knockout/transgenic, GWAS or a non-member anti-mouse antibody)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug class, route not_applicable (system tied to no member drug: knockout/transgenic, GWAS or a non-member anti-mouse antibody)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug etokimab, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug etokimab, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug etokimab, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug itepekimab, route sc; strengthens dropped: first comparison on the itepekimab track; year 2024 kept (registry 2022-06-10 lacks the datum)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug class, route not_applicable (system tied to no member drug: knockout/transgenic, GWAS or a non-member anti-mouse antibody)"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "drug torudokimab, route sc"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "what": "drug etokimab, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "drug etokimab, route iv; status same -> retro, retrodiction true: assay run after the in-vivo patient result (retrodiction rule; Chen 2019 full text)"
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "what": "drug etokimab, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug class, route not_applicable (system tied to no member drug: knockout/transgenic, GWAS or a non-member anti-mouse antibody)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug class, route not_applicable (system tied to no member drug: knockout/transgenic, GWAS or a non-member anti-mouse antibody)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug class, route not_applicable (system tied to no member drug: knockout/transgenic, GWAS or a non-member anti-mouse antibody)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug etokimab, route sc"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug etokimab, route sc"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug etokimab, route sc"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug etokimab, route sc"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug itepekimab, route sc; year 2024 -> 2021: first public itepekimab miss NCT03736967 results 2021-11-01 (rule 6); itepekimab track of its own, strengthens dropped"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug class, route not_applicable (system tied to no member drug: knockout/transgenic, GWAS or a non-member anti-mouse antibody)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug etokimab, route sc"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug torudokimab, route sc; strengthens dropped: first comparison on the torudokimab track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug class, route not_applicable (system tied to no member drug: knockout/transgenic, GWAS or a non-member anti-mouse antibody)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "drug etokimab, route sc"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug torudokimab, route sc"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug itepekimab, route sc; status same -> untested (no_prediction): safety is scored per drug; the torudokimab model states no harm or margin (Okragly 2021 full text) and was never run for itepekimab"
+  }
+ ],
+ "added": []
+}

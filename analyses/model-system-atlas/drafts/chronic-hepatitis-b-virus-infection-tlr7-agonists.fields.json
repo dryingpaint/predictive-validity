@@ -1,0 +1,42 @@
+{
+ "tile": "chronic-hepatitis-b-virus-infection-tlr7-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: woodchuck ISG match first public (2015) after Lopatin 2013 human ISG data (retrodiction ruling)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true: Fosdick model data first public 2013-10 after Lopatin 2013-02 human ISG data (retrodiction ruling)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> untested (no_prediction): ISG target came from prior human data, not stated by the woodchuck system (dose rule; check verdict)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: presystemic window first public 2013-10 after the same drug's 2013-02 volunteer data (retrodiction ruling for dose)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2017 -> 2016: Janssen trial first public as AASLD 2016 abstract 1851 (rule 6 earliest date); combination_with nucleos(t)ide analogue"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "year 2017 -> 2016: Janssen trial first public as AASLD 2016 abstract 1851 (rule 6 earliest date); combination_with nucleos(t)ide analogue"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "new woodchuck safety entry: contra 2016 (Janssen trial, AASLD 2016 / J Hepatol 2018): thrombocytopenia at the ISG-matched regimen absent in patients (named-harm rule, settles rule question 3)"
+  }
+ ]
+}

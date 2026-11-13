@@ -1,0 +1,195 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/retinitis-pigmentosa-rpgr-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fischer 2017 (PMID 28549772) abstract quote verbatim; AAV8-coRPGR is cotoretigene, subretinal; XIRIUS enrolled RPGR-XLRP males, biomarker_selected. Untested/not_measured holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Song 2020 (PMID 32414297) quote verbatim; rAAV2tYF-GRK1-hRPGRco is AGTC-501 = laru-zova, subretinal; HORIZON/VISTA males with pathogenic RPGR variants. Untested/not_measured holds."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fischer 2017 abstract states no human dose, exposure or margin; cotoretigene, subretinal, biomarker_selected correct. Untested/no_prediction holds (abstract only)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Song 2020 'guided the initial doses' quote verbatim; laru-zova, subretinal, RPGR males correct. Opening untested entry stands."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "untested",
+   "rule": "CHECKER_BRIEF 3: dose same on a target the model never stated (an MTD, the drafter's arithmetic); DRAFTER_BRIEF dose table margin_stated row",
+   "note": "Yang 2024 (epub 4 Dec 2024) quote verbatim but names the clinical MTD, not the dog margin. Dog NOAEL 6e11 vg/mL (0.07 mL, ~4e10 vg); humans tolerated 6.8e11 vg/eye: the margin cannot be matched. Drug/route/population correct.",
+   "adjudicated_status": "same",
+   "adjudication_note": "DRAFTER_BRIEF dose table margin_stated row / Decision 16: dog NOAEL 6e11, toxic 3e12 vg/mL (Song/Dufour 2020) is a model-stated margin; HORIZON concentrations (Ophthalmology Times): 1.1e12 vg/mL tolerated, 3.2e12 vg/mL toxic. Margin held."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fischer 2017 quote verbatim; cotoretigene subretinal opener; RPGR-genotyped males fit biomarker_selected."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Biogen release (14 May 2021) re-opened: 'did not meet its primary endpoint' seen; full microperimetry wording confirmed by Lam 2024 abstract. Cotoretigene subretinal, RPGR males; contra, year 2021 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dufour 2020 (PMID 31910043) quote verbatim; AGTC-501 = laru-zova, subretinal in XLPRA2 dogs; opener untested stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Beacon release (21 Sep 2026) quote verbatim; VISTA laru-zova subretinal in RPGR males met LLVA primary; same, tier 5, year 2026."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Fischer 2017 'good safety' quote verbatim; cotoretigene subretinal opener; population correct."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Cehajic-Kapetanovic 2020 (PMID 32094925) quote verbatim; XIRIUS phase 1/2 AAV8-coRPGR subretinal in RPGR-XLRP males; inflammation unshown in mice, contra stands (low confidence)."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dufour 2020 high-dose toxicity quote verbatim; laru-zova subretinal; population correct."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Yang 2024 RPE-change quote verbatim; HORIZON males with pathogenic RPGR variants, subretinal AGTC-501; top-dose posterior-segment toxicity matches dog high dose in direction."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Sladen 2024 (PMID 38339118, epub 2 Feb 2024) quote verbatim; clinical bota-vec cassette, product_in_model false; LUMEOS subretinal RPGR males. Untested/no_prediction holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Sladen 2024 sentence verbatim; botaretigene, product_in_model false; phase 1/2 primary was safety, so untested opener stands; subretinal, biomarker_selected correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "MeiraGTx EX-99.1 'did not meet statistical significance' VMA quote verbatim; LUMEOS bota-vec subretinal RPGR males missed primary (2025). Organoids predate readout: prospective contra."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lam 2024 (PMID 38423215) Conclusions quote verbatim. Organoids (2 Feb 2024) post-date XIRIUS miss (May 2021): efficacy retrodiction on target; rescue vs primary miss is contra. Underpowering is not an untested model condition. Year 2024 correct."
+  }
+ ],
+ "missing": [
+  "Botaretigene (bota-vec, AAV5-hRKp.RPGR) has no track although it is a class member with a phase 3 failure: human RPGR-KO iPSC retinal organoids tested the bota-vec clinical construct and said they 'support' the phase I/II results ahead of phase 3 (Sladen 2024, Int J Mol Sci, doi:10.3390/ijms25031839, PMID 38339118); LUMEOS then missed its primary (J&J 5 May 2025; Fierce Biotech). A prospective organoid efficacy entry would score contra in 2025 (engagement readout opsin localisation: not_measured).",
+  "Bota-vec phase 1/2 (Michaelides et al. 2024, AJO, doi:10.1016/j.ajo.2024.05.034, PMID 38871269): no dose-limiting events at 1-4x10^11 vg/mL and steroid-responsive ocular inflammation; patient-side data for a bota-vec preclinical track (its own mouse/dog/NHP basis not located).",
+  "XLPRA1/XLPRA2 dogs with AAV2/5-hIRBP/hGRK1-hRPGR (Beltran 2012 PNAS, doi:10.1073/pnas.1118847109, PMID 22308428): the original canine proof of concept for subretinal RPGR replacement; check whether it is bota-vec's preclinical basis (AAV5 capsid) and, if so, add it as a track.",
+  "Two 2026 meta-analyses of AAV-RPGR trials (J Transl Med doi:10.1186/s12967-026-08709-7; J Clin Med doi:10.3390/jcm15166144) are tier 4 patient-side sources the draft could cite for safety/efficacy pooling."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose entry 3 and safety entry 4 score the same dog-predicted top-dose retinal toxicity twice (dose same with margin_stated, safety same). 'Count the harm once' names only the misplaced-margin and unpredicted cases; does a correctly placed, predicted harm belong in dose, safety, or both?",
+  "Can a margin stated in vg/mL (dog) be scored against human doses reported only in vg/eye when injection volume is unknown, or must the dose entry stay untested?",
+  "Efficacy entry 2 uses the tier 5 press release as src while a tier 1 record (Lam 2024) of the same trial exists with the same status; should src move to the tier 1 record with year kept at the 2021 public date?",
+  "RPGR organoid track: the organoids carried the bota-vec hRKp.RPGR cassette in an AAV7m8 capsid, not the clinical AAV5. Does a same-cassette, different-capsid vector count as product_in_model true, or as a sibling drug (false)?",
+  "LUMEOS: the sponsor says the VMA maze 'was not sensitive enough' and a secondary PRO improved. Does blaming the endpoint's sensitivity fall under 'attributes the result to conditions the model never tested' (untested), or does a primary miss stay contra?"
+ ]
+}

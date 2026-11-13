@@ -1,0 +1,157 @@
+{
+ "tile": "plasma-cell-myeloma-psmb5-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug delanzomib, route iv (from null); opener untested 2007 unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug ixazomib, route iv (from null; the track compared is the IV phase 1); opener untested 2010 unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (bortezomib whole-blood 20S inhibition in patients public 2002, Orlowski 2002); drug ixazomib, route iv; oprozomib datum split to entries 5-6"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (bortezomib patient 20S inhibition public 2002, Orlowski 2002); drug delanzomib, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug delanzomib, route iv; untested 2007 unchanged, untested_reason no_prediction (settles rule question 1: no model-stated target, so dose untested)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug ixazomib, route oral; opener unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug ixazomib, route oral; same 2015 kept; margin_stated true -> false: a margin scores on the track of the system that stated it (rat/dog GLP, appended entries 6-7)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "year 2015 -> 2014, epub_year and model_first_use_year 2014: earlier public date (PubMed online 2014-11-08, checker adjudication); drug ixazomib, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug ixazomib, route oral, combination_with lenalidomide-dexamethasone; same 2015 unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug delanzomib, route iv; opener unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug ixazomib, route oral; opener unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (bortezomib myeloma responses public 2003); combination_with lenalidomide-dexamethasone (combination ruling); drug ixazomib, route oral; oprozomib patient_trials row split to entries 10-11"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "contra 2017 kept, retrodiction false -> true (retrodiction ruling; failed to reproduce); drug delanzomib, route iv; settles rule question 1 (no stated target, efficacy as the trial showed)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug delanzomib, route iv (patient route of the drug the explants were dosed with); opener unchanged, untested_reason not_measured"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status same -> untested (untested_reason not_measured): single-arm ruling, primary endpoint safety/MTD, ORR a secondary (checker adjudication); drug ixazomib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug delanzomib, route iv (patients dosed IV; the model claim included oral dosing); opener unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "contra 2017 kept, retrodiction false -> true (retrodiction ruling; failed to reproduce); drug delanzomib, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "contra 2020 kept, retrodiction false -> true (retrodiction ruling); combination_with lenalidomide-dexamethasone (combination ruling); drug ixazomib, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug delanzomib, route iv; opener unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug ixazomib, route oral; opener unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug oprozomib, route oral; opener unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling (GLP findings first public 2015, after ixazomib phase 1 safety 2014); drug ixazomib, route oral, combination_with lenalidomide-dexamethasone"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "contra 2017 kept (checker had moved it to 2012 on Gallerani 2013): imported-harm ruling, this disease measured; drug delanzomib, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "contra 2019 kept (checker had moved it to 2016 on Infante 2016 solid tumours): imported-harm ruling, this disease measured; drug oprozomib, route oral"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "opener untested 2009 for the oprozomib-rodent-dog-tolerability x oprozomib x oral engagement track (Zhou 2009), split from entry 3"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "retro 2016 on oprozomib-rodent-dog-tolerability x oprozomib x oral (Infante 2016 dose-dependent blood proteasome inhibition); retrodiction ruling (bortezomib patient PD 2002)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "opener untested 2009 for the ixazomib-rat-dog-glp-tox x ixazomib x oral dose track (dog NOAEL margin, FDA PharmR), split from entry 3"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "retro 2015 on ixazomib-rat-dog-glp-tox x ixazomib x oral: dog NOAEL margin held (label: grade 3 neuropathy 2% both arms); retrodiction ruling (first public after ixazomib phase 1 2014)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "opener untested 2010 for the mm1s-scid-xenograft x oprozomib x oral track (Chauhan 2010), split from entry 3"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "retro 2019 on mm1s-scid-xenograft x oprozomib x oral: single-arm ruling (phase II primary ORR 41.0%), retrodiction ruling (bortezomib 2003)"
+  }
+ ]
+}

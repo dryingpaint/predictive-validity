@@ -1,0 +1,117 @@
+{
+ "tile": "type-1-diabetes-mellitus-slc5a2-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug dapagliflozin, route oral set from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug remogliflozin etabonate, route oral; model_src now Fujimori 2008 (remogliflozin dosed in STZ rats), product_in_model true; no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug empagliflozin, route oral, population_group biomarker_selected (hyperfiltering T1D); model_first_use_year 2012 (Vallon 2013 Sglt2-KO Akita); retrodiction rule checked: prospective, status same kept"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug dapagliflozin, route oral set from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug dapagliflozin, route oral set from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug dapagliflozin, route oral set from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug dapagliflozin, route oral; model_src now Meng 2008 (dapagliflozin's own STZ-rat result); insulin background noted; no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug empagliflozin, route oral; Kaku 2019 ipragliflozin split to its own track (entries 5-6); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug empagliflozin, route oral set from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug dapagliflozin, route oral set from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug empagliflozin, route oral; dapagliflozin and ipragliflozin patients split to their own tracks (entries 9-11); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug dapagliflozin, route oral set from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug dapagliflozin, route oral set from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug dapagliflozin, route oral set from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug empagliflozin, route oral set from the entry's sources; no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug empagliflozin, route oral; contra kept under the passing-tolerability ruling (stated 'ketone bodies were unremarkable' is a scored safety prediction); stray untested_reason removed"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "drug empagliflozin, route oral set from the entry's sources; no status or year change"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "opener, stz-rat x ipragliflozin oral, untested 2014 (Tahara 2014), split from efficacy entry 3"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "same 2019, stz-rat x ipragliflozin oral: Kaku 2019 HbA1c primary met (-0.36%), split from efficacy entry 3"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "contra 2018, stz-rat x dapagliflozin oral: DEPICT-2 (Mathieu 2018) DKA 2.6%/2.2% vs 0% against the model's silence, split from safety entry 2"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "opener, stz-rat x ipragliflozin oral, untested 2014 (Tahara 2014), split from safety entry 2"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "what": "same 2019 (low confidence), stz-rat x ipragliflozin oral: Kaku 2019 no DKA, model silent; split from safety entry 2 because ipragliflozin patients differed in result"
+  }
+ ]
+}

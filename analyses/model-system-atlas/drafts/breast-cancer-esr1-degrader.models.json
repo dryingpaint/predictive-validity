@@ -461,5 +461,27 @@
   "Giredestrant, amcenestrant and brilanestrant safety-pharmacology (hERG, dog telemetry): no public model-side data (giredestrant unapproved, no FDA review; Liang 2021 abstract's 'excellent in vitro and in vivo safety profiles' already anchors the rat/dog track), so the hERG/telemetry track carries vepdegestrant only.",
   "Caco-2 permeability assay (compared in the same EpiIntestinal paper): over-predicted vepdegestrant's transporter DDIs (dabigatran Papp 6-fold vs 2.9-fold clinical; rosuvastatin +127% vs +11%); a generic screening assay not used to carry the class into patients, so not opened as its own track; noted in the EpiIntestinal entry.",
   "Immature-rat uterotrophic assay (ER antagonism/no agonism in vivo, used in the class's discovery papers): no patient endometrial comparison in any source read; no dedicated search run."
+ ],
+ "gaps": [
+  {
+   "lead": "persevERA (NCT04546009) first-line giredestrant+palbociclib, ITT PFS not met (Roche 2026-03-09)",
+   "outcome": "covered",
+   "detail": "Checker entry 13 (efficacy #3, er-pos-wt-breast-xenograft, contra) already proposes adding persevERA (NCT04546009, Roche 2026-03-09) to patient_trials with status unchanged; changes nothing scored."
+  },
+  {
+   "lead": "Safety-pharmacology package (hERG to 30 uM, single-dose dog telemetry) vs patient dQTcF 10.9 ms / label 5.1 QTc warning",
+   "outcome": "tracked",
+   "detail": "vepdegestrant-herg-dog-telemetry, safety #5 (untested 2026) and #6 (contra 2026), already in added_models and merged; both entries confirmed by the checker."
+  },
+  {
+   "lead": "ZN-c5 discontinued August 2022 with no randomised readout",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: a citation for efficacy #3's judgement text (ZN-c5 discontinued Aug 2022, no randomised readout); checker missing[2] already raises it; no system or status added."
+  },
+  {
+   "lead": "Patient-derived organoid / ex-vivo comparison with a member drug",
+   "outcome": "none",
+   "detail": "PubMed members AND organoid (1 review hit) and members AND ex vivo/explant/patient-derived cells (1 unrelated hit); organoid concordance exists only for fulvestrant (non-member)."
+  }
  ]
 }

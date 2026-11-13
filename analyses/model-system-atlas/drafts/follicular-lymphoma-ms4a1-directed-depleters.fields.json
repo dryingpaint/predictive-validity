@@ -1,0 +1,46 @@
+{
+ "tile": "follicular-lymphoma-ms4a1-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "route iv -> mixed (patients compared got IV or SC doses; checker fields correction); status retro and year 2008 unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "year 2020 -> 2019: monkey SC/IV depletion and cytokine data first public in the ASH 2019 abstract (rule 6)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "year 2020 -> 2019: monkey SC/IV depletion and cytokine data first public in the ASH 2019 abstract (rule 6)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "year 2020 -> 2019: monkey SC/IV depletion and cytokine data first public in the ASH 2019 abstract (rule 6)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "year 2021 -> 2019: patient B-cell depletion first reported in the ASH 2019 abstract (rule 6); status retro unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "year 2021 -> 2019: SC regimen reached with depletion and non-severe CRS first public in ASH 2019 abstract (rule 6); status same unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "src/quote Sinnollareddy 2026 -> Linton 2024 (FL cohort dosed to 48 mg); year 2026 -> 2023 (2023-06-27 topline release, rule 6; dose scores target reached); status retro unchanged (rests on epcoritamab's own Hutchings 2021 RP2D)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status retro -> same, retrodiction false (safety retrodiction may rest only on the same drug's own earlier patient result; draft rested on mosunetuzumab/rituximab); year 2021 -> 2019 (patient CRS first public in ASH 2019 abstract, rule 6)"
+  }
+ ],
+ "added": []
+}

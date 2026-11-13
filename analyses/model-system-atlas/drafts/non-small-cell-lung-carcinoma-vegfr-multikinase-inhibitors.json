@@ -52,7 +52,11 @@
     "judgement": "Study M03012 is listed by title only; Yamamoto 2014 (10.1186/2045-824x-6-18) gives the readouts (CD31 MVD, tumour pVEGFR2 in KP-1/VEGF). No NSCLC trial of a member drug reported a tumour MVD or receptor-phosphorylation series, so untested rather than a downstream same.",
     "model_first_use_year": 2003,
     "readout_tier": null,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "patient",
@@ -89,7 +93,11 @@
     "judgement": "Abstract-level reading. Patient-level model (RET fusion selects responders). The Hida 2019 phase 2 took no on-treatment biopsies, so the direct readout has no human counterpart.",
     "model_first_use_year": 2013,
     "readout_tier": null,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -127,7 +135,11 @@
     "model_first_use_year": 2019,
     "readout_tier": null,
     "reason": "No model PD readout measured in NSCLC patients",
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "pembrolizumab"
    },
    {
     "retrodiction": false,
@@ -159,13 +171,17 @@
     "status": "untested",
     "src": "https://doi.org/10.1111/1759-7714.14689",
     "srcLabel": "Yuan 2022",
-    "note": "LLC tumours read CD8+ TIL, M1 TAM and MDSC by flow; no on-treatment immune readout exists from famitinib- or lenvatinib-treated NSCLC patients.",
+    "note": "LLC tumours read CD8+ TIL, M1 TAM and MDSC by flow; no on-treatment immune readout exists from famitinib- or lenvatinib-treated NSCLC patients. The 2026 lenvatinib run is a separate track with no engagement entry of its own.",
     "short": "Mouse immune PD readouts never measured in patients",
     "quote": "Compared with radioimmunotherapy, the addition of famitinib further promoted the infiltration of CD8+ T cells and M1 type tumor associated macrophages, and reduced the number of myeloid suppressor cells.",
     "judgement": "One track for both LLC runs: same cell line (LLC), host (C57BL/6), RT schedule (3 x 8 Gy), checkpoint antibody dose (10 mg/kg) and prediction (a VEGFR TKI potentiates radio-immunotherapy); only the member drug differs. A lung-specific immunocompetent system, so distinct from the draft's cross-indication CT26/BNL isografts (syngeneic-ct26-bnl-mouse-lenvatinib-anti-pd1) and from the immunodeficient human xenograft track. Opening entry at first use; the model's PD readouts are tumour immune-cell counts that no NSCLC trial of a member drug has measured on treatment.",
     "reason": "Mouse immune readouts not measured in patients",
     "readout_tier": null,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "famitinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -206,7 +222,11 @@
     "blocked_by": null,
     "margin_stated": false,
     "reason": "Model never stated an exposure target",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "patient",
@@ -245,7 +265,11 @@
     "blocked_by": null,
     "margin_stated": false,
     "reason": "No exposure target stated by the model",
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -282,7 +306,12 @@
     "judgement": "Full text read. The paper gives no mouse PK, so the 20 mg clinical dose (Study 111/KEYNOTE-146 RP2D, NCT02501096) cannot be called a reached model target on its own.",
     "model_first_use_year": 2019,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "pembrolizumab",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -321,7 +350,11 @@
     "reason": "No human exposure target stated",
     "blocked_by": null,
     "margin_stated": false,
-    "untested_reason": "no_prediction"
+    "untested_reason": "no_prediction",
+    "drug": "famitinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -361,15 +394,19 @@
     "model_first_use_year": 2003,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "patient",
-    "subjects": null,
+    "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
-    "model_src": null,
-    "model_src_tier": null,
+    "model_src": "https://doi.org/10.1016/j.canlet.2013.07.007",
+    "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
     "epub_year": 2013,
@@ -378,28 +415,32 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
-    "magnitude": null,
-    "magnitude_basis": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "RET-fusion cell and tumour growth inhibition versus partial responses in RET-fusion NSCLC patients on a RET multikinase inhibitor",
     "source_calls_it": null,
     "population": "RET fusion-positive",
     "confidence_note": null,
     "year": 2013,
-    "status": "untested",
+    "status": "retro",
     "model": "RET fusion-driven cells (CCDC6-RET lung and thyroid lines, Ba/F3-type assays) and RET-fusion NIH3T3 xenografts",
     "model_id": "ret-fusion-nsclc-cells-nih3t3-xenograft",
-    "note": "Lenvatinib inhibited RET-fusion signalling and growth in CCDC6-RET lung cells and RET-fusion NIH3T3 tumours; a patient-selection prediction before any RET-fusion trial.",
-    "short": "RET-fusion cells and tumours lenvatinib-sensitive",
+    "note": "Retrodiction under the 2026-11-09 ruling: published 12 Jul 2013, after cabozantinib (RET/VEGFR2 inhibitor) gave 2 of 3 RET-fusion NSCLC patients partial responses (Drilon 2013, online 26 Mar 2013); the model reproduced that.",
+    "short": "Retrodicts cabozantinib RET-fusion responses",
     "src": "https://doi.org/10.1016/j.canlet.2013.07.007",
     "srcLabel": "Okamoto 2013",
     "quote": "These results demonstrate that lenvatinib can exert antitumor activity against RET gene fusion-driven tumor models by inhibiting oncogenic RET gene fusion signaling.",
     "confidence": "high",
-    "judgement": "Abstract-level reading. Published July 2013, three months after NCT01877083 opened (April 2013), but before any patient result; prediction_level patient because the model names the responder genotype.",
+    "judgement": "Abstract-level reading. Published July 2013, three months after NCT01877083 opened (April 2013), but before any patient result; prediction_level patient because the model names the responder genotype. Ruling 2026-11-09: efficacy is a claim about the target, so any drug's earlier patient result for the same target and action makes a later model a retrodiction, motivated or not. Drilon et al., Cancer Discov 2013 (doi 10.1158/2159-8290.CD-13-0035, PMID 23533264, online 2013-03-26): confirmed partial responses in 2 of the first 3 RET-fusion NSCLC patients on cabozantinib. Okamoto 2013 went online 2013-07-12 and reproduced RET-fusion sensitivity, so retro, not untested. Hida 2019 stays the first prospective lenvatinib test on this track.",
     "model_first_use_year": 2013,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -423,17 +464,17 @@
     "source_calls_it": null,
     "population": "Unselected, non-squamous, >=2 prior regimens",
     "confidence_note": "Quote is the registry's structured primary-outcome fields (medians in weeks with 95% CI), not a sentence. The hazard ratio and p-value come from the EU register results (2011-002347-10, first published 2019-01-19). The ASCO 2014 abstract (Havel et al., J Clin Oncol 32:15_suppl 8043, May 2014) was the first public report but could not be fetched (ascopubs 403), so the entry is dated to the ClinicalTrials.gov results posting.",
-    "year": 2016,
+    "year": 2014,
     "status": "same",
     "model": "Human NSCLC cell-line xenografts in immunodeficient mice (H460 lenvatinib, A549 vorolanib)",
     "model_id": "nsclc-human-xenograft-immunodeficient-mouse",
-    "note": "Study 703: lenvatinib 24 mg vs placebo, >=2 prior regimens; OS 38.4 vs 24.1 weeks (HR 0.70, p=0.065), PFS 20.9 vs 7.9 weeks.",
+    "note": "Study 703 (randomized, placebo-controlled phase 2): lenvatinib 24 mg, >=2 prior regimens; OS 38.4 vs 24.1 weeks (p=0.065), PFS 20.9 vs 7.9 weeks; first public at ASCO 2014.",
     "short": "Phase 2 OS/PFS favoured lenvatinib; no phase 3",
     "src": "https://clinicaltrials.gov/study/NCT01529112",
     "srcLabel": "ClinicalTrials.gov NCT01529112 results",
     "quote": "Overall Survival (OS) ... Lenvatinib 38.4 (26.57 to 47.86) ... Lenvatinib Matched Placebo 24.1 (15.29 to 36.43)",
     "confidence": "low",
-    "judgement": "Paired by me: model side Yamamoto 2014 (H460 growth inhibition, no regression), patient side the registry record (tier 3). Direction agrees on OS, PFS and ORR, but the primary OS analysis missed two-sided p<0.05 (HR 0.70, 95% CI 0.45-1.03, p=0.065 on the EU register) and Eisai never ran a monotherapy phase 3, so a stricter reader could leave this unresolved. Not scored contra: nothing in the patient data points the other way. Vorolanib's A549 xenograft (Mol Ther Oncolytics 2022, 10.1016/j.omto.2022.01.001) joins this track, but its only NSCLC trial is a nivolumab combination (listed below) that the monotherapy xenograft did not predict, so it changes no status. Famitinib has NSCLC phase 2 data (listed) and three terminated phase 3s (NCT02766140, NCT04619433, NCT05106335) but no preclinical NSCLC model I could find (Europe PMC, abstract level).",
+    "judgement": "Paired by me: model side Yamamoto 2014 (H460 growth inhibition, no regression), patient side the registry record (tier 3). Direction agrees on OS, PFS and ORR, but the primary OS analysis missed two-sided p<0.05 (HR 0.70, 95% CI 0.45-1.03, p=0.065 on the EU register) and Eisai never ran a monotherapy phase 3, so a stricter reader could leave this unresolved. Not scored contra: nothing in the patient data points the other way. Vorolanib's A549 xenograft (Mol Ther Oncolytics 2022, 10.1016/j.omto.2022.01.001) joins this track, but its only NSCLC trial is a nivolumab combination (listed below) that the monotherapy xenograft did not predict, so it changes no status. Famitinib has NSCLC phase 2 data (listed) and three terminated phase 3s (NCT02766140, NCT04619433, NCT05106335) but no preclinical NSCLC model I could find (Europe PMC, abstract level). Rule 6: the comparison was first public in the ASCO 2014 poster abstract (Havel et al., J Clin Oncol 32:15_suppl 8043, doi 10.1200/jco.2014.32.15_suppl.8043; OS 38.4 vs 24.1 weeks, p = 0.065; read via the Linkos ASCO 2014 abstract database), so year 2014; the registry record (2016-02-18) stays the status source.",
     "model_first_use_year": 2003,
     "endpoint_role": "primary",
     "outcome_tested": null,
@@ -457,7 +498,11 @@
       "quote": "With a median follow-up of 18.1 months, the confirmed ORR was 42.9% (95% confidence interval [CI] 24.5-62.8)."
      }
     ],
-    "reason": "Phase 2 directionally matched; never confirmed"
+    "reason": "Phase 2 directionally matched; never confirmed",
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -495,7 +540,11 @@
     "model_first_use_year": 2019,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": "pembrolizumab"
    },
    {
     "prediction_level": "patient",
@@ -518,18 +567,18 @@
     "magnitude_basis": "growth inhibition of RET-fusion cells and tumours versus ORR/PFS in RET-fusion patients",
     "source_calls_it": "partial",
     "population": "RET fusion-positive lung adenocarcinoma",
-    "confidence_note": null,
-    "year": 2019,
+    "confidence_note": "ESMO 2016 abstract 1204PD dated from search listings; its text was not opened.",
+    "year": 2016,
     "status": "same",
     "model": "RET fusion-driven cells (CCDC6-RET lung and thyroid lines, Ba/F3-type assays) and RET-fusion NIH3T3 xenografts",
     "model_id": "ret-fusion-nsclc-cells-nih3t3-xenograft",
-    "note": "Phase 2 in 25 RET-fusion lung adenocarcinomas: ORR 16% (primary endpoint), DCR 76%, median PFS 7.3 months; activity as predicted, but weak.",
+    "note": "Single-arm phase 2, 25 RET-fusion lung adenocarcinomas, no success bar stated: ORR 16% (primary endpoint), median PFS 7.3 months; a response where the model predicted one, so same. First shown ESMO 2016.",
     "short": "RET-fusion NSCLC: 16% ORR, PFS 7.3 months",
     "src": "https://doi.org/10.1016/j.lungcan.2019.09.011",
     "srcLabel": "Hida 2019",
     "quote": "Lenvatinib demonstrated activity in patients with RET fusion-positive lung adenocarcinomas; although the response rate was relatively low, the median PFS supports the activity of lenvatinib in these patients.",
     "confidence": "medium",
-    "judgement": "Paired by me (model Okamoto 2013; the trial paper cites the model, which is a pairing, not a statement). Scored same at patient level with source_calls_it partial, my reading of the authors' own 'relatively low' wording: direction agreed, magnitude was modest and no registration followed. A stricter reader could score contra on the 16% primary ORR; I did not, because the model predicted activity, not a response-rate bar. Abstract-level reading; registry results posted 2019-08-13, before the paper.",
+    "judgement": "Paired by me (model Okamoto 2013; the trial paper cites the model, which is a pairing, not a statement). Scored same at patient level with source_calls_it partial, my reading of the authors' own 'relatively low' wording: direction agreed, magnitude was modest and no registration followed. A stricter reader could score contra on the 16% primary ORR; I did not, because the model predicted activity, not a response-rate bar. Abstract-level reading; registry results posted 2019-08-13, before the paper. Rulings 2026-11-09: a single-arm trial with no pre-specified success bar is scored on its primary endpoint against the predicted direction; ORR 16% is a response, so same (settles the checker's rule question on Hida's ORR bar; the abstract states no threshold). Rule 6: first public as ESMO 2016 poster 1204PD (Velcheti et al., Ann Oncol 27 suppl 6), so year 2016; abstract text not opened (search listing and a 2016-dated secondary report of ORR 16% / PFS 7.3 months only).",
     "model_first_use_year": 2013,
     "endpoint_role": "primary",
     "outcome_tested": null,
@@ -541,7 +590,11 @@
       "quote": "The overall ORR was 16% (95% CI: 4.5%-36.1%). At data cutoff (February 3, 2016), the median PFS was 7.3 months (95% CI: 3.6-10.2) and the median OS was not reached."
      }
     ],
-    "reason": "Model-picked RET responders answered, weakly"
+    "reason": "Model-picked RET responders answered, weakly",
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -569,13 +622,13 @@
     "status": "contra",
     "model": "Syngeneic CT26 colon / BNL hepatoma mouse models of lenvatinib plus anti-PD-1 (immunocompetent BALB/c)",
     "model_id": "syngeneic-ct26-bnl-mouse-lenvatinib-anti-pd1",
-    "note": "LEAP-007: adding lenvatinib to first-line pembrolizumab gave OS HR 1.10 (futility met) and more grade 3-5 toxicity; LEAP-006 and LEAP-008 also failed.",
+    "note": "Combination with pembrolizumab, scored on LEAP-007's primary endpoints: co-primary OS (HR 1.10) and PFS (HR 0.78, below its bar); authors call it a failure. LEAP-006 and LEAP-008 also failed.",
     "short": "Three LEAP phase 3s failed; OS HR 1.10",
     "src": "https://doi.org/10.1016/j.jtho.2023.12.023",
     "srcLabel": "Yang 2024 (LEAP-007)",
     "quote": "Lenvatinib plus pembrolizumab did not have a favorable benefit‒risk profile versus placebo plus pembrolizumab.",
     "confidence": "high",
-    "judgement": "Paired by me: model side Kato 2019 (tier 1); none of the LEAP abstracts cites a model. Dated to the ClinicalTrials.gov results posting (2022-06-02), before the JTO paper (online 29 Dec 2023). The isografts predicted combination benefit over PD-1 blockade alone; LEAP-007 (n=623) showed none on OS and PFS HR 0.78 did not meet its threshold, LEAP-008 (OS HR 0.98 vs docetaxel) and LEAP-006 (OS HR 1.05 with chemotherapy) agreed. One contra entry with the other two trials as patient_trials; nothing has reversed it. Abstract-level reading of all three.",
+    "judgement": "Paired by me: model side Kato 2019 (tier 1); none of the LEAP abstracts cites a model. Dated to the ClinicalTrials.gov results posting (2022-06-02), before the JTO paper (online 29 Dec 2023). The isografts predicted combination benefit over PD-1 blockade alone; LEAP-007 (n=623) showed none on OS and PFS HR 0.78 did not meet its threshold, LEAP-008 (OS HR 0.98 vs docetaxel) and LEAP-006 (OS HR 1.05 with chemotherapy) agreed. One contra entry with the other two trials as patient_trials; nothing has reversed it. Abstract-level reading of all three. Rulings 2026-11-09: a combination of a member drug with another active drug is scored on the trial's primary endpoint (partner in combination_with); with co-primary OS and PFS, neither met, the trial is scored as its authors call it, a failure, so contra stands.",
     "model_first_use_year": 2019,
     "endpoint_role": "primary",
     "outcome_tested": null,
@@ -599,7 +652,11 @@
       "quote": "Adding lenvatinib to first-line pembrolizumab plus chemotherapy did not improve efficacy versus pembrolizumab plus chemotherapy in stage IV nonsquamous NSCLC without targetable genetic alterations."
      }
     ],
-    "reason": "Isograft combination benefit absent in three phase 3s"
+    "reason": "Isograft combination benefit absent in three phase 3s",
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "pembrolizumab"
    },
    {
     "retrodiction": false,
@@ -637,7 +694,11 @@
     "judgement": "One track for both LLC runs: same cell line (LLC), host (C57BL/6), RT schedule (3 x 8 Gy), checkpoint antibody dose (10 mg/kg) and prediction (a VEGFR TKI potentiates radio-immunotherapy); only the member drug differs. A lung-specific immunocompetent system, so distinct from the draft's cross-indication CT26/BNL isografts (syngeneic-ct26-bnl-mouse-lenvatinib-anti-pd1) and from the immunodeficient human xenograft track. Opening entry; groups were control, RT, anti-PD-1, RT + famitinib, RT + anti-PD-1 and the triple (n = 5 each), so the prediction is an add-on effect of famitinib over radio-immunotherapy.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "famitinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -670,10 +731,10 @@
     "src": "https://doi.org/10.1136/jitc-2023-007227",
     "srcLabel": "Ren 2024 (NCT04346381)",
     "strengthens": true,
-    "note": "Single-arm camrelizumab plus famitinib cohorts (ORR 53.7% first-line, 7.5% post chemo-IO) lack RT and a famitinib-free arm; randomized phase 3s terminated or unreported.",
+    "note": "Single-arm camrelizumab plus famitinib cohorts (ORR 53.7% first-line, 7.5% post chemo-IO) never ran the modelled add-on to radiotherapy; randomized phase 3s terminated or unreported.",
     "short": "Single-arm doublet cohorts; no add-on test",
     "quote": "the combination regimen of camrelizumab and famitinib achieved an ORR of 53.7% (95% CI 37.4% to 69.3%) and a DCR of 92.7% (95% CI 80.1% to 98.5%).",
-    "judgement": "Untested, not same + partial: the model predicted that famitinib adds to radio-immunotherapy, and a single-arm doublet without RT or a famitinib-free comparator cannot test an add-on effect; the ORR shows the doublet is active, which the draft already credits to the xenograft track. The controlled tests never read out: NCT04619433 (camrelizumab + chemo +/- famitinib, phase 3) terminated by sponsor at n = 48, NCT05106335 (vs docetaxel) terminated at n = 1 for R&D strategy, NCT05042375 (vs pembrolizumab, n = 450) status unknown with no results (ClinicalTrials.gov, read 2026-11-05). If the checker accepts single-arm activity in the predicted direction as a comparison (as the draft does for Hida 2019), this becomes same with source_calls_it partial and magnitude direction_only.",
+    "judgement": "Untested, not same + partial: the model predicted that famitinib adds to radio-immunotherapy, and a single-arm doublet without RT or a famitinib-free comparator cannot test an add-on effect; the ORR shows the doublet is active, which the draft already credits to the xenograft track. The controlled tests never read out: NCT04619433 (camrelizumab + chemo +/- famitinib, phase 3) terminated by sponsor at n = 48, NCT05106335 (vs docetaxel) terminated at n = 1 for R&D strategy, NCT05042375 (vs pembrolizumab, n = 450) status unknown with no results (ClinicalTrials.gov, read 2026-11-05). If the checker accepts single-arm activity in the predicted direction as a comparison (as the draft does for Hida 2019), this becomes same with source_calls_it partial and magnitude direction_only. Single-arm ruling 2026-11-09 considered: it scores a single-arm trial against the model's predicted direction, but this model predicted famitinib's add-on to radio-immunotherapy, a regimen the cohorts did not give, so there is no predicted direction to score against; untested stands.",
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [
@@ -689,17 +750,22 @@
       "doi": "10.1007/s00262-024-03715-4",
       "quote": "The ORR and DCR with this combination regimen were 7.5% (95% CI, 1.6-20.4) and 80.0% (95% CI, 64.4-90.9), respectively."
      }
-    ]
+    ],
+    "untested_reason": "not_measured",
+    "drug": "famitinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "camrelizumab"
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "model_id": "llc-syngeneic-c57bl6-rt-checkpoint",
     "model": "Syngeneic Lewis lung carcinoma (LLC) subcutaneous tumours in immunocompetent C57BL/6 mice: VEGFR TKI (famitinib 2022, lenvatinib 2026) added to radiotherapy plus PD-1/PD-L1 blockade",
     "model_kind": "animal",
     "prediction_level": "class",
     "model_first_use_year": 2022,
-    "subjects": null,
+    "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
     "model_src": "https://doi.org/10.1080/15384047.2025.2610526",
@@ -711,25 +777,35 @@
     "model_filed": false,
     "product_in_model": true,
     "imported_from": null,
-    "magnitude": null,
-    "magnitude_basis": null,
+    "magnitude": "opposite",
+    "magnitude_basis": "model: lenvatinib adds survival to anti-PD-L1 (+RT); patients: OS HR 1.10 for adding lenvatinib to pembrolizumab (LEAP-007)",
     "source_calls_it": null,
-    "population": "Unselected",
+    "population": "First-line PD-L1 TPS >=1% NSCLC (LEAP-007), the earlier patient result the model post-dates",
     "confidence": "medium",
     "confidence_note": "Full text read (PMC12773621): received 2025-08-14, accepted 2025-12-23, published 2026-01-02; groups control, RT, RT + anti-PD-L1, triple (n = 8); no lenvatinib + anti-PD-L1 arm without RT; LEAP-006/007/008 are not cited.",
     "year": 2026,
-    "status": "untested",
+    "status": "contra",
     "src": "https://doi.org/10.1080/15384047.2025.2610526",
     "srcLabel": "Liu 2026",
-    "strengthens": true,
-    "note": "Lenvatinib 4 mg/kg added to RT plus anti-PD-L1 extended LLC survival 29.5 to 34 days; no NSCLC trial of that triple exists.",
-    "short": "Post-LEAP lenvatinib triple in LLC; no trial",
+    "note": "Retrodiction (ruling 2026-11-09): published Jan 2026, after LEAP-007 showed lenvatinib adds nothing to PD-1 blockade (OS HR 1.10); the model still predicted benefit, so contra.",
+    "short": "Post-LEAP lenvatinib model predicts benefit: contra",
     "quote": "The triple-combination (RT + anti-PD-L1 + Lenvatinib) significantly suppressed tumor progression (P < 0.05) and extended median survival (34 vs. 29.5 days, P < 0.05) versus dual therapy.",
-    "judgement": "Not scored as a retrodiction (retrodiction false, status untested): the run post-dates the LEAP failures (LEAP-007 results 2022-06-02, LEAP-008 2024-08-22, LEAP-006 2025-02-21) but never ran the LEAP regimen (no lenvatinib + checkpoint arm without RT), does not cite LEAP, and predicts a triple (RT + anti-PD-L1 + lenvatinib) that no NSCLC trial has tested (ClinicalTrials.gov lenvatinib + radiotherapy in lung cancer: none, 2026-11-05). Under decision 10 it is a fresh prospective prediction awaiting its trial. If rule question 5 is settled the other way (any post-failure model of the lenvatinib + checkpoint pairing is a retrodiction), this entry becomes contra with retrodiction true, because the model did not reproduce the human null. Same track as the famitinib run (see track note).",
-    "reason": "Triple regimen never tested in NSCLC patients",
+    "judgement": "Ruling 2026-11-09 settles rule question 5: efficacy is a claim about the target, and post-dating alone makes a model a retrodiction, whether or not it cites or was motivated by the patient result. Liu 2026 (online 2026-01-02) post-dates LEAP-007 (results 2022-06-02), LEAP-008 and LEAP-006, all of which showed no benefit from adding lenvatinib to PD-1 blockade in NSCLC; the LLC model reported that lenvatinib potentiates anti-PD-L1 (with RT), so it did not reproduce the human null: contra, retrodiction true. Its own lenvatinib track on the LLC system (the famitinib run is another track); the model's first use for lenvatinib is this entry, so no separate opener. Caveat kept: the model added RT, which no LEAP arm gave; an opener for the untested triple would need its own trial.",
+    "reason": "Post-LEAP model fails to reproduce null",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [
+     {
+      "nct": "NCT03829332",
+      "registry_date": "2022-06-02",
+      "doi": "10.1016/j.jtho.2023.12.023",
+      "quote": "Lenvatinib plus pembrolizumab did not have a favorable benefit‒risk profile versus placebo plus pembrolizumab."
+     }
+    ],
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": "pembrolizumab"
    }
   ],
   "safety": [
@@ -766,15 +842,19 @@
     "quote": "originally reviewed by Wei Chen, Ph.D. in April, 2005 following submission of IND",
     "confidence": "medium",
     "judgement": "One safety track pools the standard rodent plus non-rodent GLP toxicology (rat, monkey, dog for lenvatinib). Proxy opening date from the review's own history of the IND study. Famitinib and vorolanib toxicology was not retrievable (no NDA).",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
     "subjects": "patients",
-    "comparison_stated": true,
-    "source_tier": 2,
-    "model_src": null,
-    "model_src_tier": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/206947Orig1s000PharmR.pdf",
+    "model_src_tier": 2,
     "trial_unreported": false,
     "patient_signal_reversed": false,
     "epub_year": 2015,
@@ -784,24 +864,28 @@
     "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
-    "imported_from": "MONDO:0002108",
+    "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "haemorrhage from vascular lesions, animals vs patients",
     "source_calls_it": "match",
-    "population": "Unselected",
-    "confidence_note": null,
+    "population": "Nonsquamous NSCLC after >=2 prior regimens (Study 703)",
+    "confidence_note": "ASCO 2014 abstract read via the Linkos ASCO abstract database copy; the AE table is not a sentence, so the quote is the abstract's safety conclusion.",
     "year": 2015,
     "status": "same",
     "model": "GLP repeat-dose toxicology in rat plus monkey (and dog)",
     "model_id": "repeat-dose-tox-rodent-nonrodent",
-    "note": "Vascular lesions with haemorrhage in rat and monkey tissues predicted the haemorrhagic and arterial thromboembolic events, including fatal intracranial haemorrhage, seen in patients.",
+    "note": "NSCLC patients were measured (Study 703: grade 3/4 hypertension 17% vs 0% placebo), so they, not thyroid patients, set the status: the rat/monkey vascular findings predicted it.",
     "short": "Animal vascular haemorrhage matched clinic",
-    "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/206947Orig1s000PharmR.pdf",
-    "srcLabel": "FDA Pharmacology Review 2015",
-    "quote": "Consistent with nonclinical findings, hemorrhagic events including fatal intracranial hemorrhage have been observed in patients administered lenvatinib, as well as other VEGF antagonists.",
+    "src": "https://doi.org/10.1200/jco.2014.32.15_suppl.8043",
+    "srcLabel": "Havel 2014 (ASCO, Study 703)",
+    "quote": "LEN was generally well-tolerated, with an AE profile consistent with observed LEN monotherapy studies.",
     "confidence": "high",
-    "judgement": "Comparison stated by the reviewer; imported from the thyroid-cancer NDA population (MONDO id as used by the sibling HCC draft, not re-verified by me). The review also pairs rat/monkey proteinuria with clinical proteinuria and vascular necrosis with hypertension/RPLS; the haemorrhage pairing is the one that matters most in lung cancer, where VEGF-pathway bleeding is the class worry.",
-    "model_first_use_year": 2005
+    "judgement": "Imported-harm ruling 2026-11-09: a harm is imported only when this disease has no patient safety data for the class. Study 703's ASCO 2014 abstract already reported NSCLC safety (grade 3/4 hypertension 17% vs 0%, dyspnea 9% vs 13%), so the entry now pairs the 2015 FDA pharmacology review (model side: vascular necrosis 'suggestive of lenvatinib-mediated hypertension', vascular lesions with haemorrhage) with the NSCLC patients. Status same unchanged; year stays 2015, when the model side became public. The reviewer's own stated comparison was with the thyroid NDA population (quote: 'Consistent with nonclinical findings, hemorrhagic events including fatal intracranial hemorrhage have been observed in patients administered lenvatinib').",
+    "model_first_use_year": 2005,
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "prediction_level": "class",
@@ -838,7 +922,11 @@
     "judgement": "Paired by me: model side is the 2015 review (proteinuria in rats and monkeys 'consistent with clinical findings of proteinuria'; vascular necrosis 'suggestive of lenvatinib-mediated hypertension'). First in-disease confirmation, so strengthens. Nothing NSCLC-specific that animals missed could be found: LEAP-007 grade 3-5 TRAEs 57.9% vs 24.4% and LEAP-006 grade 5 5.6% vs 2.7% are class harms the review predicted; whether squamous-histology pulmonary haemorrhage occurred is not in the abstracts and a checker with LEAP-007 full text could test it. Abstract-level reading.",
     "model_first_use_year": 2005,
     "strengthens": true,
-    "reason": "Class vascular harms matched in NSCLC patients"
+    "reason": "Class vascular harms matched in NSCLC patients",
+    "drug": "lenvatinib",
+    "route": "oral",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ]
  }

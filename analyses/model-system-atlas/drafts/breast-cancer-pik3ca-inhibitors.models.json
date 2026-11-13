@@ -325,5 +325,47 @@
   "Razavi 2020 PTEN finding (NCT01870505): Razavi built no PTEN model, so the PTEN result is scored as the first prospective entry on the Juric PDX track (paired, model_src Juric 2015), not its own track.",
   "NEO-ORB NCT01923168 (Mayer 2019), LORELEI NCT02273973 (Saura 2019), EPIK-B5 NCT05038735 (trade press only, no registry results), INAVO121 NCT05646862 (no results): patient-side items for the existing cell-panel, ER-feedback and degrader tracks; no new model system, so left to the draft's own tracks per the checker's missing list.",
   "Human genetic, human challenge and QSP dose-selection models: none found for this class in the searches above."
+ ],
+ "gaps": [
+  {
+   "lead": "NEO-ORB NCT01923168 (Mayer 2019)",
+   "outcome": "covered",
+   "detail": "Covered: check.json efficacy 3 and efficacy 5 verdicts propose the NEO-ORB change (contra 2018) and both are adjudicated (decision 4/#35: early-stage letrozole neoadjuvant setting is a condition the models never tested, so untested, SOLAR-1 same stands; NEO-ORB to patient_trials). Its pAKT fall is an engagement 2 patient_trials line that changes no status."
+  },
+  {
+   "lead": "LORELEI NCT02273973 (Saura 2019)",
+   "outcome": "covered",
+   "detail": "Covered: changes nothing scored. LORELEI (NCT02273973, CT.gov results first posted 2018-05-21, confirmed) is taselisib + letrozole neoadjuvant in early-stage HR+ disease, the same setting the efficacy 3/5 adjudication (decision 4/#35, NEO-ORB) holds is a condition the advanced-disease cell-panel/xenograft track never tested; so it cannot open a scored 2018 same on efficacy 3, and the checker's missing list itself files it as a same + source_calls_it partial patient_trials line. Efficacy 3 stays same 2019 (SOLAR-1)."
+  },
+  {
+   "lead": "Juric 2015 PTEN-null metastasis PDX",
+   "outcome": "tracked",
+   "detail": "pten-null-metastasis-pdx-juric, efficacy 7 (untested 2014), 8 (retro 2014), 9 (same 2020, Razavi)."
+  },
+  {
+   "lead": "Vasan 2019 double-PIK3CA-mutant model",
+   "outcome": "tracked",
+   "detail": "double-pik3ca-cis-mutant-isogenic-cells, efficacy 10 (untested 2019), 11 (same 2019, SANDPIPER ctDNA); retro-vs-same is checker rule question 6."
+  },
+  {
+   "lead": "Donzelli 2022 PIK3CA-mutant metastatic PDOs",
+   "outcome": "none",
+   "detail": "Full text read (PMC9306102): no PDO donor treated with alpelisib, authors call for clinical validation; no model-to-patient comparison."
+  },
+  {
+   "lead": "Hopkins 2018 insulin-feedback mouse model",
+   "outcome": "none",
+   "detail": "No patient comparison: EPIK-B4 NCT04899349 terminated at n=2; NCT05025735, NCT05090358, NCT04300790 have no results."
+  },
+  {
+   "lead": "EPIK-B5 NCT05038735",
+   "outcome": "none",
+   "detail": "CT.gov API 2026-11-07: active, not recruiting, hasResults false; Europe PMC 'EPIK-B5' returns only reviews, no primary paper; no tier 1-3 record, so no entry under the source-tier rule."
+  },
+  {
+   "lead": "INAVO121 NCT05646862",
+   "outcome": "covered",
+   "detail": "Covered: efficacy 6 (mutant-p110a-degradation-model) stays untested; INAVO121 NCT05646862 has no results (CT.gov 2026-11-07, recruiting, hasResults false) and the confirmed check.json verdict on efficacy 6 already names it for the note; changes nothing scored."
+  }
  ]
 }

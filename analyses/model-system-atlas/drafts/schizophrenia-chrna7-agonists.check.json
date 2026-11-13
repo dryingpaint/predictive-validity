@@ -12,17 +12,19 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "PMID 19615981 resolves; quote verbatim in abstract. No human read-out of cortical dopamine for AZD0328 exists; untested stands."
+   "note": "PubMed abstract (PMID 19615981): quote verbatim. azd-0328 is a member; NCT00669903 dosed AZD0328 as oral solution. Unselected stable patients. Status untested/not_measured and 2009 unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "PMC3005247 full text (BioC) resolves; quote verbatim in Results. No patient PPI/P50 datum for any member found in PubMed; untested stands."
+   "note": "Hauser 2009 (PMID 19482012) resolves; PPI-interaction sentence is body text, not in abstract, so not re-seen. bradanicline = TC-5619; patient trials gave capsules orally. Drug/route/population right; status unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -32,17 +34,19 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "PMID 38601007 resolves; quote verbatim in abstract. Pig PET post-dates all failures and no human occupancy exists for any member; untested, not retro, is right."
+   "note": "Magnussen 2024 abstract (PMID 38601007): quote verbatim; TC-5619 blocked ~40% of pig alpha7 binding. bradanicline, oral (its clinical route; no patient comparison). Status/year unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Full text resolves; quote verbatim in Methods (rat NOR dose-response, 'data not shown'). Low confidence is right; no exposure target stated."
+   "note": "Hauser 2009 resolves; MED sentence ('data not shown') is body text, not re-seen this pass. bradanicline; NCT01003379 hard gelatin capsules, oral. Drug/route/population right; status unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -52,19 +56,19 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "PMID 19615981 resolves; quote verbatim in abstract. Trace-dose inverted-U stated; no exposure or occupancy target."
+   "note": "Sydserff abstract: quote verbatim. azd-0328; NCT00669903 arms are 'oral solution'. Drug/route/population right; status/year unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "Evidence rule 6 (year = earliest date the comparison was public) with rule 2 (tier-5 press release / SEC filing admissible on the patient side; the tier-1 paper still sets the status)",
-   "note": "Quote verbatim; GMLT was the primary. Targacept 8-K EX-99.1 (2011-01-19, tier 5) made the result public first: year 2011 under rule 6. Primary passed a one-sided p<0.10 criterion (adjusted p=0.054)."
+   "rule": null,
+   "note": "Lieberman abstract (PMID 23303043) quote verbatim; oral 1/5/25 mg. Hauser stated a rat mg/kg MED, no exposure/occupancy/margin: untested/no_prediction per dose table. 8-K EX-99.1 dated 2011-01-19 confirms 2011. Same status as opener dose 1, so no status change.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -74,7 +78,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "PMC3005247 resolves; quote verbatim in abstract."
+   "note": "Hauser abstract: quote verbatim. bradanicline (TC-5619), oral in patients. Drug/route/population right; status unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -84,7 +89,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "PMID 19615981 resolves; quote verbatim in abstract."
+   "note": "Sydserff abstract: quote verbatim. azd-0328, oral solution in NCT00669903. Drug/route/population right; status unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -94,75 +100,82 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Registry resolves; LS means 0.234/0.240/0.194 vs 0.266 and the termination quote verified; results posted 2010-08-06. model_src should be Sydserff 2009 (Castner post-dates the posting). Contra stands."
+   "note": "Registry re-opened: whyStopped verbatim; results first posted 2010-08-06; primary GMLT+OCLT composite day 14; oral solution arms; stable schizophrenia, unselected. azd-0328, oral right; contra 2010 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "Evidence rule 6 (year = earliest date the comparison was public) with rule 2 (tier-5 press release / SEC filing admissible on the patient side; the tier-1 paper still sets the status)",
-   "note": "Quote verbatim; GMLT was the primary. Public first in Targacept 8-K EX-99.1 of 2011-01-19 (tier 5), so year 2011 under rule 6; the bar was one-sided p<0.10 (adjusted p=0.054), so confidence low."
+   "rule": null,
+   "note": "8-K EX-99.1 re-opened, dated 2011-01-19: 'TC-5619 met the protocol criteria for a positive result on the primary efficacy outcome measure, the GMLT' (one-sided adjusted p=0.054). Lieberman quote verbatim. Year 2011, same, bradanicline, oral, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "Decision 10 (a retrodiction that failed to reproduce the human data is contra, not retro) with the efficacy primary-endpoint rule and rule 2 (a failure known only from a press release must be found)",
-   "note": "Quote verbatim; epub 2014-07-24. The SANS-primary failure (NCT01488929) was public 2013-12-16, seven months earlier; the retrodiction showed benefit the primary endpoint had already refuted, so it failed to reproduce the human data: contra, not retro.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Decision 10 with section 4 (primary endpoint governs) and rule 2 (tier-5 failure admissible): the SANS-primary miss of NCT01488929 was public 2013-12-16, before Pedersen 2014; the model reproduced a refuted secondary signal, not the human data. Contra."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Pedersen abstract (epub 2014-07-24) quote verbatim; drugs chosen as 'reported to exert some beneficial effect on negative symptoms'. SANS-primary miss public 2013-12-16/17 first: failed retrodiction, contra, retrodiction true, 2014. Contra rests on pairing with the release.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Release re-opened (BioSpace copy 2013-12-17 of Business Wire): 'TC-5619 did not meet the primary outcome measure ... SANS'. Walling abstract quote verbatim (epub 2015-06-12). Year 2013, contra, bradanicline oral. Judgement prose still says 'Dated 2015' and 'the 2012 same': stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
    "proposed_status": "contra",
-   "proposed_year": 2013,
-   "rule": "Evidence rule 6 (year = earliest date the comparison was public) with rule 2 (tier-5 press release / SEC filing admissible on the patient side; the tier-1 paper still sets the status)",
-   "note": "Quote verbatim; epub 2015-06-12. Targacept press release 2013-12-16 (tier 5) reported the SANS-primary miss first: year 2013 under rule 6, status set by Walling."
-  },
-  {
-   "cell": "efficacy",
-   "index": 7,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim; contra holds, but the premise fails: the trial result was public 2013-12-16, before the model (2014-07-24), so this is not a prospective test. Keep only as the tier-1 record of entry 5."
+   "proposed_year": 2014,
+   "rule": "Evidence rule 6 (earliest date the comparison was public); status table: one entry per change of status on a track",
+   "note": "Retrodiction true is right (model 2014 after the 2013 miss). Same pcp-nest-building-mouse x bradanicline comparison as efficacy 5; rule 6 dates it 2014, not Walling's 2015 epub. No status change, so it duplicates entry 5 and should be dropped.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Status table: one entry per change of status on a track. Same pcp-nest-building-mouse x bradanicline oral comparison as efficacy 5 (contra 2014, rule 6 dating); Walling 2016 adds no status change, so drop."
   },
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "PMC5061881 resolves; quote verbatim. Haig AJP (epub 2016-03-04, NCT01095562) was the first public ABT-126 primary miss, same year. No AbbVie registry results posted; product_in_model false is right."
+   "proposed_status": "contra",
+   "proposed_year": 2015,
+   "rule": "Evidence rule 6 (congress abstract counts; earliest public date)",
+   "note": "Haig npp abstract quote verbatim; MCCB primary missed; nelonicline is a member, oral, unselected; contra right. But the paper's footnote says results were 'Previously presented at the International Congress on Schizophrenia Research ... March 28-April 1, 2015', so year 2015. Track lacks a 2009 opener.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Contra agreed (MCCB primary missed). Rule 6: npp 2016 footnote confirms results 'Previously presented at the International Congress on Schizophrenia Research ... March 28—April 1, 2015', so year 2015, not 2016."
   },
   {
    "cell": "safety",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "Full text resolves; quote verbatim in Results (receptor selectivity section)."
+   "note": "Hauser 2009 resolves; selectivity sentence is body text, not re-seen this pass. bradanicline, oral in patients. Drug/route/population right; status unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -172,19 +185,19 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "PMID 20965497 resolves; quote verbatim; epub 2010-10-20 fits year 2010. Impairing dose 0.48 mg/kg never approached in patients; untested stands."
+   "note": "Castner abstract (PMID 20965497, epub 2010-10-20): quote verbatim. azd-0328, oral solution in patients. Drug/route/population right; status/year unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "Evidence rule 6 (year = earliest date the comparison was public) with rule 2 (tier-5 press release / SEC filing admissible on the patient side; the tier-1 paper still sets the status)",
-   "note": "Quote verbatim. Prediction held (no nicotinic harms in three trials). Public first in the 2011-01-19 8-K ('was well tolerated'; nausea 5%), so year 2011 under rule 6."
+   "rule": null,
+   "note": "8-K EX-99.1 (2011-01-19) re-opened: TC-5619 'was well tolerated', 'favorable tolerability profile', nausea 5% mild-moderate. Lieberman quote verbatim. Year 2011, same, bradanicline, oral, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

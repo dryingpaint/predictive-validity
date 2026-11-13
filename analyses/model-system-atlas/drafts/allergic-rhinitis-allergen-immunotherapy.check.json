@@ -11,57 +11,63 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "NCT01198613 resolves (ToleroMune Ragweed EEC, first posted 2010-09-10, no results). Quote is the first clause of the brief-summary sentence. registry_date should be 2010-09-10, not null (rule 9: registry lookup mandatory)."
+   "note": "NCT01198613 re-opened: ToleroMune Ragweed (=Ragweed-SPIRE) 'Intradermal injection 1 x8', posted 2010-09-10; quote verbatim first clause. Drug/route/unselected right. Opener holds; track's later chamber results (2011 PR, 2014-12-08 PR p=0.149) still absent.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ellis 2017 abstract (PMID 28236469, epub 2017-02-21): 'intradermally administered grass allergen peptides'; P=.0346 quote verbatim. Grass-SPIRE/intradermal/unselected right; 2017 holds, no earlier Grass-SPIRE chamber release verified.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "NCT01198613 re-opened: Ragweed-SPIRE intradermal, posted 2010-09-10; quote verbatim first clause. Drug/route/population right; no stated dose target, untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Nony 2015 abstract (PMID 25846209): sublingual rBet v 1 tablets, 12.5-50 ug quote verbatim. rBet v 1/sublingual right; ex-vivo cells stated no dose, untested no_prediction holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Circassia PR 18 Apr 2017 (Wayback copy) regimen sentence verbatim; 2013 PRNewswire names the chamber's four-doses-over-12-weeks course, which the field study dosed: target reached, same. HDM-SPIRE/intradermal right (NCT01447784, NCT02150343).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
    "proposed_status": "same",
-   "proposed_year": 2013,
-   "rule": "evidence rule 6 (year = earliest public comparison)",
-   "note": "Ellis 2017 abstract (PMID 28236469, epub 2017-02-21) quote verbatim; same holds. But HDM-SPIRE's chamber TRSS moved (p=0.02) in Circassia PRNewswire 2013-09-12, tier 5 with model_src NCT01447784 (tier 3): earliest member comparison is 2013. Status unchanged."
-  },
-  {
-   "cell": "dose",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "note": "Same registry record as engagement 1; untested supported. registry_date 2010-09-10 missing."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Nony 2015 (PMID 25846209, epub 2015-04-20) abstract quote verbatim. The ex-vivo DC/PBMC assay made no exposure or dose prediction; 12.5-50 ug range set clinically. untested supported."
-  },
-  {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "PR dated 18 Apr 2017, quote verbatim; model_src NCT01447784 resolves (no results). 'Reached, failed, abandoned' row holds (escalated regimens also failed). But trial_unreported must be false: NCT02150343 posted results 2018-06-15 (tier 3; CS wk 50-52 1.69/1.51/1.40 vs placebo 1.56). 2013 PR confirms chamber regimen 'four doses over 12 weeks'.",
+   "proposed_year": 2018,
+   "rule": "evidence rule 6 (year = earliest date the comparison was public)",
+   "note": "Biedermann quote verbatim (epub 2019-01-15); birch tablet/sublingual right, same holds. Couroux (12 DU chosen, tolerated) epub 2018-11-22 verified; Phase III result public in ALK PR 2017-09-14 (prior pass, not re-opened): comparison public 2018.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): the chamber's 4 x 12 nmol course was dosed in the field study"
-  },
-  {
-   "cell": "dose",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Biedermann 2019 (PMID 30654054, epub 2019-01-15) quote verbatim. Couroux full text (PMC6588091): Phase III 'initiated with the SQ tree SLIT-tablet (12 DU) (EudraCT: 2015-004821-15)'; chamber NCT02481856 first posted 2015-06-25, ran 2015-06 to 2016-04, prospective. margin_stated true supported ('generally well tolerated in all administered doses'). model_filed should be true: Health Canada RDS00632 names 'a Phase II dose-finding EEC trial' in the authorization basis."
+   "adjudication_note": "Rule 6: same holds; year 2018. Chamber's 12 DU choice first public in Couroux (epub 2018-11-22); ALK PR 2017-09-14 names no dose, so the dose comparison was public in 2018, not 2019."
   },
   {
    "cell": "efficacy",
@@ -70,7 +76,8 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "Same registry record; untested supported. registry_date 2010-09-10 missing."
+   "note": "NCT01198613 re-opened: Ragweed-SPIRE intradermal, posted 2010-09-10; quote verbatim first clause. No Ragweed-SPIRE field trial; untested holds (untested_reason not_measured fits better than unsettled).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -79,7 +86,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PR quote verbatim; sponsor states the comparison ('despite positive results in earlier chamber studies'); primary CS at 1 year not met, programme halted: contra supported. trial_unreported must be false (NCT02150343 results posted 2018-06-15, tier 3). patient_trials Biedermann quote verbatim. Ragweed-SPIRE chamber miss (p=0.149) not verified. The judgement's 'gp-ASIT+ had no model' is wrong (see missing)."
+   "note": "Circassia PR 18 Apr 2017 (Wayback): 'did not meet its primary endpoint' verbatim and 'despite positive results in earlier chamber studies'; NCT02150343 results 2018-06-15. HDM-SPIRE/intradermal right; contra holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -88,7 +96,8 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "Same registry record; untested supported."
+   "note": "NCT01198613 re-opened: Ragweed-SPIRE intradermal, posted 2010-09-10; quote verbatim first clause. Drug/route/population right; no field trial, untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -97,7 +106,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Nony 2015 abstract: no proinflammatory cytokine ex vivo, tablets well tolerated in 483 patients; held negative prediction, same supported. Caveat: abstract does not say the ex-vivo assay preceded the trial (retrodiction not excluded); comparison_stated true rests on consecutive sentences."
+   "note": "Nony 2015 abstract: tolerability and ex-vivo cytokine sentences verbatim, sublingual tablets in 483 patients. 2009 Stallergenes PR gives no tolerability, so not a retrodiction. rBet v 1/sublingual right; same holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -106,109 +116,122 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PR quote verbatim; same (no harm predicted, none seen) supported. HDM-SPIRE's own chamber safety statement exists in the 2013 PR ('All treatment regimens were well tolerated, with a safety profile similar to placebo'), better than the results-less registry record. trial_unreported must be false (NCT02150343, 2018-06-15)."
+   "note": "Circassia PR 18 Apr 2017 (Wayback): 'well tolerated with a highly favourable safety profile' verbatim; chamber side 2013 PRNewswire 'All treatment regimens were well tolerated'. HDM-SPIRE/intradermal right; same holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Biedermann 2019 quote verbatim; Couroux abstract predicts mild-to-moderate oral local reactions; same supported on AE category. model_filed should be true (RDS00632). Caveat: RDS reports one anaphylaxis (8 SQ-Bet) and severe throat events across 1084 exposed that the 219-subject chamber did not show."
-  },
-  {
-   "cell": "engagement",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "NCT02156791 resolves (SC gpASIT+ dose-escalation, start 2013-08, first posted 2014-06-05, no results); quote verbatim as the CPT secondary-outcome title. Year 2013 = first class use (rule 8), record posted 2014. untested supported.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "engagement",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Mosges 2018 (PMID 29512827, epub 2018-06-21) full text: quote verbatim in abstract. CPT reactivity and peak CSMS reported in the same dosed patients; NCT02560948 first posted 2015-09-25, no results. same supported; human-challenge engagement tautology stays rule question 1.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "dose",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Same registry record as engagement 3 (dates confirmed: start 2013-08, posted 2014-06-05); untested supported.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "dose",
-   "index": 6,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim. model_src Mosges 2017 (epub 2017-12-22; Phase IIb Aug-Nov 2014): CPT 51.2% at 170 ug P=.023, 46.3% at 370 ug. Phase III (Jan-Sep 2016) dosed 170 ug, 89% reached it. Prospective; within_2x and margin_stated (no grade III/IV up to 370 ug) supported.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Same registry record as engagement 3; untested supported.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim; peak-season CSMS primary met P=.041. The 20% is the sample-size assumption (90% power), not a pre-specified relevance bar, and the paper calls the result significant: source_calls_it should be match, shortfall kept in magnitude_basis. same holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "PR quote verbatim: peak CSMS 0.15 (p=0.05) vs 0.30 pre-specified primary; whole-season 0.18 (p=0.005) is secondary. Judged on the primary (decision 13): contra supported. patient_trials NCT03724240 primary-outcome text verbatim; trial_unreported true holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 6,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Tourdot 2013 (PMID 23583462, received 2012-09-04, epub 2013-04-10) abstract quote verbatim; untested opening supported. Flag: model postdates the 2009-09-16 Stallergenes result, so retrodiction should be true here too (drafter brief: record a post-hoc model with retrodiction: true).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 7,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2013,
-   "rule": "7 (dating: earliest admissible source; same pattern as engagement 2)",
-   "note": "Nony 2015 (PMID 25846209, epub 2015-04-20) quote verbatim. retro confirmed: VO59.08 (483 patients, all 3 doses significant on AASS) was public in Stallergenes' 2009-09-16 release (BioSpace copy, tier 5), before the mouse paper. Earliest public comparison is the mouse paper year 2013, with that PR as src and Tourdot 2013 as model_src; Nony 2015 stays the tier-1 record.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "evidence rule 6 (year = earliest date the comparison was public)",
+   "note": "Biedermann AE sentence verbatim; birch tablet/sublingual right, same holds. Chamber oral-reaction profile public in Couroux epub 2018-11-22 (verified); Phase III tolerability in ALK PR 2017-09-14 (prior pass): comparison public 2018, not 2019.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: same holds; year 2018. ALK PR 2017-09-14 gave field tolerability but not the chamber's oral-reaction profile, first public in Couroux epub 2018-11-22; comparison public 2018."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT02156791 re-opened: gpASIT+ 'administered subcutaneously', start 2013-08, posted 2014-06-05; CPT outcome title verbatim. gpASIT+/sc/unselected right. Its results are Mosges 2018 doi:10.1111/all.13392 (epub 2018-02-13, single-arm CPT fell).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "evidence rule 6 (year = earliest date the comparison was public)",
+   "note": "Mosges 2018 abstract: 170 ug sc, CPT quote verbatim; gpASIT+/sc right, same holds. But the CPT readout already fell vs placebo in dosed patients in the Phase IIb (51.2% vs 25.6%, P=.023), Mosges 2017 doi:10.1111/all.13358, epub 2017-12-22.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: same holds; year 2017. CPT reactivity already fell vs placebo in dosed Phase IIb patients, Mosges 2017 doi:10.1111/all.13358, epub 2017-12-22 (Europe PMC verified)."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same NCT02156791 record as engagement 3 (sc, posted 2014-06-05). gpASIT+/sc right; untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Mosges 2018 abstract: CSMS quote verbatim, Phase III dosed 170 ug sc; Mosges 2017 Phase IIb chose 170 ug (CPT P=.023). gpASIT+/sc right; same with margin_stated holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same NCT02156791 record; gpASIT+/sc right; untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Mosges 2018 abstract: primary peak-season CSMS -15.5% (P=.041) verbatim; 170 ug sc; model side Mosges 2017 (epub 2017-12-22). gpASIT+/sc/unselected right; same holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FirstWord page blocked this pass (quote verified in prior check); NCT03724240 re-opened: sc gpASIT+, posted 2018-10-30, primary peak-season CSMS matches. gpASIT+/sc right; contra 2019 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "rule": "DRAFTER_BRIEF 'What the model is': a model run after the clinic knew the answer is recorded retrodiction: true",
+   "note": "Tourdot 2013 abstract (PMID 23583462, epub 2013-04-10): quote verbatim; sublingual rBet v 1a in mice. rBet v 1/sublingual right, untested holds, but the model post-dates the 2009-09-16 Stallergenes patient result (re-opened), so retrodiction should be true.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status untested holds (not the track's latest entry). 'What the model is': post-dating alone makes a retrodiction; Tourdot 2013 follows the 2009-09-16 patient result, so retrodiction should be true."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Nony 2015 abstract quote verbatim; sublingual rBet v 1. Stallergenes 2009-09-16 PR re-opened (VO59.08, 483 patients, positive); mouse paper epub 2013-04-10, so retro 2013 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -217,8 +240,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Same registry record as engagement 3; untested supported.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Same NCT02156791 record; gpASIT+/sc right; untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -227,8 +250,63 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim. Model side verified in Phase IIb full text (no grade III/IV, no epinephrine, 89.9% no SR). Phase III: ESR 10.1% (37/368) vs 2.3% placebo; serious ESRs grade 2/3/4, the grade 4 needed epinephrine. Rate held; literal 'no grade III/IV' did not (2/368), beyond the ~150-active Phase IIb's reach. same/partial supported; rule question 5 stands.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Mosges 2018 abstract: ESR quote verbatim; 170 ug sc. Model side Mosges 2017 Phase IIb. gpASIT+/sc right; same (partial) holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FirstWord page and its archive blocked this pass; quote was verified verbatim in the prior check. NCT03724240 re-opened: confirmatory Phase III, same 4x2 sc injection course, posted 2018-10-30. Target reached: same per dose table; the miss is efficacy 5's.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT01447784 re-opened: ToleroMune HDM (=HDM-SPIRE) 'Intradermal injection', posted 2011-10-06; brief-summary sentence verbatim. Untested opener on the HDM-SPIRE chamber track holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PRNewswire 2013-09-12 re-opened: HDM-SPIRE phase II, symptoms on HDM allergen exposure, four doses/12 weeks vs placebo p=0.02; quote verbatim. HDM-SPIRE/intradermal right; same 2013 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT02481856 re-opened: SQ tree SLIT-tablet chamber dose-response, posted 2015-06-25; brief-summary sentence verbatim. birch pollen allergen extract/sublingual right; untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "evidence rule 6 (year = earliest date the comparison was public)",
+   "note": "Biedermann conclusion verbatim (epub 2019-01-15); same holds. ALK PR 2017-09-14 reported chamber Phase II and Phase III primary met (prior pass, adjudicated): year 2017. registry_date 2010-09-10 is NCT01198613's, not this trial's.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: same holds; year 2017. ALK PR 2017-09-14 (tier 5, re-opened) states the chamber Phase II benefit and the Phase III primary met (TCS -39.6%). registry_date 2010-09-10 belongs to NCT01198613."
   }
  ],
  "missing": [
@@ -237,7 +315,8 @@
   "Circassia PRNewswire 2013-09-12 (https://www.prnewswire.com/news-releases/circassias-short-course-house-dust-mite-allergy-treatment-achieves-significant-long-term-symptom-reduction-223419011.html): HDM-SPIRE chamber Phase II, 172 subjects, four doses over 12 weeks, symptoms improved vs placebo one year after start (p=0.02), 'All treatment regimens were well tolerated'. Earliest public member-drug chamber comparison (engagement year 2013) and the HDM-SPIRE model-side safety statement.",
   "Health Canada Regulatory Decision Summary RDS00632 for Itulatek (https://dhpp.hpfb-dgpsa.ca/review-documents/resource/RDS00632, approval April 2020): tier-2 record stating authorization rested on four trials including 'a Phase II dose-finding EEC trial'; sets model_filed true for the birch-tablet entries; reports 35.69% TCS reduction, one anaphylaxis at 8 SQ-Bet.",
   "Not found / not searched: Europe PMC returns no primary animal-model paper for the SPIRE peptides (reviews only), so no missed animal track for the peptide members; DP/MG/14-1 and Salsola kali pollen extract were not pursued beyond one Europe PMC query (no model found); no mouse-model search was run for rBet v 1.",
-  "Stallergenes press release 2009-09-16, BioSpace copy (https://www.biospace.com/stallergenes-s-a-immunotherapy-tablet-containing-recombinant-allergen-rbet-v-1-of-birch-pollen-positive-results-for-a-phase-iib-iii-trial): VO59.08 Phase IIb/III, 2009 season, 483 patients, 12.5/25/50 ug rBet v 1 tablets all significantly reduced AASS vs placebo. Tier-5 patient record predating Tourdot 2013 (received 2012-09-04); dates the rBet v 1 mouse retrodiction (efficacy 7 year 2013) and is the earliest patient source for the patient-blood-dc-pbmc track as well. No further model-system search was run on the models pass."
+  "Stallergenes press release 2009-09-16, BioSpace copy (https://www.biospace.com/stallergenes-s-a-immunotherapy-tablet-containing-recombinant-allergen-rbet-v-1-of-birch-pollen-positive-results-for-a-phase-iib-iii-trial): VO59.08 Phase IIb/III, 2009 season, 483 patients, 12.5/25/50 ug rBet v 1 tablets all significantly reduced AASS vs placebo. Tier-5 patient record predating Tourdot 2013 (received 2012-09-04); dates the rBet v 1 mouse retrodiction (efficacy 7 year 2013) and is the earliest patient source for the patient-blood-dc-pbmc track as well. No further model-system search was run on the models pass.",
+  "Ragweed-SPIRE chamber track (engagement 1's model_id x Ragweed-SPIRE x intradermal) has later results: Circassia Phase II ragweed PR (newswire.ca 'Circassia's Ragweed Allergy Therapy Achieves Positive Phase II Clinical Results', ~2011, not opened) and Phase IIb chamber PR 2014-12-08 (fiercepharma copy: 8x12 nmol TRSS vs placebo 1.25 points, p=0.149; well tolerated). Tier 5; the 2010 'unsettled' opener is not the track's latest state."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

@@ -11,7 +11,9 @@
   "Europe PMC: (members OR calcimimetic) AND (autosomal dominant hypocalcemia OR activating mutation OR gain-of-function) AND CASR AND (predict OR compared) — human genetic model",
   "Europe PMC: members AND (human challenge OR healthy volunteers OR first-in-human) AND parathyroid",
   "ClinicalTrials.gov API v2: NCT03960437 (outcomes, posted results incl. T50, derived publication PMID 37574661) and NCT03795558 (outcomes, no results)",
-  "Europe PMC: PMID 37574661 (Khairallah 2023, Parsabiv-MBD bone-quality publication) abstract"
+  "Europe PMC: PMID 37574661 (Khairallah 2023, Parsabiv-MBD bone-quality publication) abstract",
+  "PMDA Orkedia review 2018-03-08 (curl + pdftotext pmda.go.jp/files/000235777.pdf): grep QT, monkey, hERG, electrocardiogra; sections 3.1.3, 5.R.1, 7.R (Table 49)",
+  "fc.py search 'Upasita upacicalcet PMDA review report English': PMDA index pages and newdrugapprovals only; English Upasita review not found"
  ],
  "added_models": [
   {
@@ -310,12 +312,95 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "evocalcet-monkey-tox",
+   "model": "Cynomolgus monkey safety pharmacology and 4-39 week toxicology (evocalcet)",
+   "model_kind": "animal",
+   "model_first_use_year": 2018,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "model_id": "evocalcet-monkey-tox",
+      "model": "Cynomolgus monkey safety pharmacology and 4-39 week toxicology (evocalcet)",
+      "model_kind": "animal",
+      "model_first_use_year": 2018,
+      "prediction_level": "class",
+      "src": "https://www.pmda.go.jp/files/000235777.pdf",
+      "srcLabel": "PMDA Orkedia review 2018",
+      "source_tier": 2,
+      "model_src": null,
+      "model_src_tier": null,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "model_filed": true,
+      "product_in_model": true,
+      "retrodiction": false,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "imported_from": null,
+      "population": "Unselected",
+      "modality": "small molecule",
+      "year": 2018,
+      "status": "untested",
+      "subjects": null,
+      "comparison_stated": false,
+      "registry_date": null,
+      "note": "Monkey telemetry and repeated-dose studies showed QTc prolongation timed to the serum-calcium fall, 0.4-fold margin; in-vitro ion-channel and papillary-muscle studies ruled out direct channel block.",
+      "short": "Monkey: hypocalcemic QTc, 0.4x margin",
+      "quote": "an increase in heart rate, an increase in blood pressure, and QTc prolongation in monkeys (Table 7), with 4.0- and 0.4-fold safety margins in rats and monkeys, respectively.",
+      "confidence": "high",
+      "confidence_note": "Full text of the PMDA English review (dated 2018-03-08), section 3.1.3 and Table 7; the monkey data were not public before it, so first use is proxied by the review year.",
+      "untested_reason": "unpublished",
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null
+     },
+     {
+      "model_id": "evocalcet-monkey-tox",
+      "model": "Cynomolgus monkey safety pharmacology and 4-39 week toxicology (evocalcet)",
+      "model_kind": "animal",
+      "model_first_use_year": 2018,
+      "prediction_level": "class",
+      "src": "https://www.pmda.go.jp/files/000235777.pdf",
+      "srcLabel": "PMDA Orkedia review 2018",
+      "source_tier": 2,
+      "model_src": "https://www.pmda.go.jp/files/000235777.pdf",
+      "model_src_tier": 2,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "model_filed": true,
+      "product_in_model": true,
+      "retrodiction": false,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "imported_from": null,
+      "population": "Unselected",
+      "modality": "small molecule",
+      "year": 2018,
+      "status": "same",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "registry_date": null,
+      "note": "Held in direction: QT-prolongation events in 1.6% (8/493) of Japanese phase III patients, 3 judged drug-related, none serious; PMDA attributes the risk to decreased blood calcium, as the monkey did.",
+      "short": "Calcium-linked QT events in patients",
+      "quote": "Adverse events coded to torsade de pointes/QT prolongation occurred in 1.6% (8 of 493) of patients in all evocalcet groups combined.",
+      "confidence": "medium",
+      "confidence_note": "Both sides from the same PMDA review (section 3.1.3 monkey, section 7.R QT events, Table 49), paired here rather than stated by PMDA; no ECG-interval rate comparable to the monkey QTc. Registry ids of the Japanese phase III studies not looked up.",
+      "reason": "Monkey hypocalcemic QTc reproduced as QT events",
+      "judgement": "A separate system from rat-dog-tox (different species, different member, no shared source). The monkey call was QTc prolongation secondary to hypocalcemia, not channel block; patients showed QT-prolongation events at low rate (0.9% vs 2.8% on cinacalcet) that PMDA ties to decreased blood calcium. Direction matches; partial because the rate was not above the active comparator.",
+      "magnitude": "direction_only",
+      "magnitude_basis": "hypocalcemia-linked QTc prolongation in monkeys vs QT-prolongation adverse events in patients; no comparable rate",
+      "source_calls_it": "partial"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
   "Adenine-diet uremic rat (FDA PharmR NDA 208325 study r20130076, 0.3 mg/kg SC x4 wk; EPAR p.16 'prevented development of increased PTG-weight, increased average Ki-67-stained parathyroid chief cell count and increase of the aortic calcium content'): a different model but the same predictions as the 5/6 Nx rat (PTH fall, PTG hyperplasia and aortic calcification prevented), so it stays pooled under the draft's uremic-rat slug by this run's identity rule.",
   "Double-nephrectomized rat (Goto 2023, doi 10.1016/j.ejphar.2023.175936, upacicalcet IV 0.3-30 mg/kg): acute single-dose iPTH and serum Ca fall, the same prediction the 5/6 Nx rat made; pooled under uremic-rat, not a separate track.",
-  "Monkey QTc toxicology for evocalcet (PMDA Orkedia review 2018-03-08, QTc prolongation attributed to hypocalcemia, 0.4-fold margin): same system class as the existing rat-dog-tox track (animal toxicology predicting hypocalcemia-linked QTc); a tier-2 source for that track, not a new system.",
   "In-vitro hERG assay (EPAR: 'Parsabiv is not an inhibitor of the hERG channel'; PharmR): already folded into the rat-dog-tox track's QTc-is-hypocalcemia call; not split out.",
   "NCT03960437 Parsabiv-MBD (phase 2 single-arm, n=22, results posted 2023-09-21; Khairallah 2023 CJASN doi 10.2215/CJN.0000000000000254): PTH -64%, BMD up, bone formation rate down; the T50 calcification-propensity primary outcome reads 'No data, as measured by T50, was collected'; no vascular-calcification or parathyroid-size endpoint, so it cannot set outcome_tested on the uremic-rat calcification prediction.",
   "NCT03795558 (Cejka; Clin Kidney J 2024 doi 10.1093/ckj/sfae097, PMID 38919277, single-arm dose-escalation, 16 completers, no registry results): 'Lowering of PTH with etelcalcetide did not result in statistically significant changes in T50', calciprotein particles fell 22-35%. Patient side of the existing uremic-rat track; serum T50 is a propensity surrogate, not the aortic calcium the rat measured, and the study is single-arm, so I would leave outcome_tested null.",
@@ -326,5 +411,47 @@
   "Healthy-volunteer first-in-human studies (Martin 2014 etelcalcetide; Narushima 2018 evocalcet; upacicalcet 2022): human PD data, patient side, not model systems.",
   "Mouse model of primary hyperparathyroidism with evocalcet (J Bone Miner Metab 2026, doi 10.1007/s00774-026-01699-y) and klotho-deficient kl/kl mouse elastin calcification with upacicalcet (Sci Rep 2026, doi 10.1038/s41598-026-56029-z): different disease (pHPT) or the same calcification prediction as the uremic rat; both post-date all patient data and have no patient comparison; nothing to score.",
   "ASP-7991: no model paper and no reported trial (NCT02133404 completed 2014-11, no results), as the checker found; nothing to add."
+ ],
+ "gaps": [
+  {
+   "lead": "EMA EPAR Parsabiv EMA/664198/2016",
+   "outcome": "covered",
+   "detail": "Covered: check.json dose 2 verdict already proposes year 2016 and margin_stated false from the EPAR 'no safety margins' sentence."
+  },
+  {
+   "lead": "Adenine-diet uremic rat and double-nephrectomised rat (Goto 2023)",
+   "outcome": "covered",
+   "detail": "Covered: a model-label wording change on uremic-rat entries; no status, year or scored field changes."
+  },
+  {
+   "lead": "Patient-derived parathyroid cells ex vivo (Fujioka 2020)",
+   "outcome": "tracked",
+   "detail": "phpt-parathyroid-cells-ex-vivo, engagement 3 (untested 2020)."
+  },
+  {
+   "lead": "NCT03960437 and NCT03795558 as patient tests of the rat calcification prediction",
+   "outcome": "covered",
+   "detail": "Covered: extra patient trials on efficacy 2 with status and outcome_tested unchanged."
+  },
+  {
+   "lead": "Monkey toxicology for evocalcet (PMDA Orkedia review)",
+   "outcome": "added",
+   "detail": "evocalcet-monkey-tox, safety: untested 2018 then same 2018 (partial; QT events 1.6% of phase III patients, calcium-linked), PMDA review section 3.1.3 vs 7.R."
+  },
+  {
+   "lead": "In-vitro hERG (etelcalcetide PharmR, EPAR)",
+   "outcome": "covered",
+   "detail": "Covered: note/judgement wording on safety 2 (rat-dog-tox); call and status unchanged."
+  },
+  {
+   "lead": "PMDA review reports as tier-2 sources (Orkedia, Upasita)",
+   "outcome": "covered",
+   "detail": "Covered: check.json dose 3 verdict already sets model_filed true from the PMDA Orkedia review; upacicalcet model_filed stays null (no source found)."
+  },
+  {
+   "lead": "ASP-7991",
+   "outcome": "none",
+   "detail": "No model paper and no reported trial results (NCT02133404 completed 2014-11, no results); nothing to compare."
+  }
  ]
 }

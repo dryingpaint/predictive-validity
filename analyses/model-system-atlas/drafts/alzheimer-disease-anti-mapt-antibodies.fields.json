@@ -1,0 +1,102 @@
+{
+ "tile": "alzheimer-disease-anti-mapt-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug gosuranemab, route iv: first entry on the tau-tg-mice-p301 x gosuranemab x iv track, strengthens dropped; status same 2023 unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "status same -> retro, retrodiction true: ex-vivo CSF depletion first public 2020 after the 2018/2019 human CSF tau results for the same target (retrodiction rule; applies the checker's adjudication); drug gosuranemab, route iv"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "strengthens true (duplicate of entry 7, now also retro); drug gosuranemab, route iv; status retro 2020 unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug gosuranemab, route iv: first entry on its own track, strengthens dropped; status same 2023 unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2022 -> 2020: Tauriel topline press release 2020-09-23 (AC Immune) made the miss public, mouse side public at AD/PD 2017 (rule 6, press release and congress count); status contra unchanged; drug semorinemab, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2022 -> 2021: Biogen press release 2021-06-16 reported the TANGO CDR-SB miss (rule 6; settles the checker's press-release dating question); status same unchanged (neg ruled unavailable without a class bar); drug gosuranemab, route iv; tilavonemab and zagotenemab split to appended entries 17 and 19"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug semorinemab, route iv: moved to the semorinemab track, where it strengthens entry 3 (contra); co-primary ruling applied to Lauriet (one met, authors call it negative: failure); status contra 2023 unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "year 2022 -> 2021: tilavonemab AD phase 2 results presented at CTAD November 2021 (rule 6, congress abstract counts); status contra unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "year 2023 -> 2021: Biogen press release 2021-06-16 (rule 6); status contra unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "model_id qsp-synaptic-cleft-tau-antibody -> mcell-spatial-cleft-tau-antibody (own track, model_first_use_year 2025, strengthens dropped; settles the checker's identity question); status retro 2025 unchanged; drug semorinemab, route iv"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "opener untested 2013 for the tau-tg-mice-p301 x tilavonemab x iv track (Yanamandra 2013, HJ8.5 in P301S mice)"
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "what": "same 2017 on the tau-tg-mice-p301 x tilavonemab x iv track: Yanamandra 2017 states mouse and PSP-patient plasma tau rises (checker's missed comparison; ruling: PSP patients count as dosed humans for engagement)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "opener untested 2013 for the tau-tg-mice-p301 x tilavonemab x iv track (Yanamandra 2013 in-vivo arm, split from entry 1's judgement)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "contra 2021 on the tau-tg-mice-p301 x tilavonemab x iv track: Yanamandra 2013 paired with Florian 2023 (CTAD Nov 2021, registry 2022-08-26)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "what": "contra 2021 on the tau-tg-mice-p301 x zagotenemab x iv track (follows opener entry 1): Fleisher 2024 states the MC-1 mouse basis and the miss; dated to Lilly's October 2021 investor call"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "what": "opener untested 2018 for the ad-tau-seeding-assay x tilavonemab x iv track (Courade 2018 antibody B)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 17,
+   "what": "same 2021 on the ad-tau-seeding-assay x tilavonemab x iv track: Courade antibody B paired with Florian 2023 (CTAD Nov 2021)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 18,
+   "what": "opener untested 2018 for the ad-tau-seeding-assay x zagotenemab x iv track (Courade 2018 antibody F = MC-1)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 19,
+   "what": "same 2021 on the ad-tau-seeding-assay x zagotenemab x iv track: Courade antibody F paired with Fleisher 2024 (Lilly Oct 2021)"
+  }
+ ]
+}

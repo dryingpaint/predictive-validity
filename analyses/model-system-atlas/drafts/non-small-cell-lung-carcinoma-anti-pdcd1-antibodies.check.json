@@ -39,10 +39,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": null,
-   "note": "PMID 36206498 resolves (epub 2022-10-07, print 2023-01). Quote verbatim incl. P < .0001. Reached-and-worked rule: saturating regimen (Wei 2020) given at 240 mg q3w, PFS met. NCT03856411 no results (checked)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 36206498 abstract quote verbatim (epub 2022-10-07); met-endpoint release 2021-08-18 per prior check (site fetch returned nothing now). Combination noted; toripalimab, iv, unselected fine. Wei 2020 RO dating stays a rule question."
   },
   {
    "cell": "dose",
@@ -62,17 +63,23 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "761174 review p.37 verbatim incl. n=6-9/group; study ANA011.E004-RES-20150327 confirmed, so 2015 opening is sound. Surrogate RMP1-14, product_in_model false correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "761174 review line 1554 verbatim; opener untested holds; drug dostarlimab, iv, unselected fine. Model result first public 2021, after nivolumab/pembrolizumab NSCLC results: retrodiction should be true on this track."
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "PMID 33347829 resolves (epub 2020-12-18). Quote verbatim; PFS primary met. Pairing with class surrogate allowed. But judgement's 'camrelizumab has no public in-vivo model' is wrong: hPD-1-transgenic MC38 data exist (see missing). NCT03134872 no results."
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2021,
+   "rule": "Retrodiction: for engagement and efficacy a model first public after a patient result on the same target (member or not) is a retrodiction; one that reproduced the human data is retro, never same",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 33347829 (epub 2020-12-18) resolves; PFS primary met, carboplatin + pemetrexed noted, year 2021 fine. But dostarlimab MC38 result was first public 2021, after PD-1 NSCLC results (2015): retro, not same.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement/efficacy): the dostarlimab-filed MC38 surrogate result was first public 2021, after PD-1 NSCLC trial results (2015); it reproduced CameL's PFS benefit, so retro, never same."
   },
   {
    "cell": "efficacy",
@@ -87,12 +94,17 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim; model side (hPD-1 KI MC38, 761240 p.49-50, Study TR003) confirmed. COSTAR Lung registry 2026-07-01, OS HR 0.96 (0.77-1.20) confirmed; failure was public in trade press July 2025 (no GSK release found). PERLA 2023-09-18 confirmed. No status change: post-PD-(L)1 re-treatment untested by model."
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2023,
+   "rule": "Retrodiction: for engagement and efficacy a model first public after a patient result on the same target (member or not) is a retrodiction; one that reproduced the human data is retro, never same",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 36206498 quote verbatim; KI-MC38 toripalimab data in 761240 (lines 4447-4464). Own track, combination noted, strengthens false fine. Model first public 2023, long after PD-1 NSCLC results: retro.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement/efficacy): toripalimab knock-in MC38 data first public in the 2023 FDA review, years after PD-1 NSCLC results; reproduced CHOICE-01 PFS benefit: retro."
   },
   {
    "cell": "safety",
@@ -132,7 +144,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "761174 review p.34 verbatim. Pairing of Nishimura autoimmunity with immune-mediated irAEs is the drafter's; comparison_stated false correct. MONDO:0002447 = endometrial carcinoma confirmed. Direction-only same holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "CHOICE-01 irAE sentence verbatim in PMC9870236; NSCLC replaces imported endometrial correctly; class, iv, unselected fine. Knockout 1999 is prospective. CameL (2020) full text unread could date the comparison 2020."
   },
   {
    "cell": "safety",
@@ -142,7 +155,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "761174 p.34 verbatim; one 10 mg/kg male euthanised Day 89 for unresolved skin inflammation confirmed. Monkey findings and clinical irAE statement share one paragraph, so comparison_stated true is defensible. Partial same holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "761174 line 1460 verbatim; opener untested holds, drug dostarlimab. Retrodiction should be true (monkey data public after Oaknin 2020 irAEs). Cohort E NSCLC sat in the 2021 irAE pool (line 811), so untested_reason unsettled, not not_measured."
   },
   {
    "cell": "safety",
@@ -152,7 +166,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "761240 p.43 verbatim; FDA assessment 'no toripalimab-related adverse effects up to 100 mg/kg' (p.53); JUPITER-02 irAEs 40% (review text line 3148); MONDO:0015459 = NPC confirmed. Note: minimal infiltrates did occur in 1-2 animals of all groups incl. controls; silence is FDA's, so contra holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "761240 line 4690 (no toripalimab-related effects to 100 mg/kg) and CHOICE-01 irAE sentence verbatim; contra, year 2023, toripalimab own track fine. Monkey tox public after toripalimab's own irAEs: retrodiction true; failing to reproduce keeps contra."
   },
   {
    "cell": "efficacy",
@@ -192,26 +207,29 @@
    "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": false,
-   "proposed_status": "untested",
+   "proposed_status": "retro",
    "proposed_year": 2023,
-   "rule": "decision 4 (#35, #72): result attributed to conditions the model never tested",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "PMID 36822161 abstract verbatim. Source attributes the Ki67 rise to radiotherapy plus camrelizumab; no antibody-alone arm, comparator differs by chemotherapy, and radiotherapy alone drives homeostatic CD8 proliferation. The readout the mice showed (effector-memory proportion) did not move. PubMed sweep (12 hits) found no member-drug monotherapy Ki67 datum; Tang 2019 (PMID 30642373) reports baseline activated CD8 only.",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: decision 4 states the never-tested-conditions rule for contra only (#35, #72 are failures); the checker brief extends it to same, the drafter brief does not. Does a Ki67 rise under unisolated radiotherapy co-treatment score same+partial or untested?"
+   "rule": "Retrodiction: for engagement and efficacy a model first public after a patient result on the same target (member or not) is a retrodiction; one that reproduced the human data is retro, never same",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 36822161 abstract verbatim; radiotherapy as combination_with fine under the ruling; camrelizumab, iv, other_disease fine. huPBMC-NSG result first public in the 2023 review, after PD-1 patient engagement (Wei 2020, nivolumab): retro, partial.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement/efficacy): huPBMC-NSG T-cell result first public 2023, after PD-1 patient engagement data; partially reproduced (CD8 proliferation rose, subsets unchanged): retro, source_calls_it partial."
   },
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "761174 text lines 2622-2625 verbatim. Opening entry, no NSCLC readout: untested holds; 2021 review year correct; tier 2. Merging dostarlimab and toripalimab popPK into one in_silico track is a drafter choice (both sponsor models fit to patient PK)."
+   "proposed_status": "untested",
+   "rule": "Rule 5 untested_reason: patients measured, result unreported for NSCLC",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "761174 review line 2624 verbatim; untested holds. Note wrong: GARNET Cohort E NSCLC got 500 mg Q3W then 1000 mg Q6W (Moreno 2022, PMID 35729005; review line 811). untested_reason should be unsettled, not not_measured.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5: untested holds; review line 811 shows GARNET Cohort E NSCLC patients got the recommended 500 mg Q3W/1000 mg Q6W regimen, so measured but no comparison reported (ER inconclusive): unsettled, not not_measured."
   },
   {
    "cell": "dose",
@@ -220,21 +238,52 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": false,
-   "proposed_status": "untested",
+   "proposed_status": "retro",
    "proposed_year": 2023,
-   "rule": "decision 4: post-hoc PK/PD justification is untested with source_calls_it scaling (#50, #99, #118); decision 10 alternative retro",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "PMID 36206498 verbatim; popPK numbers confirmed (761240 lines 5380-5382, 5600-5607). But the simulation (TOPA-PMX-TORI-2412) is the BLA popPK fit to the 12 monotherapy studies incl. the 240 mg Q3W cohort itself, E-R files dated 06/2021, cross-study comparison a July 2020 IND submission; CHOICE-01 started on 240 mg Q3W in 2019. Regimen was not taken into the trial on the simulation: post-hoc, not same. dose 2 (cyno track) already carries reached-and-worked.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 (#50, #99, #118), reaffirmed by decision 16: post-hoc PK/PD justification is untested, source_calls_it scaling. The simulation (first use 2021) post-dates CHOICE-01's 2019-03 start and is fitted to that regimen's own data; the dose-specific rule, not decision 10, governs."
+   "rule": "Evidence rule 3 (quote supports status); drug/route/population_group match the patients compared",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Retro holds: popPK fit to toripalimab's own monotherapy PK incl. TAB001-01 240 mg Q3W (85/19 vs 77/25 ug/mL, 761240 lines 5600-5607). But src/quote is CHOICE-01 PFS: should be that review PK sentence; population_group other_disease, combination_with null.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Dose retrodiction rule: popPK fit after toripalimab's own 240 mg Q3W patient PK, reproduced exposure: retro. Rule 3: quote should be the review PK sentence (lines 5600-5607), not CHOICE-01 PFS; status unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2022,
+   "rule": "Retrodiction: for engagement and efficacy a model first public after a patient result on the same target (member or not) is a retrodiction; one that reproduced the human data is retro, never same",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "'PERLA met its pre-specified endpoint.' verbatim (PMID 37951954); ORR primary, combination noted. Model first public 2021 after PD-1 NSCLC results: retro. GARNET Cohort E (irORR 26.9%, epub 2022-05-23) is an earlier dostarlimab NSCLC datum; year 2022 holds.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement/efficacy): dostarlimab's MC38 RMP1-14 result was first public 2021, after PD-1 NSCLC results; it matched PERLA's met ORR endpoint, so retro, never same. Year 2022 stands."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2022,
+   "rule": "Retrodiction (safety: same drug's own earlier patient result); rule 6 earliest date",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PERLA irAE sentence verbatim (PMC10640551). Monkey data first public 2021, after dostarlimab's own patient irAEs (Oaknin 2020): retro, not same. Earliest NSCLC comparison is GARNET Cohort E, irTRAEs 28.4% (PMID 35729005, epub 2022-05-23): year 2022.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Safety retrodiction rule: dostarlimab monkey toxicology first public 2021, after its own patient irAEs (Oaknin 2020); partial reproduction of immune-type harm: retro. Rule 6: GARNET Cohort E (2022) may set year."
   }
  ],
  "missing": [
   "Camrelizumab's own in-vivo model, which the draft says does not exist: C57 human PD-1 transgenic mice bearing MC38(PD-L1) tumours, SHR-1210 3 mg/kg i.p. Q2Dx7 gave 20.40% tumour inhibition (not significant vs HIgG control); combination with apatinib 63.07%. Source: sponsor protocol for NCT03092895, section 1.5.5, https://cdn.clinicaltrials.gov/large-docs/95/NCT03092895/Prot_000.pdf (tier uncertain: sponsor document on the registry). Would be the member's own model side for CameL/CameL-sq with product_in_model true, and the weak monotherapy number is an under-call of a drug that worked.",
   "Toripalimab's second and third in-vivo systems in its own package with no track: NSG mice bearing MC38 engrafted with allogeneic CD8+ CTLs, where toripalimab 10 mg i.p. twice weekly had only 'minor antitumor activity' (Study TR003, Figure 8), and human-PBMC-engrafted mice where toripalimab expanded effector-memory T cells (PD readout). Source: FDA BLA 761240 multidisciplinary review pp.43 and 49, https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/761240Orig1s000MultidisciplineR.pdf.",
-  "Not found (one WebSearch each): any NSCLC patient-derived organoid or PBMC co-culture, humanized PDX, or other patient-level model compared with response to camrelizumab, toripalimab, dostarlimab or spartalizumab; and any member-drug Phase 3 failure in NSCLC other than COSTAR Lung (already listed). Spartalizumab's own preclinical package was not searched (budget); its NSCLC data are Phase 1b combinations only, as the draft says."
+  "Not found (one WebSearch each): any NSCLC patient-derived organoid or PBMC co-culture, humanized PDX, or other patient-level model compared with response to camrelizumab, toripalimab, dostarlimab or spartalizumab; and any member-drug Phase 3 failure in NSCLC other than COSTAR Lung (already listed). Spartalizumab's own preclinical package was not searched (budget); its NSCLC data are Phase 1b combinations only, as the draft says.",
+  "GARNET Cohort E: dostarlimab monotherapy in recurrent NSCLC, irORR 26.9%, immune-related TRAEs 28.4%, 1000 mg Q6W maintenance (Moreno 2022, Clin Lung Cancer, doi:10.1016/j.cllc.2022.05.013, PMID 35729005, epub 2022-05-23); dates the dostarlimab efficacy and safety tracks and the popPK dose track"
  ],
- "overall": "accept",
+ "overall": "accept_with_corrections",
  "rule_questions": [
   "Is prior anti-PD-(L)1 progression (COSTAR Lung, dostarlimab + docetaxel, OS HR 0.96) inside this context's 'Unselected' population, or a condition the MC38 model never tested? The draft keeps efficacy `same` and lists it in patient_trials; if it is in-population, the one-contra-beats-same rule would turn the mc38 track contra in 2025/2026.",
   "May a track carry a second entry with the same status that only adds `margin_stated: true` (dose 3, decision 16) or `product_in_model: true` (efficacy 4), given 'one entry per change of status' and `patient_trials` for non-status-changing trials? Lint accepts them.",
@@ -242,6 +291,7 @@
   "Which `model_kind` fits an in-vitro receptor-proteome screen on cultured cells (safety 3)? No in_vitro enum; the draft used ex_vivo.",
   "Should a dose entry whose patient-side PK/AUC is from another indication (dose 3: NPC programme, same 240 mg q3w regimen as CHOICE-01) carry `imported_from` as safety entries do?",
   "What tier is a sponsor protocol document posted on ClinicalTrials.gov (the only public source for camrelizumab's own mouse data), and can it serve as `model_src` (tiers 1-3 required)?",
-  "When a member's own model under-called a drug that later worked (camrelizumab 20% TGI, not significant, then CameL positive), is that `same` direction-only, `contra` (magnitude opposite), or set aside? The `neg` rule covers only the failed-drug direction."
+  "When a member's own model under-called a drug that later worked (camrelizumab 20% TGI, not significant, then CameL positive), is that `same` direction-only, `contra` (magnitude opposite), or set aside? The `neg` rule covers only the failed-drug direction.",
+  "Dose 2: does the reached-target comparison date to the first patient RO/PK showing the target met (Wei 2020, mixed tumours) rather than the first NSCLC trial on that regimen (CHOICE-01, 2021)?"
  ]
 }

@@ -1,0 +1,232 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/multiple-sclerosis-ms4a1-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "125326 PharmR quote present (OCR CD20\"). Ofatumumab opener; sc and unselected match the MS patients; untested 2009 right. A later ofatumumab retro entry (ASCLEPIOS depletion) is absent but not this entry's error."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ocrevus label quote verbatim. Engagement is a target claim; rituximab and ocrelizumab phase 2 depletion in patients preceded the 2017 review (and Vugmeyster 2005), so retro; ocrelizumab, iv, unselected right."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "125326 PharmR quote present; ofatumumab monkeys gave no MS regimen, exposure or margin. Ofatumumab, sc, unselected right; untested 2009 stands."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "Retrodiction, dose/safety: only the same drug's own patient result, public earlier, makes a model a retrodiction",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Ocrelizumab's monkey tolerability was public in Vugmeyster 2005 (PMID 15838377: 10-100 mg/kg, only depletion and follicular atrophy), before any ocrelizumab patient result; NOAEL 100 mg/kg in PharmR. Prospective same, retrodiction false; direction_only fine.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Retrodiction rule (dose: same drug's own patient result must be public earlier): Vugmeyster 2005 (PMID 15838377) published 10-100 mg/kg tolerated while ocrelizumab was in RA phase 1. Prospective; margin held (decision 16), so same, retrodiction false."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Weber 2010 abstract quote verbatim; opener untested 2010; ocrelizumab, iv, unselected right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Weber 2010 post-dates HERMES (NEJM Feb 2008, same target and action), so retro under the target-claim rule; Kappos 2011 GdE primary quote verbatim; year 2011, ocrelizumab iv right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Torres 2022 gave ofatumumab SC; quote verbatim but model-side only. Retro vs ASCLEPIOS right, ofatumumab sc. src should be the ASCLEPIOS paper with Torres as model_src."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "125326 PharmR quote present (OCR '|'). Ofatumumab opener, sc, unselected; untested 2009 right."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Label infection quote verbatim. Monkey infections first public in 2017 PharmR (Vugmeyster 2005 abstract silent on infection), after ocrelizumab's own patient data: retro; iv, unselected right."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2023,
+   "rule": "Dating rule 6: year is the earliest date the comparison was public",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Label line 278 and PharmR lines 407-410 verified; retrodiction true and contra right, ublituximab iv track. The monkey cytokine data appear only in the PharmR (dated 2022-12-27, posted under nda/2023), so the comparison was first public 2023.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Both agree contra (retrodiction; failed to reproduce first-infusion reactions). Dispute is only the year (rule 6): the monkey cytokine data are public only in the PharmR posted under nda/2023, so 2023."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Yu 2022 (PMID 35233753) Methods quote verbatim; opener untested 2022; ofatumumab, sc, unselected right."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Yu 2022 Results quote verbatim; model fit to pooled RMS data after ASCLEPIOS used 20 mg, so ofatumumab's own result came first: retro; sc, unselected right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kap 2010 (PMID 20739677) quote verbatim; HuMab 7D8 sibling antibody; opener untested 2010; ocrelizumab, iv, unselected right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kap 2010 (online Aug 2010) post-dates HERMES Feb 2008: retro under the target-claim rule. Kappos 2011 primary quote verbatim; year 2011, ocrelizumab iv right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Matsushita 2008 JCI quote verbatim; opener untested 2008; ocrelizumab, iv, unselected right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Matsushita 2008 (JCI Oct 2008) post-dates HERMES Feb 2008: retro; partial right given pre-induction worsening. Kappos 2011 primary quote verbatim; year 2011, iv right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Hauser 2023 quote verbatim; 2019 proxy predates MUSETTE/GAVOTTE; untested opener; ocrelizumab, iv, unselected right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lancet 2026 quote verbatim; two parallel trials, same cCDP primary, HR 0.93/0.95, so magnitude null right. Prospective contra; year 2025 matches Roche MUSETTE release 2 Apr 2025; iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Torres 2022 IV ocrelizumab arm exists; quote verbatim but model-side only. Retro vs OPERA right; ocrelizumab iv, unselected. src should be Hauser 2017 with Torres as model_src."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PharmR line 1105 (IL-6 up on SD1 in 15/16) and label IRR 34-40% verified. First public 2017 after ocrelizumab's own IRRs: retro; iv, unselected. Same status as safety 2, so no change of status on the track."
+  }
+ ],
+ "missing": [
+  "Safety, same track (cyno-bcell-depletion-tox), 2017 'same': the ocrelizumab monkey PK/PD study 02-082-0352 (761053 PharmR p.12, bundle line ~1101) found 'IL-6 levels were increased on SD1 at 2 hours post-dose in 15 of 16 animals', with fewer elevations after the second dose. That matches the first-infusion reactions in patients (34.3% in OPERA, Hauser 2017 PMID 28002679; Ocrevus label 5.1). It belongs before the 2022 ublituximab contra, and it shows the ublituximab study's repeat-dose-only sampling, not the species, is why no cytokines were seen.",
+  "Efficacy track missing: marmoset EAE (rhMOG/CFA) with late B-cell depletion by HuMab 7D8, a sibling human anti-CD20 that cross-reacts with marmoset CD20. Kap et al. 2010 J Immunol, doi 10.4049/jimmunol.1001393 (PMID 20739677), reported it 'halts the development of EAE'; it pairs with Kappos 2011 (ocrelizumab phase 2, 2011). Follow-up: Kap 2014 J Immunol doi 10.4049/jimmunol.1303125. product_in_model false.",
+  "Efficacy, possible earlier track (not verified this session): mouse MOG35-55 EAE with mouse anti-CD20 (Matsushita et al. 2008 JCI). Depletion before induction exacerbated EAE and depletion after onset reduced it. Mixed predictions; if added, model_first_use_year for EAE moves to 2008.",
+  "Engagement: the huCD20 transgenic mouse PK/PD in the 761053 PharmR (line 206) is a second B-cell depletion system with no track; low priority.",
+  "Ocrelizumab monkey toxicology published prospectively: Vugmeyster et al. 2005 J Immunother 28:212 (doi 10.1097/01.cji.0000155050.03916.04, PMID 15838377), PRO70769 10-100 mg/kg IV, 'Depletion of CD20-expressing cells and lymphoid follicular atrophy were the only treatment-related effects'. Its 2005 tolerability statement is a prospective safety prediction on the cyno ocrelizumab track (silent on infection, later seen in patients) and the source for dose 2's margin."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Safety: a primate study measured cytokines only after repeated dosing (ublituximab), and the class's harm is a first-infusion effect. Does 'silence on a harm the species could have shown' cover a study design that sampled outside the harm's window? Another member's monkeys did show first-dose IL-6. Under the current rules the 2022 contra stands and beats the missing 2017 ocrelizumab 'same'.",
+  "Efficacy: one paper (Weber 2010) gives opposite anti-CD20 effects in two EAE paradigms (rMOG improved, MOG p35-55 worsened). Do they count as one model with a mixed prediction, or two model_ids where only the B-cell-dependent paradigm is a class prediction? The draft chose the rMOG arm alone.",
+  "Efficacy: the class entered MS on rituximab's phase 2 (HERMES, 2008), a same-target non-member in MS patients. Is that a cross_indication or sibling-drug 'model' track, or out of scope because rituximab is not a member?",
+  "Dose: what should magnitude be for a margin_stated 'same' when the margin held with ~12-fold headroom? within_2x reads as prediction accuracy."
+ ]
+}

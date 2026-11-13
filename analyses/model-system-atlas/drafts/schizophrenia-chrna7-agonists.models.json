@@ -35,5 +35,32 @@
   "Patient exposure-response in Walling 2016 (no relationship between TC-5619 plasma concentration and SANS change) and ABT-126 sparse PK in Haig 2016: patient-side data with no model prediction to compare against",
   "ABT-126 in the MPTP macaque (Parkinson's dyskinesia, 2015), ABT-126 Alzheimer's trials (Gault 2015/2016), TC-5619 ADHD and AD studies: other indications; they transfer only to safety via imported_from, which the in-disease safety entries make unnecessary",
   "Non-member alpha7 agonists with their own model-patient pairs (Hayward 2017 low-attentive rat 5C-CPT with encenicline; DBA/2 gating and human P50 with DMXB-A; BMS-933043, RG3487, AQW051, PHA-543613 aged-rat PVT): outside the member list, so they cannot score this context"
+ ],
+ "gaps": [
+  {
+   "lead": "Targacept press release 2013-12-16 (TC-5619 NCT01488929 SANS-primary miss)",
+   "outcome": "covered",
+   "detail": "Covered: check verdicts on efficacy 6 (rodent-schizophrenia-screens, year 2015->2013 from this press release) and efficacy 5 (pcp-nest-building-mouse, adjudicated retro->contra because the SANS miss was public 2013-12-16 before Pedersen 2014); the draft has no TC-5619 phase 2b dose entry, so nothing else changes"
+  },
+  {
+   "lead": "Targacept 8-K EX-99.1 2011-01-19 (TC-5619 NCT01003379 GMLT positive, well tolerated)",
+   "outcome": "covered",
+   "detail": "Covered: check verdicts move rodent-schizophrenia-screens dose 3, efficacy 4 and safety 3 from 2012 to 2011 on the 8-K EX-99.1 of 2011-01-19 (rule 6 with rule 2); status same is unchanged"
+  },
+  {
+   "lead": "Mazurov 2012 J Med Chem (PMID 23126648) stated animal-model/phase 2 comparison",
+   "outcome": "fix",
+   "detail": "efficacy 4 (rodent-schizophrenia-screens, TC-5619): field comparison_stated, current false, source supports true; src/srcLabel current Lieberman 2013 (10.1038/npp.2012.259), the stated-comparison source is Mazurov 2012 J Med Chem https://doi.org/10.1021/jm301048a (PMID 23126648, epub 2012-11-13; abstract read), which puts the animal models and the phase 2 PoC side by side: '7a had positive effects across cognitive, positive, and negative symptoms of schizophrenia in animal models and was additive or synergistic with the antipsychotic clozapine.' (24 words) and 'Compound 7a ... demonstrated encouraging results on measures of negative symptoms and cognitive dysfunction in schizophrenia and was well tolerated in a phase II clinical proof of concept trial'. The drafter's confidence_note says the sentence exceeds 40 words; it does not. Status same and year 2011 (per the 8-K verdict) are unchanged; Lieberman 2013 stays the tier-1 patient record. Same source also supports safety 3: comparison_stated false -> true (abstract pairs 'no detectable effects on muscle or ganglionic nicotinic receptor subtypes, indicating a marked selectivity for the central nervous system over the peripheral nervous system' with 'was well tolerated in a phase II clinical proof of concept trial')."
+  },
+  {
+   "lead": "ABT-126 NCT00912431 (HV PK/exploratory biomarker) and NCT01043458 (PK in schizophrenia)",
+   "outcome": "none",
+   "detail": "No posted results and no publication (CT.gov v2 API, Europe PMC); Haig 2016 states no ABT-126 occupancy studies were done; no verifiable model-to-patient comparison, so no track (evidence rule: a system needs a resolvable quoted source)"
+  },
+  {
+   "lead": "Checked-and-not-missing items (Hayward 2017 encenicline 5C-CPT, DMXB-A gating, ABT-126 preclinical, AbbVie registry, other-indication trials)",
+   "outcome": "none",
+   "detail": "Non-member drugs (encenicline, DMXB-A) are outside the member list; no ABT-126 preclinical efficacy paper or posted AbbVie results exist; ADHD/AD trials are other indications already made unnecessary by in-disease safety entries"
+  }
  ]
 }

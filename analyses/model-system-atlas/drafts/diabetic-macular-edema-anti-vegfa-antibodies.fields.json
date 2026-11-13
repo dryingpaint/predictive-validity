@@ -1,0 +1,28 @@
+{
+ "tile": "diabetic-macular-edema-anti-vegfa-antibodies",
+ "changed": [
+  {"cell": "engagement", "index": 2, "what": "year 2014 -> 2011, src/quote Korobelnik 2014 -> Do 2011 (DA VINCI CRT); rule 6 earliest public DME result on the track; drug aflibercept, route intravitreal"},
+  {"cell": "engagement", "index": 3, "what": "drug abicipar pegol, route intravitreal set"},
+  {"cell": "engagement", "index": 4, "what": "drug abicipar pegol, route intravitreal set"},
+  {"cell": "engagement", "index": 1, "what": "drug aflibercept (VEGF TrapA40 precursor, product_in_model false), route intravitreal set"},
+  {"cell": "dose", "index": 1, "what": "drug aflibercept, route intravitreal set"},
+  {"cell": "dose", "index": 2, "what": "year 2014 -> 2011, src/quote -> Do 2011 (DA VINCI 2q8 arm); rule 6 earliest public date; drug aflibercept, route intravitreal"},
+  {"cell": "dose", "index": 3, "what": "drug abicipar pegol, route intravitreal; untested_reason unsettled"},
+  {"cell": "dose", "index": 4, "what": "status same -> retro, retrodiction true: aflibercept 8 mg rabbit RNV study first public in the 2023 FDA review, after the same drug's PHOTON/PULSAR topline press release (Sept 2022); drug aflibercept, route intravitreal"},
+  {"cell": "dose", "index": 5, "what": "drug aflibercept, route intravitreal set"},
+  {"cell": "dose", "index": 6, "what": "drug aflibercept, route intravitreal set"},
+  {"cell": "dose", "index": 7, "what": "drug abicipar pegol, route intravitreal; untested_reason unsettled"},
+  {"cell": "efficacy", "index": 1, "what": "drug aflibercept (precursor), route intravitreal set"},
+  {"cell": "efficacy", "index": 2, "what": "year 2014 -> 2011, src/quote Korobelnik 2014 -> Do 2011 (DA VINCI primary BCVA endpoint met); rule 6; DA VINCI added to patient_trials; drug aflibercept, route intravitreal"},
+  {"cell": "efficacy", "index": 3, "what": "status same -> retro, retrodiction true: conbercept rat result (Huang 2012) first public after anti-VEGFA DME efficacy was known (DA VINCI 2011, ranibizumab); efficacy is target-level; drug conbercept, route intravitreal"},
+  {"cell": "safety", "index": 1, "what": "drug aflibercept, route intravitreal set"},
+  {"cell": "safety", "index": 2, "what": "status same -> contra, magnitude opposite: predicted nasal turbinate erosion never seen in patients (safety ruling); stays imported from nAMD (population_group other_disease); drug aflibercept"},
+  {"cell": "safety", "index": 3, "what": "status same -> retro, retrodiction true; imported_from removed, population_group unselected: DME patients measured first (Campochiaro 2013 MP0112 phase I/II, 61% ocular inflammation, epub 2012) and abicipar tox first public 2020; drug abicipar pegol"},
+  {"cell": "safety", "index": 4, "what": "status same -> contra, magnitude opposite: monkey nasal erosion at 4-7 mg/eye not seen in PHOTON DME patients (safety ruling); drug aflibercept"}
+ ],
+ "added": [
+  {"cell": "dose", "index": 8, "what": "untested opener 2023, rabbit-chronic-rnv-leak x aflibercept x intravitreal (FDA 761355 PharmR)"},
+  {"cell": "efficacy", "index": 4, "what": "untested opener 2012, diabetic-rat-brb-evans-blue x conbercept x intravitreal (Huang 2012)"},
+  {"cell": "safety", "index": 5, "what": "untested opener 2020, ivt-repeat-dose-toxicology x abicipar pegol x intravitreal (EMA Rayoqta report)"}
+ ]
+}

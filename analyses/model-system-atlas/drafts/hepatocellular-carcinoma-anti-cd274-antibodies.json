@@ -49,7 +49,11 @@
     "short": "In-vitro T-cell activation, no patients yet",
     "src": "https://doi.org/10.1158/2326-6066.CIR-14-0191",
     "srcLabel": "Stewart 2015",
-    "quote": "In vitro assays demonstrate that MEDI4736 is a potent antagonist of PD-L1 function, blocking interaction with PD-1 and CD80 to overcome inhibition of primary human T-cell activation."
+    "quote": "In vitro assays demonstrate that MEDI4736 is a potent antagonist of PD-L1 function, blocking interaction with PD-1 and CD80 to overcome inhibition of primary human T-cell activation.",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_id": "durva-primary-human-tcell-assay",
@@ -85,7 +89,11 @@
     "src": "https://doi.org/10.1200/JCO.20.03555",
     "srcLabel": "Kelley 2021",
     "quote": "An early expansion of CD8+ lymphocytes was associated with response across arms, with highest proliferating CD8+ lymphocyte levels occurring in the T300 + D arm.",
-    "reason": "T-cell proliferation readout moved in patients"
+    "reason": "T-cell proliferation readout moved in patients",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    }
   ],
   "dose": [
@@ -114,16 +122,20 @@
     "confidence": "high",
     "confidence_note": null,
     "judgement": "The model's dose statement is a tolerability margin (13-week NOAEL = highest dose, 200/100 mg/kg/week), not an efficacy exposure: durvalumab does not bind mouse PD-L1, and the clinical regimen was set from sPD-L1 suppression in Study 1108 patients plus the in-vitro 3 ug/mL figure. Untested here because the tile scores HCC patients only; the first HCC trial (Study 22, NCT02519348) had not reported.",
-    "year": 2017,
+    "year": 2012,
     "status": "untested",
     "blocked_by": null,
     "margin_stated": null,
     "model": "Cynomolgus monkey 4-week and 13-week GLP repeat-dose toxicology of durvalumab (up to 200/100 mg/kg/week)",
-    "note": "Monkey NOAEL exposure sat 19.7-fold above the AUC at 10 mg/kg Q2W; the regimen came from patient sPD-L1 saturation; no HCC patient dosed.",
+    "note": "Monkey NOAEL exposure sat 19.7-fold above the AUC at 10 mg/kg Q2W; the regimen came from patient sPD-L1 saturation; no HCC patient dosed. Opens at the monkey studies' first use, 2012 (rule 6).",
     "short": "Monkey margin 19.7x; HCC not yet dosed",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761069Orig1s000PharmR.pdf",
     "srcLabel": "FDA Pharmacology Review 2017",
-    "quote": "The exposures in the monkey GLP studies were up to 19.7-fold higher than the clinical AUC of 1773.2 μg*hr/mL (at the clinically recommended dose of 10 mg/kg every two weeks)."
+    "quote": "The exposures in the monkey GLP studies were up to 19.7-fold higher than the clinical AUC of 1773.2 μg*hr/mL (at the clinically recommended dose of 10 mg/kg every two weeks).",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_id": "durva-cyno-monkey-tox",
@@ -150,17 +162,21 @@
     "confidence": "medium",
     "confidence_note": "Abstract-level reading of Abou-Alfa 2022. The 1500 mg Q4W regimen is AstraZeneca's flat-dose equivalent of 10 mg/kg Q2W; I did not re-derive the HCC AUC.",
     "judgement": "Reached-and-worked rule on the member drug's own gate: durvalumab monotherapy met its pre-specified non-inferiority objective and the STRIDE arm (durvalumab plus tremelimumab) met the primary OS endpoint. Decision 16: the monkey stated a tolerated exposure 19.7x the clinical AUC and HCC patients took the full regimen with fewer grade 3/4 events than sorafenib, so margin_stated true. EMERALD-1 (Sangro 2025) dosed the same regimen with TACE; its primary (durvalumab plus bevacizumab) was met and the durvalumab-alone PFS comparison was a secondary, so it does not turn this cell.",
-    "year": 2022,
+    "year": 2021,
     "status": "same",
     "blocked_by": null,
     "margin_stated": true,
     "model": "Cynomolgus monkey 4-week and 13-week GLP repeat-dose toxicology of durvalumab (up to 200/100 mg/kg/week)",
-    "note": "HIMALAYA: durvalumab 1500 mg Q4W reached in 389 HCC patients, monotherapy non-inferior to sorafenib (OS HR 0.86); grade 3/4 TEAEs 37.1% vs 52.4% on sorafenib.",
+    "note": "HIMALAYA: durvalumab 1500 mg Q4W reached in 389 HCC patients, monotherapy non-inferior to sorafenib (OS HR 0.86); grade 3/4 TEAEs 37.1% vs 52.4% on sorafenib. First public in the AstraZeneca press release 15 Oct 2021 (https://www.astrazeneca.com/media-centre/press-releases/2021/imfinzi-and-tremelimumab-improved-os-in-liver-cancer.html): durvalumab alone non-inferior with improved tolerability vs sorafenib.",
     "short": "Full dose reached, tolerated, non-inferior",
     "src": "https://doi.org/10.1056/EVIDoa2100070",
     "srcLabel": "Abou-Alfa 2022",
     "quote": "Overall survival with durvalumab monotherapy was noninferior to sorafenib (hazard ratio, 0.86; 95.67% CI, 0.73 to 1.03; noninferiority margin, 1.08).",
-    "reason": "Target regimen reached; margin held"
+    "reason": "Target regimen reached; margin held",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    }
   ],
   "efficacy": [
@@ -199,7 +215,11 @@
     "short": "Surrogate anti-PD-L1 combo extends mouse survival",
     "src": "https://doi.org/10.1158/1078-0432.CCR-13-1189",
     "srcLabel": "Morales-Kastresana 2013",
-    "quote": "The triple combination of ISmAbs extended survival of mice bearing hepatocellular carcinomas in a CD8-dependent fashion and synergized with adoptive T-cell therapy using activated OVA-specific TCR-transgenic OT-1 and OT-2 lymphocytes."
+    "quote": "The triple combination of ISmAbs extended survival of mice bearing hepatocellular carcinomas in a CD8-dependent fashion and synergized with adoptive T-cell therapy using activated OVA-specific TCR-transgenic OT-1 and OT-2 lymphocytes.",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_id": "hcc-mouse-anti-pdl1-surrogate",
@@ -226,9 +246,9 @@
     "confidence": "low",
     "confidence_note": "Abstract-level reading of both sides. The mouse prediction is for anti-PD-L1 within an immunostimulatory combination; the trial's primary arm combines durvalumab with tremelimumab (a non-member), and the member-only arm met a non-inferiority secondary objective.",
     "judgement": "Paired by me; the trial does not cite the mouse work. Same, direction only, at low confidence: the mouse HCC models show anti-PD-L1 activity mainly in combination, and in patients the combination arm met the primary endpoint while durvalumab alone was non-inferior, not superior, to sorafenib (ORR 10.6% in Study 22). Not contra because no member failed a primary endpoint in HCC: EMERALD-1's primary (TACE plus durvalumab plus bevacizumab) was met and its durvalumab-alone PFS arm was a secondary (results read from memory, not verified at full text). Pfister 2021's NASH-HCC mouse comparison is excluded: its mice got anti-PD-1 and its pooled trials used atezolizumab, nivolumab and pembrolizumab, none a member. Benmelstobart (TQB2450) has HCC patient data (phase 1b with AL2846, ORR 0/15 in ICI-refractory HCC, Cancer 2024, doi 10.1002/cncr.35377; several phase 2s and a phase 3 with ablation, NCT04665609, status unknown) and sugemalimab a phase 1b/2 with fisogatinib (NCT04194801, results posted 2023-02-06); I found no model comparison for either, so neither scores.",
-    "year": 2022,
+    "year": 2021,
     "status": "same",
-    "endpoint_role": "primary",
+    "endpoint_role": "poc_gate",
     "outcome_tested": null,
     "patient_trials": [
      {
@@ -245,12 +265,17 @@
      }
     ],
     "model": "Transgenic c-myc/OVA multifocal mouse HCC dosed with rat anti-mouse PD-L1 (B7-H1) antibody in combination with anti-CD137 and anti-OX40",
-    "note": "HIMALAYA: durvalumab plus one tremelimumab dose beat sorafenib on OS (HR 0.78); durvalumab alone was non-inferior (HR 0.86), as the combination-dependent mouse data pointed.",
+    "note": "HIMALAYA: durvalumab plus one tremelimumab dose beat sorafenib on OS (HR 0.78); durvalumab alone was non-inferior (HR 0.86), as the combination-dependent mouse data pointed. Design: the member-only arm's pre-specified, alpha-controlled non-inferiority objective vs sorafenib governs (poc_gate); the primary was durvalumab plus tremelimumab (STRIDE, met). First public in the AstraZeneca press release 15 Oct 2021 (https://www.astrazeneca.com/media-centre/press-releases/2021/imfinzi-and-tremelimumab-improved-os-in-liver-cancer.html).",
     "short": "HIMALAYA OS matched mouse direction",
     "src": "https://doi.org/10.1056/EVIDoa2100070",
     "srcLabel": "Abou-Alfa 2022",
     "quote": "STRIDE significantly improved overall survival versus sorafenib. Durvalumab monotherapy was noninferior to sorafenib for patients with unresectable hepatocellular carcinoma.",
-    "reason": "Durvalumab matched; two members uncompared"
+    "reason": "Durvalumab matched; two members uncompared",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line",
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -287,7 +312,11 @@
     "short": "Co-implant xenograft TGI 74-95%, T-cell dependent",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761069Orig1s000PharmR.pdf",
     "srcLabel": "FDA Pharmacology Review 2017",
-    "quote": "MEDI4736 significantly inhibited growth of HPAC (Fig 5) and A375 (Fig 6) cells by up to 74% and 95%, respectively, as compared to the control group (CAT254)."
+    "quote": "MEDI4736 significantly inhibited growth of HPAC (Fig 5) and A375 (Fig 6) cells by up to 74% and 95%, respectively, as compared to the control group (CAT254).",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
@@ -301,7 +330,7 @@
     "trial_unreported": false,
     "model_filed": true,
     "product_in_model": true,
-    "year": 2022,
+    "year": 2021,
     "status": "same",
     "subjects": "patients",
     "comparison_stated": false,
@@ -314,7 +343,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "tumor growth inhibition up to 74% (HPAC) and 95% (A375) with MEDI4736 in co-implant mice vs HIMALAYA durvalumab-monotherapy OS HR 0.86 (non-inferior to sorafenib) and Study 22 confirmed ORR 10.6%",
     "source_calls_it": null,
-    "endpoint_role": "primary",
+    "endpoint_role": "poc_gate",
     "outcome_tested": null,
     "patient_trials": [
      {
@@ -333,18 +362,22 @@
     "confidence": "low",
     "confidence_note": "Abstract-level reading of Abou-Alfa 2022 and Kelley 2021. Cross-indication pairing: melanoma and pancreatic xenografts set against HCC patients; neither trial cites the model.",
     "judgement": "Pairing is mine. The model's prediction is that durvalumab itself, acting through T cells, slows PD-L1+ human tumors as a single agent; in HCC, durvalumab alone was non-inferior to sorafenib on OS (a pre-specified secondary objective; the trial's primary was STRIDE, with the non-member tremelimumab) and gave confirmed responses in 10.6% of Study 22 patients. Direction agreed, so same at low confidence, matching the draft's existing efficacy call and inheriting the checker's open rule question on combination-arm primaries. EMERALD-1 is recorded, not scored: its primary (durvalumab plus bevacizumab plus TACE, PFS HR 0.77) was met and the durvalumab-plus-TACE comparison (HR 0.94) was a key secondary in a different, embolisation-eligible setting; its final OS (HR 1.10, ESMO GI 2026 abstract) is a key secondary I did not fetch. Not retro: the model (2012) predates every HCC trial.",
-    "note": "HIMALAYA: durvalumab alone non-inferior to sorafenib on OS (HR 0.86); Study 22 ORR 10.6%; single-agent activity the co-implant model foretold, in direction.",
+    "note": "HIMALAYA: durvalumab alone non-inferior to sorafenib on OS (HR 0.86); Study 22 ORR 10.6%; single-agent activity the co-implant model foretold, in direction. Design: the member-only arm's pre-specified, alpha-controlled non-inferiority objective vs sorafenib governs (poc_gate); the primary was durvalumab plus tremelimumab (STRIDE, met). First public in the AstraZeneca press release 15 Oct 2021 (https://www.astrazeneca.com/media-centre/press-releases/2021/imfinzi-and-tremelimumab-improved-os-in-liver-cancer.html).",
     "short": "Monotherapy activity held in HCC patients",
     "src": "https://doi.org/10.1056/EVIDoa2100070",
     "srcLabel": "Abou-Alfa 2022",
     "quote": "Overall survival with durvalumab monotherapy was noninferior to sorafenib (hazard ratio, 0.86; 95.67% CI, 0.73 to 1.03; noninferiority margin, 1.08).",
-    "reason": "Filed xenograft direction held; HCC unmodelled"
+    "reason": "Filed xenograft direction held; HCC unmodelled",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    },
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
     "model_id": "ct26-anti-mouse-pdl1-surrogate",
-    "model": "Syngeneic CT26 mouse colorectal carcinoma dosed with a rat anti-mouse PD-L1 surrogate antibody (durvalumab does not bind mouse PD-L1), alone or with oxaliplatin; filed as ONC4736-0018 and ONC4736-0019",
+    "model": "Syngeneic CT26 mouse colorectal carcinoma dosed with the rat anti-mouse PD-L1 surrogate 10F.9G2 (durvalumab does not bind mouse PD-L1), alone or with oxaliplatin; filed as ONC4736-0011 (oxaliplatin combination) and ONC4736-0019 (dose levels)",
     "model_kind": "cross_indication",
     "prediction_level": "class",
     "model_first_use_year": 2015,
@@ -375,13 +408,17 @@
     "short": "Surrogate anti-PD-L1 monotherapy prolongs CT26 survival",
     "src": "https://doi.org/10.1158/2326-6066.CIR-14-0191",
     "srcLabel": "Stewart 2015",
-    "quote": "Here, anti-mouse PD-L1 significantly improved survival of mice implanted with CT26 colorectal cancer cells."
+    "quote": "Here, anti-mouse PD-L1 significantly improved survival of mice implanted with CT26 colorectal cancer cells.",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
     "model_id": "ct26-anti-mouse-pdl1-surrogate",
-    "model": "Syngeneic CT26 mouse colorectal carcinoma dosed with a rat anti-mouse PD-L1 surrogate antibody (durvalumab does not bind mouse PD-L1), alone or with oxaliplatin; filed as ONC4736-0018 and ONC4736-0019",
+    "model": "Syngeneic CT26 mouse colorectal carcinoma dosed with the rat anti-mouse PD-L1 surrogate 10F.9G2 (durvalumab does not bind mouse PD-L1), alone or with oxaliplatin; filed as ONC4736-0011 (oxaliplatin combination) and ONC4736-0019 (dose levels)",
     "model_kind": "cross_indication",
     "prediction_level": "class",
     "model_first_use_year": 2015,
@@ -389,7 +426,7 @@
     "trial_unreported": false,
     "model_filed": true,
     "product_in_model": false,
-    "year": 2022,
+    "year": 2021,
     "status": "same",
     "subjects": "patients",
     "comparison_stated": false,
@@ -402,7 +439,7 @@
     "magnitude": "direction_only",
     "magnitude_basis": "survival benefit of surrogate anti-PD-L1 monotherapy in CT26 mice vs HIMALAYA durvalumab-monotherapy OS HR 0.86 (non-inferior to sorafenib)",
     "source_calls_it": null,
-    "endpoint_role": "primary",
+    "endpoint_role": "poc_gate",
     "outcome_tested": null,
     "patient_trials": [
      {
@@ -421,12 +458,16 @@
     "confidence": "low",
     "confidence_note": "Abstract-level reading. Surrogate antibody in a colorectal, not HCC, model; the trial does not cite the model. The mouse survival magnitude is not in the abstract, so magnitude is direction only.",
     "judgement": "Pairing is mine. The surrogate predicted single-agent survival benefit from PD-L1 blockade in an immunocompetent host; in HCC, durvalumab alone was non-inferior to sorafenib on OS (secondary non-inferiority objective; the primary was STRIDE with the non-member tremelimumab). Same, direction only, low confidence, matching the draft's existing efficacy call. The 2021 follow-up with effector-function-null murine surrogates of durvalumab and tremelimumab in syngeneic models (PMID 33397194) sits on this track's model side but adds no patient comparison. EMERALD-1's durvalumab-plus-TACE PFS miss (HR 0.94, key secondary) is recorded in patient_trials, not scored.",
-    "note": "HIMALAYA: durvalumab alone non-inferior to sorafenib (OS HR 0.86); the surrogate's monotherapy survival prediction held in direction in HCC patients.",
+    "note": "HIMALAYA: durvalumab alone non-inferior to sorafenib (OS HR 0.86); the surrogate's monotherapy survival prediction held in direction in HCC patients. Design: the member-only arm's pre-specified, alpha-controlled non-inferiority objective vs sorafenib governs (poc_gate); the primary was durvalumab plus tremelimumab (STRIDE, met). First public in the AstraZeneca press release 15 Oct 2021 (https://www.astrazeneca.com/media-centre/press-releases/2021/imfinzi-and-tremelimumab-improved-os-in-liver-cancer.html).",
     "short": "Surrogate monotherapy direction held in HCC",
     "src": "https://doi.org/10.1056/EVIDoa2100070",
     "srcLabel": "Abou-Alfa 2022",
     "quote": "Overall survival with durvalumab monotherapy was noninferior to sorafenib (hazard ratio, 0.86; 95.67% CI, 0.73 to 1.03; noninferiority margin, 1.08).",
-    "reason": "Surrogate CT26 direction held in HCC"
+    "reason": "Surrogate CT26 direction held in HCC",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    }
   ],
   "safety": [
@@ -463,7 +504,11 @@
     "short": "Knockout predicts immune hepatitis",
     "src": "https://doi.org/10.1016/s1074-7613(04)00050-0",
     "srcLabel": "Dong 2004",
-    "quote": "Moreover, antigen-driven CD8(+) T cells proliferated normally while apoptotic levels during the contraction phase was selectively impaired in the liver, leading to accelerated hepatocyte damage in experimental autoimmune hepatitis."
+    "quote": "Moreover, antigen-driven CD8(+) T cells proliferated normally while apoptotic levels during the contraction phase was selectively impaired in the liver, leading to accelerated hepatocyte damage in experimental autoimmune hepatitis.",
+    "drug": "class",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_id": "pdl1-knockout-mouse",
@@ -494,12 +539,16 @@
     "year": 2017,
     "status": "same",
     "model": "PD-L1 (B7-H1)-deficient mouse: spontaneous intrahepatic CD8+ T-cell accumulation and accelerated experimental autoimmune hepatitis",
-    "note": "Durvalumab label: immune-mediated hepatitis in 16/1414 (1.1%) of the combined safety database, one death; the liver harm the knockout foretold.",
+    "note": "Durvalumab label: immune-mediated hepatitis in 16/1414 (1.1%) of the combined safety database, one death; the liver harm the knockout foretold. Imported harm: no HCC patient safety data for the class were public in May 2017.",
     "short": "Immune-mediated hepatitis as knockout predicted",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761069Orig1s000SumR.pdf",
     "srcLabel": "FDA Summary Review 2017",
     "quote": "Immune-mediated hepatitis occurred in patients receiving IMFINZI.",
-    "reason": "Knockout liver prediction held in patients"
+    "reason": "Knockout liver prediction held in patients",
+    "drug": "class",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "model_id": "durva-cyno-monkey-tox",
@@ -534,7 +583,11 @@
     "short": "Monkey toxicology filed, no comparison yet",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761069Orig1s000PharmR.pdf",
     "srcLabel": "FDA Pharmacology Review 2017",
-    "quote": "The safety of durvalumab was characterized in a non-GLP dose range-finding study and in GLP 28-day and 13-week toxicology studies in monkeys."
+    "quote": "The safety of durvalumab was characterized in a non-GLP dose range-finding study and in GLP 28-day and 13-week toxicology studies in monkeys.",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "unselected"
    },
    {
     "model_id": "durva-cyno-monkey-tox",
@@ -565,11 +618,15 @@
     "year": 2017,
     "status": "same",
     "model": "Cynomolgus monkey 4-week and 13-week GLP repeat-dose toxicology of durvalumab (up to 200/100 mg/kg/week)",
-    "note": "FDA set the monkey's immune-mediated rash and multi-organ arteritis beside patients' immune-related dermatitis; patients also had hepatitis, pneumonitis and colitis the monkey lacked.",
+    "note": "FDA set the monkey's immune-mediated rash and multi-organ arteritis beside patients' immune-related dermatitis; patients also had hepatitis, pneumonitis and colitis the monkey lacked. Imported harm: no HCC patient safety data for the class were public in May 2017.",
     "short": "Monkey immune lesions matched irAEs, partly",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/761069Orig1s000PharmR.pdf",
     "srcLabel": "FDA Pharmacology Review 2017",
-    "quote": "These findings may be attributed to immune-mediated response. In humans, administration of durvalumab at the recommended dose of 10 mg/kg (study #1108,214) resulted in immune-related adverse events (dermatitis or rash)."
+    "quote": "These findings may be attributed to immune-mediated response. In humans, administration of durvalumab at the recommended dose of 10 mg/kg (study #1108,214) resulted in immune-related adverse events (dermatitis or rash).",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "other_disease"
    },
    {
     "model_id": "durva-cyno-monkey-tox",
@@ -601,12 +658,16 @@
     "year": 2025,
     "status": "same",
     "model": "Cynomolgus monkey 4-week and 13-week GLP repeat-dose toxicology of durvalumab (up to 200/100 mg/kg/week)",
-    "note": "HIMALAYA HCC patients: immune-mediated AEs in 16.5% on durvalumab alone (35.8% with STRIDE), mostly low grade, within three months of starting.",
+    "note": "HIMALAYA HCC patients: immune-mediated AEs in 16.5% on durvalumab alone (35.8% with STRIDE), mostly low grade, within three months of starting. HCC patients' own result now sets this track's status (imported-harm ruling).",
     "short": "HCC patients showed the predicted irAEs",
     "src": "https://doi.org/10.1097/HEP.0000000000001385",
     "srcLabel": "HIMALAYA imAE analysis 2025",
     "quote": "imAEs occurred in 139/388 (35.8%) and 64/388 (16.5%) participants with STRIDE and durvalumab, respectively; most were low grade.",
-    "reason": "Monkey irAE prediction held in HCC"
+    "reason": "Monkey irAE prediction held in HCC",
+    "drug": "durvalumab",
+    "route": "iv",
+    "combination_with": null,
+    "population_group": "stage_or_line"
    }
   ]
  }

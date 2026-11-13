@@ -1,0 +1,132 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/waldenstrom-macroglobulinemia-ms4a1-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Quote found in bundled PharmR text (OCR 'CD20°'). Opening untested at proxy 2004 is acceptable."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "ClinPharmR bundle line 757 has the 93%/91% quote; PharmR calls monkey B-cell depletion consistent with clinical observations. Rituximab human depletion (1990s) and Coiffier CLL (2007-11-14) predate FDA 2009: retro. ofatumumab, iv, other_disease (CLL) correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR confirms the reviewer NOAEL of 20 mg/kg (0.7x) with LOAEL 100 mg/kg (brain focal arteritis), while the sponsor reported 100 mg/kg as the NOAEL. Furman confirms the WM 2000 mg dose came from CLL. Untested/no_prediction is defensible; see rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Teeling 2004 abstract (PMID 15172969) ends with the quoted sentence verbatim. Furman's PMC text cites in-vitro CDC superiority as the rationale for the trial."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Furman 2017 abstract has the quote verbatim; single-arm, primary ORR, no preset bar. Teeling 2004 (Blood 2004-06) post-dates Dimopoulos JCO 2002-05: retro. DOI of ASH 2010 abstract 1795 resolves: year 2010. NCT01536067 3 enrolled, results 2016-06-10.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (PMC4380738); online 2014-12-31: year 2014. Sawas 2017 full text has no WM patient, so not_measured, though NCT01647971 lists WM. Fields: retrodiction should be true (post-dates rituximab WM responses); reason text stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote found in PharmR. Opening proxy year 2004 is acceptable."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "not_found",
+   "status_supported": true,
+   "note": "ASH 1795 DOI resolves to the WM ofatumumab phase II abstract but the page returned 403; quote not re-seen. Furman 2017 abstract (same trial) confirms infusion reactions, haemolysis in WM. Coiffier 2007-11-14 predates FDA 2009 tox: retro. Fields correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Bleeker 2008 abstract (Europe PMC, DOI resolves, online 2007-11-27) has the quote verbatim and states the 5-10 ug/mL maintenance target. Untested opening, class level, prospective. The 10 ug/mL half comes from the monkey arm of the same paper."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Furman 2017 PMC Table 5 row matches (TGA 23.4, TGB 181 ug/mL before dose 4). The target was stated by the model paper, not a sponsor trough. The trial started 2009, after the 2007 model, so not retro. Same holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote is verbatim in the Bleeker abstract, but I saw only the abstract. In-vivo xenograft kept as its own track apart from in-vitro CDC. Untested 2007, class level."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Bleeker BJH online 2007-11-27, after Dimopoulos 2002 rituximab WM responses: retro under target-level rule. Furman 2017 quote verbatim; ASH 2010 abstract DOI resolves, year 2010. Single-arm noted; ofatumumab, iv, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "NCT01536067 (ofatumumab + bortezomib, untreated WM, phase 2, terminated, results posted): a WM patient trial of a class member in combination. It belongs in patient_trials on the efficacy track and does not change the status.",
+  "No uncovered model system found: Europe PMC and a web search for ofatumumab, ublituximab or veltuzumab against WM cell lines (BCWM.1), xenografts or patient cells turned up nothing beyond Le Garff-Tavernier 2015. Veltuzumab has no WM data (its NCT00989586 is a B-NHL combination)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose: the sponsor's tox report states a NOAEL of 100 mg/kg (3.5x the clinical dose), which held in patients, but the FDA reviewer re-set the NOAEL to 20 mg/kg (0.7x) on brain arteritis. Whose stated margin counts as the model's margin_stated: the sponsor's, or the regulator's re-reading?",
+  "Safety: monkeys showed fatal haemolytic anaemia (which FDA called likely species-specific) and focal brain arteritis at 3.5x the clinical exposure, and neither was seen as such in patients. Does a harm the regulator discounted, or one seen only above human exposure, count as a 'predicted harm that never appeared' (contra/opposite)?"
+ ]
+}

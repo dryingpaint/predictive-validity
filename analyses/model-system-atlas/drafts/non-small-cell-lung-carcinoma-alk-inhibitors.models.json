@@ -308,6 +308,56 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "alk-mutant-cells",
+   "model": "Ba/F3 EML4-ALK L1196M cells and crizotinib-resistant patient-derived lines",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2011,
+   "prediction_level": "patient",
+   "cells": {
+    "efficacy": [
+     {
+      "year": 2023,
+      "status": "contra",
+      "model": "Ba/F3 EML4-ALK L1196M cells and crizotinib-resistant patient-derived lines",
+      "model_id": "alk-mutant-cells",
+      "model_kind": "ex_vivo",
+      "prediction_level": "patient",
+      "model_first_use_year": 2011,
+      "note": "Mutant-cell panel ranked brigatinib above alectinib after crizotinib; ALTA-3 head-to-head found identical PFS (19.3 vs 19.2 months, HR 0.97), futility met.",
+      "short": "Cells ranked brigatinib over alectinib; trial tied",
+      "src": "https://doi.org/10.1016/j.jtho.2023.08.010",
+      "srcLabel": "Yang 2023",
+      "quote": "Brigatinib was not superior to alectinib for PFS in crizotinib-pretreated ALK+ NSCLC.",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level reading (PMID 37574132, epub 2023-08-12). Model side: Zhang 2016 abstract (PMID 27780853) and brigatinib FDA multidisciplinary review Study ARP618 Table 4 (figure, not text-extractable). ALTA-3 did not select by ALK resistance mutation; only 34% had ctDNA-detectable ALK fusion.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1158/1078-0432.CCR-16-0569",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2023,
+      "print_year": 2023,
+      "registry_date": "2025-02-19",
+      "model_filed": true,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "predicted brigatinib superiority over alectinib across crizotinib-resistant ALK mutants versus BIRC-assessed PFS HR 0.97 (95% CI 0.66-1.42)",
+      "source_calls_it": null,
+      "population": "ALK-rearranged NSCLC progressed on crizotinib",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [],
+      "reason": "Within-class ranking failed in ALTA-3",
+      "judgement": "Paired comparison: Zhang 2016 states brigatinib 'exhibited a superior inhibitory profile compared with crizotinib, ceritinib, and alectinib at clinically achievable concentrations' in the same Ba/F3 mutant panel (ARP618) filed with the NDA; ALTA-3 then tested brigatinib against alectinib for superiority after crizotinib and found none. A prospective within-class ranking miss on this patient-level track, scored contra (one drug comparison's contra beats earlier same). Open rule question whether a member-vs-member ranking belongs in efficacy; the trial was not enriched for ALK mutations, so a reader could call the panel's prediction untested in this population."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -319,5 +369,22 @@
   "Brigatinib PBPK DDI modelling: the 2017 review only required it as a post-marketing commitment (PMR 3190-2 / PMC 3190-6), no comparison at approval, so no 2017 entry on the alk-pbpk-ddi track.",
   "Iruplinalkib and foritinib: the checker found no model comparison; their Ba/F3 and xenograft programmes are the same systems as the draft's tracks and no patient comparison with a distinct model was searched for within budget.",
   "No true co-clinical PDX trial (patients matched to their own PDX response) for ALK inhibitors was found in PubMed or web search; the Recondo PDX track is the only in-vivo patient-derived comparison located."
+ ],
+ "gaps": [
+  {
+   "lead": "ALTA-3 head-to-head (NCT03596866; Yang 2023, PMID 37574132): brigatinib not superior to alectinib, PFS HR 0.97, against the Ba/F3 panel ranking (208772 MultidisciplineR Table 4)",
+   "outcome": "entry",
+   "detail": "Added a 2023 contra entry on alk-mutant-cells (efficacy): Yang 2023 ALTA-3 (doi 10.1016/j.jtho.2023.08.010; NCT03596866 results 2025-02-19) paired with Zhang 2016 (doi 10.1158/1078-0432.CCR-16-0569) / brigatinib review ARP618 Table 4. The context note's 'every track matched' is in the draft and is left for the checker."
+  },
+  {
+   "lead": "Patient-derived organoid track, ALK-positive NSCLC (Lee 2023, doi 10.1186/s13046-023-02899-4)",
+   "outcome": "tracked",
+   "detail": "alk-nsclc-pdo-codrp, efficacy cell: 2023 untested opener and 2023 retro entry (draft efficacy index 7); the checker's efficacy[7] verdict (adjudicated retro, five patients not four, AUC miss in the note) covers the correction."
+  },
+  {
+   "lead": "CKB 25891: alectinib failing in an ALK I1171N/F1174I 'PDX'",
+   "outcome": "none",
+   "detail": "Resolved to Mizuta 2021 Nat Commun (PMID 33627640): an engineered I1171N+F1174I overexpressing patient-derived line xenografted, not a PDX from an alectinib-resistant tumour; same mutant-panel system as alk-mutant-cells (one system, one track) and the compound mutant's resistance was already known from patients, so no new system."
+  }
  ]
 }

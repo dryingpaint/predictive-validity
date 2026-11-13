@@ -1,0 +1,117 @@
+{
+ "tile": "hepatocellular-carcinoma-vegfr-multikinase-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to regorafenib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to regorafenib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: dose retrodiction rule; Kissel 2017's exposure match was first public after regorafenib's own 160 mg patient results; drug set to regorafenib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to regorafenib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: H129 survival result (2012) first public after sorafenib's SHARP survival result in HCC (same target and action, any drug counts for efficacy); drug set to regorafenib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: Tai 2014 xenograft result first public after SHARP; model_first_use_year of the xenograft system set to 2014 (Tai 2014); drug set to regorafenib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "strengthens true added (second retro on the regorafenib xenograft track); status unchanged; drug set to regorafenib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true: Eisai/Matsuki xenograft result first public after SHARP; non-inferiority primary design written into note; drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to regorafenib, route oral (track field; from the entry's own source)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to lenvatinib, route oral (track field; from the entry's own source)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "same (partial) 2016 on the repeat-dose-tox x regorafenib x oral track: imported-harm ruling, HCC patients measured in RESORCE (Stivarga label 2017: mild liver laboratory excess, no increase in fatal hepatic failure); strengthens"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "same 2018 on the repeat-dose-tox x lenvatinib x oral track: imported-harm ruling, HCC patients measured in REFLECT (Lenvima label 2018: hepatic encephalopathy 8% vs 3%, hepatic failure 3%); strengthens"
+  }
+ ]
+}

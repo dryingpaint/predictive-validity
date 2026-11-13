@@ -1,0 +1,257 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/duchenne-muscular-dystrophy-dmd.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Track fields: drug = member the model was run for at an opener; route = patients compared",
+   "note": "Quote verbatim in bundled 206488 PharmR. Untested opener of the mdx-surrogate eteplirsen track, later compared with IV Cirak 2011: drug eteplirsen, route iv, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Status same (direction agrees); prospective (model 2006 before any patient result)",
+   "note": "Cirak 2011 abstract quote verbatim (epub 2011-07-23); weekly IV AVI-4658 (eteplirsen). Alter 2006 precedes van Deutekom 2007, so prospective same; drug/route/population correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Rule 6 opener; track fields",
+   "note": "Arechavala-Gomeza 2007 (HGT Sep 2007) abstract quote verbatim. Opener of the patient-cell eteplirsen track compared with IV Cirak 2011, so eteplirsen/iv consistent.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Status same, paired; prospective",
+   "note": "Cirak 2011 quote verbatim; IV dosing. Cell model public Sep 2007, before van Deutekom Dec 2007 and Cirak 2011, so prospective same stands; route iv correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Rule 6 opener; track fields",
+   "note": "Abstract quote verbatim. hDMD track compared with Kinali 2009 intramuscular EDB injection: drug eteplirsen (AVI-4658), route im correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Status same, paired; prospective",
+   "note": "Kinali 2009 interpretation sentence verbatim; AVI-4658 injected into EDB, route im. hDMD public Sep 2007, before van Deutekom (Dec 2007) and Kinali, so prospective same stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Untested opener cannot carry retrodiction true; track fields",
+   "note": "206488 PharmR quote verbatim; GLP-0901 test article dated May 7, 2009 supports proxy year. Route im matches the patients later compared (Study 33); drug eteplirsen correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (engagement): model result first public after a same-target patient result is retro, never same",
+   "note": "MedR quote verbatim. Monkey skipping first public in the 2016 review, after Kinali 2009 and van Deutekom 2007 patient skipping: retro, retrodiction true, year 2016. Route im = Study 33 patients.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Rule 6 opener; track fields",
+   "note": "Kinali 2009 methods sentence verbatim in abstract. Fibroblast-screen opener; drug eteplirsen, route im correct; opener untested with retrodiction false is right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "Retrodiction (engagement): a model result first public after a patient result for the same target and action, from any drug, is retro, never same",
+   "note": "Quote verbatim, route im right. But van Deutekom 2007 (NEJM, Dec 2007, PMID 18160687) already showed in-vitro-selected responders skipping exon 51 after IM PRO051; the fibroblast screen was first public 2009: retro, retrodiction true.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement/efficacy are target claims): van Deutekom 2007 (PMID 18160687) showed in-vitro-selected boys skipping exon 51 after IM PRO051, before the 2009 fibroblast result; it reproduced that, so retro, not same."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Dose table row 1; untested_reason no_prediction",
+   "note": "Quote verbatim in 206488 PharmR. mdx surrogate stated no human exposure or regimen target; drug eteplirsen, route iv matches IV human dose-ranging.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (dose): only the same drug's own earlier patient result counts; reproduced -> retro",
+   "note": "PharmR quote verbatim; MedR 'no laboratory indication of renal toxicity'. Margins first public 2016, after Mendell 2013 eteplirsen IV tolerability: retro, retrodiction true. Stray untested_reason 'unpublished' should be null.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Rule 6 opener; track fields",
+   "note": "Quote verbatim in 206488 PharmR (Wu 2011 summary). Opener of the mdx eteplirsen IV track; drug and route correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Primary endpoint governs; prospective",
+   "note": "Mendell 2013 (epub 2013-09-10) quote verbatim; weekly IV eteplirsen, dystrophin-positive fibres primary. Drug/route correct. outcome_tested 'negative' leans on other members' trials (RACER53, ESSENCE), not eteplirsen's.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Track fields: same model, another drug, is its own track; efficacy contra on primary",
+   "note": "NS Pharma 2024-05-27 release quote verbatim (re-fetched); registry NCT04060199 results 2024-12-11. RACER53 viltolarsen IV weekly, functional primary missed: drug viltolarsen, route iv, contra stand. Track has no untested opener (rule 6).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Rule 6 opener; track fields",
+   "note": "Arechavala-Gomeza 2007 abstract quote verbatim. Opener of the eteplirsen patient-cell track; drug eteplirsen, route iv consistent with entry 5.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Primary endpoint governs; prospective",
+   "note": "Same Mendell 2013 quote, IV eteplirsen. Cell model 2007 precedes patient dystrophin results (van Deutekom Dec 2007), so prospective same stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Retrodiction (efficacy): any drug, same target, earlier patient result -> retro",
+   "note": "Clemens 2020 quote verbatim (IV, primary dystrophin). Watanabe 2018 epub 2018-09-27, after Cirak 2011/Mendell 2013: retro, retrodiction true, year 2020. Viltolarsen track lacks an untested opener (rule 6).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Untested opener; track fields",
+   "note": "PharmR quote verbatim. Opener untested, retrodiction false; renal harm counted in dose (margin held). Drug eteplirsen, route iv correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Safety: predicted harm absent in this disease's patients -> contra, magnitude opposite",
+   "note": "Vyondys 53 label quote verbatim; golodirsen weekly IV. Contra stands. No golodirsen patient safety paper before 2020 found in PubMed; a 2017 topline release (unfetched) could make retrodiction true, status unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (safety, same drug) that failed to reproduce -> contra",
+   "note": "212154 SumR quote verbatim. Review Aug 2020 after Clemens 2020 viltolarsen tolerability: retrodiction true; predicted serious renal toxicity absent, contra. Drug viltolarsen, route iv correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "Dose cell has no track for rodent/cynomolgus GLP toxicology (rodent-nhp-glp-tox), which stated NOAEL AUC margins for eteplirsen (20x monkey, 6x juvenile rat; 206488 PharmR) and a small margin for golodirsen (211970 PharmR). Patients were dosed at 30 mg/kg without renal toxicity, so this is a candidate dose 'same' with margin_stated true, provided the margin was stated before dosing.",
+  "Vesleteplirsen (member, PPMO): MOMENTUM stopped for persistent hypomagnesemia and declining kidney function (Sarepta community letter 'Update SRP-5051 Program', 2024; AJMC 'Sarepta Halts Development'). Its nonclinical renal and electrolyte predictions were not found. The safety cell should carry it at least as an unsettled/unpublished note, and checking for a public nonclinical source is worthwhile, because this patient renal harm cuts against the 'kidney toxicity absent in patients' contra.",
+  "hDMD transgenic mouse (full human DMD locus), used in Arechavala-Gomeza 2007 (doi:10.1089/hum.2006.061) to pick the human exon 51 sequence. It is a separate system from patient myoblasts and could be its own engagement track.",
+  "PRO044 and PRO045 (members, 2'OMePS): patient exon-skipping and dystrophin data exist (PRO044 NCT01037309; PRO045 NCT01826474), and BioMarin discontinued them in 2016. The draft has no entry for these members; engagement pairings were not verified here.",
+  "Cynomolgus monkey exon 53 skipping for viltolarsen (Watanabe 2018, doi:10.1016/j.omtn.2018.09.017) is a possible further engagement track; not verified in full text."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "mdx efficacy contra (2024): in mdx, function improved only above about 10% dystrophin (Wu 2011: none at 2.6%), and patients reached about 1-6%. Is RACER53/ESSENCE a contra, or a result under conditions the model never tested (untested)? The trial sources do not cite dystrophin level as the cause (NS Pharma cites age, duration and steroids), so contra stands under the literal rule.",
+  "ESSENCE (listed in patient_trials) pooled golodirsen with casimersen, which is not in the class member list. Is a pooled primary admissible as a patient datum for the member drug?",
+  "Eteplirsen's GLP tox gave kidney NOAEL margins that held in patients. Does that belong in safety (2016 'same' before golodirsen's 2019 contra) or only in dose under Decision 16? The brief's 'count the harm once' does not settle it when the harm never appeared.",
+  "Do the class members' renal-monitoring label warnings, plus vesleteplirsen's patient kidney decline on the same PMO backbone with a peptide, make the 'renal toxicity absent' contra 'other' (same platform showed the harm), or is PPMO a different platform?",
+  "Engagement 10 (patient-level fibroblast responder screen): does van Deutekom 2007 (PRO051, in-vitro-selected responders, IM) make a 2009 patient-selection model a retrodiction, given prediction_level 'patient' and that PRO051 may not be a class member?"
+ ]
+}

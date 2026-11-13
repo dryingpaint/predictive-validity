@@ -1,0 +1,183 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-ms4a1-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "de Romeuf 2008 (PMID 18302712) quote verbatim in abstract. Ublituximab IV, biomarker_selected (GENUINE: del17p/del11q/TP53 required, Sharman 2021 abstract) correct; ADCC has no patient readout, untested/not_measured stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "Engelberts 2020 (PMID 31981978) quote verbatim. Epcoritamab SC, stage_or_line (EPCORE CLL-1: >=2 prior lines incl. BTKi, Danilov 2024) correct; 2020 untested opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "Mhibik 2023 (PMID 37219524) quote verbatim. Epcoritamab SC, stage_or_line correct; Kater 2021 and Danilov 2024 abstracts report no T-cell expansion, so untested/not_measured stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "verbatim",
+   "note": "Danilov 2024 ASH abstract (online 2024-11-05) uMRD quote verbatim. Retro correct: rituximab B-cell depletion in patients 1994 precedes the 2020 cyno model. Kater 2021 reports PRs but no MRD/depletion, so 2024 stands; SC 48 mg, stage_or_line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "Quote verbatim in de Romeuf 2008. Ublituximab IV, biomarker_selected correct; 'more pronounced at low doses' is no exposure target or margin, untested/no_prediction stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "Quote verbatim in Engelberts 2020. Epcoritamab SC, stage_or_line correct; SC bioavailability is no human exposure target or margin, untested/no_prediction stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "Quote verbatim (de Romeuf 2008). Ublituximab IV, biomarker_selected correct; 2008 untested opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "Sharman 2021 (PMID 33631112) ORR quote verbatim; ORR sole primary after amendment. Retro correct (rituximab CLL responses 2001). TG press release at 53rd ASCO (2017) reports primary met, so year 2017. Combination with ibrutinib; IV, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "Mhibik 2023 quote verbatim. Epcoritamab SC, stage_or_line correct; untested opener, note records post-dating of rituximab 2001 and Kater 2021-11-05 PRs in 3/5 (confirmed).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "verbatim",
+   "note": "Danilov 2024 'In EXP, ORR was 61% and CR rate was 39%' verbatim; EXP primary endpoint ORR (confex). Retro correct: model 2023 post-dates rituximab 2001 and Kater 2021. Single-arm design in note; no earlier EXP readout found; SC, stage_or_line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "Engelberts 2020 quote verbatim. Epcoritamab SC, stage_or_line correct; 2020 untested opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "verbatim",
+   "note": "Kater 2021 ASH abstract (doi 10.1182/blood-2021-146563, online 2021-11-05) quote verbatim; 7 R/R CLL pts SC 24/48 mg. Same correct and prospective: cyno model (epub Jan 2020) precedes epcoritamab's own patient CRS. Year 2021, SC, stage_or_line correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "Goldenberg 2009 (PMID 18941114, epub 2008-10-21) quote verbatim. Veltuzumab SC, unselected (untreated or relapsed CD20+ CLL, Kalaycio ASH 2012) correct; 2008 untested opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2012,
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public, including a congress abstract",
+   "note": "Kalaycio 2016 quote verbatim; retro correct (rituximab 1994). But Kalaycio ASH 2012 (doi 10.1182/blood.V120.21.192.192, online 2012-11-16) already reported 'Circulating leukemic cells decreased after treatment in all patients'; year 2015 -> 2012.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status retro agreed by both (retrodiction rule: post-dates rituximab 1994 depletion). Rule 6 dating: Kalaycio ASH 2012 abstract (Blood 120:192) already reported circulating leukemic cells fell in all patients, so the entry year is 2012, not 2015."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "Quote verbatim in Goldenberg 2009. Veltuzumab SC, unselected correct; only qualitative 'low doses', no exposure target or margin; untested/no_prediction stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "status_supported": true,
+   "quote_found": "abstract_only",
+   "note": "Goldenberg 2009 quote verbatim; Kalaycio 2016 2/21 PR verbatim. Veltuzumab SC, unselected correct; safety-primary phase I, untested/unsettled stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "Veltuzumab (a class member) track: low-dose IV/SC veltuzumab depleted circulating and sessile B cells in cynomolgus monkeys and controlled lymphoma xenografts (Goldenberg 2009 Blood, doi 10.1182/blood-2008-07-168146, PMID 18941114), compared with SC low-dose veltuzumab in CLL (Kalaycio 2016 Leuk Lymphoma, doi 10.3109/10428194.2015.1085531, epub 2015-10-19): 'Lymphocytosis decreased in all patients' (engagement same, 2015) and 2/21 PR, 'no obvious exposure-response relationship' (efficacy/dose). The draft note says no veltuzumab model source was found.",
+  "Earlier patient-side source for the epcoritamab tracks: Kater et al., Blood 2021;138(Suppl 1):2627, doi 10.1182/blood-2021-146563 (EPCORE CLL-1 dose escalation: CRS 100%, PRs in 3/5), which dates the cyno safety comparison to 2021 and makes the Mhibik PBMC/PDX efficacy track a retrodiction."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a model paper that cites early single-arm patient responses (Mhibik 2023 citing ASH 2021 PRs in 3/5) count as a retrodiction for the class-efficacy question even though its specific claim (activity in BTKi-progressing samples, CD20-independence) was new?",
+  "GENUINE topline (met ORR primary endpoint) was public by TG Therapeutics press release / ASCO 2017; rule 6 lists registry, epub, label, print but not tier-5 releases. Should a tier-5 topline set the entry year (2017) when the tier-1 paper (2021) sets the status?",
+  "Is blood MRD of the CD20+ CLL clone a valid human counterpart of monkey peripheral B-cell depletion for engagement, and should its readout_tier be proximal rather than downstream?"
+ ]
+}

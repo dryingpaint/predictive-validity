@@ -11,7 +11,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "DOI resolves to Hemmerling 2017 J Med Chem 60(20), epub 2017-10-12; quote verbatim in abstract. Proxy opener NCT00963183 first posted 2009-08-21 confirmed. Untested opener fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Hemmerling 2017 (PMID 28937774) AZD5423 rat dry-powder sentence verbatim; drug azd-5423, inhaled, unselected fit the opener. Proxy 2009-08-21 (NCT00963183) stands."
   },
   {
    "cell": "engagement",
@@ -20,7 +21,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Gauvreau 2015 AJRCCM 191(2) PMID 25473939, quote verbatim in abstract; NCT01225549 results posted 2015-04-02. Rat oedema itself was never measured in humans; same rests on a downstream same-axis readout (rule question 2)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (engagement/efficacy: model public after any same-target patient result)",
+   "note": "Gauvreau 2015 sputum-eosinophil sentence verbatim (Europe PMC abstract); AZD5423 nebulised = inhaled, mild allergic asthma unselected. ICS and this result precede Hemmerling (Crossref 2017-09-22/online 10-12): retro, 2017."
   },
   {
    "cell": "engagement",
@@ -29,7 +32,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Brown 2019 open access; quote verbatim. Registry NCT02479412 (results 2017-06-23) FeNO day 15 p=0.0084/0.0062/0.0002 at 58/250/800 ug. Werkstrom 2016 cortisol in healthy volunteers is the tighter thymus counterpart, not entered."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (engagement/efficacy: model public after any same-target patient result)",
+   "note": "Brown 2019 FeNO sentence verbatim (PubMed); NCT02479412 results posted 2017-06-23 before Hemmerling (2017-09/10): retro, 2017. Velsecorat, inhaled DPI, unselected match."
   },
   {
    "cell": "dose",
@@ -38,7 +43,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Hemmerling 2017 abstract quote verbatim (AZD7594 improved therapeutic ratio, once-daily potential). Opener untested, proxy date 2009-08-21 confirmed."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "AZD7594 therapeutic-ratio sentence verbatim in Hemmerling abstract; velsecorat, inhaled, unselected right for the opener. registry_date 2009-08-21 is AZD5423's NCT00963183 (proxy), not velsecorat's."
   },
   {
    "cell": "dose",
@@ -47,7 +53,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Registry primary 800 ug 0.1478 L p=0.0108, no cortisol difference. Decision 16 same holds, but the margin is a qualitative rat therapeutic-ratio claim with no NOAEL/MTD number read (rule question 3)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (dose/safety: same drug's own earlier patient result)",
+   "note": "Brown 2019 FEV1 sentence verbatim; velsecorat's own 2a results posted 2017-06-23 before the rat model was public (2017-09/10): same-drug retrodiction, reproduced, retro 2017. Drug, route, population match."
   },
   {
    "cell": "dose",
@@ -56,7 +64,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Uings 2013 quote verbatim; full text is free (PMC3831715), not paywalled as stated. Proxy NCT00483899 (posted 2007-06-07) is the AMP-challenge trial, a human model the draft never tracks (see missing)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Uings 2013 (BJP, online 2013-06-21) OVA sentence verbatim in abstract; no human exposure target or margin stated, so untested/no_prediction holds. gw-870086, inhaled, unselected."
   },
   {
    "cell": "efficacy",
@@ -65,7 +74,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Same Hemmerling 2017 opener as engagement 1; verbatim, dates confirmed."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Swapped AZD7594 sentence verbatim in Hemmerling 2017 abstract; velsecorat track opener, inhaled, unselected. Proxy year 2009 (model first use, AZD5423) stands."
   },
   {
    "cell": "efficacy",
@@ -74,16 +84,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Brown 2019 primary met at 800 ug only (registry 0.1478 L p=0.0108; 250 ug p=0.1827; 58 ug p=0.6379). Class-level same at top dose, endpoint_role primary, is supported."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (engagement/efficacy: model public after any same-target patient result)",
+   "note": "Brown 2019 trough-FEV1 sentence verbatim; primary met at 800 ug. ICS efficacy and NCT02479412 results (2017-06-23) precede the model: retro, 2017. Velsecorat, inhaled, unselected."
   },
   {
    "cell": "efficacy",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Registry primary missed at every dose (720 ug p=0.060, 360 ug p=0.094); FF p=0.014. Contra on the primary-endpoint rule stands. Sponsor's ATS 2021 abstract (A1202) reads 360/720 ug as positive; not peer-reviewed (rule question 6)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (engagement/efficacy: model public after any same-target patient result)",
+   "note": "NCT03622112 registry (results 2020-11-27): 720 ug +0.082 L (-0.003, 0.167) p=0.060; FF +0.111 p=0.014; quote is a faithful compression. Primary missed: contra; retrodiction flag follows the same-target ruling."
   },
   {
    "cell": "efficacy",
@@ -92,7 +106,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Uings 2013 Br J Pharmacol 169(6), quote verbatim; mouse OVA comparable to FP. Opener untested; proxy date 2007-06-07 confirmed."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Uings 2013 OVA sentence verbatim (abstract); gw-870086, inhaled, unselected; untested opener 2007 (NCT00483899 proxy) stands."
   },
   {
    "cell": "efficacy",
@@ -101,16 +116,19 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Bareille 2013 J Asthma PMID 23991670, epub 2013-10-01, quote verbatim incl. typo. NCT00945932 first posted 2009-07-24, no results (draft left registry_date null). Single 1 mg dose the authors call suboptimal: contra vs untested is rule question 4."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (engagement/efficacy: model public after any same-target patient result)",
+   "note": "Bareille J Asthma (online 2013-10-01) 'suboptimal efficacy' sentence verbatim (abstract); 1 mg 28-day FEV1 -0.077 L. Contra stands; post-dates Uings and ICS: retrodiction. gw-870086 inhaled, FEV1 40-85% unselected."
   },
   {
    "cell": "efficacy",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "NCT00857857 first posted 2009-03-09, official title verbatim; results posted 2018-02-20. Untested opener for the allergen-challenge track is fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT00857857 official title verbatim up to 'Late Asthmatic Response' (truncated before 'in Subjects With Mild Asthma'); first posted 2009-03-09; GW870086X inhaled, mild asthmatics unselected. Untested opener stands."
   },
   {
    "cell": "efficacy",
@@ -119,7 +137,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Gauvreau 2015 quote verbatim; registry primary 90.97/91.32% vs placebo 85.83%, budesonide 87.28% confirmed. AZD5423 went to COPD only (Kuna 2017), so untested here holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Gauvreau LAR sentence verbatim (Europe PMC); AZD5423 nebulised, mild allergic asthma; no AZD5423 asthma efficacy trial, untested/not_measured holds. Year 2015 kept: Crossref published-online 2015-01-15 (DOI created 2014-12-04 only)."
   },
   {
    "cell": "efficacy",
@@ -127,13 +146,14 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "neg definition / decision 13 (class_threshold must be a bar the class's own successful drugs cleared); evidence rule 2 (a higher-tier record of the same trial sets status and date)",
-   "note": "Registry values verified, but the bar is fluticasone, outside the member list; no SGRM cleared any bar, so neg unavailable. 1 mg LAR protection significant yet 28-day FEV1 null: contra. Tier-1 report doi 10.2174/15748855113089990005 (2014, unread) re-dates 2018 to 2014.",
-   "adjudicated_status": "neg",
-   "adjudication_note": "Neg stands under decision 13 as written: decision 12 defines the class as the (NR3C1, agonist) mechanism, which fluticasone shares, so its same-crossover LAR protection is a class bar; GW870086 1 mg gave half and the 1 mg trial failed."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "retro",
+   "proposed_year": 2013,
+   "rule": "evidence rule 6 (earliest public date: online publication)",
+   "note": "Registry LAR quote verbatim (1 mg +0.265, FP +0.526). Publisher page gives the challenge report (10.2174/15748855113089990005) citation_publication_date 2013-07-05, not 2014-01-31; with J Asthma online 2013-10-01 the comparison was public 2013. Its abstract: 1 mg weighted-mean LAR not significant, so retro holds; epub_year 2013.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6 (earliest public date): status retro agreed; challenge report was online ahead of print in July 2013 (Bentham ahead-of-print DOI, Crossref created 2013-07-09; print 2014-01-31), so year/epub_year 2013."
   },
   {
    "cell": "safety",
@@ -142,7 +162,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Hemmerling 2017 therapeutic-ratio quote verbatim; manifest confirms no NDA/BLA for any member, so no review names the tox species. Opener untested fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "AZD7594 therapeutic-ratio sentence verbatim (Hemmerling abstract); velsecorat, inhaled, unselected opener; proxy 2009 stands."
   },
   {
    "cell": "safety",
@@ -151,16 +172,19 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Cortisol quote verbatim in Brown 2019 abstract; absolute sparing held. In the 2b FF 100 ug had less cortisol effect (0.991 vs 0.916) and more FEV1, so the relative ratio claim is unshown. Kuna 2017 COPD import not entered."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (dose/safety: same drug's own earlier patient result)",
+   "note": "Brown 2019 cortisol sentence verbatim; velsecorat 2a posted 2017-06-23 before the rat model (2017-09/10): same-drug retrodiction, reproduced, retro 2017. Drug, route, population match."
   },
   {
    "cell": "safety",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "NCT03622112 day-84 cortisol AUEC ratio 720 ug 0.916 (0.780-1.077) p=0.285, FF 0.991 p=0.923 verified; results posted 2020-11-27. Same holds as a strengthening entry."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT03622112 day-84 cortisol AUEC 720 ug 0.916 (0.780, 1.077) p=0.285 matches registry; first prospective test after the 2017 model, so same with retrodiction false. Velsecorat, inhaled, unselected."
   },
   {
    "cell": "efficacy",
@@ -169,19 +193,19 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "NCT00483899 (SIG102335) official title verbatim; CT.gov start 2005-10-07, completed 2006-12-15, first posted 2007-06-07, n=20, no results. Proxy 2007 opener consistent with the mouse track's use of the same NCT; human_challenge, class level fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT00483899 official title verbatim; GW870086X inhaled, steroid-naive mild asthmatics coded unselected. Untested opener 2007 stands."
   },
   {
    "cell": "efficacy",
    "index": 10,
-   "verdict": "confirmed",
+   "verdict": "unverified",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "not_found",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "rule": "decision 4 case (4); dating rule 7",
-   "note": "Leaker 2015 JACI 136(2) online 2015-03-14, quote verbatim; challenge ran 2005-06 (ethics 05/Q0408/89), so prospective, not retro. 1 mg stated and null on FEV1: contra is case-4's first status. The adaptive trial (2 and 4 mg positive, see missing) owes a later same, same year."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (engagement/efficacy: model public after any same-target patient result)",
+   "note": "Leaker 2015 is a letter with no abstract; JACI full text paywalled (DOI resolves, online 2015-03-14/15), so the quote was not re-read this pass. Logic holds: retrodiction (2013 results and ICS precede it), 1 mg null not reproduced, contra. Judgement text still says 'Prospective, not a retrodiction'."
   },
   {
    "cell": "dose",
@@ -190,42 +214,76 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "NCT00483899 (SIG102335) official title verbatim; CT.gov start 2005-10-07, completed 2006-12-15, first posted 2007-06-07, n=20, no results. Proxy 2007 opener consistent with the mouse track's use of the same NCT; human_challenge, class level fine."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT00483899 official title verbatim (GW870086X via Diskhaler, steroid-naive male asthmatics, first posted 2007-06-07, no results); gw-870086, inhaled, unselected fit. Untested opener stands."
   },
   {
    "cell": "dose",
    "index": 5,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "not_found",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (dose/safety: same drug's own earlier patient result)",
+   "note": "Leaker 2015 is a letter with no abstract; JACI full text paywalled (DOI resolves, online 2015-03-14/15), so the quote was not re-read this pass. Logic holds: Leaker post-dates GW870086's own 2013 results (same-drug retrodiction), 1 mg failed then 2-4 mg worked, so contra (target too low)."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT00483899 official title verbatim; GW870086X inhaled via Diskhaler; untested opener 2007 stands."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "not_found",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Leaker 2015 is a letter with no abstract; JACI full text paywalled (DOI resolves, online 2015-03-14/15), so the quote was not re-read this pass. No GW870086 asthma trial abstract read reports systemic-GR markers, so untested/not_measured is consistent; gw-870086, inhaled, unselected."
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (engagement/efficacy: model public after any same-target patient result)",
+   "note": "Adaptive-trial conclusion verbatim (eurekaselect, published 2013-09-06; 2 mg +0.172, 4 mg +0.159 L day-28 FEV1); Leaker 2015 post-dates it: retro, 2015. contra-then-same move rests on the 'higher dose later worked' row, not attenuation."
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "retrodiction (engagement/efficacy: model public after any same-target patient result)",
+   "note": "Adaptive-trial conclusion verbatim (published 2013-09-06); Uings online 2013-06-21 post-dates ICS efficacy: retro, 2013. gw-870086 inhaled, persistent asthma unselected. patient_signal_reversed used for a higher-dose success, not attenuation."
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "rule": "decision 4 case (4) (reached, failed, higher dose later worked: target too low, not derived_from efficacy)",
-   "note": "Status contra holds, field wrong: Bareille 2013 Curr Drug Ther 8(2) shows 2 and 4 mg improved day-28 FEV1, so the 1 mg regimen was too low. Set derived_from null, record magnitude (2 mg vs 1 mg, about 2x), count as an independent dose miss. Margin is qualitative (existing rule question 3).",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): target too low: 2 and 4 mg improved day-28 FEV1 (Bareille 2013)"
-  },
-  {
-   "cell": "safety",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "NCT00483899 (SIG102335) official title verbatim; CT.gov start 2005-10-07, completed 2006-12-15, first posted 2007-06-07, n=20, no results. Proxy 2007 opener consistent with the mouse track's use of the same NCT; human_challenge, class level fine. Registry secondaries include blood and urine tests; cortisol/osteocalcin read appears only in Leaker 2015."
-  },
-  {
-   "cell": "safety",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim (urinary free cortisol and weighted-mean osteocalcin unchanged at 1-3 mg over 7 days). Neither GW870086 patient report read (J Asthma 1 mg; Curr Drug Ther 8(2) 2-4 mg abstract) carries cortisol or bone data, so untested with strengthens stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "retro",
+   "proposed_year": 2013,
+   "rule": "evidence rule 6 (earliest public date: online publication)",
+   "note": "Adaptive-trial conclusion verbatim (2013-09-06). Model side, the challenge report, was online 2013-07-05 (publisher citation_publication_date; abstract: 3 mg protective, 1 mg LAR ns), so the comparison was public 2013, not 2014. Retro holds; epub_year 2013.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6 (earliest public date): retro agreed (ICS target retrodiction); challenge report online July 2013 (ahead-of-print DOI, Crossref created 2013-07-09) and adaptive trial 2013-09-06, so the comparison dates 2013."
   }
  ],
  "missing": [
@@ -248,6 +306,8 @@
   "A single-dose trial failure whose authors call the dose 'suboptimal' (GW870086 1 mg, Bareille 2013), where the model stated no exposure target: contra on the model's track, or untested because the trial tested a condition the model never set?",
   "When a registry's posted primary (minimum FEV1 LAR: 1 mg significant) and the peer-reviewed report's featured statistic (weighted-mean LAR: 1 mg not significant) disagree, which number is the model's number for neg/contra, and does the paper's 2014 date or the registry's 2018 posting set year?",
   "Are conference abstracts with a DOI (ATS 2021 A1202, A1418) tier 1 'peer-reviewed paper with DOI', inadmissible, or review-grade pointers only? GRANIT's only publication and velsecorat's later preclinical model both exist only in that form.",
-  "Decision 4 case (4) when both the stated-dose failure (1 mg, J Asthma 2013-10) and the higher-dose success (2-4 mg, Curr Drug Ther 2013-09) were public before the model result (Leaker 2015): do contra and same both enter the track at 2015 with the same-year ordering of rule 7, or only the latest status (same), given 'a new entry is written only on a status change'?"
+  "Decision 4 case (4) when both the stated-dose failure (1 mg, J Asthma 2013-10) and the higher-dose success (2-4 mg, Curr Drug Ther 2013-09) were public before the model result (Leaker 2015): do contra and same both enter the track at 2015 with the same-year ordering of rule 7, or only the latest status (same), given 'a new entry is written only on a status change'?",
+  "Same-target retrodiction: when every model of a class post-dates the reference drugs' (ICS) patient results, is a member drug's later trial (velsecorat 2b 2020 after the 2017 model; GW870086 2013 trials after Uings 2013-06) a retrodiction, or 'its first prospective prediction afterwards', scored as usual with retrodiction false? Should untested openers then carry retrodiction: true?",
+  "Rule 6: does a Crossref DOI registration date for an ahead-of-print article (Bentham 10.2174/...99990005, created 2013-07-09; AJRCCM in-press 2014-12-04) count as the online publication date when the publisher page cannot be read?"
  ]
 }

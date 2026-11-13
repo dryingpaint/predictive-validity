@@ -52,18 +52,15 @@ def prediction(question: str, final: str) -> str:
 
 
 def tracks(e: pd.DataFrame, tiles: pd.DataFrame) -> pd.DataFrame:
-    """One row per (slug, question, modality, model_id): the latest non-drop entry's status and fields (latest in seq order,
+    """One row per (slug, question, modality, track_id): the latest non-drop entry's status and fields (latest in seq order,
     as glance reads a track), the tile's area and
     outcome, every model text the track used (for the family rules), and the prediction direction."""
     e = e[e.final != "drop"].copy()
     e["modality"] = e.modality.fillna("")
     e = e.merge(tiles[["slug", "area", "mondo_id", "mechanism_key", "furthest_phase", "class_programs"]], on=["mondo_id", "mechanism_key"])
-    key = ["slug", "question", "modality", "model_id"]
+    key = ["slug", "question", "modality", "track_id"]
     e = e.sort_values(key + ["seq"])
     last = e.groupby(key).tail(1).copy()
-    f = pd.DataFrame(last.fields.tolist(), index=last.index)
-    for c in ["model_kind", "readout_tier", "reason", "note", "magnitude", "product_in_model", "subjects"]:
-        last[c] = f[c] if c in f else None
     last["texts"] = e.groupby(key).model.agg(lambda s: " | ".join(dict.fromkeys(str(x) for x in s))).reindex(
         pd.MultiIndex.from_frame(last[key])).to_numpy()
     last["compared"] = last.final.isin(COMPARED)
@@ -261,7 +258,7 @@ def headline_table(t: pd.DataFrame, e: pd.DataFrame | None = None, tiles: pd.Dat
     wide = cells.pivot(index="slug", columns="question", values="status")
     out = tiles.set_index("slug")[["area", "furthest_phase"]].join(wide).reset_index()
     out["approved"] = out.furthest_phase == 4
-    key = ["slug", "modality", "model_id"]
+    key = ["slug", "modality", "track_id"]
     eng = cells[cells.question == "engagement"][key].merge(t[t.question == "engagement"][key + ["readout_tier", "family"]], on=key)
     eng = eng.set_index("slug").rename(columns={"readout_tier": "engagement_tier", "family": "engagement_family"})
     return out.join(eng[["engagement_tier", "engagement_family"]], on="slug")

@@ -306,6 +306,64 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "breast-cell-line-panel",
+   "model": "Human breast cancer cell-line panel (47 lines)",
+   "model_kind": "ex_vivo",
+   "prediction_level": "class",
+   "model_first_use_year": 2009,
+   "cells": {
+    "efficacy": [
+     {
+      "subjects": "patients",
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "imported_from": null,
+      "product_in_model": true,
+      "registry_date": "2022-04-13",
+      "model_filed": null,
+      "year": 2020,
+      "status": "contra",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1186/bcr2419",
+      "model_src_tier": 1,
+      "epub_year": 2021,
+      "print_year": 2021,
+      "retrodiction": false,
+      "magnitude": "direction_only",
+      "magnitude_basis": "3-year iDFS 88.2% vs 88.5% (HR 0.93, 95% CI 0.76-1.15) vs predicted palbociclib activity in ER+ disease",
+      "source_calls_it": null,
+      "population": "HR-positive, HER2-negative early breast cancer (adjuvant)",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level reading. Dated 2020: Pfizer announced the futility stop on 2020-05-29 (press release seen in search); Lancet Oncol epub 2021-01-15; NCT02513394 results posted 2022-04-13.",
+      "note": "PALLAS: adding palbociclib to adjuvant endocrine therapy did not improve invasive disease-free survival in early ER+/HER2- breast cancer.",
+      "short": "PALLAS adjuvant palbociclib fails iDFS",
+      "reason": "Adjuvant palbociclib failed (PALLAS, PENELOPE-B)",
+      "src": "https://doi.org/10.1016/S1470-2045(20)30642-2",
+      "srcLabel": "Mayer 2021 (PALLAS)",
+      "quote": "At the planned second interim analysis, addition of 2 years of adjuvant palbociclib to adjuvant endocrine therapy did not improve invasive disease-free survival compared with adjuvant endocrine therapy alone.",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [
+       {
+        "nct": "NCT02513394",
+        "registry_date": "2022-04-13",
+        "doi": "10.1016/S1470-2045(20)30642-2",
+        "quote": "addition of 2 years of adjuvant palbociclib to adjuvant endocrine therapy did not improve invasive disease-free survival compared with adjuvant endocrine therapy alone."
+       },
+       {
+        "nct": "NCT01864746",
+        "registry_date": "2023-12-12",
+        "doi": "10.1200/JCO.20.03639",
+        "quote": "Palbociclib for 1 year in addition to ET did not improve iDFS in women with residual invasive disease after NACT."
+       }
+      ],
+      "judgement": "The context population (HR+/HER2-) does not exclude early disease, and the panel predicted palbociclib activity in ER+ breast cancer (with tamoxifen synergy) without restricting stage; palbociclib failed its primary endpoint there, so contra under 'one drug's contra beats another's same'. Abemaciclib's positive monarchE does not reverse it. PENELOPE-B (also negative) changes no status and rides in patient_trials."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -317,5 +375,22 @@
   "QSP / semi-mechanistic neutropenia models: those found are fitted to patient data (popPK/PD), not preclinical predictions; none chose a dose prospectively from preclinical data.",
   "Abemaciclib dog telemetry: the 208716 review grep found no QTc finding, so the dog-cv-telemetry track carries only palbociclib and ribociclib.",
   "Dalpiciclib, lerociclib: xenograft efficacy only, same system as the draft's tracks; no separate patient comparison found."
+ ],
+ "gaps": [
+  {
+   "lead": "Efficacy: PALLAS (palbociclib adjuvant, failed iDFS; Mayer 2021 Lancet Oncol, PMID 33460574)",
+   "outcome": "entry",
+   "detail": "Added efficacy entry on breast-cell-line-panel: 2020 contra (PALLAS failed primary iDFS; Pfizer futility release 2020-05-29, Mayer 2021 Lancet Oncol doi:10.1016/S1470-2045(20)30642-2, NCT02513394 results 2022-04-13)."
+  },
+  {
+   "lead": "Efficacy: PENELOPE-B (palbociclib post-neoadjuvant, negative iDFS; Loibl 2021 JCO, PMID 33793299)",
+   "outcome": "covered",
+   "detail": "Second negative adjuvant trial, status unchanged after the PALLAS contra; recorded in that entry's patient_trials (NCT01864746, results 2023-12-12; Loibl 2021 JCO doi:10.1200/JCO.20.03639)."
+  },
+  {
+   "lead": "Safety: ribociclib dog telemetry QTc consistent with clinical QTc prolongation (FDA 209092 Multidiscipline review 2017)",
+   "outcome": "tracked",
+   "detail": "dog-cv-telemetry, safety cell, 2017 'same' entry (comparison_stated true, FDA 209092 quote); checker confirmed it (safety index 6)."
+  }
  ]
 }

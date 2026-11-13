@@ -1,0 +1,132 @@
+{
+ "tile": "small-cell-lung-carcinoma-anti-pdcd1-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug nivolumab, route iv, population_group other_disease set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug toripalimab, route iv, population_group other_disease set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug nivolumab, route iv, population_group unselected set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug nivolumab, route iv, population_group stage_or_line set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug toripalimab, route iv, population_group unselected set from the entry's sources (field was absent); no status or year change; status untested kept, untested_reason not_measured, combination reason replaced by the dose-vs-efficacy rule"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug nivolumab, route iv, population_group unselected set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug nivolumab, route iv, population_group stage_or_line set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug nivolumab, route iv, population_group biomarker_selected set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2020 -> 2018 (rule 6 earliest public date: CheckMate 331 OS miss in BMS press release 2018-10-12 and ESMO IO 2018 LBA5); status contra unchanged; drug nivolumab, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug nivolumab, route iv, population_group biomarker_selected, combination_with ipilimumab set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug nivolumab, route iv, population_group stage_or_line set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug camrelizumab, route iv: pooled camrelizumab/toripalimab opener kept for the camrelizumab track only (track split); status and year unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug nivolumab, route iv, population_group biomarker_selected set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug nivolumab, route iv, population_group biomarker_selected set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "RULE QUESTION settled: sibling-target anti-PD-L1 track stays untested (no_prediction), drug 'class', route not_applicable; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug class, route iv, population_group unselected set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug class, route iv, population_group unselected set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug nivolumab, route iv, population_group other_disease set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug nivolumab, route iv, population_group stage_or_line set from the entry's sources (field was absent); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "year 2018 -> 2014, src/quote -> 2014 Opdivo label, imported_from MONDO:0005105 (adjudicated: earliest public date of the imported melanoma datum); status same unchanged; Ready 2019 moved to appended entry"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "status same -> untested (not_measured): imported-harm ruling, SCLC patients measured from 2016 so the imported TB cases no longer set the status; imported_from cleared"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "hpd1-knockin-mc38 x camrelizumab iv: retro 2020, PASSION camrelizumab plus apatinib single-arm ORR 34 % (Fan 2021); combination and single-arm rulings, retrodiction after CheckMate 032"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "hpd1-knockin-mc38 x toripalimab iv: untested opener 2023 (FDA BLA 761240 Study TR003), track split from entry 7"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "hpd1-knockin-mc38 x toripalimab iv: retro 2023, EXTENTORCH toripalimab plus etoposide-platinum, PFS and OS met (Cheng 2025); combination and co-primary rulings, model first public after the patient result"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "pd1-knockout-mouse x class iv: same 2018 (strengthens), Ready 2019 CheckMate 032 third-line nivolumab immune-type harms in SCLC, moved from entry 5"
+  }
+ ]
+}

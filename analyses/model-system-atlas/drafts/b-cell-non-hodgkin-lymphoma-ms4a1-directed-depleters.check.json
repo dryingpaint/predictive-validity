@@ -1,0 +1,114 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/b-cell-non-hodgkin-lymphoma-ms4a1-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Gillies 2005 (PMID 15692062, epub 2005-02-03) abstract carries quote verbatim; only mechanistic readout in-vitro ADCC, no human counterpart. untested/no_prediction stands; di-leu16-il2, sc matches NCT01874288 (SC only), unselected opener fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Aleksandrova 2024 (PMID 39386211) quote verbatim. MB-CART20.1, iv correct; ASH 2022 lymphoma abstract (15 Nov 2022) precedes the 2024 co-culture, as the judgement records. Opener untested/no_prediction fits lint convention."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kutsch 2026 (PMID 42906410) quote verbatim. Patient expansion public at ASH 2022 before 2024 co-culture (and CD20 depletion known since rituximab): retro, retrodiction true, year 2024 when both halves public. MB-CART20.1, iv, stage_or_line correct."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Gillies 2005 quote verbatim; mouse mg/kg only, no human exposure target or margin: untested/no_prediction. ASH 2015 abstract confirms SC dosing with low-dose rituximab 50 mg/m2, so sc, combination_with rituximab, stage_or_line correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener 2005, quote verbatim in Gillies 2005 abstract. di-leu16-il2, sc consistent with the SC track. Model post-dates rituximab's NHL responses (1997), so the track's scored entry is a retrodiction (see efficacy 2)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2015,
+   "rule": "Retrodiction: for efficacy a model first public after a patient result for the same target and action, from a member or any other drug, is a retrodiction; reproduced result is retro, never same",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "whyStopped quote verbatim (CT.gov v2); BOR one of five primaries, single-arm. ASH 2015 abstract (3 Dec 2015) confirms SC, rituximab 50 mg/m2, 1 CR + 3 PR of 12: year 2015 holds. But Gillies 2005 post-dates rituximab NHL responses (1997): retro, retrodiction true. Registry BOR n=24, not 23.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: efficacy is a target claim; rituximab, same target (MS4A1) and action (depleter), had public NHL responses by 1997, before the 2005 Daudi-SCID model; reproduced response is retro, never same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Aleksandrova 2024 quote verbatim; activation/amplification only, no antitumour readout, so untested/no_prediction. MB-CART20.1, iv, stage_or_line correct."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Gillies 2005 closing sentence verbatim; no tolerability claim. SCID mice lack T cells, so CRS DLTs at 6 mg/m2 (ASH 2016, 2 Dec 2016) are not a miss. sc, combination_with rituximab, stage_or_line correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT00720135 (phase I, IV DI-Leu16-IL2 plus IV rituximab) primary 'Maximum tolerated dose of DI-Leu16-IL2' verbatim; no posted results. ASH 2013 abstract dated 2013-11-15 (Crossref). untested/unsettled 2013, iv, combination_with rituximab fit; separate IV track correct."
+  }
+ ],
+ "missing": [
+  "ASH 2022 abstract (Blood 140 Suppl 1:12980, https://ashpublications.org/blood/article/140/Supplement%201/12980/488176) reported MB-CART20.1 lymphoma expansion and CRs before the co-culture paper; not an admissible tier, but it fixes the co-culture as a retrodiction.",
+  "No cell-therapy entry in dose or safety. MB-CART20.1's own preclinical basis for the 2018 lymphoma trial (EudraCT 2017-000121-12) is not public, so a cell-therapy dose/safety track would be untested/unpublished. The companion MB-CART20.1 melanoma trial (EJC 2026, https://www.sciencedirect.com/science/article/pii/S0959804926015625) reports severe toxicities, which bear on cross-indication safety (imported_from).",
+  "Not verified: CART20 (NCT02965157, Beijing Biohealthcare, status unknown, no results) may share its construct with the Chinese PLA General Hospital CD20 CAR (Zhang 2016, Signal Transduct Target Ther, NCT01735955). If it does, that paper is patient data for a member."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a release or potency co-culture of clinical products made for another indication (melanoma) count as a model system for the lymphoma class, when the lymphoma trial cannot have relied on it?",
+  "Retrodiction timing: should 'the clinic already knew the answer' count a conference abstract (ASH 2022), which is not an admissible scoring tier?",
+  "Safety for an antibody-class member whose GLP toxicology is unpublished: should the track be the efficacy model (no_prediction) or an unnamed tox model (unpublished)?"
+ ]
+}

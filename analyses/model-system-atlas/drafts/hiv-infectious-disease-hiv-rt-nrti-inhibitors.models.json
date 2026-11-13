@@ -17,7 +17,8 @@
   "Europe PMC: (GS-9131 OR GS-9148) AND (clinical OR isolates OR phenotype OR patients) -> no clinical-isolate or patient paper beyond the 2008 design paper",
   "Europe PMC: (azvudine OR FNC OR azidocytidine) AND HIV AND (humanized OR SCID OR NSG OR BLT OR hu-PBL) -> none",
   "Europe PMC: (GS-9131 OR GS-9148 OR censavudine OR festinavir OR BMS-986001 OR 4'-Ed4T) AND (humanized OR SCID OR SIV OR SHIV OR macaque OR 'in vivo efficacy') -> none",
-  "ClinicalTrials.gov v2: intervention azvudine/FNC, condition HIV -> NCT04109183 (Phase 2, n=172, completed 2019-01, no results posted), NCT04303598 (Phase 3, n=720, status unknown, no results)"
+  "ClinicalTrials.gov v2: intervention azvudine/FNC, condition HIV -> NCT04109183 (Phase 2, n=172, completed 2019-01, no results posted), NCT04303598 (Phase 3, n=720, status unknown, no results)",
+  "ClinicalTrials.gov v2 NCT03472326 statusModule: statusVerifiedDate 2020-12, resultsFirstPost and lastUpdatePost 2021-01-05; /api/int history endpoint 403"
  ],
  "added_models": [],
  "considered_not_added": [
@@ -35,5 +36,22 @@
   "Censavudine healthy-volunteer single-ascending-dose Phase 1 (PMID 24374821): human PK only; the abstract states no animal-PK-based dose prediction, so it adds nothing to a new track.",
   "CL-197 first-in-human (AAC 2026, PMID 42695945): not a class member.",
   "Earlier public date for the GS-9131 termination (Adis 2020-04-28): a dating question on an existing entry, not a model system."
+ ],
+ "gaps": [
+  {
+   "lead": "Azvudine NMPA package insert (conditional approval 2021-07; pivotal Phase 2 NCT04109183, 172 ART-naive patients, week-48 HIV-1 RNA <50 copies/mL)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the checker's missing list proposes the NMPA-label azvudine result as a 2021 `same` on hiv-nrti-cell-culture-panel. Engagement is already `same` since 2013 (Cotte 2013), so a further `same` is no change of status; efficacy has been `contra` since 2021-01-05 (GS-9131, efficacy #4) and one drug's contra beats another drug's same on the same track, so a 2021-07 azvudine `same` leaves the track `contra`. At most an extra patient trial with the status unchanged (tier of an NMPA 说明书 is open as checker rule question 1); the draft note's 'unpublished, scores nothing' wording is a note, not a scored field."
+  },
+  {
+   "lead": "Azvudine in-vitro M184I selection (Wang 2014) vs M184I after short-term azvudine for COVID-19 in people with HIV (AIDS 2023, PMID 37930315)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: in-vitro M184I selection (Wang 2014) agreeing with M184I after azvudine for COVID-19 in people with HIV (AIDS 2023 letter, PMID 37930315) would be a further agreeing comparison on hiv-nrti-cell-culture-panel, whose engagement cell is already `same` (2013); resistance genotype is not the track's viral-load readout, and the letter's full text is not open access, so no quote supports a separate entry. Also listed by the checker under missing."
+  },
+  {
+   "lead": "Earlier public date for the GS-9131 failure (Adis 2020-04-28; Fierce Biotech pipeline drop)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: re-checked CT.gov v2 for NCT03472326 (2026-11-07): TERMINATED, whyStopped 'GS-9131 did not meet the targeted antiviral response', resultsFirstSubmit and lastUpdateSubmit 2020-12-07, resultsFirstPost and lastUpdatePost 2021-01-05; the history endpoint returns 403 and the history tab does not render via scrape. Adis (2020-04-28) and Fierce Biotech are not admissible tiers, so efficacy #4 year 2021 / registry_date 2021-01-05 stand; whether a status change dates a comparison is checker rule question 5."
+  }
  ]
 }

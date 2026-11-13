@@ -10,18 +10,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Pedersen 2010 resolves (PMID 20068188); quote verbatim in abstract. Opening untested entry at model_first_use_year 2010 is correct."
+   "note": "Pedersen 2010 opener, quote verbatim. drug futuximab (Sym004 with modotuximab as partner), route iv, population_group unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_year": 2013,
-   "rule": "rule 6 (dating: earliest public date)",
-   "note": "Quote verbatim (abstract). Status same holds. But ASCO 2013 abstract 3551 (DOI 10.1200/jco.2013.31.15_suppl.3551, online 2013-05-20) already reported 'profound down-regulation of EGFR' in serial biopsies; year should be 2013."
+   "note": "ASCO 2013 abstract 3551 re-opened: dc.Date 2013-05-20, 'profound down-regulation of EGFR' in serial tumour samples; so year 2013 (rule 6). Dienstmann 2015 quote verbatim. futuximab, iv, biomarker_selected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -30,7 +30,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Montagut 2018 resolves (PMC5885274); quote verbatim in abstract; downstream ctDNA readout fits. ESMO 2017 abstract 478O may pre-date it but I could not read whether it reported the ECD ctDNA fall."
+   "note": "Montagut 2018 quote verbatim; Symphogen 2017-09 release reports OS and biomarker subgroups, not the ECD ctDNA fall, so 2018 stands. futuximab, iv, biomarker_selected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -39,183 +40,32 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Gerdes 2013 resolves (PMID 23209031, epub 2012-12-03); quote verbatim in abstract; opening untested at 2012 correct."
+   "note": "Gerdes 2013 (epub 2012-12) opener, quote verbatim. imgatuzumab, iv, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Delord 2014 resolves (PMID 24262587, epub 2013-11-18); quote verbatim in abstract; downstream readout, paired by drafter (comparison_stated false) is right since the abstract only infers MoA."
-  },
-  {
-   "cell": "engagement",
-   "index": 6,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Bleeker 2004 resolves (PMID 15383606); quote verbatim in abstract. NCT00677924 registry confirms AE primary, n=9, no PK/PD outcome: untested is right."
-  },
-  {
-   "cell": "dose",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Skartved 2011 resolves (PMID 21825041); quote verbatim. Full text read: clinical chemistry measured, no NOAEL, margin or human exposure target stated, so margin_stated false is correct."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_year": 2013,
-   "rule": "rule 6 (dating: earliest public date)",
-   "note": "Quote verbatim in full text. 'Reached, worked' row applies at the PoC gate. ASCO 2013 abstract 3551 already showed 9 and 12 mg/kg active with PD confirmed; year should be 2013."
-  },
-  {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Gerdes 2013 full text read (AACR): 25 mg/kg weekly dosing sentence verbatim; no human exposure target stated, so untested opening is correct."
-  },
-  {
-   "cell": "dose",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Delord 2014 quote verbatim in abstract; 1400 mg regimen; contra derived from the 0/25 efficacy failure follows the dose table. Paz-Ares 2011 clearance plateau not re-checked.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): 1,400 mg saturated EGFR-mediated clearance and engaged ADCC"
-  },
-  {
-   "cell": "dose",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Lammerts van Bueren 2006 resolves (PMID 16885363); quote verbatim in abstract. NCT00677924 posted no PK, so untested is right."
-  },
-  {
-   "cell": "efficacy",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Pedersen 2010 quote verbatim in abstract; opens the Sym004 efficacy track correctly."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_year": 2013,
-   "rule": "rule 6 (dating: earliest public date)",
-   "note": "Quote verbatim; full text calls the expansion cohorts 'proof of mechanism and proof of concept', supporting poc_gate. ASCO 2013 abstract 3551 (PR 4/39, 'clearly demonstrating proof-of-concept') makes the year 2013."
-  },
-  {
-   "cell": "efficacy",
-   "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "retro",
-   "rule": "decision 10 (retrodiction scored retro, never same)",
-   "note": "Retrodiction. Dienstmann 2015 (and ASCO 2013) already reported a PR in an EGFR S492R patient; Sanchez-Martin's introduction says the model work was done to characterise that observation, and the G465R case is a phase 1 patient sequenced afterwards.",
+   "rule": "DRAFTER_BRIEF retrodiction: an engagement model first public after a same-target patient result is a retrodiction; reproduced -> retro, never same",
+   "note": "Delord abstract quote verbatim (PMID 24262587). Paz-Ares 2011 (PMID 21900113, epub 2011-09) already reported 'a marked reduction in circulating natural killer cells and increased infiltration of immune effector cells' before Gerdes (epub 2012-12): retro, retrodiction true. imgatuzumab, iv fit.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: S\u00e1nchez-Mart\u00edn 2016's introduction frames the ECD-mutant models as characterising the phase I S492R partial response (Dienstmann 2015); the G465R case is a phase 1 patient. Post-dates and motivated by the patient result, reproduces it: retro, never same."
+   "adjudication_note": "Retrodiction rule: engagement is a target claim; Paz-Ares 2011 (epub 2011-09-06, same drug) already reported NK-cell decline and immune-effector infiltration before Gerdes epub 2012-12. Reproduced, so retro, never same."
   },
   {
-   "cell": "efficacy",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_year": 2017,
-   "rule": "rule 6 (dating: earliest public date)",
-   "note": "Quote verbatim (abstract); full text confirms ECD mutations 'not linked to clinical benefit' and the ctDNA subgroup is 'retrospective hypothesis-generating'. Primary OS failure was public 2017-09 (Symphogen release, ESMO 2017 478O): year 2017."
-  },
-  {
-   "cell": "efficacy",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "PDX sentence verbatim in PMC full text (eFigure 11, Supplement 2). Separate track, retrodiction true, status retro is correct under decision 10."
-  },
-  {
-   "cell": "efficacy",
+   "cell": "engagement",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Gerdes 2013 full text: xenograft superiority sentence and 'first-in-class treatment of patients with KRAS-mutated tumors' both verbatim; untested opening correct."
-  },
-  {
-   "cell": "efficacy",
-   "index": 7,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Delord 2014 abstract: 'The primary end-point was tumour response'; 0 objective responses, SD 40%, in 25 KRAS-mutant patients. Contra on the model's stated KRAS-mutant prediction holds."
-  },
-  {
-   "cell": "efficacy",
-   "index": 8,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "DOI resolves to ASCO GI 2015 abstract 669 (GAIN-C); quote and both HRs verbatim; NCT01326000 has no posted results. Contra holds, but tier of a meeting abstract is a rule question."
-  },
-  {
-   "cell": "efficacy",
-   "index": 9,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Bleeker 2004 quote verbatim. NCT00677924: 9 patients, AE primary, terminated 'Due to changes in portfolio review'. Untested rather than contra is right."
-  },
-  {
-   "cell": "safety",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Skartved 2011 quote verbatim (abstract). Full text: rash dose-related, blistering at 36/24 mg/kg; clinical chemistry measured, magnesium never mentioned; no NOAEL."
-  },
-  {
-   "cell": "safety",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_year": 2013,
-   "rule": "rule 6 (dating: earliest public date)",
-   "note": "Quote verbatim; cynomolgus-comparison sentence found in full text, so comparison_stated true holds. ASCO 2013 abstract 3551 reported grade 3+ rash 62% and hypomagnesaemia 38%: year 2013. Hypomagnesaemia silence is a rule question."
+   "note": "Bleeker 2004 opener, quote verbatim in abstract. zalutumumab, iv, unselected fit; no CRC PD readout published.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -224,22 +74,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Br J Cancer 2014;110:1221 (PMC3950873) resolves; quote verbatim (abstract Results); online 2014-02-04. Untested opening at 2014 holds. Roche Diagnostics and Roche Glycart co-authored and funded the ex-vivo study.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Br J Cancer 2014 (PMC3950873) opener, quote verbatim. imgatuzumab, iv fit; mCRC patients' NK cells ex vivo, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "rule": "decision 10 (a model run after the patient result was known is retro, never same)",
-   "note": "Quote verbatim (abstract). NK decline was public in Paz-Ares 2011; Delord accepted 2013-10-15, online 2013-11-18, before the ex-vivo paper (received 2013-10-24, online 2014-02-04), whose authors Oppenheim and Farzaneh co-wrote Delord. Retro, retrodiction true.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: the ex-vivo result (online 2014-02-04) post-dates the patient NK decline (Paz-Ares 2011; Delord online 2013-11-18), and its authors (Oppenheim, Farzaneh, Passioukov) co-wrote Delord, so hindsight holds on either reading of 'motivated by'. Reproduces it: retro, never same."
+   "status_supported": true,
+   "note": "Delord quote re-confirmed verbatim (epub 2013-11-18). Ex-vivo paper online 2014-02-04, after Delord and Paz-Ares 2011 NK decline: retro, retrodiction true correct. imgatuzumab, iv, biomarker_selected (KRAS-mutant) fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -248,8 +94,66 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Oncotarget 2017;8:67592 (PMC5620195) resolves; quote verbatim (abstract); online 2017-06-27. No Sym004 patient study read MET/AKT/MAPK phosphorylation; untested holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Napolitano 2017 (PMC5620195, online 2017-06-27) opener, quote verbatim. futuximab, iv fit; stage_or_line for the acquired-resistance model population acceptable.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Skartved 2011 opener, quote verbatim; no human exposure target or margin stated. futuximab, iv, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "DRAFTER_BRIEF dose: a target scores only on the track of the model that stated it; a sponsor trough, an MTD or derived arithmetic is not one; reached-and-failed is efficacy only",
+   "note": "Year 2013 right (ASCO 3551, 2013-05-20); futuximab, iv fit; MTD quote verbatim. Status still same: Pedersen/Skartved stated no exposure, regimen target or margin (dose 1); EGFR loss is engagement. Untested, no_prediction.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose table row 1: Skartved/Pedersen stated no human exposure, regimen target or margin; EGFR loss is engagement, responses are efficacy. Untested, untested_reason no_prediction (rule 5)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gerdes 2013 opener; 25 mg/kg dosing sentence verbatim, no human exposure target. imgatuzumab, iv, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "DRAFTER_BRIEF dose: a target scores only on the track of the model that stated it; a sponsor trough, an MTD or derived arithmetic is not one; reached-and-failed is efficacy only",
+   "note": "Delord 1400mg sentence verbatim (PMID 24262587); imgatuzumab, iv fit. Clearance saturation is human PK (Paz-Ares 2011), not a target the Gerdes xenografts stated; reached-and-failed is efficacy only. Untested, no_prediction.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose table row 1: Gerdes xenografts stated no human exposure target or margin; clearance saturation is human PK, not the model's target; reached-and-failed is efficacy only. Untested, no_prediction (rule 5)."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Lammerts van Bueren 2006 quote verbatim in abstract; 9-patient CRC trial posted no PK. zalutumumab, iv, unselected fit; untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -258,8 +162,112 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (Figure 6 legend); methods confirm 50 mg/kg and cetuximab 1 mg twice weekly for 30 weeks, no PK and no human target. margin_stated false and untested hold.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Napolitano 2017 dosing sentence verbatim (i.p. in mice); no human target. route iv names the human route of the track; futuximab fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "DRAFTER_BRIEF dose: a target scores only on the track of the model that stated it; a sponsor trough, an MTD or derived arithmetic is not one; reached-and-failed is efficacy only",
+   "note": "Montagut 2018 OS quote near-verbatim; futuximab, iv fit. Napolitano 2017 stated no exposure, regimen target or margin; the reached regimens failing is efficacy 14's alone, never a dose contra. Untested, no_prediction.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose table row 1: Napolitano 2017 stated no human exposure, regimen target or margin; the failed phase 2 at reached regimens is efficacy only, never a dose contra. Untested, no_prediction (rule 5)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Pedersen 2010 opener, quote verbatim. futuximab, iv, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "ASCO 3551 (2013-05-20) re-opened: PRs at 9 and 12 mg/kg, 'clearly demonstrating proof-of-concept'; year 2013 right. Single-arm design noted; AE registry primary, so poc_gate fits. futuximab, iv, biomarker_selected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Retro with retrodiction true is right: ECD-mutant models (Clin Cancer Res 2016) post-date the phase 1 responses public 2013/2015. Quote in abstract. futuximab, iv, biomarker_selected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Symphogen release re-opened: published 2017-09-11, 'did not meet the primary end-point of a 3-month improvement of overall survival'; year 2017 (rule 6), Montagut 2018 sets status. futuximab, iv, biomarker_selected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PDX sentence verbatim in Montagut 2018; retro on its own track, first public 2018. futuximab, iv, biomarker_selected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gerdes 2013 opener, quote verbatim. imgatuzumab, iv, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Delord quote verbatim (PMID 24262587); 0/25 responses, single-arm design in note: contra. imgatuzumab, iv, biomarker_selected fit. By the target rule retrodiction should be true (cetuximab/panitumumab KRAS-mutant failure 2008); status contra either way.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "GAIN-C abstract (online 2015-01-20) quote verbatim; arms confirm imgatuzumab+FOLFIRI vs cetuximab+FOLFIRI or FOLFIRI; combination_with FOLFIRI and design in note, PFS primary: contra. imgatuzumab, iv, stage_or_line fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Bleeker 2004 opener, quote verbatim in abstract; 9-patient trial allows no comparison. zalutumumab, iv, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -268,8 +276,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (abstract Conclusions). GAIN-C (NCT01326000) recruited from 2011 and read out 2015-01, after the model, so the combination prediction opens untested at 2014.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Br J Cancer 2014 conclusion quote verbatim; opener. imgatuzumab, iv fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -278,8 +286,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "ascopubs page (via Firecrawl) resolves to ASCO GI 2015 abstract 669, Bridgewater; conclusion sentence and both HRs verbatim; published online 2015-01-20. Contra on the model's own combination prediction holds; abstract-tier rule question stands.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "GAIN-C quote verbatim; contra on the ex-vivo track's chemo-combination prediction. imgatuzumab, iv, stage_or_line fit; combination_with should be FOLFIRI as on efficacy 8 (same trial), not null.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -288,8 +296,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (Discussion). The paper's conclusion restricts the claim to MET-driven acquired resistance; untested opening at 2017 holds. Whether the track is class- or patient-level is a rule question.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Napolitano 2017 quote verbatim; opener 2017. futuximab, iv fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -298,8 +306,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (Introduction, citing NCT01117428). Dienstmann 2015 and ASCO 2013 pre-date receipt (2016-12-05) and the paper itself makes the comparison; retro under decision 10 holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Re-opened PMC5620195: 'disease control in 26 of 39 enrolled patients' verbatim; received 2016-12-05, after the phase 1 was public: retro. futuximab, iv, biomarker_selected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -308,8 +316,48 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (abstract Conclusions, PMID 29423521). Prospective: Napolitano calls the phase 2 'under investigation'. Failure public 2017-09-11 (Symphogen) and ESMO 2017 478O, so year 2017 verified. JAMA Oncol online 2018-02-08.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Montagut 2018 quote verbatim; failure public 2017-09-11 (Symphogen), after model online 2017-06-27: prospective contra, year 2017. futuximab, iv, biomarker_selected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Skartved 2011 opener, quote verbatim. futuximab, iv, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "ASCO 3551 (2013-05-20): grade 3+ rash 62%, hypomagnesaemia 38%, so year 2013. Dienstmann quote verbatim. Rash matched, magnesium silence a miss: same, source_calls_it partial per the settled ruling. futuximab, iv, biomarker_selected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Re-opened PMC5620195: 'Both treatment protocols were well tolerated by mice ...' verbatim; stated tolerability claim opens the track untested 2017. futuximab, iv fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Napolitano 2017 (50% rash, 21% hypomagnesaemia, citing phase 1). Post-dates Sym004's own phase 1 harms (2013): retrodiction true; claim fails to reproduce them: contra 2017. futuximab, iv, biomarker_selected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -326,6 +374,8 @@
   "Does a tier 5 press release (or a conference abstract) set `year` under rule 6 when the status rests on a later tier 1 paper of the same trial (Sym004 phase 2: Symphogen 2017-09 vs JAMA Oncol 2018)?",
   "Safety silence: Skartved 2011 measured clinical chemistry in cynomolgus and reported no magnesium finding, yet hypomagnesaemia was a human DLT. Is EGFR-dependent renal magnesium wasting a harm the species 'could have shown' (contra) or excluded like CRS in mouse?",
   "Track placement of a retrodiction on an existing platform: do the ECD-mutant cell lines and xenografts (Sanchez-Martin 2016) stay on sym004-egfr-resistant-xenograft with retrodiction true, or take their own model_id like the PDX panel?",
-  "Is a single-patient 'proof-of-principle' (n=1) an admissible comparison for a patient-level `same`? The rules require >=1 drug, not a minimum number of patients."
+  "Is a single-patient 'proof-of-principle' (n=1) an admissible comparison for a patient-level `same`? The rules require >=1 drug, not a minimum number of patients.",
+  "Efficacy retrodiction across drugs: imgatuzumab's KRAS-mutant xenograft prediction (2012) post-dates the cetuximab/panitumumab KRAS-mutant failures (2008), same target and action; is it a retrodiction (contra either way, retrodiction flag differs)?",
+  "Safety 4: a tolerability claim from mice in which Sym004 does not bind mouse EGFR scored contra; should a stated claim from a species that cannot show the on-target harm be scored like silence (not a miss)?"
  ]
 }

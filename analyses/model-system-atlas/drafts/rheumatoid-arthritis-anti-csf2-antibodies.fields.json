@@ -1,0 +1,132 @@
+{
+ "tile": "rheumatoid-arthritis-anti-csf2-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug otilimab, route sc, population_group unselected set from the entry's sources"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug otilimab, route sc, population_group unselected set from the entry's sources"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug otilimab, route sc, population_group unselected set from the entry's sources"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug otilimab, route sc, population_group unselected set from the entry's sources"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug otilimab, route sc, population_group unselected set from the entry's sources"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug otilimab, route sc, population_group unselected set from the entry's sources"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug otilimab, route sc, population_group stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug otilimab, route sc, population_group stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug namilumab, route sc, population_group unselected set from the entry's sources"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug namilumab, route sc, population_group stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug otilimab, route sc, population_group stage_or_line set from the entry's sources; status contra -> untested (adjudicated verdict; dose-table row 'target never reached' leaves efficacy untested), untested_reason unsettled"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug otilimab, route sc, population_group stage_or_line set from the entry's sources; year 2023 -> 2022 (rule 6: GSK press release 2022-10-27, gsk.com); strengthens dropped (now the track's first contra)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug otilimab, route sc, population_group unselected set from the entry's sources"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug otilimab, route sc, population_group unselected set from the entry's sources"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug otilimab, route sc, population_group stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug otilimab, route sc, population_group stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug otilimab, route iv, population_group unselected set from the entry's sources"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug otilimab, route iv, population_group unselected set from the entry's sources"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug namilumab, route sc, population_group stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "drug otilimab, route sc, population_group stage_or_line set from the entry's sources"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "drug otilimab, route sc, population_group unselected set from the entry's sources"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "opener: GM-CSF-null mouse x otilimab iv, untested 1994 (Dranoff 1994)"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "what": "knockout x otilimab iv: contra 2014 (Behrens 2015, SP-D and PFTs normal), track split per checker's safety 3 verdict"
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "what": "opener: GM-CSF-null mouse x namilumab sc, untested 1994 (Dranoff 1994)"
+  },
+  {
+   "cell": "safety",
+   "index": 13,
+   "what": "knockout x namilumab sc: contra 2018 (NEXUS registry 2018-09-14; Taylor 2019 PAP-biomarker sentence)"
+  }
+ ]
+}

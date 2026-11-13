@@ -1,0 +1,25 @@
+{
+ "tile": "systemic-lupus-erythematosus-btk-inhibitors",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "drug fenebrutinib (G-744, non-member Genentech sibling, opens the fenebrutinib track), route oral, population_group unselected"},
+  {"cell": "engagement", "index": 2, "what": "year 2021 -> 2019 (rule 6: ACR/ARP 2019 abstract, first published 2019-10-23, reported reduced anti-dsDNA, IgG and plasmablast RNA signature); drug fenebrutinib, route oral"},
+  {"cell": "engagement", "index": 3, "what": "drug evobrutinib, route oral: contra now on the evobrutinib track only (fenebrutinib same is a separate track)"},
+  {"cell": "engagement", "index": 4, "what": "drug evobrutinib, route oral (opener of the evobrutinib occupancy track)"},
+  {"cell": "engagement", "index": 5, "what": "status same -> retro, retrodiction true, year 2022 -> 2019, src/quote Wallace 2022 -> Becker 2019 (doi 10.1111/cts.12713, epub 2019-11-29, healthy volunteers full BTK occupancy at 25 mg): healthy volunteers count and rule 6 earliest date (checker verdict); retrodiction ruling, human BTK blockade (fenebrutinib HV, Herman 2018) public before the 2019 mouse occupancy model; drug evobrutinib, route oral"},
+  {"cell": "engagement", "index": 6, "what": "drug fenebrutinib, route oral"},
+  {"cell": "engagement", "index": 7, "what": "drug fenebrutinib, route oral"},
+  {"cell": "dose", "index": 1, "what": "drug evobrutinib, route oral"},
+  {"cell": "dose", "index": 2, "what": "year 2022 -> 2019, src/quote Wallace 2022 -> Becker 2019 (healthy-volunteer full occupancy at 25 mg/day, above the 80% mouse target; magnitude within_2x): healthy-volunteer PK counts, rule 6 (checker verdict); status same unchanged, prospective (evobrutinib's own human data came after the model); drug evobrutinib, route oral"},
+  {"cell": "dose", "index": 3, "what": "drug fenebrutinib, route oral"},
+  {"cell": "dose", "index": 4, "what": "drug fenebrutinib, route oral"},
+  {"cell": "efficacy", "index": 1, "what": "drug fenebrutinib (G-744 sibling opener), route oral"},
+  {"cell": "efficacy", "index": 2, "what": "year 2020 -> 2019 (rule 6: ACR/ARP 2019 abstract, first published 2019-10-23, SRI-4 not met); drug fenebrutinib, route oral; evobrutinib and elsubrutinib trials moved out of patient_trials to their own tracks (efficacy 3-6)"},
+  {"cell": "safety", "index": 1, "what": "drug evobrutinib (the liver signal quoted), route oral; note says toxicology is unpublished for all three members"}
+ ],
+ "added": [
+  {"cell": "efficacy", "index": 3, "what": "evobrutinib x nzbw-lupus-mouse opener: untested 2019 (Haselmayer 2019, evobrutinib dosed in NZB/W mice)"},
+  {"cell": "efficacy", "index": 4, "what": "evobrutinib x nzbw-lupus-mouse: contra 2020 (co-primary SRI-4 and SRI-6 both missed; ACR Convergence 2020 abstract, registry 2020-12-17; Wallace 2022 quote); co-primary design in note"},
+  {"cell": "efficacy", "index": 5, "what": "elsubrutinib x nzbw-lupus-mouse opener: untested 2018 (Goess 2018, ABBV-105 in IFNa-accelerated NZB/W nephritis)"},
+  {"cell": "efficacy", "index": 6, "what": "elsubrutinib x nzbw-lupus-mouse: contra 2023 (SLEek monotherapy arm stopped for lack of efficacy; registry 2023-07-21; Merrill 2024); combination with upadacitinib (ABBV-599 high dose) also missed its primary (P = 0.081), same status, recorded in note and patient_trials"}
+ ]
+}

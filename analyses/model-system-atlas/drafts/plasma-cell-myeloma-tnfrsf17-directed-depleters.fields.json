@@ -1,0 +1,22 @@
+{
+ "tile": "plasma-cell-myeloma-tnfrsf17-directed-depleters",
+ "changed": [
+  {"cell": "efficacy", "index": 3, "what": "year 2018 -> 2015, src/quote Friedman 2018 -> Chekmasova 2015 ASH abstract (doi 10.1182/blood.V126.23.3094.3094), the BCMA-density panel's first public date (rule 6); model_first_use_year 2015 on both entries of bb2121-bcma-density-cell-panel; drug idecabtagene vicleucel"},
+  {"cell": "efficacy", "index": 4, "what": "year 2019 -> 2017: response by tumour BCMA level first public at ASH 2017 (rule 6, checker correction); stays same, not retro, since the panel was public in 2015; drug idecabtagene vicleucel"},
+  {"cell": "efficacy", "index": 2, "what": "drug belantamab mafodotin, route iv; KarMMa (ide-cel) removed from patient_trials and split to its own CAR-T xenograft track (efficacy 6); design written into note; DREAMM-3 left unscored"},
+  {"cell": "engagement", "index": 1, "what": "drug BCMA CAR-T cells (NCI CAR-BCMA), route iv, biomarker_selected"},
+  {"cell": "engagement", "index": 2, "what": "drug BCMA CAR-T cells (NCI CAR-BCMA, Ali 2016), route iv, biomarker_selected"},
+  {"cell": "efficacy", "index": 1, "what": "drug BCMA CAR-T cells (Carpenter 2013 construct), route iv"},
+  {"cell": "dose", "index": 1, "what": "drug idecabtagene vicleucel (Abecma SBRA), route iv"},
+  {"cell": "dose", "index": 2, "what": "drug belantamab mafodotin, route iv"},
+  {"cell": "dose", "index": 3, "what": "drug belantamab mafodotin, route iv"},
+  {"cell": "dose", "index": 4, "what": "drug belantamab mafodotin, route iv, combination_with bortezomib-dex (DREAMM-7) / pomalidomide-dex (DREAMM-8); combination design written into note; retro kept (same drug's own earlier result)"},
+  {"cell": "safety", "index": 1, "what": "drug idecabtagene vicleucel, route iv; passing tolerability claim ('no adverse findings') now read as a safety prediction but scored only on harms NSG mice could show, so untested kept, untested_reason no_prediction"},
+  {"cell": "safety", "index": 2, "what": "drug belantamab mafodotin, route iv"},
+  {"cell": "safety", "index": 3, "what": "drug belantamab mafodotin, route iv; non-adverse call noted, harm shown in kind so same kept"}
+ ],
+ "added": [
+  {"cell": "efficacy", "index": 5, "what": "opener untested 2015: CAR-T xenograft (bcma-myeloma-xenograft-nsg-cart) run for idecabtagene vicleucel, Chekmasova 2015 ASH abstract"},
+  {"cell": "efficacy", "index": 6, "what": "same 2019: KarMMa primary ORR 73% (Munshi 2021 NEJM; dated to 2019 BMS/bluebird top-line release), split from efficacy 2 onto the ide-cel CAR-T xenograft track"}
+ ]
+}

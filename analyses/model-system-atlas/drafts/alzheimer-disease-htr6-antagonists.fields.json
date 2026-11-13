@@ -1,0 +1,147 @@
+{
+ "tile": "alzheimer-disease-htr6-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "untested 2017 -> same 2014; src/quote NCT03307993 -> Schmidt 2014 AAIC abstract (10.1016/j.jalz.2014.07.144, >80% human occupancy at 30-60 mg); ruling: congress abstracts admissible, data-not-shown adjudication settled; drug idalopirdine, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "year 2023 -> 2011; src Sawant-Basak 2023 -> Comery 2011 AAIC abstract (10.1016/j.jalz.2011.05.2278); ruling: congress abstract admissible (RULE QUESTION); drug sam-760, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "year 2016 -> 2013; src Herrik 2016 -> Herrik 2013 AAIC abstract (10.1016/j.jalz.2013.05.1046), the earlier public date; ruling: congress abstracts admissible; drug idalopirdine, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2016 -> 2013; src Herrik 2016 -> Herrik 2013 AAIC abstract (10.1016/j.jalz.2013.05.1046), the earlier public date; ruling: congress abstracts admissible; drug idalopirdine, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "no status/year change; combination_with donepezil (LADDER add-on); drug idalopirdine, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2014 -> 2012 (Lundbeck LADDER press release June 2012; ruling: press release dates the entry); combination_with donepezil; drug idalopirdine, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2017 -> 2016 (Lundbeck STARSHINE press release 2016-09-22; ruling: press release dates the entry); combination_with cholinesterase inhibitor; drug idalopirdine, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "year 2017 -> 2016 (Lundbeck STARSHINE press release 2016-09-22; ruling: press release dates the entry); combination_with cholinesterase inhibitor; drug idalopirdine, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "year 2022 -> 2019 (Suven top-line press release 2019-11-30; ruling: press release dates the entry); combination_with donepezil + memantine; drug masupirdine, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "no status/year change; combination_with donepezil; drug sam-760, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "untested 2017 -> same 2014; src/quote Atri 2018 -> Schmidt 2014 AAIC abstract (human >80% occupancy at 30-60 mg reached the rat >65% target); rulings: congress abstract admissible, reached target = same; drug idalopirdine, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug idalopirdine, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug sam-760, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug sam-760, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug masupirdine, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug sam-760, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug idalopirdine, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug sam-760, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug masupirdine, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug sam-760, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug masupirdine, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug idalopirdine, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug masupirdine, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug sam-760, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug sam-760, route oral set (were missing); no status/year change"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug idalopirdine, route oral set (were missing); no status/year change"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "sam-760 oral track of ind-tox-unpublished: untested (unpublished) 2017, Fullerton 2018 safe and well tolerated"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "masupirdine oral track of ind-tox-unpublished: untested (unpublished) 2022, Nirogi 2022 generally safe and well tolerated"
+  }
+ ]
+}

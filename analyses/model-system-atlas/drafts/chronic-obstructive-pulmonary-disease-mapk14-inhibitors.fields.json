@@ -1,0 +1,172 @@
+{
+ "tile": "chronic-obstructive-pulmonary-disease-mapk14-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "status same -> retro, retrodiction true: rat/monkey endotoxin PD first public 2009, after BIRB 796 cut endotoxin TNF-alpha in volunteers (Branger 2002); drug pha-797804 oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug pha-797804, route oral (opener of the PH-797804 track on the rodent LPS model)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug pha-797804, route oral (PF-03715455 inhaled gave the same direction; not split)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: AstraZeneca cell model first public 2018, after earlier human p38 engagement results (Branger 2002, Hope 2009); drug azd-7624 inhaled"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug azd-7624, route inhaled (member later run in the COPD macrophage system)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug pha-797804, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug pha-797804, route oral; judgement reworded: target reached is same, whether it worked is efficacy"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug azd-7624, route inhaled; judgement prose no longer describes a contra the entry does not carry"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug acumapimod, route oral; population coded stage_or_line (AECOPD)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug acumapimod, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug acumapimod, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug pha-797804, route oral (opener)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug pha-797804, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug pha-797804, route oral; combination_with tiotropium (add-on design written into note)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug azd-7624, route inhaled (own track on the rodent LPS model)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug acumapimod, route oral; population coded stage_or_line (AECOPD)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug pha-797804, route oral (opener)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "status same -> contra, retrodiction true, comparison_stated false: challenge result first public 2015-08 after the 6-week win and the 12-week miss (2015-07-11); src/quote now EudraCT 2011-005864-11, Singh 2015 moved to model_src (checker correction + retrodiction rule); drug pha-797804 oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "retrodiction true (challenge result for AZD7624 first public 2018, after PH-797804's COPD results), status stays contra; drug azd-7624 inhaled"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "retrodiction true (AstraZeneca cell model first public 2018), status stays contra; drug azd-7624 inhaled"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug pha-797804, route oral (opener)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug pha-797804, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "drug pha-797804, route oral; combination_with tiotropium; AZD7624 and acumapimod split to entries 15-18"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "drug pha-797804, route oral (opener of the track entry 14 scores)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "drug pha-797804, route oral; combination_with salmeterol/fluticasone; two predefined decision criteria, one met, sponsor called it a failure: contra stands (co-primary ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug pha-797804, route oral (Hope 2009 abstract carries no tolerability claim to score)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "src Pehrson 2018 (volunteers) -> Patel 2018 COPD trial: this disease's patients were measured and set the status (well tolerated), status stays same; Pehrson moved to model_src, comparison_stated false; drug azd-7624 inhaled"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug acumapimod, route oral; population coded stage_or_line"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "year 2019 -> 2018, src Strambu 2019 -> Mereo release 2017-12-11 (tier 5, trial_unreported): acumapimod's own tolerability was public before Growcott's epub 2018-01-24, so retro holds under the same-drug rule and dates to 2018; drug acumapimod oral"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "what": "mouse-cigarette-smoke-inflammation x azd-7624 inhaled: untested opener 2007, track split from entry 12"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "what": "mouse-cigarette-smoke-inflammation x azd-7624 inhaled: contra 2018, Patel 2018 exacerbation primary HR 1.39 (paired with Medicherla 2008)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 17,
+   "what": "mouse-cigarette-smoke-inflammation x acumapimod oral: untested opener 2007, track split from entry 12"
+  },
+  {
+   "cell": "efficacy",
+   "index": 18,
+   "what": "mouse-cigarette-smoke-inflammation x acumapimod oral: contra 2019, Strambu 2019 Day-10 FEV1 primary missed (paired with Medicherla 2008)"
+  }
+ ]
+}

@@ -61,11 +61,38 @@
   {
    "cell": "dose",
    "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "DRAFTER_BRIEF dose table: the model stated no exposure, occupancy or regimen target nor a margin -> untested; untested_reason no_prediction",
+   "note": "Asim 2017 / Li 2017 xenografts stated no human exposure, regimen target or margin; 300 mg BID working is efficacy's. Should be untested, no_prediction. Drug olaparib, oral, combination_with abiraterone fine.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose table row 1: Asim/Li 2017 xenografts stated no human exposure, occupancy, regimen target or margin (drafter's own magnitude_basis says so); 300 mg BID working is efficacy's. Latest on track: untested_reason no_prediction."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Clarke 2018 Lancet Oncol resolves; quote verbatim; registry results 2018-10-02 confirmed. Asim 2017 full text names olaparib (26 mentions), so product_in_model true holds."
+   "rule": "decision 8; decision 4 (#91 regimen prediction) for scope",
+   "note": "Quote verbatim (bundle ClinPharmR, PBPK appendix p.4, line-wrapped); model_filed true holds. Population field slightly off: DDI studies and simulations used the tablet (100/300 mg single dose); 400 mg BID capsule was the proposed regimen. Dose-cell scope: rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10; decision 3 (healthy-volunteer PK) and decision 12 (cross-indication) for admissibility",
+   "note": "Quote verbatim; Tables 2-3 confirm 2.75/2.66 and 0.32/0.12; FDA 'Yes' with caveat supports partial. Retro holds: only the V13.1 model re-fitted to interim DDI data is reviewed, though the initial V12 model was prospective. Subjects: advanced-solid-tumour patients, imported_from null (rule question).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
   },
   {
    "cell": "efficacy",
@@ -92,7 +119,8 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "de Bono 2020 resolves (epub 2020-04-28); quote near-verbatim (abstract, sentence truncated at P<0.001). Registry 2020-10-12 and Hussain 2020 OS quote confirmed. BRCA2 is ~52% of cohort A (BRCA1/2 ~65%): rule question 6; gene-level BRCA2 HR exists in EMA II/0036."
+   "note": "de Bono 2020 abstract quote near-verbatim. AstraZeneca press release 2019-08-07 (PROfound met primary) and ESMO 2019 precede the 2020 paper: year 2019 holds (rule 6). Olaparib, oral, biomarker_selected (BRCA1/2/ATM cohort A) match.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -101,7 +129,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Chi 2023 JCO resolves (epub 2023-03-23); quote verbatim in abstract and PMC full text. FDA Akeega review Table 30 BRCA2 rPFS HR 0.43 (0.28-0.67), BRCA1 2.83 verified in bundle. Registry 2023-10-04 confirmed."
+   "note": "Chi 2023 quote verbatim; BRCA1/2 rPFS first public at ASCO GU 2022 (JCO 40:6_suppl 012; Janssen release 2022-02-14): year 2022 holds. Niraparib, oral, biomarker_selected, combination_with AAP correct; same on rPFS primary.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -128,7 +157,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Carreira 2021 resolves (received 2021-01-11, epub 2021-05-27); quote verbatim (Europe PMC spaces the italic gene names, hence a low string score). Contra defensible for a patient-level rule, but contra + source_calls_it partial is undefined by the table (rule question 2). TOPARP-B's own 30% bar passed ATM (37%) and failed CDK12. EMA II/0036 (Sept 2020, BRCA1/2-only) would date this contra to 2020 with a tier-2 source."
+   "note": "EMA II/0036 EPAR re-downloaded: quote verbatim (p.161 passage), CHMP opinion 17 Sept 2020, tier 2, comparison_stated true. Contra 2020, olaparib oral biomarker_selected confirmed. `population` text still names TOPARP-B; should name PROfound non-BRCA HRR.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -137,7 +167,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Non-BRCA HRRm rPFS HR 0.99 quote verbatim in the bundled Akeega review, which also states the treatment effect attenuated with the non-BRCA HRRm subpopulation. Registry 2023-10-04 and GALAHAD quote confirmed."
+   "note": "Akeega FDA review quote verbatim (bundle); no earlier public non-BRCA niraparib HR found (ASCO GU 2022 gives BRCA and all-HRR). Niraparib, oral, AAP combination, biomarker_selected correct. Judgement prose 'strengthens the 2021 contra' is stale (olaparib track, 2020).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -159,13 +190,13 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
+   "status_supported": true,
    "proposed_status": "retro",
-   "proposed_year": 2023,
-   "rule": "decision 10 (a retrodiction that reproduces the human data is retro, never same)",
-   "note": "Model written knowing TOPARP-B/PROfound ATM non-response (see index 9), so the match is retro not same. Also the pairing quotes a pooled non-BRCA subgroup, not an ATM datum: an ATM-specific source (TOPARP-B ATM 11%; EMA II/0036 ATM subgroup) should carry it.",
+   "rule": "DRAFTER_BRIEF fields: population/population_group describe the patients compared",
+   "note": "EPAR ATM subgroup HR 1.04 verbatim; retro 2020, olaparib oral biomarker_selected correct. But `population` still reads MAGNITUDE (niraparib) non-BRCA; set PROfound ATM subgroup. magnitude_basis and judgement ('scored same') are stale.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: Rafiei 2020 (received 2019-10-22) post-dates TOPARP-B ATM (ASCO 2019) and ESMO PROfound (2019-09-30); its introduction cites both before the hypothesis, so retrodiction is true and the reproduced non-response is retro, not same. Pooled non-BRCA quote: sourcing caveat."
+   "adjudication_note": "Retrodiction rule: Rafiei 2020 post-dates TOPARP-B and PROfound and reproduced the EPAR ATM-subgroup null (HR 1.04), so retro. Checker's correction is field-level only (population still names MAGNITUDE; stale judgement); status unchanged."
   },
   {
    "cell": "efficacy",
@@ -192,7 +223,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Clarke 2018 Study 08 quote verbatim; registry 2018-10-02; unselected mCRPC primary met: same."
+   "note": "Clarke 2018 quote verbatim; first public ASCO GU Feb 2018, same year. Olaparib oral unselected correct; combination_with 'abiraterone' acceptable (regimen was abiraterone + prednisone/prednisolone).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -201,7 +233,8 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "Clarke 2022 NEJM Evid resolves (epub 2022-06-03); quote starts mid-sentence, otherwise verbatim. Registry 2023-06-15 and Saad 2023 OS quote confirmed. AZ press release 2021-09-24 preceded it (rule question 4). FDA ODAC 2023-04-28 restricted olaparib+abi to BRCAm: missing tier-2 source for this track."
+   "note": "AstraZeneca release 2021 (PROpel met rPFS primary at Sept 2021 interim) precedes Clarke 2022: year 2021 holds. Quote near-verbatim. Olaparib oral, AAP combination, unselected (enrolled irrespective of HRR) correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -210,52 +243,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Chi 2023 futility quote verbatim; Akeega review confirms Cohort 2 'stopped early after a pre-specified futility analysis' (CCO 18 Sep 2020). Contra on the pooled track holds under the one-contra-beats-same rule. poc_gate on a futility gate is rule question 3; Janssen press release 2022-02-15 (composite HR 1.09) is rule question 4."
-  },
-  {
-   "cell": "safety",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Lynparza 2014 pharmacology review in bundle; quote verbatim; FDA states the comparison itself (comparison_stated true); imported from ovarian correctly flagged."
-  },
-  {
-   "cell": "safety",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Zejula 2017 multidisciplinary review in bundle; quote verbatim with the rat/dog marrow findings preceding it. The dog DAT/blood-pressure secondary pharmacology vs MAGNITUDE hypertension is an unscored same on this track."
-  },
-  {
-   "cell": "safety",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Akeega label 2023 in bundle; 28%/8%/7% quote verbatim; registry 2023-10-04. Paired comparison, label does not cite the toxicology: comparison_stated false is right."
-  },
-  {
-   "cell": "safety",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Xiong 2020 Neoplasia (open access) resolves; quote verbatim in PMC full text, absent from abstract; body weight twice weekly was the only tolerability readout, no haematology. Whether such a study is a safety model is rule question 7."
-  },
-  {
-   "cell": "safety",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Xu 2023 BCRT resolves (epub 2022-12-02, print 2023); quote verbatim; NCT03575065 results posted 2022-09-07, so year 2022 is right; imported from breast (MONDO:0007254) flagged. Contra rests on rule question 7."
+   "note": "Janssen release dated 2022-02-14 (not -15) reports HRR-negative cohort met futility (Aug 2020, HR>1): year 2022 holds. Niraparib oral AAP, biomarker_selected, design in note. confidence_note calling congress abstracts inadmissible contradicts rule 6.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -280,26 +269,66 @@
    "checked_by": "CHECKER_BRIEF_v3 / models"
   },
   {
-   "cell": "dose",
-   "index": 5,
+   "cell": "safety",
+   "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 8; decision 4 (#91 regimen prediction) for scope",
-   "note": "Quote verbatim (bundle ClinPharmR, PBPK appendix p.4, line-wrapped); model_filed true holds. Population field slightly off: DDI studies and simulations used the tablet (100/300 mg single dose); 400 mg BID capsule was the proposed regimen. Dose-cell scope: rule question.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Lynparza 2014 pharmacology review in bundle; quote verbatim; FDA states the comparison itself (comparison_stated true); imported from ovarian correctly flagged."
   },
   {
-   "cell": "dose",
-   "index": 6,
+   "cell": "safety",
+   "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "decision 10; decision 3 (healthy-volunteer PK) and decision 12 (cross-indication) for admissibility",
-   "note": "Quote verbatim; Tables 2-3 confirm 2.75/2.66 and 0.32/0.12; FDA 'Yes' with caveat supports partial. Retro holds: only the V13.1 model re-fitted to interim DDI data is reviewed, though the initial V12 model was prospective. Subjects: advanced-solid-tumour patients, imported_from null (rule question).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Zejula 2017 review quote verbatim (bundle). Niraparib oral, other_disease (ovarian) correct; import admissible per drug until GALAHAD (Feb 2019) measured prostate niraparib patients; per-class reading (TOPARP-A 2015) is the open rule question.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "rule 6 (earliest public date) with the imported-harm ruling (this disease's patients decide)",
+   "note": "Akeega label quote verbatim, but prostate niraparib patients were first measured in GALAHAD: Janssen release 2019-02-14 / ASCO GU 2019 abstract 202, grade 3/4 anaemia 26%, thrombocytopenia 15%. Date same 2019, src GALAHAD, combination_with null.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 plus imported-harm ruling: prostate niraparib patients first measured in GALAHAD (ASCO GU 2019 abstract 202, grade 3/4 anaemia 25%, thrombocytopenia 15%; verified). Marrow prediction held: same, dated 2019, monotherapy."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "rule": "decision 10 (dose and safety: the same drug's own earlier patient result makes the model a retrodiction)",
+   "note": "Xiong 2020 quote verbatim (prior check); drug pamiparib oral fine. Pamiparib's own patient anaemia was public first (Friedlander, Lancet Oncol 2019, grade>=3 anaemia), so retrodiction should be true; status untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Retrodiction rule (safety: same drug's earlier patient result): Friedlander, Lancet Oncol Aug 2019, pamiparib (+tislelizumab) grade>=3 anaemia 12%, public before Xiong 2020. retrodiction true; opener stays untested; not the track's latest."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "rule": "decision 10 (a retrodiction that failed to reproduce the human data is contra)",
+   "note": "CT.gov API: results posted 2021-11-17, mCRPC HRD; anaemia 7/13 (other AEs), serious anaemia, febrile neutropenia, neutropenia, pancytopenia 1/13 each. Contra 2021, pamiparib oral biomarker_selected confirmed; set retrodiction true. confidence_note stale ('no prostate trial').",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Retrodiction rule: a retrodiction that failed to reproduce the human data is contra. Xiong 2020 post-dates Friedlander 2019 pamiparib anaemia; its no-toxicity claim missed registry anaemia 7/13 (2021). contra, retrodiction true."
   }
  ],
  "missing": [
@@ -323,7 +352,8 @@
   "model_filed when the filing cites the model's companion paper (Farmer 2005) but not the entry's src (Bryant 2005): true as drafted, or false? Separately McCabe 2006 is not cited at all (McCabe appears only as a Farmer 2005 co-author), so the hrr-gene-panel entries' model_filed true looks like a grep false positive.",
   "models check: does a clinical-pharmacology DDI PBPK (olaparib exposure under CYP3A modulation, i.e. a dose-modification regimen) belong in the dose cell, which asks whether the model's exposure target was reached and sufficient? Admissible by the letter (#91 regimen prediction; in_silico model_kind) but it predicts neither the efficacious exposure nor its sufficiency, and admitting it makes every FDA-reviewed PBPK DDI model a dose track on every small-molecule tile.",
   "models check: decision 3 admits healthy-volunteer PK for dose; decision 12 lets cross-indication comparisons transfer only for safety with imported_from set. The olaparib DDI studies (D0816C00007/8) enrolled advanced-solid-tumour patients inside the ovarian NDA and are scored in a prostate dose cell with imported_from null, while safety index 1 from the same review sets MONDO:0008170. Which rule governs, and which MONDO (solid tumours or ovarian) would imported_from carry?",
-  "models check: decision 10 when an in-silico model predicted prospectively (Simcyp V12 built while the DDI studies were ongoing; FDA IR 2014-03-05 asked for verification against their interim results) but the source reports only the re-fitted V13.1 model's agreement: retro as drafted, or same + partial on the unreported prospective prediction?"
+  "models check: decision 10 when an in-silico model predicted prospectively (Simcyp V12 built while the DDI studies were ongoing; FDA IR 2014-03-05 asked for verification against their interim results) but the source reports only the re-fitted V13.1 model's agreement: retro as drafted, or same + partial on the unreported prospective prediction?",
+  "fields check: the imported-harm ruling says import only 'when this disease has no patient safety data for the class'. With tracks per drug, does prostate olaparib safety data (TOPARP-A 2015) bar a 2017 ovarian import on the niraparib track, or is it judged per drug (admitted until GALAHAD 2019)?"
  ],
  "could_not_verify": [
   "Schiewer 2012 inhibitor identity (PMC XML body names neither olaparib nor ABT-888).",

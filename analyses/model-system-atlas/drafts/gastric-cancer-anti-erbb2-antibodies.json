@@ -53,7 +53,11 @@
     "population": "HER2-positive gastric cancer",
     "model_first_use_year": 2011,
     "readout_tier": null,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "pertuzumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2011,
@@ -91,7 +95,11 @@
     "population": "HER2-positive tumours; CD16A-158F carriers",
     "model_first_use_year": 2011,
     "readout_tier": null,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "margetuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
     "year": 2017,
@@ -129,7 +137,11 @@
     "population": "HER2-positive cancer cell lines and xenografts",
     "model_first_use_year": 2017,
     "readout_tier": null,
-    "untested_reason": "not_measured"
+    "untested_reason": "not_measured",
+    "drug": "anbenitamab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    }
   ],
   "dose": [
@@ -168,7 +180,12 @@
     "population": "HER2-positive gastric cancer",
     "model_first_use_year": 2011,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "pertuzumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2011,
@@ -205,10 +222,14 @@
     "population": "Cynomolgus monkeys, 15-150 mg/kg",
     "model_first_use_year": 2011,
     "blocked_by": null,
-    "margin_stated": true
+    "margin_stated": true,
+    "drug": "margetuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
-    "year": 2020,
+    "year": 2018,
     "status": "same",
     "model": "Cynomolgus monkey single and repeat-dose toxicology and toxicokinetics of MGAH22 (margetuximab)",
     "note": "Gastric patients took the 15 mg/kg q3w phase 2 dose with pembrolizumab without dose-limiting toxicity, inside the monkey's 15-150 mg/kg tolerated range.",
@@ -217,7 +238,7 @@
     "srcLabel": "Catenacci 2020",
     "quote": "The combination therapy showed acceptable safety and tolerability; there were no dose-limiting toxicities in the dose-escalation phase.",
     "confidence": "medium",
-    "confidence_note": "Abstract-level reading. Decision 16: the model stated a tolerated dose at or above the clinical dose and it held. Whether 15 mg/kg q3w was enough is untested because every gastric margetuximab trial was single-arm (see efficacy). Registry results for NCT02689284 posted 2022-08-04, after the 2020 paper.",
+    "confidence_note": "Abstract-level reading. Decision 16: the model stated a tolerated dose at or above the clinical dose and it held. Whether 15 mg/kg q3w was enough is untested because every gastric margetuximab trial was single-arm (see efficacy). Registry results for NCT02689284 posted 2022-08-04, after the 2020 paper. Year 2018: first public as the ASCO 2018 abstract 4030 (doi 10.1200/JCO.2018.36.15_suppl.4030, read in full): 'Tx was well tolerated, with 13% of pts having TRAE ≥ grade 3, 3 drug-related SAEs, and 2 cases of autoimmune hepatitis and 1 pneumonitis.'",
     "reason": "Monkey tolerability margin held in patients",
     "judgement": "Same with margin_stated under decision 16, direction only: the 15 mg/kg q3w dose (selected in breast for activity similar to 6 mg/kg weekly, FDA review sources/761150) sits at the bottom of the monkey's tolerated range and produced no DLT in gastric patients. Paired by me; the trial paper does not cite the monkey data.",
     "model_id": "margetuximab-cyno-tox",
@@ -243,7 +264,11 @@
     "population": "HER2-positive gastro-oesophageal adenocarcinoma after trastuzumab, margetuximab 15 mg/kg q3w plus pembrolizumab",
     "model_first_use_year": 2011,
     "blocked_by": null,
-    "margin_stated": true
+    "margin_stated": true,
+    "drug": "margetuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": "pembrolizumab"
    },
    {
     "year": 2017,
@@ -281,7 +306,12 @@
     "population": "HER2-positive cancer cell lines and xenografts",
     "model_first_use_year": 2017,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "drug": "anbenitamab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -318,7 +348,53 @@
     "model": "Pertuzumab serum exposure target (trough >= 20 µg/mL) set from maximal tumour-growth suppression at ~5-25 µg/mL in HER2-overexpressing mouse xenografts (non-gastric lines, Malik 2003), carried into gastric dosing by JOSHUA and JACOB",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2012
+    "model_first_use_year": 2012,
+    "drug": "pertuzumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": false,
+    "trial_unreported": false,
+    "imported_from": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "day-43 pertuzumab trough in gastric patients (40.0-62.7 µg/mL) against the 20 µg/mL xenograft target",
+    "source_calls_it": null,
+    "year": 2014,
+    "status": "same",
+    "note": "Target reached in gastric patients: JOSHUA day-43 troughs 40.0 and 62.7 µg/mL, above the 20 µg/mL xenograft target; JACOB PK (Kirschbrown 2019) confirmed. Whether it worked is efficacy.",
+    "short": "20 ug/mL trough target met",
+    "src": "https://doi.org/10.1038/bjc.2014.356",
+    "srcLabel": "Kang 2014",
+    "quote": "Mean pertuzumab Cmin at day 43 was 40.0 μg ml(-1) (s.d.: 17.3) in Arm A and 62.7 μg ml(-1) (29.1) in Arm B.",
+    "confidence": "medium",
+    "confidence_note": "Abstract-level reading of Kang 2014 (PubMed 24960402; epub 2014-06-24; JOSHUA NCT01461057 results posted 2016-06-27) and Kirschbrown 2019 (doi 10.1007/s00280-019-03871-w). Earlier public date than the JACOB paper this entry first cited, so the year moves to 2014.",
+    "reason": "Exposure target reached, no OS benefit",
+    "judgement": "Dose scored on its own prediction: the xenograft-derived 20 µg/mL trough target was reached in gastric patients, first shown by JOSHUA (2014); JACOB's OS miss belongs to efficacy. Paired by me: JOSHUA states the breast comparison, not the xenograft target.",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2012/125409Orig1s000ClinPharmR.pdf",
+    "model_src_tier": 2,
+    "epub_year": 2014,
+    "print_year": 2014,
+    "registry_date": "2016-06-27",
+    "model_filed": true,
+    "product_in_model": true,
+    "population": "First-line HER2-positive advanced gastric cancer, JOSHUA phase 2a n=30 (pertuzumab 840/420 mg or 840 mg q3w with trastuzumab, cisplatin, capecitabine); confirmed in JACOB PK (n=374)",
+    "blocked_by": null,
+    "margin_stated": false,
+    "model_id": "pertuzumab-xenograft-exposure-target",
+    "model": "Pertuzumab serum exposure target (trough >= 20 µg/mL) set from maximal tumour-growth suppression at ~5-25 µg/mL in HER2-overexpressing mouse xenografts (non-gastric lines, Malik 2003), carried into gastric dosing by JOSHUA and JACOB",
+    "model_kind": "animal",
+    "prediction_level": "class",
+    "model_first_use_year": 2012,
+    "drug": "pertuzumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": "trastuzumab plus cisplatin and capecitabine"
    },
    {
     "retrodiction": false,
@@ -328,17 +404,17 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "year": 2018,
-    "status": "same",
-    "note": "Target reached in gastric patients: JOSHUA day-43 trough 62.7 µg/mL at 840 mg q3w, JACOB's PK paper says the majority reached target; JACOB then missed OS, so the exposure was not enough.",
-    "short": "20 ug/mL trough target met",
+    "year": 2017,
+    "status": "contra",
+    "note": "Duplicate of the JACOB pairing on this track (adjudicated drop); dated 2017 because JACOB was first public at ESMO 2017.",
+    "short": "Target reached, JACOB failed",
     "src": "https://doi.org/10.1016/S1470-2045(18)30481-9",
     "srcLabel": "Tabernero 2018",
     "quote": "overall survival was not significantly different between treatment groups (median overall survival 17·5 months [95% CI 16·2-19·3] in the pertuzumab group and 14·2 months [12·9-15·5] in the control group; hazard ratio 0·84 [95% CI 0·71-1·00]; p=0·057)",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading of Kang 2014 (JOSHUA, doi 10.1038/bjc.2014.356: mean day-43 Cmin 40.0 µg/mL at 840/420 mg, 62.7 µg/mL at 840 mg q3w, the latter chosen for phase 3) and of Kirschbrown 2019 (doi 10.1007/s00280-019-03871-w: 'The 840 mg q3w dose allowed the majority of patients in JACOB to achieve target pertuzumab concentrations'). JACOB OS was first public at ESMO 2017 (abstract 616O); year 2018 follows the draft's JACOB entries pending the checker's dating question.",
     "reason": "Exposure target reached, no OS benefit",
-    "judgement": "Dose scored on its own prediction (rule v4): the 20 ug/mL xenograft trough target was met in gastric patients. Dose table row 'reached, failed, abandoned': the only exposure target the programme stated (trough >= 20 µg/mL, from xenografts) was met in gastric patients at the 840 mg q3w dose JOSHUA selected, and JACOB missed its primary endpoint; the failure is counted once in efficacy on the gastric-xenograft track and derived here. Paired by me: Tabernero 2018 does not set the xenograft target beside the result; Kirschbrown 2019 states the target was reached but does not score the model. Not blocked by toxicity and no tolerability margin came from this model (margin_stated false), so decision 16 does not apply. Trastuzumab's exposure is not scored (not a member).",
+    "judgement": "Dose table row 'reached, failed, abandoned': the only exposure target the programme stated (trough >= 20 µg/mL, from xenografts) was met in gastric patients at the 840 mg q3w dose JOSHUA selected, and JACOB missed its primary endpoint; the failure is counted once in efficacy on the gastric-xenograft track and derived here. Paired by me: Tabernero 2018 does not set the xenograft target beside the result; Kirschbrown 2019 states the target was reached but does not score the model. Not blocked by toxicity and no tolerability margin came from this model (margin_stated false), so decision 16 does not apply. Trastuzumab's exposure is not scored (not a member).",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -356,7 +432,11 @@
     "model": "Pertuzumab serum exposure target (trough >= 20 µg/mL) set from maximal tumour-growth suppression at ~5-25 µg/mL in HER2-overexpressing mouse xenografts (non-gastric lines, Malik 2003), carried into gastric dosing by JOSHUA and JACOB",
     "model_kind": "animal",
     "prediction_level": "class",
-    "model_first_use_year": 2012
+    "model_first_use_year": 2012,
+    "drug": "pertuzumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": "trastuzumab plus cisplatin and capecitabine or fluorouracil"
    }
   ],
   "efficacy": [
@@ -396,19 +476,23 @@
     "model_first_use_year": 2011,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "pertuzumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
-    "year": 2018,
+    "year": 2017,
     "status": "contra",
     "model": "HER2-positive human gastric cancer xenografts (NCI-N87, 4-1ST) in mice, pertuzumab plus trastuzumab",
-    "note": "JACOB primary OS missed: HR 0.84 (95% CI 0.71-1.00), p=0.057, 17.5 vs 14.2 months; end-of-study analysis (2022) confirmed.",
+    "note": "Combination design: pertuzumab or placebo added to trastuzumab plus cisplatin-fluoropyrimidine. JACOB primary OS missed: HR 0.84 (0.71-1.00), p=0.057, 17.5 vs 14.2 months; first public at ESMO 2017.",
     "short": "JACOB missed overall survival",
     "src": "https://doi.org/10.1016/S1470-2045(18)30481-9",
     "srcLabel": "Tabernero 2018",
     "quote": "Adding pertuzumab to trastuzumab and chemotherapy did not significantly improve overall survival in patients with HER2-positive metastatic gastric or gastro-oesophageal junction cancer compared with placebo.",
     "confidence": "high",
-    "confidence_note": "Abstract-level reading (Lancet Oncol, paywalled); the abstract carries the primary result. Registry results for NCT01774786 posted 2018-02-14, before the 2018-09-11 epub. The end-of-study analysis (Tabernero 2022, doi 10.1007/s10120-022-01335-4) confirmed no significant OS gain.",
+    "confidence_note": "Abstract-level reading (Lancet Oncol, paywalled); the abstract carries the primary result. Registry results for NCT01774786 posted 2018-02-14, before the 2018-09-11 epub. The end-of-study analysis (Tabernero 2022, doi 10.1007/s10120-022-01335-4) confirmed no significant OS gain. Year 2017: the primary result was first public at ESMO 2017 (abstract 616O, Annals of Oncology supplement), and a congress abstract sets the year under rule 6.",
     "reason": "Xenograft call failed in phase 3",
     "judgement": "Primary endpoint governs: OS HR 0.84 with p=0.057 misses. The direction favoured pertuzumab, so the model over-called the size rather than the sign, but v3 scores the primary endpoint, not the trend. JOSHUA (phase 2a, NCT01461057) had PK and safety primaries, so its 86% and 55% partial-response rates change nothing. Paired by me: JACOB does not set the xenograft beside its result. The ToGA trastuzumab success on the same xenograft system is not scored because trastuzumab is not a member of this class.",
     "model_id": "nci-n87-gastric-xenograft",
@@ -442,7 +526,11 @@
       "doi": "10.1016/S1470-2045(18)30481-9",
       "quote": "overall survival was not significantly different between treatment groups (median overall survival 17·5 months [95% CI 16·2-19·3] in the pertuzumab group and 14·2 months [12·9-15·5] in the control group; hazard ratio 0·84 [95% CI 0·71-1·00]; p=0·057)"
      }
-    ]
+    ],
+    "drug": "pertuzumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": "trastuzumab plus cisplatin and capecitabine or fluorouracil"
    },
    {
     "year": 2011,
@@ -480,21 +568,25 @@
     "model_first_use_year": 2011,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "margetuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
-    "year": 2022,
-    "status": "untested",
+    "year": 2018,
+    "status": "same",
     "model": "Fc-optimised anti-HER2 ADCC assays with CD16A-genotyped donor effectors (N87 and SKBR-3 targets) and human CD16A-158F transgenic mice bearing JIMT-1 xenografts",
-    "note": "Gastric trials were single-arm with anti-PD-1 (ORR 18% post-trastuzumab, 53% first-line); the randomised MAHOGANY arm versus trastuzumab was discontinued unread.",
-    "short": "Fc effect never isolated in gastric",
-    "src": "https://doi.org/10.1016/j.esmoop.2022.100563",
-    "srcLabel": "Catenacci 2022",
-    "quote": "The study sponsor discontinued the study in advance of the planned enrollment when it became apparent that the study design would no longer meet the requirements for drug approval because of recent advances in the treatment of GEA.",
-    "confidence": "medium",
-    "confidence_note": "Abstract-level reading of both trial papers. In breast cancer the FDA review of BLA 761150 (SOPHIA) found the CD16A-158V/V subgroup 'in a direction unfavorable to margetuximab' and called it 'mechanistically unexpected'; that is another disease and is not scored here. MAHOGANY cohort B (margetuximab plus chemotherapy with or without retifanlimab versus trastuzumab plus chemotherapy) never reported efficacy; NCT04082364 results posted 2025-04-22 cover cohort A.",
-    "reason": "Single-arm combos never tested Fc prediction",
-    "judgement": "Untested, not same: both gastric trials combined margetuximab with a PD-1 antibody and had no anti-HER2 comparator, so the model's prediction (optimised Fc beats wild-type Fc, most in CD16A-158F carriers) was never compared, and the authors themselves frame CP-MGAH22-05 as proof of concept for synergy with pembrolizumab. The only randomised comparison was discontinued for strategic reasons before any readout. The responses are recorded in patient_trials and change no status; a second untested entry is kept because the abandonment of the randomised arm is the event that fixed the cell.",
+    "note": "Single-arm combination with pembrolizumab, no preset success bar: primary endpoint ORR 18% (17/92) post-trastuzumab; a response where the model predicted activity is scored same. First public ASCO 2018.",
+    "short": "Margetuximab plus pembrolizumab responded",
+    "src": "https://doi.org/10.1016/S1470-2045(20)30326-0",
+    "srcLabel": "Catenacci 2020",
+    "quote": "Objective responses were observed in 17 (18·48%; 95% CI 11·15-27·93) of 92 evaluable patients.",
+    "confidence": "low",
+    "confidence_note": "Abstract-level reading of Catenacci 2020 (Lancet Oncol) and the ASCO 2018 abstract 4030 (read in full; 'best ORR was 16%' in 57 evaluable patients), which sets the year. The model's distinctive differential (CD16A-158F carriers gain over wild-type Fc) was not tested: no comparator arm; the checker's genotype tabulation of five responders (genotype-independent) is exploratory and was not found in the ASCO abstract text read here.",
+    "reason": null,
+    "judgement": "Settles the checker's rule question under the 2026-11-09 rulings: a single-arm trial with no success bar is scored on its primary endpoint against the predicted direction, and a combination is scored like any other trial. Partial because only the activity half of the prediction is read.",
     "model_id": "fc-optimised-adcc-cd16a-158f",
     "prediction_level": "patient",
     "subjects": "patients",
@@ -504,36 +596,27 @@
     "model_src_tier": 1,
     "trial_unreported": false,
     "patient_signal_reversed": false,
-    "epub_year": 2022,
-    "print_year": 2022,
-    "registry_date": "2025-04-22",
+    "epub_year": 2020,
+    "print_year": 2020,
+    "registry_date": "2022-08-04",
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
     "imported_from": null,
-    "magnitude": null,
-    "magnitude_basis": null,
-    "source_calls_it": null,
-    "population": "HER2-positive gastro-oesophageal adenocarcinoma: post-trastuzumab with pembrolizumab (2020, n=95); first-line HER2 IHC 3+/PD-L1+ with retifanlimab (2022, n=43)",
+    "magnitude": "direction_only",
+    "magnitude_basis": "objective response in a single-arm combination against the model's predicted anti-tumour activity; no wild-type-Fc comparator",
+    "source_calls_it": "partial",
+    "population": "HER2-positive gastro-oesophageal adenocarcinoma after trastuzumab, margetuximab 15 mg/kg q3w plus pembrolizumab (CP-MGAH22-05, NCT02689284), n=95",
     "model_first_use_year": 2011,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": [
-     {
-      "nct": "NCT02689284",
-      "registry_date": "2022-08-04",
-      "doi": "10.1016/S1470-2045(20)30326-0",
-      "quote": "Objective responses were observed in 17 (18·48%; 95% CI 11·15-27·93) of 92 evaluable patients."
-     },
-     {
-      "nct": "NCT04082364",
-      "registry_date": "2025-04-22",
-      "doi": "10.1016/j.esmoop.2022.100563",
-      "quote": "The ORR by independent assessment was 53% [21/40 (95% confidence interval (CI) 36.1-68.5)], with a median duration of response of 10.3 months (95% CI 4.6-not evaluable); disease control rate was 73% [29/40 (95% CI 56.1-85.4)]."
-     }
-    ],
-    "strengthens": true
+    "patient_trials": [],
+    "drug": "margetuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": "pembrolizumab",
+    "untested_reason": null
    },
    {
     "year": 2017,
@@ -571,19 +654,23 @@
     "model_first_use_year": 2017,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "anbenitamab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
-    "year": 2022,
+    "year": 2021,
     "status": "same",
     "model": "Trastuzumab/pertuzumab-derived anti-HER2 bispecific on Alphamab's heterodimeric (CRIB) Fc, cancer-cell proliferation in vitro and in mouse xenografts",
-    "note": "Single-arm phase 2: KN026 monotherapy ORR 56% in HER2-high gastric/GEJ cancer after prior therapy; primary endpoint ORR.",
+    "note": "Single-arm monotherapy phase 2: primary endpoint ORR 56% in HER2-high gastric/GEJ cancer after prior therapy; first public ASCO 2021 (55.6%, 10/18).",
     "short": "KN026 monotherapy ORR 56% in HER2-high",
     "src": "https://doi.org/10.1016/j.ejca.2022.10.004",
     "srcLabel": "Xu 2023",
     "quote": "The ORR in the high-level HER2 cohort was 56% (95% confidence interval [CI] 35%-76%)",
     "confidence": "low",
-    "confidence_note": "Abstract-level reading (Eur J Cancer, paywalled; epub 2022-10-19, print 2023); the pre-specified ORR bar is not in the abstract, and the quote is a verbatim fragment. NCT03925974 has no posted results, so registry_date is null. Single-arm, so direction only.",
+    "confidence_note": "Abstract-level reading (Eur J Cancer, paywalled; epub 2022-10-19, print 2023); the pre-specified ORR bar is not in the abstract, and the quote is a verbatim fragment. NCT03925974 has no posted results, so registry_date is null. Single-arm, so direction only. Year 2021: first public as ASCO 2021 abstract e16005 (doi 10.1200/JCO.2021.39.15_suppl.e16005, online 2021-05-28, read in full): '55.6% (10/18) ORR' in the HER2-overexpressing cohort.",
     "judgement": "Scored same, unlike the margetuximab single-arm trials, because this was monotherapy: the response is attributable to the bispecific and tests the model's activity prediction in direction. The model's own comparator (trastuzumab plus pertuzumab) was not in the trial, so magnitude is direction only and confidence low.",
     "model_id": "crib-her2-biparatopic-xenograft",
     "prediction_level": "class",
@@ -616,20 +703,24 @@
       "doi": "10.1016/j.ejca.2022.10.004",
       "quote": "The ORR in the high-level HER2 cohort was 56% (95% confidence interval [CI] 35%-76%)"
      }
-    ]
+    ],
+    "drug": "anbenitamab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
-    "year": 2026,
+    "year": 2025,
     "status": "same",
     "strengthens": true,
     "model": "Trastuzumab/pertuzumab-derived anti-HER2 bispecific on Alphamab's heterodimeric (CRIB) Fc, cancer-cell proliferation in vitro and in mouse xenografts",
-    "note": "Phase 3 KC-WISE interim: anbenitamab plus chemotherapy beat chemotherapy on both co-primaries after trastuzumab failure, PFS HR 0.25 and OS HR 0.29.",
+    "note": "Phase 3 KC-WISE, anbenitamab plus chemotherapy versus chemotherapy after trastuzumab: co-primary PFS (HR 0.25) and OS (HR 0.29) both met; first public ESMO 2025.",
     "short": "KC-WISE met PFS and OS",
     "src": "https://doi.org/10.1016/j.annonc.2026.01.006",
     "srcLabel": "Liu 2026",
     "quote": "Compared with chemotherapy alone, anbenitamab plus chemotherapy demonstrated clinically meaningful superior PFS and OS in patients with HER2-positive GC/GEJ adenocarcinoma whose previous therapy containing trastuzumab had failed.",
     "confidence": "medium",
-    "confidence_note": "Abstract-level reading (Ann Oncol; epub 2026-01-20, print 2026-06). Prespecified interim analysis at about 120 PFS events; final analysis pending; NCT05427383 results not posted as of 2026-11-05. The China approval of 27 May 2026 (Blair 2026, doi 10.1007/s40265-026-02382-2) is noted, not used to set the status.",
+    "confidence_note": "Abstract-level reading (Ann Oncol; epub 2026-01-20, print 2026-06). Prespecified interim analysis at about 120 PFS events; final analysis pending; NCT05427383 results not posted as of 2026-11-05. The China approval of 27 May 2026 (Blair 2026, doi 10.1007/s40265-026-02382-2) is noted, not used to set the status. Year 2025: the interim was first public as the ESMO 2025 late-breaking oral (17 Oct 2025, Alphamab press release) and the phase II part in Cancer Commun 2025 (doi 10.1002/cac2.70080).",
     "reason": "Bispecific xenograft call held in phase 3",
     "judgement": "Strengthens the 2022 same: a randomised, double-blind phase 3 met both co-primary endpoints in trastuzumab-pretreated HER2-positive gastric cancer. Direction only: the trial comparator was chemotherapy, not the trastuzumab-plus-pertuzumab combination the model benchmarked against. Paired by me; the trial paper's rationale is clinical, and whether it cites Wei 2017 was not checked.",
     "model_id": "crib-her2-biparatopic-xenograft",
@@ -663,7 +754,11 @@
       "doi": "10.1016/j.annonc.2026.01.006",
       "quote": "At the prespecified interim analysis, anbenitamab plus chemotherapy significantly improved PFS [median 7.1 months, 95% confidence interval (CI) 5.5-10.3 months versus 2.7 months, 95% CI 1.5-3.0 months; hazard ratio (HR), 0.25, 95% CI 0.17-0.39, P < 0.0001]"
      }
-    ]
+    ],
+    "drug": "anbenitamab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": "taxane or irinotecan chemotherapy"
    },
    {
     "retrodiction": false,
@@ -675,8 +770,8 @@
     "source_calls_it": null,
     "year": 2021,
     "status": "untested",
-    "prediction_level": "patient",
-    "note": "Selection rule proposed: HER2 hyper-amplified (>= 8 copies) gastric patients would benefit from dual blockade. No pertuzumab trial selected or stratified gastric patients by copy number.",
+    "prediction_level": "class",
+    "note": "Selection rule proposed: HER2 hyper-amplified (>= 8 copies) gastric patients would benefit from dual blockade. No pertuzumab trial selected or stratified gastric patients by copy number. Recorded at class level like the rest of this model's track; the copy-number selection rule it proposed is the untested part.",
     "short": "Copy-number selection rule never tested",
     "src": "https://doi.org/10.1007/s10120-021-01165-w",
     "srcLabel": "Ughetto 2021",
@@ -701,7 +796,12 @@
     "model_id": "her2-hyperamplified-gastric-pdx",
     "model": "HER2 'hyper'-amplified (>= 8 copies) gastric cancer patient-derived xenografts run as preclinical randomized trials of trastuzumab alone versus trastuzumab plus pertuzumab (or lapatinib), 8 models, 5 mice each, RECIST-like response",
     "model_kind": "animal",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "pertuzumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": true,
@@ -747,7 +847,56 @@
     "model_id": "her2-hyperamplified-gastric-pdx",
     "model": "HER2 'hyper'-amplified (>= 8 copies) gastric cancer patient-derived xenografts run as preclinical randomized trials of trastuzumab alone versus trastuzumab plus pertuzumab (or lapatinib), 8 models, 5 mice each, RECIST-like response",
     "model_kind": "animal",
-    "model_first_use_year": 2021
+    "model_first_use_year": 2021,
+    "drug": "pertuzumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": "trastuzumab plus cisplatin and capecitabine or fluorouracil"
+   },
+   {
+    "year": 2022,
+    "status": "same",
+    "model": "Fc-optimised anti-HER2 ADCC assays with CD16A-genotyped donor effectors (N87 and SKBR-3 targets) and human CD16A-158F transgenic mice bearing JIMT-1 xenografts",
+    "note": "Single-arm combination with retifanlimab (MAHOGANY cohort A, first-line HER2 IHC 3+/PD-L1+): primary endpoint ORR 53%; the randomised cohort B versus trastuzumab was discontinued unread.",
+    "short": "MAHOGANY cohort A ORR 53%",
+    "src": "https://doi.org/10.1016/j.esmoop.2022.100563",
+    "srcLabel": "Catenacci 2022",
+    "quote": "The ORR by independent assessment was 53% [21/40 (95% confidence interval (CI) 36.1-68.5)], with a median duration of response of 10.3 months (95% CI 4.6-not evaluable); disease control rate was 73% [29/40 (95% CI 56.1-85.4)].",
+    "confidence": "low",
+    "confidence_note": "Abstract-level reading of both trial papers. In breast cancer the FDA review of BLA 761150 (SOPHIA) found the CD16A-158V/V subgroup 'in a direction unfavorable to margetuximab' and called it 'mechanistically unexpected'; that is another disease and is not scored here. MAHOGANY cohort B (margetuximab plus chemotherapy with or without retifanlimab versus trastuzumab plus chemotherapy) never reported efficacy; NCT04082364 results posted 2025-04-22 cover cohort A.",
+    "reason": "Single-arm combos responded; Fc effect unread",
+    "judgement": "Appended (the entry at this index was rewritten to the earlier CP-MGAH22-05 comparison). Single-arm combination scored on its primary endpoint under the 2026-11-09 rulings; strengthens the 2018 same. The randomised Fc comparison (cohort B) never read out, so the differential prediction stays unread.",
+    "model_id": "fc-optimised-adcc-cd16a-158f",
+    "prediction_level": "patient",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1186/bcr3069",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2022,
+    "print_year": 2022,
+    "registry_date": "2025-04-22",
+    "model_filed": true,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "objective response in a single-arm combination against the model's predicted anti-tumour activity; no wild-type-Fc comparator",
+    "source_calls_it": "partial",
+    "population": "First-line HER2 IHC 3+/PD-L1-positive gastro-oesophageal adenocarcinoma, margetuximab plus retifanlimab (MAHOGANY cohort A, NCT04082364), n=43",
+    "model_first_use_year": 2011,
+    "endpoint_role": "primary",
+    "outcome_tested": null,
+    "patient_trials": [],
+    "strengthens": true,
+    "drug": "margetuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": "retifanlimab",
+    "untested_reason": null
    }
   ],
   "safety": [
@@ -784,14 +933,18 @@
     "magnitude_basis": "harm present in both; severe diarrhoea with euthanasia in monkeys versus grade 3 diarrhoea 7.9% vs 5.0% in CLEOPATRA",
     "source_calls_it": "match",
     "population": "Pertuzumab-treated HER2-positive metastatic breast cancer patients (CLEOPATRA), imported",
-    "model_first_use_year": null
+    "model_first_use_year": null,
+    "drug": "pertuzumab",
+    "route": "iv",
+    "population_group": "other_disease",
+    "combination_with": null
    },
    {
-    "year": 2018,
+    "year": 2017,
     "status": "same",
     "strengthens": true,
     "model": "Cynomolgus monkey repeat-dose toxicology, up to 26 weekly doses (pertuzumab)",
-    "note": "In gastric patients grade 3-5 diarrhoea was 13% vs 6% with placebo; the monkey-predicted harm held with cisplatin-fluoropyrimidine.",
+    "note": "In gastric patients grade 3-5 diarrhoea was 13% vs 6% with placebo; the monkey-predicted harm held with cisplatin-fluoropyrimidine. Year 2017: JACOB first public at ESMO 2017 (congress abstract), which dates the comparison.",
     "short": "Diarrhoea excess seen in gastric patients",
     "src": "https://doi.org/10.1016/S1470-2045(18)30481-9",
     "srcLabel": "Tabernero 2018",
@@ -821,7 +974,11 @@
     "magnitude_basis": "harm present; 7-point excess in grade 3-5 diarrhoea over placebo plus trastuzumab and chemotherapy",
     "source_calls_it": null,
     "population": "First-line HER2-positive metastatic gastric/GEJ cancer, pertuzumab plus trastuzumab and cisplatin-fluoropyrimidine, n=780",
-    "model_first_use_year": null
+    "model_first_use_year": null,
+    "drug": "pertuzumab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": "trastuzumab plus cisplatin and capecitabine or fluorouracil"
    },
    {
     "year": 2011,
@@ -856,10 +1013,14 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Cynomolgus monkeys, 15-150 mg/kg",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "margetuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": null
    },
    {
-    "year": 2020,
+    "year": 2018,
     "status": "same",
     "model": "Cynomolgus monkey single and repeat-dose toxicology and toxicokinetics of MGAH22 (margetuximab)",
     "note": "No dose-limiting toxicity or treatment-related death; grade 3-4 anaemia 4% and infusion reactions 3% with pembrolizumab, matching the clean monkey profile.",
@@ -868,7 +1029,7 @@
     "srcLabel": "Catenacci 2020",
     "quote": "The most common grade 3-4 treatment-related adverse events were anaemia (four [4%]) and infusion-related reactions (three [3%]).",
     "confidence": "medium",
-    "confidence_note": "Abstract-level reading of Catenacci 2020; the model side is read from the bundled FDA review text (sources/761150). Infusion-related reactions (3% grade 3-4) are the one patient harm the general toxicology did not show; the pregnant-monkey ePPND study did record hypersensitivity reactions, so the species can show it.",
+    "confidence_note": "Abstract-level reading of Catenacci 2020; the model side is read from the bundled FDA review text (sources/761150). Infusion-related reactions (3% grade 3-4) are the one patient harm the general toxicology did not show; the pregnant-monkey ePPND study did record hypersensitivity reactions, so the species can show it. Year 2018: first public as the ASCO 2018 abstract 4030 (doi 10.1200/JCO.2018.36.15_suppl.4030, read in full): 'Tx was well tolerated, with 13% of pts having TRAE ≥ grade 3, 3 drug-related SAEs, and 2 cases of autoimmune hepatitis and 1 pneumonitis.'",
     "reason": "No unpredicted harm in gastric patients",
     "judgement": "Same, not contra, on infusion reactions: they are a platform harm of chimeric IgG1 antibodies, occurred at low grade with pembrolizumab co-administered, and the species did show hypersensitivity in the ePPND study, so the general-tox silence is not a clear miss; a reviewer who weighs infusion reactions more heavily could mark this entry other. The breast-cancer comparison in the FDA review (profile similar to trastuzumab) is not imported because the gastric trial supplies its own.",
     "model_id": "margetuximab-cyno-tox",
@@ -892,7 +1053,11 @@
     "magnitude_basis": "absence of target-organ toxicity in monkeys versus a low-grade patient profile with no DLT or treatment-related death",
     "source_calls_it": null,
     "population": "HER2-positive gastro-oesophageal adenocarcinoma after trastuzumab, margetuximab 15 mg/kg q3w plus pembrolizumab, n=95",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "drug": "margetuximab",
+    "route": "iv",
+    "population_group": "biomarker_selected",
+    "combination_with": "pembrolizumab"
    }
   ]
  }

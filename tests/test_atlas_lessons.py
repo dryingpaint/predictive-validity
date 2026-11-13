@@ -48,8 +48,10 @@ def test_prediction_reads_safety_and_a_model_that_said_no():
 
 def entry(slug, question, model_id, year, status, seq=1, final=None, **fields):
     return {"mondo_id": "M:" + slug, "mechanism_key": "X", "question": question, "modality": None, "seq": seq, "year": year, "status": status,
-            "model_id": model_id, "model": "Rat and dog toxicology", "src_label": "", "retrodiction": status == "retro", "fields": {"model_kind": "animal", **fields},
-            "adjudicated_status": None, "final": final or status, "short": ""}
+            "track_id": f"{model_id} / d1 / oral", "model_id": model_id, "model": "Rat and dog toxicology", "src_label": "",
+            "retrodiction": status == "retro", "model_kind": "animal", "readout_tier": None, "reason": None, "note": None,
+            "magnitude": None, "product_in_model": True, "subjects": None, "adjudicated_status": None,
+            "final": final or status, "short": "", **fields}
 
 
 def tiles_for(*slugs):

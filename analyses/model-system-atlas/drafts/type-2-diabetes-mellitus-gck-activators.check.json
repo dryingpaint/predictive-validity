@@ -1,238 +1,310 @@
 {
- "draft": "analyses/model-system-atlas/drafts/v3/type-2-diabetes-mellitus-gck-activators.json",
- "index_base": 1,
- "checked_by": "CHECKER_BRIEF_v3",
- "lint": "0 findings",
- "entries": [
-  {
-   "cell": "engagement",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Grimsby 2003 (PMID 12869762) resolves; quote verbatim in abstract. Opener untested with non-member compound, product_in_model false: fine."
-  },
-  {
-   "cell": "engagement",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Meininger 2011 (PMID 21994424) quote verbatim; Eiki 2011 model_src (PMID 21937665) reports MK-0941 lowering glucose in mice/dogs, -48% OGTT AUC. Downstream glucose readout moved in patients: same holds."
-  },
-  {
-   "cell": "dose",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Quote verbatim. Note text cites MK-0941 16-day/4-day data, which is Eiki 2011, not the cited Grimsby 2003; tidy the note, status fine."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Zhang 2013 (PMID 23263772) quote verbatim; NCT01024244 terminated 'due to nonclinical safety findings', results 2011-10-26. Model was fitted to patient MAD data, not preclinical; flip from contra rests on that. See rule question."
-  },
-  {
-   "cell": "efficacy",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Opener; quote verbatim."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Abstract confirms primary endpoint was A1C at Week 14 and was met; non-sustained by week 30 correctly kept partial. AZD1656 metformin patient_trial (PMID 23464532, NCT01020123 results 2012-11-26) quote verbatim."
-  },
-  {
-   "cell": "efficacy",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Kiyosue quote verbatim; primary 4-month HbA1c not significant (p=0.30). Baker 2014 (PMID 24772484) 'in marked contrast to clinical findings' confirmed. Contra beats MK-0941 same."
-  },
-  {
-   "cell": "efficacy",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Vella 2019 (PMID 30651321) quote verbatim; status same under model_change is defensible. Fix fields: model_first_use_year should predate 2019 (genetic rationale guided TTP399 design); dorzagliatin is dual-acting, so its Phase 3s do not test a hepatoselective genetics model."
-  },
-  {
-   "cell": "safety",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Opener; quote verbatim. But see missing: MK-0941 2011 triglyceride rise against a rodent model silent on lipids."
-  },
-  {
-   "cell": "safety",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2012,
-   "rule": "evidence rule 6 (dating)",
-   "note": "Retro status is right (De Ceuninck postdates Meininger). But the year should be 2012: Crossref shows the BJP paper online 2012 (record created 2012-08-28, published-online 2012-12-20), not 2013."
-  },
-  {
-   "cell": "safety",
-   "index": 3,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2023,
-   "rule": "evidence rule 6 (dating)",
-   "note": "Liang 2024 quote verbatim. An earlier tier-4 meta-analysis (Frontiers Endocrinol 2023, doi 10.3389/fendo.2023.1175198) already showed GKA-raised triglycerides (WMD +0.322 mmol/L, P=0.001). The flip is blocked if the missing 2011 contra is added."
-  },
-  {
-   "cell": "engagement",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Liu 2017 (PMID 28000102) abstract has the quote verbatim. Opener untested at 2014 is a proxy (FIP NCT02077452 started 2014-03; HV data NCT01952535 ended 2013-12), allowed under rule 6; not verifiable that the model existed then.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "engagement",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "rule": "10",
-   "note": "Quote verbatim (abstract). Comparison is to values 'fitted from observed clinical data' plus a sinogliatin patient popPK/PD, epub Dec 2016, two years after NCT02077452 completed (2014-09). Nothing shows the projection was fixed first: retro.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 10 with rule 7 dating: Liu epub 2016 post-dates the 2014 first-in-patient data and fits the projection against them; no filing or registry shows it was fixed first, so a reproduction is retro, not same."
-  },
-  {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Same Liu 2017 abstract sentence, verbatim. Untested opener at the FIP start (2014-03) is a permitted proxy.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "dose",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "rule": "10",
-   "note": "'nearly identical ... (0.82 vs. 0.78%)' verbatim in abstract. Published after the patient HbA1c data were in hand and the abstract gives no evidence the projection was locked before them; prospective status rests only on 'learn-research-confirm' framing: retro.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 10: Model C (HbA1c compartment) was assembled and reported in 2016 after the observed 1-month HbA1c was known; 'learn-research-confirm' framing is not a dated prospective projection, so the 0.82 vs 0.78% match is retro."
-  },
-  {
-   "cell": "efficacy",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Diabetes 2025 (PMID 40272935, PMC12278794) abstract has the quote verbatim. Opener at 2025, first use of this islet perifusion comparison on member drugs.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 6,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim in Article highlights. Run 2025, after SEED/DAWN (Nat Med 2022) primaries: retro is right; paper titled as explaining dorzagliatin's clinical success.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Same abstract sentence, verbatim. Opener 2025 untested.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim. MK-0941 hypoglycaemia public since Meininger 2011; islet result reproduces it 14 years later, so retro; comparison_stated false is correct since the abstract does not name hypoglycaemia.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 6,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Wang 2024 (PMID 38951793, PMC11218184) Methods quote verbatim. Opener 2024, run after GKA trial lipid signals; untested.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 7,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim. Full text says dorzagliatin and TTP399 'did not cause hypertriglyceridemia', yet SEED/DAWN reported ~20% TG rise and hyperlipidaemia 12-14% vs 9-11%: dorzagliatin's own TG rise is the cleaner contra pairing than the pooled meta-analysis. Source_calls_it is the authors' 'match'.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  }
- ],
- "missing": [
-  "safety 2011: MK-0941 raised triglycerides (and hypoglycaemia) in patients (Meininger 2011, doi 10.2337/dc11-1200), while the rodent model of record (Eiki 2011) was silent on lipids that rodents can show (De Ceuninck 2013). Arguably contra (silence contradicted), which would keep later rodent-model safety entries from flipping to same.",
-  "dose 2011: MK-0941 dose reached and the Week-14 primary met (Meininger 2011): the 'reached, drug worked' row gives dose same in 2011 before the AZD1656 contra.",
-  "efficacy patient_trials: PF-04991532 (hepatoselective member) met the 12-week HbA1c primary in NCT01336738 (450 and 750 mg vs placebo, p=0.0017 and 0.0003; results posted 2013-08-06) and NCT01338870 (results 2013-04-23). No status change.",
-  "efficacy patient_trials: PF-04937319 (nerigliatin) met the 12-week HbA1c primary at 100 mg (-0.45 to -0.47%) in two studies, Amin 2015 doi 10.1111/dom.12474. No status change.",
-  "safety: LY2599506 Phase 2s (NCT01024244, NCT01029795) were terminated for 'nonclinical safety findings'. The model flagged a harm before patients showed it, and nobody compared it in patients, so it is not scored but is worth a note.",
-  "safety: Baker 2014 (doi 10.1111/bph.12504) is a rodent model that showed no triglyceride rise, against the patient hyperlipidaemia signal. It is a second rodent result that conflicts with De Ceuninck."
- ],
- "overall": "accept_with_corrections",
- "rule_questions": [
-  "Dose: does a semi-mechanistic model fitted to the drug's own patient MAD data (LY2599506 GIG model) count as a 'model' with model_change: true that can turn a contra cell back to same? It is a human-to-human extrapolation, not a preclinical system, and its trials stopped before efficacy was fully shown.",
-  "Safety: when a model's only public sources are pharmacology papers (no tox review, no NDA), is their silence on a harm the species can show (rodent triglycerides) enough to score contra when patients show it?",
-  "Efficacy: can a human-genetic rationale for a hepatoselective drug (TTP399) count as the model for later, non-hepatoselective members (dorzagliatin), or is it a separate model_id limited to the drugs designed from it?",
-  "Dating: TTP399 Phase 2 results were presented in 2016 (ADA), before Vella 2019. Does a conference abstract or press release set the entry year under rule 6?",
-  "Model-informed drug development papers (Liu 2017 sinogliatin PK/PD) published after the first-in-patient data, claiming a learn-research-confirm projection: without a dated pre-trial record of the projection, does the default fall to retro (checker) or to the paper's framing (drafter)?",
-  "Two-arm drug-target MR (GCK vs GCKR proxies) under one model_id: when one arm reproduces the class harm and the other contradicts it, which arm is the class proxy? Safety 7 scores the GCK arm contra on dorzagliatin's TG rise."
- ]
+  "draft": "analyses/model-system-atlas/drafts/v3/type-2-diabetes-mellitus-gck-activators.json",
+  "index_base": 1,
+  "checked_by": "CHECKER_BRIEF_v3",
+  "lint": "0 findings",
+  "entries": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Grimsby 2003 (PMID 12869762) quote verbatim in abstract. Untested opener; sibling compound, product_in_model false. Drug mk-0941, oral, unselected fit the MK-0941 rodent track opener.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Meininger 2011 (epub 2011-10-12) quote verbatim; NCT00767000 results 2012-09-03. Patients on stable glargine: combination_with, stage_or_line, note correct. Eiki 2011 (epub 2011-09-21) resolves. Post-dating vs piragliatin 2010 left as rule question.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "engagement",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Liu 2017 (PMID 28000102, online 2016-12-20) quote verbatim. Opener at FIP start (NCT02077452, 2014-03) is an allowed proxy. Dorzagliatin, oral, unselected correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "engagement",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Quote verbatim. Online 2016-12-20, after MK-0941's 2011 patient glucose result: retro under the engagement retrodiction rule (target-level). Dorzagliatin, oral, unselected correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Grimsby quote verbatim; the 16-day mouse / 4-day dog detail is in the Eiki 2011 abstract as attributed. No human exposure, regimen or margin stated: untested, no_prediction. mk-0941 oral correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Zhang 2013 (epub 2012-12-22) quote verbatim. NCT01024244 results first posted 2011-10-26, before the model was public: retro under the dose rule (same drug's own result). ly-2599506 oral unselected correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "dose",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Same Liu abstract sentence, verbatim. Opener proxy 2014; dorzagliatin oral unselected correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "dose",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "'nearly identical ... (0.82 vs. 0.78%)' verbatim. No dorzagliatin patient result public before Dec 2016, so same not retro under the dose rule. Exposure half rests on projected PK within 70-130%; the HbA1c quote is an efficacy readout.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Opener; Grimsby quote verbatim. mk-0941 oral unselected correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Meininger abstract: primary = A1C change at Week 14, met at all doses; lost by week 30. Combination with glargine scored on the primary, design in note. AZD1656 patient_trial correctly moved off.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Kiyosue (NCT01152385 results 2012-08-27) quote verbatim: 4-month HbA1c primary missed. NCT01020123 (results 2012-11-26) listed as patient_trial. azd-1656 oral unselected correct. Judgement prose still says MK-0941 shares this track; it no longer does.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Vella 2019 quote verbatim; vTv/BioSpace topline 'achievement of the primary endpoint ... HbA1c at 6 months' (2016): year 2016 correct. Cadisegliatin, oral, on metformin fits. model_first_use_year 2016 post-dates MK-0941 2011 while retrodiction false: see rule question.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Roman 2025 (PMID 40272935) quote verbatim. Opener islet x dorzagliatin; dorzagliatin oral unselected correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Quote verbatim (Article highlights). SEED and DAWN (Nat Med, epub 2022-05-12) precede Roman 2025: retro correct. Scored against drug-naive SEED, so unselected fits; DAWN in patient_trials.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 7,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "proposed_status": "untested",
+      "proposed_year": 2003,
+      "rule": "Dating rule 6: each cell opens at model_first_use_year with status untested; a track's entries in year order",
+      "note": "Quote verbatim. Opener still dated 2012, tied with efficacy 3 (contra) and placed after it, so by seq it becomes the AZD1656 track's latest entry and hides the contra. Date it 2003 (model_first_use_year).",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "untested",
+      "adjudication_note": "Rule 6: AZD1656 rodent-track opener is untested at model_first_use_year; date it 2003, before efficacy 3 (2012 contra), so the contra stays the track's latest entry. Not latest, so no untested_reason."
+    },
+    {
+      "cell": "efficacy",
+      "index": 8,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Roman 2025 quote verbatim. Opener islet x MK-0941 at 2025, before efficacy 9; mk-0941 oral unselected fine.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 9,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Quote verbatim. Islets show strong MK-0941 insulin secretion, consistent with its met week-14 primary (2011): post-dated, so retro; partial as loss of effect not modelled. Pairing is ours. Glargine, stage_or_line correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Opener; Grimsby quote verbatim. mk-0941 oral unselected correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Meininger quote verbatim (TG rose). De Ceuninck (PMID 22925001) accepted article online 2012-08-28: year 2012 correct. Post-dates MK-0941's own 2011 TG result: retro. Glargine combination correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 3,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": false,
+      "proposed_status": "contra",
+      "proposed_year": 2022,
+      "rule": "Safety rule and status table (contra); checker step 4: the model for this drug's track is its own rodent study",
+      "note": "Liang quote verbatim; DAWN epub 2022-05-12, hyperlipidaemia 14% vs 9%. But dorzagliatin's own rat study (Wang 2017, PMC5278194 full text): HMS5552 'levels of TG and TC were not significantly changed'. Drafter misread: the contra rests on this track, not MK-0941's.",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "contra",
+      "adjudication_note": "Safety rule (silence on a harm the species can show, contradicted) and contra row: dorzagliatin's own rat study (Wang 2017 full text) found TG/TC 'not significantly changed'; DAWN 2022 hyperlipidaemia 14% vs 9%. Make model_src Wang 2017."
+    },
+    {
+      "cell": "safety",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Roman 2025 quote verbatim. Opener islet x MK-0941, untested 2025; fields correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Quote verbatim. Meininger 2011 reported increased hypoglycaemia with MK-0941 on glargine, 14 years earlier: retro under the safety rule (same drug's own result). Glargine, stage_or_line correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Wang 2024 (PMID 38951793) Methods quote verbatim in abstract. Opener; drug 'class' correct for a genetic system; route oral is that of the GKA patients compared.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 7,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Quote verbatim: GCK proxy 'not with dyslipidemia'; GKA patients (MK-0941, dorzagliatin) showed lipid rises: contra either way. retrodiction true for drug 'class' and choice of arm are open rule questions.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 8,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "proposed_status": "contra",
+      "proposed_year": 2014,
+      "rule": "Evidence rule 3: the quote must come from the cited source",
+      "note": "Contra stands: Baker 2014 (PMID 24772484) rodents showed no TG rise, after MK-0941's 2011 rise; quote verbatim in Baker's abstract. But src/srcLabel still name Meininger 2011: make src Baker 2014 (Meininger as patient side).",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "contra",
+      "adjudication_note": "Status stands: Baker 2014 retrodiction failed to reproduce MK-0941's 2011 TG rise (contra). Evidence rule 3: src/srcLabel must be Baker 2014 (bph.12504), the quote's source; Meininger 2011 is the patient side."
+    },
+    {
+      "cell": "safety",
+      "index": 9,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "proposed_status": "untested",
+      "proposed_year": 2017,
+      "rule": "Dating rule 6: track opens at first use with status untested; a track's entries in year order",
+      "note": "Quote verbatim (J Diabetes Res, epub 2017-01-16). Opener held at 2022 and placed after safety 3 becomes the track's latest entry by seq, hiding its comparison. Date 2017; full text shows TG/TC unchanged (see safety 3).",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "untested",
+      "adjudication_note": "Rule 6: dorzagliatin rodent-track opener is untested at first use, Jan 2017 (Wang 2017 epub), not 2022; then safety 3 (2022) is the latest entry. Not latest, so no untested_reason."
+    }
+  ],
+  "missing": [
+    "safety 2011: MK-0941 raised triglycerides (and hypoglycaemia) in patients (Meininger 2011, doi 10.2337/dc11-1200), while the rodent model of record (Eiki 2011) was silent on lipids that rodents can show (De Ceuninck 2013). Arguably contra (silence contradicted), which would keep later rodent-model safety entries from flipping to same.",
+    "dose 2011: MK-0941 dose reached and the Week-14 primary met (Meininger 2011): the 'reached, drug worked' row gives dose same in 2011 before the AZD1656 contra.",
+    "efficacy patient_trials: PF-04991532 (hepatoselective member) met the 12-week HbA1c primary in NCT01336738 (450 and 750 mg vs placebo, p=0.0017 and 0.0003; results posted 2013-08-06) and NCT01338870 (results 2013-04-23). No status change.",
+    "efficacy patient_trials: PF-04937319 (nerigliatin) met the 12-week HbA1c primary at 100 mg (-0.45 to -0.47%) in two studies, Amin 2015 doi 10.1111/dom.12474. No status change.",
+    "safety: LY2599506 Phase 2s (NCT01024244, NCT01029795) were terminated for 'nonclinical safety findings'. The model flagged a harm before patients showed it, and nobody compared it in patients, so it is not scored but is worth a note.",
+    "safety: Baker 2014 (doi 10.1111/bph.12504) is a rodent model that showed no triglyceride rise, against the patient hyperlipidaemia signal. It is a second rodent result that conflicts with De Ceuninck.",
+    "safety: dorzagliatin's own rat study (Wang 2017, doi 10.1155/2017/5812607, PMC5278194) reports TG and TC 'not significantly changed' with HMS5552, a drug-specific rodent lipid prediction contradicted by DAWN hyperlipidaemia (14% vs 9%)."
+  ],
+  "overall": "accept_with_corrections",
+  "rule_questions": [
+    "Dose: does a semi-mechanistic model fitted to the drug's own patient MAD data (LY2599506 GIG model) count as a 'model' with model_change: true that can turn a contra cell back to same? It is a human-to-human extrapolation, not a preclinical system, and its trials stopped before efficacy was fully shown.",
+    "Safety: when a model's only public sources are pharmacology papers (no tox review, no NDA), is their silence on a harm the species can show (rodent triglycerides) enough to score contra when patients show it?",
+    "Efficacy: can a human-genetic rationale for a hepatoselective drug (TTP399) count as the model for later, non-hepatoselective members (dorzagliatin), or is it a separate model_id limited to the drugs designed from it?",
+    "Dating: TTP399 Phase 2 results were presented in 2016 (ADA), before Vella 2019. Does a conference abstract or press release set the entry year under rule 6?",
+    "Model-informed drug development papers (Liu 2017 sinogliatin PK/PD) published after the first-in-patient data, claiming a learn-research-confirm projection: without a dated pre-trial record of the projection, does the default fall to retro (checker) or to the paper's framing (drafter)?",
+    "Two-arm drug-target MR (GCK vs GCKR proxies) under one model_id: when one arm reproduces the class harm and the other contradicts it, which arm is the class proxy? Safety 7 scores the GCK arm contra on dorzagliatin's TG rise.",
+    "Engagement/efficacy retrodiction on the rodent track: Eiki 2011 (MK-0941's own rodent data, Sep 2011) post-dates piragliatin's patient glucose lowering (2010), while the class rodent prediction (Grimsby 2003) predates every patient result. Which model-side date governs a drug's track?",
+    "Efficacy 4: the human-genetics model's phenotypes were public from 1998 (GCK activating) and 2008 (GCKR), before any GKA patient result, but its model_first_use_year is set to 2016, after MK-0941's 2011 result. Does post-dating by that proxy make it a retrodiction?",
+    "Openers appended after a track's comparison with an equal year (efficacy 7, safety 9) become the track's latest entry by seq: should openers be inserted in year order instead?",
+    "Safety 3 / safety 9 (dorzagliatin rodent track): when the drug's own rodent study (Wang 2017, TG unchanged) and a sibling-compound class warning (De Ceuninck 2012, TG raised) sit on one track, which model statement does the patient result score against?"
+  ]
 }

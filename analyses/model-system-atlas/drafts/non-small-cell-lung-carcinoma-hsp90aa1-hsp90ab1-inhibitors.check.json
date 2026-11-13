@@ -20,7 +20,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Sessa 2013 resolves; PBMC HSP70 and tumour client depletion moved at RP2D, abstract only. Goldman 2013 (epub 2013-03-25, same drug as the model) is the earlier same-year source. product_in_model false here but true on the identical dose pairing; harmonise."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Sessa 2013 (PMID 23757357, epub 2013-06-11) abstract quote verbatim; iv luminespib. Garon 2013 model_src is luminespib, product_in_model true. Retro holds: Banerji 2005 17-AAG tumour PD predates. Judgement text stale ('scored same', product_in_model false)."
   },
   {
    "cell": "dose",
@@ -34,13 +35,17 @@
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Decision 4 case 3: Sessa states xenograft-active concentrations reached at 70 mg/m2, single-agent NSCLC failed, so contra derived_from efficacy, counted once. Sessa's stated comparison is to luminespib xenografts (Garon 2013), not Shimamura; product_in_model should match engagement entry 2.",
+   "proposed_status": "same",
+   "proposed_year": 2013,
+   "rule": "two systems sharing one model_id; a target scores on the track of the model system that stated it",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Sessa quote verbatim; status same holds. But Sessa's 'range of xenograft models' cites Eccles 2008 and Jensen 2008 (breast, ovarian, glioma, prostate, melanoma), not NSCLC: a separate system needing its own model_id, first use 2008. Judgement still argues contra.",
    "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): the RP2D exposure matched xenograft-active concentrations (Sessa)"
+   "adjudication_note": "Dose table row \"target reached\" is same; efficacy carries the failure. Status holds on either track; per \"a target scores on the track of the model system that stated it\", re-track to the Eccles 2008 non-NSCLC xenograft system."
   },
   {
    "cell": "efficacy",
@@ -72,14 +77,12 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2015,
-   "rule": "7",
-   "note": "Status holds (registry results 2016-07-01; Pillai 2020 verbatim; stopped for futility). Synta press release 2015-10-20 (tier 5) announced the futility termination; decision 7 takes the earliest admissible source, so year 2015 with the tier 3/1 record setting status."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Pillai 2020 (PMID 31829907) quote verbatim; primary OS, HR 1.11. Synta 8-K (filed 2015-10-22) confirms the 2015-10-20 futility press release, so year 2015 right; ganetespib iv plus docetaxel, stage_or_line; Proia 2012 resolves."
   },
   {
    "cell": "efficacy",
@@ -88,7 +91,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Piotrowska 2018 quotes verbatim; registry results 2018-04-10; primary ORR with a 20% PR+SD>=3 mo bar, met (38%). Jorge 2018 (epub 2018-08-28) post-dates the trial it calls confirmatory; not a retrodiction by decision 10, but model_first_use_year 2018 understates (trial started 2013 on this model)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Piotrowska 2018 quote verbatim (preset 20% bar met). Registry results first posted 2018-04-10; Jorge 2018 epub 2018-08-28, so retro by post-dating; ex_vivo apt for cell lines. luminespib iv, biomarker_selected right. Judgement text stale."
   },
   {
    "cell": "safety",
@@ -102,16 +106,12 @@
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2013,
-   "rule": "4",
-   "note": "Goldman 2013 quote verbatim. The stated no-cardiac/liver prediction held, but the model was silent on diarrhoea, the DLT and commonest AE (78% in Socinski 2013), a harm measurable in mice: askable silence contradicted is contra under decision 4.",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: does an efficacy paper's incidental no-cardiac/liver claim make it a safety model whose silence on mouse-measurable GI toxicity is askable (decision 4: #54 'relied on for that question' vs #89 species test)? Stated prediction held; kept same."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Socinski 2013 (PMID 23553849, epub 2013-04-03) quote verbatim; 99 NSCLC patients on iv ganetespib set the status. Ying 2012 (resolves) 'no cardiac or liver toxicity' is scored; mouse-showable diarrhoea and a cardiac-arrest death contradict it. Contra, low confidence."
   },
   {
    "cell": "safety",
@@ -140,9 +140,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim (39-word fragment of the abstract's penultimate sentence). The paper interprets the dog retinopathy against already-reported clinical visual disorders, so retro under decision 10, never same. Class-level, comparison_stated true at low resolution, year 2014 correct.",
-   "detail": "Decision 10 and the drafter brief: a model built or run after the clinic knew the answer is a retrodiction. Clinical visual disorders on HSP90 inhibitors (luminespib phase 1, ESMO 2010 / Sessa 2013) predate the Feb 2014 paper, and the abstract's own sentence puts the dogs beside 'some clinical trials of Hsp90 inhibitors', so comparison_stated true and source_calls_it match are supported. No member drug was dosed; the member-drug patient side is luminespib (Felip 2018 visual disorders 79.7%, Piotrowska 2018 76%), which matches the direction, so retro rather than contra. The rat track (Zhou 2013, safety 3) is a different species and readout, so a separate model_id is right. Note the dog track carries an opening untested entry in the same year while the rat track does not; that is a consistency point for the existing verdict, not an error here."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Johnson 2015 (PMID 25870087, epub 2015-04-13) quote verbatim; luminespib iv plus erlotinib, EGFR-mutant. Same under the dosed-drug ruling. Unverified: ASCO 2012 abstract 7543 (luminespib NSCLC phase 2, not readable: site blocked) may report visual AEs earlier, which would date this 2014."
   },
   {
    "cell": "efficacy",
@@ -166,6 +165,76 @@
    "rule": "4 (#58), 10",
    "note": "Socinski 2013 (PMID 23553849, epub 2013-04-03) quotes verbatim; cohort B is KRAS. Same holds under #58: the GEMM stated the monotherapy null as a prediction and was discriminating (combination regressed). Not retro: the paper never mentions ganetespib or NCT01031225.",
    "detail": "The question put to this check: is a no-effect prediction confirmed by a null cohort same or untested? Decision 4 as decided (RULES_V3_PROPOSAL §4, #58): a null-null is same only when the model made the null a prediction; the #58 recommendation adds that the null must be discriminating (falsifiable). Both hold here. De Raedt states the single-agent null as a result ('none of the single agents investigated in this study exerted a cytotoxic response when administered individually') and draws the clinical inference that such agents 'might be overlooked if they are assessed exclusively as mono-therapies'; and the same MRI system showed regression on IPI-504 plus rapamycin, so a ganetespib monotherapy response in KRAS-mutant patients would have contradicted it (#10). So same, direction_only, not untested. Retrodiction checked, since the drafter left it open: Synta's 8-K exhibit 99.1 of 2011-06-04 did report cohort B (13 evaluable, 5/13 SD, no objective response, headlined as 62% target-lesion shrinkage), three months before De Raedt's print date; but decision 10 requires post-dates AND motivated by, and the paper is an Nf1/MPNST and Kras lung mechanism study of Infinity's IPI-504 that never names ganetespib or the trial, with no online-first and a Sept 2011 print, so the experiments were not run to reproduce the cohort. The public reading in June 2011 was encouraging, not a null; the clean null (0/17 PR, 5.9% PFS16) is Socinski 2013, the entry's year. The GEMM's positive (combination) prediction was tested in NSCLC only with retaspimycin plus everolimus (NCT01427946, started 2011-07, no posted results), outside the member list, so the drafter's 'only the monotherapy half is scored' is right. Confidence low is appropriate: own pairing, sibling drug in the model, p53 status of cohort B unknown."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Garon 2013 (PMID 23493311, epub 2013-03-14) quote verbatim; luminespib opener untested 2013 right. Lists after engagement 2; opener should come first."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Garon 2013 IC50 quote verbatim; untested opener right. If dose 2 moves to its own model_id this is the track's latest entry and needs untested_reason; its note overstates (Sessa compared with non-NSCLC xenografts)."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Zhou 2013 (PMID 24090817, epub 2013-10-01) quote verbatim; abstract states ganetespib caused no visual disorders in trials. Ganetespib's own patient results (Socinski, April 2013) predate it: retro under the same-drug rule. Split right."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Zhou 2013 methods sentence verbatim; rats dosed with NVP-AUY922, so the luminespib opener untested 2013 is right."
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Zhou 2013 methods sentence verbatim; ganetespib dosed in rats; opener untested 2013 right; should precede safety 6 in list order."
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kanamaru 2014 (PMID 24418710, print 2014, no epub) quote verbatim; non-member Chugai drugs dosed orally, product_in_model false; ganetespib-track opener untested 2014 right."
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kanamaru predicts class retinal toxicity; Socinski 2013 AE list (verbatim) names no visual disorder and Zhou 2013 says ganetespib caused none. Contra, opposite, 2014 holds either way on the retro question; absence inferred from abstract."
   }
  ],
  "missing": [
@@ -173,7 +242,8 @@
   "Garon 2013, 'The HSP90 inhibitor NVP-AUY922 potently inhibits non-small cell lung cancer growth', Mol Cancer Ther, doi:10.1158/1535-7163.MCT-12-0998 (PMID 23493311): luminespib's own NSCLC cell-line and xenograft work; same nsclc-xenograft-panel track, but the proper model_src for the Sessa 2013 pairings (engagement 2, dose 2) rather than the ganetespib paper.",
   "Acquaviva 2012, 'Targeting KRAS-mutant non-small cell lung cancer with the Hsp90 inhibitor ganetespib', Mol Cancer Ther, doi:10.1158/1535-7163.MCT-12-0615 (PMID 23012248): the panel's KRAS-mutant prediction; Socinski 2013 cohort B (KRAS) 5.9% PFS at 16 weeks with no responses is a second patient-level miss on the same track, worth naming in efficacy entry 2.",
   "Synta press release 2015-10-20, 'Synta Announces Termination for Futility of Ganetespib Phase 3 GALAXY-2 Trial in Lung Cancer' (https://ir.madrigalpharma.com/node/8606; also filed on Form 8-K): tier-5 patient-side report of the GALAXY-2 failure nine months before the registry posting; sets the date of efficacy entry 4.",
-  "Synta 8-K exhibit 99.1, June 2011 (https://www.sec.gov/Archives/edgar/data/1157601/000110465911033406/a11-14314_1ex99d1.htm): ASCO 2011 report of ALK-rearranged responses to ganetespib (six of eight with shrinkage, four objective responses); dates the patient result the Sang 2013 ALK model retrodicted."
+  "Synta 8-K exhibit 99.1, June 2011 (https://www.sec.gov/Archives/edgar/data/1157601/000110465911033406/a11-14314_1ex99d1.htm): ASCO 2011 report of ALK-rearranged responses to ganetespib (six of eight with shrinkage, four objective responses); dates the patient result the Sang 2013 ALK model retrodicted.",
+  "Xu 2007, 'Sensitivity of EGFR and ErbB2 exon 20 insertion mutants to Hsp90 inhibition', Br J Cancer 97:741, doi:10.1038/sj.bjc.6603950 (PMID 17712310): prospective exon-20 cell model (17-AAG, non-member, product_in_model false) that predates NCT01854034; a non-retro track beside efficacy 5."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
@@ -183,6 +253,7 @@
   "Safety (decision 4): does an efficacy paper's incidental claim ('no evidence of cardiac or liver toxicity', Ying 2012) constitute a safety model whose silence on GI toxicity is 'askable', or is only a toxicology study's silence scored? The safety-2 correction rests on the first reading.",
   "Decision 12 for safety models dosed only with non-member drugs of the same mechanism (Kanamaru 2014 dog retina, Chugai HSP90 inhibitors): a sibling-drug track with `product_in_model: false`, or outside the class?",
   "Decision 4 (#58) for efficacy: the decided text requires only that 'the model made the null a prediction'; the #58 recommendation also asks that the null be discriminating. The GEMM (De Raedt 2011) meets both, so efficacy 7 is same; confirm that a sibling-drug (IPI-504) monotherapy null transfers to a member (ganetespib) on the same terms as a positive sibling prediction (product_in_model false).",
-  "Decision 10 wording: the rule says 'post-dates and is motivated by the patient result'; the models-check task says 'run after the patient result was known'. For efficacy 7 the KRAS interim (Synta 8-K 2011-06-04) preceded De Raedt's print (2011-09) but the paper never names the drug or trial. Scored under the decided (motivated-by) text; if the stricter gloss is adopted, the entry needs the experiment run date, which is not public."
+  "Decision 10 wording: the rule says 'post-dates and is motivated by the patient result'; the models-check task says 'run after the patient result was known'. For efficacy 7 the KRAS interim (Synta 8-K 2011-06-04) preceded De Raedt's print (2011-09) but the paper never names the drug or trial. Scored under the decided (motivated-by) text; if the stricter gloss is adopted, the entry needs the experiment run date, which is not public.",
+  "Safety retrodiction 'same drug' (safety 5, 10): when the model dosed only non-member siblings, is the same-drug test applied to the dosed drug (no prior result, so prospective) or to the entry's member drug (luminespib visual AEs public 2013, Sessa; ganetespib clean eyes public 2013), which would make both retrodictions?"
  ]
 }

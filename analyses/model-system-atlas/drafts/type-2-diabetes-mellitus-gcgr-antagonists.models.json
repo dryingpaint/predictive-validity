@@ -602,5 +602,22 @@
   "Volagidemab population PK/PD in healthy Chinese and US subjects (2026, doi:10.1007/s11095-026-04028-0): human-data exposure modelling with no efficacy or safety prediction compared against patients",
   "Glucagon challenge in overweight cats with MK-3577 (Mott 2024): already tracked in the draft (gcgr-cat-glucagon-challenge)",
   "Volagidemab T2D dose-escalation NCT02455011: no results posted or published, so nothing for any added track to compare against in T2D; the antibody comparisons remain imported from T1D"
+ ],
+ "gaps": [
+  {
+   "lead": "Gcgr-/- knockout mouse (Yang 2011, Yu 2011)",
+   "outcome": "added",
+   "detail": "added_models gcgr-ko-mouse: efficacy untested 2002 -> same 2015 (Kazda 2016); safety untested 2002 -> same 2015 (Kelly 2015), same 2016 (Kazierad 2016, Yang 2011 model_src), contra 2017 (Guzman 2017 liver fat); PNETs (Yu 2011) unassessable in trials"
+  },
+  {
+   "lead": "Mahvash disease, human GCGR loss-of-function (Zhou 2009)",
+   "outcome": "added",
+   "detail": "added_models mahvash-gcgr-lof-human (human_genetic): safety untested 2009 (Zhou 2009) -> same 2015 (Kelly 2015, hyperglucagonaemia without hypoglycaemia)"
+  },
+  {
+   "lead": "Guan 2015 GRA-induced LDL-C cholesterol-absorption mouse (MK-0893, sibling-dosed)",
+   "outcome": "added",
+   "detail": "added_models gcgr-gra-mouse-cholesterol-absorption (product_in_model false): safety untested 2015 -> same 2016 (Kazierad 2016 PF-06291874), same 2017 (Kazda 2017), same 2022 (Pettus 2022 volagidemab, imported T1D)"
+  }
  ]
 }

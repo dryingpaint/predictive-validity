@@ -9,7 +9,11 @@
   "Europe PMC: sofosbuvir viral-kinetic / mathematical / PBPK model AND dose or regimen (in-silico dose selection)",
   "Europe PMC: member drugs AND mitochondrial | POLRMT (AT-527, MK-3682, VX-135, PSI-352938, IDX184)",
   "ClinicalTrials.gov API v2: NCT01425970 (BMS-986094 Phase 2: terminated for safety, no results), NCT05904470 (bemnifosbuvir+ruzasvir Phase 2: results posted 2025-10-21), NCT03219957 (AT-527 MAD: no results)",
-  "Not run: WebSearch, Firecrawl, browser tools, DB queries (none needed)"
+  "Not run: WebSearch, Firecrawl, browser tools, DB queries (none needed)",
+  "Gap pass: NCBI PMC efetch PMC6949113 (Good 2020) full text grepped for O6-alkylguanine, PSI-938, hepatotox, mitochondrial",
+  "Gap pass: Europe PMC DOI lookups 10.1097/hep.0000000000001871 (bemnifosbuvir Phase 2, PMID 42826065), 10.1177/0960327115592939 (Luo 2015 IDX14184 tox), 10.1128/AAC.01521-12 (Lalezari 2012 IDX184 monotherapy)",
+  "Gap pass: Europe PMC (\"ALS-2200\" OR \"VX-135\" OR \"ALS-002200\" OR \"ALS2200\"): 41 hits, reviews only, no primary preclinical or clinical paper",
+  "Gap pass: FDA source bundle grep VX-135|ALS-2200: no hits; ClinicalTrials.gov VX-135: NCT01790100, NCT01726946, NCT01842451 all completed, no results posted"
  ],
  "added_models": [
   {
@@ -245,6 +249,130 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "cyp3a4-o6-alkylguanine",
+   "model": "Recombinant human CYP3A4 metabolite-formation assay (mutagenic O6-alkylguanine nucleobase release from guanosine nucleotide prodrugs)",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2020,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "model_id": "cyp3a4-o6-alkylguanine",
+      "model": "Recombinant human CYP3A4 metabolite-formation assay (mutagenic O6-alkylguanine nucleobase release from guanosine nucleotide prodrugs)",
+      "model_kind": "ex_vivo",
+      "prediction_level": "class",
+      "model_first_use_year": 2020,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "imported_from": null,
+      "population": "Unselected (chronic HCV, genotypes 1-6)",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "epub_year": 2020,
+      "print_year": 2020,
+      "retrodiction": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "confidence": "medium",
+      "confidence_note": "full text read via NCBI PMC (PMC6949113, epub 2020-01-08). Sponsor (Atea) authors.",
+      "year": 2020,
+      "status": "untested",
+      "note": "Atea rhCYP3A4 assay: AT-511 (bemnifosbuvir) released no O6-alkylguanine, unlike PSI-938 and PSI-661; no bemnifosbuvir patient safety data beyond single doses yet.",
+      "short": "CYP3A4 assay clears bemnifosbuvir",
+      "src": "https://doi.org/10.1371/journal.pone.0227104",
+      "srcLabel": "Good 2020",
+      "quote": "Unlike the other potent guanosine analogs PSI-938 and PSI-661, no mutagenic O 6 -alkylguanine bases were formed when incubated with cytochrome P450 (CYP) 3A4",
+      "judgement": "Opener at the first published use of this system for a member. Distinct from the mitochondrial tracks: it reads a CYP-mediated metabolite mechanism (hepatotoxicity), not POLRMT or mtDNA. model_filed false: no regulator review of it found. retrodiction false on the opener (lint); the PSI-938 half is scored as retro in the next entry."
+     },
+     {
+      "model_id": "cyp3a4-o6-alkylguanine",
+      "model": "Recombinant human CYP3A4 metabolite-formation assay (mutagenic O6-alkylguanine nucleobase release from guanosine nucleotide prodrugs)",
+      "model_kind": "ex_vivo",
+      "prediction_level": "class",
+      "model_first_use_year": 2020,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "imported_from": null,
+      "population": "Unselected (chronic HCV, genotypes 1-6)",
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": null,
+      "epub_year": 2020,
+      "print_year": 2020,
+      "retrodiction": true,
+      "magnitude": "direction_only",
+      "magnitude_basis": "PSI-938 converted 31% (1.57 uM O6-ethylguanine from 5 uM) vs 0% for AT-511, qualitative against the known PSI-938 clinical hepatotoxicity",
+      "source_calls_it": "match",
+      "confidence": "low",
+      "confidence_note": "sponsor-authored and hedged ('likely due to'); the PSI-938 ALT signal (QUANTUM, Dec 2011) is cited by the paper, not shown. The same assay also released O6-methylguanine from BMS-986094 (8.7%), whose patient harm was cardiac, which the paper does not discuss.",
+      "year": 2020,
+      "status": "retro",
+      "note": "Run eight years after PSI-938 stopped for ALT elevations: the assay attributes that hepatotoxicity to O6-alkylguanine release, which it reproduced in vitro.",
+      "short": "CYP3A4 assay reproduces PSI-938 liver signal",
+      "src": "https://doi.org/10.1371/journal.pone.0227104",
+      "srcLabel": "Good 2020",
+      "quote": "Other prodrugs of M3, such as PSI-661 and PSI-938, have been discontinued or have failed due to toxicity in the clinic likely due to the formation of mutagenic O 6 -alkylated nucleobase metabolites",
+      "judgement": "Retrodiction (PSI-938's clinical hepatotoxicity was public from 2011-2012), so 'retro', never 'same'. Low confidence because the mechanistic attribution is the sponsor's hedged reading; the FDA Sovaldi MedR names the GS-0938 ALT elevations on the patient side."
+     },
+     {
+      "model_id": "cyp3a4-o6-alkylguanine",
+      "model": "Recombinant human CYP3A4 metabolite-formation assay (mutagenic O6-alkylguanine nucleobase release from guanosine nucleotide prodrugs)",
+      "model_kind": "ex_vivo",
+      "prediction_level": "class",
+      "model_first_use_year": 2020,
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "imported_from": null,
+      "population": "Unselected (chronic HCV, genotypes 1-6)",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1371/journal.pone.0227104",
+      "epub_year": 2026,
+      "print_year": null,
+      "retrodiction": false,
+      "magnitude": "direction_only",
+      "magnitude_basis": "no mutagenic metabolite in vitro vs no drug-related serious adverse event or drug-related discontinuation in 275 patients over 8 weeks",
+      "source_calls_it": null,
+      "confidence": "low",
+      "confidence_note": "abstract-level (PMID 42826065, epub 2026-10-02); the abstract reports no drug-related SAEs but gives no liver-enzyme table, so the hepatic match is inferred from overall tolerability. Paired by us, sponsor on both sides.",
+      "year": 2026,
+      "status": "same",
+      "note": "Prospective clean prediction for bemnifosbuvir held in an 8-week Phase 2 of 275 patients with ruzasvir: no drug-related serious adverse events.",
+      "short": "Bemnifosbuvir Phase 2 clean, as predicted",
+      "src": "https://doi.org/10.1097/hep.0000000000001871",
+      "srcLabel": "Hepatology 2026 Phase 2",
+      "quote": "No drug-related serious adverse events or premature treatment discontinuations due to drug-related adverse events were reported.",
+      "patient_trials": [
+       {
+        "nct": "NCT05904470",
+        "registry_date": null,
+        "doi": "10.1097/hep.0000000000001871",
+        "quote": "8-week bemnifosbuvir and ruzasvir regimen"
+       }
+      ],
+      "judgement": "Prospective: the CYP3A4 result (2020) preceded the Phase 2 (results posted 2025-10-21). Paired comparison, so comparison_stated false and model_src named. Dated to the peer-reviewed paper (2026) rather than the registry posting. Earlier 7-day MAD (Berliba 2019) is too short to test hepatotoxicity."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -260,5 +388,37 @@
   "Baumgart 2016 monkey mtDNA (doi 10.1093/toxsci/kfw135): already cited in the draft's cyno-monkey-echo-retro judgement; same animals as Gill 2016.",
   "ALS-2200/VX-135 (2013 liver-enzyme hold) and uprifosbuvir (MK-3682): no public model-side mitochondrial or toxicology source and no admissible patient-side source found this session; unscored.",
   "PSI-352938 IND-era mitochondrial data (Pharmasset, 2010-2011): not verified this session, so its hepatotoxicity is scored only on the Feng 2016 retro panel, where the paper itself states the miss."
+ ],
+ "gaps": [
+  {
+   "lead": "In-vitro mitochondrial-toxicity assays (POLRMT; HepG2/CEM/PC-3)",
+   "outcome": "tracked",
+   "detail": "mito-tox-cellline-ind safety 8-10 (untested 2010, same 2013, contra 2013 on INX-08189/BMS-986094) and polrmt-mito-panel-retro safety 11-13 (Feng 2016 retro; Jin 2017 folded in)"
+  },
+  {
+   "lead": "IDX-184 on the IND-toxicology track (Luo 2015)",
+   "outcome": "none",
+   "detail": "same system as rodent-dog-monkey-tox (no new system); animal heart/kidney/muscle flags never tested in patients: 3-day monotherapy only, programme stopped on the BMS-986094 regulatory concern (rule 5 untested); draft safety judgement already names it unscored"
+  },
+  {
+   "lead": "IDX-184 on the replicon track (Lalezari 2012, -0.5 to -0.7 log10)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: hcv-replicon-huh7 efficacy 2 stays same, no 'neg'. IDX-184 never failed in patients on efficacy: 3-day monotherapy -0.5 to -0.7 log10 at 25-100 mg vs placebo -0.05, authors call it 'significant antiviral activity' (Lalezari 2012, doi 10.1128/AAC.01521-12, PMID 23070151); 14-day IDX184 + P/R gave -2.7 to -4.3 log10 vs -1.5 for P/R alone, 'greater antiviral activity ... than P/R' (Antivir Ther 2013, doi 10.3851/imp2552, PMID 23439365). Luo 2015's 'suboptimal efficacy' is a sponsor statement in a toxicology paper beside the BMS-986094 regulatory hold, not a trial result; decision 13 judges neg on data, not on what the sponsor said. The draft judgement's 'no member failed on efficacy' could name IDX-184 as stopped on the class hold (note only)."
+  },
+  {
+   "lead": "GS-0938 (PSI-352938) safety failure; ALS-2200/VX-135 liver hold",
+   "outcome": "tracked",
+   "detail": "polrmt-mito-panel-retro safety 13 (contra 2015, Feng 2016) scores the PSI-352938 hepatotoxicity miss; FDA Sovaldi MedR 'ALT elevations associated with GS-0938' is a judgement citation; ALS-2200 hold press-release tier only"
+  },
+  {
+   "lead": "CYP3A4 O6-alkylguanine metabolite assay (Good 2020)",
+   "outcome": "added",
+   "detail": "cyp3a4-o6-alkylguanine safety: untested 2020, retro 2020 (PSI-938), same 2026 (bemnifosbuvir Phase 2, doi 10.1097/hep.0000000000001871)"
+  },
+  {
+   "lead": "ALS-002200",
+   "outcome": "none",
+   "detail": "Europe PMC (ALS-2200/VX-135/ALS-002200) returns reviews only; no FDA bundle text; 3 VX-135 trials with no posted results; 2013 liver-enzyme hold known only from press releases (tier excluded): no model-to-patient comparison"
+  }
  ]
 }

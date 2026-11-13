@@ -1,0 +1,76 @@
+{
+ "tile": "psoriasis-anti-il17a-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: mouse KC data first public 2016 (FDA review), after Krueger 2012 patient result for the same target (post-dating rule). drug ixekizumab, route sc set."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: NOAEL margin first public 2015/2016 FDA review, after ixekizumab's own Phase 2 results (Leonardi 2012); public date governs (settles decision-16 rule question). drug ixekizumab, route sc set."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: izokibep monkey NOAEL first public Klint 2023, after izokibep's own AFFIRM-35 top-line tolerability release 2020-06-15. drug izokibep, route sc set."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: patient ex-vivo model data first public 2016, after Leonardi 2012 efficacy for the same target. drug ixekizumab, route sc set."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: izokibep mouse KC data first public 2023, after IL-17A blockade efficacy known since 2012 (and izokibep top-line 2020-06-15). drug izokibep, route sc set."
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug ixekizumab, route sc, population_group unselected set (no scored change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug ixekizumab, route sc, population_group unselected set (no scored change)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug ixekizumab, route sc, population_group unselected set (no scored change)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug ixekizumab, route sc, population_group unselected set (no scored change)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug izokibep, route sc, population_group unselected set (no scored change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug ixekizumab, route sc, population_group unselected set (no scored change)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug izokibep, route sc, population_group unselected set (no scored change)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug class, route sc, population_group unselected set (no scored change)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug class, route sc, population_group unselected set (no scored change)"
+  }
+ ],
+ "added": []
+}

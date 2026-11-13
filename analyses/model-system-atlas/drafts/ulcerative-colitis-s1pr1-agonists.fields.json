@@ -1,0 +1,112 @@
+{
+ "tile": "ulcerative-colitis-s1pr1-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to ozanimod, route oral: FTY720 opener dates the readout for the ozanimod track (product_in_model false)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro (retrodiction: true): mouse result first public 2016 after fingolimod's human lymphocyte fall, same target and action; drug ozanimod, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug ozanimod, route oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug ozanimod, route oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug etrasimod, route oral set; note corrected (label 5.3 ALT rises), status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to mocravimod (the member run in this model, Song 2008), route oral; opener unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro (retrodiction: true): model first public 2016-04 after TOUCHSTONE topline press release 2014-10-27; comparison_stated true per checker; drug ozanimod, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to ozanimod (opener of the S1P3-KO track scored on ozanimod), route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug ozanimod, route oral set; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug etrasimod, route oral set; retro kept, re-based on etrasimod's own earlier patient result (ruling: dose/safety retrodiction only from the same drug)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug ozanimod, route oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "year 2020 -> 2021; src/quote MS summary review -> 2021 Zeposia UC label (imported-harm ruling: UC patients measured); imported_from cleared; status same unchanged; drug ozanimod, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug etrasimod, route oral set; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug etrasimod, route oral set; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "drug etrasimod, route oral set; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "drug etrasimod, route oral set; status unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "drug ozanimod, route oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "what": "year 2020 -> 2021; src/quote MS 2020 label -> 2021 Zeposia UC label (imported-harm ruling); imported_from cleared; status same unchanged; drug ozanimod, route oral"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "ozanimod opener (untested, 2016, Scott 2016) for the mouse-tnbs-transfer-colitis track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "etrasimod opener (untested, 2019, Al-Shamma 2019 JPET) for the mouse-tnbs-transfer-colitis track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "etrasimod retro (2019): transfer colitis (Al-Shamma 2019) vs OASIS primary endpoint met (Sandborn 2020, epub 2019-11-09); retrodiction because ozanimod's UC result was public from 2014"
+  }
+ ]
+}

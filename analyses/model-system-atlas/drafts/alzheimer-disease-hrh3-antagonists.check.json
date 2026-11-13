@@ -11,60 +11,63 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "JPET 2012 resolves (PMID 22815533); quote verbatim in abstract. Othman 2013 full text confirms 'A receptor occupancy study in humans was not conducted for ABT-288'. untested holds."
+   "note": "Esbenshade 2012 (PMID 22815533) quote verbatim in abstract; Othman 2013 full text: 'receptor occupancy study in humans was not conducted for ABT-288'. untested not_measured, 2012, abt-288 oral, unselected hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Full text (PMC3952801) confirms KD 4.50e-12 human vs 3.98e-11 pig vs 1.26-2.00e-10 in vitro; RO 62-70% at 6 ug. PET protocol NCT00474513 is in the paper (draft: none found). No untested opener on this track."
-  },
-  {
-   "cell": "dose",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim in abstract; DOI resolves. untested opener holds."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2012,
-   "rule": "6",
-   "note": "Quote verbatim in PMC3635600; 0.1-2 ng/mL = ~10-40% RO, 3 mg MTD, 5-6 mg intolerable, 580-fold NOAEL margin all confirmed. PubMed indexed 2012-09-29 (accepted 2012-09-20): online 2012, so year 2012. Steady-state Cmax figures not verified."
-  },
-  {
-   "cell": "efficacy",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim in abstract. Griebel 2012 (epub 2012-04-21) and Medhurst 2007 resolve as described. untested opener holds."
-  },
-  {
-   "cell": "efficacy",
    "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": false,
-   "proposed_status": "contra",
+   "proposed_status": "retro",
    "proposed_year": 2013,
-   "rule": "efficacy cell definition (primary endpoint governs); decision 13",
-   "note": "Quote verbatim in abstract (PubMed 2013-12-24). Co-primary design: executive/working-memory co-primary and ADAS-Cog null, p=0.0495 unadjusted, authors conclude GSK239512 'failed to show benefit'. Primary not met: contra, not same/partial. Rule question raised.",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: co-primary design, one co-primary nominally met (p=0.0495), the other and ADAS-Cog null, authors call it a failure: decision 11 partial -> same, or decision 4 primary not met -> contra (untested under #32)? Rules do not define co-primaries."
+   "rule": "'What the model is': engagement model first public after a human result on the same target is a retrodiction, retro never same; rule 6 earliest online date",
+   "note": "Quote verbatim (PMID 24670146 abstract). Pig PET first public here, after human GSK189254 H3 occupancy (Ashworth 2010 J Nucl Med, PMID 20554726, epub 2010-06-16): retrodiction, so retro. Crossref created 2013-11-06 (Accepted Article), so 2013. gsk-239512 oral hold.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement is a target claim): pig PET first public in Ashworth 2014 (Accepted Article online 2013-11), after human GSK189254 H3 occupancy (epub 2010-06-16); occupancy reproduced, so retro, never same. Rule 6: year 2013."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Esbenshade 2012 abstract. Opener untested 2012, abt-288 oral, unselected hold; not the track's latest entry, so no untested_reason needed.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (PMC3635600). PubMed accepted 2012-09-20, entrez 2012-09-29: year 2012 holds (rule 6). 3 mg tolerated above rat band, 5-6 mg intolerable: same, margin_stated. abt-288 oral. Stale confidence_note still says year is print year.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Esbenshade abstract; opener untested 2012, abt-288 oral, unselected hold. Member rodent papers (Apr/Jul 2012) post-date Egan 2012 MK-0249 AD failure (entrez 2012-01-26), so retrodiction flag arguably true; status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Grove abstract (PMID 24359500, entrez 2013-12-24) verbatim: co-primary episodic memory p=0.0495, executive/working memory and ADAS-Cog null, 'failed to show benefit'. Co-primary ruling: contra; 2013, gsk-239512 oral, unselected hold; design in note.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -73,7 +76,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim; the abstract itself sets preclinical efficacy beside the failed trial, so comparison_stated true holds. Donepezil positive control significant. No registry results posted."
+   "note": "Haig 2014 abstract (PMID 25024314) verbatim; primary ADAS-Cog13 numerically worse, futility stop: contra 2014, abt-288 oral hold. Model side post-dates Egan 2012 MK-0249 failure, so retrodiction should be true; a failed retrodiction stays contra.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -82,7 +86,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in PMC5651361. Sanofi DRI10734 summary (issued 2014-11-11) confirms ADAS-Cog +0.26/+0.62/+0.72, p 0.77/0.47/0.42. EU CTR 2010-022596-64 results v1 published 2016-05-10 (tier 3): registry_date should be 2016-05-10. contra holds."
+   "note": "Delay-Goyet quote verbatim (PMC5651361). Sanofi DRI10734 summary read: issue 11-Nov-2014, all arms on donepezil, ADAS-Cog11 +0.26/+0.62/+0.72 (p 0.77/0.47/0.42). contra 2014, SAR110894 oral, combination_with donepezil hold; retrodiction should be true (post-dates Egan 2012).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -91,7 +96,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in abstract; patent PCT/EP2013/057241 confirmed in full text. No disease-modification trial registered. untested holds on its own track."
+   "note": "Quote verbatim (PMC5651361). SAR110894 oral; no disease-modification trial run, so untested not_measured holds; retrodiction false defensible since no patient result exists for that readout.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -100,45 +106,38 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in abstract. The abuse-liability paper at 10.1007/s00213-013-3027-7 is Hudzik 2013, not 'Bitner 2013' (judgement text only). untested opener holds."
+   "note": "Quote verbatim in Esbenshade 2012 abstract ('wide central nervous system and cardiovascular safety margin'). Opener untested 2012, abt-288 oral hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2012,
-   "rule": "6",
-   "note": "Quote verbatim in PMC3635600 ('H 3' typography). Insomnia at intolerable 6 mg (young) / 5 mg (elderly), 3 mg MTD confirmed; prediction held in kind and order. Online 2012 (PubMed 2012-09-29): year 2012. Double count with dose 2 is a rule question."
+   "note": "Quote verbatim (PMC3635600, 'H 3' typography). Online 2012-09-29: year 2012 holds. Insomnia dose-limiting at 5-6 mg above rat band; AD patients (Haig 2014) had mild AEs at 1-3 mg, so same; schizophrenia AEs correctly not imported.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "8; 6 #3 (one drug's contra overrides another's same on the same track); 5 (predicted absence of harm, magnitude opposite)",
-   "note": "PDF read (4 pp, issue 11-Nov-2014); quote verbatim p.4; dose trend and 3 of 11 insomnia discontinuations at 5 mg confirmed; model_src resolves. contra and 2014 hold. Merged with rat-safety-pharm-eeg this contra overrides ABT-288's same, so the safety headline reads contra from 2014.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Sanofi summary read: quote verbatim, issue 11-Nov-2014, 3 insomnia discontinuations, TEAEs 'possible cholinergic origin' with trend to higher incidence by dose. Griebel BBR abstract: SAR110894 3-30 mg/kg no sleep/wake change. contra 2014, SAR110894 oral, donepezil combination hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2016,
-   "rule": "8; 7 (strengthens on a second miss that removes the first's excuse)",
-   "note": "PMC5651361 epub 2016-11-03; quote verbatim; refs 35-39 include Stemmelin 2013 (bib38); the BBR EEG is not cited, so paired holds. strengthens justified (tier 1, class-wide, removes the donepezil excuse). Same merge into rat-safety-pharm-eeg; status unchanged.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Quote verbatim (PMC5651361, epub 2016-11-03); class-wide sentence citing the SAR110894 abstract. SAR110894 oral track, strengthening contra 2016, unselected hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
@@ -146,7 +145,8 @@
   "EU Clinical Trials Register results record 2010-022596-64 for the SAR110894 trial (NCT01266525), results v1 published 2016-05-10: a tier 3 patient-side source the draft could not read (readable via fc.py); supplies registry_date 2016-05-10 and could replace the tier 5 Sanofi summary as the trial record. The Sanofi DRI10734 summary (issue date 11-Nov-2014) would also support its own 2014 tier 5 entry with trial_unreported true.",
   "GSK239512 PET occupancy study protocol NCT00474513 (stated in Ashworth 2014 Methods); the draft says no NCT was found.",
   "GSK239512 product-in-model model side: EU CTR document for 2007-004117-33 (clinicaltrialsregister.eu attachment) states GSK239512 is 'active in animal cognition models', a tier 3 model_src with product_in_model true, instead of the GSK189254 sibling paper. No peer-reviewed GSK239512 rodent paper found.",
-  "Stemmelin 2013 CTAD oral OC42 'A phase 2 study to investigate the effects of SAR110894 on cognition, daily function, apathy and sleep in mild to moderate AD' (J Nutr Health Aging 17(9):774-856, supplement DOI 10.1007/s12603-013-0399-7, Nov 2013): the earliest public patient-side report of NCT01266525 and a possible 2013 date for the sleep-disturbance contra under rule 7; text not retrievable (Springer/ResearchGate blocked), so unverified whether it reports the sleep AEs."
+  "Stemmelin 2013 CTAD oral OC42 'A phase 2 study to investigate the effects of SAR110894 on cognition, daily function, apathy and sleep in mild to moderate AD' (J Nutr Health Aging 17(9):774-856, supplement DOI 10.1007/s12603-013-0399-7, Nov 2013): the earliest public patient-side report of NCT01266525 and a possible 2013 date for the sleep-disturbance contra under rule 7; text not retrievable (Springer/ResearchGate blocked), so unverified whether it reports the sleep AEs.",
+  "Egan 2012, Curr Alzheimer Res 9:481-490 (PMID 22272611, doi 10.2174/156720512800492530, PubMed 2012-01-26): MK-0249 H3 inverse agonist pilot RCT in AD, a non-member patient result on the same target public before the member rodent efficacy papers; it makes the 2012 rodent-battery efficacy entries retrodictions (status unaffected for the contras)."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
@@ -158,6 +158,7 @@
   "Model identity across sponsors: is a 'system' defined by the assay (species, readout, paradigm: rat sleep-wake EEG after oral H3 antagonist) or by the programme that ran it? Decision 6 #3 (one drug's contra overrides another's same on the same track) presumes assay identity, and this draft pools three sponsors' rodent cognition on one track; by that reading Sanofi's rat EEG (SAR110894 no wake-promotion at 3-30 mg/kg) and AbbVie's rat EEG (ABT-288 wake above procognitive exposure) are one track, and the safety cell headline flips from same to contra from 2014. The drafter split them under 'a member drug's own model'.",
   "Untested-condition attribution: the Sanofi DRI10734 summary both flags HLT 'Disturbances in initiating and maintaining sleep' as a safety signal (trend with dose vs donepezil-matched placebo) and calls the TEAEs 'of possible cholinergic origin' with every arm on donepezil. Is that an attribution to a condition the drug-alone rat EEG never tested (untested), or a mechanism note on an on-target class harm seen without donepezil in ABT-288 healthy volunteers (contra, as drafted)?",
   "Rule 7 dating: does a conference abstract in a journal supplement carrying only the supplement's collective DOI (CTAD 2013, 10.1007/s12603-013-0399-7) count as an admissible tier 1 source for the entry year? If so and it reports the sleep AEs, safety 4 dates 2013, not 2014.",
-  "[orchestrator 2026-11-05] Track merge applied per the models check: Sanofi rat sleep-wake EEG re-keyed onto rat-safety-pharm-eeg (same assay, different sponsor); the 2012 Sanofi opener was folded into safety entry 1's note and safety verdicts 4-5 renumbered 3-4."
+  "[orchestrator 2026-11-05] Track merge applied per the models check: Sanofi rat sleep-wake EEG re-keyed onto rat-safety-pharm-eeg (same assay, different sponsor); the 2012 Sanofi opener was folded into safety entry 1's note and safety verdicts 4-5 renumbered 3-4.",
+  "[fields check 2026-11-09] Retrodiction on an untested entry: Thy-Tau22 (efficacy 5, 2016) and the 2012 rodent-battery opener post-date patient H3 results; does 'post-dating alone' set retrodiction: true on an untested entry whose readout no trial measured? And for engagement 2, does an unpublished pig PET used prospectively in 2007 count as 'first public' only in Ashworth 2013, after MK-0249's human H3 engagement (Iannone 2009 ACNP abstract, seen only as a citation in Othman 2013)?"
  ]
 }

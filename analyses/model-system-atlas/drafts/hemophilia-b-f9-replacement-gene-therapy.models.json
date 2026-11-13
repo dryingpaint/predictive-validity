@@ -12,7 +12,12 @@
   "PubMed: factor IX Padua thrombosis gene therapy (human-genetic Padua model)",
   "PubMed: humanized liver mice AAV capsid hepatocyte transduction factor IX clinical -> Brown 2020 (AAV3, not a member)",
   "Europe PMC full text: PMC6586596 (Majowicz) read; PMC7885820 (Konkle) returned 500",
-  "ClinicalTrials.gov v2: NCT01687608, NCT02396342, NCT03861273, NCT02484092 results posting dates"
+  "ClinicalTrials.gov v2: NCT01687608, NCT02396342, NCT03861273, NCT02484092 results posting dates",
+  "PubMed: AAVS3 AND factor IX; FLT180a; verbrinacogene; DTX101; AAVrh10 factor IX primate/mice; rIX-FP preclinical translation",
+  "fc.py search FLT180a preclinical -> B-AMAZE supplement (whiterose eprint 189484) cites Dane 2018 ASH; abstract read on ScienceDirect (doi 10.1182/blood-2018-99-117969)",
+  "fc.py search DTX101 AAVrh10 NHP preclinical: only press releases/SEC filings, no model data",
+  "FDA SBRA Beqvez nonclinical section re-read for healthy-mouse toxicology",
+  "ClinicalTrials.gov v2 NCT03369444: results first posted 2022-12-02"
  ],
  "added_models": [
   {
@@ -345,17 +350,223 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "hemb-nhp-aavs3-fix-flt180a",
+   "model": "Rhesus macaques given AAVS3-hFIX vectors (FLT180a capsid), with human hepatocyte and FRG humanized-liver mouse transduction",
+   "model_kind": "animal",
+   "model_first_use_year": 2018,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "registry_date": null,
+      "model_filed": null,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "model_id": "hemb-nhp-aavs3-fix-flt180a",
+      "model": "Rhesus macaques given AAVS3-hFIX vectors (FLT180a capsid), with human hepatocyte and FRG humanized-liver mouse transduction",
+      "model_kind": "animal",
+      "model_first_use_year": 2018,
+      "prediction_level": "class",
+      "drug_basis": "verbrinacogene setparvovec (FLT180a)",
+      "product_in_model": true,
+      "population": "Severe or moderately severe hemophilia B (FIX activity ≤2%)",
+      "confidence": "medium",
+      "confidence_note": "ASH 2018 abstract (Blood 132 Suppl 1:2197), read in full on ScienceDirect; 14 macaques, two FIX cassettes, not necessarily the exact FLT180a cassette.",
+      "judgement": "Opening entry: FLT180a's own capsid in macaques, a different system from the draft's hemophilic dog tracks.",
+      "year": 2018,
+      "status": "untested",
+      "readout_tier": "proximal",
+      "note": "AAVS3-FIX in macaques gave ~11% of normal hFIX at 0.93e12 vg/kg and ~430% at 2.56e13 vg/kg; preclinical support for the B-AMAZE Phase 1/2.",
+      "short": "NHP: ~11% FIX at ~1e12 vg/kg",
+      "src": "https://doi.org/10.1182/blood-2018-99-117969",
+      "srcLabel": "Dane 2018 (ASH)",
+      "quote": "AAVS3 FIX vectors injected at clinically relevant doses of 0.93 x1012 to 2.56 x1013 vg/kg achieved mean peak levels of 0.546 and 21.7µg/ml of hFIX respectively (~11% to ~430% of normal levels)."
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1182/blood-2018-99-117969",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2022,
+      "print_year": 2022,
+      "registry_date": "2022-12-02",
+      "model_filed": null,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "off_by_>5x",
+      "magnitude_basis": "FIX activity: macaques ~11% of normal at 0.93e12 vg/kg vs patients 23-260% (five normal, 51-78%) at 0.38-1.28e12 vg/kg",
+      "source_calls_it": null,
+      "model_id": "hemb-nhp-aavs3-fix-flt180a",
+      "model": "Rhesus macaques given AAVS3-hFIX vectors (FLT180a capsid), with human hepatocyte and FRG humanized-liver mouse transduction",
+      "model_kind": "animal",
+      "model_first_use_year": 2018,
+      "prediction_level": "class",
+      "drug_basis": "verbrinacogene setparvovec (FLT180a)",
+      "product_in_model": true,
+      "population": "Severe or moderately severe hemophilia B (FIX activity ≤2%)",
+      "confidence": "medium",
+      "confidence_note": "NEJM abstract only (full text paywalled); FIX levels by dose not read, only the pooled range. Chowdary does not compare with the macaques; paired by me.",
+      "judgement": "The proximal readout (transgene FIX) rose dose-dependently in patients as the macaques showed, so same; the macaque underpredicted human potency several-fold, as expected for a capsid built for human hepatocytes. Liver enzyme rises needing immunosuppression are capsid T-cell immunity the macaque cannot show, not scored.",
+      "year": 2022,
+      "status": "same",
+      "readout_tier": "proximal",
+      "note": "All 10 patients had dose-dependent FIX rises; at 0.38-1.28e12 vg/kg levels reached 23-260%, well above the macaques' ~11% near 1e12 vg/kg.",
+      "short": "FIX rose dose-dependently, above NHP",
+      "src": "https://doi.org/10.1056/NEJMoa2119913",
+      "srcLabel": "Chowdary 2022",
+      "reason": "transgene FIX expressed, higher than predicted",
+      "quote": "After receiving the infusion, all the patients had dose-dependent increases in factor IX levels."
+     }
+    ]
+   }
+  },
+  {
+   "model_id": "hemb-mouse-healthy-aavrh74var-hfix-padua-tox",
+   "model": "Healthy male mice given AAVRh74var-hFIX-Padua (fidanacogene predecessor), GLP toxicology",
+   "model_kind": "animal",
+   "model_first_use_year": 2015,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 2,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2024,
+      "print_year": 2024,
+      "registry_date": null,
+      "model_filed": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "model_id": "hemb-mouse-healthy-aavrh74var-hfix-padua-tox",
+      "model": "Healthy male mice given AAVRh74var-hFIX-Padua (fidanacogene predecessor), GLP toxicology",
+      "model_kind": "animal",
+      "model_first_use_year": 2015,
+      "prediction_level": "class",
+      "drug_basis": "fidanacogene elaparvovec",
+      "product_in_model": false,
+      "population": "Severe or moderately severe hemophilia B (FIX activity ≤2%)",
+      "confidence": "low",
+      "confidence_note": "model_first_use_year 2015 is a proxy (study run before the Nov 2015 Phase 1/2a, public only in the April 2024 SBRA). Predecessor differs from Beqvez in a redacted element.",
+      "judgement": "Opening entry: healthy mice with endogenous FIX, a different system from the NHP toxicology track.",
+      "year": 2015,
+      "status": "untested",
+      "note": "Of 110 healthy mice, 6 deaths were judged test-article related (brain and/or skin pathology) at doses 2-10x below the human dose.",
+      "short": "Mice: test-article deaths (brain/skin)",
+      "src": "https://www.fda.gov/media/178688/download",
+      "srcLabel": "FDA SBRA Beqvez 2024",
+      "quote": "Six of these unscheduled mortalities were considered related to AAVRh74var-(b) (4) -Padua, based upon anatomic pathology findings in the brain and/or skin."
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 2,
+      "model_src": "https://www.fda.gov/media/178688/download",
+      "model_src_tier": 2,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2024,
+      "print_year": 2024,
+      "registry_date": "2024-03-27",
+      "model_filed": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "opposite",
+      "magnitude_basis": "test-article deaths with brain/skin pathology in mice vs no deaths or thromboembolic events in Phase 1/2a and Phase 3 patients",
+      "source_calls_it": null,
+      "model_id": "hemb-mouse-healthy-aavrh74var-hfix-padua-tox",
+      "model": "Healthy male mice given AAVRh74var-hFIX-Padua (fidanacogene predecessor), GLP toxicology",
+      "model_kind": "animal",
+      "model_first_use_year": 2015,
+      "prediction_level": "class",
+      "drug_basis": "fidanacogene elaparvovec",
+      "product_in_model": false,
+      "population": "Severe or moderately severe hemophilia B (FIX activity ≤2%)",
+      "confidence": "low",
+      "confidence_note": "Both sides in the same FDA review, separate sections. FDA read the mouse deaths as exacerbated tissue/vascular injury from repeated bleeds in animals with endogenous FIX, so the harm may be a model artefact rather than a prediction.",
+      "judgement": "Under the brief, a model harm that never appeared in patients is contra with magnitude opposite: the mice signalled lethal vascular/tissue harm at sub-clinical doses, and none occurred in patients.",
+      "year": 2024,
+      "status": "contra",
+      "note": "No deaths, thromboembolic events or FIX inhibitors in either trial, unlike the mouse study's test-article deaths.",
+      "short": "No such harm in patients",
+      "src": "https://www.fda.gov/media/178688/download",
+      "srcLabel": "FDA SBRA Beqvez 2024",
+      "reason": "predicted harm did not appear",
+      "quote": "There were no infusions reactions, malignancy, inhibitors to FIX, thromboembolic events or deaths reported in either trial."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
   "DTX101 (AAVrh10-hFIX) preclinical NHP/mouse model: no published preclinical paper or stated predicted FIX level found; Pipe 2025 names no preclinical model. Patient miss (peak FIX 7-10 IU/dL vs 20 IU/dL target) has no model side to pair.",
-  "FLT180a (verbrinacogene) preclinical model (AAVS3 capsid, NHP/humanized-liver mice): no published preclinical study found; NEJM full text not accessible. Its AV-fistula thrombosis at FIX 260% could not be paired with a stated model prediction.",
   "AAV5-hFIX (AMT-060) NHP dose-response for the dose cell: Majowicz 2019 gives NHP doses but no human FIX target; no source states an NHP-predicted patient level against Miesbach 2018's 4.4-6.9 IU/dL.",
   "Human-genetic FIX Padua carriers (Simioni 2009, thrombophilia at FIX ~776%): no source found that compares it with gene-therapy patients; pairing with one FLT180a AV-fistula thrombosis would be confounded by the fistula.",
   "Beqvez population PD model (SBRA): built on the Phase 1/2 and Phase 3 patients themselves to support dosing on adjusted weight; describes, does not predict, a patient result.",
   "Beqvez human hepatocyte cell line in vitro transduction (SBRA): no comparison with patients stated or pairable beyond the draft's engagement entries.",
   "Humanized-liver (FRG) mice / AAV3 capsid (Brown 2020): the AAV3 vector is not a class member and has no patient result.",
-  "Mouse toxicology with AAVRh74var-hFIX-Padua in healthy mice (SBRA, deaths with brain/skin findings): FDA attributed them to bleeding procedures in animals with endogenous FIX; no patient counterpart, not scored.",
-  "BAX 335 dose cell: mice gave a dose-linear 2-500% range but no stated human target exposure; not entered."
+  "BAX 335 dose cell: mice gave a dose-linear 2-500% range but no stated human target exposure; not entered.",
+  "FLT180a dose cell from Dane 2018 macaques: the abstract calls the doses clinically relevant but states no human FIX or dose target, so no dose prediction to score; FLT180a safety: macaque abstract reports only liver findings, silent on thrombosis."
+ ],
+ "gaps": [
+  {
+   "lead": "DTX101 (AAVrh10-hFIX) Phase 1/2 miss",
+   "outcome": "none",
+   "detail": "No published DTX101 preclinical model or stated predicted FIX level (PubMed DTX101/AAVrh10 FIX primate; web: press/SEC only; Pipe 2025 names none); patient miss has no model side (rule 3, no quotable prediction)."
+  },
+  {
+   "lead": "AskBio009/BAX 335 loss of expression",
+   "outcome": "fix",
+   "detail": "engagement, index 5 (hemb-mouse-scaav8-fixr338l contra, Konkle 2021): field year, current 2020, source supports 2015. Baxalta's 24 Jun 2015 release on its ISTH 2015 oral presentation (https://www.fiercebiotech.com/biotech/baxalta-reports-continued-progress-on-phase-1-2-clinical-trial-of-bax335-investigational) first made the loss public: 'In the highest dose cohort (3x1012 vg/kg), expression levels have peaked above 50 percent, though the two patients in this cohort experienced an immune response which has led to decreased FIX expression, with one patient resuming regular FIX infusions.' The Feb 2015 Baxter EAHAD release reported only one patient with raised liver enzymes, no loss. Status contra unchanged; src stays Konkle 2021 for the full 7-of-8 result, or cite the 2015 release (source_tier lower, sponsor press release) if the year moves."
+  },
+  {
+   "lead": "verbrinacogene setparvovec (FLT180a) NHP model",
+   "outcome": "added",
+   "detail": "hemb-nhp-aavs3-fix-flt180a engagement: Dane 2018 macaques untested 2018, Chowdary 2022 same (FIX rose, NHP underpredicted >5x)."
+  },
+  {
+   "lead": "AAV5-hFIX (AMT-060) NHP dose prediction",
+   "outcome": "none",
+   "detail": "Majowicz 2019 NHP gives doses but no stated human FIX target; dose rule needs a model-stated target (already tracked for NAb in hemb-nhp-aav5-preexisting-nab engagement)."
+  },
+  {
+   "lead": "Fidanacogene predecessor healthy-mouse toxicology deaths",
+   "outcome": "added",
+   "detail": "hemb-mouse-healthy-aavrh74var-hfix-padua-tox safety: 2015 untested, 2024 contra (opposite; no such harm in patients), low confidence."
+  },
+  {
+   "lead": "albutrepenonacog alfa",
+   "outcome": "tracked",
+   "detail": "Draft names it rIX-FP: rixfp-rodent-pk engagement 1, hemb-dog-cyno-rixfp engagement 2 and dose 1-2, hemb-mouse-tailtip-rixfp efficacy 1-2."
+  },
+  {
+   "lead": "verbrinacogene setparvovec",
+   "outcome": "added",
+   "detail": "hemb-nhp-aavs3-fix-flt180a engagement (2018 untested, 2022 same)."
+  }
  ]
 }

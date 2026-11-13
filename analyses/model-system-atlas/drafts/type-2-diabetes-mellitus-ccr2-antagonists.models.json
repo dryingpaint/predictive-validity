@@ -126,5 +126,22 @@
   "MCP-1 -2518A/G population genetics as a class-level human_genetic track (Simeoni 2004, PMID 15349727: G allele lowers MCP-1, OR 0.80 for T2D; Kaur 2009, PMID 19450143: opposite direction for metabolic syndrome): a ligand-level association never set beside a member trial by any source and internally inconsistent; recorded as the rationale inside the patient-level track rather than opened as its own class-level track.",
   "JNJ-41443532 preclinical model: no model paper found under the drug name (PubMed returns only Di Prospero 2014), so nothing beyond the draft's existing track.",
   "Retracted JPET 2012 CCX140-B characterisation (PMID 22378937): not used, as in the draft."
+ ],
+ "gaps": [
+  {
+   "lead": "MCP-1 (CCL2) promoter polymorphism as a patient-level predictor (CCX140-B trial stratifier, EU CTR 2009-016051-22)",
+   "outcome": "tracked",
+   "detail": "mcp1-ccl2-promoter-genotype-t2d-patients, efficacy 5 (2010 opener, untested) and efficacy 6 (2022 CSR synopsis posting, untested; genotype-by-response never reported)"
+  },
+  {
+   "lead": "Sullivan et al. 2013 Metabolism doi:10.1016/j.metabol.2013.06.008 (PMID 23953944), mouse-active CCX140-B analogue in DIO and db/db mice",
+   "outcome": "fix",
+   "detail": "efficacy 2: (a) model_src is 'https://doi.org/10.1172/JCI24335' (Weisberg 2006, non-member antagonist); source supports 'https://doi.org/10.1016/j.metabol.2013.06.008' (Sullivan 2013 Metabolism, PMID 23953944, model_src_tier 1 unchanged), the member's own model: 'A mouse-active chemical analogue of the clinical candidate CCX140-B was tested in diet-induced obese (DIO) mice and db/db mice.' (b) comparison_stated is false; source supports true: the 15 Sep 2011 ChemoCentryx press release (entry's src) reports the Phase II result and the DIO/db/db mouse result together ('These data were presented this week in Lisbon, Portugal at the 47th European Association for the Study of Diabetes (EASD) in the form of two presentations'; 'CCR2 inhibition was studied in two models of type 2 diabetes: diet-induced obese mice and db/db mice'), and Sullivan 2013 states the link ('These mechanisms may contribute to the promising anti-diabetic effects seen in humans with at least one CCR2 antagonist'). Not proposed by the check.json verdict on efficacy 2, which changes src/status only. product_in_model stays false (analogue, not CCX140-B). Checker to rule whether the model, public at EASD Sept 2011 alongside the clinic but printed 2013, makes this entry a retrodiction."
+  },
+  {
+   "lead": "de Zeeuw 2015 Lancet Diabetes Endocrinol (PMID 26268910, NCT01447147), 52-week CCX140-B in T2D with nephropathy",
+   "outcome": "none",
+   "detail": "patient side only, not a model system; HbA1c secondary so it changes no status under the primary-endpoint rule; belongs in patient_trials of the dio-dbdb-mouse-ccr2-antagonist efficacy entries"
+  }
  ]
 }

@@ -1,0 +1,37 @@
+{
+ "tile": "cervical-cancer-anti-pdcd1-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: monkey RO first public Sept 2021 (Lou 2021), after the phase Ia human RO it is compared with and earlier anti-PD-1 occupancy (engagement retrodiction counts any drug of the target); drug zimberelimab, route iv; confidence low (human RO data not shown)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: the monkey 26-week margin was first public Sept 2021 (Lou 2021), after zimberelimab's own phase Ia (Liu 2021, epub 2021-03-07) reported no DLT; rule question settled as first-public date governs; drug zimberelimab, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: MC38 knock-in data first public Sept 2021, after pembrolizumab's cervical-cancer responses (target-level retrodiction rule); single-arm design scored on primary ORR; drug zimberelimab, route iv, biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2019 -> 2018 (and model_first_use_year 2018): earlier first-use date, CAESURA NCT03912402 start 2018-12-25 per checker adjudication; drug prolgolimab, route iv"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "new prolgolimab/iv entry: CAESURA single-arm combination (with paclitaxel, platinum, bevacizumab) primary RECIST ORR 63.8% (Fogt 2023 ASCO abstract) scored under the combination and single-arm rulings; retro because the CT26 data (Gordeev 2024) post-date it"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "new zimberelimab/iv entry: monkey 26-week 'no abnormal manifestation' tolerability claim scored as a safety prediction (passing-tolerability ruling) against cervical patients (Xia 2023, acceptable safety, hypothyroidism 26.7%); retro because zimberelimab's own phase Ia safety (Liu 2021) was public first"
+  }
+ ]
+}

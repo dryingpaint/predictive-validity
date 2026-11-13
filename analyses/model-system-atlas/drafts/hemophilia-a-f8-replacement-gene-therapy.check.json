@@ -19,10 +19,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Konkle abstract carries the quote verbatim; Chhabra (model_src) abstract quote verbatim; NCT03205163 results posted 2019-12-02. Proximal readout, drafter pairing; same holds."
+   "rule": "retrodiction (engagement/efficacy: same target and action, any drug)",
+   "note": "Konkle quote in abstract; NCT03205163 results posted 2019-12-02. FVIII replacement raised plasma FVIII in patients decades before Chhabra 2020, so retro under the target rule. Efanesoctocog alfa, iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -31,8 +32,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim in PMC9018415 full text; sponsor states the animal comparison; NCT02576795 results 2025-04-10. The same paper reports no ER stress in patient hepatocytes, which the draft never scores (see missing)."
+   "rule": "retrodiction (engagement/efficacy: same target and action, any drug)",
+   "note": "Quote verbatim (PMC9018415). Fong 2022 transduction comparison post-dates valoctocogene expression (BioMarin 2016, NEJM 2017-12-09) and FVIII replacement, so retro. Valoctocogene, iv, AAV5-antibody-negative = biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -51,8 +53,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote, 380% and the ALT sentence all verbatim in PMC5835117. Roctavian SBRA: mouse mortality at >=6.53e13 vg/kg, a 1.09x margin over 6e13. 'Reached, worked' fits; the 6e12/2e13 escalation start was not a mouse-set target."
+   "rule": "retrodiction (dose and safety: only the same drug's own earlier patient result)",
+   "note": "Quote verbatim (PMC5835117). Valoctocogene's own patient FVIII (BioMarin 2016 interim; NEJM 2017-12-09) precedes Bunting online 2017-12-14, so retro. Drug, iv, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -67,12 +70,17 @@
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "rule": null,
-   "note": "Quote near-verbatim (elided at the semicolon) in the abstract; NCT03205163 results 2019-12-02. Margin basis is misattributed: SBRA monkeys had ADA and one death; the held margin is the rat NOAEL 750 IU/kg (15x). Status unchanged."
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2020,
+   "rule": "retrodiction (dose and safety: only the same drug's own earlier patient result)",
+   "note": "Konkle 2020 reference list (Europe PMC) cites 'PK profiles of IV and SC rFVIIIFc-VWF-XTEN in cynomolgus monkey', Haemophilia 2016, before BIVV001's first dosing (start 2017-08-28). Monkey half-life prediction was prospective: same, retrodiction false.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Retrodiction rule (dose: only the same drug's earlier patient result): monkey PK of rFVIIIFc-VWF-XTEN was public in Haemophilia 2016 (cited by Konkle 2020), before BIVV001's own phase 1 PK (2019). Prospective, so a target reached is same, not retro."
   },
   {
    "cell": "efficacy",
@@ -123,30 +131,37 @@
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim in the abstract; NCT03370913 results 2023-11-28 (registry primary is ABR change, NEJM primary FVIII change at wk 49-52; both met). Bunting 2018 pairing verified."
+   "rule": "retrodiction (engagement/efficacy: same target and action, any drug)",
+   "note": "Ozelo abstract quote; Bunting online 2017-12-14 after Rangarajan NEJM 2017-12-09 and decades of FVIII prophylaxis, so retro. Primary endpoint (FVIII wk 49-52) met. Valoctocogene, iv, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim in the abstract; NCT04161495 results 2023-05-24."
+   "rule": "retrodiction (engagement/efficacy: same target and action, any drug)",
+   "note": "Quote in von Drygalski abstract; NCT04161495 results 2023-05-24. Mouse hemostatic data (Blood 2020) post-date FVIII prophylaxis and BIVV001 phase 1 (2019-12-02), so retro. Efanesoctocog, iv, unselected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim (abstract and PMC11780198); model_src PMID 40123744 (online 2025-01-28) states 'long-term and stable FVIII expression' in tolerant hFVIII mice; NCT03370172 results 2025-09-11, primary AEs only, so poc_gate is the drafter's reading. Contra stands; see rule questions 2 and 4."
+   "proposed_status": "contra",
+   "proposed_year": 2025,
+   "rule": "population_group: the patients compared, coded",
+   "note": "Contra with retrodiction true stands (model online 2025-01-28 after Chapin 2024-12-23). NCT03370172 excludes anti-AAV8 neutralizing antibodies (registry eligibility re-read), so population_group should be biomarker_selected, not unselected. Status unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status unchanged: retrodiction that failed to reproduce human loss is contra. Field fix accepted: NCT03370172 excludes anti-AAV8 neutralizing antibodies, so population_group is biomarker_selected."
   },
   {
    "cell": "safety",
@@ -163,10 +178,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Rangarajan abstract quote verbatim (online 2017-12-09; Bunting 2017-12-14). Macaques measured ALT/AST and showed none; askable silence contradicted (decision 4). Whether a capsid T-cell hepatitis is askable of an NHP is rule question 2."
+   "rule": "retrodiction (dose and safety: only the same drug's own earlier patient result)",
+   "note": "Rangarajan abstract quote; valoctocogene's own ALT rise (NEJM 2017-12-09) precedes Bunting (2017-12-14), so retrodiction true; macaques measured ALT and missed it, so contra. Drug, iv, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -175,22 +191,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim in the Roctavian SBRA (2023-06-29) clinical safety section; 87% immunosuppression also there; NCT03370913 results 2023-11-28. Strengthens the 2017 contra."
+   "rule": "retrodiction (dose and safety: only the same drug's own earlier patient result)",
+   "note": "Quote verbatim in Roctavian SBRA; same model source as safety 2, post-dated by the drug's own ALT data, so retrodiction true and contra stands (strengthens). Drug, iv, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "same",
-   "proposed_year": 2023,
-   "rule": "4",
-   "note": "Quote verbatim. Same SBRA gives the patient side ('FVIII Inhibitor antibody development was not detected') and a held margin (rat NOAEL 750 IU/kg, 15x). Decisions 1 and 4 give same; decision 5 on the monkey ADA gives contra, never untested.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "RULE QUESTION: is a xenogeneic monkey ADA finding on a human protein a decision-5 harm prediction (contra, P-CAB precedent) or a species artefact (untested)? The held rat NOAEL null (decision 4 #58) gives same; rules rank neither."
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "retrodiction (dose and safety: only the same drug's own earlier patient result)",
+   "note": "SBRA re-read: quote matches (opens after redaction). Monkeys: no adverse findings besides xenogeneic ADA; held in patients. First public 2023, after BIVV001 phase 1 (2019), so retro. Note's 'NOAEL 750 IU/kg' is the rat study, not this track; fix note.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -356,6 +370,99 @@
    "rule": null,
    "note": "PMID 34652966; quote verbatim in abstract. NCT03588299 hasResults false (completed 2026-09-15); untested is right.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cao 2022 (PMID 35778500, PMC9935387, epub 2022-07-01); quote verbatim in Results (mouse passive transfer, AAV6-hF9 proxy, product_in_model false). Opening untested entry on the patient-level track; fine.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "retrodiction (engagement/efficacy: same target and action, any drug)",
+   "note": "Cao 2022 quote verbatim (prior read). Mouse result first public 2022, after Alta expression (ASH 2019): post-dating alone makes it retro. Giroctocogene, iv, NAb-screened = biomarker_selected correct. Stale judgement text still says 'not a retrodiction'.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Sternberg 2026 Blood (PMID 42371804, PMC13389822, 2026-10-01); quote verbatim in abstract. Opening untested entry for a post-clinic track; full text not reachable.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract. Mouse model built after AAV trials had shown the OSA>CSA FVIII-SQ gap; mice and SPK-8011 participants agree, so retro (retrodiction true) is correct, not same.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Scallan 2003 abstract quote verbatim (PubMed 12738670). Untested opener for the dirloctocogene dog track; fields file's 'Sarkar 2003' is a label slip, src is Scallan. Drug and iv correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2021,
+   "rule": "retrodiction (engagement/efficacy: same target and action, any drug)",
+   "note": "Quote verbatim (PMC8672712). Dog AAV-cFVIII results (2003+) post-date F8 gene transfer raising FVIII in patients (Roth 2001 NEJM) and FVIII prophylaxis; reproducing SPK-8011's result is retro, as the draft scores efficacy 6. Drug, iv, biomarker_selected fine.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (efficacy: same target and action, any drug): dog AAV-cFVIII data (2003+) post-date FVIII replacement preventing bleeds in patients (prophylaxis, Roth 2001). Reproduced SPK-8011 durability in 16/18: retro, source_calls_it partial."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same Scallan 2003 abstract, quote verbatim; untested opener for the giroctocogene dog track. Drug and iv correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2024,
+   "rule": "retrodiction (engagement/efficacy: same target and action, any drug)",
+   "note": "Registry re-read: primary total ABR NI met (diff -3.49, CI -6.06 to -0.91, p=0.004); quote is the NI-method sentence, better quote the result. Sabatino 2011 dogs post-date FVIII prophylaxis and Roth 2001, so retro. Year 2024 (Pfizer PR) right.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (efficacy: same target and action, any drug): Sabatino 2011 dogs post-date FVIII prophylaxis and Roth 2001. AFFINE ABR non-inferiority primary met, so the reproduction is retro, not same."
   }
  ],
  "missing": [

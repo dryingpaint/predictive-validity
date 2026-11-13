@@ -1,0 +1,87 @@
+{
+ "tile": "hodgkins-lymphoma-anti-pdcd1-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: model side (Wang 2014) first public after the 2010 patient occupancy result for the same target (retrodiction rule, engagement)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: mouse PK-PD first public in the 2015 FDA review, after nivolumab's own patient PK/occupancy (Brahmer 2010); dose retrodiction rests on the same drug"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2014 -> 2016; src/quote Ansell 2015 -> Younes 2016 (CheckMate 205 primary ORR 66.3%): primary-endpoint rule and single-arm design ruling (checker verdict); status same unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "src/quote Brahmer 2010 melanoma -> Ansell 2015 cHL (this disease's patients measured, imported_from removed); retrodiction true (monkey data first public 2014 after nivolumab's own 2010 colitis); status contra and year 2014 unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "year 2017 -> 2016; src Merryman 2017 -> FDA Opdivo label 05/2016 s5.10 (earliest public, member-specific; checker verdict, rule 6); status same unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "year 2016 -> 2014; src FDA label 2016 -> Ansell 2015 NEJM (epub Dec 2014), earliest cHL report (checker verdict, rule 6); drug set to 'class' (target knockout); status same unchanged"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "opener untested 2017 for the sintilimab track of chl-9p24-cell-lines-hrs (trial start, proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "same 2018, sintilimab track: Shi 2019 single-arm primary ORR (split from efficacy 2's patient_trials / class members)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "opener untested 2017 for the camrelizumab track of chl-9p24-cell-lines-hrs (trial start, proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "same 2019, camrelizumab track: Song 2019 single-arm primary ORR (split from efficacy 2's patient_trials / class members)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "opener untested 2017 for the tislelizumab track of chl-9p24-cell-lines-hrs (trial start, proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "same 2018, tislelizumab track: Song 2020 single-arm primary ORR (split from efficacy 2's patient_trials / class members)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "opener untested 2018 for the zimberelimab track of chl-9p24-cell-lines-hrs (trial start, proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "same 2020, zimberelimab track: Lin 2022 single-arm primary ORR (split from efficacy 2's patient_trials / class members)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "opener untested 2018 for the penpulimab track of chl-9p24-cell-lines-hrs (trial start, proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "same 2022, penpulimab track: Song 2022 single-arm primary ORR (split from efficacy 2's patient_trials / class members)"
+  }
+ ]
+}

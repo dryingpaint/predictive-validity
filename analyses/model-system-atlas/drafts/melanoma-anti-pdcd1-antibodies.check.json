@@ -21,8 +21,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Open full text (PMC6332582, epub 2019-01-14): quote verbatim. Direct RO readout, saturation in monkey and patients: same, direction_only. Mixed-tumour phase 1 acceptable for PD. NCT02836795 has no posted results."
+   "rule": "retrodiction",
+   "note": "Tang 2019 quote verbatim (PMC6332582). Fu 2017 monkey occupancy post-dates Brahmer 2010 nivolumab blood T-cell PD-1 occupancy: retro right. Year 2019, toripalimab, iv, stage_or_line (refractory advanced tumours) fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -61,8 +62,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Abstract verbatim (PMID 32321714, epub 2020-04-22; paywalled). Primary = safety + ORR per abstract and NCT03013101; no results posted. Abstract states no ORR success bar, so 'met' rests on the 2018 NMPA approval; direction matched. Subtype attenuation: rule question 4."
+   "rule": "6; retrodiction",
+   "note": "ASCO 2018 abstract 9539 (doi resolves, POLARIS-01 interim ORR) makes 2018 the earliest date; MC38 knock-in post-dates Topalian 2012: retro. Toripalimab iv, stage_or_line, single-arm note right. Judgement prose ('2020 earliest', 'stays same') is stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -71,8 +73,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "note": "Quote verbatim (PMC11452378, 2024-10-04). Erratum 10.1038/s41598-024-77480-w (2024-11-06) fixes author-name order only. Full text never mentions GITR: drop 'hGITR' from the model label. comparison_stated true is a stretch (efficacy cited as known, no side-by-side): rule question 3. retro correct."
+   "rule": null,
+   "note": "Gordeev 2024 quote verbatim. Model built after MIRACULUM (2021): retro 2024 unchanged and correct. Prolgolimab given IV in MIRACULUM; drug prolgolimab, route iv, stage_or_line fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -81,8 +84,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "PMID 41481311 (PubMed 2026-01-02, print 2026-03-01). Abstract matches quote through '(hazard ratio, 0.71; 95% CI'; tail not seen (abstract truncated, PubMed efetch empty, not retried). NCT03430297 primary = PFS, no results posted. same/strengthens correct."
+   "rule": "6; retrodiction",
+   "note": "Junshi press release 2023-09-25 confirmed: MELATORCH (NCT03430297) BICR PFS primary met; Sheng 2026 quote verbatim on PubMed 41481311. Year 2023, retro, toripalimab iv, stage_or_line right. 'Strengthens the 2020 call' prose stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -101,8 +105,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim (full text). Monkey package affirmatively negative with hormone panels at saturated RO; thyroid irAEs are showable in macaque, so contra holds. Tang also says 'no novel safety signal' vs approved anti-PD-1: class-known harm, rule question 2."
+   "rule": "6",
+   "note": "Tang 2019 quote verbatim. ASCO 2018 abstract 9539 reported hypothyroidism in melanoma patients: year 2018. No earlier toripalimab patient result before Fu 2017, so retrodiction false holds; contra, toripalimab, iv, stage_or_line fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -144,9 +149,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Abstract quote verbatim (PMID 33512952, Clin Nucl Med 2021-05, paywalled). Prospective: mouse paper received 2019-11, epub 2020-02; pilot published 2021 by the same group. Tumour uptake above background held 11/11; cold-dose spleen-sink effect is not a reversal. same, direction_only, class. No registry id found.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction",
+   "note": "Wang 2021 abstract quote verbatim (Clin Nucl Med, paywalled). Huang 2020 mouse PET post-dates Niemeijer 2018 89Zr-nivolumab tumour uptake: retro right. 2021, toripalimab, iv, unselected fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -166,9 +171,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "11",
-   "note": "Abstract quote verbatim (PMID 32321714, epub 2020-04-22). Model side is the reviewer's unquantified 'minor antitumor activity' (no TGI, no statistics) in MC38 with non-specific CTLs: weak positive vs positive ORR, so same + direction_only holds at low confidence. Headline unchanged (KI track same 2020). Rule question 8.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "6; retrodiction",
+   "note": "Same trial and quote as efficacy 2; ASCO 2018 abstract dates it 2018. NSG/CTL work post-dates nivolumab 2012 melanoma responses: retro. Toripalimab iv fit; separate drug track from entry 7. Judgement still argues 'same': stale prose.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -177,9 +182,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "note": "Both Cui 2023 quotes verbatim (PMC9901108); Zhang 2020 quote verbatim (PMC7153830, received 2019-11-02, accepted 2020-01-16). MiXeno = PBMC into NSG mice bearing HCC827. Mouse predates any public HX008 melanoma ORR (cutoff 2021-07-30, registered 2021-02-11): prospective, not retro. same, direction_only, strengthens, 2023 right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "6; retrodiction",
+   "note": "Cui 2023 quote verbatim; ASCO 2021 abstract 9554 (Lian, HX008 single-arm phase 2) resolves, so 2021 is earliest. Zhang 2020 post-dates 2012 nivolumab: retro. Pucotenlimab iv, stage_or_line fit. Judgement 'prospective' is stale.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

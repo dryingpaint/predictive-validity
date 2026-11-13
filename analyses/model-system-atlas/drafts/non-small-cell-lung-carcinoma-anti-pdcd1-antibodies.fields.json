@@ -1,0 +1,67 @@
+{
+ "tile": "non-small-cell-lung-carcinoma-anti-pdcd1-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "RULE QUESTION settled under the combination ruling: same (partial) kept with radiotherapy as combination_with; drug set to camrelizumab, a separate track from the toripalimab opener"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "year 2022 -> 2021: CHOICE-01 met-endpoint press release 2021-08-18 (rule 6 earliest date); combination with platinum-doublet chemotherapy noted"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug set to dostarlimab (own popPK track); untested_reason not_measured, PERLA dosed 500 mg Q3W not the simulated 1000 mg Q6W"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true: toripalimab popPK first public 2023, after the drug's own 240 mg Q3W patient PK and CHOICE-01 (dose retrodiction rule); drug toripalimab, own track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to dostarlimab: opener of the dostarlimab track on the MC38 system it filed (surrogate RMP1-14)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug camrelizumab, own track; combination ruling noted (carboplatin + pemetrexed); judgement corrected on camrelizumab's own MC38 data (public 2023)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug toripalimab, own track; PERLA and COSTAR Lung moved to the dostarlimab entry 7; strengthens set false (first entry on its track); combination ruling noted"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "imported-harm ruling: patient side moved from dostarlimab endometrial (imported) to NSCLC CHOICE-01 irAEs 49.4% vs 21.2%; year 2021 -> 2022, src and quote replaced, imported_from removed; status same unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "imported-harm ruling: status same -> untested (2021 opener of the dostarlimab monkey track); the endometrial patient result no longer scores; drug dostarlimab"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "imported-harm ruling: patient side moved from NPC/pooled tumours to NSCLC CHOICE-01 irAEs (src and quote replaced); status contra and year 2023 unchanged; drug toripalimab, now its own track apart from dostarlimab"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "dostarlimab track on MC38 split from entry 4: PERLA (dostarlimab + chemotherapy vs pembrolizumab + chemotherapy) met its ORR endpoint, same, 2022 (ESMO-IO/GSK 2022-12-07); COSTAR Lung listed in patient_trials, not scored"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "dostarlimab monkey track: PERLA NSCLC irAEs 31% vs monkeys' mild immune-type lesions, same (partial), 2023"
+  }
+ ]
+}

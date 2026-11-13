@@ -1,0 +1,193 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/sjogren-syndrome-btk-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Angst 2020 (PMID 32083858, entrez 2020-02-22) quote in abstract. Opener untested 2020; remibrutinib oral; healthy volunteers coded unselected, acceptable."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kaul 2021 quote verbatim (PMC8504815). Retro correct: rat occupancy public Feb 2020, after ibrutinib patient BTK occupancy (Advani, PMID 23045577, epub 2012-10-08). Year 2021, remibrutinib oral, healthy volunteers."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Gillooly quote verbatim in abstract; BMS-986142 oral, unselected fine. Watterson 2016 (PMID 27583770, epub 2016-09-19) already reported BMS-986142 in-vivo efficacy; if that is the same mouse CIA, opener/model_first_use_year is 2016."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Lee 2017 CD69 quote verbatim (abstract, epub 2017-03-06), before Gillooly (2017-07-24); ibrutinib occupancy 2012 also precedes. Retro, year 2017, BMS-986142 oral, healthy volunteers: all correct."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener untested 2020; remibrutinib oral, healthy volunteers unselected. Abstract states only a rat dose giving EC90 occupancy, not a human exposure/occupancy target."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2021,
+   "rule": "dose: same on a target the model system never stated (the drafter's arithmetic) is not allowed; rule 5 untested_reason no_prediction",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kaul MAD quote verbatim; drug/route/population correct. Status still same on a rat mg/kg EC90 the model never stated as a human target, and the entry itself carries untested_reason no_prediction.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose rule: a target scores only if the model system stated it. Angst 2020 gives a rat mg/kg occupancy EC90 (1.6 mg/kg), no human exposure, occupancy or margin; drafter's pairing is own arithmetic. Untested, no_prediction (rule 5, already set)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2021,
+   "rule": "population_group: the patients compared, coded; remibrutinib's anti-Ro-required trial is coded biomarker_selected, and this trial also required anti-SSA/SSB seropositivity",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Meng 2021 quote verbatim (abstract); tirabrutinib 40 mg oral; untested/not_measured stands. NCT03100942 required anti-SSA/SSB seropositivity, so population_group should be biomarker_selected, as for remibrutinib.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status untested/not_measured stands (rule 5); correction is population_group only (anti-SSA/SSB required, biomarker_selected), which does not change the status."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2017,
+   "rule": "population_group: the patients compared, coded; remibrutinib's anti-Ro-required trial is coded biomarker_selected, and this trial also required anti-SSA/SSB seropositivity",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Gillooly quote verbatim; NCT02843659 terminated, results 2018-10-04; untested/unsettled and BMS-986142 oral correct. Registry requires positive anti-SS-A/Ro and/or anti-SS-B/La: population_group biomarker_selected, not unselected.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status untested/unsettled stands (rule 5, trial terminated); correction is population_group only (anti-SSA/SSB required, biomarker_selected), which does not change the status."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opener untested 2020 on rat CIA track; remibrutinib oral. NCT04035668 requires anti-Ro/SSA seropositivity, so biomarker_selected correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2022,
+   "rule": "retrodiction: for efficacy a model first public after a patient result on the same target (member or not) is a retrodiction; one that reproduced the human data is retro, never same",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dörner quote verbatim (PMC10894844); registry results 2022-12-20; remibrutinib oral, biomarker_selected correct. Angst 2020 (entrez 2020-02-22) post-dates tirabrutinib's Sjogren primary result (NCT03100942 results 2020-01-22): a retrodiction, so retro not same.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Ruling: Angst 2020 post-dates tirabrutinib's failed Sjogren result (2020-01-22), so it is a retrodiction scored against it; it did not reproduce the failure: contra, retrodiction true, year 2020."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in bundled NDA 218436 integrated review (line 3194). Opener 2016 proxy, untested/unpublished; remibrutinib oral; biomarker_selected correct."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Dörner quote verbatim (PMC10894844). Sjogren patients measured, so CSU import correctly cleared. Tox public 2025 after the drug's own Sjogren result (2022-12-20): retrodiction; bleeding 10.2% vs 8.3% not above placebo, contra/opposite, year 2025."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "Admissible sources: tier 1 requires DOI or PMID; population_group: the patients compared, coded; remibrutinib's anti-Ro-required trial is coded biomarker_selected, and this trial also required anti-SSA/SSB seropositivity",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "ACR 2012 abstract quote verbatim; opener untested 2012, tirabrutinib oral. No DOI/PMID, so source_tier 1 is mis-stated. NCT03100942 required anti-SSA/SSB: population_group biomarker_selected. Status and year unchanged.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Opener untested stands (rule 6). Corrections are fields only: ACR abstract lacks DOI/PMID so source_tier 1 is wrong (rule 2), and population_group biomarker_selected; neither changes the status."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2020,
+   "rule": "A paired comparison names its model side in model_src with model_src_tier 1-3; tier 1 requires DOI or PMID; population_group: the patients compared, coded; remibrutinib's anti-Ro-required trial is coded biomarker_selected, and this trial also required anti-SSA/SSB seropositivity",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Price 2022 quote verbatim; tirabrutinib 40 mg oral; results 2020-01-22. Model side Ariza 2019 (iMedPub page, no DOI/PMID) is not tier 1-3, so contra cannot stand (efficacy 6 already records untested). population_group should be biomarker_selected.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 2: a paired comparison needs model_src tier 1-3; Ariza 2019 (iMedPub, no DOI/PMID) and the 2012 ACR abstract are not, and Europe PMC shows no tier-1 tirabrutinib CIA paper. Contra cannot stand; efficacy 6 records untested."
+  }
+ ],
+ "missing": [
+  "Tirabrutinib mouse CIA track: Ariza Y et al. 2019, J Mol Sci 3:2 (iMedPub, published 2019-03-11; https://www.imedpub.com/articles/brutons-tyrosine-kinase-btk-inhibitor-tirabrutinib-suppresses-osteoclastogenesis-and-inflammation-in-a-mouse-collageninduced-arthr.php?aid=24145) reports dose-dependent CIA efficacy and warrants clinical testing in inflammatory disease; paired with NCT03100942 (results 2020-01-22; Price 2022 doi:10.1093/rheumatology/keac167, primary not met, 34.7% vs 26.7%, P=0.33) this is an efficacy contra 2020 on a tirabrutinib-CIA track. Earlier ONO-4059 CIA ACR abstract also exists (acrabstracts.org). The draft says no tirabrutinib preclinical model was found.",
+  "Same tirabrutinib paper: TNP-Ficoll mouse study showed once-daily dosing did not give continuous B-cell BTK inhibition (twice daily needed); the Sjogren trial dosed 40 mg once daily. Possible dose-regimen statement on the tirabrutinib track (likely untested, no human target stated).",
+  "BMS-986142 safety: RA phase 2 (NCT02638948; PMID 38251590) discontinued the 350 mg arm for elevated liver enzymes; no safety track for BMS-986142 (imported from RA; nonclinical tox likely unpublished -> untested/unpublished, or contra if tox was silent).",
+  "BMS-986142 mouse system first public earlier: Watterson SH et al. J Med Chem 2016 (doi:10.1021/acs.jmedchem.6b01088, PMID 27583770, epub 2016-09-19) reports in-vivo efficacy of BMS-986142 before Lee 2017 and Gillooly 2017; the mouse-cia-caia-bms986142 opener may belong in 2016."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does an arthritis model (rat or mouse CIA) relied on for a Sjogren trial count as a disease model scored as 'animal', or is this 'the class went straight to patients on another indication's data' (empty cell / cross_indication)?",
+  "Is a tirabrutinib CIA paper in an iMedPub journal with no DOI/PMID found admissible as model_src (tier 1 requires DOI or PMID)?",
+  "Can one model_id cover both mouse CIA/CAIA and human in-vitro B-cell assays from the same pharmacology paper, or are they two systems?",
+  "Does a rat occupancy EC90 (a rat dose) count as a stated occupancy target for the human dose cell?",
+  "Is an iMedPub (J Mol Sci) paper or an ACR meeting abstract, neither with DOI/PMID, admissible as the model side of a pairing? If yes, efficacy 5 stays contra (2020); if no, the whole mouse-cia-tirabrutinib track has no admissible model source.",
+  "Efficacy retrodiction when the earlier same-target patient result went the other way: rat CIA (remibrutinib, public Feb 2020) post-dates tirabrutinib's failed Sjogren primary (registry 2020-01-22) but predicted benefit, which remibrutinib then showed. Retro (reproduces remibrutinib's result), contra (did not reproduce the known failure), or prospective same?",
+  "Do autoantibody entry criteria (anti-SSA/Ro and/or anti-SSB/La seropositivity, required by all three Sjogren trials) make population_group biomarker_selected, or is seropositivity part of the disease definition (unselected)? The draft codes remibrutinib biomarker_selected and tirabrutinib/BMS-986142 unselected."
+ ]
+}

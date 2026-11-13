@@ -1,0 +1,20 @@
+{
+ "tile": "hepatocellular-carcinoma-anti-pdcd1-antibodies",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "drug class (surrogate rat anti-mouse antibody, no member), route iv; untested_reason not_measured"},
+  {"cell": "engagement", "index": 2, "what": "status same -> retro, retrodiction true: in-vitro occupancy titration first public in the 2025 FDA review, after anti-PD-1 patient T-cell occupancy (nivolumab 2010); engagement retrodiction counts any drug. drug penpulimab, route iv, population other_disease (solid tumours)"},
+  {"cell": "dose", "index": 1, "what": "status same -> retro, retrodiction true: monkey NOAEL first public in the 2025 review, after penpulimab's own patient tolerability (Huang 2022 Front Immunol, 465 patients). drug penpulimab, iv, combination_with anlotinib (combination ruling noted)"},
+  {"cell": "dose", "index": 2, "what": "drug penpulimab, iv, combination_with anlotinib; status same kept under the combination ruling (checker's untested correction superseded)"},
+  {"cell": "efficacy", "index": 1, "what": "drug camrelizumab, iv (opener of the camrelizumab track on the surrogate HCC-mouse system)"},
+  {"cell": "efficacy", "index": 2, "what": "drug camrelizumab, iv, stage_or_line; single-arm ruling: scored same on co-primary ORR 14.7 % and 6-month OS 74.4 % (rule question settled, status unchanged)"},
+  {"cell": "efficacy", "index": 3, "what": "year 2023 -> 2022: CARES-310 first public as ESMO 2022 LBA35 (rule 6). drug camrelizumab, iv, combination_with rivoceranib; combination and co-primary rulings noted"},
+  {"cell": "efficacy", "index": 4, "what": "status same -> retro, retrodiction true: MC38 knock-in data first public 2025, after anti-PD-1 HCC patient results (2020, 2022, APOLLO ESMO 2024). Combination ruling supersedes the checker's untested correction. drug penpulimab, iv, combination_with anlotinib"},
+  {"cell": "safety", "index": 1, "what": "drug class (knockout tied to no drug), route iv"},
+  {"cell": "safety", "index": 2, "what": "year 2018 -> 2020; src/quote -> Wang 2020 J Hematol Oncol (HCC phase 2 RCCEP 145/217), Finlay 2019 screen moved to model_src, comparison_stated false: HCC patients were measured so they set the status (still retro, camrelizumab's own phase 1 preceded the screen). drug camrelizumab, iv"},
+  {"cell": "safety", "index": 3, "what": "drug class (knockout tied to no drug), iv, combination_with HLX04"},
+  {"cell": "safety", "index": 4, "what": "src/quote -> APOLLO (Zhou 2025; HCC irAEs 103/432, 24 %), FDA review moved to model_src; imported_from nasopharyngeal carcinoma removed because HCC patients were measured; retrodiction true (penpulimab's own irAEs public in Huang 2022 before the 2025 monkey data), status contra kept. drug penpulimab, iv, combination_with anlotinib"},
+  {"cell": "safety", "index": 5, "what": "drug class, iv; untested_reason unsettled"},
+  {"cell": "safety", "index": 6, "what": "drug class (primatized non-member antibody), iv; untested_reason unsettled"}
+ ],
+ "added": []
+}

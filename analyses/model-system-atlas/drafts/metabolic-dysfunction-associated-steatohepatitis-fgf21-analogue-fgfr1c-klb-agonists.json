@@ -51,7 +51,11 @@
     "src": "https://doi.org/10.2337/db11-0838",
     "srcLabel": "Mu 2012",
     "quote": "In addition to mitigating elevated glucose levels, PEGylated Q108 and R131 both reduced plasma and liver triglyceride levels in db/db mice at the termination of the 12-day study",
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "obese-diabetic-mouse",
@@ -88,7 +92,11 @@
     "srcLabel": "Charles 2019",
     "quote": "The absence of a lowering effect on body weight, glucose, and insulin contrasts with observations from preclinical studies in rodents and nonhuman primates",
     "readout_tier": "downstream",
-    "reason": "Adiponectin and lipids moved; glucose did not"
+    "reason": "Adiponectin and lipids moved; glucose did not",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "other_disease",
+    "combination_with": null
    },
    {
     "model_id": "obese-diabetic-cyno-monkey",
@@ -124,7 +132,12 @@
     "src": "https://doi.org/10.1210/en.2016-1917",
     "srcLabel": "Stanislaus 2017",
     "quote": "In obese and diabetic mouse and cynomolgus monkey models, Fc-FGF21(RGE) demonstrated greater efficacies to Fc-FGF21(RG), resulting in larger and more sustained improvements in multiple metabolic parameters.",
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "drug": "efruxifermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "obese-diabetic-cyno-monkey",
@@ -141,7 +154,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "serum triglycerides and adiponectin, direction of change",
@@ -153,15 +166,101 @@
     "prediction_level": "class",
     "judgement": "Readout is adiponectin and lipids, downstream of FGFR1c/KLB; no occupancy or proximal marker exists for this class. Direction only: the source attempts no quantitative scaling.",
     "year": 2023,
-    "status": "same",
+    "status": "retro",
     "model": "Obese/diabetic cynomolgus monkeys",
-    "note": "Pegozafermin lowered triglycerides and raised adiponectin in diabetic monkeys and then in healthy volunteers; the paper states the comparison.",
+    "note": "Pegozafermin lowered triglycerides and raised adiponectin in diabetic monkeys and then in healthy volunteers; the paper states the comparison. Ruling: the monkey data were first public in 2023, after FGF21 analogues (LY2405319, pegbelfermin, efruxifermin) had moved triglycerides and adiponectin in patients, so this is a retrodiction.",
     "short": "Monkey TG, adiponectin shifts repeat in volunteers",
     "src": "https://doi.org/10.1124/jpet.123.001618",
     "srcLabel": "Rosenstock 2023",
     "quote": "In a single ascending dose study in healthy volunteers, subcutaneously administered pegozafermin was associated with statistically significant improvements in triglycerides, low- and high-density lipoprotein-cholesterol, and adiponectin, an insulin-sensitizing and anti-inflammatory adipokine.",
     "readout_tier": "downstream",
-    "reason": "Monkey lipid/adiponectin PD repeated in humans"
+    "reason": "Monkey reproduced known human lipid PD",
+    "drug": "pegozafermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
+   },
+   {
+    "model_id": "obese-diabetic-cyno-monkey",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1210/en.2016-1917",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2020,
+    "print_year": 2020,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": true,
+    "imported_from": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "fasting triglycerides and lipids, direction of change",
+    "source_calls_it": null,
+    "population": "Type 2 diabetes patients, efruxifermin (AKR-001) 7-140 mg weekly or every 2 weeks for 4 weeks (phase 1 MAD)",
+    "model_first_use_year": 2017,
+    "confidence": "medium",
+    "confidence_note": "Full text read (PMC7659583). Patients had type 2 diabetes, not MASH; engagement admits any dosed humans. Kaufman 2020 does not cite the monkey study for this comparison.",
+    "prediction_level": "class",
+    "judgement": "Paired comparison on the efruxifermin track. The monkey result (online 2017-03) post-dates LY2405319 lowering triglycerides and raising adiponectin in T2D patients (Gaich 2013), so by rule it is a retrodiction; it reproduced the lipid response, so retro.",
+    "year": 2020,
+    "status": "retro",
+    "model": "Obese/diabetic cynomolgus monkeys",
+    "note": "Efruxifermin cut fasting triglycerides 55-69% and raised HDL in T2D patients, as in monkeys. Ruling: the monkey model post-dated other FGF21 analogues' patient lipid results, so retrodiction.",
+    "short": "Efruxifermin cut triglycerides as in monkeys",
+    "src": "https://doi.org/10.1016/j.xcrm.2020.100057",
+    "srcLabel": "Kaufman 2020",
+    "quote": "For example, the maximal placebo-corrected reductions in fasting triglyceride were 69% and 55%, whereas the increases in HDL were 61% and 37%, respectively, for QW and Q2W.",
+    "readout_tier": "downstream",
+    "drug": "efruxifermin",
+    "route": "sc",
+    "population_group": "other_disease",
+    "combination_with": null,
+    "reason": "Monkey reproduced known human lipid PD"
+   },
+   {
+    "model_id": "obese-diabetic-cyno-monkey",
+    "subjects": null,
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": null,
+    "model_src_tier": null,
+    "trial_unreported": false,
+    "patient_signal_reversed": false,
+    "epub_year": 2023,
+    "print_year": 2023,
+    "registry_date": null,
+    "model_filed": null,
+    "product_in_model": true,
+    "model_kind": "animal",
+    "retrodiction": false,
+    "imported_from": null,
+    "magnitude": null,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "population": "Diabetic cynomolgus monkeys, subcutaneous pegozafermin weekly or every 2 weeks",
+    "model_first_use_year": 2017,
+    "confidence": "medium",
+    "confidence_note": "Abstract only. The first use of monkeys for pegozafermin is dated by publication; internal studies were likely earlier.",
+    "prediction_level": "class",
+    "judgement": "Track opener added when the monkey model was split per drug.",
+    "year": 2023,
+    "status": "untested",
+    "model": "Obese/diabetic cynomolgus monkeys",
+    "note": "Opener for the pegozafermin track: first public use of diabetic monkeys for pegozafermin (Rosenstock 2023); earlier unpublished use not dated.",
+    "short": "Pegozafermin improves lipids, adiponectin in monkeys",
+    "src": "https://doi.org/10.1124/jpet.123.001618",
+    "srcLabel": "Rosenstock 2023",
+    "quote": "In diabetic monkeys, once-weekly and once-every-2-weeks regimens of subcutaneous pegozafermin provided rapid and robust benefits for an array of metabolic biomarkers, including triglycerides, cholesterol, fasting glucose, glycated hemoglobin, adiponectin, alanine aminotransferase, food intake, and body weight.",
+    "readout_tier": "downstream",
+    "drug": "pegozafermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    }
   ],
   "dose": [
@@ -200,7 +299,11 @@
     "srcLabel": "Mu 2012",
     "quote": "Twice-weekly dosing of an optimal FGF21 analog reduced blood glucose, plasma lipids, liver triglycerides, and plasma glucagon and enhanced pancreatic insulin content, islet number, and glucose-dependent insulin secretion.",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "obese-diabetic-mouse",
@@ -228,17 +331,23 @@
     "confidence_note": "Decision-table row 'reached, drug worked'. No mouse exposure target existed to compare, so magnitude is null. The Lancet issue is dated December 2018 (print_year 2018).",
     "prediction_level": "class",
     "judgement": "Dose follows efficacy for this drug's liver-fat endpoint. The trial closed enrolment early at a prespecified interim because the liver-fat effect exceeded expectation.",
-    "year": 2018,
-    "status": "same",
+    "year": 2017,
+    "status": "untested",
     "model": "db/db and diet-induced obese mice",
-    "note": "Pegbelfermin 10 mg daily or 20 mg weekly for 16 weeks was reached and tolerated, and liver fat fell: dose sufficient for steatosis.",
-    "short": "16-week doses reached; liver fat fell",
+    "note": "Pegbelfermin 10 mg daily or 20 mg weekly for 16 weeks was reached and tolerated, and liver fat fell: dose sufficient for steatosis. Ruling: the db/db mouse stated no exposure target or margin, so dose is untested; first public at EASL 2017 (BMS press release 2017-04-22).",
+    "short": "Doses reached; mouse set no target",
     "src": "https://doi.org/10.1016/s0140-6736(18)31785-9",
     "srcLabel": "Sanyal 2019",
     "quote": "We observed a significant decrease in absolute hepatic fat fraction in the group receiving 10 mg pegbelfermin daily (-6·8% vs -1·3%; p=0·0004) and in the group receiving 20 mg pegbelfermin weekly (-5·2% vs -1·3%; p=0·008) compared with the placebo group.",
     "blocked_by": null,
     "margin_stated": false,
-    "reason": "Doses reached; steatosis responded"
+    "reason": "Mouse stated no human dose target",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction",
+    "strengthens": true
    },
    {
     "model_id": "nash-fibrosis-mouse",
@@ -275,7 +384,12 @@
     "srcLabel": "Charles 2019 (citing Krupinski 2016)",
     "quote": "In animal models, pegbelfermin has been shown to improve the histologic features of NASH and fibrosis",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "obese-diabetic-cyno-monkey",
@@ -312,7 +426,12 @@
     "srcLabel": "Stanislaus 2017",
     "quote": "In obese and diabetic mouse and cynomolgus monkey models, Fc-FGF21(RGE) demonstrated greater efficacies to Fc-FGF21(RG), resulting in larger and more sustained improvements in multiple metabolic parameters.",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "efruxifermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "obese-diabetic-cyno-monkey",
@@ -341,16 +460,21 @@
     "prediction_level": "class",
     "judgement": "SYMMETRY (efruxifermin, cirrhosis) missed at 36 weeks but was not abandoned and the 50 mg arm separated at 96 weeks, so it is not a 'reached, failed, abandoned' row; it is recorded under efficacy only.",
     "year": 2023,
-    "status": "same",
+    "status": "untested",
     "model": "Obese/diabetic cynomolgus monkeys",
-    "note": "Pegozafermin 30 mg weekly or 44 mg every 2 weeks was reached and tolerated over 24 weeks, and fibrosis improved.",
-    "short": "Pegozafermin doses reached; fibrosis improved",
+    "note": "Pegozafermin 30 mg weekly or 44 mg every 2 weeks was reached and tolerated over 24 weeks, and fibrosis improved. Ruling: the monkey work stated no exposure target or margin for pegozafermin, so dose is untested.",
+    "short": "Doses reached; monkey set no target",
     "src": "https://doi.org/10.1056/nejmoa2304286",
     "srcLabel": "Loomba 2023",
     "quote": "In this phase 2b trial, treatment with pegozafermin led to improvements in fibrosis.",
     "blocked_by": null,
     "margin_stated": false,
-    "reason": "Monkey regimens reached; fibrosis responded"
+    "reason": "Monkey stated no human dose target",
+    "drug": "pegozafermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -387,7 +511,11 @@
     "srcLabel": "Pegozafermin popPK/PD 2023",
     "quote": "Simulations showed that the 30 mg q.w. dose approximated the full PD effect; almost all patients would benefit from a greater than or equal to 30% HFF reduction, suggesting fibrosis regression.",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "drug": "pegozafermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -425,7 +553,11 @@
     "quote": "In this phase 2b trial, treatment with pegozafermin led to improvements in fibrosis.",
     "blocked_by": null,
     "margin_stated": false,
-    "reason": "Model-chosen regimens reached and worked"
+    "reason": "Model-chosen regimens reached and worked",
+    "drug": "pegozafermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "efficacy": [
@@ -465,7 +597,11 @@
     "quote": "In addition to mitigating elevated glucose levels, PEGylated Q108 and R131 both reduced plasma and liver triglyceride levels in db/db mice at the termination of the 12-day study",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "obese-diabetic-mouse",
@@ -490,13 +626,13 @@
     "population": "Biopsy-confirmed NASH F1-F3 with hepatic fat fraction ≥10%, 16 weeks (NCT02413372)",
     "model_first_use_year": 2012,
     "confidence": "medium",
-    "confidence_note": null,
+    "confidence_note": "Year from BMS press release 2017-04-22 (EASL late-breaker); Sanyal 2019 sets the status.",
     "prediction_level": "class",
     "judgement": "This track scores only liver-fat primary endpoints because the mouse predicted steatosis, not fibrosis. FALCON 1's later PDFF result (secondary, not significant) does not govern.",
-    "year": 2018,
+    "year": 2017,
     "status": "same",
     "model": "db/db and diet-induced obese mice",
-    "note": "Primary endpoint, absolute MRI-PDFF change at 16 weeks, fell 5-7 points vs 1.3 on placebo: the mouse steatosis prediction held.",
+    "note": "Primary endpoint, absolute MRI-PDFF change at 16 weeks, fell 5-7 points vs 1.3 on placebo: the mouse steatosis prediction held. Dated to the BMS press release and EASL late-breaker of 2017-04-22, which reported the primary endpoint met.",
     "short": "Liver fat fell as mice predicted",
     "src": "https://doi.org/10.1016/s0140-6736(18)31785-9",
     "srcLabel": "Sanyal 2019",
@@ -504,7 +640,11 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
-    "reason": "Mouse steatosis prediction held (PDFF)"
+    "reason": "Mouse steatosis prediction held (PDFF)",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "obese-diabetic-cyno-monkey",
@@ -542,7 +682,11 @@
     "quote": "In obese and diabetic mouse and cynomolgus monkey models, Fc-FGF21(RGE) demonstrated greater efficacies to Fc-FGF21(RG), resulting in larger and more sustained improvements in multiple metabolic parameters.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "efruxifermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "obese-diabetic-cyno-monkey",
@@ -567,13 +711,13 @@
     "population": "Biopsy-confirmed NASH F1-F3, 16 weeks (NCT03976401)",
     "model_first_use_year": 2017,
     "confidence": "medium",
-    "confidence_note": null,
+    "confidence_note": "Year from Akero press releases (BALANCED week-12 primary reported in Q1 2020; Q1 2020 results release 2020-05-13); Harrison 2021 sets the status.",
     "prediction_level": "class",
     "judgement": "Paired comparison; the trial paper cites preclinical FGF21 work but makes no model-to-patient statement.",
-    "year": 2021,
+    "year": 2020,
     "status": "same",
     "model": "Obese/diabetic cynomolgus monkeys",
-    "note": "BALANCED primary endpoint, MRI-PDFF at week 12, fell 12-14 points vs +0.3 on placebo with efruxifermin.",
+    "note": "BALANCED primary endpoint, MRI-PDFF at week 12, fell 12-14 points vs +0.3 on placebo with efruxifermin. Dated to the Akero Q1 2020 report that BALANCED met its week-12 liver-fat primary in all dose groups.",
     "short": "Efruxifermin cut liver fat 12-14 points",
     "src": "https://doi.org/10.1038/s41591-021-01425-3",
     "srcLabel": "Harrison 2021",
@@ -581,7 +725,11 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
-    "reason": "Liver-fat primary met as predicted"
+    "reason": "Liver-fat primary met as predicted",
+    "drug": "efruxifermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "nash-fibrosis-mouse",
@@ -619,7 +767,11 @@
     "quote": "In animal models, pegbelfermin has been shown to improve the histologic features of NASH and fibrosis",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "nash-fibrosis-mouse",
@@ -683,7 +835,11 @@
       "quote": "In patients with compensated cirrhosis caused by MASH, efruxifermin did not significantly reduce fibrosis at 36 weeks."
      }
     ],
-    "reason": "Mouse fibrosis win; pegbelfermin failed FALCON"
+    "reason": "Mouse fibrosis win; pegbelfermin failed FALCON",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "stage_or_line",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -721,7 +877,11 @@
     "quote": "Simulations showed that the 30 mg q.w. dose approximated the full PD effect; almost all patients would benefit from a greater than or equal to 30% HFF reduction, suggesting fibrosis regression.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "drug": "pegozafermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -760,7 +920,11 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
-    "reason": "Fibrosis primary met at simulated regimens"
+    "reason": "Fibrosis primary met at simulated regimens",
+    "drug": "pegozafermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ],
   "safety": [
@@ -797,7 +961,11 @@
     "short": "FGF21 causes bone loss in mice",
     "src": "https://doi.org/10.1073/pnas.1200797109",
     "srcLabel": "Wei 2012",
-    "quote": "These results reveal that skeletal fragility may be an undesirable consequence of chronic FGF21 administration."
+    "quote": "These results reveal that skeletal fragility may be an undesirable consequence of chronic FGF21 administration.",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "model_id": "mouse-fgf21-gain-of-function",
@@ -832,7 +1000,11 @@
     "short": "No BMD loss at 12 weeks",
     "src": "https://doi.org/10.1002/oby.22344",
     "srcLabel": "Charles 2019",
-    "quote": "were not decreased from baseline in patients who received pegbelfermin compared with placebo at any time point (data not shown)"
+    "quote": "were not decreased from baseline in patients who received pegbelfermin compared with placebo at any time point (data not shown)",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "other_disease",
+    "combination_with": null
    },
    {
     "model_id": "mouse-fgf21-gain-of-function",
@@ -869,7 +1041,11 @@
     "src": "https://doi.org/10.1016/j.xcrm.2020.100057",
     "srcLabel": "Kaufman 2020",
     "quote": "No change in mean bone mineral density was observed following 12 weeks or 16 weeks of pegbelfermin treatment.",
-    "reason": "Mouse bone-loss prediction unmet at 16 weeks"
+    "reason": "Mouse bone-loss prediction unmet at 16 weeks",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -904,7 +1080,12 @@
     "short": "No bone toxicity after 1 year, margin stated",
     "src": "https://doi.org/10.1016/j.taap.2021.115673",
     "srcLabel": "Pegbelfermin monkey bone study 2021",
-    "quote": "There were no PGBF-related effects on bone biomarkers, radiography, densitometry, or strength."
+    "quote": "There were no PGBF-related effects on bone biomarkers, radiography, densitometry, or strength.",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -940,7 +1121,11 @@
     "src": "https://doi.org/10.1016/j.xcrm.2020.100057",
     "srcLabel": "Kaufman 2020",
     "quote": "No change in mean bone mineral density was observed following 12 weeks or 16 weeks of pegbelfermin treatment.",
-    "reason": "Reproduced absent bone loss, after the fact"
+    "reason": "Reproduced absent bone loss, after the fact",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -975,7 +1160,12 @@
     "short": "Rats: no sympathetic activation, more food intake",
     "src": "https://doi.org/10.1111/bph.15725",
     "srcLabel": "Tillman 2022",
-    "quote": "Markers of sympathetic activation, urinary corticosterone and ratio of adrenal-to-body weight were unchanged."
+    "quote": "Markers of sympathetic activation, urinary corticosterone and ratio of adrenal-to-body weight were unchanged.",
+    "drug": "efruxifermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null,
+    "untested_reason": "unpublished"
    },
    {
     "retrodiction": true,
@@ -1011,7 +1201,11 @@
     "src": "https://doi.org/10.1111/bph.15725",
     "srcLabel": "Tillman 2022",
     "quote": "The absence of an increase in sympathetic tone in rats mirrors the unchanged salivary cortisol and systemic blood pressure following efruxifermin treatment in humans.",
-    "reason": "Mirrors unchanged human BP, stated after result"
+    "reason": "Mirrors unchanged human BP, stated after result",
+    "drug": "efruxifermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1046,7 +1240,11 @@
     "short": "Lower-FGF21 allele carriers have higher BP",
     "src": "https://doi.org/10.1016/j.celrep.2018.03.070",
     "srcLabel": "Frayling 2018",
-    "quote": "We then showed that this allele is more strongly associated with higher blood pressure and waist-hip ratio, despite an association with lower total body-fat percentage, than it is with BMI or type 2 diabetes."
+    "quote": "We then showed that this allele is more strongly associated with higher blood pressure and waist-hip ratio, despite an association with lower total body-fat percentage, than it is with BMI or type 2 diabetes.",
+    "drug": "class",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1082,7 +1280,11 @@
     "src": "https://doi.org/10.1016/j.xcrm.2020.100057",
     "srcLabel": "Kaufman 2020",
     "quote": "The predicted lack of effect of AKR-001 on blood pressure is consistent with the observed blood pressure phenotypes of human carriers of FGF21 genetic variants.",
-    "reason": "Carrier BP phenotype matched: no rise"
+    "reason": "Carrier BP phenotype matched: no rise",
+    "drug": "class",
+    "route": "sc",
+    "population_group": "other_disease",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1117,7 +1319,11 @@
     "short": "No bone loss with rhFGF21 in DIO mice",
     "src": "https://doi.org/10.1002/jbmr.2936",
     "srcLabel": "Li 2017",
-    "quote": "However, bone loss was not detected in rhFGF21-treated mice by dual-energy X-ray absorptiometry (DXA), micro-CT, and histomorphometric analyses."
+    "quote": "However, bone loss was not detected in rhFGF21-treated mice by dual-energy X-ray absorptiometry (DXA), micro-CT, and histomorphometric analyses.",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    },
    {
     "retrodiction": false,
@@ -1153,7 +1359,11 @@
     "src": "https://doi.org/10.1016/j.xcrm.2020.100057",
     "srcLabel": "Kaufman 2020",
     "quote": "No change in mean bone mineral density was observed following 12 weeks or 16 weeks of pegbelfermin treatment.",
-    "reason": "Predicted no bone loss; none seen"
+    "reason": "Predicted no bone loss; none seen",
+    "drug": "pegbelfermin",
+    "route": "sc",
+    "population_group": "unselected",
+    "combination_with": null
    }
   ]
  }

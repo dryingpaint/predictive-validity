@@ -11,7 +11,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "May 2015 (PMID 25609634, PMC6605527) full text read on PMC; quote verbatim. Opening untested is right. The 2012 proxy is late: the PDAPP and dog work came before the 2011-12 Phase 1 studies."
+   "note": "May 2015 full text (PMC6605527) re-read: quote verbatim. Mice, dogs and healthy volunteers all got oral LY2886721; drug, route, unselected and untested 2012 opener hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -20,7 +21,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Abstract sentence verbatim. Dog CSF Abeta 1-x nadir ~80% vs human CSF Abeta1-40/1-42 -71 to -83% at 70 mg; within_2x and proximal tier hold. Willis 2022 (PMC8842743) repeats the match for LY3202626."
+   "note": "Quote verbatim. Retro right: dog/PDAPP data first public Jan 2015, after LY2811376 human CSF Abeta lowering (J Neurosci 2011 Nov 16, PMID 22090477), same target and action. Oral, healthy volunteers coded unselected: correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -29,7 +31,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim, and untested is right. The note's claim that human doses were chosen to reproduce dog CSF lowering is not in the paper, which reports plain SAD/MAD escalation. The note should be reworded."
+   "note": "Quote verbatim; drug and route match; untested 2012 holds. Full text states no dog-derived human dose or exposure target (SAD/MAD escalation), so the note 'doses chosen to reproduce dog lowering' is unsupported.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -40,10 +43,11 @@
    "status_supported": false,
    "proposed_status": "untested",
    "proposed_year": 2015,
-   "rule": "dose table / decision 16 (never reached because of toxicity, no stated margin -> untested); dose question definition",
+   "rule": "dose: `same` on a target the model system never stated is not admissible; the model stated no exposure target nor margin -> untested",
+   "note": "Full text grepped: no dog-derived human exposure, CSF-lowering target or tolerability margin is stated; the quote is the engagement datum. 'same' scores a target the model never stated; entry already carries untested_reason no_prediction.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 dose row: the paper (full text re-read) sets no dog exposure target; the CSF match is the engagement readout. LY2886721 Phase 2 stopped for liver toxicity with no stated margin: untested (#22, decision 16).",
-   "note": "The paper states no model exposure target or margin. The quote is the engagement datum counted a second time. LY2886721's patient trial stopped for liver toxicity with no stated margin, so the drafter's own note gives untested."
+   "adjudication_note": "Dose rule: the model must state an exposure, occupancy or regimen target or margin. May 2015 full text states none from dogs; HV CSF lowering is engagement. Untested, untested_reason no_prediction (already on entry)."
   },
   {
    "cell": "efficacy",
@@ -52,16 +56,23 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim. PDAPP mice used for Abeta only, matching the house-style ad-amyloid entry. Same early proxy-year caveat as engagement 1."
+   "note": "Quote verbatim; PDAPP mice dosed with oral LY2886721 (product_in_model true). Untested 2012 opener holds; NCT01561430 primaries were CSF Abeta only, no efficacy readout.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "near",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PACC was EARLY's primary endpoint (Sperling 2021 abstract); the registry date 2020-02-10 checks out. Contra matches the ad-amyloid house style. product_in_model should be false (sibling LY2886721). The other patient_trials registry dates and whyStopped texts check out."
+   "proposed_status": "contra",
+   "proposed_year": 2018,
+   "rule": "Dating rule 6: year is the earliest public date, congress abstract included",
+   "note": "Henley 2019 (NEJM 2019 Apr 11, PMID 30970197) is the source; PACC is NCT02569398's primary; amyloid-positive -> biomarker_selected, oral, product_in_model false correct. Janssen reported 25 mg one point worse on PACC at CTAD Oct 2018, before the letter. Track lacks a 2012 opener.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Contra on EARLY PACC primary agreed. Rule 6: year should be 2018, Janssen reported 25 mg one point worse on PACC at CTAD Oct 2018 (Alzforum), before Henley 2019."
   },
   {
    "cell": "safety",
@@ -70,76 +81,133 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "The retinal-pathology tox quote is verbatim."
+   "note": "Retinal-pathology toxicology quote verbatim in May 2015 full text; drug ly-2886721, oral matches. Untested 2012 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Verbatim. The paper states 4 of 70 patients had liver enzyme rises, and NCT01561430 results were posted 2018-05-18. Willis 2022 states 'This finding was not observed in nonclinical toxicology studies'. Liver is a harm the species could show, so contra holds."
+   "proposed_status": "contra",
+   "proposed_population_group": "biomarker_selected",
+   "rule": "population_group codes the patients compared (NCT01561430 eligibility: positive amyloid scan for MCI and mild AD alike)",
+   "note": "Quote verbatim; full text: liver enzymes rose in 4 of 70 patients, toxicology had not shown it. Contra 2015 holds (June 2013 release gave no tox comparison). NCT01561430 required a positive amyloid scan for every enrollee, so population_group is biomarker_selected.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Contra 2015 agreed. population_group codes the patients compared: NCT01561430 required a positive amyloid scan, so biomarker_selected, not stage_or_line."
   },
   {
    "cell": "efficacy",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Jonsson 2012 abstract (PMID 22801501) read; quote verbatim. Untested opening of the human-genetic track, 2012, class level, product_in_model false: all correct."
+   "note": "Jonsson 2012 (Nature, PMID 22801501) abstract quote verbatim. drug 'class' right for human genetics; route oral matches the track's compared patients. Untested 2012 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "near",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Henley 2019 quote confirmed via search snippet (NEJM paywalled); Sperling 2021 abstract agrees (-1.09 final). Genetics 2012 precede EARLY, so prospective; primary endpoint reversed: contra. EARLY results-posted 2020-02-10 and NAVIGATE-AD 2021-04-19 match registry. See rule question on A673T substrate specificity."
+   "proposed_status": "contra",
+   "proposed_year": 2018,
+   "rule": "Dating rule 6: year is the earliest public date, congress abstract included",
+   "note": "Contra holds on EARLY's PACC primary (amyloid-positive, biomarker_selected); drug 'class' fits a genetic system. EARLY 25 mg PACC worsening was first public at CTAD Oct 2018 (Janssen presentation), before the April 2019 NEJM letter.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Contra on EARLY PACC primary agreed. Rule 6: earliest public date is CTAD Oct 2018 (Janssen PACC worsening), so year 2018, not 2019."
   },
   {
    "cell": "safety",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Filser abstract (PMID 25599931, epub 2014-10-29) read; quote verbatim. Untested opening, class level, sibling inhibitors so product_in_model false: correct."
+   "note": "Filser abstract (PMID 25599931, epub 2014-10-29) quote verbatim. Mice got SCH1682496/LY2811376 (siblings); drug atabecestat, oral, is the track's compared patients. Untested 2014 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "near",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Filser (2014) stated mechanism-based cognitive deficits before EARLY began (Nov 2015) and reported (2019): prospective, not retro. Patients showed reversible dose-related worsening (Sperling 2021 abstract), as mice did. Same holds; academic rather than sponsor model, noted."
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "Dating rule 6: year is the earliest public date, congress abstract included",
+   "note": "Same holds and is prospective (Filser 2014 precedes any atabecestat cognitive result). EARLY 25 mg PACC worsening was first public at CTAD Oct 2018 (Janssen), before the April 2019 NEJM letter; oral, biomarker_selected correct.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Same agreed; prospective (Filser 2014 precedes). Rule 6: the cognitive worsening was first public at CTAD Oct 2018, so year 2018, not 2019."
   },
   {
    "cell": "safety",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract (PMID 39348529, 2024-09-30) read; objectives sentence verbatim. Untested opening, ex_vivo, patient level, year 2024 correct."
+   "note": "Chem Res Toxicol 2024 (PMID 39348529, epub 2024-09-30) objectives sentence verbatim. Drug atabecestat, oral (patients dosed orally), biomarker_selected by HLA: correct. Untested 2024 opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "HLA-restriction sentence verbatim (abstract). Retro right: atabecestat's own patients' HLA-DRB1 alleles were known before the clones. Drug, route and population match.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract states patients' DRB1*12:01/13:02/15:01 restriction first, then clones built from donors chosen for those alleles; quote verbatim. Post-hoc and reproduces the human data: retro (decision 10), not same. Correct."
+   "note": "Quote verbatim (May 2015). Opener of the elenbecestat track on PDAPP mice dosed with sibling LY2886721; product_in_model false, oral, 2012 proxy and untested hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT02956486 whyStopped verbatim; core primary CDR-SB at 24 months; MCI/mild AD with positive amyloid biomarker -> biomarker_selected; oral tablet; results posted 2021-02-03; 13 Sept 2019 press release dates it 2019. Primary never fully read out (noted).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. Opener of the LY3202626 track on PDAPP mice dosed with sibling LY2886721; oral, 2012 proxy and untested hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Lo 2021 abstract (PMID 34113788, epub 2021-04-29) quote verbatim. NCT02791191 primary flortaucipir SUVr at 52 wk, florbetapir-positive mild AD (biomarker_selected), oral; registry results 2021-04-19 is earliest; 2021 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [

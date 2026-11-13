@@ -11,7 +11,8 @@
   "Europe PMC: VIR-2218 AND ALN-HBV AND randomized (Gane 2023 J Hepatol, PMID 37290591); core records for PMIDs 41586499, 40375057, 42761645, 30403127, 38522000, 39389081",
   "Europe PMC full text XML: PMC12959159 (Noack 2026) and PMC13588135 (K-PD framework 2026); Gane 2023 not in PMC, fc.py scrape of journal-of-hepatology.eu returned the paywall page",
   "ClinicalTrials.gov API v2: NCT03672188 (results first posted 2021-12-13; primary outcomes AEs and laboratory assessments)",
-  "doi.org resolution: 10.1021/acsinfecdis.8b00191, 10.1128/aac.01127-25, 10.1016/j.jhep.2023.05.023, 10.2147/dddt.s638364 (all 302 to the publisher page)"
+  "doi.org resolution: 10.1021/acsinfecdis.8b00191, 10.1128/aac.01127-25, 10.1016/j.jhep.2023.05.023, 10.2147/dddt.s638364 (all 302 to the publisher page)",
+  "Europe PMC core + PMC full text (HTML): Schlegel 2022 NAR, doi 10.1093/nar/gkac539, PMID 35736224, PMC9262600 (ALN-HBV rat/NHP tox, ALN-HBV02 HepG2.2.15 RNA-seq and AAV-HBV PD)"
  ],
  "added_models": [
   {
@@ -359,6 +360,98 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "hbv-hepg2215-offtarget-rnaseq",
+   "model": "HepG2.2.15 HBV-transfected hepatoma cells, transcriptome-wide off-target (RNA-seq) profiling",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2022,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "model_id": "hbv-hepg2215-offtarget-rnaseq",
+      "model": "HepG2.2.15 HBV-transfected hepatoma cells, transcriptome-wide off-target (RNA-seq) profiling",
+      "model_kind": "ex_vivo",
+      "model_first_use_year": 2022,
+      "prediction_level": "class",
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2022,
+      "print_year": 2022,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "population": "Unselected",
+      "confidence": "medium",
+      "src": "https://doi.org/10.1093/nar/gkac539",
+      "srcLabel": "Schlegel 2022",
+      "subjects": null,
+      "comparison_stated": false,
+      "registry_date": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "confidence_note": "Full text read (PMC9262600). The RNA-seq off-target run is the in-vitro basis for reintroducing ALN-HBV02 (VIR-2218, elebsiran); the class rat therapeutic-window data in the paper were run on Hao1 and other siRNAs, not on ALN-HBV02.",
+      "reason": null,
+      "patient_trials": null,
+      "year": 2022,
+      "status": "untested",
+      "note": "VIR-2218 (ESC+ elebsiran) dysregulated far fewer seed-matched transcripts than its parent ALN-HBV in HepG2.2.15 cells, the in-vitro hepatic-safety proxy.",
+      "short": "Fewer seed off-targets for elebsiran in vitro",
+      "quote": "A significant reduction in the total number of differentially expressed gene transcripts and a shifted distribution with loss of seed-type statistical significance were observed with ALN-HBV02 relative to ALN-HBV",
+      "judgement": "Opens the off-target transcriptome track at its first public use for a member; the paper ties seed off-targets to GalNAc-siRNA hepatotoxicity, so the read-out bears on safety."
+     },
+     {
+      "model_id": "hbv-hepg2215-offtarget-rnaseq",
+      "model": "HepG2.2.15 HBV-transfected hepatoma cells, transcriptome-wide off-target (RNA-seq) profiling",
+      "model_kind": "ex_vivo",
+      "model_first_use_year": 2022,
+      "prediction_level": "class",
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2022,
+      "print_year": 2022,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "population": "Unselected",
+      "confidence": "medium",
+      "src": "https://doi.org/10.1093/nar/gkac539",
+      "srcLabel": "Schlegel 2022",
+      "subjects": "healthy_volunteers",
+      "comparison_stated": true,
+      "registry_date": "2021-12-13",
+      "magnitude": "direction_only",
+      "magnitude_basis": "count of seed-matched dysregulated transcripts in vitro vs incidence of ALT elevation in volunteers, VIR-2218 vs ALN-HBV",
+      "source_calls_it": "match",
+      "confidence_note": "Full text read. The in-vitro work preceded VIR-2218 dosing (it supported reintroduction), so not a retrodiction; it was designed after ALN-HBV ALT elevations (5/18 volunteers) were known. Human side cited as manuscript submitted; patient numbers from Gane 2023 (none of VIR-2218 volunteers had post-treatment ALT elevations vs 28% on ALN-HBV).",
+      "reason": "Off-target reduction carried to better hepatic safety in volunteers",
+      "patient_trials": [
+       {
+        "nct": "NCT03672188",
+        "registry_date": "2021-12-13",
+        "doi": "10.1016/j.jhep.2023.05.023",
+        "quote": "In healthy volunteers, post-treatment ALT elevations occurred in 28% of participants receiving ALN-HBV compared with none in those receiving VIR-2218."
+       }
+      ],
+      "year": 2022,
+      "status": "same",
+      "note": "Fewer in-vitro seed off-targets for VIR-2218 than ALN-HBV matched its improved hepatic safety in volunteers (no ALT elevations vs 28% on ALN-HBV).",
+      "short": "In-vitro off-target cut matched human ALT",
+      "quote": "ALN-HBV02 demonstrated an improved hepatic safety profile and robust dose-dependent HBsAg in humans, suggesting an enhanced therapeutic window and providing the first human proof of concept for the ESC+ approach",
+      "judgement": "The source states the comparison: the off-target reduction seen in HepG2.2.15 for the member was followed by improved hepatic safety in humans; agreement in direction only, since a transcript count has no ALT scale."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -372,6 +465,59 @@
   "HepG2-NTCP and HepAD38 hepatoma lines (Noack 2026, HBsAg EC50 66.5 pM): immortalised lines; the human-hepatocyte in-vitro arm is carried by the PHH track",
   "PHH cytotoxicity ('no cytotoxicity was observed') as a safety prediction: too weak a read-out to pair with human ALT; not scored",
   "Cynomolgus or other NHP toxicology for elebsiran or JNJ-3989: no public tier 1-3 source and no FDA review exists (no NDA/BLA)",
-  "Patient-derived organoids or cells, PDX, human challenge, human genetic models: nothing found for HBV siRNA in any search"
+  "Patient-derived organoids or cells, PDX, human challenge, human genetic models: nothing found for HBV siRNA in any search",
+  "Rat and NHP repeat-dose toxicology (Schlegel 2022): only ALN-HBV, elebsiran's non-member parent, is reported as having passed them before its volunteer ALT elevations; no rat or NHP result for ALN-HBV02/VIR-2218 itself is given, so no member comparison"
+ ],
+ "gaps": [
+  {
+   "lead": "ARB-1467 Phase 2 HBsAg data in Arbutus press releases 2016-12-12 and 2017 AASLD (tier 5)",
+   "outcome": "covered",
+   "detail": "Check verdict engagement 3 (hbv-genome-mouse) already proposes year 2016 from the 2016-12-12 Arbutus release (tier 5, model_src Wooddell 2013), adjudicated same/2016; nothing further."
+  },
+  {
+   "lead": "NCT03672188 registry results 2021-12-13 (elebsiran HBsAg -1.03 to -1.65 log10)",
+   "outcome": "covered",
+   "detail": "Same change on the same entry: check verdict engagement 3 re-dates hbv-genome-mouse to 2016, earlier than the 2021-12-13 NCT03672188 posting; the registry record is already the patient side of engagement 6."
+  },
+  {
+   "lead": "REEF-2 NCT04129554, functional cure 0/130 (Agarwal 2024)",
+   "outcome": "covered",
+   "detail": "Extra patient trial with status unchanged: REEF-2 (NCT04129554, Agarwal 2024) is the same member JNJ-3989 missing functional cure (0/130), consistent with efficacy 2's same/partial call (knockdown without cure, HBsAg loss rare); no status change on hbv-genome-mouse, so no new entry."
+  },
+  {
+   "lead": "MARCH (Vir PR 2025-05-09) tobevibart+elebsiran seroclearance 8%/16%",
+   "outcome": "none",
+   "detail": "Every arm carries tobevibart, a non-member mAb, so the result is not a member result (member rule; rule question for the checker); no model system compared with it"
+  },
+  {
+   "lead": "Noack 2026 AAC: elebsiran in AAV-HBV mice, PXB chimeric mice and HBV-infected PHH",
+   "outcome": "tracked",
+   "detail": "hbv-human-liver-chimeric-mouse engagement 6 (retro) and hbv-infected-phh-in-vitro engagement 7-8; the AAV-HBV retro belongs to existing hbv-genome-mouse engagement and needs a verdict there, not a new system"
+  },
+  {
+   "lead": "NCT04667104 (PENGUIN) registry results 2024-07-03, draft records null",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: NCT04667104 registry_date (2024-07-03) sits inside efficacy 2 patient_trials, which change no status; the check file already records the date (efficacy 2 note and missing)."
+  },
+  {
+   "lead": "No tier 1-3 model source for ARB-1467 own preclinical data",
+   "outcome": "none",
+   "detail": "Europe PMC ARB-1467 OR TKM-HBV returns reviews only; patient data pair with hbv-genome-mouse via Wooddell 2013 (engagement 3 verdict)"
+  },
+  {
+   "lead": "Schlegel 2022 NAR rat/NHP tox and HepG2.2.15 off-target RNA-seq for ALN-HBV vs VIR-2218",
+   "outcome": "added",
+   "detail": "hbv-hepg2215-offtarget-rnaseq safety untested 2022 then same 2022 (member VIR-2218); rat/NHP tox not added: only non-member ALN-HBV reported, no ALN-HBV02 rat/NHP result in the paper"
+  },
+  {
+   "lead": "PXB track label: Gane 2023 safety 3 used uninfected PXB mice",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: a model-name label on hbv-human-liver-chimeric-mouse safety 3 (uninfected PXB mice); same model_id, status same confirmed by the check verdict on safety 3."
+  },
+  {
+   "lead": "ARB-001467 (ARB-1467, member never mentioned by id)",
+   "outcome": "covered",
+   "detail": "Covered by check verdict engagement 3 (ARB-1467 tier-5 data re-date hbv-genome-mouse to 2016); no own tier 1-3 preclinical source for ARB-1467, so no new entry."
+  }
  ]
 }

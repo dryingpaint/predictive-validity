@@ -3,6 +3,8 @@ allergy,MONDO:0005271,allergic disease,7,allergen (immunotherapy)|tolerance_indu
 allergy,MONDO:0011786,allergic rhinitis,39,allergen (immunotherapy)|tolerance_induction,allergen (immunotherapy),8,0.205,other;peptide;protein,selective,3,0.53,DP/MG/14-1; Grass-SPIRE; HDM-SPIRE; Ragweed-SPIRE; Salsola kali pollen allergen extract; ToleroMune HDM
 allergy,MONDO:0011786,allergic rhinitis,39,PTGDR2|antagonist,PTGDR2 antagonists,4,0.103,small molecule,selective,3,0.53,bi-671800; fevipiprant; qav-680; setipiprant
 autoimmune,MONDO:0005011,Crohn disease,36,IL23A|binder_neutralizer,anti-IL23A antibodies,3,0.083,antibody,selective,4,0.14,brazikumab; mirikizumab; risankizumab
+autoimmune,MONDO:0010030,Sjogren syndrome,17,BTK|inhibitor,BTK inhibitors,3,0.176,small molecule,selective,2,0.0,bms-986142; remibrutinib; tirabrutinib
+autoimmune,MONDO:0010030,Sjogren syndrome,17,PIK3CD|inhibitor,PIK3CD inhibitors,3,0.176,small molecule,selective,2,0.0,leniolisib; parsaclisib; seletalisib
 autoimmune,MONDO:0005083,psoriasis,78,RORC|inverse_agonist,RORC inverse agonists,4,0.051,small molecule,selective,2,0.15,AGN-242428; BI 730357; VTP-43742; gsk-2981278
 autoimmune,MONDO:0005083,psoriasis,78,IL17A|binder_neutralizer,anti-IL17A antibodies,4,0.051,antibody;protein,selective,4,0.15,ixekizumab; izokibep; netakimab; vunakizumab
 autoimmune,MONDO:0005083,psoriasis,78,JAK1|inhibitor,JAK1 inhibitors,3,0.038,small molecule,selective,2,0.15,abrocitinib; itacitinib; solcitinib
@@ -11,8 +13,12 @@ autoimmune,MONDO:0005083,psoriasis,78,IL23A|binder_neutralizer,anti-IL23A antibo
 autoimmune,MONDO:0008383,rheumatoid arthritis,96,BTK|inhibitor,BTK inhibitors,8,0.083,small molecule,selective,2,0.06,TAS5315; acalabrutinib; bms-986142; elsubrutinib; evobrutinib; fenebrutinib
 autoimmune,MONDO:0008383,rheumatoid arthritis,96,SYK|inhibitor,SYK inhibitors,3,0.031,small molecule,selective,2,0.06,cevidoplenib; lanraplenib; mk-8457
 autoimmune,MONDO:0008383,rheumatoid arthritis,96,CSF2|binder_neutralizer,anti-CSF2 antibodies,3,0.031,antibody,selective,3,0.06,lenzilumab; namilumab; otilimab
+autoimmune,MONDO:0007915,systemic lupus erythematosus,36,BTK|inhibitor,BTK inhibitors,3,0.083,small molecule,selective,2,0.03,elsubrutinib; evobrutinib; fenebrutinib
 autoimmune,MONDO:0005101,ulcerative colitis,70,S1PR1|agonist,S1PR1 agonists,3,0.043,small molecule,selective,4,0.12,etrasimod; mocravimod; ozanimod
+cardiovascular,MONDO:0005542,acute coronary syndrome,9,APOA1|replacement,APOA1 replacement / gene therapy,3,0.333,protein,selective,3,0.0,CER-001; MDCO-216; apolipoprotein a-i
 endocrine,MONDO:0005133,endometriosis,13,GNRHR|antagonist,GNRHR antagonists,3,0.231,small molecule,selective,4,0.0,linzagolix; opigolix; relugolix
+endocrine,MONDO:0005152,hypopituitarism,6,GHR|agonist,GHR agonists,3,0.5,protein,selective,4,0.0,somatrogon; somatropin pegol; somavaratan
+endocrine,MONDO:0006909,pituitary dwarfism,3,GHR|agonist,GHR agonists,3,1.0,protein,selective,4,0.0,somapacitan; somatropin pegol; somavaratan
 endocrine,MONDO:0006964,secondary hyperparathyroidism,6,CASR|positive_modulator,CASR positive modulators,4,0.667,peptide;small molecule,selective,4,0.0,asp-7991; etelcalcetide; evocalcet; upacicalcet
 endocrine,MONDO:0005147,type 1 diabetes mellitus,31,SLC5A2|inhibitor,SLC5A2 inhibitors,4,0.129,small molecule,selective,3,0.2,dapagliflozin; empagliflozin; ipragliflozin; remogliflozin etabonate
 endocrine,MONDO:0005148,type 2 diabetes mellitus,125,GLP1R|agonist,GLP1R agonists,12,0.096,peptide;protein;small molecule,selective,4,0.12,CJC-1134-PC; HS-20004; LY2428757; TTP054; TTP273; YH14617
@@ -25,9 +31,11 @@ endocrine,MONDO:0005148,type 2 diabetes mellitus,125,SLC5A2|inhibitor,SLC5A2 inh
 endocrine,MONDO:0005148,type 2 diabetes mellitus,125,GCGR|antagonist,GCGR antagonists,4,0.032,antibody;small molecule,selective,2,0.12,adomeglivant; mk-3577; pf-06291874; volagidemab
 endocrine,MONDO:0005148,type 2 diabetes mellitus,125,GPR119|agonist,GPR119 agonists,4,0.032,small molecule,selective,2,0.12,PSN821; firuglipel; gsk-1292263; mbx-2982
 endocrine,MONDO:0005148,type 2 diabetes mellitus,125,CCR2|antagonist,CCR2 antagonists,3,0.024,small molecule,selective,2,0.12,bms-741672; ilacirnon; jnj-41443532
+gastroenterology,MONDO:0001684,exocrine pancreatic insufficiency,4,PNLIP|replacement,PNLIP replacement / gene therapy,3,0.75,protein,selective,2,0.0,SLV339; adrulipase alfa; burlulipase
 gastroenterology,MONDO:0007186,gastroesophageal reflux disease,11,ATP4A|blocker,ATP4A blockers,3,0.273,small molecule,selective,3,0.2,fexuprazan; revaprazan; tegoprazan
 gastroenterology,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,76,NR1H4|agonist,NR1H4 agonists,4,0.053,small molecule,selective,2,0.22,cilofexor; edp-305; tropifexor; vonafexor
 gastroenterology,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,76,FGF21 analogue (FGFR1c/KLB)|agonist,FGF21 analogue (FGFR1c/KLB) agonists,3,0.039,protein,selective,3,0.22,efruxifermin; pegbelfermin; pegozafermin
+gastroenterology,MONDO:0100187,opioid-induced constipation,5,OPRM1|antagonist,OPRM1 antagonists,4,0.8,small molecule,selective,4,0.0,axelopran; bevenopran; methylsamidorphan; naldemedine
 gastroenterology,MONDO:0005388,primary biliary cholangitis,15,NR1H4|agonist,NR1H4 agonists,3,0.2,small molecule,selective,2,0.0,cilofexor; edp-305; tropifexor
 hematology,MONDO:0010602,hemophilia A,15,F8|replacement,F8 replacement / gene therapy,8,0.533,gene therapy;protein,selective,4,0.0,BAX 888; SPK-8016; dirloctocogene samoparvovec; efanesoctocog alfa; giroctocogene fitelparvovec; peboctocogene camaparvovec
 hematology,MONDO:0010604,hemophilia B,10,F9|replacement,F9 replacement / gene therapy,7,0.7,gene therapy;protein,selective,4,0.0,AAV5-hFIX; AskBio009; DTX101; albutrepenonacog alfa; dalcinonacog alfa; fidanacogene elaparvovec
@@ -36,21 +44,37 @@ infectious_disease,MONDO:0005109,HIV infectious disease,32,HIV RT (NNRTI)|inhibi
 infectious_disease,MONDO:0005109,HIV infectious disease,32,HIV RT (NRTI)|inhibitor,HIV RT (NRTI) inhibitors,3,0.094,small molecule,selective,3,0.27,azvudine; censavudine; rovafovir etalafenamide
 infectious_disease,MONDO:0005109,HIV infectious disease,32,HIV integrase (INSTI)|inhibitor,HIV integrase (INSTI) inhibitors,3,0.094,small molecule,selective,4,0.27,bictegravir; cabotegravir; dolutegravir
 infectious_disease,MONDO:0005109,HIV infectious disease,32,HIV maturation (Gag)|inhibitor,HIV maturation (Gag) inhibitors,3,0.094,small molecule,selective,2,0.27,bms-955176; fipravirimat; gsk-2838232
-infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,18,HBV RNA|gene_expression_reduction,HBV RNA antisense / siRNA,3,0.167,oligo,selective,2,0.53,ARB-001467; elebsiran; tomligisiran
-infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,18,HBsAg release (NAP)|inhibitor,HBsAg release (NAP) inhibitors,3,0.167,oligo,selective,2,0.53,REP 2055; REP 2139; REP 2165
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,HCV NS3/4A protease|inhibitor,HCV NS3/4A protease inhibitors,13,0.25,small molecule,selective,4,0.2,asunaprevir; danoprevir; faldaprevir; glecaprevir; grazoprevir; gs-9256
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,HCV NS5A|inhibitor,HCV NS5A inhibitors,10,0.192,small molecule,selective,4,0.2,TD-6450; daclatasvir; elbasvir; gsk-2336805; ledipasvir; ombitasvir
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,HCV NS5B (non-nucleoside)|inhibitor,HCV NS5B (non-nucleoside) inhibitors,10,0.192,small molecule,selective,4,0.2,CDI-31244; abt-072; beclabuvir; dasabuvir; filibuvir; lomibuvir
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,HCV NS5B (nucleotide)|inhibitor,HCV NS5B (nucleotide) inhibitors,7,0.135,small molecule,selective,4,0.2,ALS-002200; bemnifosbuvir; bms-986094; idx-184; psi-352938; sofosbuvir
+infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,HBV RNA|gene_expression_reduction,HBV RNA antisense / siRNA,3,0.094,oligo,selective,2,0.42,ARB-001467; elebsiran; tomligisiran
+infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,HBsAg release (NAP)|inhibitor,HBsAg release (NAP) inhibitors,3,0.094,oligo,selective,2,0.42,REP 2055; REP 2139; REP 2165
+infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,TLR7|agonist,TLR7 agonists,3,0.094,small molecule,selective,2,0.42,TQ-A3334; rg-7795; vesatolimod
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,HCV NS3/4A protease|inhibitor,HCV NS3/4A protease inhibitors,13,0.186,small molecule,selective,4,0.19,asunaprevir; danoprevir; faldaprevir; glecaprevir; grazoprevir; gs-9256
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,HCV NS5A|inhibitor,HCV NS5A inhibitors,10,0.143,small molecule,selective,4,0.19,TD-6450; daclatasvir; elbasvir; gsk-2336805; ledipasvir; ombitasvir
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,HCV NS5B (non-nucleoside)|inhibitor,HCV NS5B (non-nucleoside) inhibitors,10,0.143,small molecule,selective,4,0.19,CDI-31244; abt-072; beclabuvir; dasabuvir; filibuvir; lomibuvir
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,HCV NS5B (nucleotide)|inhibitor,HCV NS5B (nucleotide) inhibitors,7,0.1,small molecule,selective,4,0.19,ALS-002200; bemnifosbuvir; bms-986094; idx-184; psi-352938; sofosbuvir
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,IFNAR1/IFNAR2|agonist,IFNAR1/IFNAR2 agonists,3,0.043,protein,selective,3,0.19,Hanferon; PEG-IFN-SA; interferon alfa-5
+metabolic,MONDO:0010526,Fabry disease,5,GLA|replacement,GLA replacement / gene therapy,4,0.8,gene therapy;protein,selective,4,0.0,FLT190; isaralgagene civaparvovec; pegunigalsidase alfa; voxeralgagene autotemcel
+metabolic,MONDO:0009290,glycogen storage disease II,5,GAA|replacement,GAA replacement / gene therapy,3,0.6,protein,selective,4,0.0,cipaglucosidase alfa; clervonafusp alfa; reveglucosidase alfa
 metabolic,MONDO:0021187,hyperlipidemia,33,CETP|inhibitor,CETP inhibitors,3,0.091,small molecule,selective,3,0.1,drl-17822; evacetrapib; rocacetrapib
 metabolic,MONDO:0021187,hyperlipidemia,33,HCAR2|agonist,HCAR2 agonists,3,0.091,small molecule,selective,2,0.1,gsk-256073; mk-1903; sch-900271
+metabolic,MONDO:0001586,mucopolysaccharidosis type 1,6,IDUA|replacement,IDUA replacement / gene therapy,4,0.667,gene therapy;protein,selective,3,0.0,RGX-111; azamidugene autotemcel; devafidugene civaparvovec; valanafusp alfa
+metabolic,MONDO:0009656,mucopolysaccharidosis type 3B,4,NAGLU|replacement,NAGLU replacement / gene therapy,3,0.75,gene therapy;protein,selective,3,0.0,lesinidase alfa; rAAV2/5-hNAGLU; tralesinidase alfa
 neurology,MONDO:0004975,Alzheimer disease,76,BACE1|inhibitor,BACE1 inhibitors,4,0.053,small molecule,selective,3,0.15,atabecestat; elenbecestat; ly-2886721; ly-3202626
 neurology,MONDO:0004975,Alzheimer disease,76,MAPT|binder_neutralizer,anti-MAPT antibodies,4,0.053,antibody,selective,2,0.15,gosuranemab; semorinemab; tilavonemab; zagotenemab
 neurology,MONDO:0004975,Alzheimer disease,76,HRH3|antagonist,HRH3 antagonists,3,0.039,small molecule,selective,2,0.15,SAR110894; abt-288; gsk-239512
 neurology,MONDO:0004975,Alzheimer disease,76,HTR6|antagonist,HTR6 antagonists,3,0.039,small molecule,selective,3,0.15,idalopirdine; masupirdine; sam-760
 neurology,MONDO:0004975,Alzheimer disease,76,APP|binder_neutralizer,anti-APP antibodies,3,0.039,antibody,selective,4,0.15,crenezumab; lecanemab; ponezumab
+neurology,MONDO:0010679,Duchenne muscular dystrophy,24,DMD|other,DMD,8,0.333,oligo,selective,4,0.13,BMN-053; DS-5141b; PRO044; PRO045; eteplirsen; golodirsen
+neurology,MONDO:0007739,Huntington disease,15,HTT|gene_expression_reduction,HTT antisense / siRNA,4,0.267,gene therapy;oligo,selective,3,0.2,ifezuntirgene inilparvovec; lexanersen; rovanersen; tominersen
+neurology,MONDO:0010383,fragile X syndrome,8,GRM5|negative_modulator,GRM5 negative modulators,3,0.375,small molecule,selective,3,0.0,basimglurant; fenobam; mavoglurant
 neurology,MONDO:0005277,migraine disorder,29,CGRP receptor|antagonist,CGRP receptor antagonists,4,0.138,small molecule,selective,4,0.2,bi-44370; mk-3207; rimegepant; ubrogepant
 neurology,MONDO:0005277,migraine disorder,29,CALCA/CALCB (CGRP ligand)|binder_neutralizer,anti-CALCA/CALCB (CGRP ligand) antibodies,3,0.103,antibody,selective,4,0.2,eptinezumab; fremanezumab; galcanezumab
+neurology,MONDO:0005301,multiple sclerosis,26,MS4A1|depleter,MS4A1-directed depleters,4,0.154,antibody,selective,4,0.14,divozilimab; ocrelizumab; ofatumumab; ublituximab
+neurology,MONDO:0007571,primary erythermalgia,4,SCN9A|blocker,SCN9A blockers,3,0.75,small molecule,selective,2,0.0,XPF-001; funapide; pf-05089771
+oncology,MONDO:0015759,B-cell non-Hodgkin lymphoma,8,MS4A1|depleter,MS4A1-directed depleters,3,0.375,antibody;cell therapy,selective,2,0.0,CART20; MB-CART20.1; di-leu16-il2
+oncology,MONDO:0004952,Hodgkins lymphoma,22,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,6,0.273,antibody,selective,4,0.0,camrelizumab; nivolumab; penpulimab; sintilimab; tislelizumab; zimberelimab
+oncology,MONDO:0004952,Hodgkins lymphoma,22,CD274|binder_neutralizer,anti-CD274 antibodies,3,0.136,antibody,selective,2,0.0,benmelstobart; sugemalimab; tagitanlimab
+oncology,MONDO:0100280,Waldenstrom macroglobulinemia,8,MS4A1|depleter,MS4A1-directed depleters,3,0.375,antibody,selective,3,0.0,ofatumumab; ublituximab; veltuzumab
+oncology,MONDO:0004967,acute lymphoblastic leukemia,17,CD19|depleter,CD19-directed depleters,6,0.353,ADC;cell therapy,selective,4,0.24,BinD19; CD19 CAR-T cells with CRS suppression technology; TBI-1501; brexucabtagene autoleucel; coltuximab ravtansine; vadacabtagene leraleucel
 oncology,MONDO:0018874,acute myeloid leukemia,79,FLT3|inhibitor,FLT3 inhibitors,4,0.051,small molecule,selective,4,0.12,akn-028; crenolanib; gilteritinib; quizartinib
 oncology,MONDO:0018874,acute myeloid leukemia,79,CD33|depleter,CD33-directed depleters,3,0.038,ADC;antibody;cell therapy,selective,3,0.12,anti-CD33 CAR-NK cells; bi-836858; vadastuximab talirine
 oncology,MONDO:0007254,breast cancer,129,CDK4/6|inhibitor,CDK4/6 inhibitors,6,0.047,small molecule,selective,4,0.03,abemaciclib; dalpiciclib; lerociclib; palbociclib; ribociclib; trilaciclib
@@ -62,21 +86,36 @@ oncology,MONDO:0007254,breast cancer,129,PARP1/2|inhibitor,PARP1/2 inhibitors,3,
 oncology,MONDO:0007254,breast cancer,129,PI3K (pan)|inhibitor,PI3K (pan) inhibitors,3,0.023,small molecule,pan,3,0.03,buparlisib; pictilisib; pilaralisib
 oncology,MONDO:0007254,breast cancer,129,PIK3CA|inhibitor,PIK3CA inhibitors,3,0.023,small molecule,selective,4,0.03,alpelisib; inavolisib; taselisib
 oncology,MONDO:0007254,breast cancer,129,pan-HER|inhibitor,pan-HER inhibitors,3,0.023,small molecule,pan,3,0.03,poziotinib; pyrotinib; sapitinib
+oncology,MONDO:0002974,cervical cancer,8,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,4,0.5,antibody,selective,3,0.0,balstilimab; geptanolimab; prolgolimab; zimberelimab
+oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,BTK|inhibitor,BTK inhibitors,4,0.138,small molecule,selective,4,0.04,acalabrutinib; orelabrutinib; tirabrutinib; zanubrutinib
+oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,CD19|depleter,CD19-directed depleters,4,0.138,antibody;cell therapy,selective,4,0.04,CD19 CAR-T cells; inebilizumab; lisocabtagene maraleucel; tafasitamab
+oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,MS4A1|depleter,MS4A1-directed depleters,4,0.138,antibody;protein,selective,3,0.04,epcoritamab; mt-3724; ublituximab; veltuzumab
+oncology,MONDO:0011996,chronic myeloid leukemia,11,ABL1|inhibitor,ABL1 inhibitors,3,0.273,small molecule,selective,4,0.1,flumbatinib; ponatinib; vamotinib
 oncology,MONDO:0005575,colorectal cancer,88,KDR (VEGFR)|inhibitor,KDR (VEGFR) inhibitors,3,0.034,small molecule,selective,4,0.05,fruquintinib; rivoceranib; tivozanib
 oncology,MONDO:0005575,colorectal cancer,88,VEGFR multikinase|inhibitor,VEGFR multikinase inhibitors,3,0.034,small molecule,pan,3,0.05,donafenib; famitinib; linifanib
 oncology,MONDO:0005575,colorectal cancer,88,EGFR|binder_neutralizer,anti-EGFR antibodies,3,0.034,antibody,selective,2,0.05,futuximab; imgatuzumab; modotuximab; zalutumumab
+oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,MS4A1|depleter,MS4A1-directed depleters,5,0.161,antibody;protein,selective,4,0.0,epcoritamab; imvotamab; mosunetuzumab; mt-3724; zuberitamab
+oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,CD19|depleter,CD19-directed depleters,4,0.129,ADC;antibody;cell therapy,selective,4,0.0,coltuximab ravtansine; inebilizumab; loncastuximab tesirine; tisagenlecleucel
+oncology,MONDO:0019472,extranodal nasal NK/T cell lymphoma,6,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,3,0.5,antibody,selective,3,0.33,camrelizumab; sintilimab; tislelizumab
+oncology,MONDO:0018906,follicular lymphoma,34,MS4A1|depleter,MS4A1-directed depleters,4,0.118,antibody,selective,4,0.0,MIL62; epcoritamab; imvotamab; veltuzumab
 oncology,MONDO:0018906,follicular lymphoma,34,CD19|depleter,CD19-directed depleters,3,0.088,cell therapy,selective,4,0.0,axicabtagene ciloleucel; lisocabtagene maraleucel; relmacabtagene autoleucel
 oncology,MONDO:0018906,follicular lymphoma,34,PIK3CD|inhibitor,PIK3CD inhibitors,3,0.088,small molecule,selective,4,0.0,idelalisib; linperlisib; zandelisib
 oncology,MONDO:0001056,gastric cancer,40,PARP1/2|inhibitor,PARP1/2 inhibitors,3,0.075,small molecule,selective,3,0.11,olaparib; pamiparib; rucaparib
 oncology,MONDO:0001056,gastric cancer,40,ERBB2|binder_neutralizer,anti-ERBB2 antibodies,3,0.075,antibody,selective,3,0.11,anbenitamab; margetuximab; pertuzumab
+oncology,MONDO:0011719,gastrointestinal stromal tumor,12,HSP90AA1/HSP90AB1|inhibitor,HSP90AA1/HSP90AB1 inhibitors,3,0.25,small molecule,selective,2,0.0,biib-021; ganetespib; onalespib
 oncology,MONDO:0007256,hepatocellular carcinoma,73,VEGFR multikinase|inhibitor,VEGFR multikinase inhibitors,4,0.055,small molecule,pan,4,0.13,catequentinib; donafenib; lenvatinib; regorafenib
 oncology,MONDO:0007256,hepatocellular carcinoma,73,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,4,0.055,antibody,selective,3,0.13,camrelizumab; penpulimab; serplulimab; spartalizumab
 oncology,MONDO:0007256,hepatocellular carcinoma,73,KDR (VEGFR)|inhibitor,KDR (VEGFR) inhibitors,3,0.041,small molecule,selective,3,0.13,axitinib; rivoceranib; tivozanib
 oncology,MONDO:0007256,hepatocellular carcinoma,73,CD274|binder_neutralizer,anti-CD274 antibodies,3,0.041,antibody,selective,4,0.13,benmelstobart; durvalumab; sugemalimab
+oncology,MONDO:0968974,large B-cell lymphoma,4,CD19|depleter,CD19-directed depleters,3,0.75,cell therapy,selective,4,0.0,axicabtagene ciloleucel; lisocabtagene maraleucel; relmacabtagene autoleucel
 oncology,MONDO:0009831,malignant pancreatic neoplasm,74,MAP2K1/2|inhibitor,MAP2K1/2 inhibitors,3,0.041,small molecule,selective,4,0.17,pimasertib; refametinib; trametinib
+oncology,MONDO:0018876,mantle cell lymphoma,15,BTK|inhibitor,BTK inhibitors,4,0.267,small molecule,selective,4,0.0,acalabrutinib; ibrutinib; orelabrutinib; zanubrutinib
+oncology,MONDO:0018876,mantle cell lymphoma,15,CD19|depleter,CD19-directed depleters,3,0.2,ADC;cell therapy,selective,4,0.0,axicabtagene ciloleucel; brexucabtagene autoleucel; loncastuximab tesirine
+oncology,MONDO:0017604,marginal zone lymphoma,9,MS4A1|depleter,MS4A1-directed depleters,3,0.333,antibody,selective,3,0.0,epcoritamab; imvotamab; ublituximab
 oncology,MONDO:0005105,melanoma,52,BRAF|inhibitor,BRAF inhibitors,3,0.058,small molecule,selective,4,0.08,dabrafenib; encorafenib; vemurafenib
 oncology,MONDO:0005105,melanoma,52,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,3,0.058,antibody,selective,3,0.08,prolgolimab; pucotenlimab; toripalimab
 oncology,MONDO:0018881,myelodysplastic syndrome,44,HDAC (pan)|inhibitor,HDAC (pan) inhibitors,3,0.068,small molecule,pan,3,0.1,ivaltinostat; panobinostat; pracinostat
+oncology,MONDO:0044903,myelofibrosis,21,JAK2|inhibitor,JAK2 inhibitors,3,0.143,small molecule,selective,4,0.0,bms-911543; fedratinib; ilginatinib
 oncology,MONDO:0005233,non-small cell lung carcinoma,191,EGFR|inhibitor,EGFR inhibitors,18,0.094,small molecule,dual; selective,4,0.05,abivertinib; ask-120067; aumolertinib; befotertinib; firmonertinib; lazertinib
 oncology,MONDO:0005233,non-small cell lung carcinoma,191,ALK|inhibitor,ALK inhibitors,6,0.031,small molecule,dual; selective,4,0.05,alectinib; brigatinib; ceritinib; foritinib; iruplinalkib; lorlatinib
 oncology,MONDO:0005233,non-small cell lung carcinoma,191,MET|inhibitor,MET inhibitors,5,0.026,small molecule,selective,4,0.05,capmatinib; gumarontinib; sar-125844; savolitinib; tepotinib
@@ -94,27 +133,35 @@ oncology,MONDO:0008315,prostate cancer,91,PARP1/2|inhibitor,PARP1/2 inhibitors,5
 oncology,MONDO:0008315,prostate cancer,91,CYP17A1/AR|inhibitor,CYP17A1/AR inhibitors,3,0.033,small molecule,dual,3,0.05,galeterone; odm-204; seviteronel
 oncology,MONDO:0008315,prostate cancer,91,EZH2|inhibitor,EZH2 inhibitors,3,0.033,small molecule,selective,2,0.05,lirametostat; tazemetostat; zeprumetostat
 oncology,MONDO:0008315,prostate cancer,91,FOLH1|depleter,FOLH1-directed depleters,3,0.033,ADC;other,selective,4,0.05,PSMA ADC; lutetium lu-177 vipivotide tetraxetan; mip-1095
+oncology,MONDO:0005086,renal cell carcinoma,29,VEGFR multikinase|inhibitor,VEGFR multikinase inhibitors,4,0.138,small molecule,pan,4,0.03,catequentinib; famitinib; lenvatinib; regorafenib
 oncology,MONDO:0008433,small cell lung carcinoma,39,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,3,0.077,antibody,selective,4,0.0,camrelizumab; nivolumab; toripalimab
+ophthalmology,MONDO:0005150,age-related macular degeneration,52,VEGFA|binder_neutralizer,anti-VEGFA antibodies,5,0.096,antibody;cell therapy;gene therapy;protein,selective,4,0.17,NT-503; abicipar pegol; brolucizumab; conbercept; surabgene lomparvovec
 ophthalmology,MONDO:0004728,diabetic macular edema,21,VEGFA|binder_neutralizer,anti-VEGFA antibodies,3,0.143,protein,selective,4,0.06,abicipar pegol; aflibercept; conbercept
 ophthalmology,MONDO:0006733,dry eye syndrome,51,TNF|binder_neutralizer,anti-TNF antibodies,3,0.059,antibody;protein,selective,3,0.4,ESBA105; licaminlimab; tanfanercept
-ophthalmology,MONDO:0005338,open-angle glaucoma,20,ROCK|inhibitor,ROCK inhibitors,3,0.15,small molecule,dual; selective,4,0.21,ATS907; DE-104; netarsudil
+ophthalmology,MONDO:0005338,open-angle glaucoma,27,ROCK|inhibitor,ROCK inhibitors,6,0.222,small molecule,dual; selective,4,0.15,ATS907; DE-104; RKI983; netarsudil; sovesudil; verosudil
+ophthalmology,MONDO:0005338,open-angle glaucoma,27,PTGER2|agonist,PTGER2 agonists,3,0.111,small molecule,selective,4,0.15,aganepag isopropyl; omidenepag isopropyl; simenepag isopropyl
+ophthalmology,MONDO:0019200,retinitis pigmentosa,14,RPGR|replacement,RPGR replacement / gene therapy,3,0.214,gene therapy,selective,3,0.38,botaretigene sparoparvovec; cotoretigene toliparvovec; laruparetigene zovaparvovec
 other,MONDO:0004980,atopic eczema,81,PDE4|inhibitor,PDE4 inhibitors,5,0.062,small molecule,selective,4,0.27,DRM02; an-2898; crisaborole; difamilast; leo-29102
 other,MONDO:0004980,atopic eczema,81,IL33|binder_neutralizer,anti-IL33 antibodies,4,0.049,antibody,selective,2,0.27,etokimab; itepekimab; torudokimab; tozorakimab
 other,MONDO:0004980,atopic eczema,81,HRH4|antagonist,HRH4 antagonists,3,0.037,small molecule,selective,2,0.27,adriforant; jnj-39758979; pf-5212372
 other,MONDO:0005016,diabetic kidney disease,26,NR3C2|antagonist,NR3C2 antagonists,3,0.115,small molecule,selective,4,0.12,apararenone; esaxerenone; finerenone
+other,MONDO:0005393,gout,20,SLC22A12|inhibitor,SLC22A12 inhibitors,5,0.25,small molecule,selective,4,0.06,D-0120; epaminurad; lesinurad; rdea-806; verinurad
 other,MONDO:0005178,osteoarthritis,65,MAPK14|inhibitor,MAPK14 inhibitors,3,0.046,small molecule,selective,2,0.31,FX005; emprumapimod; pha-797804
 other,MONDO:0005178,osteoarthritis,65,NTRK1|inhibitor,NTRK1 inhibitors,3,0.046,small molecule,selective,2,0.31,VM902A; asp-7962; gz-389988
+other,MONDO:0005298,osteoporosis,5,SOST|binder_neutralizer,anti-SOST antibodies,3,0.6,antibody,selective,4,0.0,blosozumab; romosozumab; setrusumab
+other,MONDO:0009179,recessive dystrophic epidermolysis bullosa,7,COL7A1|replacement,COL7A1 replacement / gene therapy,5,0.714,gene therapy;protein,selective,4,0.0,Hologene 7; PTR-01; beremagene geperpavec; dabocemagene autoficel; prademagene zamikeracel
 psychiatry,MONDO:0013600,insomnia,11,HCRTR1/2|antagonist,HCRTR1/2 antagonists,6,0.545,small molecule,selective,4,0.0,daridorexant; fazamorexant; filorexant; lemborexant; suvorexant; vornorexant
 psychiatry,MONDO:0005090,schizophrenia,45,PDE10A|inhibitor,PDE10A inhibitors,5,0.111,small molecule,selective,2,0.02,Lu AF11167; OMS824; balipodect; elpipodect; mardepodect
 psychiatry,MONDO:0005090,schizophrenia,45,SLC6A9|inhibitor,SLC6A9 inhibitors,4,0.089,small molecule,selective,3,0.02,AMG 747; bitopertin; iclepertin; pf-03463275
 psychiatry,MONDO:0005090,schizophrenia,45,CHRNA7|agonist,CHRNA7 agonists,3,0.067,small molecule,selective,2,0.02,azd-0328; bradanicline; nelonicline
-respiratory,MONDO:0004979,asthma,84,PTGDR2|antagonist,PTGDR2 antagonists,9,0.107,small molecule,selective,3,0.11,ADC3680B; GB001; MK-1029; arry-502; azd-1981; bi-671800
-respiratory,MONDO:0004979,asthma,84,ADRB2|agonist,ADRB2 agonists,4,0.048,small molecule,selective,2,0.11,abediterol; azd-3199; bedoradrine; carmoterol
-respiratory,MONDO:0004979,asthma,84,NR3C1|agonist,NR3C1 agonists,4,0.048,small molecule,selective,2,0.11,azd-5423; gw-870086; sun-597; velsecorat
-respiratory,MONDO:0004979,asthma,84,IL13|binder_neutralizer,anti-IL13 antibodies,4,0.048,antibody,selective,3,0.11,GSK679586; dectrekumab; lebrikizumab; tralokinumab
+respiratory,MONDO:0004979,asthma,87,PTGDR2|antagonist,PTGDR2 antagonists,9,0.103,small molecule,selective,3,0.11,ADC3680B; GB001; MK-1029; arry-502; azd-1981; bi-671800
+respiratory,MONDO:0004979,asthma,87,ADRB2|agonist,ADRB2 agonists,4,0.046,small molecule,selective,2,0.11,abediterol; azd-3199; bedoradrine; carmoterol
+respiratory,MONDO:0004979,asthma,87,NR3C1|agonist,NR3C1 agonists,4,0.046,small molecule,selective,2,0.11,azd-5423; gw-870086; sun-597; velsecorat
+respiratory,MONDO:0004979,asthma,87,IL13|binder_neutralizer,anti-IL13 antibodies,4,0.046,antibody,selective,3,0.11,GSK679586; dectrekumab; lebrikizumab; tralokinumab
 respiratory,MONDO:0005002,chronic obstructive pulmonary disease,46,CHRM3|antagonist,CHRM3 antagonists,6,0.13,small molecule,selective,4,0.09,AZD8683; CHF5992; QAX028; azd-9164; pf-03635659; revefenacin
 respiratory,MONDO:0005002,chronic obstructive pulmonary disease,46,ADRB2|agonist,ADRB2 agonists,4,0.087,small molecule,selective,4,0.09,abediterol; azd-3199; pf-00610355; vilanterol
 respiratory,MONDO:0005002,chronic obstructive pulmonary disease,46,MAPK14|inhibitor,MAPK14 inhibitors,4,0.087,small molecule,selective,2,0.09,acumapimod; azd-7624; pf-03715455; pha-797804
 respiratory,MONDO:0009061,cystic fibrosis,43,CFTR|corrector,CFTR correctors,10,0.233,small molecule,selective,4,0.08,VX-152; bamocaftor; elexacaftor; galicaftor; glpg-2737; lumacaftor
 respiratory,MONDO:0009061,cystic fibrosis,43,CFTR|potentiator,CFTR potentiators,5,0.116,small molecule,selective,4,0.08,deutivacaftor; dirocaftor; glpg-1837; icenticaftor; navocaftor
+respiratory,MONDO:0015924,pulmonary arterial hypertension,14,PTGIR|agonist,PTGIR agonists,3,0.214,small molecule,selective,3,0.0,QCC374; beraprost; ralinepag
 urology,MONDO:0018301,interstitial cystitis,10,NGF|binder_neutralizer,anti-NGF antibodies,3,0.3,antibody,selective,2,0.12,ASP6294; fulranumab; tanezumab

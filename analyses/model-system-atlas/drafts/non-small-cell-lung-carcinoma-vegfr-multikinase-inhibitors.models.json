@@ -244,5 +244,27 @@
   "Camrelizumab + famitinib in previously treated NSCLC (ChiCTR1900026641, Ther Adv Med Oncol 2025) and in pulmonary sarcomatoid carcinoma (CAPSTONE, NCT04888429): patient side only, already in the draft's patient_trials on the xenograft track.",
   "IBI318 (PD-1/PD-L1 bispecific) + lenvatinib in ICI-resistant NSCLC (Nat Commun 2025, PMID 41398162): patient side only, title-level (not read); a lenvatinib + checkpoint pairing without RT, so it does not test the LLC track's triple.",
   "Famitinib monotherapy or chemo-combination NSCLC trials (NCT02356991 placebo-controlled phase 2, suspended by sponsor; NCT02766140 famitinib + docetaxel phase 3, terminated for recruitment): no results and no famitinib NSCLC model preceded them."
+ ],
+ "gaps": [
+  {
+   "lead": "Famitinib LLC syngeneic + RT + checkpoint model (Thorac Cancer 2022, PMID 36281217)",
+   "outcome": "tracked",
+   "detail": "llc-syngeneic-c57bl6-rt-checkpoint: engagement 4, dose 4, efficacy 7 (opening untested, Yuan 2022); patient side efficacy 8 (Ren 2024, NCT04346381)"
+  },
+  {
+   "lead": "Famitinib + almonertinib in NCI-H1975/PC-9 xenografts (Thorac Cancer 2021, PMID 33656275)",
+   "outcome": "tracked",
+   "detail": "same system as nsclc-human-xenograft-immunodeficient-mouse (engagement 1, dose 1, efficacy 1 and 3); stays untested for famitinib (NCT03904823 no results, n=6 EGFR subgroup only), so decision 7 adds no entry"
+  },
+  {
+   "lead": "Lenvatinib LLC C57BL/6 + RT + anti-PD-L1 model (Cancer Biol Ther 2026, PMID 41481002)",
+   "outcome": "tracked",
+   "detail": "llc-syngeneic-c57bl6-rt-checkpoint efficacy 9 (Liu 2026, untested); retro vs contra hangs on checker rule question 5, and own entry vs note on rule question 6"
+  },
+  {
+   "lead": "NCT04346381 cohorts missing from famitinib patient_trials (JITC 2024; CII 2024)",
+   "outcome": "tracked",
+   "detail": "both papers in patient_trials of efficacy 8 (llc-syngeneic-c57bl6-rt-checkpoint, Ren 2024); NCT03583086, ChiCTR1900026641, NCT04888429 on efficacy 3"
+  }
  ]
 }

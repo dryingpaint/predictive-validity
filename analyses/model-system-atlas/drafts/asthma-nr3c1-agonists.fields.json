@@ -1,0 +1,201 @@
+{
+ "tile": "asthma-nr3c1-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug null -> azd-5423, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug null -> azd-5423, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug null -> velsecorat, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug null -> velsecorat, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug null -> velsecorat, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug null -> velsecorat (opener of the velsecorat track, whose later entries are efficacy 2-3), route inhaled; quote swapped to the AZD7594 sentence of the same Hemmerling 2017 abstract"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug null -> velsecorat, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug null -> velsecorat, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug null -> azd-5423, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug null -> velsecorat, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug null -> velsecorat, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug null -> velsecorat, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug null -> gw-870086, route null -> inhaled (from the entry source; all members dosed by dry-powder or nebulised inhalation)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "retrodiction false -> true, status same -> retro, year 2015 -> 2017: ICS sputum-eosinophil effect and Gauvreau 2015 public before the rat model paper (online 2017-10-12); year moved to when the comparison became public"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "retrodiction false -> true, status same -> retro: same-target retrodiction ruling (ICS FeNO effect; velsecorat 2a results posted 2017-06-23 before the model paper 2017-10-12)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "retrodiction false -> true, status same -> retro: dose retrodiction on velsecorat's own earlier patient result (registry 2017-06-23) vs model public 2017-10-12"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "retrodiction false -> true, status contra kept: Leaker 2015 post-dates GW870086's own 2013 patient results (same-drug dose retrodiction); failed to reproduce"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "retrodiction false -> true, status same -> retro: same-target retrodiction ruling (ICS efficacy; velsecorat 2a posted before the model paper)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "retrodiction false -> true, status contra kept (same-target retrodiction ruling; failed to reproduce)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "retrodiction false -> true, status contra kept (same-target retrodiction ruling; failed to reproduce)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "status neg -> retro, retrodiction false -> true (1 mg failure 2013-10 and ICS efficacy public before the challenge result); year 2018 -> 2014 (rule 6: Curr Drug Ther report issued 2014-01-31, Crossref)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "retrodiction false -> true, status contra kept: Leaker 2015 post-dates the 2013 patient results and ICS efficacy; failed to reproduce"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "retrodiction false -> true, status same -> retro: same-target retrodiction ruling; Leaker 2015 after the 2013 adaptive trial"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "retrodiction false -> true, status same -> retro: same-target retrodiction ruling (ICS efficacy public before Uings 2013)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "retrodiction false -> true, status same -> retro, year 2018 -> 2014: same-target retrodiction ruling; rule 6 date from the challenge report (2014-01-31) as its own judgement asked"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "retrodiction false -> true, status same -> retro: same-drug safety retrodiction (registry 2017-06-23 vs model public 2017-10-12)"
+  }
+ ],
+ "added": []
+}

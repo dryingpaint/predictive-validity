@@ -1,0 +1,62 @@
+{
+ "tile": "non-small-cell-lung-carcinoma-anti-igf1r-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug dalotuzumab (h7C10 parent), route iv set"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug dalotuzumab, route iv set; population_group other_disease (mixed solid tumours)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug cixutumumab (the quoted patients), route iv, combination_with erlotinib; product_in_model false since the xenografts used h7C10"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug dalotuzumab, route iv set; opener of the A549 dalotuzumab track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug teprotumumab (R1507), route iv, combination_with erlotinib; combination design written into note (status contra unchanged)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug teprotumumab, route iv set; population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug teprotumumab, route iv, combination_with erlotinib; combination design in note (status contra unchanged)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug cixutumumab (Novello patients), route iv, combination_with pemetrexed + cisplatin, product_in_model false; untested_reason no_prediction; Goetsch 2005 makes no tolerability claim, so no passing-tolerability prediction"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug teprotumumab, route iv set"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "src/quote moved from FDA TED comparison to Ramalingam 2011 NSCLC R1507+erlotinib hyperglycemia (imported-harm ruling: this disease's patients were measured); imported_from removed, FDA review kept as model_src; retrodiction true (monkey data first public 2021, after R1507's own patient hyperglycemia), status contra and year 2021 unchanged"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "A549 xenograft track for dalotuzumab (the model's own antibody): contra 2014, Moran 2014 dalotuzumab+erlotinib phase II no PFS gain (NCT00654420, results 2016-12-28); Huang 2016 as patient trial"
+  }
+ ]
+}

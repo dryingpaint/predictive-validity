@@ -1,5 +1,5 @@
 """Disease burden for the atlas's tracked diseases: global DALYs in 2021 from the WHO Global Health Estimates,
-mapped by hand to the 48 diseases that have a tracked tile (issue #76).
+mapped by hand to every disease that has a tracked tile (issue #76).
 
     .venv/bin/python analyses/model-system-atlas/burden.py
 
@@ -55,6 +55,23 @@ MAP = {
     "MONDO:0005011": ("broader", [1244], "Inflammatory bowel disease, with ulcerative colitis"),
     "MONDO:0005101": ("shared", [1244], "within Inflammatory bowel disease, held by Crohn disease"),
     "MONDO:0005338": ("broader", [1030], "Glaucoma, all forms"),
+    "MONDO:0005542": ("broader", [1130], "Ischaemic heart disease; acute coronary syndrome is its acute presentation"),
+    "MONDO:0005301": ("exact", [980], ""),
+    "MONDO:0002974": ("exact", [710], "Cervix uteri cancer"),
+    "MONDO:0004952": ("exact", [761], ""),
+    "MONDO:0005086": ("broader", [745], "Kidney cancer; renal cell carcinoma is about nine tenths of it"),
+    "MONDO:0005150": ("exact", [1060], "Macular degeneration"),
+    "MONDO:0005393": ("exact", [1370], ""),
+    "MONDO:0003864": ("shared", [770], "within Leukaemia, held by acute myeloid leukemia"),
+    "MONDO:0004967": ("shared", [770], "within Leukaemia, held by acute myeloid leukemia"),
+    "MONDO:0011996": ("shared", [770], "within Leukaemia, held by acute myeloid leukemia"),
+    "MONDO:0015759": ("shared", [762], "within Non-Hodgkin lymphoma, held by follicular lymphoma"),
+    "MONDO:0017604": ("shared", [762], "within Non-Hodgkin lymphoma, held by follicular lymphoma"),
+    "MONDO:0018876": ("shared", [762], "within Non-Hodgkin lymphoma, held by follicular lymphoma"),
+    "MONDO:0018905": ("shared", [762], "within Non-Hodgkin lymphoma, held by follicular lymphoma"),
+    "MONDO:0019472": ("shared", [762], "within Non-Hodgkin lymphoma, held by follicular lymphoma"),
+    "MONDO:0968974": ("shared", [762], "within Non-Hodgkin lymphoma, held by follicular lymphoma"),
+    "MONDO:0100280": ("shared", [762], "within Non-Hodgkin lymphoma, held by follicular lymphoma"),
     # no WHO cause is specific enough
     "MONDO:0011786": ("none", [], "allergic rhinitis has no WHO cause"),
     "MONDO:0005271": ("none", [], "allergic disease has no WHO cause"),
@@ -74,6 +91,26 @@ MAP = {
     "MONDO:0013600": ("none", [], "no WHO cause"),
     "MONDO:0009061": ("none", [], "inside Other respiratory diseases"),
     "MONDO:0018301": ("none", [], "inside Other urinary diseases"),
+    "MONDO:0007915": ("none", [], "inside Other musculoskeletal disorders"),
+    "MONDO:0010030": ("none", [], "inside Other musculoskeletal disorders"),
+    "MONDO:0005152": ("none", [], "inside Other endocrine, blood and immune disorders"),
+    "MONDO:0006909": ("none", [], "inside Other endocrine, blood and immune disorders"),
+    "MONDO:0001586": ("none", [], "inside Other endocrine, blood and immune disorders"),
+    "MONDO:0009290": ("none", [], "inside Other endocrine, blood and immune disorders"),
+    "MONDO:0009656": ("none", [], "inside Other endocrine, blood and immune disorders"),
+    "MONDO:0010526": ("none", [], "inside Other endocrine, blood and immune disorders"),
+    "MONDO:0001684": ("none", [], "only the Other digestive diseases aggregate"),
+    "MONDO:0100187": ("none", [], "a side effect of opioid treatment, not a WHO cause"),
+    "MONDO:0007571": ("none", [], "inside Other neurological conditions"),
+    "MONDO:0007739": ("none", [], "inside Other neurological conditions"),
+    "MONDO:0010679": ("none", [], "inside Other neurological conditions"),
+    "MONDO:0010383": ("none", [], "inside Other chromosomal anomalies"),
+    "MONDO:0011719": ("none", [], "inside Other malignant neoplasms"),
+    "MONDO:0044903": ("none", [], "inside Other neoplasms"),
+    "MONDO:0019200": ("none", [], "inside Other vision loss"),
+    "MONDO:0005298": ("none", [], "a risk factor in the WHO estimates (low bone mineral density), not a cause"),
+    "MONDO:0009179": ("none", [], "only the Skin diseases aggregate"),
+    "MONDO:0015924": ("none", [], "inside Other circulatory diseases"),
 }
 
 

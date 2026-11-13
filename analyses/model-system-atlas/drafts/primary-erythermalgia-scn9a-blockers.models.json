@@ -1,0 +1,113 @@
+{
+ "tile": "primary-erythermalgia-scn9a-blockers",
+ "searched": [
+  "Checker missing list (primary-erythermalgia-scn9a-blockers.check.json): PBPK microdose model (Jones 2016) and Siebenga 2020 healthy-volunteer pain battery as leads",
+  "manifest.csv rows for the tile: all members 'no NDA/BLA', no FDA/EMA review bundle exists to grep",
+  "Europe PMC: (funapide OR XEN402 OR XPF-001 OR XPF-002 OR TV-45070): 68 hits; no preclinical (animal, ex-vivo or in-silico) funapide paper, only Goldberg 2012, the PHN trial and reviews",
+  "Europe PMC: PF-05089771 AND (rat OR mouse OR mice OR in vivo OR model OR microneurography OR evoked OR iPSC OR PBPK): 162 hits; candidates Jones 2016 PBPK, Alexandrou 2016 DRG, Siebenga 2020, McDermott 2023 iPSC, Thornton 2025 iPSC screen, Fujita 2026 human DRG, intrathecal mouse 2026",
+  "Europe PMC: (PF-05089771 OR funapide OR XEN402) AND (erythromelalgia OR erythermalgia): 91 hits; no further model compared with IEM patient results",
+  "Europe PMC abstracts: Jones 2016 (PMID 26895021), Yang 2025 Pain review (PMID 39928833, full text PMC11808711 grepped for members and IEM), Thornton 2025 (PMID 40415465), Fujita 2026 (PMID 42912422), Siebenga 2020 (PMID 31642607, full text via pmc.ncbi.nlm.nih.gov grepped for erythromelalgia), Alexandrou 2016 (PMID 27050761), Cao 2016 (PMID 27099175)",
+  "PubMed efetch 26895021: entrez/pubmed date 2016-02-20, print Jul 2016",
+  "ClinicalTrials.gov v2 API, intervention PF-05089771: microdose NCT01165736 (2010-07), SAD NCT01259882 (2010-12 to 2011-09), IEM NCT01769274 (2012-10 to 2013-07), HV pain battery NCT02349607 (2015)",
+  "fc.py scrape link.springer.com Jones 2016 full text: failed (empty result), abstract-level only"
+ ],
+ "added_models": [
+  {
+   "model_id": "pf05089771-pbpk-microdose",
+   "model": "PBPK model from a human IV/oral microdose study (PF-05089771)",
+   "model_kind": "in_silico",
+   "model_first_use_year": 2010,
+   "prediction_level": "class",
+   "cells": {
+    "dose": [
+     {
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": null,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "SCN9A gain-of-function variants (inherited erythromelalgia)",
+      "confidence_note": "Opening year is a proxy: the microdose study NCT01165736 started 2010-07; the PBPK prediction was made before the SAD study (NCT01259882, 2010-12). Abstract-level.",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "product_in_model": true,
+      "judgement": "Opening entry at the model's first use; the prediction was not public until 2016.",
+      "confidence": "medium",
+      "year": 2010,
+      "status": "untested",
+      "epub_year": 2016,
+      "print_year": 2016,
+      "src": "https://doi.org/10.1007/s40262-015-0365-0",
+      "srcLabel": "Jones 2016",
+      "quote": "A physiologically-based PK (PBPK) model was used to predict exposure and multiples of Nav1.7 50 % inhibitory concentration (IC50) for each compound at higher doses.",
+      "note": "PBPK model built on microdose PK predicted the oral dose giving about 12x Nav1.7 IC50 at Cmax for PF-05089771.",
+      "short": "PBPK predicts 1 g for 12x IC50",
+      "blocked_by": null,
+      "margin_stated": false
+     },
+     {
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": null,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": "PBPK-predicted vs observed plasma exposure of PF-05089771 in the single ascending oral dose study",
+      "source_calls_it": "match",
+      "population": "SCN9A gain-of-function variants (inherited erythromelalgia)",
+      "confidence_note": "Abstract-level (Springer full text not retrieved), so the fold error behind 'compared well' is unknown and magnitude is null. SAD registry NCT01259882 has no posted results found. IEM-patient exposure versus the IC50 multiple not checked (Cao 2016 paywalled).",
+      "subjects": "healthy_volunteers",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "product_in_model": true,
+      "judgement": "Healthy-volunteer PK counts for dose. The PBPK model stated an exposure target (12x IC50 at Cmax with 1 g); the SAD study, run after the prediction, matched it, and IEM patients then got 1600 mg, above the predicted 1 g. Reaching target is scored here; whether it worked is efficacy.",
+      "confidence": "medium",
+      "year": 2016,
+      "status": "same",
+      "epub_year": 2016,
+      "print_year": 2016,
+      "src": "https://doi.org/10.1007/s40262-015-0365-0",
+      "srcLabel": "Jones 2016",
+      "quote": "In a subsequent single ascending oral dose clinical study, the predictions for PF-05089771 compared well with observed data.",
+      "note": "Single ascending oral doses in volunteers matched the PBPK exposure predictions; the IEM trial then dosed 1600 mg.",
+      "short": "SAD PK matched PBPK prediction",
+      "reason": "Predicted exposure seen in volunteers",
+      "blocked_by": null,
+      "margin_stated": false
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Healthy-volunteer evoked pain battery (Siebenga 2020, NCT02349607, PF-05089771 150 mg BID): no analgesia, but run in 2015 after the IEM result at about a tenth of the IEM dose, and the paper attributes the gap to dose ('these patients were administered a single dose of 1,600 mg'); not a comparison of a model prediction with IEM patients",
+  "Patient iPSC sensory neurons from other IEM lines (McDermott 2023 Brain; Thornton 2025 Clin Transl Med): same system as the draft's iem-patient-ipsc-sensory-neurons track; McDermott uses no member drug and Thornton screens AZ compounds only",
+  "Mouse/human DRG ex vivo (Alexandrou 2016 PLoS One; Fujita 2026 eLife, AM-2099): pharmacology of PF-05089771 or a non-member, no comparison with IEM patients",
+  "Rodent pain models (Yang 2025 Pain review of 43 preclinical studies; intrathecal PF-05089771 mouse 2026): no rodent efficacy study of a member compared with IEM results; the review is not a source and notes rat Nav1.7 is less sensitive to PF-05089771",
+  "Funapide (XEN402/XPF-001/XPF-002) preclinical models: none published; no Xenon animal, ex-vivo or PK model found to compare with Goldberg 2012 or NCT01486446",
+  "Genotype-guided structural modelling plus functional profiling of patient mutant channels (Yang 2012 Nat Commun; Geha 2016 JAMA Neurol): validated only on carbamazepine, a non-member, so it does not score for this class",
+  "Heterologous expression of patients' mutant Nav1.7 channels tested with a member: not found in the abstracts read (Cao 2016 body paywalled)"
+ ],
+ "gaps": [
+  {
+   "lead": "Dose track: PBPK model from a healthy-volunteer microdose study (Jones 2016, PMID 26895021)",
+   "outcome": "tracked",
+   "detail": "pf05089771-pbpk-microdose, dose cell: untested 2010 opening, then same 2016 (SAD PK matched PBPK prediction); checker dose entries 2-3 confirmed"
+  },
+  {
+   "lead": "Siebenga 2020 healthy-volunteer evoked-pain battery (PMC7070789)",
+   "outcome": "none",
+   "detail": "Human volunteer readout run in 2015 after the IEM result at 150 mg BID, not a model prediction compared with IEM patients; outside the model-system rule (see considered_not_added)"
+  }
+ ]
+}

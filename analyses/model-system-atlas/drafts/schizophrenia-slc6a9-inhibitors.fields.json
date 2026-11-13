@@ -1,0 +1,167 @@
+{
+ "tile": "schizophrenia-slc6a9-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to bitopertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to bitopertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to iclepertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug set to bitopertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug set to bitopertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug set to pf-03463275, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug set to pf-03463275, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to bitopertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to bitopertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to bitopertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug set to iclepertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug set to pf-03463275, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug set to pf-03463275, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to bitopertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to bitopertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set to bitopertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to iclepertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to iclepertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug set to pf-03463275, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to pf-03463275, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug set to pf-03463275, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug set to pf-03463275, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug set to pf-03463275, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug set to pf-03463275, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to pf-03463275, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to bitopertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to iclepertin, route oral (from the entry's sources)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2016 -> 2014: ruling that a sponsor press release dates the entry (Roche media release 21 Jan 2014, FlashLyte/DayLyte primary endpoints missed); settles check.json RULE QUESTION on efficacy 3; status contra unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "status retro -> untested, retrodiction false: ruling that a safety retrodiction counts only the same drug's own earlier patient result; Liu 2013 rests on unnamed GlyT1 inhibitors' visual reports"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "iclepertin opener (untested, 2018) on rat-csf-glycine-microdialysis: track split from bitopertin"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "iclepertin opener (untested, 2018) on rat-csf-glycine-microdialysis: dose track split from bitopertin"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "iclepertin opener (untested, 2026) on rodent-hematology-hb: track split from bitopertin"
+  }
+ ]
+}

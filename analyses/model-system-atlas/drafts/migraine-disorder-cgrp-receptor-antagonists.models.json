@@ -13,7 +13,12 @@
   "Europe PMC: MK-3207 AND (rat OR monkey OR in vitro OR hepatocyte)",
   "Europe PMC full text: Monroe 2020 (PMC7553701), Lusk 2026 (PMC12782279 via PMC efetch), Chaudhry 2026 (PMC12820400), Boucherie 2024 (PMC11351853), Mulder 2020 (PMC7540520)",
   "Europe PMC title lookups: Rubio-Beltrán 2019 ubrogepant arteries; Navratilova 2020 ubrogepant MOH; Marcus 2013 BMS-927711 phase 2b",
-  "ClinicalTrials.gov API: NCT01430442 results date; term search rimegepant MR angiography"
+  "ClinicalTrials.gov API: NCT01430442 results date; term search rimegepant MR angiography",
+  "Europe PMC: ubrogepant AND (dose selection OR exposure-response OR capsaicin)",
+  "Europe PMC: \"BI 44370\"",
+  "PMC10777434 full text (Boinpally 2024) for CIDV dose rationale",
+  "Europe PMC: \"Making Better Dose Decisions\" (no hit)",
+  "fc.py search: BI 44370 Boehringer discontinued liver"
  ],
  "added_models": [
   {
@@ -567,6 +572,53 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "dilisym-qst",
+   "model": "In vitro hepatotoxicity assays plus DILIsym simulation",
+   "model_kind": "in_silico",
+   "model_first_use_year": 2019,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "year": 2020,
+      "status": "retro",
+      "model": "In vitro hepatotoxicity assays plus DILIsym simulation",
+      "model_id": "dilisym-qst",
+      "note": "Smith 2020 reports DILIsym, run after MK-3207 was dropped for liver signals, reproduced its liver toxicity at the clinical dosing regimens.",
+      "short": "DILIsym reproduced MK-3207 liver injury",
+      "src": "https://doi.org/10.1093/toxsci/kfaa093",
+      "srcLabel": "Smith 2020, Toxicol Sci",
+      "quote": "DILIsym successfully modeled liver toxicity for telcagepant and MK-3207 at the dosing regimens used in clinical trials.",
+      "confidence": "medium",
+      "confidence_note": "Abstract read (PMID 32579200, PMC8312697); the MK-3207 clinical liver signal is from Monroe 2020 and the 2009 discontinuation.",
+      "reason": "Retro-modelled MK-3207 liver signal",
+      "judgement": "MK-3207 was discontinued over liver concerns in 2009, before the DILIsym runs, so this member comparison is a retrodiction; a retro never sets the headline nor hides the 2019 prospective ubrogepant match on this track. Added from the gap pass lead.",
+      "subjects": "mixed",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1093/toxsci/kfaa093",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2020,
+      "print_year": 2020,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": true,
+      "model_kind": "in_silico",
+      "retrodiction": true,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "presence of simulated vs observed ALT elevations for MK-3207",
+      "source_calls_it": "match",
+      "population": "Unselected",
+      "model_first_use_year": 2019,
+      "prediction_level": "class"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -582,5 +634,27 @@
   "BI 44370: no published preclinical model or regulator document found; no added track.",
   "Human CGRP/GTN provocation or genetic models with a member gepant: none found in searches.",
   "PBPK DDI models in the ubrogepant/rimegepant ClinPharm reviews: none surfaced by grep, and DDI exposure prediction is outside the four questions."
+ ],
+ "gaps": [
+  {
+   "lead": "Smith 2020 DILIsym retrodiction of MK-3207 liver toxicity (doi 10.1093/toxsci/kfaa093)",
+   "outcome": "entry",
+   "detail": "Added safety retro 2020 on dilisym-qst (Smith 2020, doi 10.1093/toxsci/kfaa093, abstract quote); glance.headline ignores retrodictions, so the 2019 prospective ubrogepant same still sets the track."
+  },
+  {
+   "lead": "BI 44370 discontinuation attributed to liver toxicity",
+   "outcome": "none",
+   "detail": "No model-to-patient comparison exists for BI 44370; the liver attribution appears only in secondary reviews (Europe PMC 'BI 44370', web search found no sponsor or registry source); a mention in the safety note is a checker edit, not a system."
+  },
+  {
+   "lead": "Ubrogepant CIDV-based dose prediction",
+   "outcome": "none",
+   "detail": "Boinpally 2024 (PMC10777434) gives rhesus/human CIDV EC50/EC90 for ubrogepant but phase 3 doses came from phase 2b patient exposure-response modeling; no published CIDV-predicted ubrogepant dose set beside Voss 2016 (Stodtmann 2026 popPK/ER likewise patient-based)."
+  },
+  {
+   "lead": "Monroe 2020 MK-3207 GLP toxicology contra (doi 10.1093/toxsci/kfaa088)",
+   "outcome": "tracked",
+   "detail": "mk3207-glp-tox, safety cell, 2020 contra entry already in added_models (merged draft safety #10)."
+  }
  ]
 }

@@ -1,0 +1,112 @@
+{
+ "tile": "gastrointestinal-stromal-tumor-hsp90aa1-hsp90ab1-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to 'biib-021', route oral (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to 'onalespib', route iv (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to 'biib-021', route oral (from null); status same -> retro, retrodiction true: Hsp70 induction by Hsp90 inhibition in patients was public in 2005 (Banerji 2005, 17-AAG), before the model (retrodiction rule: engagement counts any drug of the same target and action)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug set to 'onalespib', route iv (from null); status same -> retro, retrodiction true: Hsp70 induction by Hsp90 inhibition in patients was public in 2005 (Banerji 2005, 17-AAG), before the model (retrodiction rule: engagement counts any drug of the same target and action)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to 'biib-021', route oral (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to 'onalespib', route iv (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to 'biib-021', route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to 'biib-021', route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to 'onalespib', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set to 'biib-021', route oral (from null); status same -> retro, retrodiction true: IPI-504 GIST FDG-PET responses public June 2007 (Van den Abbeele ASCO 2007) predate the BIIB021 xenograft model (2008/2009); single-arm design written into note"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to 'onalespib', route iv (from null); retrodiction true (status stays contra, failed to reproduce): model 2011/2012 post-dates IPI-504 GIST responses (ASCO 2007); combination_with imatinib, combination and single-arm design in note"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to 'biib-021', route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug set to 'biib-021', route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to 'ganetespib', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug set to 'class', route not_applicable (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug set to 'ganetespib', route iv (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug set to 'ganetespib', route iv (from null); retrodiction true (status stays contra): ganetespib xenografts (2010/2011) post-date IPI-504 GIST responses (ASCO 2007); single-arm design in note"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to 'biib-021', route oral (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to 'onalespib', route iv (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to 'onalespib', route iv (from null)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "opening untested entry for the ganetespib (iv) track of the 17-AAG GIST cell-line model (Bauer 2006), dated at its first pairing with ganetespib (2016)"
+  }
+ ]
+}

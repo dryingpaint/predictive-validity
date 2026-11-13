@@ -28,5 +28,22 @@
   "PTGDR2/CRTH2 polymorphisms in AR: association studies only; no comparison with response to a member drug",
   "Sidharta 2014 setipiprant Phase 1 and Erpenbeck 2016 fevipiprant Phase 1: PK/tolerability with no ex-vivo PD model readout (as the checker found)",
   "Horak 2012 OC000459 Vienna chamber and the Actelion 2012-04-02 release: sibling and patient-side sources for the existing chamber track, not model systems; left to the adjudicator per the task"
+ ],
+ "gaps": [
+  {
+   "lead": "Actelion media release 2012-04-02 (setipiprant Phase 3 SAR miss, development stopped; via RTTNews/PharmaTimes)",
+   "outcome": "fix",
+   "detail": "efficacy #4 (ova-mouse-allergic-rhinitis, contra): field year, current 2017, source supports 2012. Model side Stebbins 2010 (doi 10.1016/j.ejphar.2010.04.031) was public in 2010; the setipiprant Phase 3 SAR miss was public 2012-04-02 (RTTNews, 'two recently concluded studies ... did not confirm efficacy findings made in earlier studies', https://www.rttnews.com/1852195/actelion-to-end-setipiprant-clinical-development-in-asthma-allergic-rhinitis.aspx, re-opened 2026-11-07). The verdict's note says 'If kept, year is 2012' but proposes no year, and adjudication kept contra. The other dates this release bears on are covered: dose #3 (proposed 2014), efficacy #2 (proposed 2013, see next lead) and efficacy #6 (proposed 2014)."
+  },
+  {
+   "lead": "Horak 2012 Allergy (PMID 23025511): OC000459 Vienna grass-pollen chamber, n=35",
+   "outcome": "fix",
+   "detail": "efficacy #2 (allergen-exposure-chamber, contra): field year, current 2017, verdict proposes 2013, source supports 2012. Horak 2012 Allergy (doi 10.1111/all.12042, PMID 23025511, Europe PMC first publication 2012-10-01, print 2012-12) is a sibling-dosed chamber result: 'treatment with OC000459 significantly reduced both nasal and ocular symptoms in allergic subjects compared with placebo after challenge with grass pollen'. With the Phase 3 miss public 2012-04-02 (RTTNews), the chamber-vs-field comparison was first public 2012-10; sibling-dosed model sides are admitted (decision 8, product_in_model false, as adjudicated for efficacy #4). If adopted, model_src becomes Horak 2012 and product_in_model false for the dating; no verdict proposes 2012."
+  },
+  {
+   "lead": "No untracked model system found (fevipiprant/setipiprant Phase 1, ARRY-063 OVA mouse, NCT01804400, ramatroban)",
+   "outcome": "none",
+   "detail": "checker's own negative finding; Phase 1 papers lack ex vivo PD, ARRY-063 is the tracked ova-mouse-allergic-rhinitis system, NCT01804400 unreported, ramatroban outside the class (non-selective); searched list in this file agrees"
+  }
  ]
 }

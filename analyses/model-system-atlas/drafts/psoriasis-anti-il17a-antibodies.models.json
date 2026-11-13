@@ -11,7 +11,8 @@
   "Europe PMC: (imiquimod OR skin xenograft OR humanized mice) AND (anti-IL-17A OR ixekizumab) AND clinical efficacy AND psoriasis",
   "Europe PMC: (ixekizumab OR IL-17A) AND psoriasis AND (Mendelian randomization OR loss-of-function OR protective variant)",
   "Full text: Klint 2023 izokibep preclinical + first-in-human (PMC10187109); Krueger 2012 ixekizumab Phase 1 lesional transcriptome (PMC3470466)",
-  "ClinicalTrials.gov API: NCT02690142, NCT03591887, NCT01107457, izokibep psoriasis, LY2439821 psoriasis"
+  "ClinicalTrials.gov API: NCT02690142, NCT03591887, NCT01107457, izokibep psoriasis, LY2439821 psoriasis",
+  "Europe PMC (gap pass): (vunakizumab OR SHR-1314) AND (mouse OR imiquimod OR cynomolgus OR preclinical OR in vitro); (netakimab OR BCD-085) AND (mouse OR imiquimod OR cynomolgus OR preclinical OR in vitro OR monkey); netakimab/vunakizumab AND psoriasis AND phase III"
  ],
  "added_models": [
   {
@@ -239,5 +240,12 @@
   "Netakimab and vunakizumab preclinical models: no preclinical or translational paper found in Europe PMC.",
   "Patient-level response predictors (serum uric acid, blood biomarkers for ixekizumab): observational patient cohorts, not a model system.",
   "Human genetics / Mendelian randomization for IL17A in psoriasis efficacy: none found; the inborn-errors safety track is already in the draft."
+ ],
+ "gaps": [
+  {
+   "lead": "No failure found for any member; vunakizumab Phase III (PMID 42952621) and netakimab PLANETA positive trials not listed in patient_trials",
+   "outcome": "covered",
+   "detail": "Adds only positive patient trials (vunakizumab Phase III, netakimab PLANETA) as patient_trials on efficacy that change no status; no model system was run for netakimab or vunakizumab, so nothing scored changes."
+  }
  ]
 }

@@ -11,18 +11,23 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "ACR 2014 abstract (Marcantonio) resolves; quote verbatim. Proxy 2011 opening holds (NCT01446003 started 2011-10). Tier 1 for a no-DOI/PMID meeting abstract is a rule question, not a status issue."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Marcantonio ACR 2014 re-fetched; quote verbatim. mk-8457 dosed orally (FIH and Phase 2 BID tablets); unselected right for an opener with no patients compared; untested at 2011 proxy holds."
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "van Vollenhoven ACR 2014 resolves; '99% inhibition of basophil CD63' verbatim; 69% requirement verbatim in Marcantonio. Readout 'direct' is right. The 99% figure is probably HV-derived PD, so subjects=patients is uncertain."
+   "status_supported": false,
+   "rule": "DRAFTER_BRIEF retrodiction: engagement is a target claim; a model first public after any same-target patient result is retro, never same",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim; 69% target verbatim in Marcantonio. Model first public Nov 2014, after SYK engagement in dosed humans (fostamatinib: Weinblatt 2008 PMID 18975322; Herman 2013 PMID 23385377): retro, retrodiction true. Drug, oral, stage_or_line right.",
+   "proposed_status": "retro",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: engagement is a target claim; rat PK-PD target first public Nov 2014, after fostamatinib SYK-inhibitor patient results (Weinblatt 2008; Herman 2013). Reproduced human engagement, so retro, not same."
   },
   {
    "cell": "engagement",
@@ -31,8 +36,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Cho 2023 (PMID 36346114, PMC9993459) resolves; dosing sentence verbatim in Methods. NCT02717988/NCT03315494 carry no results, so untested is right; 2015 proxy matches NCT02717988 start 2015-09."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Cho 2023 PMC9993459 full text: dosing sentence verbatim; cevidoplenib given orally in mice and in the RA trial (BID). No human SYK PD for RA published; untested at 2015 proxy holds; unselected fine for opener."
   },
   {
    "cell": "dose",
@@ -41,8 +47,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Same opening source and quote as engagement 1; proxy year holds."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Same source and quote as engagement 1, verbatim. mk-8457 oral; unselected opener; untested 2011 holds."
   },
   {
    "cell": "dose",
@@ -51,8 +58,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Floor holds (decision 4 case 2): 99% CD63 vs 69% target, ACR20 hit. But margin_stated=true rests on a 10-day HV MAD (200 mg BID), not a model NOAEL/MTD, and the ceiling did not hold (infections at 100 mg BID); set margin_stated null (rule question)."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim. Rat PK-PD 69% target vs 99% CD63 at 100 mg BID: target reached = same. Dose is a drug claim, no earlier MK-8457 patient result: prospective. Oral BID, MTX-IR/TNF-IR stage_or_line, margin_stated false right."
   },
   {
    "cell": "dose",
@@ -61,8 +69,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Cho 2023 gives only 42/84 mg/kg BID, no exposure or occupancy target; untested is correct. Oscotec's 'increase the dose' remark is a sponsor reading, not a model target."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Cho 2023 gives mg/kg only (42/84 mpk orally BID), no exposure or occupancy target: untested holds. Cevidoplenib oral; unselected opener."
   },
   {
    "cell": "efficacy",
@@ -71,8 +80,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Marcantonio abstract states dose-dependent inhibition of AIA/CIA by paw thickness; opening untested holds."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opening quote verbatim (Marcantonio 2014); abstract reports dose-dependent rat AIA/CIA inhibition. mk-8457 oral, unselected opener; untested 2011 holds."
   },
   {
    "cell": "efficacy",
@@ -81,8 +91,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Primary ACR20 in MTX-IR hit: registry NCT01569152 (posted 2017-03-09) 68.29% vs 24.39%, p<0.001. TNF-IR DAS28 miss (NCT01651936, 31 evaluable, authors: 'little power') is a disclaimed terminated trial, not a patient result; same+partial holds. Confidence should be low (conference-only clinical side, decision 2)."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Conclusion verbatim; Study 1 primary ACR20 68.3% vs 24.4% met, Study 2 small and terminated (partial). Rat model first public Nov 2014, after fostamatinib's positive RA trial (Weinblatt 2008, verified): retro, retrodiction true right. Oral + MTX, stage_or_line."
   },
   {
    "cell": "efficacy",
@@ -91,8 +102,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Abstract sentence verbatim. Paper received 2022-09-02, 20 months after the RA miss, never mentions the trial; retrodiction=false is defensible but undecidable from the rules (rule question)."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abstract sentence verbatim (PubMed 36346114). Cevidoplenib oral; untested opener at 2015 proxy holds."
   },
   {
    "cell": "efficacy",
@@ -101,8 +113,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Korea Biomed 2021-01-07 quote verbatim; registry NCT04057118 (posted 2024-07-31) confirms DAS28 -0.95/-0.91/-1.06/-1.15 and TNF-IR eligibility. Model tested anti-TNF-refractory mice (combination arm), so the sponsor's 'serious RA' attribution does not make it untested. contra holds; src tier/year is a rule question."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "KBR 2021-01-07 quote verbatim (primary DAS28 missed, n=163, BID). Cho 2023 epub 2022-11-08 post-dates miss: retrodiction true, contra, year 2022 right. Oral; MTX+anti-TNF-IR = stage_or_line. combination_with null is inconsistent with other background-MTX entries."
   },
   {
    "cell": "safety",
@@ -111,8 +124,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Opening entry; abstract states 200 mg BID x10 d tolerated in HV and says nothing on infection. Holds."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Opening quote verbatim; rat abstract silent on infection (tolerability statement there is HV clinical data, not the model). mk-8457 oral, unselected opener; untested 2011 holds."
   },
   {
    "cell": "safety",
@@ -121,18 +135,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim; registry SAE tables confirm pneumonia x4 (2 in extension), bronchitis, enterocolitis, lung infection on MK-8457 arms only. Silence on a harm a rodent could show scores contra under the brief; counted once here, not in dose, which is consistent."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Serious-infection sentence verbatim (6 serious respiratory infections, 1 death, 16.3/100 PY). Rat silent on a harm a rodent could show = contra. Drug claim, no earlier MK-8457 patient result: prospective. Oral BID + MTX, stage_or_line right."
   },
   {
    "cell": "safety",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": null,
-   "note": "Clarke 2018 (PMID 30172129, Thromb Res, epub 2018-08-23) resolves; quote is the abstract's conclusion sentence, paywalled body unread. Stated negative prediction (no BT prolongation) held in dosed humans; comparison stated in-source. Healthy-volunteer safety comparison is a rule question."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kivitz quote verbatim; 'No deaths or serious AE were reported' though no bleeding AE is named, so support is near (direction_only). RA patients measured, so they decide; Clarke HV correctly moved to note. Oral QD + MTX, stage_or_line; 2018 right."
   },
   {
    "cell": "engagement",
@@ -141,9 +157,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Di Paolo ACR 2016 resolves; readout sentence verbatim. Rat PD = ankle/paw/histology/joint RNA; Kivitz 2018 measured TruCulture/VectraDA, no shared readout, so untested holds. Presented 2016-11-14, trial result 2017-08+: prospective, class."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Di Paolo ACR 2016 re-fetched; readout sentence verbatim. Lanraplenib 'an oral, selective SYK inhibitor'; Kivitz 2018 measured none of the rat readouts, so untested holds. Unselected opener right."
   },
   {
    "cell": "dose",
@@ -152,9 +168,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Exposure-match sentence verbatim; Dolton 2016 FIH (same meeting) gives HV PK only, no margin, no PD. Opening untested at 2016 (first public use, proxy) holds; retrodiction=false right."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Di Paolo 2016 PK sentence verbatim; lanraplenib oral. Untested opener holds as drafted, but the rat was dosed to already-known HV exposures, so whether this is a stated target or a retro comparison is a rule question."
   },
   {
    "cell": "dose",
@@ -163,11 +179,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Kivitz 2018 resolves; PK sentence verbatim. Registry NCT02885181 results posted 2018-09-19 (start 2016-09-21) sets year 2018. Rat target reached qualitatively, primary failed, no further RA trial: 'reached, failed, abandoned' row, contra derived_from efficacy. margin_stated=false right.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): patient exposure matched the rat's effective exposure"
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kivitz ACR 2018 'Plasma exposures ... comparable to those observed in healthy subjects' verbatim: rat-effective exposure reached in RA patients = same (target reached). Oral QD on stable MTX; MTX/biologic-IR = stage_or_line; 2018 right."
   },
   {
    "cell": "efficacy",
@@ -176,31 +190,56 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "'dose-responsive efficacy' verbatim; Dolton 2016 FIH states the rat CIA model established in vivo efficacy, so this is lanraplenib's own entry model. Opening untested 2016 holds; prospective (abstract 2016-11, trial started 2016-09-21, read out 2017-08)."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "'dose-responsive efficacy in the rat CIA model' verbatim (Di Paolo ACR 2016). Lanraplenib oral; untested opener 2016 holds."
   },
   {
    "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF retrodiction: efficacy is a target claim; a failed retrodiction is contra",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kivitz conclusion verbatim; DAS28-CRP primary missed (-1.26/-0.78 vs -1.36), contra holds; oral QD on MTX, stage_or_line right. Rat CIA (Nov 2016) post-dates fostamatinib 2008 and MK-8457 2014 RA results: retrodiction should be true, note's 'Prospective' wrong.",
+   "proposed_status": "contra",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Retrodiction rule: efficacy is a target claim; rat CIA (Nov 2016) post-dates fostamatinib 2008 RA results, so retrodiction true, but a failed retrodiction stays contra. DAS28-CRP primary missed."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Di Paolo conclusion verbatim; abstract reports no tolerability or harm readout. Lanraplenib oral, unselected opener; untested holds (no RA harm to contradict silence)."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Clarke 2018 abstract (PMID 30172129, epub 2018-08-23): quote verbatim; dosed humans got only bleeding time ('orally administered GS-9876'), GPVI aggregation in humans is in vitro. Oral; untested/not_measured holds."
+  },
+  {
+   "cell": "dose",
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Conclusion sentence verbatim. Registry primary DAS28-CRP -1.26/-0.78/-2.46/-1.36 and LS diffs 0.01 (p=0.978), 0.40 (p=0.300) match patient_trials quote. Filgotinib arm validated the trial; contra on primary, not neg, holds. No tier-1 RA paper exists (Europe PMC)."
-  },
-  {
-   "cell": "safety",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Conclusion sentence verbatim; abstract reports efficacy only. Kivitz 2018: no deaths or SAE, AE rate below placebo, so no harm appeared to contradict the rat's silence; untested holds. Bleeding stays on the cynomolgus track."
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Status same is right (target reached; the DAS28 miss is efficacy 6 only), and contra was wrong. Same source, quote, year and track as dose 5: a pure duplicate, not a change of status. Drug, oral, stage_or_line as dose 5."
   }
  ],
  "missing": [
@@ -216,6 +255,7 @@
   "A trade-press report of a sponsor's exchange disclosure (Korea Biomedical Review quoting Oscotec) is not a press release or SEC filing: admissible as tier 5? And when a tier-3 registry record of the same trial later posts (2024-07-31), does the entry keep the tier-5 src and 2021 year (decision 7, earliest public date) or move to the registry src, 2024 and trial_unreported=false?",
   "A development model published only after the trial failed (Cho 2023, received 2022-09, trial topline 2021-01), with no public pre-trial record and no mention of the trial: prospective (retrodiction=false) or retrodiction? Status is contra either way, but the mark differs.",
   "Does the safety cell accept a healthy-volunteer comparison (lanraplenib cynomolgus bleeding time vs Phase 1 humans, Clarke 2018)? Decision 3 names engagement and dose only.",
-  "A member drug whose only published model is another indication's (lanraplenib, NZB/W lupus) and whose RA trial failed: decision 12 says cross-indication transfers only for safety, so the failure has no efficacy track and is invisible on the tile. Should a class failure with no published model be surfaced some other way than inside another drug's patient_trials?"
+  "A member drug whose only published model is another indication's (lanraplenib, NZB/W lupus) and whose RA trial failed: decision 12 says cross-indication transfers only for safety, so the failure has no efficacy track and is invisible on the tile. Should a class failure with no published model be surfaced some other way than inside another drug's patient_trials?",
+  "Dose, lanraplenib rat CIA (Di Paolo 2016): the rat was dosed to exposures already reached in healthy volunteers (Dolton 2016) and the abstract states the match. Is that a stated exposure target reached in 2016 (same) or, since the human exposure was known first, a dose retrodiction (retro), when the brief limits dose retrodiction to the drug's own earlier 'patient' result?"
  ]
 }

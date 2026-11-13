@@ -1,0 +1,193 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/opioid-induced-constipation-oprm1-antagonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "PharmR transit quote in bundle (text has 'oxycodone- induced'; another passage 'ranging from 0.02 to 0.23'). Naldemedine, oral, unselected correct; untested not_measured unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR tail-flick quote verbatim (bundle); IND 107475 review dated July 19, 2011 supports the proxy year. Naldemedine, oral correct; opener unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF retrodiction: dose/safety, only the same drug's own earlier patient result makes a model a retrodiction",
+   "note": "SumR COWS/SOWS quote verbatim. Rat window first public in 2017 PharmR (no earlier paper; Kanemasa 2019); naldemedine's own phase 3 topline was public Aug 2015 (Shionogi release), so retro holds; year 2017. Naldemedine, oral.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "PharmR transit quote in bundle (minor spacing). Naldemedine, oral correct; opener untested 2011 unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF retrodiction: engagement/efficacy, any same-target patient result public earlier",
+   "note": "Hale 2017 abstract quote. Retro holds: methylnaltrexone OIC results (2008) precede any naldemedine rat data; rat transit first public 2017 PharmR, so year 2017. NCT01207427 removal correct. Naldemedine, oral, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR withdrawal quote verbatim (bundle). Naldemedine, oral correct; opener untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF retrodiction: dose/safety, only the same drug's own earlier patient result makes a model a retrodiction",
+   "note": "Label Highlights read 'abdominal pain, diarrhea, and nausea' (OCR interleave). Rat withdrawal first public 2017 PharmR, after naldemedine's own phase 3 (Aug 2015 release, DDW 2016): retro holds, 2017. Naldemedine, oral.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Armstrong 2013 abstract quote verbatim. Axelopran, oral correct; opener untested 2010 unchanged (rat loperamide GE also in Sept 2010 poster).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2012,
+   "rule": "DRAFTER_BRIEF retrodiction: engagement/efficacy, any same-target patient result public earlier; DRAFTER_BRIEF evidence rule 6: year is the earliest date the comparison was public (congress abstract, press release)",
+   "note": "Long 2019 quote verbatim; 10 Jul 2012 release: primary CSBM wks 2-5 met at all doses. Retro holds (methylnaltrexone 2008), but rat loperamide GE was public Sept 2010 (poster), so comparison public July 2012: year 2012.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (efficacy is target-level): methylnaltrexone OIC results predate it, so retro. Rule 6: rat loperamide GE public in 2010 Beattie/Vickery poster PW 262, patient side 10 Jul 2012 release; year 2012."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Long 2019 mouse transit quote verbatim (PMC full text). Axelopran, oral correct; opener unchanged. confidence_note wrongly cites Armstrong abstract (prose only).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF retrodiction: engagement/efficacy, any same-target patient result public earlier",
+   "note": "Long 2019 phase 2b quote verbatim. Mouse transit/GE screen not in the 2010 poster or Armstrong; first public 2019, after methylnaltrexone and axelopran results: retro, 2019. Axelopran, oral, unselected.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Armstrong 2013 abstract quote verbatim. Axelopran, oral correct; opener 2010 fine (mouse jumping data in Sept 2010 poster).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "DRAFTER_BRIEF retrodiction: dose/safety, only the same drug's own earlier patient result makes a model a retrodiction; DRAFTER_BRIEF evidence rule 6: year is the earliest date the comparison was public (congress abstract, press release)",
+   "note": "Long 2019 quote verbatim; 10 Jul 2012 release: no CNS withdrawal by COWS. Mouse morphine-dependent jumping (TD-1211 >10 mg/kg) was public Sept 2010 poster, before axelopran's own patient results: prospective, same, year 2012.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Retrodiction rule (safety is drug-level): mouse morphine-dependent jumping (TD-1211 >10 mg/kg) was public in the 2010 poster PW 262, before axelopran's own patient result (Jul 2012). Rule 6 counts congress material: prospective, same, year 2012."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Armstrong 2013 abstract quote verbatim (Europe PMC, epub 2013-03-13). Axelopran, oral correct. Hot-plate window was already public Sept 2010 (Theravance poster), so 2010 opener is fine.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "DRAFTER_BRIEF retrodiction: dose/safety, only the same drug's own earlier patient result makes a model a retrodiction; DRAFTER_BRIEF evidence rule 6: year is the earliest date the comparison was public (congress abstract, press release)",
+   "note": "Long 2019 quote verbatim; 10 Jul 2012 release confirms no analgesic interference. But rat/dog hot-plate window (TD-1211 ID50 >100 mg/kg) was public in a Sept 2010 poster, before any axelopran patient result: prospective, same, year 2012.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Retrodiction rule (dose is drug-level): rat/dog hot-plate window (ID50 >100 mg/kg, ratio >278) was public in the 2010 poster PW 262, before axelopran's Jul 2012 patient result. Rule 6: prospective, same, year 2012."
+  }
+ ],
+ "missing": [
+  "Axelopran (member) has a model source the draft says it lacks: Armstrong et al. 2013, Naunyn-Schmiedeberg's Arch Pharmacol, PMID 23512167 (doi 10.1007/s00210-013-0844-5), rat loperamide-inhibited gastric emptying, castor-oil diarrhoea and dog GI contractility plus CNS models; pair with axelopran phase 2 OIC trials (registry/press, not verified here). Likely a separate track (loperamide gastric-emptying model) or same-direction add to the rat transit track; would not change the status but may add an earlier year.",
+  "NCT01122030: naldemedine phase 2 in opioid-dependent chronic-pain patients (single doses; results posted 2017-05-30), a human withdrawal/central-effect comparison for the rat withdrawal and analgesia-window tracks; not cited in safety or dose.",
+  "PharmR lists a rat in-vivo brain opioid receptor occupancy study (S-297995-EB-257-N) supporting peripheral restriction; a possible separate dose/central-sparing model, not tracked.",
+  "Patient side for the mouse withdrawal (safety) and hot-plate window (dose) tracks: J Pain 2013;14(4 Suppl) abstract 'No evidence of analgesic interference or CNS opioid withdrawal for TD-1211 in a phase 2b study in OIC' (https://www.jpain.org/article/S1526-5900(13)00698-6/fulltext; COWS max 7.0 TD-1211 vs 6.0 placebo, seen in search snippet only). Paired with Armstrong 2013 it would date both tracks' same to 2013 if a supplement abstract is admissible tier 1.",
+  "Axelopran phase 2b efficacy was public in Oct 2012 (ACG 2012, Am J Gastroenterol suppl; MedPage Today coverage https://www.medpagetoday.com/meetingcoverage/acg/35542; Theravance topline PR). Paired with Armstrong 2013 this gives a 2013 comparison for the rat loperamide GE track, earlier than Long 2019.",
+  "Axelopran model data (rat loperamide gastric emptying, rat/dog hot-plate, mouse morphine-dependent jumping) were first public in Beattie/Vickery et al., Theravance poster PW 262, F1000Posters 2010-09-23 (https://www.academia.edu/27525418), not Armstrong 2013; this dates dose 4 and safety 4 as prospective and efficacy 4 to 2012."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Engagement: when the model's PD readout is GI transit and humans measured bowel-movement frequency (the efficacy endpoint), does SBM count as a downstream engagement readout, or must engagement stay untested/not_measured?",
+  "Dose: does a central-vs-peripheral window built from two in-rat dose thresholds (no human exposure translation) count as a 'stated tolerability margin' under Decision 16?",
+  "Axelopran hot-plate window (dose 4): the margin was generated before phase 1 but first published (Armstrong, Mar 2013) after the phase 2b ended (May 2012). Does margin_stated require a public model source before the trial, or does an IND-era study published later count?",
+  "Are conference abstracts in journal supplements (J Pain, Am J Gastroenterol) tier 1 sources for dating a paired comparison?",
+  "Does a congress poster mirrored on F1000Posters (no abstract DOI found) count as the model side's first public date for the retrodiction test, as congress abstracts do for dating?"
+ ]
+}

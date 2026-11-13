@@ -531,5 +531,37 @@
   "DP/MG/14-1: zero hits on Europe PMC and ClinicalTrials.gov; identity could not be established.",
   "Human genetic model of allergen tolerance: none exists for this class.",
   "In-silico / QSP dose-selection model: none found for any member (Europe PMC QSP / PK-PD / 'in silico' + allergen immunotherapy + dose)."
+ ],
+ "gaps": [
+  {
+   "lead": "gp-ASIT+ conjunctival provocation test (CPT) track",
+   "outcome": "tracked",
+   "detail": "gpasit-conjunctival-provocation-test in added_models: engagement 2013 untested/2018 same, dose 2013 untested/2018 same/2019 contra, efficacy 2013 untested/2018 same/2019 contra, safety 2013 untested/2018 same (merged draft engagement 3-4, dose 5-6, efficacy 3-5, safety 5-6)"
+  },
+  {
+   "lead": "NCT02150343 HDM-SPIRE field Phase 2b results posted 2018-06-15",
+   "outcome": "covered",
+   "detail": "Covered: check.json verdicts on dose 3, efficacy 2 and safety 3 each already state trial_unreported must be false (NCT02150343 results posted 2018-06-15); statuses contra/contra/same unchanged."
+  },
+  {
+   "lead": "Circassia PRNewswire 2013-09-12 HDM-SPIRE chamber Phase II",
+   "outcome": "covered",
+   "detail": "Covered: engagement 2 corrected verdict already proposes year 2013 from this release (status same unchanged); its model-side safety statement is noted in the safety 3 verdict and changes no status."
+  },
+  {
+   "lead": "Health Canada RDS00632 Itulatek (birch SLIT-tablet)",
+   "outcome": "covered",
+   "detail": "Covered: dose 4 and safety 4 verdicts both already state model_filed should be true on RDS00632 ('a Phase II dose-finding EEC trial')."
+  },
+  {
+   "lead": "Not found / not searched: SPIRE peptide animal models, DP/MG/14-1, Salsola kali, rBet v 1 mouse",
+   "outcome": "tracked",
+   "detail": "rBet v 1 mouse now tracked as rbetv1-balbc-birch-asthma-mouse (efficacy 6-7); SPIRE peptide animal, DP/MG/14-1 and Salsola kali searched in the models pass with no model-to-patient comparison found (none, see considered_not_added)"
+  },
+  {
+   "lead": "Stallergenes 2009-09-16 VO59.08 Phase IIb/III press release",
+   "outcome": "covered",
+   "detail": "Covered: efficacy 7 corrected verdict already proposes year 2013 with this release as src; efficacy 6 verdict flags retrodiction true. For patient-blood-dc-pbmc dose 2 (untested) and safety 2 the ex-vivo data were first public in Nony 2015 (Europe PMC, epub 2015-04-20), so the comparison cannot predate 2015 and the abstract does not date the assay relative to the trial: no scored field changes."
+  }
  ]
 }

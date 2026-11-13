@@ -102,8 +102,77 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT00875277", "registry_date": "2019-12-11", "doi": null, "quote": "Change in Total Clinical Score (TCS) of the Clinical Symptoms Compared to Baseline (Day 1): LEO 29102 Cream Vehicle -1.60; LEO 29102 Cream -3.04; P<0.001."}
+       {
+        "nct": "NCT00875277",
+        "registry_date": "2019-12-11",
+        "doi": null,
+        "quote": "Change in Total Clinical Score (TCS) of the Clinical Symptoms Compared to Baseline (Day 1): LEO 29102 Cream Vehicle -1.60; LEO 29102 Cream -3.04; P<0.001."
+       }
       ]
+     }
+    ]
+   }
+  },
+  {
+   "model_id": "pde4-mouse-imiquimod-psoriasiform",
+   "model": "Imiquimod psoriasis-like mouse (topical DRM02), with phorbol-ester ear and Th2 contact-hypersensitivity models",
+   "model_kind": "animal",
+   "prediction_level": "class",
+   "model_first_use_year": 2020,
+   "cells": {
+    "efficacy": [
+     {
+      "year": 2022,
+      "status": "contra",
+      "model": "Imiquimod psoriasis-like mouse (topical DRM02), with phorbol-ester ear and Th2 contact-hypersensitivity models",
+      "note": "Crisaborole 2% cut ear and epidermal thickness, myeloid cells and itch in imiquimod mice (2022), predicting the plaque benefit crisaborole's Phase-3-design trial did not show.",
+      "short": "Imiquimod mouse ran crisaborole after its miss",
+      "src": "https://clinicaltrials.gov/study/NCT01300052?tab=results",
+      "srcLabel": "NCT01300052 results 2017",
+      "quote": "Percentage of Participants Who Achieved Success in Physician's Global Assessment (PGA) of Disease Severity at Day 84: AN2728 Ointment, 2% 17.4 (6.4 to 28.3); AN2728 Ointment, Vehicle 13.6 (0.0 to 28.0); difference 3.8 (-14.3 to 21.8).",
+      "confidence": "medium",
+      "confidence_note": "Model side full text read (PMC10066830, NCBI efetch): 'We found that crisaborole treatment significantly reduced ear thickness and epidermal thickness compared to vehicle treatment (Figure 1B–D).' Inducer imiquimod 5% on both ear sides daily for four days. Patient side registry record confirmed via CT.gov API; Hashim 2020 (abstract via Europe PMC) is the positive result the paper cites.",
+      "reason": "Crisaborole retrodiction contradicted by NCT01300052",
+      "judgement": "Same system as the track (imiquimod psoriasis-like mouse, topical PDE4 inhibitor), now with the member crisaborole, so a retrodiction entry, not a new model_id. Online 2022-12-19, after NCT01300052 (2011) and Hashim 2020 (online 2019-07-03). The paper states crisaborole 'has shown efficacy in patients with psoriasis' (its reference 14, Hashim 2020: 21 intertriginous/anogenital/facial patients, 66% vs 9%, P=.0011); against that it reproduces, but the track is already contra (DRM02, 2020) and crisaborole's own plaque-psoriasis primary missed, so contra by the track rule, paired by me (comparison_stated false). Hashim is kept as a patient_trials row; whether its site-specific population is in scope is rule question 10, and whether NCT01300052 is an admissible miss is rule question 1; if either flips, the checker may prefer retro with patient_signal_reversed considered. strengthens: true (decision 7, #127): the track's 2020 DRM02 miss rests on a tier-5 statement pooling three indications with no posted psoriasis result; this second miss, for a member drug run in the same system, rests on a posted registry primary and removes that excuse.",
+      "model_id": "pde4-mouse-imiquimod-psoriasiform",
+      "prediction_level": "class",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 3,
+      "model_src": "https://doi.org/10.1111/exd.14722",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2022,
+      "print_year": 2023,
+      "registry_date": "2017-03-07",
+      "model_filed": false,
+      "product_in_model": true,
+      "model_kind": "animal",
+      "retrodiction": true,
+      "imported_from": null,
+      "magnitude": null,
+      "source_calls_it": null,
+      "population": "Unselected",
+      "model_first_use_year": 2020,
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [
+       {
+        "nct": "NCT01300052",
+        "registry_date": "2017-03-07",
+        "doi": null,
+        "quote": "Percentage of Participants Who Achieved Success in PGA of Disease Severity at Day 84: 17.4 vs 13.6; difference 3.8 (-14.3 to 21.8)."
+       },
+       {
+        "nct": null,
+        "registry_date": null,
+        "doi": "https://doi.org/10.1016/j.jaad.2019.06.1288",
+        "quote": "After 4 weeks, participants in the crisaborole group demonstrated 66% improvement compared with 9% in the vehicle group (P = .0011)."
+       }
+      ],
+      "magnitude_basis": null,
+      "strengthens": true
      }
     ]
    }
@@ -115,6 +184,39 @@
   "Youn 2023 Exp Dermatol (doi 10.1111/exd.14722, PMID 36461082, online 2022-12-19, print 2023-04-01; full text read via PMC10066830): the inducer is imiquimod ('imiquimod (5% Taro Pharmaceuticals) was applied to both sides of the mouse ear daily for four consecutive days'; 2% crisaborole ointment 4 h after each application), so it is the same system as the existing pde4-mouse-imiquimod-psoriasiform track (DRM02) and the same class-level prediction; not a new track. Owed on that track as a retrodiction entry: comparison_stated true ('has shown efficacy in patients with psoriasis', reference 14), result 'crisaborole treatment significantly reduced ear thickness and epidermal thickness compared to vehicle treatment' plus reduced neutrophils, macrophages and itch; retro against the patient result the paper cites, contra against NCT01300052 is the checker's question. The patient side the paper cites is Hashim 2020 JAAD (doi 10.1016/j.jaad.2019.06.1288, PMID 31279028, online 2019-07-03): 21 patients with intertriginous, anogenital or facial psoriasis, TLSS improvement 66% vs 9% at 4 weeks, P=.0011, not registered under crisaborole on ClinicalTrials.gov. That trial is not in the draft's crisaborole efficacy track at all and may deserve a patient_trials row there.",
   "Topical photodynamic therapy plus crisaborole in imiquimod mice (J Med Chem 2025, doi 10.1021/acs.jmedchem.5c01266): same imiquimod system, a combination with a non-member agent, no stated patient comparison; not added.",
   "LEO 29102 human skin open-flow microperfusion cAMP (Pharm Res 2020, doi 10.1007/s11095-020-02962-1) and crisaborole lesional biomarkers (JACI 2019): atopic dermatitis; engagement does not import across diseases.",
-  "Patient-derived cells or skin, ex-vivo drug sensitivity, human challenge or genetic models, in-silico/QSP or dermal PBPK dose models, and regulator reliance on model data: none found for crisaborole, DRM02 or LEO 29102 in psoriasis (searches listed above). Apremilast and roflumilast models were not widened into this tile."
+  "Patient-derived cells or skin, ex-vivo drug sensitivity, human challenge or genetic models, in-silico/QSP or dermal PBPK dose models, and regulator reliance on model data: none found for crisaborole, DRM02 or LEO 29102 in psoriasis (searches listed above). Apremilast and roflumilast models were not widened into this tile.",
+  "Dong 2016 retrodiction on pde4-mouse-phorbol-ear-edema efficacy: drafted, then not added. A retro after the track's 2011 contra needs patient_signal_reversed, which no source shows; a contra entry would rest on the same NCT01300052 result as efficacy 3 and removes no excuse, so decision 7 folds it (no strengthens). Model-side fact for that entry's note: 'Topical compd3 penetrates the skin and suppresses phorbol myristate acetate-induced IL-13, IL-22, IL-17F, and IL-23 transcription ... in mouse skin' (abstract, doi 10.1124/jpet.116.232819, online 2016-06-27)."
+ ],
+ "gaps": [
+  {
+   "lead": "Dong 2016 JPET (PMID 27353073) benzoxaborole Th17-cytokine models after the psoriasis trials",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: Dong 2016 (compd3, PMA-induced mouse-skin cytokines, abstract only) sits on pde4-mouse-phorbol-ear-edema, whose efficacy 3 is contra 2011 on NCT01300052. Retro would need patient_signal_reversed (lint, none shown); contra would repeat efficacy 3's patient result with no excuse removed (decision 7), so it is a note on efficacy 3. The in-vitro PBMC arm has no psoriasis patient readout on the engagement-only pde4-human-pbmc-cytokine-release track. If rule question 1 voids NCT01300052, a 2016 retro entry becomes owed."
+  },
+  {
+   "lead": "Youn 2023 Exp Dermatol (PMID 36461082) crisaborole in mouse psoriasis-like dermatitis",
+   "outcome": "entry",
+   "detail": "Written: added_models pde4-mouse-imiquimod-psoriasiform efficacy, contra 2022, strengthens true (Youn 2023, doi 10.1111/exd.14722, online 2022-12-19, retrodiction true, crisaborole, product_in_model true, full text PMC10066830) paired with NCT01300052 (registry 2017-03-07): a member-drug miss on a posted primary after the DRM02 tier-5 miss. Hashim 2020 (doi 10.1016/j.jaad.2019.06.1288) as a patient_trials row; retro vs Hashim is barred by the track's contra without patient_signal_reversed."
+  },
+  {
+   "lead": "Not missing: ClinPharmR psoriasis PK studies; LEO 29102 explant cAMP and crisaborole AD biomarkers",
+   "outcome": "none",
+   "detail": "Topical with no model exposure target gives no dose comparison (dose 1-2 stand); AD engagement does not import across diseases (only safety imports)"
+  },
+  {
+   "lead": "[models check] Youn 2023 inducer confirmed as imiquimod",
+   "outcome": "covered",
+   "detail": "Duplicate of lead 2 (inducer confirmed imiquimod from PMC10066830); the entry is written there, on the existing track."
+  },
+  {
+   "lead": "[models check] Dong 2016 adds no model_id",
+   "outcome": "covered",
+   "detail": "Duplicate of lead 1: no new model_id; Dong 2016 is a note on pde4-mouse-phorbol-ear-edema efficacy 3, not an entry (see lead 1)."
+  },
+  {
+   "lead": "[models check] Hashim 2020 JAAD (PMID 31279028) crisaborole intertriginous/facial psoriasis trial",
+   "outcome": "covered",
+   "detail": "Patient trial with status unchanged (efficacy 3 contra stands); changes nothing scored. Recorded as a patient_trials row on the added Youn 2022 entry, the result it cites; population scope is rule question 10."
+  }
  ]
 }

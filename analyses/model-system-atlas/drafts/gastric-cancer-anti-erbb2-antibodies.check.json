@@ -62,7 +62,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Catenacci 2020 (PMID 32653053) quote verbatim; NCT02689284 results posted 2022-08-04 confirmed. Decision 16: tolerated margin (15-150 mg/kg) held at 15 mg/kg q3w with no DLT. The 'enough' half stays untested, as the draft says."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Catenacci 2020 'acceptable safety and tolerability; no dose-limiting toxicities in the dose-escalation phase' verbatim. ASCO 2018 abstract 4030 resolves (2018-05-20; title only): year 2018. Decision 16 margin held; combination_with pembrolizumab right."
   },
   {
    "cell": "dose",
@@ -87,14 +88,13 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2017,
-   "rule": "6 (earliest public date)",
-   "note": "Status contra is right: JACOB primary OS HR 0.84, p=0.057 (abstract verbatim; NCT01774786 results 2018-02-14 confirmed). Year: the result was presented at ESMO 2017 (abstract 616O; ASCO Post 2017-11-25 reports it), so earliest public date is 2017 if congress abstracts count (rule question 1)."
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Tabernero 2018 (PMID 30217672) conclusion verbatim in abstract; primary OS HR 0.84, p=0.057 missed. ESMO 2017 abstract resolves (Crossref doi 10.1093/annonc/mdx369, Ann Oncol Sept 2017, 'Final analysis... JACOB'; title only): year 2017. Combination and design in note; drug/route/population right."
   },
   {
    "cell": "efficacy",
@@ -109,16 +109,13 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "same",
-   "proposed_year": 2018,
-   "rule": "same (agreement in direction for >=1 member drug) and prediction_level patient; rule 6 for the year",
-   "note": "The patient-level prediction WAS compared: ASCO 2018 abstr 4030 (CP-MGAH22-05, doi 10.1200/JCO.2018.36.15_suppl.4030): 'Responses were independent of FcR genotype; CD16A genotype for evaluable pts with PR: 1 V/V, 2 V/F, 2 F/F'. Same, direction_only, low confidence (n=5, pembrolizumab combo); tier-1 record Catenacci 2020.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "RULE QUESTION: can a differential patient-level prediction (158F carriers gain over wild-type Fc) score same from an n=5 exploratory genotype tabulation in a single-arm pembrolizumab combination with no wild-type-Fc comparator, when the source calls responses genotype-independent? Decisions 4/11 silent."
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Catenacci 2020 (PMID 32653053) '17 (18.48%...) of 92' verbatim in abstract. ASCO 2018 abstract 4030 resolves (Crossref 2018-05-20, title only): year 2018. Single-arm combination on primary ORR in predicted direction: same, partial. Retrodiction vs ToGA stays a rule question."
   },
   {
    "cell": "efficacy",
@@ -138,19 +135,19 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Xu 2023 (PMID 36370604, epub 2022-10-19) quote verbatim; ORR was a primary endpoint; NCT03925974 has no posted results (confirmed). Monotherapy single-arm same, direction_only, is consistent with how the margetuximab combos were handled."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Xu 2023 (PMID 36370604) HER2-high ORR 56% verbatim. ASCO 2021 e16005 resolves (Crossref 2021-05-20, title 'preliminary efficacy of KN026... gastric'; text not read): year 2021. Monotherapy single-arm, same; drug/route/population right."
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2025,
-   "rule": "6 (earliest public date)",
-   "note": "Liu 2026 (PMID 41571045) resolves, quotes verbatim, both co-primaries met; NCT05427383 has no results (confirmed). But the interim was public at ESMO 2025 (LBA oral, 17 Oct 2025; Alphamab PR Newswire Oct 2025) and the phase II part is in Cancer Commun 2025 (PMID 41273757), so year 2025."
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Liu 2026 (PMID 41571045) conclusion verbatim; both co-primaries met, design in note. NCT05427383 is phase II/III; its phase II part (Cancer Commun, doi 10.1002/cac2.70080) epub 2025-11-22, so 2025 holds; ESMO 2025 LBA not independently located."
   },
   {
    "cell": "safety",
@@ -162,19 +159,20 @@
    "proposed_status": "same",
    "proposed_year": 2013,
    "rule": "6 (earliest public date)",
-   "note": "EPAR (EMA/17250/2013, dated 13 Dec 2012) downloads and the quote is verbatim at the non-clinical discussion; comparison_stated and imported_from breast are right. The CHMP report became public with the March 2013 EU decision, so year 2013, print_year 2013."
+   "note": "EPAR (EMA/17250/2013, dated 13 Dec 2012) downloads and the quote is verbatim at the non-clinical discussion; comparison_stated and imported_from breast are right. The CHMP report became public with the March 2013 EU decision, so year 2013, print_year 2013.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed. Rule 6: the Perjeta EPAR (EMA/17250/2013) became public with the March 2013 EU decision; the December 2012 CHMP date is internal. Year 2013, print_year 2013."
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2017,
-   "rule": "6 (earliest public date)",
-   "note": "JACOB AE sentence verbatim in abstract; grade 3-5 diarrhoea 13% vs 6% supports the monkey-predicted harm holding in gastric patients. Same year caveat as efficacy #2 (ESMO 2017)."
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Tabernero 2018 AE sentence verbatim (diarrhoea 51 [13%] vs 25 [6%]); monkey-predicted diarrhoea held in gastric patients measured. Year 2017 from ESMO 2017 abstract mdx369 (resolves; title only). Drug, route, combination right."
   },
   {
    "cell": "safety",
@@ -194,7 +192,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Catenacci 2020 quote verbatim; model_src FDA review resolves in the bundle, and its ePPND text does record hypersensitivity reactions in monkeys, so the species could show infusion-type harm and the draft's same-not-contra reasoning on IRRs stands."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Catenacci 2020 grade 3-4 AE sentence verbatim in abstract; ASCO 2018 abstract 4030 resolves (2018-05-20; title only), so year 2018. Gastric patients measured, nothing imported; infusion-reaction reasoning stands; combination_with pembrolizumab."
   },
   {
    "cell": "dose",
@@ -210,17 +209,13 @@
   {
    "cell": "dose",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2017,
-   "rule": "7 (dating), bound to efficacy #2's pending question; decision 4 case 3 for the status",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Tabernero 2018 (PMID 30217672) quote verbatim; Kang 2014 (62.7 ug/mL) and Kirschbrown 2019 (99.3% >=20 ug/mL at steady state, no OS difference across exposure quartiles) confirm the target was reached: derived contra holds. Year must follow efficacy #2 (ESMO 2017 if congress abstracts count).",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): the 20 ug/mL xenograft trough target was met in gastric patients"
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kang 2014 (PMID 24960402, epub 2014-06-24, Crossref) day-43 Cmin 40.0 and 62.7 ug/mL verbatim, above the 20 ug/mL xenograft target from the 2012 FDA review: target reached, same. Year 2014 is the earliest public date; failure stays in efficacy."
   },
   {
    "cell": "efficacy",
@@ -247,6 +242,36 @@
    "note": "Retrodiction flag right: Discussion opens on JACOB's 'formally negative results'. But the model's prediction was conditional on >=8 copies and the source attributes JACOB's miss to IHC/ISH selection it never modelled; source_calls_it unresolved maps to untested under #90. Note overstates: pertuzumab-arm CR <=3/8 (GTR0108/0233/0277), GTR0402 PR; 5/8 pools lapatinib. 'Apparently discordant' sentence unverified (Discussion truncated in scrape).",
    "adjudicated_status": "untested",
    "adjudication_note": "Decision 4 Also-clause (#35/#72, #90): the PDX predicted only for >=8-copy tumours; JACOB's IHC/ISH population was never modelled, the source attributes the miss to that selection, and unresolved maps to untested. Decision 10's contra presumes a reproduction attempt."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "drop",
+   "proposed_year": 2017,
+   "rule": "DRAFTER_BRIEF dose table: target reached is same, a reached-then-failed trial is efficacy's failure only; one entry per status change",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "OS quote verbatim; year 2017 (ESMO 2017, mdx369) right. Contra rests only on JACOB's OS miss after the target was reached, which dose 6 already scores same on this track: duplicate, drop. confidence_note still says 'year 2018', stale.",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Dose table: target reached is same and a reached-then-failed trial is efficacy's failure only (efficacy 2). Dose 6 already scores same on this track; one entry per status change, so drop."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2021,
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date, congress abstract)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Catenacci 2022 (PMID 36029651) ORR 53% sentence verbatim; single-arm combination, same holds. MAHOGANY cohort A was public earlier as ESMO 2021 poster 1379P (Crossref doi 10.1016/j.annonc.2021.08.1488, Ann Oncol Sept 2021; title only), so year 2021.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed (single-arm combination, primary ORR in predicted direction). Rule 6: ESMO 2021 poster 1379P (Ann Oncol Sept 2021, Crossref verified) is the earliest public date; year 2021."
   }
  ],
  "missing": [
@@ -261,6 +286,7 @@
   "Dose track attribution: when the programme's exposure target (pertuzumab 20 ug/mL trough) was stated by a different model system (breast xenografts) than the efficacy model on the track (N87 gastric xenograft), does 'reached, failed, abandoned' put contra on a separate track for the model that stated the target, or stay untested on the efficacy model's track (the draft's own treatment of KN026)?",
   "Patient-level predictions in single-arm combination trials: is an exploratory genotype-by-response tabulation (5 responders, margetuximab plus pembrolizumab, no wild-type-Fc comparator) an admissible comparison for `same` when the model's claim was a differential (158F carriers gain most), or does it need a comparator arm?",
   "A retrodiction model (Ughetto 2021 PDX) that contradicts the class-level patient result while proposing an untested patient-level selection rule: one track with a class-level contra entry plus a patient-level untested entry, or two prediction levels on one entry?",
-  "Member list: zanidatamab, a biparatopic anti-ERBB2 antibody with a phase 3 in HER2-positive GEA (HERIZON-GEA-01, NCT05152147; reported 2025), is absent from the tile's members while the biparatopic anbenitamab is included - intended split by modality group?"
+  "Member list: zanidatamab, a biparatopic anti-ERBB2 antibody with a phase 3 in HER2-positive GEA (HERIZON-GEA-01, NCT05152147; reported 2025), is absent from the tile's members while the biparatopic anbenitamab is included - intended split by modality group?",
+  "Retrodiction scope: trastuzumab (non-member, same target and action) succeeded in HER2-positive gastric cancer in ToGA (2009-2010) before the fc-optimised (2011) and CRIB (2017) models were public. Read literally, the efficacy rule makes their same entries (efficacy 4, 6, 7, 10) retro; does a non-member result in another line or regimen count?"
  ]
 }

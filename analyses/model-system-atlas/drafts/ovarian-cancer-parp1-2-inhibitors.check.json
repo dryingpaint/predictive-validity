@@ -11,7 +11,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Kinders 2008 (PMID 18980982) resolves; quote verbatim in abstract. Veliparib is a member; opening untested at model_first_use_year correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kinders 2008 (PMID 18980982, Clin Cancer Res 2008-11-01) quote verbatim in abstract. Untested opener holds; veliparib is a member, oral matches the Kummar patients, unselected fits the mixed xenograft panel."
   },
   {
    "cell": "engagement",
@@ -20,7 +21,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Kummar 2009 (PMID 19364967, epub 2009-04) resolves; quote verbatim. Same PAR ELISA design as the Kinders model; proximal readout; mixed advanced cancers acceptable for engagement. Pairing correctly marked comparison_stated false."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Kummar 2009 (PMID 19364967, epub 2009-04-13) quote verbatim. Retro holds: Kinders public 2008-11, after Fong ASCO 2008 abstract 5510 (2008-05-20) PD-guided olaparib escalation. Oral veliparib; mixed solid tumours/lymphoma = other_disease; proximal readout."
   },
   {
    "cell": "dose",
@@ -29,7 +31,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Jones 2009 (PMID 19873981) quote verbatim. model_filed true confirmed: the 2017 niraparib review cites BRCA1/2-deficient xenografts and HRD PDX models."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Jones 2009 (PMID 19873981, J Med Chem 2009) quote verbatim in abstract. Untested opener correct; oral niraparib, BRCA1-deficient model = biomarker_selected. Tolerability claim moved to safety, so the harm is counted once."
   },
   {
    "cell": "dose",
@@ -38,7 +41,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in bundle 208447 MultidisciplineR clin-pharm (p.10-22); the review also states >=50% PBMC PARP inhibition from 80 mg. Target reached, NOVA positive -> same; margin_stated false is right (no nonclinical margin stated)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in bundle 208447 MultidisciplineR (clin-pharm). PBMC >50% target stated preclinically and reached above 80 mg/day in phase 1 mixed solid tumours: same; other_disease and oral fit; margin_stated false correct."
   },
   {
    "cell": "efficacy",
@@ -47,16 +51,18 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Jones 2009 quote verbatim in abstract; BRCA-selective cell killing and BRCA1-deficient xenograft activity; opening untested correct."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Jones 2009 abstract quote verbatim; oral niraparib, BRCA-deficient cells/xenograft = biomarker_selected. Untested 2009 opener correct."
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Mirza 2016 (PMID 27717299, epub 2016-10-07) quote verbatim; NCT01847274 results first posted 2019-05-01 and gBRCA PFS is a registered primary outcome. Should add ARIEL4 OS detriment as outcome_tested (see missing)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NOVA (PMID 27717299, epub 2016-10-07) quote verbatim in abstract; NCT01847274 primary = gBRCA PFS, results posted 2019-05-01. Retro holds: Jones 2009 post-dates Fong ASCO 2008/NEJM 2009 olaparib BRCA ovarian responses. outcome_tested negative per adjudication; oral."
   },
   {
    "cell": "safety",
@@ -65,7 +71,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in 209115 review; next sentence says patients' ALT/AST rises were absent in animals. same+partial is defensible under the partial clause, but a strict silence-contradicted reading gives contra; raised as rule question."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in bundle 209115 review; next sentence: ALT/AST rises in patients not seen in animals (partial). ARIEL2 (epub 2016-11-29) reported grade>=3 anaemia 22% and ALT/AST rises before the Dec 2016 review: retro holds; oral rucaparib."
   },
   {
    "cell": "safety",
@@ -74,33 +81,75 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim; BP +13-20% at 1 mg/kg = 0.7x unbound Cmax; label grade 3-4 hypertension 9% vs 2%. Status fine, but model_change: true is misused (no preceding contra); should be false."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in bundle 208447 review (dog BP/HR rise at 0.7x unbound Cmax, vagotomy caveat). Study first public in 2017 review after NOVA (epub 2016-10-07) and Sandhu 2013: retro holds; oral, stage_or_line fine."
   },
   {
    "cell": "dose",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Berek 2018 (PMID 29767688) conclusion quoted verbatim (abstract). Decision-tree on NOVA safety population; untested at 2018 is right, prediction_level patient fits a rule choosing per-patient start dose. Not a retrodiction: NORA/PRIMA ISD outcomes unknown then."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Berek 2018 (PMID 29767688) conclusion verbatim. In-silico model fitted to NOVA platinum-sensitive recurrent patients: stage_or_line, oral niraparib correct; prospective opener untested."
   },
   {
    "cell": "dose",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NORA (PMID 33453391, epub 2021-01-14) conclusion verbatim. Platinum-sensitive recurrent, BRCA-mutant and wild-type, so stage_or_line is right; oral niraparib; same with margin_stated true holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Drew 2011 JNCI (PMID 21183737, epub 2010-12-23) quote verbatim. Untested 2010 opener; oral rucaparib, BRCA-mutant/silenced models = biomarker_selected."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Swisher 2017 (PMID 27908594, epub 2016-11-29) quote verbatim; NCT01891344 primary PFS by HRD subgroup, results posted 2021-07-13. Single-arm scored on primary in predicted direction; 2016 earliest; retro since Drew post-dates olaparib BRCA responses; oral."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Jones 2009 'well tolerated in vivo' verbatim in abstract; scored as a safety prediction per the drafter brief. Untested 2009 opener at model_first_use_year; oral niraparib; precedes niraparib's first patient data (2010)."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "NORA (PMID 33453391, epub Jan 2021) conclusion verbatim; 249 ISD, 235 at 200 mg, PFS HR 0.32. Prospective test, so same not retro. NORA lacks an FSD arm; Mirza 2023 PRIMA (PMID 37060236) confirms similar efficacy, better haem safety with ISD."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NOVA abstract quote verbatim (grade 3-4 thrombocytopenia 33.8%, anaemia 25.3%, neutropenia 19.6%). Mice can show myelosuppression, so silence contradicted: contra. Not retro (Jones 2009 precedes niraparib patients). Ovarian patients measured; stage_or_line, oral."
   }
  ],
  "missing": [
   "ARIEL4 (rucaparib vs chemotherapy, BRCA-mutant relapsed ovarian; NCT02855944, results posted 2022-02-11): primary invPFS met (Kristeleit, Lancet Oncol 2022), but final OS 19.4 vs 25.4 months (Lancet Oncol 2025, PIIS1470-2045(24)00674-0); FDA treatment indication voluntarily withdrawn June 2022. Status stays same on the primary endpoint, but efficacy should carry this as a patient_trials item / outcome_tested: negative.",
   "NOVA final OS (gBRCA HR ~0.85, not significant; non-gBRCA OS detriment) led to the 2022 restriction of niraparib 2L maintenance to gBRCA; relevant to outcome_tested, not to the PFS-based status.",
-  "Stenoparib (2X-121, member) phase 2 NCT03878849 in platinum-resistant ovarian cancer, DRP-selected not BRCA-selected; sponsor press releases only (Allarity 2025), positive in tone, outside the BRCA/HRD population; no failure to add."
+  "Stenoparib (2X-121, member) phase 2 NCT03878849 in platinum-resistant ovarian cancer, DRP-selected not BRCA-selected; sponsor press releases only (Allarity 2025), positive in tone, outside the BRCA/HRD population; no failure to add.",
+  "Rucaparib efficacy track: ARIEL3 (Coleman 2017 Lancet, doi 10.1016/S0140-6736(17)32440-6, PMID 28916367) BRCA-mutant cohort primary PFS vs placebo is the first randomized patient test of Drew 2011's prediction (ARIEL2 Part 1, Swisher 2017 Lancet Oncol, single-arm, earlier); the track's 'same' should date 2017."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

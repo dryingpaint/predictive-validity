@@ -351,5 +351,17 @@
   "ACU193 vs lecanemab ex-vivo mouse brain binding (2026) and B28 APP knock-in mice (2026): no patient comparison.",
   "Human genetic (APP A673T protective variant) and PSEN1 E280A kindred (API Colombia): the first bears on Aβ production (BACE tile); the second is a patient population tested in a trial, not a model.",
   "Patient-derived cells, organoids or ex-vivo drug sensitivity for anti-Aβ antibodies: none found."
+ ],
+ "gaps": [
+  {
+   "lead": "safety, lecanemab, contra (tg-arcswe-mab158 plus Tg2576 with mAb158), year 2023: SumR no mAb158 microhemorrhage vs Clarity AD excess ARIA-H",
+   "outcome": "tracked",
+   "detail": "tg2576-mab158, safety: 2009 untested opening, 2023 same (Study 201 ARIA-H 6% vs 5%, Jan 2023 label), 2023 contra (Clarity AD ARIA-H 17% vs 9%, Jul 2023 label); the SumR line cited covers the APPArcSwe half too, so no parallel tg-arcswe-mab158 safety track is added"
+  },
+  {
+   "lead": "efficacy, lecanemab: Study 201 missed its 12-month Bayesian ADCOMS gate (64% vs 80%) before Clarity AD met its primary in 2022",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: check.json adjudicates efficacy entry 3 (tg-arcswe-mab158, 2022) to untested (rules 4 and 8; the mouse behavioural null was not relied on and the model stated no benefit prediction on a clinical endpoint), so the track has no benefit prediction for Study 201's missed 12-month Bayesian ADCOMS gate (Swanson 2021, doi 10.1186/s13195-021-00813-8) to be scored against; draft entry 3 judgement already records the 201 miss."
+  }
  ]
 }

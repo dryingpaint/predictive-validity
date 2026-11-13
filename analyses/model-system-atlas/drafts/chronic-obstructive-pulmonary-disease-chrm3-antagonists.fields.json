@@ -1,0 +1,61 @@
+{
+ "tile": "chronic-obstructive-pulmonary-disease-chrm3-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, year 2012 -> 2011: retrodiction rule (model first public after tiotropium and AZD9164's own 2011-08-05 registry FEV1 results); rule 6 earliest public pairing 2011 (NCT00939211 results + Mete 2011)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, year 2012 -> 2011: retrodiction rule (model first public after tiotropium and AZD9164's own 2011-08-05 registry FEV1 results); rule 6 earliest public pairing 2011 (NCT00939211 results + Mete 2011)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, year 2012 -> 2011, margin_stated true: AZD9164's own registry results (2011-08-05) public before Mete 2011 (dose retrodiction counts the same drug only); rule 6 date; decision 16 held margin (Jorup 2014)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "status same -> retro: retrodiction rule for target claims (Glossop 2011 first public after tiotropium and AZD9164 patient FEV1 results); dose stays same because PF-03635659's own results were public only in 2016"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status same -> retro: retrodiction rule for target claims (Glossop 2011 first public after tiotropium and AZD9164 patient FEV1 results); dose stays same because PF-03635659's own results were public only in 2016"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same -> retro, year 2018 -> 2016: retrodiction rule (rat/dog paper 2013 post-dates tiotropium and AZD9164 patient FEV1 results); rule 6 earliest public comparison NCT02040792 results 2016-12-07"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "year 2018 -> 2016: rule 6 earliest public comparison, NCT02040792 results posted 2016-12-07 (dose 350 ug no gain over 175 ug)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro, year 2018 -> 2016: retrodiction rule (rat/dog paper 2013 post-dates tiotropium and AZD9164 patient FEV1 results); rule 6 earliest public comparison NCT02040792 results 2016-12-07"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "status same -> retro: retrodiction rule, model first public 2018 (Hegde 2018 / FDA review) after revefenacin's own NCT02040792 results 2016-12-07 and after earlier M3-antagonist COPD results"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "what": "status same -> retro: retrodiction rule, model first public 2018 (Hegde 2018 / FDA review) after revefenacin's own NCT02040792 results 2016-12-07"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "status same -> retro: retrodiction rule, model first public 2018 (Hegde 2018 / FDA review) after revefenacin's own NCT02040792 results 2016-12-07 and after earlier M3-antagonist COPD results"
+  }
+ ],
+ "added": []
+}

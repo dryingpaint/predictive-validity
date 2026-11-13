@@ -12,7 +12,8 @@
   "FDA bundle grep for a dasabuvir monotherapy log10 sentence -> only MedR 978 (the reviewer-error sentence the checker flagged), not used",
   "Europe PMC REST search for Reddy 2012 (PMC3370793); fullTextXML not served; PubMed PMC full text returned empty",
   "WebFetch pmc.ncbi.nlm.nih.gov/articles/PMC3370793/ (two passes): Table 1 rows ABT-333 400/800 mg BID observed -1.08/-0.95 (predicted -1.3), ABT-072 -1.07 to -1.57; 'the model predicts VL decreases within about 0.5-log10 units with good confidence'; no prose sentence names ABT-333's number",
-  "drafts/lint.py rules read: consecutive same-status entries need strengthens; non-untested engagement entries need readout_tier; endpoint_role enum allows null"
+  "drafts/lint.py rules read: consecutive same-status entries need strengthens; non-untested engagement entries need readout_tier; endpoint_role enum allows null",
+  "Gap pass: PubMed esearch (tegobuvir OR GS-9190) AND (hERG OR QT OR cardiac OR toxicity OR safety) -> 3 hits (Bioorg Med Chem 2018 SAR paper: analogue hERG 'improvement over tegobuvir', no patient comparison; Lawitz 2014 Hepatology LDV/VDV/TGV/RBV phase 2, no cardiac signal; Clin Liver Dis 2013 review); no tier 1-3 tegobuvir hERG/cardiac model source"
  ],
  "added_models": [
   {
@@ -172,7 +173,12 @@
       "endpoint_role": null,
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT01464827", "registry_date": "2015-01-06", "doi": "10.1128/AAC.00998-15", "quote": "The most prevalent treatment-emergent resistance-associated variants (RAVs) in GT1a were R155K and D168V in NS3, M28T and Q30R in NS5A, and S556G in NS5B."}
+       {
+        "nct": "NCT01464827",
+        "registry_date": "2015-01-06",
+        "doi": "10.1128/AAC.00998-15",
+        "quote": "The most prevalent treatment-emergent resistance-associated variants (RAVs) in GT1a were R155K and D168V in NS3, M28T and Q30R in NS5A, and S556G in NS5B."
+       }
       ],
       "reason": "Chimp sibling resistance sites recurred in patients"
      }
@@ -262,7 +268,12 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT01973049", "registry_date": null, "doi": "10.1001/jama.2015.3868", "quote": "SVR12 rates were 98% (97.5% CI, 88.9%-100%) for patients in the treatment-naive group and 93% (97.5% CI, 85.0%-100.0%) for those in the treatment-experienced group when ribavirin was included in the regimen."}
+       {
+        "nct": "NCT01973049",
+        "registry_date": null,
+        "doi": "10.1001/jama.2015.3868",
+        "quote": "SVR12 rates were 98% (97.5% CI, 88.9%-100%) for patients in the treatment-naive group and 93% (97.5% CI, 85.0%-100.0%) for those in the treatment-experienced group when ribavirin was included in the regimen."
+       }
       ]
      },
      {
@@ -322,5 +333,37 @@
   "Earlier Chayama-lab chimeric-mouse NS3+NS5B combination study cited in Shi 2013's abstract: not verified whether its NS5B inhibitor was a non-nucleoside, so not used to date the track's first use.",
   "Dasabuvir 3-day monotherapy registry record NCT00696904: no posted results (per the draft), so Reddy 2012 Table 1 is the patient side for the chimpanzee engagement pairing.",
   "IL28B host genotype: a marker of interferon response, not a model of the NNI class; no entry."
+ ],
+ "gaps": [
+  {
+   "lead": "Chimpanzee (HCV-infected) dosed with A-837093 (Chen/Long 2007 AAC)",
+   "outcome": "tracked",
+   "detail": "hcv-chimpanzee: engagement 2007 untested + 2012 entry (check engagement 4-5), efficacy 2007 untested + 2014 entry (check efficacy 4-5); added_models item already in this file and merged into the draft"
+  },
+  {
+   "lead": "Human-hepatocyte chimeric (uPA-SCID) mouse with BMS-821095 NNI (Shi 2013 Gut)",
+   "outcome": "tracked",
+   "detail": "hcv-chimeric-mouse-upa-scid: efficacy 2013 untested, 2015 same (beclabuvir UNITY-2), 2018 same (check efficacy 6-8); earlier first use via Kneteman 2009 HCV-796 is the checker's efficacy-6 verdict"
+  },
+  {
+   "lead": "Replicon resistance-pathway prediction compared in patients (filibuvir M423, dasabuvir S556G/C316Y/M414T, lomibuvir DUAL breakthrough)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored. A resistance-substitution overlap compares no primary endpoint; the check's adjudication of efficacy 5 (decision 4) scores the same kind of comparison on the chimpanzee track untested, so filibuvir M423 (2011) and dasabuvir S556G/C316Y/M414T would add only an untested entry after hcv-gt1-replicon efficacy 1 (2009 untested), no status change; rule question 4 in the check carries the open question. The lomibuvir DUAL breakthrough (Di Bisceglie 2014, PMID 24901821, first published 2014-07-01) post-dates the replicon track's efficacy 3 contra (2014-01-27), so the track's 2014 contra is unchanged."
+  },
+  {
+   "lead": "Beclabuvir as second approved member (Ximency, PMDA Dec 2016; UNITY-2; Lemm 2014 replicon)",
+   "outcome": "covered",
+   "detail": "Changes nothing scored. The tile-note correction ('only dasabuvir reached approval'; beclabuvir approved in Japan as Ximency, Dec 2016) is a note. A 2015 beclabuvir same (UNITY-2) on hcv-gt1-replicon efficacy would follow that track's efficacy 3 contra (filibuvir, 2014); one drug's contra beats another's same on the same track, so the track stays contra and UNITY-2 is at most a patient_trials record; beclabuvir already scores on hcv-chimeric-mouse-upa-scid efficacy 7."
+  },
+  {
+   "lead": "Tegobuvir QT signal (2007) and 2011 dosing halt, tier 5 patient side",
+   "outcome": "none",
+   "detail": "source-tier rule: patient side is tier-5 press releases and no tier 1-3 tegobuvir hERG/cardiac model source exists (PubMed search: only a 2018 SAR paper comparing analogues with tegobuvir hERG, no patient comparison)"
+  },
+  {
+   "lead": "Registry check for setrobuvir NCT01903954/NCT00978497 and tegobuvir NCT00743795",
+   "outcome": "none",
+   "detail": "no posted results, so no patient result to compare a model with; the draft's 'not scored' for those members stands"
+  }
  ]
 }

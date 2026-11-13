@@ -1,0 +1,52 @@
+{
+ "tile": "b-cell-non-hodgkin-lymphoma-ms4a1-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug di-leu16-il2, route sc set from the SC trial (NCT01874288)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug MB-CART20.1, route iv; judgement records the co-culture as post-dating the ASH 2022 lymphoma expansion data"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true, year 2026 -> 2024: lymphoma expansion public in the ASH 2022 abstract (15 Nov 2022) before the 2024 co-culture (retrodiction rule; congress-abstract dating); drug MB-CART20.1, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug di-leu16-il2, route sc, combination_with rituximab (low-dose B-cell depletion, ASH 2016 abstract)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug di-leu16-il2, route sc"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2020 -> 2015: SC responses first public in the ASH 2015 abstract (earliest public date ruling); single-arm design and rituximab combination written into note; drug di-leu16-il2, route sc, combination_with rituximab; NCT00720135 (IV) moved out of patient_trials to its own track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug MB-CART20.1, route iv"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug di-leu16-il2, route sc, combination_with rituximab"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "New IV track (Daudi SCID model x di-leu16-il2 x iv): untested/unsettled 2013, IV pilot NCT00720135 has no registry results; 1 CR of 7 public only in the ASH 2013 abstract; primary endpoint MTD"
+  }
+ ]
+}

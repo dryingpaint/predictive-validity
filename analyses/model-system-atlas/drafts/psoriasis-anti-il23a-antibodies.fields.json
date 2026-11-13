@@ -1,0 +1,72 @@
+{
+ "tile": "psoriasis-anti-il23a-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug mirikizumab -> tildrakizumab, route iv: kept as the opener (untested 2013) of the hil23-intradermal x tildrakizumab x iv track that entry 5 scores; mirikizumab's own track gets an appended opener"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "status same -> retro, retrodiction true: model first public 2023 after the 2015 tildrakizumab lesional-transcript result for the same target (retrodiction rule; settles checker rule question on dating, year stays 2023); drug tildrakizumab, route iv"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: the cyno NOAEL margin was first public in the 2018 label/EPAR, after tildrakizumab's own patient dosing (Papp 2015, Reich 2017) - retrodiction rule for dose (same drug's own earlier patient result); settles checker rule question 3; drug tildrakizumab, route sc"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug tildrakizumab, route sc: opener of the xenograft x tildrakizumab x sc track; no status change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "route iv -> sc, src/quote Kopp 2015 -> Papp 2015 phase 2b (NCT01225731, registry 2015-03-30), endpoint_role poc_gate -> primary; status same and year 2015 unchanged. The IV phase 1 comparison moves to appended entry 11"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug mirikizumab, route sc: now its own track (strengthens -> false); status same 2019 unchanged. No opener appended: an appended 2010 opener would follow the 2019 entry and break year order"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug tildrakizumab, route sc (reSURFACE PASI 90); retro unchanged - retrodiction rule confirms it (model first public 2021, after the patient results)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug 'class' (human genetics, tied to no drug), route iv (Kopp 2015 IV phase 1); entry 8 likewise; no status change"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: cyno 'very well tolerated' (a passing tolerability claim, scored) first public 2018, after tildrakizumab's own patient safety results (Papp 2015, Reich 2017); drug tildrakizumab, route sc"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "status same -> retro, retrodiction true: surrogate infection model first public in the 2018 EPAR, after tildrakizumab's own 2015/2017 patient infection data (safety retrodiction rule); drug tildrakizumab, route sc"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "opener, hil23-intradermal-skin-pd-mouse x mirikizumab x sc, untested 2013 (not_measured); track split from entry 4, which now opens the tildrakizumab track"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "opener, psoriasis-xenograft-agr129 x tildrakizumab x iv, untested 2010 (Tonel 2010); split from entry 2"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "psoriasis-xenograft-agr129 x tildrakizumab x iv, same 2015 (Kopp 2015 IV phase 1, PASI 75 in all 3-10 mg/kg subjects, poc_gate); split from entry 2"
+  }
+ ]
+}

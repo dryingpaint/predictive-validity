@@ -11,7 +11,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Miwa 2011 (PMID 21657270) resolves; quote verbatim in abstract. Field fix: model_filed should be true, FDA 214846 PharmR p.32 summarises the castrated-cynomolgus LH study TAK-385-00095 (0.1-3 mg/kg, LH down 48 h at 3 mg/kg)."
+   "note": "Miwa 2011 (PMID 21657270, epub 2011-06-23) quote verbatim; untested opener right; relugolix, oral, unselected right. Opener post-dates Struthers 2008, so retrodiction could read true; status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -20,7 +21,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Nakata 2014 (PMID 24333551, epub 2013-12-18) resolves; quote verbatim. FDA PharmR p.32 study TAK-385-00103 confirms model_filed true."
+   "note": "Nakata 2014 (PMID 24333551, epub 2013-12-11) quote verbatim; untested opener right; relugolix, oral, unselected right. Post-dates Struthers 2008 (retrodiction true on the opener would be consistent); status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -29,7 +31,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "MacLean 2015 (PMID 26502357) resolves; quote verbatim. Europe PMC has no full-text XML for PMC4667159, so the macaque citation stays unverified as the drafter said. Healthy men count for engagement. Field fix: model_filed true (TAK-385-00095 filed)."
+   "note": "MacLean 2015 (epub 2015-10-26) quote verbatim. Struthers 2008 (PMID 19033369, epub 2008-11-25) re-read: elagolix suppressed gonadotropins in women before the 2011 monkey result, so retro right. Relugolix, oral; healthy men coded unselected acceptable.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -38,7 +41,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Same MacLean 2015 source; quote verbatim. Nakata abstract states prostate weight to castrate levels in male knock-in mice; castrate testosterone in men is a direction-only match."
+   "note": "MacLean 2015 abstract carries the >=80 mg/d castration sentence verbatim. Knock-in mouse (epub 2013-12-11) post-dates Struthers 2008: retro right. Relugolix, oral, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -47,7 +51,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Untested opening entry; no exposure target in Miwa 2011. Field fix: model_filed true (FDA PharmR p.32)."
+   "note": "Miwa 2011 quote verbatim; no exposure target or margin stated, untested right; relugolix, oral, unselected right. Latest untested entry on this track still lacks untested_reason (no_prediction).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -56,7 +61,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "FDA PharmR confirms 100 mg/kg BID effective and 30 mg/kg no-effect in female knock-in mice with no TK; a mg/kg dose without exposure is not a target. Untested stands."
+   "note": "Nakata 2014 quote verbatim; a mg/kg dose without PK is no target, untested right; relugolix, oral, unselected right. Sole entry on its track lacks untested_reason (no_prediction).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -65,8 +71,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "16",
-   "note": "FDA 214846 PharmR (posted 2021) quote verbatim; NOAEL 15 mg/kg = 26.2x for liver and menses cessation, 50 mg/kg (99x) liver toxicity. Margin stated and held at 40 mg in endometriosis (Osuga 2021, SPIRIT): decision 16 same. Source is the fibroid NDA; consider imported_from."
+   "note": "FDA 214846 PharmR NOAEL 15 mg/kg, 26X MRHD verbatim (prior read). Margin first public 2021, after relugolix's own endometriosis patients (Osuga epub 2020-09-07, re-read): retro right under the same-drug dose rule. Relugolix, oral.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -75,7 +81,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Yselty EPAR (EMA/266814/2022, 22 Apr 2022) p.18 states the monkey Clast >~20 ug/mL threshold and p.~60 the 100% E2 <20 pg/mL at 200 mg; verbatim. Human Clast not stated, so direction_only is right."
+   "note": "EPAR Clast >~20 ug/mL and E2 sentence verbatim. Linzagolix's own patient E2 was public first (2018-09-28 press release; Donnez 2020): retro right; split from relugolix right; oral. The E2 sentence pools phase 1 subjects: subjects mixed, not patients.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -84,8 +91,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "16",
-   "note": "EPAR quote verbatim (absolute margin <1, ~3-fold free drug). Patients reached 200 mg with slight AST/ALT excess, no block. Decision 16 has no row for a stated margin <1 that patients nevertheless tolerated; same + partial is defensible, raised as a rule question."
+   "note": "EPAR 'margins to NOAELs ... less than 1' verbatim. First public 2022, after linzagolix's own patients (2018 release; Donnez 2020): retro right; own linzagolix track, oral. Whether a sub-1 margin that held is same remains a rule question.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -94,7 +101,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Untested on the monkey track: LH/E2/menses are PD surrogates, no disease readout. Consistent only if the mouse track is scored the same way (see efficacy 4). Field fix: model_filed true."
+   "note": "Miwa 2011 sentence verbatim; monkey gives no disease readout, untested right; relugolix, oral, unselected right. Latest untested entry on this track lacks untested_reason (no_prediction).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -103,7 +111,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Nakata 2014 quote verbatim; the paper names endometriosis as an indication but tests uterine weight only. Opening untested entry is right."
+   "note": "Nakata 2014 closing sentence verbatim; uterine-weight opener untested right; relugolix, oral, unselected right. Post-dates Kupker 2002, so retrodiction true would be consistent; status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -112,21 +121,18 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Kim 2015 (PMID 26321528) resolves; quote verbatim. SKI2670 is a non-member proxy, product_in_model false. Tezuka 2023 uses renal-subcapsular autotransplantation; Kim's implant site is not stated in the abstract, pooling as one rat autotransplant system is reasonable."
+   "note": "Kim 2015 (PMID 26321528, epub 2015-08-28) quote verbatim; SKI2670 proxy opener of rat x linzagolix, product_in_model false, oral, unselected right. Judgement's 'without bone loss ... not scored' is now stale (safety 5-6).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2020,
-   "rule": "CHECKER_BRIEF_v3 §3 bullet 1 (pairing on conditions the model never tested); DRAFTER_BRIEF_v3 efficacy definition",
-   "note": "Osuga 2021 quote verbatim (epub 2020-09-12, NCT01458301 no results). The knock-in mouse never tested lesions or pain; uterine atrophy is the same oestrogen-deprivation surrogate as the monkey E2/menses readout the drafter left untested. Score both tracks alike; if the mouse stays same, the monkey must be same too.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4: efficacy scores the trial primary as the model predicted; the knock-in mouse predicted uterine atrophy (a PD surrogate), never pain or lesions. Decision 8: one rule per track, so the mouse is untested like the monkey."
+   "status_supported": true,
+   "note": "Osuga 2021 (epub 2020-09-07) quote verbatim. Kupker 2002 (PMID 12470539) re-read: cetrorelix gave 15/15 endometriosis patients a symptom-free period, before the 2013 mouse: retro right. Relugolix, oral. PD-only-model rule question stays open.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -135,8 +141,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "10",
-   "note": "Donnez 2020 (PMID 32505383) quote verbatim; NCT02778399 results posted 2022-07-21 confirmed; EPAR p.18 rat sentence verbatim; Tezuka 2023 (PMID 37186405, received 2023-01-31) cyst-volume quote verbatim. Prospective status rests on an unknown run date (rule question)."
+   "note": "Donnez 2020 (PMID 32505383) quote verbatim; EPAR rat implant sentence as previously read. Rat linzagolix result first public 2022, after Kupker 2002 and linzagolix's own phase 2: retro right. Linzagolix, oral, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -145,7 +151,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Osuga 2021 clause verbatim; FDA PharmR p.32 bone sentence verbatim, OVX control also null. Contra holds on a literal reading (species could show it, model data said none) but an insensitive null is a rule question. Year 2021 depends on Nakata 2014 full text not reporting bone; not checked (paywalled)."
+   "note": "Osuga 2021 clause verbatim (epub 2020-09-07); FDA PharmR bone sentence as previously read. Model public 2021 after relugolix's own patient BMD: retrodiction true, failed to reproduce, contra right. Relugolix, oral, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -154,7 +161,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "FDA PharmR 39-week monkey summary has no bone endpoint (grep: bone only as marrow/micronucleus); menses-cessation and uterine-atrophy predictions matched. Contra on BMD silence supported."
+   "note": "Osuga 2021 clause verbatim; 39-week monkey summary has no bone endpoint. Public 2021 after Osuga 2020: retrodiction true, contra right. Relugolix, oral, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -163,7 +171,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Donnez 2020 BMD sentence verbatim. EPAR nonclinical (pp.17-30) silent on bone; liver finding stated (p.~27 'increase in serum ALT and glutamate dehydrogenase'); the judgement's 'serum liver enzyme activity' sentence was not found verbatim, near only. Contra + partial supported."
+   "note": "Donnez 2020 BMD sentence verbatim. EPAR tox silent on bone; model public 2022, after linzagolix's own BMD (2018-09-28 release, Donnez 2020): retrodiction true, contra right. Own linzagolix track, oral.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -172,8 +181,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Yselty EPAR EMA/266814/2022 p.18 verbatim ('supressed' sic); rat Ki 274 nM p.17. Opening untested entry on a new rat track; the rat PD study's run date is not public (existing rule question 4 applies). model_filed true is right for an MAA primary-pharmacology study.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Yselty EPAR p.18 quote verbatim ('supressed' sic, per prior full-text read). Linzagolix, oral, unselected right; untested opener 2022 right. Post-dates Struthers 2008, so retrodiction true would be consistent.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -182,9 +191,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7, 11",
-   "note": "EPAR p.52 quote verbatim (clinical primary pharmacology); rat side p.18 verbatim. Pairing is the drafter's: E2 fell dose-dependently in rat and in women, no rat threshold quoted, so direction_only. A filed primary-pharmacology study, not post-hoc; 2022 is the first document carrying both sides.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "EPAR p.52 E2 <20 pg/mL sentence verbatim (prior full-text read); rat side p.18. Model first public 2022, after Struthers 2008: retro right. Linzagolix, oral; subjects mixed, population unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -193,13 +201,13 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": false,
-   "proposed_status": "same",
+   "proposed_status": "retro",
    "proposed_year": 2024,
-   "rule": "RQ 93 (dose = target reached); decision 7 dating; decision 11 magnitude",
-   "note": "Quote verbatim (en-dashes normalised). Donnez 2024 full text (PMC11144970, open) states: 'E2 levels were maintained within a therapeutic range (between 20 and 60 pg/ml) ... in patients who received 75 mg linzagolix daily' (Fig. 2). Target reached prospectively at 75 mg: same 2024, direction_only (trial band 20-60 vs model 20-50; medians only in the figure).",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "Decision 4 case 2: the model's E2 window was reached at 75 mg (Donnez 2024, 20-60 vs 20-50 pg/mL) and the drug worked (this track's efficacy entry 7, same/partial). Prospective under decision 10; no decision 16 block. Same, 2024."
+   "rule": "DRAFTER_BRIEF dose table (target reached); retrodiction rule (dose: same drug's own earlier patient result); rule 6 dating",
+   "note": "Pohl 2022 quote verbatim (PMID 34904270, epub 2022-01-13). Donnez 2024 full text (prior read): 75 mg held E2 in 20-60 pg/mL, the model's target reached. Model fitted to linzagolix phase 1-2 patients, earlier: retro 2024. Linzagolix, oral right.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Dose table 'target reached' plus dose retrodiction rule: model fitted to linzagolix's own earlier phase 1/2 E2; Donnez 2024 full text shows 75 mg held E2 in window. Reproduced, so retro (year 2024 per checker, rule 6)."
   },
   {
    "cell": "efficacy",
@@ -208,29 +216,28 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Pohl 2022 (PMC9306723) abstract and discussion verbatim (dashes normalised); received 2021-04-13, accepted 2021-11-21, epub 2022-01-13. Paper states its goal was phase 3 dose selection and that 75 mg was the selected phase 3 dose (NCT03992846). Decision 8 admits in-silico systems; the FLT3 exposure-response exclusion is a rule question, not a rule.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Pohl 2022 quote verbatim in abstract. Untested opener right; linzagolix, oral, unselected right. Post-dates Kupker 2002 and was fitted to patient data, so retrodiction true would be consistent.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "10, 11",
-   "note": "ObsEva topline 2022-01-06 precedes epub 2022-01-13 by 7 days, but the manuscript was received 2021-04-13 (before primary completion 2021-10-18) and the 75 mg arm fixed 2019-06-13; decision 10 ('post-dates and motivated by') is not met, so same + partial stands (DYS 44.0% vs 23.5%, NMPP p=0.279; model gave >95% for both). Donnez 2024 cites Pohl 2022 for PK/PD only and credits the dose to EDELWEISS 1, so comparison_stated false holds. EPAR 2022 has no EDELWEISS 3 data; 2024 dating right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Donnez 2024 quote verbatim; 75 mg NMPP P=0.279. ObsEva topline dated 2022-01-06 (verified) precedes Pohl epub 2022-01-13: retro, year 2022 right. Release says 75 mg 'did not meet the co-primary efficacy objective'; paper does not call it failure: partial kept, see rule question.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 8,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Flores 2025 (PMID 39393571, epub 2024-10-10, print 2025-02-01) quote verbatim in abstract. Cetrorelix only, product_in_model false; PR-stratified response to GnRH antagonism never tested in patients, so untested 2024 at patient level is right. Note the abstract also reports high-PR lesions responding 21-fold more completely to cetrorelix, so the model's stratification runs both ways.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "note": "Flores 2025 (PMID 39393571, epub 2024-10-10) quote verbatim. Cetrorelix only, no member drug or patients compared: drug 'class', route not_applicable defensible (see rule question). Latest untested entry lacks untested_reason (not_measured).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -239,13 +246,58 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": false,
-   "proposed_status": "same",
-   "proposed_year": 2024,
-   "rule": "safety definition (stated harm prediction held); decision 7 dating; decision 11 magnitude",
-   "note": "Model: 75-125 mg keeps 24-week LS BMD loss within the -1.6% target (50 mg -0.09%, 100 mg -1.30%, abstract verbatim). Donnez 2024 full text: 'BMD loss was not clinically meaningful (<1% from baseline for the lumbar spine, femoral neck, and total hip at 24 weeks)'; abstract gives <1% in both arms. Prospective at 75 mg alone: same 2024; magnitude within_2x on LS BMD (adjudicator's call).",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "Decision 4 safety: the model's stated prediction (24-week LS BMD loss within -1.6% at 75-125 mg) held in EDELWEISS 3 (<1% at 75 mg, Donnez 2024). Prospective under decision 10; decision 16 counts no window failure. Same, 2024."
+   "proposed_status": "retro",
+   "proposed_year": 2022,
+   "rule": "safety (stated harm prediction held); retrodiction rule (safety: same drug's own earlier result); rule 6 earliest date incl. press release",
+   "note": "Pohl quote verbatim; BMD model 'adjusted to the clinical data' of linzagolix phase 2: retrodiction. EDELWEISS 3 topline 2022-01-06 ('minimal BMD decrease', both doses) precedes Pohl epub 2022-01-13; Donnez 2024 <1% at 75 mg sets status: retro 2022.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Safety stated-harm rule plus same-drug retrodiction rule: BMD model adjusted to linzagolix phase 2 data, EDELWEISS 3 topline (2022-01-06) preceded Pohl epub; <1% loss at 75 mg reproduced. Retro, year 2022 (rule 6)."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tezuka 2023 (PMID 37186405, epub 2023-04-26) quote verbatim. No source compares the ~1 umol/L free target with patient free exposure: untested (not_measured) right. Linzagolix, oral, unselected right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kim 2015 abstract re-read: 'without bone loss' verbatim; a passing-tolerability claim is a scorable prediction and rats show oestrogen-deficiency bone loss. Untested 2015 opener, proxy SKI2670, oral linzagolix track right.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2018,
+   "rule": "rule 6 dating (earliest public date incl. sponsor press release)",
+   "note": "Donnez 2020 BMD sentence verbatim; contra right (prospective: Kim 2015 precedes any linzagolix BMD). But linzagolix's dose-graded BMD loss was first public 2018-09-28 (ObsEva phase 2b release: lumbar -2.60% at 200 mg), so year 2018.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status agreed (prospective proxy claim of no bone loss, patients lost BMD). Rule 6: ObsEva EDELWEISS phase 2b release 2018-09-28 (verified) first made the BMD loss public, so contra dated 2018."
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "EPAR p.18 Clast sentence verbatim (prior full-text read). Untested opener 2022 right (EPAR before Tezuka 2022 epub 2022-07-12); linzagolix, oral, unselected right. Post-dates linzagolix's own patient E2, so retrodiction true consistent.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "field_corrections": [
@@ -257,7 +309,8 @@
   "Patient-derived xenograft ('murine avatar') of human endometrioma lesions in NOD/SCID mice dosed with the GnRH antagonist cetrorelix: low-PR lesions respond more to GnRH antagonism than to MPA (F S Sci 2025, PMID 39393571, doi 10.1016/j.xfss.2024.10.004). A patient-level track for this mechanism with a non-member peptide sibling (product_in_model false, modality outside the tile); no patient comparison yet, so untested, but it is a model compared-in-principle with patients and should be listed.",
   "Rat autotransplant track has no dose entry although Tezuka 2023 (PMID 37186405) states a model exposure target: 'The effective concentration of linzagolix, calculated as the free form of the last-observed drug concentration, was ~1 umol/L in endometriosis model rats.' Comparable to human free exposure at 200 mg (EPAR gives ~3-fold free-drug margin); at least an untested opening entry, possibly same.",
   "Knock-in mouse reversibility prediction (Nakata 2014: gonadal function recovered within 14 days of withdrawal) matched by faster menses return on relugolix vs leuprorelin (Osuga 2022, PMID 34895700). A held prediction on the hgnrhr-knockin-mouse track; does not lift the bone contra but belongs in the record.",
-  "Nothing missed on failures: no endometriosis press-release or EMA failure for relugolix or linzagolix (EDELWEISS 2 termination already noted); opigolix/ASP1707 has no preclinical model on PubMed or Europe PMC (16 hits, all clinical or reviews), confirming the drafter's 'no public model'."
+  "Nothing missed on failures: no endometriosis press-release or EMA failure for relugolix or linzagolix (EDELWEISS 2 termination already noted); opigolix/ASP1707 has no preclinical model on PubMed or Europe PMC (16 hits, all clinical or reviews), confirming the drafter's 'no public model'.",
+  "Dating source for linzagolix patient BMD and E2: ObsEva phase 2b EDELWEISS final-results release, 2018-09-28 (globenewswire 1586251), lumbar spine BMD -0.80% (75 mg) to -2.60% (200 mg) at 24 weeks; predates Donnez 2020 and should date safety entries on linzagolix BMD."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
@@ -266,6 +319,9 @@
   "Decision 16 gap: the model stated an absolute liver margin <1 at the clinical exposure (EPAR), yet patients were dosed to 200 mg with only slight LFT excess. Is dose same with source_calls_it partial/over_predicted, or contra with magnitude opposite for a misplaced margin in the conservative direction?",
   "Retrodiction with an unknown run date: the linzagolix rat study is in the MAA primary-PD package (EPAR 2022) and was published in 2023, after the 2018 phase 2b readout; its run date is not public. Default prospective (same) or retro?",
   "Must every track open in every cell? The rat track appears only in efficacy and the tox track only in dose/safety; lint accepts this, the brief's 'each cell opens at model_first_use_year' is ambiguous.",
-  "Which area spelling is canonical: tiles.json 'endocrine' or the contexts' capitalised 'Endocrine'?"
+  "Which area spelling is canonical: tiles.json 'endocrine' or the contexts' capitalised 'Endocrine'?",
+  "Co-primary call when sponsor and paper differ: ObsEva's topline release says 75 mg 'did not meet the co-primary efficacy objective'; Donnez 2024 (tier 1) says only that 200 mg 'met the primary efficacy objective'. Does the sponsor's explicit failure call make efficacy 7 contra, or does the higher-tier paper's silence keep partial?",
+  "drug for a system dosed only with a non-member sibling (PDX avatar, cetrorelix): is 'class' right, given the brief reserves 'class' for systems tied to no drug?",
+  "Proxy safety claim on a member track: can SKI2670's 'without bone loss' (a non-member) be scored contra against linzagolix patients under the drug-specific safety rule?"
  ]
 }

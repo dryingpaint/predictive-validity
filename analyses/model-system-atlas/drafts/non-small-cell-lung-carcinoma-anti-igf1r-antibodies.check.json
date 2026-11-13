@@ -11,8 +11,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "evidence rule 6",
-   "note": "DOI resolves to Goetsch 2005 Int J Cancer (PMID 15386423); quote verbatim in abstract. h7C10 is dalotuzumab's parent, a member. Opening untested at 2005 is correct."
+   "rule": "track fields (drug, route); rule 6 opener",
+   "note": "Goetsch 2005 (PMID 15386423) abstract quote verbatim. h7C10 is the dalotuzumab parent, a member; patients got dalotuzumab iv. Untested opener 2005, unselected: holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -21,8 +22,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "engagement definition (readout_tier)",
-   "note": "Atzori 2011 CCR (PMID 21810918), dalotuzumab phase I, paired tumour biopsies; quote verbatim. Mixed solid tumours acceptable for engagement. 'direct' is defensible (tumour receptor and phospho-signalling); total IGF-1R fall is downregulation, arguably proximal."
+   "rule": "track fields; population_group",
+   "note": "Atzori 2011 (PMID 21810918, epub 2011-08-02) abstract quote verbatim; iv dalotuzumab in advanced solid tumours, so drug, route iv and other_disease fit. Direct readout; same holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -31,8 +33,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "dose table row 'no stated margin'; evidence rule 6",
-   "note": "Weickhardt 2012 JTO (PMID 22237261) quote verbatim. Untested holds: no model-stated exposure target or margin. But a year-2005 entry cites a 2012 source; the opening entry should cite Goetsch 2005. Other trials dosed members fully, so 'never reached' framing overstates."
+   "rule": "dose table: no stated target or margin -> untested; untested_reason no_prediction",
+   "note": "Weickhardt 2012 (PMID 22237261) quote verbatim: cixutumumab iv with full-dose erlotinib, unselected NSCLC. Drug, route, combination_with fit; xenografts used h7C10, product_in_model false; Goetsch states no exposure or margin.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -41,18 +44,20 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "evidence rule 6",
-   "note": "Goetsch 2005 abstract: A549 xenograft, h7C10 plus vinorelbine or anti-EGFR antibody 225 almost completely inhibited growth; quote verbatim."
+   "rule": "track fields; rule 6 opener",
+   "note": "Goetsch 2005 abstract quote verbatim (A549, h7C10 plus vinorelbine or antibody 225). Drug dalotuzumab, route iv, opener of the A549 dalotuzumab track: correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "efficacy definition (primary endpoint); contra",
-   "note": "Ramalingam 2011 JCO (PMID 22025157, PMC5320944) primary end point 12-week PFS rate, null; quote verbatim. Registry dates 2021-01-05, 2018-06-12, 2016-09-08 match ClinicalTrials.gov. Novello and E3508 quotes verbatim. Partner drugs differ from model (see rule question)."
+   "rule": "efficacy: combination with another active drug scored on primary endpoint",
+   "note": "Ramalingam 2011 (PMID 22025157, epub 2011-10-24) quote verbatim; primary 12-week PFS rate null; R1507 iv plus erlotinib vs placebo plus erlotinib, design in note; NCT00760929 results 2021-01-05. Contra holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -61,8 +66,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "checker item 4 (model relied on); evidence rule 6",
-   "note": "Novello quote verbatim. Untested at 2005 is fine, but the safety model the class relied on was the cynomolgus GLP toxicology of R1507/teprotumumab (reports 2005), not A549 xenografts; and a 2005 entry cites a 2016 source. A later contra is missing (see missing)."
+   "rule": "untested_reason no_prediction; safety: a tolerability statement is a prediction",
+   "note": "Novello 2017 (PMID 27464970) quote verbatim; cixutumumab iv plus pemetrexed/cisplatin, stage IV nonsquamous; product_in_model false. Goetsch abstract makes no tolerability claim, so untested no_prediction holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -71,20 +77,20 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "evidence rule 3 (no quote, untested); rule 8 parallel track",
-   "note": "Gong 2009 PLoS One (PMID 19806209, Oct 2009) quote verbatim in abstract. Prospective (before 2011 trial readout), prediction_level patient correct. Habben 2011 abstract still 403; search snippet suggests IGF1R-level subgroups null, so a 2011 contra likely follows once quotable.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "rule 6 opener; population_group",
+   "note": "Gong 2009 (PMID 19806209) abstract quote verbatim; R1507 = teprotumumab, iv in patients compared; biomarker_selected fits a total-IGF-1R prediction. Note's 'Habben could not be read' is stale; status unaffected.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "rule 7 (opens at model_first_use_year)",
-   "note": "PharmR (bundle txt) lists study 6131-477 with this title verbatim; initiation November 3, 2004, report preface 10/31/2005. Opening untested at 2004, class level, product_in_model true all hold.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "rule 6 opener",
+   "note": "FDA PharmR BLA 761143 (bundle txt line 3635) gives the 7-week iv cynomolgus study title for Ro 485-8696 (R1507 = teprotumumab), initiated 2004-11-03. Drug teprotumumab, route iv; opener untested 2004 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -93,9 +99,35 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "rule 7 dating; retrodiction rule",
-   "note": "Quote verbatim in PharmR 11.4; exec summary: 'did not predict these effects'. Monkey studies 2004-05 preceded clinical hyperglycemia, so contra not retro. Review signed Dec 2019/Jan 2020; 2021 posting year unverified, 2020 defensible.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "safety: this disease's patients measured set status (no import); retrodiction for safety = same drug's earlier patient result",
+   "note": "Quote verbatim in Ramalingam 2011 PMC text; PharmR line 894: monkey studies 'did not predict' hyperglycemia. Monkey data public 2021, after R1507's own NSCLC hyperglycemia: failed retrodiction, contra 2021; fields fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "efficacy: combination scored on primary endpoint; paired comparison",
+   "note": "Habben 2011 ASCO 7584 sentence seen via search text (abstract body not opened): IGF1R-level subgroups showed no impact on 12-week PFS in NO21160, R1507 iv plus erlotinib. Fields fit; prospective after Gong 2009: contra.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2011,
+   "rule": "evidence rule 6 (year = earliest public date, congress abstract included)",
+   "note": "Moran 2014 quote verbatim; phase II primary endpoint PFS (2.5 vs 1.6 mo, ns); drug, iv, erlotinib, product_in_model true fit. Full text: presented at IASLC 14th WCLC, July 2011, so year 2011.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status contra agreed. Rule 6: Moran 2014 full text says results presented at IASLC 14th WCLC, July 2011; the congress date is earliest public, so year 2011, not 2014. AACR 2009 mention predates phase II results."
   }
  ],
  "missing": [

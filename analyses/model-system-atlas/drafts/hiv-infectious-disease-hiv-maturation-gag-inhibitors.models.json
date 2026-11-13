@@ -372,5 +372,22 @@
   "Thorough-QT study of GSK3640254 (PMID 37961928) and hERG/dog telemetry: no public animal-side prediction to compare, as the draft already notes.",
   "Clinical DDI studies (metabolic probe cocktail, dolutegravir, TAF/FTC, darunavir/ritonavir, oral contraceptives): no in-silico PBPK DDI prediction stated in any abstract, so no model side.",
   "Human challenge, human genetic (loss-of-function), patient-derived organoid or PDX models: none exist for HIV-1 maturation inhibitors."
+ ],
+ "gaps": [
+  {
+   "lead": "Humanized mouse efficacy model (SCID-hu Thy/Liv, Stoddart 2007)",
+   "outcome": "tracked",
+   "detail": "hiv-scid-hu-thy-liv: engagement, dose and efficacy cells each open 2007 untested (Stoddart 2007, bevirimat proxy, product_in_model false); no member ever run in it"
+  },
+  {
+   "lead": "Chronic rat/dog toxicology and FDA clinical hold on GSK2838232 (Johnson 2018)",
+   "outcome": "covered",
+   "detail": "Covered by the checker: safety index 1 verdict note (Johnson 2018, PMC5989765) records the CV findings in Study 200207, the FDA clinical hold and its lifting after 6-month rat / 9-month dog studies, and the missing-list item names the hold/resumption as Study 204953 on mi-nonclinical-tox; the safety 2018 status stays 'same', so nothing scored changes."
+  },
+  {
+   "lead": "Cross-species ADME/PK projection vs human PK (Johnson 2018; Regueiro-Ren 2022 / Pene Dumitrescu 2020)",
+   "outcome": "tracked",
+   "detail": "mi-preclinical-adme-projection: dose 2018 same (Johnson 2018, GSK2838232) and 2022 same (Wen 2022, fipravirimat); Regueiro-Ren 2022 states no numeric human projection (see considered_not_added)"
+  }
  ]
 }

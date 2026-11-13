@@ -349,5 +349,17 @@
   "Mirikizumab surrogate LSN2479016 mouse colitis models and tildrakizumab SCH 900598 colitis: already tracked (mouse-surrogate-colitis)",
   "LY2525623: no public model data; its 8-patient terminated study stays unscored as in the draft",
   "Guselkumab and risankizumab model systems: not members, not widened"
+ ],
+ "gaps": [
+  {
+   "lead": "Mirikizumab's own in-vivo PD models (acute systemic hIL-23 splenocyte IL-17 assay; acute intradermal hIL-23 skin assay)",
+   "outcome": "tracked",
+   "detail": "hil23-systemic-splenocyte-il17-mouse (engagement #3, 2013 untested) and hil23-intradermal-skin-pd-mouse (engagement #4 2013 untested, #5 2023 same), both in added_models and the draft"
+  },
+  {
+   "lead": "IL23R R381Q loss-of-function carriers (human_genetic)",
+   "outcome": "tracked",
+   "detail": "il23r-r381q-human-genetic (efficacy #8 2006 untested, #9 2015 same), in added_models and the draft"
+  }
  ]
 }

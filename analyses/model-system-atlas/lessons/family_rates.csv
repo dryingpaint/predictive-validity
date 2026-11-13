@@ -1,99 +1,98 @@
 q,family,n_tracks,n_tiles,matched,contra,ppv,lo,hi,rankable,pooled,pooled_lo,pooled_hi,label
-dose,tox_repeat_dose,22,21,22,0,1.0,1.0,1.0,True,0.935,0.898,0.97,Toxicology in standard species
-dose,poppk_exposure_response,11,11,11,0,1.0,1.0,1.0,True,0.935,0.898,0.97,Population PK / exposure-response from clinical data
-dose,cell_line_assay,6,6,6,0,1.0,1.0,1.0,True,0.935,0.898,0.97,"Cell line, replicon or cell panel"
-dose,donor_primary_human,6,6,6,0,1.0,1.0,1.0,True,0.935,0.898,0.97,"Donor primary human cells, blood or tissue"
-dose,organ_pharmacology_animal,12,5,12,0,1.0,1.0,1.0,True,0.935,0.898,0.97,Organ-level evoked pharmacology
-dose,syngeneic_tumour,4,3,4,0,1.0,1.0,1.0,False,0.935,0.898,0.97,Syngeneic mouse tumour
-dose,genetic_disease_model,3,2,3,0,1.0,1.0,1.0,False,0.935,0.898,0.97,Transgenic or genetic disease model
-dose,humanised_mouse,2,2,2,0,1.0,1.0,1.0,False,0.935,0.898,0.97,Humanised or knock-in mouse
-dose,cross_indication,1,1,1,0,1.0,1.0,1.0,False,0.935,0.898,0.97,Cross-indication import
-dose,nonrodent_disease_model,2,1,2,0,1.0,1.0,1.0,False,0.935,0.898,0.97,Non-rodent disease or pharmacology model
-dose,patient_material_ex_vivo,1,1,1,0,1.0,1.0,1.0,False,0.935,0.898,0.97,"Patient-derived cells, organoids or tissue"
-dose,pharmacological_challenge_human,1,1,1,0,1.0,1.0,1.0,False,0.935,0.898,0.97,Pharmacological challenge in people
-dose,qsp_mechanistic,1,1,1,0,1.0,1.0,1.0,False,0.935,0.898,0.97,QSP or mechanistic disease model
-dose,target_knockout,1,1,1,0,1.0,1.0,1.0,False,0.935,0.898,0.97,Target knockout or mutant animal
-dose,xenograft_cell_line,22,18,21,1,0.955,0.85,1.0,True,0.935,0.898,0.97,Cell-line xenograft
-dose,pkpd_occupancy_animal,14,11,13,1,0.929,0.733,1.0,True,0.935,0.898,0.97,"PK, occupancy or PET in animals"
-dose,xenograft_pdx,7,5,6,1,0.857,0.625,1.0,True,0.935,0.898,0.97,Patient-derived xenograft
-dose,metabolic_disease_model,13,9,11,2,0.846,0.667,1.0,True,0.935,0.898,0.97,"Rodent metabolic, renal or endocrine model"
-dose,pbpk_translational,6,6,5,1,0.833,0.5,1.0,True,0.935,0.898,0.97,PBPK or translational PK from preclinical data
-dose,allergen_challenge_human,6,3,5,1,0.833,0.0,1.0,False,0.935,0.898,0.97,Allergen challenge in people
-dose,behaviour_cns_model,5,4,4,1,0.8,0.571,1.0,True,0.935,0.898,0.97,"Rodent behaviour, cognition or pain model"
-dose,inflammatory_disease_model,9,8,7,2,0.778,0.5,1.0,True,0.935,0.898,0.97,Induced inflammatory or joint disease model
-efficacy,gemm_tumour,4,4,4,0,1.0,1.0,1.0,True,0.537,0.457,0.622,Engineered mouse tumour (GEMM)
-efficacy,poppk_exposure_response,3,3,3,0,1.0,1.0,1.0,False,0.537,0.457,0.622,Population PK / exposure-response from clinical data
-efficacy,nonrodent_disease_model,3,2,3,0,1.0,1.0,1.0,False,0.537,0.457,0.622,Non-rodent disease or pharmacology model
-efficacy,expression_classifier,1,1,1,0,1.0,1.0,1.0,False,0.537,0.457,0.622,Expression or structure classifier
-efficacy,pkpd_occupancy_animal,1,1,1,0,1.0,1.0,1.0,False,0.537,0.457,0.622,"PK, occupancy or PET in animals"
-efficacy,qsp_mechanistic,1,1,1,0,1.0,1.0,1.0,False,0.537,0.457,0.622,QSP or mechanistic disease model
-efficacy,organ_pharmacology_animal,13,5,12,1,0.923,0.769,1.0,True,0.537,0.457,0.622,Organ-level evoked pharmacology
-efficacy,humanised_mouse,8,6,7,1,0.875,0.571,1.0,True,0.537,0.457,0.622,Humanised or knock-in mouse
-efficacy,tox_repeat_dose,8,7,6,2,0.75,0.429,1.0,True,0.537,0.457,0.622,Toxicology in standard species
-efficacy,metabolic_disease_model,23,16,16,7,0.696,0.48,0.905,True,0.537,0.457,0.622,"Rodent metabolic, renal or endocrine model"
-efficacy,cell_line_assay,25,22,17,8,0.68,0.462,0.875,True,0.537,0.457,0.622,"Cell line, replicon or cell panel"
-efficacy,infected_or_chimeric_liver,6,6,4,2,0.667,0.333,1.0,True,0.537,0.457,0.622,Infected or human-liver-chimeric animal
-efficacy,target_lof_genetics,6,6,4,2,0.667,0.333,1.0,True,0.537,0.457,0.622,Target loss-of-function carriers
-efficacy,syngeneic_tumour,8,6,5,3,0.625,0.222,1.0,True,0.537,0.457,0.622,Syngeneic mouse tumour
-efficacy,patient_material_ex_vivo,15,13,9,6,0.6,0.357,0.857,True,0.537,0.457,0.622,"Patient-derived cells, organoids or tissue"
-efficacy,cross_indication,7,6,4,3,0.571,0.167,0.889,True,0.537,0.457,0.622,Cross-indication import
-efficacy,xenograft_cell_line,38,27,21,17,0.553,0.405,0.721,True,0.537,0.457,0.622,Cell-line xenograft
-efficacy,donor_primary_human,4,4,2,2,0.5,0.0,1.0,True,0.537,0.457,0.622,"Donor primary human cells, blood or tissue"
-efficacy,xenograft_pdx,15,12,7,8,0.467,0.2,0.733,True,0.537,0.457,0.622,Patient-derived xenograft
-efficacy,pharmacological_challenge_human,7,6,3,4,0.429,0.143,0.714,True,0.537,0.457,0.622,Pharmacological challenge in people
-efficacy,target_knockout,6,6,2,4,0.333,0.0,0.667,True,0.537,0.457,0.622,Target knockout or mutant animal
-efficacy,inflammatory_disease_model,38,23,11,27,0.289,0.156,0.444,True,0.537,0.457,0.622,Induced inflammatory or joint disease model
-efficacy,pharmacogenetic_stratification,4,4,1,3,0.25,0.0,0.75,True,0.537,0.457,0.622,Pharmacogenetic stratification
-efficacy,genetic_disease_model,7,7,1,6,0.143,0.0,0.429,True,0.537,0.457,0.622,Transgenic or genetic disease model
-efficacy,behaviour_cns_model,12,6,1,11,0.083,0.0,0.333,True,0.537,0.457,0.622,"Rodent behaviour, cognition or pain model"
-efficacy,allergen_challenge_human,8,7,0,8,0.0,0.0,0.0,True,0.537,0.457,0.622,Allergen challenge in people
-efficacy,biochemical_assay,1,1,0,1,0.0,0.0,0.0,False,0.537,0.457,0.622,"Biochemical, binding or transporter assay"
-engagement,xenograft_cell_line,30,22,30,0,1.0,1.0,1.0,True,0.902,0.843,0.952,Cell-line xenograft
-engagement,metabolic_disease_model,24,17,24,0,1.0,1.0,1.0,True,0.902,0.843,0.952,"Rodent metabolic, renal or endocrine model"
-engagement,cell_line_assay,11,11,11,0,1.0,1.0,1.0,True,0.902,0.843,0.952,"Cell line, replicon or cell panel"
-engagement,organ_pharmacology_animal,15,6,15,0,1.0,1.0,1.0,True,0.902,0.843,0.952,Organ-level evoked pharmacology
-engagement,xenograft_pdx,7,6,7,0,1.0,1.0,1.0,True,0.902,0.843,0.952,Patient-derived xenograft
-engagement,allergen_challenge_human,6,4,6,0,1.0,1.0,1.0,True,0.902,0.843,0.952,Allergen challenge in people
-engagement,target_knockout,4,4,4,0,1.0,1.0,1.0,True,0.902,0.843,0.952,Target knockout or mutant animal
-engagement,biochemical_assay,3,3,3,0,1.0,1.0,1.0,False,0.902,0.843,0.952,"Biochemical, binding or transporter assay"
-engagement,nonrodent_disease_model,4,3,4,0,1.0,1.0,1.0,False,0.902,0.843,0.952,Non-rodent disease or pharmacology model
-engagement,syngeneic_tumour,3,2,3,0,1.0,1.0,1.0,False,0.902,0.843,0.952,Syngeneic mouse tumour
-engagement,target_lof_genetics,2,2,2,0,1.0,1.0,1.0,False,0.902,0.843,0.952,Target loss-of-function carriers
-engagement,pharmacological_challenge_human,1,1,1,0,1.0,1.0,1.0,False,0.902,0.843,0.952,Pharmacological challenge in people
-engagement,donor_primary_human,14,14,13,1,0.929,0.786,1.0,True,0.902,0.843,0.952,"Donor primary human cells, blood or tissue"
-engagement,inflammatory_disease_model,13,11,12,1,0.923,0.75,1.0,True,0.902,0.843,0.952,Induced inflammatory or joint disease model
-engagement,humanised_mouse,8,8,7,1,0.875,0.625,1.0,True,0.902,0.843,0.952,Humanised or knock-in mouse
-engagement,pkpd_occupancy_animal,8,6,7,1,0.875,0.667,1.0,True,0.902,0.843,0.952,"PK, occupancy or PET in animals"
-engagement,behaviour_cns_model,4,4,3,1,0.75,0.25,1.0,True,0.902,0.843,0.952,"Rodent behaviour, cognition or pain model"
-engagement,patient_material_ex_vivo,12,10,8,4,0.667,0.4,0.917,True,0.902,0.843,0.952,"Patient-derived cells, organoids or tissue"
-engagement,tox_repeat_dose,6,6,4,2,0.667,0.333,1.0,True,0.902,0.843,0.952,Toxicology in standard species
-engagement,genetic_disease_model,8,7,5,3,0.625,0.273,1.0,True,0.902,0.843,0.952,Transgenic or genetic disease model
-engagement,infected_or_chimeric_liver,8,4,5,3,0.625,0.308,1.0,True,0.902,0.843,0.952,Infected or human-liver-chimeric animal
-engagement,expression_classifier,1,1,0,1,0.0,0.0,0.0,False,0.902,0.843,0.952,Expression or structure classifier
-engagement,qsp_mechanistic,1,1,0,1,0.0,0.0,0.0,False,0.902,0.843,0.952,QSP or mechanistic disease model
-safety,biochemical_assay,5,5,5,0,1.0,1.0,1.0,True,0.654,0.591,0.717,"Biochemical, binding or transporter assay"
-safety,allergen_challenge_human,6,3,6,0,1.0,1.0,1.0,False,0.654,0.591,0.717,Allergen challenge in people
-safety,nonrodent_disease_model,4,3,4,0,1.0,1.0,1.0,False,0.654,0.591,0.717,Non-rodent disease or pharmacology model
-safety,pkpd_occupancy_animal,3,3,3,0,1.0,1.0,1.0,False,0.654,0.591,0.717,"PK, occupancy or PET in animals"
-safety,poppk_exposure_response,3,3,3,0,1.0,1.0,1.0,False,0.654,0.591,0.717,Population PK / exposure-response from clinical data
-safety,cross_indication,1,1,1,0,1.0,1.0,1.0,False,0.654,0.591,0.717,Cross-indication import
-safety,pharmacogenetic_stratification,1,1,1,0,1.0,1.0,1.0,False,0.654,0.591,0.717,Pharmacogenetic stratification
-safety,qsp_mechanistic,1,1,1,0,1.0,1.0,1.0,False,0.654,0.591,0.717,QSP or mechanistic disease model
-safety,organ_pharmacology_animal,10,5,9,1,0.9,0.7,1.0,True,0.654,0.591,0.717,Organ-level evoked pharmacology
-safety,target_lof_genetics,7,7,6,1,0.857,0.571,1.0,True,0.654,0.591,0.717,Target loss-of-function carriers
-safety,behaviour_cns_model,4,4,3,1,0.75,0.25,1.0,True,0.654,0.591,0.717,"Rodent behaviour, cognition or pain model"
-safety,donor_primary_human,4,4,3,1,0.75,0.25,1.0,True,0.654,0.591,0.717,"Donor primary human cells, blood or tissue"
-safety,target_knockout,13,13,9,4,0.692,0.462,0.923,True,0.654,0.591,0.717,Target knockout or mutant animal
-safety,tox_cv_safety_pharm,13,13,9,4,0.692,0.462,0.923,True,0.654,0.591,0.717,Cardiovascular safety pharmacology
-safety,genetic_disease_model,6,3,4,2,0.667,0.5,1.0,False,0.654,0.591,0.717,Transgenic or genetic disease model
-safety,inflammatory_disease_model,3,3,2,1,0.667,0.0,1.0,False,0.654,0.591,0.717,Induced inflammatory or joint disease model
-safety,patient_material_ex_vivo,3,3,2,1,0.667,0.0,1.0,False,0.654,0.591,0.717,"Patient-derived cells, organoids or tissue"
-safety,metabolic_disease_model,10,8,6,4,0.6,0.364,0.875,True,0.654,0.591,0.717,"Rodent metabolic, renal or endocrine model"
-safety,tox_repeat_dose,80,70,47,33,0.588,0.486,0.684,True,0.654,0.591,0.717,Toxicology in standard species
-safety,infected_or_chimeric_liver,4,4,2,2,0.5,0.0,1.0,True,0.654,0.591,0.717,Infected or human-liver-chimeric animal
-safety,cell_line_assay,4,3,2,2,0.5,0.0,1.0,False,0.654,0.591,0.717,"Cell line, replicon or cell panel"
-safety,gemm_tumour,2,2,1,1,0.5,0.0,1.0,False,0.654,0.591,0.717,Engineered mouse tumour (GEMM)
-safety,syngeneic_tumour,2,1,1,1,0.5,0.5,0.5,False,0.654,0.591,0.717,Syngeneic mouse tumour
-safety,xenograft_cell_line,13,9,5,8,0.385,0.1,0.643,True,0.654,0.591,0.717,Cell-line xenograft
-safety,xenograft_pdx,4,3,1,3,0.25,0.0,0.5,False,0.654,0.591,0.717,Patient-derived xenograft
-safety,humanised_mouse,2,2,0,2,0.0,0.0,0.0,False,0.654,0.591,0.717,Humanised or knock-in mouse
+dose,poppk_exposure_response,12,11,12,0,1.0,1.0,1.0,True,0.886,0.83,0.936,Population PK / exposure-response from clinical data
+dose,cell_line_assay,7,5,7,0,1.0,1.0,1.0,True,0.886,0.83,0.936,"Cell line, replicon or cell panel"
+dose,donor_primary_human,4,4,4,0,1.0,1.0,1.0,True,0.886,0.83,0.936,"Donor primary human cells, blood or tissue"
+dose,organ_pharmacology_animal,7,4,7,0,1.0,1.0,1.0,True,0.886,0.83,0.936,Organ-level evoked pharmacology
+dose,behaviour_cns_model,4,3,4,0,1.0,1.0,1.0,False,0.886,0.83,0.936,"Rodent behaviour, cognition or pain model"
+dose,xenograft_pdx,5,3,5,0,1.0,1.0,1.0,False,0.886,0.83,0.936,Patient-derived xenograft
+dose,genetic_disease_model,2,2,2,0,1.0,1.0,1.0,False,0.886,0.83,0.936,Transgenic or genetic disease model
+dose,humanised_mouse,2,2,2,0,1.0,1.0,1.0,False,0.886,0.83,0.936,Humanised or knock-in mouse
+dose,nonrodent_disease_model,2,2,2,0,1.0,1.0,1.0,False,0.886,0.83,0.936,Non-rodent disease or pharmacology model
+dose,target_knockout,2,2,2,0,1.0,1.0,1.0,False,0.886,0.83,0.936,Target knockout or mutant animal
+dose,biochemical_assay,1,1,1,0,1.0,1.0,1.0,False,0.886,0.83,0.936,"Biochemical, binding or transporter assay"
+dose,cross_indication,1,1,1,0,1.0,1.0,1.0,False,0.886,0.83,0.936,Cross-indication import
+dose,patient_material_ex_vivo,1,1,1,0,1.0,1.0,1.0,False,0.886,0.83,0.936,"Patient-derived cells, organoids or tissue"
+dose,pharmacological_challenge_human,1,1,1,0,1.0,1.0,1.0,False,0.886,0.83,0.936,Pharmacological challenge in people
+dose,syngeneic_tumour,1,1,1,0,1.0,1.0,1.0,False,0.886,0.83,0.936,Syngeneic mouse tumour
+dose,xenograft_cell_line,16,14,15,1,0.938,0.786,1.0,True,0.886,0.83,0.936,Cell-line xenograft
+dose,pbpk_translational,9,9,8,1,0.889,0.667,1.0,True,0.886,0.83,0.936,PBPK or translational PK from preclinical data
+dose,pkpd_occupancy_animal,14,13,12,2,0.857,0.643,1.0,True,0.886,0.83,0.936,"PK, occupancy or PET in animals"
+dose,allergen_challenge_human,5,3,4,1,0.8,0.0,1.0,False,0.886,0.83,0.936,Allergen challenge in people
+dose,tox_repeat_dose,25,24,19,6,0.76,0.593,0.917,True,0.886,0.83,0.936,Toxicology in standard species
+dose,inflammatory_disease_model,6,5,4,2,0.667,0.2,1.0,True,0.886,0.83,0.936,Induced inflammatory or joint disease model
+dose,metabolic_disease_model,5,3,3,2,0.6,0.0,1.0,False,0.886,0.83,0.936,"Rodent metabolic, renal or endocrine model"
+efficacy,gemm_tumour,4,3,4,0,1.0,1.0,1.0,False,0.394,0.321,0.476,Engineered mouse tumour (GEMM)
+efficacy,expression_classifier,3,2,3,0,1.0,1.0,1.0,False,0.394,0.321,0.476,Expression or structure classifier
+efficacy,qsp_mechanistic,4,1,4,0,1.0,1.0,1.0,False,0.394,0.321,0.476,QSP or mechanistic disease model
+efficacy,target_lof_genetics,10,9,8,2,0.8,0.5,1.0,True,0.394,0.321,0.476,Target loss-of-function carriers
+efficacy,nonrodent_disease_model,4,3,3,1,0.75,0.5,1.0,False,0.394,0.321,0.476,Non-rodent disease or pharmacology model
+efficacy,humanised_mouse,6,5,4,2,0.667,0.25,1.0,True,0.394,0.321,0.476,Humanised or knock-in mouse
+efficacy,patient_material_ex_vivo,26,18,16,10,0.615,0.364,0.806,True,0.394,0.321,0.476,"Patient-derived cells, organoids or tissue"
+efficacy,syngeneic_tumour,10,8,6,4,0.6,0.25,0.909,True,0.394,0.321,0.476,Syngeneic mouse tumour
+efficacy,cell_line_assay,29,19,17,12,0.586,0.31,0.815,True,0.394,0.321,0.476,"Cell line, replicon or cell panel"
+efficacy,cross_indication,6,5,3,3,0.5,0.0,0.875,True,0.394,0.321,0.476,Cross-indication import
+efficacy,pharmacogenetic_stratification,6,5,3,3,0.5,0.167,0.833,True,0.394,0.321,0.476,Pharmacogenetic stratification
+efficacy,biochemical_assay,2,2,1,1,0.5,0.0,1.0,False,0.394,0.321,0.476,"Biochemical, binding or transporter assay"
+efficacy,pkpd_occupancy_animal,2,2,1,1,0.5,0.0,1.0,False,0.394,0.321,0.476,"PK, occupancy or PET in animals"
+efficacy,poppk_exposure_response,2,2,1,1,0.5,0.0,1.0,False,0.394,0.321,0.476,Population PK / exposure-response from clinical data
+efficacy,metabolic_disease_model,25,14,12,13,0.48,0.269,0.69,True,0.394,0.321,0.476,"Rodent metabolic, renal or endocrine model"
+efficacy,xenograft_cell_line,45,27,20,25,0.444,0.288,0.595,True,0.394,0.321,0.476,Cell-line xenograft
+efficacy,tox_repeat_dose,9,6,4,5,0.444,0.111,0.8,True,0.394,0.321,0.476,Toxicology in standard species
+efficacy,infected_or_chimeric_liver,7,5,3,4,0.429,0.0,0.875,True,0.394,0.321,0.476,Infected or human-liver-chimeric animal
+efficacy,pharmacological_challenge_human,8,6,3,5,0.375,0.111,0.714,True,0.394,0.321,0.476,Pharmacological challenge in people
+efficacy,xenograft_pdx,22,13,8,14,0.364,0.118,0.632,True,0.394,0.321,0.476,Patient-derived xenograft
+efficacy,donor_primary_human,5,4,1,4,0.2,0.0,0.429,True,0.394,0.321,0.476,"Donor primary human cells, blood or tissue"
+efficacy,inflammatory_disease_model,61,21,12,49,0.197,0.093,0.308,True,0.394,0.321,0.476,Induced inflammatory or joint disease model
+efficacy,target_knockout,12,9,2,10,0.167,0.0,0.417,True,0.394,0.321,0.476,Target knockout or mutant animal
+efficacy,allergen_challenge_human,9,6,1,8,0.111,0.0,0.25,True,0.394,0.321,0.476,Allergen challenge in people
+efficacy,genetic_disease_model,23,14,1,22,0.043,0.0,0.136,True,0.394,0.321,0.476,Transgenic or genetic disease model
+efficacy,behaviour_cns_model,15,5,0,15,0.0,0.0,0.0,True,0.394,0.321,0.476,"Rodent behaviour, cognition or pain model"
+efficacy,organ_pharmacology_animal,3,3,0,3,0.0,0.0,0.0,False,0.394,0.321,0.476,Organ-level evoked pharmacology
+engagement,metabolic_disease_model,12,10,12,0,1.0,1.0,1.0,True,0.84,0.77,0.907,"Rodent metabolic, renal or endocrine model"
+engagement,allergen_challenge_human,7,4,7,0,1.0,1.0,1.0,True,0.84,0.77,0.907,Allergen challenge in people
+engagement,cell_line_assay,5,4,5,0,1.0,1.0,1.0,True,0.84,0.77,0.907,"Cell line, replicon or cell panel"
+engagement,nonrodent_disease_model,5,4,5,0,1.0,1.0,1.0,True,0.84,0.77,0.907,Non-rodent disease or pharmacology model
+engagement,syngeneic_tumour,5,4,5,0,1.0,1.0,1.0,True,0.84,0.77,0.907,Syngeneic mouse tumour
+engagement,xenograft_pdx,5,4,5,0,1.0,1.0,1.0,True,0.84,0.77,0.907,Patient-derived xenograft
+engagement,biochemical_assay,3,3,3,0,1.0,1.0,1.0,False,0.84,0.77,0.907,"Biochemical, binding or transporter assay"
+engagement,target_lof_genetics,2,2,2,0,1.0,1.0,1.0,False,0.84,0.77,0.907,Target loss-of-function carriers
+engagement,pharmacological_challenge_human,1,1,1,0,1.0,1.0,1.0,False,0.84,0.77,0.907,Pharmacological challenge in people
+engagement,poppk_exposure_response,1,1,1,0,1.0,1.0,1.0,False,0.84,0.77,0.907,Population PK / exposure-response from clinical data
+engagement,xenograft_cell_line,21,19,20,1,0.952,0.864,1.0,True,0.84,0.77,0.907,Cell-line xenograft
+engagement,donor_primary_human,8,8,7,1,0.875,0.625,1.0,True,0.84,0.77,0.907,"Donor primary human cells, blood or tissue"
+engagement,pkpd_occupancy_animal,8,6,7,1,0.875,0.667,1.0,True,0.84,0.77,0.907,"PK, occupancy or PET in animals"
+engagement,target_knockout,11,7,9,2,0.818,0.667,1.0,True,0.84,0.77,0.907,Target knockout or mutant animal
+engagement,patient_material_ex_vivo,19,14,15,4,0.789,0.619,0.944,True,0.84,0.77,0.907,"Patient-derived cells, organoids or tissue"
+engagement,inflammatory_disease_model,7,7,5,2,0.714,0.286,1.0,True,0.84,0.77,0.907,Induced inflammatory or joint disease model
+engagement,tox_repeat_dose,6,6,4,2,0.667,0.333,1.0,True,0.84,0.77,0.907,Toxicology in standard species
+engagement,behaviour_cns_model,3,3,2,1,0.667,0.0,1.0,False,0.84,0.77,0.907,"Rodent behaviour, cognition or pain model"
+engagement,humanised_mouse,3,3,2,1,0.667,0.0,1.0,False,0.84,0.77,0.907,Humanised or knock-in mouse
+engagement,infected_or_chimeric_liver,7,3,4,3,0.571,0.0,1.0,False,0.84,0.77,0.907,Infected or human-liver-chimeric animal
+engagement,genetic_disease_model,9,6,5,4,0.556,0.2,0.889,True,0.84,0.77,0.907,Transgenic or genetic disease model
+engagement,organ_pharmacology_animal,1,1,0,1,0.0,0.0,0.0,False,0.84,0.77,0.907,Organ-level evoked pharmacology
+engagement,qsp_mechanistic,1,1,0,1,0.0,0.0,0.0,False,0.84,0.77,0.907,QSP or mechanistic disease model
+safety,allergen_challenge_human,5,3,5,0,1.0,1.0,1.0,False,0.583,0.524,0.641,Allergen challenge in people
+safety,pkpd_occupancy_animal,2,2,2,0,1.0,1.0,1.0,False,0.583,0.524,0.641,"PK, occupancy or PET in animals"
+safety,cross_indication,1,1,1,0,1.0,1.0,1.0,False,0.583,0.524,0.641,Cross-indication import
+safety,qsp_mechanistic,1,1,1,0,1.0,1.0,1.0,False,0.583,0.524,0.641,QSP or mechanistic disease model
+safety,organ_pharmacology_animal,9,6,8,1,0.889,0.7,1.0,True,0.583,0.524,0.641,Organ-level evoked pharmacology
+safety,biochemical_assay,8,8,7,1,0.875,0.625,1.0,True,0.583,0.524,0.641,"Biochemical, binding or transporter assay"
+safety,nonrodent_disease_model,8,7,7,1,0.875,0.7,1.0,True,0.583,0.524,0.641,Non-rodent disease or pharmacology model
+safety,target_lof_genetics,13,10,11,2,0.846,0.583,1.0,True,0.583,0.524,0.641,Target loss-of-function carriers
+safety,behaviour_cns_model,5,5,4,1,0.8,0.4,1.0,True,0.583,0.524,0.641,"Rodent behaviour, cognition or pain model"
+safety,donor_primary_human,11,8,8,3,0.727,0.4,1.0,True,0.583,0.524,0.641,"Donor primary human cells, blood or tissue"
+safety,cell_line_assay,6,4,4,2,0.667,0.4,1.0,True,0.583,0.524,0.641,"Cell line, replicon or cell panel"
+safety,genetic_disease_model,6,3,4,2,0.667,0.5,1.0,False,0.583,0.524,0.641,Transgenic or genetic disease model
+safety,patient_material_ex_vivo,3,3,2,1,0.667,0.0,1.0,False,0.583,0.524,0.641,"Patient-derived cells, organoids or tissue"
+safety,target_knockout,18,15,11,7,0.611,0.347,0.882,True,0.583,0.524,0.641,Target knockout or mutant animal
+safety,syngeneic_tumour,7,5,4,3,0.571,0.222,1.0,True,0.583,0.524,0.641,Syngeneic mouse tumour
+safety,tox_repeat_dose,119,87,63,56,0.529,0.429,0.625,True,0.583,0.524,0.641,Toxicology in standard species
+safety,tox_cv_safety_pharm,17,10,9,8,0.529,0.222,0.834,True,0.583,0.524,0.641,Cardiovascular safety pharmacology
+safety,metabolic_disease_model,19,12,9,10,0.474,0.261,0.765,True,0.583,0.524,0.641,"Rodent metabolic, renal or endocrine model"
+safety,xenograft_cell_line,23,20,10,13,0.435,0.24,0.667,True,0.583,0.524,0.641,Cell-line xenograft
+safety,infected_or_chimeric_liver,5,3,2,3,0.4,0.0,0.5,False,0.583,0.524,0.641,Infected or human-liver-chimeric animal
+safety,inflammatory_disease_model,6,6,2,4,0.333,0.0,0.667,True,0.583,0.524,0.641,Induced inflammatory or joint disease model
+safety,humanised_mouse,4,3,1,3,0.25,0.0,1.0,False,0.583,0.524,0.641,Humanised or knock-in mouse
+safety,xenograft_pdx,4,3,1,3,0.25,0.0,0.5,False,0.583,0.524,0.641,Patient-derived xenograft
+safety,gemm_tumour,1,1,0,1,0.0,0.0,0.0,False,0.583,0.524,0.641,Engineered mouse tumour (GEMM)
+safety,pharmacogenetic_stratification,1,1,0,1,0.0,0.0,0.0,False,0.583,0.524,0.641,Pharmacogenetic stratification

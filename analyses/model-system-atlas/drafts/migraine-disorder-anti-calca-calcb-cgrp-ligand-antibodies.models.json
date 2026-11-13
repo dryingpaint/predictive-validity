@@ -326,6 +326,62 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "evoked-vasodilation-rat-nhp",
+   "model": "Rat evoked neurogenic vasodilation (skin flare, middle meningeal artery)",
+   "model_kind": "animal",
+   "model_first_use_year": 2008,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "model_id": "evoked-vasodilation-rat-nhp",
+      "prediction_level": "class",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1038/bjp.2008.334",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2026,
+      "print_year": 2026,
+      "registry_date": "2020-07-09",
+      "model_filed": true,
+      "product_in_model": false,
+      "model_kind": "animal",
+      "retrodiction": false,
+      "magnitude": "opposite",
+      "magnitude_basis": "Model gives % inhibition of evoked vasodilation, trial gives migraine-day change; the predicted benefit was absent (LS mean difference -0.1 day, 95% CI -1.48 to 1.22)",
+      "source_calls_it": "miss",
+      "population": "Unselected",
+      "model_first_use_year": 2008,
+      "confidence": "low",
+      "confidence_note": "Paired by me (Zeller 2008 model, Teva pediatric CM trial). Results first posted on ClinicalTrials.gov 2025-12-19 (tier 3: LS mean difference -0.1, p=0.8484), which dates the entry; the AAN 2026 abstract (Hershey et al., Neurology supplement) is the src, abstract read in full. Whether a pediatric chronic-migraine miss scores against an adult-derived Unselected track is checker rule question 1; the companion pediatric EM trial NCT04458857 met its primary.",
+      "year": 2025,
+      "status": "contra",
+      "model": "Rat evoked neurogenic vasodilation (skin flare, middle meningeal artery)",
+      "note": "Fremanezumab missed its primary in children and adolescents with chronic migraine (6-17 y), against the class benefit the rat model called; pediatric EM was positive.",
+      "short": "Pediatric CM Phase 3 primary missed",
+      "src": "https://doi.org/10.1212/WNL.0000000000214996",
+      "srcLabel": "Hershey 2026",
+      "quote": "Fremanezumab significantly reduced MMD versus placebo (–2.5 vs –1.4; p=0.0210) in the EM study; no significant difference was observed between treatment groups in the CM study (–3.8 vs –3.7; p=0.8484).",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [
+       {
+        "nct": "NCT04458857",
+        "registry_date": "2020-07-07",
+        "doi": "10.1212/WNL.0000000000214996",
+        "quote": "Fremanezumab significantly reduced MMD versus placebo (–2.5 vs –1.4; p=0.0210) in the EM study"
+       }
+      ],
+      "reason": "Member drug missed placebo-controlled primary in pediatric CM",
+      "judgement": "Scored contra because a member drug missed its placebo-controlled primary endpoint in patients of the context disease (Unselected population includes children), and one drug's contra beats the adult same on this track; the positive pediatric EM study is recorded under patient_trials."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -337,5 +393,37 @@
   "Patient-derived cells or organoids, PDX co-clinical trials, ex-vivo drug sensitivity, human loss-of-function genetic models: none found for this class; the predicts/correlates search returned only clinical responder-predictor cohorts, which are not models.",
   "Rat dura substance P and CGRP release with GTN and anti-CGRP antibodies (J Headache Pain 2025, doi 10.1186/s10194-025-02050-y, PMID 40380328): no patient comparison.",
   "Fremanezumab pediatric chronic migraine miss (NCT04464707, 2025): a patient-side datum for the existing efficacy tracks (checker rule question 1), not a missing model system; left to the draft's tracks."
+ ],
+ "gaps": [
+  {
+   "lead": "Fremanezumab pediatric chronic migraine Phase 3 NCT04464707 primary miss (2025)",
+   "outcome": "entry",
+   "detail": "Added efficacy entry on evoked-vasodilation-rat-nhp: 2025 contra (NCT04464707 results posted 2025-12-19, LS mean diff -0.1, p=0.8484; Hershey 2026 AAN abstract doi 10.1212/WNL.0000000000214996), confidence low pending rule question 1; pediatric EM NCT04458857 positive in patient_trials."
+  },
+  {
+   "lead": "Human ex-vivo artery model, Ohlsson 2018 (PMID 30109438)",
+   "outcome": "tracked",
+   "detail": "human-exvivo-artery-myograph: engagement 3 (untested), efficacy 5 (untested opener) and efficacy 6 (retro)."
+  },
+  {
+   "lead": "Mouse CGRP-evoked light aversion / grimace with ALD405, Mason 2017 and Rea 2018",
+   "outcome": "tracked",
+   "detail": "mouse-cgrp-evoked-behaviour: efficacy 7 (untested opener) and efficacy 8 (retro); Rea 2018 noted in its confidence_note."
+  },
+  {
+   "lead": "Rodent GTN / spontaneous-trigeminal-allodynia models with ALD405, Christensen 2019",
+   "outcome": "tracked",
+   "detail": "rodent-gtn-sta-pain: efficacy 9 (untested opener) and efficacy 10 (retro)."
+  },
+  {
+   "lead": "Rat post-concussion headache model, Bree & Levy 2017 (761089 PharmR DPR-2017-037)",
+   "outcome": "tracked",
+   "detail": "Folded into rat-headache-behaviour (efficacy 3, which the checker accepts as one track); PharmR citation and its post-traumatic-headache Phase 2 miss (NCT03347188) recorded in considered_not_added."
+  },
+  {
+   "lead": "CHALLENGE-MIG NCT05127486; galcanezumab and fremanezumab cluster headache trials",
+   "outcome": "none",
+   "detail": "Outside the rules: CHALLENGE-MIG is an active-comparator superiority endpoint no model predicted; cluster headache is another disease (different MONDO context) from this migraine tile."
+  }
  ]
 }

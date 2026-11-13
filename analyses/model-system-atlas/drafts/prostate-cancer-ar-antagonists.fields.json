@@ -1,0 +1,82 @@
+{
+ "tile": "prostate-cancer-ar-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug apalutamide, route oral set (opener; no scored value changed)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true (target claim: enzalutamide CRPC PSA falls, Scher 2010, predate Clegg 2012); year 2013 -> 2012 (ASCO GU 2012 abstract); drug apalutamide, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug apalutamide, route oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug apalutamide, route oral set; status unchanged (dose is a drug claim; no apalutamide patient result before Clegg 2012)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug apalutamide, route oral set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true (model public 2012 after enzalutamide CRPC efficacy 2010); year 2016 -> 2012 (ESMO 2012 abstract, 12-week PSA response 89.5%); drug apalutamide, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug darolutamide, route oral set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true (Moilanen 2015 public after enzalutamide 2010 and ARADES 2014 CRPC results); drug darolutamide, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug apalutamide, route oral set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug apalutamide, route oral set; status same kept (no earlier patient F876L result, so not retro)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug pruxelutamide, route oral set; untested_reason unsettled (interim rPFS miss in an unmodelled post-NHA population, tier 5 only)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "status same -> retro, retrodiction true (safety is a drug claim; apalutamide's own SPARTAN seizures, NEJM 2018-02-08, public before the dog study first appeared in the 2018 label/review); drug apalutamide, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug darolutamide, route oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug darolutamide, route oral set; status same kept (ARAMIS post-dates the 2015 model)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "gt0918-crpc-xenograft-mouse, pruxelutamide oral: retro 2023, phase 2 mCRPC randomised across three doses with no control and no preset bar, scored as single-arm on primary week-16 PSA50 (35-43%); model post-dates class CRPC efficacy (doi:10.1002/ijc.34512)"
+  }
+ ]
+}

@@ -19,10 +19,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Beier 2014 resolves (PMID 25256258, online 2014-09-08); quote verbatim (abstract); FEV1 to 36 h is the downstream readout of the duration models; same supported; no NCT for this crossover found either."
+   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Beier 2014 (PMID 25256258, online 2014-09-08) quote in abstract; model 2012 after Beeh 2007 (PMID 17251236, online 2007-01-24) 24-h indacaterol asthma result: retro. Abediterol, inhaled, unselected ICS-treated asthmatics correct."
   },
   {
    "cell": "engagement",
@@ -59,10 +60,11 @@
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Bjermer 2013 resolves (PMID 23907810, online 2013-08-01); quote verbatim; NCT00736489 results posted 2014-04-03 confirmed, E22-26 co-primary met at 480/1920 ug; dating 2014 (model side public) accepted."
+   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bjermer 2013 (PMID 23907810, online 2013-08-01) quote verbatim in abstract; Stocks 2014 model online 2014-02-08, after Beeh 2007 and Bjermer: retro, dated 2014. azd-3199 inhaled correct; judgement prose still says not a retrodiction (stale)."
   },
   {
    "cell": "engagement",
@@ -77,24 +79,28 @@
   {
    "cell": "engagement",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "decision 7 (dating: earliest public date, registry posting)",
-   "note": "Matsuda 2012 resolves (PMID 23094708, online 2012-10-25); quote verbatim (abstract). NCT00679263 posted FEV1 %pred +17.48 vs +1.85 placebo on 2011-12-15, so the comparison was public in 2011 (decision 7); same stands."
+   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action); rule 6 earliest public date",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Matsuda 2012 (PMID 23094708) quote verbatim in abstract; ClinicalTrials.gov API: NCT00679263 results first posted 2011-12-15, so year 2011 (rule 6). Model 2001 after Ullman 1988 (PMID 2904183): retro; iv, stable asthmatics unselected."
   },
   {
    "cell": "engagement",
    "index": 9,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Rossoni 2005 BJP resolves (PMID 15655502, PMC1576020); quote verbatim; Chiesi guinea-pig track opens untested 2005; earlier Tanabe TA-2005 guinea-pig airway papers (1991-1994) exist, see missing."
+   "proposed_status": "untested",
+   "proposed_year": 1994,
+   "rule": "model_first_use_year is the system's first published use for a member drug (gaps 'Tanabe TA-2005 airway models' and its residual duplicate)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Kikkawa 1994 Biol Pharm Bull 17:1047 (PMID 7820105, 1994-08-01) abstract: anaesthetised guinea-pig histamine/antigen challenge, inhaled long duration. Change year and model_first_use_year 2005->1994, epub_year 1994, src doi 10.1248/bpb.17.1047, srcLabel 'Kikkawa 1994', quote to: When TA-2005 was administered by inhalation to guinea pigs or by the intraduodenal route to cats, it exhibited a long-lasting inhibitory effect comparable or superior to the effects of salmeterol and formoterol. | superseded: confirmed (): Rossoni 2005 BJP resolves (PMID 15655502, PMC1576020); quote verbatim; Chiesi guinea-pig track opens untested 2005; earlier Tanabe TA-2005 guinea-pig airway papers (1991-1994) exist, see missing.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status unchanged by the correction: only model_first_use_year moves 2005->1994 (Kikkawa 1994, same anaesthetised guinea-pig challenge system); rule 6 (each cell opens at model_first_use_year). Drafter's status stands."
   },
   {
    "cell": "engagement",
@@ -103,8 +109,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "EU CTR 2006-005689-38 results (posted 2017-01-01) and ICH E3 synopsis CCD-0604-RS-0009 downloaded; quote verbatim; peak FEV1 +0.241 L p<0.001; downstream same at 2017; tier 3 correct."
+   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "EU CTR 2006-005689-38 page returns a 244-byte gate to curl; quote not re-read, relies on prior checker's synopsis read. Rossoni 2005 (PMID 15655502) model post-dates Ullman 1988: retro; carmoterol inhaled, unselected."
   },
   {
    "cell": "dose",
@@ -141,10 +148,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim; registry posts E22-26 3.35/3.40 L (480/1920 ug) vs 3.23 placebo and 3.31 at 120 ug; regimen reached and sufficient; margin_stated false correct."
+   "rule": "retrodiction (dose: same drug's own earlier patient result)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bjermer 2013 quote verbatim; Stocks 2014 (PMID 24900851) states an ultralong-acting (once-daily) regimen, reached at 480/1920 ug. Model online after AZD3199's own trial: same-drug retrodiction, retro; margin_stated false right."
   },
   {
    "cell": "dose",
@@ -169,24 +177,32 @@
   {
    "cell": "dose",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Rossoni 2005 quote verbatim; picomole intratracheal doses, no human dose; untested opening 2005."
+   "proposed_status": "untested",
+   "proposed_year": 1994,
+   "rule": "model_first_use_year is the system's first published use for a member drug (gaps 'Tanabe TA-2005 airway models' and its residual duplicate)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Kikkawa 1994 Biol Pharm Bull 17:1047 (PMID 7820105, 1994-08-01) abstract: anaesthetised guinea-pig histamine/antigen challenge, inhaled long duration. Change year and model_first_use_year 2005->1994, epub_year 1994, src doi 10.1248/bpb.17.1047, srcLabel 'Kikkawa 1994', quote to: When TA-2005 was administered by inhalation to guinea pigs or by the intraduodenal route to cats, it exhibited a long-lasting inhibitory effect comparable or superior to the effects of salmeterol and formoterol. | superseded: confirmed (): Rossoni 2005 quote verbatim; picomole intratracheal doses, no human dose; untested opening 2005.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status unchanged by the correction: only model_first_use_year moves 2005->1994 (Kikkawa 1994, same anaesthetised guinea-pig challenge system); rule 6 (each cell opens at model_first_use_year). Drafter's status stands."
   },
   {
    "cell": "dose",
    "index": 8,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim in synopsis. EU CTR 2008-001773-15 (posted 2017-01-01) shows carmoterol 4 ug once daily held trough FEV1 +0.26 L p<0.001, so this is 'target too low': contra stays, derived_from null, magnitude off_by_2x.",
+   "proposed_status": "contra",
+   "proposed_year": 2017,
+   "rule": "model_first_use_year is the system's first published use for a member drug (gaps 'Tanabe TA-2005 airway models' and its residual duplicate)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Only model_first_use_year changes, 2005->1994 (Kikkawa 1994, PMID 7820105, same anaesthetised guinea-pig challenge system); status and year as drafted, any status question stays with the earlier verdict on this entry. | superseded: confirmed (): Quote verbatim in synopsis. EU CTR 2008-001773-15 (posted 2017-01-01) shows carmoterol 4 ug once daily held trough FEV1 +0.26 L p<0.001, so this is 'target too low': contra stays, derived_from null, magnitude off_by_2x.",
    "adjudicated_status": "contra",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): target too low: 4 ug once daily held trough FEV1 (EU CTR 2008-001773-15)"
+   "adjudication_note": "Status unchanged by the correction: only model_first_use_year moves 2005->1994 (Kikkawa 1994, same anaesthetised guinea-pig challenge system); rule 6 (each cell opens at model_first_use_year). Drafter's status stands."
   },
   {
    "cell": "efficacy",
@@ -203,10 +219,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim (abstract); trough FEV1 primary met vs placebo and salmeterol; endpoint_role primary; patient_trials NCT01425801 (results 2018-01-26) and Beier 2017 DOIs resolve; same supported."
+   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Beier 2014 quote verbatim in abstract; trough FEV1 is the stated primary and was met; model 2012 after Beeh 2007: retro. Abediterol inhaled, unselected correct."
   },
   {
    "cell": "efficacy",
@@ -223,10 +240,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim; registry confirms co-primaries (Emax, E22-26, S-potassium) and results 2014-04-03; both FEV1 co-primaries met at 480/1920 ug; same supported; 2014 dating by model-side publication accepted."
+   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Bjermer 2013 quote verbatim in abstract; Emax and E22-26 co-primaries met at 480/1920 ug, described in note; model online 2014-02-08 after Beeh 2007 and Bjermer: retro 2014; azd-3199 inhaled."
   },
   {
    "cell": "efficacy",
@@ -243,34 +261,37 @@
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim (abstract only); 3-h %FEV1 primary missed in 167 non-responders to standard therapy. Abstract does not attribute the miss to the beta2-refractory population, so contra holds under the do-not rule; NCT00683449 (results 2011-07-29) belongs in patient_trials; rule question 3."
+   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action); rule 6 press release dating",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "House 2015 (PMID 26324315) quote verbatim; %FEV1 at 3 h is the stated primary. NCT00838591 has no posted results, registry_date null right; 2012 press-release dating not re-opened. Contra with retrodiction true; stage_or_line right, though population text still reads Unselected."
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Rossoni 2005 quote verbatim; duration-of-protection model, nothing on disease airflow; untested opening 2005."
+   "proposed_status": "untested",
+   "proposed_year": 1994,
+   "rule": "model_first_use_year is the system's first published use for a member drug (gaps 'Tanabe TA-2005 airway models' and its residual duplicate)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Kikkawa 1994 Biol Pharm Bull 17:1047 (PMID 7820105, 1994-08-01) abstract: anaesthetised guinea-pig histamine/antigen challenge, inhaled long duration. Change year and model_first_use_year 2005->1994, epub_year 1994, src doi 10.1248/bpb.17.1047, srcLabel 'Kikkawa 1994', quote to: When TA-2005 was administered by inhalation to guinea pigs or by the intraduodenal route to cats, it exhibited a long-lasting inhibitory effect comparable or superior to the effects of salmeterol and formoterol. | superseded: confirmed (): Rossoni 2005 quote verbatim; duration-of-protection model, nothing on disease airflow; untested opening 2005.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status unchanged by the correction: only model_first_use_year moves 2005->1994 (Kikkawa 1994, same anaesthetised guinea-pig challenge system); rule 6 (each cell opens at model_first_use_year). Drafter's status stands."
   },
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2017,
-   "rule": "decision 4 dose table ('reached, failed, a higher dose later worked': efficacy contra then same); tension with decision 6, rule question 1",
-   "note": "Quote verbatim in synopsis; 2 ug once daily missed trough FEV1 (+0.057 L NS): contra stands. EU CTR 2008-001773-15 (same posting date) shows 4 ug once daily held trough FEV1 +0.26 L p<0.001, so the dose table adds 'then same'; combination caveat in missing.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Contra stands. Decision 12 (#70): a combination arm counts only if the source attributes it to the class drug; CHF 5188 budesonide/carmoterol has no budesonide-alone arm, so decision 4 case 4 is not triggered; decision 6 keeps the track contra."
+   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "EU CTR trough FEV1 primary-miss quote not re-read (gate page), relies on prior synopsis read. Model post-dates Ullman 1988: retrodiction true, failed to reproduce, contra stands; carmoterol inhaled, unselected."
   },
   {
    "cell": "safety",
@@ -356,17 +377,13 @@
   {
    "cell": "engagement",
    "index": 12,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2007,
-   "rule": "decision 10 (post-hoc models are retrodictions; a model run after the patient result was known is retro, never same)",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim (abstract). CFD was solved on the scans after the same patients' FEV1 was measured and the paper frames it as validating CFD against spirometry: a readout validation, not a prediction preceding the result; retrodiction true, status retro.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: CFD solved on dosed patients' scans after their FEV1 was known, framed as validating CFD against spirometry; reproduces the known result, so retro not same. Doubtful as a model track under decision 8 (readout validation in patients)."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "decision 10 / retrodiction",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "De Backer 2008 (PMID 17698073, online 2007-08-14) quote verbatim in abstract; CFD solved on dosed patients' scans after their FEV1 and after Ullman 1988: retro. Drug named only via indexed substance; judgement prose stale."
   },
   {
    "cell": "engagement",
@@ -386,9 +403,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Same EU CTR 2006-005689-38 record and identical quote string as Chiesi engagement #10 (synopsis read by the prior checker; curl here gets a 244-byte gate page, not re-read). Model 1992 predates the trial, so prospective; downstream same at 2017 consistent."
+   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Same EU CTR quote as engagement 10 (not re-read, gate page). Voss 1992 (PMID 1359974, Dec 1992) post-dates Ullman 1988 salmeterol >12-h FEV1: retro; carmoterol inhaled, unselected."
   },
   {
    "cell": "efficacy",
@@ -408,9 +425,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Identical quote string to adjudicated Chiesi efficacy #8 (contra). Separate system, so the same trial scores on each track it tests (decision 6); the primary tests the duration claim itself, so #32 not triggered. No dose entry on this track (see rule question)."
+   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Same EU CTR quote as efficacy 8 (not re-read). Voss 1992 post-dates Ullman 1988: retrodiction true, did not reproduce 24-h bronchodilation, contra stands; carmoterol inhaled."
   },
   {
    "cell": "safety",
@@ -433,6 +450,17 @@
    "rule": null,
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "Matsuda 2012 resolves (PMID 23094708, online 2012-10-25); quote verbatim (abstract). NCT00679263 (results 2011-12-15) lists Hyperkalemia 2/11, 4/11 vs 1/6 and sinus tachycardia 1/11, no hypokalemia term, so 2012 dating stands (decision 7); prospective direction match, same."
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "retrodiction (safety: same drug's own earlier patient result); passing-tolerability ruling",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Stocks 2014 abstract: 'safety profiling ... excellent over all profile' (passing-tolerability prediction); Bjermer 2013 'well tolerated' verbatim. Model after the drug's own trial: retro 2014, follows opener safety 3; azd-3199 inhaled, unselected."
   }
  ],
  "missing": [

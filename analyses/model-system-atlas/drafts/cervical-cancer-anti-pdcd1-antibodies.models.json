@@ -1,0 +1,134 @@
+{
+ "tile": "cervical-cancer-anti-pdcd1-antibodies",
+ "searched": [
+  "Read DRAFTER_BRIEF, draft, check.json (missing list: no model system missed) and tiles.json spec (members balstilimab, geptanolimab, prolgolimab, zimberelimab)",
+  "sources/manifest.csv: all four members marked 'no NDA/BLA'; no FDA review text in the bundle",
+  "Europe PMC: balstilimab preclinical",
+  "Europe PMC: AGEN2034 preclinical characterization",
+  "Europe PMC: geptanolimab preclinical",
+  "Europe PMC: GB226 PD-1 antibody preclinical",
+  "Europe PMC: prolgolimab BCD-100 preclinical cynomolgus",
+  "Europe PMC: zimberelimab GLS-010 pharmacokinetic model dose",
+  "Europe PMC: zimberelimab population pharmacokinetic",
+  "Europe PMC: prolgolimab pharmacokinetics",
+  "Europe PMC: prolgolimab",
+  "Europe PMC: balstilimab pharmacokinetics",
+  "Europe PMC: cervical cancer organoid anti-PD-1 response",
+  "Europe PMC: cervical cancer humanized mouse PD-1 antibody patient-derived xenograft",
+  "Europe PMC: cervical cancer ex vivo tumor fragment PD-1 blockade",
+  "BioC full text PMC11408354 (FLAT, prolgolimab flat dose): grep for model / simulation / exposure / trough",
+  "ClinicalTrials.gov API: NCT05783882 (FLAT) status and dates",
+  "fc.py search: balstilimab AGEN2034 preclinical cynomolgus receptor occupancy",
+  "fc.py search: geptanolimab GB226 preclinical pharmacology mouse tumor model",
+  "Gap pass: fc.py scrape thepharmaletter.com 'Russia registers new drug for treatment of aggressive forms of female cancer' (2026-10-13): the drug is fuzuloparib (Elefusa, PARP inhibitor), not prolgolimab"
+ ],
+ "added_models": [
+  {
+   "model_id": "poppk-prolgolimab-flat",
+   "model": "BIOCAD population PK model simulating a 250 mg Q3W flat dose of prolgolimab",
+   "model_kind": "in_silico",
+   "model_first_use_year": 2022,
+   "prediction_level": "class",
+   "cells": {
+    "dose": [
+     {
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2024,
+      "print_year": 2024,
+      "registry_date": "2023-03-24",
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Untreated unresectable or metastatic melanoma (FLAT); dose pools tumour types",
+      "confidence": "medium",
+      "confidence_note": "Full text read (PMC11408354). Model year is a proxy: the popPK simulation preceded FLAT, which started 2022-02 (NCT05783882); the model itself is described only in the trial paper.",
+      "year": 2022,
+      "status": "untested",
+      "blocked_by": null,
+      "margin_stated": false,
+      "note": "PopPK model fitted to weight-based MIRACULUM PK chose a 250 mg Q3W flat dose before FLAT dosed it.",
+      "short": "PopPK picks 250 mg flat dose",
+      "src": "https://doi.org/10.3389/fonc.2024.1385685",
+      "srcLabel": "Demidov 2024",
+      "quote": "The Q3W flat dose was selected based on population PK modeling along with efficacy and safety data on weight-based regimens from the BCD-100-2/MIRACULUM study (NCT03269565).",
+      "judgement": "Opening entry at first use. Not a retrodiction: the model was fitted to weight-based PK but predicted exposure for a regimen not yet given to anyone."
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2024,
+      "print_year": 2024,
+      "registry_date": "2023-03-24",
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "predicted 250 mg Q3W Cmax/Cav/Ctrough at or above 1 mg/kg Q2W vs observed FLAT Ctrough consistently higher than weight-based dosing",
+      "source_calls_it": "match",
+      "population": "Untreated unresectable or metastatic melanoma (FLAT); dose pools tumour types",
+      "confidence": "medium",
+      "confidence_note": "Full text read (PMC11408354). The comparison is with a historical control (MIRACULUM) and the authors caution that bioanalytical methods differed between studies. FLAT has no registry results.",
+      "year": 2024,
+      "status": "same",
+      "blocked_by": null,
+      "margin_stated": false,
+      "note": "Observed flat-dose troughs exceeded weight-based troughs, as the popPK simulation predicted; melanoma patients, not cervical.",
+      "short": "Flat-dose exposure as predicted",
+      "src": "https://doi.org/10.3389/fonc.2024.1385685",
+      "srcLabel": "Demidov 2024",
+      "quote": "Figure 4  illustrates that Ctrough values with flat dosing were consistently higher to weight-based dosing in the overall Ctrough population.",
+      "reason": "Flat-dose troughs met the predicted exposure",
+      "judgement": "Dose question scored on exposure only; the non-inferior ORR belongs to efficacy in melanoma, outside this tile. Dose pools tumour types as patient PK, so a melanoma trial counts. No tolerability margin was stated by the model, so margin_stated false. The cervical trials (CAESURA, FERMATA) used weight-based dosing, so this track bears on the class's dosing, not on the cervical readouts."
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Zimberelimab population PK and exposure-response model (Yang 2024, https://doi.org/10.1002/cpdd.1439): fitted to the same patients' 240 mg Q2W data (self-fit, not an independent comparison); its prospective prediction (360 mg Q3W, 480 mg Q4W comparable exposure) has no published patient PK comparison found.",
+  "Balstilimab (AGEN2034) preclinical package: no peer-reviewed preclinical characterization or regulator review found (no BLA review public; BLA withdrawn 2021); phase 1/2 dose came from patient PK, not a model.",
+  "Geptanolimab (GB226) preclinical package: no published preclinical pharmacology, occupancy or toxicology found; only clinical papers (ASPS, PTCL).",
+  "Prolgolimab in-vitro PD-1 occupancy and T-cell activation assays (Gordeev 2024): compared only with pembrolizumab and nivolumab in vitro, never with patient results; its CT26 mouse track is already in the draft.",
+  "Cervical cancer patient-derived organoids, PDX or humanized-mouse models, or ex-vivo tumour fragments with any member drug: none found.",
+  "Russian registration of prolgolimab for cervical cancer: a regulator decision on trial data (CAESURA), not reliance on model data; not opened.",
+  "Human challenge, genetic (PDCD1 loss-of-function) or QSP models for this class in cervical cancer: none found."
+ ],
+ "gaps": [
+  {
+   "lead": "No missed model system found (no public preclinical package for balstilimab or geptanolimab; no cervical organoid or patient-cell comparison)",
+   "outcome": "none",
+   "detail": "Checker found no missed system; this pass's searches agree (see searched and considered_not_added); nothing to add."
+  },
+  {
+   "lead": "Geptanolimab phase II in PD-L1+ R/M cervical cancer (JCO 2023;41(16_suppl):5535)",
+   "outcome": "none",
+   "detail": "Patient result only: geptanolimab has no published preclinical model to compare it with, so no track can exist; at most a context note in the draft."
+  },
+  {
+   "lead": "Balstilimab BLA withdrawn on FDA advice after pembrolizumab's full approval (Agenus 2021-10-22)",
+   "outcome": "none",
+   "detail": "Regulatory context, not a model system or a correction to any entry; balstilimab has no track; could go in the tile's context note."
+  },
+  {
+   "lead": "Russian registration of a drug for cervical cancer, possibly prolgolimab (thepharmaletter)",
+   "outcome": "none",
+   "detail": "Opened via fc.py: the article is about fuzuloparib (PARP inhibitor) for breast/ovarian cancer, not prolgolimab; no effect on ct26-prolgolimab efficacy entries."
+  }
+ ]
+}

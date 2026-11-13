@@ -323,5 +323,32 @@
   "BIIB021: no breast model-versus-patient comparison found; BIIB021 plus exemestane in HR-positive metastatic breast cancer (NCT01004081) has no posted results and no paper.",
   "Alvespimycin monotherapy phase 1 trials (mixed solid tumours) and the terminated HER2-positive breast phase 2 (NCT00780000, 4 patients, no results): no breast-specific efficacy comparison for the toxicology track, so its dose entry carries the tolerability half only.",
   "Regulator reliance: no member has an NDA/BLA (manifest rows are all 'no NDA/BLA'), so no regulator review and no in-vitro label expansion to score."
+ ],
+ "gaps": [
+  {
+   "lead": "Alvespimycin rat/dog toxicology, Glaze 2005 (PMID 15986212)",
+   "outcome": "tracked",
+   "detail": "alvespimycin-rat-dog-tox: dose #2 (2005 untested), dose #3 (2012, adjudicated untested), safety #4 (2005 untested), safety #5 (2012 contra, Jhaveri 2012 keratitis/LV DLTs)"
+  },
+  {
+   "lead": "ER-positive resistance-emergence xenograft, Whitesell 2014 (PMID 25489079)",
+   "outcome": "tracked",
+   "detail": "er-resistance-emergence-xenograft: efficacy #7 (2014 untested; Grinshpun 2026 tested established resistance, not emergence)"
+  },
+  {
+   "lead": "ENCHANT-1 (NCT01677455) interim, Synta SEC exhibit 99.1 2013-12-12",
+   "outcome": "covered",
+   "detail": "Checker verdict on efficacy #4 (tnbc-xenograft) already adjudicates it untested citing ENCHANT-1 TNBC 2/11 PR; otherwise a tier-5 patient_trials datum (trial_unreported) that changes no status."
+  },
+  {
+   "lead": "Ganetespib first-in-human phase 1, Goldman 2013 (PMID 23530663)",
+   "outcome": "covered",
+   "detail": "Checker verdict on safety #2 (ganetespib-mouse-tox) already cites its grade 3 diarrhoea DLT; mixed solid tumours, and no ganetespib track states a human dose/exposure target or engagement readout for it to score, so it changes nothing scored."
+  },
+  {
+   "lead": "No PDX/organoid comparison for any member in breast cancer; Jensen 2008 MAXF clonogenic assays",
+   "outcome": "none",
+   "detail": "PubMed search for PDX/organoid/ex vivo/co-clinical with members in breast: no model-vs-patient comparison; MAXF assays gave GI50 only, never compared with patients (no comparison, no track)"
+  }
  ]
 }

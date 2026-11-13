@@ -1,0 +1,92 @@
+{
+ "tile": "renal-cell-carcinoma-vegfr-multikinase-inhibitors",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2017 -> 2016 (earlier public date: Lenvima label 05/2016 states the RCC xenograft combination result beside Study 205); drug lenvatinib, combination_with everolimus"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "year 2019 -> 2018 and model_first_use_year 2018 (earlier public date: Kimura 2018 Cancer Sci, same syngeneic system); drug lenvatinib"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug regorafenib, route oral set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug regorafenib, route oral; single-arm design written into note; Study 205 patient_trial moved to the lenvatinib track (entry 3)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug catequentinib (anlotinib), route oral set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug lenvatinib, route oral set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug lenvatinib, route oral, combination_with pembrolizumab; combination design in note"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug lenvatinib, route oral, combination_with pembrolizumab; combination design in note"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "src/quote/population changed: colorectal import replaced by RCC patients (NCT00664326 registry, 1/49 serious hepatic function abnormal) under the imported-harm ruling; status stays same, source_calls_it partial; drug regorafenib, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug lenvatinib, route oral set"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug regorafenib, route oral set"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug regorafenib, route oral set; mixed solid-tumour phase 1 coded other_disease"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug regorafenib, route oral set"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "opening untested entry, rcc-xenograft-786o-a498-caki x lenvatinib x oral, 2016 (track split from the regorafenib track)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "rcc-xenograft-786o-a498-caki x regorafenib x oral, 2011 untested (passing tolerability claim scored as safety)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "rcc-xenograft-786o-a498-caki x regorafenib x oral, 2012 contra (passing tolerability claim scored as safety)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "renca-syngeneic-mouse x catequentinib x oral, 2022 retro (passing tolerability claim scored as safety)"
+  }
+ ]
+}

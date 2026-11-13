@@ -1,0 +1,210 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/open-angle-glaucoma-ptger2-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kirihara 2018 (PMID 29332128) abstract quote verbatim; opening untested 2012 unchanged. drug omidenepag isopropyl, route ocular_topical, population_group unselected match the OAG/OHT patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2015,
+   "rule": "Retrodiction: for engagement and efficacy, a model first public after a patient result for the same target and action, from a member drug or any other drug, is a retrodiction (retro, never same)",
+   "note": "Year 2015 (ARVO IOVS 56:5708/5709) fine; Aihara 2019 quote verbatim. But taprenepag isopropyl, a selective EP2 agonist, lowered IOP in POAG/OHT patients (Curr Eye Res 2011-09, PMID 21851167) before the monkey data were public: retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement: any drug, same target/action): taprenepag, a selective EP2 agonist, lowered IOP in POAG/OHT patients (Curr Eye Res Sept 2011, PMID 21851167) before omidenepag monkey data were public (ARVO 2015). Retro."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Opening untested 2012 unchanged; Kirihara 2018 abstract quote verbatim. drug omidenepag isopropyl, route ocular_topical, population_group unselected match the OAG/OHT patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Aihara 2019 quote verbatim. Kirihara (Jan 2018) once-daily statement post-dates omidenepag's own once-daily Phase 2a (ARVO 2015): same-drug dose retrodiction, retro 2018 holds; drug/route correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Opening untested 2012 unchanged; same Kirihara abstract quote. drug omidenepag isopropyl, route ocular_topical, population_group unselected match the OAG/OHT patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2018,
+   "rule": "Retrodiction: for engagement and efficacy, a model first public after a patient result for the same target and action, from a member drug or any other drug, is a retrodiction (retro, never same)",
+   "note": "AYAME quote verbatim (AJO 2020); 2018 ARVO date and NI primary design noted correctly. But taprenepag (EP2 agonist) patient IOP lowering public 2011 precedes the monkey data (2015), so retro not same.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (efficacy: any drug, same target/action): taprenepag EP2-agonist patient IOP lowering public Sept 2011 (PMID 21851167) precedes the omidenepag monkey data (ARVO 2015). Reproduced, so retro, not same."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR (bundle txt) quote verbatim; opening untested 2012 unchanged. drug omidenepag isopropyl, route ocular_topical, population_group unselected match the OAG/OHT patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR 'With deference to the Clinical review team...' verbatim. Monkey corneal thickening first public 2022, after omidenepag's own patient corneal thickening (AYAME ARVO 2018): retro holds; fields correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "'Report date July 16, 2019' present in PharmR (study 104Fq080) with table spacing; opening untested 2019 unchanged. drug omidenepag isopropyl, route ocular_topical, population_group unselected match the OAG/OHT patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR 104Fq080 rationale quote verbatim: patient side is omidenepag + tafluprost in 33-001, so combination_with tafluprost is right; label 5.3 ocular inflammation confirmed; retro unchanged.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Esaki 2020 abstract conclusion verbatim; opening untested 2019 unchanged. drug omidenepag isopropyl, route ocular_topical, population_group unselected match the OAG/OHT patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "StatR pooled phase 3 eyelash-growth row verbatim (line 1404); retro 2022 unchanged. drug omidenepag isopropyl, route ocular_topical, population_group unselected match the OAG/OHT patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Yamamoto 2020 (epub 2020-01-14) abstract conclusion verbatim; opening untested 2019 unchanged. drug omidenepag isopropyl, route ocular_topical, population_group unselected match the OAG/OHT patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Nakakura 2020 conclusion verbatim. Same drug's patient PAPS result (PubMed entry 2020-01-09, per draft; PubMed re-pull rate-limited) precedes 3T3-L1 epub 2020-01-14: retro, retrodiction true; fields correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hikage 2021 translational-relevance sentence present (case differs); opening untested 2021 unchanged. drug omidenepag isopropyl, route ocular_topical, population_group unselected match the OAG/OHT patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Nakakura 2020 quote verbatim; organoids (2021) post-date the same drug's patient switch series, retro unchanged. drug omidenepag isopropyl, route ocular_topical, population_group unselected match the OAG/OHT patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Nakamura 2023 abstract sentence verbatim; opening untested 2023 unchanged. drug omidenepag isopropyl, route ocular_topical, population_group unselected match the OAG/OHT patients compared.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Abstract sentence verbatim; patient side is tafluprost-combination inflammation (33-001) behind the warning, so combination_with tafluprost fits; retro unchanged; drug/route correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "Possible retrodiction track on ocular inflammation: non-GLP monkey study 104Fq080 (report dated 2019-07-16, FDA PharmR 2022, Table 92) found laser-flare aqueous flare rising on omidenepag 0.002% monotherapy at D4/D7 versus D1 and higher with FP-agonist combination; patients: Omlonti label 5.3 'Ocular inflammation has been reported in patients taking Omlonti' (accessdata.fda.gov label/2022/215092s000lbl.pdf) and the Japanese tafluprost-combination contraindication (PMC9058248 review points to it). Run after the human signal, so it would be retro (retrodiction: true), not same. The drafter set it aside for lack of a human source, but label 5.3 is a tier 2 source.",
+  "Phase 1 healthy-volunteer IOP lowering (Aihara et al., PMID 31674861, 2019) is an engagement datum (healthy volunteers count) that the draft omits; no status change.",
+  "No admissible model source or patient failure found for aganepag isopropyl or simenepag isopropyl (searched); the draft's statement stands.",
+  "Patient-side source for the DUES/PAPS tracks predating the 3T3-L1 and organoid models: RENGE 12-month study (Jpn J Ophthalmol 2021, PMID 34495425, doi 10.1007/s10384-021-00868-y; summarized in Aihara 2024, PMID 38168596: no DUES/eyelash/iris colour change after a year) - a tier 1 patient source the safety tracks could cite."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "SPECTRUM 3 (NCT03691649) missed its primary endpoint, noninferiority to timolol, while omidenepag's own IOP drop matched the other trials. The monkeys made no prediction against timolol. Does a missed active-comparator noninferiority primary endpoint count as an efficacy contra, or is it outside what the model predicted? The draft says outside; the rules do not say.",
+  "When the model's PD readout is the clinical endpoint itself (IOP), the engagement and efficacy cells score the same readout on different trials. Is that double counting allowed, or should engagement be untested/no_prediction?",
+  "Dose: Kirihara 2018 published the QD-sufficiency statement after Phase 2 had already used QD, but the animal work dates to 2011. Is a regimen statement first published after the trial a prospective prediction, given the model was run before?",
+  "Engagement/efficacy retrodiction across non-member drugs: taprenepag isopropyl (Pfizer selective EP2 agonist, not a tile member) lowered IOP in POAG/OHT patients (Curr Eye Res 2011, PMID 21851167) before omidenepag's monkey data were public (ARVO 2015). Read literally, the rule makes engagement 2 and efficacy 2 retro; confirm that a non-member same-target drug triggers it here."
+ ]
+}

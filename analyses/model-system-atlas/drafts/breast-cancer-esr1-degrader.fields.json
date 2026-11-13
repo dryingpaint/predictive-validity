@@ -1,0 +1,187 @@
+{
+ "tile": "breast-cancer-esr1-degrader",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug brilanestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug brilanestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant); status same -> retro, retrodiction true: model result first public after fulvestrant (an ER degrader, same target and action) cut tumour ER in patients in 1994 (DeFriend, Cancer Res 1994, PMID 8275477); Lai 2015 came 21 years later (retrodiction ruling)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug vepdegestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant); status same -> retro, retrodiction true: model result first public after fulvestrant (an ER degrader, same target and action) cut tumour ER in patients in 1994 (DeFriend, Cancer Res 1994, PMID 8275477); vepdegestrant's xenograft ER loss was first shown in 2018 (retrodiction ruling)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug brilanestrant, route oral, population_group biomarker_selected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug amcenestrant, route oral, population_group biomarker_selected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug vepdegestrant, route oral, population_group biomarker_selected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug brilanestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug brilanestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug amcenestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant); status same -> retro, retrodiction true: model result first public after amcenestrant's own dose-escalation result in patients (ASCO 2019 abstract, JCO 37:15_suppl 1054, data cut 28 Nov 2018), two years before the amcenestrant xenograft paper (Shomali, epub 2020-12-11) (retrodiction ruling); year 2023 -> 2022 (rule 6)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug brilanestrant, route oral, population_group biomarker_selected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug vepdegestrant, route oral, population_group biomarker_selected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug vepdegestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "drug vepdegestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "what": "drug vepdegestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "dose",
+   "index": 9,
+   "what": "drug vepdegestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "dose",
+   "index": 10,
+   "what": "drug vepdegestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "dose",
+   "index": 11,
+   "what": "drug vepdegestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "dose",
+   "index": 12,
+   "what": "drug vepdegestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug brilanestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug giredestrant, route oral, population_group stage_or_line set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant); status same -> retro, retrodiction true: model result first public after fulvestrant 500 mg beat anastrozole on time to progression in FIRST (Robertson, JCO 2009, doi 10.1200/JCO.2008.21.1136); the giredestrant xenografts (Liang 2021) post-date it (retrodiction ruling); year 2023 -> 2021 (rule 6: coopERA first public at ESMO 2021)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug amcenestrant, route oral, population_group stage_or_line set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant); year 2023 -> 2022 (rule 6: Sanofi AMEERA-3 announcement, early 2022); retrodiction true, status contra unchanged (a retrodiction that failed to reproduce the fulvestrant result stays contra)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug brilanestrant, route oral, population_group biomarker_selected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug vepdegestrant, route oral, population_group biomarker_selected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant); status same -> retro, retrodiction true: model result first public after fulvestrant beat exemestane in ESR1-mutant but not wild-type patients in SoFEA (Fribbens, JCO 2016-06-06, doi 10.1200/JCO.2016.67.3061); vepdegestrant's Y537S PDX result was first public at SABCS 2018 (retrodiction ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug brilanestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug giredestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug giredestrant, route oral, population_group stage_or_line set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant); status same -> retro, retrodiction true: model result first public after giredestrant's own phase Ia/b tolerability in patients (ASCO 2021 abstract, JCO 39:15_suppl 1017, 'well tolerated at all doses, with no DLTs'), which preceded Liang 2021 (epub 2021-07-12) (retrodiction ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug vepdegestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant); status same -> retro, retrodiction true: model result first public after vepdegestrant's own patient safety results (VERITAC-2, NEJM epub 2025-05-31); the rat/dog toxicology was first public in the 2026 FDA review (retrodiction ruling)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug vepdegestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug vepdegestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant); retrodiction true (battery first public 2026, after VERITAC-2's 2025 patient safety report); status contra unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug giredestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant)"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "drug giredestrant, route oral, population_group unselected set from the entry's own source (GDC-0810 = brilanestrant, SAR439859 = amcenestrant, GDC-9545 = giredestrant, ARV-471 = vepdegestrant); now giredestrant only; amcenestrant split to appended safety 10"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "giredestrant track split from efficacy 3: acelERA contra 2022 (Roche Q1 2022-04-25; Martín 2024), retrodiction true (post-dates fulvestrant FIRST 2009); persevERA (Roche 2026-03-09, combination with palbociclib, missed) and evERA in patient_trials"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "untested opener of the vepdegestrant track on er-pos-wt-breast-xenograft, 2018 (SABCS 2018 poster; Gough 2024 quote)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "vepdegestrant track split from efficacy 3: VERITAC-2 all-patient PFS contra 2025 (Campone 2025), retrodiction true; co-primary design written in note"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "untested opener of the amcenestrant track on zebrafish-serd-bradycardia, 2026 (Basu 2026)"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "amcenestrant track split from safety 8: retro 2026 (Basu 2026), no bradycardia in zebrafish matching AMEERA patients"
+  }
+ ]
+}

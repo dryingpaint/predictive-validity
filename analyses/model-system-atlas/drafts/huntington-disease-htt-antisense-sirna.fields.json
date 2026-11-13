@@ -1,0 +1,137 @@
+{
+ "tile": "huntington-disease-htt-antisense-sirna",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug -> tominersen, route -> intrathecal, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug -> lexanersen, route -> intrathecal, population_group -> biomarker_selected (track set from the entry's own source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug -> ifezuntirgene inilparvovec, route -> intracerebral, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug -> tominersen, route -> intrathecal, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug -> ifezuntirgene inilparvovec, route -> intracerebral, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug -> rovanersen, route -> intrathecal, population_group -> biomarker_selected (track set from the entry's own source); note narrowed to rovanersen (HTT-164); lexanersen split out"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug -> ifezuntirgene inilparvovec, route -> intracerebral, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "what": "drug -> ifezuntirgene inilparvovec, route -> intracerebral, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug -> tominersen, route -> intrathecal, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug -> lexanersen, route -> intrathecal, population_group -> biomarker_selected (track set from the entry's own source)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug -> ifezuntirgene inilparvovec, route -> intracerebral, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug -> tominersen, route -> intrathecal, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug -> lexanersen, route -> intrathecal, population_group -> biomarker_selected (track set from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug -> ifezuntirgene inilparvovec, route -> intracerebral, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug -> tominersen, route -> intrathecal, population_group -> stage_or_line (track set from the entry's own source); year 2023 -> 2021 (rule 6 earliest date: sponsor disclosure of the cUHDRS result, April 2021)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug -> ifezuntirgene inilparvovec, route -> intracerebral, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug -> tominersen, route -> intrathecal, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug -> lexanersen, route -> intrathecal, population_group -> biomarker_selected (track set from the entry's own source)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug -> ifezuntirgene inilparvovec, route -> intracerebral, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug -> ifezuntirgene inilparvovec, route -> intracerebral, population_group -> stage_or_line (track set from the entry's own source)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug -> tominersen, route -> intrathecal, population_group -> stage_or_line (track set from the entry's own source); year 2023 -> 2021 (rule 6 earliest date: Roche April 2021 disclosure of ventricular enlargement and excess SAEs)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 9,
+   "what": "rovanersen track on wave-snp12-preclinical: untested 2017 (unpublished), NCT03225833 results posted 2022-02-10 (split from the lexanersen entry)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "rovanersen track on wave-snp12-preclinical: untested 2017 (unpublished), NCT03225833 results posted 2022-02-10 (split from the lexanersen entry)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "rovanersen track on wave-snp12-preclinical: untested 2017 (unpublished), NCT03225833 results posted 2022-02-10 (split from the lexanersen entry)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "rovanersen track on wave-snp12-preclinical: untested 2017 (unpublished), NCT03225833 results posted 2022-02-10 (split from the lexanersen entry)"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "what": "lexanersen track on hd-ipsc-neuron-snp-aso: retro 2024 (Iwamoto 2024, HTT-273 = WVE-120102), split from engagement 6"
+  }
+ ]
+}

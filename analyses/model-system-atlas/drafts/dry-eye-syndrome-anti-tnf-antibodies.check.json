@@ -9,60 +9,66 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "5, 15",
-   "note": "PMID 24052636 resolves; quote verbatim in abstract. No human TNF-alpha readout found (Dong 2022, VELOS, Shettle carry none; Donnenfeld 2024 retracted). readout_tier: free TNF-alpha on the surface is the target itself, so 'direct' fits decision 15 better than 'proximal'."
+   "rule": "engagement readout_tier (direct: free target); 5",
+   "note": "Ji 2013 abstract (PMID 24052636) quote verbatim. Eliminating free ocular-surface TNF-alpha is the free target, so readout_tier direct fits. HL036 = tanfanercept, eye drops; untested/not_measured stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "7",
-   "note": "PMID 18757508 resolves; quote verbatim; PubMed gives epub 2008-08-29, print Feb 2009, so year 2008 is right under decision 7."
+   "rule": "dose; 6",
+   "note": "Furrer 2009 abstract (PMID 18757508, epub 2008-08-29) quote verbatim. ESBA105 is licaminlimab's code; rabbit eye drops, so drug licaminlimab, route ocular_topical correct; year 2008 is the epub.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4, 11",
-   "note": "PMID 23490328 (epub 2013-03-13) resolves; quote verbatim; abstract only. Aqueous 96-359x over TNF-alpha, vitreous 5/6 undetectable: anterior half held, same/direction_only acceptable for a surface disease, partial a defensible alternative. Subjects are cataract-surgery patients; imported_from is set on the safety twin but not here."
+   "rule": "dose; Track and population fields",
+   "note": "Thiel 2013 abstract quote verbatim. Patients compared were cataract-surgery cohorts, so population_group other_disease matches; licaminlimab, ocular_topical correct. Same/direction_only stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4, 5",
-   "note": "Same Ji 2013 source. NCT02717208 (healthy Korean males, Cmax/AUC secondaries) has no posted results, verified. The mouse stated no exposure target, so dose-table case 3 cannot be applied; untested stands. VELOS-4 suspended 'Logistical issue', verified."
+   "rule": "dose; 5",
+   "note": "Ji 2013 abstract quote verbatim; HL036 = tanfanercept, ocular_topical correct. Mouse stated no human exposure target and no human PK published; untested stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "5",
-   "note": "Ji 2013 abstract: 'Corneal erosion and goblet cell counts were improved only with topically applied etanercept and HL036' verbatim; corneal-sign prediction, no symptom readout."
+   "rule": "5; 6",
+   "note": "Ji 2013 abstract: 'Corneal erosion and goblet cell counts were improved only with topically applied etanercept and HL036' verbatim. Drug tanfanercept, route ocular_topical correct; 2013 opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "PMID 29634381 (epub 2018-04-16) resolves; quote verbatim; HanAll authors, so a member drug's own model. Separate system (spontaneous disease, active comparator, no placebo), own model_id is right."
+   "rule": "5; 6",
+   "note": "Lee 2018 abstract (PMID 29634381) conclusion verbatim. HL036 = tanfanercept, topical drops in dogs; drug, route correct; 2018 opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -71,8 +77,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "4, 7",
-   "note": "CT.gov v2 API: ICSS LS mean diff 0.08 (-0.04, 0.21) p=0.1871; ODS 0.05 p=0.5549; results posted 2022-04-14; composite quote matches posted fields. VELOS-1 (posted 2022-01-26, ICSS p=0.2883) is the earliest public miss, same year. Dong 2022 and VELOS-3 quotes verified. Shettle 2022 exploratory corneal staining (-1.1 vs -1.4 vehicle, no stats) is consistent."
+   "rule": "efficacy co-primary; 6",
+   "note": "CT.gov v2 NCT03846453: ICSS 0.08 (-0.04, 0.21) p=0.1871, ODS 0.05 p=0.5549, results posted 2022-04-14. Medigate 2020-01-21 press-conference report: ICSS and ODS not met. Year 2020, co-primary note, drug, route correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -81,82 +88,90 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "4 (#80), 6",
-   "note": "Same registry fields verified. Dog predicted sign and Schirmer gain beyond CsA; placebo-controlled Phase 3 showed no sign effect, so #80 (active-comparator ranking) does not rescue it. VELOS-3 Schirmer is a secondary; contra holds."
+   "rule": "efficacy co-primary; 6",
+   "note": "Same VELOS-2 registry values and 2020-01-21 topline press conference re-verified; both co-primaries missed, described in note; tanfanercept, ocular_topical, unselected correct; year 2020 earliest public date.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8 (#74), 2 (#126)",
-   "note": "PMID 38416549 resolves to the retracted paper (epub 2024-02-28; retraction PMID 39225356, 2024-10-01); quote verbatim. Untested is right, but #74/#126 require retracted: true on the entry; add it. No pre-2024 public record of the genotype claim found (EDGAR search empty, no retry)."
+   "rule": "5; Track and population fields",
+   "note": "Donnenfeld 2024 abstract (PMID 38416549, marked RETRACTED) quote verbatim. Licaminlimab drops, TNFR1 genotype carriers: drug, route, biomarker_selected correct. Untested opener stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 6,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": false,
    "proposed_status": "untested",
    "proposed_year": 2024,
-   "rule": "2 (#126), 4 (#32)",
-   "note": "Release read in full via fc.py; quote verbatim. Model side is the author-withdrawn retraction, inadmissible per #126, and tier 5 cannot carry the model side; the subgroup result is a sign endpoint (ICSS Day 43) where the model predicted symptom response, with no carrier-vs-non-carrier test and no full-population primary result stated. Untested until PREDICT-1 (NCT07548632, primary = discomfort Day 29 in genotype carriers; registry says 160 estimated, draft says 176).",
+   "rule": "efficacy: primary endpoint; biomarker context only when biomarker >=80% of trial; 5 (unsettled)",
+   "note": "Oculis 2024-06-10 release quote verbatim. Drug, route right, but subgroup n=23/122 (19%) is not the trial population; no primary-endpoint result stated; prediction was symptoms, subgroup read a sign. Not admissible: untested.",
+   "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 2/#126 governs: #126 was decided on Donnenfeld 2024 with the retraction already post-dating RELIEF, so the tier-5 entry has no admissible model_src (decision 2). Decision 7 only sets year. Decision 8 keeps the track; #32 corroborates."
+   "adjudication_note": "Efficacy rule: the trial's primary endpoint governs and an unselected trial counts for a biomarker population only at >=80%; carriers were 19% of RELIEF and no primary result is stated. Untested, rule 5 unsettled."
   },
   {
    "cell": "safety",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "7, 12",
-   "note": "PMID 18757508; '25,000-fold lower' sentence verbatim; epub 2008. Platform harm (systemic TNF blockade) on the antibody sub-strip is consistent with decision 12."
+   "rule": "5; 6",
+   "note": "Furrer 2009 '25,000-fold lower' sentence verbatim in abstract. Drug licaminlimab, ocular_topical correct; model text identical to dose entries on rabbit-topical-ocular-pk.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4, 12",
-   "note": "Thiel 2013 abstract: serum 17/55 pre-op, 0/19 next day, TEAEs identical to placebo, verbatim. Cataract cohort import (MONDO:0005129) is the direct test of the rabbit's systemic-exposure prediction; NCT01338610 (posted 2013-04-19, serious AEs 0) posts no serum PK, so it cannot replace it."
+   "rule": "safety: this disease's patients decide; 6",
+   "note": "Thiel 17/55, 0/19 verbatim. NCT01338610 (dry eye, posted 2013-04-19): 0/56 SAEs on ESBA105, agrees, so same 2013 stands; that dry-eye record should be src and population_group unselected, imported_from dropped.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "5",
-   "note": "Lee 2018: 'No severe adverse reactions were noted in either group.' verbatim; 19 dogs on 0.2-5 mg/mL for 42 days, matches."
+   "note": "Lee 2018 abstract 'No severe adverse reactions were noted in either group.' verbatim. Tanfanercept, ocular_topical correct; 2018 opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4, 7",
-   "note": "PMID 35192105 (epub 2022-02-22) resolves; quote verbatim. Registry AE counts verified (VELOS-2 5/318 vs 4/319; VELOS-3 0/130 vs 1/130). VELOS-1 posted 2022-01-26 with serious 0/50 per arm precedes Dong by four weeks; same year, no change."
+   "rule": "6",
+   "note": "Dong 2022 abstract quote verbatim (PMID 35192105). VELOS-1 ARVO 2019 IOVS abstract (articleid 2740920) states no serious adverse events: year 2019 correct; VELOS-2 SAEs 5/318 vs 4/319 confirmed in registry.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "7 (#127)",
-   "note": "PMID 35821785 resolves; quote verbatim; no rabbit mention (Shettle cites Zhu 2005 rabbit dacryoadenitis TNF-inhibitor gene as rationale). NCT01338610 serious AEs 0 verified. Strengthening entry correctly flagged."
+   "rule": "5; 6",
+   "note": "Shettle 2022 abstract quote verbatim (69 vs 65 randomized). Licaminlimab 60 mg/mL drops in severe DED: drug, route, unselected correct. registry_date 2013-04-19 is NCT01338610 (56 vs 29), apparently another trial: check.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -165,9 +180,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "5, 15",
-   "note": "PMC10812879 resolves; Figure 5 title verbatim. No tanfanercept-dosed human tear-cytokine readout exists; untested holds. Panel measured tear TNF itself (fell with IL-1b, IFN-g, IL-17 etc.), so readout_tier 'direct' (free target) fits decision 15 better than 'downstream'.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "engagement readout_tier; 5",
+   "note": "Kelagere 2023 (PMC10812879) Fig. 5 title verbatim in full text. Tanfanercept 0.25% eye drops: drug, route correct; no human tear-cytokine readout published, untested stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -176,9 +191,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7, 8",
-   "note": "Quote verbatim (Discussion, author manuscript). Epub 2023-08-25 (Europe PMC; Crossref agrees). Paper calls itself 'the first to test it in the age-related dry eye model'; no corneal-staining, Schirmer or symptom readout in the drug arm; own track (decision 8) right.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "5",
+   "note": "Kelagere 2023 Discussion sentence verbatim in PMC full text (epub 2023). Tanfanercept 0.25% eye drops in aged mice: drug, route correct; untested opener.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -187,9 +202,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "10, 4, 6",
-   "note": "CT.gov v2: ICSS 0.08 (-0.04, 0.21) p=0.1871 posted 2022-04-14; VELOS-1 (2022-01-26, p=0.2883) and VELOS-3 (2023-10-23, p=0.764) verified. Paper says 'currently in Phase III', cites VELOS-1 only; HanAll/PRN release URLs now 404. Contra holds; the flag is a rule question.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction (engagement/efficacy: post-dates same-target patient result); efficacy co-primary",
+   "note": "VELOS-2 values re-verified; topline public 2020-01-21, so the 2023 model is a retrodiction that failed to reproduce: contra. Note's co-primary design and 2020 date accurate; drug, route correct; year 2023 (model side).",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [],

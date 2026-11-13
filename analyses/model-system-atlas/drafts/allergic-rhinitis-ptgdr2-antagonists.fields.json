@@ -1,0 +1,101 @@
+{
+ "tile": "allergic-rhinitis-ptgdr2-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to qav-680, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to bi-671800, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "drug set to bi-671800, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "drug set to bi-671800, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to qav-680, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "status same and year 2017 kept; judgement rewritten (target reached and margin held = same; efficacy failure counted once in efficacy); the 2012 Actelion release carries no dose or tolerability result, so no earlier date; drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "status retro kept: dose retrodiction rests on setipiprant's own clinical PK/PD and its 2012 Phase 3 miss (same drug), so it stands; note added; drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to qav-680, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2017 -> 2012 (rule 6: Actelion release 2012-04-02 via RTTNews; Horak 2012 OC000459 chamber epub 2012-10-01 as model_src); retrodiction false -> true (chamber result public after the class's patient miss); status contra kept (failed to reproduce); drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2017 -> 2012 (rule 6: Stebbins 2010 model side; Actelion release 2012-04-02); prospective, contra kept; drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2017 -> 2014 (rule 6: Diamant 2014-08-01 after the 2012-04-02 release); retrodiction false -> true (post-dating); contra kept (failed to reproduce); drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to qav-680, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to setipiprant, route oral, population_group unselected, combination_with null"
+  }
+ ],
+ "added": []
+}

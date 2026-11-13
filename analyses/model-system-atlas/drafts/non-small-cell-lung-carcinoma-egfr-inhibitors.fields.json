@@ -1,0 +1,117 @@
+{
+ "tile": "non-small-cell-lung-carcinoma-egfr-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug osimertinib, route oral (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug osimertinib, route oral (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug osimertinib, route oral; model text made identical to its model_id (rat/dog tox moved to note)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug osimertinib, route iv ([11C] microdose PET track)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug osimertinib, route iv, population_group unselected (healthy volunteers)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug osimertinib, route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug osimertinib, route oral; EXCLAIM-2 (mobocertinib) removed from patient_trials, scored on its own track (efficacy 7)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug osimertinib, route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: EGFR-TKI CNS responses (Park 2012, gefitinib/erlotinib) public before the 2016 model; single-arm ruling noted; drug osimertinib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug mobocertinib, route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug mobocertinib, route oral; single-arm ruling noted (status unchanged)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "year 2025 -> 2023 (earliest public date: Takeda press release 2023-10-02, per adjudication); active-comparator monotherapy scored on primary endpoint; magnitude 'null' string -> null; drug mobocertinib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug osimertinib, route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug osimertinib, route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug osimertinib, route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug osimertinib, route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "drug firmonertinib, route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "year 2026 -> 2024 (WCLC 2024 congress presentation / IASLC press release); status same -> retro, retrodiction true (afatinib responses in uncommon/PACC-type mutations, Yang 2015, preceded the model); single-arm-type design noted; drug firmonertinib, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug osimertinib, route oral (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug osimertinib, route oral; mobocertinib QT miss moved from judgement to its own track (safety 3-4)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "mobocertinib track opener on herg-rat-dog-tox, 2016 untested (FDA 215310 multidisciplinary review; proxy from NCT02716116 start)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "mobocertinib track on herg-rat-dog-tox: 2021 contra, QT prolongation the hERG/dog package cleared (FDA 215310 multidisciplinary review, comparison stated); split from safety 2's judgement"
+  }
+ ]
+}

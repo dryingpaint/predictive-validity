@@ -1,0 +1,143 @@
+{
+ "tile": "extranodal-nasal-nk-t-cell-lymphoma-anti-pdcd1-antibodies",
+ "searched": [
+  "Read draft, check verdicts (missing list) and tiles.json spec (members camrelizumab, sintilimab, tislelizumab)",
+  "Manifest: tislelizumab BLAs 761232/761380/761417 (ESCC/gastric, other indications); camrelizumab and sintilimab have no NDA/BLA in the bundle",
+  "Europe PMC: DOI 10.2147/OTT.S187280 (Xue 2019) abstract and full text (BioC PMC6433108) for model, antibody and strain",
+  "Europe PMC: (sintilimab OR tislelizumab OR camrelizumab) AND (NK/T OR NKTCL OR ENKTL) AND (biomarker OR predict* OR correlat*)",
+  "Europe PMC: (NK/T OR NKTCL OR ENKTL) AND (PD-1 OR anti-PD-1) AND (mouse OR xenograft OR in vivo OR cell line OR organoid)",
+  "Europe PMC: member or anti-PD-1 AND ENKTL AND response AND (mutation OR EBV DNA OR signature OR PD-L1 expression OR gene expression), 2018-2026",
+  "Europe PMC: (NK/T OR NKTCL OR ENKTL) AND (humanized OR PDX OR ex vivo OR organoid) AND (PD-1 OR member names)",
+  "Europe PMC: camrelizumab AND ENKTL",
+  "Europe PMC: DOI 10.1038/s41392-024-01825-0 (SCENT, sintilimab + chidamide) abstract for biomarker-vs-response comparisons"
+ ],
+ "added_models": [
+  {
+   "model_id": "el4-syngeneic-mouse-rmp1-14",
+   "model": "EL4 murine T-cell lymphoma, syngeneic C57BL/6 mice, surrogate anti-mouse PD-1 (RMP1-14)",
+   "model_kind": "animal",
+   "model_first_use_year": 2019,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "year": 2019,
+      "status": "untested",
+      "model": "EL4 murine T-cell lymphoma, syngeneic C57BL/6 mice, surrogate anti-mouse PD-1 (RMP1-14)",
+      "model_id": "el4-syngeneic-mouse-rmp1-14",
+      "prediction_level": "class",
+      "note": "Surrogate anti-PD-1 lengthened survival of EL4 lymphoma-bearing mice (median 28 vs 20 days), offered as evidence for NK/T lymphoma; no member drug tested yet.",
+      "short": "Anti-PD-1 prolongs mouse lymphoma survival",
+      "src": "https://doi.org/10.2147/OTT.S187280",
+      "srcLabel": "Xue 2019",
+      "quote": "In vivo, anti-PD1 treatment improved overall survival and median survival time of mice bearing an NK/T cell line.",
+      "confidence": "medium",
+      "confidence_note": "Full text read (PMC6433108). The abstract says NK/T cell line, but the methods implant EL4, a murine T-lymphoma line, in C57BL/6 mice; the NK/T lines were used only for in-vitro PD-L1.",
+      "judgement": "Opening entry at Xue's epub (2019-03-19). Kept as its own animal track because it is the only dosed in-vivo efficacy model for the class in this disease; the tumour is not an NK/T line, which lowers face validity but not admissibility.",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2019,
+      "print_year": 2019,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": false,
+      "model_kind": "animal",
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected (relapsed/refractory ENKTL, EBV-positive)",
+      "model_first_use_year": 2019,
+      "endpoint_role": null,
+      "outcome_tested": null
+     },
+     {
+      "year": 2020,
+      "status": "same",
+      "model": "EL4 murine T-cell lymphoma, syngeneic C57BL/6 mice, surrogate anti-mouse PD-1 (RMP1-14)",
+      "model_id": "el4-syngeneic-mouse-rmp1-14",
+      "prediction_level": "class",
+      "note": "ORIENT-4: sintilimab gave 75% ORR (primary endpoint) in 28 r/r ENKTL patients, matching the mouse model's direction (anti-PD-1 slows lymphoma).",
+      "short": "Sintilimab ORR 75%, as mice predicted",
+      "src": "https://doi.org/10.1038/s41392-021-00768-0",
+      "srcLabel": "Tao 2021",
+      "quote": "Twenty-one patients (75.0%, 95% CI: 55.1-89.3%) achieved an objective response.",
+      "confidence": "medium",
+      "confidence_note": "Pairing made by me; ORIENT-4 does not cite Xue 2019. Year from NCT03228836 results posting (2020-12-17, per the draft and its checker); paper online 2021-10-27. The mouse showed only modest tumour suppression, so direction only.",
+      "reason": "Patients responded as the mouse predicted",
+      "judgement": "Paired comparison (comparison_stated false). Not a retrodiction: the mouse data were public in March 2019, before any member-drug ENKTL result (ORIENT-4 interim, ASH December 2019). Tislelizumab cohort 1 (ORR 31.8%, stopped for modest efficacy) is listed in patient_trials and kept as same, as on the draft's PD-L1 track, since the model stated no magnitude.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.2147/OTT.S187280",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2021,
+      "print_year": 2021,
+      "registry_date": "2020-12-17",
+      "model_filed": false,
+      "product_in_model": false,
+      "model_kind": "animal",
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "objective response rate vs mouse median survival gain (28 vs 20 days)",
+      "source_calls_it": null,
+      "population": "Unselected (relapsed/refractory ENKTL, EBV-positive)",
+      "model_first_use_year": 2019,
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [
+       {
+        "nct": "NCT03493451",
+        "registry_date": "2022-05-04",
+        "doi": "10.1182/bloodadvances.2022009575",
+        "quote": "Modest efficacy was observed in cohort 1 (median FU, 8.4 months; ORR, 31.8%; CR, 18.2%; median DOR, not reached)"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "ENKTL cell lines with STAT3-driven PD-L1 (Song 2018, Blood): in-vitro PD-L1 regulation, no member or surrogate anti-PD-1 dosed, no prediction checkable in patients; same rationale as the draft's PD-L1 track.",
+  "NK/T cell lines (YT, NKYS, NK92, KAI3, NKL, SNK-6) PD-L1 flow cytometry in Xue 2019: undosed rationale, folded into the EL4 track's source rather than a separate track.",
+  "PD-L1 (CD274) structural variants as responder selector (Lim 2020 Leukemia; Kwong 2017): tested on pembrolizumab, not a member drug; set aside.",
+  "SCENT (sintilimab + chidamide, STTT 2024): dynamic ctDNA/EBV-DNA and STAT3 mutation were prognostic in a combination trial; on-treatment biomarkers, not a model predicting response to the class, and the regimen adds an HDAC inhibitor.",
+  "Plasma EBV-DNA / ctDNA kinetics in member-drug ENKTL trials: on-treatment patient monitoring, not a model system.",
+  "Tislelizumab/sintilimab/camrelizumab dose selection (population PK, receptor occupancy in phase 1 solid-tumour patients): human data from other indications, and no ENKTL trial compared exposure with a stated target; dose cell stays empty.",
+  "Cynomolgus toxicology for sintilimab and camrelizumab: no FDA review in the bundle (no NDA/BLA), not verified; tislelizumab monkey track already in the draft.",
+  "Humanized-mouse, PDX, organoid or ex-vivo drug-sensitivity models of ENKTL with a member drug: none found in Europe PMC searches.",
+  "Tislelizumab combination trials in ENKTL (liposomal mitoxantrone 2026, selinexor TOUCH 2026): combination regimens, no model-vs-patient comparison found at title level."
+ ],
+ "gaps": [
+  {
+   "lead": "NK/T-cell-line tumour-bearing mouse model treated with anti-PD-1 (Xue 2019, OTT, doi:10.2147/OTT.S187280)",
+   "outcome": "tracked",
+   "detail": "el4-syngeneic-mouse-rmp1-14, efficacy (2019 untested, 2020 same vs ORIENT-4); the in-vivo tumour is EL4 with surrogate RMP1-14, product_in_model false; retro question already in checker verdict efficacy index 5"
+  },
+  {
+   "lead": "ENKTL cell lines with STAT3-driven PD-L1 expression (Song 2018, Blood)",
+   "outcome": "none",
+   "detail": "in-vitro PD-L1 regulation with no member or surrogate anti-PD-1 dosed and no prediction compared with patients; rationale already covered by enktl-biopsy-pdl1-ihc"
+  },
+  {
+   "lead": "PD-L1 genomic structural alterations as responder selector (Lim 2020, Leukemia)",
+   "outcome": "none",
+   "detail": "tested on pembrolizumab only; outside the member list (camrelizumab, sintilimab, tislelizumab), only members score"
+  },
+  {
+   "lead": "Sintilimab plus chidamide in r/r ENKTL (SCENT, STTT 2024)",
+   "outcome": "none",
+   "detail": "abstract reviewed: ctDNA/EBV-DNA kinetics and STAT3 mutation are on-treatment prognostic biomarkers in an HDAC-inhibitor combination, not a model system predicting member-drug response"
+  }
+ ]
+}

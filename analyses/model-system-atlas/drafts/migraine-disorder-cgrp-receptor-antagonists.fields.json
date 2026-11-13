@@ -1,0 +1,127 @@
+{
+ "tile": "migraine-disorder-cgrp-receptor-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug mk-3207, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "status same->retro (retrodiction ruling: human CGRP-receptor engagement public 2005, olcegepant/Petersen); drug mk-3207, route oral set"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug mk-3207, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug mk-3207, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug ubrogepant, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "drug ubrogepant, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug mk-3207, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same->retro (retrodiction ruling: olcegepant 2004 and telcagepant 2008 patient efficacy preceded the primate model result); drug mk-3207, route oral set"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug ubrogepant, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug rimegepant, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "status same->retro (retrodiction ruling: olcegepant 2004 and telcagepant 2008 patient efficacy preceded the 2012 primate facial blood flow result); drug rimegepant, route oral set"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug mk-3207, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug ubrogepant, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug ubrogepant, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug rimegepant, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug rimegepant, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug rimegepant, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug mk-3207, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "drug mk-3207, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "drug ubrogepant, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "drug mk-3207, route oral set from the entry's sources (field added; status and year unchanged)"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "what": "drug mk-3207, route oral set from the entry's sources (field added; status and year unchanged)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "opening untested entry, ubrogepant oral track on rhesus-cidv, 2019 FDA PharmR"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "retro 2020, ubrogepant oral track on rhesus-cidv, Moore 2020 rhesus 3.2 vs human 2.6 nM CIDV EC50, split from engagement 2 judgement"
+  }
+ ]
+}

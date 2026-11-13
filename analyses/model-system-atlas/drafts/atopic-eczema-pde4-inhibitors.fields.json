@@ -1,0 +1,47 @@
+{
+ "tile": "atopic-eczema-pde4-inhibitors",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true, year 2016 -> 2015: retrodiction ruling (ear-edema model first public 2009, after Hanifin 1996 topical PDE4 inhibitor CP80,633 worked in AD patients); earliest public date is the Anacor Phase 3 topline press release, 13 July 2015"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "status same -> retro, retrodiction true: retrodiction ruling judged on first public date; mouse chronic contact dermatitis data first public after Hanifin 1996 and crisaborole Phase 3"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug set to difamilast; crisaborole (Calama 2024) split into its own track (efficacy 13-14)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: dose retrodiction ruling (same drug); minipig margin first public in the Dec 2016 FDA review, after crisaborole Phase 3 results (July 2015 topline, Paller 2016)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "status same -> retro, retrodiction true: safety retrodiction ruling (same drug); rabbit irritation data first public in the Dec 2016 FDA review, after Paller 2016 reported application-site pain"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "retrodiction true (status stays contra): model first public 2014, after Hanifin 1996 and crisaborole Phase 2; failed to reproduce LEO 29102's own result"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "crisaborole track on mouse-oxazolone-dermatitis: opening untested 2024 (Calama 2024, doi:10.1111/exd.70024)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "crisaborole track on mouse-oxazolone-dermatitis: retro 2024, crisaborole effective in the 4-challenge oxazolone model after approval (Calama 2024)"
+  }
+ ]
+}

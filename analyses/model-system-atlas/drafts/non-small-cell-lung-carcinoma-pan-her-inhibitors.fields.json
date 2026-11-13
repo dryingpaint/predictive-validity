@@ -1,0 +1,211 @@
+{
+ "tile": "non-small-cell-lung-carcinoma-pan-her-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "population recoded to the first-in-human advanced solid tumour cohort, population_group unselected; drug dacomitinib, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "opener year 2018 -> 2017 with model_first_use_year 2017 (model first public at WCLC 2017); drug poziotinib, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "drug set to pyrotinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "drug set to tarloxotinib, route iv (was missing); no status or year change"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "opener year 2018 -> 2017 with model_first_use_year 2017 (model first public at WCLC 2017); drug poziotinib, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "drug set to poziotinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "drug set to pyrotinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "what": "drug set to tarloxotinib, route iv (was missing); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "what": "drug set to tarloxotinib, route iv (was missing); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 9,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "dose",
+   "index": 10,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "year 2018 -> 2017 (rule 6 earliest date: WCLC Oct 2017 abstract Elamin OA 12.01 first put preclinical and clinical poziotinib activity side by side); single-arm design noted, status same; drug poziotinib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "year 2025 -> 2019 (rule 6 earliest date: Spectrum press release 2019-12-26 announced ZENITH20-1 missed its primary endpoint; settles RULE QUESTION, src stays Le 2025 as tier-1 source of the status); single-arm design with pre-set 17% ORR bar noted; drug poziotinib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug set to pyrotinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "status same kept; single-arm design with no pre-set bar written into note; drug pyrotinib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "drug set to tarloxotinib, route iv (was missing); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "status contra kept; single-arm design written into note; drug tarloxotinib, route iv"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "status same kept under the single-arm ruling (exploratory HER2 cohort, no primary or bar; 3/26 responses in the predicted direction); settles RULE QUESTION; confidence low -> medium per checker; drug dacomitinib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "drug set to poziotinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "drug set to poziotinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "opener year 2018 -> 2017 with model_first_use_year 2017 (model first public at WCLC 2017); drug poziotinib, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "drug set to pyrotinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "what": "drug set to pyrotinib, route oral (was missing); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "drug set to tarloxotinib, route iv (was missing); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "drug set to tarloxotinib, route iv (was missing); no status or year change"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "drug set to dacomitinib, route oral (was missing); no status or year change"
+  }
+ ],
+ "added": []
+}

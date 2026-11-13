@@ -1,0 +1,11 @@
+{"tile": "gout-slc22a12-inhibitors",
+ "changed": [
+  {"cell": "engagement", "index": 2, "what": "status same -> retro (retrodiction true): benzbromarone/probenecid, URAT1 inhibitors, lowered urate in patients before the 2002 genotype; year 2016 -> 2009 (Ardea press release 11 Jun 2009 / EULAR 2009 volunteer sUA data, earlier than Fleischmann 2014); drug 'class', route oral"},
+  {"cell": "engagement", "index": 4, "what": "status same -> retro (retrodiction true): URAT1 inhibitors incl. RDEA806 lowered urate in people before the hURAT1 assay; year 2016 -> 2009 (EULAR 2009 posters announced in Ardea press release 11 Jun 2009); drug lesinurad, route oral"},
+  {"cell": "engagement", "index": 6, "what": "status same -> retro (retrodiction true): capuchin data (Ahn 2016) first public after lesinurad's patient urate lowering; drug epaminurad, route oral"},
+  {"cell": "efficacy", "index": 2, "what": "status same -> retro (retrodiction true): benzbromarone/probenecid patient urate lowering predates the assay; year 2015 -> 2011 (Ardea press release 6 Jan 2011: phase 2b lesinurad + allopurinol met primary); combination design, combination_with allopurinol; drug lesinurad, route oral"},
+  {"cell": "efficacy", "index": 5, "what": "status same -> retro (retrodiction true): capuchin data (Ahn 2016) first public after lesinurad met its sUA endpoint in gout; drug epaminurad, route oral"},
+  {"cell": "dose", "index": 2, "what": "combination_with 'allopurinol or febuxostat' (400 mg renal events on XOI add-on); drug lesinurad, route oral; status and year unchanged (no dose retrodiction: tox predates lesinurad's own patient data)"}
+ ],
+ "added": []
+}

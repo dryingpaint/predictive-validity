@@ -1,0 +1,72 @@
+{
+ "tile": "type-2-diabetes-mellitus-gcgr-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "status same->retro, retrodiction true: model (Mu 2012) first public after the 2001 Bay 27-9955 human glucagon-challenge blockade (Petersen 2001, Diabetologia); engagement retrodiction counts any drug's earlier human result for the target"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "status same->retro, retrodiction true: antibody model (Yan 2009) first public after the 2001 Bay 27-9955 human engagement result for GCGR antagonism"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "status same->retro, retrodiction true: small-molecule model (Mu 2012) first public after MK-0893's Phase 2 HbA1c result (ADA, June 2011); efficacy retrodiction counts any drug's earlier result for the target"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "year 2015->2013: patient side public at EASD September 2011 (Clinical Endocrinology News 2011-10-01), so the paired comparison dates to the model side, Guzman-Perez 2013 (rule 6, earliest public date)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "status same->untested: imported T1D harm set aside because T2D patients were measured for the class (imported-harm ruling); volagidemab T2D study NCT02455011 unreported"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "status contra->untested: imported T1D harm set aside because T2D patients were measured for the class (imported-harm ruling); volagidemab T2D study NCT02455011 unreported"
+  },
+  {
+   "cell": "safety",
+   "index": 16,
+   "what": "status same->untested on the volagidemab track: T1D import set aside because T2D patients were measured for the class; NCT02455011 unreported"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "opener, small-molecule challenge model x adomeglivant x oral, 2012 (Mu 2012)"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "what": "split from engagement 3: adomeglivant oral track, retro 2015 (Kelly 2015), retrodiction under the target rule (Bay 27-9955 2001)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "opener, small-molecule model x mk-3577 x oral, 2012 (Mu 2012)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "split from efficacy 3: mk-3577 oral track, retro 2017 (NCT00868790 registry results 2017-01-11)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "opener, small-molecule model x pf-06291874 x oral, 2013 (Guzman-Perez 2013)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "split from efficacy 3: pf-06291874 oral track, retro 2017 (NCT02554877 results 2017-08-07; Kazierad 2018)"
+  }
+ ]
+}

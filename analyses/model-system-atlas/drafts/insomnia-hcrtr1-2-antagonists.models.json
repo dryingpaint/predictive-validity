@@ -242,5 +242,32 @@
   "Preproorexin knockout / orexin-neuron-deficient mice as a target-specificity control (lemborexant): shows on-target action, compared with no patient result beyond the chocolate-cataplexy track added here.",
   "Human PET OX2 occupancy for members: none found; the daridorexant 65% threshold came from almorexant and suvorexant clinical data (folded into the PBPK-PD track).",
   "Vornorexant, fazamorexant, filorexant: no member-specific model differing from the draft's rat/dog EEG found at abstract level."
+ ],
+ "gaps": [
+  {
+   "lead": "Vornorexant Phase 3 (Japan) met sSL primary, no narcolepsy signs (Sleep 2025, PMID 41001841)",
+   "outcome": "tracked",
+   "detail": "rat-dog-sleep-eeg efficacy #2 (class same, 2012); its judgement already names vornorexant meeting its primary; agrees, no status change, so no new entry."
+  },
+  {
+   "lead": "Filorexant Phase 2 insomnia positive at all doses (Connor 2016), dropped without failure",
+   "outcome": "tracked",
+   "detail": "rat-dog-sleep-eeg efficacy #2 judgement cites Connor 2016 and the portfolio drop; no missed failure."
+  },
+  {
+   "lead": "Lemborexant FDA 2019 review: mouse chocolate cataplexy WT vs orexin-KO",
+   "outcome": "tracked",
+   "detail": "mouse-chocolate-cataplexy safety #5 (untested, 2014) and #6 (same/partial, 2019)."
+  },
+  {
+   "lead": "Fazamorexant Phase 3 (NCT05525637) positive on secondary aggregators only",
+   "outcome": "tracked",
+   "detail": "rat-dog-sleep-eeg efficacy #2 judgement names fazamorexant meeting its primary; positive result agrees with class same, no member failure found, no status change."
+  },
+  {
+   "lead": "Lemborexant and daridorexant own nonclinical abuse-liability studies vs human abuse potential trials (FDA 2019, 2022)",
+   "outcome": "tracked",
+   "detail": "rhesus-rat-abuse-liability-battery safety #4 (contra, 2014); its confidence_note cites the 2019 lemborexant review and the 2022 daridorexant HAP; class-level track already contra, later members repeat it."
+  }
  ]
 }

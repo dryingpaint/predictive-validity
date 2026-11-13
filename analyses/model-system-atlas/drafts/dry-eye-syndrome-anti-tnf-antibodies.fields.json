@@ -1,0 +1,96 @@
+{
+ "tile": "dry-eye-syndrome-anti-tnf-antibodies",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2022 -> 2020: VELOS-2 primary miss first public at the HanAll/Daewoong topline press conference 2020-01-21 (release 2020-01-28), rule 6 earliest date; co-primary design (both missed) written into note; drug tanfanercept, route ocular_topical"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "year 2022 -> 2020: same VELOS-2 topline press release, rule 6; co-primary design in note; drug tanfanercept, route ocular_topical"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "year 2022 -> 2019: VELOS-1 ARVO 2019 abstract first reported no serious adverse events in tanfanercept-dosed dry-eye patients (congress abstract, rule 6); Dong 2022 stays the status source"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug tanfanercept, route ocular_topical; readout_tier proximal -> direct (free ocular-surface TNF-alpha is the target itself)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug tanfanercept, route ocular_topical"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug licaminlimab (ESBA105 is its development code), route ocular_topical"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug licaminlimab, route ocular_topical; population_group other_disease (cataract-surgery cohorts)"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug tanfanercept, route ocular_topical"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug tanfanercept, route ocular_topical"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug tanfanercept, route ocular_topical"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug licaminlimab, route ocular_topical, population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug licaminlimab, route ocular_topical, population_group biomarker_selected"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug tanfanercept, route ocular_topical"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug tanfanercept, route ocular_topical; note records the co-primary design and the 2020 public date of the miss the retrodiction post-dates"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug licaminlimab, route ocular_topical; model text unified with the rabbit dose entries"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug licaminlimab, route ocular_topical, population_group other_disease (imported cataract cohort); note adds that dry-eye patients (NCT01338610, 2013) agree, so status same 2013 stands"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug tanfanercept, route ocular_topical"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug licaminlimab, route ocular_topical; model text unified"
+  }
+ ],
+ "added": []
+}

@@ -1,0 +1,205 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/marginal-zone-lymphoma-ms4a1-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Engelberts 2020 (PMID 31981978, epub 2020-01-23) abstract has the quote verbatim. FDA BLA 761324 review confirms monkey B-cell depletion. Opening untested at FIH 2018 proxy is fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2019,
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public",
+   "note": "Retro right (Maloney 1994 predates model); epcoritamab sc, other_disease right. Lugtenburg ASH 2019 abstract (doi 10.1182/blood-2019-121460, 2019-11-13) states cyno B-cell depletion and 'rapid, complete depletion of circulating B cells' in patients: year 2019, comparison_stated true.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status agreed: retro (retrodiction, rituximab depletion 1994 predates model). Rule 6 moves year to 2019: Lugtenburg ASH 2019 (DOI resolves) first stated monkey and patient B-cell depletion; comparison_stated true."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "engagement: did the PD readout move in dosed humans (any dosed humans count); untested_reason not_measured requires no trial measured the readout",
+   "note": "Sawas 2017 full text (PMC5412890) does measure depletion: 'A rapid depletion in circulating lymphocytes was observed in all CLL patients, with most patients achieving a >50% reduction within 7 days'. Add a 2017 same entry (readout_tier downstream/proximal, paired).",
+   "adjudicated_status": "same",
+   "adjudication_note": "Engagement rule: any dosed humans count. Sawas 2017 full text shows rapid circulating-lymphocyte depletion in all CLL patients on ublituximab, matching ex-vivo ADCC in direction. 2008 opener stays untested; track's latest becomes a 2017 paired same (rule 1)."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote is from the Lancet full text, which I could not open; FDA 761324 review (p.297) confirms RP2D came from a PBPK/PD model fitted to preclinical plus phase 1 data, with no monkey-stated exposure target or margin. untested/unpublished stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Engelberts abstract quote verbatim; FDA review confirms CDX/PDX (DLBCL) in humanized mice. No epcoritamab MZL efficacy readout found (MZL phase 2 NCT06796998 recruiting); untested/unsettled stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "de Romeuf 2008 (PMID 18302712) abstract quote verbatim. Opening untested 2008 entry is correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2013,
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public",
+   "note": "Retro right (Conconi 2003 predates 2008 model); ublituximab iv, stage_or_line right. Deng ASCO 2013 (doi 10.1200/jco.2013.31.15_suppl.8575, 2013-05-20), same trial: '1 CR (rituximab refractory MZL); 2 PR's (1 MZL, 1 FL)'. Year 2013; registry_date 2012-07-24 missing.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status agreed: retro (Conconi 2003 predates 2008 ex-vivo model). Rule 6 moves year to 2013: Deng ASCO 2013 abstract (DOI resolves) first reported MZL responses on ublituximab; add registry_date 2012-07-24."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Engelberts abstract quote verbatim; FDA review adds first-dose cytokine-associated signs and one death at 1 mg/kg IV, lower cytokines on SC."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Blood 2019;134(S1):758 quote verbatim; abstract states SC cyno lower cytokines beside non-severe patient CRS: comparison_stated true, year 2019, not retro, same. epcoritamab sc, other_disease (14/18 DLBCL) right. srcLabel should be Lugtenburg 2019 (first author).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Hart 2019 ASH abstract (fc.py scrape) has the quote verbatim ('300 mg per kg' as printed, likely a typo for ug/kg). No human depletion data in 2019; untested 2019, class level, fine.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "GlobeNewswire 2025-01-09 quote verbatim; tier 5, trial_unreported true. Retro right (rituximab 1994 predates 2019 model); partial for shallower depletion. imvotamab iv, other_disease right. imported_from null though RA/SLE imported; set RA MONDO id.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Hart 2019; monkeys showed only transient IL-6 <200 pg/mL. A stated low-CRS prediction before patient data; untested 2019.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "EHA 2022 P1276 (PMC9429641) quote verbatim: low CRS, no ICANS up to 1000 mg. Monkeys can show CRS and predicted it low in 2019, before patient data: prospective same, imported from mixed NHL.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same PMC9429641 abstract states lower responses at 600/1000 mg were already observed before the synapse model was fitted; the model reproduces the 100 mg window. retro 2022, retrodiction true, correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Li 2022 CPT abstract quote verbatim; model guided 48 mg RP2D. Year 2020 is a proxy for RP2D selection (first public epub 2022); acceptable. Model was fitted partly to escalation patient data.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Sinnollareddy 2026 abstract quote verbatim; 48 mg regimen reached and response plateau held in FL expansion patients the model had not seen. Some escalation patients overlap the fitting data; see rule question. same 2026, within_2x.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2010,
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public",
+   "note": "Sawas 2017 quote verbatim; retro, ublituximab iv, CLL other_disease right. But Cartron ASH 2010 (doi 10.1182/blood.V116.21.2447.2447, 2010-11-19) reported 'rapid, profound and sustained lymphocyte depletion' in 21 CLL pts on LFB-R603 (ublituximab): year 2010.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status agreed: retro (rituximab depletion predates 2008 model). Rule 6 moves year to 2010: Cartron ASH 2010 (DOI resolves) first reported lymphocyte depletion in CLL patients on LFB-R603 (ublituximab)."
+  }
+ ],
+ "missing": [
+  "Imvotamab (member) engagement track: preclinical models claimed deep B-cell depletion, incl. low-CD20 cells (ACR abstract, acrabstracts.org 'Imvotamab ... effectively depletes low-expressing CD20 B cells in preclinical models'); phase 1b RA/SLE patients showed inadequate B-cell depletion and the drug was discontinued (IGM Biosciences press release 2025-01-09, globenewswire.com/news-release/2025/01/09/3007285; tier 5, trial_unreported). Candidate engagement contra, 2025, imported from RA/SLE.",
+  "Imvotamab NHL phase 1 NCT04082936 enrolled MZL (conditions list), terminated for pipeline prioritization, no posted results; EHA 2022 P1276 (PMC9429641) reports 60% ORR at 100 mg in R/R NHL. Draft note 'no MZL data found' should cite this trial.",
+  "Ublituximab B-cell depletion in MS patients (ULTIMATE I/II, Steinman 2022 NEJM; phase 2 Fox 2021) is a further human engagement readout for the ublituximab track."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Can an efficacy entry score a disease subset (8/35 MZL, 3 with tabulated responses) of a mixed trial when the subset is below the 80% bar and the quote speaks of indolent NHL as a whole?",
+  "Engagement for a member drug measured only in another disease (imvotamab in RA/SLE, ublituximab in MS): admissible as 'any dosed humans', and should it carry imported_from?",
+  "Is monkey silence on ICANS a safety miss, given monkeys showed 'uncoordinated movements' with cytokine release but neurotoxicity is debated as species-observable?",
+  "Models: epcoritamab PBPK/PD (Li 2022) was fitted to escalation-cohort patient PK/response data; the later FL exposure-response pools escalation and expansion patients. Is a comparison partly on the fitting data prospective (same) or retro? Scored same here because the expansion cohort was unseen.",
+  "Models: engagement contra vs same/partial when patients' depletion moved but fell short of the sponsor's depth bar (imvotamab RA/SLE, press release only)."
+ ]
+}

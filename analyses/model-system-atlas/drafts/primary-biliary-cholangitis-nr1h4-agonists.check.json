@@ -9,67 +9,74 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 29148806 resolves; quote verbatim in abstract; epub 2017-12-08 confirmed. NCT02516605 start 2015-09-09 verified, so the PD model predates the trial result. Untested opener holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 29148806 (epub 2017-12-08); quote verbatim in abstract. Opener: tropifexor, oral, unselected right; untested holds."
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 31823525; quote verbatim (abstract); epub 2019-12-10, print 2020 Apr confirmed. Healthy-volunteer FGF19 rise paired with rodent Fgf15 induction; proximal readout right. No NCT in abstract; registry_date null accepted."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 31823525 quote verbatim. Mudaliar 2013 (PMID 23727264, epub 2013-05-30) abstract shows OCA raised FGF19 before Tully 2017: retro right (engagement is a target claim). Tropifexor, oral, healthy volunteers coded unselected right."
   },
   {
    "cell": "engagement",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 38409114, first pub 2024-03-15; quote verbatim; abstract states rodent and phase 1 side by side. Younis 2023 (PMID 36573450) verified: FGF19 up, C4 down, plateau >30 mg. Second match on one track; strengthens is for a second miss (#127)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 38409114 (2024) quote verbatim. Model first public after OCA (2013) and tropifexor (2019) human FGF19 rises: retro right. Cilofexor own track, strengthens null right; oral, unselected right."
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Same source as engagement 1; the abstract states no dose, exposure or human projection. Untested opener holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Same abstract as engagement 1; no dose, exposure or human projection stated. Opener tropifexor, oral, unselected right; untested holds."
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "decision 4 (dose: the model's exposure/occupancy/regimen target must exist to be reached; a post-hoc justification is untested) and evidence rule 3 (no quotable target)",
-   "note": "GGT fold change verified as a NCT02516605 primary (0.74/0.41/0.28/0.31 vs 0.86; p<0.001 at 60-150 ug; posted 2019-11-13). But no model source states any exposure, occupancy or regimen target; the quote evidences efficacy, not a reached target. Nothing to compare.",
+   "rule": "DRAFTER_BRIEF dose table row 1 (model stated no exposure, occupancy or regimen target nor a margin: untested); 'a target scores on the track of the model system that stated it'",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (PMID 36267872) but shows efficacy, not a model-stated target reached; the entry itself carries untested_reason no_prediction. No earlier tropifexor patient result, so retrodiction false right; tropifexor, oral, stage_or_line right.",
    "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4: dose asks whether the model's exposure/occupancy/regimen target was reached; this track states no target (dose 1), so case 2 cannot apply and the GGT quote is efficacy evidence. Decision 8: model never compared, untested."
+   "adjudication_note": "Dose table row 1: the rodent PD model stated no exposure, occupancy or regimen target nor margin; GGT response is efficacy, not dose. Drafter's own untested_reason no_prediction stands."
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 30027140, first pub 2018-05-21; quote verbatim (abstract). BDL rat fibrosis prediction never tested in INTREPID (ELF/APRI/FIB-4 secondaries only, no histology; registry verified). Untested opener holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 30027140 (2018-05-21) quote verbatim. Opener edp-305, oral, unselected right; fibrosis never measured in INTREPID. Latest untested on its track yet carries no untested_reason (not_measured fits)."
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 32329946, first pub 2020-05-06; quote verbatim (abstract conclusions). Same day as the topline press release, but decision 10 needs a result motivated by the patient result, which this was not. Prospective, untested holds."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 32329946, epub 2020-05-06; quote verbatim. Opener edp-305, oral, unselected right; untested opener holds. Judgement still calls it prospective, inconsistent with efficacy 3's retrodiction ruling."
   },
   {
    "cell": "efficacy",
@@ -80,84 +87,90 @@
    "status_supported": false,
    "proposed_status": "untested",
    "proposed_year": 2020,
-   "rule": "decision 4 (efficacy): missed primary + significant secondary is untested unless the source's own conclusion calls it a match (#32); failed means absent or reversed, not development stopped (#53); year per decision 7 if a tier-5 press release is a dating event",
-   "note": "Registry verified: posted 2021-05-18; ALP responders 45.2/46.4/11.1%, p=0.106/0.063 (OR 5.6, 7.0); ALT/AST/GGT significant. That is the #32 pattern: untested, not same+partial and not contra. Decision 13 governs neg, not this. Press release 2020-05-06 unfetched.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 #32: primary ALP responder rate missed (p=0.063); significant secondaries score only if the source's conclusion calls it a match, and the tier-3 registry record has none. Decision 11 partial follows the pre-specified readout; decision 13 is neg-only."
+   "rule": "DRAFTER_BRIEF efficacy: status follows the trial's primary endpoint (no poc_gate); rule 5 untested_reason unsettled (patients measured, result inconclusive)",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Registry (results 2021-05-18) primary title verbatim; ITT ALP responders 45%/46% vs 11%, p=0.106/0.063: primary not met. Year 2020 (press release 2020-05-06) and retrodiction true right; edp-305, oral, stage_or_line right. Missed primary is not a reproduction.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Efficacy follows the trial's primary endpoint: INTREPID ITT ALP responder primary not met (p=0.106/0.063), authors call it a failure. Retrodiction that failed to reproduce the patient result is contra, not retro; not 'unsettled'."
   },
   {
    "cell": "efficacy",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 34818403, first pub 2021-10-25; quote verbatim (abstract). GGT is a verified NCT02516605 primary, so endpoint_role primary holds; rat matched GGT and bilirubin, not ALP (partial). Post-dates the 2019-11-13 posting: retro is right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 34818403 (2021-10-25) quote verbatim. Post-dates tropifexor PBC registry results 2019-11-13 whose primary was GGT: retro right; tropifexor, oral, stage_or_line right."
   },
   {
    "cell": "efficacy",
    "index": 5,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "evidence rules 2-3 (a paired comparison needs an admissible, quotable patient side; a conference abstract is not a listed tier) and decision 10 (a terminated trial's unreported result)",
-   "note": "PMID 37841639, first pub 2023-08-03; quote verbatim. But NCT02943447 (terminated; results 2020-01-13) posts safety primaries only, verified; the PBC efficacy lives in an unopened AASLD 2019 abstract, patient quote null. No admissible quoted human datum; keep retrodiction: true.",
+   "rule": "DRAFTER_BRIEF evidence rules 2-3 (patient side needs an admissible, quotable source) and rule 5 untested_reason unsettled",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 37841639 quote verbatim but model-side only. NCT02943447 posts safety outcomes only; cilofexor PBC efficacy exists only as an unopened AASLD 2019 abstract, so no quotable patient result. Cilofexor, oral, unselected right; retrodiction true stays.",
    "adjudicated_status": "untested",
-   "adjudication_note": "Evidence rules 2-3 and decision 10: retro needs a reproduced human result from an admissible, quoted patient source; NCT02943447 posts no efficacy outcome and the AASLD 2019 abstract is unopened with patient quote null. Retrodiction flag stays."
+   "adjudication_note": "Evidence rules 2-3: patient side is an unopened conference abstract, no quotable cilofexor PBC efficacy result (registry posts safety only); model paper alone is no comparison. Untested, untested_reason unsettled."
   },
   {
    "cell": "safety",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Same source as engagement 1; the abstract carries no safety prediction. Untested opener holds; no NDA, so no FDA review to grep (manifest: no NDA/BLA)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Same abstract as engagement 1; no safety prediction stated. Opener tropifexor, oral, unselected right; untested holds."
   },
   {
    "cell": "safety",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 36267872; quote verbatim (lay summary); pruritus 52.5% vs 28.6%, 3 discontinuations at 150 ug confirmed; registry pruritus 3/11, 6/9, 5/12, 7/8 vs 6/21 verified. Contra rests on rodent itch being askable; IL-31 signal needed a humanized-liver mouse (rule question)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 36267872 quote verbatim; registry results 2019-11-13 set year 2019. Tropifexor, oral, second-line PBC = stage_or_line right; no earlier tropifexor patient result, so not a retrodiction; contra holds."
   },
   {
    "cell": "safety",
    "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "contra",
-   "proposed_year": 2021,
-   "rule": "decision 4 (safety: askable silence) applied per track (decisions 6 and 8: each track scored by the same rules); no rule counts one harm once across tracks, only once across dose and safety (decision 16)",
-   "note": "Quote verbatim; ductular prediction untested is right, but this track's silence on pruritus was contradicted by INTREPID (registry 2021-05-18: pruritus 16/28 vs 3/9, 17.9% TEAE discontinuations at 2.5 mg). Moves with safety 2; 2020 if press releases date.",
+   "proposed_year": 2020,
+   "rule": "DRAFTER_BRIEF safety: silence contradicted on a harm the species could have shown, scored per track ('a contra on one does not carry to the other')",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (PMID 32329946). Ductular prediction untested is right, but this edp-305 track was silent on pruritus, which mice can show, and INTREPID (2020-05-06) had dose-limiting pruritus (18% discontinuations at 2.5 mg). Edp-305, oral, unselected right.",
    "adjudicated_status": "contra",
-   "adjudication_note": "Decision 4 askable silence scores per track (decisions 6, 8: contra is per model); decision 16 counts once across dose and safety only, never across tracks. Safety 2 treats rodent itch as measurable, so INTREPID pruritus contradicts this mouse too."
+   "adjudication_note": "Safety: silence contradicted on a harm rodents could show (as confirmed on safety 2); tracks score separately, and decision 16 counts once only across dose and safety. EDP-305 pruritus dose-limiting in INTREPID, year 2020."
   },
   {
    "cell": "safety",
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "DOI resolves to PMID 35686937 / PMC9970017 (Hepatology 2023;77:20-32), tier 1 full text; epub 2022-07-17 (PubMed-indexed 2022-06-11), so 2022 holds. Quote verbatim in abstract (U+2010). PXB mice, OCA 10 mg/kg x 18 d (Methods say BID, Results once daily), sampled 2 h post-dose: mRNA 7.8x, serum 1.1 vs 0.085 pg/ml. Untested opener right. OCA is the same target and action (NR1H4 agonist), a sibling-drug proxy under decision 8 (#34), not a sibling-class surrogate (#69); patient side is a member, so the allowance should stand (rule question 7)."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 35686937, epub 2022-07-17; abstract quote confirmed. Opener on the PXB track for cilofexor (model dosed OCA, product_in_model false). Oral, unselected right; untested holds."
   },
   {
    "cell": "safety",
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim (abstract). NCT02854605 verified: 24 wk, 30/100 mg, n=140, safety primaries, results 2019-01-29; grade 2-3 pruritus 8/56, 1/56, 0/28 and W24 IL-31 7-fold higher (1.7 vs 0.24 pg/ml) in grade 2-3 confirmed in text. Mouse run 2022 (received 2022-02-17) after the NASH pruritus signal and PBC class itch were known: retro, never same (decision 10). Safety-only cross-indication transfer with imported_from is what decision 12 requires; same doses as the PBC trial, 24 vs 12 wk. Magnitude is computable on serum fold (mouse 13x; NASH 100 mg 13-fold per the discussion, 4.2x vs placebo at W24), so within_2x or off_by_2-5x rather than direction_only; status unchanged."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in abstract. PBC patients were measured (safety 6), so imported NASH harm set aside: untested, other_disease right. Retrodiction should stay true: cilofexor's own NASH (2019-01-29) and PBC (2020-01-13) results predate the mouse."
   },
   {
    "cell": "safety",
@@ -166,8 +179,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Quote verbatim (Results). NCT02943447 verified: terminated for alternate therapies, n=71, 30/100 mg, 12 wk, results 2020-01-13, safety primaries only. Not an exposure or duration artefact: same doses as NASH and the NASH rise was present from W1, so W1/W4/W12 sampling could show it. But the draft omits Figure 4D: 100 mg cilofexor acutely raised PBC serum IL-31 2.5x (3 to 7.4 pg/ml at 5 h post-dose), and the mouse was itself sampled 2 h post-dose; the rise did not persist at trough and VAS/5-D itch stayed flat vs placebo (Fig S4). Contra holds on the pre-specified steady-state readout (decisions 10, 11) with source_calls_it unresolved (authors: no increase, ceiling, multiple mediators), but magnitude_basis must state it is computed on trough and record 4D; opposite is wrong on the post-dose quantity. Confidence medium right."
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in Results (Europe PMC full text PMC9970017). PBC IL-31 unchanged vs placebo; retrodiction true right; contra holds as the only scoring PXB entry. Cilofexor, oral, unselected right."
   }
  ],
  "missing": [

@@ -417,5 +417,37 @@
   "Patient-derived organoids or ex-vivo drug sensitivity with Sym004: none found.",
   "In-silico or QSP dose selection for any member: none found beyond the sponsor PK modelling cited in Delord 2014, which is patient-derived.",
   "FDA/EMA reviews: none exist for any member (manifest has no rows); regulatory_reliance stays false."
+ ],
+ "gaps": [
+  {
+   "lead": "Napolitano 2017 Oncotarget (PMID 28978055), Sym004 in CRC lines/xenografts with acquired cetuximab resistance and MET activation",
+   "outcome": "added",
+   "detail": "sym004-crc-acquired-cetuximab-resistance-met-xenograft (already in added_models; engagement 2017 untested, dose 2017 untested/contra, efficacy 2017 untested/retro/contra vs Montagut 2018)"
+  },
+  {
+   "lead": "Oppenheim 2014 Br J Cancer (PMID 24496456), imgatuzumab ADCC by ex-vivo NK cells from CRC patients",
+   "outcome": "added",
+   "detail": "ga201-crc-patient-nk-exvivo-adcc (already in added_models; engagement 2014 untested/same vs Delord 2014, efficacy 2014 untested, 2015 contra vs Bridgewater 2015)"
+  },
+  {
+   "lead": "Dienstmann ASCO 2013 abstract 3551 (DOI 10.1200/jco.2013.31.15_suppl.3551)",
+   "outcome": "covered",
+   "detail": "covered: check.json already proposes year 2013 (rule 6) on engagement 2, dose 2, efficacy 2 and safety 2 (Dienstmann 2015 entries, sym004-egfr-resistant-xenograft); a dating source, not a new entry"
+  },
+  {
+   "lead": "Symphogen press release 2017-09 and ESMO 2017 abstract 478O (Sym004 phase 2 OS failure)",
+   "outcome": "covered",
+   "detail": "covered: check.json already proposes year 2017 (rule 6) on efficacy 4 (Montagut 2018 contra); efficacy 14 already dated 2017 and confirmed. Engagement 3 (ctDNA ECD fall) stays 2018: the Symphogen 2017-09 release reports the OS miss and a biomarker-negative subgroup, not the ECD ctDNA decrease"
+  },
+  {
+   "lead": "Temam 2017 Ann Oncol (PMID 28950289), imgatuzumab vs cetuximab PD window study in HNSCC",
+   "outcome": "none",
+   "detail": "a patient PD study in another indication, not a model system; imported_from transfers only safety comparisons (brief 'What the model is'), and CRC engagement is already paired with Delord 2014"
+  },
+  {
+   "lead": "Sym004 patient PK: Japanese phase 1 (PMID 30099818) and population PK (PMID 31679083)",
+   "outcome": "none",
+   "detail": "patient PK sources, not model systems (pop-PK is fitted to patient data); the Sym004 dose track's patient comparison is dose 2 (year 2013 by verdict) and a later same-status PK entry changes nothing"
+  }
  ]
 }

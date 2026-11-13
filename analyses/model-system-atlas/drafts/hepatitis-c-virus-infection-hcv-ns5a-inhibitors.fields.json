@@ -1,0 +1,142 @@
+{
+ "tile": "hepatitis-c-virus-infection-hcv-ns5a-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "year 2010 -> 2008 (proxy opener; replicon use public at AASLD Nov 2008); drug daclatasvir, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "year 2010 -> 2008: earlier public date, AASLD 2008 late-breaker poster (Nettles) reported replicon potency and the patient viral-load fall; drug daclatasvir, route oral"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "year 2011 -> 2010: earlier public date (Gao 2010 abstract states patient variants at replicon positions); model_id -> hcv-replicon-ns5a-ras (patient-level system); drug daclatasvir, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "year 2010 -> 2008 (proxy opener, replicon EC90 target public Nov 2008); drug daclatasvir, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "year 2011 -> 2008 (AASLD 2008 poster: C24 above replicon PBA EC90); quote -> Nettles 2011 Cmin-vs-EC90 sentence; rule question 1 settled: dose same rests on target reached, not on later SVR; drug daclatasvir, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "model_id -> hcv-replicon-ns5a-ras (patient-level system); drug daclatasvir, route oral, combination sofosbuvir; the checker's 2014 Harvoni date belongs to ledipasvir and is split into its own entry"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "model_id -> hcv-replicon-ns5a-ras; drug elbasvir, route oral, combination grazoprevir"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "drug ledipasvir, route oral, combination sofosbuvir; daclatasvir arm split into an appended entry"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "drug velpatasvir, route oral, combination sofosbuvir; single-arm design written into note; source_calls_it partial; other regimens split into appended entries"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "year 2019 -> 2015, src/quote -> Kai 2015 (first class use of TK-NOG; checker adjudication); model_first_use_year 2015; drug ledipasvir, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "drug ledipasvir, route oral, combination sofosbuvir (identity: model_first_use_year 2015)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug ledipasvir, route oral, combination sofosbuvir: now its own track, no longer overridden by the daclatasvir contra (rule question 4); model_first_use_year 2010"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "year 2015 -> 2014, src/quote -> EMA Daklinza EPAR (earlier regulator date, rule question 5); drug daclatasvir, route oral; contra kept under rule question 3; per-drug track (rule question 4)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "hcv-replicon-ns5a-ras x daclatasvir x oral opener, untested 2010 (Lemm 2010 resistance selection)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "hcv-replicon-ns5a-ras x ledipasvir x oral opener, untested 2014 (proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "what": "hcv-replicon-ns5a-ras x ledipasvir same 2014 (patient-level, partial): Harvoni label Oct 2014 sec 12.4, baseline NS5A RAS relapse 22% vs ~2% in treatment-experienced (checker missing item; split from efficacy 4)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "what": "hcv-replicon-ns5a-ras x daclatasvir x oral opener, untested 2015 (proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "what": "hcv-replicon-ns5a-ras x elbasvir x oral opener, untested 2016 (proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "what": "hcv-viral-kinetic-model x daclatasvir retro 2016 (Dahari 2016 sofosbuvir + daclatasvir arm, all cured; split from efficacy 7)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 16,
+   "what": "hcv-viral-kinetic-model x ledipasvir x oral opener, untested 2016 (proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 17,
+   "what": "hcv-viral-kinetic-model x velpatasvir x oral opener, untested 2020 (proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 18,
+   "what": "hcv-viral-kinetic-model x elbasvir x oral opener, untested 2020 (proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 19,
+   "what": "hcv-viral-kinetic-model x elbasvir same 2020: Etzion 2020 grazoprevir/elbasvir arm, single-arm SVR primary; split from efficacy 8"
+  },
+  {
+   "cell": "efficacy",
+   "index": 20,
+   "what": "hcv-viral-kinetic-model x ledipasvir same 2020: Etzion 2020 sofosbuvir/ledipasvir arm, single-arm SVR primary; split from efficacy 8"
+  },
+  {
+   "cell": "efficacy",
+   "index": 21,
+   "what": "hcv-viral-kinetic-model x pibrentasvir x oral opener, untested 2020 (proxy)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 22,
+   "what": "hcv-viral-kinetic-model x pibrentasvir same 2020: Etzion 2020 glecaprevir/pibrentasvir arm, single-arm SVR primary; split from efficacy 8"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "ns5a-animal-tox x ledipasvir x oral opener, untested 2014 (proxy)"
+  }
+ ]
+}

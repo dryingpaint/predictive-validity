@@ -1,0 +1,89 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/hodgkins-lymphoma-anti-cd274-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "3 findings, all 'empty cell (no model relied on)' for engagement, dose and safety. DRAFTER_BRIEF allows empty lists, so I checked the draft anyway rather than returning it unchecked.",
+ "entries": [
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Roemer JCO 2016 abstract quote verbatim. Untested opener. Drug sugemalimab/iv rather than 'class' opens the track efficacy 2 scores on (open rule question); stage_or_line fits R/R cHL.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "efficacy single-arm design (scored on primary endpoint with its value in note) + rule 5 untested_reason 'unsettled' (patients measured, result unreported)",
+   "note": "Chen 2022 quote verbatim (PMC8722342); drug sugemalimab, iv, stage_or_line correct; single-arm design now in note. EPAR lists CS1001-202 (n=81) but gives no ORR; 'limited' is not 'no response', so untested, unsettled.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Single-arm rule scores on the primary endpoint's value; CS1001-202 ORR is unreported and 'limited' is not 'no response'. Patients measured, result unreported: untested, rule 5 'unsettled'."
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "EPAR Cejemly in-vitro quote re-found verbatim. Untested opener; drug sugemalimab (listed member) and route iv match the track the assays were run for; other_disease fits the mixed phase 1. 2016 first-use year is a proxy.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gong 2022 CII full text (PMC9293819, epub 2022-01-05): '7 evaluable patients showed 100% RO' verbatim. Year 2022 is the earliest public date. Sugemalimab iv, other_disease (mixed tumours, 5 cHL) match. same, prospective.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "EPAR NOAEL 200 mg/kg quote re-found verbatim. Untested opener; sugemalimab, iv, other_disease (phase 1 population) correct. Exposure margin figures are the EPAR's computation; pre-trial NOAEL carries margin_stated (open rule question).",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gong 2022 full text: 'No DLTs were reported at any dose level, and the MTD was not reached' verbatim; epub 2022-01-05 so year 2022. Sugemalimab iv 3-40 mg/kg and 1200 mg, mixed tumours (other_disease). same with margin_stated holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "Tier-5 corroboration of the CS1001 cHL failure. CStone's 2019 annual results (HKEX, 2020-03-26, https://www1.hkexnews.hk/listedco/listconews/sehk/2020/0326/2020032600722.pdf) said: 'We expect to submit an NDA for cHL in the second half of 2020 if the data meet the National Medical Products Administration requirements.' I found no cHL NDA afterwards. This could go in confidence_note or patient_trials; it changes no status.",
+  "Benmelstobart (TQB2450) phase 1 in advanced tumours (Ther Adv Med Oncol 2023, https://doi.org/10.1177/17588359231220516). 1 of 3 Hodgkin lymphoma patients had a PR at 3 mg/kg ('achieved an ORR of 33.3% in Hodgkin's lymphoma'). This is a member-drug cHL datum the draft lacks; it is phase 1, n=3 and not a primary endpoint, so it belongs in patient_trials only.",
+  "A patient-level entry on the same track. Chen 2022 ran FISH on CS1001 non-responders: all five had 9p24.1 amplification and did not respond to CS1001. That tests 'amplification selects responders' (prediction_level: patient). The draft puts it in a class-level note only.",
+  "No other model system compared with patients for this class was found: no peer-reviewed or registry results for the KL-A167 (NCT03580564, completed 2022-01-13) or TQB2450 (NCT03800706, status unknown) cHL phase 2 trials. Searched Europe PMC, ClinicalTrials.gov and the web.",
+  "Peer-reviewed first-in-human source for the sugemalimab engagement and dose tracks: Gong et al., Cancer Immunol Immunother 2022;71:1897 (epub 2022-01-05, PMID 34984540, PMC9293819). It reports 100% RO on CD3+ T cells in 7 patients and no DLT at 3-40 mg/kg, and its phase 1a included 5 cHL patients. The two 2024 EPAR-dated entries should cite it and be dated 2022."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Does the 9p24.1 genetics model predict that blocking PD-L1 alone works? The same amplicon raises PD-L2, which Roemer measured ('PD-L1/PD-L2 alterations'), and Chen blames the failure on PD-L2. Read that way, the model foresaw a PD-L1-only shortfall, and contra (or even same) depends on reading the prediction as PD-1-axis versus PD-L1. The rules do not say how to read a mechanistic model's prediction when a co-measured redundant ligand explains the miss.",
+  "The class went into cHL largely on anti-PD-1 results in cHL (nivolumab, pembrolizumab): the same disease, but a sibling target. The brief says sibling-target patient data do not score. It does not say whether a sibling-target clinical result can itself be a track the class relied on (model_kind cross_indication applies to another indication, not another target in the same disease).",
+  "Can a single qualitative sentence in a third-party paper ('limited efficacy') score contra under 'data not shown scores at low confidence'? Or should it be untested with untested_reason 'unsettled' (primary result unreported)? I confirmed contra under the former reading.",
+  "Lint counts empty cells as findings, but DRAFTER_BRIEF allows them. Should a draft whose only lint findings are empty cells go back unchecked?",
+  "Dose margin_stated: the toxicology set a NOAEL (200 mg/kg) before the trial, but the exposure margin is quoted only in the 2024 EPAR, computed against clinical Cmax. Does a pre-trial NOAEL above every dose tested count as a margin the model stated before the trial?",
+  "model_kind for in-vitro cell-line binding and T-cell assays: the enum has no in_vitro value, and the drafter used ex_vivo.",
+  "Efficacy opener of a human_genetic system: DRAFTER_BRIEF says drug 'class' for a system tied to no drug, yet tracks are per drug and route. Should a genetics opener carry the member drug of the track it opens (sugemalimab/iv here) or 'class'/not_applicable?"
+ ]
+}

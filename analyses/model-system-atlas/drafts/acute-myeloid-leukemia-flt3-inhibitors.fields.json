@@ -1,0 +1,77 @@
+{
+ "tile": "acute-myeloid-leukemia-flt3-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug set to 'quizartinib', route oral (from null)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug set to 'quizartinib', route oral (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug set to 'quizartinib', route oral (from null)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug set to 'quizartinib', route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug set to 'quizartinib', route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "year 2019 -> 2018, src/quote QuANTUM-R -> Cortes 2018 single-arm phase 2 (NCT00989261, co-primary CRc/CR); single-arm and co-primary rulings; drug quizartinib, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2022 -> 2020 (earliest public date: Astellas release 2020-12-21); combination ruling noted; drug gilteritinib, route oral, combination_with azacitidine"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug set to 'quizartinib', route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "drug set to 'quizartinib', route oral (from null)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "drug set to 'gilteritinib', route oral (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug set to 'gilteritinib', route oral (from null)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug set to 'gilteritinib', route oral (from null)"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "crenolanib track opener on flt3-itd-ba-f3-resistance-screen, 2014 untested (Smith 2014 PNAS)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "crenolanib track on flt3-itd-ba-f3-resistance-screen: 2019 same (Zhang 2019 Nat Commun), split from Smith 2012 entry's patient_trials"
+  }
+ ]
+}

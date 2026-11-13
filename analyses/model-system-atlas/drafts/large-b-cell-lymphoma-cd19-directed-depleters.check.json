@@ -1,0 +1,182 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/large-b-cell-lymphoma-cd19-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 20631379 (epub 2010-07-14) abstract has quote verbatim. Surrogate 1D3-28Z model is the nonclinical basis CBER cites for Yescarta, so drug axi-cel, route iv fit; untested opener 2010 correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 20668228 (epub 2010-07-28, after the mouse paper's 2010-07-14) abstract: B-cell absence 39 weeks verbatim; NCI FMC63-28Z (axi-cel construct), follicular lymphoma patient, so other_disease fits; engagement admits any dosed humans. Year 2010, same, iv correct."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMC2981541 full text: '3 x 10^8 total T cells/kg ... achieved in human clinical trials' verbatim; mirrors trial doses, states no human target or margin, so untested/no_prediction holds. Axi-cel, iv correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in PMID 20631379 abstract. Untested opener 2010; drug axi-cel (Kite package cites this model), route iv correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NEJM abstract (PMID 29226797, epub 2017-12-10) '82% ... 54%' verbatim; Kite topline 2016-09-26 (ORR 76%, primary endpoint met p<0.0001) confirmed, so 2016 right. Model 2010 precedes all CD19 CAR patient efficacy: prospective. Preset-bar single-arm design in note."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMC2981541: warning sentence verbatim, and 'The only toxicity ever noted in the treated mice was a lack of B cells' present. Untested opener 2010, axi-cel iv correct; but no later entry scores that tolerability claim (see missing)."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 20668228 abstract: 'serum immunoglobulins decreased to very low levels' verbatim; epub 2010-07-28 after the mouse paper. Follicular lymphoma patient, MONDO:0018906; no LBCL safety data in 2010, so import admissible. Same, 2010, axi-cel iv."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "untested",
+   "rule": "Retrodiction: for engagement and efficacy, a model first public after a patient result on the same target and action, from any drug, is a retrodiction.",
+   "note": "Quote verbatim (PMID 26369987, epub 2015-09-15); untested opener and liso-cel iv right, but CD19 CAR T efficacy in refractory DLBCL was public a year earlier (Kochenderfer JCO, epub 2014-08-25), so this track should carry retrodiction: true.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Retrodiction rule: xenograft (epub 2015-09) post-dates CD19 CAR T responses in refractory DLBCL (Kochenderfer JCO, PMID 25154820, epub 2014-08-25); opener stays untested but the track is a retrodiction."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "retro",
+   "proposed_year": 2019,
+   "rule": "Retrodiction (engagement/efficacy: any drug's earlier patient result on the same target); a retrodiction that reproduced the human data is retro, never same.",
+   "note": "Lancet abstract 186/256 (73%) verbatim; BMS ASH Dec 2019 release dates it to 2019, design in note. But the xenograft (2015) and the SBRA model side (2021) post-date CD19 CAR DLBCL responses (Kochenderfer JCO 2014-08-25): reproduced known result, so retro.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (efficacy: any drug, same target/action): 2015 xenograft post-dates Kochenderfer 2014 DLBCL responses; it reproduced TRANSCEND ORR, so retro, never same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 29895668 (epub 2018-06-12) abstract quote verbatim; preinfusion NCI FMC63-28Z products from NCT00924326, mostly DLBCL. Opener untested 2018; axi-cel, iv correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Abstract: prespecified PSI 'significantly associated with clinical response' verbatim; responses known before the analysis, so retro right. Cohort mixed NHL, predominantly DLBCL per prior full-text check. Axi-cel, iv correct."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 29808005 (epub 2018-05-28) abstract quote verbatim; MSKCC 19-28z in SCID-beige Raji, product_in_model false. Opener untested 2018; axi-cel iv consistent with its LBCL comparison in safety 4."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NEJM abstract: grade 3+ CRS 13%, neurologic events 28% verbatim; LBCL patients correctly replace the ALL import. ZUMA-1 (epub 2017-12-10) precedes model (2018-05-28): retro on axi-cel's own result; no neurotoxicity in model, partial."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "PMID 29808007 (epub 2018-05-28) abstract: 'mouse model recapitulating key features of CRS and neurotoxicity' verbatim. Opener untested 2018; drug axi-cel, route iv correct."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Same NEJM quote verbatim; LBCL ZUMA-1 replaces ALL import, imported_from null. Model (May 2018) post-dates axi-cel's own LBCL CRS/neurotoxicity, so retro correct; paired comparison, axi-cel iv."
+  }
+ ],
+ "missing": [
+  "Humanized SGM3 mouse CAR-T model (Norelli 2018 Nat Med, doi 10.1038/s41591-018-0036-4, PMID 29808007) reproduced CD19 CAR T CRS and neurotoxicity seen in patients: a retrodiction safety track (retro).",
+  "SCID-beige xenograft CRS model (Giavridis 2018 Nat Med, doi 10.1038/s41591-018-0041-7, PMID 29808005) reproduced CAR T CRS (IL-6/IL-1 from macrophages) after the clinic: retrodiction safety track.",
+  "Rhesus macaque CAR T neurotoxicity model (Taraseviciute 2018 Cancer Discov, doi 10.1158/2159-8290.CD-17-1368, PMID 29563103; CD20 CAR, product_in_model false) reproduced CRS and neurotoxicity: retrodiction safety track.",
+  "Safety B-cell aplasia comparison could open earlier: Kochenderfer 2010 Blood case report (doi 10.1182/blood-2010-04-281931) showed B-cell absence and very low immunoglobulins in a follicular lymphoma patient (imported comparison, 2010).",
+  "Safety, syngeneic-mcd19-car-mouse track: the stated tolerability prediction 'The only toxicity ever noted in the treated mice was a lack of B cells' (PMC2981541) is never scored against patients; Kochenderfer 2015 JCO (doi 10.1200/JCO.2014.56.2025, DLBCL, grade 3-4 neurotoxicity) and ZUMA-1 contradict it."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Engagement: does a patient dosed with the academic NCI FMC63-28Z product (pre-Kite axi-cel) count as a member drug? The draft already accepts it for 2014; if yes, the earliest date is the 2010 case report.",
+  "Safety: should the on-target B-cell aplasia comparison be dated to the first patient showing it in another B-cell lymphoma (2010, imported_from follicular lymphoma) rather than the first LBCL record (2017)?",
+  "Safety: the brief says a mouse cannot show cytokine release; does that extend to ICANS, and to an immunocompetent syngeneic tumour-bearing mouse (later mouse models did reproduce CRS/ICANS)?",
+  "Liso-cel and relma-cel nonclinical packages (CBER Breyanzi memo 4.3 mentions only absent carcinogenicity/genotoxicity studies) were not checked for a separate xenograft track; unverified.",
+  "Efficacy dating, liso-cel: interim TRANSCEND ORR was public at ASH 2017 (ORR ~80% core set); if ORR was already a registered primary endpoint then, rule 6 would date efficacy 4 to 2017. Registry history not retrievable (403); status same either way.",
+  "Safety: does an explicit 'only toxicity was B-cell loss' statement from an immunocompetent mouse count as a scored no-toxicity prediction (contra on CRS/ICANS), or does the 'a mouse cannot show cytokine release' exemption cover it?"
+ ]
+}

@@ -61,12 +61,16 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "v3 efficacy definition (primary endpoint, placebo-controlled, unselected mCRC)",
-   "note": "Xu 2017 (PMID 28103904, epub 2017-01-19) PFS and OS quotes verbatim in abstract; HT-29 activity from 0.77 mg/kg verbatim in FDA 217564 review. Registry dates confirmed on CT.gov: NCT02196688 results 2019-08-13, NCT04322539 2023-09-14, NCT01478594 2015-04-03, NCT02314819 none. Two patient_trials quotes (FRESCO, FRESCO-2) are FDA-review sentences, not text of the cited JAMA/Lancet DOIs (status-neutral; fix attribution). BATON-CRC exclusion is defensible but is a rule question (below)."
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "DRAFTER_BRIEF retrodiction: for efficacy and engagement, a model result first public after a patient result for the same target and action, from a member or any other drug, is a retrodiction; reproduced = retro, failed = contra",
+   "note": "Xu 2017 PFS quote verbatim (PMID 28103904, epub 2017-01-19); fruquintinib/oral/stage_or_line right. Sun 2014 model postdates VEGFR-TKI CRC results (vatalanib CONFIRM-1, ASCO 2005; JCO 2011 PMID 21464406): retrodiction true, reproduced Xu 2017, so retro. Same applies to efficacy 4.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (target-level, post-dating alone): Sun 2014 model postdates VEGFR-TKI CRC patient results (vatalanib CONFIRM-1 2005; regorafenib CORRECT 2012); it reproduced Xu 2017 PFS benefit, so retro, never same."
   },
   {
    "cell": "safety",
@@ -83,12 +87,14 @@
    "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2017,
-   "rule": "evidence rule 6 (year = earliest date the comparison was public) and rule 8 (EMA EPAR must be fetched)",
-   "note": "FDA 212904 quotes verbatim (monkey 3 mg/kg BP rise; 454/1008 = 45% hypertension; 39-fold HED, though the same review elsewhere says 43-fold). Status same holds, but the EMA Fotivda EPAR (EMA/CHMP/437168/2017, 22 Jun 2017) already states 'Safety pharmacology findings demonstrated an increase in blood pressure (see discussion on Clinical Safety)' against 48% hypertension in study 301: re-date to 2017, src = EPAR, comparison_stated true."
+   "quote_found": "near",
+   "status_supported": false,
+   "proposed_status": "drop",
+   "rule": "DRAFTER_BRIEF dose, decision 16: count the harm once (a predicted harm whose margin the model misplaced scores in dose, not safety)",
+   "note": "CT.gov API NCT01478594: results posted 2015-04-03; other AEs hypertension 77/177 vs 25/87, serious 4/177 vs 0/87; quote is that table row. CRC measured, imported_from cleared right; tivozanib/oral/stage_or_line right. Harm already dose index 5 contra: drop. EPAR not re-opened (EMA blocked).",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Dose rule, count the harm once: monkey BP rise predicted hypertension but misplaced the margin, already scored as dose index 5 contra (blocked_by toxicity); the same harm is not scored again in safety."
   },
   {
    "cell": "safety",
@@ -165,6 +171,71 @@
    "rule": "do-not-widen (member outside class is not a comparison)",
    "note": "PMC13400167, Cell Rep Med, published 2026-06-17, DOI matches. Apatinib and fruquintinib dosed on P15 chips; 86.36% accuracy (22 patients) is for FOLFOX+bevacizumab; P15 drug-matched case is regorafenib. Untested correct.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "dose: Decision 16 / count the harm once (model predicted the harm but misplaced the margin)",
+   "note": "Eskens 2011 (PMID 21976547) quote verbatim in abstract; 1.5 mg MTD had grade 3 hypertension DLT. FDA 212904: monkey CV NOAEL HED 5.8 mg/day, study DRZZ1019 begun 2003, pre-trial. Track first-use should be 2003; 13-wk monkey findings at HED 1.9 make 4.3x generous.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "DRAFTER_BRIEF retrodiction: for efficacy and engagement, a model result first public after a patient result for the same target and action, from a member or any other drug, is a retrodiction; reproduced = retro, failed = contra",
+   "note": "Eskens 2011 (PMID 21976547, epub 2011-10-05) quote verbatim in abstract; tivozanib/oral/unselected right. Morgan 2003 (PMID 14517187, epub 2003-09-29) showed dose-dependent DCE-MRI Ki fall with vatalanib in CRC patients before Nakamura 2006: retrodiction true, retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement is target-level): Morgan 2003 showed dose-dependent DCE-MRI Ki fall with vatalanib in CRC patients before Nakamura 2006; the rat DCE-MRI/pVEGFR2 result reproduced Eskens 2011, so retro."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2013,
+   "rule": "evidence rule 6 (earliest public date, incl. sponsor announcement); retrodiction rule (target-level, any drug)",
+   "note": "Benson 2016 quote verbatim (PMID 27401244); primary PFS, combination rule gives contra; tivozanib/oral/stage_or_line right. AVEO 10-K (filed 2014-03-13): 'On December 13, 2013' announced primary endpoint unlikely to be met: year 2013. Nakamura 2006 postdates CONFIRM-1: retrodiction true.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Combination rule scores BATON-CRC primary PFS: failed, contra. Retrodiction true (Nakamura 2006 postdates CONFIRM-1), failed to reproduce, still contra. Rule 6: year 2013, AVEO press release 2013-12-13."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "evidence rule 6 (track opens untested at the model's first use for the drug)",
+   "note": "Tian 2011 (PMID 21443688, epub 2011-05-09) resolves; abstract confirms xenograft growth inhibition, Fig. 4A legend quote per prior full-text read. Rivoceranib/oral/unselected opener at 2011 correct.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "DRAFTER_BRIEF retrodiction: for efficacy and engagement, a model result first public after a patient result for the same target and action, from a member or any other drug, is a retrodiction; reproduced = retro, failed = contra",
+   "note": "Chen 2019 (PMID 30877190, epub 2019-03-15) single-arm, primary PFS 3.9 mo, quote verbatim; rivoceranib/oral/stage_or_line right. Tian 2011 postdates vatalanib CONFIRM-1/2 (2005-06), so judgement's drug-level 'prospective' is the wrong rule: retrodiction true, retro.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: post-dating alone; Tian 2011 postdates VEGFR-TKI CRC patient results (vatalanib CONFIRM-1/2 2005-06), any drug counts for efficacy; single-arm Chen 2019 activity reproduced, so retro, not same."
   }
  ],
  "missing": [
@@ -180,6 +251,8 @@
   "Safety track identity: do species-specific safety-pharmacology studies run for different member drugs (cynomolgus telemetry for tivozanib, beagle telemetry for fruquintinib) belong to one 'tox-rodent-nonrodent' track, so that fruquintinib's contra overrides tivozanib's same, or is each species/drug package its own system?",
   "Design-limited silence: a single-dose, 6-hour dog telemetry study cannot show hypertension that develops over days to weeks. The v3 safety rule keys only on whether the species could show the harm. Should a study design that could not show it count as contradicted silence (contra) or as untested?",
   "Engagement across indications: the tivozanib DCE-MRI/sVEGFR2 readout comes from a phase I in advanced solid tumours, not CRC. Since healthy volunteers count for engagement, any dosed humans presumably count; confirm that engagement entries from other-indication patients need no imported_from.",
-  "Quote attribution inside patient_trials: when the quoted sentence comes from an FDA review rather than the DOI listed, should the entry carry the review URL as its source? Status-neutral, but lint does not catch it."
+  "Quote attribution inside patient_trials: when the quoted sentence comes from an FDA review rather than the DOI listed, should the entry carry the review URL as its source? Status-neutral, but lint does not catch it.",
+  "Tivozanib hypertension is now scored twice on tox-rodent-nonrodent: dose index 5 contra (monkey margin misplaced, Eskens 2011) and safety index 2 same (monkey BP rise predicted hypertension). Under 'count the harm once' the predicted-but-misplaced harm belongs in dose; should safety index 2 be withdrawn or kept as the direction-only call?",
+  "Cross-drug retrodiction for efficacy (fields pass): vatalanib (CONFIRM-1/2, 2005) and cediranib (HORIZON III, 2010) VEGFR TKI CRC results predate Tian 2011 and Nakamura 2006. Under the target-level rule these xenograft models are retrodictions, but the prior human data were negative while the models predicted activity; does that make efficacy 7/9 (and efficacy 2/4, prior checks treated as prospective) retrodictions, and is the status then contra or scored against the trial compared?"
  ]
 }

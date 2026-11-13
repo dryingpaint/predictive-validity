@@ -1,0 +1,126 @@
+{
+ "tile": "glycogen-storage-disease-ii-gaa-replacement-gene-therapy",
+ "searched": [
+  "Draft, checker verdicts (missing list) and tiles.json spec: members cipaglucosidase alfa, clervonafusp alfa, reveglucosidase alfa",
+  "FDA BLA 761204 integrated review text (manifest bundle): grep fibroblast, myoblast, popPK, PBPK, allometric, miglustat stabilization/half-life, dose selection, pediatric simulation",
+  "FDA BLA 761204 review: sections on contribution of miglustat (clinical PK Table 30, in vitro blood stability RRB200-040/010), Gaa KO mouse dose selection RRB200-005, KO-mouse PK with/without miglustat",
+  "Europe PMC: (cipaglucosidase OR ATB200) AND (iPSC OR organoid OR fibroblast OR myotube OR population pharmacokinetic OR model)",
+  "Europe PMC: (VAL-1221 OR clervonafusp OR 3E10) AND (GAA OR Pompe)",
+  "Europe PMC: (reveglucosidase OR BMN 701 OR GILT-tagged) AND (Pompe OR GAA)",
+  "Europe PMC: (cipaglucosidase OR ATB200) AND miglustat AND (pharmacokinetic OR phase 1 OR first-in-human)",
+  "Europe PMC: Xu 2019 JCI Insight abstract (DOI 10.1172/jci.insight.125358)"
+ ],
+ "added_models": [
+  {
+   "model_id": "miglustat-blood-stability-ex-vivo",
+   "model": "Human whole-blood / neutral-pH enzyme stability assay (cipaglucosidase alfa with miglustat)",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2016,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "model_id": "miglustat-blood-stability-ex-vivo",
+      "model": "Human whole-blood / neutral-pH enzyme stability assay (cipaglucosidase alfa with miglustat)",
+      "prediction_level": "class",
+      "model_kind": "ex_vivo",
+      "product_in_model": true,
+      "population": "Late-onset Pompe disease (GAA-deficient), unselected",
+      "model_first_use_year": 2016,
+      "imported_from": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "retrodiction": false,
+      "model_filed": true,
+      "readout_tier": "proximal",
+      "year": 2016,
+      "status": "untested",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 2,
+      "model_src": null,
+      "model_src_tier": null,
+      "epub_year": 2023,
+      "print_year": 2023,
+      "registry_date": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "note": "Ex vivo, cipaglucosidase alfa lost 70% activity in human blood over 4 h; miglustat prevented the loss, predicting higher active-enzyme exposure in patients.",
+      "short": "Miglustat keeps enzyme active in blood",
+      "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/761204Orig1s000IntegratedR.pdf",
+      "srcLabel": "FDA BLA 761204 review 2023",
+      "quote": "In contrast, when cipaglucosidase alfa alone was incubated with whole human blood for 4 h, it lost 70% of its enzymatic activity.",
+      "confidence": "medium",
+      "confidence_note": "Year is a proxy: first-in-human ATB200-02 (NCT02675465), which tested miglustat co-dosing, started 2016; study RRB200-040 itself is undated in the review.",
+      "judgement": "Opening entry at the first clinical use of the stabilisation rationale."
+     },
+     {
+      "model_id": "miglustat-blood-stability-ex-vivo",
+      "model": "Human whole-blood / neutral-pH enzyme stability assay (cipaglucosidase alfa with miglustat)",
+      "prediction_level": "class",
+      "model_kind": "ex_vivo",
+      "product_in_model": true,
+      "population": "Late-onset Pompe disease (GAA-deficient), unselected",
+      "model_first_use_year": 2016,
+      "imported_from": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "retrodiction": false,
+      "model_filed": true,
+      "readout_tier": "proximal",
+      "year": 2023,
+      "status": "same",
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 2,
+      "model_src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/761204Orig1s000IntegratedR.pdf",
+      "model_src_tier": 2,
+      "epub_year": 2023,
+      "print_year": 2023,
+      "registry_date": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "ex vivo: 70% activity loss without vs very little with miglustat over 4 h; patients: plasma GAA activity AUC0-t +7.1%/+3.7%, AUCtmax-24h +24%/+21.3% with 130/260 mg miglustat",
+      "source_calls_it": "partial",
+      "note": "In ATB200-02, miglustat raised plasma GAA activity and protein exposure versus cipaglucosidase alone, but by under 50%, far less than the ex vivo stabilisation implied.",
+      "short": "Plasma enzyme exposure rose, modestly",
+      "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/761204Orig1s000IntegratedR.pdf",
+      "srcLabel": "FDA BLA 761204 review 2023",
+      "quote": "Overall, the PK results showed that coadministration of cipaglucosidase alfa with miglustat resulted in increases in plasma levels of total GAA protein and GAA activity compared to cipaglucosidase alfa administered alone, which supported that miglustat stabilized cipaglucosidase alfa",
+      "confidence": "medium",
+      "confidence_note": "FDA integrated review read (section on contribution of miglustat, Table 30, in vitro evidence). Quote ends mid-sentence. No earlier tier 1 publication of the ATB200-02 with/without-miglustat PK found; dated to the 2023 review.",
+      "reason": "Exposure rose, smaller than ex vivo",
+      "judgement": "Comparison stated: the FDA review sets the clinical PK beside the in vitro stabilisation data in one assessment. Scored same with partial: direction held, but the review calls the enhancement relatively small (<50%), with no exposure-response link to efficacy."
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Pompe patient fibroblasts and L6 rat myoblasts (M6P-mediated internalization, RRB200-009): predicted better uptake than alglucosidase; no human uptake readout was measured, and the downstream comparison is already scored on the gaa-ko-mouse track",
+  "Gaa KO mouse plasma GAA activity with/without miglustat (+25%) and KO-mouse miglustat dose-finding: same system as the draft's gaa-ko-mouse track",
+  "Clervonafusp alfa (VAL-1221) in Gaa KO mice: same strain as gaa-ko-mouse; phase 1/2 NCT02898753 terminated without posted results, so no patient comparison (later work is in Lafora disease, outside the context)",
+  "Reveglucosidase alfa nonclinical IGF/insulin-receptor pharmacology for hypoglycaemia: no public model statement found; already carried as revegluc-nonclinical-tox untested/unpublished",
+  "Applicant and FDA population PK / exposure-response models (miglustat weight-tiered dose, renal impairment simulation): fitted to the same patients, no prospective prediction later compared with new patient data",
+  "Disease progression / indirect-comparison models of long-term 6MWD and FVC (2024-2026, CER papers): in-silico extrapolations from trial data, not compared with later patient outcomes",
+  "Patient-derived iPSC, organoid or PDX-like co-clinical systems, human challenge or genetic models: none found for the member drugs",
+  "Earlier dating of gaa-ko-mouse engagement (Schoser 2021 Hex4; ATB200-02 Hex4) raised by the checker: a dating correction to an existing track, not a missing system"
+ ],
+ "gaps": [
+  {
+   "lead": "Engagement: PROPEL urinary Hex4/CK vs alglucosidase in Schoser 2021 Lancet Neurol / Amicus Feb 2021 topline",
+   "outcome": "covered",
+   "detail": "Covered by check.json engagement index 2 (verdict corrected, adjudicated same, proposed_year 2021, rule 6): the same re-dating of gaa-ko-mouse engagement entry 2 from 2023 to 2021 on Schoser 2021 Lancet Neurol."
+  },
+  {
+   "lead": "Possible earlier engagement comparison: ATB200-02 (NCT02675465) urinary Hex4 reductions from 2018",
+   "outcome": "covered",
+   "detail": "Changes nothing scored beyond the engagement index 2 verdict (year 2021): Europe PMC (ATB200 OR cipaglucosidase) AND (Hex4 OR tetrasaccharide) finds no tier 1-3 ATB200-02 (NCT02675465) Hex4 report before Byrne 2023 J Neurol (PMID 38057636, epub 2023-12-06), later than Schoser 2021; status same is unchanged."
+  },
+  {
+   "lead": "Clervonafusp alfa (VAL-1221) Gaa KO mouse vs phase 1/2 NCT02898753",
+   "outcome": "none",
+   "detail": "Gaa KO data are the gaa-ko-mouse system; NCT02898753 terminated (company closure, n=12) with no posted or published results (CT.gov, Europe PMC); later VAL-1221 work is Lafora disease, outside the tile."
+  }
+ ]
+}

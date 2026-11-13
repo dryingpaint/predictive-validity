@@ -1,0 +1,37 @@
+{
+ "tile": "colorectal-cancer-kdr-vegfr-inhibitors",
+ "changed": [
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "year 2021->2017, src FDA RCC review -> NCT01478594 registry AE table (CRC), model_src EMA EPAR 2017, imported_from cleared; drug tivozanib, route oral. Imported-harm ruling (CRC patients measured in BATON-CRC) and earliest public date of the model side; status stays same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug fruquintinib, route oral; BATON-CRC and rivoceranib phase II removed from patient_trials because they are now scored on their own tracks (combination and single-arm rulings); status unchanged."
+  }
+ ],
+ "added": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "tivozanib/oral same 2011 (Eskens 2011 DCE-MRI perfusion fall vs Nakamura 2006), per the checker adjudication of engagement index 2."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "tivozanib/oral contra 2014: BATON-CRC tivozanib + mFOLFOX6 failed PFS superiority vs bevacizumab + mFOLFOX6 (combination ruling); split from efficacy index 2."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "rivoceranib/oral untested 2011 opener: Tian 2011 HCT 116, HT-29, Ls174t colon xenografts."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "rivoceranib/oral same 2019: single-arm phase II, primary PFS 3.9 months (single-arm ruling); split from efficacy index 2."
+  }
+ ]
+}

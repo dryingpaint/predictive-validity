@@ -1,0 +1,82 @@
+{
+ "tile": "hiv-infectious-disease-hiv-rt-nrti-inhibitors",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2015 -> 2014 (rule 6: week-24 primary result first public at ICAAC 2014, per conference report; abstract not read); combination_with 'efavirenz + lamivudine' under the combination ruling; status same unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "drug rovafovir etalafenamide, population_group biomarker_selected; endpoint_role primary -> poc_gate (checker correction: sentinel-cohort secondary was the go/no-go gate); status contra unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "status same -> retro, retrodiction true: rat/monkey tox (Guha 2014) first public after censavudine's own Phase 2a patient safety result (Cotte 2013), safety retrodiction rule"
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "drug censavudine, route oral (track fields set)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "drug censavudine, route oral"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "drug censavudine, route oral; model text and model_first_use_year aligned to the panel (2009 -> 2004)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "drug censavudine, route oral; model identity aligned"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "drug rovafovir etalafenamide, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "drug censavudine, route oral"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "drug censavudine, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "drug censavudine, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "drug censavudine, route oral"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "drug censavudine, route oral; note records that the tox paper post-dates the drug's Phase 2a safety result"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "drug rovafovir etalafenamide, route oral"
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "untested opener for the rovafovir etalafenamide (GS-9131) track on hiv-nrti-cell-culture-panel, 2007, Cihlar 2008 (10.1128/AAC.01215-07) resistance-profile quote; appended at end of cell, so it sits after that track's 2021 contra"
+  }
+ ]
+}

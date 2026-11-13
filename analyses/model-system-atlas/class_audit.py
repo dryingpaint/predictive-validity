@@ -1,18 +1,18 @@
-"""Draw each named indication's tile(s), its mechanism, from a hand-reviewed class table.
+"""Draw each disease's tiles, its tracked mechanisms, from a hand-reviewed class table.
 
     .venv/bin/python analyses/model-system-atlas/class_audit.py          # files only
     .venv/bin/python analyses/model-system-atlas/class_audit.py store    # and the database (migration 133)
 
-Without `store` it only reads. Rebuilds the cohort lists.py uses (novel Phase 2 entrants 2008-2019 in the 71 named
-indications, lists/named_indications.csv) on today's database and writes lists/named_contexts.csv,
+Without `store` it only reads. Rebuilds the cohort lists.py uses (novel Phase 2 entrants 2008-2019 in every disease,
+lists/named_indications.csv) on today's database and writes lists/named_contexts.csv,
 one row per tracked tile, and under lists/class_audit/:
 
-  class_members.csv     one row per (named indication, novel Phase 2 program): the database's
+  class_members.csv     one row per (disease, novel Phase 2 program): the database's
                         target, action, ChEMBL mechanism, modality, novelty, first FDA approval and
                         furthest phase, joined to the hand review in reviews.csv (verified target,
                         action, selectivity, modality group, first FDA approval, evidence) and a
                         disagrees_with_db flag;
-  register.csv          every mechanism in every named indication, counted across modalities,
+  register.csv          every mechanism in every disease, counted across modalities,
                         tracked when it has MIN_PROGRAMS programs (named_contexts.csv is the tracked rows);
   AUDIT.md              where the database disagrees with the review, and the rule's result.
 
@@ -30,7 +30,9 @@ indication is registered; one with at least MIN_PROGRAMS distinct entities is tr
 model track record is drafted. Phase is never a criterion, so tracking does not depend on success.
 """
 import importlib.util
+import json
 import os
+import re
 import sys
 import uuid
 
@@ -46,6 +48,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "lists", "class_audit")
 REVIEWS = os.path.join(OUT, "reviews.csv")
 CONTEXTS = os.path.join(HERE, "lists", "named_contexts.csv")
+TILES = os.path.join(HERE, "drafts", "tiles.json")
 MIN_PROGRAMS = 3
 
 _spec = importlib.util.spec_from_file_location("atlas_lists", os.path.join(HERE, "lists.py"))
@@ -61,7 +64,7 @@ MODALITY_GROUP = {
 
 
 def cohort() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    """Phase 2 entries in the window as lists.main() draws them, the named indications, and the programs frame."""
+    """Phase 2 entries in the window as lists.main() draws them, the diseases, and the programs frame."""
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
     rows = section1.phase_rows(progs, trials, snap, window=lists.WINDOW)
@@ -76,7 +79,7 @@ def cohort() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
 
 
 def members(ent: pd.DataFrame, named: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
-    """One row per novel program in a named indication, with the database's view of its class."""
+    """One row per novel program in a disease, with the database's view of its class."""
     mt = frame.query("""SELECT mt.moiety_id, string_agg(t.symbol, ';' ORDER BY t.symbol) AS db_target,
                                string_agg(mt.action, ';' ORDER BY t.symbol) AS db_action, count(*) AS n_primary
                         FROM preclin.moiety_target mt JOIN public.targets t ON t.id = mt.target_id
@@ -186,7 +189,7 @@ def class_label(target: str, action: str) -> str:
     return ACTION_PHRASE.get(action, "{t} " + str(action)).format(t=target)
 
 def register(m: pd.DataFrame, named: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Every mechanism in every named indication: one row per indication x mechanism,
+    """Every mechanism in every disease: one row per disease x mechanism,
     counted across modalities and tracked when it has MIN_PROGRAMS programs; and the members, each
     with its mechanism_key or the reason it is in none."""
     m = m.copy()
@@ -221,6 +224,31 @@ def register(m: pd.DataFrame, named: pd.DataFrame) -> tuple[pd.DataFrame, pd.Dat
     return reg, m
 
 
+def slug(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def write_tiles(out: pd.DataFrame, m: pd.DataFrame) -> None:
+    """drafts/tiles.json, the drafters' spec of every tracked tile: its members and modality groups. A tile keeps
+    its order number across draws; a tile without one is numbered after the last."""
+    old = json.load(open(TILES)) if os.path.exists(TILES) else []
+    order = {t["slug"]: t["order"] for t in old if t.get("order")}
+    members = m[m.tracked].groupby(["mondo_id_named", "mechanism_key"]).drug.agg(lambda d: sorted(set(d)))
+    tiles = [{"slug": slug(f"{r['label']} {r['class']}"), "area": r["area"], "disease": r["label"], "mondo_id": r["mondo_id"],
+              "mechanism_key": r["mechanism_key"], "mechanism": r["class"], "class_programs": int(r["class_programs"]),
+              "class_share": float(r["class_share"]), "modality_groups": str(r["modality_groups"]).split(";"),
+              "members": members[(r["mondo_id"], r["mechanism_key"])],
+              "furthest_phase": None if pd.isna(r["furthest_phase"]) else int(r["furthest_phase"])}
+             for r in out[out.tracked].to_dict("records")]
+    nxt = max(order.values(), default=0)
+    for t in sorted(tiles, key=lambda t: (t["slug"] not in order, order.get(t["slug"], 0), t["slug"])):
+        if t["slug"] not in order:
+            nxt += 1
+            order[t["slug"]] = nxt
+        t["order"] = order[t["slug"]]
+    json.dump(sorted(tiles, key=lambda t: t["order"]), open(TILES, "w"), indent=1, ensure_ascii=False)
+
+
 def _nul(v):
     """None for a missing value, a plain Python scalar otherwise (psycopg2 does not adapt numpy types)."""
     if v is None or (not isinstance(v, (list, str)) and pd.isna(v)):
@@ -237,8 +265,8 @@ def store(m: pd.DataFrame, reg: pd.DataFrame, named: pd.DataFrame) -> str:
     build_id = str(uuid.uuid4())
     with llm.connect() as conn, conn.cursor() as cur:
         method = llm.record_method(
-            cur, "atlas_class_register@v1", "Atlas class register",
-            "Every mechanism (verified target, action; across modalities) of every named indication, from the "
+            cur, "atlas_class_register@v2", "Atlas class register",
+            "Every mechanism (verified target, action; across modalities) of every disease, from the "
             "novel Phase 2 entrants of 2008-2019 and a hand review of the entities; tracked when it has "
             "min_programs distinct entities.",
             ["preclin.dev_program", "preclin.moiety_target", "preclin.chembl_mechanism",
@@ -302,6 +330,7 @@ def main() -> None:
             "modality_groups", "selectivity_note", "furthest_phase", "share_unresolved", "example_entities", "tracked"]
     out[keep].to_csv(os.path.join(OUT, "register.csv"), index=False)
     out[out.tracked][[k for k in keep if k != "tracked"]].to_csv(CONTEXTS, index=False)
+    write_tiles(out, m)
     need = m[m.tracked & ~m.reviewed]
     t = out[out.tracked]
     print(f"{len(m)} member rows, {int(m.reviewed.sum())} reviewed, {int(m.disagrees_with_db.eq(True).sum())} disagree; "

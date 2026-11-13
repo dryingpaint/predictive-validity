@@ -318,5 +318,27 @@
   "CYP2C19 genotype (human genetic): no source uses it to predict member-drug response; the genotype question concerns PPIs",
   "Patient-derived organoids, ex-vivo gastric glands, PDX, human challenge (acid perfusion): nothing found for any member drug",
   "Regulator reliance: no FDA/EMA review exists for any member (Korean approvals only); none found"
+ ],
+ "gaps": [
+  {
+   "lead": "Sebela TRIUMpH press release 2025-04-23 (tegoprazan EE and NERD primary endpoints met)",
+   "outcome": "covered",
+   "detail": "Extra patient trial for efficacy entry 2 with status unchanged (primary endpoints met, matching the existing call); the check.json missing note already records it. Nothing scored changes."
+  },
+  {
+   "lead": "Fexuprazan phase III EE head-to-head (Jeong 2024 J Clin Med, doi:10.3390/jcm13113262), retracted",
+   "outcome": "none",
+   "detail": "Retracted publication; not a model-to-patient comparison and must not be used as patient evidence, so correctly absent"
+  },
+  {
+   "lead": "Tegoprazan Korean NERD phase 3 and TRIUMpH NERD",
+   "outcome": "covered",
+   "detail": "Extra patient trial for efficacy entry 2 with status unchanged (primary endpoints met, matching the existing call); the check.json missing note already records it. Nothing scored changes."
+  },
+  {
+   "lead": "Zastaprazan (JP-1366) GERD-patient popPK model (doi:10.1002/psp4.13228)",
+   "outcome": "none",
+   "detail": "Zastaprazan is not a tile member (members: fexuprazan, revaprazan, tegoprazan); its popPK model also describes exposure only, no acid or healing readout"
+  }
  ]
 }

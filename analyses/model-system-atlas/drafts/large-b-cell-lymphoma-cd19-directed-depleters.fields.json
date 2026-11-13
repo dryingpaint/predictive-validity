@@ -1,0 +1,21 @@
+{
+ "tile": "large-b-cell-lymphoma-cd19-directed-depleters",
+ "changed": [
+  {"cell": "engagement", "index": 1, "what": "drug set to axicabtagene ciloleucel (surrogate-CAR model behind the Kite package), route iv"},
+  {"cell": "engagement", "index": 2, "what": "year 2014->2010, src/quote to Kochenderfer 2010 Blood case report (epub 2010-07-28, same NCI FMC63-28Z product), population_group other_disease; rule 6 earliest public date, per check adjudication; status same unchanged; drug axi-cel, route iv"},
+  {"cell": "dose", "index": 1, "what": "drug axicabtagene ciloleucel, route iv"},
+  {"cell": "efficacy", "index": 1, "what": "drug axicabtagene ciloleucel, route iv"},
+  {"cell": "efficacy", "index": 2, "what": "year 2017->2016: Kite topline press release 2016-09-26 (ZUMA-1 interim met ORR primary endpoint); single-arm design with preset bar written into note; TRANSCEND (liso-cel) removed from this axi-cel track's patient_trials; drug axi-cel, route iv"},
+  {"cell": "efficacy", "index": 3, "what": "drug lisocabtagene maraleucel, route iv"},
+  {"cell": "efficacy", "index": 4, "what": "year 2020->2019: BMS ASH 2019 press release reporting TRANSCEND primary analysis (ORR 73%); single-arm seamless design written into note; drug liso-cel, route iv"},
+  {"cell": "efficacy", "index": 5, "what": "drug axicabtagene ciloleucel, route iv"},
+  {"cell": "efficacy", "index": 6, "what": "drug axicabtagene ciloleucel, route iv"},
+  {"cell": "safety", "index": 1, "what": "drug axicabtagene ciloleucel, route iv; 'only toxicity was B-cell loss' recorded as a scored tolerability prediction (status untested unchanged at opener)"},
+  {"cell": "safety", "index": 2, "what": "year 2017->2010, src/quote to Kochenderfer 2010 Blood case report (very low immunoglobulins), imported_from MONDO:0018906 follicular lymphoma since no LBCL safety data existed in 2010; LBCL CBER 2017 data kept in confidence_note; status same unchanged; drug axi-cel, route iv"},
+  {"cell": "safety", "index": 3, "what": "drug axicabtagene ciloleucel, route iv"},
+  {"cell": "safety", "index": 4, "what": "imported ALL comparison replaced by LBCL patients (ruling: imported harm where this disease's patients were measured): src/quote to Neelapu 2017 ZUMA-1 (CRS 13%, neuro 28% grade 3+), paired with model_src Giavridis 2018, imported_from null; retro unchanged, resting on axi-cel's own earlier patient result; drug axi-cel, route iv"},
+  {"cell": "safety", "index": 5, "what": "drug axicabtagene ciloleucel, route iv"},
+  {"cell": "safety", "index": 6, "what": "imported ALL comparison replaced by LBCL patients: src/quote to Neelapu 2017 ZUMA-1, paired with model_src Norelli 2018, imported_from null; retro unchanged; drug axi-cel, route iv"}
+ ],
+ "added": []
+}

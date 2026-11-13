@@ -54,7 +54,7 @@ def final_year(r) -> int:
 
 
 def headline(entries: list[dict]) -> str | None:
-    """A cell's headline: the best latest status among its tracks (one per model_id) that predicted before the
+    """A cell's headline: the best latest status among its tracks (one per track_id: model x drug x route) that predicted before the
     patient result; untested when none did. A track's latest entry is its last in seq order. A retrodiction is shown
     on its track but never sets the headline, nor hides the prospective entries before it on the same track."""
     kept = [e for e in entries if e["final"] != "drop"]
@@ -63,25 +63,26 @@ def headline(entries: list[dict]) -> str | None:
     last = {}
     for e in sorted(kept, key=lambda e: e["seq"]):
         if e["final"] != "retro" and not e["retrodiction"]:
-            last[e["model_id"]] = e["final"]
+            last[e["track_id"]] = e["final"]
     tested = [s for s in last.values() if s in HEADLINE]
     return min(tested, key=HEADLINE.index) if tested else "untested"
 
 
 def load() -> tuple[pd.DataFrame, pd.DataFrame]:
     e = frame.query("""SELECT e.mondo_id, e.mechanism_key, e.question, coalesce(e.modality, '') AS modality, e.seq, e.year, e.status,
-                              e.model_id, e.model, e.src_label, e.retrodiction, e.fields, v.verdict, v.proposed_year,
+                              e.track_id, t.model_id, t.model, t.drug, t.route, e.src_label, e.retrodiction, e.short,
+                              e.outcome_tested, e.untested_reason, e.population_group, t.model_kind, e.readout_tier,
+                              e.reason, e.note, e.magnitude, e.product_in_model, e.subjects, v.verdict, v.proposed_year,
                               v.adjudicated_status
                        FROM preclin.atlas_track_entry e
+                       JOIN preclin.atlas_track t USING (mondo_id, mechanism_key, track_id)
                        LEFT JOIN preclin.atlas_track_verdict v USING (mondo_id, mechanism_key, question, modality, seq)""")
-    e["fields"] = e.fields.map(lambda f: f or {})
     verdicts = [{"status": st, "year": y, "verdict": v if isinstance(v, str) else None,
                  "proposed_year": None if pd.isna(py) else int(py),
                  "adjudicated_status": adj if isinstance(adj, str) else None}
                 for st, y, v, py, adj in zip(e.status, e.year, e.verdict, e.proposed_year, e.adjudicated_status)]
     e["final"] = [final_status(r) for r in verdicts]
     e["year"] = [final_year(r) for r in verdicts]
-    e["short"] = e.fields.map(lambda f: f.get("short"))
     tiles = pd.DataFrame(json.load(open(os.path.join(DRAFTS, "tiles.json"))))
     stored = set(zip(e.mondo_id, e.mechanism_key))  # a tile is drawn once its track record is stored
     tiles = tiles[[k in stored for k in zip(tiles.mondo_id, tiles.mechanism_key)]].reset_index(drop=True)
@@ -90,16 +91,16 @@ def load() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 def strip(g: pd.DataFrame) -> tuple[str, dict, dict] | None:
     """One modality strip: its headline status, the entry that set it, and each track's latest entry, keyed by
-    (modality, model_id); None when every entry was dropped. A track's latest entry is its last in seq order; the
+    (modality, track_id); None when every entry was dropped. A track's latest entry is its last in seq order; the
     entry drawn is the latest prospective one on a track that set the headline."""
     ents = sorted((x for x in g.to_dict("records") if x["final"] != "drop"), key=lambda x: x["seq"])
     if not ents:
         return None
     st = headline(ents)
-    latest = {(x["modality"], x["model_id"]): x for x in ents}
+    latest = {(x["modality"], x["track_id"]): x for x in ents}
     if st == "untested" and all(x["final"] == "retro" for x in latest.values()):
         return "retro", max(latest.values(), key=lambda x: (x["year"], x["seq"])), latest
-    prospective = {(x["modality"], x["model_id"]): x for x in ents if x["final"] != "retro" and not x["retrodiction"]}
+    prospective = {(x["modality"], x["track_id"]): x for x in ents if x["final"] != "retro" and not x["retrodiction"]}
     pick = max([x for x in prospective.values() if x["final"] == st] or list(prospective.values()) or ents,
                key=lambda x: (x["year"], x["seq"]))
     return st, pick, latest
@@ -125,11 +126,12 @@ def cells(e: pd.DataFrame, tiles: pd.DataFrame) -> pd.DataFrame:
             contra = [x for x in last.values() if x["final"] == "contra"] if st in MATCHED else []
             dissent = max(contra, key=lambda x: (x["year"], x["seq"])) if contra else None
             rows.append({"slug": t.slug, "area": t.area, "mondo_id": t.mondo_id, "disease": t.disease, "mechanism": t.mechanism, "programs": t.class_programs,
-                         "share": t.class_share, "question": q, "status": st, "year": pick.get("year"), "model_id": pick.get("model_id"),
-                         "modality": pick.get("modality"), "model": pick.get("model"),
+                         "share": t.class_share, "question": q, "status": st, "year": pick.get("year"), "track_id": pick.get("track_id"), "model_id": pick.get("model_id"),
+                         "modality": pick.get("modality"), "model": pick.get("model"), "drug": pick.get("drug"),
+                         "route": pick.get("route"), "population_group": pick.get("population_group"),
                          "short": pick.get("short"), "tracks": len(last), "other_tracks": max(len(last) - 1, 0),
-                         "outcome_tested": pick.get("fields", {}).get("outcome_tested"),
-                         "untested_reason": pick.get("fields", {}).get("untested_reason") if st == "untested" else None,
+                         "outcome_tested": pick.get("outcome_tested"),
+                         "untested_reason": pick.get("untested_reason") if st == "untested" else None,
                          "dissent": None if dissent is None else dissent["short"], "dissent_model": None if dissent is None else dissent["model"]})
     df = pd.DataFrame(rows)
     df["year"] = df.year.astype("Int64")

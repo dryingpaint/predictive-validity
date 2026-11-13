@@ -143,7 +143,7 @@
       "short": "PBMC PAR inhibition sustained 24 h",
       "src": "https://doi.org/10.1038/s41416-020-0916-5",
       "srcLabel": "Plummer 2020",
-      "quote": "PARP inhibition was sustained with a ≥ 70% decrease in PAR levels at 24-h post-dose time points (cycle 1, days 1, 7, 8 and 16 [at 0 h for each]).",
+      "quote": "PARP inhibition was sustained with a \u2265 70% decrease in PAR levels at 24-h post-dose time points (cycle 1, days 1, 7, 8 and 16 [at 0 h for each]).",
       "confidence": "medium",
       "confidence_note": "Full text read (PMC7434893). PBMC, not tumour, PAR in patients; mixed solid tumours (4 breast), allowed for engagement.",
       "reason": "PAR fell in patients as in mice",
@@ -421,7 +421,7 @@
       "year": 2020,
       "status": "untested",
       "prediction_level": "class",
-      "note": "MDA-MB-436: pamiparib 1.6-12.5 mg/kg BID for 28 days regressed every tumour with no body-weight effect; mouse AUC/dose 552 ng·h/mL per mg/kg.",
+      "note": "MDA-MB-436: pamiparib 1.6-12.5 mg/kg BID for 28 days regressed every tumour with no body-weight effect; mouse AUC/dose 552 ng\u00b7h/mL per mg/kg.",
       "short": "1.6 mg/kg BID regresses xenografts",
       "src": "https://doi.org/10.1016/j.neo.2020.06.009",
       "srcLabel": "Xiong 2020",
@@ -590,7 +590,7 @@
       "short": "Anaemia, neutropenia unforeseen by model",
       "src": "https://doi.org/10.1007/s10549-022-06785-z",
       "srcLabel": "Xu 2023",
-      "quote": "The most common treatment-emergent adverse events (TEAEs), treatment-related TEAEs, and ≥ Grade 3 TEAEs were hematologic (including anemia, decreased neutrophil count, and decreased white blood cell count).",
+      "quote": "The most common treatment-emergent adverse events (TEAEs), treatment-related TEAEs, and \u2265 Grade 3 TEAEs were hematologic (including anemia, decreased neutrophil count, and decreased white blood cell count).",
       "confidence": "low",
       "confidence_note": "Abstract-level on the patient side. Same logic and same open rule question as the draft's safety[2]; Lickliter 2022 (mixed tumours) had already shown grade 3 or worse anaemia in 24.8% in 2021.",
       "reason": "Marrow toxicity unpredicted",
@@ -705,5 +705,27 @@
   "Xiong 2020 intracranial H209 + temozolomide model and Wang 2020 brain-penetration DMPK: SCLC-brain and glioma predictions (tested in Schiff 2026, Piotrowski 2025), outside the breast context.",
   "Veliparib population-PK or exposure-response models for dose selection: not searched within the budget; no in-silico dose model for breast cancer surfaced in the searches run.",
   "Patient-derived xenograft co-clinical trials with a member drug in breast cancer: the Europe PMC PDX/organoid search returned only Bui 2026 (added) and reviews."
+ ],
+ "gaps": [
+  {
+   "lead": "PARPi-7 and BRCA1ness signatures tested against pCR in I-SPY 2 veliparib/carboplatin arm (Wolf 2017)",
+   "outcome": "added",
+   "detail": "already in added_models as ispy2-parpi7-brca1ness-signatures (efficacy: untested 2012, same 2017); carboplatin confound noted there"
+  },
+  {
+   "lead": "2X-121 (E7449) own BRCA-deficient xenografts (McGonigle 2015)",
+   "outcome": "added",
+   "detail": "already in added_models as e7449-brca-deficient-xenografts (engagement/dose/safety same 2020 vs Plummer 2020; efficacy untested 2015, breast phase 2 unreported)"
+  },
+  {
+   "lead": "Pamiparib own preclinical package (Xiong 2020 / Wang 2020 J Med Chem)",
+   "outcome": "added",
+   "detail": "already in added_models as pamiparib-mda-mb-436-xenograft (engagement/dose same 2021, efficacy same 2022, safety contra 2022 vs Xu 2023)"
+  },
+  {
+   "lead": "Kummar 2009 mouse PK/PD 0.21 umol/L plasma target",
+   "outcome": "fix",
+   "detail": "engagement, index 2 (mx1-brca-xenograft-chemopotentiation, Kummar 2009): field comparison_stated, current false, source supports true; dose, index 2 (same track, Kummar 2009): field comparison_stated, current false, source supports true. Source: Kummar 2009 JCO, https://doi.org/10.1200/JCO.2008.19.7681 (full text PMC2739635, re-opened): the paper itself sets the mouse-derived target ('a plasma Cmax of 0.21 umol/L (concentration associated with a significant reduction in tumor PAR levels in single-dose studies in mice)'), reports 'The target Cmax of 0.21 umol/L was exceeded in the first patient cohort', and states the side-by-side PD comparison: 'Greater than 90% inhibition of PAR levels was observed 3 to 6 hours post-drug administration, with recovery at 24 hours in both xenograft models and the clinical trial.' The checker's confirmed verdicts on these entries say this only in their notes and propose no field change, so it is recorded here as a fix."
+  }
  ]
 }

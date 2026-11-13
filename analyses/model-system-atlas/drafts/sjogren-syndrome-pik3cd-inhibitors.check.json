@@ -1,0 +1,177 @@
+{
+  "draft": "analyses/model-system-atlas/drafts/sjogren-syndrome-pik3cd-inhibitors.json",
+  "index_base": 1,
+  "checked_by": "CHECKER_BRIEF",
+  "entries": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "Rule 6 (cell opens untested at model_first_use_year, proxy allowed)",
+      "note": "Nayar 2019 (PMID 30472652, epub 2018-11-24) quote verbatim in abstract; full text confirms pS6 flow staining in mice and 10 mg/kg seletalisib. 2015 opening year is a proxy tied to NCT02610543 start (Oct 2015)."
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "proposed_status": "retro",
+      "proposed_year": 2019,
+      "rule": "Rule 6 dating: year is the earliest public date of the comparison (congress abstract counts)",
+      "note": "Juarez abstract quote verbatim; Nayar epub 2018-11-24 after Helmer 2017-02-04, so retro holds; seletalisib oral unselected right. EULAR 2019 AB0458 (Crossref: June 2019, same trial) preceded the 2020 paper: year 2019. Its body not reopened this pass.",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "retro",
+      "adjudication_note": "Rule 6: EULAR 2019 AB0458 (June 2019) already reported reduced foci size/organisation and target engagement, so year 2019; status retro unchanged (retrodiction, Nayar epub after Helmer 2017)."
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "Dose table row 1: model stated no exposure/regimen target nor margin -> untested, no_prediction",
+      "note": "Nayar full text gives only 10 mg/kg/day gavage in mice, with no human exposure, regimen or margin projection. The quote shows the model was used but does not itself support the dose call; acceptable for untested."
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "Efficacy co-primary ruling: scored as the authors call the trial; rule 5 unsettled",
+      "note": "Juarez abstract: co-primaries safety and week-12 ESSDAI (-2.59, P=0.266); authors call it a trend toward improvement, not a failure, so unsettled holds. Design in note. Seletalisib oral, unselected correct.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "Rule 5 unpublished; Rule 6 opening entry",
+      "note": "FDA multidisciplinary review (bundle txt, line ~1693) has the quote verbatim under the 39-week rat study 1470444. NCT02775916 started 2016-06-01, so a 2016 proxy is fine."
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "Safety retrodiction: the same drug's own patient result public earlier",
+      "note": "FDA review quote verbatim; tox public 2023, after leniolisib's own Sjögren's AE results (registry 2019-10-18; EULAR 2018 earlier), so retro; model_filed true right (NDA tox). Leniolisib oral, unselected.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "engagement",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "note": "Allen 2017 (JPET, PMID 28442583) abstract contains the quote verbatim. Opening year 2013 proxy matches Helmer Study-1 ethics ref 13/SC/0366; untested opening correct; prediction_level class."
+    },
+    {
+      "cell": "engagement",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "Retrodiction (engagement): model first public after a dosed-human result for the same target",
+      "note": "Europe PMC: Helmer epub 2017-02-04, Allen (PMID 28442583) epub 2017-04-25, so retro. Helmer quote is in full text, not abstract. Seletalisib oral; HV plus psoriasis as other_disease is the closest code.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "engagement",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "rule": "Rule 6: cell opens at model_first_use_year, proxy allowed",
+      "note": "Hoegenauer abstract quote verbatim. CT.gov API: NCT02435173 start 2015-08-24, so 2015 opener and track model_first_use_year 2015 hold. Leniolisib oral; untested opener, not latest, so no untested_reason needed.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "engagement",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "rule": "Retrodiction (engagement): model first public after a dosed-human result for the same target",
+      "note": "Rao abstract quote verbatim (epub 2017-09-29). Hoegenauer epub 2017-08-25 follows Helmer 2017-02-04, so retro. Leniolisib oral; APDS patients coded other_disease; year 2017 correct for the pairing.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "rule 5 / opening entry at model_first_use_year, untested",
+      "note": "Full text (ScienceDirect via DOI) has the quote verbatim; IACUC protocols 19-12-054/055 support a 2019 opening year. Opening untested entry for the parsaclisib NOD.ShiLtJ/NOD.B10 track is correct.",
+      "checked_by": "CHECKER_BRIEF / models"
+    },
+    {
+      "cell": "efficacy",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "Single-arm ruling; retrodiction by first public dates",
+      "note": "CT.gov API: NCT03627065 results first posted 2021-03-24; primary SGUS responders 0/8, 0/7. Mouse paper epub 2021-06-29 after all member results, so retrodiction that failed: contra. Parsaclisib oral, 2021 hold.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "Passing tolerability statement is a safety prediction; opener untested at model_first_use_year",
+      "note": "Quote verbatim in Nayar full text (PMC6352416). 2015 opener matches the track's model_first_use_year. Seletalisib oral, unselected; untested opener fine.",
+      "checked_by": "CHECKER_BRIEF / fields"
+    },
+    {
+      "cell": "safety",
+      "index": 4,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "proposed_status": "contra",
+      "proposed_year": 2019,
+      "rule": "Rule 6 dating: year is the earliest public date of the comparison (congress abstract counts)",
+      "note": "Juarez abstract quote verbatim; contra and retrodiction (seletalisib's own Helmer 2017 human data preceded Nayar) hold. EULAR 2019 AB0458 (June 2019) on the same trial preceded the 2020 paper: year 2019. Its body not reopened this pass.",
+      "checked_by": "CHECKER_BRIEF / fields",
+      "adjudicated_status": "contra",
+      "adjudication_note": "Rule 6: EULAR 2019 AB0458 (June 2019) already reported serious TEAEs 3/13 vs 1/14 and AE discontinuations 5/13 vs 1/14, so year 2019; status contra unchanged."
+    }
+  ],
+  "missing": [
+    "Possible engagement track: leniolisib pAkt-positive B-cell PD (ex vivo, direct readout) measured in Sjögren's patients in Study 2203 (CCDZ173X2203), per FDA review NDA 217759 clinical pharmacology section (https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/217759Orig1s000MultidisciplineR.pdf). The draft scores engagement only on the seletalisib mouse track.",
+    "Possible engagement track: seletalisib healthy-volunteer PD from first-in-human studies (Helmer 2017, doi:10.1007/s00228-017-2205-7). The draft cites it for dose selection only, not as an engagement comparison.",
+    "No parsaclisib Sjögren's trial found on ClinicalTrials.gov or Europe PMC, and no press release reporting a member failure beyond the two Phase 2s.",
+    "Efficacy entry 1 (draft, 'both member Phase 2') should list parsaclisib NCT03627065 (Phase 2 primary Sjogren's, n=10, open label, primary SGUS endpoint null, results posted 2021-03-24; https://clinicaltrials.gov/study/NCT03627065) among its patient_trials."
+  ],
+  "overall": "accept",
+  "rule_questions": [
+    "Efficacy: two small member Phase 2s each missed their primary with CIs spanning zero (one terminated at 36% power), and the mouse's functional readout (saliva flow) was unchanged in patients. Is pooled class-level inconclusive data 'unsettled' or 'contra'? The rules do not set a power or CI threshold.",
+    "Efficacy: should an untested track whose untested_reason changes (from opening to 'unsettled' once trials report) get a new dated entry, or does the single 2015 entry carry the 2019/2020 data?",
+    "parsaclisib-nod-mouse: the mouse run is dated only by IACUC protocol numbers (Dec 2019), days after the trial's primary completion (2019-12-07) and before any public result (2021-03); the paper calls the trial ongoing. The rules do not say whether 'the clinic already knew the answer' means sponsor-internal readout or public results."
+  ]
+}

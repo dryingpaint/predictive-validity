@@ -10,7 +10,8 @@
   "fc.py search: cevidoplenib SKI-O-703 phase 1 healthy volunteers pharmacodynamics; RA phase 2 DAS28 results",
   "fc.py search: GS-9876 lanraplenib collagen-induced arthritis rat OR mouse preclinical efficacy SYK Gilead abstract",
   "fc.py search: acrabstracts.org GS-9876 healthy volunteers single multiple ascending dose pharmacodynamics SYK",
-  "curl acrabstracts.org: Di Paolo ACR 2016 (GS-9876 + JAK inhibitor in chronic rat CIA), Dolton ACR 2016 (GS-9876 first-in-human), Kivitz ACR 2018 (GS-9876 RA Phase 2), tag/syk listing for other GS-9876 abstracts"
+  "curl acrabstracts.org: Di Paolo ACR 2016 (GS-9876 + JAK inhibitor in chronic rat CIA), Dolton ACR 2016 (GS-9876 first-in-human), Kivitz ACR 2018 (GS-9876 RA Phase 2), tag/syk listing for other GS-9876 abstracts",
+  "fc.py search: Oscotec cevidoplenib SKI-O-703 rheumatoid arthritis phase 2a topline results January 2021 (only Korea Biomedical Review, larvol, patsnap, ITP PRNewswire 2023; no Oscotec RA release or DART filing text)"
  ],
  "added_models": [
   {
@@ -261,6 +262,55 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "cynomolgus-bleeding-time-lanraplenib",
+   "model": "Cynomolgus monkey platelet/bleeding-time (lanraplenib)",
+   "model_kind": "animal",
+   "model_first_use_year": 2018,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "model_id": "cynomolgus-bleeding-time-lanraplenib",
+      "model": "Cynomolgus monkey platelet/bleeding-time (lanraplenib)",
+      "model_kind": "animal",
+      "model_first_use_year": 2018,
+      "prediction_level": "class",
+      "population": "Unselected",
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "patient_signal_reversed": false,
+      "model_filed": null,
+      "trial_unreported": false,
+      "year": 2018,
+      "status": "untested",
+      "subjects": "healthy_volunteers",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "registry_date": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "readout_tier": "direct",
+      "confidence": "low",
+      "confidence_note": "Abstract-level reading; Thromb Res body paywalled (publisher scrape returned no text). The abstract reports ex vivo GPVI aggregation for dosed monkeys only; human data named are in vitro whole blood and bleeding time. Dolton 2016 FIH abstract reports bleeding time only.",
+      "src": "https://doi.org/10.1016/j.thromres.2018.08.012",
+      "srcLabel": "Clarke 2018",
+      "quote": "Ex vivo, GPVI-stimulated platelet aggregation was inhibited in GS-9876-treated monkeys without a concomitant increase in BT.",
+      "note": "Monkey PD readout was ex vivo GPVI-stimulated platelet aggregation; no public source reports that readout in dosed humans, only bleeding time.",
+      "short": "Monkey platelet blockade, no human ex vivo",
+      "judgement": "Opening entry the track needs. The checker read the conclusion as human ex vivo inhibition, but the abstract's human platelet data are in vitro whole blood; 'in monkeys or humans' qualifies bleeding time. Cannot quote a dosed-human readout, so untested.",
+      "reason": "Human ex vivo aggregation not reported",
+      "untested_reason": "not_measured"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -275,5 +325,27 @@
   "Patient-derived organoids/cells, PDX co-clinical, human challenge, human genetic (SYK loss-of-function) and in-silico/QSP dose-selection models: none found for cevidoplenib, lanraplenib or MK-8457; the GS-9876 FIH abstract reports empirical PK only",
   "Cevidoplenib Phase 1 HV studies NCT02717988 and NCT03315494: no results posted and no PD paper found; nothing to compare",
   "MK-8457: no model system beyond the tracked rat AIA/CIA found (Merck published nothing further)"
+ ],
+ "gaps": [
+  {
+   "lead": "Clarke 2018 ex vivo GPVI platelet aggregation in GS-9876-dosed monkeys and humans (engagement on cynomolgus-bleeding-time-lanraplenib)",
+   "outcome": "entry",
+   "detail": "Added engagement entry 2018 untested (readout direct, healthy_volunteers, not_measured) on cynomolgus-bleeding-time-lanraplenib from Clarke 2018 (10.1016/j.thromres.2018.08.012). Abstract reports ex vivo GPVI aggregation only in dosed monkeys; human data are in vitro whole blood and bleeding time, so the human counterpart cannot be quoted (body paywalled)."
+  },
+  {
+   "lead": "Kivitz ACR 2018 lanraplenib RA Phase 2 abstract",
+   "outcome": "tracked",
+   "detail": "rat-cia-therapeutic-lanraplenib: efficacy 6 (contra 2018, Kivitz 2018 ACR src, NCT02885181) and dose 5 (same 2018, patient PK comparable to HV); Di Paolo 2016 rat CIA is the arthritis model it is scored on"
+  },
+  {
+   "lead": "Oscotec's own 2021-01-07 disclosure of the cevidoplenib RA miss",
+   "outcome": "covered",
+   "detail": "Changes nothing scored: efficacy 4 stays contra 2021 whichever source holds (registry NCT04057118 posted 2024-07-31 confirms the miss and is already its registry_date); sponsor DART text not found; src tier/year is checker rule question 3, not a field error."
+  },
+  {
+   "lead": "Entospletinib in K/BxN (Kaposztas 2023)",
+   "outcome": "none",
+   "detail": "Non-member sibling (tile members are cevidoplenib, lanraplenib, mk-8457); outside the member rule, correctly unscored"
+  }
  ]
 }

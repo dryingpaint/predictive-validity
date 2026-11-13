@@ -11,8 +11,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "8",
-   "note": "PMID 11527957 abstract: quote verbatim; VEGF TrapA40 systemic, product_in_model false correct. Opens track untested. No change."
+   "rule": "tracks: drug/route; product_in_model false",
+   "note": "Qaum 2001 (PMID 11527957) abstract quote verbatim; systemic VEGF TrapA40 precursor, so product_in_model false; drug aflibercept, route intravitreal (patients' route), unselected; untested opener 2001 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -22,9 +23,12 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "7",
-   "note": "Korobelnik CRT quote verbatim; VGT-NC-007/008 confirmed in 125387 PharmR. But DA VINCI (Do 2011, doi 10.1016/j.ophtha.2011.02.018, epub 2011-05-05) already showed CRT fall in DME: earliest public comparison is 2011."
+   "proposed_year": 2009,
+   "rule": "6 (earliest public date)",
+   "note": "Do 2011 CRT quote verbatim, epub 2011-05-05; same holds. But Do 2009 (BJO 93:144, doi 10.1136/bjo.2008.138271), single 4 mg aflibercept in 5 DME patients, already showed excess foveal thickness falling: year 2009. Note/judgement still cite VIVID/VISTA, 'year 2014'.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: status same agreed; Do 2009 (PMID 19174400, BJO 93:144) single 4 mg VEGF Trap-Eye in 5 DME patients cut excess foveal thickness 31%, earlier public than DA VINCI, so the entry dates 2009."
   },
   {
    "cell": "dose",
@@ -33,30 +37,35 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "8",
-   "note": "Stewart 2008 (PMID 18356264) conclusion verbatim. Field fix only: the academic decay model was not filed; the rabbit half-life study VGFT-PK-03028 was, so model_filed should be false or noted per decision 8."
+   "rule": "tracks: drug/route",
+   "note": "Stewart 2008 (PMID 18356264, epub 2008-03-20) conclusion verbatim. drug aflibercept, route intravitreal, unselected correct; untested opener 2008 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "7",
-   "note": "2q8 quote verbatim; 42x/56x margin confirmed (125387 SumR 13.2); 2q8 basis VGFT-OD-0508 confirmed. DA VINCI 2q8 arm (Do 2011) tested the 10-12-week prediction first: year 2011. Margin comes from the monkey tox model, not the decay model."
-  },
-  {
-   "cell": "dose",
-   "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "8",
-   "note": "Rodrigues 2018 abstract verbatim; PALM NCT02186119 completed 2015-06 with no results, so untested holds. Field fix: model_filed true, the EMA Rayoqta report section 3.2 describes the rabbit chronic-neovascularisation/VEGF-leak model."
+   "rule": "6",
+   "note": "Do 2011 BCVA quote verbatim; 2q8 arm beat laser at week 24, epub 2011-05-05; Do 2009 was a single dose, not a regimen test, so 2011 holds. same/aflibercept/intravitreal ok. Note's 10.7 vs 10.5-12.5 are VIVID/VISTA; margin_stated borrows tox-track margin.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2018,
+   "rule": "5 (untested_reason: first that fits)",
+   "note": "Rodrigues 2018 (PMID 30535424) quote verbatim; untested holds, abicipar pegol/intravitreal right. The RNV model states no human dose, exposure, regimen or margin (duration claim is from the VEGF-vasculopathy model): untested_reason no_prediction, not unsettled.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5 (first that fits): Rodrigues 2018 abstract gives no human dose, exposure, regimen or margin from the rabbit RNV model, so untested_reason is no_prediction, which precedes unsettled."
   },
   {
    "cell": "dose",
@@ -65,8 +74,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7",
-   "note": "Brown 2024 verbatim; registry 2023-11-21 before epub 2024-03-07, so 2023 holds. magnitude_basis borrows the popPK (15 vs 8.7 weeks); the rabbit's own numbers (leak-free 6 vs 4 weeks, 1.5x) vs 12-16 vs 8 weeks still give within_2x."
+   "rule": "retrodiction (dose: same drug's own earlier patient result)",
+   "note": "Brown 2024 quote verbatim (PMID 38461843); 761355 PharmR s1.2 rabbit 2 mg/eye ~8 mg human confirmed (VGFT-PH-19050). PHOTON/PULSAR topline Sept 2022 precedes the review: retro holds. magnitude_basis is the popPK track's number; review dated 2023 here, 2024 in dose 6.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -75,20 +85,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "8",
-   "note": "Qaum 2001 abstract verbatim; model_filed true confirmed (125387 PharmR VGT-NC-007 intravitreal, VGT-NC-008 systemic, Evans blue 'equivalent to the levels seen in non-diabetic controls'). v2 was wrong, v3 right."
+   "rule": "tracks: drug/route; product_in_model false",
+   "note": "Qaum 2001 abstract dose-dependent-inhibition quote verbatim; precursor given systemically, product_in_model false; drug aflibercept, route intravitreal, unselected; untested opener 2001 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "7",
-   "note": "VIVID/VISTA BCVA quote verbatim, primary endpoint, registry dates confirmed. DA VINCI phase 2 primary endpoint (BCVA week 24, +8.6 to +11.4 vs +2.5 laser; Do 2011, PMID 21546089) was public 2011-05: earliest comparison is 2011."
+   "rule": "6",
+   "note": "Do 2011 (Ophthalmology 118:1819, epub 2011-05-05) BCVA quote verbatim; BCVA at week 24 is the main outcome, met in all four arms. DA VINCI in patient_trials (registry 2014-09-09) correct. same/2011/aflibercept/intravitreal hold; Do 2009 was safety/bioactivity, not efficacy.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "efficacy",
@@ -97,8 +107,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "10",
-   "note": "Liu 2022 (PMID 34001667, epub 2021) verbatim; Huang 2012 'less retinal vessel leakage' verbatim; SAILING NCT02194634 status UNKNOWN, no results, registry null correct. Huang 2012 post-dates DA VINCI; see rule question 4."
+   "rule": "retrodiction (efficacy: target-level, any drug)",
+   "note": "Liu 2022 quote verbatim (epub 2021-05-17); Huang 2012 epub 2012-03-15 is after DA VINCI 2011-05-05: retro, reproduced. conbercept, intravitreal, unselected hold. An earlier SAILING congress report may exist (unverified).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -107,22 +118,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "8",
-   "note": "125387 PharmR Key Study Findings line verbatim modulo OCR (wg for ug). Opens track untested in 2011. Track identity (abicipar package merged in) is rule question 2."
+   "rule": "tracks: drug/route",
+   "note": "125387 PharmR line 1007 quote verbatim modulo OCR ('wg' = ug). drug aflibercept, intravitreal, unselected hold; untested opener 2011 stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2011,
-   "rule": "5",
-   "note": "SumR quote verbatim; 42x/56x margin and ENT monitoring confirmed; MONDO:0005150 = AMD confirmed. Decision 5 (#51): a 25-50x margin does not gate same; harm predicted, not seen = contra, magnitude opposite. Drafter used the rejected alternative.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Decision 5 (#51): erosion at the clinical 2 mg/eye behind a 42–56× margin is a harm prediction the ENT sub-study refuted: contra, opposite. Decision 16 scores the held margin in dose; decision 11 partial fails on the pre-specified nasal readout."
+   "status_supported": true,
+   "rule": "safety: predicted harm never seen = contra, opposite; imported when this disease unmeasured",
+   "note": "125387 SumR line 652 quote verbatim; nasal erosion predicted at clinical dose, not seen in ENT-checked nAMD patients: contra/opposite. DME patients never checked for it until PHOTON, so imported/other_disease kept. Judgement still argues 'same'.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
@@ -131,22 +140,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "11",
-   "note": "EMA/CHMP/279665/2020, adopted 28 May 2020, p.36 verbatim, followed by 'Intraocular inflammation also occurs in human': stated comparison, harm predicted and seen, same + direction_only. CEDAR 2020-07-28 confirmed. On a contra track (decision 6) if entry 2 flips."
+   "rule": "retrodiction (safety: same drug's own earlier patient result); this disease's patients set status",
+   "note": "EMA/CHMP/279665/2020 (28 May 2020) line 1907 quote verbatim. Campochiaro 2013 (MP0112 = abicipar, DME, 11/18 = 61% inflammation, epub 2012-12-04) precedes: retro, unselected. registry_date and magnitude_basis still cite nAMD.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2023,
-   "rule": "5",
-   "note": "761355 PharmR verbatim, 'Per the Applicant' confirmed. Erosions again at 4-7 mg/eye with no NOAEL, ~3x margin, no human signal in PHOTON: same over-prediction, decision 5 contra/opposite; mild IOI matched is the partial route in rule question 3.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Decision 5 (#51), as index 2: erosions at 4–7 mg/eye, no NOAEL, ~3× margin; PHOTON/PULSAR nasomucosal analysis null: contra, opposite, dated 2023 (first DME dataset). Held margin scores in dose (decision 16); decision 6 keeps the track contra."
+   "status_supported": true,
+   "rule": "safety: predicted harm never seen = contra, opposite",
+   "note": "761355 PharmR lines 229-232 quote verbatim ('Per the Applicant', names PHOTON DME). Nasal erosion at 4-7 mg/eye not seen in DME patients: contra/opposite, unselected, aflibercept. source_calls_it 'match' contradicts contra.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -155,24 +162,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "8",
-   "note": "ClinPharmR lines 942-944 verbatim; Reference ID 5162313 signed 2023-04-21, so 2023 holds. Opens the track untested. If index 6 folds in, carry source_calls_it scaling and PHOTON in patient_trials here.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "tracks: drug/route",
+   "note": "761355 ClinPharmR line 943 popPK quote verbatim. drug aflibercept, intravitreal, unselected (pooled nAMD/DME) hold; opener untested 2023 stands (epub_year 2024 conflicts with year).",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2023,
-   "rule": "16 (dose-cell rule, #50/#118)",
-   "note": "Lines 289-295 verbatim. PopPK fitted to the BLA's own PHOTON/PULSAR/CANDELA plasma PK; the 15-week ocular figure is unobserved ('treated with caution'). Post-hoc PK/PD justification: untested + source_calls_it scaling, not retro; folds into index 5, dated 2023 like dose 4.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Dose-cell rule (#50/#118, re-affirmed by decision 16) is the specific rule: a sponsor popPK fitted to PHOTON's own plasma PK, ocular output unobserved, is a post-hoc PK/PD dose justification, untested, source_calls_it scaling, not decision-10 retro; year 2023."
+   "status_supported": true,
+   "rule": "retrodiction (dose: same drug's own earlier patient result)",
+   "note": "ClinPharmR lines 288-290 quote verbatim; popPK built with PHOTON PK after the Sept 2022 topline: retro. drug/route/population hold. Year 2024 vs 2023 for dose 4/5 from the same review set is inconsistent.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -181,9 +184,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Abstract sentence verbatim (full text 403 at ScienceDirect and ASPET); epub 2020-02-25. EMA/415176/2020 s3.2.2 p.27 confirms the in-silico model was filed. Separate system from rabbit-chronic-rnv-leak: built on rabbit IVT PK tissue data (s3.2.2), not the leak model (s3.2.1).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "5",
+   "note": "Luu 2020 (PMID 32098861, epub 2020-02-25) abstract quote verbatim; EMA/CHMP/279665/2020 s3.2.2 describes the same in-silico model. drug abicipar pegol (= MP0112), intravitreal, unselected hold; opener untested 2020.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "engagement",
@@ -192,9 +195,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "10",
-   "note": "Abstract verbatim. Retrodiction holds: refit to Campochiaro 2013 DME aqueous data (epub 2012-12-04, VEGF neutralised 8-12 weeks). Abstract and EMA state only a PK fit; the VEGF comparison is unverifiable, so magnitude null stands and 'direct' is abstract-based. Campochiaro belongs in patient_trials.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "retrodiction (engagement: target-level)",
+   "note": "Refit sentence verbatim in abstract; EMA text 'again fitted well against ... patients with nAMD and diabetic macular edema' confirmed. DME aqueous data (Campochiaro 2013, epub 2012-12-04) predate: retro. abicipar pegol, intravitreal, unselected hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
   },
   {
    "cell": "dose",
@@ -203,16 +206,56 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "Abstract verbatim. PALM NCT02186119 completed 2015-06, hasResults false, no paper: untested holds. Regimen preceded the model (PALM 2014, CEDAR/SEQUOIA 2015) and EMA calls the simulation dose-selection support: a post-hoc PK/PD justification, so set source_calls_it scaling.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "5",
+   "note": "Luu 2020 abstract 'simulate 8-, 12- (quarterly), and 16-week dosing intervals' verbatim; PALM NCT02186119 measured patients, no results: untested, unsettled fits. abicipar pegol, intravitreal, unselected hold.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2018,
+   "rule": "6 (opener at first use with the drug)",
+   "note": "761355 PharmR line 179-181 quote verbatim. But Cao 2018 (IOVS 59:1033, doi 10.1167/iovs.17-22897, Regeneron) first ran this rabbit RNV model with aflibercept (500 ug ~8 weeks leak-free, dose-dependent): opener 2018. source_tier should be 2; subjects null.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6 opener: Cao 2018 (PMID 29450547, IOVS 59:1033) first ran the AAA rabbit RNV model with aflibercept (500 ug, ~8 weeks leak-free), so the aflibercept track opens untested in 2018, not 2023."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6 (opener at first use with the drug)",
+   "note": "Huang 2012 (PMID 22340191, epub 2012-03-15) results sentence verbatim; untested opener 2012, conbercept, intravitreal right; lint passes. Listed after its 2021 entry; model_src_tier 1 with null model_src, subjects should be null.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6 (opener at first public use)",
+   "note": "EMA Rayoqta report line 1646 quote verbatim (rabbit and dog repeat-dose IVT). Opener untested 2020, abicipar pegol, intravitreal fine; subjects should be null, magnitude_basis null.",
+   "checked_by": "CHECKER_BRIEF / fields"
   }
  ],
  "missing": [
   "Applicant population-PK (in silico) model for aflibercept 8 mg: time to ocular LLOQ 8.7 weeks (2 mg) -> 15 weeks (8 mg), flagged unconfirmed by the reviewer, held in PHOTON q12/q16; no track, yet dose entry 4 borrows its number. Source: https://www.accessdata.fda.gov/drugsatfda_docs/nda/2024/761355Orig1s000ClinPharmR.pdf (bundle sources/761355/761355Orig1s000ClinPharmR.txt lines 289-290).",
   "Abicipar mechanistic translational PK/PD model (rabbit -> human, refitted to nAMD/DME patient aqueous VEGF): Luu 2020, doi 10.1124/jpet.119.263178, PMID 32098861. The draft excluded it as a refit; under decision 10 a refit after patient data is a retrodiction (retro or contra) and is tracked, not dropped.",
   "DA VINCI phase 2 (Do 2011, doi 10.1016/j.ophtha.2011.02.018, PMID 21546089, epub 2011-05-05; 52-week Do 2012, doi 10.1016/j.ophtha.2012.02.010): the first public DME-patient comparison for the rat-leak track (BCVA primary endpoint met, CRT fell) and for the decay-model track (2q8 arm). Not a model, but it redates engagement 2, dose 2 and efficacy 2 to 2011.",
-  "Direct-tier engagement in DME patients: aqueous VEGF after intravitreal aflibercept in treatment-naive DME (doi 10.1089/jop.2020.0038, PMID 32589498, 2020) could test the decay model's VEGF-binding prediction in this context; optional, the rat model never measured VEGF."
+  "Direct-tier engagement in DME patients: aqueous VEGF after intravitreal aflibercept in treatment-naive DME (doi 10.1089/jop.2020.0038, PMID 32589498, 2020) could test the decay model's VEGF-binding prediction in this context; optional, the rat model never measured VEGF.",
+  "fields check: Cao 2018, 'Aflibercept Action in a Rabbit Model of Chronic Retinal Neovascularization: Reversible Inhibition of Pathologic Leakage With Dose-Dependent Duration', IOVS 59(2):1033, doi 10.1167/iovs.17-22897 (PMID 29450547): first use of rabbit-chronic-rnv-leak with aflibercept (500 ug ~8 weeks leak-free, about the human 2 mg q8 regimen known from DA VINCI/VIVID), so the aflibercept dose track opens in 2018 and this 2018 run is itself a dose retrodiction of 2q8.",
+  "fields check: Do 2009, 'An exploratory study of ... a single intravitreal injection of VEGF Trap-Eye in patients with diabetic macular oedema', Br J Ophthalmol 93:144-149, doi 10.1136/bjo.2008.138271 (PMID 19174400): 4 mg aflibercept, excess foveal thickness 108 -> 59 um at week 4 in 5 DME patients, the first public DME engagement result on the rat-leak aflibercept track (redates engagement 2 to 2009).",
+  "fields check: Cao 2018 (doi 10.1167/iovs.17-22897) is itself a dose comparison on the aflibercept rabbit-RNV track: 500 ug (~2 mg human) ~8 weeks leak-free, published after 2q8 held in DA VINCI/VIVID, so a retro entry in 2018 before dose 4."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
@@ -224,6 +267,8 @@
   "models check: Decision 10 vs the dose-cell post-hoc rule (#50/#118, decision 16): a sponsor popPK fitted to the pivotal trial's own plasma PK whose unobserved ocular-compartment output 'explains' the regimen that held (aflibercept 8 mg, 15 vs 8.7 weeks) - `retro` or `untested` with `source_calls_it: scaling`? The dose rule was applied as the more specific and later-decided one.",
   "models check: Decision 7 dating of an FDA review: its signature/approval year (761355 ClinPharmR signed 2023-04-21, approval 2023-08-18) or its Drugs@FDA posting folder year (nda/2024)? The tile dates dose 4 by approval; the same convention was applied.",
   "models check: Does `retro` require a non-null `magnitude`? Decision 10 rests on reproduction, decision 11 allows the null bin; engagement 4 (Luu 2020) is retro with null because only the abstract and the EMA's PK-fit sentence are readable.",
-  "models check: Is a `retro` whose stated reproduction is drug concentration in aqueous humour (PK) admissible in the engagement cell, or does it belong in dose with engagement untested until a measured-VEGF comparison is shown?"
+  "models check: Is a `retro` whose stated reproduction is drug concentration in aqueous humour (PK) admissible in the engagement cell, or does it belong in dose with engagement untested until a measured-VEGF comparison is shown?",
+  "fields check: the post-hoc PK/PD dose rule (#50/#118) the earlier adjudication used for dose 6 is not in the current DRAFTER_BRIEF; under the current text a sponsor popPK built after the same drug's topline is a retrodiction (retro). Confirm the current brief governs.",
+  "fields check: imported harm (safety 2): DME patients had class safety data in 2011 (DA VINCI) but no one examined them for the nasal harm; does 'no patient safety data for the class' mean none at all (then DA VINCI sets the status) or none for that harm (imported, as drafted)?"
  ]
 }

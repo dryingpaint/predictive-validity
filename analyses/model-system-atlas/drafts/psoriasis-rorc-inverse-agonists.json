@@ -49,7 +49,12 @@
     "srcLabel": "Smith 2016",
     "quote": "Finally, target engagement by this small molecule was confirmed in ex vivo lesional psoriatic skin.",
     "judgement": "Model is the human skin explant assay GSK built to show topical delivery and target engagement before the clinic.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "population_group": "unselected",
+    "combination_with": null,
+    "drug": "gsk-2981278",
+    "route": "topical",
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "gsk-srica-human-skin",
@@ -66,7 +71,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "null",
     "magnitude_basis": "IL-17-pathway transcripts in 4%-treated vs vehicle plaque biopsies",
     "source_calls_it": "miss",
@@ -78,13 +83,17 @@
     "status": "contra",
     "model": "Human ex vivo skin (sRICA) and lesional psoriatic skin explants, GSK2981278",
     "readout_tier": "proximal",
-    "note": "In the plaque test, biopsies of 4%-treated plaques showed no meaningful change in IL-17 biomarkers or the psoriasis signature.",
+    "note": "In the plaque test, biopsies of 4%-treated plaques showed no meaningful change in IL-17 biomarkers or the psoriasis signature. A retrodiction (explants public after the 2015 VTP-43742 human IL-17 result) that failed to reproduce it, so contra.",
     "short": "No IL-17 biomarker change in treated plaques",
     "src": "https://www.jidonline.org/article/S0022-202X(17)30447-5/fulltext",
     "srcLabel": "GSK SID abstract 2017",
     "quote": "No meaningful changes in IL-17 related biomarkers or psoriasis disease signature were detected.",
     "judgement": "Explant assay predicted the ointment would reach and suppress IL-17 in skin; patient biopsies did not move. Readout tier proximal: IL-17 transcripts are RORγt's own transcriptional product. Paired by me (abstract does not cite Smith 2016).",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "population_group": "unselected",
+    "combination_with": null,
+    "drug": "gsk-2981278",
+    "route": "topical"
    },
    {
     "model_id": "human-whole-blood-il17-vtp",
@@ -108,19 +117,23 @@
     "population": "Unselected",
     "model_first_use_year": 2015,
     "confidence": "medium",
-    "confidence_note": "Protocol amendment dated 21-Dec-2017, public only with the registry results posting (2021-04-06); dose redacted (350 mg per the protocol text). The 16 Mar 2016 Vitae press release (tier 5) also reported plasma IL-17A/F down up to 75% in patients.",
-    "year": 2021,
+    "confidence_note": "Year from the Vitae press release 18 Nov 2015 (https://www.globenewswire.com/news-release/2015/11/18/788542/31491/en/vitae-pharmaceuticals-announces-positive-top-line-results-from-a-phase-1-multiple-ascending-dose-trial-of-vtp-43742.html): dosed volunteers' blood showed >90% IL-17A suppression over 24 h. Protocol amendment dated 21-Dec-2017, public only with the registry results posting (2021-04-06); dose redacted (350 mg per the protocol text). The 16 Mar 2016 Vitae press release (tier 5) also reported plasma IL-17A/F down up to 75% in patients.",
+    "year": 2015,
     "status": "same",
     "model": "Human whole-blood ex vivo IL-17 secretion assay (IC90 target), VTP-43742/AGN-242428",
     "readout_tier": "direct",
-    "note": "The sponsor's whole-blood IL-17 IC90 was reached and inhibition held over 24 h in dosed volunteers and patients.",
+    "note": "The sponsor's whole-blood IL-17 IC90 was reached and inhibition held over 24 h in dosed volunteers and patients. First public in Vitae's Nov 2015 healthy-volunteer release; the protocol (posted 2021) states the IC90 target.",
     "short": "Whole-blood IL-17 blocked ≥IC90 over 24 h",
     "src": "https://cdn.clinicaltrials.gov/large-docs/99/NCT03339999/Prot_000.pdf",
     "srcLabel": "AGN-242428 protocol (NCT03339999)",
     "quote": "provided a plasma exposure that was ≥ IC90 for inhibition of IL-17 secretion in an ex vivo whole blood assay of IL-17 secretion, and this inhibition was sustained over a full 24 hours duration with chronic dosing.",
     "reason": "Whole-blood IL-17 blocked in humans",
-    "judgement": "Different model from the 2017 failure (blood ex vivo assay, not topical skin explant), so model_change. AGN-242428 is VTP-43742 under Allergan (protocol: 'formerly Vitae Pharmaceuticals compound VTP-43742'); pooled as one drug.",
-    "prediction_level": "class"
+    "judgement": "Different model from the 2017 failure (blood ex vivo assay, not topical skin explant), so model_change. AGN-242428 is VTP-43742 under Allergan (protocol: 'formerly Vitae Pharmaceuticals compound VTP-43742'); coded VTP-43742, the name under which the human data were generated.",
+    "prediction_level": "class",
+    "population_group": "unselected",
+    "combination_with": null,
+    "drug": "VTP-43742",
+    "route": "oral"
    }
   ],
   "dose": [
@@ -149,14 +162,19 @@
     "confidence_note": null,
     "year": 2016,
     "status": "untested",
-    "model": "Human ex vivo skin (sRICA), GSK2981278 ointment strengths",
+    "model": "Human ex vivo skin (sRICA) and lesional psoriatic skin explants, GSK2981278",
     "note": "Explants set the ointment strengths (0.001–4%); no skin drug level was measured in patients, so the exposure target was never checked.",
     "short": "Ointment strengths set on skin explants",
     "src": "https://doi.org/10.1371/journal.pone.0147979",
     "srcLabel": "Smith 2016",
     "quote": "Skin biopsy sections were first exposed to GSK2981278 in a simple ointment at approximately half-log increments between 0.001% and 4% strengths.",
     "judgement": "The GSK plaque test and NCT03004846 measured plasma, not skin, exposure; whether the topical target was reached is unknown, so GSK2981278 adds no dose comparison.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "population_group": "unselected",
+    "combination_with": null,
+    "drug": "gsk-2981278",
+    "route": "topical",
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "human-whole-blood-il17-vtp",
@@ -180,19 +198,23 @@
     "population": "Unselected",
     "model_first_use_year": 2015,
     "confidence": "medium",
-    "confidence_note": "Dose values redacted in the posted protocol; 350 mg (IC90) and 700 mg (transaminases) from the protocol text and the 2016 press release.",
-    "year": 2021,
+    "confidence_note": "Year from the Vitae press release 18 Nov 2015 (https://www.globenewswire.com/news-release/2015/11/18/788542/31491/en/vitae-pharmaceuticals-announces-positive-top-line-results-from-a-phase-1-multiple-ascending-dose-trial-of-vtp-43742.html) (healthy-volunteer exposure reached the whole-blood target in all but the lowest cohort). Dose values redacted in the posted protocol; 350 mg (IC90) and 700 mg (transaminases) from the protocol text and the 2016 press release.",
+    "year": 2015,
     "status": "same",
     "model": "Human whole-blood ex vivo IL-17 secretion assay (IC90 target), VTP-43742/AGN-242428",
-    "note": "The IC90-based dose was reached without liver signal over 28 days and PASI improved; 700 mg raised transaminases.",
+    "note": "The IC90-based dose was reached without liver signal over 28 days and PASI improved; 700 mg raised transaminases. The exposure half was first public in Vitae's Nov 2015 healthy-volunteer release.",
     "short": "IC90 dose reached; PASI improved",
     "src": "https://cdn.clinicaltrials.gov/large-docs/99/NCT03339999/Prot_000.pdf",
     "srcLabel": "AGN-242428 protocol (NCT03339999)",
-    "quote": "Administration for 28 days to patients with psoriasis resulted in an improvement in disease as measured by percent change from baseline in PASI scores.",
+    "quote": "The dose provided a plasma exposure that was ≥ IC90 for inhibition of IL-17 secretion in an ex vivo whole blood assay of IL-17 secretion",
     "margin_stated": false,
     "reason": "IC90 exposure reached, PASI improved",
     "judgement": "No nonclinical tolerability margin is public, so decision 16 margin_stated is false. BI 730357 is consistent and adds no status change: Ooi 2023 (doi:10.1002/psp4.12948) puts the PASI plateau above 2000 nmol/L against a 140 nM whole-blood IC50 (Harcken 2021).",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "population_group": "unselected",
+    "combination_with": null,
+    "drug": "VTP-43742",
+    "route": "oral"
    }
   ],
   "efficacy": [
@@ -228,7 +250,11 @@
     "srcLabel": "Smith 2016",
     "quote": "Mice exposed to GSK2981278 exhibited reduced skin redness and scaling, as well as decreased hyperplasia, as evidenced by a 23% reduction in epidermal thickness when compared to the placebo + IMQ-treated group",
     "judgement": "GSK paired the mouse with the human skin explant; the mouse carries the efficacy prediction.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "population_group": "unselected",
+    "combination_with": null,
+    "drug": "gsk-2981278",
+    "route": "topical"
    },
    {
     "model_id": "gsk-imq-mouse",
@@ -271,7 +297,12 @@
      }
     ],
     "judgement": "Scored as efficacy contra rather than a dose failure: the model package (Smith 2016) explicitly claimed topical delivery into human skin, so the miss belongs to the model. NCT03004846 open-label 4% ointment: PASI +4.3% at day 57 (n=8); Part B never enrolled.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "population_group": "unselected",
+    "combination_with": null,
+    "drug": "gsk-2981278",
+    "route": "topical",
+    "untested_reason": "unsettled"
    },
    {
     "model_id": "il23-minicircle-mouse-bi",
@@ -288,19 +319,19 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "magnitude": "direction_only",
     "magnitude_basis": "mouse skin IL-17A mRNA inhibition up to 109% and S100a8/9 up to 95% vs PASI75 30% (Imax 0.56 in Ooi 2023)",
     "source_calls_it": "partial",
     "population": "Unselected",
-    "model_first_use_year": null,
+    "model_first_use_year": 2021,
     "confidence": "high",
-    "confidence_note": "Year from the NCT03635099 results posting (2022-06-02); abstract-level reading of Gooderham 2025.",
+    "confidence_note": "Year from the NCT03635099 results posting (2022-06-02); abstract-level reading of Gooderham 2025. model_first_use_year 2021 is the mouse data's first public date (proxy; internal use likely earlier).",
     "year": 2022,
-    "status": "same",
+    "status": "retro",
     "model": "IL-23 minicircle mouse, oral BI 730357",
-    "note": "Oral BI 730357 met its co-primary: PASI75 30% at 200 mg vs 0% placebo; response plateaued and the program stopped.",
-    "short": "PASI75 30% vs 0%, then plateau",
+    "note": "Co-primary design: PASI75 30% (200 mg) vs 0% placebo and sPGA 0/1 27.5% vs 0%, both met. Retrodiction: mouse data public 2021, after VTP-43742's 2016 positive Phase 2a; it reproduced it.",
+    "short": "PASI75 30% vs 0%; retrodiction",
     "src": "https://doi.org/10.1016/j.jid.2024.12.025",
     "srcLabel": "Gooderham 2025",
     "quote": "In part 1, 12 (30.0%) patients achieved PASI75 (P = .0062), and 11 (27.5%) achieved static Physician's Global Assessment of 0/1 (P = .0095) with BI 730357 200 mg versus none receiving placebo.",
@@ -321,8 +352,12 @@
      }
     ],
     "reason": "Primary met, moderate effect",
-    "judgement": "Direction matched, so same; the mouse's near-total IL-17 suppression over-promised a biologic-like effect (source_calls_it partial). VTP-43742 2016 Phase 2a (press release only, no published model side) and the terminated AGN-242428 trial are listed in patient_trials.",
-    "prediction_level": "class"
+    "judgement": "Direction matched, so same; the mouse's near-total IL-17 suppression over-promised a biologic-like effect (source_calls_it partial). VTP-43742 2016 Phase 2a (press release only, no published model side) and the terminated AGN-242428 trial are listed in patient_trials. Ruling 2026-11-09: efficacy retrodiction counts any drug's earlier patient result for the target; the minicircle data (Harcken, epub 2021-01-05) post-date VTP-43742's March 2016 PASI result, so retro.",
+    "prediction_level": "class",
+    "population_group": "unselected",
+    "combination_with": null,
+    "drug": "BI 730357",
+    "route": "oral"
    }
   ],
   "safety": [
@@ -360,7 +395,11 @@
     "reason": "No public nonclinical safety data",
     "judgement": "Thymic lymphoma in RORγ-null mice is the known on-target concern but no trial was long enough to test it; the liver signal cannot be scored without the sponsor's tox findings.",
     "prediction_level": "class",
-    "untested_reason": "unpublished"
+    "untested_reason": "unpublished",
+    "population_group": "unselected",
+    "combination_with": null,
+    "drug": "AGN-242428",
+    "route": "oral"
    }
   ]
  }

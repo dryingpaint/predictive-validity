@@ -1,0 +1,284 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/huntington-disease-htt-antisense-sirna.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tominersen, intrathecal bolus, manifest HD not SNP-selected (stage_or_line) match NCT02519036/NCT03761849. Kordasiewicz 2012 abstract quote verbatim; untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT03225846 (WVE-120102 = lexanersen; Iwamoto 2024 maps HTT-273/SNP2 rs362331): SNP-prescreened early manifest HD, intrathecal, results posted 2022-04-25 (CT.gov API); biomarker_selected right. PD outcome title verbatim; untested/unpublished holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ifezuntirgene inilparvovec = AMT-130 (class_members.csv); NCT04120493 one-time intrastriatal infusion (intracerebral), early manifest HD TFC 9-13 (stage_or_line). Evers 2018 abstract quote verbatim; untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tominersen, intrathecal bolus, manifest HD not SNP-selected (stage_or_line) match NCT02519036/NCT03761849. Tabrizi 2019 abstract quote verbatim (-20% to -42% CSF mHTT); same 2019 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": null,
+   "status_supported": null,
+   "note": "Ifezuntirgene inilparvovec = AMT-130 (class_members.csv); NCT04120493 one-time intrastriatal infusion (intracerebral), early manifest HD TFC 9-13 (stage_or_line). Press release returned 403 this pass (no retry), so the quote was not re-opened; status not re-confirmed.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Iwamoto 2024 full text (PMC11255113): HTT-164 = WVE-120101, SNP1; ~15% mHTT lowering, paper states 2021 clinical discontinuation. Rovanersen, intrathecal, biomarker_selected right; retro 2024 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": null,
+   "note": "Tominersen, intrathecal bolus, manifest HD not SNP-selected (stage_or_line) match NCT02519036/NCT03761849. Quote verbatim in Tabrizi 2019 abstract. Open: the model's dose-to-HTT target sits in the public NEJM supplement (unread), so untested_reason 'unpublished' does not fit.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT03225846 (WVE-120102 = lexanersen; Iwamoto 2024 maps HTT-273/SNP2 rs362331): SNP-prescreened early manifest HD, intrathecal, results posted 2022-04-25 (CT.gov API); biomarker_selected right. No public Wave dose model; untested/unpublished holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ifezuntirgene inilparvovec = AMT-130 (class_members.csv); NCT04120493 one-time intrastriatal infusion (intracerebral), early manifest HD TFC 9-13 (stage_or_line). Spronck 2019 abstract quote verbatim; untested/no_prediction holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tominersen, intrathecal bolus, manifest HD not SNP-selected (stage_or_line) match NCT02519036/NCT03761849. Quote is a verbatim leading fragment of the Kordasiewicz 2012 abstract sentence; untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT03225846 (WVE-120102 = lexanersen; Iwamoto 2024 maps HTT-273/SNP2 rs362331): SNP-prescreened early manifest HD, intrathecal, results posted 2022-04-25 (CT.gov API); biomarker_selected right. TFC outcome title verbatim; untested/unpublished holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ifezuntirgene inilparvovec = AMT-130 (class_members.csv); NCT04120493 one-time intrastriatal infusion (intracerebral), early manifest HD TFC 9-13 (stage_or_line). Spronck 2019 rotarod quote verbatim in abstract; untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": null,
+   "status_supported": true,
+   "note": "Tominersen, intrathecal bolus, manifest HD not SNP-selected (stage_or_line) match NCT02519036/NCT03761849. Year 2021 right: HDBuzz 28 Apr 2021 (CHDI) reported q8w 'may even have been slightly worse'. Registry: week-69 cUHDRS -1.17 q8w vs -0.63 placebo. NEJM letter (no abstract) not re-opened.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": null,
+   "status_supported": null,
+   "note": "Ifezuntirgene inilparvovec = AMT-130 (class_members.csv); NCT04120493 one-time intrastriatal infusion (intracerebral), early manifest HD TFC 9-13 (stage_or_line). Press release returned 403 this pass (no retry), so the quote was not re-opened; status not re-confirmed. External-control primary rule question stands.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tominersen, intrathecal bolus, manifest HD not SNP-selected (stage_or_line) match NCT02519036/NCT03761849. Abstract only: quote is in Tabrizi 2019 body, not abstract; abstract's 'no serious adverse events' is consistent. Untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT03225846 (WVE-120102 = lexanersen; Iwamoto 2024 maps HTT-273/SNP2 rs362331): SNP-prescreened early manifest HD, intrathecal, results posted 2022-04-25 (CT.gov API); biomarker_selected right. TEAE outcome title verbatim; no public Wave toxicology, untested/unpublished holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ifezuntirgene inilparvovec = AMT-130 (class_members.csv); NCT04120493 one-time intrastriatal infusion (intracerebral), early manifest HD TFC 9-13 (stage_or_line). Spronck 2021 abstract quote verbatim; untested holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": null,
+   "status_supported": null,
+   "note": "Ifezuntirgene inilparvovec = AMT-130 (class_members.csv); NCT04120493 one-time intrastriatal infusion (intracerebral), early manifest HD TFC 9-13 (stage_or_line). Press release returned 403 this pass (no retry), so the quote was not re-opened; status not re-confirmed.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": null,
+   "status_supported": false,
+   "note": "Tominersen, intrathecal bolus, manifest HD not SNP-selected (stage_or_line) match NCT02519036/NCT03761849. Year 2021 unsupported: CHDI Apr 2021 (HDBuzz) called larger ventricles 'difficult to interpret', 'no new dangerous side effects'. Attribution first public in registry results 2023-11-07 (SAE 19% q8w vs 13%); keep 2023.",
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "contra",
+   "proposed_year": 2023,
+   "rule": "Evidence rule 6 (earliest date the comparison was public) with rule 7 (use what was known at the entry's date)",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status contra agreed (NHP 'without adverse effects' vs ventriculomegaly). Rules 6-7: 2021-22 public reports called tominersen safe, ventricles 'difficult to interpret'; harm first public as treatment-attributed in 2023 (registry 2023-11-07). Year 2023."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ifezuntirgene inilparvovec = AMT-130 (class_members.csv); NCT04120493 one-time intrastriatal infusion (intracerebral), early manifest HD TFC 9-13 (stage_or_line). Keskin 2019 abstract quote verbatim (epub 2019-10-04); untested opener holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": null,
+   "status_supported": null,
+   "note": "Ifezuntirgene inilparvovec = AMT-130 (class_members.csv); NCT04120493 one-time intrastriatal infusion (intracerebral), early manifest HD TFC 9-13 (stage_or_line). Press release returned 403 this pass (no retry), so the quote was not re-opened; status not re-confirmed.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT03225833 (WVE-120101 = rovanersen, SNP1 rs362307): SNP-prescreened early manifest HD, intrathecal, results posted 2022-02-10 (CT.gov API); biomarker_selected right. Quote is the PD outcome description verbatim (results -5.2 to -12.3% vs -6.6% placebo); untested/unpublished 2017 holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT03225833 (WVE-120101 = rovanersen, SNP1 rs362307): SNP-prescreened early manifest HD, intrathecal, results posted 2022-02-10 (CT.gov API); biomarker_selected right. Quote is the official title verbatim; no public Wave dose model, untested/unpublished holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT03225833 (WVE-120101 = rovanersen, SNP1 rs362307): SNP-prescreened early manifest HD, intrathecal, results posted 2022-02-10 (CT.gov API); biomarker_selected right. TFC outcome title verbatim; no public efficacy model, untested/unpublished holds.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "NCT03225833 (WVE-120101, rovanersen): SNP1-carrier early manifest HD, intrathecal, results posted 2022-02-10 (CT.gov API); biomarker_selected right. TEAE outcome title verbatim; no public Wave toxicology, untested/unpublished holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Iwamoto 2024 full text: HTT-273 = WVE-120102 (lexanersen), SNP2; quote verbatim; post-dates PRECISION-HD2, so retro 2024 holds. Note's '~25%' should read '>25%'.",
+   "checked_by": "CHECKER_BRIEF / fields"
+  }
+ ],
+ "missing": [
+  "uniQure regulatory update (Nov 2025, https://uniqure.gcs-web.com/news-releases/news-release-details/uniqure-provides-regulatory-update-amt-130-huntingtons-disease-0): at the pre-BLA meeting FDA no longer accepted the Enroll-HD external control. Not a status change under the rules, but efficacy 5's note should carry it; a BLA was filed later (BioSpace).",
+  "NCT03225833 (WVE-120101, rovanersen) registry results posted 2022-02-10. This is the earlier registry record for the Wave engagement/dose/safety entries, which cite only NCT03225846.",
+  "Iwamoto 2024 (doi:10.1016/j.omtn.2024.102246) also tests a tominersen-surrogate pan-silencer (HTT-2723) in patient iPSC neurons, a retrodiction of tominersen's CSF lowering. It could be a second retro on the iPSC track; the draft scores only the Wave molecules.",
+  "Southwell et al. 2015 (Sci Rep, cited as ref 15 in Tabrizi 2019): BACHD/YAC128 mouse and NHP data that CSF mHTT tracks brain HTT lowering. This is the model behind the engagement readout and could be cited as model_src for engagement 4."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Efficacy 4: GENERATION HD1's pre-specified primary was cUHDRS/TFC at week 101, but dosing stopped early and only an ad hoc week-69 analysis of the same measure exists. Does an early-timepoint analysis of the primary measure count as the primary endpoint (endpoint_role primary)?",
+  "Efficacy 5: the AMT-130 'primary' is a cUHDRS comparison against a propensity-matched external control, and a later timepoint (48 months) was reportedly non-significant (tier 5/trade press). Does an external-control primary score same, and does a later non-significant timepoint from the same open-label study count as attenuation?",
+  "Dose 1: when the model's stated target sits in a public supplement the drafter did not read, which untested_reason applies? 'unpublished' does not fit."
+ ]
+}

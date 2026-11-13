@@ -1,0 +1,153 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/glycogen-storage-disease-ii-gaa-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Maga abstract verbatim (Europe PMC, first public 2012-11-27). No reveglucosidase trial (Byrne 2017, INSPIRE registry) measured glycogen/Hex4, so untested/not_measured; drug, iv, unselected right. retrodiction flag arguably true (post-dates alglucosidase patients)."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "retro",
+   "rule": "retrodiction: for engagement and efficacy a model first public after a patient result on the same target (member or not) is a retrodiction; reproduced -> retro, never same",
+   "note": "Quote verbatim in IntegratedR; drug/iv/miglustat/unselected and 2021 dating fine. But Xu 2019 mouse (epub 2019-03-07) post-dates alglucosidase patient Hex4 falls and ATB200-02 interim Hex4 (2018), so retrodiction; as efficacy 2 already rules.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement is a target claim): Xu 2019 mouse (epub 2019) post-dates alglucosidase patients' urinary Hex4 falls and ATB200-02 interim Hex4 (2018); it reproduced the Hex4 fall, so retro, never same."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (3-month NHP co-dosing study; 31-55-fold AUC margin for 5 mg/kg FIH dose). Drug/iv/miglustat/unselected correct; untested 2016 proxy fine."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim (26-week monkey, 18.1x MRHD AUC). Patients dosed to 20 mg/kg with miglustat without organ toxicity: Decision 16 same, margin_stated. Prospective (dose is a drug claim). Fields correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Maga abstract verbatim; reveglucosidase iv opener untested 2012 fine; not track's latest so no untested_reason."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "efficacy: single-arm, no success bar, scored on primary against model direction; retrodiction rule",
+   "note": "CT.gov API: INSPIRE single-group, primary MIP %pred +2.2 (SD 8.3) at wk24, results first posted 2018-06-14, rhGAA-exposed (stage_or_line). Peng abstract (epub 2016-11-16) post-dates GAA patient respiratory data: retro. Merge into gaa-ko-mouse right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_status": "retro",
+   "rule": "retrodiction: for engagement and efficacy a model first public after a patient result on the same target (member or not) is a retrodiction; reproduced -> retro, never same",
+   "note": "Schoser 2021 abstract confirms 6MWD primary, superiority missed; combination scored on primary, fields right. But Xu 2019 mouse post-dates alglucosidase 6MWD benefit (LOTS 2010) and ATB200-02 interim data: retrodiction; direction reproduced, so retro (partial).",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (efficacy is a target claim): Xu 2019 mouse post-dates alglucosidase 6MWD benefit (LOTS 2010) and ATB200-02 interim data; PROPEL 6MWD moved in the predicted direction (partial), so retro, never same; consistent with efficacy 2."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in IntegratedR; 13-week monkey co-dosing with miglustat also there. Drug/iv/miglustat/unselected correct; opener untested 2016 proxy."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Byrne 2017 abstract: ERT-naive LOPD, hypoglycaemia among main risks (63% figure in Results, not shown in Europe PMC abstract text). No public reveglucosidase toxicology; untested/unpublished stands; iv, unselected right."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in IntegratedR. Clean organ tox matched 151 LOPD patients; anaphylaxis a known ERT class effect, not scored. Drug/iv/miglustat/unselected correct; prospective (drug's own patient data later)."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim in IntegratedR (RRB200-040, undated). Cipaglucosidase iv with miglustat, LOPD unselected; opener untested at 2016 FIH proxy acceptable."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / fields",
+   "note": "Quote verbatim; review states miglustat raised plasma GAA protein/activity but '<50%', so same/partial direction_only holds. With/without-miglustat design in note; iv, miglustat, unselected right; 2023 dating, no earlier public PK comparison found."
+  }
+ ],
+ "missing": [
+  "Engagement: PROPEL urinary Hex4/CK vs alglucosidase reported in Schoser 2021 Lancet Neurol (doi:10.1016/S1474-4422(21)00331-8) and Amicus topline press release Feb 2021; dates the gaa-ko-mouse engagement comparison to 2021, not 2023.",
+  "Possible earlier engagement comparison: ATB200-02 open-label phase 1/2 (NCT02675465) urinary Hex4 reductions on cipaglucosidase+miglustat, presented from 2018; not verified in a tier 1-3 source.",
+  "Clervonafusp alfa (VAL-1221, 3E10-Fab-GAA): Gaa KO mouse data exist and phase 1/2 NCT02898753 terminated without results; no track in the draft (would be untested/unsettled). Not verified within budget.",
+  "Engagement possible retrodiction source: duvoglustat (AT2220) co-dosed with alglucosidase raised plasma GAA activity in Pompe patients (Kishnani et al., Mol Ther 2017, phase 2 AT2220-010); may predate the undated ex-vivo miglustat stabilisation study."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Efficacy: when the model predicted superiority over an active comparator and the primary superiority test missed (point estimate favourable, CI crossing zero), is that same+partial (direction) or contra (prediction of superiority not borne out)?",
+  "Efficacy retro on a separate readout (plethysmography) of the same mouse strain: separate track by readout, or the same model_id as the strain's glycogen/muscle-function track?",
+  "Can a retrodiction be scored against an exploratory endpoint of a safety-primary phase 1/2 when the only trial with that endpoint as primary (INSPIRE, single-arm, terminated) was never inferentially tested?",
+  "miglustat-blood-stability-ex-vivo: plasma GAA activity/protein exposure is a PK readout; the rules do not say whether an exposure-enhancement prediction belongs in engagement (proximal) or the dose cell.",
+  "Single-arm ruling: does a small mean change in the predicted direction that does not exclude zero (INSPIRE MIP +2.2, SD 8.3, n=18) count as a 'response' (same/retro), or as none (contra) or inconclusive (untested, unsettled)?",
+  "Tracks are per drug: should the cipaglucosidase alfa gaa-ko-mouse tracks in engagement and efficacy carry their own untested opener at model_first_use_year, separate from the reveglucosidase opener?",
+  "Retrodiction for a comparative claim: a next-gen GAA mouse result predicting superiority over alglucosidase post-dates alglucosidase's own patient results; is it a retrodiction (the rule's 'same target, member or not') even though the superiority itself was untested in patients?"
+ ]
+}
