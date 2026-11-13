@@ -676,7 +676,7 @@ rheumatoid-arthritis-syk-inhibitors,safety,,rat-cia-therapeutic-lanraplenib,anim
 sjogren-syndrome-btk-inhibitors,dose,,rat-btk-occupancy-cia,animal,inflammatory_disease_model,rule,untested,yes,Rat BTK occupancy and collagen-induced arthritis (remibrutinib)
 sjogren-syndrome-btk-inhibitors,efficacy,,mouse-cia-caia-bms986142,animal,inflammatory_disease_model,rule,untested,yes,Mouse CIA/CAIA and BTK-pathway assays (BMS-986142)
 sjogren-syndrome-btk-inhibitors,efficacy,,mouse-cia-tirabrutinib,animal,inflammatory_disease_model,rule,untested,yes,Mouse collagen-induced arthritis (DBA/1J) dosed with tirabrutinib (ONO-4059)
-sjogren-syndrome-btk-inhibitors,efficacy,,rat-btk-occupancy-cia,animal,inflammatory_disease_model,rule,same,yes,Rat BTK occupancy and collagen-induced arthritis (remibrutinib)
+sjogren-syndrome-btk-inhibitors,efficacy,,rat-btk-occupancy-cia,animal,inflammatory_disease_model,rule,contra,yes,Rat BTK occupancy and collagen-induced arthritis (remibrutinib)
 sjogren-syndrome-btk-inhibitors,engagement,,mouse-cia-caia-bms986142,animal,inflammatory_disease_model,rule,retro,yes,Mouse CIA/CAIA and BTK-pathway assays (BMS-986142)
 sjogren-syndrome-btk-inhibitors,engagement,,rat-btk-occupancy-cia,animal,inflammatory_disease_model,rule,retro,yes,Rat BTK occupancy and collagen-induced arthritis (remibrutinib)
 sjogren-syndrome-pik3cd-inhibitors,dose,,adv5-sialadenitis-mouse,animal,inflammatory_disease_model,override,untested,yes,AdV5 cannulation focal sialadenitis mouse (seletalisib)
@@ -817,7 +817,8 @@ type-2-diabetes-mellitus-hsd11b1-inhibitors,efficacy,,dio-mouse,animal,metabolic
 type-2-diabetes-mellitus-hsd11b1-inhibitors,efficacy,,dio-mouse,animal,metabolic_disease_model,rule,contra,yes,Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
 type-2-diabetes-mellitus-hsd11b1-inhibitors,efficacy,,dio-mouse,animal,metabolic_disease_model,rule,untested,yes,Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
 type-2-diabetes-mellitus-hsd11b1-inhibitors,efficacy,,dio-mouse,animal,metabolic_disease_model,rule,untested,yes,Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
-type-2-diabetes-mellitus-hsd11b1-inhibitors,efficacy,,gk-rat,animal,metabolic_disease_model,rule,contra,yes,Goto-Kakizaki and cortisone-treated rats (JTT-654)
+type-2-diabetes-mellitus-hsd11b1-inhibitors,efficacy,,gk-rat,animal,metabolic_disease_model,rule,untested,yes,Goto-Kakizaki and cortisone-treated rats (JTT-654)
+type-2-diabetes-mellitus-hsd11b1-inhibitors,efficacy,,gk-rat,animal,metabolic_disease_model,rule,untested,yes,Goto-Kakizaki and cortisone-treated rats (JTT-654)
 type-2-diabetes-mellitus-hsd11b1-inhibitors,engagement,,dio-mouse,animal,metabolic_disease_model,rule,same,yes,Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
 type-2-diabetes-mellitus-hsd11b1-inhibitors,engagement,,dio-mouse,animal,metabolic_disease_model,rule,same,yes,Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
 type-2-diabetes-mellitus-hsd11b1-inhibitors,engagement,,dio-mouse,animal,metabolic_disease_model,rule,untested,yes,Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
@@ -836,7 +837,7 @@ type-2-diabetes-mellitus-insr-agonists,engagement,,novo-pig-clamp-rat-dog-pk,ani
 type-2-diabetes-mellitus-insr-agonists,safety,,lilly-stz-rat-glucodynamics,animal,metabolic_disease_model,rule,untested,safety,STZ-diabetic rat single-dose PK/glucodynamics (Lilly)
 type-2-diabetes-mellitus-insr-agonists,safety,,lilly-stz-rat-glucodynamics,animal,metabolic_disease_model,rule,untested,safety,STZ-diabetic rat single-dose PK/glucodynamics (Lilly)
 type-2-diabetes-mellitus-insr-agonists,safety,,novo-pig-clamp-rat-dog-pk,animal,metabolic_disease_model,rule,retro,safety,LYD pig euglycaemic clamp + rat/dog PK
-type-2-diabetes-mellitus-insr-agonists,safety,,novo-pig-clamp-rat-dog-pk,animal,metabolic_disease_model,rule,contra,safety,LYD pig euglycaemic clamp + rat/dog PK
+type-2-diabetes-mellitus-insr-agonists,safety,,novo-pig-clamp-rat-dog-pk,animal,metabolic_disease_model,rule,untested,safety,LYD pig euglycaemic clamp + rat/dog PK
 type-2-diabetes-mellitus-slc5a2-inhibitors,dose,,t2dm-rodent-diabetic,animal,metabolic_disease_model,override,retro,yes,"Rodent hyperglycaemia models (90%-pancreatectomized rat, ZDF rat, db/db mouse; SD-rat/dog toxicology margins for dose)"
 type-2-diabetes-mellitus-slc5a2-inhibitors,efficacy,,t2dm-rodent-diabetic,animal,metabolic_disease_model,override,retro,yes,"Rodent hyperglycaemia models (90%-pancreatectomized rat, ZDF rat, db/db mouse; SD-rat/dog toxicology margins for dose)"
 type-2-diabetes-mellitus-slc5a2-inhibitors,efficacy,,t2dm-rodent-diabetic,animal,metabolic_disease_model,override,retro,yes,"Rodent hyperglycaemia models (90%-pancreatectomized rat, ZDF rat, db/db mouse; SD-rat/dog toxicology margins for dose)"
@@ -1156,7 +1157,7 @@ chronic-obstructive-pulmonary-disease-mapk14-inhibitors,efficacy,,human-inhaled-
 chronic-obstructive-pulmonary-disease-mapk14-inhibitors,efficacy,,human-inhaled-lps-challenge,human_challenge,pharmacological_challenge_human,rule,contra,yes,"Healthy-volunteer inhaled-LPS sputum neutrophilia challenge (PH-797804, PF-03715455, AZD7624)"
 schizophrenia-pde10a-inhibitors,efficacy,,tak063-ketamine-challenge-healthy-human,human_challenge,pharmacological_challenge_human,rule,contra,yes,Healthy-volunteer ketamine challenge (fMRI BOLD/EEG)
 schizophrenia-slc6a9-inhibitors,dose,,human-vep-ltp-neuroplasticity,human_challenge,pharmacological_challenge_human,rule,same,yes,Human visual-evoked-potential LTP (EEG neuroplasticity) in schizophrenia patients
-schizophrenia-slc6a9-inhibitors,efficacy,,human-ketamine-challenge-fmri-wm,human_challenge,pharmacological_challenge_human,rule,neg,no,Human ketamine-challenge working-memory fMRI in healthy volunteers
+schizophrenia-slc6a9-inhibitors,efficacy,,human-ketamine-challenge-fmri-wm,human_challenge,pharmacological_challenge_human,rule,same,yes,Human ketamine-challenge working-memory fMRI in healthy volunteers
 schizophrenia-slc6a9-inhibitors,efficacy,,human-vep-ltp-neuroplasticity,human_challenge,pharmacological_challenge_human,rule,contra,yes,Human visual-evoked-potential LTP (EEG neuroplasticity) in schizophrenia patients
 type-2-diabetes-mellitus-gcgr-glp1r-agonists,efficacy,,human-glp1-glucagon-coinfusion,human_challenge,pharmacological_challenge_human,rule,same,yes,Human GLP-1 + glucagon co-infusion challenge (overweight volunteers without diabetes)
 type-2-diabetes-mellitus-gcgr-glp1r-agonists,engagement,,human-glp1-glucagon-coinfusion,human_challenge,pharmacological_challenge_human,rule,same,yes,Human GLP-1 + glucagon co-infusion challenge (overweight volunteers without diabetes)
@@ -1480,7 +1481,7 @@ hepatocellular-carcinoma-kdr-vegfr-inhibitors,safety,,repeat-dose-tox-rodent-non
 migraine-disorder-anti-calca-calcb-cgrp-ligand-antibodies,safety,,rat-monkey-cv-safety-pharm,animal,tox_cv_safety_pharm,rule,contra,safety,Rat chronic blood pressure and heart rate under anti-CGRP antibody; monkey safety pharmacology
 migraine-disorder-anti-calca-calcb-cgrp-ligand-antibodies,safety,,rat-monkey-cv-safety-pharm,animal,tox_cv_safety_pharm,rule,contra,safety,Rat chronic blood pressure and heart rate under anti-CGRP antibody; monkey safety pharmacology
 migraine-disorder-anti-calca-calcb-cgrp-ligand-antibodies,safety,,rat-monkey-cv-safety-pharm,animal,tox_cv_safety_pharm,rule,contra,safety,Rat chronic blood pressure and heart rate under anti-CGRP antibody; monkey safety pharmacology
-myelodysplastic-syndrome-hdac-pan-inhibitors,safety,,panobinostat-dog-rat-tox,animal,tox_cv_safety_pharm,rule,retro,safety,Dog telemetry and rat/dog repeat-dose toxicology (panobinostat IND package)
+myelodysplastic-syndrome-hdac-pan-inhibitors,safety,,panobinostat-dog-rat-tox,animal,tox_cv_safety_pharm,rule,untested,safety,Dog telemetry and rat/dog repeat-dose toxicology (panobinostat IND package)
 myelodysplastic-syndrome-hdac-pan-inhibitors,safety,,panobinostat-dog-rat-tox,animal,tox_cv_safety_pharm,rule,retro,safety,Dog telemetry and rat/dog repeat-dose toxicology (panobinostat IND package)
 non-small-cell-lung-carcinoma-egfr-inhibitors,safety,,herg-rat-dog-tox,animal,tox_cv_safety_pharm,rule,contra,safety,hERG assay with rat and dog toxicology and dog cardiovascular telemetry
 non-small-cell-lung-carcinoma-egfr-inhibitors,safety,,herg-rat-dog-tox,animal,tox_cv_safety_pharm,rule,contra,safety,hERG assay with rat and dog toxicology and dog cardiovascular telemetry

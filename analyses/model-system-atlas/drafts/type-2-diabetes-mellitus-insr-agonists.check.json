@@ -288,7 +288,7 @@
    "note": "Zinman 2012 quote verbatim; retro right. But the prediction is first public in FDA 2015 SumR (line 709); Jonassen 2012 abstract states none. A pairing cannot predate its model side: year 2015.",
    "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "retro",
-   "adjudication_note": "RULE QUESTION: retro agreed; for a pairing whose model side (FDA 2015 SumR) post-dates the trial (2012), is the year the trial's or 2015, when the pairing became possible? Open in RULE_QUESTIONS.md; rule 6 does not settle it."
+   "adjudication_note": "Ruled: a paired comparison is dated to its later side (FDA 2015 review), so retro at 2015, not 2012."
   },
   {
    "cell": "safety",
@@ -301,8 +301,8 @@
    "rule": "4 (safety row; #35, #72)",
    "note": "ONWARDS 1 quote verbatim. No icodec lower-hypoglycaemia prediction is quoted: Kjeldsen and PharmR state none (PharmR hypoglycaemia is exaggerated tox pharmacology); FDA blames a weekly day-2 peak. Untested, no_prediction (already set).",
    "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "RULE QUESTION: no icodec hypoglycaemia prediction is quotable (degludec's 2015 claim cannot carry across tracks), so only silence remains: is a weekly day-2-peak excess vs daily glargine askable for a clamp/PD model, or a condition never tested (#35/#72)?"
+   "adjudicated_status": "untested",
+   "adjudication_note": "Ruled: the clamp/PD model was never run under weekly dosing, so it made no prediction on a weekly day-2 hypoglycaemia peak: untested, no_prediction."
   }
  ],
  "missing": [

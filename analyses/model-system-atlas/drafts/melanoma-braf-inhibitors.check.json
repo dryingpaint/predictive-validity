@@ -256,7 +256,7 @@
    "note": "Full text verbatim (PMC5726788). Compared patient was BRAF V600E on vemurafenib (PR 70.6%, PFS 16 weeks), not selected by stage or line: population_group biomarker_selected, as entry 11. Retro holds; missed initial PR stays a rule question.",
    "checked_by": "CHECKER_BRIEF / fields",
    "adjudicated_status": "retro",
-   "adjudication_note": "RULE QUESTION: retro needs the PDX to reproduce the human data; it reproduced early relapse but not the patient's 70.6% initial PR (PDX no response). Is that retro with source_calls_it partial (as same+partial), or a failure to reproduce, contra?"
+   "adjudication_note": "Ruling: PDX reproduced early relapse but not the initial partial response; retro with source_calls_it partial, not contra."
   },
   {
    "cell": "efficacy",

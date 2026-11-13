@@ -720,17 +720,17 @@
    },
    {
     "year": 2015,
-    "status": "retro",
+    "status": "untested",
     "model": "Dog telemetry and rat/dog repeat-dose toxicology (panobinostat IND package)",
-    "note": "IV track split from the oral comparison: QTcF prolongation was the DLT in 15 AML/ALL/MDS patients (2006), matching dog QTc first public in the 2015 FDA review, so retro.",
-    "short": "IV QTcF DLTs matched dog QTc",
+    "note": "Ruling: MDS patients were measured on oral panobinostat, so this mostly-AML IV cohort (13 AML, 1 ALL, 1 MDS; QTcF DLTs, Giles 2006) is not imported against the dog QTc data public in 2015, and the single MDS patient's result cannot be separated: untested, unsettled.",
+    "short": "IV mixed cohort not imported",
     "src": "https://doi.org/10.1158/1078-0432.CCR-06-0511",
     "srcLabel": "Giles 2006",
     "quote": "Four dose-limiting toxicities (grade 3 QTcF prolongation) were observed, four at 14.0 mg/m(2) and one at 11.5 mg/m(2).",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading of Giles 2006; dog side from the FDA pharmacology review (pdftotext, earlier draft). Pairing is mine.",
     "reason": null,
-    "judgement": "Split because the opener sits on the IV program (Giles 2006) while the FDA comparison is for oral panobinostat; the IV patients (mostly AML, one MDS) showed the dog's QTc harm, public before the dog data, so retro.",
+    "judgement": "Split because the opener sits on the IV program (Giles 2006) while the FDA comparison is for oral panobinostat. The IV patients (mostly AML, one MDS) showed the dog's QTc harm, but MDS patients were measured orally, so the import rule leaves this other-disease IV cohort unscored.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -744,9 +744,9 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": true,
-    "magnitude": "direction_only",
-    "magnitude_basis": "QTc prolongation present in dog and patients",
+    "retrodiction": false,
+    "magnitude": null,
+    "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Refractory hematologic malignancies on IV panobinostat (13 AML, 1 ALL, 1 MDS), phase 1",
     "model_first_use_year": 2006,
@@ -755,8 +755,10 @@
     "imported_from": null,
     "drug": "panobinostat",
     "route": "iv",
-    "population_group": "unselected",
-    "combination_with": null
+    "population_group": "other_disease",
+    "combination_with": null,
+    "untested_reason": "unsettled",
+    "strengthens": true
    }
   ]
  }

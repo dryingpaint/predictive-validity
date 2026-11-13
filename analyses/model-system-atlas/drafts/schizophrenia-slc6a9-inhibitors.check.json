@@ -293,8 +293,8 @@
       "rule": "Status table: neg needs class_threshold a bar the class's own successful drugs cleared",
       "note": "Quote verbatim; drug/route/population right. class_threshold is the assay's own positive call; the class has no successful drug, so no class bar exists and neg is inadmissible: same, direction_only.",
       "checked_by": "CHECKER_BRIEF / fields",
-      "adjudicated_status": "neg",
-      "adjudication_note": "RULE QUESTION: neg needs the model's data below 'the class's usual effect bar'; when no member ever cleared the assay, may the assay's own positive call (attenuation of ketamine effect) serve as class_threshold, or is it same + direction_only?"
+      "adjudicated_status": "same",
+      "adjudication_note": "neg-bar ruling: neg needs a bar a class drug cleared in the model; no member cleared the ketamine assay, so there is no bar: same, magnitude direction_only."
     },
     {
       "cell": "efficacy",

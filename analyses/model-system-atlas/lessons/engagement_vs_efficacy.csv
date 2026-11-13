@@ -80,7 +80,7 @@ diabetic-kidney-disease-nr3c2-antagonists,other,4,same,same,same,same,True,proxi
 osteoarthritis-mapk14-inhibitors,other,2,untested,same,same,untested,False,downstream,inflammatory_disease_model
 osteoarthritis-ntrk1-inhibitors,other,2,untested,same,untested,contra,False,,inflammatory_disease_model
 schizophrenia-chrna7-agonists,psychiatry,2,untested,contra,untested,same,False,direct,pkpd_occupancy_animal
-schizophrenia-slc6a9-inhibitors,psychiatry,3,same,neg,same,same,False,proximal,pkpd_occupancy_animal
+schizophrenia-slc6a9-inhibitors,psychiatry,3,same,same,same,same,False,proximal,pkpd_occupancy_animal
 asthma-adrb2-agonists,respiratory,2,same,untested,retro,same,False,downstream,biochemical_assay
 asthma-nr3c1-agonists,respiratory,2,untested,untested,retro,same,False,downstream,inflammatory_disease_model
 asthma-anti-il13-antibodies,respiratory,3,untested,contra,same,retro,False,downstream,patient_material_ex_vivo
@@ -157,7 +157,7 @@ renal-cell-carcinoma-vegfr-multikinase-inhibitors,oncology,4,untested,untested,r
 retinitis-pigmentosa-rpgr-replacement-gene-therapy,ophthalmology,3,same,same,untested,same,False,proximal,patient_material_ex_vivo
 rheumatoid-arthritis-btk-inhibitors,autoimmune,2,untested,same,retro,untested,False,direct,inflammatory_disease_model
 schizophrenia-pde10a-inhibitors,psychiatry,2,same,contra,same,contra,False,downstream,behaviour_cns_model
-sjogren-syndrome-btk-inhibitors,autoimmune,2,untested,same,retro,untested,False,direct,inflammatory_disease_model
+sjogren-syndrome-btk-inhibitors,autoimmune,2,untested,untested,retro,untested,False,direct,inflammatory_disease_model
 sjogren-syndrome-pik3cd-inhibitors,autoimmune,2,untested,untested,retro,untested,False,downstream,inflammatory_disease_model
 systemic-lupus-erythematosus-btk-inhibitors,autoimmune,2,same,contra,same,untested,False,direct,poppk_exposure_response
 type-2-diabetes-mellitus-gck-activators,endocrine,3,same,same,same,contra,False,downstream,metabolic_disease_model

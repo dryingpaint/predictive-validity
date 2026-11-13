@@ -201,8 +201,8 @@
    "rule": "population_group codes the patients compared (other_disease)",
    "checked_by": "CHECKER_BRIEF / fields",
    "note": "Giles quote verbatim; FDA dog QTc quote verbatim (model_src). Retro right: own patient DLTs 2006, dog data public 2015. Patients compared are 13 AML, 1 ALL, 1 MDS: population_group other_disease, not unselected.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "RULE QUESTION: mixed 13 AML/1 ALL/1 MDS IV cohort while MDS patients were measured orally; does the import rule ('only when this disease has no patient safety data for the class') make this IV entry untested (unsettled)? population_group other_disease."
+   "adjudicated_status": "untested",
+   "adjudication_note": "Ruled: MDS patients were measured orally, so the mostly-AML IV cohort is not imported; untested, untested_reason unsettled, population_group other_disease."
   }
  ],
  "missing": [

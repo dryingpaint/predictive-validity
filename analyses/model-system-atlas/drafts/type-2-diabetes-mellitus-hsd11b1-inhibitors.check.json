@@ -275,8 +275,8 @@
    "rule": "DRAFTER_BRIEF track rule (drug = member whose patient result is compared) and CHECKER_BRIEF 3 (pairing on conditions the model never tested)",
    "note": "Quotes verbatim (BPB 2023; DOM 2023). Compared patients are BI 187004's, so drug is bi-187004, not JTT-654. Heitaku frames GK rat for non-obese T2D; Bianzano enrolled BMI 28-40. Untested; retrodiction true, year 2023 right.",
    "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "RULE QUESTION: does CHECKER_BRIEF 3's pairing exclusion apply when the model paper (GK rat, 'non-obese T2D') scopes itself away from the patients (BMI 28-40) but the trial source attributes nothing to obesity? Drug should be bi-187004 per track rule."
+   "adjudicated_status": "untested",
+   "adjudication_note": "Ruling: model scoped to non-obese T2D, trial enrolled obese patients (BMI 28-40), a population never tested: untested; drug set to bi-187004 per the track rule."
   }
  ],
  "missing": [

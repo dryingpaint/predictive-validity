@@ -23,15 +23,15 @@ Direct-tier tiles outside neurology and psychiatry: 6 of 19 contradicted; non-di
 
 ## Sensitivity: the drafters' statuses instead of the adjudicated ones
 
-Engagement held in 99 tiles (adjudicated: 83); efficacy contradicted among them in 19 (adjudicated: 19). Compared safety contradictions: 112 (adjudicated: 114), 110 in common.
+Engagement held in 99 tiles (adjudicated: 83); efficacy contradicted among them in 19 (adjudicated: 19). Compared safety contradictions: 111 (adjudicated: 113), 109 in common.
 
 ## Safety packages that serve more than one tile
 
-127 typed contradictions on 107 model systems; systems in more than one tile: `cyno-monkey-ro` (3 tiles); `cynomolgus-toxicology` (2 tiles); `ganetespib-mouse-tox` (2 tiles); `pamiparib-mda-mb-436-xenograft` (2 tiles); `rat-dog-glp-tox` (2 tiles). Harm rows: 157 by track, 137 unique (system, harm, type); the figure counts the unique rows.
+126 typed contradictions on 106 model systems; systems in more than one tile: `cyno-monkey-ro` (3 tiles); `cynomolgus-toxicology` (2 tiles); `ganetespib-mouse-tox` (2 tiles); `pamiparib-mda-mb-436-xenograft` (2 tiles); `rat-dog-glp-tox` (2 tiles). Harm rows: 156 by track, 136 unique (system, harm, type); the figure counts the unique rows.
 
 ## Second, blind coder on the safety typing
 
-114 rows typed independently from the entry text (`safety_types_coder1.csv`, the first coding as written; `safety_types_coder2.csv`, the blind second). Type: 107 agree, kappa 0.904. Primary harm class: 107 agree, kappa 0.932; 113 share at least one harm class. Disagreements on type (coder 1 / coder 2 -> resolved in `safety_types.csv`):
+113 rows typed independently from the entry text (`safety_types_coder1.csv`, the first coding as written; `safety_types_coder2.csv`, the blind second). Type: 106 agree, kappa 0.903. Primary harm class: 106 agree, kappa 0.931; 112 share at least one harm class. Disagreements on type (coder 1 / coder 2 -> resolved in `safety_types.csv`):
 
 - hepatitis-c-virus-infection-hcv-ns5b-nucleotide-inhibitors / `polrmt-mito-panel-retro`: stated_safe / silent -> stated_safe
 - primary-biliary-cholangitis-nr1h4-agonists / `mdr2-ko-mouse`: silent / no_comparison -> no_comparison

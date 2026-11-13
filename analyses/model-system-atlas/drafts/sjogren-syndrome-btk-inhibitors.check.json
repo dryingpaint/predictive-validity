@@ -120,8 +120,8 @@
    "rule": "retrodiction: for efficacy a model first public after a patient result on the same target (member or not) is a retrodiction; one that reproduced the human data is retro, never same",
    "checked_by": "CHECKER_BRIEF / fields",
    "note": "Dörner quote verbatim (PMC10894844); registry results 2022-12-20; remibrutinib oral, biomarker_selected correct. Angst 2020 (entrez 2020-02-22) post-dates tirabrutinib's Sjogren primary result (NCT03100942 results 2020-01-22): a retrodiction, so retro not same.",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: Angst 2020 (public 2020-03) post-dates tirabrutinib's failed Sjogren result (2020-01-22). Is it a retrodiction scored against LOUiSSe (unknown then, matched: retro), against tirabrutinib (not reproduced: contra), or prospective for LOUiSSe (same)?"
+   "adjudicated_status": "contra",
+   "adjudication_note": "Ruling: Angst 2020 post-dates tirabrutinib's failed Sjogren result (2020-01-22), so it is a retrodiction scored against it; it did not reproduce the failure: contra, retrodiction true, year 2020."
   },
   {
    "cell": "safety",

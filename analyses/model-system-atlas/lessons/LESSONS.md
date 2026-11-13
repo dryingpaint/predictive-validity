@@ -1,7 +1,7 @@
 # What a preclinical "yes" was worth
 
-Built on the 166 tracked tiles of the atlas (1,385 tracks, 758 with a compared outcome; 1,050 model systems),
-as stored on 2026-11-10. A track is one model system for one member drug by one route; a prediction published
+Built on the 166 tracked tiles of the atlas (1,386 tracks, 756 with a compared outcome; 1,050 model systems),
+as stored on 2026-11-12. A track is one model system for one member drug by one route; a prediction published
 after the patient result it is scored against is a retrodiction and is not counted. Main figure
 `atlas_lessons.*` (two panels), supplementary `atlas_lessons_families.*`, caption `atlas_lessons_caption.md`,
 design and decisions `DESIGN.md`, checks `robustness.md`; everything from `lessons.py all`. Statuses are the atlas's
@@ -47,27 +47,27 @@ as a disease result.
 
 ## 2. What the safety models missed (figure, panel b)
 
-Safety predictions held in 176 of 303 compared tracks (0.58, 0.52–0.64). A prediction is a stated finding or
-silence on a harm the species could have shown (brief v3). The 128 contradicted tracks (114 system–tile rows) were
-typed from the entry text by two coders, the second blind to the first: agreement on type 107 of 114 (kappa 0.90),
-on primary harm class 107 of 114 (kappa 0.93), all but one row sharing at least one harm class; the seven type
+Safety predictions held in 176 of 302 compared tracks (0.58, 0.52–0.64). A prediction is a stated finding or
+silence on a harm the species could have shown (brief v3). The 127 contradicted tracks (113 system–tile rows) were
+typed from the entry text by two coders, the second blind to the first: agreement on type 106 of 113 (kappa 0.90),
+on primary harm class 106 of 113 (kappa 0.93), all but one row sharing at least one harm class; the seven type
 disagreements are listed in `robustness.md` and were resolved by re-reading the entry (three to the second
 coder, four kept). One track typed as having no admissible comparison leaves the count.
 
 | type | tracks | meaning |
 |---|---|---|
-| silent | 52 (+2 not showable) | no prediction on a harm the species could have shown; patients had it |
+| silent | 51 (+2 not showable) | no prediction on a harm the species could have shown; patients had it |
 | stated safe | 51 | the model said there would be no such harm; patients had it |
 | false alarm | 22 | the model predicted a harm patients never had |
 
-Twenty of the 127 repeat a system: one package serving several tiles (a cynomolgus toxicology package behind
+Twenty of the 126 repeat a system: one package serving several tiles (a cynomolgus toxicology package behind
 three PD-1 tiles, four behind two, a pamiparib xenograft among them) or several drugs of one tile, so the figure
-counts each (system, harm) once: **107 model systems, 137 unique system–harm pairs**. By harm: cardiovascular 23
+counts each (system, harm) once: **106 model systems, 136 unique system–harm pairs**. By harm: cardiovascular 23
 (9 silent, 12 stated safe: QT prolongation twice after a clean hERG and dog telemetry, hypertension after "no
 blood-pressure effect", bradycardia after S1P3 sparing and after clean dog telemetry, heart failure, atrial
 fibrillation after clean dog telemetry, a serious cardiovascular-event imbalance three human systems had cleared,
 a blood-pressure rise the knockout said would not come, hypertension after a xenograft "well tolerated"; 2 false
-alarms), metabolic, endocrine and bone 20 (4 silent, 12 stated safe, 4 false alarms), immune-mediated 14
+alarms), metabolic, endocrine and bone 19 (3 silent, 12 stated safe, 4 false alarms), immune-mediated 14
 (10 silent), haematological 14, CNS 13, liver 11 (8 silent), gastrointestinal 11, skin 8.
 
 Repeat-dose toxicology in standard species held in 63 of 119 tracks (87 tiles); its 56 misses were 37
@@ -84,10 +84,10 @@ bleeding) are the other cost: harms that shaped or stopped programmes and never 
 
 The 1,050 systems fall into 29 families (keyword rules in `families.py`, 93 hand overrides in `overrides.csv`).
 The family forests are supplementary because a family's rate follows the classes it served: in never-approved
-classes every large family's yes collapsed (induced inflammatory models 10 of 56, cell-line xenografts 4 of 21,
+classes every large family's yes collapsed (induced inflammatory models 9 of 56, cell-line xenografts 4 of 21,
 patient-derived cells 3 of 12), in approved classes most held. Read as "which yes to discount", not as a
 ranking, the table says: transgenic disease models 1 of 23, rodent behaviour and cognition 0 of 15, allergen
-challenge in people 1 of 9 (six tiles, none approved), induced inflammatory and joint models 13 of 61;
+challenge in people 1 of 9 (six tiles, none approved), induced inflammatory and joint models 12 of 61;
 patient-derived xenografts (8 of 22) did no better than cell-line xenografts (20 of 45), inside approved classes
 too (PDX 7 of 18 against 16 of 24), and patient cells or organoids (16 of 26) only matched cell lines (17 of 29).
 Intervals are cluster bootstraps over tiles; families under four tiles are listed, not ranked.
@@ -102,11 +102,11 @@ models that would have stopped a failure.
 ## Robustness (details in `robustness.md`)
 
 - **Adjudication.** On the drafters' statuses instead of the adjudicated ones: engagement held in 99 tiles
-  (83), efficacy contradicted among them in 19 (19); 112 compared safety contradictions by system and tile (114),
-  110 in common.
+  (83), efficacy contradicted among them in 19 (19); 111 compared safety contradictions by system and tile (113),
+  109 in common.
 - **Tier definition.** Headline track's tier or best matched tier on the tile: the same picture, neither significant.
 - **Duplicate packages.** Counted once per (system, harm) in the figure; track counts stated beside them.
-- **Second coder.** Blind retyping of the 114 safety contras: kappa 0.90 on type, 0.93 on primary harm; the seven
+- **Second coder.** Blind retyping of the 113 safety contras: kappa 0.90 on type, 0.93 on primary harm; the seven
   disagreements and their resolution in `robustness.md`; the first coding is frozen as `safety_types_coder1.csv`.
 - **Units.** Tiles are independent in panel a (Wilson); tracks nest in tiles in the family rates (cluster
   bootstrap).

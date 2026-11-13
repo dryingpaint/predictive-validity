@@ -1785,9 +1785,17 @@ Q 324 624.42 324 623.124
 L 324 618.876 
 Q 324 617.58 325.296 617.58 
 z
-" clip-path="url(#pcbfbfd2d13)" style="fill: url(#h180c3c447a)"/>
+" clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
    <g id="patch_145">
+    <path d="M 334.44 632.88 
+L 338.04 632.88 
+L 336.24 629.28 
+L 334.44 632.88 
+z
+" clip-path="url(#pcbfbfd2d13)" style="fill: none; stroke: #c9362b; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_146">
     <path d="M 423.216 617.58 
 L 427.464 617.58 
 Q 428.76 617.58 428.76 618.876 
@@ -1800,7 +1808,7 @@ Q 421.92 617.58 423.216 617.58
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_146">
+   <g id="patch_147">
     <path d="M 129.456 637.02 
 L 133.704 637.02 
 Q 135 637.02 135 638.316 
@@ -1813,7 +1821,7 @@ Q 128.16 637.02 129.456 637.02
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_147">
+   <g id="patch_148">
     <path d="M 227.376 637.02 
 L 231.624 637.02 
 Q 232.92 637.02 232.92 638.316 
@@ -1826,7 +1834,7 @@ Q 226.08 637.02 227.376 637.02
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_148">
+   <g id="patch_149">
     <path d="M 325.296 637.02 
 L 329.544 637.02 
 Q 330.84 637.02 330.84 638.316 
@@ -1839,7 +1847,7 @@ Q 324 637.02 325.296 637.02
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #c9362b"/>
    </g>
-   <g id="patch_149">
+   <g id="patch_150">
     <path d="M 423.216 637.02 
 L 427.464 637.02 
 Q 428.76 637.02 428.76 638.316 
@@ -1852,7 +1860,7 @@ Q 421.92 637.02 423.216 637.02
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_150">
+   <g id="patch_151">
     <path d="M 129.456 656.46 
 L 133.704 656.46 
 Q 135 656.46 135 657.756 
@@ -1865,7 +1873,7 @@ Q 128.16 656.46 129.456 656.46
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_151">
+   <g id="patch_152">
     <path d="M 227.376 656.46 
 L 231.624 656.46 
 Q 232.92 656.46 232.92 657.756 
@@ -1878,7 +1886,7 @@ Q 226.08 656.46 227.376 656.46
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_152">
+   <g id="patch_153">
     <path d="M 325.296 656.46 
 L 329.544 656.46 
 Q 330.84 656.46 330.84 657.756 
@@ -1891,7 +1899,7 @@ Q 324 656.46 325.296 656.46
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_153">
+   <g id="patch_154">
     <path d="M 334.44 671.76 
 L 338.04 671.76 
 L 336.24 668.16 
@@ -1899,7 +1907,7 @@ L 334.44 671.76
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: none; stroke: #c9362b; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
-   <g id="patch_154">
+   <g id="patch_155">
     <path d="M 423.216 656.46 
 L 427.464 656.46 
 Q 428.76 656.46 428.76 657.756 
@@ -3730,7 +3738,7 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="334.44" y="627.361875" transform="rotate(-0 334.44 627.361875)">working-memory fMRI</text>
    </g>
    <g id="text_535">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="632.419062" transform="rotate(-0 334.44 632.419062)">Assay said inactive; trial flat</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="339.84" y="632.433906" transform="rotate(-0 339.84 632.433906)">Three phase 3s flat on MCCB</text>
    </g>
    <g id="text_536">
     <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="622.595215" transform="rotate(-0 432.36 622.595215)">2026</text>
@@ -3858,61 +3866,5 @@ L 514.08 674.64
   <clipPath id="pcbfbfd2d13">
    <rect x="0" y="0" width="518.4" height="694.8"/>
   </clipPath>
- </defs>
- <defs>
-  <pattern id="h180c3c447a" patternUnits="userSpaceOnUse" x="0" y="0" width="72" height="72">
-   <rect x="0" y="0" width="73" height="73" fill="#2a7bd0"/>
-   <path d="M -36 36 
-L 36 108 
-M -33 33 
-L 39 105 
-M -30 30 
-L 42 102 
-M -27 27 
-L 45 99 
-M -24 24 
-L 48 96 
-M -21 21 
-L 51 93 
-M -18 18 
-L 54 90 
-M -15 15 
-L 57 87 
-M -12 12 
-L 60 84 
-M -9 9 
-L 63 81 
-M -6 6 
-L 66 78 
-M -3 3 
-L 69 75 
-M 0 0 
-L 72 72 
-M 3 -3 
-L 75 69 
-M 6 -6 
-L 78 66 
-M 9 -9 
-L 81 63 
-M 12 -12 
-L 84 60 
-M 15 -15 
-L 87 57 
-M 18 -18 
-L 90 54 
-M 21 -21 
-L 93 51 
-M 24 -24 
-L 96 48 
-M 27 -27 
-L 99 45 
-M 30 -30 
-L 102 42 
-M 33 -33 
-L 105 39 
-M 36 -36 
-L 108 36 
-" style="fill: #ffffff; stroke: #ffffff; stroke-width: 0.6; stroke-linecap: butt; stroke-linejoin: miter"/>
-  </pattern>
  </defs>
 </svg>

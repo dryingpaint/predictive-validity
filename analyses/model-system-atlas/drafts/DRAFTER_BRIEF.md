@@ -45,7 +45,10 @@ A model built or run after the clinic already knew the answer is a **retrodictio
 motivated it. Which patient result counts depends on the question. Engagement and efficacy are claims about
 the target: a model result first public after a patient result for the same target and action, from a
 member drug or any other drug, is a retrodiction. Dose and safety are claims about the drug: there only the
-same drug's own patient result, public earlier, makes a model a retrodiction. If it reproduced the human data its status is `retro`, never `same`; if it failed to
+same drug's own patient result, public earlier, makes a model a retrodiction. A retrodiction is scored
+against the patient results public before it: `retro` when it reproduced them (`source_calls_it: "partial"`
+when it reproduced part of them), `contra` when it did not, including a failure of another drug it did not
+reproduce. If it reproduced the human data its status is `retro`, never `same`; if it failed to
 reproduce them, `contra`. Its first prospective prediction afterwards is a fresh entry scored as usual
 .
 
@@ -98,14 +101,17 @@ reproduce them, `contra`. Its first prospective prediction afterwards is a fresh
   safety prediction of that model and is scored. Patients of the tile's own disease decide: a harm seen
   only in another disease's patients is imported (`imported_from`, `population_group: "other_disease"`)
   only when this disease has no patient safety data for the class; where this disease's patients were
-  measured, their result sets the status.
+  measured, their result sets the status, and a mixed cohort mostly from another disease is not this
+  disease's data (`untested`, `unsettled`). A model never run under the regimen, dose schedule or patient
+  population the trial used (a daily clamp for a weekly drug, a non-obese rat for obese patients) made no
+  prediction for it: `untested`.
 
 ## Status of one track, as of a year (one entry per change of status on that track)
 | key | status | rule |
 |---|---|---|
 | untested | Never compared | a model exists and was used for this class, but no admissible comparison of its prediction with patient results |
 | same | Matched | a comparison shows the model's prediction agreed with patient results for ≥1 drug of this class, in direction; record how far off in `magnitude`; partial agreement is `same` + `source_calls_it: "partial"` |
-| neg | Matched, incl. a known failure | `same`, AND the model's own data for a drug of this class fell below the class's usual effect bar and that drug failed in patients. Record the model's number in `effect_size` and the bar in `class_threshold`. Judged on what the data showed, not on what the sponsor said about them |
+| neg | Matched, incl. a known failure | `same`, AND the model's own data for a drug of this class fell below the class's usual effect bar and that drug failed in patients. The bar is one a drug of the class cleared in the model; where none did, there is no bar and the entry is `same` with `magnitude: "direction_only"`. Record the model's number in `effect_size` and the bar in `class_threshold`. Judged on what the data showed, not on what the sponsor said about them |
 | other | Matched, same platform only | safety only: another molecule on the same platform showed the same harm. Evidence from another drug class is set aside, not scored |
 | contra | Contradicted | the model predicted wrongly for a drug in this context. A failed model stays failed on its track; a newer model that did better is its own track. A later entry turns the track back only when a tier 1–4 source shows the early patient signal attenuated to background, so the model was right (`patient_signal_reversed: true`). One drug's `contra` still beats another drug's `same` on the same track |
 | retro | Reproduces the known result | a retrodiction (`retrodiction: true`) that reproduced the human data; drawn with its own mark and counted apart from `same` |
@@ -136,7 +142,9 @@ reproduce them, `contra`. Its first prospective prediction afterwards is a fresh
    a drug outside the class).
 6. **Dating.** The entry's `year` is the earliest date the comparison was public: registry results posting,
    online publication, congress abstract, sponsor press release, label, or print, whichever came first,
-   even when a later paper is the higher-tier source of the status. Record all of `registry_date`, `epub_year`, `print_year`. Each cell
+   even when a later paper is the higher-tier source of the status. A paired comparison exists only once
+   both sides are public, so its year is the later of the two. A track opens at its own drug's first use
+   in the model, not at the system's first use for another drug. Record all of `registry_date`, `epub_year`, `print_year`. Each cell
    opens at `model_first_use_year` with status `untested`, proxy allowed, so the strip shows when a model
    existed before it was tested.
 7. Do NOT use approval status or later knowledge to decide a status; use what was known at the entry's date.
