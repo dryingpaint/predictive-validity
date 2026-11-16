@@ -1,5 +1,4 @@
 slug,model_id,type,harm_class,note
-primary-biliary-cholangitis-nr1h4-agonists,mdr2-ko-mouse,no_comparison,liver;skin,Ductular-reaction prediction never biopsied in INTREPID; text says untested
 malignant-pancreatic-neoplasm-map2k1-2-inhibitors,tox-species-rat-dog,silent,ocular;cardiovascular,Rat/dog could show retinal and LVEF harm; reported neither at clinical exposure
 type-2-diabetes-mellitus-gcgr-antagonists,gcgr-sm-rodent-monkey-challenge,stated_safe,liver;metabolic_endocrine_bone;cardiovascular,Rat package explicitly called PF-06291874 safe; LDL and ALT rose
 colorectal-cancer-kdr-vegfr-inhibitors,tox-rodent-nonrodent,silent,cardiovascular,Dog telemetry measures BP yet reported nothing; hypertension commonest grade 3-4 event
@@ -112,3 +111,4 @@ type-2-diabetes-mellitus-slc5a2-inhibitors,sglt2-rodent-tox,false_alarm,metaboli
 type-2-diabetes-mellitus-slc5a2-inhibitors,slc5a2-lof-frg,stated_safe,other,FRG carriers 'without hypoglycemia or other obvious morbidity'; canagliflozin patients had genital mycotic infections 10-11 % vs 3 %
 ulcerative-colitis-s1pr1-agonists,dog-cv-telemetry-etrasimod,stated_safe,cardiovascular,dog CV safety pharmacology stated no cardiovascular effect (NOEL 350 mg/kg); UC patients' heart rate fell 7.2 bpm after the first 2 mg dose
 breast-cancer-pan-her-inhibitors,her2-amplified-breast-xenografts,stated_safe,gastrointestinal,Paper explicitly claimed sufficient animal safety windows; diarrhoea DLT
+metabolic-dysfunction-associated-steatohepatitis-nr1h4-agonists,stam-amln-mouse-tropifexor,stated_safe,metabolic_endocrine_bone,"LDL rose and HDL fell in FLIGHT-FXR (LDL ratio 1.20 vs 0.97 at 200 ug); STAM mice showed plasma cholesterol falling, the opposite direction (retro contra, confirmed by checker)"

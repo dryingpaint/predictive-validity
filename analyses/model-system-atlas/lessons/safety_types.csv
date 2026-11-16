@@ -46,7 +46,6 @@ non-small-cell-lung-carcinoma-pan-her-inhibitors,her2-ex20-pdo-pdx-pyrotinib,sil
 osteoarthritis-ntrk1-inhibitors,rat-naive-knee-ia-tolerability,silent,musculoskeletal,rat intra-articular histology silent; injection-joint inflammatory reaction in 67 % of knees
 plasma-cell-myeloma-psmb5-inhibitors,delanzomib-mm-xenograft,stated_safe,haematological,marrow sparing predicted from normal marrow cultures; thrombocytopenia (53 % grade 3/4) was a DLT
 plasma-cell-myeloma-psmb5-inhibitors,oprozomib-rodent-dog-tolerability,stated_safe,gastrointestinal,tolerated in rodents and dogs; GI toxicity with three AE-related deaths ended the programme
-primary-biliary-cholangitis-nr1h4-agonists,mdr2-ko-mouse,no_comparison,skin,"resolved to coder 2: the entry's reason is the untested ductular-reaction prediction; the pruritus silence is a side remark, so the track leaves the count"
 primary-biliary-cholangitis-nr1h4-agonists,pxb-humanized-liver-il31,false_alarm,skin,hepatocyte IL-31 rose in PXB mice; serum IL-31 and itch unchanged in 71 PBC patients on cilofexor
 primary-biliary-cholangitis-nr1h4-agonists,rodent-fxr-pd,silent,skin,dose-limiting pruritus (52.5 % vs 28.6 %); no rodent model showed scratching
 prostate-cancer-cyp17a1-ar-inhibitors,seviteronel-crpc-xenografts,silent,cns,concentration impairment tremor and fatigue closed the phase 2; the mice never showed CNS toxicity
@@ -112,3 +111,4 @@ type-2-diabetes-mellitus-slc5a2-inhibitors,sglt2-rodent-tox,false_alarm,metaboli
 type-2-diabetes-mellitus-slc5a2-inhibitors,slc5a2-lof-frg,stated_safe,other,"FRG carriers 'without hypoglycemia or other obvious morbidity'; canagliflozin patients had genital mycotic infections 10-11 % vs 3 %; these are glucosuric genitourinary infections, not immune-mediated (in the CSV, immune for infection is kept for immunosuppressants), so other"
 ulcerative-colitis-s1pr1-agonists,dog-cv-telemetry-etrasimod,stated_safe,cardiovascular,dog CV safety pharmacology NOEL 350 mg/kg with no cardiovascular effect; UC patients' heart rate fell 7.2 bpm after the first 2 mg dose
 breast-cancer-pan-her-inhibitors,her2-amplified-breast-xenografts,stated_safe,gastrointestinal,discovery paper claimed sufficient animal safety windows; grade 3 diarrhoea was the DLT
+metabolic-dysfunction-associated-steatohepatitis-nr1h4-agonists,stam-amln-mouse-tropifexor,stated_safe,metabolic_endocrine_bone,"LDL rose and HDL fell in FLIGHT-FXR (LDL ratio 1.20 vs 0.97 at 200 ug); STAM mice showed plasma cholesterol falling, the opposite direction (retro contra, confirmed by checker)"
