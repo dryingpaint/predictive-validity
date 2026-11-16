@@ -76,32 +76,24 @@
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "unverified",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2015,
-   "rule": "DRAFTER_BRIEF efficacy: did the trial's primary endpoint respond as predicted",
-   "note": "Abstract verbatim, but the registry primary (mean daily glucose) was missed: Roche BP21850 synopsis, EU register 2008-001122-13, posted 2015-06-26. Mouse predicted glucose lowering: contra. RO5093151 oral, partner metformin, unselected right.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Efficacy rule: primary governs. Roche BP21850 synopsis (EU CTR 2008-001122-13, first posted 2015-06-26) re-read: 'failed to show' mean daily glucose improvement. Contra, dated 2015 unless Heise 2014 full text (unseen) reports it."
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date) and efficacy (primary endpoint governs)",
+   "note": "ADA 2013 abstract exists (Morrow, Diabetes 62 Suppl 1:A293; EASD Diabetologia 56 S407; Crossref refs of DeFronzo 2014) but its text was unreadable; Heise epub 2014-06-09 omits registry primary (mean daily glucose). 'same' rests on secondary HbA1c trend; earlier-cited 2015 Roche synopsis not re-opened.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2015,
    "rule": "DRAFTER_BRIEF rule 6 (earliest public date; press release counts)",
-   "note": "DOM 2023 (PMID 36478142, epub 2022-12-22) abstract verbatim. Vitae 8-K 2015-06-29 re-opened: FPG primary unmet (metformin arm); monotherapy arm unmet 2015-12-17. bi-187004 oral, pooled, unselected right. Contra dated 2015.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6: earliest public date, press release counts. Vitae 8-K 2015-06-29 (already the draft's ko-mouse 2015 source) reports the BI 187004 FPG endpoint unmet. Contra, dated 2015."
+   "note": "Vitae 8-K EX-99.1 filed 2015-06-29 (0001104659-15-048184) re-opened: 'Primary efficacy data (fasting plasma glucose) from the metformin arm did not meet ... predefined endpoint criteria.' Contra, 2015; model 2005, prospective, not a retrodiction.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

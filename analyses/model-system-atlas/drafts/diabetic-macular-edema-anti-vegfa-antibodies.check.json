@@ -72,11 +72,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "retrodiction (dose: same drug's own earlier patient result)",
-   "note": "Brown 2024 quote verbatim (PMID 38461843); 761355 PharmR s1.2 rabbit 2 mg/eye ~8 mg human confirmed (VGFT-PH-19050). PHOTON/PULSAR topline Sept 2022 precedes the review: retro holds. magnitude_basis is the popPK track's number; review dated 2023 here, 2024 in dose 6.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6 (pairing dates at the later side) and retrodiction (dose: same drug's earlier patient result)",
+   "note": "Bundle PharmR: 2 mg vs 500 ug leak suppression 6 vs 4 weeks; Cao 2018 stops at 500 ug. File in nda/2024; earliest Wayback capture 2024-10-09, none in 2023: 2024. PHOTON topline Sept 2022 precedes: retro holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -105,11 +105,11 @@
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "retrodiction (efficacy: target-level, any drug)",
-   "note": "Liu 2022 quote verbatim (epub 2021-05-17); Huang 2012 epub 2012-03-15 is after DA VINCI 2011-05-05: retro, reproduced. conbercept, intravitreal, unselected hold. An earlier SAILING congress report may exist (unverified).",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6 (earliest public date incl. label) and retrodiction (efficacy: target-level, any drug)",
+   "note": "Liu 2025 (PMC12532959) full text: conbercept 'indication was extended to DME in 2019', SAILING the pivotal trial. PubMed pre-2020 search finds no earlier SAILING report. Later of Huang 2012 and 2019 = 2019; retro holds (after DA VINCI 2011).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -213,17 +213,13 @@
   {
    "cell": "dose",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2018,
-   "rule": "6 (opener at first use with the drug)",
-   "note": "761355 PharmR line 179-181 quote verbatim. But Cao 2018 (IOVS 59:1033, doi 10.1167/iovs.17-22897, Regeneron) first ran this rabbit RNV model with aflibercept (500 ug ~8 weeks leak-free, dose-dependent): opener 2018. source_tier should be 2; subjects null.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6 opener: Cao 2018 (PMID 29450547, IOVS 59:1033) first ran the AAA rabbit RNV model with aflibercept (500 ug, ~8 weeks leak-free), so the aflibercept track opens untested in 2018, not 2023."
+   "rule": "6 (track opens at its own drug's first use in the model)",
+   "note": "Cao 2018 IOVS 59(2):1033, 2018-02-01 (PMID 29450547), Regeneron AAA rabbit chronic-RNV model with IVT aflibercept, 500 ug ~8 weeks, dose-dependent: track opens 2018, untested. PharmR quote verbatim (bundle line 179). Stale epub_year 2023/confidence_note.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

@@ -83,8 +83,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Nat Med 2024;30(8), epub 2024-06-03; quote verbatim; primary endpoint IRC ORR confirms endpoint_role. NCT04245839 and NCT04089215 have no posted results; RELIANCE quote verbatim. Paired same holds; Breyanzi FL label (2024-05-15) is the same year."
+   "rule": "Rule 6 (dating: earliest public date, paired year is the later side); retrodiction paragraph",
+   "note": "BMS release dated 2023-06-17 (ICML late-breaker, 'first disclosure of primary analysis results') gives 3L+ FL n=101 ORR 97%, CR 94%; Nat Med epub 2024. Model Leukemia epub 2015-09-15 predates it: 2023, same, prospective.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -253,17 +254,13 @@
   {
    "cell": "safety",
    "index": 12,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2024,
-   "rule": "Rule 7 (use what was known at the entry's date) limits rule 6: the 2021 press release does not show the contra result; the contra comparison was first public in the registry, 2024-03-04",
-   "note": "Press release (Healio 2021-04-22) reported only no grade>=2 CRS/NT at 1800 mg and ORR 83%; the all-grade CRS 67%/NE rates carrying contra first appeared in registry results 2024-03-04 (CT.gov API). Keep 2024, as adjudicated before. Note's 'primary endpoint' wrong: phase 1 primary was DLTs.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rules 6+7: status contra agreed; date it 2024 (registry 2024-03-04). The 2021 press release showed only no grade>=2 CRS/NT at 1800 mg, not the all-grade CRS/NE rates carrying contra, so the comparison was first public in 2024."
+   "rule": "Rules 6+7: dated when the result carrying the status was first public",
+   "note": "CT.gov API: results first posted 2024-03-04. Humanigen 2021 release and ASH 2022 abstract (Blood 140 Suppl 1:10318) report only no grade>=3 CRS, one grade>=3 NE; no all-grade rates in text. 2024, contra; Sterner 2018 precedes any lenzilumab+axi-cel result: prospective.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

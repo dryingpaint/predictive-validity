@@ -1,0 +1,25 @@
+{
+ "tile": "chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-btk-inhibitors",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "2017 -> 2015 (opener: acalabrutinib's first mouse oral-dose PD use, Covey et al., AACR 2015 abstract 2596 (Cancer Res 75(15 Suppl):2596, presented 18-22 Apr 2015, doi:10.1158/1538-7445.AM2015-2596)); status untested unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "2019 -> 2015 (opener: zanubrutinib's first mouse BTK-occupancy use, Li et al., AACR 2015 abstract 2597 (Cancer Res 75(15 Suppl):2597, presented 18-22 Apr 2015, doi:10.1158/1538-7445.AM2015-2597)); status untested unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2017 -> 2015 (pairing: model side Covey et al., AACR 2015 abstract 2596 (Cancer Res 75(15 Suppl):2596, presented 18-22 Apr 2015, doi:10.1158/1538-7445.AM2015-2596); patient side same abstract and Byrd NEJM epub 2015-12-07); status retro unchanged, retrodiction true (ibrutinib patient occupancy 2012-13 earlier)"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "2019 -> 2015 (pairing: model side Li et al., AACR 2015 abstract 2597 (Cancer Res 75(15 Suppl):2597, presented 18-22 Apr 2015, doi:10.1158/1538-7445.AM2015-2597); patient side Tam ASH 2015 abstract 832, Blood 126(23):832, Dec 2015); status retro unchanged, retrodiction true"
+  }
+ ]
+}

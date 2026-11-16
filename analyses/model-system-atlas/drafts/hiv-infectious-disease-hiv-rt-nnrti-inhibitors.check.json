@@ -33,17 +33,13 @@
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
+   "status_supported": true,
    "rule": "6",
-   "note": "Lai 2014 quote verbatim. NATAP CROI 2013 report cites Lai, ICAAC 9-12 Sep 2012 abstract H-551 (MK-1439 antiviral activity, in-vitro resistance): opener at 2012, not 2013. Doravirine, oral correct.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "untested",
-   "proposed_year": 2012,
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: status agreed (doravirine track opener, untested); only the date moves to the ICAAC Sep 2012 abstract H-551. Not the track's latest entry, so no untested_reason."
+   "note": "NATAP ICAAC_23 page: Lai et al., ICAAC 9-12 Sep 2012 abstract H-551, MK-1439 EC95 in 10%/50% serum (WT 20 nM in 50%) and resistance selection. Opener year 2012 confirmed; untested (no doravirine patient result yet). Lai 2014 quote verbatim in abstract.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -52,13 +48,13 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": false,
-   "rule": "retrodiction (What the model is): engagement/efficacy result first public after a same-target patient result is retro; 6",
-   "note": "Schurmann 2016 quote verbatim. NATAP CROI 2013 abstract 100: -1.37/-1.26 log10 vs placebo, so 2013. Post-dates fosdevirine's 2008 viral-load result (member, same target): retro, retrodiction true.",
-   "checked_by": "CHECKER_BRIEF / fields",
    "proposed_status": "retro",
    "proposed_year": 2013,
+   "rule": "retrodiction (What the model is): engagement/efficacy result first public after a same-target patient result is retro; 6",
+   "note": "Year 2013 confirmed: NATAP croi_22, Anderson CROI 3-6 Mar 2013 abstract 100, -1.37/-1.26 log10 vs placebo; model side Sep 2012. Still post-dates fosdevirine 2008 and earlier NNRTI viral-load results: retro, retrodiction true.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule (What the model is): engagement/efficacy are target claims; result first public after nevirapine/efavirenz viral-load results on HIV RT (any drug, same target/action) is a retrodiction, reproduced: retro. Also post-dates fosdevirine 2008; dated 2013 (CROI) per rule 6."
+   "adjudication_note": "Retrodiction rule (What the model is): doravirine cell result (Sep 2012) first public after fosdevirine 2008 and nevirapine/efavirenz viral-load results on HIV RT (same target/action, any drug); reproduced them: retro. Year 2013 per rule 6."
   },
   {
    "cell": "dose",
@@ -107,32 +103,24 @@
   {
    "cell": "dose",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
+   "status_supported": true,
    "rule": "6",
-   "note": "Anderson 2015 'All dose levels produced C24 h>19 nM' verbatim. Doravirine's cell-model track first public at ICAAC Sep 2012 (H-551), before the Mar 2013 patient result; opener at 2012.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "untested",
-   "proposed_year": 2012,
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: status agreed (doravirine dose opener, untested); opener dates to ICAAC Sep 2012. Not the track's latest entry."
+   "note": "NATAP ICAAC_23 page: Lai et al., ICAAC 9-12 Sep 2012 abstract H-551, MK-1439 EC95 in 10%/50% serum (WT 20 nM in 50%) and resistance selection. Serum-adjusted EC95 target public Sep 2012; opener 2012 untested confirmed (first patient dosing Mar 2013).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
+   "status_supported": true,
    "rule": "6",
-   "note": "Schurmann quote verbatim. CROI 2013 abstract 100 (NATAP): troughs 14x (25 mg) and 87x (200 mg) serum-adjusted IC95, both active; same holds, first public Mar 2013.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "same",
-   "proposed_year": 2013,
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6 and dose table 'target reached': same agreed; dated Mar 2013 (CROI abstract 100). Dose retrodiction needs the same drug's earlier patient result, absent here."
+   "note": "NATAP croi_22 (CROI Mar 2013 abstract 100): steady-state C24 14x (25 mg) and 87x (200 mg) serum-adjusted IC95, both active. Later of Sep 2012 model and Mar 2013 patient side: 2013; same holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -163,17 +151,13 @@
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
+   "status_supported": true,
    "rule": "6",
-   "note": "Lai 2014 quote verbatim. Doravirine cell model first public ICAAC Sep 2012 abstract H-551 (cited in NATAP CROI 2013 report); opener 2012.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "untested",
-   "proposed_year": 2012,
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: status agreed (doravirine efficacy opener, untested); opener dates to ICAAC Sep 2012. Not the track's latest entry."
+   "note": "NATAP ICAAC_23 page: Lai et al., ICAAC 9-12 Sep 2012 abstract H-551, MK-1439 EC95 in 10%/50% serum (WT 20 nM in 50%) and resistance selection. Efficacy opener 2012, untested, confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -182,13 +166,13 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": false,
-   "rule": "retrodiction (What the model is): engagement/efficacy result first public after a same-target patient result is retro; 6",
-   "note": "Schurmann quote verbatim; primary 7-day viral load met, first public CROI Mar 2013 abstract 100. Post-dates fosdevirine's 2008 result on the same target: retro, retrodiction true.",
-   "checked_by": "CHECKER_BRIEF / fields",
    "proposed_status": "retro",
    "proposed_year": 2013,
+   "rule": "retrodiction (What the model is): engagement/efficacy result first public after a same-target patient result is retro; 6",
+   "note": "Year 2013 confirmed: primary 7-day viral load vs placebo first public CROI Mar 2013 abstract 100 (NATAP croi_22). Post-dates fosdevirine's 2008 viral-load result on RT: retro, retrodiction true.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule (What the model is): engagement/efficacy are target claims; result first public after nevirapine/efavirenz viral-load results on HIV RT (any drug, same target/action) is a retrodiction, reproduced: retro. Dated 2013 (CROI) per rule 6."
+   "adjudication_note": "Retrodiction rule (What the model is): doravirine cell result (Sep 2012) first public after fosdevirine 2008 and nevirapine/efavirenz viral-load results on HIV RT (same target/action, any drug); reproduced them: retro. Year 2013 per rule 6."
   },
   {
    "cell": "efficacy",
@@ -208,17 +192,13 @@
   {
    "cell": "safety",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
+   "status_supported": true,
    "rule": "6",
-   "note": "Zhou tolerability sentence verbatim. Idenix 6 Feb 2008 release already reported healthy volunteers well tolerated to 1200 mg (CROI 2008): opener and nnrti-standard-tox-species model_first_use_year should be 2008.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "untested",
-   "proposed_year": 2008,
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: status agreed (fosdevirine tox opener, untested); opener dates to Feb 2008 (CROI healthy-volunteer tolerability). Not the track's latest entry (safety 2 contra)."
+   "note": "NATAP croi_89: Mayers et al., CROI Feb 3-6 2008, IDX899 safe and well tolerated to 1200 mg single, 800 mg QD x7d in healthy subjects. Opener 2008 untested confirmed; model_first_use_year 2009 should also be 2008.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

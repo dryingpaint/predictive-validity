@@ -18,9 +18,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Cortes 2012 NEJM (PMC3777383) full text has the pCRKL sentence verbatim. Model-side CRKL readout seen only at abstract level (O'Hare full text rate-limited); proximal tier fine."
+   "rule": "Evidence rule 6 (dating); retrodiction rule",
+   "note": "ASH 2009 abstract (Blood 114:643, online 2009-11-20) states CrkL phosphorylation inhibited at >=8 mg; O'Hare Cancer Cell model side Nov 2009, earlier. Paired year = later side = 2009. Same; not a retrodiction.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -54,24 +56,22 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PACE abstract (PMID 24180494) verbatim; MCyR in CP-CML is the primary endpoint. NCT01207440 results first posted 2020-01-29, matches registry_date; year 2013 from epub is right."
+   "rule": "Evidence rule 6 (dating); retrodiction rule",
+   "note": "PACE first results at ASH 2011 (Blood 118:109, Dec 2011): MCyR primary endpoint met in CP, higher in T315I. Model side Nov 2009, earlier. Year 2011 confirmed; same, not a retrodiction.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2019,
-   "rule": "Evidence rule 6 (dating): year is the earliest public date, including a congress abstract",
-   "note": "Zhang CCR abstract verbatim (epub 2020-09-14), MMR6 primary. Retro right: Luo 2010 epub 2010-08-12 follows ENESTnd/DASISION (June 2010). FESTnd primary result public earlier as ASCO 2019 abstract (JCO 37:15_suppl 7004, 2019-05-20): year 2019. Drug, oral, stage_or_line right.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Status retro agreed (retrodiction rule: Luo 2010 post-dates ENESTnd/DASISION). Rule 6: ASCO 2019 abstract (JCO 37:15_suppl 7004, online 2019-05-26) reports MMR6 primary met, so the entry year is 2019, not 2020."
+   "rule": "Evidence rule 6 (dating); retrodiction rule",
+   "note": "ASCO 2019 abstract (JCO 37:15_suppl 7004, May 2019) reports MMR6 primary 33.7% vs 18.3%, before CCR epub 2020. Luo 2010 (Aug 2010) post-dates ENESTnd/DASISION (June 2010): retro holds. Year 2019.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -87,9 +87,11 @@
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PACE abstract verbatim; also 'Responses were observed regardless of the baseline BCR-ABL kinase domain mutation status'. Same holds for 2013, but Zabriskie 2014 compound-mutation resistance is a missing later entry on this track (see missing)."
+   "rule": "Evidence rule 6 (dating); retrodiction rule",
+   "note": "ASH 2012 PACE 12-month abstract (Blood 120:163, online Nov 2012) states 'Similar response rates were observed in patients with and without BCR-ABL mutations'. Model side 2009. Year 2012; same unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -182,8 +184,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Mian quote verbatim in abstract (epub 2014-11-14, year 2014). Turkina 2025 PMC12141164: primary objective MTD/DLT verbatim, efficacy secondary, so untested/unsettled. Vamotinib, oral, stage_or_line right. Model post-dates ponatinib T315I patient data, so retrodiction should be true.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Evidence rule 6 (dating); retrodiction rule",
+   "note": "Mian ASH 2013 abstract (Blood 122:3907, online 2013-11-15): PF-114 50 mg/kg prolonged survival of BCR/ABL and T315I CML-like mice vs ponatinib. Opener year 2013, untested holds. Retrodiction flag arguably true (post-dates ponatinib T315I data).",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

@@ -19,11 +19,11 @@
   "cells": {
     "engagement": [
       {
-        "year": 2003,
+        "year": 2014,
         "status": "untested",
         "model": "F8-knockout mice + cynomolgus macaques",
         "model_id": "hema-f8ko-mouse-nhp",
-        "note": "AAV2 heavy/light-chain FVIII vectors gave dose-dependent, therapeutic-to-supraphysiologic plasma FVIII after portal-vein injection in F8-knockout mice.",
+        "note": "AAV2 heavy/light-chain FVIII vectors gave dose-dependent, therapeutic-to-supraphysiologic plasma FVIII after portal-vein injection in F8-knockout mice. Track dated to valoctocogene's own first public use of the model: BioMarin press release 2014-01-13 (biomarin.com, 'Selection of Factor VIII Gene Therapy Drug Development Candidate BMN 270'): 'In our hemophiliac factor VIII deficient mouse models, BMN 270 restored factor VIII plasma concentrations', with IND-enabling studies initiated.",
         "short": "AAV-FVIII expresses in F8-knockout mice",
         "src": "https://doi.org/10.1182/blood-2003-01-0222",
         "srcLabel": "Scallan 2003",
@@ -555,12 +555,12 @@
     ],
     "dose": [
       {
-        "year": 2003,
+        "year": 2014,
         "status": "untested",
         "modality": "gene therapy",
         "model": "F8-knockout mice + cynomolgus macaques",
         "model_id": "hema-f8ko-mouse-nhp",
-        "note": "Mouse dose-response was the class's exposure model; dogs received lower doses of canine FVIII and were never dose-matched to patients.",
+        "note": "Mouse dose-response was the class's exposure model; dogs received lower doses of canine FVIII and were never dose-matched to patients. Track dated to valoctocogene's own first public use of the model: BioMarin press release 2014-01-13 (biomarin.com, 'Selection of Factor VIII Gene Therapy Drug Development Candidate BMN 270'): 'In our hemophiliac factor VIII deficient mouse models, BMN 270 restored factor VIII plasma concentrations', with IND-enabling studies initiated.",
         "short": "Dose-dependent FVIII in mice",
         "src": "https://doi.org/10.1182/blood-2003-01-0222",
         "srcLabel": "Scallan 2003",
@@ -641,12 +641,12 @@
         "combination_with": null
       },
       {
-        "year": 2020,
+        "year": 2015,
         "status": "untested",
         "modality": "protein",
         "model": "F8-knockout mice + cynomolgus macaques",
         "model_id": "hema-f8ko-mouse-nhp",
-        "note": "BIVV001 (efanesoctocog alfa) half-life was 25-31 h in mice and 33-34 h in monkeys, a 3-4x extension over rFVIII.",
+        "note": "BIVV001 (efanesoctocog alfa) half-life was 25-31 h in mice and 33-34 h in monkeys, a 3-4x extension over rFVIII. Track dated to efanesoctocog's own first public use of the model: ASH 2015 abstract 3492 (Drager et al., Blood 2015;126(23):3492, online Nov 2015), rFVIIIFc-VWF-XTEN half-life about 37 h in hemophilia A mice, >4-fold over rFVIII.",
         "short": "3-4x half-life in mice and monkeys",
         "src": "https://doi.org/10.1182/blood.2019001292",
         "srcLabel": "Chhabra 2020",
@@ -771,11 +771,11 @@
     ],
     "efficacy": [
       {
-        "year": 2003,
+        "year": 2014,
         "status": "untested",
         "model": "F8-knockout mice + cynomolgus macaques",
         "model_id": "hema-f8ko-mouse-nhp",
-        "note": "AAV2-FVIII corrected the bleeding diathesis in F8-knockout mice: all treated mice survived tail clipping.",
+        "note": "AAV2-FVIII corrected the bleeding diathesis in F8-knockout mice: all treated mice survived tail clipping. Track dated to valoctocogene's own first public use of the model: BioMarin press release 2014-01-13 (biomarin.com, 'Selection of Factor VIII Gene Therapy Drug Development Candidate BMN 270'): 'In our hemophiliac factor VIII deficient mouse models, BMN 270 restored factor VIII plasma concentrations', with IND-enabling studies initiated.",
         "short": "Mice survive tail clip after AAV-FVIII",
         "src": "https://doi.org/10.1182/blood-2003-01-0222",
         "srcLabel": "Scallan 2003",
@@ -961,11 +961,11 @@
         "combination_with": null
       },
       {
-        "year": 2022,
+        "year": 2021,
         "status": "retro",
         "model": "F8-knockout mice + cynomolgus macaques",
         "model_id": "hema-f8ko-mouse-nhp",
-        "note": "GENEr8-1 met its primary endpoint: FVIII activity rose 41.9 IU/dL at weeks 49-52 after 6e13 vg/kg valoctocogene, with bleeding and factor use reduced. Retrodiction by post-dating: the mouse/macaque paper (online 2017-12-14) appeared five days after valoctocogene's phase 1/2 FVIII results (NEJM 2017-12-09), so the later phase 3 match is retro.",
+        "note": "GENEr8-1 met its primary endpoint: FVIII activity rose 41.9 IU/dL at weeks 49-52 after 6e13 vg/kg valoctocogene, with bleeding and factor use reduced. Retrodiction by post-dating: the mouse/macaque paper (online 2017-12-14) appeared five days after valoctocogene's phase 1/2 FVIII results (NEJM 2017-12-09), so the later phase 3 match is retro. Patient side first public in BioMarin's GENEr8-1 topline release of 2021-01-10 (all primary and secondary efficacy endpoints met; mITT FVIII 42.9 IU/dL at year 1).",
         "short": "Phase 3 primary endpoint met",
         "src": "https://doi.org/10.1056/NEJMoa2113708",
         "srcLabel": "Ozelo 2022",
@@ -1016,12 +1016,12 @@
         "combination_with": null
       },
       {
-        "year": 2023,
+        "year": 2022,
         "status": "retro",
         "strengthens": false,
         "model": "F8-knockout mice + cynomolgus macaques",
         "model_id": "hema-f8ko-mouse-nhp",
-        "note": "XTEND-1 met its primary endpoint: once-weekly efanesoctocog alfa gave mean ABR 0.71, superior to prior prophylaxis, as 4x hemostatic cover in mice predicted. Retrodiction by post-dating: the hemophilia A mouse data (Blood 2020) appeared after efanesoctocog's phase 1 results were posted (2019-12-02) and after other FVIII products had prevented bleeds on prophylaxis.",
+        "note": "XTEND-1 met its primary endpoint: once-weekly efanesoctocog alfa gave mean ABR 0.71, superior to prior prophylaxis, as 4x hemostatic cover in mice predicted. Retrodiction by post-dating: the hemophilia A mouse data (Blood 2020) appeared after efanesoctocog's phase 1 results were posted (2019-12-02) and after other FVIII products had prevented bleeds on prophylaxis. Patient side first public in Sanofi's XTEND-1 release of 2022-03-09 (primary and key secondary endpoints met).",
         "short": "Weekly efanesoctocog: ABR 0.71, superior",
         "src": "https://doi.org/10.1056/NEJMoa2209226",
         "srcLabel": "von Drygalski 2023",
@@ -1298,12 +1298,12 @@
     ],
     "safety": [
       {
-        "year": 2017,
+        "year": 2014,
         "status": "untested",
         "modality": "gene therapy",
         "model": "F8-knockout mice + cynomolgus macaques",
         "model_id": "hema-f8ko-mouse-nhp",
-        "note": "Macaques at 1e13-3.6e13 vg/kg and mice at up to 2e14 vg/kg showed no ALT/AST rise, no caspase-3 activation and no hepatocyte ER stress.",
+        "note": "Macaques at 1e13-3.6e13 vg/kg and mice at up to 2e14 vg/kg showed no ALT/AST rise, no caspase-3 activation and no hepatocyte ER stress. Track dated to valoctocogene's own first public use of the model: BioMarin press release 2014-01-13 (biomarin.com, 'Selection of Factor VIII Gene Therapy Drug Development Candidate BMN 270'): 'In our hemophiliac factor VIII deficient mouse models, BMN 270 restored factor VIII plasma concentrations', with IND-enabling studies initiated.",
         "short": "No ALT rise in mice or macaques",
         "src": "https://doi.org/10.1016/j.ymthe.2017.12.009",
         "srcLabel": "Bunting 2018",
@@ -1379,13 +1379,13 @@
         "combination_with": null
       },
       {
-        "year": 2023,
+        "year": 2021,
         "status": "contra",
         "strengthens": true,
         "modality": "gene therapy",
         "model": "F8-knockout mice + cynomolgus macaques",
         "model_id": "hema-f8ko-mouse-nhp",
-        "note": "In the phase 3 package 81% of patients had ALT above normal and 87% of the efficacy population needed immunosuppression; hepatotoxicity is labelled. Retrodiction by post-dating: the mouse/macaque safety data (online 2017-12-14) appeared after valoctocogene's own patient ALT rises (NEJM 2017-12-09); a retrodiction that failed to reproduce the harm stays contra.",
+        "note": "In the phase 3 package 81% of patients had ALT above normal and 87% of the efficacy population needed immunosuppression; hepatotoxicity is labelled. Retrodiction by post-dating: the mouse/macaque safety data (online 2017-12-14) appeared after valoctocogene's own patient ALT rises (NEJM 2017-12-09); a retrodiction that failed to reproduce the harm stays contra. Patient side first public in BioMarin's GENEr8-1 topline release of 2021-01-10: ALT elevation in 115 of 134 (86%), the most common adverse event, managed with corticosteroids or other immunosuppressants.",
         "short": "ALT rise in 81%, 87% immunosuppressed",
         "src": "https://www.fda.gov/media/170455/download",
         "srcLabel": "FDA SBRA Roctavian 2023",

@@ -607,7 +607,7 @@ Q 128.16 235.62 128.16 234.324
 L 128.16 230.076 
 Q 128.16 228.78 129.456 228.78 
 z
-" clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
+" clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
    <g id="patch_49">
     <path d="M 227.376 228.78 
@@ -1319,7 +1319,7 @@ Q 128.16 468.9 128.16 467.604
 L 128.16 463.356 
 Q 128.16 462.06 129.456 462.06 
 z
-" clip-path="url(#pcbfbfd2d13)" style="fill: #e07fc0"/>
+" clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
    <g id="patch_108">
     <path d="M 227.376 462.06 
@@ -1405,17 +1405,9 @@ Q 324 488.34 324 487.044
 L 324 482.796 
 Q 324 481.5 325.296 481.5 
 z
-" clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
+" clip-path="url(#pcbfbfd2d13)" style="fill: #c9362b"/>
    </g>
    <g id="patch_115">
-    <path d="M 334.44 496.8 
-L 338.04 496.8 
-L 336.24 493.2 
-L 334.44 496.8 
-z
-" clip-path="url(#pcbfbfd2d13)" style="fill: none; stroke: #c9362b; stroke-width: 0.6; stroke-linejoin: miter"/>
-   </g>
-   <g id="patch_116">
     <path d="M 423.216 481.5 
 L 427.464 481.5 
 Q 428.76 481.5 428.76 482.796 
@@ -1428,7 +1420,7 @@ Q 421.92 481.5 423.216 481.5
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_117">
+   <g id="patch_116">
     <path d="M 129.456 500.94 
 L 133.704 500.94 
 Q 135 500.94 135 502.236 
@@ -1441,7 +1433,7 @@ Q 128.16 500.94 129.456 500.94
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_118">
+   <g id="patch_117">
     <path d="M 227.376 500.94 
 L 231.624 500.94 
 Q 232.92 500.94 232.92 502.236 
@@ -1454,7 +1446,7 @@ Q 226.08 500.94 227.376 500.94
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_119">
+   <g id="patch_118">
     <path d="M 325.296 500.94 
 L 329.544 500.94 
 Q 330.84 500.94 330.84 502.236 
@@ -1467,7 +1459,7 @@ Q 324 500.94 325.296 500.94
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #c9362b"/>
    </g>
-   <g id="patch_120">
+   <g id="patch_119">
     <path d="M 423.216 500.94 
 L 427.464 500.94 
 Q 428.76 500.94 428.76 502.236 
@@ -1480,7 +1472,7 @@ Q 421.92 500.94 423.216 500.94
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_121">
+   <g id="patch_120">
     <path d="M 432.36 516.24 
 L 435.96 516.24 
 L 434.16 512.64 
@@ -1488,7 +1480,7 @@ L 432.36 516.24
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: none; stroke: #c9362b; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
-   <g id="patch_122">
+   <g id="patch_121">
     <path d="M 129.456 520.38 
 L 133.704 520.38 
 Q 135 520.38 135 521.676 
@@ -1501,7 +1493,7 @@ Q 128.16 520.38 129.456 520.38
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_123">
+   <g id="patch_122">
     <path d="M 227.376 520.38 
 L 231.624 520.38 
 Q 232.92 520.38 232.92 521.676 
@@ -1514,7 +1506,7 @@ Q 226.08 520.38 227.376 520.38
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_124">
+   <g id="patch_123">
     <path d="M 236.52 535.68 
 L 240.12 535.68 
 L 238.32 532.08 
@@ -1522,7 +1514,7 @@ L 236.52 535.68
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: none; stroke: #c9362b; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
-   <g id="patch_125">
+   <g id="patch_124">
     <path d="M 325.296 520.38 
 L 329.544 520.38 
 Q 330.84 520.38 330.84 521.676 
@@ -1535,7 +1527,7 @@ Q 324 520.38 325.296 520.38
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_126">
+   <g id="patch_125">
     <path d="M 334.44 530.64 
 L 338.04 530.64 
 L 336.24 527.04 
@@ -1543,7 +1535,7 @@ L 334.44 530.64
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: none; stroke: #c9362b; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
-   <g id="patch_127">
+   <g id="patch_126">
     <path d="M 423.216 520.38 
 L 427.464 520.38 
 Q 428.76 520.38 428.76 521.676 
@@ -1556,7 +1548,7 @@ Q 421.92 520.38 423.216 520.38
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_128">
+   <g id="patch_127">
     <path d="M 432.36 535.68 
 L 435.96 535.68 
 L 434.16 532.08 
@@ -1564,7 +1556,7 @@ L 432.36 535.68
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: none; stroke: #c9362b; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
-   <g id="patch_129">
+   <g id="patch_128">
     <path d="M 129.456 539.82 
 L 133.704 539.82 
 Q 135 539.82 135 541.116 
@@ -1577,7 +1569,7 @@ Q 128.16 539.82 129.456 539.82
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_130">
+   <g id="patch_129">
     <path d="M 227.376 539.82 
 L 231.624 539.82 
 Q 232.92 539.82 232.92 541.116 
@@ -1590,7 +1582,7 @@ Q 226.08 539.82 227.376 539.82
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_131">
+   <g id="patch_130">
     <path d="M 325.296 539.82 
 L 329.544 539.82 
 Q 330.84 539.82 330.84 541.116 
@@ -1603,7 +1595,7 @@ Q 324 539.82 325.296 539.82
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_132">
+   <g id="patch_131">
     <path d="M 423.216 539.82 
 L 427.464 539.82 
 Q 428.76 539.82 428.76 541.116 
@@ -1616,7 +1608,7 @@ Q 421.92 539.82 423.216 539.82
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_133">
+   <g id="patch_132">
     <path d="M 129.456 559.26 
 L 133.704 559.26 
 Q 135 559.26 135 560.556 
@@ -1629,7 +1621,7 @@ Q 128.16 559.26 129.456 559.26
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e07fc0"/>
    </g>
-   <g id="patch_134">
+   <g id="patch_133">
     <path d="M 227.376 559.26 
 L 231.624 559.26 
 Q 232.92 559.26 232.92 560.556 
@@ -1642,7 +1634,7 @@ Q 226.08 559.26 227.376 559.26
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_135">
+   <g id="patch_134">
     <path d="M 325.296 559.26 
 L 329.544 559.26 
 Q 330.84 559.26 330.84 560.556 
@@ -1655,7 +1647,7 @@ Q 324 559.26 325.296 559.26
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_136">
+   <g id="patch_135">
     <path d="M 423.216 559.26 
 L 427.464 559.26 
 Q 428.76 559.26 428.76 560.556 
@@ -1668,7 +1660,7 @@ Q 421.92 559.26 423.216 559.26
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #c9362b"/>
    </g>
-   <g id="patch_137">
+   <g id="patch_136">
     <path d="M 129.456 578.7 
 L 133.704 578.7 
 Q 135 578.7 135 579.996 
@@ -1681,7 +1673,7 @@ Q 128.16 578.7 129.456 578.7
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e07fc0"/>
    </g>
-   <g id="patch_138">
+   <g id="patch_137">
     <path d="M 227.376 578.7 
 L 231.624 578.7 
 Q 232.92 578.7 232.92 579.996 
@@ -1694,7 +1686,7 @@ Q 226.08 578.7 227.376 578.7
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #c9362b"/>
    </g>
-   <g id="patch_139">
+   <g id="patch_138">
     <path d="M 325.296 578.7 
 L 329.544 578.7 
 Q 330.84 578.7 330.84 579.996 
@@ -1707,7 +1699,7 @@ Q 324 578.7 325.296 578.7
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_140">
+   <g id="patch_139">
     <path d="M 423.216 578.7 
 L 427.464 578.7 
 Q 428.76 578.7 428.76 579.996 
@@ -1720,7 +1712,7 @@ Q 421.92 578.7 423.216 578.7
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_141">
+   <g id="patch_140">
     <path d="M 129.456 598.14 
 L 133.704 598.14 
 Q 135 598.14 135 599.436 
@@ -1733,7 +1725,7 @@ Q 128.16 598.14 129.456 598.14
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_142">
+   <g id="patch_141">
     <path d="M 227.376 598.14 
 L 231.624 598.14 
 Q 232.92 598.14 232.92 599.436 
@@ -1746,7 +1738,7 @@ Q 226.08 598.14 227.376 598.14
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_143">
+   <g id="patch_142">
     <path d="M 325.296 598.14 
 L 329.544 598.14 
 Q 330.84 598.14 330.84 599.436 
@@ -1759,7 +1751,7 @@ Q 324 598.14 325.296 598.14
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_144">
+   <g id="patch_143">
     <path d="M 334.44 613.44 
 L 338.04 613.44 
 L 336.24 609.84 
@@ -1767,7 +1759,7 @@ L 334.44 613.44
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: none; stroke: #c9362b; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
-   <g id="patch_145">
+   <g id="patch_144">
     <path d="M 423.216 598.14 
 L 427.464 598.14 
 Q 428.76 598.14 428.76 599.436 
@@ -1780,7 +1772,7 @@ Q 421.92 598.14 423.216 598.14
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_146">
+   <g id="patch_145">
     <path d="M 432.36 613.44 
 L 435.96 613.44 
 L 434.16 609.84 
@@ -1788,7 +1780,7 @@ L 432.36 613.44
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: none; stroke: #c9362b; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
-   <g id="patch_147">
+   <g id="patch_146">
     <path d="M 129.456 617.58 
 L 133.704 617.58 
 Q 135 617.58 135 618.876 
@@ -1801,7 +1793,7 @@ Q 128.16 617.58 129.456 617.58
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_148">
+   <g id="patch_147">
     <path d="M 227.376 617.58 
 L 231.624 617.58 
 Q 232.92 617.58 232.92 618.876 
@@ -1814,7 +1806,7 @@ Q 226.08 617.58 227.376 617.58
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_149">
+   <g id="patch_148">
     <path d="M 325.296 617.58 
 L 329.544 617.58 
 Q 330.84 617.58 330.84 618.876 
@@ -1827,7 +1819,7 @@ Q 324 617.58 325.296 617.58
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e07fc0"/>
    </g>
-   <g id="patch_150">
+   <g id="patch_149">
     <path d="M 423.216 617.58 
 L 427.464 617.58 
 Q 428.76 617.58 428.76 618.876 
@@ -1840,7 +1832,7 @@ Q 421.92 617.58 423.216 617.58
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #c9362b"/>
    </g>
-   <g id="patch_151">
+   <g id="patch_150">
     <path d="M 129.456 637.02 
 L 133.704 637.02 
 Q 135 637.02 135 638.316 
@@ -1853,7 +1845,7 @@ Q 128.16 637.02 129.456 637.02
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_152">
+   <g id="patch_151">
     <path d="M 227.376 637.02 
 L 231.624 637.02 
 Q 232.92 637.02 232.92 638.316 
@@ -1866,7 +1858,7 @@ Q 226.08 637.02 227.376 637.02
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_153">
+   <g id="patch_152">
     <path d="M 325.296 637.02 
 L 329.544 637.02 
 Q 330.84 637.02 330.84 638.316 
@@ -1879,7 +1871,7 @@ Q 324 637.02 325.296 637.02
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #3dbb7a"/>
    </g>
-   <g id="patch_154">
+   <g id="patch_153">
     <path d="M 423.216 637.02 
 L 427.464 637.02 
 Q 428.76 637.02 428.76 638.316 
@@ -1892,7 +1884,7 @@ Q 421.92 637.02 423.216 637.02
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #c9362b"/>
    </g>
-   <g id="patch_155">
+   <g id="patch_154">
     <path d="M 129.456 656.46 
 L 133.704 656.46 
 Q 135 656.46 135 657.756 
@@ -1905,7 +1897,7 @@ Q 128.16 656.46 129.456 656.46
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_156">
+   <g id="patch_155">
     <path d="M 227.376 656.46 
 L 231.624 656.46 
 Q 232.92 656.46 232.92 657.756 
@@ -1918,7 +1910,7 @@ Q 226.08 656.46 227.376 656.46
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #e2e5e5"/>
    </g>
-   <g id="patch_157">
+   <g id="patch_156">
     <path d="M 325.296 656.46 
 L 329.544 656.46 
 Q 330.84 656.46 330.84 657.756 
@@ -1931,7 +1923,7 @@ Q 324 656.46 325.296 656.46
 z
 " clip-path="url(#pcbfbfd2d13)" style="fill: #c9362b"/>
    </g>
-   <g id="patch_158">
+   <g id="patch_157">
     <path d="M 423.216 656.46 
 L 427.464 656.46 
 Q 428.76 656.46 428.76 657.756 
@@ -2461,10 +2453,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="334.44" y="126.993906" transform="rotate(-0 334.44 126.993906)">chimeric 1-6 replicons)</text>
    </g>
    <g id="text_88">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="117.155215" transform="rotate(-0 432.36 117.155215)">2025</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="117.155215" transform="rotate(-0 432.36 117.155215)">2024</text>
    </g>
    <g id="text_89">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="447.442187" y="117.010195" transform="rotate(-0 447.442187 117.010195)">Recombinant human CYP3A4</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="447.48" y="117.010195" transform="rotate(-0 447.48 117.010195)">Recombinant human CYP3A4</text>
    </g>
    <g id="text_90">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="432.36" y="121.939062" transform="rotate(-0 432.36 121.939062)">metabolite-formation assay…</text>
@@ -2587,10 +2579,10 @@ L 514.08 674.64
     <text style="font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="24.48" y="180.781328" transform="rotate(-0 24.48 180.781328)">FLT3 inhibitors (4)</text>
    </g>
    <g id="text_130">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="175.475215" transform="rotate(-0 138.6 175.475215)">2013</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="175.475215" transform="rotate(-0 138.6 175.475215)">2008</text>
    </g>
    <g id="text_131">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.682187" y="175.330195" transform="rotate(-0 153.682187 175.330195)">FLT3-ITD cell lines and</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.693359" y="175.330195" transform="rotate(-0 153.693359 175.330195)">FLT3-ITD cell lines and</text>
    </g>
    <g id="text_132">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="138.6" y="180.241875" transform="rotate(-0 138.6 180.241875)">MV4-11 xenografts</text>
@@ -2599,10 +2591,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="185.299063" transform="rotate(-0 138.6 185.299063)">Patient plasma fully blocks FLT3-ITD</text>
    </g>
    <g id="text_134">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="175.475215" transform="rotate(-0 236.52 175.475215)">2013</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="175.475215" transform="rotate(-0 236.52 175.475215)">2007</text>
    </g>
    <g id="text_135">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.602188" y="175.330195" transform="rotate(-0 251.602188 175.330195)">FLT3-ITD cell lines and</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.664062" y="175.330195" transform="rotate(-0 251.664062 175.330195)">FLT3-ITD cell lines and</text>
    </g>
    <g id="text_136">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="236.52" y="180.241875" transform="rotate(-0 236.52 180.241875)">MV4-11 xenografts</text>
@@ -2650,10 +2642,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="204.850195" transform="rotate(-0 138.6 204.850195)">CD33 saturation</text>
    </g>
    <g id="text_151">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="194.915215" transform="rotate(-0 236.52 194.915215)">2017</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="194.915215" transform="rotate(-0 236.52 194.915215)">2015</text>
    </g>
    <g id="text_152">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.664062" y="194.641875" transform="rotate(-0 251.664062 194.641875)">CD33+ AML xenografts (mice)</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.602188" y="194.641875" transform="rotate(-0 251.602188 194.641875)">CD33+ AML xenografts (mice)</text>
    </g>
    <g id="text_153">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="199.713906" transform="rotate(-0 236.52 199.713906)">No checkable prediction</text>
@@ -2725,10 +2717,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="224.290195" transform="rotate(-0 334.44 224.290195)">CAESURA ORR 63.8%, combination</text>
    </g>
    <g id="text_176">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="214.355215" transform="rotate(-0 432.36 214.355215)">2022</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="214.355215" transform="rotate(-0 432.36 214.355215)">2021</text>
    </g>
    <g id="text_177">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="447.442187" y="214.081875" transform="rotate(-0 447.442187 214.081875)">Cynomolgus 26-week</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="446.685078" y="214.081875" transform="rotate(-0 446.685078 214.081875)">Cynomolgus 26-week</text>
    </g>
    <g id="text_178">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="432.36" y="219.121875" transform="rotate(-0 432.36 219.121875)">repeat-dose toxicology…</text>
@@ -2746,16 +2738,16 @@ L 514.08 674.64
     <text style="font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="24.48" y="239.101328" transform="rotate(-0 24.48 239.101328)">MAP2K1/2 inhibitors (3)</text>
    </g>
    <g id="text_183">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="233.795215" transform="rotate(-0 138.6 233.795215)">2012</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="233.795215" transform="rotate(-0 138.6 233.795215)">2010</text>
    </g>
    <g id="text_184">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.682187" y="233.650195" transform="rotate(-0 153.682187 233.650195)">Pancreatic and other tumour</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.701094" y="233.650195" transform="rotate(-0 153.701094 233.650195)">Pancreatic and other tumour</text>
    </g>
    <g id="text_185">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="138.6" y="238.561875" transform="rotate(-0 138.6 238.561875)">xenografts (cell-line, orthotopic and</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="138.6" y="238.561875" transform="rotate(-0 138.6 238.561875)">xenografts (cell-line, orthotopic an…</text>
    </g>
    <g id="text_186">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="138.6" y="243.633906" transform="rotate(-0 138.6 243.633906)">patient-derived)</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="243.633906" transform="rotate(-0 138.6 243.633906)">Not measured in patients</text>
    </g>
    <g id="text_187">
     <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="233.795215" transform="rotate(-0 236.52 233.795215)">2012</text>
@@ -2836,16 +2828,16 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="263.170195" transform="rotate(-0 334.44 263.170195)">Rat fibrosis fell; ATLAS 12% vs 11%</text>
    </g>
    <g id="text_213">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="253.235215" transform="rotate(-0 432.36 253.235215)">2021</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="253.235215" transform="rotate(-0 432.36 253.235215)">2018</text>
    </g>
    <g id="text_214">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="446.685078" y="253.090195" transform="rotate(-0 446.685078 253.090195)">Humanized chimeric-liver</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="447.453359" y="253.090195" transform="rotate(-0 447.453359 253.090195)">Humanized chimeric-liver</text>
    </g>
    <g id="text_215">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="432.36" y="258.033906" transform="rotate(-0 432.36 258.033906)">(PXB) mice, plasma lipoproteins</text>
    </g>
    <g id="text_216">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="437.76" y="263.170195" transform="rotate(-0 437.76 263.170195)">Cilofexor LDL rise contradicts H…</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="437.76" y="263.073906" transform="rotate(-0 437.76 263.073906)">LDL up in patients; mice said…</text>
    </g>
    <g id="text_217">
     <text style="font-weight: 700; font-size: 6px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="24.48" y="272.820234" transform="rotate(-0 24.48 272.820234)">MASH</text>
@@ -3013,10 +3005,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="138.6" y="340.801875" transform="rotate(-0 138.6 340.801875)">enzyme assay rating VT-464…</text>
    </g>
    <g id="text_272">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="330.995215" transform="rotate(-0 236.52 330.995215)">2018</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="330.995215" transform="rotate(-0 236.52 330.995215)">2017</text>
    </g>
    <g id="text_273">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.613359" y="330.721875" transform="rotate(-0 251.613359 330.721875)">VCaP xenografts in mice</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.664062" y="330.721875" transform="rotate(-0 251.664062 330.721875)">VCaP xenografts in mice</text>
    </g>
    <g id="text_274">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="335.793906" transform="rotate(-0 236.52 335.793906)">Exposure plateaued; PK stopped</text>
@@ -3064,10 +3056,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="138.6" y="355.330195" transform="rotate(-0 138.6 355.330195)">EZH2i + AR blockade</text>
    </g>
    <g id="text_289">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="350.435215" transform="rotate(-0 236.52 350.435215)">2012</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="350.435215" transform="rotate(-0 236.52 350.435215)">2017</text>
    </g>
    <g id="text_290">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.602188" y="350.161875" transform="rotate(-0 251.602188 350.161875)">CRPC lines and xenografts,</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.664062" y="350.161875" transform="rotate(-0 251.664062 350.161875)">CRPC lines and xenografts,</text>
    </g>
    <g id="text_291">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="236.52" y="355.330195" transform="rotate(-0 236.52 355.330195)">EZH2i + AR blockade</text>
@@ -3103,16 +3095,16 @@ L 514.08 674.64
     <text style="font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="24.48" y="375.169297" transform="rotate(-0 24.48 375.169297)">FOLH1-directed depleters (3)</text>
    </g>
    <g id="text_302">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="369.875215" transform="rotate(-0 138.6 369.875215)">2017</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="369.875215" transform="rotate(-0 138.6 369.875215)">2015</text>
    </g>
    <g id="text_303">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.744063" y="369.601875" transform="rotate(-0 153.744063 369.601875)">PSMA-high CRPC xenograf…</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.682187" y="369.633906" transform="rotate(-0 153.682187 369.633906)">PSMA-positive vs…</text>
    </g>
    <g id="text_304">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="374.673906" transform="rotate(-0 138.6 374.673906)">Response tracked PSMA expression</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="374.641875" transform="rotate(-0 138.6 374.641875)">PSMA imaging selected responders,</text>
    </g>
    <g id="text_305">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="379.713906" transform="rotate(-0 138.6 379.713906)">in patients</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="379.810195" transform="rotate(-0 138.6 379.810195)">PSA fell</text>
    </g>
    <g id="text_306">
     <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="369.875215" transform="rotate(-0 236.52 369.875215)">2011</text>
@@ -3232,10 +3224,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="418.593906" transform="rotate(-0 236.52 418.593906)">No checkable prediction</text>
    </g>
    <g id="text_345">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="408.755215" transform="rotate(-0 334.44 408.755215)">2024</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="408.755215" transform="rotate(-0 334.44 408.755215)">2023</text>
    </g>
    <g id="text_346">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="349.56" y="408.481875" transform="rotate(-0 349.56 408.481875)">Raji xenograft in NSG mice,</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="349.522187" y="408.481875" transform="rotate(-0 349.522187 408.481875)">Raji xenograft in NSG mice,</text>
    </g>
    <g id="text_347">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="334.44" y="413.650195" transform="rotate(-0 334.44 413.650195)">CD19 CAR T</text>
@@ -3310,10 +3302,10 @@ L 514.08 674.64
     <text style="font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="24.48" y="452.941328" transform="rotate(-0 24.48 452.941328)">PARP1/2 inhibitors (6)</text>
    </g>
    <g id="text_371">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="447.635215" transform="rotate(-0 138.6 447.635215)">2009</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="447.635215" transform="rotate(-0 138.6 447.635215)">2008</text>
    </g>
    <g id="text_372">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.714844" y="447.361875" transform="rotate(-0 153.714844 447.361875)">Human tumour xenografts,</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.693359" y="447.361875" transform="rotate(-0 153.693359 447.361875)">Human tumour xenografts,</text>
    </g>
    <g id="text_373">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="138.6" y="452.419062" transform="rotate(-0 138.6 452.419062)">needle-biopsy PAR ELISA (veliparib)</text>
@@ -3322,10 +3314,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="457.473906" transform="rotate(-0 138.6 457.473906)">PAR fell in patient tumour biopsies</text>
    </g>
    <g id="text_375">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="447.635215" transform="rotate(-0 236.52 447.635215)">2021</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="447.635215" transform="rotate(-0 236.52 447.635215)">2020</text>
    </g>
    <g id="text_376">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="250.845078" y="447.379062" transform="rotate(-0 250.845078 447.379062)">NOVA exposure–safety model</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.621094" y="447.379062" transform="rotate(-0 251.621094 447.379062)">NOVA exposure–safety model</text>
    </g>
    <g id="text_377">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="236.52" y="452.433906" transform="rotate(-0 236.52 452.433906)">(niraparib)</text>
@@ -3334,13 +3326,13 @@ L 514.08 674.64
     <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="447.635215" transform="rotate(-0 334.44 447.635215)">2016</text>
    </g>
    <g id="text_379">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="349.54625" y="447.490195" transform="rotate(-0 349.54625 447.490195)">BRCA-deficient cancer cells…</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="349.54625" y="447.490195" transform="rotate(-0 349.54625 447.490195)">BRCA-deficient cancer cells</text>
    </g>
    <g id="text_380">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="452.530195" transform="rotate(-0 334.44 452.530195)">ARIEL2: BRCA-mutant PFS 12.8</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="334.44" y="452.401875" transform="rotate(-0 334.44 452.401875)">and xenografts (niraparib)</text>
    </g>
    <g id="text_381">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="457.570195" transform="rotate(-0 334.44 457.570195)">months</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="457.441875" transform="rotate(-0 334.44 457.441875)">PFS HR 0.27 in gBRCA cohort</text>
    </g>
    <g id="text_382">
     <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="447.635215" transform="rotate(-0 432.36 447.635215)">2016</text>
@@ -3364,16 +3356,16 @@ L 514.08 674.64
     <text style="font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="24.48" y="472.381328" transform="rotate(-0 24.48 472.381328)">VEGFR multikinase inhibitors (4)</text>
    </g>
    <g id="text_389">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="467.075215" transform="rotate(-0 138.6 467.075215)">2012</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="467.075215" transform="rotate(-0 138.6 467.075215)">2010</text>
    </g>
    <g id="text_390">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.682187" y="466.801875" transform="rotate(-0 153.682187 466.801875)">Rat GS9L glioma DCE-MRI…</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.701094" y="466.801875" transform="rotate(-0 153.701094 466.801875)">Rat GS9L glioma DCE-MRI</text>
    </g>
    <g id="text_391">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="471.873906" transform="rotate(-0 138.6 471.873906)">Patient tumour perfusion fell on</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="138.6" y="471.873906" transform="rotate(-0 138.6 471.873906)">(tumour perfusion)</text>
    </g>
    <g id="text_392">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="477.010195" transform="rotate(-0 138.6 477.010195)">DCE-MRI</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="476.913906" transform="rotate(-0 138.6 476.913906)">No checkable prediction</text>
    </g>
    <g id="text_393">
     <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="467.075215" transform="rotate(-0 236.52 467.075215)">2010</text>
@@ -3433,10 +3425,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="496.450195" transform="rotate(-0 138.6 496.450195)">mice</text>
    </g>
    <g id="text_412">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="486.515215" transform="rotate(-0 236.52 486.515215)">2022</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="486.515215" transform="rotate(-0 236.52 486.515215)">2021</text>
    </g>
    <g id="text_413">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.602188" y="486.259062" transform="rotate(-0 251.602188 486.259062)">CIA occupancy-efficacy</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="250.845078" y="486.259062" transform="rotate(-0 250.845078 486.259062)">CIA occupancy-efficacy</text>
    </g>
    <g id="text_414">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="236.52" y="491.410195" transform="rotate(-0 236.52 491.410195)">PK/PD</text>
@@ -3445,16 +3437,16 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="496.353906" transform="rotate(-0 236.52 496.353906)">No checkable prediction</text>
    </g>
    <g id="text_416">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="486.515215" transform="rotate(-0 334.44 486.515215)">2019</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="486.515215" transform="rotate(-0 334.44 486.515215)">2023</text>
    </g>
    <g id="text_417">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="349.554844" y="486.241875" transform="rotate(-0 349.554844 486.241875)">Collagen-induced arthritis</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="349.522187" y="486.241875" transform="rotate(-0 349.522187 486.241875)">Collagen-induced arthritis</text>
    </g>
    <g id="text_418">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="334.44" y="491.324844" transform="rotate(-0 334.44 491.324844)">(rodent)</text>
    </g>
    <g id="text_419">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="339.84" y="496.450195" transform="rotate(-0 339.84 496.450195)">Missed ACR20 at week 12</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="496.450195" transform="rotate(-0 334.44 496.450195)">Missed ACR20 at week 12</text>
    </g>
    <g id="text_420">
     <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="486.515215" transform="rotate(-0 432.36 486.515215)">2021</text>
@@ -3541,10 +3533,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="138.6" y="535.233906" transform="rotate(-0 138.6 535.233906)">pain models</text>
    </g>
    <g id="text_448">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="525.395215" transform="rotate(-0 236.52 525.395215)">2025</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="236.52" y="525.395215" transform="rotate(-0 236.52 525.395215)">2024</text>
    </g>
    <g id="text_449">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.602188" y="525.121875" transform="rotate(-0 251.602188 525.121875)">Cynomolgus 13-week SC and</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="251.64" y="525.121875" transform="rotate(-0 251.64 525.121875)">Cynomolgus 13-week SC and</text>
    </g>
    <g id="text_450">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="236.52" y="530.290195" transform="rotate(-0 236.52 530.290195)">26-week IV GLP tox, otilimab</text>
@@ -3649,16 +3641,16 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="236.52" y="569.041875" transform="rotate(-0 236.52 569.041875)">4 mg versus BSA-based dosing</text>
    </g>
    <g id="text_484">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="564.275215" transform="rotate(-0 334.44 564.275215)">2014</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="564.275215" transform="rotate(-0 334.44 564.275215)">2011</text>
    </g>
    <g id="text_485">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="349.56" y="564.019062" transform="rotate(-0 349.56 564.019062)">Patient-derived primary</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="348.464297" y="564.019062" transform="rotate(-0 348.464297 564.019062)">Human MM.1S myeloma</text>
    </g>
    <g id="text_486">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="334.44" y="569.059062" transform="rotate(-0 334.44 569.059062)">CD138+ myeloma cells ex vivo,…</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="334.44" y="569.041875" transform="rotate(-0 334.44 569.041875)">xenografts in CB-17 SCID mice;…</text>
    </g>
    <g id="text_487">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="574.113906" transform="rotate(-0 334.44 574.113906)">Not measured in patients</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="574.113906" transform="rotate(-0 334.44 574.113906)">No checkable prediction</text>
    </g>
    <g id="text_488">
     <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="564.275215" transform="rotate(-0 432.36 564.275215)">2017</text>
@@ -3682,10 +3674,10 @@ L 514.08 674.64
     <text style="font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="24.48" y="589.021328" transform="rotate(-0 24.48 589.021328)">SLC22A12 inhibitors (5)</text>
    </g>
    <g id="text_495">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="583.715215" transform="rotate(-0 138.6 583.715215)">2019</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="583.715215" transform="rotate(-0 138.6 583.715215)">2017</text>
    </g>
    <g id="text_496">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.714844" y="583.459062" transform="rotate(-0 153.714844 583.459062)">Tufted capuchin monkeys</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.744063" y="583.459062" transform="rotate(-0 153.744063 583.459062)">Tufted capuchin monkeys</text>
    </g>
    <g id="text_497">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="138.6" y="588.481875" transform="rotate(-0 138.6 588.481875)">(low uricase, high plasma urate)…</text>
@@ -3865,10 +3857,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="236.52" y="651.873906" transform="rotate(-0 236.52 651.873906)">phase 2, risankizumab, mirikizumab</text>
    </g>
    <g id="text_556">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="642.035215" transform="rotate(-0 334.44 642.035215)">2017</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="642.035215" transform="rotate(-0 334.44 642.035215)">2016</text>
    </g>
    <g id="text_557">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="349.584062" y="641.890195" transform="rotate(-0 349.584062 641.890195)">T-cell transfer colitis mouse</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="349.54625" y="641.890195" transform="rotate(-0 349.54625 641.890195)">T-cell transfer colitis mouse</text>
    </g>
    <g id="text_558">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="334.44" y="646.833906" transform="rotate(-0 334.44 646.833906)">(anti-mouse IL-23p19 mAb)</text>
@@ -3895,10 +3887,10 @@ L 514.08 674.64
     <text style="font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="24.48" y="666.769297" transform="rotate(-0 24.48 666.769297)">MS4A1-directed depleters (4)</text>
    </g>
    <g id="text_566">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="661.475215" transform="rotate(-0 138.6 661.475215)">2009</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="138.6" y="661.475215" transform="rotate(-0 138.6 661.475215)">2007</text>
    </g>
    <g id="text_567">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.714844" y="661.201875" transform="rotate(-0 153.714844 661.201875)">Cynomolgus monkey B-cell</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="153.744063" y="661.201875" transform="rotate(-0 153.744063 661.201875)">Cynomolgus monkey B-cell</text>
    </g>
    <g id="text_568">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="138.6" y="666.241875" transform="rotate(-0 138.6 666.241875)">depletion PK/PD and toxicology</text>
@@ -3931,10 +3923,10 @@ L 514.08 674.64
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="334.44" y="671.281875" transform="rotate(-0 334.44 671.281875)">Higher dose gave no added benefit</text>
    </g>
    <g id="text_578">
-    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="661.475215" transform="rotate(-0 432.36 661.475215)">2009</text>
+    <text style="font-weight: 700; font-size: 5.5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #1a1a1a" x="432.36" y="661.475215" transform="rotate(-0 432.36 661.475215)">2007</text>
    </g>
    <g id="text_579">
-    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="447.474844" y="661.201875" transform="rotate(-0 447.474844 661.201875)">Cynomolgus monkey B-cell</text>
+    <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="447.504063" y="661.201875" transform="rotate(-0 447.504063 661.201875)">Cynomolgus monkey B-cell</text>
    </g>
    <g id="text_580">
     <text style="font-size: 5px; font-family: 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #6b7372" x="432.36" y="666.241875" transform="rotate(-0 432.36 666.241875)">depletion PK/PD and toxicology</text>

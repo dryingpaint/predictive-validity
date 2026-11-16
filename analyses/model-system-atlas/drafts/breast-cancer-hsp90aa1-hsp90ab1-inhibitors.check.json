@@ -18,17 +18,13 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2012,
-   "rule": "DRAFTER_BRIEF retrodiction: an engagement model first public after a patient result on the same target, member or not, is a retrodiction; reproduced is retro, never same",
-   "note": "Jhaveri 2012 (PMID 22781552, epub 2012-07-10) quote verbatim in abstract. Alvespimycin iv with trastuzumab, HER2-selected correct. HSP70 rose in tanespimycin-dosed patients (Banerji 2005; Modi 2007) before the 2008 xenograft: retro, retrodiction true.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: engagement is a target claim; tanespimycin patients showed HSP70 induction (Banerji 2005) before the 2008 xenograft readout, so reproducing it in alvespimycin patients is retro, never same; retrodiction should be true."
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF rule 6 (paired year is the later side) and retrodiction rule (engagement model first public after a patient result on the same target is retro)",
+   "note": "Miller ASCO 2007 abstract 1115 (Crossref 2007-06-20, OpenAlex text): dose-dependent Hsp70 rise in PBLs, maintained at 80-100 mg/m2. Jensen 2008 (bcr1996) epub 2008-04-22 is the later side: year 2008, retro, retrodiction true.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -57,11 +53,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "DRAFTER_BRIEF efficacy: combination with another active drug scored on the primary endpoint with combination_with; single-arm scored against the predicted direction",
-   "note": "Modi 2013 (PMID 23580070, epub 2013-04-12; NCT00817362 no posted results) quote verbatim. Retaspimycin iv with trastuzumab, HER2-selected, single-arm Simon design in note; 0/26 responses, contra on primary endpoint.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 dating; efficacy: single-arm combination scored on its primary endpoint with combination_with",
+   "note": "ASCO 2011 abstract 590 (2011-05-20): Simon two-stage on ORR, 1 PR in 20 evaluable, 'did not meet the prespecified efficacy criteria for trial expansion'. Leow 2009 (epub 2009-08-14) earlier, a prospective retaspimycin prediction: 2011, contra.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -193,12 +189,12 @@
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "untested",
-   "proposed_year": 2012,
-   "rule": "DRAFTER_BRIEF dose table row 1 and decision 16: no stated exposure target or tolerability margin above an effective exposure is untested; an MTD is not a target",
-   "note": "Jhaveri 2012 RP2D quote verbatim. Glaze states daily-x5 species MTDs and a start dose, no effective exposure or margin; weekly human MTD 80 mg/m2 hits no model target. Entry's own untested_reason no_prediction contradicts same.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Dose table row 1, decision 16: an MTD is not a target and a margin is a tolerated dose at or above a stated effective exposure; Glaze stated none. Untested, untested_reason no_prediction (already on the entry)."
+   "proposed_year": 2007,
+   "rule": "DRAFTER_BRIEF dose table row 1 and decision 16: no stated exposure target, and no tolerated dose at or above an effective one, is untested",
+   "note": "Year 2007 confirmed: ASCO 2007 abstract 1115 (2007-06-20) reports 60/80/100 mg/m2 cohorts, DLT only at 100, RP2D pending; Glaze 2005 (epub 2005-06-29) earlier, no earlier alvespimycin patient result found. Status still contested: Glaze states MTDs and start dose, no effective exposure.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decision 16 lists an MTD as a stated tolerability margin; the dose question's two halves are independent. Glaze's rat/dog MTDs held: dog-limiting harms never limited escalation to 80 mg/m2. Row 1 untested needs neither target nor margin."
   },
   {
    "cell": "efficacy",
@@ -229,9 +225,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "DRAFTER_BRIEF safety: predicted harm absent is contra (opposite); silence contradicted on a harm the species could show",
-   "note": "Jhaveri 2012 DLT quote verbatim. Alvespimycin iv with trastuzumab, 25/28 HER2+ breast, biomarker_selected. Keratitis unpredicted and predicted renal/gallbladder harms absent: contra holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 dating; safety: predicted harm absent is contra, silence contradicted on a harm the species could show",
+   "note": "ASCO 2007 abstract 1115 (2007-06-20): falling-LVEF DLT at 100 mg/m2, dry eye 25%, diarrhoea 60%, no renal or gallbladder harm, so contra was public in 2007. Glaze 2005 earlier and prospective. Keratitis DLT appears only in Jhaveri 2012.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

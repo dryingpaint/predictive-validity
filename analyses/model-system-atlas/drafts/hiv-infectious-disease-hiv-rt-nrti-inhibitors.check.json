@@ -22,27 +22,22 @@
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "retro",
-   "proposed_year": 2013,
-   "rule": "retrodiction (DRAFTER_BRIEF 'What the model is'; CHECKER_BRIEF 3): for engagement and efficacy a model result first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced is retro, never same; failed is contra",
-   "note": "Cotte 2013 (PMID 23771104) quote verbatim; censavudine, oral, unselected correct. Panel (2004) post-dates zidovudine/lamivudine patient viral-load results on HIV RT, same action: retrodiction true, reproduced the drop, so retro.",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_year": 2010,
+   "rule": "retrodiction (DRAFTER_BRIEF 'What the model is'; CHECKER_BRIEF 3): for engagement and efficacy a model result first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced is retro, never same; rule 6 dating",
+   "note": "Year 2010 confirmed: i-base HTB 15247 reports the 10-day 100-600 mg festinavir monotherapy as a 50th ICAAC poster, Sept 2010; Dutschman 2004 earlier. Status same stays wrong: panel post-dates zidovudine RT patient results, so retro.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule ('What the model is'): engagement is a target claim; the 2004 panel post-dates zidovudine/lamivudine patient viral-load results on RT, and it reproduced them, so retro with retrodiction true."
+   "adjudication_note": "Retrodiction rule: engagement is a target claim; Dutschman 2004 post-dates zidovudine/lamivudine RT patient results, so the 2010 pairing is a retrodiction that reproduced them: retro, never same; year 2010 (rule 6)."
   },
   {
    "cell": "dose",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2004,
-   "rule": "rule 6: each cell opens at model_first_use_year with status untested",
-   "note": "Wang 2009 (PMID 19470503) abstract quote verbatim; censavudine, oral correct. model_first_use_year now 2004 but the cell opens 2009; rule 6 opens the cell at model_first_use_year, so year 2004 (status untested unchanged).",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: the cell opens at model_first_use_year (2004) with status untested, so the opener's year is 2004, not 2009; status unchanged."
+   "note": "Year 2004 confirmed: Dutschman 2004 (AAC 48:1640, May 2004 per Crossref) is censavudine's (4'-Ed4T) first use on the panel; rule 6 opens the track there; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -52,12 +47,12 @@
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "untested",
-   "proposed_year": 2013,
-   "rule": "dose (DRAFTER_BRIEF; CHECKER_BRIEF 3): same only on a target the model system stated; no stated target is untested",
-   "note": "Cotte 2013 AUC quote verbatim; censavudine, oral. Wang 2009 abstract (full text not retrievable) states triphosphate persistence but no exposure, occupancy or regimen target; plateau activity is efficacy's. untested, untested_reason no_prediction.",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_year": 2010,
+   "rule": "dose (DRAFTER_BRIEF; CHECKER_BRIEF 3): same only on a target the model system stated; rule 6 dating",
+   "note": "Year 2010 confirmed (ICAAC Sept 2010, i-base HTB 15247); Wang 2009 (AAC, Aug 2009 issue) precedes, no retrodiction. Wang states triphosphate persistence, no exposure or regimen target: untested (no_prediction), not same.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "untested",
-   "adjudication_note": "Dose rule: same needs a stated exposure/occupancy/regimen target; Wang 2009 abstract states triphosphate persistence only, no target; plateau activity is efficacy's. Untested, untested_reason no_prediction (rule 5)."
+   "adjudication_note": "Dose rule: same needs a target the model stated; Wang 2009 abstract states triphosphate persistence only, no exposure, occupancy or regimen target: untested, untested_reason no_prediction (already on the draft entry)."
   },
   {
    "cell": "dose",
@@ -92,12 +87,12 @@
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "retro",
-   "proposed_year": 2013,
-   "rule": "retrodiction (DRAFTER_BRIEF 'What the model is'; CHECKER_BRIEF 3): for engagement and efficacy a model result first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced is retro, never same; failed is contra",
-   "note": "Cotte 2013 conclusion verbatim; censavudine, oral, unselected, primary correct. Panel (2004) post-dates earlier NRTI patient HIV-RNA results on RT: target-level retrodiction, reproduced, so retro with retrodiction true.",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_year": 2010,
+   "rule": "retrodiction (DRAFTER_BRIEF 'What the model is'; CHECKER_BRIEF 3): for engagement and efficacy a model result first public after a patient result for the same target and action, member or not, is a retrodiction; reproduced is retro, never same; rule 6 dating",
+   "note": "Year 2010 confirmed: same ICAAC Sept 2010 monotherapy poster (i-base HTB 15247); model side Dutschman 2004 (May 2004). Target-level retrodiction that reproduced the HIV-RNA drop, so retro, not same.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: efficacy is a target claim; panel (2004) post-dates earlier NRTI patient HIV-RNA results on RT and reproduced them, so retro with retrodiction true, not same."
+   "adjudication_note": "Retrodiction rule: efficacy is a target claim; model side post-dates earlier NRTI patient results on HIV RT, and the 2010 monotherapy reproduced them: retro, not same; year 2010 (rule 6)."
   },
   {
    "cell": "efficacy",
@@ -142,17 +137,12 @@
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2014,
-   "rule": "rule 6 dating: earliest public date, congress abstract included",
-   "note": "Gupta 2016 quote verbatim; censavudine, oral, unselected; same/partial stands (2004 prediction prospective for this drug). TAG 2015 pipeline report: bone and peripheral-fat differences reported at ICAAC 2014, so rule 6 moves year to 2014 (secondary report).",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6 dating: earliest public date including congress abstract; bone and fat differences were presented at ICAAC 2014, so year 2014; same/partial stands (prediction prospective for this drug)."
+   "note": "Year 2014 confirmed: TAG 2015 Pipeline Report cites McComsey ICAAC H-1644 (5-9 Sep 2014) for bone and peripheral-fat differences; model AAC.01206-13 public 2013. Prospective for this drug; same/partial stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -196,8 +186,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Cihlar 2008 abstract quote verbatim (epub 2007); untested opener for the rovafovir track, oral, unselected correct. Lint reads tracks in year order regardless of list position (0 findings), so placement after the 2021 contra is fine.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "note": "Year 2006 confirmed: i-base HTB 31268 says GS-9148 in vitro resistance studies were presented at CROI 2006 (Cihlar 45LB), before the 2007 epub; untested opener unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

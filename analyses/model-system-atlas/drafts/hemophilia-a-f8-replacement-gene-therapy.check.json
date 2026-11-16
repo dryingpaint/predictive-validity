@@ -11,8 +11,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "PMID 12893764, epub 2003-07-31; quote verbatim in the abstract. Sibling AAV2 vector; untested opening entry is right."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date; track opens at its own drug's first use; pair dated by the later side)",
+   "note": "Year 2014 confirmed: BioMarin 8-K ex99.1 (SEC, filed 2014-02-27) says 'In January 2014, the Company announced that it had selected ... BMN 270 ... and has initiated IND-enabling studies'; no BMN 270 mention in SEC filings in 2013. Release's mouse wording not re-seen (biomarin.com behind Cloudflare). Untested stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -43,8 +44,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Same Scallan abstract, quote verbatim; opening untested entry for the gene-therapy strip."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date; track opens at its own drug's first use; pair dated by the later side)",
+   "note": "Year 2014 confirmed: BioMarin 8-K ex99.1 (SEC, filed 2014-02-27) says 'In January 2014, the Company announced that it had selected ... BMN 270 ... and has initiated IND-enabling studies'; no BMN 270 mention in SEC filings in 2013. Release's mouse wording not re-seen (biomarin.com behind Cloudflare). Untested stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -64,8 +66,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "PMID 32078672; quote verbatim in the abstract (PMC7180082 full text returned HTTP 500). Opening protein entry."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date; track opens at its own drug's first use; pair dated by the later side)",
+   "note": "Year 2015 confirmed: Crossref 10.1182/blood.v126.23.3492.3492, Drager (Biogen), 'Recombinant FVIIIFc-VWF-XTEN ... Subcutaneous Administration in Hemophilia A Mice', Blood 2015-12-03; no earlier FVIIIFc-VWF-XTEN mouse record found. Untested stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -89,8 +92,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim in the abstract; opening mouse-track entry."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date; track opens at its own drug's first use; pair dated by the later side)",
+   "note": "Year 2014 confirmed: BioMarin 8-K ex99.1 (SEC, filed 2014-02-27) says 'In January 2014, the Company announced that it had selected ... BMN 270 ... and has initiated IND-enabling studies'; no BMN 270 mention in SEC filings in 2013. Release's mouse wording not re-seen (biomarin.com behind Cloudflare). Untested stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -133,9 +137,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "retrodiction (engagement/efficacy: same target and action, any drug)",
-   "note": "Ozelo abstract quote; Bunting online 2017-12-14 after Rangarajan NEJM 2017-12-09 and decades of FVIII prophylaxis, so retro. Primary endpoint (FVIII wk 49-52) met. Valoctocogene, iv, biomarker_selected correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date; track opens at its own drug's first use; pair dated by the later side)",
+   "note": "Year 2021 confirmed: BioMarin 10-K (filed 2021-02-26): 'In January 2021, we announced topline results' of the 134-patient phase 3, ABR -84%, mITT FVIII 42.9 IU/dL. Model side online 2017-12-14 post-dates FVIII prophylaxis and phase 1/2, so retro stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -144,9 +148,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "retrodiction (engagement/efficacy: same target and action, any drug)",
-   "note": "Quote in von Drygalski abstract; NCT04161495 results 2023-05-24. Mouse hemostatic data (Blood 2020) post-date FVIII prophylaxis and BIVV001 phase 1 (2019-12-02), so retro. Efanesoctocog, iv, unselected correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date; track opens at its own drug's first use; pair dated by the later side)",
+   "note": "Year 2022 confirmed verbatim: Sanofi 6-K ex99.2 (SEC, 2022-03-15) reproduces the 'March 9, 2022' release: XTEND-1 'met the primary endpoint'. Model side Blood 2020 post-dates FVIII prophylaxis and BIVV001 phase 1, so retro stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -170,8 +174,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim in PMC5835117; SBRA confirms mouse mortality and cardiac findings only at >=6.53e13 vg/kg and monkeys at 1.58e13/5.44e13 vg/kg with APTT prolongation, no ALT."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date; track opens at its own drug's first use; pair dated by the later side)",
+   "note": "Year 2014 confirmed: BioMarin 8-K ex99.1 (SEC, filed 2014-02-27) says 'In January 2014, the Company announced that it had selected ... BMN 270 ... and has initiated IND-enabling studies'; no BMN 270 mention in SEC filings in 2013. Release's mouse wording not re-seen (biomarin.com behind Cloudflare). Untested stands. Opens at the drug's own first model use, earlier than Bunting 2017.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -191,9 +196,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "retrodiction (dose and safety: only the same drug's own earlier patient result)",
-   "note": "Quote verbatim in Roctavian SBRA; same model source as safety 2, post-dated by the drug's own ALT data, so retrodiction true and contra stands (strengthens). Drug, iv, biomarker_selected correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date; track opens at its own drug's first use; pair dated by the later side)",
+   "note": "Year 2021 confirmed: BioMarin 10-K says the phase 3 topline was announced January 2021; the release's 86% ALT wording was not re-seen (no archive copy found). Post-dates the drug's own 2017 ALT rises, so retrodiction and contra stand.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

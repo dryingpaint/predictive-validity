@@ -11,8 +11,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Kim 2016 Ann Hematol (epub 2016-10-03) quote verbatim in abstract. Untested opener 2016 on the sintilimab track; drug=sintilimab, route=iv (ORIENT-4: 200 mg IV Q3W) fit the track.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use)",
+   "note": "ClinicalTrials.gov: NCT03228836 (sintilimab, ENKTL) first posted 2017-07-25, earliest sintilimab ENKTL registration found; year 2017 confirmed; untested opener, not a retrodiction. registry_date still null in draft.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -76,8 +77,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Tislelizumab opener on enktl-biopsy-pdl1-ihc at 2016, untested; Kim 2016 quote verbatim in abstract; drug=tislelizumab, route=iv correct; model fields match index 1.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use)",
+   "note": "ClinicalTrials.gov: NCT03493451 (tislelizumab, R/R T/NK neoplasms incl. ENKTL) first posted 2018-04-10, earliest tislelizumab ENKTL registration found; year 2018 confirmed; untested opener. registry_date still null in draft.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

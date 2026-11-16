@@ -1,0 +1,30 @@
+{
+ "tile": "non-small-cell-lung-carcinoma-anti-ctla4-antibodies",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "2012 -> 2010; status same unchanged; later of model side Leach 1996 and patient side ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20), which already reported the irPFS result"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "2020 -> 2019; status same unchanged; later of model side Curran 2010 and patient side BMS topline announcement, October 2019, that CheckMate 9LA met its OS primary endpoint at interim (ASCO Post, April 2020)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "2012 -> 2010; status same unchanged; later of model side Tivol 1995 and patient side ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20), which reported grade 3-4 irAEs of 15-20%"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "2012 -> 2011; status contra unchanged; patient side first public in ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20); model side (monkey toxicology, model_src FDA PharmR) first public with the FDA review, 2011, so the pairing dates to 2011"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "2012 -> 2011; status retro unchanged; patient side first public in ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20); model side (colitis models, model_src FDA PharmR) first public with the FDA review, 2011, so the pairing dates to 2011"
+  }
+ ]
+}

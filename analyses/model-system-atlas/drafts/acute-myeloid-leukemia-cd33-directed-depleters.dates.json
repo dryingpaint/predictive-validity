@@ -1,0 +1,10 @@
+{
+  "tile": "acute-myeloid-leukemia-cd33-directed-depleters",
+  "changed": [
+    {
+      "cell": "dose",
+      "index": 2,
+      "what": "2017 -> 2015 (status same unchanged, retrodiction stays false): patient side first public in Stein et al., ASH 2015 abstract 324 (40 mcg/kg recommended dose, 33% CR+CRi), https://ash.confex.com/ash/2015/webprogramscheduler/Paper83162.html; model side Kung Sutherland 2013"
+    }
+  ]
+}

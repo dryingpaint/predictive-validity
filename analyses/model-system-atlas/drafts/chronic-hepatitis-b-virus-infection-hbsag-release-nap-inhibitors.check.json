@@ -102,17 +102,13 @@
   {
    "cell": "dose",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2013,
-   "rule": "6 (each cell opens at model_first_use_year)",
-   "note": "Noordeen 2015 quote verbatim (PMC4641618); untested, no_prediction right. Year 2015 is off model_first_use_year 2013 (duck in use for REP 2055 in 2013): open at 2013. Drug REP 2055, route iv fit.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Status agreed: untested, no_prediction (rule 5). Rule 6: each cell opens at model_first_use_year, so the opener year is 2013, not 2015."
+   "rule": "6 (track opens at its own drug's first use in the model; cell opens at model_first_use_year)",
+   "note": "Noordeen 2013 (AAC, doi resolves; online 12-13 Aug 2013, print Nov 2013) abstract: REP 2055 dosed in DHBV ducks, prophylactic down to 1 mg/kg/day. REP 2055 duck track opens 2013, untested. Draft judgement prose still says 2015 (stale).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -311,17 +307,13 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2017,
-   "rule": "6 (earliest public date: congress abstract)",
-   "note": "Bazinet 2020 quote verbatim; combination and poc_gate set; retro holds. Off-treatment control per arm was public at AASLD 2017 LB-24 (2017-10-21: 'persisting after therapy ... 8/10 with REP 2139'), after Roehl (May 2017): year 2017.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Status agreed: retro. Rule 6 (earliest public date, congress abstract): off-treatment REP 2139 arm result public at AASLD 2017 LB-24 (Oct 2017), so year 2017, not 2020."
+   "rule": "6 (paired comparison dated at the later side; congress abstract counts); retrodiction rule for efficacy",
+   "note": "Replicor release dated 23 Oct 2017 and LB-24 poster (AASLD 20-24 Oct 2017): off-therapy functional control 8/10 REP 2139. Roehl 2017 online 4 May 2017. Later side Oct 2017: year 2017; retro unchanged (after 2016 REP 2055 patient results).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -337,17 +329,13 @@
   {
    "cell": "efficacy",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2017,
-   "rule": "6 (earliest public date: congress abstract)",
-   "note": "Bazinet 2020 conclusion verbatim; arms did not differ, as ducks predicted; retro holds. REP 2165 off-treatment control first public AASLD 2017 LB-24 (2017-10-21, 5/10 REP 2165): year 2017, not 2020.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Status agreed: retro. Rule 6 (earliest public date, congress abstract): REP 2165 off-treatment result public at AASLD 2017 LB-24 (Oct 2017), so year 2017, not 2020."
+   "rule": "6 (paired comparison dated at the later side; congress abstract counts); retrodiction rule for efficacy",
+   "note": "LB-24 poster PDF (AASLD Oct 2017) states off-therapy control persisting in 5/10 REP 2165 vs 8/10 REP 2139; press release names only REP 2139. Later than Roehl (May 2017): year 2017; retro unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

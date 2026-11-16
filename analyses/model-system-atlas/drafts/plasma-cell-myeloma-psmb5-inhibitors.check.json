@@ -22,9 +22,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Kupperman 2010 (PMID 20160034, epub 2010-02-16) quote verbatim. Route iv matches the IV phase 1 this track compares; opener holds."
+   "rule": "evidence rule 6 (year = earliest public date; track opens at its own drug's first use in the model)",
+   "note": "Chauhan 2011 Clin Cancer Res (doi 10.1158/1078-0432.CCR-11-0476) epub 2011-06-30: human MM xenograft, ixazomib's first use of the system. ASH 2010 abstract 2992 was in vitro only. Year 2011; untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -59,9 +59,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Kupperman 2010 quote verbatim; ixazomib, oral matches TOURMALINE-MM1; opener holds."
+   "rule": "evidence rule 6 (year = earliest public date; track opens at its own drug's first use in the model)",
+   "note": "Chauhan 2011 Clin Cancer Res (doi 10.1158/1078-0432.CCR-11-0476) epub 2011-06-30: human MM xenograft, ixazomib's first use of the system. ASH 2010 abstract 2992 was in vitro only. Year 2011; untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -95,9 +95,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Kupperman 2010 quote verbatim; ixazomib, oral opener holds."
+   "rule": "evidence rule 6 (year = earliest public date; track opens at its own drug's first use in the model)",
+   "note": "Chauhan 2011 Clin Cancer Res (doi 10.1158/1078-0432.CCR-11-0476) epub 2011-06-30: human MM xenograft, ixazomib's first use of the system. ASH 2010 abstract 2992 was in vitro only. Year 2011; untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -179,17 +179,13 @@
   {
    "cell": "safety",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "evidence rule 6 (year = earliest public date, congress abstract included)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Ghobrial 2019 quote verbatim; contra holds. MM-only result public earlier: Vij ASH 2014 (doi 10.1182/blood.V124.21.34.34, 2014-12-06): commonest grade 3 AEs diarrhoea, nausea, vomiting; two upper-GI-bleed deaths. Ghobrial ASH 2013 pooled MM/WM. Year to 2014.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6: contra unchanged (dog/rodent tolerability vs dose-limiting GI toxicity in myeloma patients); earliest myeloma-only public result is Vij ASH 2014, so year 2014 as checker proposed."
+   "rule": "evidence rule 6 (year = earliest public date; track opens at its own drug's first use in the model)",
+   "note": "Vij ASH 2014 abstract 34 (2014-12-06), MM subset: commonest grade 3 AEs diarrhoea, nausea, vomiting; two upper-GI-bleed deaths. Ghobrial ASH 2013 abstract 3184 had grade 3-4 diarrhoea 9/42 but pooled MM/WM, no deaths. Year 2014; contra, retrodiction false hold.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -220,9 +216,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "decision 4 (primary endpoint governs; secondary only as poc_gate)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Kumar 2014 (PMID 24904120): abstract confirms primary safety/MTD, response secondary; untested, not_measured right; ixazomib oral. Quote not in abstract; PMC body not retrievable this pass. Note/judgement still argue 'same': stale prose."
+   "rule": "evidence rule 6 (year = earliest public date; track opens at its own drug's first use in the model)",
+   "note": "Chauhan ASH 2010 abstract 2992 (doi 10.1182/blood.V116.21.2992.2992, 2010-11-19): MLN2238 on purified tumour cells from MM patients relapsing after lenalidomide or bortezomib; ixazomib's first ex-vivo use. Year 2010; untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -347,11 +343,11 @@
    "status_supported": true,
    "proposed_status": "retro",
    "proposed_year": 2014,
-   "rule": "evidence rule 6 (year = earliest public date, congress abstract included)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Ghobrial 2019 (PMID 31142508, epub 2019-05-29) quote verbatim; phase II primary ORR, single-arm, retro holds. Earlier: Vij ASH 2014 (doi 10.1182/blood.V124.21.34.34, 2014-12-06), MM phase 2 ORR 27.3%/33.3%, primary objective ORR. Year to 2014.",
+   "rule": "evidence rule 6 (year = earliest public date; track opens at its own drug's first use in the model); single-arm efficacy rule (primary endpoint)",
+   "note": "Vij ASH 2014 abstract 34 (doi 10.1182/blood.V124.21.34.34, 2014-12-06) already gave phase 2 primary-endpoint ORR, 5/14 240 mg/d MM: 27.3% CFZ-refractory, 33.3% CFZ-sensitive. Ghobrial ASH 2016 is later. Year 2014; retro holds.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6 and single-arm rule: retro unchanged (post-dates bortezomib 2003 responses); same phase 2 ORR primary first public at Vij ASH 2014, so year 2014 as checker proposed."
+   "adjudication_note": "Rule 6: retro unchanged (post-dates bortezomib 2003 myeloma responses); same phase 1b/2 phase-2 ORR first public in Vij ASH 2014 abstract 34 (2014-12-06), model side Chauhan 2010, so year 2014 as checker proposed."
   }
  ],
  "missing": [

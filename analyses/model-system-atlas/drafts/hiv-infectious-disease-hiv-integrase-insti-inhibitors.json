@@ -18,11 +18,12 @@
  "cells": {
   "engagement": [
    {
-    "year": 2010,
+    "year": 2009,
     "status": "untested",
+    "untested_reason": "no_prediction",
     "model": "HIV-1 replication in cell culture (MT-4/PBMC)",
     "model_id": "hiv-cell-culture-replication",
-    "note": "Dolutegravir blocked HIV replication in cell assays at low-nanomolar potency; this assay was the class's engagement readout.",
+    "note": "Dolutegravir blocked HIV replication in cell assays at low-nanomolar potency; this assay was the class's engagement readout. Opens 2009: dolutegravir's cell-culture data were first public at IAS 2009 Cape Town (Sato WEPEA097).",
     "short": "Low-nM block of HIV in cells",
     "src": "https://doi.org/10.1128/AAC.01209-10",
     "srcLabel": "Kobayashi 2011",
@@ -56,11 +57,11 @@
     "combination_with": null
    },
    {
-    "year": 2011,
+    "year": 2009,
     "status": "same",
     "model": "HIV-1 replication in cell culture (MT-4/PBMC)",
     "model_id": "hiv-cell-culture-replication",
-    "note": "Ten days of dolutegravir monotherapy cut plasma HIV-1 RNA 1.5-2.5 log10 with a clear dose-response, as the cell assay predicted.",
+    "note": "Ten days of dolutegravir monotherapy cut plasma HIV-1 RNA 1.5-2.5 log10 with a clear dose-response, as the cell assay predicted. Dated 2009: both sides public at IAS 2009 Cape Town (cell data, Sato WEPEA097; 10-day monotherapy, Lalezari TUAB105).",
     "short": "Viral load fell up to 2.5 log10",
     "src": "https://doi.org/10.1097/QAD.0b013e32834a1dd9",
     "srcLabel": "Min 2011",
@@ -178,11 +179,11 @@
   ],
   "efficacy": [
    {
-    "year": 2010,
+    "year": 2009,
     "status": "untested",
     "model": "HIV-1 replication in cell culture (MT-4/PBMC)",
     "model_id": "hiv-cell-culture-replication",
-    "note": "Cell-culture replication assays, with resistance passage, were the efficacy model; no animal infection model was on the treatment path.",
+    "note": "Cell-culture replication assays, with resistance passage, were the efficacy model; no animal infection model was on the treatment path. Opens 2009: dolutegravir's cell-culture data were first public at IAS 2009 Cape Town (Sato WEPEA097).",
     "short": "Cell replication assay is the model",
     "src": "https://doi.org/10.1128/AAC.01209-10",
     "srcLabel": "Kobayashi 2011",
@@ -217,11 +218,11 @@
     "combination_with": null
    },
    {
-    "year": 2011,
+    "year": 2010,
     "status": "same",
     "model": "HIV-1 replication in cell culture (MT-4/PBMC)",
     "model_id": "hiv-cell-culture-replication",
-    "note": "SPRING-1 primary endpoint: 93% on dolutegravir vs 60% on efavirenz below 50 copies/mL at week 16. Design: dolutegravir was given with two NRTIs, so this is a combination trial scored on its primary endpoint.",
+    "note": "SPRING-1 primary endpoint: 93% on dolutegravir vs 60% on efavirenz below 50 copies/mL at week 16. Design: dolutegravir was given with two NRTIs, so this is a combination trial scored on its primary endpoint. Dated 2010: SPRING-1 week-16 interim presented at AIDS 2010 Vienna (THLBB205, July 2010); cell data public since IAS 2009.",
     "short": "93% suppressed at week 16",
     "src": "https://doi.org/10.1016/S1473-3099(11)70290-0",
     "srcLabel": "van Lunzen 2012",
@@ -442,11 +443,11 @@
     "combination_with": null
    },
    {
-    "year": 2025,
+    "year": 2022,
     "status": "same",
     "model": "Rat and rabbit embryo-fetal development studies",
     "model_id": "rat-rabbit-efd",
-    "note": "Updated Tsepamo data: 0.10% NTDs with dolutegravir at conception vs 0.11% on other ART; the early signal fell to background. Earlier public date than Zash 2026.",
+    "note": "Updated Tsepamo data: 0.10% NTDs with dolutegravir at conception vs 0.11% on other ART; the early signal fell to background. Earlier public date than Zash 2026. Dated 2022: Tsepamo update at AIDS 2022 Montreal already showed 0.11% DTG vs 0.11% non-DTG at conception (i-base HTB 1 Sep 2022).",
     "short": "NTD signal fell to background",
     "src": "https://doi.org/10.1097/QAD.0000000000004326",
     "srcLabel": "Brummel 2025",
@@ -640,9 +641,9 @@
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "year": 2025,
+    "year": 2022,
     "status": "contra",
-    "note": "With more Tsepamo births the dolutegravir NTD rate fell to 0.10% vs 0.11% on other ART: the harm the mice reproduced is not there.",
+    "note": "With more Tsepamo births the dolutegravir NTD rate fell to 0.10% vs 0.11% on other ART: the harm the mice reproduced is not there. Dated 2022: the null Tsepamo update (0.11% vs 0.11%) was presented at AIDS 2022 Montreal (i-base HTB 1 Sep 2022).",
     "short": "Human NTD signal gone; mouse harm unconfirmed",
     "src": "https://doi.org/10.1097/QAD.0000000000004326",
     "srcLabel": "Brummel 2025",
@@ -714,7 +715,8 @@
     "drug": "dolutegravir",
     "route": "oral",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": true,
@@ -757,7 +759,7 @@
     "combination_with": null
    },
    {
-    "retrodiction": false,
+    "retrodiction": true,
     "patient_signal_reversed": false,
     "confidence_note": "abstract-level reading; Botswana folate status inferred from lack of fortification, not measured in the source",
     "trial_unreported": false,
@@ -769,9 +771,9 @@
     "model_src": "https://doi.org/10.1097/QAD.0000000000003639",
     "model_src_tier": 1,
     "source_tier": 1,
-    "year": 2025,
+    "year": 2023,
     "status": "contra",
-    "note": "With more Tsepamo births the DTG NTD rate fell to 0.10% vs 0.11% on other ART, in an unfortified, low-folate population: the harm the sensitised mice showed did not appear.",
+    "note": "With more Tsepamo births the DTG NTD rate fell to 0.10% vs 0.11% on other ART, in an unfortified, low-folate population: the harm the sensitised mice showed did not appear. Dated 2023 (mouse paper online June 2023, PMID 37382903): the null Tsepamo update (0.11% vs 0.11%) was public from AIDS 2022, before the model, so this is a retrodiction that did not reproduce it.",
     "short": "Human NTD signal gone",
     "src": "https://doi.org/10.1097/QAD.0000000000004326",
     "srcLabel": "Brummel 2025",

@@ -9,11 +9,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "DRAFTER_BRIEF rule 6 (opener)",
-   "note": "Chu 2007 (PMID 17289847, epub 2007-02-08) abstract quote verbatim; opener of GSK1292263 mouse track, oral, unselected; untested 2007 correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use, proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2008 confirmed: CT.gov API shows NCT00783549 (GSK1292263 first-in-human, start 2008-09-04) first posted 2008-10-31, earliest of five GSK1292263 records; sponsor rodent data unpublished. Untested unchanged; follows track order."
   },
   {
    "cell": "engagement",
@@ -31,22 +31,22 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "DRAFTER_BRIEF dose table row 1; rule 5 (untested_reason)",
-   "note": "Chu 2007 abstract quote verbatim; no model stated an exposure, occupancy or regimen target or margin for a member: untested, untested_reason no_prediction. GSK1292263, oral.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use, proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2008 confirmed: CT.gov API shows NCT00783549 (GSK1292263 first-in-human, start 2008-09-04) first posted 2008-10-31, earliest of five GSK1292263 records; sponsor rodent data unpublished. Untested unchanged; follows track order."
   },
   {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "DRAFTER_BRIEF rule 6 (opener)",
-   "note": "Chu 2007 quote verbatim; GSK1292263 mouse-track opener, oral, unselected; untested 2007.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use, proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2008 confirmed: CT.gov API shows NCT00783549 (GSK1292263 first-in-human, start 2008-09-04) first posted 2008-10-31, earliest of five GSK1292263 records; sponsor rodent data unpublished. Untested unchanged; follows track order."
   },
   {
    "cell": "efficacy",
@@ -75,11 +75,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "DRAFTER_BRIEF rule 6 (opener); safety",
-   "note": "Chu 2007 abstract quote verbatim; glucose-dependence is the stated safety prediction. Firuglipel opener, oral, unselected, untested 2007. GSK1292263 has no safety track on this model (missing).",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use, proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2014 confirmed: CT.gov API shows NCT02222350 (DS-8500a phase 2) first posted 2014-08-21, earliest of eight DS-8500a records; precedes firuglipel's later entries. Untested unchanged. Earlier pipeline disclosure search failed."
   },
   {
    "cell": "safety",
@@ -161,17 +161,13 @@
   {
    "cell": "efficacy",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2007,
-   "rule": "DRAFTER_BRIEF rule 6 (cell opens at model_first_use_year, untested)",
-   "note": "Chu 2007 quote verbatim; firuglipel, oral fine. A 2018 opener sorts after the track's own 2018 contra (efficacy 3) and after Inagaki 2017's same; open at model_first_use_year 2007.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: a track opens at model_first_use_year with untested. Both agree on untested; the firuglipel mouse-track opener belongs at 2007, not 2018. Not the track's latest entry (efficacy 3 contra is), so no untested_reason."
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use, proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2014 confirmed: CT.gov API shows NCT02222350 (DS-8500a phase 2) first posted 2014-08-21, earliest of eight DS-8500a records; precedes firuglipel's later entries. Untested unchanged. Earlier pipeline disclosure search failed."
   },
   {
    "cell": "efficacy",

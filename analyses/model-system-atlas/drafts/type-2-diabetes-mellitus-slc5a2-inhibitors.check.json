@@ -11,9 +11,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "untested opener; drug = member the track's patients took",
-   "note": "Rossetti 1987 quote verbatim in PubMed abstract. Phlorizin proxy opener, product_in_model false; canagliflozin, oral, unselected match the track's later patients.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "rule 6: year = earliest date the comparison was public; paired = later side; track opens at its own drug's first use",
+   "note": "Nomura 2010 (PMID 20690635, J Med Chem 53:6355, print 2010-09-09, ASAP 2010-08): canagliflozin anti-hyperglycaemic in HF-KK mice, its first rodent use. Opener year 2010 confirmed; untested, phlorizin proxy quote unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -33,9 +33,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "untested opener",
-   "note": "Rossetti 1987 quote verbatim (abstract). Canagliflozin oral track opener, phlorizin proxy; nothing scores.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "rule 6: year = earliest date the comparison was public; paired = later side; track opens at its own drug's first use",
+   "note": "Nomura 2010 (PMID 20690635, online 2010-08) is canagliflozin's first rodent use; opener year 2010 confirmed. Untested unchanged; Rossetti 1987 proxy quote verbatim in abstract.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -55,9 +55,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "untested opener",
-   "note": "Rossetti 1987 quote verbatim (abstract). Canagliflozin oral track opener with phlorizin proxy; fields match.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "rule 6: year = earliest date the comparison was public; paired = later side; track opens at its own drug's first use",
+   "note": "Nomura 2010 (PMID 20690635, online 2010-08): canagliflozin lowered glycaemia in HF-KK mice, first use on this system. Opener year 2010 confirmed; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -73,17 +73,13 @@
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2012,
-   "rule": "rule 6: year = earliest date the comparison was public",
-   "note": "Retro right (Liang 2012-02-15 after List 2008-12-29). Stenlof quote verbatim (abstract). Canagliflozin's HbA1c primary endpoint first public in Rosenstock 2012 (Diabetes Care, PMID 22492586, epub 2012-04-09): -0.70 to -0.95% vs -0.22%: year 2013 -> 2012.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6: year is earliest public comparison. Status retro unchanged; Rosenstock 2012 (Diabetes Care, epub 2012-04-09) HbA1c primary endpoint follows Liang 2012-02-15, so year 2013 -> 2012 as the checker proposes."
+   "rule": "rule 6: year = earliest date the comparison was public; paired = later side; track opens at its own drug's first use",
+   "note": "Liang 2012 (PMID 22355316) epub 2012-02-15; canagliflozin HbA1c public ADA June 2010 (Rosenstock 2012 footnote) and epub 2012-04-09. Later side 2012: year confirmed. Retro holds (List 2009 epub 2008-12-29).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -147,17 +143,13 @@
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2013,
-   "rule": "rule 6: year = earliest date the comparison was public",
-   "note": "Bilezikian quote verbatim (abstract). But the 2013 FDA medical review already reported DXA BMD 'decreased at lumbar spine and total hip with both doses of canagliflozin': rat accretion vs human loss public 2013. Contra unchanged; year 2015 -> 2013.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6: earliest public comparison. Contra unchanged; the 2013 FDA medical review (bundle MedR) states BMD 'decreased at lumbar spine and total hip' with canagliflozin, so year 2015 -> 2013."
+   "rule": "rule 6: year = earliest date the comparison was public; paired = later side; track opens at its own drug's first use",
+   "note": "Bundle: 2013 MedR 'BMD measure by DXA decreased at lumbar spine and total hip with both doses'; 2013 PharmR rat 'trabecular bone accretion'/hyperostosis. Both sides first public 2013: year confirmed; contra unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -228,17 +220,13 @@
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2012,
-   "rule": "rule 6: year = earliest date the comparison was public",
-   "note": "Retro right (knockout 2010 after List 2008-12-29). Canagliflozin's HbA1c primary endpoint first public in Rosenstock 2012 (Diabetes Care, PMID 22492586, epub 2012-04-09), before Stenlof 2013: year 2013 -> 2012. Class, oral right.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6: earliest public comparison. Retro unchanged; Rosenstock 2012 (epub 2012-04-09) precedes Stenlof 2013, so year -> 2012 at latest; an earlier canagliflozin congress abstract, if found, would move it earlier."
+   "rule": "rule 6: year = earliest date the comparison was public; paired = later side; track opens at its own drug's first use",
+   "note": "Jurczak 2011 (PMID 21357472) Diabetes 2011-03, no earlier epub found; canagliflozin phase 2 presented ADA June 2010 (Rosenstock 2012 footnote). Year 2011 confirmed; retro holds. Judgement still says 'prospective', stale.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -254,17 +242,13 @@
   {
    "cell": "safety",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2012,
-   "rule": "rule 6: year = earliest date the comparison was public",
-   "note": "Label quote verbatim (bundle grep). Canagliflozin genital infections first public in Rosenstock 2012 (Diabetes Care, PMID 22492586, epub 2012-04-09): 'symptomatic genital infections ... (3-8%) versus ... (2%)', after Ly 2011. same/partial unchanged; year 2013 -> 2012.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: earliest public comparison. Same/partial unchanged; Rosenstock 2012 (epub 2012-04-09) reported genital infections 3-8% vs 2%, after Ly 2011, so year 2013 -> 2012."
+   "rule": "rule 6: year = earliest date the comparison was public; paired = later side; track opens at its own drug's first use",
+   "note": "Rosenstock 2012 (PMID 22492586) epub 2012-04-09: genital infections 3-8% vs 2%; Ly 2011 (PMID 21209254) 2011-01. 2012 confirmed at minimum; ADA 2010/2011 canagliflozin abstracts (unread) could move it to 2011.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -313,17 +297,13 @@
   {
    "cell": "safety",
    "index": 10,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2012,
-   "rule": "rule 6 dating; safety: a statement of no harm is a scored prediction",
-   "note": "Label quote verbatim; Zhang 2011 'without hypoglycemia or other obvious morbidity' verbatim (abstract). Contra holds. Genital infections first public in Rosenstock 2012 (Diabetes Care, PMID 22492586, epub 2012-04-09), after Zhang 2011-01: year 2013 -> 2012. Class, oral right.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6 and the no-harm-statement rule: contra unchanged; Rosenstock 2012 (epub 2012-04-09) reported excess genital infections after Zhang 2011, so year 2013 -> 2012."
+   "rule": "rule 6: year = earliest date the comparison was public; paired = later side; track opens at its own drug's first use",
+   "note": "Zhang 2011 (PMID 21215314) epub 2011-01-05; Rosenstock 2012 epub 2012-04-09 genital infections 3-8% vs 2%. Year 2012 confirmed, contra unchanged; unread ADA 2011 Nyirjesy vulvovaginal abstract could move it to 2011.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

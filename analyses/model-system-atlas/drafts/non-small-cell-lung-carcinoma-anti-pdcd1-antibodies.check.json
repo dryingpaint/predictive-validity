@@ -154,9 +154,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "761174 line 1460 verbatim; opener untested holds, drug dostarlimab. Retrodiction should be true (monkey data public after Oaknin 2020 irAEs). Cohort E NSCLC sat in the 2021 irAE pool (line 811), so untested_reason unsettled, not not_measured."
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "761174 review (bundle): 4-week monkey toxicity 'reviewed previously in IND 126472'; Table 3 dates IND submission December 2015. Year 2015, untested holds. Quote is from the later 13-week study, same review."
   },
   {
    "cell": "safety",
@@ -264,17 +264,13 @@
   {
    "cell": "safety",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2022,
-   "rule": "Retrodiction (safety: same drug's own earlier patient result); rule 6 earliest date",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "PERLA irAE sentence verbatim (PMC10640551). Monkey data first public 2021, after dostarlimab's own patient irAEs (Oaknin 2020): retro, not same. Earliest NSCLC comparison is GARNET Cohort E, irTRAEs 28.4% (PMID 35729005, epub 2022-05-23): year 2022.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Safety retrodiction rule: dostarlimab monkey toxicology first public 2021, after its own patient irAEs (Oaknin 2020); partial reproduction of immune-type harm: retro. Rule 6: GARNET Cohort E (2022) may set year."
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF rule 6: paired year is the later side; retrodiction = model built or run after the patient result",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "PERLA irAEs 26% vs 34% first public 2022-12-07 (ESMO-IO 2022; OncLive, GSK release); monkey side public 2021 review. Year 2022. Monkey study ran by Dec 2015, before any dostarlimab patients: not a retrodiction; same holds."
   }
  ],
  "missing": [

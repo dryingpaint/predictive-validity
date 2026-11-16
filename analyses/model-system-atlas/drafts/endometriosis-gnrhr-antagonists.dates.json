@@ -1,0 +1,25 @@
+{
+ "tile": "endometriosis-gnrhr-antagonists",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2020 -> 2017; patient side first public as the ECE 2017 abstract (Osuga, doi 10.1530/endoabs.49.GP134), before the 2020 epub; model side 2013. Retrodiction unchanged (cetrorelix 2002)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "2021 -> 2019; model side first public in the PMDA Relumina review report (Jan 2019 approval; pmda.go.jp/files/000236064.pdf), patient BMD side ECE 2017 abstract (doi 10.1530/endoabs.49.GP134); later of the two is 2019. Still a retrodiction, status contra unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "2021 -> 2019; model side first public in the PMDA Relumina review report (Jan 2019 approval; pmda.go.jp/files/000236064.pdf), patient BMD side ECE 2017 abstract (doi 10.1530/endoabs.49.GP134); later of the two is 2019. Still a retrodiction, status contra unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "2020 -> 2018; patient side first public in the ObsEva press release of 28 Sep 2018 (EDELWEISS week-24 BMD), before the 2020 Donnez epub; model side Kim 2015. Retrodiction unchanged (false)."
+  }
+ ]
+}

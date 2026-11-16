@@ -18,13 +18,13 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (opening entry); track = model x drug x route",
-   "note": "Underwood 2000 abstract re-read: quote verbatim; sibling SB 239063 given orally. Opener of the PH-797804 oral track at 2000 is right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "checked_by": "CHECKER_BRIEF / dates",
+   "verdict": "confirmed",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use, not the system's first use for another drug",
+   "note": "CT.gov: NCT00383188 first posted 2006-10-02, earliest of all PH-797804 registrations; LPS model public 2000, so the later date, 2006, opens the track. Untested unchanged; Underwood 2000 quote verbatim."
   },
   {
    "cell": "engagement",
@@ -51,13 +51,13 @@
   {
    "cell": "engagement",
    "index": 5,
-   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "untested = model existed, no admissible comparison; track = model x drug x route",
-   "note": "Smith 2006 abstract quote verbatim. AZD7624 inhaled is the member later run here; Patel 2018 full text has no sputum readout in dosed COPD patients, so untested holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "checked_by": "CHECKER_BRIEF / dates",
+   "verdict": "confirmed",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use, not the system's first use for another drug",
+   "note": "2018 holds, but PMID 29549158/doi 10.1124/jpet.117.246132 (epub 2018-03-16) is Pehrson 2018 JPET (AZD7624 in alveolar macrophages in vitro), not Higham; Higham is IJCOPD, epub 2018-04-19. Fix citation."
   },
   {
    "cell": "dose",
@@ -106,13 +106,13 @@
   {
    "cell": "efficacy",
    "index": 1,
-   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (opening entry)",
-   "note": "Underwood 2000 abstract quote verbatim; opener of the PH-797804 oral track.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "checked_by": "CHECKER_BRIEF / dates",
+   "verdict": "confirmed",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use, not the system's first use for another drug",
+   "note": "NCT00383188 (2006-10-02) is PH-797804's earliest registration; Underwood 2000 model public 2000, so 2006 holds. Untested unchanged; quote verbatim in abstract."
   },
   {
    "cell": "efficacy",
@@ -271,13 +271,17 @@
   {
    "cell": "efficacy",
    "index": 10,
-   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (opening entry); sibling drug allowed",
-   "note": "Medicherla 2008 abstract (epub 2007-12-04) quote verbatim (PubMed renders p38alpha). Opener of the PH-797804 oral track.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "checked_by": "CHECKER_BRIEF / dates",
+   "verdict": "corrected",
+   "proposed_status": "untested",
+   "proposed_year": 2007,
+   "rule": "DRAFTER_BRIEF rule 6: cell opens at model_first_use_year; a track cannot open before its system exists",
+   "note": "PH-797804 proxy 2006-10-02 (NCT00383188) predates the smoke model's first p38 use (Medicherla epub 2007-12-04, PMID 18056868). Opener is the later: 2007. Untested unchanged.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "DRAFTER_BRIEF rule 6: an opener is untested at model_first_use_year (proxy allowed); both sides agree on untested, only the year differs, and the track opens no earlier than the smoke model's 2007 first use. Not the track's latest entry."
   },
   {
    "cell": "efficacy",
@@ -326,13 +330,13 @@
   {
    "cell": "efficacy",
    "index": 15,
-   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (opening entry); track = model x drug x route",
-   "note": "Medicherla 2008 abstract quote verbatim; opener of the azd-7624 inhaled track at 2007, product_in_model false.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "checked_by": "CHECKER_BRIEF / dates",
+   "verdict": "confirmed",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use, not the system's first use for another drug",
+   "note": "NCT01754844 (AZD7624 first-in-man) first posted 2012-12-21, earliest AZD7624 registration; smoke model public 2007, so 2012 holds. Untested unchanged."
   },
   {
    "cell": "efficacy",
@@ -348,13 +352,13 @@
   {
    "cell": "efficacy",
    "index": 17,
-   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (opening entry); track = model x drug x route",
-   "note": "Medicherla 2008 abstract quote verbatim; opener of the acumapimod oral track, AECOPD stage_or_line.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "checked_by": "CHECKER_BRIEF / dates",
+   "verdict": "confirmed",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use, not the system's first use for another drug",
+   "note": "NCT01332097 (BCT197, AECOPD) first posted 2011-04-08, earliest BCT197/acumapimod registration; smoke model public 2007, so 2011 holds. Untested unchanged."
   },
   {
    "cell": "efficacy",

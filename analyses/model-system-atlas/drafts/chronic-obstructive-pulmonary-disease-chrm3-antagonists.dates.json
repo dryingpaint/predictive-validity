@@ -1,0 +1,30 @@
+{
+ "tile": "chronic-obstructive-pulmonary-disease-chrm3-antagonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "2016 -> 2013; revefenacin Phase 2a COPD results announced Nov 2011 (Theravance Q4 2011 release), model JPET online 2013-05"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "2016 -> 2013, status same -> retro, retrodiction false -> true; revefenacin's own Phase 2a once-daily bronchodilation public Nov 2011, before the 2013 JPET model paper"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2016 -> 2013; revefenacin Phase 2a (Nov 2011) and 7-day Phase 2b (press release 2013-09-04) public, model JPET online 2013-05"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "2012 -> 2011, retrodiction false -> true (status contra kept); NCT00939211 registry results 2011-08-05 show dose-related 15-min FEV1 fall and cough, before the BMCL model paper (online 2011-10)"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "2018 -> 2017; 52-week tiotropium-controlled safety result first public in Theravance/Mylan press release 2017-07-19"
+  }
+ ]
+}

@@ -21,62 +21,46 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2012,
-   "rule": "retrodiction: for engagement and efficacy a model first public after a patient result on the same target (member or not) is a retrodiction; a retrodiction that reproduced the human data is retro, never same",
-   "note": "Mross 2012 (epub 2012-03-15) perfusion quote verbatim; regorafenib, oral, other_disease right. Rat model public 2010-12, after sorafenib Ktrans fell in RCC patients (Hahn 2008, doi:10.1200/JCO.2007.15.5655): retro, not same.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: engagement model first public 2010, after sorafenib (same target and action) lowered Ktrans in RCC patients (Hahn 2008); it reproduced the human perfusion drop, so retro, never same."
+   "status_supported": true,
+   "rule": "retrodiction: engagement/efficacy post-date any same-target patient result; dose/safety only the same drug's own earlier patient result",
+   "note": "Crossref: regorafenib phase I ASCO abstract (doi:10.1200/jco.2007.25.18_suppl.3593) online 2007-06-20 with DCE-MRI iAUC60 endpoint (text via secondary summary; ASCO page blocked); rat model 2010-12-21. Later side 2010; retro, retrodiction true confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2010,
-   "rule": "rule 6: year is the earliest public date (registry posting, epub, congress abstract, press release, label, print)",
-   "note": "Wilhelm 2011 TGI sentence verbatim; no stated human exposure target or margin, so untested/no_prediction holds; regorafenib, oral right. Paper public in PubMed 2010-12-21: opener year 2010.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: untested/no_prediction agreed; Wilhelm 2011 public in PubMed 2010-12-21, so opener year 2010."
+   "rule": "rule 6: year is the earliest public date; a paired comparison dates to the later side",
+   "note": "PubMed PMID 21170960 history: accepted 2010-11-05, entrez 2010-12-21 (Wilhelm, regorafenib xenografts), so year 2010 confirmed; untested/no_prediction holds (no stated human exposure target). model_first_use_year and epub_year still read 2011.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2010,
-   "rule": "rule 6: year is the earliest public date (registry posting, epub, congress abstract, press release, label, print)",
-   "note": "Wilhelm 2011 786-O sentence verbatim; regorafenib, oral, unselected right. Public 2010-12-21 (PubMed entrez), so year 2010; retrodiction should be true (sorafenib/sunitinib RCC results 2007).",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: untested opener agreed; Wilhelm 2011 public 2010-12-21, so year 2010. Retrodiction true: sorafenib and sunitinib RCC efficacy (2007) preceded the xenograft data."
+   "rule": "rule 6: year is the earliest public date; a paired comparison dates to the later side",
+   "note": "PubMed PMID 21170960 history: accepted 2010-11-05, entrez 2010-12-21 (Wilhelm, regorafenib xenografts), so year 2010 confirmed; untested opener holds; 786-O shrinkage sentence matches. model_first_use_year and epub_year still read 2011.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2012,
-   "rule": "retrodiction: for engagement and efficacy a model first public after a patient result on the same target (member or not) is a retrodiction; a retrodiction that reproduced the human data is retro, never same",
-   "note": "Eisen 2012 (epub 2012-09-06) ORR 39.6% verbatim; regorafenib, oral, stage_or_line, single-arm note right. Model public 2010, after sorafenib (doi:10.1056/NEJMoa060655) and sunitinib (doi:10.1056/NEJMoa065044) RCC VEGFR results: retro.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: efficacy model first public 2010, after sorafenib and sunitinib RCC trials on the same target (2007); it reproduced response, so retro, never same."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "retrodiction: engagement/efficacy post-date any same-target patient result; dose/safety only the same drug's own earlier patient result",
+   "note": "Crossref: Eisen phase II RCC ASCO abstract (doi:10.1200/jco.2009.27.15_suppl.5033) online 2009-05-20; Pharmaletter 2009-05-31 confirms 27% PR, n=49. Model public 2010-12-21 is the later side: year 2010, retro confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -156,17 +140,13 @@
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2020,
-   "rule": "rule 6: year is the earliest public date (registry posting, epub, congress abstract, press release, label, print)",
-   "note": "Motzer 2021 quote verbatim; lenvatinib, oral, pembrolizumab, stage_or_line, retro hold. Eisai/Merck release dated 2020-11-10 (eisai.com news202073) announced CLEAR met PFS vs sunitinib, before NEJM epub 2021-02-13: year 2020.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6: retro agreed; Eisai/Merck press release 2020-11-10 (eisai.com news202073) announced CLEAR met PFS, before NEJM epub 2021-02-13, so year 2020."
+   "rule": "rule 6: year is the earliest public date; a paired comparison dates to the later side",
+   "note": "Eisai release dated 2020-11-10 (news202073) says lenvatinib plus pembrolizumab 'met the trial's primary endpoint of PFS', before NEJM epub 2021-02-13; Kato 2019 model earlier. Year 2020, retro confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -181,17 +161,13 @@
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2010,
-   "rule": "rule 6: year is the earliest public date (registry posting, epub, congress abstract, press release, label, print)",
-   "note": "Wilhelm 2011 'well-tolerated' sentence verbatim; scoring it as safety follows the brief; regorafenib, oral, unselected right. Paper public in PubMed 2010-12-21: opener year 2010.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: untested opener agreed; Wilhelm 2011 'well-tolerated' statement public in PubMed 2010-12-21, so year 2010."
+   "rule": "rule 6: year is the earliest public date; a paired comparison dates to the later side",
+   "note": "PubMed PMID 21170960 history: accepted 2010-11-05, entrez 2010-12-21 (Wilhelm, regorafenib xenografts), so year 2010 confirmed; untested/no_prediction holds now entry 4 is a retrodiction. model_first_use_year and epub_year still read 2011.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -200,8 +176,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Eisen 2012 grade 3 sentence verbatim; abstract also gives 35% drug-related SAEs, two likely drug-related deaths, 'requires close monitoring'. Harms mice could show; contra, 2012, regorafenib, oral, stage_or_line hold.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "retrodiction: engagement/efficacy post-date any same-target patient result; dose/safety only the same drug's own earlier patient result",
+   "note": "Regorafenib's own RCC toxicity public at ASCO 2009 (online 2009-05-20; HFSR most common AE per 2009 reports; 13%/8% grade figures not seen, ASCO page blocked), before 2010-12-21 model: retrodiction, contra, 2010 confirmed. confidence_note is stale.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

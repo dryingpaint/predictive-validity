@@ -61,17 +61,13 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2018,
-   "rule": "DRAFTER_BRIEF evidence rule 6 (earliest public date incl. congress abstract)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Status same, single-arm ruling, camrelizumab/iv/stage_or_line right. But the trial was first public as ESMO 2018 abstract (Ann Oncol 29 suppl 8 viii719, doi 10.1093/annonc/mdy424.029, dated 2018-10-01), so year 2018 under rule 6.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same is undisputed (single-arm rule). Rule 6: the trial was first public as ESMO 2018 abstract (Ann Oncol 29 suppl 8, doi 10.1093/annonc/mdy424.029, Crossref Oct 2018, title matches), so the entry's year should be 2018."
+   "rule": "DRAFTER_BRIEF evidence rule 6 (earliest public date; paired year is the later side)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Crossref: doi 10.1093/annonc/mdy424.029 is Qin et al., randomized phase II SHR-1210 in pretreated HCC, Ann Oncol 29 suppl 8 viii719, Oct 2018 (title only; full text 403). Model Chen 2015 earlier and prospective: 2018, same, retrodiction false."
   },
   {
    "cell": "efficacy",

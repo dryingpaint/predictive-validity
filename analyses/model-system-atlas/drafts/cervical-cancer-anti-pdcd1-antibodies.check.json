@@ -56,15 +56,15 @@
    "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "retro",
-   "proposed_year": 2022,
-   "rule": "Evidence rule 6: year is the earliest public date; the primary IRC ORR (27.8%, n=90) was public in SITC 2022 abstract 673, JITC 10(Suppl 2):A703, published 2022-11-07 (doi 10.1136/jitc-2022-SITC2022.0673)",
-   "note": "Xia 2023 abstract quote verbatim; primary RECIST ORR, single-arm in note. Retro right (MC38 public 2021-09, after pembrolizumab's cervical responses). Zimberelimab, iv, biomarker_selected right. Year and epub_year should be 2022 (SITC 2022-11-07).",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_year": 2021,
+   "rule": "DRAFTER_BRIEF rule 6: a paired comparison's year is the later of its two sides' earliest public dates; patient side (NCT03972722) first public in IGCS 2020 abstract 357 (IJGC 30(Suppl 4):A147, Crossref-registered 2020-11-13, doi 10.1136/ijgc-2020-IGCS.307, trial number nct03972722), model side Lou 2021 (2021-09-15)",
+   "note": "Not 2022: SITC 2022 abstract 673 is not the first. IGCS 2020 abstract 357 (same NCT03972722, Wu/Xia) reported ORR ~27%, DCR ~54%. Later side is Lou 2021 (2021-09-15), so 2021. Retro holds: pembrolizumab cervical responses (2018) preceded MC38 data.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6: year is earliest public date, SITC 2022 abstract (2022-11-07) of the same phase II, so year 2022. Status unchanged: still post-dates MC38 (2021-09) and pembrolizumab cervical responses, retrodiction rule gives retro."
+   "adjudication_note": "Status retro either way (rule 'retro': efficacy is a target claim; pembrolizumab cervical responses 2018 preceded Lou 2021). Rule 6: patient side public in IGCS 2020 abstract 357 (Crossref 2020-11-13); later side Lou 2021, so year 2021."
   },
   {
    "cell": "efficacy",
@@ -120,15 +120,15 @@
    "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "retro",
-   "proposed_year": 2022,
-   "rule": "Evidence rule 6: year is the earliest public date; cervical safety (TRAEs 78.1%, hypothyroidism 25.7%, 'acceptable safety profile') was public in SITC 2022 abstract 673, JITC published 2022-11-07",
-   "note": "Xia 2023 quote verbatim; Lou 2021 26-week 'No abnormal manifestation' verbatim. Retro right: Liu 2021 phase Ia safety (2021-03) preceded Lou (2021-09). Zimberelimab, iv, biomarker_selected right. Year should be 2022.",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_year": 2021,
+   "rule": "DRAFTER_BRIEF rule 6: a paired comparison's year is the later of its two sides' earliest public dates; patient side (NCT03972722) first public in IGCS 2020 abstract 357 (IJGC 30(Suppl 4):A147, Crossref-registered 2020-11-13, doi 10.1136/ijgc-2020-IGCS.307, trial number nct03972722), model side Lou 2021 (2021-09-15)",
+   "note": "Not 2022: IGCS 2020 abstract 357 (NCT03972722) already called safety 'manageable'. Later side is Lou 2021 monkey claim (2021-09-15), so 2021. Retro holds: zimberelimab's own patient safety (IGCS 2020, Liu 2021) preceded the monkey claim.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6: cervical safety first public in SITC 2022 abstract (2022-11-07), so year 2022. Status unchanged: zimberelimab phase Ia safety (2021-03) preceded the monkey claim (2021-09), retrodiction rule gives retro."
+   "adjudication_note": "Status retro either way (dose/safety retrodiction: zimberelimab's own IGCS 2020 and Liu 2021 safety preceded the monkey claim). Rule 6: patient side IGCS 2020 abstract 357 (Crossref 2020-11-13); later side Lou 2021, so year 2021."
   }
  ],
  "missing": [

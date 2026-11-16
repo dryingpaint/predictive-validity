@@ -1,0 +1,45 @@
+{
+ "tile": "malignant-pancreatic-neoplasm-map2k1-2-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2012 -> 2011, status same -> retro; retrodiction true: ASCO 2010 abstr 2503 (10.1200/jco.2010.28.15_suppl.2503, 2010-05-20) already reported >90% tumour pERK/Ki67 reduction at 2 mg; model side Gilmartin 2011 online 2011-01-19, so the pair is 2011 and the model post-dates the patient readout"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2017 -> 2015; ASCO GI 2015 abstr 344 (10.1200/jco.2015.33.3_suppl.344, 2015-01-20) reported the PFS null; Vena 2015 online 2015-07-30, so 2015; retrodiction set true (Vena post-dates the 2013 trametinib null and the Jan 2015 pimasertib null), status contra unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "2014 -> 2013; ASCO GI 2013 abstr 291 (10.1200/jco.2013.31.4_suppl.291, Jan 2013) already reported OS/ORR in the KRAS-mutant cfDNA subgroup (n=143) similar to all patients; model Gilmartin 2011"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "2016 -> 2014; ASCO 2014 abstr 4025 (10.1200/jco.2014.32.15_suppl.4025, 2014-05-20) reported the KRAS mut/WT split (ORR 28%/48%, OS 6.6/18.2 mo); model Gilmartin 2011"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "2018 -> 2015; ASCO GI 2015 abstr 344 (2015-01-20): 'KRAS mutational status did not influence PFS or OS'; model Gilmartin 2011"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "2016 -> 2014; ASCO 2014 abstr 4025 (2014-05-20) first reported the phase 2a response (PR 35%); model Chang 2010"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "2010 -> 2009; opener moved from trametinib's 2010 rat study to pimasertib's own first registry-dated use: its first-in-human programme was first posted 2009 (NCT00957580 2009-08-12; NCT00982865 2009-09-23), which required its rat/dog package"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "2017 -> 2015; ASCO GI 2015 abstr 344 (2015-01-20) already reported all-grade retinal detachment 24.4% almost only on pimasertib; model FDA PharmR 2013"
+  }
+ ]
+}

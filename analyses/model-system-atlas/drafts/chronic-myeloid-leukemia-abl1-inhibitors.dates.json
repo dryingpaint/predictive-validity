@@ -1,0 +1,30 @@
+{
+  "tile": "chronic-myeloid-leukemia-abl1-inhibitors",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2012 -> 2009; patient side first public as the ASH 2009 phase 1 abstract (Blood 114:643, CrkL phosphorylation inhibited at >=8 mg); model side O'Hare Cancer Cell Nov 2009. Status unchanged (same), not a retrodiction."
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "what": "2013 -> 2011; PACE MCyR first public at ASH 2011 (Blood 118:109; CP MCyR 38/83, T315I 13/23). Status unchanged (same), not a retrodiction."
+    },
+    {
+      "cell": "efficacy",
+      "index": 3,
+      "what": "2020 -> 2019; phase 3 6-month MMR first public at ASCO 2019 (JCO 37 suppl 7004, doi:10.1200/JCO.2019.37.15_suppl.7004). Still a retrodiction (model Aug 2010 after the June 2010 nilotinib/dasatinib first-line MMR results); status retro unchanged."
+    },
+    {
+      "cell": "efficacy",
+      "index": 5,
+      "what": "2013 -> 2012; PACE response-by-mutation first public at ASH 2012 12-month follow-up abstract (similar response rates with and without BCR-ABL mutations). Status unchanged (same)."
+    },
+    {
+      "cell": "efficacy",
+      "index": 9,
+      "what": "2014 -> 2013 (opener); vamotinib's own first use of the model was the ASH 2013 abstract (Mian et al., Blood 2013, ScienceDirect S0006497119671788), before Leukemia epub 14 Nov 2014. Status untested unchanged."
+    }
+  ]
+}

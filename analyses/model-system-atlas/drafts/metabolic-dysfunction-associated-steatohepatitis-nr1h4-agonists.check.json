@@ -17,17 +17,12 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2017,
-   "rule": "6 (dating: earliest date the comparison was public, congress abstract counts)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Retro correct: Papazyan ref 41, Badman 2016 Hepatology 64:16A 'demonstrates potent activation of FXR in healthy subjects', plus OCA FGF19 data, predate Tully 2017. Both sides public 2017, not Badman 2020's 2019 epub. Drug/route fine.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Both sides agree retro (retrodiction rule: human FGF19 rise under FXR agonism predates Tully 2017). Rule 6: Badman 2016 AASLD abstract made tropifexor's human side public before the model, so the comparison dates to 2017, not 2019."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "2017 and retro confirmed: Tully J Med Chem online 2017-11-16 (Crossref; note says 12-08, year unaffected) post-dates Badman 2016 AASLD HV FGF19 abstract and OCA FGF19 data. Later side 2017; reproduced, so retro."
   },
   {
    "cell": "dose",
@@ -76,22 +71,18 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Hernandez 2019 cholesterol quote verbatim; opener untested 2019; drug tropifexor, oral, unselected correct."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Opener 2019 confirmed: Hernandez hep4.1368 online 2019-05-17 (Crossref). untested, untested_reason no_prediction fits (authors doubted STAM mice for human cholesterol). Now the track's only prospective entry."
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "safety: did the model's stated prediction hold (untested_reason no_prediction)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote and fields fine, but Hernandez states 'the use of this rodent model may not be an appropriate tool to predict the effects of FXR agonists on c[holesterol]': no stated prediction to fail. Year 2021 unverified (Novartis 2019 release silent on lipids).",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Safety rule scores a stated prediction; Hernandez says STAM mice already missed OCA's human cholesterol rise and 'may not be an appropriate tool to predict' it, so no prediction to contradict. Rule 5: untested, no_prediction."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "2019, retrodiction true, contra confirmed: Diabetes Metab J review cites Sanyal AASLD 2018 A/B interim (Hepatology 68:1460A-1A) for dose-related LDL-C rise, HDL-C fall; abstract itself not opened. Predates Hernandez 2019-05-17; mouse fall failed to reproduce."
   },
   {
    "cell": "safety",
@@ -110,8 +101,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Sanyal LDL-up/HDL-down quote verbatim; PXB 2018 precedes tropifexor's NASH lipid data, so prospective same. Tropifexor HV lipid-neutral (Badman 2020, ref 41) is set aside because NASH patients were measured; see rule question."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "2018, same, prospective confirmed: Papazyan JLR online 2018-03-20 (Crossref created; print 2018) precedes AASLD Nov 2018 A/B interim LDL rise (Hepatology 68:1460A-1A, via review). Later side 2018."
   },
   {
    "cell": "safety",

@@ -63,20 +63,22 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "PMID 30027140 (2018-05-21) quote verbatim. Opener edp-305, oral, unselected right; fibrosis never measured in INTREPID. Latest untested on its track yet carries no untested_reason (not_measured fits)."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date; track opens at its own drug's first use in the model)",
+   "note": "Enanta-hosted poster PDF (Erstad, Fuchs et al.) shows EDP-305 30 mpk cut fibrosis in BDL rats; created 2016-11-09, days before AASLD 2016; Apr 2017 Enanta release confirms. 2016 opener, untested holds. model_first_use_year still 2018."
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "PMID 32329946, epub 2020-05-06; quote verbatim. Opener edp-305, oral, unselected right; untested opener holds. Judgement still calls it prospective, inconsistent with efficacy 3's retrodiction ruling."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date; track opens at its own drug's first use in the model)",
+   "note": "Enanta release 2017-04-19 (natap): Popov poster SAT-459, EDP-305 'improved pre-established liver injury and hepatic fibrosis in biliary (BALBc.Mdr2-/-)' mice, near the An 2020 quote. 2017 opener, untested holds; model_first_use_year still 2020."
   },
   {
    "cell": "efficacy",
@@ -140,17 +142,13 @@
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2020,
-   "rule": "DRAFTER_BRIEF safety: silence contradicted on a harm the species could have shown, scored per track ('a contra on one does not carry to the other')",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote verbatim (PMID 32329946). Ductular prediction untested is right, but this edp-305 track was silent on pruritus, which mice can show, and INTREPID (2020-05-06) had dose-limiting pruritus (18% discontinuations at 2.5 mg). Edp-305, oral, unselected right.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Safety: silence contradicted on a harm rodents could show (as confirmed on safety 2); tracks score separately, and decision 16 counts once only across dose and safety. EDP-305 pruritus dose-limiting in INTREPID, year 2020."
+   "quote_found": "not_found",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date; track opens at its own drug's first use in the model)",
+   "note": "EDP-305 in BALBc.Mdr2-/- public 2017-04-19 (EASL SAT-459 release); untested is right in 2017, before INTREPID. The ductular quote is not in the release. The 2020 pruritus contra goes in a later entry on this track."
   },
   {
    "cell": "safety",

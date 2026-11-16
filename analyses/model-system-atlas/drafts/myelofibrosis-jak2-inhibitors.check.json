@@ -16,17 +16,13 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2009,
    "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
-   "note": "Pardanani 2011 (PMID 21220608, epub 2011-01-10) abstract verbatim; same right; fedratinib/oral/unselected. ASH 2009 abstract (doi:10.1182/blood.V114.22.755.755, 2009-11-20): 'median decrease in granulocyte mutant allele burden was 48%'.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status rule (same) agreed by both. Evidence rule 6: ASH 2009 abstract (doi:10.1182/blood.V114.22.755.755, 2009-11-20, Crossref-verified) first reported the allele-burden fall, so the entry's year is 2009, not 2011."
+   "note": "ASH 2009 abs 755 (Crossref 2009-11-20): median granulocyte allele burden fall 48%. ASH 2008 abs 97 promised but gave no allele data. Model Apr 2008 precedes; 2009, same, retrodiction false confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -51,17 +47,13 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2013,
    "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
-   "note": "JAKARTA (PMID 26181658) abstract verbatim; SVR35 primary met, same right; fedratinib/oral/unselected; NS-018/BMS split correct. ASH 2013 abstract (doi:10.1182/blood.V122.21.393.393, 2013-11-15) already reported week-24/28 spleen RR 36%/40% vs 1%.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status rule (same) agreed by both. Evidence rule 6: JAKARTA primary SVR35 result first public in ASH 2013 abstract (doi:10.1182/blood.V122.21.393.393, 2013-11-15, Crossref-verified), so year is 2013, not 2015."
+   "note": "ASH 2013 abs 393 (Crossref 2013-11-15) is JAKARTA (NCT01437787) primary SVR35 result. Model 2008 precedes; 2013, same, primary endpoint confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -86,17 +78,13 @@
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
    "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
-   "note": "Verstovsek 2017 (PMID 27479177, epub 2016-08-01) quote verbatim; contra vs Nakaya count-sparing claim right; ilginatinib/oral, model_filed false fine. ASH 2014 abstract (doi:10.1182/blood.V124.21.1839.1839, 2014-12-06): platelet decrease >=50% in 8 patients.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status rule (contra) agreed by both. Evidence rule 6: NS-018 phase 1/2 ASH 2014 abstract (doi:10.1182/blood.V124.21.1839.1839, 2014-12-06, Crossref-verified) first reported platelet falls, so year is 2014, not 2016."
+   "note": "ASH 2014 abs 1839 (2014-12-06): 8 patients platelet fall >=50%, drug-related platelet decrease, grade 4 thrombocytopenia discontinuation. Count-sparing claim ASH 2013 abs 3847 earlier, so retrodiction false. 2014 contra confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -123,10 +111,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "2019 label text in bundle verbatim; same/direction_only; fedratinib/oral/unselected. Healthy-volunteer PK/PD paper (J Clin Pharmacol, doi:10.1002/jcph.218, 2013-11-16) may report pSTAT3 earlier; abstract not seen, unverified.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
+   "note": "ASH 2012 abs 2837 (2012-11-16): 'Time-dependent pSTAT3 inhibition was observed at all doses' in MF patients. Not in Pardanani 2011 or ASH 2011 abs 3838 abstracts. Model 2008; 2012, same, retrodiction false confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -141,17 +130,13 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2013,
    "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
-   "note": "JAKARTA abstract verbatim; ex-vivo model (2008) predated it, same right; fedratinib/oral/unselected. Primary result first public in ASH 2013 abstract (doi:10.1182/blood.V122.21.393.393, 2013-11-15).",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status rule (same) agreed by both. Evidence rule 6: JAKARTA primary result first public in ASH 2013 abstract (doi:10.1182/blood.V122.21.393.393, 2013-11-15), so the ex-vivo track's entry year is 2013, not 2015."
+   "note": "ASH 2013 abs 393 (2013-11-15) JAKARTA primary SVR35 result; ex-vivo model 2008 precedes. 2013, same confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -200,8 +185,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Nakaya 2014 (PMID 24413068) abstract verbatim; ilginatinib/oral/unselected right; phase 1 primary was safety, no quotable primary efficacy result, so untested/unsettled defensible.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
+   "note": "ASH 2013 abs 3847 (2013-11-15): NS-018 in JAK2V617F BMT mice cut splenomegaly, fibrosis. Nakaya 2011 BCJ used Ba/F3-inoculated and transgenic mice, not BMT. Opener 2013 untested confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -210,8 +196,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Pomicter 2015 (PMID 25912019, epub 2015-04-24) abstract verbatim; untested opener 2015 for bms-911543 (tile spelling), oral, unselected right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
+   "note": "ASH 2014 abs 5572 (Crossref 2014-12-06): BMS-911543 in retroviral JAK2V617F transplant mouse, 'limited activity'. Opener 2014 untested confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -230,8 +217,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Purandare 2012 (PMID 22015772, epub 2011-10-21) abstract verbatim; untested opener 2011, bms-911543, oral, unselected right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
+   "note": "ASH 2010 abs 4112 (2010-11-19): BMS-911543 in colony assays of JAK2V617F+ MPD patient progenitors, greater anti-proliferative response than normal. Opener 2010 untested confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -246,17 +234,13 @@
   {
    "cell": "safety",
    "index": 9,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2008,
    "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
-   "note": "Pardanani 2011 abstract verbatim; same/partial right (grade 3-4 diarrhoea, cytopenias); fedratinib/oral/unselected. ASH 2008 abstract (doi:10.1182/blood.V112.11.97.97, 2008-11-16): 'Preliminary findings indicate that TG101348 is well tolerated in patients with myelofibrosis.'",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status rule (same, partial) agreed by both. Evidence rule 6: ASH 2008 abstract (doi:10.1182/blood.V112.11.97.97, 2008-11-16, Crossref-verified) first called TG101348 well tolerated in MF, so year is 2008, not 2011."
+   "note": "ASH 2008 abs 97 (2008-11-16): 'Preliminary findings indicate that TG101348 is well tolerated in patients with myelofibrosis.' Wernig mouse Apr 2008 precedes; 2008, same, retrodiction false confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

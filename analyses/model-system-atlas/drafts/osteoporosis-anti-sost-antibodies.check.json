@@ -7,20 +7,32 @@
   {
    "cell": "engagement",
    "index": 1,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Li 2009 JBMR resolves (Europe PMC); quote verbatim in abstract. Scl-AbII research antibody, product_in_model false correct; opening untested."
+   "proposed_status": "untested",
+   "proposed_year": 2007,
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date, congress abstract counts)",
+   "note": "Li 2009 epub 2008-12-04 confirmed (PubMed entrez; DOI created 2008-12-02), but the OVX-rat sclerostin-antibody system was first public earlier: Li et al., J Bone Miner Res 2007;22 Suppl 1:S65 (ASBMR 2007). Opener and model_first_use_year 2007.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: opener stays untested; earliest public date is ASBMR 2007 abstract (JBMR 22 Suppl 1:S65, cited by Paszty 2010), so year and model_first_use_year 2007. Not the track latest; no untested_reason."
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Padhi 2011 (AMG 785 = romosozumab) FIH in healthy men and postmenopausal women; quote verbatim. Paired with rat bone formation; downstream readout, healthy volunteers allowed. Europe PMC lists 2011; 2010 epub not independently confirmed."
+   "proposed_status": "same",
+   "proposed_year": 2007,
+   "rule": "DRAFTER_BRIEF rule 6 (paired year = later side); retrodiction rule",
+   "note": "OC35 is Osteoporos Int 19 Suppl 1 (ECCEO8, online 2008-03-20), but Padhi FIH markers were public earlier at ASBMR 2007 (J Bone Miner Res 2007 Suppl 1:S37), same meeting as rat abstract S65. Both sides 2007; not retro.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 and retrodiction rule: rat abstract (S65) and Padhi FIH markers (S37) both public at ASBMR 2007; model side not post-dating the human result, so not retro. Status same, year 2007."
   },
   {
    "cell": "engagement",

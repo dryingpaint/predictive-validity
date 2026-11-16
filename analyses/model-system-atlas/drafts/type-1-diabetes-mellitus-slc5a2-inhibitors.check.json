@@ -201,9 +201,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Tahara 2014 (PMID 24533859, epub 2014-02-17) quote verbatim; ipragliflozin in STZ type 1 diabetic rats; prospective opener, untested 2014 holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "rule 6 (track opens at its own drug's first use in the model)",
+   "note": "PubMed 22139434 (doi 10.1007/s00210-011-0713-z, epub 2011-12-03) abstract tests ipragliflozin in streptozotocin-induced type 1 diabetic rats. Opener 2011, untested, holds; src/quote remain Tahara 2014."
   },
   {
    "cell": "efficacy",
@@ -212,9 +212,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Kaku 2019 (PMID 31173455, epub 2019-07-11) conclusion quote verbatim; primary HbA1c -0.36% met; ipragliflozin 50 mg oral plus background insulin; Japanese adults coded unselected. Japan approved the T1D indication 2018-12-21; that press release gives no results, so 2019 stands.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "rule 6 (earliest public date; paired year is the later side)",
+   "note": "PMDA posting P20181225001 (2018) application document gives CL-6002 HbA1c difference -0.36%, significant vs placebo; precedes Kaku 2019 epub. Model side 2011/2014. Year 2018, same, holds."
   },
   {
    "cell": "safety",
@@ -234,23 +234,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Tahara 2014 conclusion quote verbatim; abstract has no ketone readout; ipragliflozin oral opener, untested 2014 holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "rule 6 (track opens at its own drug's first use in the model)",
+   "note": "PubMed 22139434, epub 2011-12-03: ipragliflozin first used in STZ type 1 diabetic rats; abstract has no ketone readout. Opener 2011, untested, holds."
   },
   {
    "cell": "safety",
    "index": 11,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "rule 5 (untested_reason no_prediction); safety: silence scores only when contradicted",
-   "note": "Kaku quote verbatim. Tahara 2014 states no ketone or tolerability finding; silence that patients did not contradict is no prediction, so untested with untested_reason no_prediction. The entry already carries untested_reason no_prediction while status is same.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Tahara 2014 states no tolerability or ketone finding; uncontradicted silence is no stated prediction, so no admissible comparison. Rule 5: untested, untested_reason no_prediction (already on the draft entry)."
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "rule 6 (earliest public date); safety silence scored as in safety 2, 9",
+   "note": "PMDA posting P20181225001 (2018) reports no ketoacidosis in CL-6002 (ketone rises noted); year 2018 holds. Same holds, consistent with silence-as-contra at 2/9; drop stray untested_reason from the draft entry."
   }
  ],
  "missing": [

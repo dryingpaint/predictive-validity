@@ -1,0 +1,25 @@
+{
+ "tile": "metabolic-dysfunction-associated-steatohepatitis-nr1h4-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2019 -> 2017; status retro unchanged. Patient side first public in Badman 2016 AASLD abstract (Hepatology 64:16A, tropifexor HV FGF19 rise), model side Tully 2017 J Med Chem (epub 2017-12-08)."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "2021 -> 2019; retrodiction false -> true, status contra unchanged (failed to reproduce). Tropifexor NASH LDL rise first public at AASLD Nov 2018 (FLIGHT-FXR Parts A/B interim, Sanyal Hepatology 68(S1):1461A); model Hernandez 2019 epub 2019-05-17."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "2021 -> 2018; status same, not a retrodiction. Model Papazyan 2018 epub 2018-03-20; patient LDL rise first public at AASLD Nov 2018 (FLIGHT-FXR Parts A/B interim)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "year 2019 unchanged; untested_reason set to no_prediction (Hernandez doubted STAM mice for human cholesterol) because safety 2 is now a retrodiction, leaving this opener as the track's latest prospective entry (lint)."
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "tile": "chronic-obstructive-pulmonary-disease-mapk14-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2000 -> 2006; Track opener dated to PH-797804's first registry-dated use, NCT00383188 posted 2006-10-02 (proxy; PH-797804 itself was never reported in this model); the 2000 date is the system's first use (SB 239063). Status untested unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "2000 -> 2006; Track opener dated to PH-797804's first registry-dated use, NCT00383188 posted 2006-10-02 (proxy; PH-797804 itself was never reported in this model); the 2000 date is the system's first use (SB 239063). Status untested unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "2007 -> 2006; Track opener dated to PH-797804's first registry-dated use, NCT00383188 posted 2006-10-02 (proxy; PH-797804 itself was never reported in this model); the 2007 date is the system's first use (SD-282). Status untested unchanged."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "2006 -> 2018; Track opener dated to AZD7624's own first use in alveolar macrophages, Higham 2018 JPET (epub 2018-03-16, PMID 29549158, doi 10.1124/jpet.117.246132); the 2006 date is the system's first use for sibling inhibitors. Status untested unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "what": "2007 -> 2012; Track opener dated to AZD7624's first registry-dated use, NCT01754844 posted 2012-12-21 (proxy; AZD7624 itself was never reported in this model); the 2007 date is the system's first use (SD-282). Status untested unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 17,
+   "what": "2007 -> 2011; Track opener dated to acumapimod's first registry-dated use, NCT01332097 posted 2011-04-08 (proxy; acumapimod itself was never reported in this model); the 2007 date is the system's first use (SD-282). Status untested unchanged."
+  }
+ ]
+}

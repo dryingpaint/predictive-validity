@@ -154,10 +154,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Dimicoli (PMID 22072492, epub 2011-11-10) quote verbatim. Single-arm, 1/13 HI, no preset bar: contra by the single-arm rule, design in note. Oral monotherapy, lower-risk MDS (stage_or_line) right."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6 (dating: paired comparison dated at the later side); retrodiction rule",
+   "note": "Crossref: Flinn ASH 2010 abstract 4015 (Blood 116(21), 2010-11-19), refractory MDS oral PAN 30mg, 0/10 responded (7 SD, 2 PD, 1 NE); Fiskus 2009-05-15 earlier. Year 2010 and contra hold; model predates this result, retrodiction false."
   },
   {
    "cell": "safety",

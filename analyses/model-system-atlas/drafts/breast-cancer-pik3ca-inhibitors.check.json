@@ -11,9 +11,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "track (drug, route); 5; 6",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "PMID 24608574 (epub 2014-03-07) abstract: quote verbatim; NVP-BYL719 = alpelisib, oral; untested/not_measured opener holds at 2014; biomarker_selected fits PIK3CA-mutant models."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "6 (track opens at its own drug's first use in the model); 5",
+   "note": "Crossref: AACR 2012 abstracts 3749 (Huang, Fritsch; CCLE panel) and 3748 (Fritsch; in vivo PI3K signalling) issued 2012-04; no earlier BYL719 record. Year 2012, untested opener holds. model_first_use_year 2013 should be ≤2012."
   },
   {
    "cell": "engagement",
@@ -55,9 +55,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "track; dose table; 5",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Fritsch 2014 abstract: quote verbatim; alpelisib oral; no human exposure target stated, untested opener right."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "6; 5; dose table",
+   "note": "AACR 2012 abstracts 3749/3748 (issued 2012-04) are alpelisib's first model use; no human exposure target stated. Year 2012, untested opener holds; 3748 fits xenograft dosing better. model_first_use_year 2013 should be ≤2012."
   },
   {
    "cell": "dose",
@@ -99,9 +99,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "track; 5",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Fritsch 2014 abstract: CCLE quote verbatim; alpelisib oral; biomarker_selected; untested strengthening entry holds."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "6; 5",
+   "note": "AACR 2012 abstract 3749 (Huang, Fritsch; Cancer Res 72(8 Suppl), issued 2012-04): CCLE screen of BYL719 sensitivity. First alpelisib model use; year 2012, untested holds. model_first_use_year 2013 should be ≤2012."
   },
   {
    "cell": "efficacy",

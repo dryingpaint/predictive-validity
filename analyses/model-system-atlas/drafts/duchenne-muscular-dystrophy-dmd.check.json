@@ -22,9 +22,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Status same (direction agrees); prospective (model 2006 before any patient result)",
-   "note": "Cirak 2011 abstract quote verbatim (epub 2011-07-23); weekly IV AVI-4658 (eteplirsen). Alter 2006 precedes van Deutekom 2007, so prospective same; drug/route/population correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Rule 6 dating; status same, prospective",
+   "note": "Opened AVI release 22 Dec 2009: systemic AVI-4658 at 2 and 4 mg/kg gave exon 51 skipping in 3/3 patients and dystrophin in one. Earliest public IV patient side; mdx model 2006, so 2009, prospective same stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -44,9 +44,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Status same, paired; prospective",
-   "note": "Cirak 2011 quote verbatim; IV dosing. Cell model public Sep 2007, before van Deutekom Dec 2007 and Cirak 2011, so prospective same stands; route iv correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Rule 6 dating; status same, prospective",
+   "note": "Same 22 Dec 2009 AVI release: exon 51 skipping in systemic-dosed patients. Kinali 2009 was intramuscular, not this IV track. Cell model 2007 precedes; year 2009, same, prospective confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -157,9 +157,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Primary endpoint governs; prospective",
-   "note": "Mendell 2013 (epub 2013-09-10) quote verbatim; weekly IV eteplirsen, dystrophin-positive fibres primary. Drug/route correct. outcome_tested 'negative' leans on other members' trials (RACER53, ESSENCE), not eteplirsen's.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Rule 6 dating; primary endpoint governs, prospective",
+   "note": "8-K URL returns 403; Benzinga/FierceBiotech copies of the 2 Apr 2012 AVI release confirm Study 201 met the 24-week primary endpoint (22.5% dystrophin-positive fibres, p<=0.002 vs placebo). Year 2012, same stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -190,9 +190,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Primary endpoint governs; prospective",
-   "note": "Same Mendell 2013 quote, IV eteplirsen. Cell model 2007 precedes patient dystrophin results (van Deutekom Dec 2007), so prospective same stands.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Rule 6 dating; primary endpoint governs, prospective",
+   "note": "2 Apr 2012 AVI topline release (via Benzinga/FierceBiotech; Sarepta 8-K blocked 403) reported the primary dystrophin endpoint met. Cell model 2007 precedes; year 2012, same stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -201,9 +201,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Retrodiction (efficacy): any drug, same target, earlier patient result -> retro",
-   "note": "Clemens 2020 quote verbatim (IV, primary dystrophin). Watanabe 2018 epub 2018-09-27, after Cirak 2011/Mendell 2013: retro, retrodiction true, year 2020. Viltolarsen track lacks an untested opener (rule 6).",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Rule 6 dating; retrodiction (efficacy): earlier same-target patient result -> retro",
+   "note": "Opened NS Pharma release via PPMD: Clemens presented the IV US/Canada phase 2 at WMS Oct 2018, dystrophin in both dose groups. Watanabe model epub Sep 2018; later of two is 2018. Eteplirsen 2009 precedes: retro stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

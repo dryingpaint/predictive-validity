@@ -56,11 +56,11 @@
     "combination_with": null
    },
    {
-    "year": 2016,
+    "year": 2015,
     "status": "same",
     "model": "Rodent striatal cAMP/cGMP and PDE10A occupancy",
     "model_id": "pde10a-rodent-striatal-cnmp",
-    "note": "Human [11C]T-773 PET: TAK-063 occupied putamen PDE10A 2.8-72% across 3-1000 mg, rising with dose and plasma level, as in rodents.",
+    "note": "Human [11C]T-773 PET: TAK-063 occupied putamen PDE10A 2.8-72% across 3-1000 mg, rising with dose and plasma level, as in rodents. Dated to NCT02370602 results posting 2015-03-20 (PET occupancy by dose), the patient side's first public date; model side Suzuki epub 2014-12-18.",
     "short": "Human striatal occupancy dose-dependent",
     "src": "https://doi.org/10.1016/j.neuroimage.2016.06.047",
     "srcLabel": "Takano 2016",

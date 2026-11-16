@@ -98,11 +98,11 @@
     "population_group": "unselected"
    },
    {
-    "year": 2013,
+    "year": 2012,
     "status": "untested",
     "model": "HIV-1 replication in cell culture (MT-4/PBMC) against wild-type and NNRTI-resistant virus, with protein-binding-adjusted IC90/EC95 and in-vitro resistance selection",
     "model_id": "hiv-nnrti-cell-culture",
-    "note": "Doravirine's track on the cell model opens with its in-vitro profile (EC95 20 nM in 50% serum, NNRTI-resistant mutants); no patient yet.",
+    "note": "Doravirine's track on the cell model opens with its in-vitro profile (EC95 20 nM in 50% serum, NNRTI-resistant mutants); no patient yet. Dated 2012: doravirine's first public use of the cell model was Lai et al., ICAAC 9-12 Sep 2012 abstract H-551 (NATAP http://www.natap.org/2012/ICAAC/ICAAC_23.htm).",
     "short": "Doravirine cell-culture activity, no patients yet",
     "src": "https://doi.org/10.1128/AAC.02403-13",
     "srcLabel": "Lai 2014",
@@ -137,11 +137,11 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2015,
+    "year": 2013,
     "status": "same",
     "model": "HIV-1 replication in cell culture (MT-4/PBMC) against wild-type and NNRTI-resistant virus, with protein-binding-adjusted IC90/EC95 and in-vitro resistance selection",
     "model_id": "hiv-nnrti-cell-culture",
-    "note": "Seven days of doravirine monotherapy cut HIV-1 RNA about 1.3 log10 versus placebo at 25 and 200 mg, as the cell assay predicted.",
+    "note": "Seven days of doravirine monotherapy cut HIV-1 RNA about 1.3 log10 versus placebo at 25 and 200 mg, as the cell assay predicted. Dated 2013: model side public Sep 2012 (ICAAC H-551); the 7-day monotherapy (-1.37/-1.26 log10 vs placebo) was first public at Anderson et al., CROI 3-6 Mar 2013 abstract 100 (NATAP https://www.natap.org/2013/CROI/croi_22.htm).",
     "short": "Doravirine monotherapy cut HIV RNA 1.3 log10",
     "src": "https://doi.org/10.1097/QAD.0000000000000876",
     "srcLabel": "Schurmann 2016",
@@ -340,11 +340,11 @@
     "population_group": "unselected"
    },
    {
-    "year": 2014,
+    "year": 2012,
     "status": "untested",
     "model": "HIV-1 replication in cell culture (MT-4/PBMC) against wild-type and NNRTI-resistant virus, with protein-binding-adjusted IC90/EC95 and in-vitro resistance selection",
     "model_id": "hiv-nnrti-cell-culture",
-    "note": "Healthy-volunteer troughs at 30-750 mg doravirine all exceeded the 50%-serum EC95 (19 nM); no patient dosed yet.",
+    "note": "Healthy-volunteer troughs at 30-750 mg doravirine all exceeded the 50%-serum EC95 (19 nM); no patient dosed yet. Dated 2012: the 50%-serum EC95 target was first public for doravirine in Lai et al., ICAAC 9-12 Sep 2012 abstract H-551 (NATAP http://www.natap.org/2012/ICAAC/ICAAC_23.htm).",
     "short": "Doravirine troughs above EC95 in volunteers",
     "src": "https://doi.org/10.3851/IMP2920",
     "srcLabel": "Anderson 2015",
@@ -379,11 +379,11 @@
     "population_group": "unselected"
    },
    {
-    "year": 2015,
+    "year": 2013,
     "status": "same",
     "model": "HIV-1 replication in cell culture (MT-4/PBMC) against wild-type and NNRTI-resistant virus, with protein-binding-adjusted IC90/EC95 and in-vitro resistance selection",
     "model_id": "hiv-nnrti-cell-culture",
-    "note": "Both 25 mg and 200 mg, with troughs above the EC95 target, gave the same viral-load fall in patients: target reached and enough.",
+    "note": "Both 25 mg and 200 mg, with troughs above the EC95 target, gave the same viral-load fall in patients: target reached and enough. Dated 2013: troughs 14x (25 mg) and 87x (200 mg) the serum-adjusted IC95 in patients were first public at Anderson et al., CROI 3-6 Mar 2013 abstract 100 (NATAP https://www.natap.org/2013/CROI/croi_22.htm); the EC95 target was public Sep 2012 (ICAAC H-551).",
     "short": "25 and 200 mg equally active",
     "src": "https://doi.org/10.1097/QAD.0000000000000876",
     "srcLabel": "Schurmann 2016",
@@ -536,11 +536,11 @@
     "population_group": "unselected"
    },
    {
-    "year": 2013,
+    "year": 2012,
     "status": "untested",
     "model": "HIV-1 replication in cell culture (MT-4/PBMC) against wild-type and NNRTI-resistant virus, with protein-binding-adjusted IC90/EC95 and in-vitro resistance selection",
     "model_id": "hiv-nnrti-cell-culture",
-    "note": "Doravirine's efficacy track on the cell model opens with its in-vitro profile; no patient yet.",
+    "note": "Doravirine's efficacy track on the cell model opens with its in-vitro profile; no patient yet. Dated 2012: doravirine's first public use of the cell model was Lai et al., ICAAC 9-12 Sep 2012 abstract H-551 (NATAP http://www.natap.org/2012/ICAAC/ICAAC_23.htm).",
     "short": "Doravirine cell-culture activity, no patients yet",
     "src": "https://doi.org/10.1128/AAC.02403-13",
     "srcLabel": "Lai 2014",
@@ -576,11 +576,11 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2015,
+    "year": 2013,
     "status": "same",
     "model": "HIV-1 replication in cell culture (MT-4/PBMC) against wild-type and NNRTI-resistant virus, with protein-binding-adjusted IC90/EC95 and in-vitro resistance selection",
     "model_id": "hiv-nnrti-cell-culture",
-    "note": "Doravirine 7-day monotherapy: the primary viral-load endpoint fell about 1.3 log10 versus placebo at both doses, as predicted.",
+    "note": "Doravirine 7-day monotherapy: the primary viral-load endpoint fell about 1.3 log10 versus placebo at both doses, as predicted. Dated 2013: model side public Sep 2012 (ICAAC H-551); the primary 7-day viral-load result was first public at Anderson et al., CROI 3-6 Mar 2013 abstract 100 (NATAP https://www.natap.org/2013/CROI/croi_22.htm).",
     "short": "Doravirine monotherapy viral load fell",
     "src": "https://doi.org/10.1097/QAD.0000000000000876",
     "srcLabel": "Schurmann 2016",
@@ -658,11 +658,11 @@
   ],
   "safety": [
    {
-    "year": 2009,
+    "year": 2008,
     "status": "untested",
     "model": "Nonclinical toxicology in standard species (rodent plus non-rodent; monkey per Castellino 2013) as filed for fosdevirine and later doravirine",
     "model_id": "nnrti-standard-tox-species",
-    "note": "Fosdevirine entered humans on a standard toxicology package whose species no tier 1-3 source names; healthy volunteers to 1,200 mg were clean, no patient comparison.",
+    "note": "Fosdevirine entered humans on a standard toxicology package whose species no tier 1-3 source names; healthy volunteers to 1,200 mg were clean, no patient comparison. Dated 2008: fosdevirine's healthy-volunteer dosing on its toxicology package (single doses to 1,200 mg well tolerated) was first public at CROI Feb 2008 (NATAP https://www.natap.org/2008/CROI/croi_89.htm).",
     "short": "Standard tox package, nothing flagged",
     "src": "https://doi.org/10.1128/AAC.01479-08",
     "srcLabel": "Zhou 2009",

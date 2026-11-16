@@ -1,0 +1,25 @@
+{
+  "tile": "diffuse-large-b-cell-lymphoma-ms4a1-directed-depleters",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "what": "2020 -> 2017 (opener); status untested unchanged. Opener postdated its own 2019 pairing; set to model_first_use_year 2017, the cynomolgus study per FDA BLA 761324 review (rule 6, as the checker adjudicated for engagement 1)."
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2021 -> 2019; status retro unchanged (rituximab depletion earlier). Lugtenburg ASH 2019 abstract (Blood 134 Suppl 1:758, 13 Nov 2019, doi:10.1182/blood-2019-121460) reported both the cynomolgus B-cell depletion and complete depletion of circulating B cells in patients."
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "what": "2020 -> 2017 (opener); status untested unchanged. Opener postdated its own 2019 pairing; set to model_first_use_year 2017, the cynomolgus study per FDA BLA 761324 review (rule 6, as the checker adjudicated for engagement 1)."
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "what": "2020 -> 2019; status same, retrodiction false unchanged (model side public no later than the patient side). Lugtenburg ASH 2019 abstract (13 Nov 2019, doi:10.1182/blood-2019-121460) reported the monkey SC cytokine attenuation and that all patient CRS events were non-severe (G1-2), before ASCO 2020."
+    }
+  ]
+}

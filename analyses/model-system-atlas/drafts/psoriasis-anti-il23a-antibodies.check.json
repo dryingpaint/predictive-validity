@@ -69,7 +69,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "EPAR p.28 sentence matches (PDF breaks 'IL- 23'). reSURFACE 1/2 co-primaries met (Lancet 2017, PMID 28596043); registry 2018-06-13 and 2018-06-27 confirmed. Strengthens only; comparison_stated false is defensible since no sentence juxtaposes model and PASI."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "Evidence rule 6 (earliest of press release, congress abstract, epub, registry)",
+   "note": "Sun Pharma PRNewswire 2016-10-01 states reSURFACE 1/2 topline 'announced on May 4, 2016' (both met primary endpoints); model side Tonel 2010. Year 2016 confirmed; status same, retrodiction false unchanged."
   },
   {
    "cell": "efficacy",
@@ -83,17 +85,13 @@
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "same",
-   "proposed_year": 2018,
-   "rule": "Evidence rule 6 (dating: earliest of congress abstract, press release, epub)",
-   "note": "Reich 2019 quote verbatim; sc, primary PASI 90 met, same right, own track. But Lilly press release 2018-09-10 (investor.lilly.com/node/39486) announced positive phase 2 analyses at EADV, before the 2019 epub: year 2018.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: status same agreed; Lilly 2018-09-10 release announces positive phase 2 mirikizumab psoriasis analyses at EADV 2018, before Reich 2019 epub, so year should be 2018 per checker."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "Evidence rule 6 (earliest of press release, congress abstract, epub, registry)",
+   "note": "AMAF 16-week PASI 90 results (0/29/59/67%) presented at 76th AAD, Feb 2018 (Practical Dermatology), before Lilly's 2018-09-10 EADV release and Reich 2019 epub. Year 2018 confirmed; status same unchanged."
   },
   {
    "cell": "safety",
@@ -143,8 +141,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote at bundle 761279 MultidisciplineR line 16045. Untested 2013 proxy opener of hil23-intradermal x tildrakizumab x iv (Kopp IV) fits; unselected right. Field fix: product_in_model should be false on this track (mouse dosed with mirikizumab)."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "Evidence rule 6 (track opens at its own drug's first use; earliest public date)",
+   "note": "Steere 2023 JPET (PMID 37714687) epub 2023-09-15 abstract describes the local IL-23 mouse model; PMDA Omvoh report (2023-02/03) describes it earlier, same year. Model never dosed with tildrakizumab: 2023 untested opener confirmed."
   },
   {
    "cell": "engagement",

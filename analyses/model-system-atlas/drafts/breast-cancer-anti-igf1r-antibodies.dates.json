@@ -1,0 +1,30 @@
+{
+  "tile": "breast-cancer-anti-igf1r-antibodies",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "what": "2003 -> 2004: opener of the mcf7-er-pos-xenograft x dalotuzumab track dated to dalotuzumab's own first use (h7C10, Goetsch 2005 Int J Cancer, doi 10.1002/ijc.20543, online 2004-09-24), not IMC-A12's 2003 use"
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2011 -> 2008: patient side first public as Atzori et al. ASCO 2008 abstract 3519 (doi 10.1200/jco.2008.26.15_suppl.3519), which already reported falls in tumour IGF1R, pAKT, pMAPK, pS6 and Ki67 in paired biopsies; model side 2004"
+    },
+    {
+      "cell": "efficacy",
+      "index": 7,
+      "what": "2017 -> 2014: R/D/E vs R/E null first public at SABCS 2014, abstract PD5-1 (doi 10.1158/1538-7445.SABCS14-PD5-1); model 2012, still prospective"
+    },
+    {
+      "cell": "efficacy",
+      "index": 9,
+      "what": "2017 -> 2014: same SABCS 2014 PD5-1 abstract; model Di Cosimo online 2014-10-15 precedes it, still prospective"
+    },
+    {
+      "cell": "efficacy",
+      "index": 11,
+      "what": "2017 -> 2016, status neg -> retro, retrodiction false -> true: the R/D/E null was public at SABCS 2014 (PD5-1, doi 10.1158/1538-7445.SABCS14-PD5-1) before Becker 2016 (2016-10-20), so the pairing dates to the model and is a retrodiction that reproduced the null; strengthens set true to clear the lint same-status finding against entry 10"
+    }
+  ]
+}

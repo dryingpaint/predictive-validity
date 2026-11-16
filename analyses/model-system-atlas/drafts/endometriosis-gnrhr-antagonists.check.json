@@ -129,10 +129,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Osuga 2021 (epub 2020-09-07) quote verbatim. Kupker 2002 (PMID 12470539) re-read: cetrorelix gave 15/15 endometriosis patients a symptom-free period, before the 2013 mouse: retro right. Relugolix, oral. PD-only-model rule question stays open.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "quote_found": "abstract_only",
+   "rule": "rule 6 dating (earliest public date; paired year = later side); retrodiction for efficacy = earlier patient result on target",
+   "note": "ECE 2017 GP134 (Crossref published 2017-05-03) read: 24-week extension of the randomized cohort, pelvic-pain VAS -6.8/-9.0/-11.9 vs -3.2 mm placebo, 40 mg near leuprorelin. Model 2013. 2017 right; cetrorelix 2002 keeps retro.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -149,20 +150,22 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Osuga 2021 clause verbatim (epub 2020-09-07); FDA PharmR bone sentence as previously read. Model public 2021 after relugolix's own patient BMD: retrodiction true, failed to reproduce, contra right. Relugolix, oral, unselected right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "quote_found": "abstract_only",
+   "rule": "rule 6 dating (earliest public date; paired year = later side); safety retrodiction = same drug's earlier patient result",
+   "note": "PMDA Relumina report (14 Nov/4 Dec 2018, Jan 2019 approval) states 4-week knock-in mouse cancellous/cortical bone density unchanged vs intact/OVX; ECE 2017 abstract shows dose-dependent relugolix BMD loss. Later side 2019; retrodiction, contra stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Osuga 2021 clause verbatim; 39-week monkey summary has no bone endpoint. Public 2021 after Osuga 2020: retrodiction true, contra right. Relugolix, oral, unselected right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "quote_found": "abstract_only",
+   "rule": "rule 6 dating (earliest public date; paired year = later side); safety retrodiction = same drug's earlier patient result",
+   "note": "PMDA Relumina report tabulates 39-week cynomolgus study (decreased menstrual frequency at 50 mg/kg, liver/PLD findings), no bone endpoint; ECE 2017 shows relugolix BMD loss. Later side 2019; retrodiction, contra stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -277,17 +280,13 @@
   {
    "cell": "safety",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2018,
+   "quote_found": "abstract_only",
    "rule": "rule 6 dating (earliest public date incl. sponsor press release)",
-   "note": "Donnez 2020 BMD sentence verbatim; contra right (prospective: Kim 2015 precedes any linzagolix BMD). But linzagolix's dose-graded BMD loss was first public 2018-09-28 (ObsEva phase 2b release: lumbar -2.60% at 200 mg), so year 2018.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status agreed (prospective proxy claim of no bone loss, patients lost BMD). Rule 6: ObsEva EDELWEISS phase 2b release 2018-09-28 (verified) first made the BMD loss public, so contra dated 2018."
+   "note": "ObsEva 6-K (SEC, 2018-09-28) reports week-24 BMD by dose, 200 mg lumbar spine loss >2%; 18 Jun 2018 release said BMD expected Q4 2018, so nothing earlier. Kim 2015 precedes; prospective, contra, 2018 right.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",

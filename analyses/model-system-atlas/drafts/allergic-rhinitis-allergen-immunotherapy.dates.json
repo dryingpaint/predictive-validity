@@ -1,0 +1,35 @@
+{
+ "tile": "allergic-rhinitis-allergen-immunotherapy",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "2019 -> 2018; status same -> retro, retrodiction false -> true. Patient side public in ALK PR 2017-09-14 (https://ir.alk-abello.com/news-releases/news-release-details/successful-phase-iii-trial-alks-tree-allergy-slit-tablet) (12-dose Phase III met primary, well tolerated); chamber dose choice (12 DU) first public in Couroux, Allergy epub 2018-11-22 (doi:10.1111/all.13606), so the model result post-dates the same drug's patient result."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "2019 -> 2018; status same -> retro, retrodiction false -> true. Phase III tolerability public in ALK PR 2017-09-14 (https://ir.alk-abello.com/news-releases/news-release-details/successful-phase-iii-trial-alks-tree-allergy-slit-tablet) ('well-tolerated ... no new or unexpected adverse events'); chamber local-reaction profile first public in Couroux epub 2018-11-22."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "what": "2019 -> 2017. ALK PR 2017-09-14 (https://ir.alk-abello.com/news-releases/news-release-details/successful-phase-iii-trial-alks-tree-allergy-slit-tablet) reports both the chamber Phase II ('significantly reduced patients' symptoms in response to both birch and oak pollen') and the Phase III primary met (TCS -39.6%, p<0.0001) the same day; no retrodiction (same-day)."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "2018 -> 2017. Patient side: ASIT biotech PR 2017-02-28 (https://www.biospace.com/b-asit-biotech-b-reports-positive-results-in-its-phase-iii-clinical-trial-with-gp-asit-for-grass-pollen-induced-allergic-rhinitis), primary peak-season CSMS p<0.041 at 170 ug; model side public earlier in ASIT biotech Aug 2015 release (https://www.european-medical-solutions.eu/wp-content/uploads/2024/10/2015-08-05_Une-avancee-majeure-pour-ASIT-biotech.pdf: 'a dose of 170 µg appears to be optimal')."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2018 -> 2017. Patient side: ASIT biotech PR 2017-02-28 (https://www.biospace.com/b-asit-biotech-b-reports-positive-results-in-its-phase-iii-clinical-trial-with-gp-asit-for-grass-pollen-induced-allergic-rhinitis) (CSMS -15 to -21%, peak-period primary p<0.041); model side public earlier in ASIT biotech Aug 2015 release (https://www.european-medical-solutions.eu/wp-content/uploads/2024/10/2015-08-05_Une-avancee-majeure-pour-ASIT-biotech.pdf: 'a dose of 170 µg appears to be optimal')."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "2018 -> 2017. Patient side: ASIT biotech PR 2017-02-28 (https://www.biospace.com/b-asit-biotech-b-reports-positive-results-in-its-phase-iii-clinical-trial-with-gp-asit-for-grass-pollen-induced-allergic-rhinitis) ('mostly mild adverse reactions and the absence of new or unexpected safety findings'); model side: Aug 2015 release ('induce minimal side-effects'), Phase IIb detail in Mosges epub 2017-12-22."
+  }
+ ]
+}

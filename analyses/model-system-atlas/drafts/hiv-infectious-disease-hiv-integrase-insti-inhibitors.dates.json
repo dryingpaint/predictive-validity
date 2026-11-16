@@ -1,0 +1,40 @@
+{
+ "tile": "hiv-infectious-disease-hiv-integrase-insti-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "2010 -> 2009 (opener; dolutegravir cell-culture data first public at IAS 2009 Cape Town, Sato WEPEA097; moved so the opener precedes its 2009 pairing)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2011 -> 2009 (cell data IAS 2009 WEPEA097 and 10-day monotherapy IAS 2009 TUAB105 both public July 2009; i-base HTB 5976)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "2010 -> 2009 (opener; same IAS 2009 WEPEA097 first public date as the engagement opener)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "2011 -> 2010 (SPRING-1 week-16 interim presented at AIDS 2010 Vienna, THLBB205, July 2010; aidsmap 23 Jul 2010)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "2025 -> 2022 (Tsepamo null update, 0.11% DTG vs 0.11% non-DTG, presented at AIDS 2022 Montreal; i-base HTB 43791)"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "what": "2025 -> 2022 (same AIDS 2022 Tsepamo null update; model public Dec 2020)"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "what": "2025 -> 2023, retrodiction false -> true, status stays contra (mouse paper online June 2023, PMID 37382903, after the AIDS 2022 null); entry 9 given untested_reason not_measured to clear lint"
+  }
+ ]
+}

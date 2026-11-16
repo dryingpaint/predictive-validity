@@ -1,0 +1,10 @@
+{
+  "tile": "large-b-cell-lymphoma-cd19-directed-depleters",
+  "changed": [
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "what": "2019 -> 2021, status same -> retro (retrodiction true): model side is the CBER Breyanzi SBRA dated 2021-02-05 (https://www.fda.gov/media/146242/download), later than the BMS Dec 2019 patient-side release; CD19 CAR T LBCL efficacy was public before 2021"
+    }
+  ]
+}

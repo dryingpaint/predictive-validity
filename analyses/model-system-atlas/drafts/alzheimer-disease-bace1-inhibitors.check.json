@@ -62,17 +62,12 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2018,
-   "rule": "Dating rule 6: year is the earliest public date, congress abstract included",
-   "note": "Henley 2019 (NEJM 2019 Apr 11, PMID 30970197) is the source; PACC is NCT02569398's primary; amyloid-positive -> biomarker_selected, oral, product_in_model false correct. Janssen reported 25 mg one point worse on PACC at CTAD Oct 2018, before the letter. Track lacks a 2012 opener.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Contra on EARLY PACC primary agreed. Rule 6: year should be 2018, Janssen reported 25 mg one point worse on PACC at CTAD Oct 2018 (Alzforum), before Henley 2019."
+   "note": "Alzforum 2 Nov 2018 (CTAD): EARLY 25 mg about 1 point worse on PACC at 6 and 12 months, about 4 worse on RBANS. Before Henley 2019; model side 2015. 2018 and contra hold; prospective.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -112,17 +107,12 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2018,
-   "rule": "Dating rule 6: year is the earliest public date, congress abstract included",
-   "note": "Contra holds on EARLY's PACC primary (amyloid-positive, biomarker_selected); drug 'class' fits a genetic system. EARLY 25 mg PACC worsening was first public at CTAD Oct 2018 (Janssen presentation), before the April 2019 NEJM letter.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Contra on EARLY PACC primary agreed. Rule 6: earliest public date is CTAD Oct 2018 (Janssen PACC worsening), so year 2018, not 2019."
+   "note": "Patient side first public at CTAD Oct 2018 (Alzforum 2 Nov 2018: 25 mg about 1 point worse on PACC); model side Jonsson 2012. Later of the two is 2018; contra holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -137,17 +127,12 @@
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2018,
-   "rule": "Dating rule 6: year is the earliest public date, congress abstract included",
-   "note": "Same holds and is prospective (Filser 2014 precedes any atabecestat cognitive result). EARLY 25 mg PACC worsening was first public at CTAD Oct 2018 (Janssen), before the April 2019 NEJM letter; oral, biomarker_selected correct.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Same agreed; prospective (Filser 2014 precedes). Rule 6: the cognitive worsening was first public at CTAD Oct 2018, so year 2018, not 2019."
+   "note": "Alzforum 2 Nov 2018 reports CTAD EARLY 25 mg PACC and RBANS worsening; model side Filser epub 2014 precedes it, so prospective. Year 2018 and same hold.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -172,12 +157,17 @@
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim (May 2015). Opener of the elenbecestat track on PDAPP mice dosed with sibling LY2886721; product_in_model false, oral, 2012 proxy and untested hold.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "Dating rule 6: year is the earliest public date, congress abstract included; a track opens at its own drug's first use",
+   "note": "Sibling PDAPP Aβ data were public before May 2015: AAIC abstract P4-197 (May, Alz Dement July 2012, doi 10.1016/j.jalz.2012.05.2125) reports oral LY2886721 lowering PDAPP brain Aβ. NCT01600859 started July 2012. Year 2012, not 2015.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: congress abstracts count. AAIC P4-197 (Alz Dement, July 2012) reports oral LY2886721 lowering PDAPP brain Abeta, so sibling data were public by elenbecestat's July 2012 first trial. Untested, year 2012."
   },
   {
    "cell": "efficacy",
@@ -192,12 +182,17 @@
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim. Opener of the LY3202626 track on PDAPP mice dosed with sibling LY2886721; oral, 2012 proxy and untested hold.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "untested",
+   "proposed_year": 2014,
+   "rule": "Dating rule 6: year is the earliest public date, congress abstract included; a track opens at its own drug's first use",
+   "note": "Sibling PDAPP data were public in the AAIC July 2012 abstract (doi 10.1016/j.jalz.2012.05.2125), not first in Jan 2015. The opener dates to LY3202626's own first use: NCT02323334 posted 2014-12-23, started Dec 2014. Year 2014.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: AAIC P4-197 (July 2012) made sibling PDAPP data public before 2015; track opens at LY3202626's own first use, NCT02323334, Dec 2014. Untested, year 2014."
   },
   {
    "cell": "efficacy",
@@ -206,8 +201,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Lo 2021 abstract (PMID 34113788, epub 2021-04-29) quote verbatim. NCT02791191 primary flortaucipir SUVr at 52 wk, florbetapir-positive mild AD (biomarker_selected), oral; registry results 2021-04-19 is earliest; 2021 holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "note": "Alzforum 2 Nov 2018: NAVIGATE stopped for futility, 'no clear effect on cognition'; 'None of these trials reported any change in tau PET'. Primary result public 2018, before 2021 registry/paper. 2018 and contra hold.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [
@@ -220,6 +215,7 @@
   "Can a dose 'contra derived_from efficacy' be paired across sibling drugs when the model that set the exposure target (Lilly dogs, LY2886721) never set the failed drug's dose? Atabecestat doses came from its own human CSF PK/PD. And when the failed trial (EARLY) was stopped for toxicity while the efficacy readout was interim, which dose-table row applies?",
   "Does a later safety prediction made from a non-model heuristic (low daily dose lowers idiosyncratic DILI risk, LY3202626) count as model_change and let the safety cell turn back, or is it out of scope because it is not a model system?",
   "The opening year for unpublished preclinical work is proxied to a member's Phase 2 start (2012). Should it be the first-in-human date (LY2886721 Phase 1, about 2011) instead?",
-  "Efficacy 4 (A673T genetics vs atabecestat): A673T lowers beta-cleavage of APP only, while drug BACE1 inhibition also blocks other substrates (e.g. SEZ6), the likely cause of cognitive worsening. Is that a 'condition the model never tested' (#35/#72 -> untested) when no trial source attributes it so? Kept contra."
+  "Efficacy 4 (A673T genetics vs atabecestat): A673T lowers beta-cleavage of APP only, while drug BACE1 inhibition also blocks other substrates (e.g. SEZ6), the likely cause of cognitive worsening. Is that a 'condition the model never tested' (#35/#72 -> untested) when no trial source attributes it so? Kept contra.",
+  "Opener for a drug never run in the model (product_in_model false): date it to the sibling data's first public date (AAIC July 2012) or to the later of that and the drug's own first public appearance (LY3202626, Dec 2014)? Proposed the later of the two."
  ]
 }

@@ -1,0 +1,25 @@
+{
+  "tile": "non-small-cell-lung-carcinoma-anti-igf1r-antibodies",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2011 -> 2008; patient tumour IGF1R/signalling decreases first public in Atzori et al. ASCO 2008 abstract 3519 (doi:10.1200/jco.2008.26.15_suppl.3519, May 20, 2008)"
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "what": "2005 -> 2010; opener of the A549 x cixutumumab track dated to cixutumumab's own first use in A549 xenografts, Riesterer et al. IJROBP (PMID 21129859, epub 2010-12-02)"
+    },
+    {
+      "cell": "efficacy",
+      "index": 5,
+      "what": "2014 -> 2011; dalotuzumab + erlotinib randomized PFS result presented at IASLC WCLC July 2011 (Moran 2014 author information; Rosell et al. 2011 cited with PFS 2.5 vs 1.6 mo, HR 0.86 in Dienstmann 2011, doi:10.1016/j.molonc.2011.11.009)"
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "what": "2005 -> 2010; opener of the A549 x cixutumumab track dated to cixutumumab's own first use in A549 xenografts, Riesterer et al. IJROBP (PMID 21129859, epub 2010-12-02)"
+    }
+  ]
+}

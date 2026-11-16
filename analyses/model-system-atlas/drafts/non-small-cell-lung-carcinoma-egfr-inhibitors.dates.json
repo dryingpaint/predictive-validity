@@ -1,0 +1,20 @@
+{
+ "tile": "non-small-cell-lung-carcinoma-egfr-inhibitors",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "2019 -> 2018; status same unchanged; patient side first public as AACR 2018 abstract CT013 (Cancer Res 78(13 Suppl):CT013), model side Ballard 2016 (epub 2016-07-19)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "2015 -> 2014; status same unchanged, retrodiction stays false; patient side first public in ASCO 2014 abstract 8009 (T790M+ ORR 64%; AstraZeneca release 2014-05-14), model side public earlier (AACR-NCI-EORTC 2013 abstract A109; Cross 2014 epub 2014-06-03)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2019 -> 2016; status retro and retrodiction true unchanged (Park 2012 still precedes); patient side first public at ASCO 2016 abstract 9002 (BLOOM LM activity), model side Ballard 2016 epub 2016-07-19 is the later side"
+  }
+ ]
+}

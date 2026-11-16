@@ -100,11 +100,11 @@
     ],
     "dose": [
       {
-        "year": 2010,
+        "year": 2018,
         "status": "untested",
         "model": "CIA occupancy-efficacy PK/PD",
         "model_id": "cia-occupancy-pkpd",
-        "note": "Fenebrutinib track opener: BTK occupancy tightly tracked efficacy in CIA mice (ibrutinib, a sibling), so blood occupancy or inhibition became the class's exposure target.",
+        "note": "Fenebrutinib track opener: BTK occupancy tightly tracked efficacy in CIA mice (ibrutinib, a sibling), so blood occupancy or inhibition became the class's exposure target. Dating: fenebrutinib's own first use in the model is Crawford 2018 (J Med Chem, PMID 29457982, epub 2018-02-23: rat CIA, IC70 exposure target), not ibrutinib's 2010 probe.",
         "short": "Occupancy tracks efficacy in CIA mice",
         "src": "https://doi.org/10.1073/pnas.1004594107",
         "srcLabel": "Honigberg 2010",
@@ -137,11 +137,11 @@
         "combination_with": null
       },
       {
-        "year": 2020,
+        "year": 2019,
         "status": "same",
         "model": "CIA occupancy-efficacy PK/PD",
         "model_id": "cia-occupancy-pkpd",
-        "note": "Fenebrutinib doses were set to reach the rat-CIA inhibition target (IC70); 150 mg QD and 200 mg BID beat placebo on ACR50, 50 mg QD did not.",
+        "note": "Fenebrutinib doses were set to reach the rat-CIA inhibition target (IC70); 150 mg QD and 200 mg BID beat placebo on ACR50, 50 mg QD did not. Dating: patient side first public as NCT02833350 registry results 2019-09-10 (before the 2020-04-09 epub); model side 2018-02-23; later of the two is 2019.",
         "short": "Rat-CIA exposure target worked in patients",
         "src": "https://doi.org/10.1002/art.41275",
         "srcLabel": "Cohen 2020",
@@ -178,11 +178,11 @@
         "untested_reason": "unsettled"
       },
       {
-        "year": 2022,
+        "year": 2021,
         "status": "same",
         "model": "CIA occupancy-efficacy PK/PD",
         "model_id": "cia-occupancy-pkpd",
-        "note": "Elsubrutinib reached adequate exposure and BTK engagement at every dose yet matched placebo; the rat-CIA occupancy target that predicted efficacy did not hold.",
+        "note": "Elsubrutinib reached adequate exposure and BTK engagement at every dose yet matched placebo; the rat-CIA occupancy target that predicted efficacy did not hold. Dating: patient side first public as NCT03682705 registry results 2021-05-03 (before the 2022-04-27 epub); model side 2018-07-23; later of the two is 2021.",
         "short": "Rat-CIA occupancy target reached",
         "src": "https://doi.org/10.1016/S2665-9913(22)00092-3",
         "srcLabel": "Fleischmann 2022",
@@ -222,11 +222,11 @@
     ],
     "efficacy": [
       {
-        "year": 2010,
+        "year": 2016,
         "status": "untested",
         "model": "Collagen-induced arthritis (rodent)",
         "model_id": "cia-rodent",
-        "note": "BMS-986142 track opener: ibrutinib (a sibling) abolished mouse CIA; every member then went into RA on mouse or rat CIA, BMS-986142 on Gillooly 2017.",
+        "note": "BMS-986142 track opener: ibrutinib (a sibling) abolished mouse CIA; every member then went into RA on mouse or rat CIA, BMS-986142 on Gillooly 2017. Dating: BMS-986142's own first use in mouse CIA is Watterson 2016 (J Med Chem, PMID 27583770, epub 2016-09-19), not ibrutinib's 2010 data.",
         "short": "Ibrutinib abolishes mouse CIA",
         "src": "https://doi.org/10.1073/pnas.1004594107",
         "srcLabel": "Honigberg 2010",
@@ -346,11 +346,11 @@
         "judgement": null
       },
       {
-        "year": 2019,
+        "year": 2016,
         "status": "contra",
         "model": "Collagen-induced arthritis (rodent)",
         "model_id": "cia-rodent",
-        "note": "Spebrutinib 375 mg/day on background MTX missed its registered primary endpoint, ACR20 at week 4 (41.7% vs 21.7%, P = 0.25), despite 83% median BTK occupancy.",
+        "note": "Spebrutinib 375 mg/day on background MTX missed its registered primary endpoint, ACR20 at week 4 (41.7% vs 21.7%, P = 0.25), despite 83% median BTK occupancy. Dating: the ACR20 miss was first public as ACR 2016 abstract 1587 (Arthritis Rheumatol 68 suppl 10, first published 2016-09-28: 42% vs 22%, p=0.25, primary endpoint not met); model side 2013; later of the two is 2016.",
         "short": "Missed ACR20 at week 4",
         "src": "https://doi.org/10.1007/s40744-019-00182-7",
         "srcLabel": "Schafer 2020",
@@ -503,14 +503,15 @@
         "route": "oral",
         "population_group": "unselected",
         "combination_with": null,
-        "judgement": null
+        "judgement": null,
+        "untested_reason": "no_prediction"
       },
       {
         "year": 2019,
-        "status": "same",
+        "status": "contra",
         "model": "Collagen-induced arthritis (rodent)",
         "model_id": "cia-rodent",
-        "note": "Fenebrutinib 150 mg QD and 200 mg BID beat placebo on the primary endpoint, ACR50 at week 12 in MTX-inadequate responders (28% and 35% vs 15%); 50 mg QD did not.",
+        "note": "Fenebrutinib 150 mg QD and 200 mg BID beat placebo on the primary endpoint, ACR50 at week 12 in MTX-inadequate responders (28% and 35% vs 15%); 50 mg QD did not. Retrodiction: fenebrutinib's rat-arthritis efficacy was first public 2018-02-23 (Crawford, J Med Chem), after spebrutinib's RA ACR20 miss was public (ACR 2016 abstract 1587, 2016-09-28); efficacy is a target claim, and the model predicted efficacy without reproducing that prior class failure, so contra under the retrodiction rule.",
         "short": "Met ACR50 at week 12",
         "src": "https://doi.org/10.1002/art.41275",
         "srcLabel": "Cohen 2020",
@@ -532,7 +533,7 @@
         "model_filed": false,
         "product_in_model": true,
         "model_kind": "animal",
-        "retrodiction": false,
+        "retrodiction": true,
         "endpoint_role": "primary",
         "outcome_tested": null,
         "magnitude": "direction_only",
@@ -548,11 +549,11 @@
         "combination_with": null
       },
       {
-        "year": 2019,
+        "year": 2017,
         "status": "untested",
         "model": "Collagen-induced arthritis (rodent)",
         "model_id": "cia-rodent",
-        "note": "Evobrutinib track opener: robust efficacy in mouse RA models; 80% blood BTK occupancy linked to near-complete disease inhibition.",
+        "note": "Evobrutinib track opener: robust efficacy in mouse RA models; 80% blood BTK occupancy linked to near-complete disease inhibition. Dating: evobrutinib's own first public use in mouse CIA is ACR 2017 abstract 2565 (Haselmayer, first published 2017-09-18), before the 2019 J Immunol paper.",
         "short": "Robust efficacy in mouse arthritis",
         "src": "https://doi.org/10.4049/jimmunol.1800583",
         "srcLabel": "Haselmayer 2019",
@@ -583,14 +584,15 @@
         "route": "oral",
         "population_group": "unselected",
         "combination_with": null,
-        "judgement": "First public 2019-04-15, before the first scored BTK result in RA (BMS-986142 registry, 2019-05-28); the acalabrutinib registry posting of 2019-03-26 carries no analysis and is not scored, so this is not a retrodiction."
+        "judgement": "First public 2019-04-15, before the first scored BTK result in RA (BMS-986142 registry, 2019-05-28); the acalabrutinib registry posting of 2019-03-26 carries no analysis and is not scored, so this is not a retrodiction.",
+        "untested_reason": "no_prediction"
       },
       {
         "year": 2020,
         "status": "contra",
         "model": "Collagen-induced arthritis (rodent)",
         "model_id": "cia-rodent",
-        "note": "Evobrutinib missed its primary endpoint, ACR20 at week 12, in MTX-inadequate responders (placebo 49.5%); no dose response.",
+        "note": "Evobrutinib missed its primary endpoint, ACR20 at week 12, in MTX-inadequate responders (placebo 49.5%); no dose response. Retrodiction: evobrutinib's CIA efficacy was first public 2017-09-18 (ACR 2017 abstract 2565), after spebrutinib's RA ACR20 miss (ACR 2016 abstract 1587, 2016-09-28); it did not reproduce that failure, so it stays contra as a retrodiction.",
         "short": "Missed ACR20 at week 12",
         "src": "https://acrabstracts.org/abstract/a-phase-iib-randomized-double-blind-study-in-patients-with-rheumatoid-arthritis-evaluating-the-safety-and-efficacy-of-evobrutinib-compared-with-placebo-in-patients-with-an-inadequate-response-to-met/",
         "srcLabel": "ACR Convergence 2020 abstract",
@@ -612,7 +614,7 @@
         "model_filed": false,
         "product_in_model": true,
         "model_kind": "animal",
-        "retrodiction": false,
+        "retrodiction": true,
         "endpoint_role": "primary",
         "outcome_tested": null,
         "magnitude": "direction_only",
@@ -628,11 +630,11 @@
         "combination_with": null
       },
       {
-        "year": 2018,
+        "year": 2015,
         "status": "untested",
         "model": "Collagen-induced arthritis (rodent)",
         "model_id": "cia-rodent",
-        "note": "Elsubrutinib (ABBV-105) track opener: inhibited paw swelling and bone destruction in rat CIA.",
+        "note": "Elsubrutinib (ABBV-105) track opener: inhibited paw swelling and bone destruction in rat CIA. Dating: elsubrutinib's own first public use in rat CIA is ACR 2015 abstract 1106 (ABBV-105, first published 2015-09-29: 'In rat CIA, ABBV-105 fully inhibits paw swelling and bone destruction').",
         "short": "Inhibits rat CIA",
         "src": "https://doi.org/10.1080/14397595.2018.1484269",
         "srcLabel": "Goess 2019",
@@ -708,11 +710,11 @@
         "combination_with": null
       },
       {
-        "year": 2017,
+        "year": 2015,
         "status": "untested",
         "model": "Collagen-induced arthritis (rodent)",
         "model_id": "cia-rodent",
-        "note": "TAS5315 track opener: dose-dependently ameliorated paw swelling in established mouse CIA at 0.1 mg/kg (ACR 2017 abstract; full paper 2023).",
+        "note": "TAS5315 track opener: dose-dependently ameliorated paw swelling in established mouse CIA at 0.1 mg/kg (ACR 2017 abstract; full paper 2023). Dating: TAS5315's own first public use in mouse CIA is ACR 2015 abstract 2561 (first published 2015-09-29: dose-dependent decrease in clinical score in DBA/1 CIA).",
         "short": "Ameliorates mouse CIA",
         "src": "https://acrabstracts.org/abstract/tas5315-a-novel-brutons-tyrosine-kinase-inhibitor-ameliorates-inflammation-and-bone-erosion-in-murine-model-for-rheumatoid-arthritis/",
         "srcLabel": "Yoshiga 2017 (ACR abstract)",

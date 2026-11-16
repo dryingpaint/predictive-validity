@@ -9,9 +9,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Bryant 2005 Nature resolves; quote verbatim in abstract. model_filed rests on the companion paper: no PARP review in the bundle cites Bryant, the Akeega review cites Farmer 2005."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model",
+   "note": "Evers 2008 Clin Cancer Res 14:3916 (PMID 18559613, print 2008-06-15, no earlier epub): AZD2281 alone in BRCA2-deficient mouse mammary tumour cells. PubMed search finds no earlier olaparib BRCA2-null study. 2008 confirmed; untested unchanged."
   },
   {
    "cell": "engagement",
@@ -36,9 +38,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Bryant 2005 opener; quote verbatim. No exposure target or margin stated: margin_stated false is right."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model",
+   "note": "Evers 2008 Clin Cancer Res 14:3916 (PMID 18559613, print 2008-06-15, no earlier epub): AZD2281 alone in BRCA2-deficient mouse mammary tumour cells. PubMed search finds no earlier olaparib BRCA2-null study. 2008 confirmed; untested unchanged."
   },
   {
    "cell": "dose",
@@ -99,9 +103,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Bryant 2005 opener; quote verbatim."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model",
+   "note": "Evers 2008 Clin Cancer Res 14:3916 (PMID 18559613, print 2008-06-15, no earlier epub): AZD2281 alone in BRCA2-deficient mouse mammary tumour cells. PubMed search finds no earlier olaparib BRCA2-null study. 2008 confirmed; untested unchanged."
   },
   {
    "cell": "efficacy",
@@ -137,9 +143,11 @@
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "McCabe 2006 Cancer Res resolves; quote verbatim. model_filed should be false: no bundle review cites McCabe 2006; the only hit is McCabe as co-author of Farmer 2005. Bajrami 2014 resolves (epub 2013-11-15)."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model",
+   "note": "Williamson 2010 Mol Cancer Ther 9:347 (PMID 20124459, epub 2010-02-02): olaparib in ATM-deficient cells and xenografts. No earlier olaparib study on a panel gene found (Mendes-Pereira 2009 is PTEN, not in the panel). 2010 confirmed; untested unchanged."
   },
   {
    "cell": "efficacy",

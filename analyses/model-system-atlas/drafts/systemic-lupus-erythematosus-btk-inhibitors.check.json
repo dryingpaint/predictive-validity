@@ -36,16 +36,13 @@
   {
    "cell": "engagement",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "untested",
-   "rule": "one system split across two model_ids: each model system is one track sharing one model_id (adjudicated 2026-11-09 for engagement 4 / dose 1: model_id nzbw-lupus-mouse)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Haselmayer 2019 abstract (epub 2019-04-15) quote verbatim; evobrutinib, oral, untested 2019 right. Occupancy PK/PD fitted in the same NZB/W mice: model_id nzbw-lupus-mouse (adjudicated); keep as evobrutinib engagement opener, not a repeat of fenebrutinib's entry 1.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Status not disputed; only model_id moves to nzbw-lupus-mouse (one system, one model_id). Evobrutinib engagement opener, untested 2019; not the track's latest entry (engagement 3 contra 2022), so no untested_reason (rule 5)."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model; year is the earliest public date",
+   "note": "EULAR 2016 THU0275 (Crossref/S2: online 2016-06-01) titled BTK occupancy vs efficacy PD modeling in SLE models with M2951 (evobrutinib); body paywalled, title only. No SLE BTKi patient result before 2016: prospective, untested 2016. model_id still pre-adjudication slug."
   },
   {
    "cell": "engagement",
@@ -84,16 +81,13 @@
   {
    "cell": "dose",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "untested",
-   "rule": "one system split across two model_ids: each model system is one track sharing one model_id (adjudicated 2026-11-09 for engagement 4 / dose 1: model_id nzbw-lupus-mouse)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Haselmayer 2019 abstract quote verbatim: stated 80% blood-occupancy target, no margin. evobrutinib, oral, untested 2019 right; model_id nzbw-lupus-mouse (adjudicated, target derived in IFN-a NZB/W mice).",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Status not disputed; model_id nzbw-lupus-mouse. Stated 80% occupancy target, no human comparison yet: opener untested 2019. Track's latest entry is dose 2 (same), so no untested_reason (rule 5)."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model; year is the earliest public date",
+   "note": "EULAR 2016 THU0275 (2016-06-01) title confirms M2951 occupancy-vs-efficacy PD modeling in SLE models; 80% figure seen only in 2019 quote. Opener untested 2016 stands; prospective. model_first_use_year 2019 should read 2016."
   },
   {
    "cell": "dose",
@@ -156,8 +150,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Haselmayer 2019 abstract (epub 2019-04-15) quote verbatim; evobrutinib dosed in NZB/W SLE mice, prospective. Opener untested 2019, evobrutinib, oral right."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model; year is the earliest public date",
+   "note": "EULAR 2016 THU0275 (2016-06-01), M2951=evobrutinib dosed in SLE mouse models per title; IFN-a NZB/W detail not seen (body paywalled). Prospective, untested 2016 right; model_first_use_year 2017 now postdates the opener."
   },
   {
    "cell": "efficacy",
@@ -176,8 +171,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Goess 2018 abstract (PMID 29862859, epub 2018-07-23) quote verbatim; ABBV-105 = elsubrutinib in IFN-a NZB/W nephritis. Opener untested 2018, elsubrutinib, oral right."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model; year is the earliest public date",
+   "note": "ACR 2015 abstract 1106 (Goess; acrabstracts datePublished 2015-09-01, poster 2015-11-09) read in full: ABBV-105 cut proteinuria, anti-dsDNA, prolonged survival in IFNa-accelerated NZB/W. Prospective, untested 2015 right; model_first_use_year 2017 is later."
   },
   {
    "cell": "efficacy",

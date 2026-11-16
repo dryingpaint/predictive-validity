@@ -18,11 +18,11 @@
   "cells": {
     "engagement": [
       {
-        "year": 2009,
+        "year": 2013,
         "status": "untested",
         "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
         "model_id": "hiv-gag-polymorph-cell-panel",
-        "note": "Patient-derived gag/pr recombinant viruses and site-directed mutants in culture: the Gag-polymorphism panel the class was optimised on, first run with bevirimat.",
+        "note": "Patient-derived gag/pr recombinant viruses and site-directed mutants in culture: the Gag-polymorphism panel the class was optimised on, first run with bevirimat. Opener dated to bms-955176's own first registry-dated use of the panel: NCT01803074 (Phase 1/2a, first posted 2013-03-04), whose doses and patient selection rested on the panel; its first public panel data were CROI 2015 (114LB; Lin poster 539) and the Feb 2015 HIV Drug Resistance Workshop. The 2009 bevirimat date is the system's first use (model_first_use_year).",
         "short": "Gag-polymorphism virus panel built on bevirimat",
         "src": "https://doi.org/10.1128/AAC.01650-08",
         "srcLabel": "Van Baelen 2009",
@@ -181,11 +181,11 @@
     ],
     "dose": [
       {
-        "year": 2016,
+        "year": 2013,
         "status": "untested",
         "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
         "model_id": "hiv-gag-polymorph-cell-panel",
-        "note": "Serum shift 5.4-fold (86% bound) gave a protein-adjusted EC90 of 14 nM for BMS-955176; the patient trough target was derived from it.",
+        "note": "Serum shift 5.4-fold (86% bound) gave a protein-adjusted EC90 of 14 nM for BMS-955176; the patient trough target was derived from it. Opener dated to bms-955176's own first registry-dated use of the panel: NCT01803074 (Phase 1/2a, first posted 2013-03-04), whose doses and patient selection rested on the panel; its first public panel data were CROI 2015 (114LB; Lin poster 539) and the Feb 2015 HIV Drug Resistance Workshop. The 2009 bevirimat date is the system's first use (model_first_use_year).",
         "short": "Serum-shifted EC90 sets the trough target",
         "src": "https://doi.org/10.1128/AAC.02560-15",
         "srcLabel": "Nowicka-Sans 2016",
@@ -406,11 +406,11 @@
         "source_calls_it": null,
         "population": "Unselected",
         "confidence_note": "Open-access full text read (PMC6198970). Paired by me: the Phase 2b paper reports the flat exposure-response but does not itself cite the Phase 2a Emax plateau as the prediction. The regimen was later abandoned for GI intolerability and NRTI-backbone resistance (rule question 3); dose stays same because the exposure target was reached and the Week-24 primary was met.",
-        "year": 2018,
+        "year": 2017,
         "status": "same",
         "srcLabel": "Morales-Ramirez 2018",
         "src": "https://doi.org/10.1371/journal.pone.0205368",
-        "note": "Phase 2b at 60/120/180 mg (all above the plateau) gave 76-83% <40 copies/mL vs 77% on efavirenz, with no exposure-response, as the plateau model predicted. Combination design: GSK3532795 with tenofovir DF/emtricitabine; target reached, so dose stays same; later abandonment is not a dose failure.",
+        "note": "Phase 2b at 60/120/180 mg (all above the plateau) gave 76-83% <40 copies/mL vs 77% on efavirenz, with no exposure-response, as the plateau model predicted. Combination design: GSK3532795 with tenofovir DF/emtricitabine; target reached, so dose stays same; later abandonment is not a dose failure. Dated 2017: the Week-24 dose-response was first public at IAS 2017 (MOAB0103, Paris, 23-26 July 2017; J Int AIDS Soc 2017;20 Suppl 5), after the model side (Hwang 2017, CID epub 2017); registry results 2018-09-19 and paper 2018 came later.",
         "short": "Flat 60-180 mg response matches plateau",
         "quote": "Efficacy endpoints demonstrated little correlation to GSK3532795 exposure. It is likely that lower doses would need to be studied to elucidate clear exposure-response relationships.",
         "confidence": "medium",
@@ -599,11 +599,11 @@
     ],
     "efficacy": [
       {
-        "year": 2009,
+        "year": 2013,
         "status": "untested",
         "model": "HIV-1 replication in cell culture against patient-derived and site-directed Gag-polymorphic viruses, with in-vitro resistance selection and a protein-binding-adjusted EC90 as the plasma trough target",
         "model_id": "hiv-gag-polymorph-cell-panel",
-        "note": "Cell-culture replication of patient-derived viruses carrying Gag polymorphisms: bevirimat failed on polymorphic viruses, so the panel became the class's efficacy screen.",
+        "note": "Cell-culture replication of patient-derived viruses carrying Gag polymorphisms: bevirimat failed on polymorphic viruses, so the panel became the class's efficacy screen. Opener dated to bms-955176's own first registry-dated use of the panel: NCT01803074 (Phase 1/2a, first posted 2013-03-04), whose doses and patient selection rested on the panel; its first public panel data were CROI 2015 (114LB; Lin poster 539) and the Feb 2015 HIV Drug Resistance Workshop. The 2009 bevirimat date is the system's first use (model_first_use_year).",
         "short": "Polymorphic-virus panel is the efficacy screen",
         "src": "https://doi.org/10.1128/AAC.01650-08",
         "srcLabel": "Van Baelen 2009",

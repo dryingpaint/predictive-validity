@@ -231,9 +231,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "4",
-   "note": "Kelly 2015 (PMID 25656305, epub 2015-03-02) quote verbatim (tilde glyph only); Gelling 2003 'supraphysiological glucagon levels', alpha-cell hyperplasia. Prospective same, direction_only. Kelly's dose-dependent aminotransferase rise is left uncharged as knockout silence; ALT is measurable in mice, so decision 4 could read it as askable silence (rule question).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "6 (dating); retrodiction (safety: same drug's earlier patient result only)",
+   "note": "Re-opened Clin Endocrinol News 2011-10-01 (EASD 2011): LY2409021 fasting glucagon up 0.6-4.2-fold with HbA1c falls, 'generally well tolerated'. Gelling 2003 (PNAS epub 2003-01-24) precedes any LY2409021 patient data, so not retro. Year 2011, same.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -275,8 +275,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Kelly 2015 quote verbatim; Zhou 2009 model_src resolves. Prospective 2009 to 2015, same direction_only on hyperglucagonaemia. Zhou's abstract states no glycaemic phenotype; the no-hypoglycaemia reading rests on Larger 2016 (PMC5118975, 2016-11-21, verified), which the note already treats as changing no status.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "rule": "6 (dating); retrodiction (safety: same drug's earlier patient result only)",
+   "note": "Re-opened Clin Endocrinol News 2011-10-01 (EASD 2011): LY2409021 fasting glucagon up 0.6-4.2-fold in T2D, matching Mahvash hyperglucagonaemia. Zhou 2009 (Pancreas, print 2009-11) precedes any LY2409021 patient result, so not retro. Year 2011, same.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -339,17 +340,13 @@
   {
    "cell": "engagement",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2012,
-   "rule": "6 (earliest public date)",
-   "note": "Kelly 2015 quote verbatim, retro right. But Clinical Endocrinology News 2011-10-01 (EASD 2011) reports LY2409021 HbA1c fall and fasting glucagon up 0.6-4.2-fold, so the pairing with Mu 2012 was public in 2012; confidence_note's claim is wrong.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6: Clin Endocrinol News 2011-10-01 (EASD 2011) reports LY2409021 HbA1c fall and fasting glucagon up 0.6-4.2-fold, so the pairing with Mu 2012 was public in 2012; year 2012. Status stays retro (retrodiction rule)."
+   "rule": "6 (dating: later of the two public sides); retrodiction (engagement: same target earlier in patients)",
+   "note": "Re-opened Clin Endocrinol News 2011-10-01 (EASD 2011): LY2409021 28-day, 47 T2D, fasting glucagon up 0.6-4.2-fold, HbA1c down. Mu 2012 epub 2012-11-19 (Crossref); later side gives 2012. Retro holds (Bay 27-9955 2001). confidence_note still says dated to Kelly 2015: stale.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

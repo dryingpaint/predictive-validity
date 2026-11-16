@@ -1,0 +1,8 @@
+{
+  "tile": "breast-cancer-pik3ca-inhibitors",
+  "changed": [
+    {"cell": "engagement", "index": 1, "what": "2014 -> 2012 (alpelisib opener on pik3ca-mutant-cell-panel-xenografts; status untested unchanged): alpelisib's first use in the model was AACR 2012 abstract 3749, Huang/Fritsch et al., Cancer Res 2012;72(8 Suppl):3749, doi 10.1158/1538-7445.AM2012-3749 (April 2012)"},
+    {"cell": "dose", "index": 1, "what": "2014 -> 2012 (alpelisib opener; status untested unchanged): same source, AACR 2012 abstract 3749, doi 10.1158/1538-7445.AM2012-3749"},
+    {"cell": "efficacy", "index": 2, "what": "2014 -> 2012 (alpelisib opener; status untested unchanged): same source, AACR 2012 abstract 3749, doi 10.1158/1538-7445.AM2012-3749"}
+  ]
+}

@@ -59,12 +59,12 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "untested",
-   "proposed_year": 2009,
-   "rule": "Evidence rule 6 (each cell opens at model_first_use_year)",
-   "note": "Sandham 2013 (epub 2013-08-22) quote verbatim; qav-680 oral fits. Year 2013 should be the 2009 proxy (model_first_use_year). Latest QAV680 entry lacks untested_reason (unsettled: NCT00814216 posted no results).",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_year": 2008,
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date incl. registry posting; track opens at its own drug's first use)",
+   "note": "NCT00814216 (QAV680, asthma, 37 pts) first posted 2008-12-24, start 2008-12; rodent data preceded it. Opener year 2008 not 2009; registry_date 2008-12-24 (draft null); model_first_use_year 2008 on the track. untested/unsettled right.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: cell opens untested at model_first_use_year (2009 proxy), not 2013. Rule 5: NCT00814216 measured QAV680 patients but posted no results, so untested_reason unsettled."
+   "adjudication_note": "Status table untested: drafter and checker agree; QAV680 opener, no comparison yet. Rule 6 dating (track opens at own drug's first use): NCT00814216 posted 2008-12-24, so year 2008. Rule 5: unsettled stays (results unreported)."
   },
   {
    "cell": "efficacy",
@@ -172,17 +172,13 @@
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2015,
-   "rule": "Evidence rule 6 (dating: congress abstract)",
-   "note": "Erpenbeck 2016b (epub 2016-06-21) quote verbatim; contra and retrodiction right. NCT01253603 was first public as ERJ 46 Suppl 59 PA2125 (Sept 2015), so year 2016 -> 2015. Abstract body not read.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Both agree contra (failed retrodiction). Rule 6 dating: NCT01253603 first public as ERS 2015 congress abstract (ERJ 46 Suppl 59), so year 2015, not 2016."
+   "rule": "DRAFTER_BRIEF rule 6 (paired year is the later side) and retrodiction rule",
+   "note": "Crossref: 10.1183/13993003.congress-2015.PA2125, Erpenbeck et al., ERS Sept 2015 = NCT01253603 (posted 2010-12-03, 170 pts, trough FEV1). Later than Sandham 2013, so 2015; contra and retrodiction (OC000459 2011) unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

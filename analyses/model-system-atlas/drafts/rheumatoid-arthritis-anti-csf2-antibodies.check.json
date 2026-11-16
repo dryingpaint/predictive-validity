@@ -7,12 +7,15 @@
   {
    "cell": "engagement",
    "index": 1,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Opener on 22E9 track; otilimab sc is the drug its patient readouts (Genovese 2020) used; unselected right for an opener. Cook 2001 quote verbatim; untested 2001 unchanged."
+   "proposed_status": "untested",
+   "proposed_year": 2008,
+   "rule": "rule 6 (dating: a track opens at its own drug's first use; earliest public date)",
+   "note": "MOR103 (otilimab) was public before NCT01023256: MorphoSys CTA approval for a Phase 1 healthy-volunteer trial, press release 2008-02-13; RA preclinical data released 2008-11-13. Drug's first use is 2008. untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -37,12 +40,15 @@
   {
    "cell": "dose",
    "index": 1,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Opener on 22E9 dose track, otilimab sc matching dose 2; unselected right. Cook 2001 quote verbatim."
+   "proposed_status": "untested",
+   "proposed_year": 2008,
+   "rule": "rule 6 (dating: a track opens at its own drug's first use; earliest public date)",
+   "note": "MOR103 (otilimab) was public before NCT01023256: MorphoSys CTA approval for a Phase 1 healthy-volunteer trial, press release 2008-02-13; RA preclinical data released 2008-11-13. Drug's first use is 2008. untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -51,8 +57,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Genovese 2020 abstract: sc otilimab weekly x5 then every other week, stable-MTX RA without IR criterion; sc, unselected hold. Quote in abstract; contra (target never reached) unchanged."
+   "note": "NCT02799472 results posted 2018-11-16, primary outcome GM-CSF-otilimab complex over weeks 1-12; model side Koch 2012 (epub 2011) earlier, so the pairing dates 2018. contra holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -61,8 +67,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Opener of the namilumab sc track (efficacy 2 is NEXUS namilumab sc); unselected right. Cook 2001 quote verbatim."
+   "note": "Krinner MT203 paper (10.1016/j.molimm.2006.03.020) Crossref-created 2006-05-12; Micromet's own 22E9 SCW study (Plater-Zyberk, epub 2006-10-04) followed. Namilumab's first use is 2006 either way. Rule 6 holds; untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -97,37 +103,38 @@
   {
    "cell": "safety",
    "index": 1,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Opener of knockout x otilimab sc track; Dranoff 1994 quote in abstract; unselected right for an opener."
+   "proposed_status": "untested",
+   "proposed_year": 2008,
+   "rule": "rule 6 (dating: a track opens at its own drug's first use; earliest public date)",
+   "note": "MOR103 (otilimab) was public before NCT01023256: MorphoSys CTA approval for a Phase 1 healthy-volunteer trial, press release 2008-02-13; RA preclinical data released 2008-11-13. Drug's first use is 2008. untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Opener of 22E9 safety track, otilimab sc; Cook 2001 quote verbatim; unselected right."
-  },
-  {
-   "cell": "safety",
-   "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "contra",
-   "proposed_year": 2019,
-   "rule": "rule 6 (dating: earliest public comparison, registry results posting counts)",
-   "note": "BAROQUE otilimab sc, MTX-IR: sc, stage_or_line, contra hold; quote verbatim in Buckley abstract. But registry NCT02504671 posted 'Number of Participants With Pulmonary Events' (cough, dyspnea, DLCO; similar to placebo) on 2019-04-04: re-date 2019.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6: status contra holds; registry NCT02504671 posted 'Number of Participants With Pulmonary Events' (cough, dyspnea, DLCO, no excess vs placebo) 2019-04-04, so the comparison dates 2019, not 2020."
+   "proposed_status": "untested",
+   "proposed_year": 2008,
+   "rule": "rule 6 (dating: a track opens at its own drug's first use; earliest public date)",
+   "note": "MOR103 (otilimab) was public before NCT01023256: MorphoSys CTA approval for a Phase 1 healthy-volunteer trial, press release 2008-02-13; RA preclinical data released 2008-11-13. Drug's first use is 2008. untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT02504671 results posted 2019-04-04 with 'Number of Participants With Pulmonary Events' outcome; model side 1994, so the pairing dates 2019. contra holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -136,18 +143,21 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "contRAst X otilimab sc, IR populations: sc, stage_or_line hold; registry names no PAP outcome, so 2025 paper dates it. Quote in abstract; contra strengthens unchanged."
+   "note": "NCT04333147 results posted 2024-02-07; 190 AE terms, none PAP; one serious interstitial lung disease (otilimab 150 mg, 1/1459), not PAP. Model side 1994, so 2024. contra holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Opener of human-autoantibody x otilimab iv track (safety 6 MOR103 IV); Kitamura 1999 quote in abstract; unselected right. The namilumab sc and otilimab sc tracks of this model have no 1999 opener."
+   "proposed_status": "untested",
+   "proposed_year": 2008,
+   "rule": "rule 6 (dating: a track opens at its own drug's first use; earliest public date)",
+   "note": "Otilimab iv opener: the MOR103 Phase 1 healthy-volunteer trial was public 2008-02-13 (MorphoSys CTA approval release), before NCT01023256 (2009-12-02). Drug's first use is 2008. untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -181,13 +191,11 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
    "proposed_status": "same",
    "proposed_year": 2019,
-   "rule": "rule 6 (dating: earliest public comparison, registry results posting counts)",
-   "note": "contRAst X sc, stage_or_line and quote hold, but BAROQUE (otilimab sc, registry pulmonary-events outcome 2019-04-04; Buckley 2020 'no ... pulmonary events of clinical concern') is this track's first dataset: first same at 2019, this entry strengthens.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: same holds; BAROQUE registry pulmonary-events outcome (2019-04-04, no excess vs placebo) is this otilimab sc track's first comparison, so first same dates 2019; contRAst X strengthens."
+   "rule": "rule 6 (dating: earliest public comparison; one entry per change of status)",
+   "note": "contRAst X itself dates 2024 (NCT04333147 results 2024-02-07). But this first entry on the track records the change to same, first public in BAROQUE's pulmonary-events results (NCT02504671, 2019-04-04).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -226,18 +234,21 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "contRAst X extension of IR populations at sc weekly dosing; sc, stage_or_line hold. Registry NCT04333147 has no PAP outcome, so the 2025 paper dates it. Quote in Weinblatt 2025 abstract."
+   "note": "NCT04333147 results posted 2024-02-07 (AE/SAE/AESI primary; no PAP term). Model side NCT04134728 protocol uploaded 2023-01-31, so the pairing dates 2024. One serious ILD on 150 mg in the registry; not PAP. same holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
    "index": 10,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Opener for knockout x otilimab iv at 1994, per the per-drug/route track rule; Dranoff quote in abstract; unselected right."
+   "proposed_status": "untested",
+   "proposed_year": 2008,
+   "rule": "rule 6 (dating: a track opens at its own drug's first use; earliest public date)",
+   "note": "Otilimab iv opener: MOR103 Phase 1 healthy-volunteer trial public 2008-02-13 (MorphoSys CTA approval release), before NCT01023256 (2009-12-02). Drug's first use is 2008. untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -252,12 +263,15 @@
   {
    "cell": "safety",
    "index": 12,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Opener for knockout x namilumab sc at 1994, consistent with safety 10; Dranoff quote in abstract; unselected right."
+   "proposed_status": "untested",
+   "proposed_year": 2009,
+   "rule": "rule 6 (dating: a track opens at its own drug's first use; earliest public date)",
+   "note": "Namilumab's first clinical use was public before NCT01317797 (2011-03-17): Micromet CTA-filing release 2009-04-02, first trial initiated 2009-06-18. Opener 2009 (2006 if drug first public, as efficacy 1). untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

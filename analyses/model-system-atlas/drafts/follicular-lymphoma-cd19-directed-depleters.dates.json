@@ -1,0 +1,15 @@
+{
+ "tile": "follicular-lymphoma-cd19-directed-depleters",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2024 -> 2023; status same unchanged, retrodiction unchanged (false). Patient side first public in BMS press release 2023-06-17 (ICML 2023 late-breaker, first disclosure of TRANSCEND FL primary analysis: ORR 97%, CR 94%), before the Nat Med 2024 epub; model side Leukemia epub 2015-09-15."
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "what": "2021 -> 2024; status contra unchanged, retrodiction unchanged (false). The 2021 Humanigen press release reported no severe CRS/NT at 1800 mg, which does not carry contra; the all-grade CRS 67% and neurologic-event rates carrying contra were first public in the NCT04314843 results posting 2024-03-04; model side Blood epub 2018."
+  }
+ ]
+}

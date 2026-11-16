@@ -225,7 +225,7 @@
    {
     "retrodiction": true,
     "patient_signal_reversed": false,
-    "year": 2015,
+    "year": 2012,
     "status": "retro",
     "subjects": "patients",
     "comparison_stated": false,
@@ -246,7 +246,7 @@
     "readout_tier": "downstream",
     "src": "https://doi.org/10.3109/10428194.2015.1085531",
     "srcLabel": "Kalaycio 2016",
-    "note": "In 21 CLL patients on low-dose SC veltuzumab, lymphocytosis fell in all, by more than half in 12. Retrodiction rule (engagement is a target claim): rituximab, another MS4A1 depleter, had already depleted blood CD20+ B cells in patients (Maloney 1994, Blood, PMID 7522629), so this model post-dates the human result. It reproduced the human depletion, so retro, not same.",
+    "note": "In 21 CLL patients on low-dose SC veltuzumab, lymphocytosis fell in all, by more than half in 12. Retrodiction rule (engagement is a target claim): rituximab, another MS4A1 depleter, had already depleted blood CD20+ B cells in patients (Maloney 1994, Blood, PMID 7522629), so this model post-dates the human result. It reproduced the human depletion, so retro, not same. Dating rule 6: the same SC CLL phase I result (circulating leukemic cells fell in all patients, >50% in 13) was first public as Kalaycio et al., ASH 2012 abstract 192 (Blood 120(21):192, 16 Nov 2012, doi 10.1182/blood.V120.21.192.192); the model side was public in 2008, so the year is 2012.",
     "short": "Lymphocytosis fell in every CLL patient",
     "quote": "Lymphocytosis decreased in all patients (maximum decrease, 5-91%), with 12 patients obtaining >50% decreases.",
     "confidence": "medium",

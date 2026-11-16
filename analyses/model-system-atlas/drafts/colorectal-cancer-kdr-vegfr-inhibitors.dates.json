@@ -1,0 +1,25 @@
+{
+ "tile": "colorectal-cancer-kdr-vegfr-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "2011 -> 2006; status same -> retro, retrodiction false -> true. Patient side first public in Eskens ASCO 2006 abstract (doi 10.1200/jco.2006.24.18_suppl.2034, published 2006-06-20: DCE-MRI decrease in tumour perfusion, sVEGFR2 fall), before the model side Nakamura Cancer Res 2006-09-15 (PMID 16982756)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "2017 -> 2015. Patient side first public as Chi-Med announcement that the fruquintinib phase II (NCT02196688) met its PFS primary endpoint, 2015-03-31 (fiercebiotech.com/biotech/chi-med-s-fruquintinib-meets-colorectal-cancer-phii-primary-endpoint); model side Sun 2014."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2017 -> 2015. Same patient-side date as efficacy 2 (Chi-Med announcement 2015-03-31); model side Sun 2014 PDX."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "2014 -> 2012. Opener of the fruquintinib tox track dated by its first-in-human trial NCT01645215 (first posted 2012-07-20, start 2011-01), the first registry-dated use of the tox package for fruquintinib; Gu 2014 was the first paper."
+  }
+ ]
+}

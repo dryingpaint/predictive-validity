@@ -1,0 +1,30 @@
+{
+  "tile": "breast-cancer-parp1-2-inhibitors",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2009 -> 2007; Kummar phase 0 PAR inhibition first public at ASCO 2007 abstract 3518 (doi 10.1200/jco.2007.25.18_suppl.3518), after Donawho CCR May 2007; status same, not a retrodiction"
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "what": "2009 -> 2007; Kummar phase 0 target-Cmax result first public at ASCO 2007 abstract 3518, after Donawho CCR May 2007; status same, not a retrodiction"
+    },
+    {
+      "cell": "safety",
+      "index": 4,
+      "what": "2020 -> 2018; Plummer ASCO 2018 abstract 2505 reported the safety profile (fatigue DLT, MTD 600 mg QD); model 2015 precedes it, status same, not a retrodiction"
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "what": "2008 -> 2015; veliparib track opener moved from the system's olaparib year to its first veliparib pairing (ASCO 2015, Somlo abstract 520), proxy; no veliparib use of the GEMM found"
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "what": "2008 -> 2021; pamiparib track opener moved from the system's olaparib year to its first pamiparib pairing (ASCO 2021), proxy; no pamiparib use of the GEMM found"
+    }
+  ]
+}

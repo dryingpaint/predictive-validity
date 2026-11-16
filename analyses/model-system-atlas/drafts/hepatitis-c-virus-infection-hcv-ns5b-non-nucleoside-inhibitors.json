@@ -18,10 +18,10 @@
  "cells": {
   "engagement": [
    {
-    "year": 2009,
+    "year": 2008,
     "status": "untested",
     "model": "HCV genotype 1 subgenomic replicon (Huh-7), with and without human serum",
-    "note": "Filibuvir inhibited the genotype 1b-Con1 replicon at 75 nM and 22 of 23 clinical-isolate chimeras at a mean 59 nM; no patient comparison yet.",
+    "note": "Filibuvir inhibited the genotype 1b-Con1 replicon at 75 nM and 22 of 23 clinical-isolate chimeras at a mean 59 nM; no patient comparison yet. Year: filibuvir replicon EC50 (mean 0.059 uM, GT1a/1b) first public at AASLD Nov 2008 (Natap AASLD_18), before Shi 2009.",
     "short": "Filibuvir inhibits GT1 replicon at 59-75 nM",
     "src": "https://doi.org/10.1128/AAC.01599-08",
     "srcLabel": "Shi 2009",
@@ -182,10 +182,10 @@
    {
     "retrodiction": true,
     "patient_signal_reversed": false,
-    "year": 2012,
+    "year": 2009,
     "status": "retro",
     "model": "HCV-infected chimpanzee, 14-day NNI monotherapy (A-837093, dasabuvir's Abbott palm-I sibling)",
-    "note": "Dasabuvir 3-day monotherapy cut genotype 1 RNA ~1.1 log10, matching the chimp's 1.4 log10 GT1a drop on the sibling. Retrodiction: HCV-796 patient RNA decline was public in 2006, before Chen 2007.",
+    "note": "Dasabuvir 3-day monotherapy cut genotype 1 RNA ~1.1 log10, matching the chimp's 1.4 log10 GT1a drop on the sibling. Retrodiction: HCV-796 patient RNA decline was public in 2006, before Chen 2007. Year: paired; chimp side 2007, dasabuvir patient RNA decline first public at HEP DART Dec 2009 (Natap hepDART_04).",
     "short": "Patient NNI monotherapy drop matched chimp",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2014/206619Orig1s000ClinPharmR.pdf",
     "srcLabel": "FDA Clinical Pharmacology Review 2014",
@@ -261,10 +261,10 @@
     "combination_with": null
    },
    {
-    "year": 2012,
+    "year": 2009,
     "status": "untested",
     "model": "HCV genotype 1 subgenomic replicon (Huh-7), with and without human serum",
-    "note": "abt-072 had a published protein-shifted replicon EC50 (Reddy Table 3); opener for its replicon track.",
+    "note": "abt-072 had a published protein-shifted replicon EC50 (Reddy Table 3); opener for its replicon track. Year: ABT-072 genotype 1a/1b replicon potency first public at EASL Apr 2009 (Natap EASL_44).",
     "short": "abt-072 replicon EC50 measured",
     "src": "https://doi.org/10.1128/AAC.06283-11",
     "srcLabel": "Reddy 2012",
@@ -340,10 +340,10 @@
     "combination_with": null
    },
    {
-    "year": 2012,
+    "year": 2008,
     "status": "untested",
     "model": "HCV genotype 1 subgenomic replicon (Huh-7), with and without human serum",
-    "note": "setrobuvir had a published protein-shifted replicon EC50 (Reddy Table 3); opener for its replicon track.",
+    "note": "setrobuvir had a published protein-shifted replicon EC50 (Reddy Table 3); opener for its replicon track. Year: ANA598 replicon EC50 (1b ~3 nM, 1a ~50 nM) first public at AASLD Nov 2008 (Natap AASLD_67).",
     "short": "setrobuvir replicon EC50 measured",
     "src": "https://doi.org/10.1128/AAC.06283-11",
     "srcLabel": "Reddy 2012",
@@ -419,10 +419,10 @@
     "combination_with": null
    },
    {
-    "year": 2012,
+    "year": 2007,
     "status": "untested",
     "model": "HCV genotype 1 subgenomic replicon (Huh-7), with and without human serum",
-    "note": "tegobuvir had a published protein-shifted replicon EC50 (Reddy Table 3); opener for its replicon track.",
+    "note": "tegobuvir had a published protein-shifted replicon EC50 (Reddy Table 3); opener for its replicon track. Year: GS-9190 GT1b replicon EC50 0.7 nM first public at AASLD Nov 2007 (Natap AASLD_39).",
     "short": "tegobuvir replicon EC50 measured",
     "src": "https://doi.org/10.1128/AAC.06283-11",
     "srcLabel": "Reddy 2012",
@@ -498,10 +498,10 @@
     "combination_with": null
    },
    {
-    "year": 2012,
+    "year": 2009,
     "status": "untested",
     "model": "HCV genotype 1 subgenomic replicon (Huh-7), with and without human serum",
-    "note": "lomibuvir had a published protein-shifted replicon EC50 (Reddy Table 3); opener for its replicon track.",
+    "note": "lomibuvir had a published protein-shifted replicon EC50 (Reddy Table 3); opener for its replicon track. Year: VCH-222 replicon characterization first public at EASL Apr 2009 (Bedard, abstract 935; cited in Natap EASL_48).",
     "short": "lomibuvir replicon EC50 measured",
     "src": "https://doi.org/10.1128/AAC.06283-11",
     "srcLabel": "Reddy 2012",
@@ -870,10 +870,10 @@
   ],
   "efficacy": [
    {
-    "year": 2009,
+    "year": 2008,
     "status": "untested",
     "model": "HCV genotype 1 subgenomic replicon (Huh-7), with and without human serum",
-    "note": "The replicon selected M423T, a single thumb-site substitution giving 761-fold filibuvir resistance, forecasting a low barrier to resistance; no patient outcome yet.",
+    "note": "The replicon selected M423T, a single thumb-site substitution giving 761-fold filibuvir resistance, forecasting a low barrier to resistance; no patient outcome yet. Year: filibuvir replicon EC50 (mean 0.059 uM, GT1a/1b) first public at AASLD Nov 2008 (Natap AASLD_18), before Shi 2009.",
     "short": "Replicon selects M423T, 761-fold filibuvir resistance",
     "src": "https://doi.org/10.1128/AAC.01599-08",
     "srcLabel": "Shi 2009",

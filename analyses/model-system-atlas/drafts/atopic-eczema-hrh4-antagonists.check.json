@@ -11,9 +11,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Fields: drug at an opener; rule 6",
-   "note": "Dunford 2007 (PMID 17208599) quote verbatim. Opener of the JNJ-39758979 track compared in engagement 3; oral, unselected, no partner correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use; proxy allowed)",
+   "note": "Year 2009 confirmed: NCT00946569 (JNJ-39758979 asthma) first posted 2009-07-27, the drug's earliest registry record; no public JNJ-39758979 run in mouse scratching. Dunford quote unchanged; untested opener precedes 2014 comparison.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -66,9 +66,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Fields: drug at an opener",
-   "note": "Dunford 2007 quote verbatim. Opener of the adriforant pruritus track (efficacy 4); oral, unselected correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use; proxy allowed)",
+   "note": "Year 2009 confirmed: NCT00856687 (PF-03893787 = adriforant) first posted 2009-03-06, earliest registry record; own mouse-itch run public only 2023. Untested opener precedes 2016 comparison (efficacy 4).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -216,9 +216,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Fields: drug at an opener",
-   "note": "Rossbach 2009 (PMID 18647342) quote verbatim. Opener of the JNJ-39758979 hapten track; oral, unselected correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use; proxy allowed)",
+   "note": "Year 2009 confirmed: NCT00946569 first posted 2009-07-27 (JNJ-39758979 earliest registry record), later than Rossbach epub 2008; no public JNJ-39758979 run in the hapten model. Untested opener precedes 2014 comparison.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

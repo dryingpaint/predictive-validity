@@ -20,23 +20,20 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Morschhauser 2009 (PMID 19451441, epub 2009-05-18) quote verbatim; IV weekly infusions, 55/82 FL. Monkey data (Oct 2008) post-date rituximab and veltuzumab phase I depletion, so retro. NCT00285428 first posted 2006-02-02 confirmed.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (paired: later side) and retrodiction rule",
+   "note": "Monkey side: Goldenberg Blood epub 2008-10-21 (PubMed 18941114), cynomolgus B-cell depletion. Patient side earlier: ASH 2005 abstract 2428 (2005-11-16) reports B-cell depletion after first infusion. Year 2008; retro holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2018,
    "rule": "DRAFTER_BRIEF rule 6 (earliest public date, congress abstract)",
-   "note": "Quote verbatim. The ASH 2018 abstract (Hiemstra, Blood 132 suppl 1:1664, doi:10.1182/blood-2018-99-115957, 29 Nov 2018) already reported lower, delayed SC peak levels, comparable bioavailability and lower cytokines after SC. Year 2018; untested, sc, epcoritamab hold.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: status untested agreed; Hiemstra ASH 2018 abstract (29 Nov 2018) already reported lower, delayed SC peak levels, comparable bioavailability and lower cytokines in monkeys, so year is 2018."
+   "note": "Hiemstra ASH 2018 abstract (Blood 132 suppl 1:1664, doi:10.1182/blood-2018-99-115957, print 2018-11-29) reports comparable bioavailability, lower and delayed SC peak levels and lower plasma cytokines in monkeys. Opener year 2018; untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -146,17 +143,13 @@
   {
    "cell": "safety",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2018,
    "rule": "DRAFTER_BRIEF rule 6 (earliest public date, congress abstract)",
-   "note": "Quote verbatim in FDA review text (bundle). Monkey cytokine elevation, lower after SC, first public in the ASH 2018 abstract (Hiemstra, Blood 132 suppl 1:1664, doi:10.1182/blood-2018-99-115957, 29 Nov 2018), not ASH 2019. Year 2018; untested opener otherwise holds.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: status untested agreed; monkey cytokine elevation, lower after SC, first public in Hiemstra ASH 2018 abstract (29 Nov 2018), so year is 2018, not 2019."
+   "note": "Hiemstra ASH 2018 abstract (Blood 132 suppl 1:1664, doi:10.1182/blood-2018-99-115957, print 2018-11-29) is epcoritamab's first public monkey safety study, with lower plasma cytokines after SC. Opener year 2018; untested holds; quote from FDA review.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -216,17 +209,13 @@
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2018,
    "rule": "DRAFTER_BRIEF rule 6 (earliest public date, congress abstract)",
-   "note": "Quote verbatim (Engelberts abstract). Monkey SC/IV B-cell depletion was already public in the ASH 2018 abstract (Hiemstra, Blood 132 suppl 1:1664, doi:10.1182/blood-2018-99-115957, 29 Nov 2018), a year before ASH 2019. Year 2018; status, drug, route sc, population hold.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: status untested agreed; Hiemstra ASH 2018 abstract (Blood 132 suppl 1:1664, 29 Nov 2018) already reported monkey SC/IV B-cell depletion, so the entry dates to 2018, not 2019."
+   "note": "Hiemstra ASH 2018 abstract (Blood 132 suppl 1:1664, doi:10.1182/blood-2018-99-115957, print 2018-11-29) reports cynomolgus B-cell depletion from blood and lymphoid organs, comparable SC vs IV. Opener year 2018; untested, epcoritamab, sc hold.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",

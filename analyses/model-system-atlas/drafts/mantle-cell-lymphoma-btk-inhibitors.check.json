@@ -180,8 +180,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Harrington 2016 PLoS One abstract quote verbatim (epub 2016-07-19). Own acalabrutinib track, oral, untested opener 2016 correct. Dog run post-dates ibrutinib MCL responses, so retrodiction should be true; no status effect.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "note": "AACR abstract 1744 (Apr 5-9 2014, doi resolves) dosed 12 B-NHL dogs with ACP-196 orally, 3 PR: track opens 2014, untested. Harrington quote verbatim. Still post-dates ibrutinib MCL responses (2011), so retrodiction should be true; no status effect.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -220,8 +220,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Harrington 2016 tolerability quote verbatim; a passing tolerability claim is a scorable prediction; untested opener 2016. Post-dates acalabrutinib's own CLL tolerability (Dec 2015), so retrodiction should be true; no status effect.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "note": "AACR abstract 1744 (April 2014): 'ACP-196 was well tolerated with only mild anorexia noted in some dogs', before human phase I. Opener 2014 untested, retrodiction false correct. Harrington 2016 quote verbatim.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -230,8 +230,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Lancet abstract quote verbatim (epub 2017-12-11). Retro basis is acalabrutinib's own NEJM Dec 2015 CLL tolerability, as the dose/safety rule requires; retro 2017 correct; acalabrutinib oral.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "note": "Dog tolerability public April 2014, before any acalabrutinib patient result (Byrd NEJM Dec 2015): prospective, so same, not retro. Lancet quote verbatim, epub 2017-12-11; year 2017 holds. model_src could cite the 2014 abstract.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

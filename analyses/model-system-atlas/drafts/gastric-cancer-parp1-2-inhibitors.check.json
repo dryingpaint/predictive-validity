@@ -86,8 +86,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "safety: on-target harm, same (not other)",
-   "note": "GOLD abstract AE sentence verbatim (30% vs 23% neutropenia). 2017 stands: the 2016 press release said only that AE incidence was 'similar', so the neutropenia excess was first public in the paper."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date; paired = later of two sides)",
+   "note": "Quote verbatim in Bang 2017 PubMed abstract (epub 2017-11-02). Patient side public at ESMO 2016 LBA25 (Ann Oncol suppl, Oct 2016); Healio 2016-10-08 congress report gives neutropenia 30% vs 23%. Model side 2014. Year 2016, same holds; not retrodiction.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",

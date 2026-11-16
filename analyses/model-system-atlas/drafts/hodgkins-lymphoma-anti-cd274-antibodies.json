@@ -144,11 +144,11 @@
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "year": 2022,
+    "year": 2024,
     "status": "same",
     "model_id": "sugemalimab-cyno-tox",
     "prediction_level": "class",
-    "note": "Phase 1a patients (5 of 29 with cHL) were dosed 3-40 mg/kg and 1200 mg Q3W with no DLT and no MTD; the cHL phase 2 then used 1200 mg Q3W. Dated 2022 under the earliest-date rule (Gong 2022 epub 2022-01-05), before the 2024 EPAR.",
+    "note": "Phase 1a patients (5 of 29 with cHL) were dosed 3-40 mg/kg and 1200 mg Q3W with no DLT and no MTD; the cHL phase 2 then used 1200 mg Q3W. Dated 2024: a pairing exists once both sides are public; the patient side was public in Gong 2022 (epub 2022-01-05), but the monkey NOAEL and its exposure margin were first public in the 2024 EMA EPAR (Gong 2022 and the 2020 AACR preclinical abstract 3260 report no toxicology).",
     "short": "Dosed to 1200 mg without DLT",
     "src": "https://doi.org/10.1007/s00262-021-03102-3",
     "srcLabel": "Gong 2022",

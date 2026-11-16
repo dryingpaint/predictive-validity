@@ -9,10 +9,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Maga abstract verbatim (Europe PMC, first public 2012-11-27). No reveglucosidase trial (Byrne 2017, INSPIRE registry) measured glycogen/Hex4, so untested/not_measured; drug, iv, unselected right. retrodiction flag arguably true (post-dates alglucosidase patients)."
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date; track opens at its own drug's first use in the model; paired year is the later side",
+   "note": "Re-opened WO2008063511A2 (Google Patents): published 2008-05-29; Example 11, FIGs 12-13A-H, ZC-701 single IV 10 mg/kg cleared heart/muscle glycogen in Pompe mice vs untagged GAA. Opener 2008, untested right; model_first_use_year 2012 should read 2008.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -53,21 +54,22 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Maga abstract verbatim; reveglucosidase iv opener untested 2012 fine; not track's latest so no untested_reason."
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date; track opens at its own drug's first use in the model; paired year is the later side",
+   "note": "Same patent WO2008063511A2, published 2008-05-29, ZC-701 (reveglucosidase alfa) beats untagged GAA in Pompe-mouse glycogen clearance. Opener 2008, untested right; Maga epub 2012-11-27 is later. model_first_use_year 2012 should read 2008.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "near",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "rule": "efficacy: single-arm, no success bar, scored on primary against model direction; retrodiction rule",
-   "note": "CT.gov API: INSPIRE single-group, primary MIP %pred +2.2 (SD 8.3) at wk24, results first posted 2018-06-14, rhGAA-exposed (stage_or_line). Peng abstract (epub 2016-11-16) post-dates GAA patient respiratory data: retro. Merge into gaa-ko-mouse right."
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date; track opens at its own drug's first use in the model; paired year is the later side",
+   "note": "BioMarin JPM release 2016-01-11 (GlobeNewswire): INSPIRE wk24 n=18, MIP +2.2, MEP +3.1 % predicted. Peng 2017 epub 2016-11-16 (Europe PMC). Later side 2016: year right; retro, retrodiction true unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

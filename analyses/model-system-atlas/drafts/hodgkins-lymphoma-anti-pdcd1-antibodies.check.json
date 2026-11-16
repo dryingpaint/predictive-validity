@@ -235,17 +235,13 @@
   {
    "cell": "efficacy",
    "index": 12,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Lin 2022 (PMID 34462189, epub 2021-08-27) quote verbatim. Earlier than ASCO 2020: ASCO 2019 e-abstract e14072 (doi 10.1200/JCO.2019.37.15_suppl.e14072, 2019-05-20), NCT03655483, ORR 15/17 (88.3%). Year 2019; status same.",
-   "proposed_status": "same",
-   "proposed_year": 2019,
-   "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same agreed by both. Rule 6: ASCO 2019 e-abstract e14072 (online 2019-05-20, Crossref-verified) predates the ASCO 2020 abstract and Lin 2022, so year 2019; status unaffected."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF evidence rule 6 (dating): earliest public date, congress abstract included; a pairing dates to the later side. Retrodiction rule: efficacy model first public after a same-target patient result.",
+   "note": "Crossref: e14072 (GLS-010/zimberelimab ph II, r/r cHL, 240 mg Q2W) published online 2019-05-20, ORR 15/17 (88.3%), cutoff Jan 2019. Model Green 2010 predates any anti-PD-1 cHL result: year 2019, same, not retro. Draft's '26 May' cosmetic."
   },
   {
    "cell": "efficacy",
@@ -260,17 +256,13 @@
   {
    "cell": "efficacy",
    "index": 14,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Song 2022 (PMID 35875118) quote verbatim; single-arm, primary IRRC ORR. AK105-201 (NCT03722147) response was presented at SITC 2020 (FirstWord report 2020-11-13), earlier than the paper: year 2020. Status same unchanged.",
-   "proposed_status": "same",
-   "proposed_year": 2020,
-   "rule": "Evidence rule 6 (dating): year is the earliest public date, congress abstract included",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same agreed by both. Rule 6: AK105-201 response presented as a SITC 2020 abstract (listed for NCT03722147), predating Song 2022, so year 2020; status unaffected."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF evidence rule 6 (dating): earliest public date, congress abstract included; a pairing dates to the later side. Retrodiction rule: efficacy model first public after a same-target patient result.",
+   "note": "Crossref: e19017 (AK105/penpulimab, NCT03722147 = AK105-201, phase I part, 200 mg Q2W) online 2019-05-20, ORR 5/5 (3 CR). Model Green 2010 prospective: year 2019, same, not retro. Draft's '26 May' and stale confidence_note cosmetic."
   }
  ],
  "missing": [

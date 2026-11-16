@@ -1,0 +1,40 @@
+{
+ "tile": "renal-cell-carcinoma-vegfr-multikinase-inhibitors",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "2011 -> 2010; opener dated to regorafenib's own first public use of the RCC xenograft system: Wilhelm 2011 (doi:10.1002/ijc.25864) was public in PubMed as an accepted article on 2010-12-21 (PMID 21170960)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "2011 -> 2010; opener dated to regorafenib's own first public use of the RCC xenograft system: Wilhelm 2011 (doi:10.1002/ijc.25864) was public in PubMed as an accepted article on 2010-12-21 (PMID 21170960)."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "2011 -> 2010; opener dated to regorafenib's own first public use of the RCC xenograft system: Wilhelm 2011 (doi:10.1002/ijc.25864) was public in PubMed as an accepted article on 2010-12-21 (PMID 21170960). Status stays untested; untested_reason set to no_prediction because entry 4 became a retrodiction, leaving this opener as the track's latest prospective entry (lint rule 5)."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2012 -> 2010, same -> retro, retrodiction false -> true; pairing year is the later side: rat model public 2010-12-21 (PMID 21170960), patient side first public as the regorafenib phase I ASCO 2007 abstract (doi:10.1200/jco.2007.25.18_suppl.3593, online 2007-06-20) reporting DCE-MRI iAUC60 falls with exposure, so the model post-dates the human readout it reproduced."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "2012 -> 2010, same -> retro, retrodiction false -> true; patient side first public as ASCO 2009 abstract (doi:10.1200/jco.2009.27.15_suppl.5033, online 2009-05-20: 27% PR in 33 evaluable), model side 2010-12-21 (PMID 21170960), so the later side is the model and it reproduced a response already public."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "2012 -> 2010, status stays contra, retrodiction false -> true; regorafenib's own RCC phase 2 toxicity (grade 3-4 HFSR 13%, renal failure 8%) was public at ASCO 2009 (doi:10.1200/jco.2009.27.15_suppl.5033, online 2009-05-20), before the xenograft 'well tolerated' claim (2010-12-21, PMID 21170960)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "2021 -> 2020; CLEAR's PFS result was first public in the Eisai/Merck press release of 2020-11-10 (eisai.com/news/2020/news202073.html), before NEJM epub 2021-02-13; model side PLoS One 2019."
+  }
+ ]
+}

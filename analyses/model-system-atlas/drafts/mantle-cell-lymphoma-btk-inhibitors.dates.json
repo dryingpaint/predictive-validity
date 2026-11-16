@@ -1,0 +1,20 @@
+{
+ "tile": "mantle-cell-lymphoma-btk-inhibitors",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "2016 -> 2014 (acalabrutinib canine-BNHL opener: first use in pet dogs public at AACR 2014, Gardner et al., Cancer Res 74(19 Suppl):1744, doi:10.1158/1538-7445.AM2014-1744)"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "2016 -> 2014 (acalabrutinib canine-BNHL safety opener: AACR April 2014 abstract reported acalabrutinib well tolerated in dogs, doi:10.1158/1538-7445.AM2014-1744)"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "what": "year stays 2017; status retro -> same, retrodiction true -> false: the dog tolerability claim was public April 2014 (AACR abstract 1744), before acalabrutinib's own first patient results (Byrd NEJM Dec 2015), so not a retrodiction on the drug's own result"
+  }
+ ]
+}

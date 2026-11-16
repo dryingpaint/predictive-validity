@@ -1,0 +1,20 @@
+{
+ "tile": "psoriasis-anti-il23a-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "2013 -> 2023 (opener of hil23-intradermal-skin-pd-mouse x tildrakizumab x iv; the model was only ever dosed with mirikizumab, 2013 was mirikizumab's pre-IND use; tildrakizumab's track opens when the model was first public, Steere 2023 JPET PMID 37714687, epub 2023-09-15); status untested unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "2018 -> 2016 (pairing: patient side reSURFACE 1/2 topline announced by Sun Pharma 2016-05-04, per PRNewswire 2016-10-01 EADV late-breaker release; model side Tonel 2010); status same, retrodiction false unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "2019 -> 2018 (pairing: mirikizumab phase 2 AMAF positive analyses presented at EADV 2018, Lilly press release 2018-09-10, before Reich 2019 BJD epub 2019; model side Tonel 2010); status same, retrodiction false unchanged"
+  }
+ ]
+}

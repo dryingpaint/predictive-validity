@@ -11,9 +11,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Van Baelen 2009 (AAC, epub Feb 2009) abstract quote verbatim. Opener for bms-955176, the first member run in this panel; bevirimat proxy, product_in_model false; route oral, unselected right; untested 2009 holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating)",
+   "note": "Re-checked: NCT01803074 first posted 2013-03-04, earliest of 11 BMS-955176 registry records; rule 6 opens track at the drug own first use, not bevirimat 2009. untested 2013 holds; registry_date null should read 2013-03-04.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -48,9 +48,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Nowicka-Sans 2016 (epub 2016-06-20) quote verbatim; serum-shifted EC90 opener for bms-955176, oral, unselected right; untested 2016 holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating)",
+   "note": "Re-checked: NCT01803074 first posted 2013-03-04, earliest BMS-955176 registry record; opener at drug own first panel use per rule 6. untested 2013 holds. Stale: judgement still says opens 2016; registry_date null.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -81,9 +81,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Same Van Baelen 2009 opener as engagement 1; bms-955176, oral, unselected, bevirimat proxy; untested 2009 holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating)",
+   "note": "Re-checked: same opener as engagement 1; NCT01803074 first posted 2013-03-04, earliest BMS-955176 registry record, rule 6 drug own first use. untested 2013 holds; registry_date null should read 2013-03-04.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -184,9 +184,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Morales-Ramirez 2018 quote verbatim; GSK3532795 60/120/180 mg or EFV, each with TDF/FTC 300/200 mg, oral, treatment-naive: combination_with right. Registry 2018-09-19 earliest found (CROI site has no Phase 2b abstract; other congresses unsearched).",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating)",
+   "note": "PMC6198970 states presented at 9th IAS Conference, Paris, 23-26 July 2017; Hwang 2017 CID entered PubMed 2017-04-04 (epub ~2017-03-23), earlier. Paired year = later side = 2017. same, retrodiction false hold.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",

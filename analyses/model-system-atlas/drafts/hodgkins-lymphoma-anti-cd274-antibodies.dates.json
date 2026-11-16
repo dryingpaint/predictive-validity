@@ -1,0 +1,10 @@
+{
+ "tile": "hodgkins-lymphoma-anti-cd274-antibodies",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "2022 -> 2024; status unchanged (same), retrodiction stays false (model run 2016, before patients). Model side (cyno NOAEL 200 mg/kg, margin) first public in the 2024 EMA EPAR Cejemly; Gong 2022 (PMC9293819) and AACR 2020 abstract 3260 report no toxicology, so the pairing dates to the later side."
+  }
+ ]
+}

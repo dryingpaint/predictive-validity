@@ -1,113 +1,113 @@
 {
- "draft": "analyses/model-system-atlas/drafts/v3/psoriasis-rorc-inverse-agonists.json",
- "index_base": 1,
- "checked_by": "CHECKER_BRIEF_v3",
- "lint": "0 findings",
- "entries": [
-  {
-   "cell": "engagement",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Smith 2016 PubMed (PMID 26870941, epub 2016-02-12): quote verbatim in abstract. Topical gsk-2981278 ointment, unselected. Untested opener fine; retrodiction false sits oddly beside entry 2's true (same public date)."
-  },
-  {
-   "cell": "engagement",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "SID 2017 abstract (academia.edu copy) has the quote verbatim; 4% topical plaques. Explants public Feb 2016 after Vitae's Sep/Nov 2015 whole-blood IL-17 suppression (same target, action), so retrodiction true; failed to reproduce, contra holds."
-  },
-  {
-   "cell": "engagement",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Protocol (Amd 2, 21-Dec-2017) quote verbatim; AGN-242428 'formerly VTP-43742', oral. Vitae release 18 Nov 2015 read: >90% ex vivo whole-blood IL-17A suppression over 24 h in volunteers (SAD Sep 2015). Year 2015 right."
-  },
-  {
-   "cell": "dose",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Smith 2016 strength sentence is full-text (abstract read, prior check saw verbatim). Topical gsk-2981278; model text matches gsk-srica-human-skin. Untested holds (skin exposure never measured); lacks untested_reason (not_measured)."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Protocol IC90 exposure sentence verbatim. Nov 2015 release: >90% suppression sustained 24 h in all but lowest cohort, so the model's IC90 target was reached in 2015. Oral VTP-43742; margin_stated false right."
-  },
-  {
-   "cell": "efficacy",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "23% epidermal-thickness quote in Smith 2016 (full text, prior check verbatim). Topical gsk-2981278, IMQ mouse. Public Feb 2016, before VTP-43742's Mar 2016 patient efficacy result, so not a retrodiction; untested opener fine."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2017,
-   "rule": "CHECKER_BRIEF 3: trial source attributes result to conditions the model never tested -> untested; DRAFTER dose table: target never reached -> efficacy untested",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote verbatim in SID abstract; primary endpoint infiltrate thickness; topical right. Authors attribute the null to no dermal penetration, small test fields, short duration, and engagement 2 shows IL-17 unmoved: target not reached, so efficacy untested; miss counted once in engagement.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "CHECKER_BRIEF 3 and DRAFTER dose table: trial authors attribute the null to no dermal penetration, and plaque biopsies show IL-17 unmoved (engagement contra), so the IMQ mouse efficacy prediction was never tested; miss counted once in engagement."
-  },
-  {
-   "cell": "efficacy",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Gooderham 2025 abstract quote verbatim; co-primary PASI75 and sPGA 0/1 both met, in note. Harcken online 2021-01-05 (abstract only) post-dates VTP-43742 Mar 2016 PASI result, so retro right. Oral BI 730357. Judgement prose still says 'so same'."
-  },
-  {
-   "cell": "safety",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Protocol IB sentence verbatim. Registry: AGN-242428 oral capsules, plaque psoriasis, whyStopped 'safety reason'. Drug, route, population right; tox unpublished, so untested/unpublished stands."
-  }
- ],
- "missing": [
-  "Engagement, VTP-43742: a peer-reviewed healthy-volunteer PK/PD paper ('Safety, tolerability, pharmacokinetics and pharmacodynamics of VTP-43742, a RORγt inhibitor, in normal healthy volunteers', ResearchGate 366800762, c. 2022-23) is a tier-1 source for the whole-blood IL-17 readout; it does not predate the 2021 registry date, so it adds no status change. Not opened.",
-  "Efficacy patient_trials: NCT03835481 (BI 730357 long-term extension) TERMINATED 'Due to company decision', results posted 2022-11-18. This was a program stop, not an efficacy failure under decision 4 ('Failed' ≠ development stopped).",
-  "Safety: NCT03339999 registry gives whyStopped 'safety reason' (verified). The draft says so, but no source says what the safety signal was."
- ],
- "overall": "accept_with_corrections",
- "rule_questions": [
-  "When the topical drug fails the engagement readout in the same biopsied field, does the efficacy cell become untested (target not reached, decision 4 row 1) even though the engagement model, not a PK model, set the target? The dose table is written for exposure. The draft scored engagement and efficacy both contra, so one failure counted twice.",
-  "Engagement entry 3: the 'model' (human whole-blood ex vivo IL-17 assay) and the human readout (the same assay on dosed subjects' blood) are the same measurement. Does a human ex-vivo assay whose own readout is repeated in dosed humans count as a model prediction that can turn back a contra, or is it close to tautological?"
- ]
+  "draft": "analyses/model-system-atlas/drafts/v3/psoriasis-rorc-inverse-agonists.json",
+  "index_base": 1,
+  "checked_by": "CHECKER_BRIEF_v3",
+  "lint": "0 findings",
+  "entries": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Smith 2016 PubMed (PMID 26870941, epub 2016-02-12): quote verbatim in abstract. Topical gsk-2981278 ointment, unselected. Untested opener fine; retrodiction false sits oddly beside entry 2's true (same public date)."
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "SID 2017 abstract (academia.edu copy) has the quote verbatim; 4% topical plaques. Explants public Feb 2016 after Vitae's Sep/Nov 2015 whole-blood IL-17 suppression (same target, action), so retrodiction true; failed to reproduce, contra holds."
+    },
+    {
+      "cell": "engagement",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Protocol (Amd 2, 21-Dec-2017) quote verbatim; AGN-242428 'formerly VTP-43742', oral. Vitae release 18 Nov 2015 read: >90% ex vivo whole-blood IL-17A suppression over 24 h in volunteers (SAD Sep 2015). Year 2015 right."
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Smith 2016 strength sentence is full-text (abstract read, prior check saw verbatim). Topical gsk-2981278; model text matches gsk-srica-human-skin. Untested holds (skin exposure never measured); lacks untested_reason (not_measured)."
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Protocol IC90 exposure sentence verbatim. Nov 2015 release: >90% suppression sustained 24 h in all but lowest cohort, so the model's IC90 target was reached in 2015. Oral VTP-43742; margin_stated false right."
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "23% epidermal-thickness quote in Smith 2016 (full text, prior check verbatim). Topical gsk-2981278, IMQ mouse. Public Feb 2016, before VTP-43742's Mar 2016 patient efficacy result, so not a retrodiction; untested opener fine."
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "near",
+      "status_supported": false,
+      "proposed_status": "untested",
+      "proposed_year": 2016,
+      "rule": "DRAFTER_BRIEF 6 (earliest public date; paired year = later side) for year; DRAFTER dose table row 'target never reached' -> efficacy untested for status (open rule question)",
+      "checked_by": "CHECKER_BRIEF / dates",
+      "note": "Year 2016 confirmed: GSK register 201465 result summary PDF created 2016-10-18 says no strength reduced infiltrate thickness; Smith 2016 online 2016-02-12, before VTP-43742 Mar 2016, so not retro. Status dispute unchanged; registry_date 2016-10-18, epub_year still 2017.",
+      "adjudicated_status": "contra",
+      "adjudication_note": "Efficacy rule plus dose table: the untested override needs target never reached in humans (PK); skin PK was never measured (dose untested). Primary endpoint missed the IMQ mouse's prediction, so contra; year 2016 (rule 6)."
+    },
+    {
+      "cell": "efficacy",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Gooderham 2025 abstract quote verbatim; co-primary PASI75 and sPGA 0/1 both met, in note. Harcken online 2021-01-05 (abstract only) post-dates VTP-43742 Mar 2016 PASI result, so retro right. Oral BI 730357. Judgement prose still says 'so same'."
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / fields",
+      "note": "Protocol IB sentence verbatim. Registry: AGN-242428 oral capsules, plaque psoriasis, whyStopped 'safety reason'. Drug, route, population right; tox unpublished, so untested/unpublished stands."
+    }
+  ],
+  "missing": [
+    "Engagement, VTP-43742: a peer-reviewed healthy-volunteer PK/PD paper ('Safety, tolerability, pharmacokinetics and pharmacodynamics of VTP-43742, a RORγt inhibitor, in normal healthy volunteers', ResearchGate 366800762, c. 2022-23) is a tier-1 source for the whole-blood IL-17 readout; it does not predate the 2021 registry date, so it adds no status change. Not opened.",
+    "Efficacy patient_trials: NCT03835481 (BI 730357 long-term extension) TERMINATED 'Due to company decision', results posted 2022-11-18. This was a program stop, not an efficacy failure under decision 4 ('Failed' ≠ development stopped).",
+    "Safety: NCT03339999 registry gives whyStopped 'safety reason' (verified). The draft says so, but no source says what the safety signal was."
+  ],
+  "overall": "accept_with_corrections",
+  "rule_questions": [
+    "When the topical drug fails the engagement readout in the same biopsied field, does the efficacy cell become untested (target not reached, decision 4 row 1) even though the engagement model, not a PK model, set the target? The dose table is written for exposure. The draft scored engagement and efficacy both contra, so one failure counted twice.",
+    "Engagement entry 3: the 'model' (human whole-blood ex vivo IL-17 assay) and the human readout (the same assay on dosed subjects' blood) are the same measurement. Does a human ex-vivo assay whose own readout is repeated in dosed humans count as a model prediction that can turn back a contra, or is it close to tautological?"
+  ]
 }

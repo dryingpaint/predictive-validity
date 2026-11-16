@@ -33,9 +33,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Dose: untested/no_prediction when the model stated no exposure, occupancy or margin; rule 6 opening year",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Yan 2005 (PMID 16054174, epub 27 Jul 2005) quote verbatim; mg/kg MPEP only, no human target. Untested/no_prediction, year 2005, model_first_use_year 2005, mavoglurant oral unselected confirmed."
+   "rule": "Rule 6: a track opens at its own drug's first use in the model, not at the system's first use for another drug (proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "NCT00718341 (AFQ056 in FXS) first posted 2008-07-18 (CT.gov API), earliest mavoglurant FXS record found. Precedes later mavoglurant entries; mouse model stated no human dose target. Year 2008 confirmed; untested, retrodiction false."
   },
   {
    "cell": "efficacy",
@@ -44,9 +44,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Rule 6: cell opens at model_first_use_year with status untested",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Yan 2005 quote verbatim; earliest Fmr1 KO rescue by mGluR5 blockade (Jul 2005). Opener untested 2005, mavoglurant oral (NCT00718341), unselected confirmed."
+   "rule": "Rule 6: a track opens at its own drug's first use in the model, not at the system's first use for another drug (proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "NCT00718341 (AFQ056 in FXS) first posted 2008-07-18 (CT.gov API), earliest mavoglurant FXS record found; precedes 2011 contra. Year 2008 confirmed; untested, retrodiction false unchanged."
   },
   {
    "cell": "efficacy",
@@ -77,9 +77,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Rule 6 opener; drug = member the track is run for",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "McBride 2005 (PMID 15748850, Mar 2005) quote verbatim. Fly-track opener for mavoglurant, oral, consistent with index 4; untested 2005 confirmed."
+   "rule": "Rule 6: a track opens at its own drug's first use in the model, not at the system's first use for another drug (proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "NCT00718341 first posted 2008-07-18, earliest mavoglurant FXS record found; mavoglurant never dosed in flies, proxy allowed; precedes 2011 contra. Year 2008 confirmed; untested, retrodiction false unchanged."
   },
   {
    "cell": "efficacy",
@@ -95,13 +95,16 @@
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Separate track per member drug; opener untested at model_first_use_year (rule 6)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Yan 2005 quote verbatim. Basimglurant not tested in Fmr1 KO mice, so sibling-MPEP opener (product_in_model false) is right; untested 2005, basimglurant oral, unselected confirmed."
+   "rule": "Rule 6: a track opens at its own drug's first use in the model, not at the system's first use for another drug (proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "proposed_year": 2009,
+   "note": "Earlier basimglurant FXS record: NCT01015430 (RO4917523, NP22578, adults) first posted 2009-11-18 (CT.gov API), before NCT01517698 (2012-01-25). Year should be 2009; untested, retrodiction false unchanged.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: status untested agreed; track opens at basimglurant's first registry-dated FXS use, NCT01015430 first posted 2009-11-18 (verified), so year should be 2009, not 2012. Not the track's latest entry; no untested_reason."
   },
   {
    "cell": "efficacy",
@@ -117,13 +120,16 @@
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Separate track per member drug; opener untested at model_first_use_year",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "McBride 2005 quote verbatim; flies dosed with non-member antagonists, product_in_model false. Basimglurant fly opener untested 2005, oral, unselected confirmed."
+   "rule": "Rule 6: a track opens at its own drug's first use in the model, not at the system's first use for another drug (proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "proposed_year": 2009,
+   "note": "Earlier basimglurant FXS record: NCT01015430 (RO4917523, NP22578, adults) first posted 2009-11-18 (CT.gov API), before NCT01517698 (2012-01-25). Year should be 2009; untested, retrodiction false unchanged.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: status untested agreed; track opens at basimglurant's first registry-dated FXS use, NCT01015430 first posted 2009-11-18 (verified), so year should be 2009, not 2012. Not the track's latest entry; no untested_reason."
   },
   {
    "cell": "efficacy",

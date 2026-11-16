@@ -43,8 +43,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "AZD7594 therapeutic-ratio sentence verbatim in Hemmerling abstract; velsecorat, inhaled, unselected right for the opener. registry_date 2009-08-21 is AZD5423's NCT00963183 (proxy), not velsecorat's."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "evidence rule 6 (track opens at its own drug's first use; paired year = later side)",
+   "note": "NCT01636024 is AZD7594 (velsecorat) FIH, submitted 2012-07-05, start 2012-09: valid proxy for its own first rat-model use; untested holds. Stale: registry_date 2009-08-21 and confidence_note still cite AZD5423's NCT00963183."
   },
   {
    "cell": "dose",
@@ -74,8 +75,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Swapped AZD7594 sentence verbatim in Hemmerling 2017 abstract; velsecorat track opener, inhaled, unselected. Proxy year 2009 (model first use, AZD5423) stands."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "evidence rule 6 (track opens at its own drug's first use; paired year = later side)",
+   "note": "NCT01636024 is AZD7594 (velsecorat) FIH, submitted 2012-07-05, start 2012-09: valid proxy for its own first rat-model use; untested holds. Stale: registry_date 2009-08-21 and confidence_note still cite AZD5423's NCT00963183."
   },
   {
    "cell": "efficacy",
@@ -137,23 +139,20 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Gauvreau LAR sentence verbatim (Europe PMC); AZD5423 nebulised, mild allergic asthma; no AZD5423 asthma efficacy trial, untested/not_measured holds. Year 2015 kept: Crossref published-online 2015-01-15 (DOI created 2014-12-04 only)."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "evidence rule 6 (track opens at its own drug's first use; paired year = later side)",
+   "note": "NCT01225549 is AZD5423's own allergen-challenge study, submitted 2010-10-15, start 2010-11; opener 2010 correct (track's system first use 2009 is GW870086). untested/not_measured unchanged, retrodiction false."
   },
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "retro",
-   "proposed_year": 2013,
-   "rule": "evidence rule 6 (earliest public date: online publication)",
-   "note": "Registry LAR quote verbatim (1 mg +0.265, FP +0.526). Publisher page gives the challenge report (10.2174/15748855113089990005) citation_publication_date 2013-07-05, not 2014-01-31; with J Asthma online 2013-10-01 the comparison was public 2013. Its abstract: 1 mg weighted-mean LAR not significant, so retro holds; epub_year 2013.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6 (earliest public date): status retro agreed; challenge report was online ahead of print in July 2013 (Bentham ahead-of-print DOI, Crossref created 2013-07-09; print 2014-01-31), so year/epub_year 2013."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "evidence rule 6 (track opens at its own drug's first use; paired year = later side)",
+   "note": "Crossref: challenge report DOI created 2013-07-09 (print 2014-01-31); J Asthma online 2013-10. Paired year 2013 holds; retro holds (ICS moved LAR decades earlier). Stale: epub_year 2014, note's 2014-01-31 and judgement's 2018 dates."
   },
   {
    "cell": "safety",
@@ -162,8 +161,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "AZD7594 therapeutic-ratio sentence verbatim (Hemmerling abstract); velsecorat, inhaled, unselected opener; proxy 2009 stands."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "evidence rule 6 (track opens at its own drug's first use; paired year = later side)",
+   "note": "NCT01636024 is AZD7594 (velsecorat) FIH, submitted 2012-07-05, start 2012-09: valid proxy for its own first rat-model use; untested holds. Stale: registry_date 2009-08-21 and confidence_note still cite AZD5423's NCT00963183."
   },
   {
    "cell": "safety",
@@ -273,17 +273,13 @@
   {
    "cell": "efficacy",
    "index": 13,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "retro",
-   "proposed_year": 2013,
-   "rule": "evidence rule 6 (earliest public date: online publication)",
-   "note": "Adaptive-trial conclusion verbatim (2013-09-06). Model side, the challenge report, was online 2013-07-05 (publisher citation_publication_date; abstract: 3 mg protective, 1 mg LAR ns), so the comparison was public 2013, not 2014. Retro holds; epub_year 2013.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6 (earliest public date): retro agreed (ICS target retrodiction); challenge report online July 2013 (ahead-of-print DOI, Crossref created 2013-07-09) and adaptive trial 2013-09-06, so the comparison dates 2013."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "evidence rule 6 (track opens at its own drug's first use; paired year = later side)",
+   "note": "Crossref: challenge report DOI created 2013-07-09; adaptive trial Curr Drug Ther 8(2) issued 2013-09-01. Both public 2013, year 2013 holds; retro holds. Stale: epub_year 2014; confidence_note/judgement still say held at 2018."
   }
  ],
  "missing": [

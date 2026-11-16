@@ -19,15 +19,15 @@
    "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
    "proposed_status": "same",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "rule": "6",
-   "note": "Quote in Kelley JCO abstract (epub 2021-07-22); durvalumab, iv, stage_or_line right. But ASCO 2020 abstract 4508 (online 2020-05-25) already reported responders 'exhibited high cytotoxic (CD8) counts'. Rule 6: year 2020.",
-   "proposed_year": 2020,
+   "proposed_year": 2021,
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest date the durvalumab-alone comparison was public",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "ASCO 2020 abstract 4508 (2020-05-20) and its ILCA 2020 report tie proliferative CD8 T cells to T300+D only ('unique association'). CD8 expansion with response across arms, durvalumab alone included, first public in Kelley JCO epub 2021-07-22. Same, not retro.",
    "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: status same agreed; year stays 2021. ASCO 2020 abstract 4508 ties the proliferative CD8 profile and high-CD8 responders to the T300+D arm only; CD8 expansion with response across arms, durvalumab included, first appears in Kelley JCO 2021."
+   "adjudication_note": "DRAFTER_BRIEF rule 6: ASCO 2020 abstract 4508 ties the proliferative CD8 profile and OR-CD8 link to T300+D only; durvalumab-alone CD8 expansion first public in Kelley JCO 2021. Same; year 2021. Retro-dating of filed models stays queued."
   },
   {
    "cell": "dose",
@@ -121,12 +121,12 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "same",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "rule": "6",
-   "note": "Quote verbatim (Hepatology epub 2025-05-16); durvalumab, iv, stage_or_line right. But HCC patients' own durvalumab imAEs were public earlier: Kelley JCO epub 2021-07-22 (Study 22, imAEs 15.8% on D, PMC8445563), then NEJM Evid 2022. Year 2021.",
    "proposed_year": 2021,
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date, even when a later paper is the higher-tier source",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "NEJM Evid 2022 is not earliest: Kelley JCO epub 2021-07-22 (Study 22, PMC8445563) gives HCC imAEs 'versus the D arm (15.8%)'. Trade press (Sept 2020) reported that rate from the ILCA 2020 talk; abstract unverified. Year 2021; same, not retro.",
    "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: status same agreed; year 2021. Kelley JCO (epub 2021-07-22) first reported HCC patients' immune-mediated AEs on durvalumab alone. Wainberg ASCO 2017 (HCC, durvalumab) gave treatment-related AEs without immune-mediated attribution."
+   "adjudication_note": "DRAFTER_BRIEF rule 6: HCC patients' own durvalumab-alone imAE rate (15.8%, Study 22) was public in Kelley JCO 2021, before HIMALAYA's 2022 report; 2020 trade-press figure unverified. Same; year 2021."
   },
   {
    "cell": "efficacy",

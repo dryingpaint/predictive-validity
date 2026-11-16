@@ -73,17 +73,13 @@
   {
    "cell": "dose",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2017,
-   "rule": "retrodiction (dose: same drug's own earlier patient result); dating rule 6; margin_stated needs a margin public before the trial",
-   "note": "Kudo quote verbatim in abstract; drug/route/population correct. Tamai model, built on lenvatinib's own HCC phase 1/202 data, first public 2017-05-31, after REFLECT topline (Jan 2017): retro. Year 2017. AUC-2430 ceiling first public then, so margin_stated false.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule (dose: same drug's own earlier patient result): Tamai model first public 2017-05-31, after lenvatinib's own HCC phase 1/Study 202 and REFLECT topline (Jan 2017). Retro, year 2017; AUC ceiling not public pre-trial, so margin_stated unsupported."
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF rule 6 (paired year = later side); retrodiction for dose: same drug's own earlier patient result",
+   "note": "Eisai release 2017-01-25 (eisai.com/news/news201706.html): REFLECT met OS non-inferiority. Tamai (doi 10.1002/jcph.917, PMID 28561918) epub 2017-05-31, print Sep 2017. Year 2017, retro confirmed. Fields epub_year/print_year 2018 should be 2017; judgement text stale.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

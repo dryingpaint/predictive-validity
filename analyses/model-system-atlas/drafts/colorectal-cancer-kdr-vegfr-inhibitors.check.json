@@ -66,11 +66,11 @@
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "retro",
-   "rule": "DRAFTER_BRIEF retrodiction: for efficacy and engagement, a model result first public after a patient result for the same target and action, from a member or any other drug, is a retrodiction; reproduced = retro, failed = contra",
-   "note": "Xu 2017 PFS quote verbatim (PMID 28103904, epub 2017-01-19); fruquintinib/oral/stage_or_line right. Sun 2014 model postdates VEGFR-TKI CRC results (vatalanib CONFIRM-1, ASCO 2005; JCO 2011 PMID 21464406): retrodiction true, reproduced Xu 2017, so retro. Same applies to efficacy 4.",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "DRAFTER_BRIEF retrodiction: for efficacy and engagement, a model result first public after a patient result for the same target and action, from a member or any other drug, is a retrodiction; reproduced = retro",
+   "note": "Year 2015 confirmed: Fierce Biotech datePublished 2015-03-31 (archived) reports fruquintinib phase II met PFS primary endpoint; Sun 2014 online 2014-10-29. Sun 2014 post-dates regorafenib CORRECT (2012): retrodiction true, reproduced, so retro.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule (target-level, post-dating alone): Sun 2014 model postdates VEGFR-TKI CRC patient results (vatalanib CONFIRM-1 2005; regorafenib CORRECT 2012); it reproduced Xu 2017 PFS benefit, so retro, never same."
+   "adjudication_note": "Retrodiction rule (efficacy is target-level, any drug): Sun 2014 (online 2014-10-29) postdates regorafenib CORRECT (2012), a VEGFR-TKI win in refractory mCRC; activity reproduced, so retro, not same. Consistent with efficacy 9 ruling."
   },
   {
    "cell": "safety",
@@ -79,8 +79,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "evidence rule 6 (proxy opener)",
-   "note": "Gu 2014 (PMID 24817647) quote verbatim in abstract. Proxy opener acceptable; note the tivozanib rat/monkey safety-pharmacology package predates 2014 (EMA EPAR 2017 lists it), so model_first_use_year 2014 is late for the track but no public date was found."
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use; earliest public date)",
+   "note": "ClinicalTrials.gov API: NCT01645215 fruquintinib phase I, submitted 2012-03-15, first posted 2012-07-20, start 2011-01; earliest public date for fruquintinib's tox package, before Gu 2014. Year 2012, untested confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -142,13 +143,16 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "decision 10 (prospective, model 2014 precedes 2017 result)",
-   "note": "Xu 2017 J Hematol Oncol, first published 2017-01-19, PMID 28103904; PFS and OS quotes verbatim in abstract. PDX (2014) predates phase II, so same, not retro. Single-agent PDX TGI is figure-only; direction_only magnitude appropriate.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "DRAFTER_BRIEF retrodiction: for efficacy and engagement, a model result first public after a patient result for the same target and action, from a member or any other drug, is a retrodiction; reproduced = retro",
+   "note": "Year 2015 confirmed: Fierce Biotech 2015-03-31 (archived), Chi-Med phase II met PFS primary endpoint; PDX in Sun 2014, online 2014-10-29. PDX post-dates regorafenib CORRECT (2012): retrodiction true, reproduced, so retro.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (efficacy is target-level, any drug): the CRC PDX first appeared in Sun 2014, after regorafenib CORRECT (2012) in refractory mCRC; activity reproduced, so retro, not same. Consistent with efficacy 9 ruling."
   },
   {
    "cell": "efficacy",
@@ -186,16 +190,13 @@
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "rule": "DRAFTER_BRIEF retrodiction: for efficacy and engagement, a model result first public after a patient result for the same target and action, from a member or any other drug, is a retrodiction; reproduced = retro, failed = contra",
-   "note": "Eskens 2011 (PMID 21976547, epub 2011-10-05) quote verbatim in abstract; tivozanib/oral/unselected right. Morgan 2003 (PMID 14517187, epub 2003-09-29) showed dose-dependent DCE-MRI Ki fall with vatalanib in CRC patients before Nakamura 2006: retrodiction true, retro.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule (engagement is target-level): Morgan 2003 showed dose-dependent DCE-MRI Ki fall with vatalanib in CRC patients before Nakamura 2006; the rat DCE-MRI/pVEGFR2 result reproduced Eskens 2011, so retro."
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF rule 6 (paired year = later side) and retrodiction (model post-dates patient result: retro)",
+   "note": "Crossref: KRN951 phase I ASCO abstract (10.1200/jco.2006.24.18_suppl.2034) published 2006-06-20; Nakamura Cancer Res online 2006-09-18. Year 2006, retrodiction true, reproduced perfusion fall: retro. ASCO page blocked; abstract wording not re-read.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

@@ -11,7 +11,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Tunaru 2003 abstract (PMID 12563315, epub 2003-02-03) verbatim; opener untested; downstream readout correct."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: a track opens at its own drug's first use in the model; proxy allowed)",
+   "note": "Year 2009 confirmed: ClinicalTrials.gov API gives NCT00847197 first posted 2009-02-19, the only MK-1903 registry record; earliest MK-1903 PubMed papers are Boatman and Lauring 2012, no earlier knockout dosing. Proxy opener; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -68,7 +70,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Opener; no exposure target stated by the knockout mouse. Verbatim."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: a track opens at its own drug's first use in the model; proxy allowed)",
+   "note": "Year 2009 confirmed: ClinicalTrials.gov API gives NCT00847197 first posted 2009-02-19, the only MK-1903 registry record; earliest MK-1903 PubMed papers are Boatman and Lauring 2012, no earlier knockout dosing. Proxy opener; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -128,7 +132,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Verbatim; FFA hypothesis opener."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: a track opens at its own drug's first use in the model; proxy allowed)",
+   "note": "Year 2009 confirmed: ClinicalTrials.gov API gives NCT00847197 first posted 2009-02-19, the only MK-1903 registry record; earliest MK-1903 PubMed papers are Boatman and Lauring 2012, no earlier knockout dosing. Proxy opener; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -200,7 +206,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Benyo 2005 abstract verbatim (PMID 16322797, Dec 2005). Flush readout enters 2005 on the 2003 mouse; fine."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: a track opens at its own drug's first use in the model; proxy allowed)",
+   "note": "Year 2009 confirmed: ClinicalTrials.gov API gives NCT00941603 first posted 2009-07-17, the only SCH 900271 registry record; Palani 2011 doses beagles only, no knockout dosing found. Proxy opener; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

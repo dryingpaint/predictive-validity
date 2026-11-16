@@ -211,11 +211,11 @@
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Kang 2014 (PMID 24960402, epub 2014-06-24, Crossref) day-43 Cmin 40.0 and 62.7 ug/mL verbatim, above the 20 ug/mL xenograft target from the 2012 FDA review: target reached, same. Year 2014 is the earliest public date; failure stays in efficacy."
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date: congress abstract)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2013 confirmed: Crossref/S2 list O-0021 (Kang et al., pertuzumab PK with trastuzumab+chemo in HER2+ AGC), Ann Oncol 24 suppl 4:iv19, June 2013; body elided/403, troughs unseen. Kang 2014 quote holds; same, not retro. Note's 57.9 vs 62.7; confidence_note still says 2014."
   },
   {
    "cell": "efficacy",
@@ -261,17 +261,13 @@
   {
    "cell": "efficacy",
    "index": 10,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2021,
-   "rule": "DRAFTER_BRIEF rule 6 (earliest public date, congress abstract)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Catenacci 2022 (PMID 36029651) ORR 53% sentence verbatim; single-arm combination, same holds. MAHOGANY cohort A was public earlier as ESMO 2021 poster 1379P (Crossref doi 10.1016/j.annonc.2021.08.1488, Ann Oncol Sept 2021; title only), so year 2021.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same agreed (single-arm combination, primary ORR in predicted direction). Rule 6: ESMO 2021 poster 1379P (Ann Oncol Sept 2021, Crossref verified) is the earliest public date; year 2021."
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date: press release / congress abstract)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2021 confirmed: MacroGenics 8-K EX-99.1 dated 16 Sep 2021 reports 21/40 (53%) confirmed ORR, ORR the primary endpoint; ESMO 2021 poster 1379P, Ann Oncol 32:S1043-4 (doi 10.1016/j.annonc.2021.08.1488). Status same unchanged; retro scope vs ToGA stays a rule question."
   }
  ],
  "missing": [

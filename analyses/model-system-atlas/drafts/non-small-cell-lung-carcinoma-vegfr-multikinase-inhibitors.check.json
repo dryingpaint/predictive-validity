@@ -117,17 +117,13 @@
   {
    "cell": "efficacy",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2021,
-   "rule": "Evidence rule 6: year is the earliest public date (congress abstract)",
-   "note": "LEAP-007 conclusion verbatim (PMID 38159809; co-primary OS HR 1.10, PFS HR 0.78); contra, pembrolizumab, biomarker_selected (PD-L1>=1%) right. Year: first public at ESMO-IO Dec 2021 (memo inOncology report), before the 2022-06-02 registry posting.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status contra agreed by both. Rule 6: year is earliest public date; LEAP-007 was presented at ESMO-IO Dec 2021 (Fierce Pharma 10 Dec 2021, memo inOncology), before the 2022-06-02 registry posting, so year 2021."
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date; paired year is the later side",
+   "note": "Crossref: 120O LEAP-007, Ann Oncol 32 S7 S1429, Dec 2021 (ESMO-IO 8-11 Dec). memo inOncology report of 120O: OS HR 1.10, PFS HR 0.78, benefit/risk 'not considered favorable', combination discontinued. Model 2019; year 2021, contra stands, not retrodiction.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -154,10 +150,11 @@
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "not_found",
    "status_supported": true,
-   "note": "Hida 2019 TEAE sentence verbatim; PharmR line 3034 proteinuria 'consistent with clinical findings'. lenvatinib/oral/biomarker_selected right; same holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date; paired year is the later side",
+   "note": "Abstract 1204PD (doi 10.1093/annonc/mdw383.05, Ann Oncol 27 S6 vi417, Oct 2016) paywalled; Targeted Oncology 2018 citing it reports hypertension 68%; proteinuria 48% unseen. Hypertension match suffices; model 2015; year 2016, same stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",

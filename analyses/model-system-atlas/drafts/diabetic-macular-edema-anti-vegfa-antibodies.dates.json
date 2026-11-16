@@ -1,0 +1,20 @@
+{
+ "tile": "diabetic-macular-edema-anti-vegfa-antibodies",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 8,
+   "what": "2023 -> 2018 (status untested unchanged): opener of the aflibercept track of rabbit-chronic-rnv-leak moved to aflibercept's own first use in the model, Cao 2018 IOVS (doi:10.1167/iovs.17-22897, PMID 29450547)"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "2023 -> 2024 (status retro unchanged): model side (2 mg vs 500 ug rabbit RNV study) first public in the FDA pharmacology review of BLA 761355, posted 2024 (nda/2024 folder, Last-Modified 2024-04-18); patient side PHOTON topline Sept 2022"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "2021 -> 2019 (status retro unchanged): SAILING patient side first public as the 2019 China NMPA DME label extension for conbercept (Liu 2025 review, PMC12532959); model side Huang 2012"
+  }
+ ]
+}

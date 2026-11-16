@@ -86,8 +86,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "efficacy: primary endpoint, class-level same; paired comparison (comparison_stated false, model_src Gao 2010)",
-   "note": "NEJM 366:216, PMID 22256805; quote verbatim; abstract names SVR12 primary. NCT01012895 first posted 2009-11-13, no results, primary 'HCV RNA 12 weeks post-treatment'. Class-level same supported: SVR achieved, 1a breakthroughs with NS5A resistance as the replicon predicted."
+   "rule": "rule 6: earliest public date; paired year = later side",
+   "note": "natap EASL_28: Lok presented EASL 2 Apr 2011, 4/11 dual and 10/10 quad SVR12. Gao 2010 epub 2010-04-21 precedes it, so prospective; year 2011 and status same hold. Abstract number 1356 not seen.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -225,13 +226,17 @@
   {
    "cell": "efficacy",
    "index": 11,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "status table: untested opener, proxy allowed",
-   "note": "Harvoni label quote verbatim (bundle line 1103) but is about RAS persistence, not the replicon map; acceptable for a proxy opener. Sorts before efficacy 12 (same year, lower index). Ledipasvir, oral, sofosbuvir right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "untested",
+   "proposed_year": 2011,
+   "rule": "rule 6: earliest public date (congress abstract before epub)",
+   "note": "Wong 2013 AAC epub 2013-07-22 confirmed (patient-derived M28T/Q30R/L31M/Y93C phenotyped in vitro), but the same study, same title and authors, was an AASLD Nov 2011 poster (natap 2011/AASLD/AASLD_52). Year 2011.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: opener stays untested (ledipasvir's first replicon RAS use; track latest is efficacy 12 same). Year 2011 accepted: AASLD Nov 2011 GS-5885 resistance poster confirmed on natap."
   },
   {
    "cell": "efficacy",
@@ -247,30 +252,28 @@
   {
    "cell": "efficacy",
    "index": 13,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "drop",
-   "rule": "track latest = last entry in seq order (track_store.py sorts by year, then JSON index); DRAFTER_BRIEF status table: each track opens untested at model_first_use_year, so a same-year opener listed after the comparison makes untested the track's latest",
-   "note": "Lemm 2010 quote verbatim, but year 2015 ties efficacy 4 (same 2015) and sorts after it, so the daclatasvir RAS track latest reads untested; source_tier 2/epub 2015 mismatch Lemm 2010 (tier 1). Drop, or re-date 2010 before entry 4.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "drop",
-   "adjudication_note": "Status table: efficacy 4 is a 2015 'same' on this daclatasvir track; this opener sorts after it, so latest reads untested. Rule 6 also breaks: Lemm 2010 quote dated 2015, tier 2. Drop."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "rule 6: track opens at its own drug's first use in the model",
+   "note": "Gao 2010 Nature epub 2010-04-21 and Fridell 2010 AAC epub 2010-06-28 (daclatasvir replicon RAS map) support 2010. src Lemm 2010 is BMS-824, and epub/print_year 2015 are stale; fix fields.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
    "index": 14,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "drop",
-   "rule": "track latest = last entry in seq order (track_store.py sorts by year, then JSON index); DRAFTER_BRIEF status table: each track opens untested at model_first_use_year, so a same-year opener listed after the comparison makes untested the track's latest",
-   "note": "Zepatier quote verbatim, but year 2016 ties efficacy 5 (same 2016) and sorts after it, so the elbasvir RAS track latest reads untested. Drop, or list it before entry 5.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "drop",
-   "adjudication_note": "Status table: elbasvir ns5a-ras track has a 2016 'same' (efficacy 5) from the same label quote; this same-year opener sorts after it and leaves latest untested. Not a rule 6 opener at 2010. Drop."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "rule 6: earliest public date (congress abstract before epub)",
+   "note": "Coburn 2013 epub 2013-10-14 confirmed but abstract only states a design goal. Liu et al., EASL Apr 2012 (natap 2012/EASL/EASL_46), in vitro MK-8742 potency against clinical resistance variants, is earlier. Year 2012.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: opener stays untested (elbasvir's first replicon RAS use; track latest is a later same). Year 2012 accepted: EASL Apr 2012 MK-8742 in vitro resistance poster confirmed on natap."
   },
   {
    "cell": "efficacy",
@@ -297,16 +300,13 @@
   {
    "cell": "efficacy",
    "index": 17,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "drop",
-   "rule": "track latest = last entry in seq order (track_store.py sorts by year, then JSON index); DRAFTER_BRIEF status table: each track opens untested at model_first_use_year, so a same-year opener listed after the comparison makes untested the track's latest",
-   "note": "Etzion 2020 quote verbatim, but year 2020 ties efficacy 8 (same 2020) and sorts after it, so the velpatasvir kinetic-model track latest reads untested. Drop, or list it before entry 8.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "drop",
-   "adjudication_note": "Status table: velpatasvir kinetic-model track has a 2020 'same' (efficacy 8); this same-year opener sorts after it so latest reads untested. Not a rule 6 opener at model_first_use_year 2013. Drop."
+   "status_supported": true,
+   "rule": "rule 6: earliest public date (congress abstract)",
+   "note": "natap AASLD 2018 (Nov 9-13) Etzion/Dahari poster (AASLD_32) confirmed; Etzion 2020 lists ELB/GRZ, SOF/LED, SOF/VEL, GLE/PIB. Opener 2018 holds. confidence_note still says 2020; comparisons 8/19/20/22 (2020) were public Nov 2018 too.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -315,9 +315,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "status table: untested opener, proxy allowed",
-   "note": "Etzion 2020 abstract sentence verbatim (PMC7575564). Sorts before efficacy 19 on the elbasvir track. Elbasvir, oral, grazoprevir right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "rule 6: earliest public date (congress abstract)",
+   "note": "natap AASLD 2018 (Nov 9-13) Etzion/Dahari poster (AASLD_32) confirmed; Etzion 2020 lists ELB/GRZ, SOF/LED, SOF/VEL, GLE/PIB. Opener 2018 holds. confidence_note still says 2020; comparisons 8/19/20/22 (2020) were public Nov 2018 too.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -348,9 +348,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "status table: untested opener, proxy allowed",
-   "note": "Etzion 2020 abstract sentence verbatim. Sorts before efficacy 22 on the pibrentasvir track. Pibrentasvir, oral, glecaprevir right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "rule 6: earliest public date (congress abstract)",
+   "note": "natap AASLD 2018 (Nov 9-13) Etzion/Dahari poster (AASLD_32) confirmed; Etzion 2020 lists ELB/GRZ, SOF/LED, SOF/VEL, GLE/PIB. Opener 2018 holds. confidence_note still says 2020; comparisons 8/19/20/22 (2020) were public Nov 2018 too.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

@@ -137,17 +137,13 @@
   {
    "cell": "engagement",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2012,
-   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public, including a congress abstract",
-   "note": "Kalaycio 2016 quote verbatim; retro correct (rituximab 1994). But Kalaycio ASH 2012 (doi 10.1182/blood.V120.21.192.192, online 2012-11-16) already reported 'Circulating leukemic cells decreased after treatment in all patients'; year 2015 -> 2012.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Status retro agreed by both (retrodiction rule: post-dates rituximab 1994 depletion). Rule 6 dating: Kalaycio ASH 2012 abstract (Blood 120:192) already reported circulating leukemic cells fell in all patients, so the entry year is 2012, not 2015."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date incl. congress abstract; paired year is the later side) and retrodiction rule (engagement: any earlier patient result on the target)",
+   "note": "Crossref: Kalaycio ASH 2012 abstract 192 issued 2012-11-16; circulating leukemic cells fell in all 20 patients, >50% in 13. Model side Goldenberg Blood 2009 (online 2008-2009), earlier. Year 2012; retro holds (rituximab 1994).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",

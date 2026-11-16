@@ -18,10 +18,10 @@
   "cells": {
     "engagement": [
       {
-        "year": 2012,
+        "year": 2011,
         "status": "untested",
         "model": "Genotype-defined NSCLC cell lines and xenografts (H1975 and others)",
-        "note": "Ganetespib depleted RTK clients in NSCLC lines; in H1975 xenografts mutant EGFR re-expressed by 72 h after one dose; no patient PD comparison yet.",
+        "note": "Ganetespib depleted RTK clients in NSCLC lines; in H1975 xenografts mutant EGFR re-expressed by 72 h after one dose; no patient PD comparison yet. Year 2011: ganetespib's own first use in this panel is Ying 2012 (Mol Cancer Ther, epub 2011-12-05, PMID 22144665, 10.1158/1535-7163.MCT-11-0755), which degraded Hsp90 clients and induced apoptosis in NCI-H1975 cells, before Shimamura 2012 (epub 2012-07-17) and Proia 2012 (epub 2012-01-10).",
         "short": "Client depletion in NSCLC cells and xenografts",
         "src": "https://doi.org/10.1158/1078-0432.CCR-11-2967",
         "srcLabel": "Shimamura 2012",
@@ -98,10 +98,10 @@
         "population_group": "other_disease"
       },
       {
-        "year": 2013,
+        "year": 2011,
         "status": "untested",
         "model": "Genotype-defined NSCLC cell lines and xenografts (H1975 and others)",
-        "note": "Luminespib's own NSCLC xenografts: tumour stability and EGFR depletion in H1975, slowed A549 growth; opens the luminespib engagement track.",
+        "note": "Luminespib's own NSCLC xenografts: tumour stability and EGFR depletion in H1975, slowed A549 growth; opens the luminespib engagement track. Year 2011: luminespib's own first use in this panel is Ueno 2011 (Lung Cancer, epub 2011-10-11, PMID 21996088), 21 genotyped NSCLC lines incl. H1975, IC50 median 20.4 nM, EGFR/MET/HER2/AKT depleted at 50-100 nM; Garon 2013 (epub 2013-03-14) is a later use.",
         "short": "Luminespib depletes EGFR in H1975 xenografts",
         "src": "https://doi.org/10.1158/1535-7163.MCT-12-0998",
         "srcLabel": "Garon 2013",
@@ -140,10 +140,10 @@
     ],
     "dose": [
       {
-        "year": 2012,
+        "year": 2011,
         "status": "untested",
         "model": "Genotype-defined NSCLC cell lines and xenografts (H1975 and others)",
-        "note": "H1975 xenografts kept ganetespib with a 58-h tumour half-life, supporting weekly dosing, but regression needed consecutive-day dosing; no human exposure comparison yet.",
+        "note": "H1975 xenografts kept ganetespib with a 58-h tumour half-life, supporting weekly dosing, but regression needed consecutive-day dosing; no human exposure comparison yet. Year 2011: ganetespib's own first use in this panel is Ying 2012 (Mol Cancer Ther, epub 2011-12-05, PMID 22144665, 10.1158/1535-7163.MCT-11-0755), which degraded Hsp90 clients and induced apoptosis in NCI-H1975 cells, before Shimamura 2012 (epub 2012-07-17) and Proia 2012 (epub 2012-01-10).",
         "short": "Tumour retention set the weekly regimen",
         "src": "https://doi.org/10.1158/1078-0432.CCR-11-2967",
         "srcLabel": "Shimamura 2012",
@@ -222,10 +222,10 @@
         "population_group": "other_disease"
       },
       {
-        "year": 2013,
+        "year": 2011,
         "status": "untested",
         "model": "Genotype-defined NSCLC cell lines and xenografts (H1975 and others)",
-        "note": "Luminespib inhibited all 41 NSCLC lines below 100 nmol/L, the concentration bar later compared with patient exposure; opens the luminespib dose track.",
+        "note": "Luminespib inhibited all 41 NSCLC lines below 100 nmol/L, the concentration bar later compared with patient exposure; opens the luminespib dose track. Year 2011: luminespib's own first use in this panel is Ueno 2011 (Lung Cancer, epub 2011-10-11, PMID 21996088), 21 genotyped NSCLC lines incl. H1975, IC50 median 20.4 nM, EGFR/MET/HER2/AKT depleted at 50-100 nM; Garon 2013 (epub 2013-03-14) is a later use.",
         "short": "Luminespib active below 100 nM in NSCLC lines",
         "src": "https://doi.org/10.1158/1535-7163.MCT-12-0998",
         "srcLabel": "Garon 2013",
@@ -265,10 +265,10 @@
     ],
     "efficacy": [
       {
-        "year": 2012,
+        "year": 2011,
         "status": "untested",
         "model": "Genotype-defined NSCLC cell lines and xenografts (H1975 and others)",
-        "note": "Ganetespib regressed EGFR L858R/T790M xenografts on consecutive-day dosing and ERBB2-driven mouse tumours; the paper named EGFR- and ERBB2-mutant NSCLC as the subsets to treat.",
+        "note": "Ganetespib regressed EGFR L858R/T790M xenografts on consecutive-day dosing and ERBB2-driven mouse tumours; the paper named EGFR- and ERBB2-mutant NSCLC as the subsets to treat. Year 2011: ganetespib's own first use in this panel is Ying 2012 (Mol Cancer Ther, epub 2011-12-05, PMID 22144665, 10.1158/1535-7163.MCT-11-0755), which degraded Hsp90 clients and induced apoptosis in NCI-H1975 cells, before Shimamura 2012 (epub 2012-07-17) and Proia 2012 (epub 2012-01-10).",
         "short": "Xenografts named EGFR-mutant NSCLC as sensitive",
         "src": "https://doi.org/10.1158/1078-0432.CCR-11-2967",
         "srcLabel": "Shimamura 2012",
@@ -767,14 +767,14 @@
         "registry_date": null,
         "model_filed": null,
         "product_in_model": false,
-        "year": 2015,
+        "year": 2014,
         "status": "same",
         "model": "Beagle dog repeat-dose retinal toxicity model (ERG, pupillary light reflex, photoreceptor histology; Chugai HSP90 inhibitors CH5164840 and CH5449302)",
         "model_id": "beagle-dog-retina-model",
         "model_kind": "animal",
         "model_first_use_year": 2014,
         "prediction_level": "class",
-        "note": "Dogs on Chugai HSP90 inhibitors predicted class retinal toxicity; luminespib NSCLC patients had night blindness that limited treatment. Not retro: the dogs' own drugs had no prior patient result.",
+        "note": "Dogs on Chugai HSP90 inhibitors predicted class retinal toxicity; luminespib NSCLC patients had night blindness that limited treatment. Not retro: the dogs' own drugs had no prior patient result. Year 2014: the patient side was public at ASCO 2013 (Johnson, abstract 8036, 10.1200/jco.2013.31.15_suppl.8036: 'transient flashing lights or night blindness' in >=20%), before the dog model (Kanamaru, J Toxicol Sci 2014-02-01), so the pairing dates to the model side.",
         "short": "Night blindness in luminespib NSCLC patients",
         "src": "https://doi.org/10.1200/JCO.2014.59.7328",
         "srcLabel": "Johnson 2015",

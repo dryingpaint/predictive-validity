@@ -18,11 +18,11 @@
  "cells": {
   "engagement": [
    {
-    "year": 2009,
+    "year": 2007,
     "status": "untested",
     "model": "FLT3-ITD cell lines and MV4-11 xenografts",
     "model_id": "flt3-itd-mv4-11-xenograft",
-    "note": "Quizartinib (AC220) inhibited FLT3 at low nanomolar potency in FLT3-ITD cells and was active in mice at 1 mg/kg.",
+    "note": "Quizartinib (AC220) inhibited FLT3 at low nanomolar potency in FLT3-ITD cells and was active in mice at 1 mg/kg. Year: quizartinib's first public use of the MV4;11 cell and xenograft model is the ASH 2007 abstract (Blood 110(11):1597, 2007-11-16: 'In the mouse MV4;11 xenograft model, tumor regression is observed at 3 mg/kg'), before Zarrinkar 2009.",
     "short": "Quizartinib blocks FLT3 in cells and mice",
     "src": "https://doi.org/10.1182/blood-2009-05-222034",
     "srcLabel": "Zarrinkar 2009",
@@ -57,11 +57,11 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2013,
+    "year": 2008,
     "status": "same",
     "model": "FLT3-ITD cell lines and MV4-11 xenografts",
     "model_id": "flt3-itd-mv4-11-xenograft",
-    "note": "Plasma from quizartinib-dosed patients completely inhibited FLT3-ITD phosphorylation in the same cells, the readout the model used.",
+    "note": "Plasma from quizartinib-dosed patients completely inhibited FLT3-ITD phosphorylation in the same cells, the readout the model used. Year: both sides public by ASH 2008 (Blood 112(11):767, 2008-11-16: 'FLT3 phosphorylation is strongly suppressed when plasma obtained from study pts is tested ex vivo in FLT3-ITD and WT cell lines at 12 mg and 60 mg doses'); model side ASH 2007.",
     "short": "Patient plasma fully blocks FLT3-ITD",
     "src": "https://doi.org/10.1200/JCO.2013.48.8783",
     "srcLabel": "Cortes 2013",
@@ -100,11 +100,11 @@
   ],
   "dose": [
    {
-    "year": 2009,
+    "year": 2007,
     "status": "untested",
     "model": "FLT3-ITD cell lines and MV4-11 xenografts",
     "model_id": "flt3-itd-mv4-11-xenograft",
-    "note": "Nanomolar cell potency and a 1 mg/kg effective mouse dose set the exposure target for quizartinib; no patient exposure yet.",
+    "note": "Nanomolar cell potency and a 1 mg/kg effective mouse dose set the exposure target for quizartinib; no patient exposure yet. Year: quizartinib's first public use of the MV4;11 cell and xenograft model is the ASH 2007 abstract (Blood 110(11):1597, 2007-11-16: 'In the mouse MV4;11 xenograft model, tumor regression is observed at 3 mg/kg'), before Zarrinkar 2009.",
     "short": "Cell potency sets the exposure target",
     "src": "https://doi.org/10.1182/blood-2009-05-222034",
     "srcLabel": "Zarrinkar 2009",
@@ -138,11 +138,11 @@
     "combination_with": null
    },
    {
-    "year": 2013,
+    "year": 2008,
     "status": "same",
     "model": "FLT3-ITD cell lines and MV4-11 xenografts",
     "model_id": "flt3-itd-mv4-11-xenograft",
-    "note": "Complete FLT3-ITD inhibition was reached at doses below the 200 mg/day MTD, and FLT3-ITD patients responded (9/17).",
+    "note": "Complete FLT3-ITD inhibition was reached at doses below the 200 mg/day MTD, and FLT3-ITD patients responded (9/17). Year: patient side first public at ASH 2008 (Blood 112(11):767, 2008-11-16): ex vivo pFLT3 strongly suppressed in FLT3-ITD cells by plasma from the 12 mg cohort, with doses up to 450 mg/day tolerated; model side ASH 2007.",
     "short": "Target reached below the MTD",
     "src": "https://doi.org/10.1200/JCO.2013.48.8783",
     "srcLabel": "Cortes 2013",
@@ -181,11 +181,11 @@
   ],
   "efficacy": [
    {
-    "year": 2009,
+    "year": 2007,
     "status": "untested",
     "model": "FLT3-ITD cell lines and MV4-11 xenografts",
     "model_id": "flt3-itd-mv4-11-xenograft",
-    "note": "Quizartinib was efficacious in FLT3-ITD mouse models at 1 mg/kg; no patient efficacy comparison yet.",
+    "note": "Quizartinib was efficacious in FLT3-ITD mouse models at 1 mg/kg; no patient efficacy comparison yet. Year: quizartinib's first public use of the MV4;11 cell and xenograft model is the ASH 2007 abstract (Blood 110(11):1597, 2007-11-16: 'In the mouse MV4;11 xenograft model, tumor regression is observed at 3 mg/kg'), before Zarrinkar 2009.",
     "short": "Quizartinib active in FLT3-ITD mice",
     "src": "https://doi.org/10.1182/blood-2009-05-222034",
     "srcLabel": "Zarrinkar 2009",
@@ -220,11 +220,11 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2018,
+    "year": 2011,
     "status": "same",
     "model": "FLT3-ITD cell lines and MV4-11 xenografts",
     "model_id": "flt3-itd-mv4-11-xenograft",
-    "note": "Single-arm phase 2, no success bar set in advance, co-primary CRc and CR: CRc 46-56% in FLT3-ITD, CR only 3-4%; authors call quizartinib highly active. Scored under the single-arm and co-primary rulings.",
+    "note": "Single-arm phase 2, no success bar set in advance, co-primary CRc and CR: CRc 46-56% in FLT3-ITD, CR only 3-4%; authors call quizartinib highly active. Scored under the single-arm and co-primary rulings. Year: phase 2 composite complete remission in relapsed/refractory FLT3-ITD patients first public at EHA June 2011 (Cortes, abstract 1019: CRc 43% of 53 evaluable) and ASH 2011 (Blood 118(21):2576); model side ASH 2007.",
     "short": "Quizartinib phase 2: CRc in half of FLT3-ITD",
     "src": "https://doi.org/10.1016/S1470-2045(18)30240-7",
     "srcLabel": "Cortes 2018",
@@ -321,14 +321,14 @@
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "year": 2012,
+    "year": 2011,
     "status": "untested",
     "prediction_level": "patient",
     "model_id": "flt3-itd-ba-f3-resistance-screen",
     "model": "Ba/F3 FLT3-ITD saturation mutagenesis resistance screen (in vitro)",
     "model_kind": "ex_vivo",
     "model_first_use_year": 2012,
-    "note": "In vitro mutagenesis of FLT3-ITD in Ba/F3 cells named the kinase-domain residues whose mutation would make quizartinib stop working.",
+    "note": "In vitro mutagenesis of FLT3-ITD in Ba/F3 cells named the kinase-domain residues whose mutation would make quizartinib stop working. Year: quizartinib's first public use of the Ba/F3 FLT3-ITD saturation mutagenesis screen is AACR 2011 (Cancer Res 71(8 Suppl):4737, 2011-04-15).",
     "short": "Screen names quizartinib resistance residues",
     "src": "https://doi.org/10.1038/nature11016",
     "srcLabel": "Smith 2012",
@@ -497,14 +497,14 @@
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "year": 2019,
+    "year": 2015,
     "status": "same",
     "prediction_level": "patient",
     "model_id": "flt3-itd-ba-f3-resistance-screen",
     "model": "Ba/F3 FLT3-ITD saturation mutagenesis resistance screen (in vitro)",
     "model_kind": "ex_vivo",
     "model_first_use_year": 2012,
-    "note": "Sequencing before and after crenolanib found no new FLT3 kinase-domain mutations and rare gatekeeper mutations; resistance came through NRAS, IDH2 and other genes, as the screen predicted.",
+    "note": "Sequencing before and after crenolanib found no new FLT3 kinase-domain mutations and rare gatekeeper mutations; resistance came through NRAS, IDH2 and other genes, as the screen predicted. Year: patient side first public at ASH 2015 (Zhang, Blood 126(23):2468, 2015-12-03: 'the majority of patients (38/44; 86%) presented with crenolanib resistance in the absence of secondary FLT3 mutations'); model side PNAS 2014.",
     "short": "No FLT3 KD mutations at crenolanib relapse",
     "src": "https://doi.org/10.1038/s41467-018-08263-x",
     "srcLabel": "Zhang 2019",

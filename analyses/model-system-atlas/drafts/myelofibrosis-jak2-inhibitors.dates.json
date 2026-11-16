@@ -1,0 +1,50 @@
+{
+ "tile": "myelofibrosis-jak2-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2011 -> 2009: patient side first public in ASH 2009 abstract 755 (doi:10.1182/blood.V114.22.755.755, 2009-11-20), allele-burden fall; model 2008; status same, retrodiction false unchanged"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "2019 -> 2012: pSTAT3 inhibition in myelofibrosis patients first public in ASH 2012 abstract 2837 (doi:10.1182/blood.V120.21.2837.2837, 2012-11-16; also Jamieson 2015 BCJ doi:10.1038/bcj.2015.63); model 2008; status same, retrodiction false unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "2015 -> 2013: JAKARTA SVR35 first public in ASH 2013 abstract 393 (doi:10.1182/blood.V122.21.393.393, 2013-11-15); model 2008; status same unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2015 -> 2013: JAKARTA SVR35 first public in ASH 2013 abstract 393 (doi:10.1182/blood.V122.21.393.393, 2013-11-15); model 2008; status same unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "2014 -> 2013 (opener): NS-018 first used in the JAK2V617F BMT mouse in ASH 2013 abstract 3847 (doi:10.1182/blood.V122.21.3847.3847, 2013-11-15); the 2010-2011 NS-018 mouse work used Ba/F3 and transgenic mice, not BMT"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "2015 -> 2014 (opener): BMS-911543 first used in the JAK2V617F retroviral BMT mouse in ASH 2014 abstract 5572 (doi:10.1182/blood.V124.21.5572.5572, 2014-12-06)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "2011 -> 2010 (opener): BMS-911543 on JAK2V617F+ patient progenitor colonies first public in ASH 2010 abstract 4112 (doi:10.1182/blood.V116.21.4112.4112, 2010-11-19)"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "2016 -> 2014: NS-018 patient cytopenias first public in ASH 2014 abstract 1839 (doi:10.1182/blood.V124.21.1839.1839, 2014-12-06); model side ASH 2013 abstract 3847 (2013-11-15) precedes it, so retrodiction stays false; status contra unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "what": "2011 -> 2008: 'well tolerated' first public in ASH 2008 abstract 97 (doi:10.1182/blood.V112.11.97.97, 2008-11-16), after the April 2008 mouse paper; status same, retrodiction false unchanged"
+  }
+ ]
+}

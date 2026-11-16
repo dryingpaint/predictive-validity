@@ -57,17 +57,13 @@
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2018,
-   "rule": "evidence rule 6 (year = earliest date the comparison was public)",
-   "note": "Biedermann quote verbatim (epub 2019-01-15); birch tablet/sublingual right, same holds. Couroux (12 DU chosen, tolerated) epub 2018-11-22 verified; Phase III result public in ALK PR 2017-09-14 (prior pass, not re-opened): comparison public 2018.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: same holds; year 2018. Chamber's 12 DU choice first public in Couroux (epub 2018-11-22); ALK PR 2017-09-14 names no dose, so the dose comparison was public in 2018, not 2019."
+   "rule": "evidence rule 6 (dating); checker rule 3 (retrodiction)",
+   "note": "ALK 2017-09-14 release (GlobeNewswire, Wayback) re-opened: Phase III primary met, no dose named. Couroux epub 2018-11-22 (Crossref) first states the chamber's 12 DU. Same drug's patient result public first: retro, 2018.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -122,17 +118,13 @@
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2018,
-   "rule": "evidence rule 6 (year = earliest date the comparison was public)",
-   "note": "Biedermann AE sentence verbatim; birch tablet/sublingual right, same holds. Chamber oral-reaction profile public in Couroux epub 2018-11-22 (verified); Phase III tolerability in ALK PR 2017-09-14 (prior pass): comparison public 2018, not 2019.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: same holds; year 2018. ALK PR 2017-09-14 gave field tolerability but not the chamber's oral-reaction profile, first public in Couroux epub 2018-11-22; comparison public 2018."
+   "rule": "evidence rule 6 (dating); checker rule 3 (retrodiction)",
+   "note": "ALK 2017-09-14 release re-opened: 'well-tolerated ... no new or unexpected adverse events'. Chamber local-reaction profile first public in Couroux epub 2018-11-22 (Crossref). Same drug's patient result first: retro, 2018.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -176,8 +168,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Mosges 2018 abstract: CSMS quote verbatim, Phase III dosed 170 ug sc; Mosges 2017 Phase IIb chose 170 ug (CPT P=.023). gpASIT+/sc right; same with margin_stated holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "evidence rule 6 (dating); checker rule 3 (retrodiction)",
+   "note": "ASIT 2017-02-28 release (BioSpace) re-opened: peak-period CSMS primary p<0.041. Aug 2015 ASIT release (PDF re-opened): 'a dose of 170 µg appears to be optimal'. Model public first: prospective, same, 2017.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -196,8 +189,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Mosges 2018 abstract: primary peak-season CSMS -15.5% (P=.041) verbatim; 170 ug sc; model side Mosges 2017 (epub 2017-12-22). gpASIT+/sc/unselected right; same holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "evidence rule 6 (dating); checker rule 3 (retrodiction)",
+   "note": "ASIT 2017-02-28 release re-opened: peak-period CSMS primary 'reached p<0.041'. Aug 2015 release gives Phase IIa/IIb basis for 170 µg. Model public first, not a retrodiction: same, 2017.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -250,8 +244,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Mosges 2018 abstract: ESR quote verbatim; 170 ug sc. Model side Mosges 2017 Phase IIb. gpASIT+/sc right; same (partial) holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "evidence rule 6 (dating); checker rule 3 (retrodiction)",
+   "note": "ASIT 2017-02-28 release re-opened: 'mostly mild adverse reactions and the absence of new or unexpected safety findings'. Aug 2015 release: 'induce minimal side-effects'. Model public first: same, 2017.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -296,17 +291,13 @@
   {
    "cell": "efficacy",
    "index": 9,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2017,
-   "rule": "evidence rule 6 (year = earliest date the comparison was public)",
-   "note": "Biedermann conclusion verbatim (epub 2019-01-15); same holds. ALK PR 2017-09-14 reported chamber Phase II and Phase III primary met (prior pass, adjudicated): year 2017. registry_date 2010-09-10 is NCT01198613's, not this trial's.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: same holds; year 2017. ALK PR 2017-09-14 (tier 5, re-opened) states the chamber Phase II benefit and the Phase III primary met (TCS -39.6%). registry_date 2010-09-10 belongs to NCT01198613."
+   "rule": "evidence rule 6 (dating); checker rule 3 (retrodiction)",
+   "note": "ALK 2017-09-14 release re-opened: chamber Phase II 'significantly reduced patients' symptoms ... birch and oak' and Phase III TCS -39.6% (p<0.0001) in one release. Same day, so not a retrodiction: same, 2017.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

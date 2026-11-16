@@ -190,9 +190,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "track fields (DRAFTER_BRIEF: drug, route, population_group, combination_with)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Ratner: tolerability quote verbatim; Krug abstract 'had a favorable safety profile' (model_src, 2013). Setipiprant SAR field patients, oral, unselected; no setipiprant patient safety result public before Krug, so prospective same, 2017."
+   "rule": "DRAFTER_BRIEF rule 6 (paired comparison dated at the later side); CHECKER_BRIEF 3 (safety retrodiction only from the same drug's earlier patient result)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Europe PMC: Krug (PMID 24332218) first published 2013-12-09, abstract 'favorable safety profile'. Pharma Letter 4 Apr 2012 relays Actelion: SAR Phase III, 'this well-tolerated agent'. Later side 2013; model BI 671800, not setipiprant, so prospective same."
   },
   {
    "cell": "safety",

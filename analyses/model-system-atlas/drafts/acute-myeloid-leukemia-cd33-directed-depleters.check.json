@@ -62,11 +62,11 @@
    "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "Dose table row 1 and CHECKER_BRIEF step 3: no dose 'same' on a target the model never stated; whether the reached dose worked is efficacy's",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Stein 2018 abstract quote verbatim; drug/iv/stage_or_line right. Kung Sutherland 2013 states no human exposure/regimen target or margin; remissions are efficacy's. Propose untested (no_prediction), matching the draft's own untested_reason and the prior adjudication.",
+   "rule": "DRAFTER_BRIEF rule 6 (year 2015 confirmed); CHECKER_BRIEF step 3: no dose same on a target the model never stated",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2015 confirmed: Stein ASH 2015 abstract 324 (Blood 126(23):324, 3 Dec 2015) names recommended 40 mcg/kg, 33% CR+CRi; xenograft 2013 earlier, retrodiction false. Status still unsupported: model stated no exposure target; propose untested (no_prediction).",
    "adjudicated_status": "untested",
-   "adjudication_note": "Dose table row 1: Kung Sutherland 2013 stated no exposure, occupancy or regimen target nor margin; remissions at 40 ug/kg are efficacy's question. Untested, no_prediction."
+   "adjudication_note": "Dose table row 1 (DRAFTER_BRIEF dose; CHECKER step 3): xenografts stated no exposure, occupancy or regimen target, so 40 ug/kg remissions are patient-side only. Untested, no_prediction (rule 5); remissions belong to efficacy."
   },
   {
    "cell": "dose",

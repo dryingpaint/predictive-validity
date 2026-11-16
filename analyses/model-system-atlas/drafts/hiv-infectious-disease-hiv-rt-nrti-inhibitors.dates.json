@@ -1,0 +1,35 @@
+{
+ "tile": "hiv-infectious-disease-hiv-rt-nrti-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2013 -> 2010; patient side first public at ICAAC Sept 2010 (Phase 1b/2a 10-day monotherapy poster; i-base HTB 15247, aidsmap 21 Dec 2010); model side Dutschman 2004; status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "2013 -> 2010; patient side first public at ICAAC Sept 2010 (same monotherapy poster; i-base HTB 15247); model side Dutschman 2004; status unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "2013 -> 2010; patient side first public at ICAAC Sept 2010 (i-base HTB 15247); model side Wang 2009 (epub May 2009) precedes it, so no retrodiction; status unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "2009 -> 2004; opener moved to censavudine's first use in the panel, Dutschman 2004 (AAC 48:1640); status untested unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "2015 -> 2014; patient side first public at ICAAC 2014 (TAG 2015 Pipeline Report, https://www.treatmentactiongroup.org/resources/pipeline-report/2015-pipeline-report/the-antiretroviral-pipeline-4/); model side AAC.01206-13 epub 2013-09-30; status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "2007 -> 2006; opener moved to GS-9148/GS-9131 first public use of the panel, CROI 2006 late-breaker 45LB (i-base HTB 31268); status untested unchanged"
+  }
+ ]
+}

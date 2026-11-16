@@ -1,0 +1,15 @@
+{
+ "tile": "breast-cancer-pi3k-pan-inhibitors",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "2010 -> 2009; opener moved to pictilisib's own first use of pi3k-driven-breast-xenografts, Raynaud 2009 Mol Cancer Ther (PMID 19584227, epub 2009-07-07); status untested unchanged"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "2016 -> 2014; patient side first public at SABCS 2014 FERGI abstract S2-02 (ASCO Post 2014-12-10 reports grade 3+ AEs and more dose adjustments/discontinuations), model side Raynaud 2009; status contra unchanged, not a retrodiction"
+  }
+ ]
+}

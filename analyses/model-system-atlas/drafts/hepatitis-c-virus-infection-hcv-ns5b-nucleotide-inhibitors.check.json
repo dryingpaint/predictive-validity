@@ -176,17 +176,13 @@
   {
    "cell": "safety",
    "index": 10,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2012,
-   "rule": "Rule 6 dating: earliest public date, including a sponsor press release",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "MedR quote verbatim (bundle), itself the BMS 2012-08-23 release. Contra holds (stated clean prediction, Vernachio 2011, wrong). Both halves were public 2012-08-23, so year 2012, not 2013. Drug, oral, partner (NCT01425970) match.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status rule: Vernachio 2011 stated no mitochondrial toxicity and BMS-986094 then proved cardiotoxic, so contra. Rule 6: both halves were public on 2012-08-23 (BMS release), so the year should be 2012, not 2013."
+   "rule": "6",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2012 confirmed: FDA MedR (bundle) quotes BMS release dated 2012-08-23, halt in Aug 2012; Vernachio AAC epub 2011-02-28 (PubMed). Paired, so later side: 2012. Contra unchanged; model predates patients, not retrodiction."
   },
   {
    "cell": "safety",
@@ -254,8 +250,8 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": "6",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Abstract quote verbatim (PMID 42826065, epub 2026-10-02). NCT05904470 results first posted 2025-10-21, bemnifosbuvir+ruzasvir, so 2025. Tidy: patient_trials registry_date null; judgement still says dated 2026."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2024 confirmed: Atea 8-K 2024-11-07 set early-Dec topline; 8-K 2025-01-14 reports December topline, n=275, no drug-related SAEs. PLoS One epub 2020-01-08. Same unchanged; prospective. Exact Dec 4 day not primary-verified."
   },
   {
    "cell": "safety",

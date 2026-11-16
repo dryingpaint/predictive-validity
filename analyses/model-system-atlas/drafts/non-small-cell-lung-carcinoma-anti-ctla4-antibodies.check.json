@@ -90,17 +90,13 @@
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2010,
-   "rule": "evidence rule 6 (earliest public date, incl. congress abstract)",
-   "note": "Lynch 2012 quote verbatim; irPFS primary met, combination_with, iv, unselected right: same. ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20, full abstract read) reported irPFS for both schedules vs P/C (SEQ HR 0.686, p=0.026; CON HR 0.775, p=0.094, one-sided alpha 0.1): year 2010.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Efficacy, combination design: phased ipilimumab met the irPFS primary, so same holds; rule 6 dates it to the ASCO 2010 abstract 7531, which already reported the irPFS result. Status unchanged."
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date; paired = later side)",
+   "note": "Year 2010 confirmed: ASCO 2010 abstract 7531 (Crossref 2010-05-20), text read via OpenAlex, already reports irPFS HR 0.686 (SEQ) vs P/C, primary objective. Model side Leach 1996. Same unchanged; not retro.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -125,17 +121,13 @@
   {
    "cell": "efficacy",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2019,
-   "rule": "evidence rule 6 (earliest public date, incl. sponsor press release)",
-   "note": "Paz-Ares 2021 quote verbatim; OS primary met: same/strengthens and combination right. BMS press release (news.bms.com/news/details/2019/CheckMate--9LA ... Meets Primary Endpoint) announced the OS win in 2019, before the 2020 registry posting and approval: year 2019.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "CheckMate 9LA met its OS primary endpoint: same. Rule 6 counts a sponsor press release, so the 2019 BMS topline announcement sets the year; status unchanged."
+   "rule": "DRAFTER_BRIEF rule 6 (sponsor press release counts)",
+   "note": "Year 2019 confirmed: BMS release 2019-10-22 'CheckMate -9LA ... Meets Primary Endpoint Demonstrating Superior Overall Survival' (news.bms.com/news/details/2019/...). Model side Curran 2010. Same unchanged; not retro.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -168,17 +160,13 @@
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2010,
-   "rule": "evidence rule 6 (earliest public date, incl. congress abstract)",
-   "note": "Lynch 2012 quote verbatim; NSCLC patients measured, so no import: same (direction) holds. ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20, full abstract read) already reported grade 3/4 immune-related AEs of 20% and 15% on ipilimumab arms: year 2010.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Safety: NSCLC patients measured, so they set the status (no import); grade 3-4 irAEs match the knockout's autoimmunity in direction: same. Rule 6 moves the year to the ASCO 2010 abstract."
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date; paired = later side)",
+   "note": "Year 2010 confirmed: ASCO 2010 abstract 7531 (2010-05-20) gives grade 3/4 irAEs 20% CON, 15% SEQ; model side Tivol 1995. Same unchanged; knockout predates ipilimumab's patient results, so not retro.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -189,26 +177,22 @@
    "status_supported": true,
    "proposed_status": "contra",
    "proposed_year": 2010,
-   "rule": "evidence rule 6 (earliest public date, incl. congress abstract)",
-   "note": "Lynch 2012 quote verbatim; monkey's near-silence contradicted by NSCLC grade 3-4 irAEs: contra, pairing (comparison_stated false), FDA PharmR model_src right. ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20, full abstract read) reported grade 3/4 irAEs 20%/15%: year 2010.",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date; paired = later side)",
+   "note": "Monkey side public before the 2011 FDA review: Keler 2003 J Immunol (10.4049/jimmunol.171.11.6251; PMID 14634142), 10D1/ipilimumab in cynomolgus, 'did not ... induce clinically observable autoimmunity'. Later side ASCO 2010 abstract 7531: year 2010, contra unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "contra",
-   "adjudication_note": "Safety: the monkey's near-silence on autoimmune harm was contradicted by grade 3-4 irAEs in NSCLC patients: contra. Rule 6 dates it to the ASCO 2010 abstract; status unchanged."
+   "adjudication_note": "Safety rule: monkey silence on autoimmunity contradicted by NSCLC grade 3-4 irAEs; contra agreed. Rule 6: Keler 2003 (10D1=ipilimumab, PMID 14634142) made the model side public earlier, so pairing year is 2010 (ASCO abstract)."
   },
   {
    "cell": "safety",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2010,
-   "rule": "evidence rule 6 (earliest public date, incl. congress abstract)",
-   "note": "Lynch 2012 quote verbatim; colitis models (2008) post-date ipilimumab's own melanoma enterocolitis: retro right. NSCLC patient side first public in ASCO 2010 abstract 7531 (10.1200/jco.2010.28.15_suppl.7531, online 2010-05-20, full abstract read) (grade 3/4 irAEs 20%/15%): year 2010.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: colitis models post-date ipilimumab's own melanoma enterocolitis, so retro. Rule 6 dates the NSCLC patient side to the ASCO 2010 abstract; status unchanged."
+   "rule": "DRAFTER_BRIEF rule 6; retrodiction rule for safety (same drug's earlier patient result)",
+   "note": "Year 2011 confirmed: oxazolone/TNBS colitis studies are unpublished BMS work first public in the 2011 FDA PharmR (bundle txt lines 2774-2834); NSCLC side 2010. Retro unchanged: run 2008 after ipilimumab's melanoma enterocolitis.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

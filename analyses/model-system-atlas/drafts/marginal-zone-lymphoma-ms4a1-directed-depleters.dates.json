@@ -1,0 +1,25 @@
+{
+ "tile": "marginal-zone-lymphoma-ms4a1-directed-depleters",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2021 -> 2019; status unchanged (retro), retrodiction unchanged (True). Source: Lugtenburg/Hutchings ASH 2019 abstract (doi 10.1182/blood-2019-121460, online 2019-11-13) made both sides public, stating cyno B-cell depletion and 'rapid, complete depletion of circulating B cells' in patients."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "2017 -> 2013; status unchanged (retro), retrodiction unchanged (True). Source: the patient side was first public at ASCO 2013 (poster 2013-06-02; TG Therapeutics press release 2013-06-03), 3/3 phase 1 MZL patients responded (CR, CR, PR); model side de Romeuf 2008."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "2026 -> 2024; status unchanged (same), retrodiction unchanged (False). Source: the FL exposure-response with a 48 mg efficacy plateau and flat exposure-safety was first public in Sinnollareddy et al., ASH 2024 abstract (Blood 144 Suppl 1:1414, doi 10.1182/blood-2024-197962, online 2024-11-05); model side Li 2022."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "2022 -> 2020; status unchanged (same), retrodiction unchanged (False). Source: first patient safety was public in the ASH 2020 abstract (Budde et al., released 2020-11-04 with IGM press release): no grade 2+ CRS in the first 8 patients; model side Hart 2019."
+  }
+ ]
+}

@@ -18,10 +18,10 @@
  "cells": {
   "engagement": [
    {
-    "year": 2012,
+    "year": 2018,
     "status": "untested",
     "model": "Human CRPC cell lines and xenografts (EZH2 inhibitor + AR blockade)",
-    "note": "CRPC cells stay dependent on EZH2 methyltransferase activity; the model read-out is H3K27me3 loss in tumour and blood cells. Opens the lirametostat track.",
+    "note": "CRPC cells stay dependent on EZH2 methyltransferase activity; the model read-out is H3K27me3 loss in tumour and blood cells. Opens the lirametostat track. Dated 2018, lirametostat's own first use in the system: Taplin, ASCO GU 2018 TPS398 (J Clin Oncol 36 suppl 6S), 'Preclinical studies have shown profound anti-proliferative effects of CPI-1205 in treating both lymphoma and prostate cancer cell models' (https://www.asco.org/abstracts-presentations/157177); Xu 2012 is the system's first use (shRNA, no member drug).",
     "short": "CRPC cells need EZH2 methyltransferase activity",
     "src": "https://doi.org/10.1126/science.1227604",
     "srcLabel": "Xu 2012",
@@ -98,10 +98,10 @@
   ],
   "dose": [
    {
-    "year": 2012,
+    "year": 2017,
     "status": "untested",
     "model": "Human CRPC cell lines and xenografts (EZH2 inhibitor + AR blockade)",
-    "note": "The prostate models stated no exposure target or tolerability margin; their implicit target is EZH2 inhibition sufficient to deplete tumour H3K27me3.",
+    "note": "The prostate models stated no exposure target or tolerability margin; their implicit target is EZH2 inhibition sufficient to deplete tumour H3K27me3. Dated 2017, tazemetostat's own first use in the system: Ku 2017 (doi 10.1126/science.aah4199, epub January 2017) dosed EPZ6438 in CRPC models (proxy; abstract-level); Xu 2012 is the system's first use (shRNA, no member drug), and no earlier EPZ-6438 prostate model was found on Europe PMC.",
     "short": "No exposure target stated by the models",
     "src": "https://doi.org/10.1126/science.1227604",
     "srcLabel": "Xu 2012",
@@ -141,10 +141,10 @@
   ],
   "efficacy": [
    {
-    "year": 2012,
+    "year": 2017,
     "status": "untested",
     "model": "Human CRPC cell lines and xenografts (EZH2 inhibitor + AR blockade)",
-    "note": "CRPC cells depend on EZH2 as an AR coactivator; later work showed EZH2 inhibition re-sensitises enzalutamide-resistant cells and xenografts to AR blockade. Opens the tazemetostat track (EPZ6438 was dosed in the prostate models).",
+    "note": "CRPC cells depend on EZH2 as an AR coactivator; later work showed EZH2 inhibition re-sensitises enzalutamide-resistant cells and xenografts to AR blockade. Opens the tazemetostat track (EPZ6438 was dosed in the prostate models). Dated 2017, tazemetostat's own first use in the system: Ku 2017 (doi 10.1126/science.aah4199, epub January 2017) dosed EPZ6438 in CRPC models (proxy; abstract-level); Xu 2012 is the system's first use (shRNA, no member drug), and no earlier EPZ-6438 prostate model was found on Europe PMC.",
     "short": "EZH2 inhibition re-sensitises CRPC to AR blockade",
     "src": "https://doi.org/10.1126/science.1227604",
     "srcLabel": "Xu 2012",
@@ -225,10 +225,10 @@
     "combination_with": null
    },
    {
-    "year": 2026,
+    "year": 2024,
     "status": "contra",
     "model": "Human CRPC cell lines and xenografts (EZH2 inhibitor + AR blockade)",
-    "note": "CELLO-1 randomized phase 2 (n=81): tazemetostat 1200 mg BID + enzalutamide missed its rPFS primary endpoint; Ipsen stopped prostate development. Combination design: tazemetostat plus enzalutamide vs enzalutamide alone, scored on its rPFS primary endpoint like any other trial.",
+    "note": "CELLO-1 randomized phase 2 (n=81): tazemetostat 1200 mg BID + enzalutamide missed its rPFS primary endpoint; Ipsen stopped prostate development. Combination design: tazemetostat plus enzalutamide vs enzalutamide alone, scored on its rPFS primary endpoint like any other trial. Dated 2024: the randomized rPFS comparison was first public at ESMO 2024, Abida et al. 1603P (Ann Oncol 35 suppl 2, S967; doi 10.1016/j.annonc.2024.08.1684), 'median PFS was 16.6 and 13.8 months (p=0.37)' as cited by UroToday (https://www.urotoday.com/clinical-trials/from-the-editor/158604); the 2026 registry posting stays the status source. Later of model side (Ku 2017) and patient side (2024).",
     "short": "Tazemetostat + enzalutamide missed rPFS",
     "src": "https://clinicaltrials.gov/study/NCT04179864",
     "srcLabel": "CELLO-1 registry 2026",
@@ -319,10 +319,10 @@
     "combination_with": null
    },
    {
-    "year": 2012,
+    "year": 2018,
     "status": "untested",
     "model": "Human CRPC cell lines and xenografts (EZH2 inhibitor + AR blockade)",
-    "note": "Opens the lirametostat track on the CRPC cell-line/xenograft system (lirametostat's own cell data, Bradley 2018, are unpublished).",
+    "note": "Opens the lirametostat track on the CRPC cell-line/xenograft system (lirametostat's own cell data, Bradley 2018, are unpublished). Dated 2018, lirametostat's own first use in the system: Taplin, ASCO GU 2018 TPS398 (J Clin Oncol 36 suppl 6S), 'Preclinical studies have shown profound anti-proliferative effects of CPI-1205 in treating both lymphoma and prostate cancer cell models' (https://www.asco.org/abstracts-presentations/157177); Xu 2012 is the system's first use (shRNA, no member drug).",
     "short": "Lirametostat track opens",
     "src": "https://doi.org/10.1126/science.1227604",
     "srcLabel": "Xu 2012",

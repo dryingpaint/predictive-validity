@@ -1,0 +1,10 @@
+{
+  "tile": "hepatocellular-carcinoma-vegfr-multikinase-inhibitors",
+  "changed": [
+    {
+      "cell": "dose",
+      "index": 5,
+      "what": "2018 -> 2017; status same -> retro, retrodiction false -> true. Patient side first public in the Eisai REFLECT topline press release 2017-01-25 (media-us.eisai.com/2017-01-25-Positive-Topline-Results-...); model side Tamai 2017 epub 2017-05-31 (PMID 28561918) is the later side, so the pairing year is 2017, and the model paper post-dates the same drug's own patient result."
+    }
+  ]
+}

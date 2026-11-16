@@ -55,10 +55,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "8",
-   "note": "O'Brien 2010 (PMID 20453058, epub 2010-05-07) quote verbatim; class-level opening untested on the xenograft track, proxy from Raynaud 2009 allowed."
+   "rule": "6",
+   "note": "PubMed 19584227: Raynaud 2009 Mol Cancer Ther, epub 2009-07-07, oral GDC-0941 in U87MG/IGROV-1 xenografts, pictilisib's first use of this system. Opener 2009 untested holds; no prior patient efficacy, not retrodiction. Folkes 2008 J Med Chem full text unchecked.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -198,17 +199,13 @@
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
    "rule": "6",
-   "note": "Krop 2016 quote verbatim. FERGI toxicity was public at SABCS 2014 (CURE 2014-12-11: diarrhoea 63% vs 9%, serious AEs 31% vs 20%), contradicting Raynaud's 'well tolerated'. Contra holds; year 2014, not 2016.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6: contra is undisputed; FERGI toxicity (diarrhoea 63% vs 9%) was public at SABCS 2014 (abstract S2-02, December 2014), contradicting the mice's 'well tolerated', so the entry year is 2014, not 2016."
+   "note": "ASCO Post 2014-12-10 (SABCS S2-02): grade 3+ rash 17%, diarrhoea 7%, more dose adjustments/discontinuations on pictilisib. Later side of pairing, model 2009; year 2014, contra holds, not retrodiction. Draft confidence_note still says 2016 epub.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

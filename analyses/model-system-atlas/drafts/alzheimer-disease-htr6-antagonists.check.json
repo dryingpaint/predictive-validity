@@ -111,8 +111,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "Fullerton 2018 (PMC5887246) quote in Discussion with citation '[13]' removed. Drug sam-760, route oral, donepezil add-on right; same 2017 (results posted 2017-03-20) unchanged.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Evidence rule 6 (pairing year = later side public; earliest public date incl. congress abstract)",
+   "note": "Fullerton P1-047 (OpenAlex abstract, 2016-07-01) reports 30 mg 5-HT6 saturation and futility stop; Comery 2011 NHP occupancy public 2011-07. Year 2016, same, not retro. model_src still cites Sawant-Basak 2023; should be Comery 2011.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -187,17 +188,13 @@
   {
    "cell": "safety",
    "index": 1,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Status untested and idalopirdine oral right, but the hepatic harm was public before 2014: Lundbeck/Otsuka AAIC release 2013-07-16 reported asymptomatic ALT/AST/GGT rises. The 2012-05-29 release said only 'well tolerated'. Year 2013.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "untested",
-   "proposed_year": 2013,
-   "rule": "Evidence rule 6 (dating: earliest public date, press release or congress abstract)",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Status untested (rule 5, unpublished tox) agreed. Rule 6: Otsuka/Lundbeck AAIC release 2013-07-17 already reported ALT/AST/GGT elevations, so the entry dates 2013, as the checker proposes."
+   "rule": "Evidence rule 6 (opener at the drug's own first use, proxy allowed)",
+   "note": "Opener 2005 confirmed: Alzforum idalopirdine says Saegis ran a 2005 Phase 2a in 20 schizophrenia patients (company press release); NCT00810667 posted 2008-12-18. Untested (unpublished) stands. model_first_use_year null; should be 2005.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -266,8 +263,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Fullerton 2018 quote verbatim (abstract and PMC5887246). NCT01712074 terminated for futility 2015-10-23; results first posted 2017-03-20, so contra 2017. Donepezil add-on, sam-760 oral right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Evidence rule 6 (pairing year = later side public; earliest public date incl. congress abstract)",
+   "note": "Fullerton P1-047 (2016-07-01) abstract read: futility stop, ADAS-cog13 0.7 favouring placebo. Comery 2011 states rodent pro-cognition, so contra, not retro. Year 2016; registry whyStopped (futility) history not checkable, could be late 2015.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -276,23 +274,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Fullerton 2018 quote verbatim (abstract and PMC5887246); NCT01712074 results posted 2017-03-20, the earliest public patient safety. Untested (unpublished): no SAM-760 toxicology public. Sam-760 oral, donepezil add-on right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Evidence rule 6 (opener at the drug's own first use, proxy allowed)",
+   "note": "Opener 2009 confirmed: NCT00948662 (Pfizer SAM-760 single-dose safety study, healthy subjects) first posted 2009-07-29, start 2009-09. Untested (unpublished) stands. model_first_use_year null; should be 2009.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Nirogi 2022 quote verbatim; untested (unpublished) and masupirdine oral right. But Suven's 2019-11-30 release already stated 'SUVN-502 was safe and well tolerated with no significant adverse events', so year 2019 (as efficacy 5).",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "untested",
-   "proposed_year": 2019,
-   "rule": "Evidence rule 6 (dating: earliest public date, sponsor press release)",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Status untested (rule 5, unpublished tox) agreed. Rule 6: Suven top-line release (2019) already stated SUVN-502 safe and well tolerated, so the entry dates 2019, as the checker proposes."
+   "rule": "Evidence rule 6 (opener at the drug's own first use, proxy allowed)",
+   "note": "Opener 2008 confirmed (proxy): Alzforum masupirdine says, per Suven's website, Phase 1 ran in Switzerland in 2008; no ClinicalTrials.gov record. Untested (unpublished) stands. model_first_use_year null; should be 2008.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

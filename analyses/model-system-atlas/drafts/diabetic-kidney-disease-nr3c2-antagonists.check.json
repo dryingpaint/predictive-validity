@@ -81,17 +81,13 @@
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2019,
-   "rule": "6",
-   "note": "Retro right: KK-Ay mouse epub 2019-01-21, after ARTS-DN 2015. Quote verbatim. ESAX-DN topline was public in a 2019-11-07 Daiichi/Exelixis release (UACR remission 22.1% vs 4.0%), and phase 2b online 2019-06-27, so the year is 2019.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6: status agreed (retro, decision on retrodiction); year is earliest public comparison, ESAX-DN topline 2019-11-07 (Exelixis/Daiichi release, Kidney Week abstract TH-PO1201, UACR remission 22.1% vs 4.0%), after the 2019-01 mouse, so 2019."
+   "rule": "DRAFTER_BRIEF rule 6 (dating); CHECKER_BRIEF retrodiction rule",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Archived Exelixis/Daiichi Sankyo release dated Nov. 7, 2019: TH-PO1201 at Kidney Week 2019, UACR remission 22.1% vs 4.0%. KK-Ay mouse online 2019-01-21 (Crossref). Later side 2019-11-07, so 2019; retro holds (ARTS-DN 2015 first)."
   },
   {
    "cell": "safety",
@@ -272,38 +268,31 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Arai 2016 JPET resolves (PMID 27384074, epub 2016-07-06); quote verbatim. Untested opener for esaxerenone on the DOCA-salt rat; model_first_use_year 2014 is the shared model_id's value. Drug and route hold.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating); CHECKER_BRIEF retrodiction rule",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Arai 2015 Eur J Pharmacol (doi 10.1016/j.ejphar.2015.06.015, Europe PMC first public 2015-06-11) abstract: chronic CS-3150 inhibited DOCA-induced BP rise. Esaxerenone's own first DOCA-salt use, opener year 2015; uninephrectomy not in abstract."
   },
   {
    "cell": "efficacy",
    "index": 16,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2019,
-   "rule": "6",
-   "note": "Retro right: rat 2016-07, after ARTS-DN 2015. ESAX-DN quote verbatim (epub 2020-11-25), but ESAX-DN topline release was 2019-11-07 and phase 2b met its UACR primary online 2019-06-27, so the year is 2019.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6: status agreed (retro); ESAX-DN UACR remission 22.1% vs 4.0% was public 2019-11-07 (sponsor release and Kidney Week 2019 abstract) before the 2020 CJASN paper, so the entry dates 2019."
+   "rule": "DRAFTER_BRIEF rule 6 (dating); CHECKER_BRIEF retrodiction rule",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Archived release dated Nov. 7, 2019: TH-PO1201, UACR remission 22.1% vs 4.0%. Arai 2016 JPET online 2016-07-06 (Crossref). Later side 2019-11-07, so 2019; retro holds, ARTS-DN 2015 precedes the rat."
   },
   {
    "cell": "safety",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2019,
-   "rule": "6",
-   "note": "Arai 2015 'no hyperkalemia (>5.5mEq/L)' and ESAX-DN 9% vs 2% are verbatim; contra, product-matched and prospective. The 2019-11-07 ESAX-DN release (hyperkalaemia 8.8% vs 2.2%) and phase 2b (2019-06-27, hyperkalemia dose proportional) date it 2019.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6: status agreed (contra, opposite); ESAX-DN hyperkalaemia 8.8% vs 2.2% was public 2019-11-07 in the sponsor release and Kidney Week 2019 abstract, earlier than the 2020 paper, so year 2019."
+   "rule": "DRAFTER_BRIEF rule 6 (dating); CHECKER_BRIEF retrodiction rule",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Archived release dated Nov. 7, 2019: hyperkalemia 8.8% vs 2.2%, TH-PO1201. Dahl rat paper online 2015-11-26 (Crossref), before any esaxerenone patient potassium result (phase 2b online 2019-06-27), so not retro; contra, year 2019."
   }
  ],
  "missing": [

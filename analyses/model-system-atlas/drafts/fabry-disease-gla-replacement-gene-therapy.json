@@ -55,7 +55,8 @@
     "drug": "pegunigalsidase alfa",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1016/j.ymgme.2014.08.002",
@@ -79,11 +80,11 @@
     "product_in_model": true,
     "model_kind": "animal",
     "model_first_use_year": 2014,
-    "year": 2019,
+    "year": 2015,
     "status": "same",
     "model": "Gla-knockout (alpha-Gal A deficient) Fabry mouse",
     "model_id": "gla-ko-mouse",
-    "note": "In the phase 1/2 trial pegunigalsidase alfa cut renal peritubular capillary Gb3 inclusions 84% in classic Fabry patients, as tissue Gb3 clearance in mice predicted.",
+    "note": "In the phase 1/2 trial pegunigalsidase alfa cut renal peritubular capillary Gb3 inclusions 84% in classic Fabry patients, as tissue Gb3 clearance in mice predicted. First public in Protalix's 8 Jan 2015 release (https://mayafiles.tase.co.il/rpdf/943001-944000/p943202-00.pdf): renal PTC Gb3 fell 75.5% (BLISS) at 0.2 mg/kg after six months; Schiffmann 2019 stays the source of the status.",
     "short": "Renal Gb3 fell in patients, as in mice",
     "src": "https://doi.org/10.1002/jimd.12080",
     "srcLabel": "Schiffmann 2019",
@@ -388,7 +389,8 @@
     "drug": "pegunigalsidase alfa",
     "route": "iv",
     "population_group": "unselected",
-    "combination_with": null
+    "combination_with": null,
+    "untested_reason": "no_prediction"
    },
    {
     "model_src": "https://doi.org/10.1016/j.ymgme.2014.08.002",
@@ -412,11 +414,11 @@
     "product_in_model": true,
     "model_kind": "animal",
     "model_first_use_year": 2014,
-    "year": 2019,
+    "year": 2015,
     "status": "same",
     "model": "Gla-knockout (alpha-Gal A deficient) Fabry mouse",
     "model_id": "gla-ko-mouse",
-    "note": "Renal PTC Gb3 inclusions fell 84% on pegunigalsidase alfa; BALANCE later showed eGFR slope non-inferior to agalsidase beta. Design: F01/02 was an open-label single-arm trial whose registered primary was adverse events; the renal PTC Gb3 endpoint FDA relied on governs. BALANCE (outcome) was a non-inferiority eGFR-slope trial against agalsidase beta.",
+    "note": "Renal PTC Gb3 inclusions fell 84% on pegunigalsidase alfa; BALANCE later showed eGFR slope non-inferior to agalsidase beta. Design: F01/02 was an open-label single-arm trial whose registered primary was adverse events; the renal PTC Gb3 endpoint FDA relied on governs. BALANCE (outcome) was a non-inferiority eGFR-slope trial against agalsidase beta. First public in Protalix's 8 Jan 2015 release (https://mayafiles.tase.co.il/rpdf/943001-944000/p943202-00.pdf): renal PTC Gb3 fell 75.5% (BLISS) at 0.2 mg/kg after six months; Schiffmann 2019 stays the source of the status.",
     "short": "Renal Gb3 cleared; eGFR non-inferior later",
     "src": "https://doi.org/10.1002/jimd.12080",
     "srcLabel": "Schiffmann 2019",

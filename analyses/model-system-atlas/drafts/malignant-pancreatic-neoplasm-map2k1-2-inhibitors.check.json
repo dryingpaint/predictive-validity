@@ -19,10 +19,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "engagement definition",
-   "note": "Lancet Oncol DOI resolves; quote verbatim (abstract). Gilmartin 2011 resolves. FDA ClinPharmR confirms dose-dependent tumour pERK/Ki67/p27 inhibition at 0.5-2 mg (MEK111054). Mixed-tumour phase 1 is admissible for engagement. Same holds."
+   "rule": "DRAFTER_BRIEF rule 6 (paired: later side); CHECKER_BRIEF 3 retrodiction (engagement, target-level)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2011, retro confirmed: ASCO 2010 abstr 2503 print 2010-05-20 (>90% tumour pERK/Ki67 fall at 2 mg) precedes Gilmartin 2011 online 2011-01-19 (Crossref); pair dated by later side; model post-dates patient result."
   },
   {
    "cell": "dose",
@@ -78,17 +79,13 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2015,
-   "rule": "6 (earliest public date incl. congress abstract); retrodiction (target-level, efficacy)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote verbatim. ASCO GI 2015 abstr 344 (10.1200/jco.2015.33.3_suppl.344, Jan 2015) reported primary PFS HR 0.883, so 2015. Vena 2015 (epub 2015-07-30) post-dates the 2013 trametinib null: retrodiction true; failed to reproduce, so contra stands.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6: ASCO GI 2015 abstr 344 (2015-01-20) dates it 2015. Vena 2015 post-dates the 2013 trametinib null, so retrodiction per target-level rule; it failed to reproduce the null, so contra either way."
+   "rule": "DRAFTER_BRIEF rule 6; CHECKER_BRIEF 3 retrodiction (efficacy, target-level); combination on primary endpoint",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2015 confirmed: ASCO GI 2015 abstr 344 (2015-01-20) PFS null; Vena 2015 online 2015-07-30 (Crossref) post-dates it and the 2013 trametinib null, so retrodiction true; failed to reproduce, contra holds."
   },
   {
    "cell": "safety",
@@ -117,41 +114,33 @@
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "7; 10",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "EJC DOI resolves (PMID 24915778, epub 2014-06-07); both quotes verbatim in abstract. NCT01231581 results (2013-09-26) carry no KRAS subgroup, so 2014 holds. Model (2011) predates the result: not retro. Contra holds; add-on design is rule question 1."
+   "rule": "DRAFTER_BRIEF rule 6 (congress abstract)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2013 confirmed: ASCO GI 2013 abstr 291 (meeting Jan 2013; Crossref print 2013-02-01) reported KRAS-mutant cfDNA subgroup like all patients; Gilmartin 2011 precedes, prospective; contra holds."
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "6 (earliest public date incl. congress abstract)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote verbatim (abstract). ASCO 2014 abstr 4025 (10.1200/jco.2014.32.15_suppl.4025, issued 2014-05-20) gave the same KRAS split, so 2014. Contra, refametinib, oral, unselected, unresolved, strengthens false hold; judgement still says 'so strengthens'.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6: ASCO 2014 abstr 4025 (2014-05-20) reported the KRAS split first, so year 2014. Status contra (reversed genotype prediction) is agreed by both sides and unchanged."
+   "rule": "DRAFTER_BRIEF rule 6 (congress abstract)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2014 confirmed: ASCO 2014 abstr 4025 (Crossref 2014-05-20) KRAS mut/WT ORR 28%/48%, OS 6.6/18.2 mo; Gilmartin 2011 precedes; reversed prediction, contra holds."
   },
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2015,
-   "rule": "6 (earliest public date incl. congress abstract)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote verbatim (Van Cutsem 2018 abstract). ASCO GI 2015 abstr 344 already stated 'KRAS mutational status did not influence PFS or OS', so year 2015. Pimasertib, oral, gemcitabine, unselected, contra, strengthens false hold.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6: ASCO GI 2015 abstr 344 (2015-01-20) already reported KRAS status did not influence PFS or OS, so year 2015. Status contra agreed and unchanged."
+   "rule": "DRAFTER_BRIEF rule 6 (congress abstract)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2015 confirmed: ASCO GI 2015 abstr 344 (Crossref 2015-01-20) states KRAS status did not influence PFS or OS; Gilmartin 2011 precedes; contra holds."
   },
   {
    "cell": "efficacy",
@@ -167,17 +156,13 @@
   {
    "cell": "efficacy",
    "index": 10,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2014,
-   "rule": "6 (earliest public date incl. congress abstract); single-arm ruling",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote verbatim (abstract); NCT01251640 single-group, primary tumour response, no results. ASCO 2014 abstr 4025 reported the phase 2a response first, so 2014. Chang 2010: growth inhibition in 3/3 orthotopic PDX; same under single-arm ruling holds.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Single-arm ruling: response where the model predicted one is same (ORR 23%). Rule 6: ASCO 2014 abstr 4025 (2014-05-20) first reported the response, so year 2014."
+   "rule": "DRAFTER_BRIEF rule 6; single-arm ruling",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2014 confirmed: ASCO 2014 abstr 4025 (Crossref 2014-05-20) first reported the phase 2a response; Chang 2010 PDX precedes; single-arm response where model predicted one, same holds."
   },
   {
    "cell": "safety",
@@ -186,24 +171,20 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "6; sibling drug allowed (product_in_model false)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote verbatim at bundled PharmR line 3992. Untested opener at 2010 for pimasertib with trametinib's package (product_in_model false) is allowed; pimasertib's own toxicology unpublished. Not the track's latest entry."
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at own drug's first use, proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2009 confirmed: earliest pimasertib registrations NCT00957580 (2009-08-12), NCT00982865 (2009-09-23), registry proxy for its own tox use; untested opener holds. model_first_use_year 2010 now later than year."
   },
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2015,
-   "rule": "6 (earliest public date incl. congress abstract); safety silence on a harm the species could show",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote verbatim. NCT01016483: retinal detachment 10/45 vs 1/42, macular detachment 7/45 vs 0; dog ophthalmoscopy unremarkable (PharmR 4195, 4540). ASCO GI 2015 abstr 344 already reported retinal detachment 24.4% almost only on pimasertib: year 2015.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Safety silence rule: dogs had ophthalmoscopy yet retinal detachment appeared in this disease's patients, so contra. Rule 6: ASCO GI 2015 abstr 344 (2015-01-20) reported it first, so year 2015."
+   "rule": "DRAFTER_BRIEF rule 6; safety silence on a harm the species could show",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2015 confirmed: ASCO GI 2015 abstr 344 (Crossref 2015-01-20) reported retinal detachment excess on pimasertib; trametinib PharmR 2013 precedes; dogs had ophthalmoscopy, so contra holds."
   }
  ],
  "missing": [

@@ -1,0 +1,35 @@
+{
+  "tile": "asthma-nr3c1-agonists",
+  "changed": [
+    {
+      "cell": "dose",
+      "index": 1,
+      "what": "2009 -> 2012; status untested and retrodiction false unchanged. Velsecorat track opener moved from the system's first use (AZD5423, 2009) to velsecorat's own first use, proxied by its first-in-human registration NCT01636024 (submitted 2012-07-05, https://clinicaltrials.gov/study/NCT01636024)."
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "what": "2009 -> 2012; status untested and retrodiction false unchanged. Velsecorat track opener moved from the system's first use (AZD5423, 2009) to velsecorat's own first use, proxied by its first-in-human registration NCT01636024 (submitted 2012-07-05, https://clinicaltrials.gov/study/NCT01636024)."
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "what": "2009 -> 2012; status untested and retrodiction false unchanged. Velsecorat track opener moved from the system's first use (AZD5423, 2009) to velsecorat's own first use, proxied by its first-in-human registration NCT01636024 (submitted 2012-07-05, https://clinicaltrials.gov/study/NCT01636024)."
+    },
+    {
+      "cell": "efficacy",
+      "index": 7,
+      "what": "2015 -> 2010; status untested and retrodiction false unchanged. AZD5423 track opener moved from the 2015 paper to AZD5423's own first use of the allergen-challenge model, NCT01225549 (submitted 2010-10-15, https://clinicaltrials.gov/study/NCT01225549)."
+    },
+    {
+      "cell": "efficacy",
+      "index": 8,
+      "what": "2014 -> 2013; status retro and retrodiction true unchanged. Pairing: model side (GW870086 LAR challenge, Bareille, Current Drug Therapy 8(3), DOI registered ahead of print 2013-07-09, doi 10.2174/15748855113089990005) and patient side (28-day 1 mg trial, J Asthma, online Oct 2013, doi 10.3109/02770903.2013.837480) both public in 2013; still later than ICS patient data, so retrodiction holds."
+    },
+    {
+      "cell": "efficacy",
+      "index": 13,
+      "what": "2014 -> 2013; status retro and retrodiction true unchanged. Pairing: model side (LAR challenge paper, Current Drug Therapy 8(3), DOI registered ahead of print 2013-07-09, doi 10.2174/15748855113089990005; issue dated Jan 2014 in Crossref) and patient side (adaptive trial, Current Drug Therapy 8(2), 2013-09, doi 10.2174/1574885511308020001) both public 2013; retrodiction holds."
+    }
+  ]
+}

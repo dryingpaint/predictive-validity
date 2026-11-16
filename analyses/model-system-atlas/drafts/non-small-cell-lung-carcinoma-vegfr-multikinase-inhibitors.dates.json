@@ -1,0 +1,15 @@
+{
+  "tile": "non-small-cell-lung-carcinoma-vegfr-multikinase-inhibitors",
+  "changed": [
+    {
+      "cell": "efficacy",
+      "index": 6,
+      "what": "2022 -> 2021; status contra unchanged. Patient side first public as LEAP-007 abstract 120O, ESMO Immuno-Oncology Congress 8-11 Dec 2021 (Ann Oncol 32 suppl S7); model side 2019 (PLoS One, PMID 30811474)."
+    },
+    {
+      "cell": "safety",
+      "index": 3,
+      "what": "2019 -> 2016; status same unchanged. Patient side first public in Velcheti et al., ESMO 2016 abstract 1204PD (Ann Oncol 27 suppl 6), which reported hypertension 68% and proteinuria 48%; model side 2015 (FDA pharmacology review)."
+    }
+  ]
+}

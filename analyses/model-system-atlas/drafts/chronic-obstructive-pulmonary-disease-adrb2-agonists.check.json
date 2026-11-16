@@ -53,9 +53,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Timmer 2014 J Clin Pharmacol (epub 2014-07-08) abstract; quote verbatim, 48 healthy men. Model Aparici JPET 2012-08. target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. Abediterol, inhaled; healthy volunteers coded unselected.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Timmer ATS 2010 abstract (AJRCCM 181:A5663) precedes the model; JPET online 2012-05-15 is the later side, so 2012. Retro stands. Aparici ATS 2010 in-vitro abstract (A5675) not opened; it could date the model side to 2010."
   },
   {
    "cell": "engagement",
@@ -64,9 +64,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Beier 2016 BMC Pulm Med (epub 2016-07-20, PMC4955259) abstract; quote verbatim, 70 COPD patients. target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. Year 2016, abediterol, inhaled, unselected match.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Beier 2016 (PMC4955259) ref 20 is its own ERS 2013 abstract (Eur Respir J 2013;42, Sept), same NCT01425814 COPD crossover. Model JPET online 2012-05-15 (Europe PMC). Year 2013; retro (target-level COPD FEV1 known from 1998/2001 labels) stands."
   },
   {
    "cell": "engagement",
@@ -157,8 +157,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim in Beier 2016 full text (not abstract). Decision 16 applied correctly: margin stated 2012, every effective dose tolerated. Volunteer palpitations at 5-50 ug overlap effective 5-10 ug; direction_only is right."
+   "rule": "DRAFTER_BRIEF rule 6 (dating)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Beier 2016 (PMC4955259) ref 20 is its own ERS 2013 abstract (Eur Respir J 2013;42, Sept), same NCT01425814 COPD crossover. Model JPET online 2012-05-15 (Europe PMC). Year 2013; same, not retro (no earlier own-drug patient result) stands."
   },
   {
    "cell": "dose",
@@ -239,9 +240,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Beier 2016 abstract; primary trough FEV1 met (all p<0.0001); quote verbatim from conclusions. target-level retrodiction: salmeterol (1998) and formoterol (2001) COPD labels predate the model: retro correct. Year 2016, abediterol, inhaled, unselected.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Beier 2016 (PMC4955259) ref 20 is its own ERS 2013 abstract (Eur Respir J 2013;42, Sept), same NCT01425814 COPD crossover. Model JPET online 2012-05-15 (Europe PMC). Year 2013; retro on the primary endpoint stands."
   },
   {
    "cell": "efficacy",
@@ -326,8 +327,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Timmer 2014 quote verbatim (abstract). Direction match holds; note the draft's 'above 0.625-10 ug' is loose, since 5 and 10 ug were both effective and palpitation-bearing doses."
+   "rule": "DRAFTER_BRIEF rule 6 (dating)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Timmer epub 2014-07-08; the ATS 2010 abstract as cited reports airway conductance only, so 2014 kept. Follows the 2013 COPD same entry on the track, so strengthens: true is correct."
   },
   {
    "cell": "safety",
@@ -336,8 +338,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Beier 2016 quote verbatim (abstract). Single-dose tolerability at every effective dose; strengthens only."
+   "rule": "DRAFTER_BRIEF rule 6 (dating)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Beier 2016 (PMC4955259) ref 20 is its own ERS 2013 abstract (Eur Respir J 2013;42, Sept), same NCT01425814 COPD crossover. Model JPET online 2012-05-15 (Europe PMC). Year 2013; same, not retro (no earlier own-drug patient result) stands."
   },
   {
    "cell": "safety",

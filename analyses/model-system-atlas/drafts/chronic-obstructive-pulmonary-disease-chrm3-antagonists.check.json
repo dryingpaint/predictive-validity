@@ -35,16 +35,13 @@
   {
    "cell": "engagement",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_year": 2013,
-   "rule": "6 (earliest public date; press release counts)",
-   "note": "Retro right, year wrong. Pulido-Rios 2013 (epub 2013-05) post-dates public revefenacin COPD FEV1. Theravance release 2013-09-04 (Study 0091) met day-7 trough FEV1 primary at all six doses and cites an earlier Phase 2a 24-h result; Cazzola, Eur Respir J 2009;34:757 already reports TD-4208 24-h bronchodilation in COPD. Pairing public 2013, not 2016.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Both sides agree retro (target claim, model public 2013 after M3-antagonist COPD bronchodilation). Rule 6: the year follows the earliest public pairing, 2013 (Pulido-Rios epub 2013-05; revefenacin COPD 24-h result public by 2009)."
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date; paired year is the later side",
+   "note": "Year 2013 confirmed: Theravance Q4 2011 results release (2012-02-10) says Phase 2a single-dose COPD results announced Nov 2011; model JPET online 2013-05-18 (Crossref). Retro right (same-target patient bronchodilation earlier). Stale 'Dated 2016' sentence remains in note.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -77,17 +74,13 @@
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2013,
-   "rule": "retrodiction (dose: same drug's own earlier patient result) and 6",
-   "note": "Revefenacin's own patient result (Phase 2a 350/700 ug, 24-h bronchodilation, public by 2009 per Cazzola ERJ 2009; cited again in the 2013-09-04 release) predates Pulido-Rios 2013, so dose is a same-drug retrodiction: retro, pairing 2013.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule (dose: same drug's own earlier patient result): Cazzola ERJ 2009 reports TD-4208 '24-h bronchodilation in COPD patients' before Pulido-Rios 2013; model reproduced once-daily regimen and margin, so retro, not same; entry retrodiction should be true."
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date; paired year is the later side; retrodiction (dose: same drug's own earlier patient result)",
+   "note": "Year 2013 and retro confirmed: revefenacin's own Phase 2a (Nov 2011, peak FEV1 met, well tolerated; 2013-09-04 release: 350/700 ug sustained 24-h bronchodilation 'previously reported') precedes JPET model online 2013-05-18. retrodiction true right.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -120,16 +113,13 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_year": 2013,
-   "rule": "6 (earliest public date; press release counts)",
-   "note": "Quote verbatim in FDA MedR; retro right. Theravance release 2013-09-04 (Study 0091) met day-7 trough FEV1 primary at all six doses and cites an earlier Phase 2a 24-h result; Cazzola, Eur Respir J 2009;34:757 already reports TD-4208 24-h bronchodilation in COPD. With Pulido-Rios epub 2013-05, the pairing was public in 2013, not 2016.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Both sides agree retro (target claim; model first public 2013 after tiotropium/glycopyrronium and TD-4208 COPD results). Rule 6: earliest public pairing is 2013, not 2016."
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date; paired year is the later side",
+   "note": "Year 2013 confirmed: Phase 2a Nov 2011; Study 0091 release 2013-09-04 (SEC EX-99) met day-7 trough FEV1 at all six doses; model online 2013-05-18. Retro stands. Judgement still says 'dated 2018' and note 'Dated 2016': stale prose.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -147,7 +137,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Verbatim in abstract, which states the initial transient dose-related FEV1 fall with cough in COPD patients. A guinea-pig airway-resistance model could have shown it; Jorup 2014 says re-evaluation of preclinical data gave no explanation. Contra holds."
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date; paired year is the later side; retrodiction (safety: same drug's own earlier patient result) scored contra when not reproduced",
+   "note": "Year 2011 confirmed: NCT00939211 results posted 2011-08-05 (15-min FEV1 1.30/1.25 vs 1.49 L placebo; cough 6/18 vs 0); BMCL model created 2011-10-15. Same-drug result first, so retrodiction true; model missed it, contra stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -173,13 +165,14 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2016,
-   "rule": "6",
-   "note": "Verbatim in SumR; MedR Table 28 (22/356, 28/364, 18/335) and 12-week dry mouth 0/1/3 verified. Earliest systemic-AE comparison is NCT02040792 results 2016-12-07 / Quinn 2017 (no significant systemic antimuscarinic activity); the 52-week tiotropium partial is 2018. Partial-vs-contra is a rule question.",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2017,
+   "rule": "retrodiction (safety: same drug's own patient result, public earlier, makes the model one; post-dating alone); partial retro = retro + source_calls_it partial",
+   "note": "Year 2017 confirmed: TBPH Q2 2017 10-Q: 'In July 2017, we announced positive top-line results from the twelve-month safety study', AEs comparable to active comparator. But revefenacin Phase 2a 'generally well-tolerated' (Nov 2011) precedes model (2013-05), as dose 4 holds: retro, partial.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "same",
-   "adjudication_note": "Status table: partial agreement is same + source_calls_it partial; low systemic antimuscarinic AEs held vs placebo, tiotropium comparison numerically similar (5.4% at 175 ug vs 6.1%), not a predicted harm absent. Rule 6 year per checker."
+   "adjudication_note": "Retrodiction rule: a retro is scored against patient results public before the model (2011 Phase 2a, at 2013). The 52-week tiotropium comparison post-dates the model, so it is the first prospective prediction, scored as usual: same, partial."
   },
   {
    "cell": "engagement",

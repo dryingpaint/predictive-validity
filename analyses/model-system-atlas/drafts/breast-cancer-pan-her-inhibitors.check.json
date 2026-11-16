@@ -221,9 +221,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "efficacy: single-arm with no bar scored on direction; retrodiction (efficacy)",
-   "note": "Park 2018 abstract quote verbatim; single-arm, PFS primary 4.04 months, no pre-set bar; NCT02418689 no results posted. Kim 2012 postdates neratinib 2010: retro 2018. Poziotinib oral, biomarker_selected right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "rule 6 dating: earliest public date incl. congress abstract; retrodiction (efficacy)",
+   "note": "Crossref: doi:10.1093/annonc/mdx365.001 is the NOV120101-203 poziotinib phase II abstract, Ann Oncol 28 suppl 5 v74, issued Sep 2017, before IJC epub 2018-11. Year 2017 confirmed; retro stands (neratinib 2010 before Kim 2012 model).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -232,9 +232,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "rule 6 opener",
-   "note": "Li 2017 abstract quote verbatim; pyrotinib oral; opener untested 2017 right. Retrodiction should be true (neratinib 2010 earlier, as efficacy 4).",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "rule 6 dating: track opens at its own drug's first use, proxy allowed",
+   "note": "ClinicalTrials.gov API: NCT01937689 (pyrotinib, HER2+ advanced breast) submitted 2013-08-14, first posted 2013-09-09 (start 2013-01); Li 2017 epub 2017-01-21 is later, so 2013 registry proxy is the earliest date. Opener untested 2013 confirmed. Flag only: neratinib HER2+ breast activity (Burstein 2010) predates it, so under the efficacy retrodiction rule retrodiction could be true; status unaffected.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -243,9 +243,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "rule 6 opener",
-   "note": "Li 2017 abstract (epub 2017-01-21) quote verbatim; pyrotinib oral; opener untested 2017. Li already cites pyrotinib's human PK, so retrodiction should be true.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "rule 6 dating: track opens at its own drug's first use, proxy allowed",
+   "note": "ClinicalTrials.gov API: NCT01937689 (pyrotinib, HER2+ advanced breast) submitted 2013-08-14, first posted 2013-09-09 (start 2013-01); Li 2017 epub 2017-01-21 is later, so 2013 registry proxy is the earliest date. Opener untested 2013 confirmed; no pyrotinib patient result before 2013, so retrodiction false holds for dose.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -254,9 +254,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "rule 6 opener",
-   "note": "Li 2017 abstract quote verbatim; pyrotinib oral; opener untested 2017. Li reports pyrotinib's clinical outcomes, so retrodiction should be true (as safety 3).",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "rule 6 dating: track opens at its own drug's first use, proxy allowed",
+   "note": "ClinicalTrials.gov API: NCT01937689 (pyrotinib, HER2+ advanced breast) submitted 2013-08-14, first posted 2013-09-09 (start 2013-01); Li 2017 epub 2017-01-21 is later, so 2013 registry proxy is the earliest date. Opener untested 2013 confirmed; no pyrotinib patient result before 2013, so retrodiction false holds for safety.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

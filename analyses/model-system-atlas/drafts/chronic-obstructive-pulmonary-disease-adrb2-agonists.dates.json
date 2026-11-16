@@ -1,0 +1,35 @@
+{
+ "tile": "chronic-obstructive-pulmonary-disease-adrb2-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "2016 -> 2013; patient side first public as Beier, ERS Congress 2013 abstract (Eur Respir J 2013;42 Suppl 57:183), same 70-patient crossover; model side Aparici JPET 2012"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "2016 -> 2013; patient side first public as Beier, ERS Congress 2013 abstract (Eur Respir J 2013;42 Suppl 57:183), same 70-patient crossover; model side Aparici JPET 2012"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2016 -> 2013; patient side first public as Beier, ERS Congress 2013 abstract (Eur Respir J 2013;42 Suppl 57:183), same 70-patient crossover; model side Aparici JPET 2012"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "2016 -> 2013; patient side first public as Beier, ERS Congress 2013 abstract (Eur Respir J 2013;42 Suppl 57:183), same 70-patient crossover; model side Aparici JPET 2012"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "what": "2014 -> 2012; patient side first public as Timmer et al., ATS 2010 abstract (Am J Respir Crit Care Med 2010;181:A5663, \"high activity and long duration in healthy subjects\"), so the later of the two is the model side, Aparici JPET online 2012-05-15; status stays retro"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "year unchanged (2014); set strengthens: true because entry 5 (COPD abstract) now dates to 2013 and precedes it on the track (lint same-status rule)"
+  }
+ ]
+}

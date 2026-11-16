@@ -58,11 +58,11 @@
         "untested_reason": null
       },
       {
-        "year": 2011,
+        "year": 2008,
         "status": "same",
         "model": "Human tumour cells and xenografts treated with h7C10 (dalotuzumab)",
         "model_id": "h7c10-human-tumour-xenograft",
-        "note": "Paired biopsies in dalotuzumab-treated patients showed lower tumour IGF-1R and downstream signalling, the readout the model used.",
+        "note": "Paired biopsies in dalotuzumab-treated patients showed lower tumour IGF-1R and downstream signalling, the readout the model used. Dated to the first public patient readout: Atzori et al., ASCO 2008 abstract 3519 (doi:10.1200/jco.2008.26.15_suppl.3519, published May 20, 2008) already reported decreases in tumour IGF1R expression and pAKT/pMAPK/pS6 in paired biopsies at >5 mg/kg.",
         "short": "Tumour IGF-1R fell in patients",
         "src": "https://doi.org/10.1158/1078-0432.CCR-10-3336",
         "srcLabel": "Atzori 2011",
@@ -101,11 +101,11 @@
     ],
     "dose": [
       {
-        "year": 2005,
+        "year": 2010,
         "status": "untested",
         "model": "A549 NSCLC xenografts in nude mice",
         "model_id": "a549-xenograft-anti-igf1r",
-        "note": "The xenograft work stated no target exposure or tolerated margin; clinical doses came from phase I PK, and cixutumumab plus erlotinib proved hard to tolerate. Track scored for cixutumumab, whose patients the quote reports; the xenografts used h7C10 (dalotuzumab), so product not in model.",
+        "note": "The xenograft work stated no target exposure or tolerated margin; clinical doses came from phase I PK, and cixutumumab plus erlotinib proved hard to tolerate. Track scored for cixutumumab, whose patients the quote reports; the xenografts used h7C10 (dalotuzumab), so product not in model. Opener dated to cixutumumab's own first use in the A549 xenograft model: Riesterer et al., Int J Radiat Oncol Biol Phys 2011 (PMID 21129859, epub Dec 2, 2010), anti-IGF-1R antibody A12 (cixutumumab) in A549 xenografts; the 2005 h7C10 study is the system's first use (model_first_use_year).",
         "short": "No model exposure target stated",
         "src": "https://doi.org/10.1097/JTO.0b013e31823c5b11",
         "srcLabel": "Weickhardt 2012",
@@ -332,11 +332,11 @@
         "combination_with": "erlotinib"
       },
       {
-        "year": 2014,
+        "year": 2011,
         "status": "contra",
         "model": "A549 NSCLC xenografts in nude mice",
         "model_id": "a549-xenograft-anti-igf1r",
-        "note": "Dalotuzumab, the antibody the A549 model was run with, added to erlotinib did not lengthen PFS (2.5 vs 1.6 months, not significant). Combination trial, scored on its phase II primary endpoint (PFS).",
+        "note": "Dalotuzumab, the antibody the A549 model was run with, added to erlotinib did not lengthen PFS (2.5 vs 1.6 months, not significant). Combination trial, scored on its phase II primary endpoint (PFS). Dated to the first public patient result: presented at the IASLC 14th World Conference on Lung Cancer, July 2011 (Moran 2014, author information), cited as Rosell et al. 2011 with median PFS 2.5 vs 1.6 months, HR 0.86, p = 0.26 in Dienstmann 2011 (doi:10.1016/j.molonc.2011.11.009).",
         "short": "Dalotuzumab + erlotinib: no PFS gain",
         "src": "https://doi.org/10.1186/2162-3619-3-26",
         "srcLabel": "Moran 2014",
@@ -384,11 +384,11 @@
     ],
     "safety": [
       {
-        "year": 2005,
+        "year": 2010,
         "status": "untested",
         "model": "A549 NSCLC xenografts in nude mice",
         "model_id": "a549-xenograft-anti-igf1r",
-        "note": "Xenograft studies reported no host metabolic toxicity; patients on cixutumumab had more grade 3-4 hyperglycemia (9.4% vs 1.2%). No published tox-species prediction found. Goetsch 2005 states no tolerability claim, so there is no passing safety prediction to score; xenografts used h7C10, not cixutumumab.",
+        "note": "Xenograft studies reported no host metabolic toxicity; patients on cixutumumab had more grade 3-4 hyperglycemia (9.4% vs 1.2%). No published tox-species prediction found. Goetsch 2005 states no tolerability claim, so there is no passing safety prediction to score; xenografts used h7C10, not cixutumumab. Opener dated to cixutumumab's own first use in the A549 xenograft model: Riesterer et al., Int J Radiat Oncol Biol Phys 2011 (PMID 21129859, epub Dec 2, 2010), anti-IGF-1R antibody A12 (cixutumumab) in A549 xenografts; the 2005 h7C10 study is the system's first use (model_first_use_year).",
         "short": "No stated harm prediction found",
         "src": "https://doi.org/10.1016/j.jtho.2016.07.013",
         "srcLabel": "Novello 2017",

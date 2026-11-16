@@ -314,10 +314,10 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2023,
+    "year": 2024,
     "status": "retro",
     "model": "Rabbit chronic retinal-neovascularisation leak model",
-    "note": "Retrodiction ruling: the aflibercept 8 mg rabbit study was first public in the 2023 FDA review, after the same drug's own PHOTON/PULSAR topline (Regeneron press release, September 2022: 12- and 16-week regimens non-inferior), so it reproduces a known dose result: retro. Rabbit RNV model: 2 mg/eye (about 8 mg human) stayed leak-free longer than 0.5 mg; PHOTON 8q12/8q16 non-inferior to 2q8 at week 48. Run here: Rabbit chronic retinal-neovascularisation leak model (aflibercept 8 mg).",
+    "note": "Retrodiction ruling: the aflibercept 8 mg rabbit study was first public in the 2023 FDA review, after the same drug's own PHOTON/PULSAR topline (Regeneron press release, September 2022: 12- and 16-week regimens non-inferior), so it reproduces a known dose result: retro. Rabbit RNV model: 2 mg/eye (about 8 mg human) stayed leak-free longer than 0.5 mg; PHOTON 8q12/8q16 non-inferior to 2q8 at week 48. Run here: Rabbit chronic retinal-neovascularisation leak model (aflibercept 8 mg). Dating (rule 6, pairing): the model side's 2 mg/eye vs 500 ug/eye result is public only in the FDA pharmacology review of BLA 761355 (nda/2024 folder; file Last-Modified 2024-04-18; the 2023 label does not describe the RNV study; Cao 2018 tested only up to 500 ug), and the patient side (PHOTON topline, Sept 2022) was public earlier, so the comparison dates 2024, not 2023. Still a retrodiction: PHOTON preceded the model side.",
     "short": "8 mg q12/q16 non-inferior in PHOTON",
     "src": "https://doi.org/10.1016/S0140-6736(23)02577-1",
     "srcLabel": "Brown 2024",
@@ -494,10 +494,10 @@
     "untested_reason": "unsettled"
    },
    {
-    "year": 2023,
+    "year": 2018,
     "status": "untested",
     "model": "Rabbit chronic retinal-neovascularisation leak model",
-    "note": "Opens the aflibercept track of the rabbit RNV model: 2 mg/eye in rabbit (about 8 mg human) stayed leak-free longer than 0.5 mg/eye.",
+    "note": "Opens the aflibercept track of the rabbit RNV model: 2 mg/eye in rabbit (about 8 mg human) stayed leak-free longer than 0.5 mg/eye. Dating (rule 6, track opener): aflibercept's own first public use of this rabbit AAA chronic-RNV model is Cao 2018 (Regeneron; IOVS 59:1033, doi:10.1167/iovs.17-22897, PMID 29450547, Feb 2018): IVT aflibercept 50-500 ug/eye fully blocked RNV leak with 'dose-dependent duration' (~8 weeks at 500 ug), so the track opens 2018; the 2 mg/eye (~8 mg human) arm is first public in the FDA review.",
     "short": "Rabbit RNV run with aflibercept 8 mg",
     "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2024/761355Orig1s000PharmR.pdf",
     "srcLabel": "FDA Eylea HD pharmacology review 2023",
@@ -649,11 +649,11 @@
     "combination_with": null
    },
    {
-    "year": 2021,
+    "year": 2019,
     "status": "retro",
     "strengthens": false,
     "model": "STZ-diabetic rat, Evans-blue blood-retinal-barrier leak",
-    "note": "Retrodiction ruling: the rat model was first run with conbercept in 2012 (Huang), after anti-VEGFA drugs had already worked in DME patients (aflibercept DA VINCI 2011, ranibizumab), so for this target-level question it reproduces a known answer: retro. Same model, second member: KH902 cut Evans-blue leak in STZ rats (Huang 2012); SAILING conbercept +8.2 vs +0.3 letters at month 12. Run here: STZ-diabetic rat, Evans-blue blood-retinal-barrier leak (intravitreal KH902/conbercept).",
+    "note": "Retrodiction ruling: the rat model was first run with conbercept in 2012 (Huang), after anti-VEGFA drugs had already worked in DME patients (aflibercept DA VINCI 2011, ranibizumab), so for this target-level question it reproduces a known answer: retro. Same model, second member: KH902 cut Evans-blue leak in STZ rats (Huang 2012); SAILING conbercept +8.2 vs +0.3 letters at month 12. Run here: STZ-diabetic rat, Evans-blue blood-retinal-barrier leak (intravitreal KH902/conbercept). Dating (rule 6, pairing): patient side first public as the 2019 China NMPA label extension of conbercept to DME on the SAILING data (Liu 2025 review, PMC12532959: 'its indication was extended to DME in 2019'), earlier than the Liu 2022 epub (2021); model side Huang 2012; so 2019. Still a retrodiction (model 2012 after aflibercept DA VINCI 2011).",
     "short": "Conbercept SAILING +8.2 letters vs laser",
     "src": "https://doi.org/10.1136/bjophthalmol-2020-318690",
     "srcLabel": "Liu 2022",

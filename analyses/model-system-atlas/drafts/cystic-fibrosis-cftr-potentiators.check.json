@@ -20,26 +20,22 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Van der Plas 2018 abstract (PMID 29148763, online 2018-01-10) quote verbatim. GLPG1837 oral tablets (NCT02707562); class III biomarker_selected. Opener untested unchanged."
+   "rule": "6 (dating: opener at the drug's own first use in the model)",
+   "note": "Galapagos NACFC Oct 2016 posters 4 and 23 (GLPG1837 mode of action vs ivacaftor; patch clamp) put GLPG1837's own mutant-cell data in public. Year 2016; untested holds. model_first_use_year still reads 2018.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2018,
-   "rule": "6 (dating: earliest public date, press release counts)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Davies 2019 abstract (PMID 31147302) quote verbatim; retro, partial, oral GLPG1837, G551D right. But SAPHIRA1 topline was press-released 2016 (firmenpresse.de/pressrelease514179) and the model paper was online 2018-01-10, so the pairing was public 2018. registry_date 2016-03-14 is first-posted; no CT.gov results.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6: status retro agreed; year is earliest public date of the pairing, SAPHIRA1 sweat-chloride topline press release (2016) plus model paper online 2018-01-10, so year 2018, after the 2018 opener."
+   "rule": "6 (paired year is the later side); retrodiction rule",
+   "note": "Model side NACFC Oct 2016; SAPHIRA1 topline press release 20 Dec 2016: sweat chloride 98 to 66 mmol/L at 500 mg bid, 'clinical validation of in vitro predictive platform'. Year 2016; retro holds (ivacaftor G551D 2010). Judgement still says 2018.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -101,11 +97,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "untested_reason (rule 5)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote verbatim. GLPG1837 oral; SAPHIRA1 primary is safety, so no efficacy primary measured: not_measured fits first. Untested unchanged."
+   "rule": "6 (dating: opener at the drug's own first use in the model)",
+   "note": "Same NACFC Oct 2016 GLPG1837 in-vitro posters open the track. Year 2016; untested/not_measured holds (SAPHIRA1 primary endpoint was safety). model_first_use_year still reads 2018.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -264,13 +260,17 @@
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Dekkers 2016 abstract (PMID 27334259) quote verbatim. Organoid efficacy track's member is dirocaftor (CHOICES, oral DIR/POS/NES); rare-variant donors biomarker_selected. Opener untested unchanged."
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "rule": "6 (dating: earliest public date, press release counts)",
+   "note": "Proteostasis press release 11 Dec 2019 announced positive initial ex-vivo HIT-CF organoid results for PTI-801/PTI-808 (dirocaftor)/PTI-428, 65 donors tested: before ECFS June 2020. Opener year 2019; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: track opens at dirocaftor first public organoid use, the Proteostasis Dec 2019 press release (CHOICES initiation, early HIT-CF organoid results), so opener year 2019; status untested agreed (no member-drug patient comparison yet)."
   },
   {
    "cell": "efficacy",
@@ -286,17 +286,13 @@
   {
    "cell": "efficacy",
    "index": 9,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "not_found",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2021,
-   "rule": "track order: a track opens with untested (rule 6); seq orders ties by list position",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Grand 2021 abstract quote verbatim; icenticaftor oral, untested opener right. But it ties efficacy 3 (2021) on the same track and sits after it, so seq (year, then list order) makes this opener the latest; list it before efficacy 3.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: a track opens with untested; this icenticaftor opener ties efficacy 3 (2021) and must be listed before it, so efficacy 3 (retro) is the latest and no untested_reason applies."
+   "rule": "6 (dating: opener at the drug's own first use in the model)",
+   "note": "Crossref: 10.1002/ppul.23106 is NACFC 2014 Posters, Pediatr Pulmonol 49 S38, online 2014-09-04; 'NVP-QBW251, a novel CFTR potentiator...' is listed there. Title-level only. Year 2014, untested holds; confidence_note still says 2021.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

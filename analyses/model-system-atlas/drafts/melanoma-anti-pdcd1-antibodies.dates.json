@@ -1,0 +1,20 @@
+{
+  "tile": "melanoma-anti-pdcd1-antibodies",
+  "changed": [
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "what": "2018 -> 2023 (status retro unchanged, already retrodiction): model side (hPD-1 knock-in MC38, Study TR003) first public in the FDA multidiscipline review for BLA 761240 (2023); not in Fu 2017 (PMID 28317872) or Liu 2019 (PMID 30892132). Patient side ASCO 2018."
+    },
+    {
+      "cell": "efficacy",
+      "index": 6,
+      "what": "2018 -> 2023 (status retro unchanged, already retrodiction): model side (PBMC/CTL-engrafted NSG, TR003) first public in the FDA multidiscipline review for BLA 761240 (2023). Patient side ASCO 2018."
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "what": "2018 -> 2023, retrodiction false -> true, status stays contra: 26-week monkey study first public in the FDA multidiscipline review for BLA 761240 (2023), after toripalimab's own irAEs (ASCO 2018 abstract 9539); a retrodiction that failed to reproduce them is contra."
+    }
+  ]
+}

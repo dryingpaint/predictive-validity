@@ -1,0 +1,45 @@
+{
+  "tile": "prostate-cancer-folh1-directed-depleters",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2014 -> 2013; status unchanged. Dated 2013: 123I-MIP-1095 visualized soft-tissue, bone and prostate lesions in 7 patients (Barrett 2013, J Nucl Med, PMID 23303962, epub 2013-01-09), the drug's first public patient uptake; model side Hillier 2009."
+    },
+    {
+      "cell": "engagement",
+      "index": 3,
+      "what": "2016 -> 2015; status unchanged. Dated 2015: lutetium-PSMA-617 patient tumour uptake was public in 2015 (Kratochwil case report, PMID 25573634, epub 2015-01-09; Delker dosimetry, PMID 26318602, epub 2015-08-29); the model side Benesova 2015 (epub 2015-04-16) is the later of the two first dates."
+    },
+    {
+      "cell": "engagement",
+      "index": 5,
+      "what": "2017 -> 2014; status unchanged. Dated by the first public patient side, Petrylak et al. ASCO 2014 abstract 5023 (J Clin Oncol 32:15_suppl, online 2014-05-20; same phase 2, 83 taxane-treated pts), which already reported PSA and CTC responses associated with higher PSMA+ CTC."
+    },
+    {
+      "cell": "engagement",
+      "index": 6,
+      "what": "2016 -> 2015; status unchanged. Dated 2015: Benesova 2015 (J Nucl Med, PMID 25883127, epub 2015-04-16), this drug's first use in the model."
+    },
+    {
+      "cell": "efficacy",
+      "index": 5,
+      "what": "2017 -> 2014; status unchanged. Dated by the first public patient side, Petrylak et al. ASCO 2014 abstract 5023 (J Clin Oncol 32:15_suppl, online 2014-05-20; same phase 2, 83 taxane-treated pts): PSA30 36%, CTC50 74%, stable disease 80%; 'active'."
+    },
+    {
+      "cell": "safety",
+      "index": 3,
+      "what": "2016 -> 2015; status unchanged. Dated 2015: the drug's own salivary-over-kidney dose was first public in Delker 2015 (PMID 26318602, epub 2015-08-29; salivary 1.4 vs kidney 0.6 Gy/GBq), after the model side Benesova 2015 (epub 2015-04-16)."
+    },
+    {
+      "cell": "safety",
+      "index": 5,
+      "what": "2017 -> 2014; status unchanged. Dated by the first public patient side, Petrylak et al. ASCO 2014 abstract 5023 (J Clin Oncol 32:15_suppl, online 2014-05-20; same phase 2, 83 taxane-treated pts): neutropenia forced 2.5 to 2.3 mg/kg and 2 patients at 2.5 mg/kg died of sepsis."
+    },
+    {
+      "cell": "safety",
+      "index": 10,
+      "what": "2016 -> 2015; status unchanged. Dated 2015: Benesova 2015 (J Nucl Med, PMID 25883127, epub 2015-04-16), this drug's first use in the model."
+    }
+  ]
+}

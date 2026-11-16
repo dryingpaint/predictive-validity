@@ -21,8 +21,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Kummar 2009 (PMID 19364967, epub 2009-04-13) quote verbatim. Retro holds: Kinders public 2008-11, after Fong ASCO 2008 abstract 5510 (2008-05-20) PD-guided olaparib escalation. Oral veliparib; mixed solid tumours/lymphoma = other_disease; proximal readout."
+   "rule": "DRAFTER_BRIEF rule 6; retrodiction (engagement, any drug on target)",
+   "note": "Crossref: ASCO 2008 abstr 3580 (veliparib phase 0 tumour PAR IHC) issued 2008-05-20; Kinders model online 2008-11-03. Pairing public once Kinders appeared: year 2008. Patient PAR results (ASCO 2007, Fong 5510) precede Kinders: retro holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -101,8 +102,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "NORA (PMID 33453391, epub 2021-01-14) conclusion verbatim. Platinum-sensitive recurrent, BRCA-mutant and wild-type, so stage_or_line is right; oral niraparib; same with margin_stated true holds."
+   "rule": "DRAFTER_BRIEF rule 6",
+   "note": "NORA ESMO 2020 LBA29 (doi 10.1016/j.annonc.2020.08.2259, Ann Oncol 2020-09; ESMO/OncLive coverage): ISD PFS 18.3 vs 5.4 mo, HR 0.32, less haematologic toxicity. Berek 2018 model earlier. Year 2020; same unchanged. LBA full text not opened.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -121,8 +123,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Swisher 2017 (PMID 27908594, epub 2016-11-29) quote verbatim; NCT01891344 primary PFS by HRD subgroup, results posted 2021-07-13. Single-arm scored on primary in predicted direction; 2016 earliest; retro since Drew post-dates olaparib BRCA responses; oral."
+   "rule": "DRAFTER_BRIEF rule 6; retrodiction",
+   "note": "McNeish ASCO 2015 abstr 5508 issued 2015-05-20; PFS 9.4 mo BRCAmut vs 3.7 biomarker-negative presented there (TargetedOnc/OncLive coverage; ascopubs page blocked). Drew online 2010-12-23. Year 2015; retro holds (olaparib BRCA responses 2008).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

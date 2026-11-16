@@ -59,10 +59,10 @@
     "combination_with": null
    },
    {
-    "year": 2000,
+    "year": 2006,
     "status": "untested",
     "model": "Rodent inhaled-LPS airway neutrophilia model (SB 239063)",
-    "note": "Opening entry: sibling p38 inhibitor SB 239063 cut BAL neutrophils, IL-6 and MMP-9 after inhaled LPS at 3-30 mg/kg; no member drug and no human PD readout yet.",
+    "note": "Opening entry: sibling p38 inhibitor SB 239063 cut BAL neutrophils, IL-6 and MMP-9 after inhaled LPS at 3-30 mg/kg; no member drug and no human PD readout yet. Track opener dated to PH-797804's first registry-dated use, NCT00383188 posted 2006-10-02 (proxy; PH-797804 itself was never reported in this model); the 2000 date is the system's first use (SB 239063).",
     "short": "Rodent LPS neutrophilia model, sibling drug",
     "src": "https://doi.org/10.1152/ajplung.2000.279.5.L895",
     "srcLabel": "Underwood 2000",
@@ -181,10 +181,10 @@
     "combination_with": null
    },
    {
-    "year": 2006,
+    "year": 2018,
     "status": "untested",
     "model": "Ex-vivo COPD-patient alveolar macrophages, LPS cytokine release (SB239063, SD-282; later AZD7624)",
-    "note": "Macrophages from smokers and emphysema patients: sibling p38 inhibitors cut LPS-induced TNF-alpha regardless of disease status; AZD7624 was run in the same system (Higham 2018) but no dosed-patient sputum readout was ever taken.",
+    "note": "Macrophages from smokers and emphysema patients: sibling p38 inhibitors cut LPS-induced TNF-alpha regardless of disease status; AZD7624 was run in the same system (Higham 2018) but no dosed-patient sputum readout was ever taken. Track opener dated to AZD7624's own first use in alveolar macrophages, Higham 2018 JPET (epub 2018-03-16, PMID 29549158, doi 10.1124/jpet.117.246132); the 2006 date is the system's first use for sibling inhibitors.",
     "short": "COPD-cell readout never measured in dosed patients",
     "src": "https://doi.org/10.1038/sj.bjp.0706885",
     "srcLabel": "Smith 2006",
@@ -477,10 +477,10 @@
   ],
   "efficacy": [
    {
-    "year": 2000,
+    "year": 2006,
     "status": "untested",
     "model": "Rodent inhaled-LPS airway neutrophilia model (SB 239063)",
-    "note": "Sibling SB 239063 cut LPS-induced BAL neutrophils, IL-6 (>90%) and MMP-9 (64%) and bleomycin fibrosis; the authors read this as therapeutic potential in chronic airway disease.",
+    "note": "Sibling SB 239063 cut LPS-induced BAL neutrophils, IL-6 (>90%) and MMP-9 (64%) and bleomycin fibrosis; the authors read this as therapeutic potential in chronic airway disease. Track opener dated to PH-797804's first registry-dated use, NCT00383188 posted 2006-10-02 (proxy; PH-797804 itself was never reported in this model); the 2000 date is the system's first use (SB 239063).",
     "short": "Sibling p38 inhibitor blocks LPS lung neutrophilia",
     "src": "https://doi.org/10.1152/ajplung.2000.279.5.L895",
     "srcLabel": "Underwood 2000",
@@ -930,10 +930,10 @@
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "year": 2007,
+    "year": 2006,
     "status": "untested",
     "model": "Mouse tobacco-smoke airway-inflammation model (SD-282 in A/J mice; later SB203580 in C57BL/6)",
-    "note": "Sibling p38alpha inhibitor SD-282 cut smoke-induced BAL macrophages, neutrophils, COX-2 and IL-6 in an 11-day A/J mouse model where dexamethasone failed; no member drug was ever reported in this model.",
+    "note": "Sibling p38alpha inhibitor SD-282 cut smoke-induced BAL macrophages, neutrophils, COX-2 and IL-6 in an 11-day A/J mouse model where dexamethasone failed; no member drug was ever reported in this model. Track opener dated to PH-797804's first registry-dated use, NCT00383188 posted 2006-10-02 (proxy; PH-797804 itself was never reported in this model); the 2007 date is the system's first use (SD-282).",
     "short": "Smoke-model prediction, no member drug tested",
     "src": "https://doi.org/10.1124/jpet.107.127092",
     "srcLabel": "Medicherla 2008",
@@ -1170,10 +1170,10 @@
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "year": 2007,
+    "year": 2012,
     "status": "untested",
     "model": "Mouse tobacco-smoke airway-inflammation model (SD-282 in A/J mice; later SB203580 in C57BL/6)",
-    "note": "Opening entry for the azd-7624 track: sibling SD-282 in the smoke model predicted benefit for p38 inhibition; azd-7624 itself was never run in it.",
+    "note": "Opening entry for the azd-7624 track: sibling SD-282 in the smoke model predicted benefit for p38 inhibition; azd-7624 itself was never run in it. Track opener dated to AZD7624's first registry-dated use, NCT01754844 posted 2012-12-21 (proxy; AZD7624 itself was never reported in this model); the 2007 date is the system's first use (SD-282).",
     "short": "Smoke-model prediction, no member drug tested",
     "src": "https://doi.org/10.1124/jpet.107.127092",
     "srcLabel": "Medicherla 2008",
@@ -1263,10 +1263,10 @@
    {
     "retrodiction": false,
     "patient_signal_reversed": false,
-    "year": 2007,
+    "year": 2011,
     "status": "untested",
     "model": "Mouse tobacco-smoke airway-inflammation model (SD-282 in A/J mice; later SB203580 in C57BL/6)",
-    "note": "Opening entry for the acumapimod track: sibling SD-282 in the smoke model predicted benefit for p38 inhibition; acumapimod itself was never run in it.",
+    "note": "Opening entry for the acumapimod track: sibling SD-282 in the smoke model predicted benefit for p38 inhibition; acumapimod itself was never run in it. Track opener dated to acumapimod's first registry-dated use, NCT01332097 posted 2011-04-08 (proxy; acumapimod itself was never reported in this model); the 2007 date is the system's first use (SD-282).",
     "short": "Smoke-model prediction, no member drug tested",
     "src": "https://doi.org/10.1124/jpet.107.127092",
     "srcLabel": "Medicherla 2008",

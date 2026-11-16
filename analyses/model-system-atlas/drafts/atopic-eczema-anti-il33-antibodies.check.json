@@ -31,8 +31,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "Chen 2019 accepted MS: 'single intravenous 300mg dose of etokimab' in 12 AD patients; abstract quote near (EASI)50 wording. Drug etokimab, route iv, unselected right; same holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Evidence rule 6 (dating: earliest public date; paired year is the later side)",
+   "note": "Re-read SEC 8-K EX-99.01 (2018-08-07): EAACI May 2018 etokimab data, blood eosinophils down 40% at day 29 after one dose. Model side 2013, so year 2018; same, prospective (no earlier IL-33 patient result).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -51,8 +52,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "Etokimab 300 mg IV confirmed in Chen 2019 MS, which writes eosinophil reduction 'as predicted by genetic analysis of IL-33 loss-of-function', so comparison_stated could be true. Drug/route right; same holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Evidence rule 6 (dating: earliest public date; paired year is the later side)",
+   "note": "Same 8-K Q2 2018 release: EAACI May 2018 eosinophil fall, said aligned with IL-33 loss-of-function genotype studies. Smith 2017 precedes it; year 2018, same, retrodiction false.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -157,17 +159,13 @@
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2021,
-   "rule": "Evidence rule 6 (dating: earliest public date incl. registry results posting)",
-   "note": "Kosloski 2024 quote verbatim; untested no_prediction right (torudokimab panel names no harm, never run for itepekimab), itepekimab sc right. But NCT03736967 posted itepekimab AE tables 2021-11-01, earlier than 2024 and than registry_date 2022-06-10.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Evidence rule 6: status untested (no_prediction) stands; NCT03736967 itepekimab results with AE tables posted 2021-11-01, so the entry dates 2021, not 2024."
+   "status_supported": true,
+   "rule": "Evidence rule 6 (track opens at its own drug's first use, proxy allowed)",
+   "note": "CT.gov NCT02958436: REGN3500 (itepekimab) SAD, start 2016-08, first posted 2016-11-08; year 2016 holds, untested no_prediction. model_first_use_year still 2021 (torudokimab's); should read 2016 for this track.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",

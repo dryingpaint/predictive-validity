@@ -1,0 +1,15 @@
+{
+ "tile": "psoriasis-pde4-inhibitors",
+ "changed": [
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "2011 -> 2017; status same -> retro, retrodiction false -> true. Model side (rabbit primary skin irritation, 2% ointment) first public only in the FDA pharmacology review 207695Orig1s000PharmR.pdf (Last-Modified 2017-01-18, approval 2016-12-14); patient side public in the Anacor 8-K of 27 June 2011, so the pairing dates to 2017 and post-dates crisaborole's own contact-dermatitis result."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "year unchanged (2008); untested_reason null -> unpublished, required by lint once entry 2 became a retrodiction: the rabbit irritation data were not public until the FDA review (2017)."
+  }
+ ]
+}

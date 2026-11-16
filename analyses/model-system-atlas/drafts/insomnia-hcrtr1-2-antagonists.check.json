@@ -75,13 +75,13 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": false,
-   "checked_by": "CHECKER_BRIEF / fields",
    "proposed_status": "retro",
    "proposed_year": 2011,
-   "rule": "DRAFTER_BRIEF What the model is: for engagement and efficacy a model result first public after a patient result on the same target (any drug) is a retrodiction; reproduced -> retro; evidence rule 6 (earliest public date)",
-   "note": "Herring 2012 (PMID 23197752) co-primary quote verbatim; suvorexant oral, primary insomnia fit. Same Phase IIb result was public at SLEEP 2010 (Merck release 2010-06-09), before Winrow 2011's suvorexant model data: retrodiction, retro, comparison public 2011.",
+   "rule": "DRAFTER_BRIEF What the model is: for efficacy a model first public after a patient result on the same target (any drug) is a retrodiction; reproduced -> retro. Rule 6: later of the two sides",
+   "note": "Year 2011 confirmed: Winrow 2011 epub 2011-04-08 (PMID 21473737), after suvorexant Phase IIb at SLEEP June 2010 (and almorexant insomnia data). That post-dating makes it a retrodiction: retro, not same; draft keeps same/retrodiction false.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: Winrow 2011 suvorexant model data follow the suvorexant Phase IIb result public at SLEEP June 2010 (and almorexant insomnia trials); reproduced, so retro. Rule 6: comparison first public 2011, not 2012."
+   "adjudication_note": "Retrodiction rule (efficacy is a target claim, any drug): suvorexant model data (Cox Jul 2010, Winrow Apr 2011) post-date suvorexant Phase IIb (SLEEP Jun 2010) and almorexant insomnia results; reproduced the sleep gain, so retro, year 2011."
   },
   {
    "cell": "safety",
@@ -116,17 +116,12 @@
   {
    "cell": "dose",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "same",
-   "proposed_year": 2020,
-   "rule": "DRAFTER_BRIEF evidence rule 6: year is the earliest public date (sponsor press release counts)",
-   "note": "Mignot 2022 (PMID 35065036) quote verbatim; daridorexant oral, insomnia adults; same holds. But Idorsia's 2020-04-20 release reported Phase 3 study 1 positive at 25 and 50 mg; model side public 2017, so comparison first public 2020.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status agreed (same). Rule 6: Idorsia's 2020-04-20 release reported study 1 positive at 25 and 50 mg, so the entry year is 2020, not 2022; model side public 2017."
+   "note": "Year 2020 confirmed: Idorsia 2020-04-20 Phase 3 release; Treiber 2017 epub 2017-06-29 precedes daridorexant's own Phase 2 release (2017-07-28), so prospective, same. Flag: that 2017 Phase 2 release may date the track's first same earlier.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -155,8 +150,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Multidiscipline review quote verbatim (W-20140712, WT vs preproorexin KO mice). Lemborexant oral; untested opener at proxy 2014 holds."
+   "note": "Year 2014 (proxy, study W-20140712) unchanged. Mouse data public only in the 2020 review, so untested_reason 'unpublished' fits; it is now the track's latest prospective entry.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -165,8 +160,8 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Label quote verbatim. Mouse study (2014) precedes lemborexant's own patient data; safety retrodiction is same-drug only, so prospective. Weak, unadjudicated events in insomnia patients: same/partial; lemborexant oral; 2019."
+   "note": "Bundle PDF metadata: multidiscipline review created 2020-01-28, label 2019-12-23; mouse chocolate study (W-20140712) appears only in the review. Same drug's patient result public first: retrodiction, retro, 2020.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

@@ -1,0 +1,60 @@
+{
+  "tile": "asthma-adrb2-agonists",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "what": "2012 -> 2010 (abediterol opener; model first public in AJRCCM 2010;181:A5676, ATS May 2010; model_first_use_year left at 2012, outside the editable fields)"
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "what": "2012 -> 2010 (abediterol opener; model first public in AJRCCM 2010;181:A5676, ATS May 2010; model_first_use_year left at 2012, outside the editable fields)"
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "what": "2012 -> 2010 (abediterol opener; model first public in AJRCCM 2010;181:A5676, ATS May 2010; model_first_use_year left at 2012, outside the editable fields)"
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "what": "2012 -> 2010 (abediterol opener; model first public in AJRCCM 2010;181:A5676, ATS May 2010; model_first_use_year left at 2012, outside the editable fields)"
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2014 -> 2010, status unchanged (ATS May 2010 supplement: Beier, AJRCCM 2010;181:A5414 (patient) and Almirall dog abstract, AJRCCM 2010;181:A5676 (model); for dose/safety the drug's own patient result was not earlier than the model, so no retrodiction)"
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "what": "2014 -> 2010, status unchanged (ATS May 2010 supplement: Beier, AJRCCM 2010;181:A5414 (patient) and Almirall dog abstract, AJRCCM 2010;181:A5676 (model); for dose/safety the drug's own patient result was not earlier than the model, so no retrodiction)"
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "what": "2014 -> 2010, status unchanged (ATS May 2010 supplement: Beier, AJRCCM 2010;181:A5414 (patient) and Almirall dog abstract, AJRCCM 2010;181:A5676 (model); for dose/safety the drug's own patient result was not earlier than the model, so no retrodiction)"
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "what": "2014 -> 2010, status unchanged (ATS May 2010 supplement: Beier, AJRCCM 2010;181:A5414 (patient) and Almirall dog abstract, AJRCCM 2010;181:A5676 (model); for dose/safety the drug's own patient result was not earlier than the model, so no retrodiction)"
+    },
+    {
+      "cell": "engagement",
+      "index": 8,
+      "what": "2011 -> 2007, status unchanged (MediciNova SEC 8-K 2007-07-24 investor deck and 2007-11-09 Q3 release reported MN-221-CL-004 FEV1 primary met)"
+    },
+    {
+      "cell": "dose",
+      "index": 6,
+      "what": "2012 -> 2007, status unchanged (MediciNova 8-K 2007-11-09: FEV1 primary met at 10-60 ug/min IV in CL-004)"
+    },
+    {
+      "cell": "safety",
+      "index": 5,
+      "what": "2012 -> 2008, status unchanged (MediciNova 8-K 2008-01-07 deck: no clinically significant CV, ECG or vital-sign changes up to 30 ug/min; safety trend at 60)"
+    }
+  ]
+}

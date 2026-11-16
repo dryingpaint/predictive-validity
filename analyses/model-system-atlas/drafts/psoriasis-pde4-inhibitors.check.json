@@ -104,8 +104,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "PharmR bundle lines 462-464 verbatim; LLNA no-sensitisation sentence precedes it. Review dates the first IND to 2008 (line 389) but does not place the rabbit study in it, so 2008 is a proxy. Untested at opening holds."
+   "rule": "DRAFTER_BRIEF evidence rule 5 (untested_reason), rule 6 (dating)",
+   "note": "PharmR bundle line 464 verbatim. 2008 opener (IND 102317, proxy) unchanged. untested_reason unpublished holds: rabbit irritation first public in the FDA review (Last-Modified 2017-01-18, re-fetched).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -114,8 +115,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": null,
-   "note": "CT.gov AE table confirmed: contact dermatitis 4/46 vs 0/22, erythema 2/46, pruritus 2/46; NCT01029405 2% BID 3/37 and 6/37 match. 8-K: contact dermatitis 8.7%. Rabbit irritancy to application-site reactions is same, direction only; 'dermatitis contact' may be allergic."
+   "rule": "DRAFTER_BRIEF rule 6 (paired year is the later side); CHECKER_BRIEF 3 (safety retrodiction: same drug's earlier patient result)",
+   "note": "PharmR.pdf Last-Modified 2017-01-18 re-fetched; NCT01300052 results posted 2017-03-07; patient side public in 2011 8-K. Pairing dates to later side, 2017, after crisaborole's own result: retro, retrodiction true.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",

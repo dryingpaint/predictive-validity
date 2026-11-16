@@ -263,10 +263,10 @@
         "untested_reason": "no_prediction"
       },
       {
-        "year": 2015,
+        "year": 2012,
         "status": "retro",
         "model": "Glucagon-challenge hGCGR mice and rhesus monkeys; diabetic mice (small-molecule GRAs)",
-        "note": "LY2409021 lowered fasting and postprandial glucose and raised glucagon in healthy people and T2D patients, as the sibling GRA1 did in mice; retro, the target had moved in people since 2001.",
+        "note": "LY2409021 lowered fasting and postprandial glucose and raised glucagon in healthy people and T2D patients, as the sibling GRA1 did in mice; retro, the target had moved in people since 2001. Dated to EASD 2011 (Clinical Endocrinology News 2011-10-01, https://mdedge.com/clinicalendocrinologynews/article/53198/diabetes/glucagon-receptor-blockers-eyed-type-2): LY2409021's 28-day study reported fasting glucagon up 0.6-4.2-fold and significant HbA1c falls, so the patient side was public in 2011. Pairing year is the later of that and Mu 2012 (epub 2012-11-19): 2012.",
         "short": "LY2409021 lowered glucose, raised glucagon",
         "src": "https://doi.org/10.1111/dom.12446",
         "srcLabel": "Kelly 2015",
@@ -1226,10 +1226,10 @@
       {
         "retrodiction": false,
         "patient_signal_reversed": false,
-        "year": 2015,
+        "year": 2011,
         "status": "same",
         "model": "Gcgr-/- knockout mouse (genetic full antagonism)",
-        "note": "28-day LY2409021 raised glucagon and lowered glucose with minimal hypoglycaemia in T2D, as the knockout's hyperglucagonaemia-without-hypoglycaemia predicted; alpha-cell hyperplasia not assessable.",
+        "note": "28-day LY2409021 raised glucagon and lowered glucose with minimal hypoglycaemia in T2D, as the knockout's hyperglucagonaemia-without-hypoglycaemia predicted; alpha-cell hyperplasia not assessable. Dated to EASD 2011 (Clinical Endocrinology News 2011-10-01, https://mdedge.com/clinicalendocrinologynews/article/53198/diabetes/glucagon-receptor-blockers-eyed-type-2): LY2409021's 28-day study reported fasting glucagon up 0.6-4.2-fold and significant HbA1c falls, so the patient side was public in 2011. Pairing year is the later of that and Gelling 2003: 2011.",
         "short": "Hyperglucagonaemia without hypoglycaemia matched",
         "src": "https://doi.org/10.1111/dom.12446",
         "srcLabel": "Kelly 2015",
@@ -1391,10 +1391,10 @@
       {
         "retrodiction": false,
         "patient_signal_reversed": false,
-        "year": 2015,
+        "year": 2011,
         "status": "same",
         "model": "Mahvash disease: homozygous GCGR loss-of-function in humans",
-        "note": "GRA-dosed T2D patients showed the Mahvash hyperglucagonaemia within 28 days with minimal hypoglycaemia; alpha-cell hyperplasia and PNET risk cannot show in short trials.",
+        "note": "GRA-dosed T2D patients showed the Mahvash hyperglucagonaemia within 28 days with minimal hypoglycaemia; alpha-cell hyperplasia and PNET risk cannot show in short trials. Dated to EASD 2011 (Clinical Endocrinology News 2011-10-01, https://mdedge.com/clinicalendocrinologynews/article/53198/diabetes/glucagon-receptor-blockers-eyed-type-2): LY2409021's 28-day study reported fasting glucagon up 0.6-4.2-fold and significant HbA1c falls, so the patient side was public in 2011. Pairing year is the later of that and Zhou 2009: 2011.",
         "short": "Hyperglucagonaemia of human loss-of-function matched",
         "src": "https://doi.org/10.1111/dom.12446",
         "srcLabel": "Kelly 2015",

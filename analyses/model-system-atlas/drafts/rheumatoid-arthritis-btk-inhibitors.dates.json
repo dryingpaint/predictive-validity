@@ -1,0 +1,55 @@
+{
+  "tile": "rheumatoid-arthritis-btk-inhibitors",
+  "changed": [
+    {
+      "cell": "dose",
+      "index": 1,
+      "what": "2010 -> 2018. Dating: fenebrutinib's own first use in the model is Crawford 2018 (J Med Chem, PMID 29457982, epub 2018-02-23: rat CIA, IC70 exposure target), not ibrutinib's 2010 probe."
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "what": "2020 -> 2019. Dating: patient side first public as NCT02833350 registry results 2019-09-10 (before the 2020-04-09 epub); model side 2018-02-23; later of the two is 2019."
+    },
+    {
+      "cell": "dose",
+      "index": 3,
+      "what": "2022 -> 2021. Dating: patient side first public as NCT03682705 registry results 2021-05-03 (before the 2022-04-27 epub); model side 2018-07-23; later of the two is 2021."
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "what": "2010 -> 2016. Dating: BMS-986142's own first use in mouse CIA is Watterson 2016 (J Med Chem, PMID 27583770, epub 2016-09-19), not ibrutinib's 2010 data."
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "what": "2019 -> 2016. Dating: the ACR20 miss was first public as ACR 2016 abstract 1587 (Arthritis Rheumatol 68 suppl 10, first published 2016-09-28: 42% vs 22%, p=0.25, primary endpoint not met); model side 2013; later of the two is 2016."
+    },
+    {
+      "cell": "efficacy",
+      "index": 8,
+      "what": "status same -> contra; retrodiction False -> True. Retrodiction: fenebrutinib's rat-arthritis efficacy was first public 2018-02-23 (Crawford, J Med Chem), after spebrutinib's RA ACR20 miss was public (ACR 2016 abstract 1587, 2016-09-28); efficacy is a target claim, and the model predicted efficacy without reproducing that prior class failure, so contra under the retrodiction rule."
+    },
+    {
+      "cell": "efficacy",
+      "index": 9,
+      "what": "2019 -> 2017. Dating: evobrutinib's own first public use in mouse CIA is ACR 2017 abstract 2565 (Haselmayer, first published 2017-09-18), before the 2019 J Immunol paper."
+    },
+    {
+      "cell": "efficacy",
+      "index": 10,
+      "what": "retrodiction False -> True. Retrodiction: evobrutinib's CIA efficacy was first public 2017-09-18 (ACR 2017 abstract 2565), after spebrutinib's RA ACR20 miss (ACR 2016 abstract 1587, 2016-09-28); it did not reproduce that failure, so it stays contra as a retrodiction."
+    },
+    {
+      "cell": "efficacy",
+      "index": 11,
+      "what": "2018 -> 2015. Dating: elsubrutinib's own first public use in rat CIA is ACR 2015 abstract 1106 (ABBV-105, first published 2015-09-29: 'In rat CIA, ABBV-105 fully inhibits paw swelling and bone destruction')."
+    },
+    {
+      "cell": "efficacy",
+      "index": 13,
+      "what": "2017 -> 2015. Dating: TAS5315's own first public use in mouse CIA is ACR 2015 abstract 2561 (first published 2015-09-29: dose-dependent decrease in clinical score in DBA/1 CIA)."
+    }
+  ]
+}

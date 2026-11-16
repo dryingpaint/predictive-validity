@@ -1,0 +1,15 @@
+{
+ "tile": "hepatocellular-carcinoma-anti-cd274-antibodies",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2021 -> 2020; Study 22 CD8/lymphocyte pharmacodynamics with the durvalumab monotherapy arm first public in the ASCO 2020 abstract (doi 10.1200/JCO.2020.38.15_suppl.4508); model side 2015; status same, not a retrodiction"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "what": "2025 -> 2022; HIMALAYA immune-mediated AE rates for durvalumab alone first public in NEJM Evidence June 2022 (doi 10.1056/EVIDoa2100070), not the 2025 Hepatology paper; model side 2017; status same, not a retrodiction"
+  }
+ ]
+}

@@ -255,13 +255,17 @@
   {
    "cell": "efficacy",
    "index": 14,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Zeller 2008 quote verbatim; no ALD403 run in this system, class prediction from sibling antibody; eptinezumab iv opener 2008 holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use in the model; proxy allowed)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Garcia-Martinez 2020 abstract confirms ALD403 rodent capsaicin-DBF run, preclinical. But ALD403's first registry posting is FIH NCT01579383 (2012-04-18, start 2012-04), not NCT01772524 (2013-01-21); proxy year should be 2012. Untested holds; src still Zeller.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: track opens at its own drug's first use, proxy allowed; ALD403 FIH NCT01579383 first posted 2012-04-18 (verified), so proxy year 2012, not 2013. Untested holds; not the track's latest entry, so no untested_reason."
   },
   {
    "cell": "efficacy",

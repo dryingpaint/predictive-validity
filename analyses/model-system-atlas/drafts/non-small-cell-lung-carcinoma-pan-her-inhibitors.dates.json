@@ -1,0 +1,15 @@
+{
+  "tile": "non-small-cell-lung-carcinoma-pan-her-inhibitors",
+  "changed": [
+    {
+      "cell": "dose",
+      "index": 5,
+      "what": "2021 -> 2018; status contra unchanged, not a retrodiction. Patient side first public at WCLC Sept 2018 (Heymach OA02.06, JTO 13(10S): 62.5% of patients at 16 mg/day needed dose reductions, MD Anderson phase 2 NCT03066206); model Robichaux Nat Med online 2018-04-23."
+    },
+    {
+      "cell": "safety",
+      "index": 7,
+      "what": "2020 -> 2019; status contra unchanged, not a retrodiction. Same trial NCT02834936 reported grade 3 diarrhoea 20% at ASCO 2019 (Gao, JCO 37:15_suppl 9089, online 2019-05-26); model Ann Oncol mdy542 (Mar 2019 issue)."
+    }
+  ]
+}

@@ -198,8 +198,9 @@ def reasonless(path: str, d: dict, split: bool) -> list[tuple[str, str]]:
 
 
 def main():
+    # a tile draft is <slug>.json; its siblings (<slug>.check.json, .models.json and the pass logs) have a second suffix
     paths = sys.argv[1:] or sorted(p for p in glob.glob(os.path.join(HERE, "*-*.json"))
-                                   if not p.endswith((".check.json", ".models.json", ".fields.json")))
+                                   if "." not in os.path.basename(p)[:-5])
     extra, issues = lint(paths)
     print("unknown keys:", dict(extra))
     for i in issues:

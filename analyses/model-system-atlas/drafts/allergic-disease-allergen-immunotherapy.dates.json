@@ -1,0 +1,20 @@
+{
+ "tile": "allergic-disease-allergen-immunotherapy",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "what": "2018 -> 2016; status contra unchanged, retrodiction false unchanged. Patient side first public by Circassia press release 2016-06-20 (investors.niox.com top-line Phase 3), model side JACI 2012 (10.1016/j.jaci.2012.07.028); registry results 2018-05-14 are later."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "2018 unchanged; retrodiction false -> true, status stays contra. Model side first public 2018-04-12 (Clin Transl Allergy epub, 10.1186/s13601-018-0198-7; NCT01383590 has no posted results; no earlier Europe PMC abstract), after the Phase 3 null press release 2016-06-20; it did not reproduce the null."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "year 2011 unchanged; untested_reason set to unpublished, since efficacy 7 is now a retrodiction this opener is the NAC track's latest prospective entry (NAC readout not public before the 2016-06-20 field null)."
+  }
+ ]
+}

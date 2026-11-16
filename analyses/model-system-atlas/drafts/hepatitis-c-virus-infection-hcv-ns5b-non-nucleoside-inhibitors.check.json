@@ -9,9 +9,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PMID 19307358, epub 2009-03-23; quote verbatim in abstract (microM rendered μM). Untested opener stands; tegobuvir's 2007 phase 1 is tier 5 and HCV-796 is not a member, so no earlier admissible opener."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date, congress abstract included; track opens at its own drug's first use in the model)",
+   "note": "Natap AASLD_18 (AASLD Nov 2008, Hammond) states filibuvir 'inhibits genotype 1a and 1b replicons in vitro, with an overall mean EC50 of 0.059 uM'. 2008 and untested confirmed; model_first_use_year/epub_year 2009 should read 2008/2009 (Shi).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -60,7 +62,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Same PMID 19307358; quote is the verbatim first clause of the resistance sentence. Untested opener stands; the resistance prediction it sets up is never scored in a later entry (see missing)."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date, congress abstract included; track opens at its own drug's first use in the model)",
+   "note": "Track opens at filibuvir's first replicon use: AASLD Nov 2008 (Natap AASLD_18, EC50 0.059 uM). M423T itself first appears in Shi 2009, but the opener year is the track's; 2008 untested confirmed. Set model_first_use_year 2008.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -105,17 +109,13 @@
   {
    "cell": "engagement",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2009,
-   "rule": "Evidence rule 6 (dating: earliest public date, congress abstract included)",
-   "note": "ClinPharmR quote verbatim; retro right (HCV-796 2006 predates Chen 2007). Year: dasabuvir patient monotherapy was public at HEP DART Dec 2009 (Reddy ref 26; at latest APASL Feb 2011, ref 15); rule 6 counts congress abstracts, so 2009 not 2012.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: HCV-796 patient decline (2006) predates Chen 2007, so retro. Rule 6 dates by earliest public record, congress abstracts included: dasabuvir monotherapy at HEP DART Dec 2009, so the year is 2009, not 2012."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date, congress abstract included; track opens at its own drug's first use in the model)",
+   "note": "Natap hepDART_04 (HEP DART Dec 2009, Klein): ABT-333 2-day monotherapy then combination, RNA change shown in Figure 1 (image; text gives only >3.5 log at 28 days). Later of chimp 2007 and 2009 = 2009; retro stands (HCV-796 2006).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -195,10 +195,11 @@
    "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Reddy 2012 PMC3370793 body read: sentence verbatim; ABT-072 in Table 3. Untested opener, proxy year fine. epub_year/print_year 2009 contradict src Reddy 2012; set 2012.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date, congress abstract included; track opens at its own drug's first use in the model)",
+   "note": "Natap EASL_44 (EASL Apr 2009, Wagner): ABT-072 replicon potency assessed with/without 40% plasma, '5-9 fold greater potency than ABT-333'; no EC50 number in page text. 2009 untested confirmed; epub/print 2009 now match.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -217,8 +218,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Reddy 2012 PMC3370793 body read: sentence verbatim; setrobuvir in Table 3. Untested opener, proxy year fine. epub_year/print_year 2009 contradict src Reddy 2012; set 2012.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date, congress abstract included; track opens at its own drug's first use in the model)",
+   "note": "Natap AASLD_67 (AASLD Nov 2008, Thompson): 'ANA598 exhibits nanomolar potency against genotype 1 HCV replicons (EC50 1b 3nM; 1a 50nM)'. 2008 untested confirmed; epub/print_year 2009 should be 2008.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -237,8 +239,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Reddy 2012 PMC3370793 body read: sentence verbatim; tegobuvir in Table 3. Untested opener, proxy year fine. epub_year/print_year 2009 contradict src Reddy 2012; set 2012.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date, congress abstract included; track opens at its own drug's first use in the model)",
+   "note": "Natap AASLD_39 (AASLD Nov 2007, Bavisotto): GS-9190 '0.7 nM EC50 in GT 1b replicon'. 2007 untested confirmed; same poster reports 1.5 log patient decline, so a paired entry could also date 2007. epub/print 2009 -> 2007.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -255,10 +258,11 @@
    "index": 13,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Reddy 2012 PMC3370793 body read: sentence verbatim; VCH-222 in Table 3. Untested opener, proxy year fine. epub_year/print_year 2009 contradict src Reddy 2012; set 2012.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date, congress abstract included; track opens at its own drug's first use in the model)",
+   "note": "Natap EASL_48 (EASL Apr 2009, Cooper) is the VCH-222 patient poster; Bedard abstract 935, EASL 2009, 'Identification and characterization of VCH-222' (replicon 1a/1b) confirmed by search, not read. 2009 untested confirmed.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",

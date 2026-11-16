@@ -16,17 +16,13 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2019,
-   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public",
-   "note": "Retro right (Maloney 1994 predates model); epcoritamab sc, other_disease right. Lugtenburg ASH 2019 abstract (doi 10.1182/blood-2019-121460, 2019-11-13) states cyno B-cell depletion and 'rapid, complete depletion of circulating B cells' in patients: year 2019, comparison_stated true.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Status agreed: retro (retrodiction, rituximab depletion 1994 predates model). Rule 6 moves year to 2019: Lugtenburg ASH 2019 (DOI resolves) first stated monkey and patient B-cell depletion; comparison_stated true."
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public; a paired comparison dates from the later side",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "abstract_only",
+   "note": "Year 2019 confirmed. Lugtenburg ASH 2019 abstract (doi resolves, online 2019-11-13) states cyno 'long-lasting depletion of B cells' and patient 'rapid, complete depletion of circulating B cells'. Retro holds: Maloney 1994 rituximab depletion predates 2018 model."
   },
   {
    "cell": "engagement",
@@ -72,17 +68,13 @@
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2013,
-   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public",
-   "note": "Retro right (Conconi 2003 predates 2008 model); ublituximab iv, stage_or_line right. Deng ASCO 2013 (doi 10.1200/jco.2013.31.15_suppl.8575, 2013-05-20), same trial: '1 CR (rituximab refractory MZL); 2 PR's (1 MZL, 1 FL)'. Year 2013; registry_date 2012-07-24 missing.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Status agreed: retro (Conconi 2003 predates 2008 ex-vivo model). Rule 6 moves year to 2013: Deng ASCO 2013 abstract (DOI resolves) first reported MZL responses on ublituximab; add registry_date 2012-07-24."
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public; a paired comparison dates from the later side",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "verbatim",
+   "note": "Year 2013 confirmed. Deng ASCO 2013 abstract 8575 (doi resolves, online 2013-05-20, before the 06-02 poster): 1 CR rituximab-refractory MZL, 2 PR (1 MZL); TG release: 3/3 MZL responded. Retro holds (Conconi 2003 precedes 2008 model). registry_date 2012-07-24 still missing."
   },
   {
    "cell": "safety",
@@ -138,10 +130,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "EHA 2022 P1276 (PMC9429641) quote verbatim: low CRS, no ICANS up to 1000 mg. Monkeys can show CRS and predicted it low in 2019, before patient data: prospective same, imported from mixed NHL.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public; a paired comparison dates from the later side",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "verbatim",
+   "note": "Year 2020 confirmed. Budde ASH 2020 abstract 1142 (released 2020-11-04): 8 patients to 30 mg, no DLT or drug-related SAE, only transient grade 1-2 fever, cytokines transient. 'No grade 2+ CRS' wording is from the IGM release, not the abstract. Same, prospective."
   },
   {
    "cell": "dose",
@@ -168,10 +161,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Sinnollareddy 2026 abstract quote verbatim; 48 mg regimen reached and response plateau held in FL expansion patients the model had not seen. Some escalation patients overlap the fitting data; see rule question. same 2026, within_2x.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public; a paired comparison dates from the later side",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "verbatim",
+   "note": "Year 2024 confirmed. Sinnollareddy ASH 2024 abstract 1414 (doi resolves, online 2024-11-05): FL 'potential plateau of efficacy was observed at 48 mg'; exposure-safety showed no AE increase with exposure. Model side Li 2022 earlier; same, prospective, unchanged."
   },
   {
    "cell": "engagement",

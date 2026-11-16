@@ -90,17 +90,13 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": false,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "retro",
-   "proposed_year": 2019,
-   "rule": "Retrodiction (engagement/efficacy: any drug's earlier patient result on the same target); a retrodiction that reproduced the human data is retro, never same.",
-   "note": "Lancet abstract 186/256 (73%) verbatim; BMS ASH Dec 2019 release dates it to 2019, design in note. But the xenograft (2015) and the SBRA model side (2021) post-date CD19 CAR DLBCL responses (Kochenderfer JCO 2014-08-25): reproduced known result, so retro.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule (efficacy: any drug, same target/action): 2015 xenograft post-dates Kochenderfer 2014 DLBCL responses; it reproduced TRANSCEND ORR, so retro, never same."
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6 (paired year = later side); retrodiction rule for efficacy",
+   "note": "Re-opened SBRA (fda.gov/media/146242): dated 5 Feb 2021, quote on xenograft dose-dependent anti-tumour activity verbatim. Patient side BMS Dec 2019; paired year 2021. CD19 CAR LBCL responses public since 2014: retro."
   },
   {
    "cell": "efficacy",

@@ -40,8 +40,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Shapiro 2014 (epub 2014-10-21) quote verbatim in abstract; onalespib iv; mixed solid tumours coded other_disease, admissible for engagement. Smyth model 2011 post-dates Banerji 2005 HSP70 induction, so retro fits."
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date; paired year is the later side.",
+   "note": "ASCO 2012 abstract 3028 (online 2012-05-20) reports HSP70 rise in PBMCs at all doses; Smyth model epub 2012-06-19 (AACR-NCI-EORTC 2011 earlier); later side 2012. First author is Mahadevan, not Shapiro. Retro stands (17-AAG 2005).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -155,8 +156,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Bauer 2006 (PMID 16982758) quote verbatim in abstract; Dickson cites Bauer (ref 3) as BIIB021 GIST rationale, so naming biib-021 oral for this non-member-drug model fits; opener untested 2006 stands."
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use, not the system's first use for another drug.",
+   "note": "NCT00618319 (BIIB021, GIST, FDG-PET PD study) first posted 2008-02-20 per ClinicalTrials.gov; opener untested 2008 fits; model_first_use_year 2006 kept.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -171,17 +173,13 @@
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2011,
-   "rule": "DRAFTER_BRIEF dating rule 6: year is the earliest public date (congress abstract before registry posting).",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Registry primary is clinical benefit (quote verbatim), ganetespib 1-h IV weekly, contra stands. But the result (limited efficacy, 12/23 SD, no responses) was public at ASCO 2011 (Demetri, JCO 29:15_suppl), before the 2016-03-10 posting.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status agreed. DRAFTER rule 6: year should be 2011; Demetri ASCO 2011 abstract (doi:10.1200/jco.2011.29.15_suppl.10011) reported the ganetespib GIST result before the 2016-03-10 registry posting."
+   "rule": "DRAFTER_BRIEF rule 6: congress abstract before registry results posting.",
+   "note": "Demetri ASCO 2011 abstract 10011 (ganetespib phase II GIST) resolves, published 2011-05-20; abstract text not retrievable, title and date seen. Model 2006, so pairing year 2011. Registry results 2016-03-10 later. Contra, non-retro unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -217,26 +215,22 @@
    "status_supported": false,
    "proposed_status": "untested",
    "proposed_year": 2011,
-   "rule": "Checker brief 3 and 4 (non-GIST model never tested GIST); efficacy primary-endpoint rule; dating rule 6 (ASCO 2011 abstract).",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Ganetespib iv and retrodiction dating right, but non-GIST xenografts made no GIST prediction, and the quote is the ORR secondary title, not the clinical-benefit primary. Comparison public ASCO 2011, not 2016. untested_reason not_measured.",
+   "rule": "DRAFTER_BRIEF efficacy (context's disease only) and checker brief 3-4; rule 6 for the year.",
+   "note": "Year 2011 confirmed: Ying model_src epub 2011-12-05 (not 2010) and ASCO 2011 GIST result 2011-05-20, both 2011; retrodiction holds. Status still untested (not_measured): non-GIST xenografts made no GIST prediction, as previously adjudicated.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "untested",
-   "adjudication_note": "Checker brief 3-4 and DRAFTER efficacy (context's disease only): non-GIST ganetespib xenografts made no GIST prediction; quote is the ORR secondary, not the primary. Rule 6 year 2011. Rule 5 not_measured."
+   "adjudication_note": "DRAFTER efficacy (context disease only) and checker brief 3-4: non-GIST ganetespib xenografts made no GIST prediction, as adjudicated for BIIB021 (eff 3). Year 2011 per rule 6. Rule 5 not_measured, already set."
   },
   {
    "cell": "efficacy",
    "index": 11,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2006,
-   "rule": "DRAFTER_BRIEF dating rule 6: each track opens at model_first_use_year with status untested.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Bauer 2006 quote verbatim (abstract); ganetespib/iv opener is needed for the eff 7 track, but dated 2016 it would follow the contra (2011 per eff 7 correction); open at model_first_use_year 2006, like eff 5.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Status agreed. DRAFTER rule 6: each track opens at model_first_use_year with untested, so this ganetespib opener is dated 2006, before the 2011 contra (eff 7), as eff 5 is."
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use, not the system's first use for another drug.",
+   "note": "NCT01039519 (ganetespib, GIST) first posted 2009-12-25 per ClinicalTrials.gov; opener untested 2009 precedes the 2011 contra (eff 7).",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

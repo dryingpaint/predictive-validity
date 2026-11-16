@@ -51,9 +51,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Retrodiction: for engagement a model result first public after a patient result for the same target and action, from any drug, is a retrodiction; if it reproduced the human data its status is retro, never same",
-   "note": "Giugliani 2018 (PMID 29976218) quote verbatim; full text: 9/11 switched from laronidase, urinary GAG held at laronidase level. Kakkis 2001 NEJM abstract: IV rhIDUA cut urinary GAG 63%, before the 2011 mouse: retro right; valanafusp alfa, iv.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Rule 6 (dating): year is the earliest public date, press release included; retrodiction: an engagement model first public after a same-target patient result is retro",
+   "note": "ArmaGen release 16 Feb 2017 (prnewswire 300408460) read: 'stabilization of urinary glycosaminoglycan (GAG) levels' on AGT-181 at 1.0 or 3.0 mg/kg weekly. Year 2017 right; Kakkis 2001 precedes 2011 mouse, retro unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -88,8 +88,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Harmatz 2022 (epub 2022-10-25) quote verbatim; only transient leukocyte IDUA. Feb 2019 Sangamo interim showed IDUA rising, so 2022 is first public contradiction. Drug, iv, unselected correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Rule 6 (dating): a paired comparison dates to the later side's first public date, press release included",
+   "note": "Sangamo release 7 Feb 2019 read: 'Plasma IDUA activity was unchanged from baseline in all three patients' (leukocyte IDUA rose). Ou 2018 epub 1 Nov 2018 claims liver secretion into circulation. Contra public 2019; not retro.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -129,9 +130,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "Decision 16: toxicity at or below the effective exposure is contra; count the harm in dose when the model predicted it but misplaced the margin",
-   "note": "Giugliani 2018 full text: infused in D5NS; hypoglycemia episodes 5/7/24 at 1/3/6 mg/kg. Boado 2012: with dextrose no hypoglycemia at 30 mg/kg. Toxicity at 1 mg/kg, >=30x below the margin: contra, off_by_>5x right. Judgement field stale ('margin held').",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Rule 6 (dating); Decision 16: toxicity at or below the effective exposure is contra when the model misplaced the margin",
+   "note": "ArmaGen release 16 Feb 2017 read: drug-related AEs included 'two hypoglycemic events' at 1.0 or 3.0 mg/kg weekly, far below the 30 mg/kg monkey margin (Boado 2012). Year 2017, contra, not retrodiction: right.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

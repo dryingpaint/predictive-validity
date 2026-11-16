@@ -7,22 +7,27 @@
   {
    "cell": "engagement",
    "index": 1,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Lai 2015 (PMID 25879485) abstract quote verbatim. GDC-0810 = brilanestrant, oral, unselected ER+ opener; fields right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "untested",
+   "proposed_year": 2013,
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date",
+   "note": "Status untested holds; year not 2014. Aragon press release 2013-04-04 states its leads 'induce tumor regressions in both tamoxifen sensitive and tamoxifen resistant tumor models in vivo'; SABCS 2013 OT3-2-07 also precedes P1-13-01. Year 2013.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6 (dating): status untested is agreed, only the year is disputed; the opener stays untested, dated at the earliest public in-vivo use (Aragon release 2013-04-04, SABCS 2013), so 2013."
   },
   {
    "cell": "engagement",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Wang 2017 (PMID 28011460) abstract fragment verbatim. Lai 2015 post-dates DeFriend 1994 fulvestrant tumour ER loss in patients, so retro/retrodiction true right; brilanestrant/oral/unselected right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "note": "Patient FES-PET loss first public SABCS 2014 P1-13-01 (Dec 2014), before AACR 2015 CT231 and Wang epub 2016; model side public 2013, so pair year 2014. Retro holds (fulvestrant cut tumour ER, DeFriend 1994).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -75,37 +80,42 @@
   {
    "cell": "dose",
    "index": 1,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Lai 2015 abstract quote verbatim; brilanestrant oral unselected opener; no mg/kg target stated.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "untested",
+   "proposed_year": 2013,
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date",
+   "note": "Status untested holds; year not 2014. Aragon press release 2013-04-04 states its leads 'induce tumor regressions in both tamoxifen sensitive and tamoxifen resistant tumor models in vivo'; SABCS 2013 OT3-2-07 also precedes P1-13-01. Year 2013.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6 (dating): status untested is agreed, only the year is disputed; the opener stays untested, dated at the earliest public in-vivo use (Aragon release 2013-04-04, SABCS 2013), so 2013."
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Wang 2017 abstract quote verbatim (600 mg chosen on FES suppression). No earlier brilanestrant patient result before Lai 2015, so not a dose retrodiction; same, brilanestrant/oral/unselected right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "note": "Patient FES suppression first public SABCS 2014 P1-13-01; model regressions public 2013 (press release, OT3-2-07), earlier, so not a dose retrodiction; year 2014, same holds. Draft note's 'went public together' is inexact.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
    "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "retro",
-   "rule": "DRAFTER_BRIEF dose: whether the reached dose worked is efficacy's alone; rule 6 dating",
-   "note": "Retro right (AMEERA-1 ASCO 2019 dose result precedes Shomali epub 2020-12-11), drug/route/population right. But src/quote are AMEERA-3 PFS, an efficacy result, and year 2022 dates by it; use Bardia 2022 AMEERA-1 (400 mg on FES-PET, no DLT), year 2020. Judgement text stale ('contra').",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_year": 2020,
-   "adjudicated_status": "retro",
-   "adjudication_note": "Both agree retro (amcenestrant's own ASCO 2019 dose result precedes Shomali epub 2020-12-11). Dose rule: AMEERA-3 PFS is efficacy's; src/quote should be AMEERA-1 (400 mg, FES-PET, no DLT); rule 6: year 2020."
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "DRAFTER_BRIEF retrodiction (dose: only the same drug's own earlier patient result) and rule 6",
+   "note": "Amcenestrant MCF7/HCI013 xenograft regressions public SABCS 2016 P3-04-05, before ASCO 2019 abstract 1054 (400 mg, ~90% FES inhibition, no DLT). Not a retrodiction; prospective pair, year 2019. Quote is AMEERA-3 PFS (efficacy's).",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "same",
+   "adjudication_note": "Retrodiction rule (dose is a drug claim) + dose table 'target reached': amcenestrant xenograft regressions public SABCS 2016 P3-04-05 (Cancer Res 77(4 Suppl)), before its own ASCO 2019 FES-PET dose result; prospective, 400 mg reached target: same, year 2019."
   },
   {
    "cell": "dose",
@@ -135,12 +145,17 @@
   {
    "cell": "efficacy",
    "index": 1,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Lai 2015 abstract quote verbatim; brilanestrant oral unselected opener.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "untested",
+   "proposed_year": 2013,
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date",
+   "note": "Status untested holds; year not 2014. Aragon press release 2013-04-04 states its leads 'induce tumor regressions in both tamoxifen sensitive and tamoxifen resistant tumor models in vivo'; SABCS 2013 OT3-2-07 also precedes P1-13-01. Year 2013.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6 (dating): status untested is agreed, only the year is disputed; the opener stays untested, dated at the earliest public in-vivo use (Aragon release 2013-04-04, SABCS 2013), so 2013."
   },
   {
    "cell": "efficacy",
@@ -185,12 +200,17 @@
   {
    "cell": "safety",
    "index": 1,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Lai 2015 abstract quote verbatim; brilanestrant oral unselected opener; no tolerability claim, untested right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "untested",
+   "proposed_year": 2013,
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date",
+   "note": "Status untested holds; year not 2014. Aragon press release 2013-04-04 states its leads 'induce tumor regressions in both tamoxifen sensitive and tamoxifen resistant tumor models in vivo'; SABCS 2013 OT3-2-07 also precedes P1-13-01. Year 2013.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6 (dating): status untested is agreed, only the year is disputed; the opener stays untested, dated at the earliest public in-vivo use (Aragon release 2013-04-04, SABCS 2013), so 2013."
   },
   {
    "cell": "safety",
@@ -205,17 +225,12 @@
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "retro",
-   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date",
-   "note": "Martin 2024 quote verbatim; retro right (giredestrant's own ASCO 2021 phase Ia/b tolerability precedes Liang epub 2021-07-12); fields right. The same tolerability sentence was public at ESMO Breast 2022 (Ann Oncol 2022, 211MO), before the 2023-03-10 registry posting: year 2022.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_year": 2022,
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retro agreed. Rule 6: the same tolerability sentence was public in ESMO 2022 abstract 211MO (Ann Oncol 2022), before the 2023-03-10 registry posting, so year 2022."
+   "note": "211MO (Ann Oncol 33 Suppl 7, ESMO Sept 2022) precedes 2023-03-10 registry posting; later than Liang epub 2021-07-12, so 2022. Retro holds: giredestrant phase I tolerability public SABCS 2019 and ASCO 2021.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

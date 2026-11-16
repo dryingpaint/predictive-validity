@@ -1,0 +1,30 @@
+{
+ "tile": "prostate-cancer-ezh2-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "2012 -> 2018; lirametostat opener moved to the drug's own first use in the CRPC cell-line system: Taplin ASCO GU 2018 TPS398 (https://www.asco.org/abstracts-presentations/157177)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "2012 -> 2018; lirametostat opener moved to the drug's own first use in the CRPC cell-line system: Taplin ASCO GU 2018 TPS398 (https://www.asco.org/abstracts-presentations/157177)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "2012 -> 2017; tazemetostat opener moved to the drug's own first use in the CRPC model: Ku 2017 EPZ6438 (doi 10.1126/science.aah4199)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "2012 -> 2017; tazemetostat opener moved to the drug's own first use in the CRPC model: Ku 2017 EPZ6438 (doi 10.1126/science.aah4199)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "2026 -> 2024; pairing: patient side first public at ESMO 2024 abstract 1603P (doi 10.1016/j.annonc.2024.08.1684; rPFS 16.6 vs 13.8 months, p=0.37), before the 2026 registry posting; model side Ku 2017; status contra and retrodiction false unchanged"
+  }
+ ]
+}

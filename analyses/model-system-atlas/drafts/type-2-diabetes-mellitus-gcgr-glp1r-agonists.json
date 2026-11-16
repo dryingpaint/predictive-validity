@@ -18,10 +18,10 @@
   "cells": {
     "engagement": [
       {
-        "year": 2009,
+        "year": 2017,
         "status": "untested",
         "model": "Diet-induced obese (DIO) C57BL/6 mouse",
-        "note": "Merck's DualAG beat a potency-matched GLP-1R agonist on weight in DIO mice; knockouts showed both receptors are needed. No patient comparison yet. Opener of the SAR425899 track (proxy peptide); the cotadutide track's own DIO-mouse result is Henderson 2016.",
+        "note": "Merck's DualAG beat a potency-matched GLP-1R agonist on weight in DIO mice; knockouts showed both receptors are needed. No patient comparison yet. Opener of the SAR425899 track (proxy peptide); the cotadutide track's own DIO-mouse result is Henderson 2016. Track opens at SAR425899's own first DIO-mouse use: Evers 2017 (J Med Chem, doi:10.1021/acs.jmedchem.7b00174, online 2017-05-05), Sanofi's exendin-based dual-agonist series, which cut body weight in DIO mice; the system's 2009 year stays in model_first_use_year.",
         "short": "Dual agonism needs both receptors in DIO mice",
         "src": "https://doi.org/10.2337/db09-0278",
         "srcLabel": "Pocai 2009",
@@ -376,10 +376,10 @@
     ],
     "dose": [
       {
-        "year": 2009,
+        "year": 2017,
         "status": "untested",
         "model": "Diet-induced obese (DIO) C57BL/6 mouse",
-        "note": "Weekly PEGylated co-agonist normalised adiposity and glucose tolerance in DIO mice; the paper states the effective dose had no overt adverse effects.",
+        "note": "Weekly PEGylated co-agonist normalised adiposity and glucose tolerance in DIO mice; the paper states the effective dose had no overt adverse effects. Track opens at SAR425899's own first DIO-mouse use: Evers 2017 (J Med Chem, doi:10.1021/acs.jmedchem.7b00174, online 2017-05-05), Sanofi's exendin-based dual-agonist series, which cut body weight in DIO mice; the system's 2009 year stays in model_first_use_year.",
         "short": "Effective mouse dose called free of adverse effects",
         "src": "https://doi.org/10.1038/nchembio.209",
         "srcLabel": "Day 2009",
@@ -458,10 +458,10 @@
     ],
     "efficacy": [
       {
-        "year": 2009,
+        "year": 2016,
         "status": "untested",
         "model": "Diet-induced obese (DIO) C57BL/6 mouse",
-        "note": "In DIO mice the dual agonist beat a potency-matched GLP-1R agonist on weight with equal glucose lowering; this is the class's prediction for patients. Opener of the cotadutide track, DualAG as proxy.",
+        "note": "In DIO mice the dual agonist beat a potency-matched GLP-1R agonist on weight with equal glucose lowering; this is the class's prediction for patients. Opener of the cotadutide track, DualAG as proxy. Track opens at cotadutide's own first DIO-mouse use: Henderson 2016 (Diabetes Obes Metab, doi:10.1111/dom.12735, online 2016-08-15); the system's 2009 year stays in model_first_use_year.",
         "short": "More weight loss than GLP-1R alone in mice",
         "src": "https://doi.org/10.2337/db09-0278",
         "srcLabel": "Pocai 2009",
@@ -1095,10 +1095,10 @@
     ],
     "safety": [
       {
-        "year": 2009,
+        "year": 2017,
         "status": "untested",
         "model": "Diet-induced obese (DIO) C57BL/6 mouse",
-        "note": "Mouse papers report no overt adverse effects. Patients showed GI intolerance (not mouse-visible) and MK-8521 raised heart rate 7 bpm vs placebo; no source compares. Ruling: the passing claim of no overt adverse effects is a safety prediction of the model, scored on the SAR425899 track (appended entry).",
+        "note": "Mouse papers report no overt adverse effects. Patients showed GI intolerance (not mouse-visible) and MK-8521 raised heart rate 7 bpm vs placebo; no source compares. Ruling: the passing claim of no overt adverse effects is a safety prediction of the model, scored on the SAR425899 track (appended entry). Track opens at SAR425899's own first DIO-mouse use: Evers 2017 (J Med Chem, doi:10.1021/acs.jmedchem.7b00174, online 2017-05-05), Sanofi's exendin-based dual-agonist series, which cut body weight in DIO mice; the system's 2009 year stays in model_first_use_year.",
         "short": "No model-patient safety comparison found",
         "src": "https://doi.org/10.1038/nchembio.209",
         "srcLabel": "Day 2009",

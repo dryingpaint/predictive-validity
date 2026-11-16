@@ -21,9 +21,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "engagement definition (healthy volunteers count); retrodiction rule",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Takano 2016 (PMID 27423256) abstract: quote verbatim; oral TAK-063, healthy men, dose-dependent putamen occupancy. Same 2016 on balipodect oral track; no earlier human PDE10A readout found, so prospective."
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date; paired year is the later side); retrodiction rule (engagement: any same-target patient result)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "NCT02370602 results first posted 2015-03-20 (putamen PDE10A occupancy primary); Suzuki epub 2014-12-18; Takano epub 2016-07-15. Year 2015 confirmed; same, prospective: no human PDE10A occupancy registry results or papers found before 2014-12-18."
   },
   {
    "cell": "dose",

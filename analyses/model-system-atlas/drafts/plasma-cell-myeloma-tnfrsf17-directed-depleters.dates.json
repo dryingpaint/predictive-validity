@@ -1,0 +1,15 @@
+{
+  "tile": "plasma-cell-myeloma-tnfrsf17-directed-depleters",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2016 -> 2015; status same and retrodiction false unchanged. Patient side first public at ASH 2015 LBA-1 (Ali et al., Blood 126(23):LBA-1, 2015-12-03: marrow plasma cells 90% -> 0% after CAR-BCMA); model side Carpenter 2013."
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "what": "2017 -> 2018; status same and retrodiction false unchanged. ASH 2017 abstract 740 had no response-by-BCMA split; the 100% vs 91% split was first public at ASCO 2018 (Raje, abstract 8007, presented 2018-06-01; ASH Clinical News July 2018, https://ashpublications.org/ashclinicalnews/news/3893/bb2121-Is-CAR-T-Cell-Therapy-Moving-to-Myeloma). Model side Chekmasova ASH 2015."
+    }
+  ]
+}

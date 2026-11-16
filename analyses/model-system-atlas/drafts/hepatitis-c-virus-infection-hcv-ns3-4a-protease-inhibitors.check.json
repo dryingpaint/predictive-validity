@@ -71,8 +71,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Olysio label 13.2 quote verbatim (2 of 6 dogs, 28x AUC). Untested 2013; simeprevir, oral, unselected right."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use in the model; proxy allowed)",
+   "note": "NCT00938899 (TMC435350 FIH) registry start 2007-01 confirmed; GLP tox precedes FIH, so 2007 opener proxy holds and matches model_first_use_year. Untested unchanged; no patient comparison, so not a retrodiction."
   },
   {
    "cell": "safety",

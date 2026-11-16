@@ -1,0 +1,25 @@
+{
+  "tile": "breast-cancer-cdk4-6-inhibitors",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2016 -> 2014; pairing: later of model side Tate CCR epub 2014-05-21 (doi 10.1158/1078-0432.CCR-13-2846) and patient side Shapiro ASCO 2013 abstract 2500 (skin pRb inhibition, doi 10.1200/jco.2013.31.15_suppl.2500); status unchanged"
+    },
+    {
+      "cell": "dose",
+      "index": 4,
+      "what": "2019 -> 2016; pairing: later of model side Raub DMD 2015 and patient side ASCO 2016 abstract 526 (doi 10.1200/JCO.2016.34.15_suppl.526, resected brain-metastasis abemaciclib concentrations); status unchanged, not a retrodiction"
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "what": "2014 -> 2012; pairing: later of model side Finn 2009 (Breast Cancer Res) and patient side PALOMA-1 primary PFS at SABCS 2012 abstract S1-6; status unchanged"
+    },
+    {
+      "cell": "safety",
+      "index": 9,
+      "what": "2011 -> 2010; opener: ribociclib's own first use of dog CV safety pharmacology, proxied by its IND date 2010-07-27 (FDA 209092 Multidiscipline review), not first-in-human 2011"
+    }
+  ]
+}

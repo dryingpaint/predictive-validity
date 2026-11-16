@@ -122,14 +122,15 @@
    "index": 5,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "Checker 3: a dose ceiling (margin_stated) where no model source stated the margin; a target the model never stated (an MTD) does not score on the model's track",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Le 2021 abstract verbatim (76.7% reductions, RDI 71.5%); poziotinib oral, HER2 exon 20 biomarker_selected right. The 'margin' in Robichaux 2018 is human phase 1/2 tolerability (refs 37-40), not a model statement; no model source stated it.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Checker 3 / dose table: Robichaux 2018 attributes '16 mg/day tolerable' to phase 1/2 patients, not the model, so no model-stated margin failed; the IC50-based exposure target was not measured in ZENITH20-2."
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2018,
+   "rule": "DRAFTER_BRIEF retrodiction (dose: same drug's own earlier patient result) and rule 6 (later side public)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2018 holds (Nat Med online 2018-04-23; WCLC OA02.06 Sept 2018). But WCLC Oct 2017 (ASCO Post 2017-10-20): 6/11 poziotinib 16 mg patients dose-reduced, before the model: retrodiction true; contra stands as non-reproduction.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Retrodiction rule (dose: same drug's earlier patient result): the model paper post-dates poziotinib's own phase 1/2 dose reductions, so retrodiction; its 16 mg/day tolerability claim did not reproduce them: contra, year 2018."
   },
   {
    "cell": "dose",
@@ -349,13 +350,17 @@
   {
    "cell": "safety",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Zhou 2020 abstract verbatim (grade 3 diarrhoea 20%), HER2-mutant NSCLC on oral pyrotinib; mice can show diarrhoea and the model was silent: contra 2020 holds."
+   "proposed_status": "contra",
+   "proposed_year": 2019,
+   "rule": "DRAFTER_BRIEF retrodiction (safety: same drug's own earlier patient result) and rule 6",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Gao ASCO 2019 abstract 9089 (JCO 37:15_suppl, 2019-05-20) reports grade 3 diarrhoea 20.0%: year 2019 confirmed. Pyrotinib's breast phase 1 diarrhoea DLT (Ma 2017) predates mdy542, so retrodiction true; contra stands.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Retrodiction rule (safety: same drug's earlier patient result): Ma 2017 breast phase 1 diarrhoea DLT predates mdy542, so retrodiction; the silent PDX did not reproduce it: contra, year 2019 (rule 6)."
   },
   {
    "cell": "safety",

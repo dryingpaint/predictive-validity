@@ -29,10 +29,11 @@
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Schuster 2017 quote verbatim; trial mixed DLBCL/FL, coded stage_or_line; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; same stands."
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date (congress abstract, press release)",
+   "note": "Schuster ASH 2014 abstract (Blood 124:3087, 6 Dec 2014; 16 DLBCL/7 FL): 'In vivo expansion of CTL019 cells was brisk'. Year 2014 confirmed; mouse 2009 precedes any CD19 CAR patient result, not a retrodiction; same stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -59,25 +60,26 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Zammarchi 2018 quote verbatim; drug, route iv and population_group stage_or_line (R/R DLBCL) match the patients compared; untested opener stands."
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date (congress abstract, press release)",
+   "note": "AACR 2017 poster (Cancer Res 77:13 Suppl abstr 51): 'clinically well tolerated in a repeat dose cynomolgus monkey study at 0.6 mg/kg'. Opener 2017 confirmed; model_first_use_year should also read 2017, not 2018.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
    "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": false,
    "proposed_status": "untested",
-   "proposed_year": 2019,
-   "rule": "dose: margin_stated only where a model source stated the margin before the trial; an MTD or no-MTD is not a model target (untested_reason no_prediction)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Fields fine. Zammarchi 2018 states 'excellent tolerability', no margin vs a human effective exposure, and appeared after phase 1 began; the ~3x AUC is the 2021 FDA review's arithmetic. Entry also carries untested_reason no_prediction with status same.",
+   "proposed_year": 2017,
+   "rule": "dose: margin_stated only where a model source stated the margin before the trial; no-MTD is not a model target (untested_reason no_prediction); rule 6 for year",
+   "note": "Year 2017 confirmed: AACR Apr 2017 poster (monkey 0.6 mg/kg tolerated) precedes ICML Jun 2017 (ASCO Post 21 Jun: MTD 'not yet reached'); no earlier patient data, not retro. Poster states no human margin, so untested.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "untested",
-   "adjudication_note": "Dose table row 1: monkey HNSTD only set the 1/6 start dose; the ~3x AUC margin is the 2021 FDA review's post-trial arithmetic at the MRHD, not a model-stated margin. untested, untested_reason no_prediction (already set)."
+   "adjudication_note": "Dose table row 1 and rule 5: Zammarchi/AACR 2017 state only 'excellent tolerability' in monkey, no human exposure or margin; the 3x AUC margin is FDA-review arithmetic post-trial. Untested, no_prediction."
   },
   {
    "cell": "dose",
@@ -134,10 +136,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Coiffier 2016 quote verbatim; single-arm with pre-set bar (reject ORR<=40%) not met: contra; combination_with rituximab, design note, model_src Al-Katib 2009 correct. Track misses the 2014 STARLYTE monotherapy same before it (see missing)."
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date (congress abstract, press release)",
+   "note": "Coiffier ASH 2013 abstract (Blood 122:4395, 15 Nov 2013): per-protocol ORR 31.1% (80% CI 22.0-41.6%), 'moderate ORR'. Year 2013 confirmed; the <=40% bar is not in the abstract or registry, first stated 2016; contra stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -162,32 +165,24 @@
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2017,
-   "rule": "Evidence rule 6: year is the earliest public date, incl. sponsor press release or congress abstract",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote verbatim; single-arm note, tisagenlecleucel/iv/stage_or_line fine; same stands. JULIET primary ORR first public in Novartis release 2017-06-07 (interim 3-month ORR 45%, CR 37%), before NEJM 2018.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Evidence rule 6: JULIET ORR first public in 2017 Novartis releases (interim ORR 45%, CR 37%; primary analysis ASH 2017), before NEJM 2018. same, year 2017."
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date (congress abstract, press release)",
+   "note": "Novartis release 7 Jun 2017: JULIET interim 3-month ORR 45% (23/51), CR 37%, primary objective met at interim. Year 2017 confirmed; mouse 2009 precedes, not retro; same stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2020,
-   "rule": "Evidence rule 6: year is the earliest public date, incl. sponsor press release or congress abstract",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Retro confirmed: Kochenderfer JCO epub 2014-08-25 anti-CD19 CAR T CRs in refractory DLBCL precede the 2018 xenografts. LOTIS-2 data shown at EHA June 2020; ORR 48.3% in ADC Therapeutics release 2020-11-20, before Lancet Oncol 2021.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Evidence rule 6: LOTIS-2 48.3% ORR public in 2020 (EHA June 2020; ADC Therapeutics release 2020-12-07, ASH 2020), before Lancet Oncol 2021. retro stands, year 2020."
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date (congress abstract, press release)",
+   "note": "LOTIS-2 ORR 48.3% (70/145), CR 24.1% presented at EHA (11-21 Jun 2020; ADC Therapeutics release 11 Jun 2020). Year 2020 confirmed; xenografts post-date Kochenderfer 2014 CAR T CRs, retro stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -297,17 +292,13 @@
   {
    "cell": "safety",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2014,
-   "rule": "Evidence rule 6: year is the earliest public date, incl. congress abstract",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Coiffier 2016 quote verbatim, same holds, but DLBCL-only safety was public earlier: STARLYTE monotherapy (NCT01472887; ASCO 2014 abstract 8506, presented 2014-06-01; Trneny 2018 Haematologica 10.3324/haematol.2017.168401): 'monotherapy was well tolerated'. Re-date and re-source; combination_with null. Modality 'ADC' missing.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Evidence rule 6: STARLYTE monotherapy in R/R DLBCL, ASCO 2014 abstract 8506 (JCO 32:15_suppl), 'acceptable safety profile', precedes Coiffier 2016. same, year 2014, re-sourced, combination_with null."
+   "rule": "DRAFTER_BRIEF rule 6: year is the earliest public date (congress abstract, press release)",
+   "note": "Coiffier ASH 2013 abstract (Blood 122:4395, Nov 2013): 'No TEAEs led to treatment discontinuation'; 'favorable safety profile'. Year 2013 confirmed, before STARLYTE ASCO 2014; combination_with rituximab correct for this source; same stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

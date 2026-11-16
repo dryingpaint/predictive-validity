@@ -194,9 +194,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "DRAFTER_BRIEF: each track opens untested at first use",
-   "note": "Calama 2024 (PMID 39715989, Exp Dermatol Dec 2024) aim sentence verbatim. Opening untested of the crisaborole track at first use, 2024; system fields (model_first_use_year 2023) match efficacy 10. Not the latest entry, so no untested_reason needed.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model",
+   "note": "PMID 34139195 (Kubota-Ishida, Eur J Pharmacol, epub 2021-06-15) uses crisaborole as comparator in acute and chronic oxazolone dermatitis; PubMed has no earlier crisaborole oxazolone paper (others 2023, 2024). Year 2021, untested opener, holds. Stale: judgement says 2024.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

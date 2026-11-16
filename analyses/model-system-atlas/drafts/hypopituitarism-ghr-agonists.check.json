@@ -26,32 +26,24 @@
   {
    "cell": "engagement",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2012,
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "verbatim",
    "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
-   "note": "Yuen quote verbatim; same, somavaratan sc, GHD adults, unselected correct. Versartis ENDO 2012 release (2012-06-25, firstwordpharma.com/story/1469105): 'IGF-1 was normalized in a dose-dependent manner', after Cleland epub 2012-06-07. Year 2013 -> 2012.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Evidence rule 6: ENDO 2012 release dates the comparison to 2012 (year change only); same in direction holds, both sides agree."
+   "note": "Versartis ENDO 2012 release (biospace, 2012-06-25): 'IGF-1 was normalized in a dose-dependent manner'; Cleland created 2012-06-07. Year 2012, same. Not retro: VRS-317 monkey PD public 2010-10-04 (GRS/IGF release), before PROLOR 2011-08-04."
   },
   {
    "cell": "engagement",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "verbatim",
    "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
-   "note": "Strasburger quote verbatim (epub 2016-12-08); same, somatrogon sc, unselected correct. PROLOR release 2011-08-04 (fiercebiotech) on this adult phase 2: all cohorts 'achieved average IGF-1 levels that were within the normal range on 100% of the days'. Year 2016 -> 2011.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Evidence rule 6: PROLOR 2011 adult phase 2 release dates it earlier (year only); rat model (2010) still precedes it, so same, not retro."
+   "note": "PROLOR release 2011-08-04 (biospace mirror): all cohorts 'within the normal range on 100% of the days'. Fares rat data online 2010-07-21 (Crossref), so prospective: same, year 2011 confirmed."
   },
   {
    "cell": "dose",
@@ -76,32 +68,24 @@
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2012,
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "verbatim",
    "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
-   "note": "Yuen quote verbatim; same within_2x, somavaratan sc, unselected correct. ENDO 2012 release (2012-06-25) already reported mean IGF-1 SDS above -1.5 for up to 3 weeks after 0.80 mg/kg, after Cleland epub 2012-06-07. Year 2013 -> 2012.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Evidence rule 6: ENDO 2012 release dates it (year only); IGF-1 target reached within 2x, dose same holds."
+   "note": "Versartis ENDO 2012 release (2012-06-25): 'mean sustained IGF-1 SDS above -1.5 for up to 3 weeks after a single 0.80 mg/kg VRS-317 dose'. Model (Cleland 2012-06-07) precedes. Same, year 2012 confirmed."
   },
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "near",
    "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
-   "note": "Moore abstract quote verbatim (epub 2015-12-16); contra on the IGF-1 target holds. ESPE 2014 abstract (2014-08-28, hrp0082p1-d3-171): phase 2a doses 'equivalent to daily rhGH of ~30 μg rhGH/kg per day' kept IGF-1 in range, ~3.5x monkey's 8.7. Year 2015 -> 2014.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Evidence rule 6: ESPE 2014 abstract dates it (year only); children needed ~3.5x the monkey-stated IGF-1 potency dose, dose contra (target too low) holds."
+   "note": "ESPE 2014 abstract hrp0082p1-d3-171: phase 2a doses 'equivalent to daily rhGH of approximately 30 ug/kg per day' kept IGF-1 in therapeutic range, ~3.5x monkey-stated 8.7 ug/kg/day. Contra, year 2014 confirmed."
   },
   {
    "cell": "efficacy",
@@ -146,17 +130,13 @@
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2012,
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "verbatim",
    "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
-   "note": "Yuen quote verbatim; same correct; drug, route, population_group correct. ENDO 2012 release (2012-06-25): 'no injection site lipoatrophy observed during treatment', after Cleland epub 2012-06-07. Year 2013 -> 2012.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Evidence rule 6: ENDO 2012 release reported no lipoatrophy (year only); predicted absence held, same."
+   "note": "Versartis ENDO 2012 release (2012-06-25): 'no injection site lipoatrophy observed during treatment'. Pig/monkey model (Cleland 2012-06-07) precedes. Same, year 2012 confirmed."
   },
   {
    "cell": "engagement",
@@ -176,17 +156,13 @@
   {
    "cell": "engagement",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / dates",
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2016,
-   "rule": "Retrodiction: post-dating alone makes a model a retrodiction (engagement/efficacy: any earlier same-target patient result); reproduced -> retro, never same",
-   "note": "Strasburger quote verbatim; drug, route, population_group correct. Monkey model first public 2016-01-18, after somatrogon's own adult IGF-1 result (PROLOR 2011-08-04); post-dating alone makes it a retrodiction that reproduced it: same -> retro.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: engagement counts any earlier same-target patient result; monkey data first public 2016-01, after somatrogon 2011 and somavaratan 2012 IGF-1 rises; reproduced, so retro, never same."
+   "rule": "Retrodiction (engagement/efficacy: any earlier same-target patient result); reproduced -> retro, never same",
+   "note": "Monkey paper PubMed epub 2016-01-18 (ACS online 2015-12-29 per Crossref), after PROLOR 2011-08-04 adult IGF-1 result: retrodiction, reproduced, retro. Year 2016 holds via Strasburger (online 2016-12-08)."
   },
   {
    "cell": "dose",
@@ -221,32 +197,24 @@
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / dates",
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2016,
-   "rule": "Retrodiction: post-dating alone makes a model a retrodiction (dose/safety: the same drug's own earlier patient result); reproduced -> retro, never same",
-   "note": "Strasburger quote verbatim; drug, route, population_group correct. Monkey 'well tolerated' claim first public 2016-01-18, after somatrogon's own adult tolerability result (PROLOR 2011-08-04): a reproduced retrodiction, same -> retro.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule (dose/safety): somatrogon's own adult tolerability was public 2011, before the monkey 'well tolerated' claim (2016-01); reproduced, so retro, never same."
+   "rule": "Retrodiction (dose/safety: the same drug's own earlier patient result); reproduced -> retro, never same",
+   "note": "PROLOR release 2011-08-04: 'excellent safety and tolerability in all patients' with somatrogon, before monkey claim (PubMed 2016-01-18; ACS 2015-12-29). Own-drug retrodiction reproduced: retro. Year 2016 via Strasburger (2016-12-08)."
   },
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2015,
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "abstract_only",
    "rule": "Evidence rule 6 (dating: earliest date the comparison was public, press release or congress abstract included)",
-   "note": "Zelinska quote verbatim (PMID 28323965); somatrogon sc, prepubertal GHD, unselected, primary 12-month HV correct. OPKO release 2015-03-03 announced the 12-month HV data (6-month interim 2014-06-23 not the endpoint): year 2017 -> 2015.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Evidence rule 6: OPKO 2015-03-03 12-month HV release dates it (year only); primary growth result in predicted direction, same."
+   "note": "OPKO presented 12-month pediatric phase 2 HV at ENDO 2015 (2015-03-05; release says HV 10.5-12.5 cm, comparable to daily Genotropin). Rat model 2010 precedes. Same, year 2015 confirmed."
   }
  ],
  "missing": [

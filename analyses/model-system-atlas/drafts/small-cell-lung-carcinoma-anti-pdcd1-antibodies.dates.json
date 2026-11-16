@@ -1,0 +1,30 @@
+{
+  "tile": "small-cell-lung-carcinoma-anti-pdcd1-antibodies",
+  "changed": [
+    {
+      "cell": "dose",
+      "index": 2,
+      "what": "2016 -> 2015; ASCO 2015 abstract 7503 (online 2015-05-20) first reported nivolumab 3 mg/kg Q2W alone in relapsed SCLC as tolerable; model side FDA pharm review 2014; status same unchanged"
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "what": "2016 -> 2015; ASCO 2015 abstract 7503 (online 2015-05-20) first reported nivolumab-alone ORR 15 % (6/40, durable) in relapsed SCLC; model side FDA pharm review 2014; status same unchanged"
+    },
+    {
+      "cell": "safety",
+      "index": 4,
+      "what": "2018 -> 2015; ASCO 2015 abstract 7503 (online 2015-05-20) first reported drug-related pneumonitis in a nivolumab-alone SCLC patient; model side FDA pharm review 2014; status contra unchanged"
+    },
+    {
+      "cell": "safety",
+      "index": 7,
+      "what": "2018 -> 2015; ASCO 2015 abstract 7503 (online 2015-05-20) first reported drug-related pneumonitis in a nivolumab-alone SCLC patient; model side Nishimura 1999; status same unchanged"
+    },
+    {
+      "cell": "efficacy",
+      "index": 12,
+      "what": "2023 -> 2019; toripalimab's own first use of the hPD-1 knock-in MC38 model is Liu 2019 (mAbs 11:681, PMID 30892132, epub 2019-04-19, Fig 1: 0.3-10 mg/kg in human PD-1 knock-in C57BL/6 mice), not the 2023 FDA review; status untested unchanged"
+    }
+  ]
+}

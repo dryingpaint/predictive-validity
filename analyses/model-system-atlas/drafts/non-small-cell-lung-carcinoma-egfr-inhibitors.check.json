@@ -51,11 +51,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "Track = one model_id x drug x route",
-   "note": "Janne 2015 (PMID 25923549) abstract quote verbatim; AURA ORR primary, oral osimertinib, T790M-selected. EXCLAIM-2 removed from patient_trials and scored on mobocertinib's own track (efficacy 7). AURA3 patient_trial unchanged.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date; paired year is the later side",
+   "note": "Year 2014 confirmed: ASCO 2014 abstract 8009 (doi 10.1200/jco.2014.32.15_suppl.8009) and AZ release 14 May 2014 give T790M+ ORR 64% vs 23% T790M-negative; model side public earlier (2013 abstract, Cross 2014). Prospective; same stands."
   },
   {
    "cell": "safety",
@@ -93,11 +93,11 @@
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "Retrodiction (dose: only the same drug's earlier patient result)",
-   "note": "Varrone 2019 (PMID 31006308, epub 2019-04) quote verbatim. Intravenous [11C]osimertinib microdose in healthy volunteers: route iv, population_group unselected, subjects healthy_volunteers match. Same, prospective under the same-drug dose rule.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date; paired year is the later side",
+   "note": "Year 2018 confirmed: AACR 2018 abstract CT013 (Cancer Res 78(13 Suppl), April 2018) carries the quote verbatim, before Varrone 2019. Model side earlier (Ballard ESMO 2014 abstract, CCR epub 2016-07-19). Same-drug dose rule: prospective; same stands."
   },
   {
    "cell": "efficacy",
@@ -112,13 +112,17 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Retrodiction (efficacy is a target claim; any EGFR inhibitor's earlier patient result counts)",
-   "note": "BLOOM (PMID 31809241) quote and LM ORR 62% verbatim; single-arm ruling in note. Park 2012 (PMID 22677429, entrez 2012-06) abstract: gefitinib/erlotinib brain-metastasis PR 83%, before the 2016 model, so retro right. Oral osimertinib.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "retro",
+   "proposed_year": 2015,
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6: earliest public date; paired year is the later side",
+   "note": "Both sides public in 2015: BLOOM osimertinib LM activity at AACR-NCI-EORTC Nov 2015 (abstract PR07, doi 10.1158/1535-7163.TARG-15-PR07; 6/11 imaging improvement); PC9 brain-met model at ESMO 2014 (doi 10.1093/annonc/mdu331.16). Year 2015, not 2016. Retro stands (Park 2012).",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6: paired year is the later side; ESMO 2014 PC9 brain-met abstract and AACR-NCI-EORTC Nov 2015 BLOOM LM abstract (PR07) both verified, so year 2015. Status retro stands: Park 2012 precedes the model."
   },
   {
    "cell": "efficacy",

@@ -48,14 +48,14 @@
    "index": 2,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "Dose: a target scores only on the model that stated it; a sponsor trough is not one (dose table row 1)",
-   "note": "Santagostino 2016 trough quote verbatim, but Nolte 2012 states no human regimen, exposure or trough target ('Clinical studies will test...'). The 20/12 IU/dL troughs are the sponsor's: untested, untested_reason no_prediction. Drug/route/population correct.",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "Evidence rule 6 (dating); dose table row 1: a target scores only on the model that stated it, a sponsor trough is not one",
+   "note": "Year 2015 confirmed: CSL release 24 Jun 2015 (OR347) reports 14-day 75 IU/kg prophylaxis, AsBR 0.00 (weekly trough not in release). Status still unsupported: Nolte 2012 states no human regimen or trough; untested, no_prediction.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "untested",
-   "adjudication_note": "Dose rule (table row 1; sponsor trough not a model target): Nolte 2012 abstract states only prolonged dog/monkey PK and 'Clinical studies will test'; no human regimen or trough. untested, no_prediction."
+   "adjudication_note": "Dose table row 1: Nolte 2012 dogs state no human regimen, exposure or trough target; CSL's patient trough is a sponsor figure, not the model's. Untested, untested_reason no_prediction (rule 5)."
   },
   {
    "cell": "dose",
@@ -72,14 +72,14 @@
    "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "Dose: a target scores only if the model stated it; not the drafter's arithmetic",
-   "note": "George 2017 FIX 33.7% quote verbatim. Crudele states dog FIX 25-40% at 1-3e12 vg/kg AAV8, no human dose or exposure target; matching ranges is drafter arithmetic: untested (no_prediction). If kept same, year 2016 (ASH 2016 abstract).",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "Evidence rule 6 (dating); dose table row 1: not the drafter's arithmetic",
+   "note": "Year 2016 confirmed: Spark/Pfizer release 19 May 2016, subject 1 'stabilized at 28% of normal' at 5e11 vg/kg; Crudele epub Jan 2015. Status still unsupported: Crudele states dog FIX 25-40%, no human dose or exposure target; untested, no_prediction.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "untested",
-   "adjudication_note": "Dose rule (table row 1; drafter arithmetic not a target): Crudele 2015 abstract gives dog FIX 25-40% at 1-3e12 vg/kg, no human dose, exposure or margin. untested, no_prediction."
+   "adjudication_note": "Dose table row 1: Crudele 2015 gives dog FIX 25-40% at AAV8 doses, no human dose or exposure target; matching patient FIX is drafter's pairing (engagement). Untested, no_prediction (rule 5)."
   },
   {
    "cell": "efficacy",
@@ -96,10 +96,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "Santagostino 2016 (PMID 26755710) AsBR quote verbatim; primary endpoint. 2009 mouse post-dates decades of FIX replacement efficacy: retro under target-level rule. Drug/route/population correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "Evidence rule 6 (dating: later of both sides); retrodiction rule (target level)",
+   "note": "Year 2015 confirmed: CSL release 24 Jun 2015 (OR347) quotes AsBR 'decreased by 100 percent from a median 15.43 ... to 0.00'; mouse 2009. Retro stands (rFIX licensed 1997). Primary endpoint.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -264,17 +265,13 @@
   {
    "cell": "engagement",
    "index": 9,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2020,
-   "rule": "Evidence rule 6 (dating: congress abstract earliest public)",
-   "note": "Chowdary 2022 abstract quote verbatim; retro right (Nathwani 2011 precedes Dane 2018). Year: B-AMAZE FIX levels first public at ISTH 2020 (Chowdary LB/CO01.1, July 2020, ASH Clinical News). Judgement text still says 'so same'.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule and rule 6: retro stands (Nathwani 2011 precedes Dane 2018). Year 2020: B-AMAZE FIX levels first public at ISTH 2020 (ASH Clinical News, ISTH site); judgement's 'so same' wording is stale."
+   "rule": "Evidence rule 6 (dating: later of both sides, earliest public date); retrodiction rule (target level)",
+   "note": "Year 2019 confirmed: Hemophilia News Today 13 Sep 2019 reports Chowdary's BIC/Inhibitor talk (Genoa, 6-8 Sep 2019), FLT180a FIX 40±5.5% in first two patients; precedes ISTH 2020. Macaques ASH Dec 2018. Retro stands (Nathwani 2011). Judgement still says 'so same'.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

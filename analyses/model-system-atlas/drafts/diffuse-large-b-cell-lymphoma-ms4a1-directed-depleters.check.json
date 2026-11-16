@@ -6,32 +6,22 @@
     {
       "cell": "engagement",
       "index": 1,
-      "verdict": "corrected",
+      "verdict": "confirmed",
       "source_resolves": true,
       "quote_found": "abstract_only",
       "status_supported": true,
-      "proposed_status": "untested",
-      "proposed_year": 2017,
-      "rule": "Evidence rule 6: each cell opens at model_first_use_year with status untested, proxy allowed",
-      "checked_by": "CHECKER_BRIEF / fields",
-      "note": "Engelberts 2020 (PMID 31981978, epub 2020-01-23) quote verbatim in abstract. Drug epcoritamab, route sc, stage_or_line correct. Opener dated 2020 but model_first_use_year 2017: open at 2017.",
-      "adjudicated_status": "untested",
-      "adjudication_note": "Rule 6: cell opens at model_first_use_year (2017) with status untested; status unchanged, only the opener year moves from 2020 to 2017."
+      "checked_by": "CHECKER_BRIEF / dates",
+      "note": "Year 2017, untested: FDA BLA 761324 review lists 14 Aug 2017 pre-IND meeting on the nonclinical package (5-week cyno study); opener precedes 2019 pairing. Engelberts quote verbatim in abstract."
     },
     {
       "cell": "engagement",
       "index": 2,
-      "verdict": "corrected",
+      "verdict": "confirmed",
       "source_resolves": true,
       "quote_found": "abstract_only",
       "status_supported": true,
-      "proposed_status": "retro",
-      "proposed_year": 2020,
-      "rule": "Evidence rule 6: year is the earliest date the comparison was public (congress abstract), even when a later paper is the higher-tier source",
-      "checked_by": "CHECKER_BRIEF / fields",
-      "note": "Hutchings 2021 quote verbatim; retro correct, and epcoritamab's own depletion was public first (Lugtenburg ASH 2019, doi:10.1182/blood-2019-121460, 13 Nov 2019). Both sides public Jan 2020: year 2021 -> 2020, as dose 3. sc, epcoritamab right.",
-      "adjudicated_status": "retro",
-      "adjudication_note": "Retrodiction rule (engagement: any drug, same target and action): rituximab and mosunetuzumab B-cell depletion in patients was public before the monkey data, so retro; year per rule 6 is 2020."
+      "checked_by": "CHECKER_BRIEF / dates",
+      "note": "Year 2019: Lugtenburg ASH 2019 (Blood 134:758, 13 Nov 2019) reports cyno B-cell depletion and complete depletion of circulating B cells in patients. Retro stands (rituximab depletion long known). Hutchings quote verbatim."
     },
     {
       "cell": "dose",
@@ -101,32 +91,22 @@
     {
       "cell": "safety",
       "index": 1,
-      "verdict": "corrected",
+      "verdict": "confirmed",
       "source_resolves": true,
       "quote_found": "abstract_only",
       "status_supported": true,
-      "proposed_status": "untested",
-      "proposed_year": 2017,
-      "rule": "Evidence rule 6: each cell opens at model_first_use_year with status untested, proxy allowed",
-      "checked_by": "CHECKER_BRIEF / fields",
-      "note": "Engelberts 2020 quote verbatim; drug epcoritamab, route sc, modality antibody correct. Opener dated 2020 but model_first_use_year 2017: open at 2017.",
-      "adjudicated_status": "untested",
-      "adjudication_note": "Rule 6: cell opens at model_first_use_year (2017) with status untested; status unchanged, only the opener year moves from 2020 to 2017."
+      "checked_by": "CHECKER_BRIEF / dates",
+      "note": "Year 2017, untested: FDA BLA 761324 review, 14 Aug 2017 pre-IND nonclinical safety package (cyno toxicology); opener precedes 2019 pairing. Engelberts SC-cytokine quote verbatim in abstract."
     },
     {
       "cell": "safety",
       "index": 2,
-      "verdict": "corrected",
+      "verdict": "confirmed",
       "source_resolves": true,
       "quote_found": "abstract_only",
       "status_supported": true,
-      "proposed_status": "retro",
-      "proposed_year": 2020,
-      "rule": "Retrodiction: for dose and safety the same drug's own patient result, public earlier, makes the model a retrodiction; a retrodiction that reproduced the human data is retro, never same",
-      "checked_by": "CHECKER_BRIEF / fields",
-      "note": "Hutchings quote verbatim; ASCO 2020 59% G1-2 fine, but Lugtenburg ASH 2019 (13 Nov 2019) already reported epcoritamab's own CRS: 'all CRS events were non-severe', before Engelberts (23 Jan 2020). Same -> retro, retrodiction true; year 2020.",
-      "adjudicated_status": "same",
-      "adjudication_note": "Retrodiction rule (safety: same drug only): the monkey SC-lowers-cytokines finding was public 29 Nov 2018 (Blood 132 suppl 1:1664, doi:10.1182/blood-2018-99-115957), before epcoritamab CRS (ASH 2019). Prospective: same."
+      "checked_by": "CHECKER_BRIEF / dates",
+      "note": "Year 2019: Lugtenburg ASH 2019 (13 Nov 2019) gives SC cyno cytokine attenuation and 'all CRS events were non-severe' (G1-2); no earlier epcoritamab patient CRS, so same, not retro. Judgement prose still says 2021->2020 (stale)."
     },
     {
       "cell": "safety",

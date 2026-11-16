@@ -11,8 +11,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Dmitrieva 1997 (PMID 9145801) quote verbatim in abstract. Tanezumab IV matches NCT00601484 (200 mcg/kg IV single dose); no IC trial measured an NGF/PD readout: untested, not_measured stands."
+   "rule": "DRAFTER_BRIEF rule 6 (dating; track opens at its own drug's first use, proxy allowed)",
+   "note": "Re-dated 1997->2006 confirmed: no tanezumab use of the cystitis model published; BioSpace release dated 2006-04-07 (Pfizer-Rinat) says RN624 'currently entering Phase II'; NCT00394563 (RN624-CL006) submitted 2006-10-30. Untested stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -21,8 +22,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Dmitrieva 1997 trkA-IgG 1 mg/kg quote verbatim; a fixed rat dose, no human exposure target or margin, so untested/no_prediction. Drug tanezumab, route iv (NCT00601484) correct."
+   "rule": "DRAFTER_BRIEF rule 6 (dating; track opens at its own drug's first use, proxy allowed)",
+   "note": "Re-dated 1997->2006 confirmed: no tanezumab use of the cystitis model published; BioSpace release dated 2006-04-07 (Pfizer-Rinat) says RN624 'currently entering Phase II'; NCT00394563 (RN624-CL006) submitted 2006-10-30. Untested stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -31,8 +33,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Quote verbatim in Dmitrieva 1997 abstract. Opens the chem-cystitis x tanezumab x iv track at first use 1997; product_in_model false (trkA-IgG); drug and route match the IV POC."
+   "rule": "DRAFTER_BRIEF rule 6 (dating; track opens at its own drug's first use, proxy allowed)",
+   "note": "Re-dated 1997->2006 confirmed: no tanezumab use of the cystitis model published; BioSpace release dated 2006-04-07 (Pfizer-Rinat) says RN624 'currently entering Phase II'; NCT00394563 (RN624-CL006) submitted 2006-10-30. Untested stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -41,8 +44,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Evans 2011 (PMID 21420111, epub 2011-03-21) primary week-6 pain quote verbatim; AdCom 2012 confirms primary landmark p=0.0032. NCT00601484 200 mcg/kg IV single dose, results 2021-05-13. Same 2011, tanezumab, iv, unselected confirmed."
+   "rule": "DRAFTER_BRIEF rule 6 (dating; track opens at its own drug's first use, proxy allowed)",
+   "note": "2011->2010 confirmed: Crossref 10.1016/j.juro.2010.02.1246 is AUA abstract 1508 'Tanezumab reduces pain and urgency in IC' (Evans, Moldwin), J Urol 183(4S), April 2010, deposited 2010-03-23. Model 1997 earlier; same, retrodiction false stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -146,8 +150,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Opener for chem-cystitis x fulranumab x sc; Dmitrieva 1997 quote verbatim. NCT01060254: JNJ-42160443 (fulranumab) 9 mg SC q28d; drug and route correct. Untested 1997 stands; listed after later entries of other tracks."
+   "rule": "DRAFTER_BRIEF rule 6 (dating; track opens at its own drug's first use, proxy allowed)",
+   "note": "1997->2009 confirmed: NCT00929188 (JNJ-42160443, cancer pain, EudraCT 2008-007690-21) submitted 2009-06-25 per CT.gov API; no fulranumab use of the cystitis model published. Untested stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -166,8 +171,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Opener for chem-cystitis x ASP6294 x sc; Dmitrieva 1997 quote verbatim. Untested 1997; drug ASP6294, route sc match EU CTR 2016-004138-12."
+   "rule": "DRAFTER_BRIEF rule 6 (dating; track opens at its own drug's first use, proxy allowed)",
+   "note": "1997->2016 confirmed: NCT02681861 (ASP6294 FIH, IV/SC) submitted 2016-01-21 per CT.gov API; its EudraCT 2014-003451-59 is an allocation number, not a public date. No ASP6294 cystitis-model use found. Untested stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

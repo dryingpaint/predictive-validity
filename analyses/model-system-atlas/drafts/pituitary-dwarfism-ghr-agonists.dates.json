@@ -1,0 +1,30 @@
+{
+ "tile": "pituitary-dwarfism-ghr-agonists",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 6,
+   "what": "2020 -> 2018; status retro unchanged; later of model (Juul popPK/PD, online 2018-04-20, PMID 29671202) and patient side (REAL 3 first presented September 2018, Novo Nordisk SHARE investor update No 3 2018)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "2020 -> 2018; status same unchanged, still prospective (model online 2018-04-20 precedes REAL 3 presentation September 2018, Novo Nordisk SHARE investor update No 3 2018)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "2020 -> 2018; status retro unchanged; later of model (Thygesen 2017, epub 2017-05-24) and patient side (REAL 3 first presented September 2018, Novo Nordisk SHARE investor update No 3 2018)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "2015 -> 2014; status retro unchanged; later of model (Cleland 2012) and patient side (VISTA phase 2a 6-month results, ESPE 2014 abstract P1-D3-171, Bright et al.)"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "2015 -> 2014; status same unchanged, still prospective; later of model (Cleland 2012) and patient side (ESPE 2014 abstract P1-D3-171, Bright et al., safety and tolerability of phase 2a)"
+  }
+ ]
+}

@@ -88,9 +88,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "drug 'class' only for a system tied to no drug",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Feagan 2017 resolves (PMID 28411872, epub 2017-04-12); quote verbatim in abstract. IV induction; drug 'class' right for the genetic system. same, primary, 2017 stand."
+   "rule": "6 (dating: congress abstract counts; paired comparison dates to the later side)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Healio 2015-05-20 and DDW 2015 abstract 830 (Sands, May 16-19 2015): MEDI2070 week-8 clinical response 49.2% vs 26.7%. Class track's patient side public 2015; R381Q model 2006 earlier, so same, retrodiction false, 2015 stand."
   },
   {
    "cell": "efficacy",
@@ -99,9 +99,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "track identity (drug, route)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Feagan 2017 quote verbatim in abstract; risankizumab 200/600 mg IV induction, so drug risankizumab, route iv right. same, 2017 stand."
+   "rule": "6 (dating: congress abstract or press release, whichever first)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "news.abbvie.com 2016-05-24: NCT02031276 risankizumab phase 2 remission ~2x placebo, presented DDW 2016 (May 21-24). Risankizumab's first patient result, after 2007 mouse model: same, retrodiction false, 2016 stand."
   },
   {
    "cell": "safety",
@@ -150,17 +150,13 @@
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2021,
-   "rule": "6 (dating: earliest public date, press release counts)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "D'Haens 2022 abstract has the MOTIVATE sentence verbatim; retro, retrodiction, strengthens, drug risankizumab, route iv, stage_or_line hold. Year late: AbbVie releases (May/June 2021) say ADVANCE and MOTIVATE topline results were announced January 2021.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6: status retro agreed by both; year is the earliest public date, and AbbVie's 2021-01-07 press release announced MOTIVATE (and ADVANCE) topline coprimary results, so the entry dates to 2021, not 2022."
+   "rule": "6 (dating: sponsor press release counts); efficacy retrodiction rule",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "news.abbvie.com 2021-01-07: ADVANCE and MOTIVATE met co-primaries; MOTIVATE remission 42%/41% vs 19%. Ex-vivo model (2018) postdates 2015-2017 anti-p19 results: retrodiction true, retro, 2021 stand."
   },
   {
    "cell": "dose",

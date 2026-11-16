@@ -1,0 +1,30 @@
+{
+ "tile": "type-2-diabetes-mellitus-dpp4-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "2016 -> 2015; status retro unchanged. Patient side first public in the PMDA Marizev review 2015-08-18 (P005 trough inhibition), later than the model side Biftu 2014 (epub 2014-04-02)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "2013 -> 2012; retrodiction stays false (both sides public together). PMDA Tenelia review (https://www.pmda.go.jp/files/000153594.pdf, dated 2012-04-05) holds the rat ED50 0.41 mg/kg and the 12-week 10-40 mg patient trials; Fukuda-Tsuru 2012 epub 2012-09-26 is also 2012."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "what": "2016 -> 2015; status unchanged. Patient side first public in the PMDA Marizev review 2015-08-18 (P005), later than the model side Biftu 2014 (epub 2014-04-02)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "2013 -> 2012; status retro unchanged. PMDA Tenelia review (https://www.pmda.go.jp/files/000153594.pdf, dated 2012-04-05) carries the 12-week dose-ranging HbA1c result and the rat data; Fukuda-Tsuru 2012 epub 2012-09-26."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "2015 -> 2014; status retro unchanged. Patient side first public as the Gantz et al. EASD 2012 abstract (Diabetologia 2012;55 Suppl 1; cited in Biftu 2014); model side Biftu 2014, epub 2014-04-02."
+  }
+ ]
+}

@@ -30,8 +30,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Cox 2006 (PMID 17167479) quote verbatim. Opener of genetics x oral funapide at model_first_use_year 2006; NCT01090622 gives XPF-001 as oral capsule, inherited EM. drug/route/population correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use in the model)",
+   "note": "Registry re-read: NCT01090622 (Xenon, XPF-001=funapide, oral, primary/inherited EM) submitted 2010-03-17, first posted 2010-03-22, start 2010-04. Funapide's first IEM use, so 2010 not Cox 2006. Opener without patient result: untested, not retrodiction.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -148,8 +149,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Goldberg 2012 quote verbatim (oral XEN402 400 mg BID). Funapide toxicology not public; opener 2010 = NCT01090622 start 2010-04. untested/unpublished, oral, biomarker_selected correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (earliest public date; track opens at its own drug's first use)",
+   "note": "Registry re-read: NCT00813670 (Xenon, XPF-001 SAD/MAD, healthy volunteers) start 2008-11, first posted 2008-12-23; nonclinical tox preceded it, so 2008. untested/unpublished unchanged. Stale: model_first_use_year 2010 and confidence_note should say 2008.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

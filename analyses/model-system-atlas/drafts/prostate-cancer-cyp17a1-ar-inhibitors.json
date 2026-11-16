@@ -137,10 +137,10 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2015,
+    "year": 2012,
     "status": "retro",
     "model": "LAPC4 androgen-dependent xenografts in SCID mice (galeterone, then VN/124-1)",
-    "note": "PSA fell at least 50% in 11/49 (ARMOR1) and 12/25 (ARMOR2 part 1); authors call the PD changes consistent with AR-signalling inhibition.  Retrodiction rule: CYP17A1 inhibition lowering androgens in patients was public from abiraterone (O'Donnell 2004, doi 10.1038/sj.bjc.6601879) before this model, so a reproduction scores retro.",
+    "note": "PSA fell at least 50% in 11/49 (ARMOR1) and 12/25 (ARMOR2 part 1); authors call the PD changes consistent with AR-signalling inhibition.  Retrodiction rule: CYP17A1 inhibition lowering androgens in patients was public from abiraterone (O'Donnell 2004, doi 10.1038/sj.bjc.6601879) before this model, so a reproduction scores retro. Dated 2012: ARMOR1's 11/49 PSA50 was first public at AACR 2012 (ecancer report, 1 Apr 2012, https://ecancer.org/en/news/2727), the later of that and the model paper.",
     "short": "PSA fell 50% or more in 22-48% of patients",
     "src": "https://doi.org/10.1158/1078-0432.CCR-15-1432",
     "srcLabel": "Montgomery 2016",
@@ -462,10 +462,10 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2018,
+    "year": 2017,
     "status": "contra",
     "model": "VCaP xenografts in mice",
-    "note": "Exposure rose only up to 300 mg twice daily and fell on repeat dosing from 200 mg; PK, not toxicity, stopped ODM-204.",
+    "note": "Exposure rose only up to 300 mg twice daily and fell on repeat dosing from 200 mg; PK, not toxicity, stopped ODM-204. Dated 2017: the VCaP xenograft at 50 mg/kg/day was public at ASCO GU 2015 (doi 10.1200/jco.2015.33.7_suppl.221, 1 Mar 2015) and the falling steady-state exposure at ASCO GU 2017 (J Clin Oncol 35 suppl 6S abstract 246, asco.org abstract 140620), the later of the two.",
     "short": "Exposure plateaued; PK stopped development",
     "src": "https://doi.org/10.1016/j.euf.2018.08.022",
     "srcLabel": "Peltola 2020",
@@ -708,10 +708,10 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2015,
+    "year": 2012,
     "status": "retro",
     "model": "LAPC4 androgen-dependent xenografts in SCID mice (galeterone, then VN/124-1)",
-    "note": "Treatment-naive CRPC: PSA50 22% in ARMOR1 and 48% in ARMOR2 part 1, 55% at 2,550 mg; the class-level activity the xenografts foresaw. Retrodiction rule: CYP17 inhibition with AR blockade lowering PSA in castration-resistant patients was public from ketoconazole and abiraterone (O'Donnell 2004) before the 2005 LAPC4 paper, so retro.",
+    "note": "Treatment-naive CRPC: PSA50 22% in ARMOR1 and 48% in ARMOR2 part 1, 55% at 2,550 mg; the class-level activity the xenografts foresaw. Retrodiction rule: CYP17 inhibition with AR blockade lowering PSA in castration-resistant patients was public from ketoconazole and abiraterone (O'Donnell 2004) before the 2005 LAPC4 paper, so retro. Dated 2012: ARMOR1's 11/49 PSA50 was first public at AACR 2012 (ecancer report, 1 Apr 2012, https://ecancer.org/en/news/2727), the later of that and the model paper.",
     "short": "PSA50 in 48% of naive CRPC",
     "src": "https://doi.org/10.1158/1078-0432.CCR-15-1432",
     "srcLabel": "Montgomery 2016",

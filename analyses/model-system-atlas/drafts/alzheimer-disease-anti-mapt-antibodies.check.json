@@ -283,9 +283,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Shulman 2023 full text (PMC10724064 via NCBI efetch): quote verbatim; all doses P<0.0001 vs placebo, -92.6% high dose; cites Sopko as ref 18. AD-patient CSF readout first public here, after Sopko 2020: same, readout direct.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "rule": "DRAFTER_BRIEF rule 6 (dating)",
+   "note": "Archived Biogen 2021-06-16 TANGO release says 'Target engagement was demonstrated with lowering of N-terminal tau in cerebrospinal fluid'; model side Sopko 2020, so paired year 2021. Status same, not retro, unchanged. confidence_note still dates patient side to 2023 paper.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",

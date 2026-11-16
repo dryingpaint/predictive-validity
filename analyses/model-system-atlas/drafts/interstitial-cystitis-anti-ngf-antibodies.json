@@ -18,11 +18,11 @@
  "cells": {
   "engagement": [
    {
-    "year": 1997,
+    "year": 2006,
     "status": "untested",
     "model": "Chemical cystitis in rats/mice with NGF sequestration",
     "model_id": "chem-cystitis-rodent-ngf-sequestration",
-    "note": "Bladder NGF drove hyper-reflexia in rats and sequestration blocked it; no IC trial reported an NGF or bladder-reflex readout of target engagement.",
+    "note": "Bladder NGF drove hyper-reflexia in rats and sequestration blocked it; no IC trial reported an NGF or bladder-reflex readout of target engagement. Track opener dated to tanezumab's own first-use proxy (no tanezumab use of the cystitis model is published): RN624 'currently entering Phase II' in the Pfizer-Rinat acquisition release, 2006-04-06 (https://www.biospace.com/pfizer-inc-to-acquire-rinat-neuroscience-corporation); first registry record NCT00394563 submitted 2006-10-30. 1997 is the system's year (trkA-IgG).",
     "short": "Rat bladder NGF; no patient PD",
     "src": "https://doi.org/10.1016/s0306-4522(96)00575-1",
     "srcLabel": "Dmitrieva 1997",
@@ -61,11 +61,11 @@
   ],
   "dose": [
    {
-    "year": 1997,
+    "year": 2006,
     "status": "untested",
     "model": "Chemical cystitis in rats/mice with NGF sequestration",
     "model_id": "chem-cystitis-rodent-ngf-sequestration",
-    "note": "trkA-IgG 1 mg/kg set no human exposure target; no source bridges the cystitis models to tanezumab's IC doses (200 µg/kg IV; 1–20 mg SC) or ASP6294's 320 mg SC.",
+    "note": "trkA-IgG 1 mg/kg set no human exposure target; no source bridges the cystitis models to tanezumab's IC doses (200 µg/kg IV; 1–20 mg SC) or ASP6294's 320 mg SC. Track opener dated to tanezumab's own first-use proxy (no tanezumab use of the cystitis model is published): RN624 'currently entering Phase II' in the Pfizer-Rinat acquisition release, 2006-04-06 (https://www.biospace.com/pfizer-inc-to-acquire-rinat-neuroscience-corporation); first registry record NCT00394563 submitted 2006-10-30. 1997 is the system's year (trkA-IgG).",
     "short": "No model exposure target for IC",
     "src": "https://doi.org/10.1016/s0306-4522(96)00575-1",
     "srcLabel": "Dmitrieva 1997",
@@ -105,11 +105,11 @@
   ],
   "efficacy": [
    {
-    "year": 1997,
+    "year": 2006,
     "status": "untested",
     "model": "Chemical cystitis in rats/mice with NGF sequestration",
     "model_id": "chem-cystitis-rodent-ngf-sequestration",
-    "note": "Irritant cystitis in rats: trkA-IgG prevented and partly reversed bladder hyper-reflexia; later CYP-cystitis work with REN1820 agreed.",
+    "note": "Irritant cystitis in rats: trkA-IgG prevented and partly reversed bladder hyper-reflexia; later CYP-cystitis work with REN1820 agreed. Track opener dated to tanezumab's own first-use proxy (no tanezumab use of the cystitis model is published): RN624 'currently entering Phase II' in the Pfizer-Rinat acquisition release, 2006-04-06 (https://www.biospace.com/pfizer-inc-to-acquire-rinat-neuroscience-corporation); first registry record NCT00394563 submitted 2006-10-30. 1997 is the system's year (trkA-IgG).",
     "short": "NGF sequestration calms rat cystitis",
     "src": "https://doi.org/10.1016/s0306-4522(96)00575-1",
     "srcLabel": "Dmitrieva 1997",
@@ -145,11 +145,11 @@
     "combination_with": null
    },
    {
-    "year": 2011,
+    "year": 2010,
     "status": "same",
     "model": "Chemical cystitis in rats/mice with NGF sequestration",
     "model_id": "chem-cystitis-rodent-ngf-sequestration",
-    "note": "A single tanezumab 200 µg/kg IV dose cut average daily IC pain 1.4 points more than placebo at week 6 (n=64), the primary endpoint.",
+    "note": "A single tanezumab 200 µg/kg IV dose cut average daily IC pain 1.4 points more than placebo at week 6 (n=64), the primary endpoint. First public as AUA 2010 abstract 1508, J Urol 183(4S), April 2010 (https://doi.org/10.1016/j.juro.2010.02.1246), before the 2011 paper.",
     "short": "Tanezumab POC cut IC pain 1.4 points",
     "src": "https://doi.org/10.1016/j.juro.2010.12.088",
     "srcLabel": "Evans 2011",
@@ -324,11 +324,11 @@
     "combination_with": null
    },
    {
-    "year": 1997,
+    "year": 2009,
     "status": "untested",
     "model": "Chemical cystitis in rats/mice with NGF sequestration",
     "model_id": "chem-cystitis-rodent-ngf-sequestration",
-    "note": "Track opener: NGF-sequestration cystitis model (1997), later paired with fulranumab SC in IC/BPS.",
+    "note": "Track opener: NGF-sequestration cystitis model (1997), later paired with fulranumab SC in IC/BPS. Opener dated to fulranumab's own first-use proxy: earliest registry record NCT00929188 (JNJ-42160443), submitted 2009-06-25; Amgen's AMG 403 Phase 1 studies (Gow 2015) carry no earlier public date found.",
     "short": "Opener for fulranumab SC",
     "src": "https://doi.org/10.1016/s0306-4522(96)00575-1",
     "srcLabel": "Dmitrieva 1997",
@@ -406,11 +406,11 @@
     "combination_with": null
    },
    {
-    "year": 1997,
+    "year": 2016,
     "status": "untested",
     "model": "Chemical cystitis in rats/mice with NGF sequestration",
     "model_id": "chem-cystitis-rodent-ngf-sequestration",
-    "note": "Track opener: NGF-sequestration cystitis model (1997), later paired with ASP6294 SC in IC/BPS.",
+    "note": "Track opener: NGF-sequestration cystitis model (1997), later paired with ASP6294 SC in IC/BPS. Opener dated to ASP6294's own first-use proxy: first-in-human registration NCT02681861, submitted 2016-01-21.",
     "short": "Opener for ASP6294 SC",
     "src": "https://doi.org/10.1016/s0306-4522(96)00575-1",
     "srcLabel": "Dmitrieva 1997",

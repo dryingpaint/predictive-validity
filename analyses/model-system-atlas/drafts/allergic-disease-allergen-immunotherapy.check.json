@@ -131,7 +131,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "As engagement 2; untested opener holds."
+   "rule": "5, 6",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "NCT01383590 first posted 2011-06-28, start 2011-10, hasResults false; year 2011 holds. Efficacy 7 now a retrodiction, so this opener is the NAC track's last prospective entry; no NAC readout public before 2016-06-20: untested_reason unpublished fits."
   },
   {
    "cell": "efficacy",
@@ -158,20 +160,20 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "note": "NCT01620762 results (posted 2018-05-14) re-read via API: Combined Score 1.04 / 1.00 / 1.05, SE 0.068 each, n 467/470/470; quote is a faithful transcription of the outcome table. Strengthens entry holds."
+   "rule": "6",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Model side Patel JACI 2012 (10.1016/j.jaci.2012.07.028, print 2013-01). Patient side Circassia top-line release 2016-06-20 precedes NCT01620762 results posted 2018-05-14; later side is 2016: year 2016, contra, retrodiction false hold."
   },
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "near",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "4",
-   "note": "Ellis 2018 full text read: open-label, no placebo arm, authors write 'no firm conclusions of efficacy can be drawn'. An uncontrolled pre/post TNSS drop is not a prediction that Cat-PAD beats placebo, which is what the field tested; NAC made no admissible prediction, so untested, not contra.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 (#35/#72), decision 8 (untested = model exists, not compared): open-label NAC with no placebo arm predicted only a pre/post TNSS fall, which Cat-PAD field arms reproduced (-58%); the failure is the placebo response the NAC never tested."
+   "status_supported": true,
+   "rule": "6; retrodiction",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Ellis 2018 Crossref online 2018-04-12; Europe PMC shows no earlier NAC/Cat-PAD abstract; NCT01383590 no results. Post-dates 2016-06-20 null: retrodiction true, year 2018, contra. Drafter: drop untested_reason, fix 'Not a retrodiction' judgement."
   },
   {
    "cell": "safety",

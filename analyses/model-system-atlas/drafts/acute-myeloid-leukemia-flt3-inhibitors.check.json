@@ -11,8 +11,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Zarrinkar 2009 (PMID 19654408, epub 2009-08-04) quote verbatim; AC220 dosed orally, drug quizartinib/route oral right; untested opener fine. retrodiction should be true: lestaurtinib patient FLT3 inhibition public 2004 (Smith 2004 Blood, PMID 14726387)."
+   "note": "ASH 2007 abstract (Blood 110(11):1597, 2007-11-16) confirmed: MV4;11 xenograft regression at 3 mg/kg; 2007 right. retrodiction should be true (lestaurtinib FLT3 inhibition, Smith 2004); model_first_use_year 2009 disagrees with 2007 opener.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -22,12 +22,12 @@
    "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "retro",
-   "proposed_year": 2013,
+   "proposed_year": 2008,
    "rule": "DRAFTER_BRIEF 'What the model is': for engagement and efficacy a model result first public after a patient result for the same target and action, member or not, is a retrodiction; post-dating alone makes it one; reproduced = retro",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Cortes 2013 (PMID 24002496) PIA quote verbatim; quizartinib oral, FLT3-unselected phase 1 so stage_or_line right. The 2009 model post-dates lestaurtinib patients' sustained FLT3 inhibition (Smith 2004, PMID 14726387), so it reproduced a known result: retro.",
+   "note": "Year 2008 confirmed: ASH 2008 abstract 767 (2008-11-16) reports pFLT3 strongly suppressed by patient plasma at 12 mg. Moving the model to 2007 still post-dates lestaurtinib patient FLT3 inhibition (Smith 2004): retro, not same.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "'What the model is' retrodiction rule: engagement is a target claim; the 2009 PIA/xenograft readout post-dates lestaurtinib patients' FLT3 inhibition (Smith 2004, epub 2004-01-15). Post-dating alone makes it a retrodiction; reproduced, so retro."
+   "adjudication_note": "'What the model is': engagement is a target claim, any drug counts. Lestaurtinib patient FLT3 inhibition by plasma inhibitory assay (Smith 2004, PMID 14726387, 2004-01) predates the 2007 model; post-dating alone makes it retro."
   },
   {
    "cell": "dose",
@@ -36,18 +36,23 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Zarrinkar 2009 quote verbatim ('given orally once daily'); quizartinib, oral; untested opener correct. Dose is drug-specific, so lestaurtinib does not make it a retrodiction."
+   "note": "2007 opener confirmed (Blood 110(11):1597). But that abstract already gives phase 1 AML plasma at 12 mg ~2x MV4;11 IC50, so 'no patient exposure yet' is wrong; see dose 2. Not a retrodiction: simultaneous, not earlier.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Cortes 2013 quote verbatim; quizartinib oral, phase 1 R/R FLT3-unselected stage_or_line right. Target is the cell-model FLT3 inhibition read by PIA, reached below MTD; margin_stated false fits abstract. Not checked: any pre-Aug-2009 quizartinib congress data."
+   "proposed_status": "same",
+   "proposed_year": 2007,
+   "rule": "DRAFTER_BRIEF evidence rule 6: year is the earliest date the comparison was public",
+   "note": "ASH 2008 abstract 767 confirmed, but ASH 2007 abstract 1597 (2007-11-16) already states phase 1 AML steady-state plasma at 12 mg is ~twofold above MV4;11 IC50: target exposure reached, stated side by side. Same, 2007.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 and dose table: ASH 2007 abstract 1597 (Blood 110:1597) states 12 mg steady-state plasma ~twofold above MV4;11 IC50, target reached side by side. Same; year 2007 as checker proposes."
   },
   {
    "cell": "efficacy",
@@ -56,8 +61,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Zarrinkar 2009 quote verbatim; quizartinib oral, biomarker_selected; untested opener right. retrodiction should be true (lestaurtinib clinical responses with FLT3 inhibition, Smith 2004 PMID 14726387); status unaffected."
+   "note": "ASH 2007 abstract 1597 (2007-11-16) confirmed as quizartinib's first MV4;11 xenograft use; 2007 right, untested right. retrodiction should be true (lestaurtinib responses, Smith 2004); model_first_use_year 2009 inconsistent.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -67,12 +72,12 @@
    "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "retro",
-   "proposed_year": 2018,
+   "proposed_year": 2011,
    "rule": "DRAFTER_BRIEF 'What the model is': for engagement and efficacy a model result first public after a patient result for the same target and action, member or not, is a retrodiction; post-dating alone makes it one; reproduced = retro",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Cortes 2018 (PMID 29859851, epub 2018-05-31) quote verbatim; single-arm, co-primary CRc/CR, 'highly active' all in abstract; 2018, quizartinib, oral, biomarker_selected right. Model post-dates FLT3-inhibitor patient responses (Smith 2004): retro, not same.",
+   "note": "2011 confirmed: phase 2 interim CRc presented at EHA June 2011 (abstract number and 43% not seen; secondary source gives 45% of 62). 2007 model still post-dates lestaurtinib responses (Smith 2004): retro.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "'What the model is': efficacy is a target claim; lestaurtinib/midostaurin patient responses (Smith 2004) preceded the 2009 model. The rule counts any earlier patient result, transient or not; post-dating alone suffices. Reproduced: retro."
+   "adjudication_note": "'What the model is': efficacy is a target claim; post-dating alone makes a retrodiction. Lestaurtinib clinical responses with FLT3 inhibition (Smith 2004) predate the 2007 model; it reproduced direction: retro, partial."
   },
   {
    "cell": "efficacy",
@@ -111,8 +116,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Smith 2012 (PMID 22504184) quote verbatim; quizartinib oral, FLT3-ITD biomarker_selected; untested opener right. retrodiction should be true (FLT3 patient results from 2004; sorafenib D835 relapse, Man 2012 PMID 22368270, epub 2012-02-24)."
+   "note": "AACR 2011 abstract 4737 (Cancer Res 71(8 Suppl)) confirmed: saturation mutagenesis, Ba/F3, AC220 resistance at F691/D835/Y842; 2011 right, untested opener right. retrodiction should be true (earlier FLT3-inhibitor patient results).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -157,12 +162,12 @@
    "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "retro",
-   "proposed_year": 2019,
+   "proposed_year": 2015,
    "rule": "DRAFTER_BRIEF 'What the model is': for engagement and efficacy a model result first public after a patient result for the same target and action, member or not, is a retrodiction; post-dating alone makes it one; reproduced = retro",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Zhang 2019 (PMID 30651561, epub 2019-01-16) quote verbatim; crenolanib oral, biomarker_selected right. Smith 2014 post-dates FLT3 patient results (Smith 2004; Smith 2012 relapse genotypes), so its match is retro, not same; 'infrequent' gatekeeper also argues partial.",
+   "note": "2015 confirmed: ASH 2015 abstract 2468 (Blood 126(23)) reports 38/44 crenolanib relapses without secondary FLT3 mutations. Smith 2014 post-dates quizartinib relapse genotypes (Smith 2012): retro, source_calls_it partial.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "'What the model is': target claim; Smith 2014 screen post-dates FLT3-inhibitor patient results (Smith 2004; Smith 2012 relapse genotypes), so retrodiction by post-dating alone; Zhang 2019 crenolanib patients matched it: retro."
+   "adjudication_note": "'What the model is': target claim, any drug counts. Quizartinib relapse FLT3 mutations in patients (Smith 2012) preceded the 2014 crenolanib screen; post-dating alone makes it retro, consistent with entry 5. Reproduced: retro, partial."
   }
  ],
  "missing": [

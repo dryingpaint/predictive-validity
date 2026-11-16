@@ -182,12 +182,12 @@
   ],
   "efficacy": [
    {
-    "year": 2010,
+    "year": 2009,
     "status": "untested",
     "model": "PI3K-pathway-activated lines and xenografts (U87MG, IGROV-1; breast lines incl. MCF7, KPL-4)",
     "model_id": "pi3k-driven-breast-xenografts",
     "prediction_level": "class",
-    "note": "Breast lines and xenografts with PIK3CA mutation, HER2 amplification or dual pathway lesions were exquisitely sensitive to GDC-0941; some unaltered models responded too.",
+    "note": "Breast lines and xenografts with PIK3CA mutation, HER2 amplification or dual pathway lesions were exquisitely sensitive to GDC-0941; some unaltered models responded too. Opener year is pictilisib's own first use of this xenograft system, Raynaud 2009 (PMID 19584227, epub 2009-07-07), as in the engagement, dose and safety openers; O'Brien 2010 is the breast-specific source.",
     "short": "PI3K-altered breast models exquisitely sensitive",
     "src": "https://doi.org/10.1158/1078-0432.CCR-09-2828",
     "srcLabel": "O'Brien 2010",
@@ -615,7 +615,8 @@
     "drug": "buparlisib",
     "route": "oral",
     "population_group": "biomarker_selected",
-    "combination_with": "letrozole"
+    "combination_with": "letrozole",
+    "untested_reason": "unsettled"
    },
    {
     "subjects": null,
@@ -859,14 +860,14 @@
     "prediction_level": "class",
     "model_kind": "animal",
     "model_first_use_year": 2009,
-    "year": 2016,
+    "year": 2014,
     "status": "contra",
     "epub_year": 2016,
     "print_year": 2016,
     "src": "https://doi.org/10.1016/S1470-2045(16)00106-6",
     "srcLabel": "Krop 2016",
     "quote": "In part 1, grade 3 or worse adverse events occurred in 54 (61%) of 89 patients in the pictilisib group and 22 (28%) of 79 in the placebo group.",
-    "note": "Mice tolerated the effective pictilisib dose with normal weight gain; in FERGI 61% had grade 3+ events vs 28%, and part 2 cut the dose to 260 mg.",
+    "note": "Mice tolerated the effective pictilisib dose with normal weight gain; in FERGI 61% had grade 3+ events vs 28%, and part 2 cut the dose to 260 mg. Dated to FERGI part 1 at SABCS 2014 (abstract S2-02, reported 2014-12-10 by ASCO Post: grade 3+ rash 17%, diarrhoea 7%, more dose adjustments and discontinuations on the combination), the later side of the pairing (model 2009).",
     "short": "Well tolerated in mice, not in FERGI",
     "confidence": "medium",
     "confidence_note": "Model side: Raynaud 2009 full text (PMC2718129), 'The therapy was well tolerated, and all groups of mice gained weight at similar rates to controls (data not shown).' Data not shown, so medium. FERGI abstract-level reading; whether the SABCS 2014 abstract reported adverse events was not verified, so the year is the 2016 epub.",

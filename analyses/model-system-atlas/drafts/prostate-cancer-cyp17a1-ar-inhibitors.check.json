@@ -39,11 +39,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": null,
-   "note": "Montgomery 2016 (epub 2015-11-02) PD sentence verbatim in abstract. Retro right: O'Donnell 2004 (Br J Cancer, June 2004) abiraterone testosterone suppression predates Handratta (April 2005). Galeterone, oral, castration-resistant stage_or_line match.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "rule 6 (year = later of the two sides' earliest public dates); retrodiction rule",
+   "note": "ARMOR1 11/49 PSA50 first public at AACR 2012 (abstract CT-07, oral 3 Apr 2012; ecancer report 1 Apr 2012); no earlier disclosure found. Model Vasaitis 2008. Year 2012; retro stands (abiraterone 2004 precedes model).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -100,17 +100,13 @@
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2018,
-   "rule": "rule 6 (cell opens at model_first_use_year, proxy allowed)",
-   "note": "Field model_first_use_year: 2018 -> 2015. ClinicalTrials.gov NCT02344017 start 2015-02 (first posted 2015-01-22); Oksala 2018 describes the preclinical package that preceded first-in-human, so the registry start is the proxy. Status and year unchanged. | superseded: confirmed (): Peltola abstract verbatim: AUC rose only to 300 mg, fell on day 8, PK prevents development. Sponsor-stated PK failure with no model-stated human target (rule question 1). NCT02344017 has no results.",
-   "checked_by": "CHECKER_BRIEF / models (gap fix)",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6 proxy: model_first_use_year 2015 (NCT02344017 start). Status contra unchanged; a 2015 untested opener is owed on this dose track."
+   "rule": "rule 6 (year = later of the two sides' earliest public dates); retrodiction rule",
+   "note": "ASCO GU Feb 2017 abstr 246: AUC rose to 300 mg, steady state fell; Orion 2016 investor decks show DUALIDES only 'ongoing', no PK. Model ASCO GU 2015. Year 2017, contra, not retrodiction.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -147,11 +143,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": null,
-   "note": "ARMOR2 PSA50 48% sentence verbatim (Montgomery 2016). Retro holds through ketoconazole: CALGB 9583 (JCO 2004-03-15) reported 27% PSA responses in CRPC before Handratta April 2005; O'Donnell 2004 is hormonal only, so the note should lean on ketoconazole.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "rule 6 (year = later of the two sides' earliest public dates); retrodiction rule",
+   "note": "Patient side AACR 2012 CT-07 (24/49 PSA30, 11/49 PSA50), first public Apr 2012; model 2005 (Handratta). Year 2012 = later side. Retro stands: CYP17/AR PSA responses public 2004 before the model.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

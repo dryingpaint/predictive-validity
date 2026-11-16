@@ -1,0 +1,20 @@
+{
+ "tile": "ovarian-cancer-parp1-2-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2009 -> 2008; status retro unchanged. Patient side public before the model: Kummar phase 0 tumour PAR inhibition at ASCO 2007 and ASCO 2008 abstract 3580 (2008-05-20); model side Kinders 2008 (2008-11), so the later side is 2008."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "what": "2021 -> 2020; status same unchanged. NORA first public as ESMO 2020 LBA29 (Annals of Oncology 2020 supplement, S0923-7534(20)42341-5), ahead of Wu 2021 Ann Oncol; model side Berek 2018."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2016 -> 2015; status retro unchanged. ARIEL2 Part 1 primary-endpoint PFS by BRCA/LOH subgroup first public at ASCO 2015 (McNeish, JCO 33 suppl abstr 5508); model side Drew 2011 (epub 2010-12)."
+  }
+ ]
+}

@@ -37,12 +37,17 @@
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Tran 2017 (PMID 28398597, epub 2017-04-11) quote verbatim; healthy-volunteer PK counts for dose. Same drug's patient result not earlier than the model, so prospective same. Ozanimod, oral."
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2016,
+   "rule": "DRAFTER_BRIEF retrodiction (dose: the same drug's own human result public earlier makes the model a retrodiction); rule 6 dating",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2016 holds (Scott 2016 epub 2016-04-28, later side). But Olson 2013 AAN abstract P01.178 (online 2013-02-12) already reported human ozanimod half-life 'consistent with once daily administration', so rodent PK post-dates it: retro, not same.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (dose: same drug's own human result public earlier). Ozanimod human half-life 19 h was public in Receptos 10-K (FY2013, filed 2014) before rodent PK (Scott 2016); reproduced once-daily: retro. AAN abstract itself gives no half-life."
   },
   {
    "cell": "dose",
@@ -89,10 +94,10 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Tran 2017 abstract quote verbatim: first-dose negative chronotropy contradicts the stated S1P1-selective no-bradycardia prediction; UC label 2021 shows HR fall in UC too, so contra stands. Ozanimod, oral."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Olson 2013 AAN P01.178 (online 2013-02-12; text seen via index snippet, publisher page 403): dose-dependent HR reduction, sinus bradycardia/pauses, Mobitz I AV block in healthy volunteers. Year 2013, contra; S1P3-KO model 2004 prospective."
   },
   {
    "cell": "safety",
@@ -201,8 +206,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Al-Shamma 2019 abstract quote verbatim (PMID 30872391, epub 2019-03-14); no earlier etrasimod colitis paper on PubMed. Etrasimod opener, untested 2019, oral."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "ECCO 2017 DOP078 (J Crohns Colitis 11 suppl 1:S72, Feb 2017) reports etrasimod 3 mg/kg inhibiting weight loss and colon inflammation in T-cell transfer colitis; no earlier etrasimod colitis report found. Opener untested 2017 confirmed."
   },
   {
    "cell": "efficacy",
@@ -211,8 +216,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Sandborn 2020 abstract quote verbatim (PMID 31711921, epub 2019-11-09). Model public 2019-03, after ozanimod's 2014 UC result, same target: retro. Primary endpoint met; etrasimod, oral, unselected UC."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Arena 8-K/press release 2018-03-19: OASIS 2 mg met primary and all secondary endpoints. Model side Feb 2017, so pairing year 2018. Retro stands: ozanimod UC result public 2014-10, before etrasimod's model data."
   }
  ],
  "missing": [

@@ -194,16 +194,13 @@
   {
    "cell": "efficacy",
    "index": 9,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "rule": "DRAFTER_BRIEF retrodiction: for efficacy a model result first public after a patient result for the same target and action, member drug or any other, is a retrodiction; one that reproduced the human data is retro, never same.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Wang 2020 quote verbatim; year 2019 confirmed (Kite release, ASH 2019). KTE-X19 co-culture (2015 proxy) post-dates CD19 CAR lymphoma responses (2010-2015), so a retrodiction: retro, not same. Drug/route/population correct.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: the KTE-X19 co-culture was first public in the 2020 SBRA, after ZUMA-2 (Dec 2019) and earlier CD19 CAR lymphoma responses; post-dating alone makes it a retrodiction that reproduced them: retro."
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF rule 6 (paired comparison dated at the later side) and retrodiction rule (efficacy model first public after a patient result on the same target reproduces it: retro).",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "SBRA (fda.gov/media/141093) dated 23 Jul 2020 states KTE-X19 CD19-dependent co-culture cytotoxicity; PubMed shows no earlier KTE-X19 in vitro report. ZUMA-2 public 9 Dec 2019 (ASH/Kite). Later side 2020; post-dates patient result: retro, retrodiction true."
   }
  ],
  "missing": [

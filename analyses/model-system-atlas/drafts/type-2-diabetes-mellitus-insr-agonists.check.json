@@ -208,13 +208,17 @@
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "7; track fields",
-   "note": "Label lines 769-770 quote verbatim. Opener untested; drug insulin degludec, route sc correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "untested",
+   "proposed_year": 2007,
+   "rule": "6 (dating: a track opens at its own drug's first use in the model; proxy allowed)",
+   "note": "2009 proxy is late: FDA 203313 PharmR (lines 4266-4273) dates degludec's pivotal 52-week rat study 206539 initiation July 3 2007; no chronic dog study listed. Opener 2007 (model_first_use_year likewise); untested/unsettled unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6 (opener at own drug's first use, proxy allowed): FDA PharmR line 4273 dates pivotal rat study 206539 to July 3 2007, so opener 2007; untested/unsettled unchanged."
   },
   {
    "cell": "safety",
@@ -254,15 +258,15 @@
    "index": 6,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "untested",
-   "proposed_year": 2024,
-   "rule": "6 (dating: earliest public date)",
-   "note": "IntegratedR line 5822 quote verbatim; untested/no_prediction and no T1D import right. But T2D hypoglycaemia was public in QWINT-2 NEJM (PMID 39254740, epub 2024-09: no severe hypoglycaemia with efsitora); year 2024, not 2026.",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_year": 2016,
+   "rule": "6 (dating: a track opens at its own drug's first use in the model; proxy allowed)",
+   "note": "Moyers 2022 (epub 2022-07-15) is first publication, not first use: efsitora's STZ-rat pharmacology preceded first-in-human NCT02942914 (registered 2016-10-24). Proxy 2016, as degludec's opener uses run date. Untested/no_prediction unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6: the T2D hypoglycaemia comparison was first public in QWINT-2 (NEJM epub 2024-09-10, PMID 39254740), after the 2022 rat paper; year 2024, not 2026. Status untested, untested_reason no_prediction, unchanged."
+   "adjudication_note": "Rule 6: the track opens at efsitora's first use in the STZ rat, not first publication; pharmacology preceded first-in-human NCT02942914 (2016), so proxy 2016. Untested/no_prediction unchanged."
   },
   {
    "cell": "safety",
@@ -296,13 +300,14 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": false,
+   "status_supported": true,
    "proposed_status": "untested",
-   "rule": "4 (safety row; #35, #72)",
-   "note": "ONWARDS 1 quote verbatim. No icodec lower-hypoglycaemia prediction is quoted: Kjeldsen and PharmR state none (PharmR hypoglycaemia is exaggerated tox pharmacology); FDA blames a weekly day-2 peak. Untested, no_prediction (already set).",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_year": 2016,
+   "rule": "6 (dating: a track opens at its own drug's first use in the model; proxy allowed)",
+   "note": "Kjeldsen 2021 (epub 2021-05-04) is first publication; icodec was selected on these pig/rat/dog models before first-in-human NCT02964104 (start 2016-11-15), and phase 2 was published 2020. Proxy 2016. Untested/no_prediction unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "untested",
-   "adjudication_note": "Ruled: the clamp/PD model was never run under weekly dosing, so it made no prediction on a weekly day-2 hypoglycaemia peak: untested, no_prediction."
+   "adjudication_note": "Rule 6: the icodec track opens at first use in the Novo protraction models, not Kjeldsen 2021 publication; selection preceded first-in-human NCT02964104 (2016), so proxy 2016. Untested/no_prediction unchanged."
   }
  ],
  "missing": [

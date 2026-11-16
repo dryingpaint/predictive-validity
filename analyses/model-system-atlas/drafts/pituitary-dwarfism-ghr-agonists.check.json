@@ -94,10 +94,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Moore 2016 quote verbatim in abstract; 6-month HV across three randomized regimens, no control arm, written into note. Retro right under target-level rule. Possible earlier Versartis congress/press disclosure of phase 2a HV not verified.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating); retrodiction rule",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "abstract_only",
+   "note": "Year 2014 confirmed: ESPE 2014 P1-D3-171 (Bright, Sept 2014) reported 3-month HV comparable to historical daily rhGH; Cleland epub 2012-06-07; Moore epub 2015-12-16. Retro stands (daily rhGH earlier). 2014 HV was interim 3-month, uncontrolled."
   },
   {
    "cell": "efficacy",
@@ -122,10 +123,11 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PMC4803167 full text: 'There were no cases of injection site lipoatrophy or nodule formation.' verbatim. Same stands: Cleland 2012 predates somavaratan's own patient safety (Moore 2013), so not a retrodiction.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (dating); retrodiction rule",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "verbatim",
+   "note": "Year 2014 confirmed: ESPE 2014 P1-D3-171 states 'Nodule formation or lipoatrophy has not been observed at injection sites', AEs mild/transient. Cleland 2012 (epub 2012-06-07) predates somavaratan's own patient safety data, so same stays prospective."
   },
   {
    "cell": "safety",
@@ -159,17 +161,13 @@
   {
    "cell": "engagement",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2018,
-   "rule": "Evidence rule 6: year is the earliest public date (congress abstract)",
-   "note": "Quote verbatim in full text (PMC7069655), not abstract. Retro right. But Juul model epub 2018-04-20 and ESPE 2018 FC10.2 (2018-08-28) reported dose-dependent IGF-I rise in REAL 3 children, so comparison public 2018.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Status retro agreed (daily rhGH IGF-I long preceded the model). Rule 6: ESPE 2018 FC10.2 (Aug 2018, verified) already reported dose-dependent IGF-I rise in REAL 3 children, so year should be 2018."
+   "rule": "DRAFTER_BRIEF rule 6 (dating); retrodiction rule",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "verbatim",
+   "note": "Year 2018 confirmed: ESPE 2018 late-breaking FC10.2 (Sept 2018) reported dose-dependent IGF-I rise in REAL 3; Novo SHARE Q3 2018 dates presentation to September. Model public earlier (APPES 2017 O4-1; Juul PMID 29671202, 2018-04-20). Retro stands: daily rhGH earlier."
   },
   {
    "cell": "dose",
@@ -186,10 +184,11 @@
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim. 0.16 target (above daily GH, below +2) held; 0.08 'match' undershot (-1.09 vs -0.40). Partial same defensible; the ~0.12 interpolated dose behind within_2x is drafter arithmetic, used only for magnitude, so keep it out of the status.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "rule": "DRAFTER_BRIEF rule 6 (dating); retrodiction rule",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "verbatim",
+   "note": "Year 2018 confirmed: REAL 3 dose-response (HV 8.0/10.9/12.9 vs 11.4 cm/y; dose-dependent IGF-I) public Sept 2018 (ESPE FC10.2, SHARE Q3). Model's steady-state dose targets public Nov 2017 (APPES O4-1), before any REAL 3 data, so prospective; same stands."
   },
   {
    "cell": "dose",
@@ -244,17 +243,13 @@
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2018,
-   "rule": "Evidence rule 6: year is the earliest public date (congress abstract)",
-   "note": "Savendahl 2020 quote verbatim; primary HV wk 26 vs daily GH, retro right. But ESPE 2018 FC10.2 (2018-08-28) already reported HV 12.9 vs 11.4 cm/y at 0.16 mg/kg/wk; Thygesen 2017 earlier, so year 2018.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Status retro agreed (retrodiction rule: daily GH grew GHD children first). Rule 6: ESPE 2018 FC10.2 (verified) reported HV 12.9 vs 11.4 cm/y at 0.16 mg/kg/wk, earliest public comparison, so year 2018."
+   "rule": "DRAFTER_BRIEF rule 6 (dating); retrodiction rule",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "quote_found": "abstract_only",
+   "note": "Year 2018 confirmed: Thygesen epub 2017-05-24 (PMID 28595133); REAL 3 HV 12.9 vs 11.4 cm/y at 0.16 mg/kg/wk first public Sept 2018 (ESPE 2018 FC10.2; Novo SHARE Q3 2018). Retro stands: daily rhGH grew GHD children before the rat model."
   }
  ],
  "missing": [

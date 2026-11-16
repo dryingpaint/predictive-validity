@@ -1,0 +1,20 @@
+{
+  "tile": "mucopolysaccharidosis-type-3b-naglu-replacement-gene-therapy",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 6,
+      "what": "2021 -> 2017; status same, retrodiction false unchanged. Patient side first public in BioMarin's ICIEM press release of 6 Sept 2017 (CSF total and disease-specific HS reduced to the normal range in all three Part 1 patients escalated to 300 mg), earlier than the Feb 2021 Muschol abstract; mouse side (Kan 2014 PNAS, Aoyagi-Scharber 2017) public before it."
+    },
+    {
+      "cell": "safety",
+      "index": 6,
+      "what": "year 2022 unchanged; retrodiction false -> true, status stays contra. The drug's own patient CNS SAEs (alteration of consciousness, CSF pleocytosis) were first public in BioMarin's ICIEM press release of 6 Sept 2017, before the dog tolerability claim (JPET, epub 2022-06-18), so the dog claim is a retrodiction that did not reproduce them."
+    },
+    {
+      "cell": "safety",
+      "index": 5,
+      "what": "year 2016 unchanged; added untested_reason 'unpublished' (dog track's latest prospective entry once safety 6 became a retrodiction; dog data not public until the 2022 JPET paper), as engagement 7 has."
+    }
+  ]
+}

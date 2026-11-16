@@ -37,9 +37,11 @@
    "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "PMID 22616628; quote verbatim (abstract). `same` holds only as a downstream readout (decision 15): FeNO is not the model's signature. Hanania 2015 Fig 3 tracks serum periostin itself under lebrikizumab; cite it. prediction_level should be class; PubMed record created 2012-05, so decision 7 likely dates it 2012."
+   "rule": "DRAFTER_BRIEF rule 6",
+   "note": "PubMed PMID 22616628 (Hodsman, BJCP): entrez 2012-05-24, print 2013 Jan. Model side Woodruff 2007 earlier, so the pairing is public 2012. Not a retrodiction; same stands. epub_year should be 2012, not null.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -496,8 +498,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "FDA 761306 NOAEL sentence verbatim (bundle line 1762). Proxy opener 2011 allowed by rule 6; its 'short' says 'until 2022', wrong for lebrikizumab (2023).",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6",
+   "note": "FDA 761306 review: TNX-650 is lebrikizumab; monkey studies 04193, 07-1186, 07-1330; quote verbatim. NCT00441818 first posted 2007-03-01 (start 2006-05). 2007 proxy opener holds; untested/unpublished unchanged. Stale fields: model_first_use_year 2011, registry_date null, confidence_note.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

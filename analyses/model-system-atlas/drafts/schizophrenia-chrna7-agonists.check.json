@@ -141,15 +141,15 @@
    "index": 7,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
+   "proposed_status": "drop",
    "proposed_year": 2014,
-   "rule": "Evidence rule 6 (earliest date the comparison was public); status table: one entry per change of status on a track",
-   "note": "Retrodiction true is right (model 2014 after the 2013 miss). Same pcp-nest-building-mouse x bradanicline comparison as efficacy 5; rule 6 dates it 2014, not Walling's 2015 epub. No status change, so it duplicates entry 5 and should be dropped.",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "DRAFTER_BRIEF rule 6 (pairing dated by the later side's earliest public date); status table: one entry per change of status on a track",
+   "note": "Year 2014 confirmed: model epub 2014-07-24 (PMID 25064467, TC-5619 in NEST); SANS miss public 2013-12-16 (Targacept 8-K EX-99.1); Walling epub 2015-06-12 not first. Contra, retrodiction hold; still duplicates efficacy 5 on the same track, so drop.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "drop",
-   "adjudication_note": "Status table: one entry per change of status on a track. Same pcp-nest-building-mouse x bradanicline oral comparison as efficacy 5 (contra 2014, rule 6 dating); Walling 2016 adds no status change, so drop."
+   "adjudication_note": "Status table: one entry per change of status on a track. Same pcp-nest-building-mouse/bradanicline/oral track, same year 2014 and contra as efficacy 5 (Pedersen 2014); Walling 2016 adds no status change, so drop."
   },
   {
    "cell": "efficacy",

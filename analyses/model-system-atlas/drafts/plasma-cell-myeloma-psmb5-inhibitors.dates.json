@@ -1,0 +1,35 @@
+{
+  "tile": "plasma-cell-myeloma-psmb5-inhibitors",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2010 -> 2011 (status untested unchanged): ixazomib's own first MM.1S/SCID xenograft use is Chauhan 2011 Clin Cancer Res, doi:10.1158/1078-0432.CCR-11-0476, epub 2011-06-30; Kupperman 2010 (CWR22/H460/WSU-DLCL2 models) is not MM.1S; model_first_use_year stays 2010 (oprozomib, Chauhan 2010)"
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "what": "2010 -> 2011 (status untested unchanged): ixazomib's own first MM.1S/SCID xenograft use is Chauhan 2011 Clin Cancer Res, doi:10.1158/1078-0432.CCR-11-0476, epub 2011-06-30; Kupperman 2010 (CWR22/H460/WSU-DLCL2 models) is not MM.1S; model_first_use_year stays 2010 (oprozomib, Chauhan 2010)"
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "what": "2010 -> 2011 (status untested unchanged): ixazomib's own first MM.1S/SCID xenograft use is Chauhan 2011 Clin Cancer Res, doi:10.1158/1078-0432.CCR-11-0476, epub 2011-06-30; Kupperman 2010 (CWR22/H460/WSU-DLCL2 models) is not MM.1S; model_first_use_year stays 2010 (oprozomib, Chauhan 2010)"
+    },
+    {
+      "cell": "efficacy",
+      "index": 6,
+      "what": "2014 -> 2010 (status untested unchanged): ixazomib's own first use of the ex-vivo patient-cell system is Chauhan et al. ASH 2010 abstract 2992, doi:10.1182/blood.V116.21.2992.2992, published 2010-11-19"
+    },
+    {
+      "cell": "efficacy",
+      "index": 11,
+      "what": "2019 -> 2016 (status retro unchanged, retrodiction stays true): patient side first public in Ghobrial et al. ASH 2016 abstract 2110 (phase II ORR 34% on 2/7 step-up), doi:10.1182/blood.V128.22.2110.2110, 2016-12-02; model side Chauhan 2010 (2010)"
+    },
+    {
+      "cell": "safety",
+      "index": 6,
+      "what": "2019 -> 2014 (status contra unchanged, retrodiction stays false): patient side first public in Vij et al. ASH 2014 abstract 34, doi:10.1182/blood.V124.21.34.34 (MM patients: commonest grade 3 AEs diarrhoea/nausea/vomiting, two upper-GI-bleeding deaths); model side Zhou 2009"
+    }
+  ]
+}

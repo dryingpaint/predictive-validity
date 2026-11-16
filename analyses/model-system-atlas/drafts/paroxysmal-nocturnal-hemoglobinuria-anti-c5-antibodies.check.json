@@ -151,17 +151,13 @@
   {
    "cell": "dose",
    "index": 7,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2024,
-   "rule": "Evidence rule 6 (dating: earliest public date, label/regulator review)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Cosson 2025 (epub 21 Jan 2025) quote verbatim; final PopPK fitted to Phase 3, retro right. But FDA BLA 761388 integrated review (June 2024, bundle) already gives the 92.8%/91.4% simulations and observed 94.8%/91.2% above 100 µg/mL: year 2024.",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Both agree retro (rule 4: final PopPK fitted to COMMODORE data). Rule 6: FDA BLA 761388 integrated review (2024) already sets 92.8%/91.4% simulated against 94.8%/91.2% observed, so year should be 2024, not 2025."
+   "rule": "DRAFTER_BRIEF rule 6 (dating: earliest public date incl. regulator review); retrodiction rule (dose: same drug's own earlier patient result)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "FDA BLA 761388 integrated review (signed 20 Jun 2024, bundle) gives final-model PopPK simulations 92.8%/91.4% and observed COMMODORE-2 94.8%/91.2% above 100 µg/mL; precedes Cosson epub Jan 2025. Year 2024; model fitted to Phase 3, retro holds."
   },
   {
    "cell": "engagement",

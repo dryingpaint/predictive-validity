@@ -1,0 +1,20 @@
+{
+  "tile": "type-2-diabetes-mellitus-gcgr-antagonists",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 7,
+      "what": "2015 -> 2012; status stays retro (retrodiction true via Bay 27-9955 2001). Patient side public at EASD 2011 (Clinical Endocrinology News 2011-10-01: LY2409021 28-day fasting glucagon up 0.6-4.2-fold, HbA1c down); later of that and Mu 2012 model side."
+    },
+    {
+      "cell": "safety",
+      "index": 8,
+      "what": "2015 -> 2011; status stays same, retrodiction false. LY2409021 28-day hyperglucagonaemia and glucose lowering public at EASD 2011 (Clinical Endocrinology News 2011-10-01); model side Gelling 2003."
+    },
+    {
+      "cell": "safety",
+      "index": 12,
+      "what": "2015 -> 2011; status stays same, retrodiction false. LY2409021 28-day hyperglucagonaemia public at EASD 2011 (Clinical Endocrinology News 2011-10-01); model side Zhou 2009 (Mahvash)."
+    }
+  ]
+}

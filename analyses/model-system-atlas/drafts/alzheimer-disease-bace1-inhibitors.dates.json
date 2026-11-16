@@ -1,0 +1,35 @@
+{
+ "tile": "alzheimer-disease-bace1-inhibitors",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "2012 -> 2015; opener: elenbecestat could rely on the sibling LY2886721 PDAPP data only once May et al. (J Neurosci, Jan 2015) published them, after its first patient trial NCT01600859, July 2012; 2012 was the system's year for LY2886721"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "2012 -> 2015; opener: LY3202626 could rely on the sibling LY2886721 PDAPP data only once May et al. (J Neurosci, Jan 2015) published them, after its first trial NCT02323334, Dec 2014; 2012 was the system's year for LY2886721"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "2019 -> 2018; pairing: patient side (EARLY 25 mg worse on PACC/RBANS) first public at CTAD Oct 2018 (Alzforum 2 Nov 2018), before Henley 2019; model side 2015"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2019 -> 2018; pairing: patient side (EARLY cognitive worsening) first public at CTAD Oct 2018 (Alzforum 2 Nov 2018); model side 2012"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "2021 -> 2018; pairing: NAVIGATE-AD futility stop with no clear effect on cognition or tau PET presented by Lo at CTAD Oct 2018 (Alzforum 2 Nov 2018), before the 2021 registry results; model side 2015"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "what": "2019 -> 2018; pairing: atabecestat 25 mg cognitive worsening first public at CTAD Oct 2018 (Alzforum 2 Nov 2018); model side Filser epub 2014"
+  }
+ ]
+}

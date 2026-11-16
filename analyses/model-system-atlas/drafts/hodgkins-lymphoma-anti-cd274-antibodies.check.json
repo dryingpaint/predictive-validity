@@ -65,8 +65,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Gong 2022 full text: 'No DLTs were reported at any dose level, and the MTD was not reached' verbatim; epub 2022-01-05 so year 2022. Sugemalimab iv 3-40 mg/kg and 1200 mg, mixed tumours (other_disease). same with margin_stated holds.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (paired comparison dates to the later side)",
+   "note": "Re-opened: EPAR EMA/380155/2024 (30 May 2024) states NOAEL 200 mg/kg, Cmax margin ~21-26x; Gong 2022 epub 2022-01-05, quote verbatim, no tox; AACR 2020 abstract 3260 no tox; Europe PMC finds none earlier. Year 2024, same, retrodiction false hold.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

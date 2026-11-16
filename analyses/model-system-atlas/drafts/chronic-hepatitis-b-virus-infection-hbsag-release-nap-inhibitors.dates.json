@@ -1,0 +1,20 @@
+{
+  "tile": "chronic-hepatitis-b-virus-infection-hbsag-release-nap-inhibitors",
+  "changed": [
+    {
+      "cell": "dose",
+      "index": 1,
+      "what": "2015 -> 2013; opener moved to REP 2055's own first duck use (Noordeen 2013, doi 10.1128/AAC.01005-13, dose-ranging prophylaxis)"
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "what": "2020 -> 2017; patient side (REP 401 off-treatment control, REP 2139 arm) first public at AASLD 2017 LB-24 (Oct 2017, Replicor press release), later than duck side Roehl 2017 (May); status retro unchanged"
+    },
+    {
+      "cell": "efficacy",
+      "index": 6,
+      "what": "2020 -> 2017; patient side (REP 401 off-treatment control, REP 2165 arm) first public at AASLD 2017 LB-24 (Oct 2017, Replicor press release), later than duck side Roehl 2017 (May); status retro unchanged"
+    }
+  ]
+}

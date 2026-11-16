@@ -1,0 +1,30 @@
+{
+ "tile": "gastrointestinal-stromal-tumor-hsp90aa1-hsp90ab1-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "2014 -> 2012; patient HSP70 induction public at ASCO 2012 (Shapiro abstract 3028, doi:10.1200/jco.2012.30.15_suppl.3028), model public Nov 2011/2012; retrodiction and retro unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "2006 -> 2008 (opener); BIIB021's own first registry-dated use: NCT00618319 first posted 2008-02-20; model_first_use_year stays 2006"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "2016 -> 2011; ganetespib GIST result public at ASCO 2011 (Demetri abstract 10011, doi:10.1200/jco.2011.29.15_suppl.10011); status contra, retrodiction false unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "what": "2016 -> 2011; same ASCO 2011 abstract 10011, model side 2010; still a retrodiction (IPI-504 PET responses June 2007), contra unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "what": "2016 -> 2009 (opener); ganetespib's own first registry-dated use: NCT01039519 first posted 2009-12-25"
+  }
+ ]
+}

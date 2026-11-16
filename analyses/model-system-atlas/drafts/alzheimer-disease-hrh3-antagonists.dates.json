@@ -1,0 +1,25 @@
+{
+  "tile": "alzheimer-disease-hrh3-antagonists",
+  "changed": [
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "what": "2013 -> 2011 (status contra unchanged): patient side first public in GSK's study-register results summary for study 110651/NCT01009255, PDF dated 2011-09-01 (https://www.gsk-studyregister.com/trials/110651); model side Medhurst 2007"
+    },
+    {
+      "cell": "efficacy",
+      "index": 3,
+      "what": "year 2014 unchanged; retrodiction false -> true, status contra unchanged: ABT-288 rodent model (JPET 2012) now post-dates GSK239512's 2011 patient result for the same target"
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "what": "year 2014 unchanged; retrodiction false -> true, status contra unchanged: SAR110894 rodent model (Griebel 2012, PBB) now post-dates GSK239512's 2011 patient result for the same target"
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "what": "year 2012 unchanged; untested_reason set to unsettled (lint): with entry 3 now a retrodiction the ABT-288 prospective track ends on this opener"
+    }
+  ]
+}

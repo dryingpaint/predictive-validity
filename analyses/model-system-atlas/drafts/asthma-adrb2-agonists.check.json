@@ -11,8 +11,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Aparici 2012 JPET resolves (PMID 22588259, online 2012-05-15); quote verbatim in abstract; guinea-pig t1/2 36 h, dog margin 5.6 confirmed; untested opening at first public use."
+   "rule": "rule 6 (earliest public date; paired = later of both sides)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Crossref: A5676 (Miralpeix, Aparici et al., LAS100977=abediterol vs salmeterol, anaesthetised dogs) is ATS May 2010; no earlier public abediterol model use found. Opener 2010 untested holds; model_first_use_year still 2012 (inconsistent)."
   },
   {
    "cell": "engagement",
@@ -21,9 +22,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Beier 2014 (PMID 25256258, online 2014-09-08) quote in abstract; model 2012 after Beeh 2007 (PMID 17251236, online 2007-01-24) 24-h indacaterol asthma result: retro. Abediterol, inhaled, unselected ICS-treated asthmatics correct."
+   "rule": "rule 6 (earliest public date; paired = later of both sides); retrodiction (engagement/efficacy: any earlier patient result on the target; dose/safety: only the same drug's own earlier patient result)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Crossref: A5414 (Beier, single inhaled LAS100977 doses, persistent asthma) and A5676 (dog) both ATS May 2010; abstract text Cloudflare-blocked, titles read. Year 2010. Model still after Beeh 2007 indacaterol 24-h asthma result: retro holds."
   },
   {
    "cell": "engagement",
@@ -83,9 +84,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action); rule 6 earliest public date",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Matsuda 2012 (PMID 23094708) quote verbatim in abstract; ClinicalTrials.gov API: NCT00679263 results first posted 2011-12-15, so year 2011 (rule 6). Model 2001 after Ullman 1988 (PMID 2904183): retro; iv, stable asthmatics unselected."
+   "rule": "rule 6 (earliest public date; paired = later of both sides); retrodiction (engagement/efficacy: any earlier patient result on the target; dose/safety: only the same drug's own earlier patient result)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2007, retro hold: 8-K filed 2007-10-10 (0001193125-07-216049) shows Phase IIa FEV1 dose response p<0.0001. Note miscites the 2007-07-24 deck, which only says MN-221 results 'anticipated 07Q4'."
   },
   {
    "cell": "engagement",
@@ -120,8 +121,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Same source and quote as engagement 1; margin 5.6 and t1/2 36 h in abstract; no human dose derived; untested opening 2012."
+   "rule": "rule 6 (earliest public date; paired = later of both sides)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Crossref: A5676 (Miralpeix, Aparici et al., LAS100977=abediterol vs salmeterol, anaesthetised dogs) is ATS May 2010; no earlier public abediterol model use found. Opener 2010 untested holds; model_first_use_year still 2012 (inconsistent)."
   },
   {
    "cell": "dose",
@@ -130,8 +132,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim (abstract); related adrenergic AEs only at 10-25 ug while 5 ug bronchodilated, so the stated dog margin held: same with margin_stated true (decision 16). NCT01425801 results 2018-01-26 confirmed."
+   "rule": "rule 6 (earliest public date; paired = later of both sides); retrodiction (engagement/efficacy: any earlier patient result on the target; dose/safety: only the same drug's own earlier patient result)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Crossref: A5414 (Beier, single inhaled LAS100977 doses, persistent asthma) and A5676 (dog) both ATS May 2010; abstract text Cloudflare-blocked, titles read. Year 2010. Abediterol's own patient result is not earlier than the model: no retrodiction, same holds."
   },
   {
    "cell": "dose",
@@ -171,8 +174,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim (abstract); plateau at 30 ug/min with linear PK; reached and worked in stable asthma: same. NCT00679263 (2011-12-15) posts no PK/plateau data, so 2012 dating stands."
+   "rule": "rule 6 (earliest public date; paired = later of both sides)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Year 2007 holds: 8-K 2007-10-10 first showed the 0.35-60 ug/min FEV1 dose response; 8-K 2007-11-09 says primary met at 10-60 ug/min. Reached, worked: same."
   },
   {
    "cell": "dose",
@@ -211,8 +215,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Same source; model reads evoked bronchoconstriction and duration only; untested opening 2012."
+   "rule": "rule 6 (earliest public date; paired = later of both sides)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Crossref: A5676 (Miralpeix, Aparici et al., LAS100977=abediterol vs salmeterol, anaesthetised dogs) is ATS May 2010; no earlier public abediterol model use found. Opener 2010 untested holds; model_first_use_year still 2012 (inconsistent)."
   },
   {
    "cell": "efficacy",
@@ -221,9 +226,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "retrodiction (engagement/efficacy: any earlier patient result for the same target and action)",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Beier 2014 quote verbatim in abstract; trough FEV1 is the stated primary and was met; model 2012 after Beeh 2007: retro. Abediterol inhaled, unselected correct."
+   "rule": "rule 6 (earliest public date; paired = later of both sides); retrodiction (engagement/efficacy: any earlier patient result on the target; dose/safety: only the same drug's own earlier patient result)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Crossref: A5414 (Beier, single inhaled LAS100977 doses, persistent asthma) and A5676 (dog) both ATS May 2010; abstract text Cloudflare-blocked, titles read. Year 2010. Model still after Beeh 2007 indacaterol asthma result: retro holds."
   },
   {
    "cell": "efficacy",
@@ -300,8 +305,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Same source; dog margin 5.6 vs 3.3/2.2/0.3 confirmed in abstract; stated margin scored here, counted once with dose (decision 16); untested opening 2012."
+   "rule": "rule 6 (earliest public date; paired = later of both sides)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Crossref: A5676 (Miralpeix, Aparici et al., LAS100977=abediterol vs salmeterol, anaesthetised dogs) is ATS May 2010; no earlier public abediterol model use found. Opener 2010 untested holds; model_first_use_year still 2012 (inconsistent)."
   },
   {
    "cell": "safety",
@@ -310,8 +316,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim (abstract); related adrenergic AEs only at 10/25 ug, 5 ug clean; direction match with the dog margin; same; single-dose exposure only, as noted."
+   "rule": "rule 6 (earliest public date; paired = later of both sides); retrodiction (engagement/efficacy: any earlier patient result on the target; dose/safety: only the same drug's own earlier patient result)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Crossref: A5414 (Beier, single inhaled LAS100977 doses, persistent asthma) and A5676 (dog) both ATS May 2010; abstract text Cloudflare-blocked, titles read. Year 2010. Abediterol's own patient result is not earlier than the model: no retrodiction, same holds."
   },
   {
    "cell": "safety",
@@ -336,12 +343,16 @@
   {
    "cell": "safety",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim (abstract); only a mild dose-related heart-rate rise, no ECG signal; direction match with the dog: same. NCT00679263 (2011-12-15) posts AE counts only, so 2012 dating stands."
+   "proposed_year": 2007,
+   "rule": "rule 6 (earliest public date; paired = later of both sides)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Status same holds, but 8-K filed 2007-10-10 already said no clinically significant cardiovascular, ECG or vital-sign changes at any dose; dog model public 2006 (PMID 16478001). Year 2007, not 2008.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Checker proposes no status change, only year 2008->2007 (8-K 2007-10-10; rule 6, earliest public date, paired = later side). Dog predicted heart-rate rise only; patients matched in direction: same stands."
   },
   {
    "cell": "safety",

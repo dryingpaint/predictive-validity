@@ -1,0 +1,20 @@
+{
+ "tile": "crohn-disease-anti-il23a-antibodies",
+ "changed": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "2017 -> 2015; patient side first public as DDW 2015 abstract 830 (Sands, MEDI2070 phase 2a, May 16-19 2015; healio.com 2015-05-20); status same, retrodiction false unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2017 -> 2016; patient side (risankizumab phase 2, NCT02031276) first public at DDW 2016 abstract 812a and press release 2016-05-24 (news.abbvie.com); status same, retrodiction false unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "2022 -> 2021; patient side (MOTIVATE) first public in AbbVie press release 2021-01-07; still after the 2017 phase 2 results, so retrodiction true and status retro unchanged"
+  }
+ ]
+}

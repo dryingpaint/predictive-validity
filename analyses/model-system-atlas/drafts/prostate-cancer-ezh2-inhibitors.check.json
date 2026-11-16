@@ -10,9 +10,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "track; 6",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Xu 2012 quote verbatim in Europe PMC abstract. Opener of crpc-ezh2-xenograft x lirametostat: lirametostat, oral (ProSTAR dosed orally), stage_or_line right; untested 2012 stands."
+   "rule": "6 (track opens at its own drug's first use)",
+   "note": "TPS398 (doi 10.1200/JCO.2018.36.6_suppl.TPS398, Crossref 2018-02-20) quote verbatim: CPI-1205 prostate cell models. No earlier lirametostat prostate data on Europe PMC/Crossref; ProSTAR registered after. Untested 2018 right.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -36,9 +36,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "dose; 5",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Xu 2012 quote verbatim in abstract. Tazemetostat, oral fit CELLO-1; no prostate model stated an exposure target or margin, so untested / no_prediction 2012 stands."
+   "rule": "6 (track opens at its own drug's first use); dose; 5",
+   "note": "Ku 2017 (Science 355:78, PubMed entrez 2017-01-07) full text names EPZ6438; Europe PMC finds no earlier EPZ-6438 prostate paper. Untested / no_prediction 2017 right.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -47,9 +47,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "track; 6",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Xu 2012 quote verbatim in abstract. Opener of crpc-ezh2-xenograft x tazemetostat: tazemetostat, oral, stage_or_line right; untested 2012 stands."
+   "rule": "6 (track opens at its own drug's first use)",
+   "note": "Ku 2017 (Science, January 2017) dosed EPZ6438 (full text hit), abstract: Ezh2 inhibitors restore enzalutamide sensitivity. No earlier tazemetostat prostate model found. Untested 2017 right.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -65,17 +65,13 @@
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2024,
-   "rule": "#53, #90 (decision 10): contra needs the effect absent; unresolved is untested",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "NCT04179864 re-opened (results 2026-03-10): whyStopped quote verbatim; rPFS 22.1 (16.6-27.6) vs 11.1 (5.7-16.5) mo, n=41/40, no test. Effect not absent: untested 2024 (ESMO 1603P). Drug, oral, enzalutamide combination, rPFS primary right.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Efficacy rule: primary rPFS not met (registry: 'primary endpoint was not met'; ESMO 2024 1603P 16.6 vs 13.8 mo, p=0.37); model predicted benefit, so contra. Brief has no effect-absent bar. Rule 6: year 2024."
+   "status_supported": true,
+   "rule": "6 (earliest public date; pairing = later of both sides); efficacy (combination, primary endpoint)",
+   "note": "1603P resolves (Ann Oncol 35 S967, Sep 2024); UroToday cites rPFS 16.6 vs 13.8 mo, p=0.37. Registry whyStopped verbatim, results posted 2026-03-10. Ku 2017 precedes, so no retrodiction. Contra 2024.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -132,9 +128,9 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "track; 6",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Xu 2012 quote verbatim in abstract. Opener of crpc-ezh2-xenograft x lirametostat efficacy track: lirametostat, oral, stage_or_line; untested 2012 right."
+   "rule": "6 (track opens at its own drug's first use)",
+   "note": "TPS398 (JCO 36 suppl 6, online 2018-02-20) quote verbatim; earliest public lirametostat use in prostate cells found. Xu 2012 quote verbatim in abstract. Untested 2018 right.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

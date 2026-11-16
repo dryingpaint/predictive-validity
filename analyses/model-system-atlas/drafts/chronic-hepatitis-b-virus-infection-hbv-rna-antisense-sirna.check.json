@@ -11,9 +11,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "track definition (drug, route); 6 (opener at model_first_use_year)",
-   "note": "Wooddell 2013 (PMID 23439496) abstract re-read: quote is the abstract sentence cut at 'proteins'. Opener untested 2013 stands; drug tomligisiran, route sc, unselected fit the JNJ-3989 patients this track pairs with.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6 (track opens at its own drug's first use in the model)",
+   "note": "Year 2017 holds; untested unchanged. EDGAR: Arrowhead filings Dec 2016 to Aug 2017 list ARO-HBV as preclinical with no data, so the 2017 R&D Day/HEP DART disclosures are the first ARO-HBV HBV-mouse use. The 2017-12-06 release itself was not opened.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -40,17 +40,13 @@
   {
    "cell": "engagement",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "6 (earliest public date: sponsor press release)",
-   "note": "Yuen 2022 quote verbatim; same holds (chimp model 2017 precedes). But Arrowhead AASLD release 2018-11-09 already reported HBsAg nadir similar by HBeAg status (-2.1 positive n=11, -1.8 negative n=13): year 2018.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "same",
-   "proposed_year": 2018,
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: status same agreed; year is earliest public comparison. Arrowhead AASLD release 2018-11-09 gave similar HBsAg nadir by HBeAg status (-2.1 vs -1.8 log10), predating Yuen 2022. Same, year 2018."
+   "rule": "6 (paired: later of two sides; earliest public date)",
+   "note": "Year 2018 holds; status same unchanged. The chimp side is Wooddell 2017 STM. The first patient HBsAg data by HBeAg status were in the AASLD Nov 2018 ARO-HBV poster; first dosing was in 2018, so no earlier patient side exists.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -59,9 +55,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "dose: no stated target -> untested",
-   "note": "Wooddell 2013 (PMID 23439496) abstract re-read; no human exposure or regimen target stated. Opener untested; tomligisiran sc unselected fine.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6 (track opens at its own drug's first use in the model)",
+   "note": "Year 2017 holds; untested unchanged. EDGAR: Arrowhead filings Dec 2016 to Aug 2017 list ARO-HBV as preclinical with no data, so the 2017 R&D Day/HEP DART disclosures are the first ARO-HBV HBV-mouse use. The 2017-12-06 release itself was not opened.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -81,24 +77,20 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "6 (opener)",
-   "note": "Wooddell 2013 (PMID 23439496) abstract re-read; abstract says 'long duration of effect', not rebound (note's 'rebound' unsupported at abstract level). Untested opener, tomligisiran sc, stands.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6 (track opens at its own drug's first use in the model)",
+   "note": "Year 2017 holds; untested unchanged. EDGAR: Arrowhead filings Dec 2016 to Aug 2017 list ARO-HBV as preclinical with no data, so the 2017 R&D Day/HEP DART disclosures are the first ARO-HBV HBV-mouse use. The 2017-12-06 release itself was not opened.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "6 (earliest public date: congress/sponsor press release)",
-   "note": "Yuen 2023 quote verbatim; primary NA-stopping endpoint, same/partial holds. Arrowhead release 2021-11-15 (AASLD 2021) already gave REEF-1 week-48 primary: 19.1% met NA-stopping criteria at 200 mg. Year 2021, not 2023.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "same",
-   "proposed_year": 2021,
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: same/partial agreed; Arrowhead AASLD 2021 release (2021-11-15) reported the REEF-1 week-48 primary (19.1% met NA-stopping criteria at 200 mg) before Yuen 2023. Same, year 2021."
+   "rule": "6 (earliest public date: congress/sponsor release)",
+   "note": "Year 2021 holds; same unchanged. The REEF-1 week-48 primary endpoint (NA-stopping criteria) was first public in Arrowhead's AASLD release of 2021-11-15, and no earlier primary readout was found. The model side is 2013.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -107,9 +99,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "safety: stated prediction binds the platform tested",
-   "note": "Wooddell 2013 (PMID 23439496) abstract re-read: quote verbatim, about chol-siF7 on NAG-MLP, not a member platform. untested no_prediction, tomligisiran sc, stands.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6 (track opens at its own drug's first use in the model)",
+   "note": "Year 2017 holds; untested unchanged. EDGAR: Arrowhead filings Dec 2016 to Aug 2017 list ARO-HBV as preclinical with no data, so the 2017 R&D Day/HEP DART disclosures are the first ARO-HBV HBV-mouse use. The 2017-12-06 release itself was not opened.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -228,9 +220,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "track split per drug and route; 6 (opener, proxy)",
-   "note": "Wooddell 2013 (PMID 23439496) abstract re-read. ARB-001467 iv opener at 2013, untested, proxy (sibling chol-siRNA) allowed; no tier 1-3 ARB-1467 mouse source found.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6 (opener at own drug's first use; proxy allowed)",
+   "note": "Year 2014 holds; untested unchanged. Tekmira's 2014-10-15 release is the first TKM-HBV preclinical HBsAg data in 'several preclinical models' and names only the chimeric mouse, so the HBV-genome-mouse use stays unconfirmed; proxy opener.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -250,9 +242,9 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "track split; 6 (opener)",
-   "note": "Wooddell 2013 (PMID 23439496) abstract re-read. Elebsiran sc opener 2013, untested, stands.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6 (opener at own lineage's first use; earliest public date)",
+   "note": "Year 2015 holds; untested unchanged. Alnylam's 8-K of 2014-08-07 reports only chimpanzee data for a Merck-era siRNA, not the DC. The 424B5 of 2015-01-20 gives the ALN-HBV DC's rodent HBsAg data, so 2015 is the earliest.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -261,13 +253,13 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "6 (earliest public date: sponsor press release)",
-   "note": "Gane 2023 quote verbatim; same holds. Vir release 2020-04-15 re-found: dose-dependent HBsAg reduction to week 24 in NCT03672188, all 200 mg patients >=1 log10, before the 2021-12-13 registry posting. Year 2020.",
-   "checked_by": "CHECKER_BRIEF / fields",
    "proposed_status": "same",
-   "proposed_year": 2020,
+   "proposed_year": 2019,
+   "rule": "6 (earliest public date: sponsor filing/press release)",
+   "note": "The patient side predates 2020. Vir's S-1 (EDGAR, 2019-09-03) reports VIR-2218 patient HBsAg declines of 0.6-2.3 log10 and 0.7 log10 by cohort. The 8-K of 2019-11-19 repeats 'substantial reductions in HBsAg'. Year 2019; status same.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: same agreed; Vir release 2020-04-15 reported dose-dependent elebsiran HBsAg reduction (all 200 mg patients >=1 log10) before the 2021-12-13 registry posting. Same, year 2020."
+   "adjudication_note": "Rule 6 (earliest public date): Vir's S-1/A (EDGAR 2019-09-30) reports VIR-2218 patient HBsAg declines, 1.5 log10 mean, 0.6-2.3 log10 at 50 mg; an SEC filing is a sponsor disclosure. Year 2019; status same, both agree."
   },
   {
    "cell": "engagement",
@@ -287,24 +279,20 @@
    "source_resolves": true,
    "quote_found": "near",
    "status_supported": true,
-   "rule": "track split; 6 (opener)",
-   "note": "Wooddell 2013 (PMID 23439496) abstract re-read. Elebsiran efficacy opener 2013, untested, stands.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6 (opener at own lineage's first use; earliest public date)",
+   "note": "Year 2015 holds; untested unchanged. Alnylam's 8-K of 2014-08-07 reports only chimpanzee data for a Merck-era siRNA, not the DC. The 424B5 of 2015-01-20 gives the ALN-HBV DC's rodent HBsAg data, so 2015 is the earliest.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "6 (earliest public date) with co-primary design written in note",
-   "note": "Wong 2025 quote verbatim; co-primary HBsAg loss EOT and 24 wk post-EOT both favour combination, same holds. Brii release 2024-11-19 re-found: EOT 26.3%/33.3% vs 5.6%. Year 2024; note should carry EOT values.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "proposed_status": "same",
-   "proposed_year": 2024,
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6 and co-primary rule: same agreed. AASLD 2024 LBA and Brii release 2024-11-19 re-found: EOT HBsAg loss 26.3%/33.3% vs 5.6%, one co-primary favouring combination. Same, year 2024."
+   "rule": "6 (earliest public date: congress abstract/sponsor release)",
+   "note": "Year 2024 holds; same unchanged. The ENSURE combination-vs-PEG-IFN comparison was first public in the AASLD 2024 late-breaker and Brii's release of 2024-11-19. Wong 2025 is later.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -313,9 +301,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "track split; 6 (opener)",
-   "note": "Wooddell 2013 (PMID 23439496) abstract re-read: F7 clinical-chemistry quote verbatim. Elebsiran safety opener 2013, untested, stands.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6 (opener at own lineage's first use; earliest public date)",
+   "note": "Year 2015 holds; untested unchanged. Alnylam's 8-K of 2014-08-07 reports only chimpanzee data for a Merck-era siRNA, not the DC. The 424B5 of 2015-01-20 gives the ALN-HBV DC's rodent HBsAg data, so 2015 is the earliest.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

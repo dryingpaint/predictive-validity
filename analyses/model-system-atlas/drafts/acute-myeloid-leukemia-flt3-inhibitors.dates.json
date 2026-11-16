@@ -1,0 +1,45 @@
+{
+ "tile": "acute-myeloid-leukemia-flt3-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "what": "2009 -> 2007; opener moved to quizartinib's own first use of the MV4;11 xenograft model, ASH 2007 abstract 1597 (Blood 110(11), 2007-11-16)"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "2009 -> 2007; opener moved to quizartinib's own first use of the MV4;11 xenograft model, ASH 2007 abstract 1597 (Blood 110(11), 2007-11-16)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "2009 -> 2007; opener moved to quizartinib's own first use of the MV4;11 xenograft model, ASH 2007 abstract 1597 (Blood 110(11), 2007-11-16)"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2013 -> 2008; pairing year = later of model side (ASH 2007 abstract 1597) and patient plasma-inhibitory-assay result (ASH 2008 abstract 767, 2008-11-16); status unchanged"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "2013 -> 2008; pairing year = later of model side (ASH 2007 abstract 1597) and patient side (ASH 2008 abstract 767: FLT3-ITD inhibition at 12 mg, well tolerated); status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "what": "2018 -> 2011; pairing year = later of model side (ASH 2007) and patient side (EHA 2011 abstract 1019, phase 2 interim CRc 43%; ASH 2011 abstract 2576); status unchanged"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2012 -> 2011; opener moved to quizartinib's own first use of the screen, AACR 2011 abstract 4737 (2011-04-15)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "2019 -> 2015; pairing year = later of model side (Smith 2014 PNAS) and patient side (ASH 2015 abstract 2468, 2015-12-03); status unchanged"
+  }
+ ]
+}

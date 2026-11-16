@@ -1,0 +1,15 @@
+{
+  "tile": "chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-cd19-directed-depleters",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2014 -> 2012; status same unchanged, retrodiction stays false (model 2009). Patient side first public in Woyach et al. ASH 2012 abstract 2894, Blood 120(21):2894 (Nov 2012), which reported responses (PR 42% by IWCLL 1996)."
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "what": "2019 -> 2013; status same unchanged, retrodiction stays false (model 2009). Patient side first public in Porter et al. ASH 2013 abstract 873, Blood 122(21):873 (Nov 2013): 2 CR + 2 PR among first 10 NCT01747486 patients within 3 months."
+    }
+  ]
+}

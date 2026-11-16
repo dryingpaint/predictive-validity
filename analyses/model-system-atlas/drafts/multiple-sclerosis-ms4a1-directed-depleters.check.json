@@ -9,10 +9,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "near",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "125326 PharmR quote present (OCR CD20\"). Ofatumumab opener; sc and unselected match the MS patients; untested 2009 right. A later ofatumumab retro entry (ASCLEPIOS depletion) is absent but not this entry's error."
+   "quote_found": "abstract_only",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model",
+   "note": "PubMed 18045353 (Bleeker, Br J Haematol 140:303, epub 27 Nov 2007) reports ofatumumab B-cell depletion/repopulation in cynomolgus monkeys; PubMed finds no earlier ofatumumab monkey paper. Own-drug opener gives 2007; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -29,10 +30,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "125326 PharmR quote present; ofatumumab monkeys gave no MS regimen, exposure or margin. Ofatumumab, sc, unselected right; untested 2009 stands."
+   "quote_found": "abstract_only",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model",
+   "note": "PubMed 18045353 (Bleeker, Br J Haematol 140:303, epub 27 Nov 2007) reports ofatumumab B-cell depletion/repopulation in cynomolgus monkeys; PubMed finds no earlier ofatumumab monkey paper. Own-drug opener gives 2007; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -84,10 +86,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "125326 PharmR quote present (OCR '|'). Ofatumumab opener, sc, unselected; untested 2009 right."
+   "quote_found": "abstract_only",
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model",
+   "note": "PubMed 18045353 (Bleeker, Br J Haematol 140:303, epub 27 Nov 2007) reports ofatumumab B-cell depletion/repopulation in cynomolgus monkeys; PubMed finds no earlier ofatumumab monkey paper. Own-drug opener gives 2007; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -102,17 +105,13 @@
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2023,
-   "rule": "Dating rule 6: year is the earliest date the comparison was public",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Label line 278 and PharmR lines 407-410 verified; retrodiction true and contra right, ublituximab iv track. The monkey cytokine data appear only in the PharmR (dated 2022-12-27, posted under nda/2023), so the comparison was first public 2023.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Both agree contra (retrodiction; failed to reproduce first-infusion reactions). Dispute is only the year (rule 6): the monkey cytokine data are public only in the PharmR posted under nda/2023, so 2023."
+   "quote_found": "verbatim",
+   "rule": "DRAFTER_BRIEF rule 6: a paired comparison's year is the later of its two sides",
+   "note": "761238Orig1s000PharmR on Drugs@FDA Last-Modified 6 Feb 2023; patient side (ULTIMATE 2022, Briumvi label Dec 2022) earlier. Year 2023; post-dates own-drug patient result, so retrodiction true; contra unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",

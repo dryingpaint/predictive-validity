@@ -104,7 +104,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Boxed-warning sentence verbatim in label and ODMemo. Organ/direction match; FDA reviews never cite renal hypouricemia (grep), so pairing is the drafter's. Double-counting with dose 2 raised as rule question."
+   "rule": "DRAFTER_BRIEF rule 6 (Dating); safety retrodiction only from same drug's earlier result",
+   "note": "ACR 2014 CLEAR 1/2 abstract: renal AEs 10-15% and sCr>=1.5x 15-16% on lesinurad 400 vs 3.5-4.9%/1-3.4% placebo. First public 2014; year 2014. Same, not retro (genotype 2004, no earlier lesinurad renal result).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -121,10 +123,11 @@
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Lee 2019 abstract (Europe PMC) quote verbatim; healthy males, print Nov 2019. Retro holds: capuchin data (EULAR 2013, JPET 2016) after lesinurad's 2009 human urate lowering. No earlier URC102 volunteer release found. epaminurad, oral fit.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF rule 6 (Dating); retrodiction rule (engagement: after any member's patient result)",
+   "note": "ACR 2017 phase 2a abstract (published 18 Sep 2017): URC102 dose-dependently lowered sUA in Korean gout patients (-54% at 10 mg). Model side JPET 2016, so year 2017. Retro holds (lesinurad urate lowering 2009+).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -139,17 +142,13 @@
   {
    "cell": "efficacy",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2021,
-   "rule": "DRAFTER_BRIEF rule 6 (Dating): year is the earliest public date, including a sponsor press release",
-   "note": "Jun 2025 quote verbatim, primary endpoint; retro holds, epaminurad/oral fit. But JW Pharmaceutical announced the same phase 2b primary result (88.89/71.79/54.05% vs 0%) on 18 Mar 2021 (thebigdata.co.kr/view.php?ud=202103181011516063d0a8833aad_23): year 2025 -> 2021.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Status retro stands (retrodiction: capuchin data 2016 post-date lesinurad sUA results). Rule 6: JW Pharmaceutical announced the same phase 2b primary result 18 Mar 2021 (verified), so year 2021, not 2025."
+   "rule": "DRAFTER_BRIEF rule 6 (Dating): sponsor press release counts; paired year is the later side",
+   "note": "Medigate News 18 Mar 2021: URC102 phase 2b met primary sUA <=6 mg/dL at week 4, 88.89/71.79/54.05% vs placebo 0%, all significant. Model side 2016, so year 2021. Retro holds (after lesinurad sUA results).",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

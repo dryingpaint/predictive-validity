@@ -226,11 +226,11 @@
     ],
     "efficacy": [
       {
-        "year": 2018,
+        "year": 2016,
         "status": "untested",
         "model": "Bile-duct-ligated rat (obstructive cholestasis)",
         "model_id": "rodent-bdl",
-        "note": "EDP-305 30 mg/kg reduced fibrosis in BDL rats; the fibrosis prediction was never tested in PBC, where the phase 2 trials carried no histology.",
+        "note": "EDP-305 30 mg/kg reduced fibrosis in BDL rats; the fibrosis prediction was never tested in PBC, where the phase 2 trials carried no histology. Track opens 2016: EDP-305 in BDL rats was first public in the AASLD Liver Meeting 2016 poster (Erstad et al., 'The Novel FXR Agonist, EDP-305, Reduces Fibrosis Progression in Rodent Models of PBC and NASH', enanta.com/wp-content/uploads/2022/02/AASLD-2016-Rodent-Model-of-PBC.pdf).",
         "short": "EDP-305 cut fibrosis in BDL rats",
         "src": "https://doi.org/10.1002/hep4.1193",
         "srcLabel": "Erstad 2018",
@@ -266,11 +266,11 @@
         "untested_reason": "not_measured"
       },
       {
-        "year": 2020,
+        "year": 2017,
         "status": "untested",
         "model": "Mdr2-/- (Abcb4-/-) mouse cholangiopathy",
         "model_id": "mdr2-ko-mouse",
-        "note": "EDP-305 lowered transaminases up to 53%, portal pressure and periportal fibrosis in BALBc.Mdr2-/- mice with established biliary fibrosis, where OCA did not improve fibrosis.",
+        "note": "EDP-305 lowered transaminases up to 53%, portal pressure and periportal fibrosis in BALBc.Mdr2-/- mice with established biliary fibrosis, where OCA did not improve fibrosis. Track opens 2017: EDP-305 in BALBc.Mdr2-/- mice was first public as EASL ILC 2017 poster SAT-459 (Popov), announced in Enanta's 2017-04-19 release (natap.org/2017/EASL/EASL_137.htm).",
         "short": "EDP-305 improved injury and fibrosis in Mdr2-/- mice",
         "src": "https://doi.org/10.1111/liv.14490",
         "srcLabel": "An 2020",
@@ -538,11 +538,11 @@
         "combination_with": null
       },
       {
-        "year": 2020,
+        "year": 2017,
         "status": "untested",
         "model": "Mdr2-/- (Abcb4-/-) mouse cholangiopathy",
         "model_id": "mdr2-ko-mouse",
-        "note": "The mouse predicted EDP-305 would not drive the ductular reaction OCA did; INTREPID took no biopsies, so the prediction was never tested, and the mouse was silent on pruritus.",
+        "note": "The mouse predicted EDP-305 would not drive the ductular reaction OCA did; INTREPID took no biopsies, so the prediction was never tested, and the mouse was silent on pruritus. Track opens 2017: EDP-305 in BALBc.Mdr2-/- mice was first public as EASL ILC 2017 poster SAT-459 (Popov), announced in Enanta's 2017-04-19 release (natap.org/2017/EASL/EASL_137.htm).",
         "short": "Ductular-reaction prediction never tested in PBC",
         "src": "https://doi.org/10.1111/liv.14490",
         "srcLabel": "An 2020",
@@ -571,7 +571,8 @@
         "model_first_use_year": 2020,
         "prediction_level": "class",
         "reason": "Stated prediction had no patient histology",
-        "judgement": "Kept untested rather than contra: the pruritus miss is already scored once on the rodent-fxr-pd track, and the one safety prediction this model stated (no ductular-reaction worsening) had no patient read-out. The INTREPID registry record has the EDP-305 pruritus counts but no quotable sentence, which is the other reason the class miss is quoted from Schramm 2022.",
+        "untested_reason": "not_measured",
+  "judgement": "Kept untested rather than contra: the pruritus miss is already scored once on the rodent-fxr-pd track, and the one safety prediction this model stated (no ductular-reaction worsening) had no patient read-out. The INTREPID registry record has the EDP-305 pruritus counts but no quotable sentence, which is the other reason the class miss is quoted from Schramm 2022.",
         "drug": "edp-305",
         "route": "oral",
         "population_group": "unselected",

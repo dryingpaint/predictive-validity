@@ -1,0 +1,25 @@
+{
+ "tile": "systemic-lupus-erythematosus-btk-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "2019 -> 2016; evobrutinib opener dated to its own first use in the model, EULAR 2016 abstract THU0275 (doi 10.1136/annrheumdis-2016-eular.4342), which already reported the BTK occupancy-efficacy PK/PD model"
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "what": "2019 -> 2016; evobrutinib opener dated to EULAR 2016 abstract THU0275 (doi 10.1136/annrheumdis-2016-eular.4342), which determined the occupancy needed for disease reduction to translate doses to humans"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "2019 -> 2016; evobrutinib opener dated to EULAR 2016 abstract THU0275 (doi 10.1136/annrheumdis-2016-eular.4342): robust efficacy in IFN-α-accelerated NZB/W F1 mice"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "2018 -> 2015; elsubrutinib opener dated to the ACR/ARHP 2015 abstract by Goess et al. (first published 2015-09-29, acrabstracts.org), which reported ABBV-105 efficacy in IFNα-accelerated lupus nephritis"
+  }
+ ]
+}

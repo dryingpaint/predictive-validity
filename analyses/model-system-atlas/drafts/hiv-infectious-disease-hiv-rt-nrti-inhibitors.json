@@ -64,11 +64,11 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2013,
+    "year": 2010,
     "status": "same",
     "model": "HIV-1 replication in cell culture (CEM/PBMC/MT-4) with site-directed NRTI-resistant mutants, clinical isolates, in-vitro resistance selection and intracellular triphosphate persistence",
     "model_id": "hiv-nrti-cell-culture-panel",
-    "note": "Ten-day censavudine monotherapy cut HIV-1 RNA 0.97-1.28 log10 at 100-600 mg once daily: the RT target the cell assay predicted was engaged in patients.",
+    "note": "Ten-day censavudine monotherapy cut HIV-1 RNA 0.97-1.28 log10 at 100-600 mg once daily: the RT target the cell assay predicted was engaged in patients. Dating: the same 10-day monotherapy study (100-600 mg) was first public as a poster at the 50th ICAAC, September 2010 (i-base HTB 14 July 2011, https://i-base.info/htb/15247; aidsmap 21 Dec 2010), so the pairing dates to 2010, the later of the two sides.",
     "short": "Monotherapy cut HIV RNA ~1 log10",
     "src": "https://doi.org/10.1097/QAI.0b013e3182965d12",
     "srcLabel": "Cotte 2013",
@@ -111,11 +111,11 @@
   ],
   "dose": [
    {
-    "year": 2009,
+    "year": 2004,
     "status": "untested",
     "model": "HIV-1 replication in cell culture (CEM/PBMC/MT-4) with site-directed NRTI-resistant mutants, clinical isolates, in-vitro resistance selection and intracellular triphosphate persistence",
     "model_id": "hiv-nrti-cell-culture-panel",
-    "note": "Intracellular 4'-Ed4T-triphosphate persisted after drug removal in CEM cells, the once-daily regimen rationale; no numeric exposure target was stated.",
+    "note": "Intracellular 4'-Ed4T-triphosphate persisted after drug removal in CEM cells, the once-daily regimen rationale; no numeric exposure target was stated. Dating: the track opens at censavudine's own first use in the cell-culture panel, Dutschman 2004 (https://doi.org/10.1128/AAC.48.5.1640-1646.2004); Wang 2009 is the dose-relevant readout within it.",
     "short": "Triphosphate persistence sets once-daily regimen",
     "src": "https://doi.org/10.1128/AAC.00302-09",
     "srcLabel": "Wang 2009",
@@ -157,11 +157,11 @@
     "combination_with": null
    },
    {
-    "year": 2013,
+    "year": 2010,
     "status": "same",
     "model": "HIV-1 replication in cell culture (CEM/PBMC/MT-4) with site-directed NRTI-resistant mutants, clinical isolates, in-vitro resistance selection and intracellular triphosphate persistence",
     "model_id": "hiv-nrti-cell-culture-panel",
-    "note": "Once-daily 100-600 mg censavudine gave dose-proportional PK and exposures on the plateau of the exposure-response curve; all doses were active.",
+    "note": "Once-daily 100-600 mg censavudine gave dose-proportional PK and exposures on the plateau of the exposure-response curve; all doses were active. Dating: the same 10-day monotherapy study (100-600 mg) was first public as a poster at the 50th ICAAC, September 2010 (i-base HTB 14 July 2011, https://i-base.info/htb/15247; aidsmap 21 Dec 2010), so the pairing dates to 2010, the later of the two sides (model side Wang 2009).",
     "short": "All once-daily doses on response plateau",
     "src": "https://doi.org/10.1097/QAI.0b013e3182965d12",
     "srcLabel": "Cotte 2013",
@@ -300,11 +300,11 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2013,
+    "year": 2010,
     "status": "same",
     "model": "HIV-1 replication in cell culture (CEM/PBMC/MT-4) with site-directed NRTI-resistant mutants, clinical isolates, in-vitro resistance selection and intracellular triphosphate persistence",
     "model_id": "hiv-nrti-cell-culture-panel",
-    "note": "Phase 2a: ten days of censavudine monotherapy produced substantial HIV-1 RNA declines in every dose group, as cell culture predicted.",
+    "note": "Phase 2a: ten days of censavudine monotherapy produced substantial HIV-1 RNA declines in every dose group, as cell culture predicted. Dating: the same 10-day monotherapy study (100-600 mg) was first public as a poster at the 50th ICAAC, September 2010 (i-base HTB 14 July 2011, https://i-base.info/htb/15247; aidsmap 21 Dec 2010), so the pairing dates to 2010, the later of the two sides.",
     "short": "Monotherapy worked at every dose",
     "src": "https://doi.org/10.1097/QAI.0b013e3182965d12",
     "srcLabel": "Cotte 2013",
@@ -460,11 +460,11 @@
     "combination_with": null
    },
    {
-    "year": 2007,
+    "year": 2006,
     "status": "untested",
     "model": "HIV-1 replication in cell culture (CEM/PBMC/MT-4) with site-directed NRTI-resistant mutants, clinical isolates, in-vitro resistance selection and intracellular triphosphate persistence",
     "model_id": "hiv-nrti-cell-culture-panel",
-    "note": "GS-9148/GS-9131 profiled on the cell-culture panel: activity unaffected by K65R, L74V or M184V; opens GS-9131's efficacy track at the model's first use for this drug.",
+    "note": "GS-9148/GS-9131 profiled on the cell-culture panel: activity unaffected by K65R, L74V or M184V; opens GS-9131's efficacy track at the model's first use for this drug. Dating: GS-9148 activity against NRTI-resistant HIV-1 in cell culture was first public as CROI 2006 late-breaker 45LB (Cihlar, 5-8 Feb 2006; cited in i-base HTB https://i-base.info/htb/31268), so the rovafovir track opens in 2006.",
     "short": "GS-9131 cell-culture resistance profile",
     "src": "https://doi.org/10.1128/AAC.01215-07",
     "srcLabel": "Cihlar 2008",
@@ -553,11 +553,11 @@
     "combination_with": null
    },
    {
-    "year": 2015,
+    "year": 2014,
     "status": "same",
     "model": "DNA polymerase-gamma / mtDNA-depletion assays in cell culture (CEM; later 19-day primary human kidney, muscle and adipocyte cultures)",
     "model_id": "nrti-mito-tox-primary-cells",
-    "note": "Phase 2b: no stavudine-like lipoatrophy and less bone loss than tenofovir DF, as predicted; unpredicted limb/trunk fat gain and cholesterol rise.",
+    "note": "Phase 2b: no stavudine-like lipoatrophy and less bone loss than tenofovir DF, as predicted; unpredicted limb/trunk fat gain and cholesterol rise. Dating: the Phase 2b bone and peripheral-fat differences were first public at ICAAC 2014 (TAG 2015 Pipeline Report); model side BMS mtDNA paper epub 30 Sep 2013, so the pairing dates to 2014.",
     "short": "No lipoatrophy; unpredicted fat gain",
     "src": "https://doi.org/10.1016/S2352-3018(15)00231-3",
     "srcLabel": "Gupta 2016",

@@ -58,10 +58,10 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2010,
+    "year": 2011,
     "status": "untested",
     "model": "Human MM.1S myeloma xenografts in CB-17 SCID mice; tumour 20S beta5 inhibition + unfolded-protein-response markers (ixazomib; oprozomib in Chauhan 2010)",
-    "note": "Ixazomib (MLN9708) gave greater tissue 20S proteasome inhibition and UPR-marker induction than bortezomib in xenografts; no patient comparison yet.",
+    "note": "Ixazomib (MLN9708) gave greater tissue 20S proteasome inhibition and UPR-marker induction than bortezomib in xenografts; no patient comparison yet. Dating ruling: opened at ixazomib's own first use of the MM.1S/SCID xenograft, Chauhan 2011 (Clin Cancer Res, doi:10.1158/1078-0432.CCR-11-0476, epub 2011-06-30); Kupperman 2010 and its ASH 2009 abstract used CWR22, H460, WSU-DLCL2 and OCI-Ly7 models, not MM.1S. The system's 2010 first use is oprozomib's (Chauhan 2010).",
     "short": "Tumour 20S inhibition is the model readout",
     "src": "https://doi.org/10.1158/0008-5472.CAN-09-2766",
     "srcLabel": "Kupperman 2010",
@@ -300,10 +300,10 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2010,
+    "year": 2011,
     "status": "untested",
     "model": "Human MM.1S myeloma xenografts in CB-17 SCID mice; tumour 20S beta5 inhibition + unfolded-protein-response markers (ixazomib; oprozomib in Chauhan 2010)",
-    "note": "Oral gavage reached tumour-active exposure in xenografts (99% TGI at 6 mg/kg twice weekly); no human exposure comparison yet.",
+    "note": "Oral gavage reached tumour-active exposure in xenografts (99% TGI at 6 mg/kg twice weekly); no human exposure comparison yet. Dating ruling: opened at ixazomib's own first use of the MM.1S/SCID xenograft, Chauhan 2011 (Clin Cancer Res, doi:10.1158/1078-0432.CCR-11-0476, epub 2011-06-30); Kupperman 2010 and its ASH 2009 abstract used CWR22, H460, WSU-DLCL2 and OCI-Ly7 models, not MM.1S. The system's 2010 first use is oprozomib's (Chauhan 2010).",
     "short": "Oral dosing active in xenografts",
     "src": "https://doi.org/10.1158/0008-5472.CAN-09-2766",
     "srcLabel": "Kupperman 2010",
@@ -590,10 +590,10 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2010,
+    "year": 2011,
     "status": "untested",
     "model": "Human MM.1S myeloma xenografts in CB-17 SCID mice; tumour 20S beta5 inhibition + unfolded-protein-response markers (ixazomib; oprozomib in Chauhan 2010)",
-    "note": "Ixazomib shrank haematologic and solid xenografts, with greater PD response tracking greater antitumour activity; no patient comparison yet.",
+    "note": "Ixazomib shrank haematologic and solid xenografts, with greater PD response tracking greater antitumour activity; no patient comparison yet. Dating ruling: opened at ixazomib's own first use of the MM.1S/SCID xenograft, Chauhan 2011 (Clin Cancer Res, doi:10.1158/1078-0432.CCR-11-0476, epub 2011-06-30); Kupperman 2010 and its ASH 2009 abstract used CWR22, H460, WSU-DLCL2 and OCI-Ly7 models, not MM.1S. The system's 2010 first use is oprozomib's (Chauhan 2010).",
     "short": "Xenograft growth inhibition tracks PD",
     "src": "https://doi.org/10.1158/0008-5472.CAN-09-2766",
     "srcLabel": "Kupperman 2010",
@@ -777,10 +777,10 @@
     "patient_signal_reversed": false,
     "trial_unreported": false,
     "imported_from": null,
-    "year": 2014,
+    "year": 2010,
     "status": "untested",
     "model": "Patient-derived primary CD138+ myeloma cells ex vivo, including cells from bortezomib-treated or bortezomib-resistant patients (Piva 2008; Chauhan 2010, 2011)",
-    "note": "Single-agent ixazomib gave PRs in the bortezomib-relapsed (3/10) and relapsed-refractory (2/11) expansion cohorts, as bortezomib-resistant patient cells ex vivo predicted. Single-arm ruling: scored on the primary endpoint, which was safety/MTD; response by prior-bortezomib cohort was a secondary objective, so untested.",
+    "note": "Single-agent ixazomib gave PRs in the bortezomib-relapsed (3/10) and relapsed-refractory (2/11) expansion cohorts, as bortezomib-resistant patient cells ex vivo predicted. Single-arm ruling: scored on the primary endpoint, which was safety/MTD; response by prior-bortezomib cohort was a secondary objective, so untested. Dating ruling: opened at ixazomib's own first use of primary patient MM cells, Chauhan et al. ASH 2010 abstract 2992 (Blood 116(21):2992, doi:10.1182/blood.V116.21.2992.2992, 2010-11-19: MLN2238 killed purified tumour cells from patients relapsing after lenalidomide or bortezomib); the 2014 phase 1 left the track untested.",
     "short": "Responses after bortezomib, as ex vivo predicted",
     "src": "https://doi.org/10.1182/blood-2014-01-548941",
     "srcLabel": "Kumar 2014",
@@ -1013,10 +1013,10 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2019,
+    "year": 2016,
     "status": "retro",
     "model": "Human MM.1S myeloma xenografts in CB-17 SCID mice; tumour 20S beta5 inhibition + unfolded-protein-response markers (ixazomib; oprozomib in Chauhan 2010)",
-    "note": "Single-arm ruling: phase II primary ORR, no success bar stated in the abstract; ORR 41.0% on the 2/7 schedule, in the direction the xenografts predicted. Retrodiction ruling: the model was first public after bortezomib, a PSMB5 inhibitor, showed myeloma responses (Richardson 2003 NEJM, doi:10.1056/NEJMoa030288, 35% response), so status retro.",
+    "note": "Single-arm ruling: phase II primary ORR, no success bar stated in the abstract; ORR 41.0% on the 2/7 schedule, in the direction the xenografts predicted. Retrodiction ruling: the model was first public after bortezomib, a PSMB5 inhibitor, showed myeloma responses (Richardson 2003 NEJM, doi:10.1056/NEJMoa030288, 35% response), so status retro. Dating ruling: the phase II ORR (2/7 step-up 34%) was first public in Ghobrial et al. ASH 2016 abstract 2110 (Blood 128(22):2110, doi:10.1182/blood.V128.22.2110.2110, 2016-12-02), ahead of the 2019 paper; the model side (Chauhan 2010) was public earlier, so year 2016. Still after Richardson 2003, so retro stands.",
     "short": "Oral oprozomib ORR 25-41%",
     "src": "https://doi.org/10.1158/1078-0432.CCR-18-3728",
     "srcLabel": "Ghobrial 2019",
@@ -1262,10 +1262,10 @@
     "combination_with": null
    },
    {
-    "year": 2019,
+    "year": 2014,
     "status": "contra",
     "model": "Oprozomib (PR-047/ONX 0912) rodent and dog repeat oral dosing plus xenografts",
-    "note": "Gastrointestinal AEs were the commonest grade 3+ events, three AE-related deaths forced step-up dosing, and the programme was halted for safety and formulation PK. Imported-harm ruling: myeloma patients were measured, so the 2019 myeloma result sets the entry, not Infante 2016 in solid tumours.",
+    "note": "Gastrointestinal AEs were the commonest grade 3+ events, three AE-related deaths forced step-up dosing, and the programme was halted for safety and formulation PK. Imported-harm ruling: myeloma patients were measured, so the 2019 myeloma result sets the entry, not Infante 2016 in solid tumours. Dating ruling: myeloma patients' GI toxicity was first public in Vij et al. ASH 2014 abstract 34 (Blood 124(21):34, doi:10.1182/blood.V124.21.34.34, December 2014): most common grade 3 AEs diarrhoea, nausea and vomiting, two deaths from upper GI bleeding; the model side (Zhou 2009) was earlier, so year 2014, and the model still precedes the drug's own patient result, so no retrodiction.",
     "short": "Tolerated in dogs; GI toxicity ended programme",
     "src": "https://doi.org/10.1158/1078-0432.CCR-18-3728",
     "srcLabel": "Ghobrial 2019",

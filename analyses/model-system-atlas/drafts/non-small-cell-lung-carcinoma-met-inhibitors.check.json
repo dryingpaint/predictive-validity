@@ -9,9 +9,10 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Liu 2011 (PMID 21918175, epub 2011-09-14) resolves; quote verbatim in abstract. Opening untested entry, proximal readout. Nothing to change."
+   "note": "Year 2008 confirmed: Koblish ASCO 2008 abstract 14561 resolves (Koblish, Liu, Hall, Boer; J Clin Oncol 26:15_suppl, 2008-05-20; in-vivo INCB028060 characterisation). No earlier capmatinib in-vivo use found. Status untested unchanged; model_first_use_year 2011 should be <=2008.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -40,9 +41,10 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Liu 2011 abstract states tolerability at complete-inhibition doses; margin_stated true is right under decision 16."
+   "note": "Year 2008 confirmed: Koblish ASCO 2008 abstract 14561 resolves (Koblish, Liu, Hall, Boer; J Clin Oncol 26:15_suppl, 2008-05-20; in-vivo INCB028060 characterisation). No earlier capmatinib in-vivo use found. Status untested unchanged; model_first_use_year 2011 should be <=2008.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
@@ -73,9 +75,10 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Liu 2011 abstract quote verbatim; opening untested entry."
+   "note": "Year 2008 confirmed: Koblish ASCO 2008 abstract 14561 resolves (Koblish, Liu, Hall, Boer; J Clin Oncol 26:15_suppl, 2008-05-20; in-vivo INCB028060 characterisation). No earlier capmatinib in-vivo use found. Status untested unchanged; model_first_use_year 2011 should be <=2008.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -222,22 +225,32 @@
   {
    "cell": "engagement",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Bladt 2013 (PMID 23553846, epub 2013-04-03) quote verbatim in abstract (sentence covers in vitro and in vivo); EMD 1214063 = tepotinib; untested opener 2013, oral, proximal correct. Lint now clean."
+   "proposed_status": "untested",
+   "proposed_year": 2009,
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model, dated at the earliest public date (congress abstract)",
+   "note": "Bladt AACR 2010 abstract 3622 resolves, but tepotinib (EMD 1214063) in c-Met-driven xenografts, with PK/PD pMet inhibition, was public earlier: Blaukat AACR-NCI-EORTC 2009, Mol Cancer Ther 8(12S):B252, 10.1158/1535-7163.TARG-09-B252. Year 2009; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Both agree untested (rule 5: model existed, no human comparison yet). Year dispute only: rule 6 opens the track at tepotinib's first xenograft use, Blaukat AACR-NCI-EORTC 2009 B252 (Crossref Dec 2009), so 2009. Not track-latest."
   },
   {
    "cell": "dose",
    "index": 5,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Bladt 2013 abstract quote verbatim; tolerated at regressing doses without weight loss is a stated margin (margin_stated true); untested opener 2013, tepotinib oral correct."
+   "proposed_status": "untested",
+   "proposed_year": 2009,
+   "rule": "DRAFTER_BRIEF rule 6: a track opens at its own drug's first use in the model, dated at the earliest public date (congress abstract)",
+   "note": "Track opens at tepotinib's first xenograft use: B252 (Mol Cancer Ther 8(12S), Dec 2009; complete regressions at 6 mg/kg/d), so 2009. B252 states no tolerability; the margin is first stated in Bladt AACR 2010. Untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Both agree untested opener (no human exposure yet). Rule 6: track opens at tepotinib's first xenograft use, B252 Dec 2009, so year 2009; margin first stated 2010. Not track-latest (2019 same follows)."
   },
   {
    "cell": "efficacy",

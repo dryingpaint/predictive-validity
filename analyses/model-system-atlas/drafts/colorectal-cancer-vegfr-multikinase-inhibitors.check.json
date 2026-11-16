@@ -23,14 +23,14 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "same",
+   "status_supported": false,
+   "proposed_status": "retro",
    "proposed_year": 2007,
-   "rule": "DRAFTER_BRIEF evidence rule 6 (year = earliest public date, congress abstract included)",
-   "note": "Wong 2009 quote verbatim (epub 2009, print Oct 2009); linifanib oral, mixed solid tumours other_disease right. ASCO 2007 abstract 3519 (2007-06-20, same phase 1) already reported 'reduced DCE-MRI derived parameters': year 2007.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: status same agreed; ASCO 2007 abstract 3519 (published 2007-06-20, Wong phase 1) already reported reduced DCE-MRI derived parameters, so the comparison year is 2007."
+   "rule": "DRAFTER_BRIEF retrodiction rule (engagement: a model first public after a patient result for the same target and action, member or any other drug, is a retrodiction) + rule 6",
+   "note": "Year 2007 confirmed (ASCO 2007 abstract 3519, 2007-06-20, reduced DCE-MRI parameters). But vatalanib's dose-dependent DCE-MRI permeability fall in CRC patients (Morgan 2003, epub 2003-09-29) predates Albert 2006: retrodiction true, retro.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (engagement: any drug, same target and action): vatalanib's dose-dependent DCE-MRI permeability fall in CRC patients (Morgan 2003, PMID 14517187, epub 2003-09-29) predates Albert 2006; the mouse model reproduced it, so retro. Year 2007 (rule 6)."
   },
   {
    "cell": "dose",
@@ -48,17 +48,15 @@
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2007,
+   "proposed_status": null,
+   "proposed_year": null,
    "rule": "DRAFTER_BRIEF evidence rule 6 (year = earliest public date, congress abstract included)",
-   "note": "Same holds under the dose table (model-stated target reached; efficacy separate). But ASCO 2007 abstract 3519 (2007-06-20) first published the phase 1 PK (CL 2.8 L/h, t1/2 16.9 h) at the 0.25 mg/kg RPTD: year 2007.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose table 'target reached' gives same, agreed; rule 6: ASCO 2007 abstract 3519 (2007-06-20) first published phase 1 PK (CL 2.8 L/h, t1/2 16.9 h) at the 0.25 mg/kg RPTD, so year 2007."
+   "note": "Crossref: ASCO 2007 abstract 3519 (2007-06-20) gives RPTD 0.25 mg/kg, CL 2.8 L/h, t1/2 16.9 h. Albert 2006 target predates it; dose retrodiction needs linifanib's own earlier result, none. Year 2007, same holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -69,9 +67,9 @@
    "status_supported": true,
    "proposed_status": null,
    "proposed_year": null,
-   "rule": null,
-   "note": "Albert 2006 colon-xenograft quote verbatim; dosed with linifanib, so product_in_model false on the famitinib track is right; famitinib oral, unselected, untested opener 2006 hold.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "DRAFTER_BRIEF evidence rule 6 (track opens at its own drug's first use)",
+   "note": "Registry: NCT01392235 (famitinib, NPC) first posted 2011-07-12; AACR 2011 abstract 3604 (2011-04-15, famitinib xenografts) is earlier but same year. No CRC patient result yet: 2011, untested holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -182,17 +180,15 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2012,
-   "rule": "DRAFTER_BRIEF evidence rule 6 (earliest public date)",
-   "note": "O'Neil 2014 quote verbatim; contra under the combination rule holds (PFS primary, mFOLFOX6 named, comparator bevacizumab + mFOLFOX6). But ASCO 2012 abstract 3532 (2012-05-20) already stated no PFS advantage (HR 1.45, 1.26): year 2012.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Combination rule: PFS primary not improved vs bevacizumab+mFOLFOX6, contra agreed. Rule 6: ASCO 2012 abstract 3532 (2012-05-20) already reported no PFS advantage (HR 1.45, 1.26), so year 2012."
+   "proposed_status": null,
+   "proposed_year": null,
+   "rule": "DRAFTER_BRIEF evidence rule 6 (year = earliest public date, congress abstract included)",
+   "note": "Crossref: ASCO 2012 abstract 3532 (O'Neil, 2012-05-20): PFS primary not improved vs bevacizumab + mFOLFOX6. 2012, contra holds; vatalanib CONFIRM-1 PFS miss (ASCO 2005) predates Albert 2006, so retrodiction may be true, contra either way.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

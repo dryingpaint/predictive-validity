@@ -1,0 +1,25 @@
+{
+ "tile": "colorectal-cancer-vegfr-multikinase-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 2,
+   "what": "2009 -> 2007; status unchanged; Dated 2007: ASCO 2007 abstract 3519 (Wong, doi 10.1200/jco.2007.25.18_suppl.3519, 2007-06-20) already reported reduced DCE-MRI derived parameters in this phase 1."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "2009 -> 2007; status unchanged; Dated 2007: ASCO 2007 abstract 3519 (doi 10.1200/jco.2007.25.18_suppl.3519, 2007-06-20) first published the phase 1 PK (CL 2.8 L/h, t1/2 16.9 h) at the 0.25 mg/kg RPTD."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "what": "2006 -> 2011; status unchanged; Dated to famitinib's first public record (NCT01392235, first posted 2011-07-12), as no famitinib colon xenograft exists; model_first_use_year stays the system's 2006."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2014 -> 2012; status unchanged; Dated 2012: ASCO 2012 abstract 3532 (O'Neil, doi 10.1200/jco.2012.30.15_suppl.3532, 2012-05-20) already reported no PFS gain over bevacizumab + mFOLFOX6."
+  }
+ ]
+}

@@ -165,17 +165,13 @@
   {
    "cell": "efficacy",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2021,
-   "rule": "Evidence rule 6 (earliest public date)",
-   "note": "IJC 2023 quote verbatim; primary endpoint PSA response, three doses, no control, so single-arm rule and retro right; NHA-pretreated patients excluded, matching the model. ASCO GU 2021 abstract 108 (print 2021-02-20) already reported PSA50 41.9%: year 2021.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6: ASCO GU 2021 abstract 108 (JCO 39:6_suppl 108) reported PSA50 41.9% across three doses; year 2021 not 2023. Single-arm rule; model (2020) post-dates class CRPC results, so retro."
+   "rule": "Evidence rule 6 (earliest public date; paired = later side); retrodiction rule",
+   "note": "ASCO GU 2021 abstract 108 (JCO 39:6_suppl, print 2021-02-20) is this phase II, PSA50 41.9%; no earlier PubMed/Crossref report. Model side Zhou 2020 EJC epub 2020-05-24 earlier, so 2021. Post-dates enzalutamide CRPC results: retro.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

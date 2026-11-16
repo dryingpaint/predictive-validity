@@ -1,0 +1,20 @@
+{
+  "tile": "type-2-diabetes-mellitus-insr-agonists",
+  "changed": [
+    {
+      "cell": "safety",
+      "index": 2,
+      "what": "2015 -> 2009: opener of rat-dog-chronic-tox x degludec set to degludec's own first use (studies run before phase 3, 2009 proxy, matching model_first_use_year; peglispro's chronic studies came later, Byrd 2017); status unchanged untested"
+    },
+    {
+      "cell": "safety",
+      "index": 6,
+      "what": "2026 -> 2022: opener of lilly-stz-rat-glucodynamics x efsitora set to efsitora's own first use in the model, Moyers 2022 JPET (PMID 35840338, epub 2022-07-15); status unchanged untested"
+    },
+    {
+      "cell": "safety",
+      "index": 9,
+      "what": "2023 -> 2021: opener of novo-pig-clamp-rat-dog-pk x icodec set to icodec's own first use in the model, Kjeldsen 2021 J Med Chem (PMID 33944562, epub 2021-05-04), not degludec's 2006 study; status unchanged untested"
+    }
+  ]
+}

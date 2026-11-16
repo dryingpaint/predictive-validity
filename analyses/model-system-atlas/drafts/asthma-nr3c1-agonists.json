@@ -145,11 +145,11 @@
     ],
     "dose": [
       {
-        "year": 2009,
+        "year": 2012,
         "status": "untested",
         "model_id": "rat-allergic-lung-oedema-az",
         "model": "Rat allergic airway inflammation (lung oedema; thymic involution as systemic index)",
-        "note": "The rat model set the regimen target: once-daily inhaled dosing with lung efficacy at a better therapeutic ratio (thymic involution) than fluticasone propionate. Velsecorat track; the opener keeps the model's first use (AZD5423, 2009); velsecorat entered humans in 2012 (NCT01636024).",
+        "note": "The rat model set the regimen target: once-daily inhaled dosing with lung efficacy at a better therapeutic ratio (thymic involution) than fluticasone propionate. Velsecorat track; the opener keeps the model's first use (AZD5423, 2009); velsecorat entered humans in 2012 (NCT01636024). Opener dated to velsecorat's own first use of the rat model, proxied by its first-in-human registration (NCT01636024, submitted 2012-07-05); model_first_use_year stays the system's 2009 (AZD5423).",
         "short": "Once-daily target with stated margin",
         "src": "https://doi.org/10.1021/acs.jmedchem.7b01215",
         "srcLabel": "Hemmerling 2017",
@@ -355,11 +355,11 @@
     ],
     "efficacy": [
       {
-        "year": 2009,
+        "year": 2012,
         "status": "untested",
         "model_id": "rat-allergic-lung-oedema-az",
         "model": "Rat allergic airway inflammation (lung oedema; thymic involution as systemic index)",
-        "note": "Rat lung-oedema inhibition after dry-powder inhalation selected AZD5423 and then AZD7594; the model predicted ICS-like lung efficacy with less systemic burden. Velsecorat track (its later entries are efficacy 2 and 3); AZD5423 never had an asthma efficacy trial, so its rat track needs no opener here. The opener keeps the model's first use (AZD5423, 2009); velsecorat entered humans in 2012 (NCT01636024).",
+        "note": "Rat lung-oedema inhibition after dry-powder inhalation selected AZD5423 and then AZD7594; the model predicted ICS-like lung efficacy with less systemic burden. Velsecorat track (its later entries are efficacy 2 and 3); AZD5423 never had an asthma efficacy trial, so its rat track needs no opener here. The opener keeps the model's first use (AZD5423, 2009); velsecorat entered humans in 2012 (NCT01636024). Opener dated to velsecorat's own first use of the rat model, proxied by its first-in-human registration (NCT01636024, submitted 2012-07-05); model_first_use_year stays the system's 2009 (AZD5423).",
         "short": "Rat oedema model picked both AZ candidates",
         "src": "https://doi.org/10.1021/acs.jmedchem.7b01215",
         "srcLabel": "Hemmerling 2017",
@@ -622,11 +622,11 @@
         "untested_reason": "unpublished"
       },
       {
-        "year": 2015,
+        "year": 2010,
         "status": "untested",
         "model_id": "allergen-challenge-lar",
         "model": "Allergen-induced late asthmatic response in mild atopic asthmatics (human challenge)",
-        "note": "AZD5423 75/300 µg cut the late fall in FEV1 to 8.7% vs 14% on placebo (budesonide 12.5%, ns); no asthma efficacy trial of AZD5423 followed.",
+        "note": "AZD5423 75/300 µg cut the late fall in FEV1 to 8.7% vs 14% on placebo (budesonide 12.5%, ns); no asthma efficacy trial of AZD5423 followed. Opener dated to AZD5423's own first use of allergen challenge: NCT01225549 registered 2010-10-15 (start 2010-11).",
         "short": "AZD5423 blunted LAR; never trialled",
         "src": "https://doi.org/10.1164/rccm.201404-0623OC",
         "srcLabel": "Gauvreau 2015",
@@ -664,11 +664,11 @@
         "untested_reason": "not_measured"
       },
       {
-        "year": 2014,
+        "year": 2013,
         "status": "retro",
         "model_id": "allergen-challenge-lar",
         "model": "Allergen-induced late asthmatic response in mild atopic asthmatics (human challenge)",
-        "note": "The 1 mg dose GSK took into the 28-day trial protected the LAR by half of fluticasone's effect; that trial then showed nothing. Retrodiction ruling: glucocorticoid-receptor agonists (inhaled corticosteroids) had moved this readout in asthma patients decades before this model result was public, and efficacy and engagement are claims about the target, so this comparison is a retrodiction. GW870086's own 1 mg failure (J Asthma, online 2013-10-01) was also public before this challenge result; the challenge reproduced it (1 mg gave half of fluticasone's protection), so neg becomes retro. Earliest public date: the trial report, Bareille et al., Curr Drug Ther 8(3), issued 2014-01-31 (doi 10.2174/15748855113089990005), before the 2018 registry posting. Model number: LAR protection +0.265 L (95% CI 0.053-0.477) at GW870086 1 mg once daily, 50% of fluticasone propionate's +0.526 L in the same crossover; bar: ICS-level LAR protection: fluticasone propionate 250 µg bid +0.526 L (95% CI 0.319-0.733) vs placebo in the same study.",
+        "note": "The 1 mg dose GSK took into the 28-day trial protected the LAR by half of fluticasone's effect; that trial then showed nothing. Retrodiction ruling: glucocorticoid-receptor agonists (inhaled corticosteroids) had moved this readout in asthma patients decades before this model result was public, and efficacy and engagement are claims about the target, so this comparison is a retrodiction. GW870086's own 1 mg failure (J Asthma, online 2013-10-01) was also public before this challenge result; the challenge reproduced it (1 mg gave half of fluticasone's protection), so neg becomes retro. Earliest public date: the trial report, Bareille et al., Curr Drug Ther 8(3), issued 2014-01-31 (doi 10.2174/15748855113089990005), before the 2018 registry posting. Model number: LAR protection +0.265 L (95% CI 0.053-0.477) at GW870086 1 mg once daily, 50% of fluticasone propionate's +0.526 L in the same crossover; bar: ICS-level LAR protection: fluticasone propionate 250 µg bid +0.526 L (95% CI 0.319-0.733) vs placebo in the same study. Dated 2013: model side Bareille et al., Current Drug Therapy 8(3), online ahead of print July 2013 (doi 10.2174/15748855113089990005); patient side J Asthma 2013 (online Aug-Oct 2013).",
         "short": "Half-ICS LAR effect; 1 mg trial failed",
         "src": "https://clinicaltrials.gov/study/NCT00857857",
         "srcLabel": "NCT00857857 results 2018",
@@ -943,9 +943,9 @@
         "model": "Allergen-induced late asthmatic response in mild atopic asthmatics (human challenge)",
         "model_kind": "human_challenge",
         "model_first_use_year": 2009,
-        "year": 2014,
+        "year": 2013,
         "status": "retro",
-        "note": "The challenge called 3 mg protective (LAR, methacholine PC20, FeNO) and 1 mg weak; the adaptive 28-day trial then improved FEV1 at 2 and 4 mg. Retrodiction ruling: glucocorticoid-receptor agonists (inhaled corticosteroids) had moved this readout in asthma patients decades before this model result was public, and efficacy and engagement are claims about the target, so this comparison is a retrodiction. Earliest public date of the challenge result: Curr Drug Ther report issued 2014-01-31, after the 2013 adaptive trial.",
+        "note": "The challenge called 3 mg protective (LAR, methacholine PC20, FeNO) and 1 mg weak; the adaptive 28-day trial then improved FEV1 at 2 and 4 mg. Retrodiction ruling: glucocorticoid-receptor agonists (inhaled corticosteroids) had moved this readout in asthma patients decades before this model result was public, and efficacy and engagement are claims about the target, so this comparison is a retrodiction. Earliest public date of the challenge result: Curr Drug Ther report issued 2014-01-31, after the 2013 adaptive trial. Dated 2013: model side Bareille et al. online ahead of print July 2013 (doi 10.2174/15748855113089990005, issue 8(3) 2013); patient side Current Drug Therapy 8(2), Sept 2013.",
         "short": "3 mg protective; 2-4 mg trial worked",
         "confidence": "medium",
         "confidence_note": "Both sides abstract only: the challenge report (Bareille 2014 Curr Drug Ther 8(3):155-163, issued January 2014) read as its ResearchGate abstract via fc.py; the adaptive trial as its eurekaselect abstract. Registry NCT00857857 (results 2018-02-20) gives the 3 mg minimum-FEV1 LAR protection +0.456 L vs FP +0.526 L. Challenge abstract: 'GW870086 3 mg demonstrated anti-inflammatory activity and offered protection from airway hyperresponsiveness.' Year held at 2018 to stay in order behind efficacy 8, which the draft still dates 2018; the checker's verdict re-dates efficacy 8 to 2014, and this entry moves to 2014 with it (the challenge report was public January 2014).",
@@ -963,11 +963,11 @@
     ],
     "safety": [
       {
-        "year": 2009,
+        "year": 2012,
         "status": "untested",
         "model_id": "rat-allergic-lung-oedema-az",
         "model": "Rat allergic airway inflammation (lung oedema; thymic involution as systemic index)",
-        "note": "The rat model read systemic GR activity as thymic involution and claimed a better therapeutic ratio than fluticasone propionate; no toxicology package is public. Velsecorat track; the opener keeps the model's first use (AZD5423, 2009); velsecorat entered humans in 2012 (NCT01636024).",
+        "note": "The rat model read systemic GR activity as thymic involution and claimed a better therapeutic ratio than fluticasone propionate; no toxicology package is public. Velsecorat track; the opener keeps the model's first use (AZD5423, 2009); velsecorat entered humans in 2012 (NCT01636024). Opener dated to velsecorat's own first use of the rat model, proxied by its first-in-human registration (NCT01636024, submitted 2012-07-05); model_first_use_year stays the system's 2009 (AZD5423).",
         "short": "Thymus involution as the systemic index",
         "src": "https://doi.org/10.1021/acs.jmedchem.7b01215",
         "srcLabel": "Hemmerling 2017",

@@ -1,0 +1,25 @@
+{
+ "tile": "breast-cancer-pan-her-inhibitors",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "2017 -> 2013 (pyrotinib opener on her2-amplified-breast-xenografts; registry proxy NCT01937689 first posted 2013-09-09, https://clinicaltrials.gov/study/NCT01937689)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "what": "2017 -> 2013 (pyrotinib opener on her2-amplified-breast-xenografts; registry proxy NCT01937689 first posted 2013-09-09, https://clinicaltrials.gov/study/NCT01937689)"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "what": "2017 -> 2013 (pyrotinib opener on her2-amplified-breast-xenografts; registry proxy NCT01937689 first posted 2013-09-09, https://clinicaltrials.gov/study/NCT01937689)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "what": "2018 -> 2017 (patient side first public at ESMO 2017, Ann Oncol 28 suppl 5:v74, doi:10.1093/annonc/mdx365.001; model side Kim 2012; status retro and retrodiction unchanged, neratinib's HER2-positive breast activity public 2010)"
+  }
+ ]
+}

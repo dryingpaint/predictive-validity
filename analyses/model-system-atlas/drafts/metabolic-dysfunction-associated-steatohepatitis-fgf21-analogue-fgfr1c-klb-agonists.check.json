@@ -97,17 +97,13 @@
   {
    "cell": "dose",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2019,
-   "rule": "evidence rule 6; each track opens at the model's first public use",
-   "note": "ENLIVEN quote verbatim; no monkey exposure target or margin, so untested/no_prediction right; drug pegozafermin, sc. Sole entry on the track, so it opens at the 2019 EASL monkey poster, not 2023.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 5/6: both agree untested, no_prediction (no monkey exposure target or margin). Sole entry on the pegozafermin-monkey dose track; untested_reason already set."
+   "rule": "evidence rule 6; track opens at its own drug's first use in the model",
+   "note": "Pegozafermin first public monkey use is EASL ILC 2019 LBP-29 (announced 2019-03-28); year 2019 confirmed. Monkey work stated no exposure target or margin, so untested/no_prediction unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -164,10 +160,11 @@
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "note": "FALCON 1 quote verbatim (abstract); enrolled stage 3 fibrosis only, so stage_or_line fits; drug pegbelfermin, sc. Contra holds only if the congress-abstract model side is admissible.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "evidence rule 6 (sponsor statement earlier than publication)",
+   "note": "Fierce Biotech, Nov 2021 (search excerpt): BMS discontinued pegbelfermin after FALCON 1/2 missed significance, no dose response. Model side 2016, so year 2021 confirmed; contra unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -327,32 +324,24 @@
   {
    "cell": "engagement",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2019,
-   "rule": "evidence rule 6 (year = earliest public date: congress abstract, sponsor press release or filing); retrodiction rule for engagement",
-   "note": "Kaufman 2020 quote verbatim (PMC7659583); retro, other_disease (T2D), efruxifermin sc correct. Akero's 2019 S-1/A (SEC) already reported AKR-001 phase 1b T2D triglycerides down up to 69%, so earliest public 2019.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule (engagement): both agree retro. Akero 2019 SEC filings reported phase 1b T2D TG up to -69%, so earliest public 2019 under rule 6; still post-dates other analogues' lipid PD."
+   "rule": "evidence rule 6 (paired year is the later side); retrodiction rule (engagement)",
+   "note": "Akero S-1 (SEC, filed 2019-05-24) text: AKR-001 trials cut triglycerides up to 69%; patient side 2019, monkey side 2017, so year 2019. Monkey post-dates LY2405319 patient lipids (2013): retro stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
    "index": 6,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2019,
-   "rule": "evidence rule 6; each track opens at the model's first public use",
-   "note": "Rosenstock 2023 abstract quote verbatim, but pegozafermin (BIO89-100) diabetic cynomolgus data were first public at EASL April 2019 (89bio poster, press release); opener belongs at 2019. Also list order 4/5/6 not in year order.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 6 opener: both agree untested. Pegozafermin diabetic-monkey data first public EASL 2019 poster, so the opener belongs at 2019. Not the track's latest entry, so no untested_reason needed."
+   "rule": "evidence rule 6; track opens at its own drug's first use in the model",
+   "note": "89bio release (2019-03-28) and EASL ILC 2019 poster LBP-29 (2019-04-11): BIO89-100 weekly/Q2W in spontaneously diabetic cynomolgus monkeys. Opener year 2019 confirmed; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [

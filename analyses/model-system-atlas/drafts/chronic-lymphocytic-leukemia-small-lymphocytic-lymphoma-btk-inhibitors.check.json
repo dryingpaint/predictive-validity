@@ -20,44 +20,44 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "Retrodiction (engagement: any drug of same target and action)",
-   "note": "NDA 210259 bundle: quote verbatim. Mouse PD first public 2015 at earliest, after ibrutinib (2013) and acalabrutinib (Byrd 2015) patient occupancy, so retro, not same. Oral acalabrutinib, R/R CLL: fields right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "quote_found": "verbatim",
+   "rule": "Rule 6 dating (paired: later of two sides); retrodiction (engagement: any drug of same target and action)",
+   "note": "Covey AACR 2015 abstract 2596 states both mouse CD86 ED50 0.34 mg/kg and 94% CLL patient occupancy at 200 mg QD; cites Byrd NEJM 2013 ibrutinib occupancy. Both sides 2015; retro holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Retrodiction (engagement: any drug of same target and action)",
-   "note": "Tam 2019 abstract (epub 2019-07-24): quote verbatim. Guo 2019 model side epub 2019-08-19, after ibrutinib/acalabrutinib and Tam's own occupancy, so retro. Oral zanubrutinib; mixed B-cell phase 1 coded unselected is fine.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "quote_found": "abstract_only",
+   "rule": "Rule 6 dating (paired: later of two sides); retrodiction (engagement: any drug of same target and action)",
+   "note": "Model side Li AACR 2015 (Apr): mouse PBMC/spleen occupancy. Patient side Tam ASH 2015 abstract 832 (3 Dec 2015): PBMC occupancy 98.6% at 40 mg QD. Later side 2015; ibrutinib occupancy 2013 earlier, retro holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "Rule 5 no_prediction (no model-stated human target)",
-   "note": "NDA 210259 bundle: quote verbatim. Mouse PD gave mg/kg ED50s only; 100 mg BID set on ACE-CL-001 patient occupancy. Untested holds; drug=acalabrutinib, route=oral right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "quote_found": "verbatim",
+   "rule": "Rule 6 dating (track opens at its own drug's first use in the model); Rule 5 no_prediction",
+   "note": "Re-opened Covey AACR 2015 abstract 2596 (presented Apr 2015, Cancer Res suppl 2015): oral ACP-196 mouse CD86 ED50 0.34 mg/kg, acalabrutinib's first mouse PD use. Year 2015 confirmed; untested (no human target) unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "dose",
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "Rule 5 no_prediction (no model-stated human target)",
-   "note": "Tam 2019 abstract: quote verbatim (italic P only). 160 mg BID chosen on patient lymph-node occupancy, no mouse-derived target. drug=zanubrutinib, route=oral right.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "quote_found": "abstract_only",
+   "rule": "Rule 6 dating (track opens at its own drug's first use in the model); Rule 5 no_prediction",
+   "note": "Re-opened Li AACR 2015 abstract 2597 (Apr 2015): dose-dependent mouse BTK occupancy in PBMC and spleen, zanubrutinib's first mouse PD use; no human target stated. Year 2015 confirmed; untested unchanged.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

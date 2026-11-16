@@ -9,9 +9,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Shimamura 2012 (PMID 22806877) resolves; quote verbatim in abstract. Untested at model opening is right. Proia 2012 (Jan) and Graham 2012 (Feb) precede it in the same year; Garon 2013 (luminespib NSCLC xenografts) also belongs to this panel."
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use in the model)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Ying 2012 (PMID 22144665) epub 2011-12-05 per PubMed; abstract-level, H1975 use confirmed by Smith 2015 (PMC4457934) citing it. Earliest ganetespib NSCLC-panel use found; untested unchanged; 2011 right."
   },
   {
    "cell": "engagement",
@@ -28,9 +30,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Shimamura 2012 quote verbatim; regimen prediction (tumour t1/2 58 h supports weekly dosing) stated before any human comparison; untested correct."
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use in the model)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Ying 2012 (PMID 22144665) epub 2011-12-05 per PubMed; abstract-level, H1975 use confirmed by Smith 2015 (PMC4457934) citing it. Earliest ganetespib NSCLC-panel use found; untested unchanged; 2011 right."
   },
   {
    "cell": "dose",
@@ -52,9 +56,11 @@
    "index": 1,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Shimamura 2012 quote verbatim; EGFR and ERBB2 subsets named before the phase 2 read out; untested correct."
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use in the model)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Ying 2012 (PMID 22144665) epub 2011-12-05 per PubMed; abstract-level, H1975 use confirmed by Smith 2015 (PMC4457934) citing it. Earliest ganetespib NSCLC-panel use found; untested unchanged; 2011 right."
   },
   {
    "cell": "efficacy",
@@ -138,10 +144,11 @@
    "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Johnson 2015 (PMID 25870087, epub 2015-04-13) quote verbatim; luminespib iv plus erlotinib, EGFR-mutant. Same under the dosed-drug ruling. Unverified: ASCO 2012 abstract 7543 (luminespib NSCLC phase 2, not readable: site blocked) may report visual AEs earlier, which would date this 2014."
+   "rule": "DRAFTER_BRIEF rule 6 (dating); CHECKER_BRIEF retrodiction rule",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Kanamaru 2014 (PMID 24418710) entrez 2014-01-15; ASCO 2013 abstract 8036 (Johnson, luminespib+erlotinib, Crossref 2013-05-20) precedes it, text blocked. Model side is later: 2014; same, not retro, unchanged."
   },
   {
    "cell": "efficacy",
@@ -171,20 +178,22 @@
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Garon 2013 (PMID 23493311, epub 2013-03-14) quote verbatim; luminespib opener untested 2013 right. Lists after engagement 2; opener should come first."
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use in the model)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Ueno 2011 (PMID 21996088) epub 2011-10-11 per PubMed; abstract: 21 NSCLC lines incl. H1975, EGFR/MET/HER2/AKT depleted at 50-100 nM. No earlier luminespib NSCLC use found; untested; 2011 right."
   },
   {
    "cell": "dose",
    "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Garon 2013 IC50 quote verbatim; untested opener right. If dose 2 moves to its own model_id this is the track's latest entry and needs untested_reason; its note overstates (Sessa compared with non-NSCLC xenografts)."
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use in the model)",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Ueno 2011 (PMID 21996088) epub 2011-10-11 per PubMed; abstract: 21 NSCLC lines incl. H1975, EGFR/MET/HER2/AKT depleted at 50-100 nM. No earlier luminespib NSCLC use found; untested; 2011 right."
   },
   {
    "cell": "safety",

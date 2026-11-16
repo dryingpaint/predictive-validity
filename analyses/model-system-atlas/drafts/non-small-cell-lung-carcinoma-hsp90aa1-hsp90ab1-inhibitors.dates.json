@@ -1,0 +1,35 @@
+{
+  "tile": "non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "what": "2012 -> 2011; opener of the ganetespib track of nsclc-xenograft-panel moved to ganetespib's own first use in the panel, Ying 2012 (epub 2011-12-05, PMID 22144665, NCI-H1975)"
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "what": "2012 -> 2011; opener of the ganetespib track of nsclc-xenograft-panel moved to ganetespib's own first use in the panel, Ying 2012 (epub 2011-12-05, PMID 22144665, NCI-H1975)"
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "what": "2012 -> 2011; opener of the ganetespib track of nsclc-xenograft-panel moved to ganetespib's own first use in the panel, Ying 2012 (epub 2011-12-05, PMID 22144665, NCI-H1975)"
+    },
+    {
+      "cell": "engagement",
+      "index": 3,
+      "what": "2013 -> 2011; opener of the luminespib track of nsclc-xenograft-panel moved to luminespib's own first use in NSCLC lines, Ueno 2011 (Lung Cancer, epub 2011-10-11, PMID 21996088), not Garon 2013"
+    },
+    {
+      "cell": "dose",
+      "index": 3,
+      "what": "2013 -> 2011; opener of the luminespib track of nsclc-xenograft-panel moved to luminespib's own first use in NSCLC lines, Ueno 2011 (Lung Cancer, epub 2011-10-11, PMID 21996088), not Garon 2013"
+    },
+    {
+      "cell": "safety",
+      "index": 5,
+      "what": "2015 -> 2014; pairing: later of model side Kanamaru 2014 (J Toxicol Sci, 2014-02-01) and patient side first public at ASCO 2013 abstract 8036 (night blindness in luminespib+erlotinib NSCLC trial); status same and retrodiction false unchanged (dogs dosed Chugai compounds, no earlier patient result of their own)"
+    }
+  ]
+}

@@ -135,8 +135,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / fields",
-   "note": "Klint 2023 full text: '30- and 50-fold superior efficacy in reducing KC secretion' verbatim; calls them preclinical psoriasis models. Untested opener at 2016 FIH proxy; izokibep, sc, unselected fine."
+   "checked_by": "CHECKER_BRIEF / dates",
+   "rule": "DRAFTER_BRIEF rule 6 (track opens at its own drug's first use; proxy allowed)",
+   "note": "Year 2015 confirmed: Klint 2023 (PMC10187109) cites FIH NCT02690142 with EudraCT 2015-004531-13; CT.gov lists that EudraCT, first submitted 2016-01-22, posted 2016-02-24. Untested opener stands; retrodiction is scored on entry 4."
   },
   {
    "cell": "efficacy",

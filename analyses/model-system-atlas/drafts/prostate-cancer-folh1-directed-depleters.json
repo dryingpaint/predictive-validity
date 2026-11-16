@@ -59,10 +59,10 @@
         "untested_reason": "no_prediction"
       },
       {
-        "year": 2014,
+        "year": 2013,
         "status": "same",
         "model": "PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)",
-        "note": "124I-MIP-1095 PET in 16 patients showed excellent tumour uptake, the direct read-out the LNCaP/PC3 mice had predicted.",
+        "note": "124I-MIP-1095 PET in 16 patients showed excellent tumour uptake, the direct read-out the LNCaP/PC3 mice had predicted. Dated 2013: 123I-MIP-1095 visualized soft-tissue, bone and prostate lesions in 7 patients (Barrett 2013, J Nucl Med, PMID 23303962, epub 2013-01-09), the drug's first public patient uptake; model side Hillier 2009.",
         "short": "Tumour uptake confirmed by patient PET",
         "src": "https://doi.org/10.1007/s00259-014-2713-y",
         "srcLabel": "Zechmann 2014",
@@ -98,11 +98,11 @@
         "combination_with": null
       },
       {
-        "year": 2016,
+        "year": 2015,
         "status": "same",
         "strengthens": true,
         "model": "PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)",
-        "note": "177Lu-PSMA-617: patients were chosen on PSMA imaging, as the PSMA-dependent uptake in LNCaP mice implied; 13 of 30 had >50% PSA falls. Lutetium track; the source shows tumour uptake in imaging-selected patients (class-level, per the checker).",
+        "note": "177Lu-PSMA-617: patients were chosen on PSMA imaging, as the PSMA-dependent uptake in LNCaP mice implied; 13 of 30 had >50% PSA falls. Lutetium track; the source shows tumour uptake in imaging-selected patients (class-level, per the checker). Dated 2015: lutetium-PSMA-617 patient tumour uptake was public in 2015 (Kratochwil case report, PMID 25573634, epub 2015-01-09; Delker dosimetry, PMID 26318602, epub 2015-08-29); the model side Benesova 2015 (epub 2015-04-16) is the later of the two first dates.",
         "short": "PSMA imaging selected responders, PSA fell",
         "src": "https://doi.org/10.2967/jnumed.115.171397",
         "srcLabel": "Kratochwil 2016",
@@ -179,10 +179,10 @@
         "untested_reason": "no_prediction"
       },
       {
-        "year": 2017,
+        "year": 2014,
         "status": "same",
         "model": "Docetaxel-refractory PSMA-high CRPC xenografts dosed with PSMA ADC",
-        "note": "In 119 mCRPC patients, PSA and CTC falls tracked PSMA expression on CTCs or tissue, the threshold rule the cell and PDX work had set.",
+        "note": "In 119 mCRPC patients, PSA and CTC falls tracked PSMA expression on CTCs or tissue, the threshold rule the cell and PDX work had set. Dated by the first public patient side, Petrylak et al. ASCO 2014 abstract 5023 (J Clin Oncol 32:15_suppl, online 2014-05-20; same phase 2, 83 taxane-treated pts), which already reported PSA and CTC responses associated with higher PSMA+ CTC.",
         "short": "Response tracked PSMA expression in patients",
         "src": "https://doi.org/10.1002/pros.23922",
         "srcLabel": "Petrylak 2020",
@@ -219,10 +219,10 @@
         "combination_with": null
       },
       {
-        "year": 2016,
+        "year": 2015,
         "status": "untested",
         "model": "PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)",
-        "note": "177Lu-PSMA-617 in LNCaP-xenograft mice: specific tumour uptake; opens the lutetium engagement track.",
+        "note": "177Lu-PSMA-617 in LNCaP-xenograft mice: specific tumour uptake; opens the lutetium engagement track. Dated 2015: Benesova 2015 (J Nucl Med, PMID 25883127, epub 2015-04-16), this drug's first use in the model.",
         "short": "Lutetium track opens: LNCaP uptake",
         "src": "https://doi.org/10.2967/jnumed.114.147413",
         "srcLabel": "Benešová 2015",
@@ -619,10 +619,10 @@
         "untested_reason": "no_prediction"
       },
       {
-        "year": 2017,
+        "year": 2014,
         "status": "same",
         "model": "Docetaxel-refractory PSMA-high CRPC xenografts dosed with PSMA ADC",
-        "note": "Open-label single-arm phase 2, no success bar set in advance, three co-primary activity measures (PSA, CTC, radiologic); scored on them against the predicted regression: PSA50 14%, CTC50 78%, PR 5.7% chemo-naive; authors call it some activity, so partial match.",
+        "note": "Open-label single-arm phase 2, no success bar set in advance, three co-primary activity measures (PSA, CTC, radiologic); scored on them against the predicted regression: PSA50 14%, CTC50 78%, PR 5.7% chemo-naive; authors call it some activity, so partial match. Dated by the first public patient side, Petrylak et al. ASCO 2014 abstract 5023 (J Clin Oncol 32:15_suppl, online 2014-05-20; same phase 2, 83 taxane-treated pts): PSA30 36%, CTC50 74%, stable disease 80%; 'active'.",
         "short": "Single-arm: some PSA, CTC, radiologic activity",
         "src": "https://doi.org/10.1002/pros.23922",
         "srcLabel": "Petrylak 2020",
@@ -785,11 +785,11 @@
         "combination_with": null
       },
       {
-        "year": 2016,
+        "year": 2015,
         "status": "contra",
         "modality": "other",
         "model": "PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)",
-        "note": "Earliest public result for this drug (rule 6): in 30 men salivary glands took the highest normal-organ dose (1.4 vs kidney 0.75 Gy/GBq); the mice had flagged kidney. VISION later: dry mouth 39%.",
+        "note": "Earliest public result for this drug (rule 6): in 30 men salivary glands took the highest normal-organ dose (1.4 vs kidney 0.75 Gy/GBq); the mice had flagged kidney. VISION later: dry mouth 39%. Dated 2015: the drug's own salivary-over-kidney dose was first public in Delker 2015 (PMID 26318602, epub 2015-08-29; salivary 1.4 vs kidney 0.6 Gy/GBq), after the model side Benesova 2015 (epub 2015-04-16).",
         "short": "Salivary glands, not kidneys, took most dose",
         "src": "https://doi.org/10.2967/jnumed.115.171397",
         "srcLabel": "Kratochwil 2016",
@@ -866,11 +866,11 @@
         "combination_with": null
       },
       {
-        "year": 2017,
+        "year": 2014,
         "status": "other",
         "modality": "ADC",
         "model": "Docetaxel-refractory PSMA-high CRPC xenografts dosed with PSMA ADC",
-        "note": "Neutropenia and peripheral neuropathy capped the dose and two patients at 2.5 mg/kg died of sepsis: the vc-MMAE platform harms brentuximab vedotin had shown.",
+        "note": "Neutropenia and peripheral neuropathy capped the dose and two patients at 2.5 mg/kg died of sepsis: the vc-MMAE platform harms brentuximab vedotin had shown. Dated by the first public patient side, Petrylak et al. ASCO 2014 abstract 5023 (J Clin Oncol 32:15_suppl, online 2014-05-20; same phase 2, 83 taxane-treated pts): neutropenia forced 2.5 to 2.3 mg/kg and 2 patients at 2.5 mg/kg died of sepsis.",
         "short": "MMAE neutropenia, neuropathy, 2 sepsis deaths",
         "src": "https://doi.org/10.1002/pros.23922",
         "srcLabel": "Petrylak 2020",
@@ -1070,11 +1070,11 @@
         "combination_with": null
       },
       {
-        "year": 2016,
+        "year": 2015,
         "status": "untested",
         "modality": "other",
         "model": "PSMA-positive vs PSMA-negative prostate tumour-bearing mice (LNCaP/PC3 and PC-3 PIP/flu xenografts, RM1-hPSMA syngeneic)",
-        "note": "177Lu-PSMA-617 mouse biodistribution named tumour and kidney as the uptake sites; opens the lutetium safety track.",
+        "note": "177Lu-PSMA-617 mouse biodistribution named tumour and kidney as the uptake sites; opens the lutetium safety track. Dated 2015: Benesova 2015 (J Nucl Med, PMID 25883127, epub 2015-04-16), this drug's first use in the model.",
         "short": "Lutetium track opens: kidney flagged",
         "src": "https://doi.org/10.2967/jnumed.114.147413",
         "srcLabel": "Benešová 2015",

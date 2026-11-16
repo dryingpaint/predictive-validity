@@ -11,20 +11,20 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": null,
-   "note": "Burtrum PMID 14695208 abstract (Europe PMC) quote verbatim. Proxy opener (IMC-A12, product_in_model false) for the dalotuzumab track allowed; Goetsch 2004 is dalotuzumab's own MCF-7 use. iv, unselected correct.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "evidence rule 6 (a track opens at its own drug's first use in the model)",
+   "note": "Goetsch h7C10 (dalotuzumab parent; PMID 15386423, doi 10.1002/ijc.20543) abstract: h7C10 significantly inhibited MCF-7 xenografts in nude mice. Crossref online 2004-08-25 (draft says 09-24); year 2004 holds; untested opener stands.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "unverified",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "rule": null,
-   "note": "Atzori 2011 (PMID 21810918, epub 2011-08-02) quote verbatim; dalotuzumab iv, mixed solid tumours: other_disease right. Same holds. Year may be 2008: Atzori ASCO 2008 PK/PD abstract (doi 10.1200/jco.2008.26.15_suppl.3519) unread. product_in_model true but model_src is A12 (Burtrum).",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "evidence rule 6 (congress abstract dates the entry; paired year is the later side)",
+   "note": "ASCO 2008 abstract 3519 resolves (Atzori, weekly MK-0646 phase I PK/PD, solid tumours, 2008-05-20) but its text is blocked; biopsy IGF1R/pAKT/Ki67 falls unseen. 2008 plausible, unconfirmed. Atzori 2011 quote verbatim; same holds. model_src cites Burtrum, not Goetsch.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
@@ -174,15 +174,15 @@
    "index": 7,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": false,
    "proposed_status": "same",
    "proposed_year": 2014,
-   "rule": "neg definition (class_threshold a bar the class's successful drugs cleared); evidence rule 6 (congress abstract dates the entry)",
-   "note": "Rugo (epub 2017-07-05) quote verbatim. neg fails: class_threshold is Fagan's parental-cell bar, no member succeeded in breast cancer. R/D/E vs R/E first public SABCS Dec 2014 (PD5-1, doi 10.1158/1538-7445.SABCS14-PD5-1). Drug, iv, stage_or_line, partners correct.",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "rule": "evidence rule 6; neg definition (the bar must be one a class drug that succeeded cleared; none did, so no bar)",
+   "note": "PD5-1 (Rugo, SABCS 2014, Dec 2014; Crossref print 2015-05) resolves; abstract text blocked, R/D/E vs R/E null seen in Rugo 2017. Model Fagan 2012 precedes: prospective, 2014 confirmed. Status should be same, direction_only, as adjudicated before.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "same",
-   "adjudication_note": "neg definition: class_threshold must be the class's usual bar in this model; drafter's is dalotuzumab's own parental-cell effect, and the class is inert in TamR. Predicted no benefit, R/D/E failed: same. Rule 6: dated SABCS 2014-12."
+   "adjudication_note": "neg definition / checker class_threshold rule: the bar must be one the class's successful drugs cleared; no anti-IGF1R drug succeeded, and an intra-paper parental-cell bar is not one, so no bar: same, direction_only (prospective, model 2012 before PD5-1 2014)."
   },
   {
    "cell": "efficacy",
@@ -198,17 +198,13 @@
   {
    "cell": "efficacy",
    "index": 9,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "evidence rule 6 (earliest public date incl. congress abstract)",
-   "note": "Contra stands (R/D/E HR 1.18; Rugo only hedges the ridaforolimus dose). Year: first public SABCS Dec 2014 (PD5-1, Crossref-confirmed abstract), after Di Cosimo 2014-10-15, so prospective and dated 2014, not 2017.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Contra stands. Rule 6: R/D/E vs R/E null first public at SABCS 2014-12 (PD5-1, verified; HR 1.18), after Di Cosimo 2014-10-15, so prospective; year 2014, not 2017."
+   "rule": "evidence rule 6 (congress abstract dates the entry); retrodiction rule",
+   "note": "Di Cosimo PubMed epub 2014-10-15 (PMID 25320355) precedes PD5-1 at SABCS Dec 2014, so the R/D/E vs R/E null is a prospective test; contra dated 2014 stands. PD5-1 abstract text blocked; null read in Rugo 2017.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -224,17 +220,13 @@
   {
    "cell": "efficacy",
    "index": 11,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2016,
-   "rule": "retrodiction (model first public after the patient result); neg definition",
-   "note": "Rugo abstract verbatim, but the R/D/E null was public at SABCS Dec 2014 (PD5-1), before Becker (epub 2016-10-20); the xenograft (no add of dalotuzumab) reproduced it: retro, retrodiction true, year 2016. neg also lacks a successful-drug class_threshold.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: the triple-regimen null was public at SABCS Dec 2014 (PD5-1, verified) before Becker (epub 2016); the xenograft reproduced it, so retro, retrodiction true, year 2016, not neg."
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "retrodiction (efficacy model first public after a patient result on the target); evidence rule 6 (later side dates a pairing)",
+   "note": "R/D/E null public at SABCS Dec 2014 (PD5-1) and R+D null Dec 2013, both before Becker (online 2016-10-20): retro, retrodiction true, year 2016. Stale prose: judgement still argues neg; confidence_note says unchecked; effect_size/class_threshold unneeded.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",

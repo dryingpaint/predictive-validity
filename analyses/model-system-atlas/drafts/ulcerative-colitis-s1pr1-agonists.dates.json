@@ -1,0 +1,25 @@
+{
+ "tile": "ulcerative-colitis-s1pr1-agonists",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "2017 -> 2016; status same unchanged, not a retrodiction (human half-life first public in the same paper as the rodent PK, not before it). Source: Scott 2016 full text (PMC4867749)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2019 -> 2017; opener moved to etrasimod's own first public use, ECCO 2017 abstract DOP078 (J Crohns Colitis 11 suppl 1, S72, Feb 2017); also FASEB J 2017 31 suppl 993.11."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "what": "2019 -> 2018; pairing = later of model side (ECCO 2017 abstract DOP078, Feb 2017) and patient side (Arena OASIS topline press release, 2018-03-19); retro unchanged (still after ozanimod's 2014 UC result)."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "2017 -> 2013; patient side first public in Olson 2013 AAN abstract P01.178 (Neurology 80(7 suppl), online 2013-02-12), which reported the dose-dependent HR fall, sinus bradycardia and a Mobitz I block; contra unchanged, model (2004) prospective."
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "tile": "hiv-infectious-disease-hiv-rt-nnrti-inhibitors",
+ "changed": [
+  {
+   "cell": "engagement",
+   "index": 3,
+   "what": "2013 -> 2012; doravirine's first cell-model use, Lai et al., ICAAC 9-12 Sep 2012 abstract H-551 (NATAP http://www.natap.org/2012/ICAAC/ICAAC_23.htm)"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "what": "2014 -> 2012; doravirine's first cell-model use (50%-serum EC95), Lai et al., ICAAC 9-12 Sep 2012 abstract H-551 (NATAP http://www.natap.org/2012/ICAAC/ICAAC_23.htm)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "what": "2013 -> 2012; doravirine's first cell-model use, Lai et al., ICAAC 9-12 Sep 2012 abstract H-551 (NATAP http://www.natap.org/2012/ICAAC/ICAAC_23.htm)"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "what": "2015 -> 2013; pairing: later of model side Sep 2012 (ICAAC H-551) and patient side Anderson et al., CROI 3-6 Mar 2013 abstract 100 (NATAP https://www.natap.org/2013/CROI/croi_22.htm)"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "what": "2015 -> 2013; pairing: later of model side Sep 2012 (ICAAC H-551) and patient side Anderson et al., CROI 3-6 Mar 2013 abstract 100 (NATAP https://www.natap.org/2013/CROI/croi_22.htm)"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "what": "2015 -> 2013; pairing: later of model side Sep 2012 (ICAAC H-551) and patient side Anderson et al., CROI 3-6 Mar 2013 abstract 100 (NATAP https://www.natap.org/2013/CROI/croi_22.htm)"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "what": "2009 -> 2008; fosdevirine's first use of the tox package, healthy-volunteer dosing public at CROI Feb 2008 (NATAP https://www.natap.org/2008/CROI/croi_89.htm)"
+  }
+ ]
+}

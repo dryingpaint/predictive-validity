@@ -437,10 +437,10 @@
     "combination_with": null
    },
    {
-    "year": 2014,
+    "year": 2011,
     "status": "untested",
     "model": "STZ-diabetic rat",
-    "note": "Ipragliflozin lowered glucose for 4 weeks in STZ type 1 diabetic rats and was proposed for T1D; no patient comparison yet.",
+    "note": "Ipragliflozin lowered glucose for 4 weeks in STZ type 1 diabetic rats and was proposed for T1D; no patient comparison yet. Track opens 2011: ipragliflozin's first use in STZ type 1 diabetic rats was Tahara et al., Naunyn-Schmiedebergs Arch Pharmacol, epub 2011-12-03 (doi:10.1007/s00210-011-0713-z, PMID 22139434).",
     "short": "Ipragliflozin lowers glucose in STZ rats",
     "src": "https://doi.org/10.1111/jphp.12223",
     "srcLabel": "Tahara 2014",
@@ -478,10 +478,10 @@
     "outcome_tested": null
    },
    {
-    "year": 2019,
+    "year": 2018,
     "status": "same",
     "model": "STZ-diabetic rat",
-    "note": "Ipragliflozin 50 mg added to insulin cut HbA1c 0.36 points vs placebo at 24 weeks in 175 Japanese T1D patients, as STZ rats predicted. Insulin was background therapy in both arms, not a partner drug, so combination_with is null.",
+    "note": "Ipragliflozin 50 mg added to insulin cut HbA1c 0.36 points vs placebo at 24 weeks in 175 Japanese T1D patients, as STZ rats predicted. Insulin was background therapy in both arms, not a partner drug, so combination_with is null. Year 2018: the patient side was first public with Japan's approval of ipragliflozin for T1D and its label on 2018-12-21 (Astellas/Kotobuki press release; PMDA review of study CL-6002), before the 2019 paper.",
     "short": "Ipragliflozin lowers HbA1c in T1D",
     "src": "https://doi.org/10.1111/dom.13807",
     "srcLabel": "Kaku 2019",
@@ -877,10 +877,10 @@
     "combination_with": null
    },
    {
-    "year": 2014,
+    "year": 2011,
     "status": "untested",
     "model": "STZ-diabetic rat",
-    "note": "Ipragliflozin in STZ type 1 diabetic rats, read for glucose, lipids and liver injury; the abstract reports no ketone readout.",
+    "note": "Ipragliflozin in STZ type 1 diabetic rats, read for glucose, lipids and liver injury; the abstract reports no ketone readout. Track opens 2011: ipragliflozin's first use in STZ type 1 diabetic rats was Tahara et al., Naunyn-Schmiedebergs Arch Pharmacol, epub 2011-12-03 (doi:10.1007/s00210-011-0713-z, PMID 22139434).",
     "short": "Ipragliflozin STZ rats, ketones unread",
     "src": "https://doi.org/10.1111/jphp.12223",
     "srcLabel": "Tahara 2014",
@@ -916,10 +916,10 @@
     "combination_with": null
    },
    {
-    "year": 2019,
+    "year": 2018,
     "status": "same",
     "model": "STZ-diabetic rat",
-    "note": "No DKA in 175 Japanese T1D patients over 24 weeks on ipragliflozin 50 mg; the STZ rat, silent on ketones, was not contradicted.",
+    "note": "No DKA in 175 Japanese T1D patients over 24 weeks on ipragliflozin 50 mg; the STZ rat, silent on ketones, was not contradicted. Year 2018: the patient side was first public with Japan's approval of ipragliflozin for T1D and its label on 2018-12-21 (Astellas/Kotobuki press release; PMDA review of study CL-6002), before the 2019 paper.",
     "short": "No DKA on ipragliflozin in T1D",
     "src": "https://doi.org/10.1111/dom.13807",
     "srcLabel": "Kaku 2019",

@@ -1,0 +1,20 @@
+{
+  "tile": "prostate-cancer-cyp17a1-ar-inhibitors",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 4,
+      "what": "2015 -> 2012; patient side (ARMOR1 PSA50 11/49) first public at AACR 2012, 1 Apr 2012 (ecancer.org/en/news/2727); model side Vasaitis 2008 (doi 10.1158/1535-7163.MCT-08-0230). Status retro and retrodiction unchanged (abiraterone 2004 precedes the model)."
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "what": "2015 -> 2012; patient side (ARMOR1 PSA50 11/49) first public at AACR 2012, 1 Apr 2012 (ecancer.org/en/news/2727); model side 2005 (doi 10.1021/jm040202w). Status retro and retrodiction unchanged."
+    },
+    {
+      "cell": "dose",
+      "index": 4,
+      "what": "2018 -> 2017; model side (VCaP xenograft, 50 mg/kg/day) public ASCO GU 2015 (doi 10.1200/jco.2015.33.7_suppl.221); patient side (exposure plateau to 300 mg, fall at steady state) public ASCO GU Feb 2017 (JCO 35 suppl 6S abstr 246). Status contra unchanged; not a retrodiction (model public first)."
+    }
+  ]
+}

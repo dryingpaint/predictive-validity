@@ -1,0 +1,25 @@
+{
+  "tile": "breast-cancer-hsp90aa1-hsp90ab1-inhibitors",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 2,
+      "what": "2012 -> 2008; status same -> retro, retrodiction false -> true. Patient side first public in Miller et al. ASCO 2007 abstract 1115 (Hsp70 rise in PBLs, 10.1200/jco.2007.25.18_suppl.1115); model side Jensen 2008 is the later side and post-dates it."
+    },
+    {
+      "cell": "dose",
+      "index": 3,
+      "what": "2012 -> 2007. Patient side (weekly 60-100 mg/m2 cohorts, DLT only at 100 mg/m2) first public in ASCO 2007 abstract 1115 (10.1200/jco.2007.25.18_suppl.1115); model Glaze 2005."
+    },
+    {
+      "cell": "safety",
+      "index": 5,
+      "what": "2012 -> 2007. Patient side (falling-LVEF DLT, dry eye, diarrhoea, no renal or gallbladder harm) first public in ASCO 2007 abstract 1115 (10.1200/jco.2007.25.18_suppl.1115); model Glaze 2005."
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "what": "2013 -> 2011. Patient side (1 PR in 20, expansion criteria not met) first public in ASCO 2011 abstract 590 (10.1200/jco.2011.29.15_suppl.590); model Leow 2009."
+    }
+  ]
+}

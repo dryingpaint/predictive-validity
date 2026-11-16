@@ -136,17 +136,13 @@
   {
    "cell": "dose",
    "index": 5,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2022,
-   "rule": "6 (earliest public date) with the same-drug retrodiction rule for dose",
-   "note": "Quote verbatim (Europe PMC record of Zelenetz 2024). Retro right: TIDAL regimen (2018) and topline (2021-11-30) predate the mouse (2022-05-04). But TIDAL safety was public at ASCO 2022 / EHA 2022, so year 2022, not 2024.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Rule 6 (earliest public date) with the same-drug retrodiction rule: TIDAL's regimen and topline predate the mouse (2022-05), so retro. The comparison was public at ASCO 2022 (JCO 40:16_suppl 7511), so year 2022, not 2024."
+   "rule": "6 (paired comparison dated to the later side) with the same-drug retrodiction rule for dose",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "note": "Re-opened: Kyowa Kirin release dated 2021-11-30 (TIDAL FL ORR 70.3%, grade>=3 colitis 1.7%); Eschweiler PubMed epub 2022-05-04. Later side 2022, so year 2022; zandelisib result predates mouse, retro and retrodiction true stand."
   },
   {
    "cell": "dose",

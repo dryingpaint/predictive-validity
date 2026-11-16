@@ -140,10 +140,10 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2016,
+    "year": 2013,
     "status": "retro",
     "model": "Rat methacholine bronchoprotection (Einthoven) and pilocarpine antisialagogue; dog acetylcholine bronchoconstriction",
-    "note": "Once-daily nebulized revefenacin raised 24-hour trough FEV1 in 1,230 COPD patients, the sustained cholinergic blockade the rat and dog showed at 24 hours. Model data filed in the FDA pharmacology review (NDA 210598). Dated 2016: the 28-day Phase 2b NCT02040792 (trough FEV1 met, 88-350 ug once daily) posted results 2016-12-07, before the FDA review. Retrodiction: engagement and efficacy are target claims, and the model was first public after M3-antagonist bronchodilation in COPD patients was known (tiotropium, glycopyrronium; AZD9164 registry 2011) before Pulido-Rios 2013, so it scores retro, not same.",
+    "note": "Once-daily nebulized revefenacin raised 24-hour trough FEV1 in 1,230 COPD patients, the sustained cholinergic blockade the rat and dog showed at 24 hours. Model data filed in the FDA pharmacology review (NDA 210598). Dated 2016: the 28-day Phase 2b NCT02040792 (trough FEV1 met, 88-350 ug once daily) posted results 2016-12-07, before the FDA review. Retrodiction: engagement and efficacy are target claims, and the model was first public after M3-antagonist bronchodilation in COPD patients was known (tiotropium, glycopyrronium; AZD9164 registry 2011) before Pulido-Rios 2013, so it scores retro, not same. Dates check: redated 2016 -> 2013. Theravance announced positive Phase 2a single-dose COPD results for TD-4208 in November 2011 (peak FEV1 met, generally well tolerated; Theravance Q4 2011 results release, biospace.com/theravance-inc-reports-fourth-quarter-and-full-year-2011-financial-results; 350-700 ug sustained 24-h bronchodilation per the 2013-09-04 Phase 2b press release), before the model paper (JPET, online 2013-05); the pairing is public once the model is, 2013.",
     "short": "24-h trough FEV1 up in COPD patients",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210598Orig1s000MedR.pdf",
     "srcLabel": "FDA medical review 2018",
@@ -474,10 +474,10 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2016,
-    "status": "same",
+    "year": 2013,
+    "status": "retro",
     "model": "Rat methacholine bronchoprotection (Einthoven) and pilocarpine antisialagogue; dog acetylcholine bronchoconstriction",
-    "note": "Once daily held (24-h trough FEV1 at 88-175 ug) and the antisialagogue margin held (dry mouth 0.7% vs 0); the dose came from clinical ranging. Model data filed in the FDA pharmacology review (NDA 210598). Dated 2016: the 28-day Phase 2b NCT02040792 (trough FEV1 met, 88-350 ug once daily) posted results 2016-12-07, before the FDA review. Not a retrodiction: no revefenacin patient result was public before the 2013 rat paper.",
+    "note": "Once daily held (24-h trough FEV1 at 88-175 ug) and the antisialagogue margin held (dry mouth 0.7% vs 0); the dose came from clinical ranging. Model data filed in the FDA pharmacology review (NDA 210598). Dated 2016: the 28-day Phase 2b NCT02040792 (trough FEV1 met, 88-350 ug once daily) posted results 2016-12-07, before the FDA review. Dates check: redated 2016 -> 2013 and rescored same -> retro. Theravance announced positive Phase 2a single-dose COPD results for TD-4208 in November 2011 (peak FEV1 met, generally well tolerated; Theravance Q4 2011 results release, biospace.com/theravance-inc-reports-fourth-quarter-and-full-year-2011-financial-results; 350-700 ug sustained 24-h bronchodilation per the 2013-09-04 Phase 2b press release), before the rat and dog paper (JPET, online 2013-05). Dose is a drug claim and revefenacin's own once-daily bronchodilation was public first, so this is a retrodiction that reproduced it.",
     "short": "Once-daily held; dose found by clinical ranging",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210598Orig1s000ClinPharmR.pdf",
     "srcLabel": "FDA clinical pharmacology review 2018",
@@ -501,7 +501,7 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "once-daily interval (24-h trough FEV1) and antisialagogue margin; no human dose was predicted",
@@ -822,10 +822,10 @@
     "untested_reason": "no_prediction"
    },
    {
-    "year": 2016,
+    "year": 2013,
     "status": "retro",
     "model": "Rat methacholine bronchoprotection (Einthoven) and pilocarpine antisialagogue; dog acetylcholine bronchoconstriction",
-    "note": "Primary endpoint met in two replicate 12-week trials: day-85 trough FEV1 +146 and +147 mL over placebo at 175 ug (n=1,230). Model data filed in the FDA pharmacology review (NDA 210598). Dated 2016: the 28-day Phase 2b NCT02040792 (trough FEV1 met, 88-350 ug once daily) posted results 2016-12-07, before the FDA review. Retrodiction: engagement and efficacy are target claims, and the model was first public after M3-antagonist bronchodilation in COPD patients was known (tiotropium, glycopyrronium; AZD9164 registry 2011) before Pulido-Rios 2013, so it scores retro, not same.",
+    "note": "Primary endpoint met in two replicate 12-week trials: day-85 trough FEV1 +146 and +147 mL over placebo at 175 ug (n=1,230). Model data filed in the FDA pharmacology review (NDA 210598). Dated 2016: the 28-day Phase 2b NCT02040792 (trough FEV1 met, 88-350 ug once daily) posted results 2016-12-07, before the FDA review. Retrodiction: engagement and efficacy are target claims, and the model was first public after M3-antagonist bronchodilation in COPD patients was known (tiotropium, glycopyrronium; AZD9164 registry 2011) before Pulido-Rios 2013, so it scores retro, not same. Dates check: redated 2016 -> 2013. Theravance announced positive Phase 2a single-dose COPD results for TD-4208 in November 2011 (peak FEV1 met, generally well tolerated; Theravance Q4 2011 results release, biospace.com/theravance-inc-reports-fourth-quarter-and-full-year-2011-financial-results; 350-700 ug sustained 24-h bronchodilation per the 2013-09-04 Phase 2b press release), and the 7-day Phase 2b met trough FEV1 (press release 2013-09-04); both sides public by 2013 (model paper JPET online 2013-05).",
     "short": "Trough FEV1 +146 mL in replicate Phase 3",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210598Orig1s000MedR.pdf",
     "srcLabel": "FDA medical review 2018",
@@ -1119,10 +1119,10 @@
     "combination_with": null
    },
    {
-    "year": 2012,
+    "year": 2011,
     "status": "contra",
     "model": "AstraZeneca guinea-pig bronchoconstriction and systemic side-effect models",
-    "note": "COPD patients had a transient, dose-related fall in FEV1 with cough minutes after inhaling AZD9164; the guinea-pig airway model had shown only bronchoprotection.",
+    "note": "COPD patients had a transient, dose-related fall in FEV1 with cough minutes after inhaling AZD9164; the guinea-pig airway model had shown only bronchoprotection. Dates check: redated 2012 -> 2011 and marked a retrodiction. The registry results of NCT00939211 (posted 2011-08-05) already showed the airway signal: 15-min FEV1 1.30 and 1.25 L at 400 and 1200 ug vs 1.49 L on placebo, cough in 6 and 18 patients vs 0. That precedes the guinea-pig paper (BMCL, online 2011-10), so the pairing dates to 2011 and, safety being a claim about this drug, the model post-dates the drug's own patient result; it failed to reproduce it, so it stays contra.",
     "short": "Paradoxical bronchospasm the guinea pig missed",
     "src": "https://doi.org/10.1016/j.rmed.2012.09.014",
     "srcLabel": "Bjermer 2013",
@@ -1145,7 +1145,7 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "retrodiction": false,
+    "retrodiction": true,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
@@ -1237,10 +1237,10 @@
     "combination_with": null
    },
    {
-    "year": 2018,
+    "year": 2017,
     "status": "same",
     "model": "Rat methacholine bronchoprotection (Einthoven) and pilocarpine antisialagogue; dog acetylcholine bronchoconstriction",
-    "note": "Few systemic antimuscarinic effects (dry mouth 0.7% vs 0 placebo, 12 weeks) but not fewer than tiotropium over 52 weeks (5.4-7.7% vs 6.1%). Model data filed in the FDA pharmacology review (NDA 210598). Kept at 2018: the partial call rests on the 52-week comparison with tiotropium, first public with the FDA review.",
+    "note": "Few systemic antimuscarinic effects (dry mouth 0.7% vs 0 placebo, 12 weeks) but not fewer than tiotropium over 52 weeks (5.4-7.7% vs 6.1%). Model data filed in the FDA pharmacology review (NDA 210598). Kept at 2018: the partial call rests on the 52-week comparison with tiotropium, first public with the FDA review. Dates check: redated 2018 -> 2017. The 52-week tiotropium-controlled safety result (AE rates comparable to tiotropium) was first public in the Theravance/Mylan press release of 2017-07-19 (prnewswire 300491058), before the FDA review.",
     "short": "Few systemic effects, not fewer than tiotropium",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210598Orig1s000SumR.pdf",
     "srcLabel": "FDA summary review 2018",

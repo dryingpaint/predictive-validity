@@ -58,13 +58,17 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "near",
    "status_supported": true,
-   "rule": "6; retrodiction",
-   "note": "ASCO 2018 abstract 9539 (doi resolves, POLARIS-01 interim ORR) makes 2018 the earliest date; MC38 knock-in post-dates Topalian 2012: retro. Toripalimab iv, stage_or_line, single-arm note right. Judgement prose ('2020 earliest', 'stays same') is stale.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "retro",
+   "proposed_year": 2019,
+   "rule": "6",
+   "note": "Liu 2019 mAbs (PMID 30892132, PMC6601540, epub 2019-04-19) Results/Fig 1 and Methods publish the hPD-1 knock-in C57BL/6 MC38 study (toripalimab 0.3-10 mg/kg i.p.). Model side public 2019, patient side ASCO 2018: year 2019, not 2023; retro stands.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Rule 6 and retrodiction rule: Liu 2019 mAbs (PMC6601540, Fig 1, Methods) publishes the hPD-1 knock-in MC38 toripalimab study, so the pairing dates 2019, not 2023; it post-dates nivolumab's 2012 melanoma responses, so retro stands."
   },
   {
    "cell": "efficacy",
@@ -105,9 +109,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "6",
-   "note": "Tang 2019 quote verbatim. ASCO 2018 abstract 9539 reported hypothyroidism in melanoma patients: year 2018. No earlier toripalimab patient result before Fu 2017, so retrodiction false holds; contra, toripalimab, iv, stage_or_line fit.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6; retrodiction",
+   "note": "26-week GLP cynomolgus study first public in FDA 761240 review (2023); Fu 2017 only says toxicity seen at 30-100 mg/kg, Liu 2019 has no monkey tox. Toripalimab's own irAEs public ASCO 2018: retrodiction true, not reproduced, contra.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -169,11 +173,11 @@
    "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
    "rule": "6; retrodiction",
-   "note": "Same trial and quote as efficacy 2; ASCO 2018 abstract dates it 2018. NSG/CTL work post-dates nivolumab 2012 melanoma responses: retro. Toripalimab iv fit; separate drug track from entry 7. Judgement still argues 'same': stale prose.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "note": "FDA 761240 multidiscipline review describes TR003 PBMC/CTL-engrafted NSG study ('minor antitumor activity'). No NSG/PBMC/CTL work in Liu 2019 full text or Fu 2017 (PMC5457696; monkey vaccine model only). Later side 2023; retro holds.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",

@@ -1,0 +1,8 @@
+{
+  "tile": "primary-biliary-cholangitis-nr1h4-agonists",
+  "changed": [
+    {"cell": "efficacy", "index": 1, "what": "2018 -> 2016 (rodent-bdl x EDP-305 opener; first public as AASLD Liver Meeting 2016 poster, Erstad et al., enanta.com/wp-content/uploads/2022/02/AASLD-2016-Rodent-Model-of-PBC.pdf); status untested unchanged"},
+    {"cell": "efficacy", "index": 2, "what": "2020 -> 2017 (mdr2-ko-mouse x EDP-305 opener; EASL ILC 2017 poster SAT-459, Enanta release 2017-04-19, natap.org/2017/EASL/EASL_137.htm); status untested unchanged"},
+    {"cell": "safety", "index": 3, "what": "2020 -> 2017 (mdr2-ko-mouse x EDP-305 opener; EASL ILC 2017 poster SAT-459, Enanta release 2017-04-19); status untested unchanged"}
+  ]
+}

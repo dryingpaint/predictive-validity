@@ -734,10 +734,10 @@
     "untested_reason": "unpublished"
    },
    {
-    "year": 2020,
+    "year": 2017,
     "status": "retro",
     "model": "Human-GnRHR knock-in mouse (uterine/prostate weight, oestrous arrest)",
-    "note": "Relugolix 10/20/40 mg cut endometriosis pelvic-pain VAS dose-dependently (-6.2/-8.1/-10.4 vs -3.8 mm placebo), 40 mg matching leuprorelin. Retrodiction by post-dating: a GnRH antagonist (cetrorelix) had already relieved endometriosis symptoms in patients (Kupker 2002, doi 10.1016/s1472-6483(10)61590-8) before this model result.",
+    "note": "Relugolix 10/20/40 mg cut endometriosis pelvic-pain VAS dose-dependently (-6.2/-8.1/-10.4 vs -3.8 mm placebo), 40 mg matching leuprorelin. Retrodiction by post-dating: a GnRH antagonist (cetrorelix) had already relieved endometriosis symptoms in patients (Kupker 2002, doi 10.1016/s1472-6483(10)61590-8) before this model result. Dated 2017: the dose-dependent pelvic-pain VAS result (relugolix 40 mg similar to leuprorelin) was first public at ECE 2017 (Osuga, Endocrine Abstracts 49 GP134, doi 10.1530/endoabs.49.GP134); the model side (Nakata) was public in 2013.",
     "short": "Pain fell dose-dependently with relugolix",
     "src": "https://doi.org/10.1016/j.fertnstert.2020.07.055",
     "srcLabel": "Osuga 2021",
@@ -997,10 +997,10 @@
   ],
   "safety": [
    {
-    "year": 2021,
+    "year": 2019,
     "status": "contra",
     "model": "Human-GnRHR knock-in mouse (uterine/prostate weight, oestrous arrest)",
-    "note": "Four-week knock-in mice (with OVX controls) showed no bone-density change; women on relugolix 10-40 mg lost bone mineral density dose-dependently. Retrodiction: the model's data were first public after this drug's own patient BMD result; failed to reproduce it, so contra.",
+    "note": "Four-week knock-in mice (with OVX controls) showed no bone-density change; women on relugolix 10-40 mg lost bone mineral density dose-dependently. Retrodiction: the model's data were first public after this drug's own patient BMD result; failed to reproduce it, so contra. Dated 2019: the model side (4-week female knock-in mice with OVX controls, no cancellous or cortical bone-density change) was first public in the PMDA Relumina review report (dated Dec 2018, published on approval Jan 2019, pmda.go.jp/files/000236064.pdf), before the 2021 FDA review; the patient side (dose-dependent relugolix BMD loss) was public at ECE 2017 (doi 10.1530/endoabs.49.GP134).",
     "short": "Mouse bone null; patients lost BMD",
     "src": "https://doi.org/10.1016/j.fertnstert.2020.07.055",
     "srcLabel": "Osuga 2021",
@@ -1037,10 +1037,10 @@
     "combination_with": null
    },
    {
-    "year": 2021,
+    "year": 2019,
     "status": "contra",
     "model": "Cynomolgus monkey repeat-dose toxicology (39-week; dog added for linzagolix)",
-    "note": "39-week monkeys predicted cessation of menses and liver toxicity only at 99x the human dose, with no bone readout; patients lost BMD dose-dependently. Retrodiction: the model's data were first public after this drug's own patient BMD result; failed to reproduce it, so contra.",
+    "note": "39-week monkeys predicted cessation of menses and liver toxicity only at 99x the human dose, with no bone readout; patients lost BMD dose-dependently. Retrodiction: the model's data were first public after this drug's own patient BMD result; failed to reproduce it, so contra. Dated 2019: the model side (39-week monkey study, liver NOAEL 15 mg/kg at 51x the 40 mg exposure, decreased menstrual frequency) was first public in the PMDA Relumina review report (dated Dec 2018, published on approval Jan 2019, pmda.go.jp/files/000236064.pdf), before the 2021 FDA review; the patient side (dose-dependent relugolix BMD loss) was public at ECE 2017 (doi 10.1530/endoabs.49.GP134).",
     "short": "Monkey tox silent on BMD loss",
     "src": "https://doi.org/10.1016/j.fertnstert.2020.07.055",
     "srcLabel": "Osuga 2021",
@@ -1198,10 +1198,10 @@
     "reason": null
    },
    {
-    "year": 2020,
+    "year": 2018,
     "status": "contra",
     "model": "Rat surgically induced (autotransplant) endometriosis, implant volume",
-    "note": "Proxy rat model claimed no bone loss; women on linzagolix lost spine BMD dose-dependently, 2.6% at 200 mg in EDELWEISS (phase 2b).",
+    "note": "Proxy rat model claimed no bone loss; women on linzagolix lost spine BMD dose-dependently, 2.6% at 200 mg in EDELWEISS (phase 2b). Dated 2018: dose-dependent spine BMD loss (-2.6% at 200 mg, week 24) was first public in ObsEva's EDELWEISS final-results press release of 28 Sep 2018 (globenewswire.com/news-release/2018/09/28/1586251); the model side (Kim 2015) was earlier.",
     "short": "Rat said no bone loss; women lost BMD",
     "src": "https://doi.org/10.1016/j.fertnstert.2020.02.114",
     "srcLabel": "Donnez 2020",

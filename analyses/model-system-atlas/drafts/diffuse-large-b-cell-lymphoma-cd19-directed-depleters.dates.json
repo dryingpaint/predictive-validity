@@ -1,0 +1,40 @@
+{
+  "tile": "diffuse-large-b-cell-lymphoma-cd19-directed-depleters",
+  "changed": [
+    {
+      "cell": "engagement",
+      "index": 3,
+      "what": "2017 -> 2014: patient-side CTL019 expansion in DLBCL/FL first public in ASH 2014 abstract (Blood 124:3087, Dec 2014); model 2009. Not a retrodiction."
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "what": "2018 -> 2017: opener moved so it precedes its 2017 pairing; cyno repeat-dose tolerability first public in AACR Apr 2017 poster (adctherapeutics.com Poster_402_AACR-2017.pdf). model_first_use_year left at 2018."
+    },
+    {
+      "cell": "dose",
+      "index": 3,
+      "what": "2019 -> 2017: model side AACR Apr 2017 poster (cyno repeat-dose tolerability); patient side ICML Jun 2017 phase 1 interim (no MTD reached). Model precedes patient data, retrodiction stays false."
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "what": "2016 -> 2013: ORR 31.1% first public in ASH 2013 abstract (Blood 122:4395); model 2009. Status contra unchanged."
+    },
+    {
+      "cell": "efficacy",
+      "index": 7,
+      "what": "2018 -> 2017: JULIET interim ORR first public in Novartis press release, 7 Jun 2017; model 2009."
+    },
+    {
+      "cell": "efficacy",
+      "index": 8,
+      "what": "2021 -> 2020: LOTIS-2 ORR 48.3% first public at EHA Jun 2020; model 2018. Retrodiction (post-dates Kochenderfer 2014) unchanged."
+    },
+    {
+      "cell": "safety",
+      "index": 7,
+      "what": "2016 -> 2013: tolerability (no discontinuations for TEAEs) first public in ASH 2013 abstract (Blood 122:4395); model 2009. Not a retrodiction."
+    }
+  ]
+}

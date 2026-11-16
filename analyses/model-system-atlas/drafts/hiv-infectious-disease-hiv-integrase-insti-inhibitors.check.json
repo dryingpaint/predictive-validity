@@ -11,16 +11,23 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Kobayashi AAC epub 2010-11-29, quote verbatim in abstract. Opening proxy acceptable; Min 2010 AAC (10.1128/AAC.00842-09, epub 2009-11-02) already reports 'potent in vitro anti-HIV activity', so 2009 was available."
+   "note": "Year 2009 confirmed: Sato WEPEA097 'S/GSK1349572 is a potent next generation HIV integrase inhibitor', IAS 2009 Cape Town (i-base HTB 5976). Untested opener holds. model_first_use_year (2010) and judgement ('epub Nov 2010 proxy') are now stale.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Min 2011 AIDS (PMID 21716073) quote verbatim; viral load proximal tier correct. Registry NCT00708110 results first posted 2013-10-30, matches."
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2009,
+   "rule": "Retrodiction rule: engagement is a target claim; a model result first public after a patient result for the same target and action, from any drug, is a retrodiction, scored retro, never same",
+   "note": "Year 2009 confirmed: WEPEA097 cell data and Lalezari TUAB105 10-day monotherapy (~1.5-2.5 log drop) both IAS 2009 (i-base HTB 5976). But raltegravir monotherapy viral-load decline was public 2006 (Markowitz, PMID 17133211): retrodiction true, retro.",
+   "checked_by": "CHECKER_BRIEF / dates",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: engagement is a target claim; raltegravir (same target, action) cut viral load in 10-day monotherapy, public 2006 (PMID 17133211), before the 2009 dolutegravir cell data. Reproduced it: retro, retrodiction true."
   },
   {
    "cell": "dose",
@@ -49,7 +56,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Quote is the abstract's first sentence, verbatim. Exclusion of SHIV-macaque PrEP models from treatment context is reasonable. 2009 opening also available (Min 2010)."
+   "note": "Year 2009 confirmed: same IAS 2009 WEPEA097 cell-culture data (i-base HTB 5976). Untested/no_prediction opener holds. model_first_use_year still 2010; set to 2009 for consistency.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -59,12 +67,12 @@
    "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "retro",
-   "proposed_year": 2011,
-   "rule": "Retrodiction rule: for efficacy a model first public after a patient result on the same target and action (member or not) is a retrodiction; one that reproduced the human data is retro, never same",
-   "note": "SPRING-1 (PMID 22018760, epub 2011-10-20) quote verbatim; combination_with and note correct. But the DTG cell-culture model (2010) post-dates raltegravir's patient efficacy (Phase 2/3 2007-2008) on the same target and action: retrodiction true, retro.",
-   "checked_by": "CHECKER_BRIEF / fields",
+   "proposed_year": 2010,
+   "rule": "Retrodiction rule: efficacy is a target claim; a model first public after a patient result on the same target and action (member or not) is a retrodiction; reproduced human data is retro, never same",
+   "note": "Year 2010 confirmed: SPRING-1 week-16 interim posted from AIDS 2010 Vienna 22 Jul 2010 (NATAP index). Status still same/retrodiction false, but the 2009 DTG cell model post-dates raltegravir combination efficacy (BENCHMRK 2007-2008): retro.",
+   "checked_by": "CHECKER_BRIEF / dates",
    "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule (efficacy is a target claim): the DTG cell-culture model (2010) post-dates raltegravir's patient efficacy on the same target and action (2007-2008); it reproduced SPRING-1, so retro, not same."
+   "adjudication_note": "Retrodiction rule: efficacy is a target claim; raltegravir combination-therapy efficacy (Phase 2 2007, BENCHMRK 2008) preceded the 2009 dolutegravir cell model. It reproduced that result: retro, never same."
   },
   {
    "cell": "safety",
@@ -88,17 +96,12 @@
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2022,
-   "rule": "Evidence rule 6 (year = earliest public date, congress abstract included, even when a later paper is the higher-tier source of the status)",
-   "note": "Brummel 2025 (PMID 40880283, epub 2025-08-26) quote verbatim; tier 1 attenuation supports same. But attenuation was public at AIDS 2022 poster PELBB02 (Zash): DTG 10/9,460 (0.11%) vs non-DTG 25/23,664 (0.11%) (i-base htb/43791). Year 2022.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "same",
-   "adjudication_note": "Evidence rule 6: status stands on Brummel 2025 (tier 1, attenuation to background), but the attenuation was first public at AIDS 2022 (Zash, DTG 0.11% vs non-DTG 0.11%), so the entry dates to 2022."
+   "note": "Year 2022 confirmed: Zash AIDS 2022 Montreal poster PELBB02, DTG-at-conception NTDs 0.11% vs non-DTG 0.11% (i-base HTB 43791, 1 Sep 2022). Attenuation to background supports same with patient_signal_reversed true.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "efficacy",
@@ -168,17 +171,12 @@
   {
    "cell": "safety",
    "index": 8,
-   "verdict": "corrected",
+   "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2022,
-   "rule": "Evidence rule 6 (year = earliest public date, congress abstract included)",
-   "note": "Brummel quote verbatim; contra/opposite and retrodiction false (2020-12 model precedes the update) hold. First public absence of the human signal is AIDS 2022 PELBB02 (DTG 0.11% vs non-DTG 0.11%), so year 2022. Judgement keeps stale 'Kept retrodiction true'.",
-   "checked_by": "CHECKER_BRIEF / fields",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Evidence rule 6: contra/opposite holds (2020 model precedes the attenuation, retrodiction false), dated to the first public absence of the signal, AIDS 2022 Zash (0.11% vs 0.11%), so year 2022."
+   "note": "Year 2022 confirmed (AIDS 2022 PELBB02 null, i-base HTB 43791). Model public 18 Dec 2020 (PMID 33341441), before the null, so prospective contra, retrodiction false. Judgement still carries stale 'Kept retrodiction true'.",
+   "checked_by": "CHECKER_BRIEF / dates"
   },
   {
    "cell": "safety",
@@ -207,8 +205,8 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Brummel AIDS PMID 40880283 (epub 2025-08-26); quote verbatim. Contra/opposite holds at low confidence: Brummel never names folate, so the low-folate condition the model needs is the drafter's inference from Botswana's lack of fortification."
+   "note": "Year 2023 confirmed: Tukeman PMID 37382903 entered PubMed 29 Jun 2023, after the AIDS 2022 null. Retrodiction true (DTG's own patient result earlier) that failed to reproduce it: contra. Judgement text ('retrodiction false') stale; folate inference remains low confidence.",
+   "checked_by": "CHECKER_BRIEF / dates"
   }
  ],
  "missing": [
