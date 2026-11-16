@@ -9,7 +9,7 @@
     .venv/bin/python analyses/model-system-atlas/lessons/lessons.py all
 
 Reads the store through glance.load() (read-only; adjudicated statuses), drafts/tiles.json and the hand-typed
-inputs beside this file: overrides.csv (family) and safety_types.csv (the 76 safety contras). Every tile reached
+inputs beside this file: overrides.csv (family) and safety_types.csv (every compared safety contradiction, typed by hand). Every tile reached
 Phase 2, so every rate here is what a positive prediction was worth once the drug was in patients, never a
 sensitivity.
 """

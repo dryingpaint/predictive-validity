@@ -1,6 +1,6 @@
 # Atlas lessons: what a preclinical "yes" was worth (design)
 
-Branch `atlas-lessons`, off `atlas-named-contexts` (PR #81), downstream of the 119-tile store. Written 2026-11-06.
+Downstream of the atlas store: the stored tiles and their tracks.
 
 ## Intent
 
@@ -11,8 +11,8 @@ drug went into patients, which did not, where a reached engagement target still 
 and which harms the safety species were silent on. The intended reader is a biologist deciding what to build
 or trust; the output may go into the paper as a figure and a short section.
 
-Why now: PR #81 completes the 119 tracked tiles (1,242 tracks, 849 with a compared outcome). Until that
-store existed, the paper's REPORT.md (line 125) says drug-level animal-model and engagement testing "could
+Why now: the atlas store holds the track record of every stored tile, with a compared outcome wherever
+patients tested the prediction. Until that store existed, the paper's REPORT.md (line 125) says drug-level animal-model and engagement testing "could
 not be measured". Now it can, at the model-family level.
 
 ## Framing that every output carries
@@ -25,7 +25,7 @@ having gone to the clinic. It is stated once in the figure legend and the note, 
 
 ## Goals
 
-1. A family taxonomy over the 744 model systems (one per tile × `model_id`): a keyword rule set over the
+1. A family taxonomy over the model systems (one per tile × `model_id`): a keyword rule set over the
    model text, with a hand-reviewed override file. Every track is assigned; the bucket of hand overrides is
    listed, never silent.
 2. Per family and question: the yes-PPV (matched / compared, among yes-predictions) with a 95 % interval
@@ -33,7 +33,7 @@ having gone to the clinic. It is stated once in the figure legend and the note, 
    of that question. Families with fewer than four tiles contributing a yes are listed, not ranked.
 3. Engagement proxy held, disease failed: the engagement × efficacy headline crosstab per tile, by area and
    by engagement `readout_tier`.
-4. Safety: the 76 compared safety contras, each typed by hand as **silent** (the model made no prediction on
+4. Safety: the compared safety contradictions, each typed by hand as **silent** (the model made no prediction on
    a harm its species could have shown and patients had it), **stated-safe** (the model said no harm,
    patients had it), **false alarm** (the model predicted a harm patients never had), or **untested** in the
    patient record; and by harm class (immune, liver, cardiovascular, metabolic/endocrine/bone,
@@ -63,7 +63,8 @@ Input: `preclin.atlas_track_entry` ⨝ `atlas_track_verdict` via `glance.load()`
 `final` are the atlas's own), `drafts/tiles.json` (`furthest_phase`, `area`, `class_programs`), and the
 figure's `glance.csv` for cell headlines.
 
-- **Track**: (slug, question, modality, model_id). Its outcome is the latest non-drop `final` on the track.
+- **Track**: one model system for one member drug by one route (`track_id`), within a tile, question and
+  modality. Its outcome is the latest non-drop `final` on the track.
 - **Compared track**: latest final ∈ {same, neg, other, contra}. `untested` and `retro` are excluded from
   every rate (a retrodiction is not a prediction; decision 10).
 - **Prediction direction** (`pred`): `yes` by default. `no` when the track's `final` is `neg` or the entry
@@ -76,8 +77,8 @@ figure's `glance.csv` for cell headlines.
 - **Rankable**: ≥ 4 tiles contribute a compared yes-track to that family × question. Others are listed
   with their n and no interval.
 - **Reference line**: the pooled yes-PPV of the same question over all compared yes-tracks.
-- **Class outcome** (context column, not a panel): `furthest_phase == 4` approved (53 tiles) vs never
-  approved (66); the yes-PPV per family is also tabulated by this split in LESSONS.md.
+- **Class outcome** (context column, not a panel): `furthest_phase == 4` approved vs never
+  approved; the yes-PPV per family is also tabulated by this split in LESSONS.md.
 
 ## The family taxonomy
 
@@ -120,15 +121,15 @@ and overrides must leave no system `unassigned`; the build fails loudly otherwis
 | `expression_classifier` | gene-expression or structure-based classifier | PARPi-7, DRP, GFS, EGFR structural classes |
 | `cross_indication` | cross-indication import | a model or trial from another disease applied to this one |
 
-Hand review: the prototype rules leave 13 of 744 systems unassigned and misfile roughly 20 more
+Hand review: the prototype rules leave some systems unassigned and misfile others
 (kinase-dead knock-ins under humanised, hemophilia dogs under humanised, clinical-data PK models under PBPK,
 retinal damage and reproductive-tox models under PK-PD). The override file records each with a one-line
 reason. The reviewer is the builder, reading the model text and `model_id`; no new source reading.
 
 As built: the rules run per **track** over the model text of that track's own entries plus the `model_id`
 (a system can be a toxicology study on its safety track and an occupancy study on its engagement track);
-an override is per system and applies to all its tracks. 70 systems (120 tracks) are overridden after a
-read of every family's membership; two systems keep two families by question (`tori-cynomolgus-monkey`,
+an override is per system and applies to all its tracks. Overrides follow a read of every family's
+membership; two systems keep two families by question (`tori-cynomolgus-monkey`,
 `rat-dog-sleep-eeg`) and `families.csv` shows it. No track is unassigned.
 
 ## Outputs
@@ -177,8 +178,8 @@ tests/test_atlas_lessons.py
 PYTHONPATH=. uv run pytest tests/test_atlas_lessons.py
 ```
 
-One PR from `atlas-lessons` into `atlas-named-contexts` (so it lands after #81), body: the framing sentence,
-the figure, the three findings with n, what is not claimed. README of the atlas gains one row per output.
+The atlas README lists one row per output; LESSONS.md carries the framing sentence, the figure, the three
+findings with n, and what is not claimed.
 
 ## Left to the builder
 
@@ -193,23 +194,23 @@ whether `other` (platform-only safety match, 1 track) is shown as matched (it is
 - The analysis lives in `lessons/` under the atlas, not in a new top-level analysis.
 - Hand-typed files are committed inputs with a `note` column, in the style of `lists/class_audit/reviews.csv`.
 
-Settled after the builder check (2026-11-06):
+Settled with the builder:
 
 - **Safety is not a yes-PPV.** A matched safety track is as often "the predicted harm appeared" as "the clean
   bill held", so the safety row in panel a is the share of safety predictions that held (matched / compared,
-  every compared safety track), labelled so. The 76 contras are typed; matched tracks are not. Under the
+  every compared safety track), labelled so. The compared safety contradictions are typed; matched tracks are not. Under the
   atlas's own rule (brief v3, safety) silence on a harm the species could have shown is a contradiction, so
   `silent` stays in the rate. Two further types exist for the hand review only: `no_comparison` (the entry
   says no admissible comparison was found, or the prediction was never tested in patients) leaves the rate
   and is listed as a caveat; `not_showable` (the species could not have shown the harm) keeps the stored
-  status, is drawn with `silent`, and is noted. The hand review is 76 rows, not every safety track.
+  status, is drawn with `silent`, and is noted. The hand review covers the compared safety contradictions, not every safety track.
 - **Dose is the model's own dose prediction.** The atlas scores a dose track only on whether the target and
   margin the model stated held in people; a drug that reached its target and failed is an efficacy failure.
 - `pred` is therefore: `yes` for efficacy, engagement and dose tracks (except the `neg` track, `no`);
   `safety` for safety tracks.
 - A track's latest entry is its last in seq order, as glance reads it; a checker's corrected year is shown
   but never reorders a track.
-Rework after Stephen's review (2026-11-06, afternoon):
+Settled on review:
 
 - **The family ranking leaves the main figure.** A family's rate follows the classes it served (in
   never-approved classes every large family's yes collapses), so a forest that ranks families reads as a
@@ -220,12 +221,12 @@ Rework after Stephen's review (2026-11-06, afternoon):
   (chi-square p = 0.35; alternative tier definition p = 0.50): a point estimate, not a claim.
 - **Panel b (safety misses)** counts each (model system, harm, type) once, because one toxicology package
   can serve several tiles (a monkey package serves three PD-1 tiles). Track counts stay in the label.
-- **A second, blind coder** retypes the 76 safety contras from the entry text; agreement (kappa) and every
+- **A second, blind coder** retypes the compared safety contradictions from the entry text; agreement (kappa) and every
   disagreement are reported in `robustness.md`, disagreements resolved by re-reading the entry.
 - **Sensitivity to adjudication:** every panel is recomputed on the drafters' statuses; the differences are
   reported in `robustness.md`.
 - `lessons.py robust` writes `robustness.md` so the checks are reproducible, not asserted.
-- The store holds all 119 tiles (2,428 entries, 1,242 tracks); `model_kind` is a key of each entry's
+- The store holds every stored tile's entries and tracks; `model_kind` is a key of each entry's
   `fields` JSON with six values (animal, ex_vivo, in_silico, human_challenge, human_genetic,
   cross_indication); the prototype rules and their misfile list are the builder's own scratch and are
   carried into `families.py` and `overrides.csv`.
