@@ -7,19 +7,19 @@
   "REPORT.md": {
    "name": "Predictive Validity Report",
    "node": "1e3b2f56-9d69",
-   "rev": 322,
+   "rev": 331,
    "sections": {
     "Predictive Validity in Drug Development": "965f1731527f1e6e",
     "Predictive Validity in Drug Development > Introduction": "3458a6e501cc3b2c",
     "Predictive Validity in Drug Development > A history of drug development": "d5cc16d8618d2e15",
     "Predictive Validity in Drug Development > Industry failure modes": "7b6bce41d66da1d8",
     "Predictive Validity in Drug Development > Industry failure modes > How programs are counted": "e0d81f5ad4c46e80",
-    "Predictive Validity in Drug Development > Industry failure modes > Why programs stop": "6809bffe0add8a6a",
+    "Predictive Validity in Drug Development > Industry failure modes > Why programs stop": "b84c7a903f89efb1",
     "Predictive Validity in Drug Development > Industry failure modes > By disease area and modality": "02a929c8ebc27e79",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence": "d2fff9e8e7e62b90",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Evidence and design": "287454dea4e70fa0",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Which evidence predicts": "5fd698d5c6af462a",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Which failure each kind of evidence prevents": "748cbec8808913e9",
+    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Which failure each kind of evidence prevents": "c7330492c8d7fdb1",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > What programs enter on": "50d05337b0f39741",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Does stronger or more specific evidence help?": "f88e43ff255faf1b",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Biology or sponsor commitment?": "7e13ad43103c8cbc",
@@ -47,7 +47,7 @@
   "REPORT_APPENDIX.md": {
    "name": "Appendix detail",
    "node": "9bf11c10-61a3",
-   "rev": 61,
+   "rev": 62,
    "sections": {
     "Appendix detail": "dd0cdf63730712ee",
     "Appendix detail > Definitions": "8e4be647166ec494",
@@ -56,6 +56,7 @@
     "Appendix detail > Tables behind the figures": "e889f9a39ba14b82",
     "Appendix detail > Tables behind the figures > Phase transitions": "52adcf4824e201b4",
     "Appendix detail > Tables behind the figures > Why programs stop": "b2355cbbf3e3001e",
+    "Appendix detail > Tables behind the figures > Why drugs that engaged their target failed, by disease": "9e61d8b2b5b052d4",
     "Appendix detail > Tables behind the figures > Why efficacy failed": "91e49c049076f811",
     "Appendix detail > Tables behind the figures > By disease area and modality": "7392e55f66bd2298",
     "Appendix detail > Tables behind the figures > Evidence by category": "ba7d8eee40898ff8",
@@ -161,14 +162,14 @@
    "published": "blob/b438f9d1-708d"
   },
   "report/output/figures/why_stop.png": {
-   "hash": "b1682550afc1d4e2",
-   "blob": "blob/fb05bf29-3c45",
-   "published": "blob/fb05bf29-3c45"
+   "hash": "36708fdf7d85932b",
+   "blob": "blob/01911a77-19de",
+   "published": "blob/01911a77-19de"
   },
   "report/output/figures/evidence_grid.png": {
-   "hash": "6e7f55467a27a35e",
-   "blob": "blob/8d9b689f-50c5",
-   "published": "blob/8d9b689f-50c5"
+   "hash": "41df36bf0359737c",
+   "blob": "blob/36927dff-3c0b",
+   "published": "blob/36927dff-3c0b"
   }
  }
 }
