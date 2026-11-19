@@ -189,6 +189,56 @@ def stop_cause_table() -> str:
                                              "After tracing: sourced or likely"]))
 
 
+MODE_NAMES = {"not_causal": "Target not causal", "wrong_time": "Wrong time", "wrong_patients": "Wrong patients",
+              "drug_fell_short": "Drug fell short", "trial_could_not_answer": "Trial couldn't answer",
+              "unresolved": "Unresolved"}
+
+
+def engaged_area_table() -> str:
+    """Engaged-without-benefit stops by failure mode in each disease area, largest area first."""
+    n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))["drilldown"]
+    areas = sorted(n["engaged_by_area"].items(), key=lambda kv: -kv[1]["stops"])
+    rows = [[sentence_case(a.replace("_", " ")), f"{g['stops']:,}"] + [pct(g[m]["share"], 0) for m in MODE_NAMES]
+            for a, g in [("all areas", n["engaged"]), *areas]]
+    return table(pd.DataFrame(rows, columns=["Disease area", "Stops", *MODE_NAMES.values()]))
+
+
+ENGAGED_EVIDENCE_ROWS = {"tier_rare_only": "Human genetics, rare variants", "tier_common_only": "Human genetics, GWAS only",
+                         "somatic_concordant": "Tumour mutation matching the drug",
+                         "expression": "Diseased tissue: RNA level differs",
+                         "altered_animal": "Mouse genetics resembling the disease",
+                         "area_measured": "Binding to the target measured",
+                         "lit_animal_disease": "Published study in an animal model of the disease",
+                         "cat_precedent": "An earlier drug on the target"}
+
+
+def engaged_disease_table() -> str:
+    """Engaged-without-benefit stops by failure mode for every disease with at least MIN_DISEASE_STOPS of them."""
+    t = pd.read_csv(os.path.join(OUT, "stop_causes", "engaged_by_disease.csv"))
+    t = t[t.stops >= MIN_DISEASE_STOPS]
+    rows = [[sentence_case(str(r.disease)), sentence_case(r.area.replace("_", " ")), f"{r.stops:,}"]
+            + [pct(getattr(r, m) / r.stops, 0) for m in MODE_NAMES] for r in t.itertuples()]
+    return table(pd.DataFrame(rows, columns=["Disease", "Area", "Stops", *MODE_NAMES.values()]))
+
+
+MIN_DISEASE_STOPS = 10
+
+
+def engaged_evidence_table() -> str:
+    """Risk ratio per phase entry of each failure mode with each evidence line against without it, Phase 1-3 entries
+    (report.failure_modes, all entries)."""
+    t = pd.read_csv(os.path.join(OUT, "failure_modes", "modes_all.csv")).drop_duplicates("column").set_index("column")
+    cell = lambda r, c: ("not testable" if pd.isna(r.get(f"{c}_rr")) else  # noqa: E731
+                         ("**" if r[f"{c}_lo"] > 1 or r[f"{c}_hi"] < 1 else "")
+                         + f"{r[f'{c}_rr']:.2f} ({r[f'{c}_lo']:.2f}–{r[f'{c}_hi']:.2f})"
+                         + ("**" if r[f"{c}_lo"] > 1 or r[f"{c}_hi"] < 1 else ""))
+    cols = {"stop_engagement": "Never engaged", "mode_not_causal": "Target not causal",
+            "mode_wrong_patients": "Wrong patients", "mode_drug_fell_short": "Drug fell short"}
+    rows = [[f"{name} ({int(t.loc[k, 'exposed']):,})"] + [cell(t.loc[k], c) for c in cols]
+            for k, name in ENGAGED_EVIDENCE_ROWS.items() if k in t.index]
+    return table(pd.DataFrame(rows, columns=["Evidence before entry (entries)", *cols.values()]))
+
+
 def attribution_sensitivity_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "attribution", "sensitivity.csv"))
     out = pd.DataFrame({"Variant": df.variant.map(sentence_case), "Programs": df.programs.map("{:,}".format),
@@ -541,7 +591,9 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "S3_TYPES_TABLE": s3_types_table, "S3_REFINEMENTS_TABLE": s3_refinements_table,
           "ATTRIBUTION_TABLE": attribution_table,
           "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table,
-          "CATEGORIES_TABLE": categories_table, "AMENDMENT_HYPOTHESES_TABLE": amendment_hypotheses_table}
+          "CATEGORIES_TABLE": categories_table, "ENGAGED_AREA_TABLE": engaged_area_table,
+          "ENGAGED_EVIDENCE_TABLE": engaged_evidence_table,
+          "ENGAGED_DISEASE_TABLE": engaged_disease_table, "AMENDMENT_HYPOTHESES_TABLE": amendment_hypotheses_table}
 
 
 def flatten(d, prefix=""):
@@ -571,7 +623,8 @@ TABS = [("REPORT.template.md", "REPORT.md"), ("APPENDIX.template.md", "REPORT_AP
 
 def main() -> None:
     numbers = dict(BIO)
-    for section in ("section1", "section2", "section3", "evidence_analysis", "attribution", "stop_causes", "quality"):
+    for section in ("section1", "section2", "section3", "evidence_analysis", "attribution", "stop_causes", "failure_modes",
+                    "quality"):
         numbers.update(flatten(json.load(open(os.path.join(OUT, section, "numbers.json"))), section + "."))
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float, sort_keys=True)

@@ -21,6 +21,7 @@ from pipeline import llm
 from pipeline.stop_causes import NOT_A_STOP, VALIDATE_METHOD
 from pipeline.stops import CAUSE, CAUSES, COMPANY_ENDED, DISCONTINUED, FATES, REGISTRY_CAUSE, SUBCAUSES, keys
 from report import frame
+from report.engaged_modes import ENGAGED_MODES, MODE_LAYER, engaged_modes
 from report.windows import RECENT, SECTION1, SECTION1_PERIODS
 from report.section3 import jsonable
 
@@ -138,20 +139,44 @@ TARGET_FATES = ["worked_elsewhere_only", "worked_here", "worked_related", "never
 
 def drilldown(d: pd.DataFrame) -> dict:
     """The headline stops broken down three times: by the cause shown, the efficacy stops by what the evidence shows
-    about engagement, and the engaged-without-benefit stops by what other drugs on the target did
-    (preclin.stop_target_history)."""
+    about engagement, and the engaged-without-benefit stops by failure mode (report.engaged_modes), with the target fates
+    behind them, the modes by disease area, and the modes as shares of every stop."""
     shown = d[d.shown.notna()]
     eff = shown[shown.shown.eq("efficacy")]
     kind = eff.subcause.map(DRILL_EFFICACY).fillna("not_examined")
-    h = frame.query("SELECT moiety_id, mondo_id, phase, target_fate FROM preclin.stop_target_history")
-    fate_of = dict(zip(keys(h), h.target_fate.replace({"worked_here_selected": "worked_here"})))
+    h = engaged_modes()
+    fate_of = dict(zip(h.key, h.target_fate.replace({"worked_here_selected": "worked_here"})))
+    mode_of = dict(zip(h.key, h["mode"]))
+    area = frame.query("SELECT mondo_id, bio_area FROM preclin.mondo_bio_area").set_index("mondo_id").bio_area
     engaged = eff[kind.eq("engaged_no_benefit")]
+    engaged = engaged.assign(mode=engaged.key.map(mode_of).fillna("unresolved"),
+                             area=engaged.mondo_id.map(area).fillna("other"))
     fates = engaged.key.map(fate_of)
     return {"stops": int(len(shown)), "shown": distribution(shown, "shown", list(SHOWN)),
             "efficacy": {"stops": int(len(eff)), **distribution(kind.to_frame("k"), "k", [
                 "engaged_no_benefit", "not_engaged", "trial_design", "no_engagement_data", "not_examined"])},
             "engaged": {"stops": int(len(engaged)), "traced": int(fates.notna().sum()),
-                        **distribution(fates.to_frame("f"), "f", TARGET_FATES)}}
+                        **distribution(engaged, "mode", ENGAGED_MODES),
+                        "of_all_stops": {m: float(engaged["mode"].eq(m).sum() / len(shown)) for m in ENGAGED_MODES},
+                        "target_layer": float(engaged["mode"].map(MODE_LAYER).eq("target").mean())},
+            "engaged_fates": {"stops": int(len(engaged)), **distribution(fates.to_frame("f"), "f", TARGET_FATES)},
+            "engaged_by_area": {a: {"stops": int(len(g)), **distribution(g, "mode", ENGAGED_MODES)}
+                                for a, g in engaged.groupby("area")}}
+
+
+def engaged_by_disease(d: pd.DataFrame) -> pd.DataFrame:
+    """One row per disease with headline engaged-without-benefit stops: its area, stops and stops by failure mode."""
+    eff = d[d.shown.eq("efficacy") & d.subcause.eq("engaged_no_benefit")]
+    h = engaged_modes()
+    label = frame.query("SELECT term_id, label FROM preclin.ontology_term WHERE ontology = 'MONDO'") \
+        .set_index("term_id").label
+    area = frame.query("SELECT mondo_id, bio_area FROM preclin.mondo_bio_area").set_index("mondo_id").bio_area
+    e = eff.assign(mode=eff.key.map(dict(zip(h.key, h["mode"]))).fillna("unresolved"))
+    t = pd.crosstab(e.mondo_id, e["mode"]).reindex(columns=ENGAGED_MODES, fill_value=0)
+    t.insert(0, "stops", t.sum(axis=1))
+    t.insert(0, "area", t.index.map(area).fillna("other"))
+    t.insert(0, "disease", t.index.map(label).fillna("No disease term (symptom or procedure)"))
+    return t.sort_values("stops", ascending=False).reset_index()
 
 
 def main() -> None:
@@ -160,6 +185,7 @@ def main() -> None:
     traced.drop(columns=["sources"]).to_csv(os.path.join(OUT, "programs.csv"), index=False)
     main = traced[traced.phase.isin(MAIN_PHASES)]
     d = traced[traced.headline]
+    engaged_by_disease(d).to_csv(os.path.join(OUT, "engaged_by_disease.csv"), index=False)
     infer = d[d.traced]
     stopped = lambda x: x[x.shown.notna()]
     p1 = traced[within(traced, SECTION1) & traced.phase.eq(1)]

@@ -39,9 +39,36 @@ For 2,952 of the 5,428 Phase 2 and 3 stops among 2008–2019 entries, the regist
 
 **Efficacy is the main reason programs stop in Phases 2 and 3.** Counting sourced and likely causes, efficacy or exposure ended 48% of Phase 2 stops and 48% of Phase 3 stops, against 29% of Phase 2 and 3 stops as the registry records them. Sponsor decisions are the next largest cause in Phase 2 (25%) and the largest in Phase 1 (47%). In Phase 3, 30% of stops followed a positive readout. Safety is rare once only stops whose sponsor gives a safety reason count: 4% in Phase 2 and 4% in Phase 3.
 
-**Why drugs that engaged their target still failed.** Of the efficacy stops whose engagement was examined, 47% are drugs that reached and engaged their target while the disease did not respond (1,035 stops). What other drugs on the same target went on to do separates the explanations. For 34% of them the target worked only in other diseases: real biology, the wrong disease, often an approved drug tried in a new one. Another 7% hit targets no drug has worked on anywhere, though others were tried in the disease. For 23% another drug on the target already worked, or later worked, in the same disease, so this drug or its trial fell short; for 11% the target worked only in a related subtype or stage. 17% were the only attempt on their target, which leaves the question open.
+**Why drugs that engaged their target still failed.** Of the efficacy stops whose engagement was examined, 47% are drugs that reached and engaged their target while the disease did not respond (1,035 stops, 69% of them failures of the target). Each is placed in one failure mode, first from what other drugs on the same target went on to do and, where that leaves the question open, from the program's own sources:
 
-![Phase 2 and 3 stops among 2008–2019 entries: by cause; the efficacy stops by what the evidence shows about engagement; and the stops where the drug engaged its target without benefit, by what other drugs on the same target did](report/output/figures/why_stop.png)
+* **The target is not causal for the disease** (63%, 652 stops): no drug on the target has worked in this disease, though drugs on it work in others or others were tried. Where a drug on the target worked in a "related" disease, that disease was almost always a different one (asthma for COPD, ankylosing spondylitis for osteoarthritis), not a subgroup or stage of this one.
+* **The target is causal, but the program treated in the wrong patients** (5%) **or at the wrong time** (5 stops): the target works in a subgroup, often one a biomarker selects, or at another stage.
+* **The target is sound and the drug fell short** (5%): too little engagement, or a dose capped by its effects elsewhere.
+* **The trial could not answer** (6%): too small, too short, or the wrong endpoint.
+* **Unresolved** (20%): no resolved target, no source settles it, or the sources call the target not causal where another drug on it worked in this disease.
+
+Across all Phase 2 and 3 stops, a target that does not drive the disease accounts for 13%, against 10% of efficacy stops for drugs that never engaged their target. The split by disease area is below. Infectious-disease stops are mostly unresolved because their drugs act on pathogen proteins, whose record the target history does not follow; every disease with at least ten such stops is in the appendix.
+
+| Disease area | Stops | Target not causal | Wrong time | Wrong patients | Drug fell short | Trial couldn't answer | Unresolved |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| All areas | 1,035 | 63% | 0% | 5% | 5% | 6% | 20% |
+| Oncology | 306 | 61% | 0% | 12% | 7% | 3% | 17% |
+| Neurology | 121 | 67% | 2% | 4% | 4% | 5% | 18% |
+| Autoimmune | 119 | 71% | 0% | 4% | 4% | 10% | 11% |
+| Other | 116 | 86% | 0% | 0% | 0% | 7% | 7% |
+| Respiratory | 77 | 56% | 0% | 3% | 3% | 9% | 30% |
+| Psychiatry | 60 | 57% | 0% | 2% | 5% | 13% | 23% |
+| Cardiovascular | 53 | 58% | 2% | 2% | 4% | 9% | 25% |
+| Infectious disease | 43 | 16% | 0% | 0% | 0% | 2% | 81% |
+| Gastroenterology | 37 | 54% | 3% | 3% | 3% | 8% | 30% |
+| Ophthalmology | 27 | 78% | 4% | 0% | 0% | 11% | 7% |
+| Endocrine | 26 | 38% | 0% | 8% | 23% | 8% | 23% |
+| Metabolic | 18 | 61% | 0% | 11% | 0% | 0% | 28% |
+| Allergy | 12 | 67% | 0% | 0% | 0% | 0% | 33% |
+| Urology | 11 | 82% | 0% | 9% | 0% | 9% | 0% |
+| Hematology | 9 | 67% | 0% | 0% | 22% | 0% | 11% |
+
+![Phase 2 and 3 stops among 2008–2019 entries: by cause; the efficacy stops by what the evidence shows about engagement; and the stops where the drug engaged its target without benefit, by failure mode](report/output/figures/why_stop.png)
 
 **What each cause breaks down into.** Shares are of Phase 2 and 3 stops whose cause is sourced.
 
@@ -135,13 +162,18 @@ Patient selection does not explain the results: holding biomarker-selected enrol
 
 **Evidence that the target is right prevents efficacy failures, and nothing measured prevents safety failures.** Human genetics went with 31% fewer stops where the drug engaged its target without benefit, mouse genetics resembling the disease 22% fewer, and an earlier drug on the target 34% fewer. Genetic support did not change how often a drug failed to engage its target or reach adequate exposure; an earlier drug on the target did, with 47% fewer such failures, as later drugs on a target someone has already drugged tend to reach it. No line known before entry clearly prevents safety stops, including the standard genetic safety flags and an earlier drug on the same target stopping for safety; only about one program in 45 stops for safety, too few to show a modest effect. A published study of the drug engaging its target in people is not tested against engagement failures ("not testable"), because those failures were judged from the same publications.
 
-### Which failure each kind of evidence prevents
+**Only evidence that the target causes the disease prevents the commonest failure.** Splitting the stops where the drug engaged its target without benefit by failure mode (Section 1), rare-variant human genetics went with 76% fewer stops where the target was not causal, and a tumour mutation matching the drug with 62% fewer. Mouse genetics resembling the disease went with 29% fewer (0.71×, 0.50–0.99), a smaller effect at the edge of chance, and changes in diseased tissue did not clearly lower them (0.91×), and a measured binding affinity did not lower engagement failures (1.14×). Leaving out entries that stopped for a business, operational or positive-readout reason, which can no longer fail on efficacy, leaves rare-variant genetics at 0.22×. Rates are per phase entry, adjusted as in the chart above; bold where the 95% range excludes 1.
 
-![Which evidence goes with fewer or more Phase 1–3 stops for each reason](report/output/figures/evidence_grid.png)
-
-*Each cell compares programs with the evidence against those without it, for stops of one kind: human evidence shows the drug never adequately engaged its target (engagement); tolerability capped the dose or exposure failed (dose); it engaged the target and the disease did not respond (efficacy); harm (safety). Coloured cells are differences whose 95% range does not include zero, adjusted for disease area, modality, entry period, novelty, target precedent and phase; grey cells are not. Below the rule: signals of a target's or drug's safety risk (exploratory).*
-
-**Evidence that the target is right prevents efficacy failures, and nothing measured prevents safety failures.** Human genetics went with 31% fewer stops where the drug engaged its target without benefit, mouse genetics resembling the disease 22% fewer, and an earlier drug on the target 34% fewer. Genetic support did not change how often a drug failed to engage its target or reach adequate exposure; an earlier drug on the target did, with 47% fewer such failures, as later drugs on a target someone has already drugged tend to reach it. No line known before entry clearly prevents safety stops, including the standard genetic safety flags and an earlier drug on the same target stopping for safety; only about one program in 45 stops for safety, too few to show a modest effect. A published study of the drug engaging its target in people is not tested against engagement failures ("not testable"), because those failures were judged from the same publications.
+| Evidence before entry (entries) | Never engaged | Target not causal | Wrong patients | Drug fell short |
+| :---- | :---- | :---- | :---- | :---- |
+| Human genetics, rare variants (651) | 1.10 (0.44–2.72) | **0.24 (0.09–0.61)** | 0.20 (0.03–1.56) | 1.09 (0.25–4.75) |
+| Human genetics, GWAS only (187) | 1.50 (0.40–5.63) | 0.85 (0.41–1.79) | 1.14 (0.16–7.98) | 2.47 (0.55–11.19) |
+| Tumour mutation matching the drug (746) | 2.10 (0.86–5.10) | **0.38 (0.21–0.67)** | 1.16 (0.37–3.65) | 1.89 (0.67–5.33) |
+| Diseased tissue: RNA level differs (907) | 1.68 (0.87–3.22) | 0.91 (0.64–1.29) | 0.54 (0.17–1.71) | 1.30 (0.48–3.51) |
+| Mouse genetics resembling the disease (1,504) | 0.98 (0.49–1.98) | **0.71 (0.50–0.99)** | 0.68 (0.26–1.79) | 0.93 (0.38–2.24) |
+| Binding to the target measured (1,658) | 1.14 (0.55–2.35) | **1.52 (1.15–2.02)** | 1.62 (0.76–3.44) | 1.91 (0.60–6.09) |
+| Published study in an animal model of the disease (4,655) | 1.01 (0.63–1.60) | **0.58 (0.46–0.72)** | 0.99 (0.56–1.75) | 1.16 (0.57–2.35) |
+| An earlier drug on the target (4,305) | **0.53 (0.31–0.91)** | not testable | not testable | 2.03 (0.84–4.89) |
 
 ### What programs enter on
 

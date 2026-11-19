@@ -11,11 +11,12 @@ from __future__ import annotations
 import sys
 import time
 
-from report import (attribution, disease_match, evidence_analysis, figures, frame, methods, quality, render, section1,
-                    section2, section3, stop_causes)
+from report import (attribution, disease_match, evidence_analysis, failure_modes, figures, frame, methods, quality, render,
+                    section1, section2, section3, stop_causes)
 
 # quality reads only the database and audit files, so it runs first with the other large reads
-STEPS = [quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, methods, figures, render]
+STEPS = [quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes, methods, figures,
+         render]
 
 
 def load_tables() -> None:

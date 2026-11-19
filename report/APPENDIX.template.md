@@ -32,6 +32,14 @@ Cause of each Phase 2 and 3 stop as registered and after tracing.
 
 {{STOP_CAUSE_TABLE}}
 
+### Why drugs that engaged their target failed, by disease
+
+A stop where the drug engaged its target without benefit takes one failure mode, decided in order. The target is not causal when no drug on the target has worked in the disease while drugs on it worked elsewhere or were tried again, or when the program's sources judge the only attempt not causal. When a drug on the target worked only in a disease the ontology rates as related, a reading of the two diseases decides whether the success was in a subgroup of this one (wrong patients), a stage of it (wrong time) or a different disease (not causal); of the headline stops it read, nearly all were a different disease. A success in this disease only in biomarker-selected trials, when this program did not select, is wrong patients. Otherwise the verdict read from the program's sources decides: wrong patients, wrong stage or timing, drug inadequate or trial inadequate. Everything else is unresolved, including a "not causal" verdict where another drug on the target worked in this disease, which the record contradicts.
+
+Every disease with at least ten such stops.
+
+{{ENGAGED_DISEASE_TABLE}}
+
 ### Why efficacy failed
 
 Efficacy and exposure stops by what the evidence shows about target engagement, by phase.

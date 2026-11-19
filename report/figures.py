@@ -593,12 +593,12 @@ DRILL = [
         ("no_engagement_data", "Engagement never measured", DRILL_PALE, True),
         ("not_examined", "Not examined", DRILL_GREYS[3], False)]),
     ("engaged", "Engaged the target, no benefit", [
-        ("worked_elsewhere_only", "Target works, but only in other diseases", ACCENT, False),
-        ("worked_here", "Another drug on the target already worked here", "#7fb0e8", False),
-        ("worked_related", "Works in a related subtype or stage", "#c6dbf4", False),
-        ("never_worked_tried_again", "Never worked; tried again", DRILL_GREYS[0], False),
-        ("never_worked_single", "Never worked; only attempt", DRILL_GREYS[2], False),
-        ("no_target", "No target", DRILL_GREYS[3], False)]),
+        ("not_causal", "Target not causal for the disease", ACCENT, False),
+        ("wrong_time", "Target causal, wrong time", "#7fb0e8", False),
+        ("wrong_patients", "Target causal, wrong patients", "#c6dbf4", False),
+        ("drug_fell_short", "Drug fell short", DRILL_GREYS[0], False),
+        ("trial_could_not_answer", "Trial couldn't answer", DRILL_GREYS[2], False),
+        ("unresolved", "Unresolved", DRILL_PALE, True)]),
 ]
 
 
@@ -618,8 +618,8 @@ def fit_label(ax, renderer, text: str, width_px: float, max_lines: int = 3, **kw
 
 def why_stop():
     """Phase 2–3 stops among 2008–2019 entries broken down three times (report.stop_causes.drilldown): by cause, the
-    efficacy stops by what the evidence shows about engagement, and the engaged-without-benefit stops by what other
-    drugs on the target did. A segment too narrow for its label is named in a lane under its bar, which the funnel to
+    efficacy stops by what the evidence shows about engagement, and the engaged-without-benefit stops by failure mode
+    (report.engaged_modes: blue, the target layer). A segment too narrow for its label is named in a lane under its bar, which the funnel to
     the next bar leaves clear."""
     n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))["drilldown"]
     fig, ax = plt.subplots(figsize=(12, 6.2))

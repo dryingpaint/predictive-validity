@@ -108,6 +108,38 @@ Cause of each Phase 2 and 3 stop as registered and after tracing.
 | Did not actually stop | 0% (0) | 4% (228) | 4% (234) |
 | Not a development program | 0% (0) | 1% (57) | 1% (57) |
 
+### Why drugs that engaged their target failed, by disease
+
+A stop where the drug engaged its target without benefit takes one failure mode, decided in order. The target is not causal when no drug on the target has worked in the disease while drugs on it worked elsewhere or were tried again, or when the program's sources judge the only attempt not causal. When a drug on the target worked only in a disease the ontology rates as related, a reading of the two diseases decides whether the success was in a subgroup of this one (wrong patients), a stage of it (wrong time) or a different disease (not causal); of the headline stops it read, nearly all were a different disease. A success in this disease only in biomarker-selected trials, when this program did not select, is wrong patients. Otherwise the verdict read from the program's sources decides: wrong patients, wrong stage or timing, drug inadequate or trial inadequate. Everything else is unresolved, including a "not causal" verdict where another drug on the target worked in this disease, which the record contradicts.
+
+Every disease with at least ten such stops.
+
+| Disease | Area | Stops | Target not causal | Wrong time | Wrong patients | Drug fell short | Trial couldn't answer | Unresolved |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| No disease term (symptom or procedure) | Other | 43 | 95% | 0% | 0% | 0% | 5% | 0% |
+| Non-small cell lung carcinoma | Oncology | 37 | 51% | 0% | 8% | 0% | 3% | 38% |
+| Asthma | Respiratory | 30 | 43% | 0% | 0% | 3% | 7% | 47% |
+| Alzheimer disease | Neurology | 26 | 62% | 0% | 8% | 4% | 0% | 27% |
+| Rheumatoid arthritis | Autoimmune | 23 | 65% | 0% | 4% | 9% | 9% | 13% |
+| Colorectal cancer | Oncology | 19 | 58% | 0% | 26% | 0% | 5% | 11% |
+| Breast cancer | Oncology | 19 | 53% | 0% | 16% | 5% | 0% | 26% |
+| Ovarian cancer | Oncology | 18 | 61% | 0% | 11% | 17% | 0% | 11% |
+| Ulcerative colitis | Autoimmune | 17 | 65% | 0% | 6% | 6% | 12% | 12% |
+| Malignant pancreatic neoplasm | Oncology | 16 | 62% | 0% | 6% | 0% | 0% | 31% |
+| Hepatocellular carcinoma | Oncology | 15 | 60% | 0% | 13% | 13% | 13% | 0% |
+| Atopic eczema | Other | 15 | 87% | 0% | 0% | 0% | 0% | 13% |
+| Small cell lung carcinoma | Oncology | 13 | 69% | 0% | 8% | 0% | 0% | 23% |
+| Prostate cancer | Oncology | 13 | 77% | 0% | 0% | 23% | 0% | 0% |
+| Schizophrenia | Psychiatry | 13 | 46% | 0% | 0% | 0% | 0% | 54% |
+| Type 2 diabetes mellitus | Endocrine | 13 | 23% | 0% | 15% | 15% | 15% | 31% |
+| Crohn disease | Autoimmune | 12 | 58% | 0% | 0% | 8% | 25% | 8% |
+| Chronic obstructive pulmonary disease | Respiratory | 12 | 58% | 0% | 8% | 0% | 17% | 17% |
+| Major depressive disorder | Psychiatry | 12 | 42% | 0% | 8% | 17% | 8% | 25% |
+| Acute myeloid leukemia | Oncology | 12 | 58% | 0% | 8% | 8% | 0% | 25% |
+| Systemic lupus erythematosus | Autoimmune | 11 | 64% | 0% | 18% | 0% | 18% | 0% |
+| Plasma cell myeloma | Oncology | 11 | 64% | 0% | 9% | 9% | 0% | 18% |
+| Idiopathic pulmonary fibrosis | Respiratory | 10 | 100% | 0% | 0% | 0% | 0% | 0% |
+
 ### Why efficacy failed
 
 Efficacy and exposure stops by what the evidence shows about target engagement, by phase.
