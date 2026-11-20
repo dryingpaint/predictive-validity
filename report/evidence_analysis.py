@@ -17,7 +17,7 @@ subcategory of report.evidence_lines.CATEGORIES, among the entries it applies to
 For the stop-risk figure, each area and each safety line (report.evidence_lines.SAFETY) is also tested
 against the traced cause of each stop (report.stop_causes: the cause, or the likely cause where no source states
 one): the adjusted risk ratio of stopping for efficacy or exposure and for safety, and of the efficacy stop split
-into the model-system atlas's questions (dose, engagement, efficacy proper; stop_outcomes), among Phase 1-3 entries,
+into whether the drug adequately reached its target and, where it did, efficacy proper (stop_outcomes), among Phase 1-3 entries,
 adjusted as above with phase added. A stop for any other reason is not an event of either.
 A line exposed in fewer than MIN_ENTRIES entries or MIN_TARGETS distinct target sets is described, not
 estimated. Descriptive lines (hindsight, 10 nM potency) are estimated alongside but make up no category.
@@ -101,16 +101,15 @@ DOSE_REASON = "PK, dose or formulation"  # the registry reason a dose stop can c
 
 def stop_outcomes(t: pd.DataFrame) -> dict[str, pd.Series]:
     """Outcome column -> whether each traced stop (report.stop_causes.load) counts. Efficacy and safety are the
-    causes; the efficacy stop is then split into the model-system atlas's questions: dose (tolerability capped the
-    dose, toxicity offset the benefit, or the registry gives a PK, dose or formulation reason), engagement (human
-    evidence shows exposure or engagement too low) and efficacy proper (the target was engaged without benefit). A stop
-    coded as another drug on the target having worked where this one was not shown to engage is neither: the code
-    follows from the target's record, so counting it would make target evidence predict engagement failure by
-    construction."""
+    causes; the efficacy stop is then split in two: the target was never adequately reached (tolerability capped the
+    dose, toxicity offset the benefit, the registry gives a PK, dose or formulation reason, or human evidence shows
+    exposure or engagement too low) and efficacy proper (the target was engaged without benefit). A stop coded as
+    another drug on the target having worked where this one was not shown to engage is neither: the code follows from
+    the target's record, so counting it would make target evidence predict a missed target by construction."""
     eff = t.likely.eq("efficacy")
     dose = eff & (t.detail.eq("dose_capped") | t.subcause.eq("toxicity_offset") | t.registry_reason.eq(DOSE_REASON))
-    return {"stop_efficacy": eff, "stop_safety": t.likely.eq("safety"), "stop_dose": dose,
-            "stop_engagement": eff & t.subcause.eq("not_engaged") & t.detail.ne("other_drug_on_target_worked") & ~dose,
+    engagement = eff & t.subcause.eq("not_engaged") & t.detail.ne("other_drug_on_target_worked")
+    return {"stop_efficacy": eff, "stop_safety": t.likely.eq("safety"), "stop_not_reached": dose | engagement,
             "stop_no_benefit": eff & t.subcause.eq("engaged_no_benefit") & ~dose}
 
 
