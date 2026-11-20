@@ -30,10 +30,19 @@ tables the report reads.
 ## 2. Build
 
 Run `.venv/bin/python -m report`. It reads one database snapshot and writes `report/output/`,
-`REPORT.md` and `REPORT_APPENDIX.md`. It exits non-zero:
+`REPORT.md` and `REPORT_APPENDIX.md`, and copies each analysis's outputs to the shared cache
+(`report.__main__.CACHE`). It exits non-zero:
 
 - when the link dropped and the build read two snapshots: build again;
 - when a placeholder is left unfilled: fix the template.
+
+To iterate, name the step you changed instead: `.venv/bin/python -m report figures` redraws the figures in
+seconds, `.venv/bin/python -m report render` rewrites the templates' text, and
+`.venv/bin/python -m report evidence_analysis` reruns that analysis and every step that uses it. Steps not
+run read their outputs from `report/output/`; in a fresh worktree they are seeded from the cache, which
+prints the commit and snapshot each was built on. A change to a module that is not a step (`frame`,
+`evidence_lines`, `engaged_modes`) names the steps that import it. Build in full before publishing, so every
+number comes from one snapshot.
 
 Then read the prose of every section the plan (step 3) will rewrite against the new numbers: rankings,
 "most"/"least", comparisons with BIO, named cases, counts written as words. The templates hold static
