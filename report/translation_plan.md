@@ -363,11 +363,12 @@ After the literature result was seen (2026-11-09), the report added two explorat
 line at Phase 2: by the size of the sponsor's company (report.section3.sponsors) and by human genetic support. They
 were chosen to test explanations of a result already known, so they are not confirmations.
 
-## Amendment, 2026-11-19: target selection (issues #146, #147, #148)
+## Amendment, 2026-11-19: target selection (issues #146, #147)
 
 Committed before any outcome below was computed. Already known, so the tests that rest on them are not blind: the
 failure modes of engaged-without-benefit stops and their rates by evidence line (PR #145), and the comparison of drugs
-with one primary target against drugs with several (0.89× to approval, 0.92× at Phase 2; Draft 4).
+with one primary target against drugs with several (0.89× to approval, 0.92× at Phase 2; Draft 4), kept as
+descriptive: off-target data at scale does not exist for clinical-stage drugs (#148, closed).
 
 **Failure modes.** A stop where the drug engaged its target without benefit takes one mode (`report/engaged_modes.py`):
 the target is not causal for the disease; it is causal but the program treated at the wrong time, or in the wrong
@@ -399,12 +400,3 @@ outcomes are joined. Architecture is a property of the disease, not evidence dat
   (interaction).
 - Descriptive: the share of disease burden (2021 WHO DALYs) in diseases with a Mendelian form, or with a large-effect
   gene that an approved or Phase 2 drug acts on.
-
-**3. Measured off-targets (#148).** Small molecules with ChEMBL bioactivities dated before entry. The off-target count
-is the number of human targets other than the primary targets with a best pChEMBL of at least 6 (1 µM). Entries tested
-against fewer than 10 human targets are not scored, and profiling depth (targets tested) is added as a covariate.
-- **M1.** Entries with two or more potent off-targets have fewer "target not causal" stops per entry than entries
-  with none.
-- **M2.** They have more safety stops per entry.
-- Descriptive: S4 and likelihood of approval by off-target count; the primary-target comparison already seen, labelled
-  as such.
