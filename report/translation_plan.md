@@ -363,7 +363,7 @@ After the literature result was seen (2026-11-09), the report added two explorat
 line at Phase 2: by the size of the sponsor's company (report.section3.sponsors) and by human genetic support. They
 were chosen to test explanations of a result already known, so they are not confirmations.
 
-## Amendment, 2026-11-19: target selection (issues #146, #147, #148, #151)
+## Amendment, 2026-11-19: target selection (issues #146, #147, #148)
 
 Committed before any outcome below was computed. Already known, so the tests that rest on them are not blind: the
 failure modes of engaged-without-benefit stops and their rates by evidence line (PR #145), and the comparison of drugs
@@ -382,22 +382,12 @@ pattern / none; only stated and pattern labels enter a test. Labels from sources
 
 **1. Target origin (#146).** Unit: target × disease pair reaching Phase 2. Origin is what first proposed the hypothesis:
 one of the target–disease evidence lines (including those registered in #143), clinical observation in people, a
-phenotypic screen with no prior hypothesis, or unclear. It starts from the earliest dated evidence item before the
+phenotypic screen with no prior hypothesis (the molecule came first; this replaces a separate molecule-origin analysis), or unclear. It starts from the earliest dated evidence item before the
 pair's first entry, and is confirmed or corrected from pre-entry sources.
 - **T1.** Pairs whose origin is an observational biomarker association or a diseased-tissue change have more
   "target not causal" stops per entry than pairs whose origin is human genetics.
 
-**2. Molecule origin (#151).** Each small molecule entering Phase 2: origin (phenotypic / target-based / unclear, the
-assay that first showed the series' activity), screen system, assay format and lineage. Tests use novel entities only;
-repurposed entities are reported apart. Validated before any outcome is computed: kappa ≥ 0.7 against Swinney & Anthony
-2011, Eder et al. 2014 and Sadri 2023 on shared approved drugs (any-date labels, through the crosswalk in #151), and
-kappa ≥ 0.6 against a blind hand check of 50 never-approved entities (pre-entry labels). Pre-entry source coverage must
-not differ by more than about 10 points between approved and never-approved entities.
-- **O1.** Phenotypic-origin small molecules advance from Phase 2 more often than target-based ones (S4 risk ratio > 1).
-- **O2.** They have fewer "target not causal" stops per entry.
-- Descriptive: unclear rates by outcome; origin and screen system by area and period; likelihood of approval by origin.
-
-**3. Genetic architecture (#147).** Non-oncology diseases. Each is profiled from current data: GWAS Catalog
+**2. Genetic architecture (#147).** Non-oncology diseases. Each is profiled from current data: GWAS Catalog
 genome-wide significant loci mapped through EFO to MONDO, LDSC SNP heritability, O'Connor et al. 2019's effective
 number of associated SNPs where covered, and whether a Mendelian form exists. Polygenicity is the number of
 independent loci per unit of SNP heritability, split into tertiles on the diseases with Phase 2 entrants before
@@ -410,7 +400,7 @@ outcomes are joined. Architecture is a property of the disease, not evidence dat
 - Descriptive: the share of disease burden (2021 WHO DALYs) in diseases with a Mendelian form, or with a large-effect
   gene that an approved or Phase 2 drug acts on.
 
-**4. Measured off-targets (#148).** Small molecules with ChEMBL bioactivities dated before entry. The off-target count
+**3. Measured off-targets (#148).** Small molecules with ChEMBL bioactivities dated before entry. The off-target count
 is the number of human targets other than the primary targets with a best pChEMBL of at least 6 (1 µM). Entries tested
 against fewer than 10 human targets are not scored, and profiling depth (targets tested) is added as a covariate.
 - **M1.** Entries with two or more potent off-targets have fewer "target not causal" stops per entry than entries
