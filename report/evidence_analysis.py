@@ -23,6 +23,9 @@ A line exposed in fewer than MIN_ENTRIES entries or MIN_TARGETS distinct target 
 estimated. Descriptive lines (hindsight, 10 nM potency) are estimated alongside but make up no category.
 N1-N3 are tested as the plan words them and Holm-corrected together.
 
+The published-animal-study finding is then tested on the later entries of report.windows.CONFIRM, as registered in
+issue #140 (published_confirmation).
+
 Writes report/output/evidence_analysis/: lines.csv (the registered categories), areas.csv (the same estimates for
 the chart's areas and their mutually exclusive tiers, AREAS), stop_risk.csv (the stop-risk figure's rows) and
 numbers.json, which also carries the literature
@@ -33,6 +36,7 @@ from __future__ import annotations
 import json
 import os
 
+import numpy as np
 import pandas as pd
 
 from report import frame
@@ -41,8 +45,8 @@ from report import stop_causes
 from report.evidence_lines import ADJUSTMENTS, APPLIES, AREAS, CATEGORIES, SAFETY, build, stale
 from report.section1 import failure_modes, phase_rows
 from report.section2 import relative_success
-from report.section3 import COVARS, MIN_TARGETS, adjusted, cause_outcomes, describe, estimate, holm, jsonable, sponsors
-from report.windows import SECTION1
+from report.section3 import COVARS, MIN_TARGETS, adjusted, cause_outcomes, coef, describe, estimate, holm, jsonable, poisson, sponsors
+from report.windows import CONFIRM, SECTION1
 
 OUT = os.path.join(frame.REPO, "report", "output", "evidence_analysis")
 LITERATURE_GATE = os.path.join(frame.REPO, "report", "audits", "literature_gate.json")  # pipeline.literature
@@ -204,28 +208,90 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame, trials: pd.Da
          "areas": {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in areas if r.get("column")},
          "literature_gate": literature_gate(),
          "basis": evidence_basis(d),
-         "published_strata": published_strata(d, rows, trials),
+         "published_strata": published_strata(strata_frame(d, sponsors(rows, trials))),
          **hypotheses(d)}
     stops = stop_risk(traced_stops(d))
     n["stop_risk"] = {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in stops.to_dict("records")}
     return pd.DataFrame(out), pd.DataFrame(areas), stops, n
 
 
-def published_strata(d: pd.DataFrame, rows: pd.DataFrame, trials: pd.DataFrame) -> dict:
-    """Where the gap at Phase 2 for a published study of the drug in an animal model of the disease lies: advancing
-    with and without it by the size tier of the program's sponsor (report.section3.sponsors) and by human genetic
-    support, and the adjusted risk ratio with both held fixed."""
-    col = "lit_animal_disease"
-    p2 = d[(d.phase == 2) & d.s4.notna() & d[col].notna()].merge(
-        sponsors(rows, trials)[["program_id", "sponsor_tier"]], on="program_id", how="left")
-    p2 = p2.assign(**{col: p2[col].astype(float), "sponsor_tier": p2.sponsor_tier.fillna("smaller"),
-                      "genetic": p2.cat_human_genetics.fillna(0).gt(0).astype(float)})
-    group = lambda g: {"n": int(len(g)), "share": float(g[col].mean()),  # noqa: E731
-                       "s4_with": float(g[g[col] > 0].s4.mean()), "s4_without": float(g[g[col] <= 0].s4.mean())}
+ANIMAL = "lit_animal_disease"  # the published-animal-study line whose gap published_strata locates
+
+
+def strata_frame(d: pd.DataFrame, tiers: pd.DataFrame) -> pd.DataFrame:
+    """Phase 2 entries of d with S4 and ANIMAL known, with the sponsor tier of report.section3.sponsors (`tiers`; an
+    entry without one is "smaller"), whether it is outside the 100 largest sponsors (smaller), human genetic support
+    (genetic) and the entry year as a level (year)."""
+    p2 = d[(d.phase == 2) & d.s4.notna() & d[ANIMAL].notna()].merge(
+        tiers[["program_id", "sponsor_tier"]], on="program_id", how="left")
+    tier = p2.sponsor_tier.fillna("smaller")
+    return p2.assign(**{ANIMAL: p2[ANIMAL].astype(float), "sponsor_tier": tier,
+                        "smaller": tier.eq("smaller").astype(float),
+                        "genetic": p2.cat_human_genetics.fillna(0).gt(0).astype(float),
+                        "year": p2.entry_year.astype(str)})
+
+
+def published_strata(p2: pd.DataFrame, covars: tuple[str, ...] = COVARS) -> dict:
+    """Where the gap at Phase 2 for a published study of the drug in an animal model of the disease lies, among the
+    entries of strata_frame: advancing with and without it by sponsor size tier and by human genetic support, and the
+    adjusted risk ratio with both held fixed."""
+    group = lambda g: {"n": int(len(g)), "share": float(g[ANIMAL].mean()),  # noqa: E731
+                       "s4_with": float(g[g[ANIMAL] > 0].s4.mean()), "s4_without": float(g[g[ANIMAL] <= 0].s4.mean())}
     return {"tiers": {t: group(g) for t, g in p2.groupby("sponsor_tier")},
             "large": group(p2[p2.sponsor_tier.ne("smaller")]),
             "genetic": {"with": group(p2[p2.genetic > 0]), "without": group(p2[p2.genetic <= 0])},
-            "adjusted": adjusted(p2, "s4", [col], (*COVARS, "sponsor_tier", "genetic"))}
+            "adjusted": adjusted(p2, "s4", [ANIMAL], (*covars, "sponsor_tier", "genetic"))}
+
+
+# The confirmation of issue #140, as registered there on 2026-11-19: the side of 1 each ratio lies on in the
+# discovery entries, and the significance level of the Holm-corrected one-sided tests.
+CONFIRM_SIDES = {"C1": -1, "C2": -1, "C3": 1}
+CONFIRM_ALPHA = 0.05
+CONFIRM_COVARS = ("bio_area", "modality", "year", "novel", "precedent")  # its entries all fall in one era bin
+
+
+def interactions(p2: pd.DataFrame, covars: tuple[str, ...]) -> dict:
+    """The registered tests on the entries of strata_frame: C1, the adjusted risk ratio of ANIMAL holding sponsor size
+    (smaller) and genetic support fixed; C2 and C3, the ratios of its interactions with them in a model with both.
+    Each carries its one-sided p in its CONFIRM_SIDES direction, the Holm-corrected p and how it reads."""
+    x = p2.assign(animal_x_smaller=p2[ANIMAL] * p2.smaller, animal_x_genetic=p2[ANIMAL] * p2.genetic)
+    main = poisson(x, "s4", [ANIMAL, "smaller", "genetic"], covars)
+    full = poisson(x, "s4", [ANIMAL, "smaller", "genetic", "animal_x_smaller", "animal_x_genetic"], covars)
+    tests = {"C1": coef(main, ANIMAL), "C2": coef(full, "animal_x_smaller"), "C3": coef(full, "animal_x_genetic")}
+    for k, t in tests.items():
+        if t:
+            t["p_one_sided"] = t["p"] / 2 if CONFIRM_SIDES[k] * np.log(t["rr"]) > 0 else 1 - t["p"] / 2
+    adj = holm({k: t.get("p_one_sided") for k, t in tests.items()})
+    for k, t in tests.items():
+        if t:
+            t["p_holm"] = adj[k]
+            t["reading"] = ("confirmed" if adj[k] < CONFIRM_ALPHA else
+                            "same direction, not confirmed" if CONFIRM_SIDES[k] * np.log(t["rr"]) > 0 else "not replicated")
+    return {"n": int(len(x)), "n_targets": int(x.target.nunique()), "tests": tests}
+
+
+def published_confirmation(c: pd.DataFrame, d: pd.DataFrame, rows_c: pd.DataFrame, rows_d: pd.DataFrame,
+                           trials: pd.DataFrame) -> dict:
+    """The registered confirmation (issue #140) of published_strata on the CONFIRM entries `c` (phase rows `rows_c`),
+    sponsor size ranked on the discovery entries `d` (phase rows `rows_d`): the cohort, the stratum table, the tests
+    (interactions), the same model on the discovery entries for reference, and the sensitivities (sponsor size ranked
+    on both windows; biomarker-selected enrolment held fixed). A program whose sponsor is unresolved counts as smaller."""
+    prep = lambda x: x.assign(precedent=x.precedent.fillna(0),  # noqa: E731
+                              target=x.target.fillna("entity " + x.moiety_id.astype(str)))
+    unresolved = lambda t: t.assign(sponsor_tier=t.sponsor_tier.where(t.sponsor.ne("unresolved"), "smaller"))  # noqa: E731
+    c, d = prep(c), prep(d)
+    frozen = unresolved(sponsors(rows_c, trials, ranked_by=rows_d))
+    p2 = strata_frame(c, frozen)
+    both = strata_frame(c, unresolved(sponsors(rows_c, trials, ranked_by=pd.concat([rows_d, rows_c]))))
+    marker = p2.assign(biomarker_selected=p2.biomarker_selected.fillna(0))
+    ph2 = c[c.phase == 2]
+    return {"cohort": {"phase2": int(len(ph2)), "with_line": int(len(p2)), "line_known": float(ph2[ANIMAL].notna().mean()),
+                       "unresolved_sponsor": float(frozen.sponsor.eq("unresolved").mean()), "s4": float(p2.s4.mean())},
+            "strata": published_strata(p2, CONFIRM_COVARS),
+            **interactions(p2, CONFIRM_COVARS),
+            "discovery": interactions(strata_frame(d, unresolved(sponsors(rows_d, trials))), COVARS),
+            "sensitivity": {"ranked_on_both": interactions(both, CONFIRM_COVARS)["tests"],
+                            "biomarker": interactions(marker, (*CONFIRM_COVARS, "biomarker_selected"))["tests"]}}
 
 
 def literature_gate() -> dict:
@@ -243,7 +309,10 @@ def main() -> None:
     snap = frame.snapshot()
     progs, trials, outcomes = frame.programs(), frame.program_trials(), frame.trial_outcomes()
     rows = phase_rows(progs, trials, snap, window=SECTION1)
-    lines, areas, stops, n = analyse(build(), rows, failure_modes(rows, progs, trials, outcomes), trials)
+    d = build()
+    lines, areas, stops, n = analyse(d, rows, failure_modes(rows, progs, trials, outcomes), trials)
+    n["published_confirmation"] = published_confirmation(build(CONFIRM), d, phase_rows(progs, trials, snap, window=CONFIRM),
+                                                         rows, trials)
     lines.to_csv(os.path.join(OUT, "lines.csv"), index=False)
     areas.to_csv(os.path.join(OUT, "areas.csv"), index=False)
     stops.to_csv(os.path.join(OUT, "stop_risk.csv"), index=False)

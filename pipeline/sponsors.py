@@ -14,7 +14,7 @@ from typing import Any
 
 from pipeline import llm
 from report import frame
-from report.windows import SECTION1
+from report.windows import CONFIRM, SECTION1
 
 TASK_NAME, VERSION = "sponsor_company", "v1"
 
@@ -51,12 +51,13 @@ TASK = llm.Task(name=TASK_NAME, prompt_version=VERSION, schema_version="v1", sys
 
 
 def items() -> dict[str, dict[str, Any]]:
-    """Each lead sponsor of an industry Phase 2 trial attached to a program and started in the report's window,
-    with the years those trials started."""
+    """Each lead sponsor of an industry Phase 2 trial attached to a program and started from the report's window
+    through the confirmation entries of issue #140 (report.windows.CONFIRM), with the years those trials started.
+    A sponsor already decided keeps its decision (main reuses by subject)."""
     t = frame.query("""SELECT DISTINCT s.lead_sponsor, extract(year FROM s.start_date)::int AS year
                        FROM preclin.dev_program_trial dt JOIN preclin.ctgov_study s USING (nct_id)
                        WHERE dt.phase = 2 AND s.lead_sponsor_class = 'INDUSTRY' AND s.lead_sponsor IS NOT NULL
-                         AND s.start_date BETWEEN %s AND %s""", SECTION1)
+                         AND s.start_date BETWEEN %s AND %s""", (SECTION1[0], CONFIRM[1]))
     years = t.groupby("lead_sponsor").year.apply(lambda y: sorted(set(y)))
     return {name: {"sponsor": name, "years": f"{ys[0]}–{ys[-1]}" if len(ys) > 1 else str(ys[0])}
             for name, ys in years.items()}
