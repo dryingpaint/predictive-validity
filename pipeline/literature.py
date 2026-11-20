@@ -31,6 +31,7 @@ the plan's gates.
 from __future__ import annotations
 
 import argparse
+from collections.abc import Callable
 import json
 import os
 import re
@@ -135,16 +136,19 @@ def pubmed_count(term: str) -> int:
     return int(ET.fromstring(eutils("esearch", term=term, retmax="0")).findtext("Count") or 0)
 
 
-def pubmed_ids(names: list[str], cutoff: int) -> tuple[str, int, list[str]]:
+def pubmed_ids(names: list[str], cutoff: int, term: Callable[[str, str], str] | None = None) \
+        -> tuple[str, int, list[str]]:
     """The query, its hit count and every PMID it returns: one search when the count is within ESEARCH_MAX,
-    else the date range is halved (years, then months) until each part is."""
-    full = pubmed_term(names, "1900", str(cutoff))
+    else the date range is halved (years, then months) until each part is. `term(lo, hi)` builds the esearch
+    term for a date span; by default the drug search's pubmed_term over names."""
+    build = term or (lambda lo, hi: pubmed_term(names, lo, hi))
+    full = build("1900", str(cutoff))
     total = pubmed_count(full)
     ids: list[str] = []
 
     def collect(lo: tuple[int, int], hi: tuple[int, int]) -> None:
         span = (f"{lo[0]}/{lo[1]:02d}", f"{hi[0]}/{hi[1]:02d}")
-        term = pubmed_term(names, *span)
+        term = build(*span)
         n = pubmed_count(term)
         if n == 0:
             return
@@ -257,9 +261,10 @@ def epmc_record(r: dict) -> tuple:
             int(year) if year and str(year).isdigit() else None, r.get("doi"))
 
 
-def epmc_records(names: list[str], cutoff: int, log=print) -> tuple[str, int, list[tuple]]:
-    """The query, its hit count and every record (record_id, source, title, abstract, year, doi) it returns."""
-    q = epmc_query(names, cutoff)
+def epmc_records(names: list[str], cutoff: int, log=print, query: str | None = None) -> tuple[str, int, list[tuple]]:
+    """The query, its hit count and every record (record_id, source, title, abstract, year, doi) it returns.
+    `query` replaces the drug search's epmc_query over names."""
+    q = query or epmc_query(names, cutoff)
     out, cursor, total = [], "*", 0
     while True:
         page = epmc_post(q, cursor, log=log)

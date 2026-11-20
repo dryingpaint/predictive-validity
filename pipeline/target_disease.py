@@ -22,7 +22,7 @@ from datetime import date
 import pandas as pd
 from psycopg2.extras import execute_values
 
-from pipeline import llm
+from pipeline import llm, target_origin
 from pipeline.target_history import targets
 from report import frame
 from report.section1 import phase_rows
@@ -172,12 +172,17 @@ def provisional(_args) -> None:
     print(o.origin.value_counts().to_string(), flush=True)
 
 
-def main() -> None:
+def parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("build").set_defaults(fn=build)
     sub.add_parser("provisional").set_defaults(fn=provisional)
-    args = ap.parse_args()
+    target_origin.add_commands(sub)
+    return ap
+
+
+def main() -> None:
+    args = parser().parse_args()
     args.fn(args)
 
 
