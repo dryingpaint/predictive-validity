@@ -299,9 +299,9 @@ def cohort_entries() -> pd.DataFrame:
 
 def survivors(ids: list[int]) -> dict[int, int]:
     """Entity -> the entity it now is, following preclin.moiety_merge chains."""
-    with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT loser_id, survivor_id FROM preclin.moiety_merge WHERE cause <> 'reversed' ORDER BY merged_at")
-        merged = dict(cur.fetchall())
+    from report import frame
+    merged = dict(frame.query("SELECT loser_id, survivor_id FROM preclin.moiety_merge WHERE cause <> 'reversed'"
+                              " ORDER BY merged_at").itertuples(index=False))
     out = {}
     for m in ids:
         seen, x = set(), m
@@ -1271,21 +1271,22 @@ RECORD_YEAR = """(SELECT year FROM public.publications WHERE pmid = s.record_id
 
 def qualifying(without: str | None = None) -> pd.DataFrame:
     """Entity, record, publication year, kind and (for animal models) mapped MONDO term of every qualifying screen;
-    without a source, the records only that source retrieved are left out."""
+    without a source, the records only that source retrieved are left out. Read through report.frame, so a report
+    build reads it from the build's snapshot."""
+    from report import frame
     only = f"""AND EXISTS (SELECT 1 FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id
-                           AND h.record_id = s.record_id{f" AND h.source <> '{without}'" if without else ""})"""
-    with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute(f"""SELECT s.moiety_id, s.record_id, {RECORD_YEAR}, 'animal_disease', md.mondo_id
-                        FROM preclin.literature_screen s CROSS JOIN unnest(s.modelled_diseases) d
-                        JOIN preclin.literature_model_disease md ON md.modelled_disease = d
-                        WHERE s.animal_disease AND md.mondo_id IS NOT NULL {only}
-                        UNION ALL
-                        SELECT s.moiety_id, s.record_id, {RECORD_YEAR}, k.kind, NULL
-                        FROM preclin.literature_screen s
-                        CROSS JOIN LATERAL (VALUES ('animal_healthy', s.animal_healthy),
-                                                   ('human_engagement', s.human_engagement)) k(kind, ok)
-                        WHERE k.ok {only}""")
-        return pd.DataFrame(cur.fetchall(), columns=["moiety_id", "pmid", "year", "kind", "mondo_id"])
+                           AND h.record_id = s.record_id{" AND h.source <> %s" if without else ""})"""
+    return frame.query(f"""SELECT s.moiety_id, s.record_id AS pmid, {RECORD_YEAR} AS year, 'animal_disease' AS kind,
+                                  md.mondo_id
+                           FROM preclin.literature_screen s CROSS JOIN unnest(s.modelled_diseases) d
+                           JOIN preclin.literature_model_disease md ON md.modelled_disease = d
+                           WHERE s.animal_disease AND md.mondo_id IS NOT NULL {only}
+                           UNION ALL
+                           SELECT s.moiety_id, s.record_id, {RECORD_YEAR}, k.kind, NULL
+                           FROM preclin.literature_screen s
+                           CROSS JOIN LATERAL (VALUES ('animal_healthy', s.animal_healthy),
+                                                      ('human_engagement', s.human_engagement)) k(kind, ok)
+                           WHERE k.ok {only}""", (without, without) if without else None)
 
 
 def record_dois() -> dict[str, str]:

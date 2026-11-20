@@ -369,12 +369,10 @@ def literature_inputs(moieties: list[int]) -> tuple[pd.DataFrame, set[int], dict
     """The qualifying literature screens, the drugs whose retrieval is screened (screen or prefilter rows, or
     nothing retrieved), and each entity's surviving entity."""
     q = literature.qualifying()
-    with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT s.moiety_id FROM preclin.literature_search s GROUP BY 1
-                       HAVING NOT EXISTS (SELECT 1 FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id)
-                       UNION SELECT moiety_id FROM preclin.literature_screen
-                       UNION SELECT moiety_id FROM preclin.literature_prefilter""")
-        screened = {r[0] for r in cur.fetchall()}
+    screened = set(frame.query("""SELECT s.moiety_id FROM preclin.literature_search s GROUP BY 1
+                                  HAVING NOT EXISTS (SELECT 1 FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id)
+                                  UNION SELECT moiety_id FROM preclin.literature_screen
+                                  UNION SELECT moiety_id FROM preclin.literature_prefilter""").moiety_id)
     return q, screened, literature.survivors(moieties)
 
 
@@ -430,6 +428,7 @@ def earlier_safety_stop(by_gene: dict, moiety_id, genes, entry: pd.Timestamp) ->
     return any(mid != moiety_id and ended <= cut for g in genes for mid, _, ended in by_gene.get(g, ()))
 
 
+@frame.held_once
 def build() -> pd.DataFrame:
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
