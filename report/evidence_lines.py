@@ -1,4 +1,4 @@
-"""The evidence-line dataset of the 2026-11-03 plan amendment (report/translation_plan.md).
+"""The evidence-line dataset of the 2026-11-03 plan amendment (report/translation_plan.md, removed; last version at 8e02c3e).
 
     python -m report.evidence_lines         # write the CSVs
     python -m report.evidence_lines store   # also replace the dataset in Postgres
@@ -195,7 +195,7 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
 }
 ADJUSTMENTS = [Line("Trial enrolled patients selected by a biomarker", "biomarker_selected", "all")]
 
-# The evidence chart's grouping (exploratory, added 2026-11-05; report/translation_plan.md): one question per area, its
+# The evidence chart's grouping (exploratory, added 2026-11-05; report/translation_plan.md, removed; last version at 8e02c3e): one question per area, its
 # tiers mutually exclusive. The registered CATEGORIES above stay the confirmatory grouping and the appendix table's.
 AREAS: dict[str, tuple[Line, list[Line]]] = {
     "human_genetics": (Line("Human genetics: inherited variants link the target to the disease", "g3", "target"), [

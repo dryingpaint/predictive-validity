@@ -13,7 +13,7 @@ Project Score together from 21Q4. Each row is "SYMBOL (Entrez id)"; genes are ke
 and joined to Ensembl through preclin.hgnc_gene. Sections 2 and 3 flag a target pan-essential when
 it is on the latest list from before the program entered the phase.
 
-Dependency screens (the 2026-11-04 comprehensiveness amendment, report/translation_plan.md): DEMETER2
+Dependency screens (the 2026-11-04 comprehensiveness amendment, report/translation_plan.md, removed; last version at 8e02c3e): DEMETER2
 combined RNAi scores of the Achilles, Project DRIVE and Marcotte screens, and Avana CRISPR scored by
 CERES. A line's DEMETER2 scores are dated by the earliest source paper of the screens it was in
 (SCREEN_YEARS; Achilles lines in the 216-line Achilles v2.4 release take 2014). Avana lines are dated

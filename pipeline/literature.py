@@ -12,7 +12,7 @@ a subtype or a disease within Lin 0.5 of it), animal_healthy (the drug's pharmac
 exposure in healthy animals) and human_engagement (target engagement or a pharmacodynamic biomarker measured in
 people; Phase 2 and 3 entries only).
 
-This is the third version, user-directed, which report/translation_plan.md fixed before it ran and which overrides
+This is the third version, user-directed, which report/translation_plan.md (removed; last version at 8e02c3e) fixed before it ran and which overrides
 the plan's stop rule; a kind that passes is labelled as passing on a third attempt. Each drug is searched once
 by its names alone (INN, code names, ChEMBL and PubChem synonyms, FDA substance-registry names), with no disease,
 species or kind terms, up to the latest cutoff of its entries (the year before entry), reviews excluded: in PubMed

@@ -1,4 +1,4 @@
-"""Section 3: which evidence translates to the clinic (plan: report/translation_plan.md).
+"""Section 3: which evidence translates to the clinic (plan: report/translation_plan.md, removed; last version at 8e02c3e).
 
     python -m report.section3
 

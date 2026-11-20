@@ -1,4 +1,4 @@
-"""The evidence-category analysis of the 2026-11-03 plan amendment (report/translation_plan.md).
+"""The evidence-category analysis of the 2026-11-03 plan amendment (report/translation_plan.md, removed; last version at 8e02c3e).
 
     python -m report.evidence_analysis
 

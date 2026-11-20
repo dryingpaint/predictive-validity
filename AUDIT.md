@@ -269,7 +269,7 @@ Each quantitative claim, with the value the rebuild gives:
   (`report/audits/attribution_adjudication.json`), which also found D73–D74.
 
 - 2026-10-21 — Section 3, which evidence translates. Plan committed before any outcome analysis
-  (`report/translation_plan.md`). New data: primary outcome measures for every trial
+  (`report/translation_plan.md` (removed; last version at 8e02c3e)). New data: primary outcome measures for every trial
   (`ctgov_study.primary_outcomes`), Open Targets 26.09 evidence rows with dates, direction and
   confidence (`preclin.ot_evidence`, 3.3 million rows) and mouse phenotypes, the Mammalian
   Phenotype ontology, the governing primary endpoint of 31,802 industry Phase 2/3 trials

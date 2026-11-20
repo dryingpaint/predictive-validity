@@ -1,6 +1,6 @@
 # Literature lines: pilot gate
 
-The plan amendment of 2026-11-03 (`report/translation_plan.md`) admits a literature line into the analysis only if,
+The plan amendment of 2026-11-03 (`report/translation_plan.md` (removed; last version at 8e02c3e)) admits a literature line into the analysis only if,
 on a seeded pilot, its retrieval recall against a blind reference set is at least 80%, a second model agrees with the
 screen at κ ≥ 0.6, and at least 8% of Phase 2 entries carry it. Otherwise the line is reported as descriptive.
 No line passed, so none was run on the full cohort.
@@ -44,7 +44,7 @@ and the pilot labels in `preclin.literature_screen`.
 
 ## Version 2 (2026-11-04)
 
-The second and last attempt, fixed in `report/translation_plan.md` before it ran: one PubMed search per drug by its
+The second and last attempt, fixed in `report/translation_plan.md` (removed; last version at 8e02c3e) before it ran: one PubMed search per drug by its
 names alone, keeping up to 200 abstracts. The names are INN, code names, ChEMBL and PubChem synonyms and FDA
 substance-registry names, filtered of identifiers and chemical names. Claude Sonnet 5 read each abstract once and
 decided every kind, naming the disease of any animal model. A second step mapped that disease to MONDO, and a model
@@ -95,7 +95,7 @@ stay descriptive: the pilot counts above, and the screens in `preclin.literature
 
 ## Version 3 (2026-11-05): the third, user-directed attempt
 
-Fixed in `report/translation_plan.md` (#101, with a Firecrawl addendum in #102) before it ran. It overrides the plan's
+Fixed in `report/translation_plan.md` (removed; last version at 8e02c3e) (#101, with a Firecrawl addendum in #102) before it ran. It overrides the plan's
 stop rule, and any kind that passes is labelled as passing on a third, user-directed attempt.
 
 **Retrieval**, per drug by its names alone, up to the year before its latest entry:
