@@ -102,12 +102,12 @@ DOSE_REASON = "PK, dose or formulation"  # the registry reason a dose stop can c
 def stop_outcomes(t: pd.DataFrame) -> dict[str, pd.Series]:
     """Outcome column -> whether each traced stop (report.stop_causes.load) counts. Efficacy and safety are the
     causes; the efficacy stop is then split in two: the target was never adequately reached (tolerability capped the
-    dose, toxicity offset the benefit, the registry gives a PK, dose or formulation reason, or human evidence shows
-    exposure or engagement too low) and efficacy proper (the target was engaged without benefit). A stop coded as
+    dose, the registry gives a PK, dose or formulation reason, or human evidence shows exposure or engagement too
+    low) and efficacy proper (the target was engaged without benefit). A stop coded as
     another drug on the target having worked where this one was not shown to engage is neither: the code follows from
     the target's record, so counting it would make target evidence predict a missed target by construction."""
     eff = t.likely.eq("efficacy")
-    dose = eff & (t.detail.eq("dose_capped") | t.subcause.eq("toxicity_offset") | t.registry_reason.eq(DOSE_REASON))
+    dose = eff & (t.detail.eq("dose_capped") | t.registry_reason.eq(DOSE_REASON))
     engagement = eff & t.subcause.eq("not_engaged") & t.detail.ne("other_drug_on_target_worked")
     return {"stop_efficacy": eff, "stop_safety": t.likely.eq("safety"), "stop_not_reached": dose | engagement,
             "stop_no_benefit": eff & t.subcause.eq("engaged_no_benefit") & ~dose}

@@ -131,7 +131,7 @@ def subcause_audit() -> dict:
 
 
 DRILL_EFFICACY = {"engaged_no_benefit": "engaged_no_benefit", "not_engaged": "not_engaged",
-                  "trial_design": "trial_design", "toxicity_offset": "trial_design",
+                  "trial_design": "trial_design",
                   "no_engagement_data": "no_engagement_data"}  # any other subcause: the stop was not examined
 TARGET_FATES = ["worked_elsewhere_only", "worked_here", "worked_related", "never_worked_tried_again", "never_worked_single",
          "no_target"]  # pipeline.target_history, worked_here_selected counted with worked_here

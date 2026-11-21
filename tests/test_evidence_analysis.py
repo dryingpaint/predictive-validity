@@ -26,20 +26,20 @@ def test_a_skipped_phase_carries_the_features_of_the_entry_that_skipped_it():
 
 
 # Traced stops: a dose cap, a registry PK reason, measured low engagement, engagement coded from another drug's success,
-# engaged without benefit, engaged without benefit but toxicity offset it, and a safety stop.
+# engaged without benefit, and two safety stops (on-target toxicity offsetting the benefit, and one with no subcause).
 STOPS = pd.DataFrame([
     {"likely": "efficacy", "subcause": "engaged_no_benefit", "detail": "dose_capped", "registry_reason": None},
     {"likely": "efficacy", "subcause": "not_stated", "detail": None, "registry_reason": "PK, dose or formulation"},
     {"likely": "efficacy", "subcause": "not_engaged", "detail": None, "registry_reason": None},
     {"likely": "efficacy", "subcause": "not_engaged", "detail": "other_drug_on_target_worked", "registry_reason": None},
     {"likely": "efficacy", "subcause": "engaged_no_benefit", "detail": None, "registry_reason": None},
-    {"likely": "efficacy", "subcause": "toxicity_offset", "detail": None, "registry_reason": None},
+    {"likely": "safety", "subcause": "on_target_toxicity", "detail": None, "registry_reason": None},
     {"likely": "safety", "subcause": "not_stated", "detail": None, "registry_reason": None},
 ])
 
 
 def test_a_stop_where_the_target_was_never_reached_counts_once_whether_dose_or_engagement_kept_it_away():
     out = {k: v.tolist() for k, v in stop_outcomes(STOPS).items()}
-    assert out["stop_not_reached"] == [True, True, True, False, False, True, False]
+    assert out["stop_not_reached"] == [True, True, True, False, False, False, False]
     assert out["stop_no_benefit"] == [False, False, False, False, True, False, False]
-    assert out["stop_safety"] == [False] * 6 + [True]
+    assert out["stop_safety"] == [False] * 5 + [True, True]

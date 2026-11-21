@@ -11,7 +11,7 @@
 Section 1 gives each suspended program one reason from its own trials. For 40% of Phase 2/3
 stops no reason is stated; a bare "sponsor decision" or an unspecified "other" reason says little
 more; and the efficacy attribution (pipeline.attribution) found stops recorded as efficacy that
-were not failed efficacy tests (codes F8, F9) or that toxicity ended (F6). Each of these is
+were not failed efficacy tests (codes F8, F9) or that toxicity ended (F5, F6). Each of these is
 inferred: the model reads the program's trials (records, posted results, linked papers), its
 structured signals and the entity's other programs, then searches the web (company releases,
 filings, pipeline updates, conference reports, news) and names the cause, how directly the
@@ -31,7 +31,7 @@ import pandas as pd
 from psycopg2.extras import execute_values
 
 from pipeline import llm
-from pipeline.stops import (CAUSE, CODE_CAUSE, INFERENCE_TASK, INFERENCE_VERSION, PHASES, REGISTRY_CAUSE,
+from pipeline.stops import (CAUSE, CODE_CAUSE, CODE_SAFETY, INFERENCE_TASK, INFERENCE_VERSION, PHASES, REGISTRY_CAUSE,
                             RELATED_DISEASE, SUBCAUSES, UNSTATED, SameTarget, detail, fate, inferred_causes, keys,
                             labels, pillar_code, settled, stops, subcause)
 from report import frame
@@ -385,7 +385,7 @@ def validate_run(_args) -> None:
     print(f"sample={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
 
 
-ASSEMBLE_METHOD = "stop_cause_assembly@v4"
+ASSEMBLE_METHOD = "stop_cause_assembly@v5"
 DESCRIBE_METHOD = "stop_description@v3"
 ASSEMBLE_DESCRIPTION = f"""Why every stop Section 1 counts happened, one row per (entity, disease, phase) in
 preclin.stop. A stated registry reason is kept and mapped to a cause ({'; '.join(f'{k} -> {CAUSE[v]}' for k, v in
@@ -399,7 +399,7 @@ the cause is unknown with no guess. Where {DESCRIBE_METHOD}'s reading of a stop'
 drug in the disease went on or it was approved there, the cause is not_stopped; where it says no one was developing
 the drug for the disease and the cause is positive_not_advanced, it is not_a_program; neither has a subcause.
 Subcause: for an efficacy stop, why efficacy failed from its label (F9 coded by
-its pillars; not_attributed without a label); off_target_toxicity for a stop the label settles as safety; for
+its pillars; not_attributed without a label); for a stop the label settles as safety, {'; '.join(f'{c} -> {s}' for c, s in CODE_SAFETY.items())}; for
 safety, sponsor decision, operational and positive-readout stops, the {DESCRIBE_METHOD} subcause; for an unknown
 cause, what the drug and sponsor did next
 (preclin.stop_signal). Explanation: the label's rationale where it gives the subcause, else the source quote or the
@@ -433,7 +433,7 @@ def stop_row(reason: str, settle: str | None, inferred: dict | None, label: dict
     if cause == "efficacy":
         sub, det = (label["subcause"], label["detail"]) if label else ("not_attributed", None)
     elif cause == "safety" and settle == "safety":
-        sub = "off_target_toxicity"
+        sub = CODE_SAFETY[label["primary_code"]]
     elif cause == "unknown":
         sub = fate
     explains = label is not None and (cause == "efficacy" or settle in CODE_CAUSE.values())
