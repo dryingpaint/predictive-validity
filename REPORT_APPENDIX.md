@@ -16,7 +16,6 @@ Every stop has one cause; where a source gives more detail, one subcause from th
 |  | Not engaged | Exposure or engagement too low, or another drug on the target worked |
 |  | Engaged, no benefit | Target or mechanism wrong for the disease as tested |
 |  | Trial design, population, endpoint | Trial design, population or endpoint, mechanism not in question |
-|  | Toxicity offset efficacy | On-target toxicity offset efficacy |
 |  | No engagement data | No human evidence of engagement either way |
 | **Safety** |  | Adverse events, poor tolerability, a safety signal, or a clinical hold for safety |
 |  | On-target toxicity | The text ties the harm to the drug's mechanism, to hitting its target |
@@ -99,8 +98,8 @@ Cause of each Phase 2 and 3 stop as registered and after tracing.
 
 | Cause of the stop | As registered | After tracing: sourced | After tracing: sourced or likely |
 | :---- | :---- | :---- | :---- |
-| Efficacy or exposure (PK, dose, formulation) | 29% (1,589) | 41% (2,248) | 46% (2,490) |
-| Safety | 1% (68) | 4% (195) | 4% (205) |
+| Efficacy or exposure (PK, dose, formulation) | 29% (1,589) | 41% (2,236) | 46% (2,478) |
+| Safety | 1% (68) | 4% (207) | 4% (217) |
 | Sponsor decision (portfolio, commercial, partner, acquisition, funding or closure) | 5% (270) | 12% (646) | 20% (1,103) |
 | Operational (enrollment, sites, supply, regulatory) | 5% (283) | 6% (316) | 6% (337) |
 | Positive readout, not yet advanced | 10% (517) | 17% (923) | 18% (955) |
@@ -149,10 +148,9 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 | Not engaged: exposure or engagement too low, or another drug on the target worked | 11% (197) | 11% (51) | 11% (248) | 10% (166) |
 | Engaged, no benefit: target or mechanism wrong for the disease as tested | 46% (797) | 50% (240) | 47% (1,037) | 44% (731) |
 | Trial design, population or endpoint, mechanism not in question | 6% (104) | 10% (46) | 7% (150) | 8% (129) |
-| On-target toxicity offset efficacy | 1% (11) | 0% (1) | 1% (12) | 0% (3) |
 | No engagement data: no human evidence of engagement either way | 36% (624) | 30% (146) | 35% (770) | 38% (620) |
 | **Not engaged, of failures whose mechanism was tested** | **20%** (17–23) | **18%** (13–22) | **19%** (17–22) | **19%** (16–21) |
-| Programs (entities) | 1,734 (1,342) | 484 (427) | 2,218 (1,649) | 1,650 (1,303) |
+| Programs (entities) | 1,723 (1,336) | 483 (426) | 2,206 (1,643) | 1,647 (1,301) |
 
 ### By disease area and modality
 
@@ -212,8 +210,8 @@ Every category and subcategory on US-developed programs, as the main tab's evide
 | · Mouse knockout from a large-scale screen | 40 / 7,435 | 16 | Too rare to estimate | – | – | – |
 | · Mutant mouse phenotype closely matches the disease | 878 / 7,435 | 317 | 1.44 (1.05–1.91) | 1.44 (1.15–1.80) | 1.42 (1.14–1.77) | 0.76 (0.61–0.96) |
 | · Mouse genetics agrees with the drug's direction | 489 / 7,435 | 183 | 1.84 (1.33–2.50) | 1.38 (1.04–1.85) | 1.37 (1.03–1.82) | 0.55 (0.39–0.78) |
-| · The drug in an animal model of the disease (exploratory) | 4,655 / 8,833 | 1,535 | 0.74 (0.62–0.91) | 0.83 (0.71–0.99) | 0.83 (0.70–0.98) | 0.94 (0.84–1.05) |
-| · The drug tested in healthy animals (exploratory) | 5,375 / 9,875 | 1,911 | 0.64 (0.54–0.77) | 0.81 (0.68–0.96) | 0.81 (0.69–0.96) | 0.93 (0.82–1.06) |
+| · The drug in an animal model of the disease (exploratory) | 4,666 / 8,833 | 1,536 | 0.75 (0.62–0.91) | 0.83 (0.70–0.98) | 0.83 (0.70–0.98) | 0.93 (0.83–1.04) |
+| · The drug tested in healthy animals (exploratory) | 5,390 / 9,875 | 1,911 | 0.65 (0.54–0.77) | 0.80 (0.67–0.95) | 0.80 (0.68–0.95) | 0.94 (0.83–1.06) |
 | Cell studies | 237 / 1,824 | 62 | 0.54 (0.15–1.21) | 0.55 (0.25–1.24) | 0.56 (0.25–1.27) | 0.54 (0.27–1.09) |
 | · Gene-knockout screens in human cells | 0 / 7,435 | 0 | Too rare to estimate | – | – | – |
 | · Cancer cells of this type need the gene to grow | 237 / 1,782 | 62 | 0.55 (0.16–1.38) | 0.56 (0.25–1.25) | 0.57 (0.25–1.28) | 0.55 (0.27–1.13) |
@@ -225,7 +223,7 @@ Every category and subcategory on US-developed programs, as the main tab's evide
 | · Drug-like size and chemistry | 4,654 / 5,520 | 1,266 | 0.99 (0.75–1.34) | 0.93 (0.71–1.23) | 0.94 (0.71–1.22) | 0.90 (0.75–1.08) |
 | · Chemistry suited to entering the brain (brain diseases) | 547 / 814 | 194 | 0.86 (0.48–1.65) | 1.43 (0.78–2.64) | 1.40 (0.76–2.58) | 0.91 (0.70–1.17) |
 | Early studies of the drug in people (exploratory) | – | – | Only its one line, below | – | – | – |
-| · Drug shown to act on its target in people (exploratory) | 2,183 / 5,613 | 855 | 1.04 (0.87–1.26) | 1.16 (0.96–1.40) | 1.17 (0.97–1.41) | 0.98 (0.86–1.11) |
+| · Drug shown to act on its target in people (exploratory) | 2,192 / 5,613 | 860 | 1.05 (0.88–1.27) | 1.15 (0.96–1.39) | 1.16 (0.96–1.40) | 0.98 (0.86–1.11) |
 | Safety risk | 4,045 / 7,435 | 634 | 0.98 (0.71–1.36) | 1.12 (0.90–1.38) | 1.11 (0.90–1.37) | 1.02 (0.54–1.94) (safety) |
 | · People rarely carry broken copies of the gene | 1,629 / 7,435 | 242 | 0.83 (0.59–1.16) | 0.97 (0.75–1.26) | 0.98 (0.76–1.27) | 0.62 (0.24–1.61) (safety) |
 | · Mice without the gene die young | 3,747 / 7,435 | 588 | 0.99 (0.71–1.36) | 1.08 (0.87–1.33) | 1.07 (0.87–1.31) | 1.17 (0.63–2.17) (safety) |

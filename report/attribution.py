@@ -41,7 +41,6 @@ SUBCAUSE_LABELS = {
                            "Engaged, no benefit"),
     "trial_design": ("Trial design, population or endpoint, mechanism not in question",
                      "Trial design, population, endpoint"),
-    "toxicity_offset": ("On-target toxicity offset efficacy", "Toxicity offset efficacy"),
     "no_engagement_data": ("No engagement data: no human evidence of engagement either way", "No engagement data"),
 }
 DETAILS = ["exposure_or_engagement_too_low", "dose_capped", "other_drug_on_target_worked", "wrong_population",

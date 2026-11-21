@@ -4,8 +4,8 @@ vocabulary of preclin.stop: the definitions pipeline.stop_causes, pipeline.attri
 A stopped program is one Section 1 records as suspended (report.section1.failure_modes), keyed by (entity,
 disease, phase). Its stop is for efficacy or exposure when the registry says so, or when stop-cause inference
 traced it there with a source. Each such stop gets an efficacy-attribution label (pipeline.attribution); the web
-search label replaces a bundle label of U. The label settles the stop's cause where it contradicts it: F6 is
-safety, F8 is a sponsor decision, and F9 (not an efficacy test) sends a registry efficacy stop back to inference.
+search label replaces a bundle label of U. The label settles the stop's cause where it contradicts it: F5
+(on-target toxicity offset the benefit) and F6 (off-target toxicity) are safety, F8 is a sponsor decision, and F9 (not an efficacy test) sends a registry efficacy stop back to inference.
 The model's failure codes stay inside the decisions; preclin.stop names them (SUBCAUSE, DETAIL).
 """
 from __future__ import annotations
@@ -38,17 +38,18 @@ CAUSE = {"efficacy": "efficacy", "pk_formulation": "efficacy", "safety": "safety
          "positive_not_advanced": "positive_not_advanced", "development_continued": "not_stopped",
          "unknown": "unknown"}
 CAUSES = [*dict.fromkeys(CAUSE.values()), "not_a_program"]  # with the one the subcause step finds in a stop's text
-CODE_CAUSE = {"F6": "safety", "F8": "sponsor_decision"}  # attribution codes that settle a stop's cause
+CODE_CAUSE = {"F5": "safety", "F6": "safety", "F8": "sponsor_decision"}  # attribution codes that settle a stop's cause
+CODE_SAFETY = {"F5": "on_target_toxicity", "F6": "off_target_toxicity"}  # the safety subcause each of them gives
 # Why efficacy failed, by attribution code. F3 and F4 count as engaged without benefit only when engagement was
-# shown or inferred, otherwise as trial design (subcause()). The other codes are not efficacy failures: F6 settles
-# the stop as safety, F8 as a sponsor decision, and F9 is coded by its pillars (pillar_code).
+# shown or inferred, otherwise as trial design (subcause()). The other codes are not efficacy failures: F5 and F6
+# settle the stop as safety, F8 as a sponsor decision, and F9 is coded by its pillars (pillar_code).
 SUBCAUSE = {"F1a": "not_engaged", "F1b": "not_engaged", "F2": "engaged_no_benefit", "F3": "engaged_no_benefit",
-            "F4": "engaged_no_benefit", "F5": "toxicity_offset", "F7": "trial_design", "U": "no_engagement_data"}
-EFFICACY_SUBCAUSES = ["not_engaged", "engaged_no_benefit", "trial_design", "toxicity_offset", "no_engagement_data"]
+            "F4": "engaged_no_benefit", "F7": "trial_design", "U": "no_engagement_data"}
+EFFICACY_SUBCAUSES = ["not_engaged", "engaged_no_benefit", "trial_design", "no_engagement_data"]
 # The subcauses of the other causes, chosen by pipeline.stop_causes describe from what the stop's explanation says.
 # Each list answers one question and is in order of precedence: where several apply, the first listed wins, so the
 # most direct cause is named. other_stated keeps a stated reason no listed subcause fits; not_stated is for text that
-# says no more than the cause. A stop the efficacy label settles as safety is off_target_toxicity. A sponsor decision
+# says no more than the cause. A stop the efficacy label settles as safety takes its code's subcause (CODE_SAFETY). A sponsor decision
 # and a positive readout that went no further share the reasons development did not go on (DISCONTINUED); for a
 # positive readout an FDA refusal comes first and approval outside the US counts only when no other reason is given.
 DISCONTINUED = ["acquisition_or_merger", "funding_or_closure", "partner_exit", "replaced_by_successor",
@@ -146,7 +147,7 @@ def pillar_code(d: pd.DataFrame) -> pd.Series:
 
 def subcause(code: pd.Series, engagement: pd.Series) -> pd.Series:
     """Why efficacy failed, from the attribution code and engagement; null for a code that is not an efficacy
-    failure (F6, F8, F9)."""
+    failure (F5, F6, F8, F9)."""
     return code.map(SUBCAUSE).where(~(code.isin(["F3", "F4"]) & ~engagement.isin(ENGAGED)), "trial_design")
 
 

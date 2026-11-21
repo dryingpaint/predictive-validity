@@ -53,7 +53,7 @@ def save(fig, name):
 
 EFFICACY = "#d62828"
 ATTRIBUTION_COLORS = {  # report.attribution.SUBCAUSE_LABELS, in stacking order; shades of the efficacy cause color
-    "not_engaged": "#7a0e0e", "engaged_no_benefit": EFFICACY, "trial_design": "#ec7a7a", "toxicity_offset": "#f5b3b3",
+    "not_engaged": "#7a0e0e", "engaged_no_benefit": EFFICACY, "trial_design": "#ec7a7a",
     "no_engagement_data": "#fbe3e3",
 }
 SHOWN_COLORS = {  # report.stop_causes.SHOWN, in stacking order; spectrum order, efficacy first
@@ -470,6 +470,31 @@ def label_pad(fig, ax) -> float:
     return max(LABEL_PAD, widest + 12)
 
 
+RATIO_LIM = (np.log2(0.2), np.log2(5))  # the ratio charts' log2 axis: 0.2× to 5×
+
+
+def ratio_interval(ax, y: float, rr: float, lo: float, hi: float, n: float, color: str) -> None:
+    """One ratio and its 95% interval on a ratio chart, with the ratio and n to the right: a filled dot is an interval
+    clear of 1, and an interval that runs past the axis ends in an arrowhead at its edge."""
+    ax.plot([np.log2(max(lo, 0.2)), np.log2(min(hi, 5))], [y, y], color=color, linewidth=2, solid_capstyle="round")
+    for end, beyond, mark in ((RATIO_LIM[0], lo < 0.2, "<"), (RATIO_LIM[1], hi > 5, ">")):
+        if beyond:
+            ax.plot(end, y, mark, markersize=7, color=color, clip_on=False)
+    ax.plot(np.log2(rr), y, "o", markersize=7, color=color, markeredgewidth=1.5,
+            markerfacecolor=color if lo > 1 or hi < 1 else "white", markeredgecolor=color)
+    ax.text(RATIO_LIM[1] + 0.1, y, f"{rr:.2f}×", va="center", color=INK2, fontsize=10)
+    ax.text(RATIO_LIM[1] + 0.85, y, f"n={n:,.0f}", va="center", color=INK2, fontsize=10)
+
+
+def ratio_axis(ax, label: str) -> None:
+    ticks = [0.25, 0.5, 1, 2, 4]
+    ax.axvline(0, color=INK2, linewidth=1)
+    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
+    ax.tick_params(axis="x", labelsize=10)
+    ax.set_xlim(*RATIO_LIM)
+    ax.set_xlabel(label, color=INK2, fontsize=10)
+
+
 def evidence_translates():
     """Relative success to approval from any phase for each evidence area (report.evidence_lines.AREAS) and its
     mutually exclusive tiers, on US-developed programs; a filled dot is a 95% interval clear of 1. Only lines with an
@@ -484,26 +509,9 @@ def evidence_translates():
         prev = r.category
         ys.append(y)
     fig, ax = plt.subplots(figsize=(10, 0.4 * len(ys) + 2.6))
-    lim = (np.log2(0.2), np.log2(5))
     for yi, r in zip(ys, lines.itertuples()):
-        color = CATEGORY_COLORS[r.category]
-        ax.plot([np.log2(max(r.rs_rs_lo, 0.2)), np.log2(min(r.rs_rs_hi, 5))], [yi, yi], color=color, linewidth=2,
-                solid_capstyle="round")
-        for end, beyond, mark in ((lim[0], r.rs_rs_lo < 0.2, "<"), (lim[1], r.rs_rs_hi > 5, ">")):
-            if beyond:  # the interval runs past the axis: an arrowhead at the edge says so
-                ax.plot(end, yi, mark, markersize=7, color=color, clip_on=False)
-        clear = r.rs_rs_lo > 1 or r.rs_rs_hi < 1
-        ax.plot(np.log2(r.rs_rs), yi, "o", markersize=7, color=color, markeredgewidth=1.5,
-                markerfacecolor=color if clear else "white", markeredgecolor=color)
-        ax.text(np.log2(5) + 0.1, yi, f"{r.rs_rs:.2f}×", va="center", color=INK2, fontsize=10)
-        ax.text(np.log2(5) + 0.85, yi, f"n={r.exposed:,.0f}", va="center", color=INK2, fontsize=10)
-    ticks = [0.25, 0.5, 1, 2, 4]
-    ax.axvline(0, color=INK2, linewidth=1)
-    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
-    ax.tick_params(axis="x", labelsize=10)
-    ax.set_xlim(*lim)
-    ax.set_xlabel("How often programs with the evidence reached approval, relative to those without (95% range)",
-                  color=INK2, fontsize=10)
+        ratio_interval(ax, yi, r.rs_rs, r.rs_rs_lo, r.rs_rs_hi, r.exposed, CATEGORY_COLORS[r.category])
+    ratio_axis(ax, "How often programs with the evidence reached approval, relative to those without (95% range)")
     style(ax)
     alone = area_alone()
     labels = [("      " if r.level != "area" else "") + r.label
@@ -525,54 +533,67 @@ def evidence_translates():
     save(fig, "evidence_translates")
 
 
-# The evidence grid's rows (report.evidence_analysis.stop_risk columns), in order: evidence about the target, then about
-# the drug.
-GRID_ROWS = {"g3": "Human genetics", "somatic": "Tumour genetics", "altered_animal": "Mouse genetics shows the disease",
-             "expression": "RNA change in diseased tissue", "cat_precedent": "Earlier drugs on the same target",
-             "area_measured": "Drug binding measured", "area_lit_animal": "Published animal studies of the drug",
-             "lit_human_engagement": "Drug shown to engage its target in people"}
-# The model-system atlas's efficacy questions, as stop outcomes (report.evidence_analysis.stop_outcomes)
-GRID_COLUMNS = [("stop_engagement", "Engagement"), ("stop_dose", "Dose or exposure"), ("stop_no_benefit", "Efficacy")]
-FEWER, MORE, NEUTRAL = ACCENT, "#eb6834", "#f4f3ef"
-# Cells whose evidence is what the stop's label was read from: published human engagement is the evidence the
-# efficacy attribution judges engagement on, so it cannot be tested against engagement stops.
-CIRCULAR = {("lit_human_engagement", "stop_engagement")}
+# Evidence lines whose stops are what an outcome's label was read from: published human engagement is the evidence the
+# efficacy attribution judges engagement on, so it cannot be tested against stops where the target was never reached.
+CIRCULAR = {("lit_human_engagement", "stop_not_reached")}
 
 
-def evidence_grid():
-    """Which evidence goes with fewer or more stops on each of the atlas's efficacy questions: a cell is coloured when the
-    adjusted risk ratio's 95% interval clears 1 (report.evidence_analysis.stop_risk) and says by how much, and how many
-    stops among the programs with the evidence it rests on; an uncoloured cell gives the interval."""
+# Blocks of the stop-ratio charts: each stop outcome (report.evidence_analysis.stop_outcomes) with its heading and the
+# colour its intervals take (None: the evidence line's own category colour, as in evidence_translates)
+EFFICACY_BLOCKS = [("stop_not_reached", "Stopped for efficacy: the target was never adequately reached", None),
+                   ("stop_no_benefit", "Stopped for efficacy: the target was reached and the disease did not respond",
+                    None)]
+EFFICACY_ROWS = {"g3": ("Human genetics", "human_genetics"), "somatic": ("Tumour genetics", "tumour_genetics"),
+                 "altered_animal": ("Mouse genetics shows the disease", "animal"),
+                 "expression": ("RNA change in diseased tissue", "diseased_tissue"),
+                 "area_measured": ("Drug binding measured", "molecule"),
+                 "area_lit_animal": ("Published animal studies of the drug", "published_animal"),
+                 "lit_human_engagement": ("Drug shown to engage its target in people", "early_human"),
+                 "cat_precedent": ("Earlier drugs on the same target", "precedent")}
+# The safety lines (report.evidence_lines.SAFETY) against safety stops and, as a control, efficacy stops
+SAFETY_BLOCKS = [("stop_safety", "Stopped for safety", CATEGORY_COLORS["safety_risk"]),
+                 ("stop_efficacy", "Stopped for efficacy (control: safety evidence should not predict it)", "#b5b4ae")]
+SAFETY_ROWS = {"liability": ("People rarely carry broken copies of the gene, or mice without it die young", "safety_risk"),
+               "ko_vital_organ": ("Mutant mice show a phenotype in a vital organ", "safety_risk"),
+               "earlier_safety_stop": ("An earlier drug on the same target stopped for safety", "safety_risk"),
+               "poor_selectivity": ("The drug binds another protein within 10-fold of its target", "safety_risk")}
+
+
+def stop_ratios(blocks: list, lines: dict, name: str) -> None:
+    """The adjusted risk ratio of each stop outcome of `blocks` with each evidence line of `lines` against without it,
+    Phase 1-3 entries (report.evidence_analysis.stop_risk), drawn as evidence_translates draws approval: a filled dot
+    is a 95% interval clear of 1, and an interval past the axis ends in an arrowhead. A line whose stops are what the
+    outcome's label was read from (CIRCULAR), or with too few stops, says so in place of an interval."""
     df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "stop_risk.csv"))
     df = df[df.estimated.eq(True)].set_index("column")
-    rows = [c for c in GRID_ROWS if c in df.index]
-    fig, ax = plt.subplots(figsize=(6.6, 0.48 * len(rows) + 1.0))
-    for i, c in enumerate(rows):
-        for j, (outcome, _) in enumerate(GRID_COLUMNS):
-            rr, lo, hi = (df.at[c, f"{outcome}_{k}"] for k in ("rr", "lo", "hi"))
-            if (c, outcome) in CIRCULAR:
-                color, text, ink = NEUTRAL, "not testable", MUTED
-            elif pd.isna(rr):
-                color, text, ink = NEUTRAL, "too few stops", MUTED
-            elif hi < 1 or lo > 1:
-                stops = round(df.at[c, "exposed"] * df.at[c, f"{outcome}_ppv"])
-                change = f"{1 - rr:.0%} fewer" if hi < 1 else f"{rr - 1:.0%} more"
-                color, text, ink = FEWER if hi < 1 else MORE, f"{change}\n{stops:,} stops", "white"
-            else:  # the interval spans 1: what it leaves possible, not a claim of no effect
-                color, text, ink = NEUTRAL, f"can't tell\n{lo:.2f}–{hi:.2f}×", MUTED
-            ax.add_patch(matplotlib.patches.Rectangle((j, i), 0.96, 0.9, color=color, linewidth=0))
-            ax.text(j + 0.48, i + 0.45, text, ha="center", va="center", fontsize=9, color=ink,
-                    fontweight="bold" if ink == "white" else "normal")
-    ax.set_xlim(0, len(GRID_COLUMNS))
-    ax.set_ylim(len(rows), -0.1)
-    ax.set_xticks([j + 0.48 for j in range(len(GRID_COLUMNS))], [t for _, t in GRID_COLUMNS], fontsize=10.5,
-                  color=INK, fontweight="bold")
-    ax.xaxis.tick_top()
-    ax.tick_params(length=0)
-    ax.set_yticks([i + 0.45 for i in range(len(rows))], [GRID_ROWS[c] for c in rows], fontsize=10, color=INK)
-    for side in ax.spines.values():
-        side.set_visible(False)
-    save(fig, "evidence_grid")
+    shown = [c for c in lines if c in df.index]
+    rows, y = [], 0.0  # (y, label, is heading, outcome, colour, line)
+    for b, (outcome, heading, color) in enumerate(blocks):
+        y -= 1.5 if b else 0
+        rows.append((y, heading, True, outcome, color, None))
+        for c in shown:
+            y -= 1
+            rows.append((y, lines[c][0], False, outcome, color or CATEGORY_COLORS[lines[c][1]], c))
+    fig, ax = plt.subplots(figsize=(10, 0.4 * len(rows) + 1.6))
+    for yi, _, heading, outcome, color, c in rows:
+        if heading:
+            continue
+        rr, lo, hi = (df.at[c, f"{outcome}_{k}"] for k in ("rr", "lo", "hi"))
+        if (c, outcome) in CIRCULAR or pd.isna(rr):
+            ax.text(0, yi, "not testable" if (c, outcome) in CIRCULAR else "too few stops", ha="center",
+                    va="center", color=MUTED, fontsize=9.5, style="italic")
+        else:
+            ratio_interval(ax, yi, rr, lo, hi, df.at[c, "exposed"], color)
+    ratio_axis(ax, "How often programs with the evidence stopped for that reason, relative to those without (95% range)")
+    style(ax)
+    ax.set_yticks([r[0] for r in rows], [("" if r[2] else "      ") + r[1] for r in rows], color=INK, fontsize=10.5)
+    for t, r in zip(ax.get_yticklabels(), rows):
+        t.set_horizontalalignment("left")
+        t.set_color(INK if r[2] else INK2)
+        t.set_fontweight("bold" if r[2] else "normal")
+    ax.tick_params(axis="y", pad=label_pad(fig, ax))
+    ax.set_ylim(rows[-1][0] - 0.7, rows[0][0] + 0.7)
+    save(fig, name)
 
 
 # The stop drill-down's segments: (key, label, colour, hatched); the first segment of each bar is the next bar's whole.
@@ -865,7 +886,8 @@ def main():
     if os.path.exists(os.path.join(OUT, "evidence_analysis", "lines.csv")):
         evidence_translates()
     if os.path.exists(os.path.join(OUT, "evidence_analysis", "stop_risk.csv")):
-        evidence_grid()
+        stop_ratios(EFFICACY_BLOCKS, EFFICACY_ROWS, "efficacy_risk")
+        stop_ratios(SAFETY_BLOCKS, SAFETY_ROWS, "safety_risk")
 
 
 if __name__ == "__main__":

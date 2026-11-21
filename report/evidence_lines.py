@@ -371,14 +371,12 @@ def literature_inputs(moieties: list[int]) -> tuple[pd.DataFrame, dict[int, list
     """The qualifying literature screens, the cutoffs of each drug's searches whose retrieval is screened (screen or
     prefilter rows, or nothing retrieved), and each entity's surviving entity."""
     q = literature.qualifying()
-    with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT s.moiety_id, array_agg(DISTINCT s.cutoff_year ORDER BY s.cutoff_year)
-                       FROM preclin.literature_search s
-                       WHERE NOT EXISTS (SELECT 1 FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id)
-                          OR s.moiety_id IN (SELECT moiety_id FROM preclin.literature_screen
-                                             UNION SELECT moiety_id FROM preclin.literature_prefilter)
-                       GROUP BY 1""")
-        screened = dict(cur.fetchall())
+    screened = dict(frame.query("""SELECT s.moiety_id, array_agg(DISTINCT s.cutoff_year ORDER BY s.cutoff_year) AS cuts
+                                   FROM preclin.literature_search s
+                                   WHERE NOT EXISTS (SELECT 1 FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id)
+                                      OR s.moiety_id IN (SELECT moiety_id FROM preclin.literature_screen
+                                                         UNION SELECT moiety_id FROM preclin.literature_prefilter)
+                                   GROUP BY 1""").itertuples(index=False, name=None))
     return q, screened, literature.survivors(moieties)
 
 
@@ -438,6 +436,7 @@ def earlier_safety_stop(by_gene: dict, moiety_id, genes, entry: pd.Timestamp) ->
     return any(mid != moiety_id and ended <= cut for g in genes for mid, _, ended in by_gene.get(g, ()))
 
 
+@frame.held_once
 def build(window: tuple[date, date] = SECTION1) -> pd.DataFrame:
     """The dataset of the phase entries in `window`: SECTION1 for the report and the stored copy."""
     snap = frame.snapshot()

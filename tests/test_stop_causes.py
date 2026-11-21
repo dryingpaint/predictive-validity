@@ -33,9 +33,15 @@ def test_an_efficacy_stop_without_a_label_is_not_attributed():
 
 
 def test_a_label_of_off_target_toxicity_makes_the_stop_a_safety_stop():
-    row = stop_row("efficacy: primary endpoint not met", "safety", None, label(subcause=None), None, TRIAL)
+    row = stop_row("efficacy: primary endpoint not met", "safety", None, label(subcause=None, primary_code="F6"), None,
+                   TRIAL)
     assert (row["cause"], row["subcause"], row["traced"]) == ("safety", "off_target_toxicity", True)
     assert row["decision_ids"] == [22]
+
+
+def test_a_label_of_on_target_toxicity_offsetting_the_benefit_makes_the_stop_a_safety_stop():
+    row = stop_row("efficacy: stated", "safety", None, label(subcause=None, primary_code="F5"), None, TRIAL)
+    assert (row["cause"], row["subcause"], row["traced"]) == ("safety", "on_target_toxicity", True)
 
 
 def test_a_traced_company_event_is_a_sponsor_decision():

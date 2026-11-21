@@ -232,7 +232,7 @@ def engaged_evidence_table() -> str:
                          ("**" if r[f"{c}_lo"] > 1 or r[f"{c}_hi"] < 1 else "")
                          + f"{r[f'{c}_rr']:.2f} ({r[f'{c}_lo']:.2f}–{r[f'{c}_hi']:.2f})"
                          + ("**" if r[f"{c}_lo"] > 1 or r[f"{c}_hi"] < 1 else ""))
-    cols = {"stop_engagement": "Never engaged", "mode_not_causal": "Target not causal",
+    cols = {"stop_not_reached": "Target never reached", "mode_not_causal": "Target not causal",
             "mode_wrong_patients": "Wrong patients", "mode_drug_fell_short": "Drug fell short"}
     rows = [[f"{name} ({int(t.loc[k, 'exposed']):,})"] + [cell(t.loc[k], c) for c in cols]
             for k, name in ENGAGED_EVIDENCE_ROWS.items() if k in t.index]

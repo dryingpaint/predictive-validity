@@ -101,8 +101,8 @@ def test_an_efficacy_stop_is_named_by_why_it_failed():
                       "engagement": ["inadequate", "adequate", "no_human_data", "adequate", "no_human_data",
                                      "adequate", "no_human_data"],
                       "dose_limited": [False, True, False, False, False, False, False]})
-    assert stops.subcause(d.code, d.engagement).tolist() == [
-        "not_engaged", "not_engaged", "not_engaged", "engaged_no_benefit", "trial_design", "toxicity_offset",
+    assert stops.subcause(d.code, d.engagement).fillna("").tolist() == [
+        "not_engaged", "not_engaged", "not_engaged", "engaged_no_benefit", "trial_design", "",  # F5 is a safety stop
         "no_engagement_data"]
     assert stops.detail(d.code, d.dose_limited).fillna("").tolist() == [
         "exposure_or_engagement_too_low", "dose_capped", "other_drug_on_target_worked", "wrong_population",
