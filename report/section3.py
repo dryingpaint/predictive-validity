@@ -274,6 +274,8 @@ class Evidence:
                  or (inc and ("loss_of_function" in risks or "gain_of_function_protective" in prots)))
         mdisc = ((dec and ("loss_of_function" in risks or "gain_of_function_protective" in prots))
                  or (inc and ("gain_of_function" in risks or "loss_of_function_protective" in prots)))
+        raises = "loss_of_function" in risks or "gain_of_function_protective" in prots
+        lowers = "gain_of_function" in risks or "loss_of_function_protective" in prots
         wants = {MOUSE_FAVOURS[(pert, rel)] for g in e.genes for pert, rel, y in self.mouse.get((g, d), ())
                  if y <= cut and (pert, rel) in MOUSE_FAVOURS}
         return {
@@ -294,12 +296,20 @@ class Evidence:
             "gwas_weak": float(on("gwas", "weak") and not on("gwas", "mid") and not on("gwas", "strong")),
             "somatic_concordant": float(on("somatic", "any") and ((dec and on("somatic", "gof_risk"))
                                                                   or (inc and on("somatic", "lof_risk")))),
+            "somatic_gof": float(on("somatic", "gof_risk")), "somatic_lof": float(on("somatic", "lof_risk")),
+            # Drug-independent forms of the direction lines: what losing the gene does to disease risk by the labelled
+            # mechanisms, and which way the mouse models favour moving the gene's function.
+            "loss_effect": ("none" if not g3 else "unlabelled" if not labelled else "mixed" if raises and lowers
+                            else "raises_risk" if raises else "lowers_risk" if lowers else "undirected"),
+            "mouse_favours": ("none" if not wants else "mixed" if len(wants) > 1 else
+                              "favours_raising" if wants == {"increase"} else "favours_lowering"),
             "expression_up": float(on("expression", "up")),
             **liab, "liability": float(any(liab.values())),
             "crispr_untimed": float("crispr" in first and first["crispr"][TIERS.index("any")] <= NEVER),
             "pan_essential_untimed": float(frame.essential_as_of(self.essential, e.genes, NEVER)),
             "precedent": float(self.precedent(moiety_id, entry)),
             "b1": float(any(m in related and when < entry for g in e.genes for m, when in self.approved.get(g, ()))),
+            "b1_close": float(any(m in close and when < entry for g in e.genes for m, when in self.approved.get(g, ()))),
         }
 
     def features(self, rows: pd.DataFrame) -> pd.DataFrame:

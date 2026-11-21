@@ -186,10 +186,10 @@ def test_a_name_whose_decision_gives_another_entitys_code_is_stale():
 
 def test_merges_copy_parents_before_children_and_delete_in_reverse():
     from pipeline.drugs import parents_first
-    tables = ["evidence_entry_line", "evidence_entry", "literature_hit", "literature_search", "stop"]
-    fks = [("evidence_entry_line", "evidence_entry"), ("literature_hit", "literature_search"), ("stop", "moiety")]
+    tables = ["evidence_entry_fact", "evidence_entry", "literature_hit", "literature_search", "stop"]
+    fks = [("evidence_entry_fact", "evidence_entry"), ("literature_hit", "literature_search"), ("stop", "moiety")]
     order = parents_first(tables, fks)
-    assert order.index("evidence_entry") < order.index("evidence_entry_line")
+    assert order.index("evidence_entry") < order.index("evidence_entry_fact")
     assert order.index("literature_search") < order.index("literature_hit") and set(order) == set(tables)
 
 
@@ -216,12 +216,12 @@ def test_merges_move_every_column_a_foreign_key_ties_to_an_entity_whatever_its_n
     fks = [("preclin.drug_moiety", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
            ("preclin.atlas_pair", "preclin.moiety", ["same_entity_as"], ["moiety_id"]),
            ("preclin.evidence_entry", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
-           ("preclin.evidence_entry_line", "preclin.evidence_entry", ["moiety_id", "mondo_id", "phase"],
+           ("preclin.evidence_entry_fact", "preclin.evidence_entry", ["moiety_id", "mondo_id", "phase"],
             ["moiety_id", "mondo_id", "phase"]),
            ("preclin.dev_program", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
            ("preclin.trial_outcome", "preclin.ctgov_study", ["nct_id"], ["nct_id"])]
     assert entity_columns(fks) == {"preclin.drug_moiety": ["moiety_id"], "preclin.atlas_pair": ["same_entity_as"],
-                                   "preclin.evidence_entry": ["moiety_id"], "preclin.evidence_entry_line": ["moiety_id"]}
+                                   "preclin.evidence_entry": ["moiety_id"], "preclin.evidence_entry_fact": ["moiety_id"]}
 
 
 def test_an_entity_resolved_in_a_scoped_run_joins_the_entity_already_holding_its_substance():

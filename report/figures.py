@@ -21,7 +21,7 @@ import pandas as pd
 from statsmodels.stats.proportion import proportion_confint
 
 from report import bio, frame
-from report.evidence_lines import area_alone
+from report.evidence_lines import CATEGORIES
 from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, stratum_name
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import BREAKDOWN, SHOWN, SUBCAUSE_NAMES
@@ -356,13 +356,17 @@ def dose_response():
     save(fig, "genetic_dose_response")
 
 
-# Evidence categories of the plan amendment (report.evidence_lines.CATEGORIES), in its order: efficacy
-# evidence by the system that produced it, then safety risk and the clinical-precedent benchmark apart.
+# Marks are coloured by what the evidence is about: the target, the drug, or (target safety risk) the target's safety.
+# The three pass the palette validator's colour-vision and contrast checks; headings and labels name each block and
+# kind, so colour never carries identity alone.
+ABOUT_COLORS = {"target": "#2a78d6", "drug": "#b04a8f", "safety": "#c8610f"}
+
+
+def about_color(category: str, about: str) -> str:
+    return ABOUT_COLORS["safety" if category == "safety" else about]
+# The Section 3 evidence map's colours, by the kind of evidence of each row
 CATEGORY_COLORS = {"human_genetics": "#2a78d6", "tumour_genetics": "#eb6834", "diseased_tissue": "#eda100",
-                   "curated_pathway": "#7fb0e8",
-                   "animal": "#1baf7a", "mouse_genetics": "#1baf7a", "cell_screen": "#8a8984", "published_animal": "#76c9a3", "cell": "#8a8984", "molecule": "#b04a8f",
-                   "early_human": "#0f8f9a",
-                   "safety_risk": "#6b6a65", "precedent": "#4a3aa7"}
+                   "animal": "#1baf7a", "safety_risk": "#6b6a65", "precedent": "#4a3aa7"}
 # Section 3 evidence-map rows by the category whose colour they take
 S3_GROUP = {"g3": "human_genetics", "gwas": "human_genetics", "gwas_strong": "human_genetics",
             "gwas_mid": "human_genetics", "gwas_weak": "human_genetics", "mendelian": "human_genetics",
@@ -458,7 +462,6 @@ def s3_specificity():
     save(fig, "s3_specificity")
 
 
-BLOCK_HEADERS = {"precedent": "For comparison: whether earlier drugs on the same target had already succeeded"}
 LABEL_PAD = 300  # points between the evidence labels, left-aligned, and the first panel
 
 
@@ -496,40 +499,39 @@ def ratio_axis(ax, label: str) -> None:
 
 
 def evidence_translates():
-    """Relative success to approval from any phase for each evidence area (report.evidence_lines.AREAS) and its
-    mutually exclusive tiers, on US-developed programs; a filled dot is a 95% interval clear of 1. Only lines with an
-    estimate are drawn; the registered categories, with every line tried, are in the appendix table. An interval
-    that runs past the axis ends in an arrowhead at its edge."""
-    lines = pd.read_csv(os.path.join(OUT, "evidence_analysis", "areas.csv"))
-    lines = lines[lines.category.isin(CATEGORY_COLORS) & lines.estimated.eq(True)]
+    """Relative success to approval from any phase for each kind of evidence and the values of its chart fact
+    (report.evidence_lines.chart_rows), on US-developed programs, under one heading per broad category; marks are
+    coloured by whether the kind is about the target or the drug; a filled dot is a 95% interval clear of 1. Only rows
+    with an estimate are drawn; every line tried is in the appendix table. An interval that runs past the axis ends
+    in an arrowhead at its edge."""
+    lines = pd.read_csv(os.path.join(OUT, "evidence_analysis", "chart.csv"))
+    lines = lines[lines.estimated.eq(True)].reset_index(drop=True)
     ys, y, prev = [], 0.0, None
     for i, r in enumerate(lines.itertuples()):
         if i:
-            y -= 2.6 if r.category in BLOCK_HEADERS and r.category != prev else 1.5 if r.level == "area" else 1
+            y -= 2.8 if r.category != prev else 1 if r.level == "value" else 1.5
         prev = r.category
         ys.append(y)
-    fig, ax = plt.subplots(figsize=(10, 0.4 * len(ys) + 2.6))
+    fig, ax = plt.subplots(figsize=(10, 0.4 * len(ys) + 3.4))
     for yi, r in zip(ys, lines.itertuples()):
-        ratio_interval(ax, yi, r.rs_rs, r.rs_rs_lo, r.rs_rs_hi, r.exposed, CATEGORY_COLORS[r.category])
+        ratio_interval(ax, yi, r.rs_rs, r.rs_rs_lo, r.rs_rs_hi, r.exposed, about_color(r.category, r.about))
     ratio_axis(ax, "How often programs with the evidence reached approval, relative to those without (95% range)")
     style(ax)
-    alone = area_alone()
-    labels = [("      " if r.level != "area" else "") + r.label
-              + (" †" if r.column in alone else "") for r in lines.itertuples()]
+    labels = [("      " if r.level == "value" else "") + r.label for r in lines.itertuples()]
     ax.set_yticks(ys, labels, color=INK, fontsize=10.5)
     for t, r in zip(ax.get_yticklabels(), lines.itertuples()):
         t.set_horizontalalignment("left")
-        t.set_color(INK if r.level == "area" else INK2)
-        t.set_fontweight("bold" if r.level == "area" else "normal")
+        t.set_color(INK if r.level != "value" else INK2)
+        t.set_fontweight("bold" if r.level != "value" else "normal")
     pad = label_pad(fig, ax)
     ax.tick_params(axis="y", pad=pad)
     label_x = -pad / 72 / (fig.get_figwidth() * ax.get_position().width)  # the labels' left edge, in axes
-    for cat, header in BLOCK_HEADERS.items():
-        first = next(yi for yi, r in zip(ys, lines.itertuples()) if r.category == cat)
-        ax.text(label_x, first + 1.1, header, transform=ax.get_yaxis_transform(), color=INK2, fontsize=10,
-                style="italic")
-    top = ys[0] + 0.7
-    ax.set_ylim(ys[-1] - 0.7, top + 0.4)
+    for category, title in CATEGORIES.items():
+        first = next((yi for yi, r in zip(ys, lines.itertuples()) if r.category == category), None)
+        if first is not None:
+            ax.text(label_x, first + 1.2, title, transform=ax.get_yaxis_transform(), color=INK, fontsize=11.5,
+                    fontweight="bold")
+    ax.set_ylim(ys[-1] - 0.7, ys[0] + 1.9)
     save(fig, "evidence_translates")
 
 
@@ -539,24 +541,25 @@ CIRCULAR = {("lit_human_engagement", "stop_not_reached")}
 
 
 # Blocks of the stop-ratio charts: each stop outcome (report.evidence_analysis.stop_outcomes) with its heading and the
-# colour its intervals take (None: the evidence line's own category colour, as in evidence_translates)
+# colour its intervals take (None: the colour of what the evidence line is about, as in evidence_translates)
 EFFICACY_BLOCKS = [("stop_not_reached", "Stopped for efficacy: the target was never adequately reached", None),
                    ("stop_no_benefit", "Stopped for efficacy: the target was reached and the disease did not respond",
                     None)]
-EFFICACY_ROWS = {"g3": ("Human genetics", "human_genetics"), "somatic": ("Tumour genetics", "tumour_genetics"),
-                 "mouse_genetics": ("Mouse genetics shows the disease", "mouse_genetics"),
-                 "expression": ("RNA change in diseased tissue", "diseased_tissue"),
-                 "area_measured": ("Drug binding measured", "molecule"),
-                 "area_lit_animal": ("Published animal studies of the drug", "published_animal"),
-                 "lit_human_engagement": ("Drug shown to engage its target in people", "early_human"),
-                 "cat_precedent": ("Earlier drugs on the same target", "precedent")}
+EFFICACY_ROWS = {"validated_at_entry": ("Validated at entry: a drug on the target approved for this disease", "target"),
+                 "g3": ("Human genetics", "target"), "somatic": ("Tumour genetics", "target"),
+                 "mouse_genetics": ("Mouse genetics shows the disease", "target"),
+                 "expression": ("RNA change in diseased tissue", "target"),
+                 "approved_other_disease": ("A drug on the target approved for another disease", "target"),
+                 "area_measured": ("Drug binding measured", "drug"),
+                 "area_lit_animal": ("Published animal studies of the drug", "drug"),
+                 "lit_human_engagement": ("Drug shown to engage its target in people", "drug")}
 # The safety lines (report.evidence_lines.SAFETY) against safety stops and, as a control, efficacy stops
-SAFETY_BLOCKS = [("stop_safety", "Stopped for safety", CATEGORY_COLORS["safety_risk"]),
+SAFETY_BLOCKS = [("stop_safety", "Stopped for safety", ABOUT_COLORS["safety"]),
                  ("stop_efficacy", "Stopped for efficacy (control: safety evidence should not predict it)", "#b5b4ae")]
-SAFETY_ROWS = {"liability": ("People rarely carry broken copies of the gene, or mice without it die young", "safety_risk"),
-               "ko_vital_organ": ("Mutant mice show a phenotype in a vital organ", "safety_risk"),
-               "earlier_safety_stop": ("An earlier drug on the same target stopped for safety", "safety_risk"),
-               "poor_selectivity": ("The drug binds another protein within 10-fold of its target", "safety_risk")}
+SAFETY_ROWS = {"liability": ("People rarely carry broken copies of the gene, or mice without it die young", "safety"),
+               "ko_vital_organ": ("Mutant mice show a phenotype in a vital organ", "safety"),
+               "earlier_safety_stop": ("An earlier drug on the same target stopped for safety", "safety"),
+               "poor_selectivity": ("The drug binds another protein within 10-fold of its target", "safety")}
 
 
 def stop_ratios(blocks: list, lines: dict, name: str) -> None:
@@ -573,7 +576,7 @@ def stop_ratios(blocks: list, lines: dict, name: str) -> None:
         rows.append((y, heading, True, outcome, color, None))
         for c in shown:
             y -= 1
-            rows.append((y, lines[c][0], False, outcome, color or CATEGORY_COLORS[lines[c][1]], c))
+            rows.append((y, lines[c][0], False, outcome, color or ABOUT_COLORS[lines[c][1]], c))
     fig, ax = plt.subplots(figsize=(10, 0.4 * len(rows) + 1.6))
     for yi, _, heading, outcome, color, c in rows:
         if heading:

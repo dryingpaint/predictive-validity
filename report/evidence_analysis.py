@@ -2,8 +2,9 @@
 
     python -m report.evidence_analysis
 
-Cohort: report.evidence_lines.build(), US-developed phase entries 2008-2019. For every category and
-subcategory of report.evidence_lines.CATEGORIES, among the entries it applies to:
+Cohort: report.evidence_lines.build(), US-developed phase entries 2008-2019. For every line of
+report.evidence_lines.report_lines (each kind of evidence, each evidence value of its facts, and the aggregates and
+crosses derived from them), among the entries it is known for:
 - relative success: likelihood of approval from Phase 1 with the line over without it (report.section2
   relative_success), on the entries' BIO-style phase rows, skipped phases counted as successes with the
   features of the entry that skipped them;
@@ -12,19 +13,19 @@ subcategory of report.evidence_lines.CATEGORIES, among the entries it applies to
   last left out for the clinical-precedent lines, which it would adjust for themselves; an entry with no
   resolved target is its own cluster and has no precedent),
   again with biomarker-selected enrolment added as a sensitivity;
-- for efficacy categories, the adjusted risk ratio of an efficacy stop among Phase 2 and 3 entries; for
-  safety risk, of a safety stop among Phase 1-3 entries.
-For the stop-risk figure, each area and each safety line (report.evidence_lines.SAFETY) is also tested
+- for every kind but target safety risk, the adjusted risk ratio of an efficacy stop among Phase 2 and 3 entries;
+  for target safety risk, of a safety stop among Phase 1-3 entries.
+For the stop-risk figure, each kind of evidence and each safety line (report.evidence_lines.SAFETY) is also tested
 against the traced cause of each stop (report.stop_causes: the cause, or the likely cause where no source states
 one): the adjusted risk ratio of stopping for efficacy or exposure and for safety, and of the efficacy stop split
 into whether the drug adequately reached its target and, where it did, efficacy proper (stop_outcomes), among Phase 1-3 entries,
 adjusted as above with phase added. A stop for any other reason is not an event of either.
 A line exposed in fewer than MIN_ENTRIES entries or MIN_TARGETS distinct target sets is described, not
-estimated. Descriptive lines (hindsight, 10 nM potency) are estimated alongside but make up no category.
+estimated. Hindsight and exploratory facts are estimated alongside but make up no kind.
 N1-N3 are tested as the plan words them and Holm-corrected together.
 
-Writes report/output/evidence_analysis/: lines.csv (the registered categories), areas.csv (the same estimates for
-the chart's areas and their mutually exclusive tiers, AREAS), stop_risk.csv (the stop-risk figure's rows) and
+Writes report/output/evidence_analysis/: lines.csv (every line, kind by kind), chart.csv (the evidence chart's rows,
+report.evidence_lines.chart_rows), stop_risk.csv (the stop-risk figure's rows) and
 numbers.json, which also carries the literature
 gate results (report/audits/literature_gate.json) that leave the literature lines descriptive.
 """
@@ -38,7 +39,7 @@ import pandas as pd
 from report import frame
 from pipeline.stops import keys
 from report import stop_causes
-from report.evidence_lines import ADJUSTMENTS, APPLIES, AREAS, CATEGORIES, SAFETY, build, stale
+from report.evidence_lines import KINDS, PRECEDENT_KINDS, SAFETY, build, chart_rows, report_lines, stale
 from report.section1 import failure_modes, phase_rows
 from report.section2 import relative_success
 from report.section3 import COVARS, MIN_TARGETS, adjusted, cause_outcomes, describe, estimate, holm, jsonable, sponsors
@@ -47,7 +48,6 @@ from report.windows import SECTION1
 OUT = os.path.join(frame.REPO, "report", "output", "evidence_analysis")
 LITERATURE_GATE = os.path.join(frame.REPO, "report", "audits", "literature_gate.json")  # pipeline.literature
 MIN_ENTRIES = 100  # exposed entries below which a line is described, not estimated
-NOT_EFFICACY = ("safety_risk", "precedent")  # categories that are not evidence the drug will work
 COVARS_23 = (*COVARS, "phase")
 
 
@@ -66,12 +66,12 @@ def exposed_enough(desc: dict) -> bool:
     return desc["n"] >= MIN_ENTRIES and desc["n_targets"] >= MIN_TARGETS
 
 
-def line_row(cat: str, level: str, line, d: pd.DataFrame, lr: pd.DataFrame) -> dict:
-    row = {"category": cat, "level": level, "label": line.label, "column": line.column, "applies": line.applies,
-           "status": line.status}
-    if not line.column:
-        return row
-    elig = d[line.column].notna() & APPLIES[line.applies](d)
+def line_row(kind: str, category: str, about: str, level: str, line, d: pd.DataFrame, lr: pd.DataFrame) -> dict:
+    """One line's estimates. `kind` decides the covariates (the precedent kinds leave out the target-precedent
+    covariate) and `category` the stop outcome (a safety stop for target safety risk, else an efficacy stop)."""
+    row = {"category": category, "about": about, "kind": kind, "level": level, "label": line.label,
+           "column": line.column, "status": line.status}
+    elig = d[line.column].notna()
     x = d.loc[elig].assign(x=d.loc[elig, line.column].astype(float))
     desc = describe(x.assign(any_outcome=1.0), "any_outcome", "x")
     row |= {"eligible": int(elig.sum()), "exposed": desc["n"], "targets": desc["n_targets"],
@@ -82,13 +82,13 @@ def line_row(cat: str, level: str, line, d: pd.DataFrame, lr: pd.DataFrame) -> d
     rs = relative_success(lr.merge(keys, on=["program_id", "entry_date"]), "x")
     row |= {f"rs_{k}": rs[k] for k in ("rs", "rs_lo", "rs_hi", "loa_with", "loa_without")}
     c2 = x[x.phase == 2]
-    base = tuple(c for c in COVARS if not (cat == "precedent" and c == "precedent"))  # not the exposure itself
+    base = tuple(c for c in COVARS if not (kind in PRECEDENT_KINDS and c == "precedent"))  # not the exposure itself
     for prefix, part, outcome, covars in (
             ("s4", c2, "s4", base),
             ("s4_biomarker", c2.assign(biomarker_selected=c2.biomarker_selected.fillna(0)), "s4",
-             (*base, "biomarker_selected")) if cat != "adjustment" else (None,) * 4,  # it is the exposure there
-            ("efficacy_stop", x[x.phase >= 2], "f_efficacy", COVARS_23) if cat not in NOT_EFFICACY else (None,) * 4,
-            ("safety_stop", x, "f_safety", COVARS_23) if cat == "safety_risk" else (None,) * 4):
+             (*base, "biomarker_selected")) if level != "adjustment" else (None,) * 4,  # it is the exposure there
+            ("efficacy_stop", x[x.phase >= 2], "f_efficacy", COVARS_23) if category != "safety" else (None,) * 4,
+            ("safety_stop", x, "f_safety", COVARS_23) if category == "safety" else (None,) * 4):
         if prefix is None:
             continue
         r = estimate(part, outcome, "x", covars)
@@ -122,17 +122,18 @@ def traced_stops(d: pd.DataFrame) -> pd.DataFrame:
 
 
 def stop_risk(d: pd.DataFrame) -> pd.DataFrame:
-    """For each area line and safety line, the adjusted risk ratio of each stop outcome (traced_stops) among the entries it
-    applies to (Phase 1-3), when the line is exposed enough to estimate."""
+    """For each kind of target and drug evidence and each safety line, the adjusted risk ratio of each stop outcome
+    (traced_stops) among the entries it is known for (Phase 1-3), when the line is exposed enough to estimate."""
     out = []
-    for group, cat, line in [*(("area", cat, line) for cat, (line, _) in AREAS.items() if cat != "safety_risk"),
-                             *(("safety", "safety_risk", ln) for ln in SAFETY)]:
-        elig = d[line.column].notna() & APPLIES[line.applies](d)
+    for group, cat, line in [*(("kind", k.key, ln) for _, k, level, ln in chart_rows()
+                               if level == "kind" and k.category != "safety"),
+                             *(("safety", "target_safety", ln) for ln in SAFETY)]:
+        elig = d[line.column].notna()
         x = d.loc[elig].assign(x=d.loc[elig, line.column].astype(float))
         desc = describe(x.assign(any_outcome=1.0), "any_outcome", "x")
         row = {"group": group, "category": cat, "label": line.label, "column": line.column, "exposed": desc["n"],
                "targets": desc["n_targets"], "estimated": exposed_enough(desc)}
-        covars = tuple(c for c in COVARS_23 if not (cat == "precedent" and c == "precedent"))
+        covars = tuple(c for c in COVARS_23 if not (cat in PRECEDENT_KINDS and c == "precedent"))
         for outcome in [c for c in d.columns if c.startswith("stop_")] if row["estimated"] else ():
             r = estimate(x, outcome, "x", covars)
             row |= {f"{outcome}_{k}": r.get(k) for k in ("ppv", "rate_without", "rr", "lo", "hi", "p")}
@@ -149,11 +150,18 @@ def hypotheses(d: pd.DataFrame) -> dict:
                 "brain_penetrant": estimate(c2[c2.brain_penetrant.notna()], "s4", "brain_penetrant")}}
     n["N2"]["p"] = max(n["N2"]["drug_like"].get("p", 1.0), n["N2"]["brain_penetrant"].get("p", 1.0))
     n3 = c2[c2.regime.ne("ONC") & c2.has_target_disease & c2.drug_like.notna()]
+    n3 = n3.assign(human_genetics=genetic(n3))
     n["N3"] = {**describe(n3, "s4", "potent_100nm"),
-               **adjusted(n3, "s4", ["potent_100nm", "cat_human_genetics", "drug_like"])}
+               **adjusted(n3, "s4", ["potent_100nm", "human_genetics", "drug_like"])}
     n["holm"] = holm({"N1": n["N1"].get("p"), "N2": n["N2"]["p"], "N3": n["N3"].get("p")})
     n["holm_min"] = min(n["holm"].values())
     return n
+
+
+def genetic(d: pd.DataFrame) -> pd.Series:
+    """Human genetic or curated-pathway support, the adjustment N3 registered (its human-genetics category, which held
+    the curated pathway)."""
+    return (d.g3.fillna(0).gt(0) | d.reactome.fillna(0).gt(0)).astype(float)
 
 
 # The lines the chart shows predicting approval: genetic support, a recurrent tumour mutation, a genetically altered
@@ -169,7 +177,7 @@ def evidence_basis(d: pd.DataFrame) -> dict:
     line counts as absent."""
     has = lambda cols: d[list(cols)].fillna(0).gt(0).any(axis=1)  # noqa: E731
     predictive, published = has(PREDICTIVE), has(PUBLISHED)
-    approved, potent = has(("cat_precedent",)), has(("potent_100nm",))
+    approved, potent = has(("b1", "approved_unrelated_only")), has(("potent_100nm",))
     rest = ~predictive
     return {"entries": int(len(d)), "predictive": float(predictive.mean()), "published": float(published.mean()),
             "approved_any": float(approved.mean()), "potent": float(potent.mean()),
@@ -180,34 +188,31 @@ def evidence_basis(d: pd.DataFrame) -> dict:
 
 def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame, trials: pd.DataFrame) \
         -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict]:
-    """The lines table (the registered categories), the areas table (the chart's grouping, AREAS), the stop-risk
-    table (stop_risk) and numbers from
+    """The lines table (report_lines), the chart table (chart_rows), the stop-risk table (stop_risk) and numbers from
     the evidence-line dataset, the phase rows and the failure modes."""
     d = d.assign(precedent=d.precedent.fillna(0),  # no resolved target: no approved drug known on it
                  target=d.target.fillna("entity " + d.moiety_id.astype(str)))  # and it is its own cluster
     d = cause_outcomes(d.merge(fm[["program_id", "phase", "reason"]], on=["program_id", "phase"], how="left"))
     lr = loa_rows(d, rows[rows.us_site])
-    out = []
-    for cat, (line, subs) in CATEGORIES.items():
-        out.append(line_row(cat, "category", line, d, lr))
-        out += [line_row(cat, "descriptive" if s.descriptive else "subcategory", s, d, lr) for s in subs]
-    out += [line_row("adjustment", "adjustment", a, d, lr) for a in ADJUSTMENTS]
-    areas = [line_row(area, level, ln, d, lr) for area, (line, tiers) in AREAS.items()
-             for level, ln in (("area", line), *(("tier", t) for t in tiers))]
+    out = [line_row(k.key if k else "", k.category if k else "adjustment", k.about if k else "", level, ln, d, lr)
+           for k, level, ln in report_lines()]
+    by_column = {r["column"]: r for r in out}
+    chart = [by_column[ln.column] | {"kind": k.key, "category": category, "about": k.about, "level": level,
+                                     "label": ln.label} for category, k, level, ln in chart_rows()]
     c2 = d[d.phase == 2]
     n = {"cohort": {"entries": int(len(d)), "programs": int(d.program_id.nunique()),
                     "with_target_disease": int(d.has_target_disease.sum()), "phase2": int(len(c2)),
                     "phase2_s4": float(c2.s4.mean()), "biomarker_selected": float(d.biomarker_selected.mean()),
                     "min_entries": MIN_ENTRIES, "min_targets": MIN_TARGETS},
          "lines": {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in out if r.get("column")},
-         "areas": {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in areas if r.get("column")},
+         "kinds": {k.key: k.label for k in KINDS.values()},
          "literature_gate": literature_gate(),
          "basis": evidence_basis(d),
          "published_strata": published_strata(d, rows, trials),
          **hypotheses(d)}
     stops = stop_risk(traced_stops(d))
     n["stop_risk"] = {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in stops.to_dict("records")}
-    return pd.DataFrame(out), pd.DataFrame(areas), stops, n
+    return pd.DataFrame(out), pd.DataFrame(chart), stops, n
 
 
 def published_strata(d: pd.DataFrame, rows: pd.DataFrame, trials: pd.DataFrame) -> dict:
@@ -218,7 +223,7 @@ def published_strata(d: pd.DataFrame, rows: pd.DataFrame, trials: pd.DataFrame) 
     p2 = d[(d.phase == 2) & d.s4.notna() & d[col].notna()].merge(
         sponsors(rows, trials)[["program_id", "sponsor_tier"]], on="program_id", how="left")
     p2 = p2.assign(**{col: p2[col].astype(float), "sponsor_tier": p2.sponsor_tier.fillna("smaller"),
-                      "genetic": p2.cat_human_genetics.fillna(0).gt(0).astype(float)})
+                      "genetic": genetic(p2)})
     group = lambda g: {"n": int(len(g)), "share": float(g[col].mean()),  # noqa: E731
                        "s4_with": float(g[g[col] > 0].s4.mean()), "s4_without": float(g[g[col] <= 0].s4.mean())}
     return {"tiers": {t: group(g) for t, g in p2.groupby("sponsor_tier")},
@@ -242,9 +247,9 @@ def main() -> None:
     snap = frame.snapshot()
     progs, trials, outcomes = frame.programs(), frame.program_trials(), frame.trial_outcomes()
     rows = phase_rows(progs, trials, snap, window=SECTION1)
-    lines, areas, stops, n = analyse(build(), rows, failure_modes(rows, progs, trials, outcomes), trials)
+    lines, chart, stops, n = analyse(build(), rows, failure_modes(rows, progs, trials, outcomes), trials)
     lines.to_csv(os.path.join(OUT, "lines.csv"), index=False)
-    areas.to_csv(os.path.join(OUT, "areas.csv"), index=False)
+    chart.to_csv(os.path.join(OUT, "chart.csv"), index=False)
     stops.to_csv(os.path.join(OUT, "stop_risk.csv"), index=False)
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(jsonable(n), f, indent=1)
