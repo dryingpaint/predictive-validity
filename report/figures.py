@@ -470,6 +470,31 @@ def label_pad(fig, ax) -> float:
     return max(LABEL_PAD, widest + 12)
 
 
+RATIO_LIM = (np.log2(0.2), np.log2(5))  # the ratio charts' log2 axis: 0.2× to 5×
+
+
+def ratio_interval(ax, y: float, rr: float, lo: float, hi: float, n: float, color: str) -> None:
+    """One ratio and its 95% interval on a ratio chart, with the ratio and n to the right: a filled dot is an interval
+    clear of 1, and an interval that runs past the axis ends in an arrowhead at its edge."""
+    ax.plot([np.log2(max(lo, 0.2)), np.log2(min(hi, 5))], [y, y], color=color, linewidth=2, solid_capstyle="round")
+    for end, beyond, mark in ((RATIO_LIM[0], lo < 0.2, "<"), (RATIO_LIM[1], hi > 5, ">")):
+        if beyond:
+            ax.plot(end, y, mark, markersize=7, color=color, clip_on=False)
+    ax.plot(np.log2(rr), y, "o", markersize=7, color=color, markeredgewidth=1.5,
+            markerfacecolor=color if lo > 1 or hi < 1 else "white", markeredgecolor=color)
+    ax.text(RATIO_LIM[1] + 0.1, y, f"{rr:.2f}×", va="center", color=INK2, fontsize=10)
+    ax.text(RATIO_LIM[1] + 0.85, y, f"n={n:,.0f}", va="center", color=INK2, fontsize=10)
+
+
+def ratio_axis(ax, label: str) -> None:
+    ticks = [0.25, 0.5, 1, 2, 4]
+    ax.axvline(0, color=INK2, linewidth=1)
+    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
+    ax.tick_params(axis="x", labelsize=10)
+    ax.set_xlim(*RATIO_LIM)
+    ax.set_xlabel(label, color=INK2, fontsize=10)
+
+
 def evidence_translates():
     """Relative success to approval from any phase for each evidence area (report.evidence_lines.AREAS) and its
     mutually exclusive tiers, on US-developed programs; a filled dot is a 95% interval clear of 1. Only lines with an
@@ -484,26 +509,9 @@ def evidence_translates():
         prev = r.category
         ys.append(y)
     fig, ax = plt.subplots(figsize=(10, 0.4 * len(ys) + 2.6))
-    lim = (np.log2(0.2), np.log2(5))
     for yi, r in zip(ys, lines.itertuples()):
-        color = CATEGORY_COLORS[r.category]
-        ax.plot([np.log2(max(r.rs_rs_lo, 0.2)), np.log2(min(r.rs_rs_hi, 5))], [yi, yi], color=color, linewidth=2,
-                solid_capstyle="round")
-        for end, beyond, mark in ((lim[0], r.rs_rs_lo < 0.2, "<"), (lim[1], r.rs_rs_hi > 5, ">")):
-            if beyond:  # the interval runs past the axis: an arrowhead at the edge says so
-                ax.plot(end, yi, mark, markersize=7, color=color, clip_on=False)
-        clear = r.rs_rs_lo > 1 or r.rs_rs_hi < 1
-        ax.plot(np.log2(r.rs_rs), yi, "o", markersize=7, color=color, markeredgewidth=1.5,
-                markerfacecolor=color if clear else "white", markeredgecolor=color)
-        ax.text(np.log2(5) + 0.1, yi, f"{r.rs_rs:.2f}×", va="center", color=INK2, fontsize=10)
-        ax.text(np.log2(5) + 0.85, yi, f"n={r.exposed:,.0f}", va="center", color=INK2, fontsize=10)
-    ticks = [0.25, 0.5, 1, 2, 4]
-    ax.axvline(0, color=INK2, linewidth=1)
-    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
-    ax.tick_params(axis="x", labelsize=10)
-    ax.set_xlim(*lim)
-    ax.set_xlabel("How often programs with the evidence reached approval, relative to those without (95% range)",
-                  color=INK2, fontsize=10)
+        ratio_interval(ax, yi, r.rs_rs, r.rs_rs_lo, r.rs_rs_hi, r.exposed, CATEGORY_COLORS[r.category])
+    ratio_axis(ax, "How often programs with the evidence reached approval, relative to those without (95% range)")
     style(ax)
     alone = area_alone()
     labels = [("      " if r.level != "area" else "") + r.label
@@ -567,7 +575,6 @@ def stop_ratios(blocks: list, lines: dict, name: str) -> None:
             y -= 1
             rows.append((y, lines[c][0], False, outcome, color or CATEGORY_COLORS[lines[c][1]], c))
     fig, ax = plt.subplots(figsize=(10, 0.4 * len(rows) + 1.6))
-    lim = (np.log2(0.2), np.log2(5))
     for yi, _, heading, outcome, color, c in rows:
         if heading:
             continue
@@ -575,23 +582,9 @@ def stop_ratios(blocks: list, lines: dict, name: str) -> None:
         if (c, outcome) in CIRCULAR or pd.isna(rr):
             ax.text(0, yi, "not testable" if (c, outcome) in CIRCULAR else "too few stops", ha="center",
                     va="center", color=MUTED, fontsize=9.5, style="italic")
-            continue
-        ax.plot([np.log2(max(lo, 0.2)), np.log2(min(hi, 5))], [yi, yi], color=color, linewidth=2,
-                solid_capstyle="round")
-        for end, beyond, mark in ((lim[0], lo < 0.2, "<"), (lim[1], hi > 5, ">")):
-            if beyond:
-                ax.plot(end, yi, mark, markersize=7, color=color, clip_on=False)
-        ax.plot(np.log2(rr), yi, "o", markersize=7, color=color, markeredgewidth=1.5,
-                markerfacecolor=color if lo > 1 or hi < 1 else "white", markeredgecolor=color)
-        ax.text(np.log2(5) + 0.1, yi, f"{rr:.2f}×", va="center", color=INK2, fontsize=10)
-        ax.text(np.log2(5) + 0.85, yi, f"n={df.at[c, 'exposed']:,.0f}", va="center", color=INK2, fontsize=10)
-    ticks = [0.25, 0.5, 1, 2, 4]
-    ax.axvline(0, color=INK2, linewidth=1)
-    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
-    ax.tick_params(axis="x", labelsize=10)
-    ax.set_xlim(*lim)
-    ax.set_xlabel("How often programs with the evidence stopped for that reason, relative to those without (95% range)",
-                  color=INK2, fontsize=10)
+        else:
+            ratio_interval(ax, yi, rr, lo, hi, df.at[c, "exposed"], color)
+    ratio_axis(ax, "How often programs with the evidence stopped for that reason, relative to those without (95% range)")
     style(ax)
     ax.set_yticks([r[0] for r in rows], [("" if r[2] else "      ") + r[1] for r in rows], color=INK, fontsize=10.5)
     for t, r in zip(ax.get_yticklabels(), rows):
