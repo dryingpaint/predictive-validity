@@ -1,6 +1,6 @@
 import pandas as pd
 
-from report.evidence_analysis import loa_rows, stop_outcomes
+from report.evidence_analysis import failing, loa_rows, stop_outcomes
 
 # Program 1 entered Phase 1 and jumped straight to Phase 3, so Phase 2 is credited as passed;
 # program 2 entered Phase 2 and stopped.
@@ -43,3 +43,19 @@ def test_a_stop_where_the_target_was_never_reached_counts_once_whether_dose_or_e
     assert out["stop_not_reached"] == [True, True, True, False, False, False, False]
     assert out["stop_no_benefit"] == [False, False, False, False, True, False, False]
     assert out["stop_safety"] == [False] * 5 + [True, True]
+
+
+# Three stops (efficacy with the target engaged, safety, a sponsor decision), an advance and a program still running.
+PHASE_ROWS = pd.DataFrame({"event": ["suspended", "suspended", "suspended", "advanced", "censored"]})
+COUNTED = pd.DataFrame({"stop_efficacy": [1.0, 0, 0, 0, 0], "stop_safety": [0, 1.0, 0, 0, 0],
+                        "stop_not_reached": [0.0] * 5, "stop_no_benefit": [1.0, 0, 0, 0, 0]})
+
+
+def test_a_failure_definition_censors_every_stop_it_does_not_count_and_leaves_advances_alone():
+    def events(failure):
+        return failing(PHASE_ROWS, COUNTED, failure).event.tolist()
+    assert events("all") == ["suspended", "suspended", "suspended", "advanced", "censored"]
+    assert events("efficacy_safety") == ["suspended", "suspended", "censored", "advanced", "censored"]
+    assert events("safety") == ["censored", "suspended", "censored", "advanced", "censored"]
+    assert events("no_benefit") == ["suspended", "censored", "censored", "advanced", "censored"]
+    assert events("not_reached") == ["censored", "censored", "censored", "advanced", "censored"]
