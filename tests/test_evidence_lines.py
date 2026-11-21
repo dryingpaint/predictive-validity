@@ -147,24 +147,39 @@ from report.evidence_lines import category_columns, lines  # noqa: E402
 def entries(*rows: dict) -> pd.DataFrame:
     """Entries with every line column null unless a row sets it."""
     base = {"modality": "small_molecule", "bio_area": "oncology", "regime": "ONC", "phase": 2, "entry_year": 2015,
-            "has_target_disease": True, **{ln.column: math.nan for ln in lines() if ln.column}}
+            "has_target_disease": True, "mondo_id": "MONDO:0004992", **{ln.column: math.nan for ln in lines() if ln.column}}
     return pd.DataFrame([{**base, **r} for r in rows])
 
 
-def test_a_molecule_with_no_known_properties_is_not_counted_as_lacking_the_molecule_evidence():
-    d = entries({"potent_100nm": 0.0, "drug_like": math.nan},   # nothing known about the structure
+def test_a_molecule_with_nothing_known_is_not_counted_as_lacking_the_molecule_evidence():
+    d = entries({"potent_100nm": math.nan, "drug_like": math.nan},   # nothing known about the molecule
                 {"potent_100nm": 0.0, "drug_like": 0.0},        # known, and neither potent nor drug-like
                 {"potent_100nm": 1.0, "drug_like": 0.0})
     assert category_columns(d).cat_molecule.tolist()[1:] == [0.0, 1.0]
     assert math.isnan(category_columns(d).cat_molecule[0])
 
 
-def test_a_subcategory_scored_on_fewer_entries_than_its_category_does_not_make_it_up():
+def test_a_category_is_any_of_its_subcategories_including_those_scored_on_fewer_entries():
     d = entries({"bio_area": "psychiatry", "potent_100nm": 0.0, "drug_like": 0.0, "brain_penetrant": 1.0},
-                {"b1": 0.0, "approved_unrelated_only": 0.0, "earlier_failure": 1.0})
+                {"b1": 0.0, "approved_unrelated_only": 0.0, "earlier_failure": 1.0},
+                {"crispr": 0.0, "cell_dependency": 1.0})
     out = category_columns(d)
-    assert out.cat_molecule[0] == 0.0  # brain penetrance is scored for neurology and psychiatry only
-    assert out.cat_precedent[1] == 0.0  # earlier failures are scored for 2011+ entries only
+    assert out.cat_molecule[0] == 1.0  # brain penetrance, scored for neurology and psychiatry only
+    assert out.cat_precedent[1] == 1.0  # an earlier failure, scored for 2011+ entries only
+    assert out.cat_cell[2] == 1.0  # cancer-cell dependency, scored for oncology from 2015 only
+
+
+def test_a_subcategory_counts_only_on_the_entries_it_applies_to():
+    d = entries({"bio_area": "oncology", "potent_100nm": 0.0, "drug_like": 0.0, "brain_penetrant": 1.0},
+                {"entry_year": 2009, "b1": 0.0, "approved_unrelated_only": 0.0, "earlier_failure": 1.0})
+    out = category_columns(d)
+    assert out.cat_molecule[0] == 0.0
+    assert out.cat_precedent[1] == 0.0
+
+
+def test_a_descriptive_line_does_not_make_up_its_category():
+    out = category_columns(entries({"crispr": 0.0, "crispr_untimed": 1.0}))
+    assert out.cat_cell[0] == 0.0
 
 
 STORED = {"snapshot": "2026-11-02", "dev_program_approval": [21628, 3360783], "moiety_property": 93}

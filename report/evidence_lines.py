@@ -122,17 +122,16 @@ APPLIES = {
     "target": lambda d: d.has_target_disease,
     "ONC": lambda d: d.has_target_disease & d.regime.eq("ONC"),
     "small_molecule": lambda d: d.modality.eq("small_molecule"),
-    "small_molecule_profiled": lambda d: d.modality.eq("small_molecule") & d.drug_like.notna(),
     "brain": lambda d: d.modality.eq("small_molecule") & d.bio_area.isin(BRAIN),
     "phase_2_3": lambda d: d.phase.ge(2),
     "from_2011": lambda d: d.has_target_disease & d.entry_year.ge(FAILURES_FROM),
     "onc_screened": lambda d: d.has_target_disease & d.regime.eq("ONC") & d.entry_year.ge(CELL_SCREENS_FROM),
     "disease": lambda d: d.mondo_id.fillna("").ne(""),
 }
-WITHIN = {"small_molecule_profiled": "small_molecule", "onc_screened": "target"}  # an APPLIES key whose entries all lie in another's
 
 # Category -> (category line, subcategories), efficacy categories grouped by the experimental system that
-# produced the evidence. A category line is rolled up from its subcategories (category_columns).
+# produced the evidence. A category line is rolled up from all its subcategories (category_columns), and applies to
+# every entry any of them does.
 CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
     "human_genetics": (Line("Human genetics", "cat_human_genetics", "target"), [
         Line("Inherited variants linked to the disease", "g3", "target"),
@@ -150,7 +149,7 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("The gene's RNA level differs in diseased tissue", "expression", "target"),
         Line("Target more active in disease, and the drug blocks it", "expression_up_inhibitor", "target"),
     ]),
-    "animal": (Line("Animal studies", "cat_animal", "target"), [
+    "animal": (Line("Animal studies", "cat_animal", "all"), [
         Line("Mouse genetics: knocked-out or mutant mice show the disease", "altered_animal", "target"),
         Line("Mutant mice from published studies", "mgi", "target"),
         Line("Mouse knockout from a large-scale screen", "impc", "target"),
@@ -161,12 +160,12 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("The drug tested in healthy animals", "lit_animal_healthy", "all",
              literature_note("animal_healthy", exploratory=False), key="the_drug_s_pharmacology_in_healthy_animals"),
     ]),
-    "cell": (Line("Cell studies", "cat_cell", "onc_screened"), [
+    "cell": (Line("Cell studies", "cat_cell", "target"), [
         Line("Gene-knockout screens in human cells", "crispr", "target"),
         Line("Cancer cells of this type need the gene to grow", "cell_dependency", "onc_screened"),
         Line("Gene-knockout screens in human cells, with hindsight", "crispr_untimed", "target", descriptive=True),
     ]),
-    "molecule": (Line("The molecule", "cat_molecule", "small_molecule_profiled"), [
+    "molecule": (Line("The molecule", "cat_molecule", "small_molecule"), [
         Line("Drug binds its target strongly (100 nM or better)", "potent_100nm", "small_molecule"),
         Line("Drug binds its target very strongly (10 nM or better)", "potent_10nm", "small_molecule",
              descriptive=True),
@@ -174,8 +173,8 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("Drug-like size and chemistry", "drug_like", "small_molecule"),
         Line("Chemistry suited to entering the brain (brain diseases)", "brain_penetrant", "brain"),
     ]),
-    "early_human": (Line("Early studies of the drug in people", None, "phase_2_3",
-                         literature_note("human_engagement", exploratory=False), key="early_human_pharmacology"), [
+    "early_human": (Line("Early studies of the drug in people", "cat_early_human", "phase_2_3",
+                         literature_note("human_engagement", exploratory=False)), [
         Line("Drug shown to act on its target in people", "lit_human_engagement", "phase_2_3",
              literature_note("human_engagement", exploratory=False), key="target_engagement_measured_in_people"),
     ]),
@@ -503,24 +502,18 @@ def build() -> pd.DataFrame:
     return d[list(dict.fromkeys(keep))].sort_values(["moiety_id", "mondo_id", "phase"]).reset_index(drop=True)
 
 
-def in_category(line: Line, sub: Line) -> bool:
-    """Whether a subcategory makes up its category: it has a column, is not descriptive, and is scored on every
-    entry the category applies to."""
-    return bool(sub.column) and not sub.descriptive and sub.applies in (line.applies, WITHIN.get(line.applies))
-
-
 def category_columns(d: pd.DataFrame) -> pd.DataFrame:
-    """Each category line: 1 when any of its subcategories is, 0 when none is, among the entries the category
-    applies to. Only subcategories scored on all of those entries (the same APPLIES key, or the one WITHIN names)
-    make it up, so a category means the same thing across its scope: a line scored on later entries or on some
-    disease areas only stays out. An entry on which none of them is known is null rather than 0."""
+    """Each category line: 1 when any of its subcategories is, 0 when none is. Every subcategory with values makes
+    it up except the descriptive ones, each counted on the entries it applies to, so a category's 0 rests on
+    whichever of its subcategories reach that entry. An entry on which none of them is known is null rather
+    than 0."""
     out = {}
     for line, subs in CATEGORIES.values():
         if not (line.column and line.column.startswith("cat_")):
             continue
-        cols = [s.column for s in subs if in_category(line, s)]
-        known = d[cols].notna().any(axis=1)
-        out[line.column] = d[cols].gt(0).any(axis=1).astype(float).where(APPLIES[line.applies](d) & known)
+        scored = pd.DataFrame({s.column: d[s.column].where(APPLIES[s.applies](d))
+                               for s in subs if s.column and not s.descriptive})
+        out[line.column] = scored.gt(0).any(axis=1).astype(float).where(scored.notna().any(axis=1))
     return pd.DataFrame(out, index=d.index)
 
 
