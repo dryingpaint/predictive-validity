@@ -40,8 +40,8 @@ To iterate, name the step you changed instead: `.venv/bin/python -m report figur
 seconds, `.venv/bin/python -m report render` rewrites the templates' text, and
 `.venv/bin/python -m report evidence_analysis` reruns that analysis and every step that uses it. Steps not
 run read their outputs from `report/output/`; in a fresh worktree they are seeded from the cache, which
-prints the commit and snapshot each was built on. A change to a module that is not a step (`frame`,
-`evidence_lines`, `engaged_modes`) names the steps that import it. Build in full before publishing, so every
+prints the commit and snapshot each was built on. After changing a module that is not a step (`frame`,
+`evidence_lines`, `engaged_modes`), name the steps that import it. Build in full before publishing, so every
 number comes from one snapshot.
 
 Then read the prose of every section the plan (step 3) will rewrite against the new numbers: rankings,

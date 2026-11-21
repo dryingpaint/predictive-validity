@@ -1,10 +1,10 @@
 import pytest
 
-from report.__main__ import selected
+from report.__main__ import name, selected
 
 
 def names(steps):
-    return [s.__name__.rsplit(".", 1)[-1] for s in steps]
+    return [name(s) for s in steps]
 
 
 def test_no_step_named_runs_the_whole_build():
