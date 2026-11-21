@@ -24,3 +24,6 @@ TRACING = (date(2008, 1, 1), date(2025, 12, 31))
 # analysis outside SECTION1, since a six-year horizon on SECTION1 halves the approvals it learns from
 # (that version is reported as a check).
 SECTION2_PREDICT = (date(2008, 1, 1), date(2016, 10, 20))
+# The confirmation entries of the published-animal-study finding (issue #140, registered 2026-11-19): Phase 2
+# entries after SECTION1 with the full four-year S4 horizon before the 2026-11-02 snapshot.
+CONFIRM = (date(2020, 1, 1), date(2022, 11, 2))
