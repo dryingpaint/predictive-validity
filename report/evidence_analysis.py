@@ -274,8 +274,9 @@ def published_confirmation(c: pd.DataFrame, d: pd.DataFrame, rows_c: pd.DataFram
                            trials: pd.DataFrame) -> dict:
     """The registered confirmation (issue #140) of published_strata on the CONFIRM entries `c` (phase rows `rows_c`),
     sponsor size ranked on the discovery entries `d` (phase rows `rows_d`): the cohort, the stratum table, the tests
-    (interactions), the same model on the discovery entries for reference, and the sensitivities (sponsor size ranked
-    on both windows; biomarker-selected enrolment held fixed). A program whose sponsor is unresolved counts as smaller."""
+    (interactions), the same model on the discovery entries for reference, and the sensitivity with sponsor size ranked
+    on both windows. A program whose sponsor is unresolved counts as smaller. The registered biomarker sensitivity is
+    not computed: biomarker selection is labelled only for trials started through 2019."""
     prep = lambda x: x.assign(precedent=x.precedent.fillna(0),  # noqa: E731
                               target=x.target.fillna("entity " + x.moiety_id.astype(str)))
     unresolved = lambda t: t.assign(sponsor_tier=t.sponsor_tier.where(t.sponsor.ne("unresolved"), "smaller"))  # noqa: E731
@@ -283,15 +284,13 @@ def published_confirmation(c: pd.DataFrame, d: pd.DataFrame, rows_c: pd.DataFram
     frozen = unresolved(sponsors(rows_c, trials, ranked_by=rows_d))
     p2 = strata_frame(c, frozen)
     both = strata_frame(c, unresolved(sponsors(rows_c, trials, ranked_by=pd.concat([rows_d, rows_c]))))
-    marker = p2.assign(biomarker_selected=p2.biomarker_selected.fillna(0))
     ph2 = c[c.phase == 2]
     return {"cohort": {"phase2": int(len(ph2)), "with_line": int(len(p2)), "line_known": float(ph2[ANIMAL].notna().mean()),
                        "unresolved_sponsor": float(frozen.sponsor.eq("unresolved").mean()), "s4": float(p2.s4.mean())},
             "strata": published_strata(p2, CONFIRM_COVARS),
             **interactions(p2, CONFIRM_COVARS),
             "discovery": interactions(strata_frame(d, unresolved(sponsors(rows_d, trials))), COVARS),
-            "sensitivity": {"ranked_on_both": interactions(both, CONFIRM_COVARS)["tests"],
-                            "biomarker": interactions(marker, (*CONFIRM_COVARS, "biomarker_selected"))["tests"]}}
+            "sensitivity": {"ranked_on_both": interactions(both, CONFIRM_COVARS)["tests"]}}
 
 
 def literature_gate() -> dict:
