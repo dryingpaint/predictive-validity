@@ -136,9 +136,9 @@ class Kind:
 
 FACT_PREFIX = "fact_"  # entries.csv column prefix of each fact
 YES_NO = (("yes", "Yes"), ("no", "No"))
-# Broad categories by the experimental system that produced the evidence, in the chart's order (PR #159, amendment 4,
-# 2026-11-20).
-CATEGORIES = {"human_genetics": "Human genetics", "in_vitro": "In vitro", "animals": "Animals", "human": "Human",
+# Broad categories by the experimental system that produced the evidence, in the chart's order (PR #159, amendments 4
+# and 5, 2026-11-20).
+CATEGORIES = {"human_genetics": "Human genetics", "in_vitro": "In vitro and ex vivo", "animals": "Animals", "human": "Human",
               "the_drug": "The drug", "safety": "Target safety risk"}
 
 FACTS = {f.key: f for f in [
@@ -279,7 +279,7 @@ KINDS = {k.key: k for k in [
          chart="animal_studies",
          derived=(Line("The drug in an animal model of the disease", "lit_animal_disease", "disease"),
                   Line("The drug tested in healthy animals", "lit_animal_healthy", "all"))),
-    Kind("diseased_tissue", "human", "target", "Diseased tissue: the gene's level differs in diseased tissue",
+    Kind("diseased_tissue", "in_vitro", "target", "Diseased tissue: the gene's level differs in diseased tissue",
          "The gene's RNA or protein level differs in diseased tissue (protein is to come, #154)",
          "Expression Atlas, through Open Targets (RNA, at least 2.1-fold)", "expression",
          (("rna", ("up", "down")),), chart="rna",

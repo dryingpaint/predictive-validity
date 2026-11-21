@@ -8,14 +8,15 @@
   * **Human genetics:** germline evidence for the disease (rare-variant or Mendelian, GWAS, or both), and what losing the gene does to disease risk by the labelled mechanism.
   * **Tumour genetics** (oncology): the gene recurrently mutated in the cancer, by whether the mutations activate or inactivate it.
   * **Curated pathway:** a curated disease mechanism (Reactome) shows a disease mutation disrupting the target.
-* **In vitro.**
+* **In vitro and ex vivo:** human cells and tissue studied outside the body, whether measured as taken from patients or changed by experiment.
+  * **Diseased tissue:** the target's RNA level changed by at least 2.1-fold in diseased tissue against normal tissue, higher in at least one comparison or lower only. Protein in patients' tissue is on the list but not yet built.
   * Changing the target in primary human cells or tissue is on the list but not yet built.
   * **Changing the target in an established cell line changes a disease feature** (today oncology, entries from 2015, until the literature part is built): every source counts on the entries it reaches, and an entry no source reaches has no value. Today the only source is knockout screens: in screens published before entry, cancer cell lines of the program's tumour type need the gene (gene effect −0.5 or lower in at least two lines and 20% of the type's screened lines, genes on that year's common-essential list excluded). The screens are genome-wide RNAi screens (Achilles, Project DRIVE, Marcotte breast lines; DEMETER2 scores) and CRISPR screens (Avana; CERES scores), each line dated by the paper or release that first made it public (2014–2018), and Project Score's CRISPR priority targets, first published in 2019, which reach no entry in the window and are also shown on today's data, as hindsight. The scores are 2018–19 reprocessings of those screens: the screen data existed before entry, but these exact scores were computed later.
 * **Animals.**
   * **Mouse genetics:** mice with the target gene knocked out or mutated whose phenotype resembles the disease, by how closely, and which way the models favour moving the gene's function. A non-genetic change to the target in an animal model is on the list but not yet built.
   * **Published animal studies of the drug** (about the drug; described below).
 * **Human.**
-  * **Diseased tissue:** the target's RNA level changed by at least 2.1-fold in diseased tissue against normal tissue, higher in at least one comparison or lower only. Protein in patients' tissue, an observational biomarker and clinical observations are on the list but not yet built; they will be read from the literature.
+  * An observational biomarker and clinical observations are on the list but not yet built; they will be read from the literature.
   * **Validated at entry:** a drug on the target was already approved for the program's disease or a very close one (Lin similarity ≥ 0.8).
   * **A drug on the target approved for another disease:** a related disease (Lin 0.5 to 0.8), or only unrelated ones.
   * **Another drug on the target failed in a related disease:** a Phase 2 or 3 trial of another drug on the target in a related disease (Lin ≥ 0.5) missed its primary endpoint or stopped for futility within the three years before entry. It is scored for 2011–2019 entries only, because trial results are sparse before 2008 and a lookback reaching before them would make the line rise with entry year.
