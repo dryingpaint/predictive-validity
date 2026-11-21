@@ -76,15 +76,19 @@ AREA_MEANING = {
                        "at least 0.8 similar on MONDO (Lin): GWAS credible sets, gene burden tests, ClinVar, PanelApp, "
                        "Orphanet, Gene2Phenotype, ClinGen, UniProt",
                        "Open Targets 26.09; each item dated by when it became known"),
-    "pathway": ("A curated pathway records a disease mutation disrupting a pathway the target is in",
+    "curated_pathway": ("A curated pathway records a disease mutation disrupting a pathway the target is in",
                 "Reactome, through Open Targets"),
     "tumour_genetics": ("The target's gene is recurrently mutated in the program's cancer (oncology only)",
                         "COSMIC Cancer Gene Census, IntOGen and ClinVar somatic, through Open Targets"),
     "diseased_tissue": ("The target's RNA level differs at least 2.1-fold between diseased and normal tissue",
                         "Expression Atlas, through Open Targets"),
-    "animal": ("Mice with the target's gene knocked out or mutated whose phenotypes resemble the "
+    "mouse_genetics": ("Mice with the target's gene knocked out or mutated whose phenotypes resemble the "
                "disease; not drugs tested in mice",
                "IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm"),
+    "cell_screen": ("A genome-wide CRISPR knockout screen in human cancer cell lines ranks the target as a priority "
+                    "for the program's cancer",
+                    "Project Score, through Open Targets; dated by the first release that listed the pair, 2019 at the "
+                    "earliest, so no program in the window has it before entry"),
     "molecule": ("The drug's binding or activity at its primary target, measured in laboratory assays: potency of 100 nM "
                  "or better, and selectivity over other proteins (small molecules)",
                  "ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it"),
@@ -150,7 +154,7 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("Target more active in disease, and the drug blocks it", "expression_up_inhibitor", "target"),
     ]),
     "animal": (Line("Animal studies", "cat_animal", "all"), [
-        Line("Mouse genetics: knocked-out or mutant mice show the disease", "altered_animal", "target"),
+        Line("Mouse genetics: knocked-out or mutant mice show the disease", "mouse_genetics", "target"),
         Line("Mutant mice from published studies", "mgi", "target"),
         Line("Mouse knockout from a large-scale screen", "impc", "target"),
         Line("Mutant mouse phenotype closely matches the disease", "animal_close", "target"),
@@ -202,18 +206,19 @@ AREAS: dict[str, tuple[Line, list[Line]]] = {
         Line("Common variants only (genome-wide association studies)", "tier_common_only", "target"),
         Line("Both rare and common variants", "allelic_series", "target"),
     ]),
-    "pathway": (Line("Curated pathways: a disease mutation is shown disrupting the target's pathway", "reactome",
-                     "target"), []),
     "tumour_genetics": (Line("Tumour genetics: the gene is recurrently mutated in this cancer", "somatic", "ONC"), [
         Line("The mutation's effect matches the drug's action", "somatic_concordant", "ONC"),
         Line("It does not, or its effect is unknown", "tier_mutation_other", "ONC"),
     ]),
-    "diseased_tissue": (Line("Diseased tissue: the gene's RNA level differs in diseased tissue", "expression",
-                             "target"), []),
-    "animal": (Line("Mouse genetics: knocked-out or mutant mice show the disease", "altered_animal", "target"), [
+    "curated_pathway": (Line("Curated pathways: a disease mutation is shown disrupting the target's pathway", "reactome",
+                     "target"), []),
+    "mouse_genetics": (Line("Mouse genetics: knocked-out or mutant mice show the disease", "mouse_genetics", "target"), [
         Line("Mutant mouse phenotype closely matches the disease", "animal_close", "target"),
         Line("Looser match", "tier_mouse_loose", "target"),
     ]),
+    "cell_screen": (Line("Cell screen: gene-knockout screens in human cells", "crispr", "target"), []),
+    "diseased_tissue": (Line("Diseased tissue: the gene's RNA level differs in diseased tissue", "expression",
+                             "target"), []),
     "molecule": (Line("The drug: its binding to the target was measured before entry", "area_measured",
                       "small_molecule"), [
         Line("Binds strongly (100 nM or better) and selectively", "tier_strong_selective", "small_molecule"),
@@ -249,6 +254,10 @@ SAFETY = [
 ]
 
 
+AREA_CATEGORY = {"curated_pathway": "human_genetics", "mouse_genetics": "animal", "cell_screen": "cell",
+                 "published_animal": "animal"}  # areas named apart from their category
+
+
 def area_lines() -> list[Line]:
     return [ln for line, tiers in AREAS.values() for ln in (line, *tiers)]
 
@@ -270,7 +279,7 @@ def area_columns(d: pd.DataFrame) -> pd.DataFrame:
         "tier_rare_only": flag(rare & ~common),
         "tier_common_only": flag(common & ~rare),
         "tier_mutation_other": flag(d.somatic.gt(0) & ~d.somatic_concordant.gt(0), APPLIES["ONC"](d)),
-        "tier_mouse_loose": flag(d.altered_animal.gt(0) & ~d.animal_close.gt(0)),
+        "tier_mouse_loose": flag(d.mouse_genetics.gt(0) & ~d.animal_close.gt(0)),
         "area_measured": flag(measured, small),
         "tier_strong_selective": flag(potent & d.selective.gt(0), small),
         "tier_strong_only": flag(potent & ~d.selective.gt(0), small),
@@ -480,7 +489,7 @@ def build() -> pd.DataFrame:
     d["allelic_series"] = flag((d.gwas > 0) & ((d.burden > 0) | (d.mendelian > 0)))
     d["genetics_concordant"] = flag(d.mechanism.eq("concordant"))
     d["expression_up_inhibitor"] = flag((d.expression_up > 0) & d.sign.eq("decrease"))
-    d["altered_animal"] = flag((d.mgi > 0) | (d.impc > 0))
+    d["mouse_genetics"] = flag((d.mgi > 0) | (d.impc > 0))
     d["animal_close"] = flag((d.mgi_strong > 0) | (d.impc_strong > 0))
     d["animal_concordant"] = flag(d.mouse_direction.eq("concordant"))
     d["approved_unrelated_only"] = flag((d.precedent > 0) & ~(d.b1 > 0))
@@ -564,17 +573,27 @@ def slug(label: str) -> str:
 
 
 def registry() -> pd.DataFrame:
-    """One row per line in display order: line_key, category, level, label, applies, status."""
+    """One row per line in display order: line_key, category, level, label, applies, status, and for a line the
+    evidence chart draws, its area, area_level and area_position. A line only the chart uses is level chart, under
+    the category its area's evidence comes from (AREA_CATEGORY)."""
     rows = []
     for cat, (line, subs) in CATEGORIES.items():
         rows.append((line, cat, "category"))
         rows += [(s, cat, "descriptive" if s.descriptive else "subcategory") for s in subs]
     rows += [(a, "adjustment", "adjustment") for a in ADJUSTMENTS]
     rows += [(m, "molecule", "measurement") for m in MEASUREMENTS]
+    known = {ln.column for ln, _, _ in rows}
+    placed = {}
+    for i, (area, level, ln) in enumerate((area, level, ln) for area, (line, tiers) in AREAS.items()
+                                          for level, ln in (("area", line), *(("tier", t) for t in tiers))):
+        placed[ln.column] = (area, level, i)
+        if ln.column not in known:
+            rows.append((ln, AREA_CATEGORY.get(area, area), "chart"))
+            known.add(ln.column)
     return pd.DataFrame([{"line_key": ln.column or ln.key or slug(ln.label), "position": i, "category": cat,
-                          "level": level,
-                          "label": ln.label, "applies": ln.applies, "status": ln.status}
-                         for i, (ln, cat, level) in enumerate(rows)])
+                          "level": level, "label": ln.label, "applies": ln.applies, "status": ln.status,
+                          **dict(zip(("area", "area_level", "area_position"), placed.get(ln.column, (None,) * 3)))}
+                         for i, (ln, cat, level) in enumerate(rows)]).astype({"area_position": "Int64"})
 
 
 def long_form(d: pd.DataFrame, reg: pd.DataFrame) -> pd.DataFrame:
@@ -642,8 +661,9 @@ def store(d: pd.DataFrame) -> str:
                        VALUES (%s, %s, %s, %s, %s)""",
                     (build_id, llm.git_commit(), frame.snapshot(), len(e), Json(fingerprint)))
         execute_values(cur, """INSERT INTO preclin.evidence_line (line_key, position, category, level, label, applies,
-                                                                  status, build_id) VALUES %s""",
-                       [(*r, build_id) for r in reg.itertuples(index=False)])
+                                                                  status, area, area_level, area_position, build_id)
+                               VALUES %s""",
+                       [(*map(nul, r), build_id) for r in reg.itertuples(index=False)])
         execute_values(cur, f"""INSERT INTO preclin.evidence_entry (moiety_id, mondo_id, phase, {", ".join(ENTRY_COLUMNS)},
                                                                     build_id) VALUES %s""",
                        [(int(r.moiety_id), r.mondo_id, int(r.phase), *(nul(getattr(r, c)) for c in ENTRY_COLUMNS),

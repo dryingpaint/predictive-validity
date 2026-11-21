@@ -138,7 +138,18 @@ def test_every_registry_line_has_a_unique_key():
     from report.evidence_lines import registry
     reg = registry()
     assert reg.line_key.is_unique and set(reg.level) <= {"category", "subcategory", "descriptive", "adjustment",
-                                                          "measurement"}
+                                                          "measurement", "chart"}
+
+
+def test_the_registry_holds_every_row_of_the_evidence_chart_in_its_order():
+    from report.evidence_lines import AREAS, registry
+    reg = registry().set_index("line_key")
+    drawn = [(area, level, ln.column) for area, (line, tiers) in AREAS.items()
+             for level, ln in (("area", line), *(("tier", t) for t in tiers))]
+    stored = reg.dropna(subset=["area"]).sort_values("area_position")
+    assert list(zip(stored.area, stored.area_level, stored.index)) == drawn
+    assert reg.at["tier_rare_only", "level"] == "chart" and reg.at["tier_rare_only", "category"] == "human_genetics"
+    assert reg.at["g3", "level"] == "subcategory" and reg.at["g3", "area_level"] == "area"
 
 
 from report.evidence_lines import category_columns, lines  # noqa: E402
@@ -235,7 +246,7 @@ def test_an_areas_tiers_are_mutually_exclusive_and_make_up_the_area():
     d = entries({"rare_variant": 1.0, "gwas": 0.0, "g3": 1.0}, {"rare_variant": 0.0, "gwas": 1.0, "g3": 1.0},
                 {"rare_variant": 1.0, "gwas": 1.0, "g3": 1.0, "allelic_series": 1.0},
                 {"rare_variant": 0.0, "gwas": 0.0, "g3": 0.0})
-    for col in ("somatic", "somatic_concordant", "expression", "reactome", "altered_animal", "animal_close",
+    for col in ("somatic", "somatic_concordant", "expression", "reactome", "mouse_genetics", "animal_close",
                 "potent_100nm", "selective", "earlier_failure", "precedent"):
         d[col] = d[col].fillna(0.0) if col in d else 0.0
     d["assay_best"] = math.nan

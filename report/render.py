@@ -206,7 +206,7 @@ def engaged_area_table() -> str:
 ENGAGED_EVIDENCE_ROWS = {"tier_rare_only": "Human genetics, rare variants", "tier_common_only": "Human genetics, GWAS only",
                          "somatic_concordant": "Tumour mutation matching the drug",
                          "expression": "Diseased tissue: RNA level differs",
-                         "altered_animal": "Mouse genetics resembling the disease",
+                         "mouse_genetics": "Mouse genetics resembling the disease",
                          "area_measured": "Binding to the target measured",
                          "lit_animal_disease": "Published study in an animal model of the disease",
                          "cat_precedent": "An earlier drug on the target"}

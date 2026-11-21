@@ -158,7 +158,7 @@ def hypotheses(d: pd.DataFrame) -> dict:
 
 # The lines the chart shows predicting approval: genetic support, a recurrent tumour mutation, a genetically altered
 # mouse model, and an approved drug on the target for a related disease.
-PREDICTIVE = ("g3", "somatic", "altered_animal", "b1")
+PREDICTIVE = ("g3", "somatic", "mouse_genetics", "b1")
 PUBLISHED = ("lit_animal_disease", "lit_animal_healthy", "lit_human_engagement")
 
 

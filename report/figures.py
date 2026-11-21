@@ -359,8 +359,8 @@ def dose_response():
 # Evidence categories of the plan amendment (report.evidence_lines.CATEGORIES), in its order: efficacy
 # evidence by the system that produced it, then safety risk and the clinical-precedent benchmark apart.
 CATEGORY_COLORS = {"human_genetics": "#2a78d6", "tumour_genetics": "#eb6834", "diseased_tissue": "#eda100",
-                   "pathway": "#7fb0e8",
-                   "animal": "#1baf7a", "published_animal": "#76c9a3", "cell": "#8a8984", "molecule": "#b04a8f",
+                   "curated_pathway": "#7fb0e8",
+                   "animal": "#1baf7a", "mouse_genetics": "#1baf7a", "cell_screen": "#8a8984", "published_animal": "#76c9a3", "cell": "#8a8984", "molecule": "#b04a8f",
                    "early_human": "#0f8f9a",
                    "safety_risk": "#6b6a65", "precedent": "#4a3aa7"}
 # Section 3 evidence-map rows by the category whose colour they take
@@ -544,7 +544,7 @@ EFFICACY_BLOCKS = [("stop_not_reached", "Stopped for efficacy: the target was ne
                    ("stop_no_benefit", "Stopped for efficacy: the target was reached and the disease did not respond",
                     None)]
 EFFICACY_ROWS = {"g3": ("Human genetics", "human_genetics"), "somatic": ("Tumour genetics", "tumour_genetics"),
-                 "altered_animal": ("Mouse genetics shows the disease", "animal"),
+                 "mouse_genetics": ("Mouse genetics shows the disease", "mouse_genetics"),
                  "expression": ("RNA change in diseased tissue", "diseased_tissue"),
                  "area_measured": ("Drug binding measured", "molecule"),
                  "area_lit_animal": ("Published animal studies of the drug", "published_animal"),
