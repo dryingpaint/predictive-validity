@@ -5,8 +5,8 @@
 Cohort: the evidence-line entries of report.evidence_analysis (US-developed phase entries 2008-2019), Phase 1-3. Each
 entry's traced stop (report.evidence_analysis.traced_stops) is split into failure modes:
 
-- never engaged: human evidence shows exposure or engagement too low (stop_engagement);
-- dose: tolerability capped the dose, toxicity offset the benefit, or a PK, dose or formulation reason (stop_dose);
+- never reached: tolerability capped the dose, toxicity offset the benefit, a PK, dose or formulation reason, or human
+  evidence shows exposure or engagement too low (stop_not_reached);
 - and the drug engaged its target without benefit (stop_no_benefit), split into the failure modes of
   report.engaged_modes: the target not causal, the wrong time, the wrong patients, the drug fell short, the
   trial could not answer, unresolved.
@@ -33,7 +33,7 @@ from report.section3 import COVARS, describe, estimate, jsonable
 from report.engaged_modes import ENGAGED_MODES, engaged_modes
 
 OUT = os.path.join(frame.REPO, "report", "output", "failure_modes")
-MODES = ["stop_engagement", "stop_dose", *(f"mode_{m}" for m in ENGAGED_MODES)]
+MODES = ["stop_not_reached", *(f"mode_{m}" for m in ENGAGED_MODES)]
 BY_RECORD = ("mode_not_causal", "mode_wrong_time", "mode_wrong_patients")  # modes the target's approval record defines
 
 

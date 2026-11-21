@@ -44,7 +44,8 @@ def test_a_retracted_runs_decisions_are_neither_reused_nor_latest(cur):
     decision(cur, "retracted", "s1", {"name": "x"}, {"v": "withdrawn"}, 1)
     assert llm._reusable(cur, TASK, {"s1": {"name": "x"}}, "subject")["s1"][1] == {"v": "kept"}
     assert llm._reusable(cur, TASK, {"s1": {"name": "x"}}, "input")["s1"][1] == {"v": "kept"}
-    assert llm._latest(cur, TASK.name, "t1").set_index("key").parsed_output["s1"] == {"v": "kept"}
+    cur.execute(llm.LATEST_DECISIONS, (TASK.name, "t1"))
+    assert dict((k, out) for k, _, out in cur.fetchall())["s1"] == {"v": "kept"}
 
 
 @pytest.mark.db

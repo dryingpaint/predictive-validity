@@ -32,6 +32,8 @@ from anthropic.types.messages.batch_create_params import Request
 from dotenv import load_dotenv
 from psycopg2.extras import Json, execute_values
 
+from report import frame
+
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 load_dotenv(os.path.join(REPO, ".env"))
 
@@ -321,21 +323,19 @@ def current_decisions(task: Task, items: dict[str, dict[str, Any]]) -> dict[str,
         return {k: (row[4], row[1]) for k, row in _reusable(cur, task, items, "input").items()}
 
 
+# The latest validated decision of each subject for a task version (task, prompt_version), held-out subjects aside
+LATEST_DECISIONS = """
+    SELECT DISTINCT ON (d.subject_key) d.subject_key AS key, d.llm_decision_id, d.parsed_output
+    FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
+    WHERE d.task = %s AND r.prompt_version = %s AND d.validation_status = 'validated'
+      AND r.status <> 'retracted' AND d.subject_key NOT LIKE '%%|heldout'
+    ORDER BY d.subject_key, d.created_at DESC"""
+
+
 def latest_decisions(task: str, prompt_version: str) -> pd.DataFrame:
-    """The latest validated decision of each subject for a task version, held-out subjects (|heldout) aside:
-    key, llm_decision_id, parsed_output."""
-    with connect() as conn, conn.cursor() as cur:
-        return _latest(cur, task, prompt_version)
-
-
-def _latest(cur, task: str, prompt_version: str) -> pd.DataFrame:
-    cur.execute("""
-        SELECT DISTINCT ON (d.subject_key) d.subject_key, d.llm_decision_id, d.parsed_output
-        FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
-        WHERE d.task = %s AND r.prompt_version = %s AND d.validation_status = 'validated'
-          AND r.status <> 'retracted' AND d.subject_key NOT LIKE '%%|heldout'
-        ORDER BY d.subject_key, d.created_at DESC""", (task, prompt_version))
-    return pd.DataFrame(cur.fetchall(), columns=["key", "llm_decision_id", "parsed_output"])
+    """LATEST_DECISIONS as key, llm_decision_id, parsed_output, read through report.frame, so a report build reads its
+    held snapshot."""
+    return frame.query(LATEST_DECISIONS, (task, prompt_version))
 
 
 def retrieved_urls(content) -> list[str]:
@@ -544,12 +544,12 @@ def stalled(batch, now: datetime) -> bool:
 
 
 def decisions(run_id: uuid.UUID) -> list[tuple[str, int, dict[str, Any]]]:
-    """(subject_key, llm_decision_id, parsed_output) for every validated decision of a run."""
-    with connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision "
+    """(subject_key, llm_decision_id, parsed_output) for every validated decision of a run. Read through report.frame,
+    so a report build reads its held snapshot."""
+    d = frame.query("SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision "
                     "WHERE decision_run_id = %s AND validation_status = 'validated' ORDER BY subject_key",
                     (str(run_id),))
-        return cur.fetchall()
+    return list(d.itertuples(index=False, name=None))
 
 
 def main() -> None:
