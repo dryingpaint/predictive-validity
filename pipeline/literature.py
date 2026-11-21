@@ -1097,10 +1097,10 @@ def run_cohort(args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("CREATE TEMP TABLE want (moiety_id int, cutoff_year int) ON COMMIT DROP")
         execute_values(cur, "INSERT INTO want VALUES %s", list(cut.items()))
-        # records the drug's search at its cutoff retrieved, and those neither screened nor prefiltered: a drug
-        # searched again at a later cutoff has only its new records left
+        # records the drug's search at its cutoff retrieved, and those still to decide: not screened, and not read by
+        # the prefilter as impossible. A drug searched again at a later cutoff has only its new records left
         cur.execute("""SELECT h.moiety_id, count(DISTINCT h.record_id),
-                              count(DISTINCT h.record_id) FILTER (WHERE s.record_id IS NULL AND p.record_id IS NULL)
+                              count(DISTINCT h.record_id) FILTER (WHERE s.record_id IS NULL AND p.possibly IS NOT FALSE)
                        FROM preclin.literature_hit h JOIN want USING (moiety_id, cutoff_year)
                        LEFT JOIN preclin.literature_screen s USING (moiety_id, record_id)
                        LEFT JOIN preclin.literature_prefilter p USING (moiety_id, record_id)
