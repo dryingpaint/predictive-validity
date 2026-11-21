@@ -19,12 +19,14 @@ against the traced cause of each stop (report.stop_causes: the cause, or the lik
 one): the adjusted risk ratio of stopping for efficacy or exposure and for safety, and of the efficacy stop split
 into whether the drug adequately reached its target and, where it did, efficacy proper (stop_outcomes), among Phase 1-3 entries,
 adjusted as above with phase added. A stop for any other reason is not an event of either.
+The areas' relative success is also estimated under each failure definition of FAILURES: only the stops it names
+count as failures, and every other stop is censored, as a program still running is.
 A line exposed in fewer than MIN_ENTRIES entries or MIN_TARGETS distinct target sets is described, not
 estimated. Descriptive lines (hindsight, 10 nM potency) are estimated alongside but make up no category.
 N1-N3 are tested as the plan words them and Holm-corrected together.
 
 Writes report/output/evidence_analysis/: lines.csv (the registered categories), areas.csv (the same estimates for
-the chart's areas and their mutually exclusive tiers, AREAS), stop_risk.csv (the stop-risk figure's rows) and
+the chart's areas and their mutually exclusive tiers, AREAS, one set per failure definition), stop_risk.csv (the stop-risk figure's rows) and
 numbers.json, which also carries the literature
 gate results (report/audits/literature_gate.json) that leave the literature lines descriptive.
 """
@@ -66,7 +68,7 @@ def exposed_enough(desc: dict) -> bool:
     return desc["n"] >= MIN_ENTRIES and desc["n_targets"] >= MIN_TARGETS
 
 
-def line_row(cat: str, level: str, line, d: pd.DataFrame, lr: pd.DataFrame) -> dict:
+def line_row(cat: str, level: str, line, d: pd.DataFrame, lr: pd.DataFrame, outcomes: bool = True) -> dict:
     row = {"category": cat, "level": level, "label": line.label, "column": line.column, "applies": line.applies,
            "status": line.status}
     if not line.column:
@@ -81,6 +83,8 @@ def line_row(cat: str, level: str, line, d: pd.DataFrame, lr: pd.DataFrame) -> d
     keys = x[["program_id", "entry_date", "x"]].drop_duplicates(["program_id", "entry_date"])
     rs = relative_success(lr.merge(keys, on=["program_id", "entry_date"]), "x")
     row |= {f"rs_{k}": rs[k] for k in ("rs", "rs_lo", "rs_hi", "loa_with", "loa_without")}
+    if not outcomes:
+        return row
     c2 = x[x.phase == 2]
     base = tuple(c for c in COVARS if not (cat == "precedent" and c == "precedent"))  # not the exposure itself
     for prefix, part, outcome, covars in (
@@ -113,12 +117,29 @@ def stop_outcomes(t: pd.DataFrame) -> dict[str, pd.Series]:
             "stop_no_benefit": eff & t.subcause.eq("engaged_no_benefit") & ~dose}
 
 
+# The approval chart's failure definitions: the stop_outcomes columns whose stops count as failures (None: every
+# stop, as Section 1 counts them). Under the others a stop that none of them names is censored.
+FAILURES = {"all": None, "efficacy_safety": ("stop_efficacy", "stop_safety"), "safety": ("stop_safety",),
+            "efficacy": ("stop_efficacy",), "not_reached": ("stop_not_reached",),
+            "no_benefit": ("stop_no_benefit",)}
+
+
 def traced_stops(d: pd.DataFrame) -> pd.DataFrame:
-    """d with one column per stop_outcomes: 1 where the entry's traced stop counts, else 0."""
+    """d (one row per entity, disease and phase) with one column per stop_outcomes: 1 where its traced stop counts,
+    else 0."""
     t = stop_causes.load()
     k = pd.Series(keys(d), index=d.index)
     return d.assign(**{col: k.map(dict(zip(t.key, hit))).fillna(False).astype(float)
                        for col, hit in stop_outcomes(t).items()})
+
+
+def failing(rows: pd.DataFrame, counted: pd.DataFrame, failure: str) -> pd.DataFrame:
+    """The phase rows with every stop the failure definition does not count censored; counted is traced_stops'
+    columns for the same rows."""
+    if FAILURES[failure] is None:
+        return rows
+    hit = counted.loc[rows.index, list(FAILURES[failure])].astype(bool).any(axis=1)
+    return rows.assign(event=rows.event.mask(rows.event.eq("suspended") & ~hit, "censored"))
 
 
 def stop_risk(d: pd.DataFrame) -> pd.DataFrame:
@@ -178,9 +199,10 @@ def evidence_basis(d: pd.DataFrame) -> dict:
                      "none": float((~(published | approved | potent))[rest].mean())}}
 
 
-def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame, trials: pd.DataFrame) \
+def analyse(d: pd.DataFrame, rows: pd.DataFrame, counted: pd.DataFrame, fm: pd.DataFrame, trials: pd.DataFrame) \
         -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict]:
-    """The lines table (the registered categories), the areas table (the chart's grouping, AREAS), the stop-risk
+    """The lines table (the registered categories), the areas table (the chart's grouping, AREAS, under each
+    failure definition of FAILURES, counted being traced_stops' columns for the rows), the stop-risk
     table (stop_risk) and numbers from
     the evidence-line dataset, the phase rows and the failure modes."""
     d = d.assign(precedent=d.precedent.fillna(0),  # no resolved target: no approved drug known on it
@@ -192,8 +214,13 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame, trials: pd.Da
         out.append(line_row(cat, "category", line, d, lr))
         out += [line_row(cat, "descriptive" if s.descriptive else "subcategory", s, d, lr) for s in subs]
     out += [line_row("adjustment", "adjustment", a, d, lr) for a in ADJUSTMENTS]
-    areas = [line_row(area, level, ln, d, lr) for area, (line, tiers) in AREAS.items()
-             for level, ln in (("area", line), *(("tier", t) for t in tiers))]
+    area_lines = [(area, level, ln) for area, (line, tiers) in AREAS.items()
+                  for level, ln in (("area", line), *(("tier", t) for t in tiers))]
+    areas = [line_row(*a, d, lr) for a in area_lines]
+    by_failure = [{"failure": "all", **r} for r in areas]
+    for failure in [f for f in FAILURES if f != "all"]:
+        lf = loa_rows(d, failing(rows[rows.us_site], counted, failure))
+        by_failure += [{"failure": failure, **line_row(*a, d, lf, outcomes=False)} for a in area_lines]
     c2 = d[d.phase == 2]
     n = {"cohort": {"entries": int(len(d)), "programs": int(d.program_id.nunique()),
                     "with_target_disease": int(d.has_target_disease.sum()), "phase2": int(len(c2)),
@@ -207,7 +234,7 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame, trials: pd.Da
          **hypotheses(d)}
     stops = stop_risk(traced_stops(d))
     n["stop_risk"] = {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in stops.to_dict("records")}
-    return pd.DataFrame(out), pd.DataFrame(areas), stops, n
+    return pd.DataFrame(out), pd.DataFrame(by_failure), stops, n
 
 
 def published_strata(d: pd.DataFrame, rows: pd.DataFrame, trials: pd.DataFrame) -> dict:
@@ -242,7 +269,9 @@ def main() -> None:
     snap = frame.snapshot()
     progs, trials, outcomes = frame.programs(), frame.program_trials(), frame.trial_outcomes()
     rows = phase_rows(progs, trials, snap, window=SECTION1)
-    lines, areas, stops, n = analyse(build(), rows, failure_modes(rows, progs, trials, outcomes), trials)
+    counted = traced_stops(rows[["moiety_id", "phase"]].assign(
+        mondo_id=rows.program_id.map(progs.set_index("program_id").mondo_id)))
+    lines, areas, stops, n = analyse(build(), rows, counted, failure_modes(rows, progs, trials, outcomes), trials)
     lines.to_csv(os.path.join(OUT, "lines.csv"), index=False)
     areas.to_csv(os.path.join(OUT, "areas.csv"), index=False)
     stops.to_csv(os.path.join(OUT, "stop_risk.csv"), index=False)
