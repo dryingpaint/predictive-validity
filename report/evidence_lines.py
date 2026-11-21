@@ -200,13 +200,13 @@ FACTS = {f.key: f for f in [
     Fact("brain_suited", "Chemistry suited to entering the brain", "brain",
          (("yes", "Yes"), ("no", "No"), ("unknown", "Structure unknown")), (("yes", "brain_penetrant"),),
          unknown=("unknown",)),
-    Fact("animal_studies", "Published studies of the drug in animals", "all",
-         (("disease_and_healthy", "In an animal model of the disease, and in healthy animals"),
-          ("disease_only", "In an animal model of the disease only"), ("healthy_only", "Only in healthy animals"),
-          ("none", "None found"), ("not_searched", "Not searched")),
-         (("disease_and_healthy", "lit_animal_both"), ("disease_only", "lit_animal_disease_only"),
-          ("healthy_only", "tier_lit_healthy_only")), unknown=("not_searched",),
-         note=literature_note("animal_disease", exploratory=True)),
+    # Every agent pools into one fact; today the only source is the drug literature's screen of the program's own drug.
+    Fact("disease_model", "A non-genetic change to the target alters an animal model of the disease", "disease",
+         (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")), (("yes", "lit_animal_disease"),),
+         unknown=("not_searched",), note=literature_note("animal_disease", exploratory=True)),
+    Fact("healthy_animals", "Pharmacokinetics or target engagement measured in healthy animals", "all",
+         (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")), (("yes", "lit_animal_healthy"),),
+         unknown=("not_searched",), note=literature_note("animal_healthy", exploratory=False)),
     Fact("in_people", "A published study shows the drug acting on its target in people", "phase_2_3",
          (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")), (("yes", "lit_human_engagement"),),
          unknown=("not_searched",), note=literature_note("human_engagement", exploratory=False)),
@@ -269,16 +269,14 @@ KINDS = {k.key: k for k in [
          derived=(Line("Mutant mice from published studies (MGI)", "mgi", "target"),
                   Line("Mouse knockout from a large-scale screen (IMPC)", "impc", "target"),
                   Line("Mouse genetics agrees with the drug's direction", "animal_concordant", "target"))),
-    Kind("animal_model_pharmacology", "animals", "target", "Animal model pharmacology",
-         "A non-genetic change to the target (drug, antibody, siRNA) alters an animal model of the disease",
-         "Literature (#154)", None),
-    Kind("drug_animal_studies", "animals", "drug", "Published animal studies of the drug",
-         "A published study of the drug itself in animals, in a model of the disease or in healthy animals "
-         "(exploratory: the searches miss some of these studies)", "PubMed abstracts, screened by an LLM",
-         "area_lit_animal", (("animal_studies", ("disease_and_healthy", "disease_only", "healthy_only")),),
-         chart="animal_studies",
-         derived=(Line("The drug in an animal model of the disease", "lit_animal_disease", "disease"),
-                  Line("The drug tested in healthy animals", "lit_animal_healthy", "all"))),
+    Kind("animal_model_pharmacology", "animals", "target",
+         "Animal model pharmacology: a non-genetic change to the target alters a disease model (today: the program's "
+         "own drug)",
+         "A non-genetic change to the target (drug, antibody, siRNA) alters an animal model of the disease, whatever "
+         "the agent; today only published studies of the program's own drug are searched, other agents are to come "
+         "(#154) (exploratory: the searches miss some of these studies)",
+         "PubMed abstracts and Firecrawl's research index, screened by an LLM", "lit_animal_disease",
+         (("disease_model", ("yes",)),)),
     Kind("diseased_tissue", "in_vitro", "target", "Diseased tissue: the gene's level differs in diseased tissue",
          "The gene's RNA or protein level differs in diseased tissue (protein is to come, #154)",
          "Expression Atlas, through Open Targets (RNA, at least 2.1-fold)", "expression",
@@ -301,9 +299,6 @@ KINDS = {k.key: k for k in [
          "Another drug on the target had a Phase 2 or 3 trial in a related disease (Lin at least 0.5) miss its "
          "primary endpoint or stop for futility in the three years before entry", "ClinicalTrials.gov",
          "earlier_failure", (("related_failure", ("yes",)),)),
-    Kind("drug_in_people", "human", "drug", "Drug shown to act on its target in people",
-         "A published study showing the drug acting on its target in people (exploratory)",
-         "PubMed abstracts, screened by an LLM", "lit_human_engagement", (("in_people", ("yes",)),)),
     Kind("binding", "the_drug", "drug", "Binding to the target measured before entry",
          "The drug's binding or activity at its primary target was measured in laboratory assays before entry "
          "(small molecules)", "ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it",
@@ -315,6 +310,14 @@ KINDS = {k.key: k for k in [
                        "small_molecule"),
                   Line("The drug binds another protein within 10-fold of its target", "poor_selectivity",
                        "small_molecule"))),
+    Kind("healthy_animal_studies", "the_drug", "drug", "Pharmacokinetics or target engagement measured in healthy animals",
+         "A published study of the drug's pharmacokinetics, or of its effect on its target or pathway, in healthy "
+         "animals (exploratory: the searches miss some of these studies)",
+         "PubMed abstracts and Firecrawl's research index, screened by an LLM", "lit_animal_healthy",
+         (("healthy_animals", ("yes",)),)),
+    Kind("drug_in_people", "the_drug", "drug", "Drug shown to act on its target in people",
+         "A published study showing the drug acting on its target in people (exploratory)",
+         "PubMed abstracts, screened by an LLM", "lit_human_engagement", (("in_people", ("yes",)),)),
     Kind("molecule_properties", "the_drug", "drug", "Molecule properties: drug-like, or suited to the brain",
          "Drug-like size and chemistry (no more than one Lipinski violation); for brain diseases, chemistry suited to "
          "entering the brain (TPSA under 90, weight under 450, at most 3 donors)",
@@ -406,7 +409,6 @@ def facts(d: pd.DataFrame) -> pd.DataFrame:
     gof, lof = on("somatic_gof"), on("somatic_lof")
     close, mouse = on("mgi_strong") | on("impc_strong"), on("mgi") | on("impc")
     best, margin = d.assay_best, d.assay_margin
-    disease, healthy = on("lit_animal_disease"), on("lit_animal_healthy")
     b1, b1_close, precedent = on("b1"), on("b1_close"), on("precedent")
     return pd.DataFrame({
         "variants": pick("target", [(rare & common, "both"), (rare, "rare_only"), (common, "common_only")]),
@@ -433,8 +435,8 @@ def facts(d: pd.DataFrame) -> pd.DataFrame:
         "selectivity_margin": margin.where(APPLIES["small_molecule"](d)),
         "drug_like": scored("drug_like", "small_molecule", "unknown"),
         "brain_suited": scored("brain_penetrant", "brain", "unknown"),
-        "animal_studies": pick("all", [(d.lit_animal_healthy.isna(), "not_searched"), (disease & healthy,
-                                       "disease_and_healthy"), (disease, "disease_only"), (healthy, "healthy_only")]),
+        "disease_model": scored("lit_animal_disease", "disease", "not_searched"),
+        "healthy_animals": scored("lit_animal_healthy", "all", "not_searched"),
         "in_people": scored("lit_human_engagement", "phase_2_3", "not_searched"),
         "constraint": yes_no("constrained"),
         "mice_die_young": yes_no("ko_lethal"),
@@ -452,7 +454,7 @@ def drug_action(sign: pd.Series) -> pd.Series:
     return sign.map({"decrease": "decreases", "increase": "increases"}).fillna("other").where(sign.notna())
 
 
-def derive(f: pd.DataFrame, action: pd.Series, mondo: pd.Series) -> pd.DataFrame:
+def derive(f: pd.DataFrame, action: pd.Series) -> pd.DataFrame:
     """Every line column from the facts `f` and the drug's action: each evidence value's 0/1 column (null where its fact
     is unknown or does not apply), each kind's any-of column (null where none of its counting facts is known), and
     the derived lines (aggregates of a fact's values, and crosses of a fact with the drug's action)."""
@@ -483,9 +485,6 @@ def derive(f: pd.DataFrame, action: pd.Series, mondo: pd.Series) -> pd.DataFrame
         "b1": flag("best_approval", ("same_or_close", "related")),
         "potent_100nm": flag("potency", ("le_10nm", "10_100nm")),
         "selective": flag("selectivity", ("ge_10x",)),
-        "lit_animal_disease": flag("animal_studies", ("disease_and_healthy", "disease_only"))
-        .where(mondo.fillna("").ne("")),
-        "lit_animal_healthy": flag("animal_studies", ("disease_and_healthy", "healthy_only")),
     }
     out["poor_selectivity"] = 1.0 - out["selective"]
     return pd.DataFrame(out, index=f.index)
@@ -689,7 +688,7 @@ def build() -> pd.DataFrame:
                                      for m, t in zip(d.moiety_id, d.has_target_disease)], index=d.index).astype(float)
     f = facts(d)
     d["drug_action"] = drug_action(d.sign)
-    lines_ = derive(f, d.drug_action, d.mondo_id)
+    lines_ = derive(f, d.drug_action)
     d = d.drop(columns=[c for c in lines_.columns if c in d.columns]).join(lines_).join(f.add_prefix(FACT_PREFIX))
     for kind, _, ln in report_lines():  # lines read from the source tables (by source) rather than from the facts
         if kind and ln.column not in lines_:

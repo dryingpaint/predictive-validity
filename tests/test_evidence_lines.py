@@ -139,7 +139,7 @@ def raw(*rows: dict) -> pd.DataFrame:
 
 def lines_of(d: pd.DataFrame) -> pd.DataFrame:
     from report.evidence_lines import drug_action
-    return derive(facts(d), drug_action(d.sign), d.mondo_id)
+    return derive(facts(d), drug_action(d.sign))
 
 
 def test_each_fact_has_exactly_one_of_its_values_on_every_entry_it_applies_to():
@@ -231,7 +231,7 @@ def test_long_form_stores_each_answer_once_and_measurements_as_numbers():
     assert not out.duplicated(["moiety_id", "mondo_id", "phase", "fact_key"]).any()
     first = out[out.moiety_id.eq(1)].set_index("fact_key")
     assert first.at["best_pchembl", "value_num"] == 7.4 and first.at["potency", "value"] == "10_100nm"
-    assert set(out[out.moiety_id.eq(2)].fact_key) == {"animal_studies", "in_people"}  # no target, no small molecule
+    assert set(out[out.moiety_id.eq(2)].fact_key) == {"healthy_animals", "in_people"}  # no target, no small molecule
 
 
 def test_the_registry_holds_every_kind_fact_and_link():
@@ -241,8 +241,8 @@ def test_the_registry_holds_every_kind_fact_and_link():
     values = dict(zip(facts_.fact_key, facts_.fact_values))
     assert all(set(v) <= set(values[f]) for f, v in zip(links.fact_key, links.evidence_values))
     assert list(kinds[kinds.category.eq("animals")].kind_key) == [
-        "mouse_genetics", "animal_model_pharmacology", "drug_animal_studies"]
-    assert set(kinds[kinds.about.eq("drug")].kind_key) == {"drug_animal_studies", "binding", "drug_in_people",
+        "mouse_genetics", "animal_model_pharmacology"]
+    assert set(kinds[kinds.about.eq("drug")].kind_key) == {"healthy_animal_studies", "binding", "drug_in_people",
                                                            "molecule_properties"}
 
 

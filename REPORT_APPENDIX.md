@@ -78,14 +78,15 @@ Each program is scored for the evidence its targets had for its disease as of th
 | Diseased tissue | The gene's RNA or protein level differs in diseased tissue (protein is to come, #154) | Expression Atlas, through Open Targets (RNA, at least 2.1-fold) |
 | **Animals** |  |  |
 | Mouse genetics | A genetic change in an animal links the target to the disease: the mutant shows the disease (a knockout or transgene altering an animal model of it is to come, #154) | IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm |
-| Published animal studies of the drug (about the drug) | A published study of the drug itself in animals, in a model of the disease or in healthy animals (exploratory: the searches miss some of these studies) | PubMed abstracts, screened by an LLM |
+| Animal model pharmacology | A non-genetic change to the target (drug, antibody, siRNA) alters an animal model of the disease, whatever the agent; today only published studies of the program's own drug are searched, other agents are to come (#154) (exploratory: the searches miss some of these studies) | PubMed abstracts and Firecrawl's research index, screened by an LLM |
 | **Human** |  |  |
 | Validated at entry | A drug on the target was already approved for the same or a very close disease (Lin at least 0.8) before entry | Drugs@FDA approvals |
 | A drug on the target approved for another disease | A drug on the target was approved for another disease, one not close enough to make the pair validated at entry | Drugs@FDA approvals |
 | Another drug on the target failed in a related disease in the last 3 years | Another drug on the target had a Phase 2 or 3 trial in a related disease (Lin at least 0.5) miss its primary endpoint or stop for futility in the three years before entry | ClinicalTrials.gov |
-| Drug shown to act on its target in people (about the drug) | A published study showing the drug acting on its target in people (exploratory) | PubMed abstracts, screened by an LLM |
 | **The drug** |  |  |
 | Binding to the target measured before entry (about the drug) | The drug's binding or activity at its primary target was measured in laboratory assays before entry (small molecules) | ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it |
+| Pharmacokinetics or target engagement measured in healthy animals (about the drug) | A published study of the drug's pharmacokinetics, or of its effect on its target or pathway, in healthy animals (exploratory: the searches miss some of these studies) | PubMed abstracts and Firecrawl's research index, screened by an LLM |
+| Drug shown to act on its target in people (about the drug) | A published study showing the drug acting on its target in people (exploratory) | PubMed abstracts, screened by an LLM |
 | Molecule properties (about the drug) | Drug-like size and chemistry (no more than one Lipinski violation); for brain diseases, chemistry suited to entering the brain (TPSA under 90, weight under 450, at most 3 donors) | PubChem and ChEMBL computed properties |
 | **Target safety risk** |  |  |
 | People rarely carry broken copies of the gene, or mice without it die young | A property of the target, not evidence for the disease: people rarely carry broken copies of the gene (gnomAD LOEUF below 0.35), mice without it die before weaning, or most human cell types need it | gnomAD v4.1; Mammalian Phenotype ontology, through Open Targets; DepMap |
@@ -234,12 +235,7 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Mutant mice from published studies (MGI) (derived) | 1,496 / 7,435 | 458 | 1.44 (1.07–1.88) | 1.36 (1.10–1.68) | 1.34 (1.08–1.65) | 0.83 (0.69–1.01) |
 | · Mouse knockout from a large-scale screen (IMPC) (derived) | 40 / 7,435 | 16 | Too rare to estimate | – | – | – |
 | · Mouse genetics agrees with the drug's direction (derived) | 489 / 7,435 | 183 | 1.84 (1.33–2.50) | 1.38 (1.04–1.85) | 1.37 (1.03–1.82) | 0.55 (0.39–0.78) |
-| Published animal studies of the drug | 6,835 / 9,875 | 2,302 | 0.79 (0.65–0.98) | 0.86 (0.73–1.02) | 0.87 (0.73–1.02) | 0.94 (0.83–1.07) |
-| · In an animal model of the disease, and in healthy animals (exploratory) | 3,221 / 9,875 | 1,109 | 0.82 (0.67–1.02) | 0.72 (0.59–0.87) | 0.71 (0.59–0.87) | 0.91 (0.80–1.03) |
-| · In an animal model of the disease only (exploratory) | 1,445 / 9,875 | 636 | 1.58 (1.20–1.97) | 1.15 (0.94–1.41) | 1.15 (0.94–1.40) | 1.02 (0.88–1.18) |
-| · Only in healthy animals (exploratory) | 2,169 / 9,875 | 1,176 | 0.68 (0.53–0.84) | 1.09 (0.91–1.31) | 1.10 (0.92–1.33) | 1.03 (0.91–1.17) |
-| · The drug in an animal model of the disease (derived) | 4,666 / 8,833 | 1,536 | 0.75 (0.62–0.91) | 0.83 (0.70–0.98) | 0.83 (0.70–0.98) | 0.93 (0.83–1.04) |
-| · The drug tested in healthy animals (derived) | 5,390 / 9,875 | 1,911 | 0.65 (0.54–0.77) | 0.80 (0.67–0.95) | 0.80 (0.68–0.95) | 0.94 (0.83–1.06) |
+| Animal model pharmacology: a non-genetic change to the target alters a disease model (today: the program's own drug) | 4,666 / 8,833 | 1,536 | 0.75 (0.62–0.91) | 0.83 (0.70–0.98) | 0.83 (0.70–0.98) | 0.93 (0.83–1.04) |
 | **Human** |  |  |  |  |  |  |
 | Validated at entry: a drug on the target approved for this or a very close disease | 1,284 / 7,435 | 336 | 2.17 (1.77–2.75) | 2.01 (1.67–2.41) | 1.99 (1.66–2.38) | 0.66 (0.53–0.82) |
 | · A related disease (Lin 0.5 to 0.8) | 892 / 7,435 | 234 | 1.19 (0.80–1.64) | 1.18 (0.93–1.50) | 1.18 (0.93–1.49) | 0.88 (0.72–1.09) |
@@ -247,7 +243,6 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | A drug on the target approved for another disease | 3,021 / 7,435 | 500 | 0.83 (0.63–1.07) | 0.80 (0.65–0.99) | 0.81 (0.66–0.99) | 1.51 (1.22–1.87) |
 | · A drug on the target approved for a related disease, Lin at least 0.5 (B1) (derived) | 2,176 / 7,435 | 423 | 1.96 (1.58–2.46) | 1.85 (1.57–2.18) | 1.83 (1.55–2.17) | 0.67 (0.55–0.80) |
 | Another drug on the target failed in a related disease in the last 3 years | 1,685 / 5,836 | 393 | 1.57 (1.22–2.01) | 1.49 (1.19–1.86) | 1.47 (1.17–1.84) | 0.75 (0.62–0.90) |
-| Drug shown to act on its target in people | 2,192 / 5,613 | 860 | 1.05 (0.88–1.27) | 1.15 (0.96–1.39) | 1.16 (0.96–1.40) | 0.98 (0.86–1.11) |
 | **The drug** |  |  |  |  |  |  |
 | Binding to the target measured before entry | 1,658 / 6,091 | 415 | 1.45 (1.08–1.88) | 1.05 (0.81–1.36) | 1.04 (0.80–1.35) | 1.06 (0.89–1.25) |
 | · 10 nM or better | 1,027 / 6,091 | 263 | 1.96 (1.35–2.68) | 1.23 (0.92–1.66) | 1.21 (0.90–1.63) | 0.98 (0.80–1.19) |
@@ -257,6 +252,8 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Drug binds its target strongly (100 nM or better) (derived) | 1,390 / 6,091 | 358 | 1.57 (1.14–2.08) | 1.08 (0.82–1.43) | 1.06 (0.80–1.41) | 1.10 (0.92–1.31) |
 | · Drug binds its target 10× more strongly than other proteins tested (derived) | 579 / 1,121 | 162 | 1.27 (0.71–2.25) | 0.99 (0.64–1.53) | 1.00 (0.65–1.54) | 0.99 (0.70–1.39) |
 | · The drug binds another protein within 10-fold of its target (derived) | 542 / 1,121 | 157 | 0.79 (0.45–1.41) | 1.01 (0.65–1.56) | 1.00 (0.65–1.55) | 1.01 (0.72–1.42) |
+| Pharmacokinetics or target engagement measured in healthy animals | 5,390 / 9,875 | 1,911 | 0.65 (0.54–0.77) | 0.80 (0.67–0.95) | 0.80 (0.68–0.95) | 0.94 (0.83–1.06) |
+| Drug shown to act on its target in people | 2,192 / 5,613 | 860 | 1.05 (0.88–1.27) | 1.15 (0.96–1.39) | 1.16 (0.96–1.40) | 0.98 (0.86–1.11) |
 | Molecule properties: drug-like, or suited to the brain | 4,654 / 5,520 | 1,266 | 0.99 (0.75–1.34) | 0.93 (0.71–1.23) | 0.94 (0.71–1.22) | 0.90 (0.75–1.08) |
 | · Drug-like size and chemistry | 4,654 / 5,520 | 1,266 | 0.99 (0.75–1.34) | 0.93 (0.71–1.23) | 0.94 (0.71–1.22) | 0.90 (0.75–1.08) |
 | · Chemistry suited to entering the brain | 547 / 814 | 194 | 0.86 (0.48–1.65) | 1.43 (0.78–2.64) | 1.40 (0.76–2.58) | 0.91 (0.70–1.17) |

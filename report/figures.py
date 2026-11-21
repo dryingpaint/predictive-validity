@@ -551,7 +551,9 @@ EFFICACY_ROWS = {"validated_at_entry": ("Validated at entry: a drug on the targe
                  "expression": ("RNA change in diseased tissue", "target"),
                  "approved_other_disease": ("A drug on the target approved for another disease", "target"),
                  "area_measured": ("Drug binding measured", "drug"),
-                 "area_lit_animal": ("Published animal studies of the drug", "drug"),
+                 "lit_animal_disease": ("A non-genetic change to the target alters a disease model (the program's own drug)",
+                                        "target"),
+                 "lit_animal_healthy": ("Pharmacokinetics or target engagement measured in healthy animals", "drug"),
                  "lit_human_engagement": ("Drug shown to engage its target in people", "drug")}
 # The safety lines (report.evidence_lines.SAFETY) against safety stops and, as a control, efficacy stops
 SAFETY_BLOCKS = [("stop_safety", "Stopped for safety", ABOUT_COLORS["safety"]),

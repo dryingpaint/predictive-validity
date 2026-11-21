@@ -211,7 +211,7 @@ ENGAGED_EVIDENCE_ROWS = {"tier_rare_only": "Human genetics, rare variants", "tie
                          "expression": "Diseased tissue: RNA level differs",
                          "mouse_genetics": "Mouse genetics resembling the disease",
                          "area_measured": "Binding to the target measured",
-                         "area_lit_animal": "Published animal study of the drug",
+                         "lit_animal_disease": "Animal model pharmacology (today the program's own drug)",
                          "validated_at_entry": "A drug on the target approved for this disease (validated)",
                          "approved_other_disease": "A drug on the target approved for another disease"}
 
