@@ -334,8 +334,29 @@ def cohort_drugs() -> dict[int, int]:
     return out
 
 
+def confirm_drugs() -> dict[int, int]:
+    """Entity -> latest cutoff year over the confirmation entries of issue #140: US-sited Phase 2 entries in
+    report.windows.CONFIRM, merged entities resolved to survivors."""
+    from report import frame
+    from report.section1 import phase_rows
+    from report.windows import CONFIRM
+    rows = phase_rows(frame.programs(), frame.program_trials(), frame.snapshot(), window=CONFIRM)
+    rows = rows[~rows.credited & rows.us_site & rows.phase.eq(2)]
+    cut = pd.to_datetime(rows.entry).dt.year - 1
+    to = survivors(sorted({int(m) for m in rows.moiety_id}))
+    out: dict[int, int] = {}
+    for m, y in zip(rows.moiety_id, cut):
+        out[to[int(m)]] = max(out.get(to[int(m)], 0), int(y))
+    return out
+
+
 def entries(which: str) -> pd.DataFrame:
     return pilot_entries() if which == "pilot" else cohort_entries()
+
+
+def drugs(which: str) -> dict[int, int]:
+    """Entity -> the cutoff of the one search it needs, for the pilot, the cohort or the confirmation entries."""
+    return {"pilot": lambda: drug_cutoffs(entries("pilot")), "cohort": cohort_drugs, "confirm": confirm_drugs}[which]()
 
 
 def drug_cutoffs(e: pd.DataFrame) -> dict[int, int]:
@@ -564,8 +585,8 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
 
 
 def search(args) -> None:
-    """Search the drugs of the entries (pilot or cohort)."""
-    search_drugs(drug_cutoffs(entries(args.entries)) if args.entries == "pilot" else cohort_drugs())
+    """Search the drugs of the entries (pilot, cohort or confirmation)."""
+    search_drugs(drugs(args.entries))
 
 
 class FirecrawlError(RuntimeError):
@@ -874,11 +895,17 @@ def screen_items(cut: dict[int, int], log=print) -> dict[str, dict]:
     log(f"drugs={len(cut)} records={len(recs)} large drugs={len(large)} "
         f"large-drug records={int(size[size > PREFILTER_ABOVE].sum())} small-drug pmids to fetch={len(small_missing)}")
     have.update(fetch_papers(small_missing, store=True))
-    with llm.connect() as conn, conn.cursor() as cur:
+    with llm.connect() as conn, conn.cursor() as cur:  # a record already screened keeps its decision when names are vetted:
+        # the vetted search still retrieves it only if it names the drug by a kept name, and records it no longer
+        # retrieves drop out of every match
         cur.execute("SELECT moiety_id || '|' || record_id, possibly FROM preclin.literature_prefilter")
         possibly = dict(cur.fetchall())
+        cur.execute("SELECT moiety_id || '|' || record_id FROM preclin.literature_screen WHERE moiety_id = ANY(%s)",
+                    (sorted(cut),))
+        screened = {r[0] for r in cur.fetchall()}
     big = recs[recs.moiety_id.isin(large)]
-    todo = big[~(big.moiety_id.astype(str) + "|" + big.record_id).isin(possibly)]
+    key = big.moiety_id.astype(str) + "|" + big.record_id
+    todo = big[~key.isin(possibly) & ~key.isin(screened)]  # a drug grown past PREFILTER_ABOVE keeps its screens
     memory = fetch_papers(sorted({r for r in todo.record_id if r.isdigit() and r not in have}, key=int), store=False)
     papers = {**memory, **have}
     pre = {f"{m}|{r}": payload(names[m], targets.get(m, ""), r, papers[r])
@@ -900,12 +927,6 @@ def screen_items(cut: dict[int, int], log=print) -> dict[str, dict]:
             cur.execute("SELECT pmid FROM public.publications WHERE pmid = ANY(%s)", (passed,))
             stored = {r[0] for r in cur.fetchall()}
         have.update(fetch_papers([p for p in passed if p not in stored], store=True))
-    with llm.connect() as conn, conn.cursor() as cur:  # a record already screened keeps its decision when names are vetted:
-        # the vetted search still retrieves it only if it names the drug by a kept name, and records it no longer
-        # retrieves drop out of every match
-        cur.execute("SELECT moiety_id || '|' || record_id FROM preclin.literature_screen WHERE moiety_id = ANY(%s)",
-                    (sorted(cut),))
-        screened = {r[0] for r in cur.fetchall()}
     keep = [(m, r) for m, r in zip(recs.moiety_id, recs.record_id)
             if r in have and m in names and (m not in large or possibly.get(f"{m}|{r}")) and f"{m}|{r}" not in screened]
     return {f"{m}|{r}": payload(names[m], targets.get(m, ""), r, have[r]) for m, r in keep}
@@ -997,7 +1018,7 @@ def sweep(_args) -> None:
                            page_size=5000)
             conn.commit()
         print(f"prefilter failures={len(pre)} decided={len(decided)}", flush=True)
-        cut = {**cohort_drugs(), **drug_cutoffs(entries("pilot"))}
+        cut = {**cohort_drugs(), **drug_cutoffs(entries("pilot")), **confirm_drugs()}
         affected = {m: cut[m] for m in {int(k.split("|")[0]) for k, _, o in decided if o["possibly"]} if m in cut}
         if affected:  # records the prefilter now passes still need the screen; screen_drugs reads only unscreened ones
             screen_drugs(affected)
@@ -1040,8 +1061,8 @@ def rescreen_refusals(_args) -> None:
 
 
 def screen(args) -> None:
-    """Screen every record of the pilot's drugs that reaches the screen."""
-    screen_drugs(drug_cutoffs(entries(args.entries)) if args.entries == "pilot" else cohort_drugs())
+    """Screen every record of the entries' drugs that reaches the screen."""
+    screen_drugs(drugs(args.entries))
 
 
 def chunks(cut: dict[int, int], sizes: dict[int, int]) -> list[dict[int, int]]:
@@ -1057,14 +1078,14 @@ def chunks(cut: dict[int, int], sizes: dict[int, int]) -> list[dict[int, int]]:
 
 
 def run_cohort(args) -> None:
-    """One worker of the cohort run: search, then prefilter and screen in chunks, the drugs with
+    """One worker of the cohort (or confirmation) run: search, then prefilter and screen in chunks, the drugs with
     moiety_id % workers == worker. Progress goes to --log; every step resumes from what is stored."""
     def log(msg: str) -> None:
         line = f"{time.strftime('%Y-%m-%d %H:%M:%S')} [w{args.worker}] {msg}"
         print(line, flush=True)
         with open(args.log, "a") as fh:
             fh.write(line + "\n")
-    cut = {m: y for m, y in cohort_drugs().items() if m % args.workers == args.worker}
+    cut = {m: y for m, y in drugs(args.entries).items() if m % args.workers == args.worker}
     if args.skip_pilot:  # the pilot screen decides these; a worker deciding them too would pay twice
         pilot = set(pilot_entries().moiety_id.astype(int))
         cut = {m: y for m, y in cut.items() if m not in pilot}
@@ -1074,12 +1095,19 @@ def run_cohort(args) -> None:
         log("worker done (search only)")
         return
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT moiety_id, count(DISTINCT record_id) FROM preclin.literature_hit
-                       WHERE moiety_id = ANY(%s) GROUP BY 1""", (sorted(cut),))
-        sizes = dict(cur.fetchall())
-        cur.execute("SELECT DISTINCT moiety_id FROM preclin.literature_screen WHERE moiety_id = ANY(%s)", (sorted(cut),))
-        screened = {r[0] for r in cur.fetchall()}
-    todo = {m: y for m, y in cut.items() if m not in screened and sizes.get(m)}
+        cur.execute("CREATE TEMP TABLE want (moiety_id int, cutoff_year int) ON COMMIT DROP")
+        execute_values(cur, "INSERT INTO want VALUES %s", list(cut.items()))
+        # records the drug's search at its cutoff retrieved, and those still to decide: not screened, and not read by
+        # the prefilter as impossible. A drug searched again at a later cutoff has only its new records left
+        cur.execute("""SELECT h.moiety_id, count(DISTINCT h.record_id),
+                              count(DISTINCT h.record_id) FILTER (WHERE s.record_id IS NULL AND p.possibly IS NOT FALSE)
+                       FROM preclin.literature_hit h JOIN want USING (moiety_id, cutoff_year)
+                       LEFT JOIN preclin.literature_screen s USING (moiety_id, record_id)
+                       LEFT JOIN preclin.literature_prefilter p USING (moiety_id, record_id)
+                       GROUP BY 1""")
+        counts = cur.fetchall()
+    sizes = {m: n for m, n, _ in counts}
+    todo = {m: y for m, y in cut.items() if any(m == x and left for x, _, left in counts)}
     large = {m: sizes[m] for m in todo if sizes[m] > LARGE_DRUG and m not in args.allow_large}
     if large:
         with llm.connect() as conn, conn.cursor() as cur:
@@ -1270,23 +1298,24 @@ RECORD_YEAR = """(SELECT year FROM public.publications WHERE pmid = s.record_id
 
 
 def qualifying(without: str | None = None) -> pd.DataFrame:
-    """Entity, record, publication year, kind and (for animal models) mapped MONDO term of every qualifying screen;
-    without a source, the records only that source retrieved are left out. Read through report.frame, so a report
-    build reads it from the build's snapshot."""
+    """Entity, record, publication year, kind, (for animal models) mapped MONDO term and the cutoffs of the searches
+    that retrieved it, of every qualifying screen; without a source, the records only that source retrieved are
+    left out. Read through report.frame, so a report build reads it from the build's snapshot."""
     from report import frame
-    only = f"""AND EXISTS (SELECT 1 FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id
-                           AND h.record_id = s.record_id{" AND h.source <> %s" if without else ""})"""
+    hits = f"""CROSS JOIN LATERAL (SELECT array_agg(DISTINCT h.cutoff_year ORDER BY h.cutoff_year) AS cuts
+                                  FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id
+                                  AND h.record_id = s.record_id{" AND h.source <> %s" if without else ""}) c"""
     return frame.query(f"""SELECT s.moiety_id, s.record_id AS pmid, {RECORD_YEAR} AS year, 'animal_disease' AS kind,
-                                  md.mondo_id
+                                  md.mondo_id, c.cuts AS search_cutoffs
                            FROM preclin.literature_screen s CROSS JOIN unnest(s.modelled_diseases) d
-                           JOIN preclin.literature_model_disease md ON md.modelled_disease = d
-                           WHERE s.animal_disease AND md.mondo_id IS NOT NULL {only}
+                           JOIN preclin.literature_model_disease md ON md.modelled_disease = d {hits}
+                           WHERE s.animal_disease AND md.mondo_id IS NOT NULL AND c.cuts IS NOT NULL
                            UNION ALL
-                           SELECT s.moiety_id, s.record_id, {RECORD_YEAR}, k.kind, NULL
+                           SELECT s.moiety_id, s.record_id, {RECORD_YEAR}, k.kind, NULL, c.cuts
                            FROM preclin.literature_screen s
                            CROSS JOIN LATERAL (VALUES ('animal_healthy', s.animal_healthy),
-                                                      ('human_engagement', s.human_engagement)) k(kind, ok)
-                           WHERE k.ok {only}""", (without, without) if without else None)
+                                                      ('human_engagement', s.human_engagement)) k(kind, ok) {hits}
+                           WHERE k.ok AND c.cuts IS NOT NULL""", (without, without) if without else None)
 
 
 def record_dois() -> dict[str, str]:
@@ -1489,7 +1518,7 @@ def main() -> None:
     sub = parser.add_subparsers(dest="cmd", required=True)
     for name, fn in (("search", search), ("screen", screen)):
         p = sub.add_parser(name)
-        p.add_argument("--entries", choices=("pilot", "cohort"), default="cohort")
+        p.add_argument("--entries", choices=("pilot", "cohort", "confirm"), default="cohort")
         p.set_defaults(fn=fn)
     sub.add_parser("diseases").set_defaults(fn=diseases)
     vt = sub.add_parser("vet")
@@ -1504,6 +1533,7 @@ def main() -> None:
     rc.add_argument("--worker", type=int, required=True)
     rc.add_argument("--workers", type=int, required=True)
     rc.add_argument("--log", required=True)
+    rc.add_argument("--entries", choices=("cohort", "confirm"), default="cohort")
     rc.add_argument("--skip-pilot", action="store_true", help="leave the pilot's drugs to the pilot screen")
     rc.add_argument("--search-only", action="store_true", help="search, and leave the prefilter and screen for a later run")
     rc.add_argument("--allow-large", type=int, nargs="*", default=[],

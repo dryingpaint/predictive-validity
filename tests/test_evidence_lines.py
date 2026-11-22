@@ -303,15 +303,31 @@ def test_a_common_essential_gene_of_that_year_does_not_count():
 
 def test_a_literature_line_counts_only_studies_published_before_entry_in_a_related_disease():
     from report.evidence_lines import literature_columns
-    q = pd.DataFrame([(1, "p1", 2009, "animal_disease", "MONDO:A"), (1, "p2", 2012, "animal_disease", "MONDO:A"),
-                      (1, "p3", 2009, "animal_disease", "MONDO:Z"), (1, "p4", 2010, "animal_healthy", None),
-                      (1, "p5", None, "human_engagement", None)],
-                     columns=["moiety_id", "pmid", "year", "kind", "mondo_id"])
+    q = pd.DataFrame([(1, "p1", 2009, "animal_disease", "MONDO:A", [2010]), (1, "p2", 2012, "animal_disease", "MONDO:A", [2010]),
+                      (1, "p3", 2009, "animal_disease", "MONDO:Z", [2010]), (1, "p4", 2010, "animal_healthy", None, [2010]),
+                      (1, "p5", None, "human_engagement", None, [2010])],
+                     columns=["moiety_id", "pmid", "year", "kind", "mondo_id", "search_cutoffs"])
     d = pd.DataFrame({"moiety_id": [1, 1, 2, 3], "mondo_id": ["MONDO:A", "MONDO:A", "MONDO:A", None],
                       "phase": [2, 1, 2, 2], "entry_year": [2011, 2010, 2011, 2011]})
-    out = literature_columns(d, lambda m: frozenset({m, "MONDO:A1"}), q, screened={1, 3}, to={1: 1, 2: 2, 3: 3})
+    out = literature_columns(d, lambda m: frozenset({m, "MONDO:A1"}), q, screened={1: [2010], 3: [2010]},
+                             to={1: 1, 2: 2, 3: 3}, last_cutoff=2018)
     assert out.lit_animal_disease.tolist()[:2] == [1.0, 1.0]  # p1 (2009) precedes both entries; p3's disease is unrelated
     assert out.lit_animal_healthy.tolist()[:2] == [1.0, 0.0]  # p4 (2010) is not before a 2010 entry's cutoff (2009)
     assert out.lit_human_engagement.iloc[0] == 0.0 and pd.isna(out.lit_human_engagement.iloc[1])  # undated; Phase 1
     assert out.iloc[2].isna().all()  # drug 2 not screened
     assert pd.isna(out.lit_animal_disease.iloc[3]) and out.lit_animal_healthy.iloc[3] == 0.0  # no disease
+
+
+def test_a_later_search_leaves_an_earlier_window_as_it_was_and_scores_only_the_entries_it_reaches():
+    from report.evidence_lines import literature_columns
+    # p1, published in 2015, was retrieved only by the drug's later search
+    q = pd.DataFrame([(1, "p1", 2015, "animal_healthy", None, [2021])],
+                     columns=["moiety_id", "pmid", "year", "kind", "mondo_id", "search_cutoffs"])
+    d = pd.DataFrame({"moiety_id": [1], "mondo_id": [None], "phase": [2], "entry_year": [2017]})
+    screened, to = {1: [2016, 2021]}, {1: 1}
+    assert literature_columns(d, lambda m: frozenset(), q, screened, to, last_cutoff=2018).lit_animal_healthy.tolist() == [0.0]
+    assert literature_columns(d, lambda m: frozenset(), q, screened, to, last_cutoff=2021).lit_animal_healthy.tolist() == [1.0]
+    # a drug searched only for a later window is unsearched in an earlier one
+    assert literature_columns(d, lambda m: frozenset(), q, {1: [2021]}, to, last_cutoff=2018).isna().all().all()
+
+

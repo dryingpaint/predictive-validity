@@ -37,6 +37,7 @@ import sys
 import uuid
 from collections import defaultdict
 from dataclasses import dataclass
+from datetime import date
 
 import numpy as np
 import pandas as pd
@@ -45,6 +46,7 @@ from psycopg2.extras import Json, execute_values
 from pipeline import literature, llm
 from report import frame
 from report.section3 import ERA_BINS, ERA_LABELS, RELATED, Evidence, cohorts, entries
+from report.windows import SECTION1
 
 OUT = os.path.join(frame.REPO, "report", "output", "evidence_lines")
 LOOKBACK_YEARS = 3  # earlier failed trials on the target count when they ended this long before entry
@@ -576,31 +578,37 @@ def property_lines(d: pd.DataFrame, props: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame({"drug_like": drug_like, "brain_penetrant": brain}, index=d.index)
 
 
-def literature_inputs(moieties: list[int]) -> tuple[pd.DataFrame, set[int], dict[int, int]]:
-    """The qualifying literature screens, the drugs whose retrieval is screened (screen or prefilter rows, or
-    nothing retrieved), and each entity's surviving entity."""
+def literature_inputs(moieties: list[int]) -> tuple[pd.DataFrame, dict[int, list[int]], dict[int, int]]:
+    """The qualifying literature screens, the cutoffs of each drug's searches whose retrieval is screened (screen or
+    prefilter rows, or nothing retrieved), and each entity's surviving entity."""
     q = literature.qualifying()
-    screened = set(frame.query("""SELECT s.moiety_id FROM preclin.literature_search s GROUP BY 1
-                                  HAVING NOT EXISTS (SELECT 1 FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id)
-                                  UNION SELECT moiety_id FROM preclin.literature_screen
-                                  UNION SELECT moiety_id FROM preclin.literature_prefilter""").moiety_id)
+    screened = dict(frame.query("""SELECT s.moiety_id, array_agg(DISTINCT s.cutoff_year ORDER BY s.cutoff_year) AS cuts
+                                   FROM preclin.literature_search s
+                                   WHERE NOT EXISTS (SELECT 1 FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id)
+                                      OR s.moiety_id IN (SELECT moiety_id FROM preclin.literature_screen
+                                                         UNION SELECT moiety_id FROM preclin.literature_prefilter)
+                                   GROUP BY 1""").itertuples(index=False, name=None))
     return q, screened, literature.survivors(moieties)
 
 
-def literature_columns(d: pd.DataFrame, related, q: pd.DataFrame, screened: set[int], to: dict[int, int]) -> pd.DataFrame:
+def literature_columns(d: pd.DataFrame, related, q: pd.DataFrame, screened: dict[int, list[int]], to: dict[int, int],
+                       last_cutoff: int) -> pd.DataFrame:
     """The three literature lines of each entry, from the version 3 screens of the drug's published abstracts:
     1 when a qualifying study was published by the year before entry (for an animal model, of the entry's disease
     or a disease `related(mondo_id)` returns), 0 when the drug's retrieval was screened and none was, null when it
-    has not been searched and screened (or, for engagement, the entry is not Phase 2 or 3). A record with no known
-    year cannot be shown to precede entry and does not count."""
+    has not been searched and screened (or, for engagement, the entry is not Phase 2 or 3). Only searches up to
+    `last_cutoff`, the last cutoff of the window's entries, and the records they retrieved count, so a search for
+    later entries leaves an earlier window's lines as they were. A record with no known year cannot be
+    shown to precede entry and does not count."""
     q = q[q.year.notna()]
     by: dict = defaultdict(list)
-    for m, year, kind, mondo in zip(q.moiety_id, q.year.astype(int), q.kind, q.mondo_id):
-        by[(int(m), kind)].append((year, mondo))
+    for m, year, kind, mondo, cuts in zip(q.moiety_id, q.year.astype(int), q.kind, q.mondo_id, q.search_cutoffs):
+        if min(cuts) <= last_cutoff:
+            by[(int(m), kind)].append((year, mondo))
     out: dict[str, list] = {"lit_animal_disease": [], "lit_animal_healthy": [], "lit_human_engagement": []}
     for r in d.itertuples():
         m, cut = to.get(int(r.moiety_id), int(r.moiety_id)), int(r.entry_year) - 1
-        if m not in screened:
+        if not any(c <= last_cutoff for c in screened.get(m, ())):
             for v in out.values():
                 v.append(np.nan)
             continue
@@ -640,11 +648,12 @@ def earlier_safety_stop(by_gene: dict, moiety_id, genes, entry: pd.Timestamp) ->
 
 
 @frame.held_once
-def build() -> pd.DataFrame:
+def build(window: tuple[date, date] = SECTION1) -> pd.DataFrame:
+    """The dataset of the phase entries in `window`: SECTION1 for the report and the stored copy."""
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
     ev = Evidence(progs)
-    rows = entries(progs, trials, snap)
+    rows = entries(progs, trials, snap, window)
     rows = rows[rows.us_site].copy()
     rows["mondo_id"] = rows.program_id.map(progs.set_index("program_id").mondo_id)
     feats = cohorts(rows.drop(columns="mondo_id"), ev).drop(columns=list(rows.columns.drop(["program_id", "phase"])),
@@ -665,7 +674,7 @@ def build() -> pd.DataFrame:
         if r.has_target_disease else None for r in d.itertuples()], index=d.index, dtype=object).map({True: 1.0, False: 0.0})
 
     d = d.join(literature_columns(d, lambda m: ev.nb.terms(m, RELATED),
-                                  *literature_inputs(sorted({int(m) for m in d.moiety_id}))))
+                                  *literature_inputs(sorted({int(m) for m in d.moiety_id})), window[1].year - 1))
 
     lines_by, dep_year = cell_screens()
     essential = frame.common_essentials()
