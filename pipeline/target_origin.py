@@ -44,6 +44,12 @@ ORIGINS = ["human_genetics", "tumour_genetics", "diseased_tissue", "mouse_geneti
 # Stored values no model gives: a label the two checkers dispute, and a pair whose labelling never returned a valid
 # answer. Each is its own value, distinct from unclear (no source settles the origin).
 STORED_ONLY = ("disputed", "not_reached")
+# An origin a stored decision gives under a name the list has since replaced (migration 150) -> its current name
+RENAMED = {"cell_screen": "cell_line_perturbation"}
+
+
+def current_origin(origin: str | None) -> str | None:
+    return RENAMED.get(origin, origin)
 GRADES = ["stated", "pattern", "none"]
 ROUTES = ["phenotypic_screen", "target_screen", "de_novo_design", "derived_from_active", "repurposed_drug", "unclear"]
 
@@ -616,8 +622,8 @@ def origin_rows(decided: list[tuple[str, int, dict]]) -> list[tuple]:
     out = []
     for k, decision_id, o in decided:
         e, m = split_key(k)
-        out.append((e, m, "labelled", o["origin"], o["origin_year"], o["secondary_origin"], o["grade"],
-                    list(o["sources"]), o["quote"].strip() or None, decision_id, LABEL_METHOD, "not_checked",
+        out.append((e, m, "labelled", current_origin(o["origin"]), o["origin_year"],
+                    current_origin(o["secondary_origin"]), o["grade"], list(o["sources"]), o["quote"].strip() or None, decision_id, LABEL_METHOD, "not_checked",
                     o["discovery_route"], o["route_quote"].strip() or None, list(o["route_sources"])))
     return out
 
@@ -969,9 +975,9 @@ CHECK_ITEMS_SQL = """SELECT o.ensembl_id, o.mondo_id, o.llm_decision_id, d.parse
 def label_row(e: str, m: str, decision_id: int, o: dict) -> dict:
     """The label as read, in the shape of its stored row (what origin_rows writes), so the check sees the same label
     whatever the row holds after an earlier check."""
-    return {"ensembl_id": e, "mondo_id": m, "origin": o["origin"], "origin_year": o["origin_year"],
-            "secondary_origin": o["secondary_origin"], "grade": o["grade"], "sources": list(o["sources"]),
-            "quote": o["quote"].strip() or None, "llm_decision_id": decision_id, "parsed_output": o}
+    return {"ensembl_id": e, "mondo_id": m, "origin": current_origin(o["origin"]), "origin_year": o["origin_year"],
+            "secondary_origin": current_origin(o["secondary_origin"]), "grade": o["grade"],
+            "sources": list(o["sources"]), "quote": o["quote"].strip() or None, "llm_decision_id": decision_id, "parsed_output": o}
 
 
 def check_items(pairs: pd.DataFrame) -> dict[str, dict]:

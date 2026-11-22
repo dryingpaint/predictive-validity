@@ -689,6 +689,13 @@ def test_a_rejected_label_is_stored_unclear_and_a_disputed_one_disputed():
     assert all("check_fields" in sql for sql in to.CHECK_UPDATE_SQL.values())
 
 
+def test_a_stored_decision_under_a_replaced_origin_name_is_read_under_the_current_one():
+    o = {"origin": "cell_screen", "origin_year": 2014, "secondary_origin": "cell_screen", "grade": "stated",
+         "sources": ["PMID:1"], "quote": " q "}
+    row = to.label_row("ENSG1", "MONDO:1", 7, o)
+    assert (row["origin"], row["secondary_origin"], row["quote"]) == ("cell_line_perturbation", "cell_line_perturbation", "q")
+
+
 def test_a_pair_never_labelled_gets_a_not_reached_row_citing_its_last_attempt():
     keys = [to.key("ENSG1", "MONDO:1"), to.key("ENSG2", "MONDO:2"), to.key("ENSG3", "MONDO:3")]
     rows = to.unreached_rows(keys, labelled={keys[0]}, last_decision={keys[1]: 42})
