@@ -84,10 +84,13 @@ DETAIL = {
     "impc": ("biologicalModelId", "biologicalModelAllelicComposition", "biologicalModelGeneticBackground",
              "targetInModel"),
     "expression_atlas": ("studyId", "contrast", "log2FoldChangeValue", "log2FoldChangePercentileRank"),
-    "reactome": ("reactionName", "targetModulation"),
+    "reactome": ("reactionId", "reactionName", "pathways", "targetModulation"),
     "crispr": ("diseaseCellLines",),
     "crispr_screen": ("studyId", "contrast", "log2FoldChangeValue", "cellType"),
 }
+# The source's own identifiers of every evidence row: the disease and target as the source names them, so a row can
+# be traced to the record it came from (an Orphanet or OMIM disease, a ClinVar or Gene2Phenotype entry).
+SOURCE_IDS = ("diseaseFromSourceId", "diseaseFromSource", "targetFromSourceId")
 EVIDENCE_COLUMNS = ("id", "targetId", "diseaseId", "datasourceId", "score", "resourceScore", "publicationDate",
                     "evidenceDate", "releaseDate", "directionOnTarget", "directionOnTrait", "confidence",
                     "allelicRequirements", "variantFunctionalConsequenceId", "literature",
@@ -189,8 +192,9 @@ def load(_args) -> None:
 
 def evidence_row(r: dict, release: int) -> tuple:
     day = r.get("publicationDate") or r.get("evidenceDate") or r.get("releaseDate")
-    detail = {k: r[k] for k in DETAIL.get(r["datasourceId"], ()) if r.get(k) not in (None, [], "")}
-    detail["n_literature"] = len(r.get("literature") or [])
+    detail = {k: r[k] for k in (*SOURCE_IDS, *DETAIL.get(r["datasourceId"], ())) if r.get(k) not in (None, [], "")}
+    if r.get("literature"):
+        detail["literature"] = list(r["literature"])  # the supporting papers' PubMed ids
     if r.get("diseaseModelAssociatedModelPhenotypes"):  # mouse phenotypes that matched the disease's
         detail["model_phenotypes"] = [p["label"] for p in r["diseaseModelAssociatedModelPhenotypes"]][:10]
         detail["n_human_phenotypes"] = len(r.get("diseaseModelAssociatedHumanPhenotypes") or [])
@@ -242,7 +246,8 @@ def evidence(_args) -> None:
     rows = []
     for name in EVIDENCE_DATASETS:
         data = ds.dataset(os.path.join(CACHE, name), format="parquet")
-        columns = [c for c in {*EVIDENCE_COLUMNS, *(k for v in DETAIL.values() for k in v)} if c in data.schema.names]
+        columns = [c for c in {*EVIDENCE_COLUMNS, *SOURCE_IDS, *(k for v in DETAIL.values() for k in v)}
+                   if c in data.schema.names]
         table = data.to_table(columns=columns, filter=ds.field("targetId").isin(targets)
                               & ds.field("datasourceId").isin(list(DATASOURCES)))
         rows += [evidence_row(r, release) for r in table.to_pylist()]
