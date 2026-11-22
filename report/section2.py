@@ -58,7 +58,7 @@ from sklearn.model_selection import StratifiedGroupKFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
-from report import frame
+from report import evidence_facts, frame
 from report.disease_match import Mondo
 from report.section1 import N_BOOT, SEED, boot_rates, loa, phase_rows, resolved_counts
 from report.windows import SECTION1, SECTION1_PERIODS, SECTION2_PREDICT
@@ -154,8 +154,8 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
     """Evidence flags per (program, phase) row, as of the year before phase entry."""
     mondo = Mondo()
     targets, by_target, constraint = target_tables()
-    essential = frame.common_essentials()
-    measurements = frame.drug_assays()
+    essential = evidence_facts.common_essentials()
+    measurements = evidence_facts.drug_assays()
     assays, no_assays = dict(iter(measurements.groupby("moiety_id"))), measurements.iloc[:0]
 
     disease = progs.set_index("program_id").mondo_id

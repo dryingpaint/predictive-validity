@@ -1293,29 +1293,16 @@ def entry_matches(e: pd.DataFrame, q: pd.DataFrame, related) -> list[set[str]]:
     return out
 
 
-RECORD_YEAR = """(SELECT year FROM public.publications WHERE pmid = s.record_id
-                UNION ALL SELECT year FROM preclin.literature_record WHERE record_id = s.record_id LIMIT 1)"""
-
-
 def qualifying(without: str | None = None) -> pd.DataFrame:
     """Entity, record, publication year, kind, (for animal models) mapped MONDO term and the cutoffs of the searches
-    that retrieved it, of every qualifying screen; without a source, the records only that source retrieved are
-    left out. Read through report.frame, so a report build reads it from the build's snapshot."""
-    from report import frame
-    hits = f"""CROSS JOIN LATERAL (SELECT array_agg(DISTINCT h.cutoff_year ORDER BY h.cutoff_year) AS cuts
-                                  FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id
-                                  AND h.record_id = s.record_id{" AND h.source <> %s" if without else ""}) c"""
-    return frame.query(f"""SELECT s.moiety_id, s.record_id AS pmid, {RECORD_YEAR} AS year, 'animal_disease' AS kind,
-                                  md.mondo_id, c.cuts AS search_cutoffs
-                           FROM preclin.literature_screen s CROSS JOIN unnest(s.modelled_diseases) d
-                           JOIN preclin.literature_model_disease md ON md.modelled_disease = d {hits}
-                           WHERE s.animal_disease AND md.mondo_id IS NOT NULL AND c.cuts IS NOT NULL
-                           UNION ALL
-                           SELECT s.moiety_id, s.record_id, {RECORD_YEAR}, k.kind, NULL, c.cuts
-                           FROM preclin.literature_screen s
-                           CROSS JOIN LATERAL (VALUES ('animal_healthy', s.animal_healthy),
-                                                      ('human_engagement', s.human_engagement)) k(kind, ok) {hits}
-                           WHERE k.ok AND c.cuts IS NOT NULL""", (without, without) if without else None)
+    that retrieved it, of every qualifying screen (the literature facts of report.evidence_facts); without a source,
+    the records only that source retrieved are left out."""
+    from report import evidence_facts
+    f = evidence_facts.facts("literature")
+    cuts = evidence_facts.detail(f, "hits").map(lambda hits: sorted({c for c, src in hits if src != without}))
+    out = pd.DataFrame({"moiety_id": f.moiety_id, "pmid": f.record_key.str.split(" ").str[1], "year": f.known_year,
+                        "kind": f.value, "mondo_id": f.mondo_id, "search_cutoffs": cuts})
+    return out[out.search_cutoffs.map(bool)].reset_index(drop=True)
 
 
 def record_dois() -> dict[str, str]:

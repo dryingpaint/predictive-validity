@@ -44,7 +44,7 @@ import pandas as pd
 from psycopg2.extras import Json, execute_values
 
 from pipeline import literature, llm
-from report import frame
+from report import evidence_facts, frame
 from report.section3 import ERA_BINS, ERA_LABELS, RELATED, Evidence, cohorts, entries
 from report.windows import SECTION1
 
@@ -547,14 +547,10 @@ def cell_dependency(genes, related: frozenset, year: int, lines: dict, dep_year:
 def cell_screens() -> tuple[dict, dict]:
     """The dependency screens: cell line -> (MONDO term, first public year), and (Ensembl gene, cell line) ->
     the year its dependency became public."""
-    s = frame.query("""SELECT c.depmap_id, c.mondo_id, min(s.public_year) AS year FROM preclin.cell_line c
-                       JOIN preclin.cell_screen s USING (depmap_id) WHERE c.mondo_id IS NOT NULL GROUP BY 1, 2""")
-    d = frame.query("""SELECT g.ensembl_id, d.depmap_id, min(s.public_year) AS year
-                       FROM preclin.cell_dependency d JOIN preclin.cell_screen s USING (depmap_id, dataset)
-                       JOIN preclin.hgnc_gene g ON g.entrez_id = d.entrez_id
-                       WHERE g.ensembl_id IS NOT NULL GROUP BY 1, 2""")
-    return ({r.depmap_id: (r.mondo_id, int(r.year)) for r in s.itertuples()},
-            {(r.ensembl_id, r.depmap_id): int(r.year) for r in d.itertuples()})
+    lines, deps = evidence_facts.facts("screened_line"), evidence_facts.facts("dependency")
+    first = deps.groupby(["ensembl_id", "value"]).known_year.min()
+    return ({line: (m, int(y)) for line, m, y in zip(lines.value, lines.mondo_id, lines.known_year)},
+            {(g, line): int(y) for (g, line), y in first.items()})
 
 
 def molecule_lines(assays: pd.DataFrame, primary: set[str], year: int) -> dict:
@@ -624,8 +620,8 @@ def literature_columns(d: pd.DataFrame, related, q: pd.DataFrame, screened: dict
 
 def vital_organ_genes() -> set[str]:
     """Ensembl ids of the genes whose mouse mutants show a phenotype in any VITAL_ORGANS class."""
-    return set(frame.query("SELECT DISTINCT target_ensembl FROM preclin.ot_mouse_phenotype WHERE class_ids && %s",
-                           (list(VITAL_ORGANS),)).target_ensembl)
+    p = evidence_facts.facts("mouse_phenotype")
+    return set(p.ensembl_id[evidence_facts.detail(p, "class_ids").map(lambda c: bool(set(c or ()) & VITAL_ORGANS.keys()))])
 
 
 def safety_stops() -> pd.DataFrame:
@@ -677,7 +673,7 @@ def build(window: tuple[date, date] = SECTION1) -> pd.DataFrame:
                                   *literature_inputs(sorted({int(m) for m in d.moiety_id})), window[1].year - 1))
 
     lines_by, dep_year = cell_screens()
-    essential = frame.common_essentials()
+    essential = evidence_facts.common_essentials()
     onc = APPLIES["ONC"](d)
     d["cell_dependency"] = pd.Series([
         cell_dependency(ev.ent.at[r.moiety_id, "genes"], ev.nb.terms(r.mondo_id, RELATED), r.entry_year - 1,
@@ -687,12 +683,14 @@ def build(window: tuple[date, date] = SECTION1) -> pd.DataFrame:
     symbols = frame.query("""SELECT mt.moiety_id, t.symbol FROM preclin.moiety_target mt
                              JOIN public.targets t ON t.id = mt.target_id WHERE mt.is_primary""") \
         .groupby("moiety_id").symbol.apply(set)
-    measurements = frame.drug_assays()
+    measurements = evidence_facts.drug_assays()
     assays, none = dict(iter(measurements.groupby("moiety_id"))), measurements.iloc[:0]
     mol = pd.DataFrame([molecule_lines(assays.get(r.moiety_id, none), symbols.get(r.moiety_id, set()), r.entry_year - 1)
                         if r.modality == "small_molecule" else {} for r in d.itertuples()], index=d.index)
     d = d.join(mol)
-    props = frame.query("SELECT moiety_id, molecular_weight, tpsa, hbd, ro5_violations FROM preclin.moiety_property")
+    mp = evidence_facts.facts("molecule_property")
+    props = pd.DataFrame({"moiety_id": mp.moiety_id, **{k: evidence_facts.detail(mp, k).astype(float)
+                                                       for k in ("molecular_weight", "tpsa", "hbd", "ro5_violations")}})
     d = d.join(property_lines(d[["moiety_id", "modality", "bio_area"]], props))
 
     vital = vital_organ_genes()

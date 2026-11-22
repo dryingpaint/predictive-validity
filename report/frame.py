@@ -97,41 +97,13 @@ def loaded_once(load):
     return get
 
 
-@held_once
-def common_essentials() -> dict[int, set[str]]:
-    """DepMap common-essential genes (Ensembl ids) by the year of the release that listed them."""
-    lists: dict[int, set[str]] = {}
-    for year, ens in query("""SELECT e.release_year, g.ensembl_id FROM preclin.depmap_common_essential e
-                              JOIN preclin.hgnc_gene g USING (entrez_id)
-                              WHERE g.ensembl_id IS NOT NULL""").itertuples(index=False):
-        lists.setdefault(int(year), set()).add(ens)
-    return lists
-
-
 def essential_as_of(lists: dict[int, set[str]], genes, year: int) -> bool:
     """Whether any of `genes` is on the latest common-essential list from `year` or before (none before 2019)."""
     known = [y for y in lists if y <= year]
     return bool(known) and any(g in lists[max(known)] for g in genes)
 
 
-CELL_BASED = "BAO_0000219"  # BioAssay Ontology: cell-based format
 POTENT, VERY_POTENT, SELECTIVE = 7.0, 8.0, 2.0  # pChEMBL 7 = 100 nM, 8 = 10 nM; a 2-log margin is 100-fold
-
-
-@held_once
-def drug_assays() -> pd.DataFrame:
-    """ChEMBL potency measurements of each entity's molecules (every form of each parent preclin.chembl_moiety
-    matches to it), one row per activity: the target's genes and type, the measurement, whether the assay
-    was functional and in cells, and the year of the document that reported it."""
-    return query("""
-        SELECT DISTINCT cm.moiety_id, a.activity_id, a.target_chembl_id, t.symbols, t.target_type,
-               a.standard_type, a.pchembl_value::float AS pchembl, a.assay_type = 'F' AS functional,
-               a.bao_format = %s AS cell_based, doc.year
-        FROM preclin.chembl_moiety cm
-        JOIN preclin.chembl_activity a USING (parent_chembl_id)
-        JOIN preclin.chembl_target t USING (target_chembl_id)
-        JOIN preclin.chembl_document doc USING (document_chembl_id)
-        WHERE doc.year IS NOT NULL""", (CELL_BASED,))
 
 
 def assays_as_of(assays: pd.DataFrame, primary: set[str], year: int) -> dict:
