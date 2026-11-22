@@ -12,12 +12,12 @@ model's answer.
 - human_genetics: germline variants link the target to the disease (GWAS, gene burden, Mendelian)
 - tumour_genetics: the gene is recurrently mutated in the cancer
 - diseased_tissue: the gene's RNA or protein level differs in diseased tissue
-- mouse_genetics: knocked-out or mutant mice show the disease
+- mouse_genetics: a genetic change in an animal links the target to the disease: knocked-out or mutant animals show the disease, or a knockout or transgene alters an animal model of it
 - curated_pathway: a curated pathway shows a disease mutation disrupting the target
-- cell_screen: a gene-knockout screen in human cells
-- earlier_drug_other_disease: a drug on the target was approved for an unrelated disease
+- cell_line_perturbation: changing the target in an established cell line (a genome-wide screen or a targeted experiment) changes a disease feature
+- earlier_drug_other_disease: a drug on the target was approved for another disease, one not close enough to the program's to make the pair validated at entry
 - observational_biomarker: the target or its product in patients' blood, another fluid or on imaging tracks the disease
-- human_cell_perturbation: perturbing the target in human cells or tissue changes a disease phenotype
+- human_cell_perturbation: perturbing the target in primary human cells or tissue (not an established cell line) changes a disease phenotype
 - animal_model_pharmacology: modulating the target by means other than genetics changes an animal model of the disease
 - clinical_observation: an effect seen in people, such as a side effect
 - phenotypic_screen: a molecule found without a target hypothesis came first
@@ -30,40 +30,25 @@ from the sources; do not copy it without a source.
 
 Two boundaries the definitions draw. A change in the diseased tissue itself (RNA or protein, against normal tissue) is
 diseased_tissue; a measurement outside it (blood, another fluid, imaging) that tracks the disease's presence,
-activity or course is observational_biomarker. A drug on the target approved for a related disease makes the pair
-validated at entry, which is not an origin; earlier_drug_other_disease is an approval for an unrelated disease.
+activity or course is observational_biomarker. A drug on the target approved for the same or a very close disease
+(MONDO Lin 0.8 or more) makes the pair validated at entry, which is not an origin; earlier_drug_other_disease is an
+approval for any other disease, related or not. A genetic change to the target in an established cell line is
+cell_line_perturbation; in primary human cells or tissue, human_cell_perturbation; in an animal, mouse_genetics,
+whether the altered animal shows the disease or a knockout alters a model of it.
 
 ## Crosswalk to the evidence chart
 
-The thirteen kinds are one list used two ways (the owner's decision of 2026-11-20 on #146): the report's evidence
-chart (`report/evidence_lines.py`) asks whether each kind was present before entry, the origin asks which came first.
-`pipeline.target_origin.CHART_LINE` holds the mapping; a test checks that every named column exists in the chart. The
-#154 kinds are quoted from that issue's table (its numbers in parentheses are its list rows); #154 counts a paper for
-the same disease at MONDO Lin 0.8 or more.
+The kinds are one list used two ways (the owner's decision of 2026-11-20 on #146, final structure of 2026-11-20 on
+#159): the report's evidence chart asks whether each kind was present before entry, the origin asks which came first.
+Each origin but phenotypic_screen and unclear is a kind of `report.evidence_lines.KINDS` under the same key, and
+`pipeline.target_origin.CHART_LINE` reads each kind's chart column from there; a kind still planned (#154) has none
+yet. The kind's definition in KINDS is the chart's wording.
 
-| origin | chart line (column) | the chart's wording |
-|---|---|---|
-| human_genetics | `g3` | inherited variants link the target to the disease (tiers: rare only, common only, both) |
-| tumour_genetics | `somatic` | the gene is recurrently mutated in this cancer |
-| curated_pathway | `reactome` | a curated pathway shows a disease mutation disrupting the target |
-| diseased_tissue | `expression` | the gene's RNA level differs in diseased tissue; #154 adds the protein tier (L3) |
-| mouse_genetics | `altered_animal` | knocked-out or mutant mice show the disease |
-| cell_screen | `crispr` | gene-knockout screens in human cells (a `Line` in `report/evidence_lines.py`; the owner's table says to add it back to the chart) |
-| earlier_drug_other_disease | `approved_unrelated_only` | a drug on the target approved only for unrelated diseases |
-| observational_biomarker | #154's "Observational biomarker" (its L4) | the target or its product, measured in blood, another fluid or by imaging, tracks the disease |
-| human_cell_perturbation | #154's "Human cell perturbation" (L1) | changing the target in primary human cells or tissue changes a disease feature |
-| animal_model_pharmacology | #154's "Animal model pharmacology", other agents (L2) | a non-genetic change to the target alters an animal model of the disease |
-| clinical_observation | #154's "Clinical observation" (descriptive) | an effect seen in people that implicates the target, such as a side effect |
-| phenotypic_screen | none | not evidence about the target |
-| unclear | none | |
+## Reporting categories
 
-## Reporting layers
-
-For reporting only, never for a gate or a hypothesis, `pipeline.target_origin.LAYER` collapses the thirteen kinds into
-six: genetics (human_genetics, tumour_genetics); tissue_biomarker (diseased_tissue, observational_biomarker);
-model_systems (mouse_genetics, curated_pathway, cell_screen, human_cell_perturbation, animal_model_pharmacology);
-earlier_drug (earlier_drug_other_disease); clinical_phenotypic (clinical_observation, phenotypic_screen); unclear. The
-gate file reports kappa on this layer beside the thirteen-way kappa.
+For reporting only, never for a gate or a hypothesis, the gate file also reports kappa on the broad category of each
+kind (`report.evidence_lines.CATEGORIES`: human genetics, in vitro and ex vivo, animals, human, the drug, target
+safety risk), with phenotypic_screen and unclear each their own.
 
 ## Grade
 

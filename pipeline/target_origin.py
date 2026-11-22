@@ -33,7 +33,8 @@ from pipeline.stop_causes import BLOCKED_DOMAINS
 from report import frame
 from report.windows import SECTION1
 
-ORIGINS = ["human_genetics", "tumour_genetics", "diseased_tissue", "mouse_genetics", "curated_pathway", "cell_screen",
+ORIGINS = ["human_genetics", "tumour_genetics", "diseased_tissue", "mouse_genetics", "curated_pathway",
+           "cell_line_perturbation",
            "earlier_drug_other_disease", "observational_biomarker", "human_cell_perturbation",
            "animal_model_pharmacology", "clinical_observation", "phenotypic_screen", "unclear"]
 GRADES = ["stated", "pattern", "none"]
@@ -350,12 +351,12 @@ def search(args) -> None:
 DEFINITIONS = """- human_genetics: germline variants link the target to the disease (GWAS, gene burden, Mendelian)
 - tumour_genetics: the gene is recurrently mutated in the cancer
 - diseased_tissue: the gene's RNA or protein level differs in diseased tissue
-- mouse_genetics: knocked-out or mutant mice show the disease
+- mouse_genetics: a genetic change in an animal links the target to the disease: knocked-out or mutant animals show the disease, or a knockout or transgene alters an animal model of it
 - curated_pathway: a curated pathway shows a disease mutation disrupting the target
-- cell_screen: a gene-knockout screen in human cells
-- earlier_drug_other_disease: a drug on the target was approved for an unrelated disease
+- cell_line_perturbation: changing the target in an established cell line (a genome-wide screen or a targeted experiment) changes a disease feature
+- earlier_drug_other_disease: a drug on the target was approved for another disease, one not close enough to the program's to make the pair validated at entry
 - observational_biomarker: the target or its product in patients' blood, another fluid or on imaging tracks the disease
-- human_cell_perturbation: perturbing the target in human cells or tissue changes a disease phenotype
+- human_cell_perturbation: perturbing the target in primary human cells or tissue (not an established cell line) changes a disease phenotype
 - animal_model_pharmacology: modulating the target by means other than genetics changes an animal model of the disease
 - clinical_observation: an effect seen in people, such as a side effect
 - phenotypic_screen: a molecule found without a target hypothesis came first
@@ -508,7 +509,7 @@ def validate_label(p: dict, out: dict) -> None:
         _check_sources(p, out["route_sources"], out["route_source_years"], retrieved, "route")
 
 
-LABEL_TASK = llm.Task(name="target_origin", prompt_version="v2", schema_version="v1", system=LABEL_SYSTEM,
+LABEL_TASK = llm.Task(name="target_origin", prompt_version="v3", schema_version="v1", system=LABEL_SYSTEM,
                       schema=LABEL_SCHEMA, render=render_label, validate=validate_label, subject_type="target_disease",
                       model="claude-opus-5-5", effort="medium", max_tokens=16000, tools=TOOLS)
 
@@ -708,13 +709,13 @@ def render_check(p: dict) -> str:
 
 
 CHECK_CONTEXT = ("label_decision_id",)  # the row's provenance, not what the checker reads
-CHECK_TASK = llm.Task(name="target_origin_check", prompt_version="v3", schema_version="v1", system=CHECK_SYSTEM,
+CHECK_TASK = llm.Task(name="target_origin_check", prompt_version="v4", schema_version="v1", system=CHECK_SYSTEM,
                       schema=CHECK_SCHEMA, render=render_check, validate=None, subject_type="target_disease",
                       model="claude-sonnet-5-5", effort="medium", max_tokens=4000, tools=CHECK_TOOLS)
 
 # The same text under Opus 5.5. The model is not part of a decision's reuse key, so the prompt version keeps the two
 # checkers' decisions apart (v4 = the v3 text, Opus).
-OPUS_CHECK_TASK = dataclasses.replace(CHECK_TASK, model="claude-opus-5-5", prompt_version="v4")
+OPUS_CHECK_TASK = dataclasses.replace(CHECK_TASK, model="claude-opus-5-5", prompt_version="v5")
 CHECKERS = (CHECK_TASK, OPUS_CHECK_TASK)
 
 CHECK_DESCRIPTION = f"""For each graded labelled row of {LABEL_METHOD} (#146 note of 2026-11-21: facts in code, judgment
@@ -725,9 +726,9 @@ whether every source is dated before the cutoff year, and whether the origin fol
 quote, from the two answers where they agree (could_not_open carries no information); year, no when a cited record is
 dated in or after the cutoff year, yes when every source is a record, else from the two answers where they agree
 (unknown carries no information); category, for earlier_drug_other_disease from the dated Drugs@FDA index of
-approvals on the pair's gene before entry (report.section3.Evidence, the chart's dating: unrelated yes; close no,
-an approval within Lin 0.8 of the disease being the hub's validated_at_entry rule; related no, an approval within
-Lin 0.5, the chart's b1 line, excluding the approved_unrelated_only tier that defines the category; none disputed), for every other origin from the two answers where they agree
+approvals on the pair's gene before entry (report.section3.Evidence, the chart's dating: close no, an approval within
+Lin 0.8 of the disease being the validated_at_entry kind; related or unrelated yes, the earlier_drug_other_disease
+kind; none disputed), for every other origin from the two answers where they agree
 (partly counts as yes). A field the checkers disagree on, or that one of them did not answer, is disputed until a human
 verdict from the disputes sheet settles it. supported: no field is no, disputed or unverified; unsupported: a field
 is no; disputed: a field is disputed; unverified: a field is unverified. A row that is not supported is rewritten as
@@ -780,7 +781,7 @@ def agree(a: str | None, b: str | None, no_info: str) -> str:
     return a if a == b else "disputed"
 
 
-FACT_CATEGORY = {"unrelated": "yes", "related": "no", "close": "no", "none": "disputed"}
+FACT_CATEGORY = {"unrelated": "yes", "related": "yes", "close": "no", "none": "disputed"}
 
 
 def check_fields(p: dict, fact: str | None, outputs: list[dict], human: dict[str, str] | None) -> dict:
@@ -823,9 +824,9 @@ def check_outcome_v2(fields: dict) -> str:
 def approval_fact(ev, ensembl_id: str, mondo_id: str, entry: pd.Timestamp) -> str:
     """Whether a drug on the pair's gene was FDA-approved before entry, from report.section3.Evidence's dated index
     (Drugs@FDA through the programs; an approval that predates the FDA letters is dated at the entity's first FDA
-    approval, as the chart dates it): close when an approved disease is within Lin 0.8 of mondo_id (the hub's
-    validated_at_entry rule, migration 142), related when within Lin 0.5 (the chart's b1 line), unrelated when the
-    gene has an earlier approval but none related (the chart's approved_unrelated_only line), none otherwise. The
+    approval, as the chart dates it): close when an approved disease is within Lin 0.8 of mondo_id (the
+    validated_at_entry kind), related when within Lin 0.5, unrelated when the gene has an earlier approval but none
+    related (related and unrelated together are the earlier_drug_other_disease kind), none otherwise. The
     gene is the pair's own, never another target of the first drug."""
     from report.section3 import CLOSE, RELATED
     before = [d for d, when in ev.approved.get(ensembl_id, ()) if when < entry]
@@ -1132,7 +1133,7 @@ def validate_research(p: dict, out: dict) -> None:
                 raise ValueError("approval: every approval needs its evidence_url")
 
 
-RESEARCH_TASK = llm.Task(name="target_origin_research", prompt_version="v1", schema_version="v1",
+RESEARCH_TASK = llm.Task(name="target_origin_research", prompt_version="v2", schema_version="v1",
                          system=RESEARCH_SYSTEM, schema=RESEARCH_SCHEMA, render=render_research,
                          validate=validate_research, subject_type="target_disease", model="claude-opus-5-5",
                          effort="medium", max_tokens=8000, tools=RESEARCH_TOOLS)
@@ -1396,7 +1397,7 @@ def validate_blind(p: dict, out: dict) -> None:
         raise ValueError(f"source year {out['source_year']} is not before the cutoff year {p['cutoff_year']}")
 
 
-BLIND_TASK = llm.Task(name="target_origin_blind_read", prompt_version="v3", schema_version="v1", system=BLIND_SYSTEM,
+BLIND_TASK = llm.Task(name="target_origin_blind_read", prompt_version="v4", schema_version="v1", system=BLIND_SYSTEM,
                       schema=BLIND_SCHEMA, render=render_blind, validate=validate_blind, subject_type="target_disease",
                       model="claude-opus-5-5", effort="medium", max_tokens=16000, tools=TOOLS)
 
