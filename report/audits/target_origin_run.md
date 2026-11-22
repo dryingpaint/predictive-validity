@@ -16,6 +16,13 @@ v1 outcomes in the stored table that afternoon. The v1 check and the stored resu
 superseded. Numbers in the run sections are from the run log, `python -m pipeline.target_disease summary --pairs
 window` and `pv_evidence.llm_decision`; the state above is from the stored table at the last commit.
 
+**Research pass (2026-11-21, 21:20 to 21:43 Pacific; the last section).** One Opus 5.5 reading with search and fetch
+per factual row of the disputes sheet (183: year 87, quote 64, and the 32 earlier-drug category rows the Drugs@FDA
+index is silent on), the checkers' answers withheld, the year and the approval tier compared in code: 162 settled (yes
+132, no 30), 21 open. The result is a filled copy of the sheet, `target_origin_disputes_research.csv`, not applied:
+applying it would move 91 disputed labels to supported and 29 to unsupported, 274 staying disputed. The table above is
+unchanged.
+
 ## How it ran
 
 The full run started after both pilot gates passed under the aligned definitions (`target_origin_pilot.md`, last
@@ -337,10 +344,124 @@ Discovery route is unchanged but for the 12 new labels (unclear 1,583, derived_f
 passed. Set b: 0.65 (stored 0.55), gap 8.0, passed. The gate is scored on the label as read, which v2 does not
 touch; the stored kappas are reported beside it as before.
 
-**What this leaves.** The disputes read, the owner's by default (the #146 note offers it back); every verdict moves
-one row out of unclear, and unread rows stay unclear with the count reported. Also for step 6: the coverage split by
+**What this leaves.** The disputes read: the research pass (next section) settles 162 of the 183 factual rows into a
+file the owner can apply, and the 259 threshold rows and the 21 open rows are a person's, by default hers (the #146
+note offers the sheet back); every verdict moves one row out of unclear, and unread rows stay unclear with the count
+reported. Also for step 6: the coverage split by
 group over the whole window is not computed (the gate scored it on the pilot's settled-stop frame), and the 61
 unlabelled pairs are absent from the table. The residual the check cannot remove: two capable models disagree on at
 least one field for 359 of 4,431 graded labels (on the category for 254); the rest of the 394 disputed labels are the
 32 the approval index is silent on and the 5 one checker refused. The audit reports that rate rather than present the
 check as exact.
+
+## Research pass on the factual disputes (2026-11-21 evening; proposed on #146 at 21:08, run from 21:31)
+
+**Why.** The disputes sheet's 442 rows are two kinds of question. The 259 category rows with a fact other than none
+are a threshold question (231 of them Sonnet "no" against Opus "partly" on the same passage) that more reading does
+not change. The other 183 are facts one checker could not read: year 87, quote 64, and the 32 category rows of
+earlier-drug labels the Drugs@FDA index is silent on. Reading the 183 notes before the pass: of the 87 year rows, in
+41 Sonnet's note says every date is before the cutoff and its field says no (25 by a text rule over the notes, 16 more
+on reading the other 19; the slip the checker sensitivity section reports for v1), 25 are a source Sonnet did not open
+and Opus dated, and 13 are a date Opus read at or after the cutoff; of the 64 quote rows, 43 are a source Sonnet did
+not open and Opus found the passage in, often in another copy, and 9 are a passage Opus traced to a paper the label
+does not cite; 10 rows are the 5 labels Opus refused. So for 151 rows the task is to fetch a named source and confirm
+a date or a passage, and the 32 index-silent rows are the one open question.
+
+**The method** (`research`, `RESEARCH_TASK`, `RESEARCH_DESCRIPTION`; method `target_origin_research@v1`). One model
+reading per row: Opus 5.5, prompt v1, web search (10 uses) and fetch (6), effort medium, through `pipeline.llm`, so
+every decision is logged with its request and the URLs it retrieved. The model is shown what the checkers were shown
+(the label, its quote and sources, the cited records in full) and the question; never the checkers' answers or notes.
+Nothing from memory counts: each answer names the page it rests on and copies the words or dates read. Three
+questions. Quote: is the passage, or the sentence it closely paraphrases, in a copy of a cited document (the journal,
+PubMed Central, Europe PMC, a patent host or the Internet Archive when the cited page will not load); a passage found
+only in an uncited paper is no; no copy readable is open. Year: the publication year of every cited source on its
+publisher's record, the issue year for a journal article, as PubMed dates the index (ruling: the index's own basis,
+so a paper online in the year before its issue is dated by the issue); an earlier online-first year is recorded beside
+it and the note says when that basis would flip the verdict, which the code never applies. The verdict is compared in
+code: yes when every year is before the cutoff, no when any is in or after it, open when any is unread. Approval: was
+any drug the hub lists on the gene approved by any medicines regulator before the entry date, and for what; the
+model gives each approval with its regulator, date, indication and the indication's MONDO id, and the code places the
+indication by the index's own rule (close within Lin 0.8 of the pair's disease, related within 0.5, else unrelated)
+and takes the verdict from `FACT_CATEGORY` of the tier, so the owner's decision on the related band propagates to
+these rows on a rerun. Ruling: no approval found, or none before entry, is no (the category's defining claim has no
+documented basis; the stored row is unclear either way); an approval in the entry year without a day, or an
+indication the ontology does not know, leaves the row open unless a close approval is documented. The output is a
+filled copy of the sheet, `target_origin_disputes_research.csv`, reader `target_origin_research@v1`, the evidence in
+`note`, the decision id beside it; the committed sheet and the origin table are untouched, and
+`check --pairs window --disputes report/audits/target_origin_disputes_research.csv` applies it. A three-row smoke run
+(retracted, run cafbe58a: it predated the commit of the code) checked the prompt; the pass ran under commit 5b40d0c.
+
+**Caveats.** Opus 5.5 is one of the two checkers, so agreement with it is not independent evidence; what makes a row
+checkable is the evidence URL and the copied words, which a reader can open. The 32 index-silent rows are settled on
+approvals by any regulator, a wider index than the Drugs@FDA fact that settled the other 695 earlier-drug labels; the
+sheet records the regulator per row. Where a cited page would not load and the model read the passage from a search
+result's page content rather than a fetch, the note says so: 55 rows, 45 of them decided.
+
+**The run.** 21:20 to 21:35 Pacific (183 calls, 24 concurrent), then 21:41 to 21:43 for four rows and a recompute at
+21:49 with no call: 198 calls in all, 183 validated. 14 answers were rejected by the validator for an approval date
+with a month and no day (ibudilast 1989-01, S-1 1999-01), the four rows they belonged to never validating in three
+passes; the validator was widened to month precision, test first, in commit 53a41f1 (the entry's own month, like its
+own year, cannot say and leaves the row open), and the four were asked again. One refusal, answered on the next pass.
+Commit 631cd7d placed an indication given without its MONDO id by its exact label (gastric cancer, subarachnoid
+hemorrhage). Tokens: 184k input, 11.5M read from cache, 330k output; 438 searches, 570 fetches; about $10 of tokens at
+the list price. `research` reruns from the decision log with no call.
+
+| question | rows | yes | no | open | as Opus read it | as Sonnet read it |
+|---|---|---|---|---|---|---|
+| quote | 64 | 48 | 7 | 9 | 47 of 55 | 8 of 55 |
+| year | 87 | 72 | 12 | 3 | 77 of 84 | 7 of 84 |
+| approval | 32 | 12 | 11 | 9 | 9 of 23 | 14 of 23 |
+| all | 183 | 132 | 30 | 21 | | |
+
+By the buckets read before the pass: of the 25 year rows where Sonnet's note said the dates pass, 25 read yes; of the
+25 where Sonnet had not opened a source, 25 yes; of the 13 where Opus read a date at or after the cutoff, 11 no, 1
+yes, 1 open; of the 19 others, 16 yes, 1 no, 2 open; the 5 Opus refused, 5 yes. Of the 43 quote rows Sonnet had not
+opened, 36 yes, 2 no, 5 open; of the 9 Opus traced to an uncited paper, 5 no, 1 yes, 3 open; the 5 refused, 5 yes; the
+6 others, 5 yes, 1 open. Agreement is with the checker who had read the source: 47 of 55 decided quote rows and 77 of
+84 year rows read as Opus did, 8 and 7 as Sonnet did. On the approval rows the checkers' category answers are not the
+method (the fact is), and the pass disagrees with both on 7: 3 yes where both read no, amifampridine's EU approval for
+Lambert-Eaton myasthenic syndrome (2009-12-23) on KCNA3, KCNA4 and KCNA5 with congenital myasthenic syndrome, at Lin
+0.26 unrelated by the index's rule, where the checkers had judged the quoted passage, a 3,4-diaminopyridine trial in
+congenital myasthenia itself; 4 no where both read partly, avadomide and golcadomide on IKZF1 and IKZF3 and resiquimod
+on TLR8, no approval anywhere before entry.
+
+**The 12 year rows read no.** Each has a source dated in the cutoff year or after by its publisher's record: a 2016
+letter the labeller dated 2009 (IGHE), a 2008 reprint cited for a 1985 paper (TNF), an AES abstract of 2018 (CACNA1I),
+a patent published 2019-01-03 (TACR1), a vendor page with no date of its own (HDAC2, open), an article in the cutoff
+year's issue. Six are online in the year before their issue and would read yes on that basis, which the note flags:
+IL4R, TLR8, IL1A, MTNR1B, SEMA4D, and CLCN2, a Canadian patent granted in 2011 whose application was published in
+1999. **The 7 quote rows read no** trace the passage to a paper the label does not cite (a different Metabolism paper
+for DRD2, Kleiman 2012 for PDE9A, a later citing paper for CHRM3, a different formalin-test study for PDE5A, Hoberman
+1997 for SCN5A) or find it absent from the cited document (CHRM4, TLR7).
+
+**The 32 approval rows.** 12 yes, each an approval the Drugs@FDA index does not carry, for a disease unrelated to the
+pair's by the index's rule: amifampridine (EMA 2009-12-23, Lambert-Eaton myasthenic syndrome) on the five KCNA3,
+KCNA4, KCNA5 and KCNA6 pairs with congenital myasthenic syndrome or myasthenia gravis (Lin 0.26 and 0.19);
+levosimendan (Sweden 2000, heart failure) on TNNC1 with amyotrophic lateral sclerosis and with pulmonary hypertension
+(0.07, 0.40); ibudilast (Japan 1989-01, asthma) on PDE10A with secondary progressive multiple sclerosis;
+thrombomodulin alfa (Japan 2008-01-25, disseminated intravascular coagulation) on THBD with idiopathic pulmonary
+fibrosis; oteracil in S-1 (Japan 1999, gastric cancer) on UMPS with cervical cancer (0.41); ozagrel (Japan 1988-01-20,
+subarachnoid hemorrhage, placed by its label) on TBXAS1 with dry eye; and Refnot, a TNF-thymosin fusion (Russia
+2009-03-27, breast cancer) on TNFRSF1A with glioma (0.37), the row that shows how wide "any regulator" reaches. 11 no:
+9 with no approval anywhere before entry (CD22's suciraslimab, epratuzumab and inotuzumab; mitoglitazone; resiquimod;
+avadomide and golcadomide on four pairs; nadofaragene firadenovec; roxadustat) and 2 close, validated at entry by the
+registered rule and missed by the index: ivabradine on HCN4 with heart failure (EMA 2012, a variation to an EU
+authorisation, heart failure itself) and anti-D immunoglobulin on RHD with immune thrombocytopenic purpura (WinRho
+SDF, FDA 1995, the disease itself; a CBER biologic, outside Drugs@FDA). 9 open, the approval documented in the note
+and its indication not placed: fasudil (Japan 1995, cerebral vasospasm), pipamperone (Switzerland 1964, indication not
+stated), sulodexide (Italy 1972, chronic venous ulcers), dibotermin alfa (EMA 2002, acute tibia fractures as an
+adjunct, which is not the ontology's "tibia fracture" label), clodronic acid (Ireland 1992, not stated on the
+licence), gimeracil (Japan 2004-12, non-small cell lung cancer, which the ontology labels carcinoma), catumaxomab (EMA
+2009, malignant ascites), perhexiline (Australia 1995, angina pectoris, a label the hub's ontology table lacks), and
+ibudilast on PDE10A with amyotrophic lateral sclerosis, where this row's call found the 2001 revaluation and not the
+1989 asthma approval the other PDE10A row found: the calls are per row and do not share findings, and a reader can
+carry it over.
+
+**If applied** (`check --pairs window --disputes report/audits/target_origin_disputes_research.csv`, computed from the
+stored `check_fields` without a write): of the 394 disputed labels, 91 become supported (as read:
+earlier_drug_other_disease 21, animal_model_pharmacology 18, human_cell_perturbation 17, diseased_tissue 10,
+clinical_observation 9, mouse_genetics 6, human_genetics 6, observational_biomarker 3, tumour_genetics 1), 29
+unsupported (earlier_drug_other_disease 18, animal_model_pharmacology 6, observational_biomarker 2, human_genetics 1,
+phenotypic_screen 1, diseased_tissue 1), 274 stay disputed: the 247 whose only open field is a threshold row, and 27
+with a verdict on one field and the category still disputed. 147 labels carry at least one verdict. Not applied here:
+the sheet is the owner's by default, and the note on #146 puts the file to her.
