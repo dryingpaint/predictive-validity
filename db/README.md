@@ -50,6 +50,7 @@ by the step named; no other step writes it.
 | Drug literature | `preclin.literature_*` (being consolidated into one set of tables), `preclin.moiety_publication`, `preclin.pubmed_search` | `pipeline.literature`, `pipeline.attribution literature` |
 | Stops | `preclin.stop`, `preclin.stop_signal`, `preclin.stop_continuation`, `preclin.analysis_method` | `pipeline.stop_causes`, `pipeline.attribution` |
 | Target-disease hypotheses | `preclin.target_disease` (one row per primary target and disease that reached Phase 2: first entry, programs, whether already validated), `preclin.target_disease_origin` (what first proposed each: provisional from dated evidence, or labelled from pre-entry sources) | `pipeline.target_disease` |
+| Target-biology literature | `preclin.target_literature_search`, `preclin.target_literature_hit`, `preclin.target_literature_prefilter`, `preclin.target_literature_screen` (each target-disease pair's searches, the records returned, and each record's reading for the seven kinds of #154) | `pipeline.target_literature` |
 | Why engaged drugs failed | `preclin.stop_target_history` (each engaged-without-benefit efficacy stop: what other drugs on its target did, and a verdict read from the sources where that leaves it open) | `pipeline.target_history` |
 | Evidence-line dataset | `preclin.evidence_line`, `preclin.evidence_entry`, `preclin.evidence_entry_line`, `preclin.evidence_line_build` | `report.evidence_lines store` (`check` says whether it is stale) |
 | Model-system atlas | `preclin.atlas_*` (build, indication, moiety_review, mechanism, member, register view, track_entry, track_verdict, source_document) | `analyses/model-system-atlas/class_audit.py store`, `fetch_sources.py store`, `drafts/track_store.py` |
@@ -58,6 +59,6 @@ by the step named; no other step writes it.
 `public.targets` (genes with Ensembl ids and symbols) and `public.gene_constraint` (gnomAD v4.1
 LOEUF) come from an earlier genome-browser import and have no loader in this repository;
 `public.publications` holds the PubMed articles `pipeline.outcomes publications`,
-`pipeline.attribution literature` and `pipeline.literature` fetch. Columns of `preclin.drug`,
+`pipeline.attribution literature`, `pipeline.literature` and `pipeline.target_literature` fetch. Columns of `preclin.drug`,
 `preclin.indication` and `public.targets` from that earlier import that no step writes or reads say so
 in their comments.

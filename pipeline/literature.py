@@ -127,24 +127,29 @@ def names_clause(names: list[str]) -> str:
     return f'({" OR ".join(f"{chr(34)}{n}{chr(34)}[tiab]" for n in names)})'
 
 
-def pubmed_term(names: list[str], lo: str, hi: str) -> str:
-    return f'{names_clause(names)} AND ("{lo}"[dp] : "{hi}"[dp]) {NOT_REVIEWS}'
+def epmc_clause(names: list[str]) -> str:
+    return f'({" OR ".join(f"TITLE_ABS:{chr(34)}{n}{chr(34)}" for n in names)})'
+
+
+def pubmed_term(clause: str, lo: str, hi: str) -> str:
+    return f'{clause} AND ("{lo}"[dp] : "{hi}"[dp]) {NOT_REVIEWS}'
 
 
 def pubmed_count(term: str) -> int:
     return int(ET.fromstring(eutils("esearch", term=term, retmax="0")).findtext("Count") or 0)
 
 
-def pubmed_ids(names: list[str], cutoff: int) -> tuple[str, int, list[str]]:
-    """The query, its hit count and every PMID it returns: one search when the count is within ESEARCH_MAX,
-    else the date range is halved (years, then months) until each part is."""
-    full = pubmed_term(names, "1900", str(cutoff))
+def pubmed_ids(clause: str, cutoff: int) -> tuple[str, int, list[str]]:
+    """The query (clause, a PubMed title/abstract clause, up to the cutoff year, reviews excluded), its hit count
+    and every PMID it returns: one search when the count is within ESEARCH_MAX, else the date range is halved
+    (years, then months) until each part is."""
+    full = pubmed_term(clause, "1900", str(cutoff))
     total = pubmed_count(full)
     ids: list[str] = []
 
     def collect(lo: tuple[int, int], hi: tuple[int, int]) -> None:
         span = (f"{lo[0]}/{lo[1]:02d}", f"{hi[0]}/{hi[1]:02d}")
-        term = pubmed_term(names, *span)
+        term = pubmed_term(clause, *span)
         n = pubmed_count(term)
         if n == 0:
             return
@@ -181,15 +186,16 @@ def esearch_up() -> bool:
     return _esearch["up"]
 
 
-def medline_query(names: list[str], cutoff: int) -> str:
-    """The PubMed search run on Europe PMC's MEDLINE records (SRC:MED), for when PubMed's esearch is down."""
-    return (f'({" OR ".join(f"TITLE_ABS:{chr(34)}{n}{chr(34)}" for n in names)}) AND PUB_YEAR:[1900 TO {cutoff}] '
+def medline_query(clause: str, cutoff: int) -> str:
+    """The PubMed search run on Europe PMC's MEDLINE records (SRC:MED), for when PubMed's esearch is down; clause is
+    the Europe PMC form of the PubMed clause."""
+    return (f'{clause} AND PUB_YEAR:[1900 TO {cutoff}] '
             'AND SRC:MED AND NOT PUB_TYPE:"review"')
 
 
-def medline_ids(names: list[str], cutoff: int, log=print) -> tuple[str, int, list[str]]:
+def medline_ids(clause: str, cutoff: int, log=print) -> tuple[str, int, list[str]]:
     """The Europe PMC MEDLINE query, its hit count and every PMID it returns (cursor-paged, no cap)."""
-    q, ids, cursor = medline_query(names, cutoff), [], "*"
+    q, ids, cursor = medline_query(clause, cutoff), [], "*"
     while True:
         page = epmc_post(q, cursor, result_type="idlist", log=log)
         total = int(page.get("hitCount") or 0)
@@ -203,21 +209,21 @@ def medline_ids(names: list[str], cutoff: int, log=print) -> tuple[str, int, lis
         cursor = nxt
 
 
-def medline_search(names: list[str], cutoff: int, log=print) -> tuple[str, int, list[str]]:
-    """PubMed ids for a drug: PubMed's esearch, or the same search on Europe PMC's MEDLINE records while esearch
-    is down. The stored query shows which served it."""
+def medline_search(pm: str, ep: str, cutoff: int, log=print) -> tuple[str, int, list[str]]:
+    """PubMed ids for one search, given as its PubMed clause pm and Europe PMC clause ep: PubMed's esearch, or the
+    same search on Europe PMC's MEDLINE records while esearch is down. The stored query shows which served it."""
     if esearch_up():
         try:
-            return pubmed_ids(names, cutoff)
+            return pubmed_ids(pm, cutoff)
         except RuntimeError as e:
             log(f"esearch failed, using Europe PMC MEDLINE: {e}")
             _esearch.update(up=False, checked=time.time())
-    return medline_ids(names, cutoff, log)
+    return medline_ids(ep, cutoff, log)
 
 
-def epmc_query(names: list[str], cutoff: int) -> str:
+def epmc_query(clause: str, cutoff: int) -> str:
     """Europe PMC titles and abstracts outside MEDLINE (whose records the PubMed search covers), with an abstract."""
-    return (f'({" OR ".join(f"TITLE_ABS:{chr(34)}{n}{chr(34)}" for n in names)}) AND PUB_YEAR:[1900 TO {cutoff}] '
+    return (f'{clause} AND PUB_YEAR:[1900 TO {cutoff}] '
             'AND NOT SRC:MED AND HAS_ABSTRACT:Y AND NOT PUB_TYPE:"review"')
 
 
@@ -257,9 +263,9 @@ def epmc_record(r: dict) -> tuple:
             int(year) if year and str(year).isdigit() else None, r.get("doi"))
 
 
-def epmc_records(names: list[str], cutoff: int, log=print) -> tuple[str, int, list[tuple]]:
+def epmc_records(clause: str, cutoff: int, log=print) -> tuple[str, int, list[tuple]]:
     """The query, its hit count and every record (record_id, source, title, abstract, year, doi) it returns."""
-    q = epmc_query(names, cutoff)
+    q = epmc_query(clause, cutoff)
     out, cursor, total = [], "*", 0
     while True:
         page = epmc_post(q, cursor, log=log)
@@ -534,8 +540,8 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
             dlog = lambda msg, m=m: log(f"moiety={m} {msg}")  # noqa: E731
             dlog(f"searching ({names[m][0]})")
             try:
-                pq, pn, pmids = medline_search(names[m], y, dlog)
-                eq, en, records = epmc_records(names[m], y, dlog)
+                pq, pn, pmids = medline_search(names_clause(names[m]), epmc_clause(names[m]), y, dlog)
+                eq, en, records = epmc_records(epmc_clause(names[m]), y, dlog)
             except (SourceDown, RuntimeError, requests.RequestException) as e:
                 tries[m] = tries.get(m, 0) + 1
                 retry_at[m] = time.time() + REQUEUE_WAIT
