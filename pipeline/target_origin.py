@@ -6,7 +6,10 @@ steps 2 to 5). Commands, registered on pipeline.target_disease:
              preclin.target_disease_source; shared with the target-literature screen (#154)
     label    an LLM reads the earliest and latest records (and the web, under the same date rule) and labels the
              origin, its grade and the first drug's discovery route (preclin.target_disease_origin, basis labelled)
-    check    a second model verifies each graded label's quote, date and reading; a failed label becomes unclear
+    check    two checkers verify each graded label's quote, date and reading; a label they reject becomes unclear,
+             one they dispute becomes disputed
+    restore  rebuild the stored labelled rows from the decision log with no model call (the check's outcomes
+             from the decisions each row cites, a disputes file's verdicts, not_reached for pairs never labelled)
     blind    a second model labels the hand-check sets from the records alone, for comparison with the reader
     sample   draw the pilot of 100 pairs (50 with a settled "not causal" stop, 50 without) and the two hand-check sets
     package  write the reader's page for one hand-check set
@@ -38,6 +41,9 @@ ORIGINS = ["human_genetics", "tumour_genetics", "diseased_tissue", "mouse_geneti
            "cell_line_perturbation",
            "earlier_drug_other_disease", "observational_biomarker", "human_cell_perturbation",
            "animal_model_pharmacology", "clinical_observation", "phenotypic_screen", "unclear"]
+# Stored values no model gives: a label the two checkers dispute, and a pair whose labelling never returned a valid
+# answer. Each is its own value, distinct from unclear (no source settles the origin).
+STORED_ONLY = ("disputed", "not_reached")
 GRADES = ["stated", "pattern", "none"]
 ROUTES = ["phenotypic_screen", "target_screen", "de_novo_design", "derived_from_active", "repurposed_drug", "unclear"]
 
@@ -622,6 +628,40 @@ def replace_sql(keys: list[tuple[str, str]]) -> tuple[str, tuple]:
             (tuple(keys),))
 
 
+LATEST_LABEL_SQL = """SELECT DISTINCT ON (subject_key) subject_key, llm_decision_id FROM pv_evidence.llm_decision
+                      WHERE task = %s AND subject_key IN %s ORDER BY subject_key, created_at DESC"""
+
+
+def unreached_rows(keys: list[str], labelled: set[str], last_decision: dict[str, int]) -> list[tuple]:
+    """INSERT_ORIGIN rows marking each pair of keys with no labelled row as not_reached, citing the last labelling
+    decision asked for it (a refusal or an answer that failed validation), when there is one."""
+    out = []
+    for k in keys:
+        if k in labelled:
+            continue
+        e, m = split_key(k)
+        out.append((e, m, "labelled", "not_reached", None, None, "none", [], None, last_decision.get(k), LABEL_METHOD,
+                    "not_checked", "unclear", None, []))
+    return out
+
+
+def mark_unreached(cur, pairs: pd.DataFrame) -> int:
+    """Give each pair of the set that has no labelled row a not_reached row; returns how many were written."""
+    keys = [key(e, m) for e, m in zip(pairs.ensembl_id, pairs.mondo_id)]
+    if not keys:
+        return 0
+    cur.execute("SELECT ensembl_id, mondo_id FROM preclin.target_disease_origin WHERE basis = 'labelled' "
+                "AND (ensembl_id, mondo_id) IN %s", (tuple(zip(pairs.ensembl_id, pairs.mondo_id)),))
+    labelled = {key(e, m) for e, m in cur.fetchall()}
+    missing = [k for k in keys if k not in labelled]
+    if not missing:
+        return 0
+    cur.execute(LATEST_LABEL_SQL, (LABEL_TASK.name, tuple(missing)))
+    rows = unreached_rows(missing, labelled, dict(cur.fetchall()))
+    execute_values(cur, INSERT_ORIGIN, rows, page_size=1000)
+    return len(rows)
+
+
 INSERT_ORIGIN = """INSERT INTO preclin.target_disease_origin
                      (ensembl_id, mondo_id, basis, origin, origin_year, secondary_origin, grade, sources, quote,
                       llm_decision_id, method_id, check_outcome, discovery_route, route_quote, route_sources)
@@ -659,8 +699,10 @@ def label(args) -> None:
         if rows:
             cur.execute(*replace_sql([(r[0], r[1]) for r in rows]))
             execute_values(cur, INSERT_ORIGIN, rows, page_size=1000)
+        unreached = mark_unreached(cur, pairs[pairs.apply(lambda r: key(r.ensembl_id, r.mondo_id) in items, axis=1)])
         conn.commit()
-    log(f"pairs={len(items)} decided={len(rows)} undecided={len(todo)} runs={params['runs']}")
+    log(f"pairs={len(items)} decided={len(rows)} undecided={len(todo)} not_reached rows written={unreached} "
+        f"runs={params['runs']}")
     log("the rewritten rows are not_checked: run `check` on the same pairs before `gate`, `summary` or any test")
 
 
@@ -739,15 +781,15 @@ _CHECK_WHERE = "WHERE basis = 'labelled' AND (ensembl_id, mondo_id) = (%s, %s)"
 CHECK_UPDATE_SQL = {
     "supported": (f"UPDATE preclin.target_disease_origin SET {_CHECK_SET}, origin = %s, origin_year = %s, "
                   f"secondary_origin = %s, grade = %s, quote = %s, sources = %s {_CHECK_WHERE}"),
-    **{o: (f"UPDATE preclin.target_disease_origin SET {_CHECK_SET}, origin = 'unclear', grade = 'none', "
+    **{o: (f"UPDATE preclin.target_disease_origin SET {_CHECK_SET}, origin = '{stored}', grade = 'none', "
            f"origin_year = NULL, secondary_origin = NULL, quote = NULL, sources = '{{}}' {_CHECK_WHERE}")
-       for o in ("unsupported", "unverified", "disputed")},
+       for o, stored in (("unsupported", "unclear"), ("unverified", "unclear"), ("disputed", "disputed"))},
 }
 
 
 def check_update_params(p: dict, outcome: str, decision_id: int | None, detail: dict, e: str, m: str) -> tuple:
     """The parameters of CHECK_UPDATE_SQL[outcome]: a supported row is restored to the label as read (the payload
-    carries it), any other row is reset to unclear by the statement itself."""
+    carries it), a disputed row is set to disputed and any other row to unclear by the statement itself."""
     head = (outcome, decision_id, Json(detail))
     if outcome == "supported":
         return (*head, p["origin"], p["origin_year"], p["secondary_origin"], p["grade"], p["quote"] or None,
@@ -981,8 +1023,44 @@ def check_payload(row: dict, base: dict, records: list[dict], fetch=None) -> dic
             "records": shown, "label_decision_id": int(row["llm_decision_id"])}
 
 
+DISPUTES_CSV = os.path.join(frame.REPO, "report", "audits", "target_origin_disputes.csv")
+STORED_DECISIONS_SQL = """SELECT llm_decision_id, parsed_output FROM pv_evidence.llm_decision
+                          WHERE llm_decision_id IN %s AND validation_status = 'validated'"""
+RESTORE_METHOD = "target_origin_restore@v1"
+RESTORE_DESCRIPTION = f"""Rebuilds the stored labelled rows of a pair set from the decision log, with no model call:
+each graded label's outcome is recomputed by {CHECK_METHOD}'s rule from the checker decisions its row already cites
+(check_fields.decisions), the approval fact as of entry and the verdicts of the disputes file given; a pair with no
+labelled row gets a not_reached row."""
+
+
+def stored_outputs(items: dict[str, dict]) -> dict[str, list[tuple[str, int, dict]]]:
+    """key -> (model, decision id, output) of the checker decisions each stored row cites in check_fields.decisions."""
+    if not items:
+        return {}
+    rows = frame.query("SELECT ensembl_id, mondo_id, check_fields FROM preclin.target_disease_origin "
+                       "WHERE basis = 'labelled' AND check_fields IS NOT NULL")
+    cited = {key(r.ensembl_id, r.mondo_id): r.check_fields.get("decisions", {}) for r in rows.itertuples()}
+    ids = sorted({i for k in items for i in cited.get(k, {}).values()})
+    parsed = {} if not ids else dict(frame.query(STORED_DECISIONS_SQL, (tuple(ids),)).itertuples(index=False))
+    return {k: [(model, i, parsed[i]) for model, i in sorted(cited.get(k, {}).items()) if i in parsed] for k in items}
+
+
+def restore(args) -> None:
+    pairs = pair_frame(args.pairs)
+    items = check_items(pairs)
+    outputs = stored_outputs(items)
+    params = {"from": CHECK_METHOD, "disputes": args.disputes, "no_model_calls": True}
+    inputs = ["preclin.target_disease_origin", "preclin.target_disease_source", "pv_evidence.llm_decision",
+              "preclin.dev_program_approval (report.section3.Evidence)", args.disputes]
+    store_check(pairs, items, outputs, args.disputes,
+                (RESTORE_METHOD, "Stored origin rows rebuilt from the decision log", RESTORE_DESCRIPTION), params, inputs)
+    with llm.connect() as conn, conn.cursor() as cur:
+        n = mark_unreached(cur, pairs)
+        conn.commit()
+    log(f"restored {len(items)} graded labels from stored decisions; not_reached rows written={n}")
+
+
 def check(args) -> None:
-    from report.section3 import Evidence
     pairs = pair_frame(args.pairs)
     items = check_items(pairs)
     params = {"task": CHECK_TASK.name, "tools": CHECK_TOOLS, "disputes": args.disputes, "runs": {},
@@ -1003,16 +1081,26 @@ def check(args) -> None:
             todo = undecided(todo, new)
         params["runs"][task.prompt_version] = runs
         params[f"unanswered_{task.prompt_version}"] = sorted(todo)
+    store_check(pairs, items, outputs, args.disputes,
+                (CHECK_METHOD, "Check of the origin labels: facts in code, judgment by agreement", CHECK_DESCRIPTION),
+                params, inputs)
+
+
+def store_check(pairs: pd.DataFrame, items: dict[str, dict], outputs: dict[str, list[tuple[str, int, dict]]],
+                disputes: str, method: tuple[str, str, str], params: dict, inputs: list[str]) -> None:
+    """Fields, outcome and stored row of each graded label from its checkers' outputs (key -> (model, decision id,
+    output)), the approval fact and the human verdicts in the disputes sheet; then rewrite the sheet with the
+    disputes left open. method is the (id, name, description) recorded for the write."""
+    from report.section3 import Evidence
     programs = first_program_rows(pairs)
     facts = approval_facts(items, programs, Evidence(frame.programs()))
-    human = read_disputes(args.disputes)
+    human = read_disputes(disputes)
     answers = {k: [o for _, _, o in outputs[k]] for k in items}
     raw = {k: check_fields(items[k], facts[k], answers[k], None) for k in items}
     fields = {k: check_fields(items[k], facts[k], answers[k], human.get(k)) for k in items}
     outcomes = {k: check_outcome_v2(f) for k, f in fields.items()}
     with llm.connect() as conn, conn.cursor() as cur:
-        llm.record_method(cur, CHECK_METHOD, "Check of the origin labels: facts in code, judgment by agreement",
-                          CHECK_DESCRIPTION, inputs, params)
+        llm.record_method(cur, *method, inputs, params)
         for k, outcome in outcomes.items():
             e, m = split_key(k)
             ids = [i for _, i, _ in outputs[k]]
@@ -1021,13 +1109,13 @@ def check(args) -> None:
             cur.execute(CHECK_UPDATE_SQL[outcome], check_update_params(items[k], outcome, ids[0] if ids else None,
                                                                         detail, e, m))
         conn.commit()
-    sheet = write_sheet(args.disputes, dispute_sheet(items, fields, {k: [(mo, o) for mo, _, o in v]
-                                                                       for k, v in outputs.items()}, programs))
+    sheet = write_sheet(DISPUTES_CSV, dispute_sheet(items, fields, {k: [(mo, o) for mo, _, o in v]
+                                                                   for k, v in outputs.items()}, programs))
     counts = pd.Series(list(outcomes.values())).value_counts().to_dict() if outcomes else {}
     facts_n = pd.Series([f for f in facts.values() if f]).value_counts().to_dict()
     log(f"graded labels={len(items)} outcomes={counts} approval facts={facts_n} human verdicts applied="
         f"{sum(len(v) for v in human.values())} disputes on the sheet={len(sheet)} "
-        f"(by field {sheet.field.value_counts().to_dict() if len(sheet) else {}}) runs={params['runs']}")
+        f"(by field {sheet.field.value_counts().to_dict() if len(sheet) else {}}) runs={params.get('runs', {})}")
 
 
 # --- research: one model reading, with search and fetch, settles a factual dispute ---
@@ -1672,7 +1760,7 @@ def package(args) -> None:
 
 # For reporting only: each origin's broad category (report.evidence_lines.CATEGORIES); the two that are not kinds are
 # their own.
-CATEGORY = {o: o if o in NOT_KINDS else KINDS[o].category for o in ORIGINS}
+CATEGORY = {**{o: o if o in NOT_KINDS else KINDS[o].category for o in ORIGINS}, **{o: o for o in STORED_ONLY}}
 KAPPA_MIN = 0.6
 GAP_MAX = 10.0
 GATE_JSON = os.path.join(frame.REPO, "report", "audits", "target_origin_gate.json")
@@ -1863,14 +1951,20 @@ def add_commands(sub) -> None:
     p.set_defaults(fn=label)
     p = sub.add_parser("check", help="check each graded label: facts in code, two checkers' judgment by agreement")
     pairs_option(p)
-    p.add_argument("--disputes", default=os.path.join(frame.REPO, "report", "audits", "target_origin_disputes.csv"),
-                   help="the disputes sheet: human verdicts are read from it, then it is rewritten with the open ones")
+    p.add_argument("--disputes", default=DISPUTES_CSV,
+                   help="where the verdicts are read from (the disputes sheet, or the research pass's filled copy); "
+                        "the disputes sheet is then rewritten with the disputes left open")
     p.set_defaults(fn=check)
+    p = sub.add_parser("restore", help="rebuild the stored labelled rows from the decision log, with no model call: "
+                                       "outcomes from the checker decisions each row cites, not_reached rows")
+    pairs_option(p, default="window")
+    p.add_argument("--disputes", default=DISPUTES_CSV,
+                   help="where the verdicts are read from (the disputes sheet, or the research pass's filled copy)")
+    p.set_defaults(fn=restore)
     p = sub.add_parser("research", help="one model reading with search and fetch settles the factual disputes "
                                         "(quote, year, approval) into a filled copy of the sheet; no table write")
     pairs_option(p, default="window")
-    p.add_argument("--disputes", default=os.path.join(frame.REPO, "report", "audits", "target_origin_disputes.csv"),
-                   help="the disputes sheet whose factual rows are researched")
+    p.add_argument("--disputes", default=DISPUTES_CSV, help="the disputes sheet whose factual rows are researched")
     p.add_argument("--out", default=RESEARCH_CSV, help="where the filled copy is written")
     p.set_defaults(fn=research)
     p = sub.add_parser("blind", help="second model labels a hand-check set from the records alone")

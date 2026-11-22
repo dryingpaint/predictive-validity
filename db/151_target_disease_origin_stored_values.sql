@@ -1,0 +1,16 @@
+-- The origin's stored values distinguish a label the checkers dispute (disputed) and a pair the labelling never
+-- answered (not_reached) from one no source settles (unclear); pipeline.target_origin writes them (check, restore,
+-- label).
+
+BEGIN;
+SET LOCAL lock_timeout = '3s';
+ALTER TABLE preclin.target_disease_origin DROP CONSTRAINT target_disease_origin_origin_check;
+ALTER TABLE preclin.target_disease_origin ADD CONSTRAINT target_disease_origin_origin_check CHECK (origin IN (
+    'human_genetics', 'tumour_genetics', 'diseased_tissue', 'mouse_genetics', 'curated_pathway', 'cell_line_perturbation',
+    'earlier_drug_other_disease', 'observational_biomarker', 'human_cell_perturbation', 'animal_model_pharmacology',
+    'clinical_observation', 'phenotypic_screen', 'unclear', 'disputed', 'not_reached'));
+COMMENT ON COLUMN preclin.target_disease_origin.origin IS
+    'human_genetics: germline variants link the target to the disease (GWAS, gene burden, Mendelian); tumour_genetics: the gene is recurrently mutated in the cancer; diseased_tissue: the gene''s RNA or protein level differs in diseased tissue; mouse_genetics: a genetic change in an animal links the target to the disease: knocked-out or mutant animals show the disease, or a knockout or transgene alters an animal model of it; curated_pathway: a curated pathway shows a disease mutation disrupting the target; cell_line_perturbation: changing the target in an established cell line (a genome-wide screen or a targeted experiment) changes a disease feature; earlier_drug_other_disease: a drug on the target was approved for another disease, one not close enough to the program''s to make the pair validated at entry; observational_biomarker: the target or its product in patients'' blood, another fluid or on imaging tracks the disease; human_cell_perturbation: perturbing the target in primary human cells or tissue (not an established cell line) changes a disease phenotype; animal_model_pharmacology: modulating the target by means other than genetics changes an animal model of the disease; clinical_observation: an effect seen in people, such as a side effect; phenotypic_screen: a molecule found without a target hypothesis came first; unclear: no source settles it; disputed: the two checkers disagree on a field of the label and no verdict has settled it (the label as read stays in llm_decision_id''s decision); not_reached: the labelling never returned a valid answer for the pair (llm_decision_id is its last attempt, when there is one). The last eight exist only for labelled rows. Each kind but phenotypic_screen and unclear is a kind of the report''s evidence list (report.evidence_lines.KINDS, under the same key).';
+COMMENT ON COLUMN preclin.target_disease_origin.check_outcome IS
+    'supported: every field holds; unsupported: a field is no; unverified: a field could not be verified; disputed: the two checkers disagree on a field, or the earlier-drug approval is not in the dated index, and no human verdict has settled it; not_checked: the label was (re)written and not yet checked. A disputed row holds origin disputed, an unsupported or unverified one origin unclear, both with grade none; the label as read stays in llm_decision_id''s decision. Method pipeline.target_origin.CHECK_METHOD.';
+COMMIT;

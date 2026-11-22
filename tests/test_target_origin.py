@@ -311,7 +311,7 @@ def test_package_holds_every_pair_and_no_label():
 # --- gate ---
 
 def test_every_origin_has_a_broad_category():
-    assert set(to.CATEGORY) == set(to.ORIGINS)
+    assert set(to.CATEGORY) == set(to.ORIGINS) | set(to.STORED_ONLY)
     assert to.CATEGORY["human_genetics"] == to.CATEGORY["tumour_genetics"] == "human_genetics"
     assert to.CATEGORY["diseased_tissue"] == to.CATEGORY["cell_line_perturbation"] == "in_vitro"
     assert to.CATEGORY["mouse_genetics"] == to.CATEGORY["animal_model_pharmacology"] == "animals"
@@ -681,11 +681,20 @@ def test_check_outcome_v2(fields, outcome):
     assert to.check_outcome_v2({**fields, "fact": None}) == outcome
 
 
-def test_check_update_sql_resets_the_origin_unless_supported():
+def test_a_rejected_label_is_stored_unclear_and_a_disputed_one_disputed():
     assert "origin = 'unclear'" not in to.CHECK_UPDATE_SQL["supported"]
-    for outcome in ("unsupported", "unverified", "disputed"):
+    for outcome in ("unsupported", "unverified"):
         assert "origin = 'unclear'" in to.CHECK_UPDATE_SQL[outcome]
+    assert "origin = 'disputed'" in to.CHECK_UPDATE_SQL["disputed"]
     assert all("check_fields" in sql for sql in to.CHECK_UPDATE_SQL.values())
+
+
+def test_a_pair_never_labelled_gets_a_not_reached_row_citing_its_last_attempt():
+    keys = [to.key("ENSG1", "MONDO:1"), to.key("ENSG2", "MONDO:2"), to.key("ENSG3", "MONDO:3")]
+    rows = to.unreached_rows(keys, labelled={keys[0]}, last_decision={keys[1]: 42})
+    assert [(r[0], r[3], r[6], r[9], r[11], r[12]) for r in rows] == [
+        ("ENSG2", "not_reached", "none", 42, "not_checked", "unclear"),
+        ("ENSG3", "not_reached", "none", None, "not_checked", "unclear")]
 
 
 def test_approval_fact_on_the_pairs_gene_from_the_dated_index():

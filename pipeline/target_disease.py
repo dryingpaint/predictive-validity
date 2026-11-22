@@ -6,7 +6,8 @@ proposed each (issue #146).
 
 A pair is a human primary target of an entity (preclin.moiety_target) and the disease of one of the entity's programs
 that entered Phase 2 or 3 with an industry trial (report.section1.phase_rows, any year). Its first entry is the
-earliest such entry of any program on the target in the disease. It was validated at entry when an entity on the
+earliest such entry of any program on the target in the disease. It was validated at entry when its approval fact
+(pipeline.target_origin.approval_fact, read from the approval index the evidence chart uses) is close: an entity on the
 target was FDA-approved for the disease, or a term within MONDO Lin 0.8 of it, before that date.
 
 The provisional origin is the earliest evidence item for the pair that became public before the year of first entry,
@@ -26,7 +27,7 @@ from pipeline import llm, target_origin
 from pipeline.target_history import targets
 from report import frame
 from report.section1 import phase_rows
-from report.section3 import ABSENT, CLOSE, evidence_index, neighbourhood
+from report.section3 import ABSENT, CLOSE, Evidence, evidence_index
 
 # Evidence families of report.section3.evidence_index -> origin, in the order that breaks a tie within one year
 FAMILY_ORIGIN = {"mendelian": "human_genetics", "burden": "human_genetics", "gwas": "human_genetics",
@@ -34,16 +35,19 @@ FAMILY_ORIGIN = {"mendelian": "human_genetics", "burden": "human_genetics", "gwa
                  "mgi": "mouse_genetics", "expression": "diseased_tissue", "crispr": "cell_line_perturbation"}
 EARLY = date(1990, 1, 1)  # phase entries are read from this date, before which the registry holds almost nothing
 
-BUILD_METHOD = "target_disease@v1"
+BUILD_METHOD = "target_disease@v2"
 BUILD_DESCRIPTION = """Pairs: every (Ensembl gene of a human primary target in preclin.moiety_target, MONDO disease of
 a program of that entity) where the program entered Phase 2 or 3 with an industry trial (report.section1.phase_rows,
 window from 1990, skipped phases not counted). first_entry: the earliest such entry for the pair. programs: distinct
-programs. validated_at_entry: an entity with a primary target on the gene has an FDA approval for a MONDO term within
-Lin 0.8 of the disease (report.section3.neighbourhood) dated before first_entry (preclin.dev_program_approval)."""
-PROVISIONAL_METHOD = "target_disease_provisional@v1"
+programs. validated_at_entry: the pair's approval fact as of first_entry is close (pipeline.target_origin.approval_fact
+over report.section3.Evidence, the evidence chart's approval index: an entity with a primary target on the gene has an
+FDA approval for a MONDO term within Lin 0.8 of the disease dated before first_entry, an approval that predates the FDA
+letters being dated at the entity's first FDA approval)."""
+PROVISIONAL_METHOD = "target_disease_provisional@v2"
 PROVISIONAL_DESCRIPTION = """For each pair in preclin.target_disease: the first year each evidence family of
 report.section3.evidence_index has the gene for a MONDO term within Lin 0.8 of the disease, and the first year an
-entity on the gene was FDA-approved for a disease outside that neighbourhood. The origin is the earliest of these
+entity on the gene was FDA-approved for a disease outside that neighbourhood (report.section3.Evidence, the evidence
+chart's approval index). The origin is the earliest of these
 before the year of first_entry (ties in the order of FAMILY_ORIGIN, then the approval); the secondary origin is the
 next distinct one. No evidence before entry: unclear, with no year."""
 
@@ -56,13 +60,6 @@ def entries() -> pd.DataFrame:
     return rows.groupby("program_id").entry.min().rename("entry").reset_index()
 
 
-def approvals() -> pd.DataFrame:
-    """(moiety_id, mondo_id, approved_on) for every approved program with a date."""
-    p = frame.programs()
-    p = p[p.approved.eq("yes") & p.first_approval_date.notna()]
-    return p.assign(approved_on=pd.to_datetime(p.first_approval_date))[["moiety_id", "mondo_id", "approved_on"]]
-
-
 def pairs() -> pd.DataFrame:
     """One row per (ensembl_id, mondo_id): symbol, first_entry, programs, validated_at_entry."""
     progs = frame.programs()[["program_id", "moiety_id", "mondo_id"]].dropna()
@@ -72,11 +69,8 @@ def pairs() -> pd.DataFrame:
     out = d.groupby(["ens", "mondo_id"]).agg(first_entry=("entry", "min"), programs=("program_id", "nunique")) \
         .reset_index().rename(columns={"ens": "ensembl_id"})
     out["first_entry"] = pd.to_datetime(out.first_entry)
-    nb = neighbourhood()
-    approved = approvals().merge(t, on="moiety_id")
-    by_gene = {g: list(zip(x.mondo_id, x.approved_on)) for g, x in approved.groupby("ens")}
-    out["validated_at_entry"] = [any(m in nb.terms(d_, CLOSE) and when < first
-                                     for m, when in by_gene.get(g, ()))
+    ev = Evidence(frame.programs())
+    out["validated_at_entry"] = [target_origin.approval_fact(ev, g, d_, first) == "close"
                                  for g, d_, first in zip(out.ensembl_id, out.mondo_id, out.first_entry)]
     sym = frame.query("SELECT ensembl_id, min(symbol) AS symbol FROM public.targets WHERE ensembl_id IS NOT NULL "
                       "GROUP BY 1").set_index("ensembl_id").symbol
@@ -107,19 +101,16 @@ def provisional_origin(family_years: dict[str, int], other_approval: int, entry_
 def origins(hub: pd.DataFrame) -> pd.DataFrame:
     """The provisional origin of every pair in hub."""
     idx, _ = evidence_index()
-    nb = neighbourhood()
-    t = targets()[["moiety_id", "ens"]].drop_duplicates()
-    approved = approvals().merge(t, on="moiety_id")
-    by_gene = {g: list(zip(x.mondo_id, x.approved_on.dt.year)) for g, x in approved.groupby("ens")}
+    ev = Evidence(frame.programs())
     out = []
     for g, d, first in zip(hub.ensembl_id, hub.mondo_id, pd.to_datetime(hub.first_entry)):
-        close = nb.terms(d, CLOSE)
+        close = ev.nb.terms(d, CLOSE)
         fams = {}
         for fam, terms in idx.get(g, {}).items():
             ys = [years[0] for m, years in terms.items() if m in close]
             if ys:
                 fams[fam] = min(ys)
-        other = min((y for m, y in by_gene.get(g, ()) if m not in close), default=ABSENT)
+        other = min((when.year for m, when in ev.approved.get(g, ()) if m not in close), default=ABSENT)
         origin, year, secondary = provisional_origin(fams, other, first.year)
         out.append({"ensembl_id": g, "mondo_id": d, "origin": origin, "origin_year": year,
                     "secondary_origin": secondary})
