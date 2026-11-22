@@ -53,7 +53,7 @@ def save(fig, name):
 
 EFFICACY = "#d62828"
 ATTRIBUTION_COLORS = {  # report.attribution.SUBCAUSE_LABELS, in stacking order; shades of the efficacy cause color
-    "not_engaged": "#7a0e0e", "engaged_no_benefit": EFFICACY, "trial_design": "#ec7a7a", "toxicity_offset": "#f5b3b3",
+    "not_engaged": "#7a0e0e", "engaged_no_benefit": EFFICACY, "trial_design": "#ec7a7a",
     "no_engagement_data": "#fbe3e3",
 }
 SHOWN_COLORS = {  # report.stop_causes.SHOWN, in stacking order; spectrum order, efficacy first

@@ -5,8 +5,8 @@
 Cohort: the evidence-line entries of report.evidence_analysis (US-developed phase entries 2008-2019), Phase 1-3. Each
 entry's traced stop (report.evidence_analysis.traced_stops) is split into failure modes:
 
-- never reached: tolerability capped the dose, toxicity offset the benefit, a PK, dose or formulation reason, or human
-  evidence shows exposure or engagement too low (stop_not_reached);
+- never reached: tolerability capped the dose, a PK, dose or formulation reason, or human evidence shows exposure or
+  engagement too low (stop_not_reached);
 - and the drug engaged its target without benefit (stop_no_benefit), split into the failure modes of
   report.engaged_modes: the target not causal, the wrong time, the wrong patients, the drug fell short, the
   trial could not answer, unresolved.

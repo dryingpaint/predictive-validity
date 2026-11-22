@@ -48,7 +48,6 @@ Across all Phase 2 and 3 stops, a target that does not drive the disease account
     * No human evidence of engagement either way: {{attribution.phase23.subcauses.no_engagement_data.share|pct0}}
     * Never engaged its target or reached adequate exposure: {{attribution.phase23.subcauses.not_engaged.share|pct0}}
     * Trial design, population or endpoint: {{attribution.phase23.subcauses.trial_design.share|pct0}}
-    * Toxicity offset any efficacy: {{attribution.phase23.subcauses.toxicity_offset.share|pct0}}
 
     Where engagement is known, {{attribution.phase23.testable.not_engaged_share|pct0}} ({{attribution.phase23.testable.lo|pct0}}–{{attribution.phase23.testable.hi|pct0}}) were never engaged, as often in Phase 3 ({{attribution.by_phase.3.testable.not_engaged_share|pct0}}) as in Phase 2 ({{attribution.by_phase.2.testable.not_engaged_share|pct0}}); in {{attribution.phase23.details.other_drug_on_target_worked.n|int}} of them this is inferred because another drug on the same target worked. The first kind points to a gap in models of the disease, the third to a gap in models of dose and engagement.
 * **Stops no source explains**, by signal:
