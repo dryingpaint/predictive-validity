@@ -13,6 +13,10 @@ import pandas as pd
 from report import frame
 
 
+FACT_KEYS = ("ot_tier", "disease_mechanism", "mouse_model", "loeuf", "mouse_phenotype", "common_essential",
+             "screened_line", "dependency", "measurement", "literature", "molecule_property")  # the view's kinds of fact
+
+
 @frame.held_once
 def facts(fact_key: str) -> pd.DataFrame:
     """Every fact of one kind (preclin.evidence_subject_fact.fact_key): its subject, answer, the year it became known
@@ -20,6 +24,12 @@ def facts(fact_key: str) -> pd.DataFrame:
     return frame.query("""SELECT ensembl_id, mondo_id, disease_id, moiety_id, value, value_num, known_year, detail,
                                  source, record_key
                           FROM preclin.evidence_subject_fact WHERE fact_key = %s""", (fact_key,))
+
+
+def load_all() -> None:
+    """Read every kind of fact once (a build calls this while its snapshot is young)."""
+    for key in FACT_KEYS:
+        facts(key)
 
 
 def detail(f: pd.DataFrame, key: str) -> pd.Series:

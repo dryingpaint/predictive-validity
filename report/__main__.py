@@ -23,8 +23,8 @@ import sys
 import time
 from datetime import datetime, timezone
 
-from report import (attribution, disease_match, evidence_analysis, failure_modes, figures, frame, methods, quality, render,
-                    section1, section2, section3, stop_causes)
+from report import (attribution, disease_match, evidence_analysis, evidence_facts, failure_modes, figures, frame,
+                    methods, quality, render, section1, section2, section3, stop_causes)
 
 # quality reads only the database and audit files, so it runs first with the other large reads
 STEPS = [quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes, methods, figures,
@@ -95,8 +95,8 @@ def cache(step) -> None:
 def load_tables() -> None:
     """Read the large tables the steps share while the held snapshot is young: a query against a snapshot held
     for minutes, while other sessions write, runs several times slower than the same query on a fresh one."""
-    for load in (frame.programs, frame.program_trials, frame.trial_outcomes, frame.drug_assays,
-                 frame.common_essentials, disease_match.mondo_tables, section2.target_tables, section3.evidence_index):
+    for load in (frame.programs, frame.program_trials, frame.trial_outcomes, evidence_facts.load_all,
+                 disease_match.mondo_tables, section2.target_tables, section3.evidence_index):
         load()
 
 
