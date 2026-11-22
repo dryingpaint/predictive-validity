@@ -12,7 +12,7 @@ Every stop has one cause; where a source gives more detail, one subcause from th
 
 {{FAILURE_DEFINITIONS_TABLE}}
 
-### Lines of evidence
+### Kinds of evidence
 
 Each program is scored for the evidence its targets had for its disease as of the year before it entered the phase.
 
@@ -52,11 +52,11 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 
 {{MODALITY_TABLE}}
 
-### Evidence by category
+### Evidence by kind
 
-Every category and subcategory on US-developed programs, as the main tab's evidence chart draws them.
+Every kind of evidence on US-developed programs, section by section: the kind, the values of its facts, and the lines derived from them, such as evidence agreeing with the drug's direction. The main tab's evidence chart draws each kind and the values of one of its facts.
 
-{{CATEGORIES_TABLE}}
+{{KINDS_TABLE}}
 
 ### Relative success, all programs
 

@@ -11,11 +11,13 @@ entry's traced stop (report.evidence_analysis.traced_stops) is split into failur
   report.engaged_modes: the target not causal, the wrong time, the wrong patients, the drug fell short, the
   trial could not answer, unresolved.
 
-For each evidence area line and its tiers (report.evidence_lines.AREAS), the adjusted risk ratio of each mode among
-the entries the line applies to (report.section3.estimate, covariates as in the stop-risk figure), in three cohorts
+For each row of the evidence chart (report.evidence_lines.chart_rows: each kind and its values) and each line derived
+from a target or drug kind (aggregates and crosses with the drug's action), the adjusted risk ratio of each mode among
+the entries the line is known for (report.section3.estimate, covariates as in the stop-risk figure), in three cohorts
 (VARIANTS): every Phase 1-3 entry; the same without entries that stopped for a reason other than efficacy or safety,
-which competes with the modes (a cause-specific comparison); and Phase 2 entries only. The precedent lines are left
-out of the target-layer modes: the target's record that defines them is the approvals the precedent lines count.
+which competes with the modes (a cause-specific comparison); and Phase 2 entries only. The kinds about earlier drugs
+on the target are left out of the target-layer modes: the target's record that defines them is the approvals those
+kinds count.
 Writes report/output/failure_modes/modes_<variant>.csv and numbers.json.
 """
 from __future__ import annotations
@@ -28,7 +30,7 @@ import pandas as pd
 from pipeline.stops import keys
 from report import frame, stop_causes
 from report.evidence_analysis import COVARS_23, exposed_enough, traced_stops
-from report.evidence_lines import APPLIES, AREAS, build
+from report.evidence_lines import PRECEDENT_KINDS, build, chart_rows, report_lines
 from report.section3 import COVARS, describe, estimate, jsonable
 from report.engaged_modes import ENGAGED_MODES, engaged_modes
 
@@ -51,22 +53,24 @@ def with_modes(d: pd.DataFrame) -> pd.DataFrame:
 
 def rows(d: pd.DataFrame) -> pd.DataFrame:
     out = []
-    for area, (line, tiers) in AREAS.items():
-        for level, ln in (("area", line), *(("tier", t) for t in tiers)):
-            if not ln.column:
+    chart = [(k, level, ln) for _, k, level, ln in chart_rows()]
+    shown = {ln.column for _, _, ln in chart}
+    derived = [(k, level, ln) for k, level, ln in report_lines()
+               if level == "derived" and k.category != "safety" and ln.column not in shown]
+    for kind, level, ln in chart + derived:
+        elig = d[ln.column].notna()
+        x = d.loc[elig].assign(x=d.loc[elig, ln.column].astype(float))
+        desc = describe(x.assign(any_outcome=1.0), "any_outcome", "x")
+        row = {"kind": kind.key, "level": level, "label": ln.label, "column": ln.column, "exposed": desc["n"],
+               "eligible": int(elig.sum()), "estimated": exposed_enough(desc)}
+        precedent = kind.key in PRECEDENT_KINDS
+        covars = tuple(c for c in COVARS_23 if not (precedent and c == "precedent"))
+        for outcome in MODES if row["estimated"] else ():
+            if precedent and outcome in BY_RECORD:
                 continue
-            elig = d[ln.column].notna() & APPLIES[ln.applies](d)
-            x = d.loc[elig].assign(x=d.loc[elig, ln.column].astype(float))
-            desc = describe(x.assign(any_outcome=1.0), "any_outcome", "x")
-            row = {"area": area, "level": level, "label": ln.label, "column": ln.column, "exposed": desc["n"],
-                   "eligible": int(elig.sum()), "estimated": exposed_enough(desc)}
-            covars = tuple(c for c in COVARS_23 if not (area == "precedent" and c == "precedent"))
-            for outcome in MODES if row["estimated"] else ():
-                if area == "precedent" and outcome in BY_RECORD:
-                    continue
-                r = estimate(x, outcome, "x", covars)
-                row |= {f"{outcome}_{k}": r.get(k) for k in ("ppv", "rate_without", "rr", "lo", "hi", "p")}
-            out.append(row)
+            r = estimate(x, outcome, "x", covars)
+            row |= {f"{outcome}_{k}": r.get(k) for k in ("ppv", "rate_without", "rr", "lo", "hi", "p")}
+        out.append(row)
     return pd.DataFrame(out)
 
 

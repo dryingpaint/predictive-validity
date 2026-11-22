@@ -118,10 +118,13 @@ def failure_definitions_table() -> str:
 
 
 def evidence_definitions_table() -> str:
-    """Each area of the evidence chart: what counts as having it, and where it comes from."""
-    from report.evidence_lines import AREA_MEANING, AREAS
-    rows = [[AREAS[k][0].label.split(":")[0].replace(" (exploratory)", ""), counts, source]
-            for k, (counts, source) in AREA_MEANING.items()]
+    """Each kind of evidence with facts, by broad category: what counts as having it, and where it comes from."""
+    from report.evidence_lines import CATEGORIES, KINDS
+    rows = []
+    for category, title in CATEGORIES.items():
+        rows.append([f"**{title}**", "", ""])
+        rows += [[k.label.split(":")[0] + (" (about the drug)" if k.about == "drug" else ""), k.definition, k.source]
+                 for k in KINDS.values() if k.category == category and k.column]
     return table(pd.DataFrame(rows, columns=["Evidence", "What counts", "Source and dating"]))
 
 
@@ -206,10 +209,11 @@ def engaged_area_table() -> str:
 ENGAGED_EVIDENCE_ROWS = {"tier_rare_only": "Human genetics, rare variants", "tier_common_only": "Human genetics, GWAS only",
                          "somatic_concordant": "Tumour mutation matching the drug",
                          "expression": "Diseased tissue: RNA level differs",
-                         "altered_animal": "Mouse genetics resembling the disease",
+                         "mouse_genetics": "Mouse genetics resembling the disease",
                          "area_measured": "Binding to the target measured",
-                         "lit_animal_disease": "Published study in an animal model of the disease",
-                         "cat_precedent": "An earlier drug on the target"}
+                         "lit_animal_disease": "Animal model pharmacology (today the program's own drug)",
+                         "validated_at_entry": "A drug on the target approved for this disease (validated)",
+                         "approved_other_disease": "A drug on the target approved for another disease"}
 
 
 def engaged_disease_table() -> str:
@@ -279,29 +283,31 @@ def ratio_cell(r, prefix: str) -> str:
     return "–" if v is None or pd.isna(v) else f"{v:.2f} ({r[f'{prefix}_lo']:.2f}–{r[f'{prefix}_hi']:.2f})"
 
 
-def categories_table() -> str:
-    """Every evidence category and subcategory of the plan amendment on US-developed programs."""
+def kinds_table() -> str:
+    """Every line of the evidence structure on US-developed programs, by broad category: each kind of evidence, the
+    values of its facts, and the lines derived from them."""
+    from report.evidence_lines import CATEGORIES
     df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "lines.csv"))
     out = []
-    for r in df.to_dict("records"):
-        literature = isinstance(r.get("status"), str) and r["status"] != ""  # a line read from the published literature
-        name = ("" if r["level"] in ("category", "adjustment") else "· ") + r["label"] \
-            + (" (descriptive)" if r["level"] == "descriptive" else "") + (" (exploratory)" if literature else "")
-        if pd.isna(r.get("column")):
-            out.append([name, "–", "–", "Only its one line, below", "–", "–", "–"])
-            continue
-        exposed = f"{int(r['exposed']):,} / {int(r['eligible']):,}"
-        if not r["estimated"]:
-            out.append([name, exposed, f"{int(r['targets']):,}", "Too rare to estimate", "–", "–", "–"])
-            continue
-        stop = ratio_cell(r, "safety_stop") + " (safety)" if r["category"] == "safety_risk" \
-            else ratio_cell(r, "efficacy_stop") if "efficacy_stop_rr" in r else "–"
-        out.append([name, exposed, f"{int(r['targets']):,}",
-                     f"{r['rs_rs']:.2f} ({r['rs_rs_lo']:.2f}–{r['rs_rs_hi']:.2f})" if pd.notna(r.get("rs_rs")) else "–",
-                     ratio_cell(r, "s4"), ratio_cell(r, "s4_biomarker"), stop])
+    for category, title in [*CATEGORIES.items(), ("adjustment", "Adjustment")]:
+        out.append([f"**{title}**", "", "", "", "", "", ""])
+        for r in df[df.category.eq(category)].to_dict("records"):
+            literature = isinstance(r.get("status"), str) and r["status"] != ""  # read from the published literature
+            name = ("" if r["level"] in ("kind", "adjustment") else "· ") + r["label"] \
+                + {"hindsight": " (hindsight)", "exploratory": " (exploratory)", "derived": " (derived)"}.get(
+                    r["level"], "") + (" (exploratory)" if literature and r["level"] != "exploratory" else "")
+            exposed = f"{int(r['exposed']):,} / {int(r['eligible']):,}"
+            if not r["estimated"]:
+                out.append([name, exposed, f"{int(r['targets']):,}", "Too rare to estimate", "–", "–", "–"])
+                continue
+            stop = ratio_cell(r, "safety_stop") + " (safety)" if category == "safety" \
+                else ratio_cell(r, "efficacy_stop") if "efficacy_stop_rr" in r else "–"
+            out.append([name, exposed, f"{int(r['targets']):,}",
+                         f"{r['rs_rs']:.2f} ({r['rs_rs_lo']:.2f}–{r['rs_rs_hi']:.2f})" if pd.notna(r.get("rs_rs")) else "–",
+                         ratio_cell(r, "s4"), ratio_cell(r, "s4_biomarker"), stop])
     return table(pd.DataFrame(out, columns=[
-        "Evidence", "Entries with it / eligible", "Targets", "Relative success to approval (95% CI)",
-        "Advancing from Phase 2, adjusted RR", "Same, biomarker enrolment held fixed", "Efficacy stop, adjusted RR"]))
+        "Evidence", "Entries with it / known", "Targets", "Relative success to approval (95% CI)",
+        "Advancing from Phase 2, adjusted RR", "Same, biomarker enrolment held fixed", "Stop, adjusted RR"]))
 
 
 def amendment_hypotheses_table() -> str:
@@ -591,7 +597,7 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "S3_TYPES_TABLE": s3_types_table, "S3_REFINEMENTS_TABLE": s3_refinements_table,
           "ATTRIBUTION_TABLE": attribution_table,
           "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table,
-          "CATEGORIES_TABLE": categories_table, "ENGAGED_AREA_TABLE": engaged_area_table,
+          "KINDS_TABLE": kinds_table, "ENGAGED_AREA_TABLE": engaged_area_table,
           "ENGAGED_EVIDENCE_TABLE": engaged_evidence_table,
           "ENGAGED_DISEASE_TABLE": engaged_disease_table, "AMENDMENT_HYPOTHESES_TABLE": amendment_hypotheses_table}
 

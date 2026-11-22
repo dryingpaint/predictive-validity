@@ -31,7 +31,7 @@ from report.section3 import ABSENT, CLOSE, evidence_index, neighbourhood
 # Evidence families of report.section3.evidence_index -> origin, in the order that breaks a tie within one year
 FAMILY_ORIGIN = {"mendelian": "human_genetics", "burden": "human_genetics", "gwas": "human_genetics",
                  "somatic": "tumour_genetics", "reactome": "curated_pathway", "impc": "mouse_genetics",
-                 "mgi": "mouse_genetics", "expression": "diseased_tissue", "crispr": "cell_screen"}
+                 "mgi": "mouse_genetics", "expression": "diseased_tissue", "crispr": "cell_line_perturbation"}
 EARLY = date(1990, 1, 1)  # phase entries are read from this date, before which the registry holds almost nothing
 
 BUILD_METHOD = "target_disease@v1"

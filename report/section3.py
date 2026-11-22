@@ -274,6 +274,8 @@ class Evidence:
                  or (inc and ("loss_of_function" in risks or "gain_of_function_protective" in prots)))
         mdisc = ((dec and ("loss_of_function" in risks or "gain_of_function_protective" in prots))
                  or (inc and ("gain_of_function" in risks or "loss_of_function_protective" in prots)))
+        raises = "loss_of_function" in risks or "gain_of_function_protective" in prots
+        lowers = "gain_of_function" in risks or "loss_of_function_protective" in prots
         wants = {MOUSE_FAVOURS[(pert, rel)] for g in e.genes for pert, rel, y in self.mouse.get((g, d), ())
                  if y <= cut and (pert, rel) in MOUSE_FAVOURS}
         return {
@@ -294,12 +296,20 @@ class Evidence:
             "gwas_weak": float(on("gwas", "weak") and not on("gwas", "mid") and not on("gwas", "strong")),
             "somatic_concordant": float(on("somatic", "any") and ((dec and on("somatic", "gof_risk"))
                                                                   or (inc and on("somatic", "lof_risk")))),
+            "somatic_gof": float(on("somatic", "gof_risk")), "somatic_lof": float(on("somatic", "lof_risk")),
+            # Drug-independent forms of the direction lines: what losing the gene does to disease risk by the labelled
+            # mechanisms, and which way the mouse models favour moving the gene's function.
+            "loss_effect": ("none" if not g3 else "unlabelled" if not labelled else "mixed" if raises and lowers
+                            else "raises_risk" if raises else "lowers_risk" if lowers else "undirected"),
+            "mouse_favours": ("none" if not wants else "mixed" if len(wants) > 1 else
+                              "favours_raising" if wants == {"increase"} else "favours_lowering"),
             "expression_up": float(on("expression", "up")),
             **liab, "liability": float(any(liab.values())),
             "crispr_untimed": float("crispr" in first and first["crispr"][TIERS.index("any")] <= NEVER),
             "pan_essential_untimed": float(frame.essential_as_of(self.essential, e.genes, NEVER)),
             "precedent": float(self.precedent(moiety_id, entry)),
             "b1": float(any(m in related and when < entry for g in e.genes for m, when in self.approved.get(g, ()))),
+            "b1_close": float(any(m in close and when < entry for g in e.genes for m, when in self.approved.get(g, ()))),
         }
 
     def features(self, rows: pd.DataFrame) -> pd.DataFrame:
@@ -315,9 +325,9 @@ class Evidence:
         return pd.DataFrame(out)
 
 
-def entries(progs: pd.DataFrame, trials: pd.DataFrame, snap: date) -> pd.DataFrame:
-    """Phase entries in SECTION1 (skipped phases excluded) with the outcome S4."""
-    rows = phase_rows(progs, trials, snap, window=SECTION1)
+def entries(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, window: tuple[date, date] = SECTION1) -> pd.DataFrame:
+    """Phase entries in `window` (skipped phases excluded) with the outcome S4."""
+    rows = phase_rows(progs, trials, snap, window=window)
     rows = rows[~rows.credited].copy()
     rows["s4"] = ((rows.event == "advanced") & (rows.years <= HORIZON_YEARS)).astype(float)
     return rows
@@ -555,20 +565,23 @@ SPONSOR_TIERS = {"top20": 20, "21-100": 100}  # rank cutoffs of sponsor size; th
 latest_decisions = frame.held_once(llm.latest_decisions)
 
 
-def sponsors(rows: pd.DataFrame, trials: pd.DataFrame) -> pd.DataFrame:
+def sponsors(rows: pd.DataFrame, trials: pd.DataFrame, ranked_by: pd.DataFrame | None = None) -> pd.DataFrame:
     """Per Phase 2 program in `rows`: the company behind the lead sponsor of its first industry Phase 2 trial (its
-    corporate parent when those trials ran, pipeline.sponsors), that company's number of Phase 2 programs in `rows`
-    and its size tier (SPONSOR_TIERS by that number)."""
-    ph2 = rows[(rows.phase == 2) & ~rows.credited].program_id
-    t = trials[(trials.phase == 2) & trials.industry & trials.program_id.isin(ph2) & trials.start_date.notna()]
-    t = t.sort_values(["program_id", "start_date", "nct_id"]).drop_duplicates("program_id")
-    lead = frame.query("SELECT nct_id, lead_sponsor FROM preclin.ctgov_study WHERE nct_id = ANY(%s)",
-                       (sorted(t.nct_id),)).set_index("nct_id").lead_sponsor
-    dec = latest_decisions(SPONSOR_TASK, SPONSOR_VERSION)
-    parent = dict(zip(dec.key, (o["parent"] for o in dec.parsed_output)))
-    out = pd.DataFrame({"program_id": t.program_id.to_numpy(),
-                        "sponsor": t.nct_id.map(lead).map(parent).fillna("unresolved").to_numpy()})
-    size = out.sponsor.value_counts()
+    corporate parent when those trials ran, pipeline.sponsors), that company's number of Phase 2 programs in
+    `ranked_by` (default `rows`) and its size tier (SPONSOR_TIERS by that number; a company with no program there is
+    "smaller")."""
+    def parents(r: pd.DataFrame) -> pd.DataFrame:
+        ph2 = r[(r.phase == 2) & ~r.credited].program_id
+        t = trials[(trials.phase == 2) & trials.industry & trials.program_id.isin(ph2) & trials.start_date.notna()]
+        t = t.sort_values(["program_id", "start_date", "nct_id"]).drop_duplicates("program_id")
+        lead = frame.query("SELECT nct_id, lead_sponsor FROM preclin.ctgov_study WHERE nct_id = ANY(%s)",
+                           (sorted(t.nct_id),)).set_index("nct_id").lead_sponsor
+        dec = latest_decisions(SPONSOR_TASK, SPONSOR_VERSION)
+        parent = dict(zip(dec.key, (o["parent"] for o in dec.parsed_output)))
+        return pd.DataFrame({"program_id": t.program_id.to_numpy(),
+                             "sponsor": t.nct_id.map(lead).map(parent).fillna("unresolved").to_numpy()})
+    out = parents(rows)
+    size = (out if ranked_by is None else parents(ranked_by)).sponsor.value_counts()
     rank = size.rank(ascending=False, method="first")
     out["sponsor_programs"] = out.sponsor.map(size)
     r = out.sponsor.map(rank)
