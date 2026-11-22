@@ -1,14 +1,16 @@
 # Target origin: full run over the 2008–2019 window (#146 step 5), 2026-11-20 to 2026-11-21
 
-## State (2026-11-21 19:40 Pacific, after check method v2 and the evening's correction of the approval fact)
+## State (2026-11-22 Pacific, after the consolidation; the last section)
 
-5,174 pairs. 241,118 pre-entry records; 3,016 pairs (58%) have at least one. 5,113 pairs labelled; 61 unlabelled, the
-API's refusal on every pass (`target_origin_unlabelled.csv`). 4,431 graded labels checked: supported 3,687, unsupported
-344 (88 with an approval on the gene within Lin 0.8 of the disease before entry, the hub's validated-at-entry rule;
-164 with one within Lin 0.5, held until the owner decides; 92 on a field answered no), disputed 394
-(`target_origin_disputes.csv`, 442 rows awaiting a verdict), unverified 6. Stored: 1,426 of the 5,113 rows are
-unclear (28%); the table by origin, as read and stored, is in the
-last section. Gates, scored on the label as read: set b κ 0.65, set a 0.69, coverage gap 8 points, both pass.
+5,174 pairs, every one with a labelled row. 241,118 pre-entry records; 3,016 pairs (58%) have at least one. 5,113
+pairs labelled and 61 not reached (stored as `not_reached`, citing the last attempt: the API refused every pass).
+4,431 graded labels checked: supported 3,931, disputed 278 (stored as `disputed`; `target_origin_disputes.csv`, 283
+rows: category 267, quote 12, year 4), unsupported 216 (88 with an approval on the gene within Lin 0.8 of the disease
+before entry, which makes the pair validated at entry; 128 on a field answered no), unverified 6. The verdicts of the
+research pass are applied (147 labels). An approval for a related disease (Lin 0.5 to 0.8) counts as
+earlier_drug_other_disease, the owner's one-list wording. Stored: 904 of the 5,174 rows are unclear. The hub flags 295
+window pairs validated at entry (was 83). Gates, scored on the label as read: set b κ 0.65, set a 0.69, coverage gap 8
+points, both pass.
 
 The sections below are the dated record in the order things happened: the run as it ran (search, label, and the v1
 check by Sonnet 5.5 alone), the checker sensitivity study of the next morning, and check method v2, which replaced the
@@ -465,3 +467,52 @@ unsupported (earlier_drug_other_disease 18, animal_model_pharmacology 6, observa
 phenotypic_screen 1, diseased_tissue 1), 274 stay disputed: the 247 whose only open field is a threshold row, and 27
 with a verdict on one field and the category still disputed. 147 labels carry at least one verdict. Not applied here:
 the sheet is the owner's by default, and the note on #146 puts the file to her.
+
+## Consolidation (2026-11-22)
+
+No model call. Code `pipeline.target_origin` and `pipeline.target_disease` at this branch's commits; migration
+`db/151_target_disease_origin_stored_values.sql`.
+
+**The hub's approval fact.** `pipeline.target_disease` reads approvals from `report.section3.Evidence`, the index the
+evidence chart and the check already read, through `target_origin.approval_fact` (method `target_disease@v2`,
+`target_disease_provisional@v2`). The hub's own reader dropped approvals with no exact date (`before_letters`), so
+`validated_at_entry` went from 212 to 834 pairs (83 to 295 in the window; the 294 of the last section plus one); no
+pair was added, removed or re-dated, and no flag was lost. The provisional origins were rewritten from the same index:
+earlier_drug_other_disease 5,210, unclear 4,142, mouse_genetics 831, diseased_tissue 383, human_genetics 369,
+tumour_genetics 350, curated_pathway 24, cell_line_perturbation 2.
+
+**Stored values.** Migration 151 adds `disputed` and `not_reached` to the origin. A label the two checkers dispute is
+stored as `disputed`, no longer as `unclear`, which now means only that no source settles the origin or that the
+check rejected the label. A pair the labelling never answered has a `not_reached` row (`target_origin_unlabelled.csv`
+lists the same 61).
+
+**Restore** (`python -m pipeline.target_disease restore --pairs window --disputes
+report/audits/target_origin_disputes_research.csv`, method `target_origin_restore@v1`). Each graded label's outcome is
+recomputed by check method v2's rule from the checker decisions its row already cites, with the related-disease band
+counting and the research pass's verdicts applied; label decisions that name `cell_screen` are read as
+`cell_line_perturbation` (4). Against the stored table before it: supported 3,687 to 3,931 (153 related-band labels
+from unsupported, 91 settled by the research pass from disputed), disputed 394 to 278 (29 settled no, 4 newly
+disputed once the related band no longer failed the category), unsupported 344 to 216, unverified 6. No supported
+label changed.
+
+| origin, stored | before | after |
+|---|---|---|
+| unclear | 1,426 | 904 |
+| diseased_tissue | 870 | 880 |
+| animal_model_pharmacology | 833 | 851 |
+| earlier_drug_other_disease | 421 | 595 |
+| human_cell_perturbation | 439 | 456 |
+| clinical_observation | 322 | 331 |
+| disputed | | 278 |
+| observational_biomarker | 252 | 255 |
+| mouse_genetics | 176 | 182 |
+| human_genetics | 175 | 181 |
+| tumour_genetics | 120 | 121 |
+| phenotypic_screen | 69 | 69 |
+| not_reached | | 61 |
+| curated_pathway | 6 | 6 |
+| cell_line_perturbation | 4 | 4 |
+
+Open: the 278 disputed labels (267 on the category, mostly the Sonnet-no against Opus-partly threshold), the relabel of
+the pairs the final list's definitions can move (row 8 primary cells, genetic disease models), and the approval fact
+as a stored fact on its subject (spec step 2).
