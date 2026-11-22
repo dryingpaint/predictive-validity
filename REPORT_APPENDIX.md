@@ -89,7 +89,7 @@ Each program is scored for the evidence its targets had for its disease as of th
 | Drug shown to act on its target in people (about the drug) | A published study showing the drug acting on its target in people (exploratory) | PubMed abstracts, screened by an LLM |
 | Molecule properties (about the drug) | Drug-like size and chemistry (no more than one Lipinski violation); for brain diseases, chemistry suited to entering the brain (TPSA under 90, weight under 450, at most 3 donors) | PubChem and ChEMBL computed properties |
 | **Target safety risk** |  |  |
-| People rarely carry broken copies of the gene, or mice without it die young | A property of the target, not evidence for the disease: people rarely carry broken copies of the gene (gnomAD LOEUF below 0.35), mice without it die before weaning, or most human cell types need it | gnomAD v4.1; Mammalian Phenotype ontology, through Open Targets; DepMap |
+| Any standard safety flag (aggregate) | A property of the target, not evidence for the disease: people rarely carry broken copies of the gene (gnomAD LOEUF below 0.35), mice without it die before weaning, or most human cell types need it | gnomAD v4.1; Mammalian Phenotype ontology, through Open Targets; DepMap |
 
 ## Tables behind the figures
 
@@ -258,11 +258,11 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Drug-like size and chemistry | 4,654 / 5,520 | 1,266 | 0.99 (0.75–1.34) | 0.93 (0.71–1.23) | 0.94 (0.71–1.22) | 0.90 (0.75–1.08) |
 | · Chemistry suited to entering the brain | 547 / 814 | 194 | 0.86 (0.48–1.65) | 1.43 (0.78–2.64) | 1.40 (0.76–2.58) | 0.91 (0.70–1.17) |
 | **Target safety risk** |  |  |  |  |  |  |
-| People rarely carry broken copies of the gene, or mice without it die young | 4,045 / 7,435 | 634 | 0.98 (0.71–1.36) | 1.12 (0.90–1.38) | 1.11 (0.90–1.37) | 1.02 (0.54–1.94) (safety) |
-| · People rarely carry broken copies of the gene (gnomAD LOEUF below 0.35) | 1,629 / 7,435 | 242 | 0.83 (0.59–1.16) | 0.97 (0.75–1.26) | 0.98 (0.76–1.27) | 0.62 (0.24–1.61) (safety) |
-| · Mice without the gene die before weaning | 3,747 / 7,435 | 588 | 0.99 (0.71–1.36) | 1.08 (0.87–1.33) | 1.07 (0.87–1.31) | 1.17 (0.63–2.17) (safety) |
+| Any standard safety flag (aggregate): people rarely carry broken copies of the gene, mice without it die young, or most cell types need it | 4,045 / 7,435 | 634 | 0.98 (0.71–1.36) | 1.12 (0.90–1.38) | 1.11 (0.90–1.37) | 1.02 (0.54–1.94) (safety) |
+| · People rarely carry broken copies of the gene (gnomAD LOEUF below 0.35; today's data) | 1,629 / 7,435 | 242 | 0.83 (0.59–1.16) | 0.97 (0.75–1.26) | 0.98 (0.76–1.27) | 0.62 (0.24–1.61) (safety) |
+| · Mice without the gene die before weaning (today's data) | 3,747 / 7,435 | 588 | 0.99 (0.71–1.36) | 1.08 (0.87–1.33) | 1.07 (0.87–1.31) | 1.17 (0.63–2.17) (safety) |
 | · Most human cell types need the gene (DepMap common essential) | 0 / 7,435 | 0 | Too rare to estimate | – | – | – |
-| · Mutant mice show a phenotype in a vital organ (heart, liver, blood, immune or nervous system) (exploratory) | 6,576 / 7,435 | 1,099 | 1.46 (0.95–2.31) | 1.05 (0.81–1.37) | 1.05 (0.80–1.36) | 2.10 (0.74–5.98) (safety) |
+| · Mutant mice show a phenotype in a vital organ (heart, liver, blood, immune or nervous system; today's data) (exploratory) | 6,576 / 7,435 | 1,099 | 1.46 (0.95–2.31) | 1.05 (0.81–1.37) | 1.05 (0.80–1.36) | 2.10 (0.74–5.98) (safety) |
 | · An earlier drug on the same target stopped for safety (exploratory) | 1,220 / 5,836 | 264 | 0.84 (0.60–1.19) | 1.01 (0.81–1.27) | 1.02 (0.81–1.27) | 1.22 (0.44–3.39) (safety) |
 | · Most human cell types need the gene, on today's list (hindsight) | 678 / 7,435 | 101 | 0.43 (0.19–0.72) | 0.62 (0.39–0.99) | 0.63 (0.39–1.00) | 0.86 (0.27–2.77) (safety) |
 | **Adjustment** |  |  |  |  |  |  |
