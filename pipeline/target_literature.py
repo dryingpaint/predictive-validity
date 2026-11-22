@@ -36,19 +36,29 @@ screened-in record. A pair with more than PREFILTER_ABOVE records gets a cheap p
 relabels a seeded sample; a blind web-enabled model lists every study of each kind for pilot rows 1-100, the
 reference for recall. The plan's gates (recall >= 0.8, kappa >= 0.6, Phase 2 coverage >= 0.08) decide which kinds
 run on every pair, after the pilot's measured cost is approved.
+
+Version 1 failed every gate on rows 1-100. Version 2, the one revision #154 allows, fixed before its reference
+was built: gene names may add the receptor or complex names papers use for the protein; the disease's direct MONDO
+subtypes are searched with its names; the prefilter applies above 3,000 records, as registered; the screen first
+names the system of the paper's main finding and reads tighter kind definitions (clinical observations exclude
+efficacy trials in the disease). It is scored on rows 101-200 against a fresh reference. Every reference PMID is
+checked against the title the model gave (verify_pmids).
 """
 from __future__ import annotations
 
 import argparse
 import json
 import os
+import re
 import time
+import xml.etree.ElementTree as ET
 
 import numpy as np
 import pandas as pd
 from psycopg2.extras import Json, execute_values
 
 from pipeline import llm, throttle
+from pipeline.outcomes import eutils
 from pipeline.literature import (FIRECRAWL_BACKOFF_MAX, FIRECRAWL_PER_SECOND, FIRECRAWL_RESULTS, FIRECRAWL_WORKERS,
                                  GATES, FirecrawlError, SourceDown, clean, epmc_clause, epmc_records, fetch_papers,
                                  firecrawl_cli, firecrawl_credits, firecrawl_ids, kappa, medline_search, names_clause,
@@ -57,25 +67,30 @@ from pipeline.literature import (FIRECRAWL_BACKOFF_MAX, FIRECRAWL_PER_SECOND, FI
 KINDS = ("human_cell_perturbation", "cell_line_perturbation", "diseased_tissue_protein", "animal_model_pharmacology",
          "mouse_genetic_disease_model", "observational_biomarker", "clinical_observation")
 KIND_TEXT = {
-    "human_cell_perturbation": "changing the target (knockdown, knockout, overexpression, or a tool compound or "
-                               "antibody) in PRIMARY human cells or tissue (patient-derived cells, primary cultures, "
-                               "organoids, iPSC-derived cells, tissue taken from patients) changes a feature of the disease",
-    "cell_line_perturbation": "the same in an ESTABLISHED human or animal cell line (HeLa, HEK293, cancer cell lines and "
-                              "the like)",
-    "diseased_tissue_protein": "the target's PROTEIN (level, activity, localisation, modification, or a single-cell "
-                               "state) differs in patients' diseased tissue compared with normal tissue; bulk RNA "
-                               "differences do not count",
+    "human_cell_perturbation": "the target is changed experimentally (knockdown, knockout, overexpression, or a tool "
+                               "compound, antibody or drug acting on it) in PRIMARY human cells or tissue, explicitly "
+                               "primary: cells isolated from patients or donors, primary cultures, organoids, "
+                               "iPSC-derived cells, or explants of patient tissue; and a feature of the disease changes",
+    "cell_line_perturbation": "the same in an ESTABLISHED cell line (HeLa, HEK293, named cancer lines and the like); "
+                              "genome-wide screens count",
+    "diseased_tissue_protein": "the target's PROTEIN is measured (immunohistochemistry, western blot, ELISA, mass "
+                               "spectrometry, activity assay, or single-cell protein methods) in patients' diseased "
+                               "tissue and differs from normal or less-affected tissue; RNA-only measurements do not count",
     "animal_model_pharmacology": "a NON-GENETIC change to the target (tool compound, antibody, antisense, siRNA, viral "
-                                 "vector, or a drug) alters an animal model of the disease",
+                                 "vector, or a drug acting on it) alters an animal model of the disease",
     "mouse_genetic_disease_model": "a knockout, knock-in or transgene of the target alters an animal model of the "
-                                   "disease (or the genetically altered animal develops the disease)",
-    "observational_biomarker": "in an observational study of patients, the target or its product measured in blood, "
-                               "another body fluid or by imaging goes with the disease's presence, severity, progression "
-                               "or outcome; genetic association does not count",
-    "clinical_observation": "an effect seen in people implicates the target in the disease, such as a side effect or "
-                            "unexpected benefit of another drug acting on the target, or a case of people with the "
-                            "target blocked or deficient",
+                                   "disease, or the genetically altered animal develops the disease",
+    "observational_biomarker": "an OBSERVATIONAL study of patients (no intervention assigned) measures the target or its "
+                               "product in blood, another body fluid or by imaging, and the measurement goes with the "
+                               "disease's presence, severity, progression or outcome; tissue measurements, genetic "
+                               "association and drug-response markers in a trial do not count",
+    "clinical_observation": "an effect seen in people, outside a trial of a drug for this disease, implicates the target "
+                            "in the disease: a side effect or unexpected benefit of a drug acting on the target in "
+                            "another setting, people with the target deficient or blocked (case reports, natural "
+                            "experiments), or autoantibodies against the target; efficacy trials of drugs in this "
+                            "disease do not count",
 }
+VERSION = "v2"  # v1 (14b38ea) failed every gate; v2 is the registered single revision, scored on rows 101-200
 COHORT = (2008, 2019)  # phase entry years of the evidence dataset
 PILOT_N = 300
 PILOT_SEED = 20261122
@@ -84,8 +99,9 @@ GATE = os.path.join(llm.REPO, "report", "audits", "target_literature_gate.json")
 REFERENCE_DIR = os.path.join(llm.REPO, "report", "audits", "target_literature_reference")
 MAX_GENE_NAMES = 16
 MAX_DISEASE_NAMES = 20
+MAX_SUBTYPE_NAMES = 15  # labels of the disease's direct MONDO subtypes searched as disease names (v2)
 MAX_MODEL_TERMS = 10
-PREFILTER_ABOVE = 500  # records per pair above which a cheap model reads each record first
+PREFILTER_ABOVE = 3000  # records per pair above which a cheap model reads each record first (as #154 registered; v1 used 500)
 PREFILTER_CHECK = 300  # seeded prefiltered-out records given the full screen, to measure the prefilter's misses
 CHECK_PER_KIND = 50  # half screened in, half screened out, per kind
 CHECK_SEED = 20261123
@@ -171,7 +187,7 @@ GENE_VET_SYSTEM = """You vet the names used to search titles and abstracts for p
 
 Keep the official symbol and full name, the protein's common names, and aliases papers really use for it. Drop aliases that are common words or abbreviations with other meanings (CAT, MET when it would match methionine or metformin papers, SET, PC, CO, AIM), names of other genes or protein families, and names so generic that most papers using them mean something else. A symbol that is also a common abbreviation is kept only when, next to a disease name, it still almost always means this gene.
 
-You may add up to five names papers commonly use for this protein that are missing from the candidates (for example "TNF-alpha" or "tumour necrosis factor alpha" for TNF, "IL-6" for IL6, "PD-1" for PDCD1), each at most four words.
+You may add up to five names papers commonly use for this protein that are missing from the candidates (for example "TNF-alpha" or "tumour necrosis factor alpha" for TNF, "IL-6" for IL6, "PD-1" for PDCD1), each at most four words. When the protein works as part of a receptor, channel or complex that papers usually name instead of the gene (for example "glycoprotein IIb/IIIa" for ITGA2B, "GABA-A receptor alpha1" for GABRA1, "NMDA receptor" for GRIN1), you may add up to three such names, counted in the five.
 
 Return the candidates to keep, copied exactly, and any added names."""
 
@@ -196,7 +212,7 @@ def validate_gene_vet(p: dict, out: dict) -> None:
 
 
 def gene_vet_task(model: str = SCREEN_MODEL, suffix: str = "") -> llm.Task:
-    return llm.Task(name="target_literature_gene_vet" + suffix, prompt_version="v1", schema_version="v1",
+    return llm.Task(name="target_literature_gene_vet" + suffix, prompt_version=VERSION, schema_version="v1",
                     system=GENE_VET_SYSTEM, schema=GENE_VET_SCHEMA, render=render_gene_vet, validate=validate_gene_vet,
                     subject_type="gene", model=model, effort="low", max_tokens=2000)
 
@@ -230,6 +246,11 @@ def disease_names(mondos: list[str]) -> dict[str, dict]:
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT term_id, label, synonyms FROM preclin.ontology_term WHERE term_id = ANY(%s)", (mondos,))
         rows = cur.fetchall()
+        cur.execute("""SELECT i.parent_id, t.label FROM preclin.ontology_is_a i JOIN preclin.ontology_term t ON t.term_id = i.child_id
+                       WHERE i.ontology = 'MONDO' AND i.parent_id = ANY(%s) AND NOT t.is_obsolete""", (mondos,))
+        subtypes: dict[str, list[str]] = {}
+        for parent, label in cur.fetchall():
+            subtypes.setdefault(parent, []).append(label)
     out = {}
     for term, label, syns in rows:
         names: list[str] = []
@@ -237,7 +258,9 @@ def disease_names(mondos: list[str]) -> dict[str, dict]:
             n = clean(n or "")
             if 3 <= len(n) <= 80 and n.lower() not in {x.lower() for x in names}:
                 names.append(n)
-        out[term] = {"label": label, "synonyms": names[1:MAX_DISEASE_NAMES], "names": names[:MAX_DISEASE_NAMES]}
+        subs = [clean(x) for x in sorted(subtypes.get(term, []), key=len) if 3 <= len(clean(x)) <= 80
+                and clean(x).lower() not in {n.lower() for n in names}][:MAX_SUBTYPE_NAMES]
+        out[term] = {"label": label, "synonyms": names[1:MAX_DISEASE_NAMES], "names": names[:MAX_DISEASE_NAMES] + subs}
     return out
 
 
@@ -438,16 +461,21 @@ disease_match: the disease the evidence is about, against the disease given: sam
 kinds: true for each kind of evidence the paper reports about THIS target (under any of its names; a different gene of the same family does not count) in the disease named under disease_match, with original data:
 """ + "\n".join(f"- {k}: {v}" for k, v in KIND_TEXT.items()) + """
 
+system: the experimental or clinical system of the paper's main finding about the target: primary_human_cells, cell_line, patient_tissue, patient_fluid_or_imaging, animal_model, people_other (clinical observations outside a trial), trial (an interventional trial), or none. Decide it first; each kind's system must match: primary_human_cells for human_cell_perturbation, cell_line for cell_line_perturbation, patient_tissue for diseased_tissue_protein, animal_model for the two animal kinds, patient_fluid_or_imaging for observational_biomarker, people_other for clinical_observation. A paper with several findings may show kinds in other systems too.
+
 A paper whose only agent is the program drug named below can show animal_model_pharmacology; mark agent_is_program_drug true then, false when another agent (a tool compound, antibody, siRNA, another drug) was used, and null when animal_model_pharmacology is false. Evidence must be about the target: a drug tested without the target being the point does not count, except under animal_model_pharmacology when the drug acts on this target. A kind is true only when the abstract states the finding; do not infer. Quote the sentence that decided the reading (empty when nothing qualifies)."""
 
 SCREEN_SCHEMA = {"type": "object", "additionalProperties": False,
                  "properties": {"original_data": {"type": "boolean"},
+                                "system": {"type": "string", "enum": ["primary_human_cells", "cell_line", "patient_tissue",
+                                                                      "patient_fluid_or_imaging", "animal_model",
+                                                                      "people_other", "trial", "none"]},
                                 "disease_match": {"type": "string", "enum": ["same_or_subtype", "related", "other", "none"]},
                                 "kinds": {"type": "object", "additionalProperties": False,
                                           "properties": {k: {"type": "boolean"} for k in KINDS}, "required": list(KINDS)},
                                 "agent_is_program_drug": {"type": ["boolean", "null"]},
                                 "quote": {"type": "string"}},
-                 "required": ["original_data", "disease_match", "kinds", "agent_is_program_drug", "quote"]}
+                 "required": ["original_data", "system", "disease_match", "kinds", "agent_is_program_drug", "quote"]}
 
 
 def render_screen(p: dict) -> str:
@@ -464,10 +492,9 @@ def validate_screen(_p: dict, out: dict) -> None:
 
 
 def screen_task(model: str = SCREEN_MODEL, suffix: str = "") -> llm.Task:
-    return llm.Task(name="target_literature_screen" + suffix, prompt_version="v1", schema_version="v1",
+    return llm.Task(name="target_literature_screen" + suffix, prompt_version=VERSION, schema_version=VERSION,
                     system=SCREEN_SYSTEM, schema=SCREEN_SCHEMA, render=render_screen, validate=validate_screen,
-                    subject_type="pair_record", model=model, effort="low" if model == SCREEN_MODEL else "medium",
-                    max_tokens=3000)
+                    subject_type="pair_record", model=model, effort="medium", max_tokens=4000)
 
 
 PREFILTER_SYSTEM = """You skim one title and abstract to decide whether it could report original data about a specific human gene or its protein in a specific disease, of any of these kinds: changing the target in cells or animals alters a disease feature or model; the target's protein differs in patients' tissue; the target or its product measured in patients tracks the disease; or an effect in people implicates the target. possibly is false only when the record clearly reports none of these (a review, a different gene or disease, only clinical outcomes of a drug, or genetics only). When unsure, answer true."""
@@ -672,7 +699,7 @@ def render_reference(p: dict) -> str:
 
 
 def reference_task(model: str = REFERENCE_MODEL, suffix: str = "") -> llm.Task:
-    return llm.Task(name="target_literature_reference" + suffix, prompt_version="v1", schema_version="v1",
+    return llm.Task(name="target_literature_reference" + suffix, prompt_version=VERSION, schema_version="v1",
                     system=REFERENCE_SYSTEM, schema=REFERENCE_SCHEMA, render=render_reference, subject_type="pair",
                     model=model, effort="medium", max_tokens=16000, tools=REFERENCE_TOOLS)
 
@@ -696,6 +723,40 @@ def rows_of(spec: str) -> pd.DataFrame:
     return p[p.row.between(lo, hi)]
 
 
+TITLE_MATCH = 0.6  # share of the shorter title's words the other shares, for a PMID to match a stated title
+
+
+def title_words(t: str | None) -> set[str]:
+    return {w for w in re.findall(r"[a-z0-9]+", (t or "").lower()) if len(w) > 2}
+
+
+def title_match(a: str | None, b: str | None) -> float:
+    x, y = title_words(a), title_words(b)
+    return len(x & y) / max(1, min(len(x), len(y)))
+
+
+def verify_pmids(studies: list[dict]) -> list[dict]:
+    """Each reference study with pmid checked against its stated title: kept when the PubMed title matches
+    (TITLE_MATCH), else replaced by the one PubMed record whose title matches a title search, else set to null.
+    pmid_given keeps what the model gave. Models cite real titles with wrong PMIDs; this keeps them from
+    counting as misses or matches for the wrong paper."""
+    ids = sorted({str(s["pmid"]).strip() for s in studies if s.get("pmid")})
+    papers = stored_papers(ids)
+    papers.update(fetch_papers([i for i in ids if i not in papers], store=True))
+    out = []
+    for s in studies:
+        s = {**s, "pmid_given": s.get("pmid")}
+        pid = str(s["pmid"]).strip() if s.get("pmid") else None
+        if pid and title_match(s["title"], (papers.get(pid) or ("",))[0]) < TITLE_MATCH:
+            words = " ".join(sorted(title_words(s["title"]), key=len, reverse=True)[:8])
+            hits = [x.text for x in ET.fromstring(eutils("esearch", term=f"{words}[ti]", retmax="5")).iter("Id")]
+            found = fetch_papers(hits, store=True) if hits else {}
+            best = max(found.items(), key=lambda kv: title_match(s["title"], kv[1][0]), default=None)
+            s["pmid"] = best[0] if best and title_match(s["title"], best[1][0]) >= TITLE_MATCH else None
+        out.append(s)
+    return out
+
+
 def reference(args) -> None:
     """The blind reference for pilot rows --rows: a web-enabled model given only the gene, the disease, the program
     drugs and the cutoff (no retrieval output) lists every qualifying study per kind; written to REFERENCE_DIR."""
@@ -707,8 +768,10 @@ def reference(args) -> None:
         fb = decide(reference_task(REFERENCE_FALLBACK, "_fallback"), refused)
         dec.update({k: (REFERENCE_FALLBACK, o) for k, (_, o) in fb.items()})
     os.makedirs(REFERENCE_DIR, exist_ok=True)
-    out = [{"ensembl_id": k.split("|")[0], "mondo_id": k.split("|")[1], "model": model, "studies": o["studies"]}
-           for k, (model, o) in sorted(dec.items())]
+    out = [{"ensembl_id": k.split("|")[0], "mondo_id": k.split("|")[1], "model": model,
+            "studies": verify_pmids(o["studies"])} for k, (model, o) in sorted(dec.items())]
+    changed = sum(s["pmid"] != s["pmid_given"] for x in out for s in x["studies"])
+    print(f"reference: PMIDs corrected or dropped after title verification={changed}")
     print(f"reference: refused by {REFERENCE_MODEL}={len(refused)}, answered by {REFERENCE_FALLBACK}="
           f"{sum(m == REFERENCE_FALLBACK for m, _ in dec.values())}, unanswered={len(items) - len(dec)}")
     with open(os.path.join(REFERENCE_DIR, f"rows_{args.rows}.json"), "w") as fh:

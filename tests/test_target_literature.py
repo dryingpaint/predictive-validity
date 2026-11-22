@@ -4,7 +4,7 @@ from pipeline.target_literature import KINDS, clauses, counts, validate_screen
 
 
 def decision(original=True, disease="same_or_subtype", agent=None, **kinds):
-    return {"original_data": original, "disease_match": disease, "agent_is_program_drug": agent,
+    return {"original_data": original, "system": "none", "disease_match": disease, "agent_is_program_drug": agent,
             "kinds": {k: kinds.get(k, False) for k in KINDS}, "quote": ""}
 
 

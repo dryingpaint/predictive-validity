@@ -1,0 +1,296 @@
+{
+  "v1": {
+    "gates": {
+      "recall": 0.8,
+      "kappa": 0.6,
+      "phase2_coverage": 0.08
+    },
+    "rows": "1-100",
+    "reference_pairs": 100,
+    "kinds": {
+      "human_cell_perturbation": {
+        "reference_studies": 34,
+        "reference_studies_in_pubmed": 24,
+        "recall": 0.5882352941176471,
+        "recall_pubmed_indexed": 0.6666666666666666,
+        "retrieval_recall": 0.8529411764705882,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.20340626704648745,
+          "positives_screen": 43,
+          "positives_check": 8
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.43050847457627117,
+        "pilot_pairs_with_any": 113,
+        "passes": false
+      },
+      "cell_line_perturbation": {
+        "reference_studies": 124,
+        "reference_studies_in_pubmed": 93,
+        "recall": 0.6854838709677419,
+        "recall_pubmed_indexed": 0.7311827956989247,
+        "retrieval_recall": 0.7661290322580645,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.5974956655750336,
+          "positives_screen": 58,
+          "positives_check": 29
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.6372881355932203,
+        "pilot_pairs_with_any": 163,
+        "passes": false
+      },
+      "diseased_tissue_protein": {
+        "reference_studies": 107,
+        "reference_studies_in_pubmed": 80,
+        "recall": 0.5981308411214953,
+        "recall_pubmed_indexed": 0.65,
+        "retrieval_recall": 0.7383177570093458,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.44652022172038613,
+          "positives_screen": 47,
+          "positives_check": 15
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.6677966101694915,
+        "pilot_pairs_with_any": 189,
+        "passes": false
+      },
+      "animal_model_pharmacology": {
+        "reference_studies": 138,
+        "reference_studies_in_pubmed": 86,
+        "recall": 0.6159420289855072,
+        "recall_pubmed_indexed": 0.6744186046511628,
+        "retrieval_recall": 0.717391304347826,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.6985805949834726,
+          "positives_screen": 53,
+          "positives_check": 34
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.7322033898305085,
+        "pilot_pairs_with_any": 191,
+        "passes": false
+      },
+      "mouse_genetic_disease_model": {
+        "reference_studies": 62,
+        "reference_studies_in_pubmed": 36,
+        "recall": 0.6612903225806451,
+        "recall_pubmed_indexed": 0.5833333333333334,
+        "retrieval_recall": 0.7419354838709677,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.7588629415208479,
+          "positives_screen": 30,
+          "positives_check": 19
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.3593220338983051,
+        "pilot_pairs_with_any": 92,
+        "passes": false
+      },
+      "observational_biomarker": {
+        "reference_studies": 51,
+        "reference_studies_in_pubmed": 27,
+        "recall": 0.49019607843137253,
+        "recall_pubmed_indexed": 0.6296296296296297,
+        "retrieval_recall": 0.5490196078431373,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.5609120521172641,
+          "positives_screen": 53,
+          "positives_check": 29
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.5932203389830508,
+        "pilot_pairs_with_any": 172,
+        "passes": false
+      },
+      "clinical_observation": {
+        "reference_studies": 96,
+        "reference_studies_in_pubmed": 65,
+        "recall": 0.28125,
+        "recall_pubmed_indexed": 0.4,
+        "retrieval_recall": 0.375,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.3669380087664374,
+          "positives_screen": 33,
+          "positives_check": 12
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.4,
+        "pilot_pairs_with_any": 121,
+        "passes": false
+      },
+      "animal_model_pharmacology_other": {
+        "reference_studies": 138,
+        "reference_studies_in_pubmed": 86,
+        "recall": 0.6086956521739131,
+        "recall_pubmed_indexed": 0.6627906976744186,
+        "retrieval_recall": 0.717391304347826,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.6544475775442192,
+          "positives_screen": 48,
+          "positives_check": 30
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.711864406779661,
+        "pilot_pairs_with_any": 181,
+        "passes": false
+      }
+    }
+  },
+  "v1_verified": {
+    "gates": {
+      "recall": 0.8,
+      "kappa": 0.6,
+      "phase2_coverage": 0.08
+    },
+    "rows": "1-100",
+    "reference_pairs": 100,
+    "kinds": {
+      "human_cell_perturbation": {
+        "reference_studies": 34,
+        "reference_studies_in_pubmed": 23,
+        "recall": 0.5882352941176471,
+        "recall_pubmed_indexed": 0.6956521739130435,
+        "retrieval_recall": 0.8529411764705882,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.20340626704648745,
+          "positives_screen": 43,
+          "positives_check": 8
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.43050847457627117,
+        "pilot_pairs_with_any": 113,
+        "passes": false
+      },
+      "cell_line_perturbation": {
+        "reference_studies": 124,
+        "reference_studies_in_pubmed": 87,
+        "recall": 0.7096774193548387,
+        "recall_pubmed_indexed": 0.8045977011494253,
+        "retrieval_recall": 0.7903225806451613,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.5974956655750336,
+          "positives_screen": 58,
+          "positives_check": 29
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.6372881355932203,
+        "pilot_pairs_with_any": 163,
+        "passes": false
+      },
+      "diseased_tissue_protein": {
+        "reference_studies": 107,
+        "reference_studies_in_pubmed": 74,
+        "recall": 0.6074766355140186,
+        "recall_pubmed_indexed": 0.7027027027027027,
+        "retrieval_recall": 0.7476635514018691,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.44652022172038613,
+          "positives_screen": 47,
+          "positives_check": 15
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.6677966101694915,
+        "pilot_pairs_with_any": 189,
+        "passes": false
+      },
+      "animal_model_pharmacology": {
+        "reference_studies": 138,
+        "reference_studies_in_pubmed": 84,
+        "recall": 0.6159420289855072,
+        "recall_pubmed_indexed": 0.6904761904761905,
+        "retrieval_recall": 0.717391304347826,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.6985805949834726,
+          "positives_screen": 53,
+          "positives_check": 34
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.7322033898305085,
+        "pilot_pairs_with_any": 191,
+        "passes": false
+      },
+      "mouse_genetic_disease_model": {
+        "reference_studies": 62,
+        "reference_studies_in_pubmed": 29,
+        "recall": 0.6935483870967742,
+        "recall_pubmed_indexed": 0.7241379310344828,
+        "retrieval_recall": 0.7741935483870968,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.7588629415208479,
+          "positives_screen": 30,
+          "positives_check": 19
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.3593220338983051,
+        "pilot_pairs_with_any": 92,
+        "passes": false
+      },
+      "observational_biomarker": {
+        "reference_studies": 51,
+        "reference_studies_in_pubmed": 23,
+        "recall": 0.5098039215686274,
+        "recall_pubmed_indexed": 0.6956521739130435,
+        "retrieval_recall": 0.5686274509803921,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.5609120521172641,
+          "positives_screen": 53,
+          "positives_check": 29
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.5932203389830508,
+        "pilot_pairs_with_any": 172,
+        "passes": false
+      },
+      "clinical_observation": {
+        "reference_studies": 96,
+        "reference_studies_in_pubmed": 62,
+        "recall": 0.28125,
+        "recall_pubmed_indexed": 0.41935483870967744,
+        "retrieval_recall": 0.3854166666666667,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.3669380087664374,
+          "positives_screen": 33,
+          "positives_check": 12
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.4,
+        "pilot_pairs_with_any": 121,
+        "passes": false
+      },
+      "animal_model_pharmacology_other": {
+        "reference_studies": 138,
+        "reference_studies_in_pubmed": 84,
+        "recall": 0.6086956521739131,
+        "recall_pubmed_indexed": 0.6785714285714286,
+        "retrieval_recall": 0.717391304347826,
+        "check": {
+          "pairs": 337,
+          "kappa": 0.6544475775442192,
+          "positives_screen": 48,
+          "positives_check": 30
+        },
+        "phase2_entries": 295,
+        "phase2_coverage": 0.711864406779661,
+        "pilot_pairs_with_any": 181,
+        "passes": false
+      }
+    }
+  }
+}
