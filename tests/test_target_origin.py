@@ -896,6 +896,10 @@ def test_research_verdict_approval_tiers_by_the_index_rule(monkeypatch):
     v, note = to.research_verdict(p, rout(approvals=[rappr(mondo="MONDO:3")]), nb, labels)
     assert v == "" and "MONDO:3" in note
     assert to.research_verdict(p, rout(approvals=[rappr(mondo=None)]), nb, labels)[0] == ""
+    # an indication given without its id is placed by its exact MONDO label, case aside; no label, no placing
+    assert to.research_verdict(p, rout(approvals=[rappr(mondo=None, indication="Far Away")]), nb, labels) == \
+        ("yes", "tier unrelated: drug a, PMDA 1988, far away (MONDO:7, placed by its label) https://u; n")
+    assert to.research_verdict(p, rout(approvals=[rappr(mondo=None, indication="far, far away")]), nb, labels)[0] == ""
     # ... unless a close approval is already documented, which settles the tier whatever the others are
     assert to.research_verdict(p, rout(approvals=[rappr(mondo="MONDO:9"), rappr(mondo=None)]), nb, labels)[0] == "no"
 

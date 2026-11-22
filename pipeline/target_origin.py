@@ -21,6 +21,7 @@ from __future__ import annotations
 import dataclasses
 import os
 import re
+from collections import Counter
 from collections.abc import Callable
 
 import pandas as pd
@@ -1144,8 +1145,8 @@ question. quote: found yes or no in a copy of a cited document, could_not_open w
 publication year of every cited source on the publisher's record (the issue year, as PubMed dates the records), an
 earlier online-first year recorded beside it; the verdict is computed in code, yes when every year is before the
 cutoff, no when any is not, open when any is unread. approval: every approval of a drug the hub lists on the gene
-by any medicines regulator before the entry date, with the regulator, the date, the indication and its MONDO id;
-the tier is computed in code by the index's rule (close within Lin {{CLOSE}}, related within Lin {{RELATED}}, else
+by any medicines regulator before the entry date, with the regulator, the date, the indication and its MONDO id
+(an indication given without one is placed by its exact MONDO label, if the label is unique); the tier is computed in code by the index's rule (close within Lin {{CLOSE}}, related within Lin {{RELATED}}, else
 unrelated) and the verdict is FACT_CATEGORY of the tier; no approval found or none before entry is no; an approval
 whose date (a year, or a year and month, when the record gives no day) cannot be placed before or after entry, or an
 indication without a MONDO id in the ontology, leaves the row open unless a close approval is documented. The verdicts are written to a filled copy of the sheet ({os.path.basename(RESEARCH_CSV)},
@@ -1185,23 +1186,28 @@ def research_verdict(p: dict, out: dict, nb, labels: dict[str, str]) -> tuple[st
                 parts.append("the online-first basis would flip this verdict")
         return verdict, "; ".join(parts + tail)
     entry = pd.Timestamp(p["entry"])
+    lowered = {k: v.strip().lower() for k, v in labels.items()}
+    counts = Counter(lowered.values())
+    by_label = {v: k for k, v in lowered.items() if counts[v] == 1}  # an indication given without its id
     found, open_, later = [], [], []
     for a in out["approvals"]:
         head = f"{a['drug']}, {a['regulator']} {a['date']}"
         before = before_entry(a["date"], entry)
+        m, placed = a["mondo_id"], ""
+        if m is None and a["indication"].strip().lower() in by_label:
+            m, placed = by_label[a["indication"].strip().lower()], ", placed by its label"
         if before is None:
-            open_.append(f"{head}: in the entry year, no day given")
+            open_.append(f"{head}: the date's precision cannot place it before or after entry")
         elif not before:
             later.append(head)
-        elif a["mondo_id"] is None:
+        elif m is None:
             open_.append(f"{head}, {a['indication']}: no MONDO id")
-        elif a["mondo_id"] not in labels:
-            open_.append(f"{head}, {a['indication']}: {a['mondo_id']} is not in the ontology")
+        elif m not in labels:
+            open_.append(f"{head}, {a['indication']}: {m} is not in the ontology")
         else:
-            m = a["mondo_id"]
             tier = ("close" if m in nb.terms(p["mondo_id"], CLOSE)
                     else "related" if m in nb.terms(p["mondo_id"], RELATED) else "unrelated")
-            found.append((tier, f"{head}, {labels[m]} ({m}) {a['evidence_url']}"))
+            found.append((tier, f"{head}, {labels[m]} ({m}{placed}) {a['evidence_url']}"))
     tiers = {t for t, _ in found}
     if "close" not in tiers and open_:
         return "", "; ".join(["unresolved: " + "; ".join(open_), *tail])
