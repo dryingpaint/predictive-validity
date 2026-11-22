@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 
 from report import bio, frame
+from report.evidence_lines import FACTS
 from report.section2 import DRUG, LIABILITIES
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import CAUSE_LABELS
@@ -37,17 +38,6 @@ FORMATS = {"": str, "pct": pct, "pct0": lambda v: pct(v, 0), "int": lambda v: f"
            "x2": "{:.2f}".format, "x3": "{:.3f}".format, "p": lambda v: p_value(v),
            "reduction": lambda rr: pct(1 - rr, 0),  # a risk ratio below 1 as the share fewer
            "inverse": lambda share: f"{1 / share:.0f}"}  # a share as "one in N"
-BAND_NAMES = {"low": "lowest third", "middle": "middle third", "high": "highest third"}  # of programs with any support
-
-
-def band_label(band: str, lo: float, hi: float) -> str:
-    """A genetic-score band as its score range, e.g. '0.61–0.88 (middle third)'; scores above 0 only, past the "none" band."""
-    if band == "none":
-        return "0 (no genetic support)"
-    span = f"above {lo:.2f}" if not np.isfinite(hi) else f"up to {hi:.2f}" if lo == 0 else f"{lo:.2f}–{hi:.2f}"
-    return f"{span} ({BAND_NAMES[band]})"
-
-
 def ci(lo, hi, digits=1):
     return "" if pd.isna(lo) else f" ({100 * lo:.{digits}f}–{100 * hi:.{digits}f})"
 
@@ -351,9 +341,9 @@ def prediction_table() -> str:
 
 
 def dose_table() -> str:
-    df = pd.read_csv(os.path.join(OUT, "section2", "genetic_dose_response.csv"))
-    df = df.assign(**{"Genetic association score before entry (Open Targets, 0–1)": [
-                          band_label(*b) for b in zip(df.band, df.score_from, df.score_to)],
+    df = pd.read_csv(os.path.join(OUT, "section2", "genetic_strength.csv"))
+    names = dict(FACTS["genetic_strength"].values)
+    df = df.assign(**{"Human genetic support before entry": df.band.map(names),
                       "Programs": df.n_programs.map("{:,}".format), "Targets": df.n_targets.map("{:,}".format),
                       "LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()]})
     return table(df.iloc[:, -4:])

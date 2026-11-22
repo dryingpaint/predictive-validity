@@ -3,25 +3,15 @@
     python -m report.section2
 
 Unit: the Section 1 phase cohorts (development programs = molecular entity x
-development indication, entering a phase in 2008-2019, report.windows.SECTION1), restricted to entities acting on
-human protein targets. Each program carries evidence about its entity's
-primary targets *for its disease*: Open Targets associations (26.09) whose
-disease matches the program's disease on MONDO (same term, a subtype, or Lin
-similarity >= 0.8), scored as of the year before the program entered the
-phase, from yearly series rebuilt from the evidence items dated by the year
-each became known (pipeline.opentargets evidence). Undated items are left out
-of the series, so as-of scores undercount; a sensitivity analysis uses the
-release score (evidence known by 2026, dated or not); another counts only evidence diseases
-with Lin similarity >= 0.8 (Minikel et al.'s criterion), dropping the subtype
-rule, which is permissive for broad program diseases. Target-level properties
-are not disease-specific: pan-essentiality is taken from the latest yearly
-DepMap list from before entry (none before 2019), with the current list as a
-sensitivity; loss-of-function constraint comes from the current gnomAD release.
-Drug pharmacology lines describe the entity itself, not its disease: ChEMBL potency
-measurements of its molecules (pipeline.chembl activities) published by the year before
-entry, at its primary targets and at other single human proteins (report.frame.assays_as_of),
-with every measurement known by 2026 as a sensitivity. They are left out of the
-prediction model, which asks about evidence for the disease.
+development indication, entering a phase in 2008-2019, report.windows.SECTION1) whose entity acts on a resolved
+human protein target and whose program has a disease. Each program carries the evidence lines of
+report.evidence_lines, the one dataset every part of the report reads its evidence from: the program's answer to
+each fact about its entity's primary targets and its disease (same MONDO term, a subtype, or Lin similarity >= 0.8)
+as of the year before it entered the phase, from the dated facts of report.evidence_facts. A line that applies only
+to some programs (tumour genetics to oncology, the drug's potency to small molecules) is compared within them. Target
+safety flags are not disease-specific. The drug's own pharmacology describes the entity, not its disease, and is
+left out of the prediction model, which asks about evidence for the disease. As a sensitivity, human genetics is
+also scored on evidence known by 2026 rather than before entry.
 
 Relative success (RS) for an evidence line = LOA of programs with it / LOA of
 programs without it, LOA being the product of BIO-style phase rates; 95%
@@ -30,8 +20,8 @@ together, so programs on overlapping sets such as EGFR and EGFR+ERBB2 are
 separate clusters). Adjusted per-phase relative risks come from a Poisson model
 with cluster-robust errors (cluster = primary-target set), adjusting for disease
 area, modality, entity novelty and entry period, one evidence line at a time and
-all lines jointly. Genetic dose-response: LOA by tertile of the positive genetic
-scores. Prediction is evaluated on a fixed-horizon cohort (Phase 1 entry
+all lines jointly. Strength of genetic support: LOA with none, with support none of it strong, and with strong
+support (the genetic_strength fact). Prediction is evaluated on a fixed-horizon cohort (Phase 1 entry
 2008-2016, approval within ten years; 2008-2019 within six years as a check), with the Open Targets evidence and
 novelty as of entry, by cross-validation grouped by primary-target set and a
 temporal split; each evidence line's contribution is the drop in
@@ -45,9 +35,7 @@ from __future__ import annotations
 
 import json
 import os
-from collections import defaultdict
 from datetime import date
-from functools import cache
 
 import numpy as np
 import pandas as pd
@@ -59,8 +47,9 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
 from report import evidence_facts, frame
-from report.disease_match import Mondo
+from report.evidence_lines import FACT_PREFIX, build, loa_rows, report_lines
 from report.section1 import N_BOOT, SEED, boot_rates, loa, phase_rows, resolved_counts
+from report.section3 import NEVER, Evidence
 from report.windows import SECTION1, SECTION1_PERIODS, SECTION2_PREDICT
 
 OUT = os.path.join(frame.REPO, "report", "output", "section2")
@@ -68,43 +57,17 @@ NAME_AUDIT = os.path.join(frame.REPO, "report", "audits", "chembl_name_matches.j
 MIN_PROGRAMS_RS = 100  # programs with the evidence below which relative success is not estimated
 MIN_PROGRAMS_RR = 20   # resolved programs with the evidence, per phase, below which no relative risk is fitted
 
-EVIDENCE = {
-    "genetic_any": {"gwas_credible_sets", "gene_burden", "eva", "genomics_england", "orphanet",
-                    "uniprot_literature", "uniprot_variants", "gene2phenotype", "clingen"},
-    "genetic_gwas": {"gwas_credible_sets"},
-    "genetic_rare": {"gene_burden", "eva", "genomics_england", "orphanet", "uniprot_literature",
-                     "uniprot_variants", "gene2phenotype", "clingen"},
-    "somatic": {"cancer_gene_census", "intogen", "eva_somatic"},
-    "animal_model": {"impc"},
-    "rna_expression": {"expression_atlas"},
-    "affected_pathway": {"reactome"},
-    "cell_line_screen": {"crispr"},      # Project Score knockout screens in cancer cell lines
-    "neuron_screen": {"crispr_screen"},  # CRISPRbrain screens in stem-cell-derived neurons and microglia
-}
-LIABILITIES = ("pan_essential", "constrained")  # target-level properties, shown apart from the disease evidence
-DRUG = ("assay_measured", "assay_potent", "assay_very_potent", "assay_cell_functional", "assay_selective")
-DRUG_KEYS = {"assay_measured": "measured", "assay_potent": "potent", "assay_very_potent": "very_potent",
-             "assay_cell_functional": "cell_functional", "assay_selective": "selective"}  # assays_as_of's flags
-JOINT_DRUG = ("assay_measured", "assay_potent", "assay_cell_functional", "assay_selective")  # very_potent nests in potent
+# The evidence lines Section 2 tests, by their keys in report.evidence_lines: evidence for the disease, the target's
+# safety flags (shown apart from it), and the drug's own pharmacology.
+EVIDENCE = ("g3", "gwas", "rare_variant", "somatic", "mouse_genetics", "expression", "reactome", "crispr")
+GENETICS, GENETIC_PARTS = "g3", ("gwas", "rare_variant")  # human genetics enters the joint models as its parts
+LIABILITIES = ("pan_essential", "constrained")
+DRUG = ("area_measured", "potent_100nm", "potent_10nm", "cell_functional", "selective")
+JOINT_DRUG = ("area_measured", "potent_100nm", "cell_functional", "selective")  # 10 nM nests in 100 nM
 FEATURES = [*EVIDENCE, *LIABILITIES, *DRUG]
-LABELS = {
-    "genetic_any": "Any human genetics",
-    "genetic_gwas": "Common variants (genome-wide association studies)",
-    "genetic_rare": "Rare inherited variants, including single-gene disease",
-    "somatic": "Gene recurrently mutated in this cancer",
-    "animal_model": "Mouse genetics: knocked-out or mutant mice show the disease",
-    "rna_expression": "The gene's RNA level differs in diseased tissue",
-    "affected_pathway": "A curated pathway shows a disease mutation disrupting the target",
-    "cell_line_screen": "Gene-knockout screen in cancer cells",
-    "neuron_screen": "Gene-knockout screen in lab-grown neurons",
-    "constrained": "People rarely carry broken copies of the gene",
-    "pan_essential": "Most human cell types need the gene",
-    "assay_measured": "Drug's binding strength measured",
-    "assay_potent": "Drug binds its target strongly (100 nM or better)",
-    "assay_very_potent": "Drug binds its target very strongly (10 nM or better)",
-    "assay_cell_functional": "Drug's effect measured in living cells",
-    "assay_selective": "Drug binds its target 100× more strongly than other proteins tested",
-}
+LABELS = {ln.column: ln.label for _, _, ln in report_lines()}
+STRENGTH = FACT_PREFIX + "genetic_strength"
+STRENGTH_BANDS = ("none", "supported", "strong")
 AREA_GROUPS = {"oncology": "oncology",
                "autoimmune": "immunology", "allergy": "immunology", "respiratory": "immunology",
                "gastroenterology": "immunology",
@@ -114,94 +77,28 @@ AREA_GROUPS = {"oncology": "oncology",
 AREA_GROUP_LABELS = {"oncology": "Oncology", "immunology": "Immunology and inflammation",
                      "neuroscience": "Neuroscience", "cardiometabolic": "Cardiometabolic and endocrine",
                      "hematology": "Hematology", "other": "Other"}
-AREA_LINES = ("genetic_any", "genetic_gwas", "genetic_rare", "somatic", "animal_model", "rna_expression",
-              "assay_potent")
+AREA_LINES = ("g3", "gwas", "rare_variant", "somatic", "mouse_genetics", "expression", "potent_100nm")
 
 
-def score_as_of(years: list[int], scores: list[float], year: int) -> float:
-    s = 0.0
-    for y, v in zip(years, scores):
-        if y <= year:
-            s = v
-        else:
-            break
-    return s
+def evidence_rows(rows: pd.DataFrame, d: pd.DataFrame) -> pd.DataFrame:
+    """The phase rows (report.section1.phase_rows) of the entries of the evidence dataset `d` that have a target and a
+    disease, each with its entry's lines; a skipped phase carries the lines of the entry that skipped it."""
+    return loa_rows(d[d.has_target_disease], rows)
 
 
-@cache  # read once per build; every target_evidence call uses the same tables
-def target_tables() -> tuple[pd.DataFrame, dict, pd.Series]:
-    """Primary human-protein targets of each entity; each target's Open Targets associations with their yearly
-    score series; and each target's lowest LOEUF."""
-    targets = frame.query("""
-        SELECT mt.moiety_id, t.symbol, t.ensembl_id
-        FROM preclin.moiety_target mt JOIN public.targets t ON t.id = mt.target_id
-        JOIN preclin.moiety m USING (moiety_id)
-        WHERE mt.is_primary AND m.target_kind = 'human_protein'""")
-    assoc = frame.query("""
-        SELECT a.target_ensembl, a.datasource, a.series_years, a.series_scores, a.score, d.mondo_ids
-        FROM preclin.ot_association a JOIN preclin.ot_disease d USING (disease_id)""")
-    by_target = defaultdict(list)
-    for ens, src, ys, ss, final, mids in assoc.itertuples(index=False):
-        if mids:
-            by_target[ens].append((src, ys, ss, final, mids))
-    constraint = frame.query("""SELECT t.ensembl_id, min(g.loeuf) AS loeuf
-                                FROM public.gene_constraint g JOIN public.targets t ON t.id = g.target_id
-                                GROUP BY 1""").set_index("ensembl_id").loeuf
-    return targets, by_target, constraint
+def scoped(rows: pd.DataFrame, feature: str) -> pd.DataFrame:
+    """The rows a line applies to (it is null elsewhere): a disease-specific line is compared within its scope."""
+    return rows[rows[feature].notna()]
 
 
-def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
-    """Evidence flags per (program, phase) row, as of the year before phase entry."""
-    mondo = Mondo()
-    targets, by_target, constraint = target_tables()
-    essential = evidence_facts.common_essentials()
-    measurements = evidence_facts.drug_assays()
-    assays, no_assays = dict(iter(measurements.groupby("moiety_id"))), measurements.iloc[:0]
-
-    disease = progs.set_index("program_id").mondo_id
-    tmap = targets.groupby("moiety_id")
-    match_cache: dict[tuple[str, str], tuple[bool, bool]] = {}
-    out = []
-    for r in rows.itertuples(index=False):
-        d = disease.get(r.program_id)
-        if r.moiety_id not in tmap.groups or not isinstance(d, str):
-            continue
-        tg = tmap.get_group(r.moiety_id)
-        year = r.entry_year - 1
-        flags = {k: 0.0 for k in EVIDENCE}
-        untimed = {f"{k}_untimed": 0.0 for k in EVIDENCE}
-        strict = {f"{k}_strict": 0.0 for k in EVIDENCE}
-        ens = list(tg.ensembl_id.dropna())
-        for e in ens:
-            for src, ys, ss, final, mids in by_target.get(e, ()):
-                hit = close = False
-                for g in mids:
-                    key = (g, d)
-                    if key not in match_cache:
-                        match_cache[key] = mondo.matches(g, d)
-                    hit, close = hit or match_cache[key][0], close or match_cache[key][1]
-                if not hit:
-                    continue
-                sc = score_as_of(ys, ss, year)
-                for k, srcs in EVIDENCE.items():
-                    if src in srcs:
-                        flags[k] = max(flags[k], sc)
-                        untimed[f"{k}_untimed"] = max(untimed[f"{k}_untimed"], final or 0.0)
-                        if close:
-                            strict[f"{k}_strict"] = max(strict[f"{k}_strict"], sc)
-        lo = [constraint.get(e) for e in ens if pd.notna(constraint.get(e))]
-        drug = frame.assays_as_of(assays.get(r.moiety_id, no_assays), set(tg.symbol), year)
-        drug_untimed = frame.assays_as_of(assays.get(r.moiety_id, no_assays), set(tg.symbol), 9999)
-        out.append({"program_id": r.program_id, "phase": r.phase,
-                    "target": tg.symbol.iloc[0] if len(tg) == 1 else "+".join(sorted(tg.symbol)),
-                    **flags, **untimed, **strict,
-                    "constrained": float(bool(lo) and min(lo) < 0.35),
-                    "pan_essential": float(frame.essential_as_of(essential, ens, year)),
-                    "pan_essential_untimed": float(frame.essential_as_of(essential, ens, max(essential))),
-                    **{f: float(drug[k]) for f, k in DRUG_KEYS.items()},
-                    **{f"{f}_untimed": float(drug_untimed[k]) for f, k in DRUG_KEYS.items()},
-                    "assay_best": drug["best"], "assay_margin": drug["margin"]})
-    return pd.DataFrame(out)
+def genetics_untimed(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.Series:
+    """Human genetics (the g3 line) of each row scored on the evidence known by 2026 rather than before entry: the
+    same evidence engine and facts, frozen at no year."""
+    ev, disease = Evidence(progs), progs.set_index("program_id").mondo_id
+    scored: dict = {}
+    for m, p in set(zip(rows.moiety_id, rows.program_id)):
+        scored[(m, p)] = ev.program(m, disease[p], pd.Timestamp.max, NEVER)["g3"]
+    return pd.Series([scored[(m, p)] for m, p in zip(rows.moiety_id, rows.program_id)], index=rows.index)
 
 
 def n_genes(targets: pd.Series) -> int:
@@ -232,25 +129,17 @@ def relative_success(rows: pd.DataFrame, feature: str) -> dict:
             "rs_lo": float(lo), "rs_hi": float(hi)}
 
 
-def dose_response(rows: pd.DataFrame, feature: str) -> pd.DataFrame:
-    """LOA by strength of one evidence line: none, then tertiles of the positive
-    scores (cut points set by the score distribution, not by outcomes); 95%
-    intervals resample targets."""
-    pos = rows.loc[rows[feature] > 0, feature]
-    cuts = [0.0, *pos.quantile([1 / 3, 2 / 3]).tolist(), float("inf")]
-    labels = ["none", "low", "middle", "high"]
-    band = pd.Series("none", index=rows.index)
-    for lab, lo, hi in zip(labels[1:], cuts[:-1], cuts[1:]):
-        band[(rows[feature] > lo) & (rows[feature] <= hi)] = lab
+def strength(rows: pd.DataFrame) -> pd.DataFrame:
+    """LOA by the strength of human genetic support (STRENGTH_BANDS); 95% intervals resample targets."""
+    band = rows[STRENGTH]
     counts, groups = resolved_counts(rows, pd.factorize(rows.target, use_na_sentinel=False)[0], band)
     draws = boot_rates(counts).prod(axis=-1)
     out = []
-    for lab, lo, hi in zip(labels, [0.0, *cuts[:-1]], cuts):
+    for lab in STRENGTH_BANDS:
         g = rows[band == lab]
         d = draws[:, groups.index(lab)] if lab in groups else np.array([np.nan])
-        out.append({"feature": feature, "band": lab, "score_from": lo, "score_to": hi,
-                    "n_programs": int(g.program_id.nunique()), "n_targets": n_genes(g.target), "loa": loa(g),
-                    "loa_lo": float(np.nanpercentile(d, 2.5)), "loa_hi": float(np.nanpercentile(d, 97.5))})
+        out.append({"band": lab, "n_programs": int(g.program_id.nunique()), "n_targets": n_genes(g.target),
+                    "loa": loa(g), "loa_lo": float(np.nanpercentile(d, 2.5)), "loa_hi": float(np.nanpercentile(d, 97.5))})
     return pd.DataFrame(out)
 
 
@@ -289,7 +178,7 @@ def by_area(rows: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFram
     modality, novelty and period, cluster-robust by target); and the pooled relative
     success of human genetics with each group left out."""
     rows = rows.assign(area_group=rows.bio_area.map(AREA_GROUPS).fillna("other"))
-    rs = pd.DataFrame([{**relative_success(g, f), "group": grp, "group_label": AREA_GROUP_LABELS[grp]}
+    rs = pd.DataFrame([{**relative_success(scoped(g, f), f), "group": grp, "group_label": AREA_GROUP_LABELS[grp]}
                        for grp, g in rows.groupby("area_group") for f in AREA_LINES])
     r = rows[(rows.phase == 2) & rows.event.isin(["advanced", "suspended"])].copy()
     r["y"] = (r.event == "advanced").astype(int)
@@ -311,7 +200,7 @@ def by_area(rows: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFram
         w = fit.wald_test(", ".join(f"{t} = 0" for t in terms), scalar=True)
         tests.append({"feature": f, "groups": len(keep), "chi2": float(w.statistic), "df": len(terms),
                       "p": float(w.pvalue)})
-    loo = pd.DataFrame([{**relative_success(rows[rows.area_group != grp], "genetic_any"), "left_out": grp,
+    loo = pd.DataFrame([{**relative_success(rows[rows.area_group != grp], GENETICS), "left_out": grp,
                          "left_out_label": AREA_GROUP_LABELS[grp]} for grp in AREA_GROUP_LABELS])
     return rs, pd.DataFrame(tests), loo
 
@@ -348,24 +237,23 @@ def temporal_split_year(window: tuple[date, date]) -> int:
     return (window[0].year + window[1].year) // 2
 
 
-def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap, window: tuple[date, date],
-               years: int) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap, window: tuple[date, date], years: int,
+               d: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Fixed-horizon prediction: programs entering Phase 1 in `window`, outcome =
-    FDA approval for the disease within `years`; Open Targets evidence and
-    novelty as of entry. The temporal split trains on entries up to the window's
+    FDA approval for the disease within `years`; the evidence lines of the dataset `d` (a line that does not apply
+    counts as absent) and novelty as of entry. The temporal split trains on entries up to the window's
     middle year (temporal_split_year) and tests on later ones. Human genetics enters as its parts (GWAS, rare-variant)
     and is removed as a group; a line with fewer than MIN_PROGRAMS_RS programs
     carrying it is left out."""
     rows = phase_rows(progs, trials, snap, window=window)
-    rows = rows[rows.phase == 1]
-    ev = target_evidence(rows, progs)
-    d = rows.merge(ev, on=["program_id", "phase"])
+    lines = d.loc[d.has_target_disease & d.phase.eq(1), ["program_id", "phase", "target", *EVIDENCE, *LIABILITIES]]
+    d = rows[rows.phase == 1].merge(lines, on=["program_id", "phase"])
     appr = pd.to_datetime(d.approval_date)
     d["y"] = (appr.notna() & ((appr - d.entry).dt.days <= round(365.25 * years))).astype(int)
-    model_features = [f for f in FEATURES if f != "genetic_any" and f not in DRUG
+    model_features = [f for f in FEATURES if f != GENETICS and f not in DRUG
                       and (d[f] > 0).sum() >= MIN_PROGRAMS_RS]
     ablations = {f: [f] for f in model_features}
-    ablations["genetic_any"] = [f for f in ("genetic_gwas", "genetic_rare") if f in model_features]
+    ablations[GENETICS] = [f for f in GENETIC_PARTS if f in model_features]
     X_ev = (d[model_features] > 0).astype(float)
     X_cov = pd.get_dummies(d[["bio_area", "modality"]], drop_first=False).astype(float)
     X_cov["novel"] = d.novel.astype(float)
@@ -418,37 +306,43 @@ def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap, window: tuple[da
     return metrics, pd.DataFrame(ablation), d
 
 
+def project_score_pairs() -> pd.Series:
+    """Target-disease pairs with a Project Score knockout-screen hit, by the year it became known."""
+    f = evidence_facts.facts("ot_tier")
+    f = f[f.source.eq("crispr") & f.value.eq("any")]
+    return f.drop_duplicates("record_key").groupby("known_year").size()
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
     rows = phase_rows(progs, trials, snap, window=SECTION1)
-    ev = target_evidence(rows, progs)
-    data = rows.merge(ev, on=["program_id", "phase"])
+    d = build()
+    data = evidence_rows(rows, d)
+    data["g3_untimed"] = genetics_untimed(data, progs)
     data.to_csv(os.path.join(OUT, "phase_rows_with_evidence.csv"), index=False)
 
-    rs = pd.DataFrame([relative_success(data, f) for f in FEATURES])
+    rs = pd.DataFrame([relative_success(scoped(data, f), f) for f in FEATURES])
     rs.to_csv(os.path.join(OUT, "relative_success.csv"), index=False)
-    untimed = pd.DataFrame([relative_success(data, f"{f}_untimed") for f in [*EVIDENCE, "pan_essential", *DRUG]])
+    untimed = pd.DataFrame([relative_success(data, "g3_untimed")])
     untimed.to_csv(os.path.join(OUT, "relative_success_untimed.csv"), index=False)
-    strict = pd.DataFrame([relative_success(data, f"{f}_strict") for f in EVIDENCE])
-    strict.to_csv(os.path.join(OUT, "relative_success_lin_only.csv"), index=False)
-    adj = pd.DataFrame([x for f in FEATURES for x in poisson_rr(data, [f])])
+    adj = pd.DataFrame([x for f in FEATURES for x in poisson_rr(scoped(data, f), [f])])
     adj.to_csv(os.path.join(OUT, "adjusted_rr_by_phase.csv"), index=False)
 
     ph3 = data[data.phase == 3]
     table = []
     for f in FEATURES:
-        w, wo = ph3[ph3[f] > 0], ph3[ph3[f] <= 0]
+        w, wo = ph3[ph3[f] > 0], ph3[ph3[f] == 0]
         rw = (w.event == "advanced").sum() / max(1, w.event.isin(["advanced", "suspended"]).sum())
         rwo = (wo.event == "advanced").sum() / max(1, wo.event.isin(["advanced", "suspended"]).sum())
         table.append({"feature": f, "label": LABELS[f], "n_with": int(w.event.isin(["advanced", "suspended"]).sum()),
                       "approved_with": float(rw), "approved_without": float(rwo)})
     pd.DataFrame(table).to_csv(os.path.join(OUT, "phase3_approval_by_evidence.csv"), index=False)
 
-    dose = dose_response(data, "genetic_any")
-    dose.to_csv(os.path.join(OUT, "genetic_dose_response.csv"), index=False)
-    joint = pd.DataFrame(poisson_rr(data, [f for f in FEATURES if f != "genetic_any"  # its parts enter instead
+    dose = strength(data[data[STRENGTH].notna()])
+    dose.to_csv(os.path.join(OUT, "genetic_strength.csv"), index=False)
+    joint = pd.DataFrame(poisson_rr(data, [f for f in FEATURES if f != GENETICS  # its parts enter instead
                                            and (f not in DRUG or f in JOINT_DRUG)]))
     joint.to_csv(os.path.join(OUT, "joint_rr_by_phase.csv"), index=False)
 
@@ -458,17 +352,17 @@ def main() -> None:
     area_loo.to_csv(os.path.join(OUT, "genetics_leave_one_area_out.csv"), index=False)
     groups = data.assign(area_group=data.bio_area.map(AREA_GROUPS).fillna("other")).groupby("area_group")
 
-    metrics, ablation, cohort = prediction(progs, trials, snap, SECTION2_PREDICT, PREDICT_YEARS)
-    metrics_check, _, cohort_check = prediction(progs, trials, snap, SECTION1, PREDICT_YEARS_CHECK)
+    metrics, ablation, cohort = prediction(progs, trials, snap, SECTION2_PREDICT, PREDICT_YEARS, d)
+    metrics_check, _, cohort_check = prediction(progs, trials, snap, SECTION1, PREDICT_YEARS_CHECK, d)
     metrics_check.to_csv(os.path.join(OUT, "prediction_metrics_6y.csv"), index=False)
     metrics.to_csv(os.path.join(OUT, "prediction_metrics.csv"), index=False)
     ablation.to_csv(os.path.join(OUT, "prediction_ablation.csv"), index=False)
     cohort[["program_id", "target", "entry_year", "y"]].to_csv(os.path.join(OUT, "prediction_cohort.csv"), index=False)
 
-    measured = data[data.assay_measured > 0]
-    rs_measured = pd.DataFrame([relative_success(measured, f) for f in DRUG if f != "assay_measured"])
+    measured = data[data.area_measured > 0]
+    rs_measured = pd.DataFrame([relative_success(measured, f) for f in DRUG if f != "area_measured"])
     rs_measured.to_csv(os.path.join(OUT, "relative_success_drug_measured.csv"), index=False)
-    by_program = data.groupby("program_id").agg(measured=("assay_measured", "max"), modality=("modality", "first"))
+    by_program = data.groupby("program_id").agg(measured=("area_measured", "max"), modality=("modality", "first"))
     name_audit = json.load(open(NAME_AUDIT))
     matched = frame.query("""
         SELECT coalesce(m.modality, 'unknown') AS modality, b.basis
@@ -483,7 +377,7 @@ def main() -> None:
     numbers = {"n_program_phase_rows": len(data), "n_programs": int(data.program_id.nunique()),
                "n_targets": n_genes(data.target),
                "evidence_coverage_ph1": {f: float((data[data.phase == 1][f] > 0).mean()) for f in FEATURES},
-               "rs": keyed(rs, "feature"), "rs_untimed": keyed(untimed, "feature"), "rs_lin_only": keyed(strict, "feature"),
+               "rs": keyed(rs, "feature"), "rs_untimed": keyed(untimed, "feature"),
                "adjusted_rr": keyed(adj, "feature", "phase"), "joint_rr": keyed(joint, "feature", "phase"),
                "dose": keyed(dose, "band"), "prediction": keyed(metrics, "split", "features"),
                "ablation": keyed(ablation, "feature"), "n_prediction": int(len(cohort)),
@@ -503,8 +397,8 @@ def main() -> None:
                         "n_rows_measured": int(len(measured)),
                         "best_median": float(measured.assay_best.median()),
                         "best_median_nm": float(10 ** (9 - measured.assay_best.median())),
-                        "potent_of_measured": float((measured.assay_potent > 0).mean()),
-                        "selective_of_off_measured": float((measured.assay_selective > 0).sum()
+                        "potent_of_measured": float((measured.potent_100nm > 0).mean()),
+                        "selective_of_off_measured": float((measured.selective > 0).sum()
                                                            / max(1, measured.assay_margin.notna().sum())),
                         "off_measured_of_measured": float(measured.assay_margin.notna().mean()),
                         "entities_matched": int((matched.basis.notna()).sum()), "entities": int(len(matched)),
@@ -512,11 +406,9 @@ def main() -> None:
                         "release": frame.query("""SELECT metadata FROM preclin.evidence_source_release
                                                   WHERE source_name = 'chembl_activity'
                                                   ORDER BY source_release_id DESC LIMIT 1""").metadata.iloc[0]},
-               "cell_line_screen_somatic": float(data[data.cell_line_screen > 0].groupby("program_id").somatic.max()
+               "cell_line_screen_somatic": float(data[data.crispr > 0].groupby("program_id").somatic.max()
                                                  .gt(0).mean()),
-               "project_score": {f"n_{y}": int(n) for y, n in frame.query(
-                   """SELECT evidence_year, count(*) FROM preclin.ot_evidence WHERE datasource = 'crispr'
-                      GROUP BY 1""").itertuples(index=False)}}
+               "project_score": {f"n_{int(y)}": int(n) for y, n in project_score_pairs().items()}}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(rs[["label", "n_with", "loa_with", "loa_without", "rs", "rs_lo", "rs_hi"]].to_string())

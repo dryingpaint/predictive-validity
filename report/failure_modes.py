@@ -30,7 +30,7 @@ import pandas as pd
 from pipeline.stops import keys
 from report import frame, stop_causes
 from report.evidence_analysis import COVARS_23, exposed_enough, traced_stops
-from report.evidence_lines import PRECEDENT_KINDS, build, chart_rows, report_lines
+from report.evidence_lines import PRECEDENT_KINDS, build, chart_rows, report_lines, us
 from report.section3 import COVARS, describe, estimate, jsonable
 from report.engaged_modes import ENGAGED_MODES, engaged_modes
 
@@ -79,7 +79,7 @@ VARIANTS = {"all": lambda d: d, "cause_specific": lambda d: d[~d.competing], "ph
 
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
-    d = build()
+    d = us(build())
     d = d.assign(precedent=d.precedent.fillna(0), target=d.target.fillna("entity " + d.moiety_id.astype(str)))
     d = with_modes(traced_stops(d[d.phase.between(1, 3)]))
     tables = {name: rows(pick(d)) for name, pick in VARIANTS.items()}
