@@ -310,11 +310,12 @@ def test_package_holds_every_pair_and_no_label():
 
 # --- gate ---
 
-def test_every_origin_has_a_layer():
-    assert set(to.LAYER) == set(to.ORIGINS)
-    assert to.LAYER["human_genetics"] == to.LAYER["tumour_genetics"] == "genetics"
-    assert to.LAYER["diseased_tissue"] == to.LAYER["observational_biomarker"]
-    assert to.LAYER["unclear"] == "unclear"
+def test_every_origin_has_a_broad_category():
+    assert set(to.CATEGORY) == set(to.ORIGINS)
+    assert to.CATEGORY["human_genetics"] == to.CATEGORY["tumour_genetics"] == "human_genetics"
+    assert to.CATEGORY["diseased_tissue"] == to.CATEGORY["cell_line_perturbation"] == "in_vitro"
+    assert to.CATEGORY["mouse_genetics"] == to.CATEGORY["animal_model_pharmacology"] == "animals"
+    assert to.CATEGORY["unclear"] == "unclear"
 
 
 def gate_frames(disagree: int):
@@ -349,7 +350,7 @@ def test_gate_reports_blind_kappas_only_when_given():
     blind = reader.rename(columns={"origin": "blind_origin"})
     r = to.gate_result(reader, stored, raw, {"not_causal": 0.9, "other": 0.9}, blind)
     assert r["kappa_blind_vs_reader"] == 1.0 and r["kappa_blind_vs_raw"] == 1.0
-    assert r["kappa_stored_layer"] == 1.0
+    assert r["kappa_stored_category"] == 1.0
 
 
 # --- model reference: majority of three blind readings ---
@@ -358,12 +359,12 @@ def test_majority_reference_and_consistency():
     readings = [("ENSG1|MONDO:1|r1", "human_genetics"), ("ENSG1|MONDO:1|r2", "human_genetics"),
                 ("ENSG1|MONDO:1|r3", "mouse_genetics"),
                 ("ENSG2|MONDO:1|r1", "unclear"), ("ENSG2|MONDO:1|r2", "unclear"), ("ENSG2|MONDO:1|r3", "unclear"),
-                ("ENSG3|MONDO:1|r1", "cell_screen"), ("ENSG3|MONDO:1|r2", "diseased_tissue"),
+                ("ENSG3|MONDO:1|r1", "cell_line_perturbation"), ("ENSG3|MONDO:1|r2", "diseased_tissue"),
                 ("ENSG3|MONDO:1|r3", "unclear"),
-                ("ENSG4|MONDO:1|r1", "cell_screen"), ("ENSG4|MONDO:1|r2", "cell_screen")]
+                ("ENSG4|MONDO:1|r1", "cell_line_perturbation"), ("ENSG4|MONDO:1|r2", "cell_line_perturbation")]
     ref, stats = to.majority_reference(readings)
     assert ref.set_index("ensembl_id").origin.to_dict() == {"ENSG1": "human_genetics", "ENSG2": "unclear",
-                                                            "ENSG4": "cell_screen"}
+                                                            "ENSG4": "cell_line_perturbation"}
     assert stats["pairs"] == 4 and stats["unanimous"] == 1 and stats["majority"] == 2 and stats["no_majority"] == 1
     assert stats["replicates"] == 3 and 0 <= stats["pairwise_agreement"] <= 1
 
@@ -501,7 +502,7 @@ def test_origin_services_filter_every_shared_table_read():
 
 
 def test_majority_needs_two_agreeing_readings():
-    ref, stats = to.majority_reference([("ENSG4|MONDO:1|r1", "cell_screen")])
+    ref, stats = to.majority_reference([("ENSG4|MONDO:1|r1", "cell_line_perturbation")])
     assert ref.empty and stats["no_majority"] == 1
 
 
@@ -539,8 +540,8 @@ def test_gene_names_drop_disease_labels_that_hgnc_lists_as_aliases():
     assert names == ["androgen receptor"]
 
 
-def test_checker_v3_has_the_labellers_search_and_fetch():
-    assert to.CHECK_TASK.prompt_version == "v3"
+def test_checker_has_the_labellers_search_and_fetch():
+    assert to.CHECK_TASK.prompt_version == "v4"
     assert [t["name"] for t in to.CHECK_TASK.tools] == ["web_search", "web_fetch"]
     assert "search" in to.CHECK_SYSTEM.lower()
 
@@ -556,30 +557,29 @@ def definition_of(origin: str) -> str:
 def test_every_origin_has_one_definition_and_a_chart_line_entry():
     assert [ln[2:].split(":")[0] for ln in to.DEFINITIONS.splitlines()] == to.ORIGINS
     assert set(to.CHART_LINE) == set(to.ORIGINS)
-    assert set(to.CHART_LINE_PENDING) == {"observational_biomarker", "human_cell_perturbation",
-                                          "animal_model_pharmacology", "clinical_observation"}
+    assert set(to.CHART_LINE_PENDING) == {"observational_biomarker", "human_cell_perturbation", "clinical_observation"}
     without = {o for o, c in to.CHART_LINE.items() if c is None}
     assert without == set(to.CHART_LINE_PENDING) | {"phenotypic_screen", "unclear"}
 
 
-def test_chart_line_columns_exist_in_the_evidence_chart():
+def test_every_origin_kind_is_a_kind_of_the_evidence_list_with_its_chart_column():
     from report import evidence_lines as ev
-    columns = {ln.column for line, tiers in ev.CATEGORIES.values() for ln in (line, *tiers)}
-    columns |= {ln.column for ln in ev.area_lines()}
-    assert to.CHART_LINE["cell_screen"] == "crispr"
-    assert to.CHART_LINE["earlier_drug_other_disease"] == "approved_unrelated_only"
-    assert to.CHART_LINE["diseased_tissue"] == "expression" and to.CHART_LINE["mouse_genetics"] == "altered_animal"
-    assert all(c in columns for c in to.CHART_LINE.values() if c is not None)
+    assert {o for o in to.ORIGINS if o not in to.NOT_KINDS} <= set(ev.KINDS)
+    assert to.CHART_LINE["cell_line_perturbation"] == "cell_line_perturbation"
+    assert to.CHART_LINE["earlier_drug_other_disease"] == "approved_other_disease"
+    assert to.CHART_LINE["diseased_tissue"] == "expression" and to.CHART_LINE["mouse_genetics"] == "mouse_genetics"
 
 
-def test_definitions_use_the_chart_lines_wording():
-    assert "human cells" in definition_of("cell_screen")
-    assert "unrelated disease" in definition_of("earlier_drug_other_disease")
+def test_definitions_follow_the_final_list():
+    assert "established cell line" in definition_of("cell_line_perturbation")
+    assert "primary human cells" in definition_of("human_cell_perturbation")
+    assert "another disease" in definition_of("earlier_drug_other_disease")
+    assert "animal model" in definition_of("mouse_genetics")
     assert "RNA or protein" in definition_of("diseased_tissue")
     assert "blood" in definition_of("observational_biomarker")
     assert "other than genetics" in definition_of("animal_model_pharmacology")
-    # the texts that produced the v1 labels and the v2 blind readings are gone, so those versions cannot be reused
-    assert to.LABEL_TASK.prompt_version != "v1" and to.BLIND_TASK.prompt_version != "v2"
+    # the texts that produced earlier labels and blind readings are gone, so those versions cannot be reused
+    assert to.LABEL_TASK.prompt_version not in ("v1", "v2") and to.BLIND_TASK.prompt_version not in ("v2", "v3")
 
 
 def test_gate_is_scored_on_the_labellers_label_as_read():
@@ -615,10 +615,10 @@ def cout(quote="yes", year="yes", follows="yes", note="") -> dict:
     return {"quote_found": quote, "year_ok": year, "origin_follows": follows, "note": note}
 
 
-def test_checkers_are_sonnet_v3_and_opus_v4_on_the_same_text():
+def test_checkers_are_sonnet_and_opus_on_the_same_text():
     s, o = to.CHECKERS
-    assert s is to.CHECK_TASK and s.model == "claude-sonnet-5-5" and s.prompt_version == "v3"
-    assert o.model == "claude-opus-5-5" and o.prompt_version == "v4" and o.system == s.system and o.tools == s.tools
+    assert s is to.CHECK_TASK and s.model == "claude-sonnet-5-5" and s.prompt_version == "v4"
+    assert o.model == "claude-opus-5-5" and o.prompt_version == "v5" and o.system == s.system and o.tools == s.tools
     assert to.CHECK_METHOD == "target_origin_check@v2"
     assert to.CHECK_OUTCOMES == ("supported", "unsupported", "unverified", "disputed", "not_checked")
 
@@ -653,7 +653,7 @@ def test_check_fields_year_is_read_from_the_records_in_code():
 def test_check_fields_earlier_drug_takes_the_category_from_the_approval_fact():
     p = cpayload(origin="earlier_drug_other_disease")
     assert to.check_fields(p, "unrelated", [cout(follows="no"), cout(follows="no")], None)["category"] == "yes"
-    assert to.check_fields(p, "related", [cout(), cout()], None)["category"] == "no"
+    assert to.check_fields(p, "related", [cout(), cout()], None)["category"] == "yes"
     assert to.check_fields(p, "close", [cout(), cout()], None)["category"] == "no"
     f = to.check_fields(p, "none", [cout(), cout()], None)
     assert f["category"] == "disputed" and f["fact"] == "none"
@@ -714,7 +714,7 @@ def test_approval_fact_on_the_pairs_gene_from_the_dated_index():
 
 
 def test_fact_category_close_is_validated_at_entry_and_not_an_origin():
-    assert to.FACT_CATEGORY == {"unrelated": "yes", "related": "no", "close": "no", "none": "disputed"}
+    assert to.FACT_CATEGORY == {"unrelated": "yes", "related": "yes", "close": "no", "none": "disputed"}
 
 
 def test_dispute_sheet_round_trip(tmp_path):
@@ -735,7 +735,7 @@ def test_dispute_sheet_round_trip(tmp_path):
     assert sheet.iloc[0].sonnet == "no" and sheet.iloc[0].sonnet_note == "s" and sheet.iloc[0].opus == "yes"
     assert sheet.iloc[1].sonnet == "no" and sheet.iloc[1].opus == "yes"  # the checkers' own words on the field
     assert sheet.iloc[2].fact == "none" and sheet.iloc[2].first_drug == "drug b"
-    assert "unrelated disease" in sheet.iloc[2].definition and sheet.iloc[2].entry == "2008-01-01"
+    assert "another disease" in sheet.iloc[2].definition and sheet.iloc[2].entry == "2008-01-01"
     assert (sheet.verdict == "").all()
     path = tmp_path / "d.csv"
     to.write_sheet(path, sheet)
@@ -877,11 +877,9 @@ def test_research_verdict_approval_tiers_by_the_index_rule(monkeypatch):
          "first_drug": "drug a", "gene_drugs": ["drug a"]}
     v, note = to.research_verdict(p, rout(approvals=[rappr(mondo="MONDO:7")]), nb, labels)
     assert v == "yes" and note == "tier unrelated: drug a, PMDA 1988, far away (MONDO:7) https://u; n"
-    assert to.research_verdict(p, rout(approvals=[rappr(mondo="MONDO:5")]), nb, labels)[0] == "no"
+    assert to.research_verdict(p, rout(approvals=[rappr(mondo="MONDO:5")]), nb, labels)[0] == "yes"  # related counts
     assert to.research_verdict(p, rout(approvals=[rappr(mondo="MONDO:9"), rappr(mondo="MONDO:7")]), nb, labels)[1] \
         .startswith("tier close")
-    monkeypatch.setitem(to.FACT_CATEGORY, "related", "yes")  # decision 1 on #146 propagates on a rerun
-    assert to.research_verdict(p, rout(approvals=[rappr(mondo="MONDO:5")]), nb, labels)[0] == "yes"
     # no approval found, or none before entry: the category does not follow
     assert to.research_verdict(p, rout(note="searched PMDA, EMA"), nb, labels) == \
         ("no", "no approval before 2008-01-01; searched PMDA, EMA")
@@ -904,9 +902,9 @@ def test_research_verdict_approval_tiers_by_the_index_rule(monkeypatch):
     assert to.research_verdict(p, rout(approvals=[rappr(mondo="MONDO:9"), rappr(mondo=None)]), nb, labels)[0] == "no"
 
 
-def test_research_task_is_opus_v1_with_search_and_fetch_and_no_checker_answers():
+def test_research_task_is_opus_with_search_and_fetch_and_no_checker_answers():
     t = to.RESEARCH_TASK
-    assert t.name == "target_origin_research" and t.prompt_version == "v1" and t.model == "claude-opus-5-5"
+    assert t.name == "target_origin_research" and t.prompt_version == "v2" and t.model == "claude-opus-5-5"
     assert [x["name"] for x in t.tools] == ["web_search", "web_fetch"] and t.validate is to.validate_research
     assert t.render is to.render_research and t.schema is to.RESEARCH_SCHEMA
     assert to.RESEARCH_METHOD == "target_origin_research@v1"

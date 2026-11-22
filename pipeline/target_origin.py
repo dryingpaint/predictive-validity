@@ -31,6 +31,7 @@ from pipeline import attribution, literature, llm
 from pipeline.literature import names_clause
 from pipeline.stop_causes import BLOCKED_DOMAINS
 from report import frame
+from report.evidence_lines import KINDS
 from report.windows import SECTION1
 
 ORIGINS = ["human_genetics", "tumour_genetics", "diseased_tissue", "mouse_genetics", "curated_pathway",
@@ -362,16 +363,12 @@ DEFINITIONS = """- human_genetics: germline variants link the target to the dise
 - phenotypic_screen: a molecule found without a target hypothesis came first
 - unclear: no source settles it"""
 
-# The evidence chart's line that each origin kind answers "present before entry?" for (report.evidence_lines; the
-# owner's one-list decision of 2026-11-20 on #146): one list of target-evidence kinds, used two ways. None: no chart
-# line. The CHART_LINE_PENDING kinds get their lines from #154, under these names.
-CHART_LINE = {"human_genetics": "g3", "tumour_genetics": "somatic", "diseased_tissue": "expression",
-              "mouse_genetics": "altered_animal", "curated_pathway": "reactome", "cell_screen": "crispr",
-              "earlier_drug_other_disease": "approved_unrelated_only", "observational_biomarker": None,
-              "human_cell_perturbation": None, "animal_model_pharmacology": None, "clinical_observation": None,
-              "phenotypic_screen": None, "unclear": None}
-CHART_LINE_PENDING = ("observational_biomarker", "human_cell_perturbation", "animal_model_pharmacology",
-                      "clinical_observation")
+# Each origin but NOT_KINDS is a kind of the report's evidence list (report.evidence_lines.KINDS) under the same key,
+# one list used two ways (#146, 2026-11-20): the chart asks whether the kind was present before entry, the origin which
+# came first. CHART_LINE is the kind's chart column, None while the kind is planned (CHART_LINE_PENDING, #154).
+NOT_KINDS = ("phenotypic_screen", "unclear")
+CHART_LINE = {o: None if o in NOT_KINDS else KINDS[o].column for o in ORIGINS}
+CHART_LINE_PENDING = tuple(o for o in ORIGINS if o not in NOT_KINDS and KINDS[o].column is None)
 
 GRADE_RULE = """stated: a source says why the target was chosen for the disease (a rationale in an introduction or discussion, a
 review written before the cutoff, a patent's background). pattern: no source says so, but a source shows the defining
@@ -1673,13 +1670,9 @@ def package(args) -> None:
 
 # --- gate and summary ---
 
-LAYER = {"human_genetics": "genetics", "tumour_genetics": "genetics",
-         "diseased_tissue": "tissue_biomarker", "observational_biomarker": "tissue_biomarker",
-         "mouse_genetics": "model_systems", "curated_pathway": "model_systems", "cell_screen": "model_systems",
-         "human_cell_perturbation": "model_systems", "animal_model_pharmacology": "model_systems",
-         "earlier_drug_other_disease": "earlier_drug",
-         "clinical_observation": "clinical_phenotypic", "phenotypic_screen": "clinical_phenotypic",
-         "unclear": "unclear"}
+# For reporting only: each origin's broad category (report.evidence_lines.CATEGORIES); the two that are not kinds are
+# their own.
+CATEGORY = {o: o if o in NOT_KINDS else KINDS[o].category for o in ORIGINS}
 KAPPA_MIN = 0.6
 GAP_MAX = 10.0
 GATE_JSON = os.path.join(frame.REPO, "report", "audits", "target_origin_gate.json")
@@ -1691,7 +1684,7 @@ read, before the second-model check (the registered wording, "against a blind ha
 the 13 categories, on one hand-check set; must be at least {KAPPA_MIN}. Coverage: the share of pilot pairs with at least
 one pre-entry record, in the group with a settled "not causal" stop and the group without; the gap must be at most
 {GAP_MAX} points. Also reported, never gating: kappa on the stored origin after the check (the check is a filter on what
-enters the tests, and its outcome rates are reported as such), both kappas on the collapsed reporting layer (LAYER),
+enters the tests, and its outcome rates are reported as such), both kappas on the origins' broad categories (CATEGORY),
 agreement with the labeller's primary or secondary origin, and the blind second coder's kappa against the reader and
 the labeller."""
 
@@ -1719,11 +1712,11 @@ def gate_result(reader: pd.DataFrame, stored: pd.DataFrame, raw: pd.DataFrame, c
     n_missing = int(m.stored.isna().sum())
     m["stored"] = m.stored.fillna("unclear")
     m["raw"] = m.raw.fillna("unclear")
-    layer = lambda s: s.map(LAYER)
+    category = lambda s: s.map(CATEGORY)
     gap = abs(coverage["not_causal"] - coverage["other"]) * 100
     out = {"n": len(m), "kappa_stored": kappa(m.origin, m.stored), "kappa_raw": kappa(m.origin, m.raw),
-           "kappa_stored_layer": kappa(layer(m.origin), layer(m.stored)),
-           "kappa_raw_layer": kappa(layer(m.origin), layer(m.raw)),
+           "kappa_stored_category": kappa(category(m.origin), category(m.stored)),
+           "kappa_raw_category": kappa(category(m.origin), category(m.raw)),
            "any_origin_agree": float(((m.origin == m.raw) | (m.origin == m.secondary_origin)).mean()) if len(m) else None,
            "coverage": {k: float(v) for k, v in coverage.items()}, "gap_points": round(gap, 2),
            "n_missing": n_missing, "kappa_blind_vs_reader": None, "kappa_blind_vs_raw": None}
