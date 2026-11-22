@@ -329,7 +329,8 @@ KINDS = {k.key: k for k in [
          "gnomAD v4.1; Mammalian Phenotype ontology, through Open Targets; DepMap", "liability",
          (("constraint", ("yes",)), ("mice_die_young", ("yes",)), ("most_cells_need_gene", ("yes",)),
           ("vital_organ_phenotype", ("yes",)), ("earlier_safety_stop", ("yes",)),
-          ("most_cells_need_gene_hindsight", ("yes",)))),
+          ("most_cells_need_gene_hindsight", ("yes",))),
+         rows=("constraint", "mice_die_young", "most_cells_need_gene", "vital_organ_phenotype", "earlier_safety_stop")),
 ]}
 ADJUSTMENTS = [Line("Trial enrolled patients selected by a biomarker", "biomarker_selected", "all")]
 # Kinds about earlier drugs on the target: the target-precedent covariate would adjust for the kind itself.
@@ -365,7 +366,8 @@ def chart_rows() -> list[tuple[str, Kind, str, Line]]:
             rows += [(k.category, k, "value", Line(labels[v], c, fact.applies)) for v, c in fact.columns if v in evidence]
         for f in k.rows:
             fact = FACTS[f]
-            rows += [(k.category, k, "fact", Line(fact.label, c, fact.applies)) for v, c in fact.columns if v == "yes"]
+            label = fact.label + (" (exploratory)" if fact.note.startswith("exploratory") else "")
+            rows += [(k.category, k, "fact", Line(label, c, fact.applies)) for v, c in fact.columns if v == "yes"]
     return rows
 
 
