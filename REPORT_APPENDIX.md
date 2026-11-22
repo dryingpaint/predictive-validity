@@ -16,7 +16,6 @@ Every stop has one cause; where a source gives more detail, one subcause from th
 |  | Not engaged | Exposure or engagement too low, or another drug on the target worked |
 |  | Engaged, no benefit | Target or mechanism wrong for the disease as tested |
 |  | Trial design, population, endpoint | Trial design, population or endpoint, mechanism not in question |
-|  | Toxicity offset efficacy | On-target toxicity offset efficacy |
 |  | No engagement data | No human evidence of engagement either way |
 | **Safety** |  | Adverse events, poor tolerability, a safety signal, or a clinical hold for safety |
 |  | On-target toxicity | The text ties the harm to the drug's mechanism, to hitting its target |
@@ -110,8 +109,8 @@ Cause of each Phase 2 and 3 stop as registered and after tracing.
 
 | Cause of the stop | As registered | After tracing: sourced | After tracing: sourced or likely |
 | :---- | :---- | :---- | :---- |
-| Efficacy or exposure (PK, dose, formulation) | 29% (1,589) | 41% (2,248) | 46% (2,490) |
-| Safety | 1% (68) | 4% (195) | 4% (205) |
+| Efficacy or exposure (PK, dose, formulation) | 29% (1,589) | 41% (2,236) | 46% (2,478) |
+| Safety | 1% (68) | 4% (207) | 4% (217) |
 | Sponsor decision (portfolio, commercial, partner, acquisition, funding or closure) | 5% (270) | 12% (646) | 20% (1,103) |
 | Operational (enrollment, sites, supply, regulatory) | 5% (283) | 6% (316) | 6% (337) |
 | Positive readout, not yet advanced | 10% (517) | 17% (923) | 18% (955) |
@@ -160,10 +159,9 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 | Not engaged: exposure or engagement too low, or another drug on the target worked | 11% (197) | 11% (51) | 11% (248) | 10% (166) |
 | Engaged, no benefit: target or mechanism wrong for the disease as tested | 46% (797) | 50% (240) | 47% (1,037) | 44% (731) |
 | Trial design, population or endpoint, mechanism not in question | 6% (104) | 10% (46) | 7% (150) | 8% (129) |
-| On-target toxicity offset efficacy | 1% (11) | 0% (1) | 1% (12) | 0% (3) |
 | No engagement data: no human evidence of engagement either way | 36% (624) | 30% (146) | 35% (770) | 38% (620) |
 | **Not engaged, of failures whose mechanism was tested** | **20%** (17–23) | **18%** (13–22) | **19%** (17–22) | **19%** (16–21) |
-| Programs (entities) | 1,734 (1,342) | 484 (427) | 2,218 (1,649) | 1,650 (1,303) |
+| Programs (entities) | 1,723 (1,336) | 483 (426) | 2,206 (1,643) | 1,647 (1,301) |
 
 ### By disease area and modality
 
@@ -235,7 +233,7 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Mutant mice from published studies (MGI) (derived) | 1,496 / 7,435 | 458 | 1.44 (1.07–1.88) | 1.36 (1.10–1.68) | 1.34 (1.08–1.65) | 0.83 (0.69–1.01) |
 | · Mouse knockout from a large-scale screen (IMPC) (derived) | 40 / 7,435 | 16 | Too rare to estimate | – | – | – |
 | · Mouse genetics agrees with the drug's direction (derived) | 489 / 7,435 | 183 | 1.84 (1.33–2.50) | 1.38 (1.04–1.85) | 1.37 (1.03–1.82) | 0.55 (0.39–0.78) |
-| Animal model pharmacology: a non-genetic change to the target alters a disease model (today: the program's own drug) | 4,666 / 8,833 | 1,536 | 0.75 (0.62–0.91) | 0.83 (0.70–0.98) | 0.83 (0.70–0.98) | 0.93 (0.83–1.04) |
+| Animal model pharmacology: a non-genetic change to the target alters a disease model (today: the program's own drug) | 4,662 / 8,833 | 1,536 | 0.75 (0.63–0.91) | 0.83 (0.71–0.99) | 0.83 (0.70–0.98) | 0.93 (0.84–1.05) |
 | **Human** |  |  |  |  |  |  |
 | Validated at entry: a drug on the target approved for this or a very close disease | 1,284 / 7,435 | 336 | 2.17 (1.77–2.75) | 2.01 (1.67–2.41) | 1.99 (1.66–2.38) | 0.66 (0.53–0.82) |
 | · A related disease (Lin 0.5 to 0.8) | 892 / 7,435 | 234 | 1.19 (0.80–1.64) | 1.18 (0.93–1.50) | 1.18 (0.93–1.49) | 0.88 (0.72–1.09) |
@@ -252,8 +250,8 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Drug binds its target strongly (100 nM or better) (derived) | 1,390 / 6,091 | 358 | 1.57 (1.14–2.08) | 1.08 (0.82–1.43) | 1.06 (0.80–1.41) | 1.10 (0.92–1.31) |
 | · Drug binds its target 10× more strongly than other proteins tested (derived) | 579 / 1,121 | 162 | 1.27 (0.71–2.25) | 0.99 (0.64–1.53) | 1.00 (0.65–1.54) | 0.99 (0.70–1.39) |
 | · The drug binds another protein within 10-fold of its target (derived) | 542 / 1,121 | 157 | 0.79 (0.45–1.41) | 1.01 (0.65–1.56) | 1.00 (0.65–1.55) | 1.01 (0.72–1.42) |
-| Pharmacokinetics or target engagement measured in healthy animals | 5,390 / 9,875 | 1,911 | 0.65 (0.54–0.77) | 0.80 (0.67–0.95) | 0.80 (0.68–0.95) | 0.94 (0.83–1.06) |
-| Drug shown to act on its target in people | 2,192 / 5,613 | 860 | 1.05 (0.88–1.27) | 1.15 (0.96–1.39) | 1.16 (0.96–1.40) | 0.98 (0.86–1.11) |
+| Pharmacokinetics or target engagement measured in healthy animals | 5,384 / 9,875 | 1,911 | 0.65 (0.54–0.78) | 0.81 (0.68–0.95) | 0.81 (0.69–0.96) | 0.93 (0.82–1.06) |
+| Drug shown to act on its target in people | 2,189 / 5,613 | 858 | 1.05 (0.89–1.27) | 1.16 (0.96–1.40) | 1.16 (0.97–1.40) | 0.97 (0.86–1.11) |
 | Molecule properties: drug-like, or suited to the brain | 4,654 / 5,520 | 1,266 | 0.99 (0.75–1.34) | 0.93 (0.71–1.23) | 0.94 (0.71–1.22) | 0.90 (0.75–1.08) |
 | · Drug-like size and chemistry | 4,654 / 5,520 | 1,266 | 0.99 (0.75–1.34) | 0.93 (0.71–1.23) | 0.94 (0.71–1.22) | 0.90 (0.75–1.08) |
 | · Chemistry suited to entering the brain | 547 / 814 | 194 | 0.86 (0.48–1.65) | 1.43 (0.78–2.64) | 1.40 (0.76–2.58) | 0.91 (0.70–1.17) |
