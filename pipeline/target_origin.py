@@ -1072,7 +1072,7 @@ RESEARCH_METHOD = "target_origin_research@v1"
 RESEARCH_CSV = os.path.join(frame.REPO, "report", "audits", "target_origin_disputes_research.csv")
 RESEARCH_QUESTION = {"quote": "quote", "year": "year", "category": "approval"}  # sheet field -> question
 MONDO_ID = re.compile(r"^MONDO:\d+$")
-APPROVAL_DATE = re.compile(r"^\d{4}(-\d{2}-\d{2})?$")
+APPROVAL_DATE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")  # a regulator's record often gives no day
 CHECKER_AS_VERDICT = {"quote": {"yes": "yes", "no": "no"}, "year": {"yes": "yes", "no": "no"},
                       "category": {"yes": "yes", "partly": "yes", "no": "no"}}
 
@@ -1124,7 +1124,7 @@ def validate_research(p: dict, out: dict) -> None:
     elif q == "approval":
         for a in out["approvals"]:
             if not APPROVAL_DATE.match(a["date"]):
-                raise ValueError(f"approval: date {a['date']!r} is not YYYY-MM-DD or YYYY")
+                raise ValueError(f"approval: date {a['date']!r} is not YYYY-MM-DD, YYYY-MM or YYYY")
             if a["mondo_id"] is not None and not MONDO_ID.match(a["mondo_id"]):
                 raise ValueError(f"approval: {a['mondo_id']!r} is not a MONDO id")
             if not a["evidence_url"]:
@@ -1147,17 +1147,19 @@ cutoff, no when any is not, open when any is unread. approval: every approval of
 by any medicines regulator before the entry date, with the regulator, the date, the indication and its MONDO id;
 the tier is computed in code by the index's rule (close within Lin {{CLOSE}}, related within Lin {{RELATED}}, else
 unrelated) and the verdict is FACT_CATEGORY of the tier; no approval found or none before entry is no; an approval
-in the entry year without a day, or an indication without a MONDO id in the ontology, leaves the row open unless a
-close approval is documented. The verdicts are written to a filled copy of the sheet ({os.path.basename(RESEARCH_CSV)},
+whose date (a year, or a year and month, when the record gives no day) cannot be placed before or after entry, or an
+indication without a MONDO id in the ontology, leaves the row open unless a close approval is documented. The verdicts are written to a filled copy of the sheet ({os.path.basename(RESEARCH_CSV)},
 reader {RESEARCH_METHOD}); no table row changes; `check --disputes` on that file applies them."""
 
 
 def before_entry(date: str, entry: pd.Timestamp) -> bool | None:
-    """Whether an approval date (YYYY-MM-DD or YYYY) is before the entry date; None when the year alone cannot say."""
+    """Whether an approval date (YYYY-MM-DD, YYYY-MM or YYYY) is before the entry date; None when the date's precision
+    cannot say (the entry's own year, or its own month)."""
     if len(date) == 10:
         return pd.Timestamp(date) < entry
-    y = int(date[:4])
-    return True if y < entry.year else (False if y > entry.year else None)
+    given = tuple(int(x) for x in date.split("-"))
+    ref = (entry.year, entry.month)[:len(given)]
+    return True if given < ref else (False if given > ref else None)
 
 
 def research_verdict(p: dict, out: dict, nb, labels: dict[str, str]) -> tuple[str, str]:

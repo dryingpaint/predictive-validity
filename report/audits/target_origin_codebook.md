@@ -105,3 +105,17 @@ value stops `check`. `reader` is the person's name, `note` free text. Commit the
 `python -m pipeline.target_disease check --pairs window`: it applies each verdict to its field, restores a label whose
 three fields are then yes, keeps the rest unclear, and rewrites the sheet with the rows still open. A verdict applies
 only to a field the checkers left disputed; it never overrides a field the code or both checkers settled.
+
+## Research file (`report/audits/target_origin_disputes_research.csv`)
+
+A filled copy of the factual rows of the disputes sheet, written by `python -m pipeline.target_disease research`
+(method `target_origin_research@v1`, `target_origin_run.md`, last section): the quote and year rows, and the category
+rows of earlier-drug labels whose approval fact is none. Same columns as the sheet plus `decision_id` (the row in
+`pv_evidence.llm_decision`). `reader` is the method name on every row the model answered; `verdict` is `yes` or `no`
+where the answer settles the field and empty where it does not (a source no copy of could be read, an approval whose
+date's precision cannot place it before or after entry, an indication without a MONDO id in the ontology); `note` is the evidence: the copy the
+passage was read in and the words, or each source's year and where it was read, or each approval with its regulator,
+date, indication and MONDO label and the tier the index's rule gives it. The committed sheet is not changed by the
+pass. To apply the research verdicts, run `check --pairs window --disputes report/audits/target_origin_disputes_research.csv`;
+to apply a person's verdicts instead, fill the committed sheet. A verdict from either file applies only to a field the
+checkers left disputed.

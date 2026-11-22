@@ -842,8 +842,8 @@ def test_validate_research_requires_the_answer_the_question_needs():
     with pytest.raises(ValueError):
         to.validate_research(year, rout(dates=[rdate("PMID:1", 2005)]))  # one entry per cited source
     to.validate_research(appr, rout())
-    to.validate_research(appr, rout(approvals=[rappr(date="1988-03-01"), rappr(mondo=None)]))
-    for bad in (rappr(date="March 1988"), rappr(mondo="7"), rappr(url="")):
+    to.validate_research(appr, rout(approvals=[rappr(date="1988-03-01"), rappr(date="1989-01"), rappr(mondo=None)]))
+    for bad in (rappr(date="March 1988"), rappr(date="1989-1"), rappr(mondo="7"), rappr(url="")):
         with pytest.raises(ValueError):
             to.validate_research(appr, rout(approvals=[bad]))
 
@@ -887,6 +887,10 @@ def test_research_verdict_approval_tiers_by_the_index_rule(monkeypatch):
         ("no", "no approval before 2008-01-01; searched PMDA, EMA")
     assert to.research_verdict(p, rout(approvals=[rappr(date="2009-05-01", mondo="MONDO:7")]), nb, labels)[0] == "no"
     assert to.research_verdict(p, rout(approvals=[rappr(date="2007-12-31", mondo="MONDO:7")]), nb, labels)[0] == "yes"
+    # month precision (regulators often give no day): before or after the entry month decides, the entry month does not
+    assert to.research_verdict(p, rout(approvals=[rappr(date="2007-12", mondo="MONDO:7")]), nb, labels)[0] == "yes"
+    assert to.research_verdict(p, rout(approvals=[rappr(date="2008-02", mondo="MONDO:7")]), nb, labels)[0] == "no"
+    assert to.research_verdict(p, rout(approvals=[rappr(date="2008-01", mondo="MONDO:7")]), nb, labels)[0] == ""
     # undecidable: an approval in the entry year without a day, or an indication the ontology does not know
     assert to.research_verdict(p, rout(approvals=[rappr(date="2008", mondo="MONDO:7")]), nb, labels)[0] == ""
     v, note = to.research_verdict(p, rout(approvals=[rappr(mondo="MONDO:3")]), nb, labels)
