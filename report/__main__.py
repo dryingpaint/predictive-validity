@@ -96,7 +96,7 @@ def load_tables() -> None:
     """Read the large tables the steps share while the held snapshot is young: a query against a snapshot held
     for minutes, while other sessions write, runs several times slower than the same query on a fresh one."""
     for load in (frame.programs, frame.program_trials, frame.trial_outcomes, evidence_facts.load_all,
-                 disease_match.mondo_tables, section2.target_tables, section3.evidence_index):
+                 disease_match.mondo_tables, section3.evidence_index):
         load()
 
 
