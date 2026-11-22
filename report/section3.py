@@ -34,7 +34,7 @@ import statsmodels.api as sm
 from statsmodels.discrete.conditional_models import ConditionalLogit
 
 from pipeline import llm
-from report import frame
+from report import evidence_facts, frame
 from report.disease_match import Mondo
 from report.section1 import SEED, approval_dates, failure_modes, phase_rows
 from report.windows import SECTION1, SECTION1_PERIODS
@@ -52,6 +52,7 @@ MIN_LEVEL = 30  # programs below which a covariate level pools into '<covariate>
 CLOSE, RELATED = 0.8, 0.5  # Lin similarity at which evidence counts for the disease (G3) or a related one (G2)
 HEREDITARY = "MONDO:0003847"
 PREWEANING_LETHAL = "MP:0010770"
+CONSTRAINED_LOEUF = 0.35  # gnomAD LOEUF below which people rarely carry broken copies of the gene
 NEVER = 9999  # year given to evidence with no date: evidence frozen at a year never counts it
 ABSENT = 10**6  # year of a tier or direction that a target-disease pair does not have
 
@@ -105,7 +106,7 @@ LABELS = {  # evidence map rows, in display order (report.render and report.figu
 MAP_FEATURES = list(LABELS)
 
 
-@cache  # one scan of the evidence table per build; every Evidence reads the same index
+@cache  # one read of the Open Targets facts per build; every Evidence reads the same index
 def evidence_index() -> tuple[dict, dict]:
     """gene -> family -> MONDO term -> first year of each tier in TIERS; and gene -> first
     year of germline evidence for any trait, including measurement traits with no MONDO
@@ -113,20 +114,18 @@ def evidence_index() -> tuple[dict, dict]:
     pathogenic with multiple submitters or expert review, ClinGen or Gene2Phenotype
     definitive or strong, PanelApp green; mouse PhenoDigm score in the top quartile.
     ClinVar 'protective' records inform direction only. Each item is dated by the year it
-    became known (preclin.ot_evidence.evidence_year: IMPC-consortium mouse models by their
+    became known (the ot_tier facts of report.evidence_facts: IMPC-consortium mouse models by their
     first IMPC data release, ClinVar records by their creation); undated items count only
     when evidence is not frozen."""
-    g = frame.query("SELECT * FROM preclin.ot_evidence_tiers")  # the summary of preclin.ot_evidence (migration 140)
-    g["family"] = g.source.map(FAMILY)
-    germline_first = g[g.family.isin(GERMLINE)].groupby("ens").y_any.min().dropna().astype(int).to_dict()
-    mondo = frame.query("SELECT disease_id, mondo_ids FROM preclin.ot_disease WHERE cardinality(mondo_ids) > 0")
-    g = g.merge(mondo, on="disease_id").explode("mondo_ids").rename(columns={"mondo_ids": "mondo"})
-    cols = [f"y_{t}" for t in TIERS]
-    g[cols] = g[cols].fillna(ABSENT).astype(int)
-    g = g.groupby(["ens", "family", "mondo"], as_index=False)[cols].min()
+    f = evidence_facts.facts("ot_tier")
+    f = f.assign(family=f.source.map(FAMILY), y=f.known_year.fillna(NEVER).astype(int))
+    germ = f[f.value.eq("any") & f.family.isin(GERMLINE)]
+    germline_first = germ.groupby("ensembl_id").y.min().astype(int).to_dict()
+    w = f[f.mondo_id.notna()].groupby(["ensembl_id", "family", "mondo_id", "value"]).y.min() \
+        .unstack("value").reindex(columns=list(TIERS)).fillna(ABSENT).astype(int)
     idx: dict = defaultdict(dict)
-    for (ens, fam), sub in g.groupby(["ens", "family"]):
-        idx[ens][fam] = dict(zip(sub.mondo, sub[cols].itertuples(index=False, name=None)))
+    for (ens, fam), sub in w.groupby(level=["ensembl_id", "family"]):
+        idx[ens][fam] = dict(zip(sub.index.get_level_values("mondo_id"), sub.itertuples(index=False, name=None)))
     return idx, germline_first
 
 
@@ -192,28 +191,22 @@ class Evidence:
             target=("symbol", lambda s: "+".join(sorted(set(s)))), genes=("ens", lambda s: sorted(set(s))),
             classes=("target_class", lambda s: sorted(set(s.fillna("Unclassified")))),
             sign=("sign", lambda s: s.iloc[0] if s.nunique() == 1 else "ambiguous"))
-        self.essential = frame.common_essentials()
-        self.liab = {
-            "constrained": set(frame.query("""SELECT t.ensembl_id FROM public.gene_constraint g
-                                              JOIN public.targets t ON t.id = g.target_id
-                                              GROUP BY 1 HAVING min(g.loeuf) < 0.35""").ensembl_id),
-            "ko_lethal": set(frame.query("""
-                SELECT DISTINCT target_ensembl FROM preclin.ot_mouse_phenotype
-                WHERE phenotype_id = %s OR phenotype_id IN (SELECT term_id FROM preclin.ontology_ancestor
-                                                            WHERE ontology = 'MP' AND ancestor_id = %s)""",
-                (PREWEANING_LETHAL, PREWEANING_LETHAL)).target_ensembl),
-        }
-        self.mechanism = {(e, m): (risk, prot, ry, py) for e, m, risk, prot, ry, py in frame.query(
-            """SELECT ensembl_id, mondo_id, risk_mechanism, protective, risk_year, protective_year
-               FROM preclin.gene_disease_mechanism""").itertuples(index=False)}
+        self.essential = evidence_facts.common_essentials()
+        lethal = {PREWEANING_LETHAL, *frame.query("""SELECT term_id FROM preclin.ontology_ancestor
+                                                     WHERE ontology = 'MP' AND ancestor_id = %s""",
+                                                  (PREWEANING_LETHAL,)).term_id}
+        loeuf, phenotypes = evidence_facts.facts("loeuf"), evidence_facts.facts("mouse_phenotype")
+        self.liab = {"constrained": set(loeuf.ensembl_id[loeuf.value_num < CONSTRAINED_LOEUF]),
+                     "ko_lethal": set(phenotypes.ensembl_id[phenotypes.value.isin(lethal)])}
+        mech = evidence_facts.facts("disease_mechanism")
+        self.mechanism = {(e, m): (risk, prot, ry, py) for e, m, risk, prot, ry, py in zip(
+            mech.ensembl_id, mech.mondo_id, mech.value, evidence_facts.detail(mech, "protective"), mech.known_year,
+            evidence_facts.detail(mech, "protective_year"))}
         self.mouse = defaultdict(list)
-        for e, m, pert, rel, year in frame.query("""
-                SELECT r.ensembl_id, r.mondo_id, r.perturbation, r.relation,
-                       min(e.evidence_year) AS year
-                FROM preclin.mouse_model_relation r JOIN preclin.ot_evidence e
-                  ON e.target_ensembl = r.ensembl_id AND e.datasource = 'impc'
-                 AND e.detail->>'biologicalModelId' = r.model_id
-                GROUP BY r.ensembl_id, r.mondo_id, r.model_id, r.perturbation, r.relation""").itertuples(index=False):
+        models = evidence_facts.facts("mouse_model")
+        for e, m, pert, rel, year in zip(models.ensembl_id, models.mondo_id,
+                                         evidence_facts.detail(models, "perturbation"), models.value,
+                                         models.known_year):
             self.mouse[(e, m)].append((pert, rel, int(year) if pd.notna(year) else NEVER))
         self.disease = progs.set_index("program_id").mondo_id
         # Approvals on each gene: each entity's first FDA approval (any disease, or the dated approval
@@ -274,6 +267,8 @@ class Evidence:
                  or (inc and ("loss_of_function" in risks or "gain_of_function_protective" in prots)))
         mdisc = ((dec and ("loss_of_function" in risks or "gain_of_function_protective" in prots))
                  or (inc and ("gain_of_function" in risks or "loss_of_function_protective" in prots)))
+        raises = "loss_of_function" in risks or "gain_of_function_protective" in prots
+        lowers = "gain_of_function" in risks or "loss_of_function_protective" in prots
         wants = {MOUSE_FAVOURS[(pert, rel)] for g in e.genes for pert, rel, y in self.mouse.get((g, d), ())
                  if y <= cut and (pert, rel) in MOUSE_FAVOURS}
         return {
@@ -294,12 +289,20 @@ class Evidence:
             "gwas_weak": float(on("gwas", "weak") and not on("gwas", "mid") and not on("gwas", "strong")),
             "somatic_concordant": float(on("somatic", "any") and ((dec and on("somatic", "gof_risk"))
                                                                   or (inc and on("somatic", "lof_risk")))),
+            "somatic_gof": float(on("somatic", "gof_risk")), "somatic_lof": float(on("somatic", "lof_risk")),
+            # Drug-independent forms of the direction lines: what losing the gene does to disease risk by the labelled
+            # mechanisms, and which way the mouse models favour moving the gene's function.
+            "loss_effect": ("none" if not g3 else "unlabelled" if not labelled else "mixed" if raises and lowers
+                            else "raises_risk" if raises else "lowers_risk" if lowers else "undirected"),
+            "mouse_favours": ("none" if not wants else "mixed" if len(wants) > 1 else
+                              "favours_raising" if wants == {"increase"} else "favours_lowering"),
             "expression_up": float(on("expression", "up")),
             **liab, "liability": float(any(liab.values())),
             "crispr_untimed": float("crispr" in first and first["crispr"][TIERS.index("any")] <= NEVER),
             "pan_essential_untimed": float(frame.essential_as_of(self.essential, e.genes, NEVER)),
             "precedent": float(self.precedent(moiety_id, entry)),
             "b1": float(any(m in related and when < entry for g in e.genes for m, when in self.approved.get(g, ()))),
+            "b1_close": float(any(m in close and when < entry for g in e.genes for m, when in self.approved.get(g, ()))),
         }
 
     def features(self, rows: pd.DataFrame) -> pd.DataFrame:
