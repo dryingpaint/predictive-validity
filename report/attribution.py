@@ -26,7 +26,7 @@ from pipeline import llm
 from pipeline.attribution import CHECK_SAMPLE, CHECK_TASK, CODES, check_sample
 from pipeline.stops import (EFFICACY_SUBCAUSES, ENGAGED, SameTarget, cohort, detail, keys, labels, pillar_code, stops,
                             subcause)
-from report import frame
+from report import evidence_facts, frame
 from report.section1 import N_BOOT, SEED
 from report.windows import RECENT, SECTION1, SECTION1_PERIODS, TRACING
 from report.section3 import Evidence, jsonable
@@ -223,7 +223,7 @@ def potency(d: pd.DataFrame) -> dict:
     primary = frame.query("""SELECT mt.moiety_id, t.symbol FROM preclin.moiety_target mt
                              JOIN public.targets t ON t.id = mt.target_id WHERE mt.is_primary""") \
         .groupby("moiety_id").symbol.agg(set)
-    measurements = frame.drug_assays()
+    measurements = evidence_facts.drug_assays()
     assays, none = dict(iter(measurements.groupby("moiety_id"))), measurements.iloc[:0]
     x = d[d.primary_code.isin(["F1a", "F2"]) & d.moiety_id.isin(primary.index)]
     known = pd.DataFrame([frame.assays_as_of(assays.get(m, none), primary[m], pd.Timestamp(e).year - 1)

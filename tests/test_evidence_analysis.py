@@ -1,7 +1,8 @@
 import numpy as np
 import pandas as pd
 
-from report.evidence_analysis import loa_rows, stop_outcomes
+from report.evidence_analysis import stop_outcomes
+from report.evidence_lines import loa_rows
 
 # Program 1 entered Phase 1 and jumped straight to Phase 3, so Phase 2 is credited as passed;
 # program 2 entered Phase 2 and stopped.

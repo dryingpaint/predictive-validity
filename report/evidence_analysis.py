@@ -2,7 +2,7 @@
 
     python -m report.evidence_analysis
 
-Cohort: report.evidence_lines.build(), US-developed phase entries 2008-2019. For every line of
+Cohort: the US-developed phase entries 2008-2019 of report.evidence_lines.build (us). For every line of
 report.evidence_lines.report_lines (each kind of evidence, each evidence value of its facts, and the aggregates and
 crosses derived from them), among the entries it is known for:
 - relative success: likelihood of approval from Phase 1 with the line over without it (report.section2
@@ -43,7 +43,7 @@ import pandas as pd
 from report import frame
 from pipeline.stops import keys
 from report import stop_causes
-from report.evidence_lines import KINDS, PRECEDENT_KINDS, SAFETY, build, chart_rows, report_lines, stale
+from report.evidence_lines import KINDS, PRECEDENT_KINDS, SAFETY, build, chart_rows, loa_rows, report_lines, stale, us
 from report.section1 import failure_modes, phase_rows
 from report.section2 import relative_success
 from report.section3 import COVARS, MIN_TARGETS, adjusted, cause_outcomes, coef, describe, estimate, holm, jsonable, poisson, sponsors
@@ -53,17 +53,6 @@ OUT = os.path.join(frame.REPO, "report", "output", "evidence_analysis")
 LITERATURE_GATE = os.path.join(frame.REPO, "report", "audits", "literature_gate.json")  # pipeline.literature
 MIN_ENTRIES = 100  # exposed entries below which a line is described, not estimated
 COVARS_23 = (*COVARS, "phase")
-
-
-def loa_rows(d: pd.DataFrame, rows: pd.DataFrame) -> pd.DataFrame:
-    """The entries' phase rows (report.section1.phase_rows) for likelihood of approval: each entry, plus the
-    phases it skipped on the way to its next phase or approval, which carry the skipping entry's features."""
-    cols = [c for c in d.columns if c not in rows.columns or c in ("program_id", "phase")]
-    own = rows[~rows.credited].merge(d[cols], on=["program_id", "phase"])
-    first = d.sort_values("phase").drop_duplicates(["program_id", "entry_date"])
-    skipped = rows[rows.credited].assign(entry_date=pd.to_datetime(rows.entry).dt.date) \
-        .merge(first[[c for c in cols if c != "phase"]], on=["program_id", "entry_date"])
-    return pd.concat([own, skipped], ignore_index=True)
 
 
 def exposed_enough(desc: dict) -> bool:
@@ -312,9 +301,9 @@ def main() -> None:
     snap = frame.snapshot()
     progs, trials, outcomes = frame.programs(), frame.program_trials(), frame.trial_outcomes()
     rows = phase_rows(progs, trials, snap, window=SECTION1)
-    d = build()
+    d = us(build())
     lines, chart, stops, n = analyse(d, rows, failure_modes(rows, progs, trials, outcomes), trials)
-    n["published_confirmation"] = published_confirmation(build(CONFIRM), d, phase_rows(progs, trials, snap, window=CONFIRM),
+    n["published_confirmation"] = published_confirmation(us(build(CONFIRM)), d, phase_rows(progs, trials, snap, window=CONFIRM),
                                                          rows, trials)
     lines.to_csv(os.path.join(OUT, "lines.csv"), index=False)
     chart.to_csv(os.path.join(OUT, "chart.csv"), index=False)

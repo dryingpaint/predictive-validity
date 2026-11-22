@@ -207,6 +207,7 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Rare variants only | 651 / 7,435 | 208 | 2.72 (2.03–3.61) | 2.12 (1.69–2.67) | 2.09 (1.64–2.66) | 0.48 (0.33–0.70) |
 | · Common variants only (genome-wide association studies) | 187 / 7,435 | 74 | 1.72 (1.05–2.46) | 1.25 (0.79–1.95) | 1.27 (0.82–1.96) | 0.99 (0.68–1.46) |
 | · Both rare and common variants | 46 / 7,435 | 23 | Too rare to estimate | – | – | – |
+| · How strong the strongest inherited-variant evidence is (exploratory) | 499 / 7,435 | 176 | 3.06 (2.31–3.93) | 1.96 (1.51–2.55) | 1.90 (1.46–2.47) | 0.55 (0.38–0.80) |
 | · Rare inherited variants, including single-gene disease (derived) | 697 / 7,435 | 223 | 2.63 (1.95–3.49) | 1.95 (1.53–2.47) | 1.90 (1.49–2.43) | 0.55 (0.39–0.79) |
 | · Common variants (genome-wide association studies) (derived) | 233 / 7,435 | 94 | 1.62 (1.06–2.26) | 1.01 (0.64–1.60) | 1.03 (0.65–1.61) | 1.08 (0.79–1.49) |
 | · Genetics agrees with the drug's direction (derived) | 433 / 7,435 | 145 | 2.59 (1.91–3.45) | 1.78 (1.31–2.43) | 1.72 (1.26–2.35) | 0.51 (0.32–0.83) |
@@ -270,60 +271,59 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 
 | Evidence line | Programs with it | LOA with / without | Relative success (95% CI) |
 | :---- | :---- | :---- | :---- |
-| Rare inherited variants, including single-gene disease | 749 | 25.9% / 8.8% | 2.93 (2.16–3.89) |
-| Any human genetics | 942 | 24.2% / 8.7% | 2.80 (2.10–3.70) |
-| Gene recurrently mutated in this cancer | 1,187 | 20.7% / 9.2% | 2.25 (1.56–3.10) |
-| A curated pathway shows a disease mutation disrupting the target | 197 | 22.0% / 9.9% | 2.21 (1.16–3.32) |
+| Rare inherited variants, including single-gene disease | 702 | 25.7% / 8.9% | 2.89 (2.14–3.81) |
+| Human genetics: inherited variants link the target to the disease | 910 | 24.1% / 8.7% | 2.76 (2.05–3.62) |
+| Curated pathway: a disease mutation disrupts the target's pathway | 197 | 22.0% / 9.9% | 2.21 (1.16–3.32) |
+| Tumour genetics (oncology): the gene is recurrently mutated in this cancer | 1,163 | 21.0% / 10.5% | 1.99 (1.15–3.79) |
 | Common variants (genome-wide association studies) | 259 | 17.1% / 10.0% | 1.70 (1.04–2.46) |
-| Mouse genetics: knocked-out or mutant mice show the disease | 1,679 | 13.6% / 9.3% | 1.46 (1.10–1.91) |
-| The gene's RNA level differs in diseased tissue | 1,054 | 10.5% / 10.2% | 1.03 (0.68–1.47) |
+| Mouse genetics: mice with the gene altered show the disease | 1,679 | 13.6% / 9.3% | 1.46 (1.10–1.91) |
+| Diseased tissue: the gene's level differs in diseased tissue | 1,054 | 10.5% / 10.2% | 1.03 (0.68–1.47) |
 | **Safety risk of the target** (not specific to the disease) |  |  |  |
-| People rarely carry broken copies of the gene | 1,818 | 9.0% / 10.5% | 0.86 (0.56–1.24) |
+| People rarely carry broken copies of the gene (gnomAD LOEUF below 0.35; today's data) | 1,818 | 9.0% / 10.5% | 0.86 (0.56–1.24) |
 | **The molecule** (assays of the drug itself, not evidence for the disease) |  |  |  |
-| Drug binds its target very strongly (10 nM or better) | 1,197 | 13.1% / 9.8% | 1.34 (0.92–1.86) |
-| Drug binds its target 100× more strongly than other proteins tested | 319 | 13.0% / 10.1% | 1.28 (0.68–2.10) |
-| Drug binds its target strongly (100 nM or better) | 1,644 | 11.1% / 10.0% | 1.11 (0.80–1.49) |
-| Drug's binding strength measured | 1,964 | 10.1% / 10.2% | 0.99 (0.73–1.31) |
-| Drug's effect measured in living cells | 474 | 7.1% / 10.4% | 0.68 (0.42–1.06) |
+| 10 nM or better | 1,143 | 13.5% / 7.4% | 1.82 (1.30–2.41) |
+| Drug binds its target strongly (100 nM or better) | 1,587 | 11.3% / 7.4% | 1.53 (1.12–2.00) |
+| Binding to the target measured before entry | 1,905 | 10.2% / 7.4% | 1.37 (1.05–1.77) |
+| Drug binds its target 10× more strongly than other proteins tested | 665 | 11.6% / 9.6% | 1.20 (0.65–2.13) |
+| Drug's effect measured in living cells | 446 | 7.3% / 8.6% | 0.85 (0.52–1.39) |
 
 ### Genetic dose–response
 
-| Genetic association score before entry (Open Targets, 0–1) | Programs | Targets | LOA (95% CI) |
+| Human genetic support before entry | Programs | Targets | LOA (95% CI) |
 | :---- | :---- | :---- | :---- |
-| 0 (no genetic support) | 7,685 | 1,273 | 8.7% (7.0–10.6) |
-| up to 0.61 (lowest third) | 384 | 222 | 16.9% (11.3–23.6) |
-| 0.61–0.92 (middle third) | 298 | 142 | 23.7% (15.8–31.3) |
-| above 0.92 (highest third) | 277 | 140 | 32.9% (25.6–41.5) |
+| None | 7,713 | 1,275 | 8.7% (7.1–10.6) |
+| Supported, none of it strong | 410 | 204 | 17.1% (10.5–24.5) |
+| Strong: a gene burden test, GWAS locus-to-gene at least 0.8, or a curated or multi-submitter Mendelian record | 513 | 244 | 29.1% (24.0–34.7) |
 
 ### Relative success by disease area
 
 | Evidence line | Oncology | Immunology and inflammation | Other | Neuroscience | Cardiometabolic and endocrine | Hematology | Differs between groups, Phase 2 (p) |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| Any human genetics | 2.00 (1.03–3.44), n=329 | 1.47 (0.69–2.42), n=141 | –, n=94 | 3.16 (1.59–5.31), n=135 | 3.37 (2.08–6.18), n=161 | –, n=82 | 0.62 (6 groups) |
+| Human genetics: inherited variants link the target to the disease | 2.03 (1.06–3.43), n=317 | 1.51 (0.71–2.51), n=138 | –, n=93 | 2.70 (1.23–4.78), n=123 | 3.40 (2.09–6.19), n=159 | –, n=80 | 0.67 (6 groups) |
 | Common variants (genome-wide association studies) | –, n=67 | –, n=81 | –, n=47 | –, n=29 | –, n=35 | –, n=0 | 0.78 (3 groups) |
-| Rare inherited variants, including single-gene disease | 2.17 (1.11–3.68), n=285 | –, n=63 | –, n=56 | 3.10 (1.49–5.32), n=120 | 3.26 (2.02–5.75), n=143 | –, n=82 | 0.79 (6 groups) |
-| Gene recurrently mutated in this cancer | 1.98 (1.15–3.79), n=1,168 | –, n=4 | –, n=5 | –, n=1 | –, n=7 | –, n=2 | – |
-| Mouse genetics: knocked-out or mutant mice show the disease | 1.00 (0.56–1.75), n=471 | 1.61 (0.91–2.60), n=235 | 1.43 (0.65–2.84), n=185 | 1.77 (1.06–3.11), n=276 | 1.54 (0.98–2.44), n=408 | 1.52 (0.86–3.82), n=104 | 0.50 (6 groups) |
-| The gene's RNA level differs in diseased tissue | 1.03 (0.61–1.71), n=769 | 0.37 (0.06–0.78), n=169 | –, n=33 | –, n=73 | –, n=10 | –, n=0 | 0.01 (4 groups) |
-| Drug binds its target strongly (100 nM or better) | 0.99 (0.50–1.76), n=849 | 1.59 (0.85–2.61), n=194 | 1.75 (0.95–3.02), n=210 | 0.81 (0.44–1.37), n=236 | 1.21 (0.53–2.11), n=139 | –, n=16 | 0.23 (5 groups) |
+| Rare inherited variants, including single-gene disease | 2.16 (1.07–3.68), n=259 | –, n=60 | –, n=55 | 2.61 (1.08–4.61), n=108 | 3.32 (2.06–5.85), n=140 | –, n=80 | 0.78 (6 groups) |
+| Tumour genetics (oncology): the gene is recurrently mutated in this cancer | 1.99 (1.15–3.79), n=1,163 | –, n=0 | –, n=0 | –, n=0 | –, n=0 | –, n=0 | – |
+| Mouse genetics: mice with the gene altered show the disease | 1.00 (0.56–1.75), n=471 | 1.61 (0.91–2.60), n=235 | 1.43 (0.65–2.84), n=185 | 1.77 (1.06–3.11), n=276 | 1.54 (0.98–2.44), n=408 | 1.52 (0.86–3.82), n=104 | 0.50 (6 groups) |
+| Diseased tissue: the gene's level differs in diseased tissue | 1.03 (0.61–1.71), n=769 | 0.37 (0.06–0.78), n=169 | –, n=33 | –, n=73 | –, n=10 | –, n=0 | 0.01 (4 groups) |
+| Drug binds its target strongly (100 nM or better) | 1.16 (0.69–1.80), n=834 | 2.22 (1.28–3.84), n=185 | 2.18 (1.08–4.06), n=201 | 1.03 (0.52–1.83), n=225 | 1.81 (0.75–3.92), n=126 | –, n=16 | 0.28 (5 groups) |
 
 ### What each line adds once the others are known
 
 | Evidence | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval |
 | :---- | :---- | :---- | :---- |
-| Common variants (genome-wide association studies) | 1.06 (0.94–1.18) | 1.09 (0.84–1.41) | 1.13 (0.82–1.54) |
-| Rare inherited variants, including single-gene disease | 1.05 (0.96–1.14) | 1.55 (1.32–1.81) | 1.43 (1.18–1.74) |
-| Gene recurrently mutated in this cancer | 1.10 (0.99–1.22) | 1.29 (1.02–1.62) | 1.07 (0.85–1.35) |
-| Mouse genetics: knocked-out or mutant mice show the disease | 0.98 (0.91–1.04) | 1.14 (1.00–1.29) | 1.06 (0.89–1.25) |
-| The gene's RNA level differs in diseased tissue | 0.95 (0.87–1.04) | 0.86 (0.70–1.06) | 0.82 (0.65–1.04) |
-| A curated pathway shows a disease mutation disrupting the target | 1.11 (1.00–1.23) | 0.80 (0.59–1.10) | 1.16 (0.93–1.44) |
+| Common variants (genome-wide association studies) | 1.06 (0.95–1.19) | 1.12 (0.85–1.46) | 1.13 (0.84–1.54) |
+| Rare inherited variants, including single-gene disease | 1.05 (0.96–1.16) | 1.52 (1.29–1.79) | 1.40 (1.16–1.70) |
+| Tumour genetics (oncology): the gene is recurrently mutated in this cancer | 1.09 (0.98–1.22) | 1.33 (1.05–1.69) | 1.11 (0.87–1.41) |
+| Mouse genetics: mice with the gene altered show the disease | 0.97 (0.91–1.04) | 1.15 (1.01–1.30) | 1.06 (0.90–1.25) |
+| Diseased tissue: the gene's level differs in diseased tissue | 0.95 (0.88–1.04) | 0.86 (0.70–1.06) | 0.82 (0.65–1.04) |
+| Curated pathway: a disease mutation disrupts the target's pathway | 1.10 (0.99–1.22) | 0.81 (0.59–1.11) | 1.17 (0.94–1.45) |
 | **Safety risk of the target** (not specific to the disease) |  |  |  |
-| People rarely carry broken copies of the gene | 0.90 (0.82–0.99) | 1.01 (0.85–1.19) | 0.97 (0.79–1.20) |
+| People rarely carry broken copies of the gene (gnomAD LOEUF below 0.35; today's data) | 0.90 (0.82–0.99) | 1.01 (0.85–1.19) | 0.97 (0.78–1.19) |
 | **The molecule** (assays of the drug itself, not evidence for the disease) |  |  |  |
-| Drug's binding strength measured | 0.81 (0.64–1.02) | 0.89 (0.67–1.18) | 1.17 (0.84–1.64) |
-| Drug binds its target strongly (100 nM or better) | 1.19 (0.93–1.51) | 1.25 (0.92–1.70) | 1.10 (0.79–1.54) |
-| Drug's effect measured in living cells | 0.79 (0.61–1.02) | 0.87 (0.69–1.10) | 0.98 (0.74–1.31) |
-| Drug binds its target 100× more strongly than other proteins tested | 1.07 (0.87–1.32) | 1.15 (0.84–1.56) | 1.08 (0.80–1.44) |
+| Binding to the target measured before entry | 0.81 (0.64–1.02) | 0.89 (0.67–1.18) | 1.22 (0.87–1.70) |
+| Drug binds its target strongly (100 nM or better) | 1.17 (0.93–1.48) | 1.21 (0.88–1.67) | 1.12 (0.80–1.56) |
+| Drug's effect measured in living cells | 0.79 (0.60–1.04) | 0.86 (0.67–1.10) | 1.04 (0.78–1.38) |
+| Drug binds its target 10× more strongly than other proteins tested | 1.08 (0.90–1.29) | 1.11 (0.88–1.41) | 0.98 (0.75–1.26) |
 
 ### Does the evidence predict which programs reach approval?
 
@@ -331,21 +331,21 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | :---- | :---- | :---- | :---- | :---- |
 | Held-out target sets | Area, modality, novelty, year | 0.593 (0.529–0.659) | 0.121 (0.060) | 3,000 (181) |
 | Temporal (later entrants held out) | Area, modality, novelty, year | 0.622 (0.551–0.697) | 0.124 (0.066) | 1,536 (101) |
-| Held-out target sets | … plus all evidence lines | 0.633 (0.584–0.688) | 0.136 (0.060) | 3,000 (181) |
-| Temporal (later entrants held out) | … plus all evidence lines | 0.635 (0.566–0.717) | 0.131 (0.066) | 1,536 (101) |
-| Held-out target sets | Evidence lines only | 0.581 (0.505–0.659) | 0.097 (0.060) | 3,000 (181) |
-| Temporal (later entrants held out) | Evidence lines only | 0.614 (0.549–0.683) | 0.111 (0.066) | 1,536 (101) |
+| Held-out target sets | … plus all evidence lines | 0.623 (0.571–0.677) | 0.133 (0.060) | 3,000 (181) |
+| Temporal (later entrants held out) | … plus all evidence lines | 0.630 (0.562–0.713) | 0.129 (0.066) | 1,536 (101) |
+| Held-out target sets | Evidence lines only | 0.564 (0.492–0.641) | 0.093 (0.060) | 3,000 (181) |
+| Temporal (later entrants held out) | Evidence lines only | 0.613 (0.550–0.681) | 0.111 (0.066) | 1,536 (101) |
 
 Change in held-out AUC when each line is removed from the full model:
 
 | Evidence removed | AUC change (95% CI) |
 | :---- | :---- |
-| Any human genetics | -0.029 (-0.053 to -0.003) |
-| Rare inherited variants, including single-gene disease | -0.029 (-0.053 to -0.006) |
-| Gene recurrently mutated in this cancer | -0.005 (-0.033 to +0.021) |
-| Mouse genetics: knocked-out or mutant mice show the disease | -0.002 (-0.006 to +0.004) |
-| People rarely carry broken copies of the gene | -0.001 (-0.009 to +0.009) |
-| The gene's RNA level differs in diseased tissue | +0.001 (-0.019 to +0.030) |
+| Human genetics: inherited variants link the target to the disease | -0.025 (-0.049 to +0.000) |
+| Rare inherited variants, including single-gene disease | -0.025 (-0.048 to -0.001) |
+| Tumour genetics (oncology): the gene is recurrently mutated in this cancer | -0.003 (-0.028 to +0.019) |
+| People rarely carry broken copies of the gene (gnomAD LOEUF below 0.35; today's data) | -0.001 (-0.009 to +0.008) |
+| Mouse genetics: mice with the gene altered show the disease | +0.000 (-0.004 to +0.007) |
+| Diseased tissue: the gene's level differs in diseased tissue | +0.002 (-0.018 to +0.031) |
 
 ### Confirmatory hypotheses
 
@@ -666,7 +666,7 @@ POLR2B (5431)
 *26.09 · `https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/26.09/output/association_by_datasource_direct/*.parquet` and `…/disease/`*
 
 **Compiled by.** EMBL-EBI, the Wellcome Sanger Institute and partners run Open Targets. It maps evidence from about 20 resources to Ensembl genes and to disease terms (MONDO, EFO, HP, Orphanet) and scores each item from 0 to 1. Per target, disease and datasource, it combines the items into one association score with a weighted harmonic sum. A "direct" association counts only evidence annotated to that exact disease, not to its subtypes. Each association carries a yearly series of its cumulative score.
-**We use.** Direct associations from the 17 datasources below, for targets of drugs in industry programs. We keep the score, the evidence count and the yearly series, so evidence is taken as of the year before phase entry. The yearly series leaves out undated evidence.
+**We use.** Direct associations from the 17 datasources below, for targets of drugs in industry programs. We keep each evidence item with the year it became known, so evidence is taken as of the year before phase entry; undated items count only on today's data.
 **Shape.** `targetId, diseaseId, aggregationValue (datasource), associationScore, evidenceCount, timeseries[{year, associationScore, yearlyEvidenceCount}]`; diseases: `id, name, dbXRefs[], therapeuticAreas[]`.
 
 ```json
