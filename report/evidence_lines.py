@@ -181,7 +181,7 @@ FACTS = {f.key: f for f in [
           ("none", "No difference")),
          (("up", "expression_up"), ("down", "expression_down"))),
     Fact("best_approval", "The closest disease a drug on the target was approved for before entry", "target",
-         (("same_or_close", "This disease or a very close one (Lin at least 0.8)"),
+         (("same_or_close", "This disease or a very close one (Lin at least 0.8): validated at entry"),
           ("related", "A related disease (Lin 0.5 to 0.8)"), ("unrelated_only", "Only unrelated diseases"),
           ("none", "No approved drug on the target")),
          (("same_or_close", "validated_at_entry"), ("related", "approved_related"),
@@ -305,14 +305,15 @@ KINDS = {k.key: k for k in [
          "Clinical observation: an effect seen in people implicates the target, such as a side effect",
          "An effect seen in people that implicates the target, such as a side effect",
          "Literature (#154)", None),
-    Kind("validated_at_entry", "human", "target", "Validated at entry: a drug on the target approved for this or a very close "
-         "disease", "A drug on the target was already approved for the same or a very close disease (Lin at least "
-         "0.8) before entry", "Drugs@FDA approvals", "validated_at_entry", (("best_approval", ("same_or_close",)),)),
-    Kind("earlier_drug_other_disease", "human", "target", "A drug on the target approved for another disease",
-         "A drug on the target was approved for another disease, one not close enough to make the pair validated at "
-         "entry", "Drugs@FDA approvals", "approved_other_disease",
-         (("best_approval", ("related", "unrelated_only")),), chart="best_approval",
-         derived=(Line("A drug on the target approved for a related disease, Lin at least 0.5 (B1)", "b1", "target"),)),
+    Kind("earlier_approval", "human", "target",
+         "Approved on the target: a drug on the target was approved before entry, for this disease or another",
+         "A drug on the target was approved before entry, banded by how close its disease is to the program's: the same "
+         "or a very close disease (Lin at least 0.8, validated at entry), a related one (Lin 0.5 to 0.8), or only "
+         "unrelated ones", "Drugs@FDA approvals", "approved_any",
+         (("best_approval", ("same_or_close", "related", "unrelated_only")),), chart="best_approval",
+         derived=(Line("A drug on the target approved for another disease (related or unrelated; the "
+                       "earlier_drug_other_disease origin)", "approved_other_disease", "target"),
+                  Line("A drug on the target approved for a related disease, Lin at least 0.5 (B1)", "b1", "target"))),
     Kind("earlier_drug_failure", "human", "target", "Another drug on the target failed in a related disease in the last 3 years",
          "Another drug on the target had a Phase 2 or 3 trial in a related disease (Lin at least 0.5) miss its "
          "primary endpoint or stop for futility in the three years before entry", "ClinicalTrials.gov",
@@ -353,7 +354,12 @@ KINDS = {k.key: k for k in [
 ]}
 ADJUSTMENTS = [Line("Trial enrolled patients selected by a biomarker", "biomarker_selected", "all")]
 # Kinds about earlier drugs on the target: the target-precedent covariate would adjust for the kind itself.
-PRECEDENT_KINDS = ("validated_at_entry", "earlier_drug_other_disease", "earlier_drug_failure")
+PRECEDENT_KINDS = ("earlier_approval", "earlier_drug_failure")
+# The approval kind's bands predict in opposite directions (validated at entry raises success, an approval only for
+# another disease does not), so the stop-risk analysis also estimates them apart.
+APPROVAL_SPLIT = [Line("Validated at entry: a drug on the target approved for this or a very close disease",
+                       "validated_at_entry", "target"),
+                  Line("A drug on the target approved for another disease", "approved_other_disease", "target")]
 # The 2026-11-08 safety lines, tested against safety and efficacy stops.
 SAFETY = [Line("Standard flags: people rarely carry broken copies of the gene, or mice lacking it die before weaning",
                "liability", "target"),
@@ -507,6 +513,7 @@ def derive(f: pd.DataFrame, action: pd.Series) -> pd.DataFrame:
         "animal_concordant": cross((inc & f.mouse_direction.eq("favours_raising"))
                                    | (dec & f.mouse_direction.eq("favours_lowering"))),
         "b1": flag("best_approval", ("same_or_close", "related")),
+        "approved_other_disease": flag("best_approval", ("related", "unrelated_only")),
         "potent_100nm": flag("potency", ("le_10nm", "10_100nm")),
         "selective": flag("selectivity", ("ge_10x",)),
     }

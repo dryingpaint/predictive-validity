@@ -564,7 +564,7 @@ def test_every_origin_has_one_definition_and_a_chart_line_entry():
 
 def test_every_origin_kind_is_a_kind_of_the_evidence_list_with_its_chart_column():
     from report import evidence_lines as ev
-    assert {o for o in to.ORIGINS if o not in to.NOT_KINDS} <= set(ev.KINDS)
+    assert set(to.ORIGIN_KIND.values()) <= set(ev.KINDS)
     assert to.CHART_LINE["cell_line_perturbation"] == "cell_line_perturbation"
     assert to.CHART_LINE["earlier_drug_other_disease"] == "approved_other_disease"
     assert to.CHART_LINE["diseased_tissue"] == "expression" and to.CHART_LINE["mouse_genetics"] == "mouse_genetics"

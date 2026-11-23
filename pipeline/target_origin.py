@@ -379,10 +379,14 @@ DEFINITIONS = """- human_genetics: germline variants link the target to the dise
 
 # Each origin but NOT_KINDS is a kind of the report's evidence list (report.evidence_lines.KINDS) under the same key,
 # one list used two ways (#146, 2026-11-20): the chart asks whether the kind was present before entry, the origin which
-# came first. CHART_LINE is the kind's chart column, None while the kind is planned (CHART_LINE_PENDING, #154).
+# came first. The exception is earlier_drug_other_disease, the approval kind's bands other than validated at entry
+# (which is not an origin): its kind is earlier_approval and its line is approved_other_disease. CHART_LINE is each
+# origin's chart column, None while the kind is planned (CHART_LINE_PENDING, #154).
 NOT_KINDS = ("phenotypic_screen", "unclear")
-CHART_LINE = {o: None if o in NOT_KINDS else KINDS[o].column for o in ORIGINS}
-CHART_LINE_PENDING = tuple(o for o in ORIGINS if o not in NOT_KINDS and KINDS[o].column is None)
+ORIGIN_KIND = {o: "earlier_approval" if o == "earlier_drug_other_disease" else o for o in ORIGINS if o not in NOT_KINDS}
+CHART_LINE = {o: None if o in NOT_KINDS else "approved_other_disease" if o == "earlier_drug_other_disease"
+              else KINDS[o].column for o in ORIGINS}
+CHART_LINE_PENDING = tuple(o for o in ORIGINS if o not in NOT_KINDS and CHART_LINE[o] is None)
 
 GRADE_RULE = """stated: a source says why the target was chosen for the disease (a rationale in an introduction or discussion, a
 review written before the cutoff, a patent's background). pattern: no source says so, but a source shows the defining
@@ -1907,7 +1911,8 @@ def package(args) -> None:
 
 # For reporting only: each origin's broad category (report.evidence_lines.CATEGORIES); the two that are not kinds are
 # their own.
-CATEGORY = {**{o: o if o in NOT_KINDS else KINDS[o].category for o in ORIGINS}, **{o: o for o in STORED_ONLY}}
+CATEGORY = {**{o: o if o in NOT_KINDS else KINDS[ORIGIN_KIND[o]].category for o in ORIGINS},
+            **{o: o for o in STORED_ONLY}}
 KAPPA_MIN = 0.6
 GAP_MAX = 10.0
 GATE_JSON = os.path.join(frame.REPO, "report", "audits", "target_origin_gate.json")

@@ -79,8 +79,7 @@ Each program is scored for the evidence its targets had for its disease as of th
 | Mouse genetics | A genetic change in an animal links the target to the disease: the mutant shows the disease (a knockout or transgene altering an animal model of it is to come, #154) | IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm |
 | Animal model pharmacology | A non-genetic change to the target (drug, antibody, siRNA) alters an animal model of the disease, whatever the agent; today only published studies of the program's own drug are searched, other agents are to come (#154) (exploratory: the searches miss some of these studies) | PubMed abstracts and Firecrawl's research index, screened by an LLM |
 | **Human** |  |  |
-| Validated at entry | A drug on the target was already approved for the same or a very close disease (Lin at least 0.8) before entry | Drugs@FDA approvals |
-| A drug on the target approved for another disease | A drug on the target was approved for another disease, one not close enough to make the pair validated at entry | Drugs@FDA approvals |
+| Approved on the target | A drug on the target was approved before entry, banded by how close its disease is to the program's: the same or a very close disease (Lin at least 0.8, validated at entry), a related one (Lin 0.5 to 0.8), or only unrelated ones | Drugs@FDA approvals |
 | Another drug on the target failed in a related disease in the last 3 years | Another drug on the target had a Phase 2 or 3 trial in a related disease (Lin at least 0.5) miss its primary endpoint or stop for futility in the three years before entry | ClinicalTrials.gov |
 | **The drug** |  |  |
 | Binding to the target measured before entry (about the drug) | The drug's binding or activity at its primary target was measured in laboratory assays before entry (small molecules) | ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it |
@@ -236,10 +235,11 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Mouse genetics agrees with the drug's direction (derived) | 489 / 7,435 | 183 | 1.84 (1.33–2.50) | 1.38 (1.04–1.85) | 1.37 (1.03–1.82) | 0.55 (0.39–0.78) |
 | Animal model pharmacology: a non-genetic change to the target alters a disease model (today: the program's own drug) | 4,662 / 8,833 | 1,536 | 0.75 (0.63–0.91) | 0.83 (0.71–0.99) | 0.83 (0.70–0.98) | 0.93 (0.84–1.05) |
 | **Human** |  |  |  |  |  |  |
-| Validated at entry: a drug on the target approved for this or a very close disease | 1,284 / 7,435 | 336 | 2.17 (1.77–2.75) | 2.01 (1.67–2.41) | 1.99 (1.66–2.38) | 0.66 (0.53–0.82) |
+| Approved on the target: a drug on the target was approved before entry, for this disease or another | 4,305 / 7,435 | 605 | 1.50 (1.17–1.96) | 1.42 (1.16–1.74) | 1.42 (1.16–1.74) | – |
+| · This disease or a very close one (Lin at least 0.8): validated at entry | 1,284 / 7,435 | 336 | 2.17 (1.77–2.75) | 2.01 (1.67–2.41) | 1.99 (1.66–2.38) | 0.66 (0.53–0.82) |
 | · A related disease (Lin 0.5 to 0.8) | 892 / 7,435 | 234 | 1.19 (0.80–1.64) | 1.18 (0.93–1.50) | 1.18 (0.93–1.49) | 0.88 (0.72–1.09) |
 | · Only unrelated diseases | 2,129 / 7,435 | 433 | 0.74 (0.56–0.96) | 0.71 (0.57–0.89) | 0.72 (0.58–0.89) | 1.50 (1.25–1.80) |
-| A drug on the target approved for another disease | 3,021 / 7,435 | 500 | 0.83 (0.63–1.07) | 0.80 (0.65–0.99) | 0.81 (0.66–0.99) | 1.51 (1.22–1.87) |
+| · A drug on the target approved for another disease (related or unrelated; the earlier_drug_other_disease origin) (derived) | 3,021 / 7,435 | 500 | 0.83 (0.63–1.07) | 0.80 (0.65–0.99) | 0.81 (0.66–0.99) | 1.51 (1.22–1.87) |
 | · A drug on the target approved for a related disease, Lin at least 0.5 (B1) (derived) | 2,176 / 7,435 | 423 | 1.96 (1.58–2.46) | 1.85 (1.57–2.18) | 1.83 (1.55–2.17) | 0.67 (0.55–0.80) |
 | Another drug on the target failed in a related disease in the last 3 years | 1,685 / 5,836 | 393 | 1.57 (1.22–2.01) | 1.49 (1.19–1.86) | 1.47 (1.17–1.84) | 0.75 (0.62–0.90) |
 | **The drug** |  |  |  |  |  |  |
