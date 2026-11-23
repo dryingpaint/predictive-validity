@@ -1,16 +1,16 @@
 # Target origin: full run over the 2008–2019 window (#146 step 5), 2026-11-20 to 2026-11-21
 
-## State (2026-11-22 Pacific, after the consolidation; the last section)
+## State (2026-11-22 Pacific, after the reread; the last section)
 
-5,174 pairs, every one with a labelled row. 241,118 pre-entry records; 3,016 pairs (58%) have at least one. 5,113
-pairs labelled and 61 not reached (stored as `not_reached`, citing the last attempt: the API refused every pass).
-4,431 graded labels checked: supported 3,931, disputed 278 (stored as `disputed`; `target_origin_disputes.csv`, 283
-rows: category 267, quote 12, year 4), unsupported 216 (88 with an approval on the gene within Lin 0.8 of the disease
-before entry, which makes the pair validated at entry; 128 on a field answered no), unverified 6. The verdicts of the
-research pass are applied (147 labels). An approval for a related disease (Lin 0.5 to 0.8) counts as
-earlier_drug_other_disease, the owner's one-list wording. Stored: 904 of the 5,174 rows are unclear. The hub flags 295
-window pairs validated at entry (was 83). Gates, scored on the label as read: set b κ 0.65, set a 0.69, coverage gap 8
-points, both pass.
+5,174 pairs, every one with a labelled row: 5,113 labelled, 61 not reached. 4,431 graded labels: supported 3,972,
+unsupported 438 (88 validated at entry; the rest on a field answered no, 226 of them the category reread's no),
+disputed 15 (`target_origin_disputes.csv`: quote 11, year 4, factual rows the research pass left open), unverified 6.
+218 labels moved under the final list's definitions (202 human-cell labels on established cell lines to
+cell_line_perturbation, 16 animal labels on a genetic change to mouse_genetics). Stored origin: unclear 1,126,
+diseased_tissue 887, animal_model_pharmacology 845, earlier_drug_other_disease 596, clinical_observation 339,
+human_cell_perturbation 260, observational_biomarker 256, cell_line_perturbation 206, mouse_genetics 204,
+human_genetics 181, tumour_genetics 122, phenotypic_screen 70, not_reached 61, disputed 15, curated_pathway 6. Gates,
+scored on the label as read under the prompts that ran: set b κ 0.65, set a 0.69, coverage gap 8 points, both pass.
 
 The sections below are the dated record in the order things happened: the run as it ran (search, label, and the v1
 check by Sonnet 5.5 alone), the checker sensitivity study of the next morning, and check method v2, which replaced the
@@ -516,3 +516,22 @@ label changed.
 Open: the 278 disputed labels (267 on the category, mostly the Sonnet-no against Opus-partly threshold), the relabel of
 the pairs the final list's definitions can move (row 8 primary cells, genetic disease models), and the approval fact
 as a stored fact on its subject (spec step 2).
+
+## Reread (2026-11-22, later)
+
+`python -m pipeline.target_disease reread --pairs window` (method `target_origin_reread@v1`, task
+`target_origin_reread` v1, Sonnet 5.5, effort low, no tools): one reading per question of a stored graded label, from
+its quote and its cited stored records only. 1,702 questions, 1,701 answered, 1 unanswered after three passes.
+
+- **Category of the disputed labels** (267, the owner's rule of 2026-11-22: the defining observation must be in a
+  cited source or a stored fact; a step a model supplies from its own knowledge does not count): no 226, yes 41. The
+  answers are the category verdicts in `target_origin_verdicts.csv`, beside the research pass's.
+- **Human-cell labels as read** (486): established cell line 202, primary cells or tissue 151, unclear 132. A cell
+  line moves the label to cell_line_perturbation.
+- **Animal-pharmacology labels as read** (949): non-genetic 842, unclear 91, genetic 16. A genetic change moves the
+  label to mouse_genetics.
+
+A moved label's category is the reread's (the checkers judged the origin as read); its quote and year fields stay the
+checkers'. Then `restore --pairs window --disputes report/audits/target_origin_verdicts.csv`. Against the
+consolidation: supported 3,931 to 3,972, disputed 278 to 15, unsupported 216 to 438, unclear 904 to 1,126. All 218
+moved labels are supported.
