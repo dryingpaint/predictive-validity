@@ -80,7 +80,6 @@ Each program is scored for the evidence its targets had for its disease as of th
 | Animal model pharmacology | A non-genetic change to the target (drug, antibody, siRNA) alters an animal model of the disease, whatever the agent; today only published studies of the program's own drug are searched, other agents are to come (#154) (exploratory: the searches miss some of these studies) | PubMed abstracts and Firecrawl's research index, screened by an LLM |
 | **Human** |  |  |
 | Approved on the target | A drug on the target was approved before entry, banded by how close its disease is to the program's: the same or a very close disease (Lin at least 0.8, validated at entry), a related one (Lin 0.5 to 0.8), or only unrelated ones | Drugs@FDA approvals |
-| Another drug on the target failed in a related disease in the last 3 years | Another drug on the target had a Phase 2 or 3 trial in a related disease (Lin at least 0.5) miss its primary endpoint or stop for futility in the three years before entry | ClinicalTrials.gov |
 | **The drug** |  |  |
 | Binding to the target measured before entry (about the drug) | The drug's binding or activity at its primary target was measured in laboratory assays before entry (small molecules) | ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it |
 | Pharmacokinetics or target engagement measured in healthy animals (about the drug) | A published study of the drug's pharmacokinetics, or of its effect on its target or pathway, in healthy animals (exploratory: the searches miss some of these studies) | PubMed abstracts and Firecrawl's research index, screened by an LLM |
@@ -241,7 +240,6 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Only unrelated diseases | 2,129 / 7,435 | 433 | 0.74 (0.56–0.96) | 0.71 (0.57–0.89) | 0.72 (0.58–0.89) | 1.50 (1.25–1.80) |
 | · A drug on the target approved for another disease (related or unrelated; the earlier_drug_other_disease origin) (derived) | 3,021 / 7,435 | 500 | 0.83 (0.63–1.07) | 0.80 (0.65–0.99) | 0.81 (0.66–0.99) | 1.51 (1.22–1.87) |
 | · A drug on the target approved for a related disease, Lin at least 0.5 (B1) (derived) | 2,176 / 7,435 | 423 | 1.96 (1.58–2.46) | 1.85 (1.57–2.18) | 1.83 (1.55–2.17) | 0.67 (0.55–0.80) |
-| Another drug on the target failed in a related disease in the last 3 years | 1,685 / 5,836 | 393 | 1.57 (1.22–2.01) | 1.49 (1.19–1.86) | 1.47 (1.17–1.84) | 0.75 (0.62–0.90) |
 | **The drug** |  |  |  |  |  |  |
 | Binding to the target measured before entry | 1,658 / 6,091 | 415 | 1.45 (1.08–1.88) | 1.05 (0.81–1.36) | 1.04 (0.80–1.35) | 1.06 (0.89–1.25) |
 | · 10 nM or better | 1,027 / 6,091 | 263 | 1.96 (1.35–2.68) | 1.23 (0.92–1.66) | 1.21 (0.90–1.63) | 0.98 (0.80–1.19) |

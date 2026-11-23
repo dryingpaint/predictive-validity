@@ -51,8 +51,7 @@ from report.section3 import ERA_BINS, ERA_LABELS, RELATED, Evidence, cohorts, en
 from report.windows import SECTION1
 
 OUT = os.path.join(frame.REPO, "report", "output", "evidence_lines")
-LOOKBACK_YEARS = 3  # earlier failed trials on the target count when they ended this long before entry
-FAILURES_FROM = 2011  # first entry year whose lookback lies wholly in the era of registered results
+FAILURES_FROM = 2011  # first entry year an earlier safety stop is scored for: the traced stops begin with 2008 entries
 # A target is a dependency in a tumour type when at least this many, and this share, of the type's cell lines
 # screened by the cutoff depend on it (the 2026-11-04 comprehensiveness amendment).
 DEPENDENT_LINES, DEPENDENT_SHARE = 2, 0.2
@@ -90,7 +89,6 @@ APPLIES = {
     "small_molecule": lambda d: d.modality.eq("small_molecule"),
     "brain": lambda d: d.modality.eq("small_molecule") & d.bio_area.isin(BRAIN),
     "phase_2_3": lambda d: d.phase.ge(2),
-    "from_2011": lambda d: d.has_target_disease & d.entry_year.ge(FAILURES_FROM),
     "onc_screened": lambda d: d.has_target_disease & d.regime.eq("ONC") & d.entry_year.ge(CELL_SCREENS_FROM),
     "disease": lambda d: d.mondo_id.fillna("").ne(""),
 }
@@ -186,9 +184,6 @@ FACTS = {f.key: f for f in [
           ("none", "No approved drug on the target")),
          (("same_or_close", "validated_at_entry"), ("related", "approved_related"),
           ("unrelated_only", "approved_unrelated_only"))),
-    Fact("related_failure", "Another drug on the target failed in a related disease in the 3 years before entry",
-         "target", (("yes", "Yes"), ("no", "No"), ("not_scored", "Not scored: entered before 2011")),
-         (("yes", "earlier_failure"),), unknown=("not_scored",)),
     Fact("potency", "How strongly the drug binds its primary target, measured before entry", "small_molecule",
          (("le_10nm", "10 nM or better"), ("10_100nm", "10 to 100 nM"), ("weaker", "Weaker than 100 nM"),
           ("not_measured", "Not measured")),
@@ -314,10 +309,6 @@ KINDS = {k.key: k for k in [
          derived=(Line("A drug on the target approved for another disease (related or unrelated; the "
                        "earlier_drug_other_disease origin)", "approved_other_disease", "target"),
                   Line("A drug on the target approved for a related disease, Lin at least 0.5 (B1)", "b1", "target"))),
-    Kind("earlier_drug_failure", "human", "target", "Another drug on the target failed in a related disease in the last 3 years",
-         "Another drug on the target had a Phase 2 or 3 trial in a related disease (Lin at least 0.5) miss its "
-         "primary endpoint or stop for futility in the three years before entry", "ClinicalTrials.gov",
-         "earlier_failure", (("related_failure", ("yes",)),)),
     Kind("binding", "the_drug", "drug", "Binding to the target measured before entry",
          "The drug's binding or activity at its primary target was measured in laboratory assays before entry "
          "(small molecules)", "ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it",
@@ -354,7 +345,7 @@ KINDS = {k.key: k for k in [
 ]}
 ADJUSTMENTS = [Line("Trial enrolled patients selected by a biomarker", "biomarker_selected", "all")]
 # Kinds about earlier drugs on the target: the target-precedent covariate would adjust for the kind itself.
-PRECEDENT_KINDS = ("earlier_approval", "earlier_drug_failure")
+PRECEDENT_KINDS = ("earlier_approval",)
 # The approval kind's bands predict in opposite directions (validated at entry raises success, an approval only for
 # another disease does not), so the stop-risk analysis also estimates them apart.
 APPROVAL_SPLIT = [Line("Validated at entry: a drug on the target approved for this or a very close disease",
@@ -455,7 +446,6 @@ def facts(d: pd.DataFrame) -> pd.DataFrame:
                                         (d.cell_dependency.isna(), "not_reached")], "no"),
         "rna": pick("target", [(on("expression_up"), "up"), (on("expression"), "down")]),
         "best_approval": pick("target", [(b1_close, "same_or_close"), (b1, "related"), (precedent, "unrelated_only")]),
-        "related_failure": scored("earlier_failure", "target", "not_scored"),
         "potency": pick("small_molecule", [(best.isna(), "not_measured"), (best >= POTENT_10NM, "le_10nm"),
                                            (best >= POTENT_100NM, "10_100nm")], "weaker"),
         "cell_functional": pick("small_molecule", [(best.isna(), "not_measured"), (on("cell_functional"), "yes")], "no"),
@@ -521,36 +511,13 @@ def derive(f: pd.DataFrame, action: pd.Series) -> pd.DataFrame:
     return pd.DataFrame(out, index=f.index)
 
 
-def failed_trials() -> pd.DataFrame:
-    """Phase 2/3 trials of each entity in a program disease that missed their primary endpoint or
-    stopped for futility, with the date they ended (primary completion, else completion)."""
-    return frame.query("""
-        SELECT DISTINCT p.moiety_id, p.mondo_id, coalesce(s.primary_completion_date, s.completion_date) AS ended
-        FROM preclin.trial_outcome o JOIN preclin.ctgov_study s USING (nct_id)
-        JOIN preclin.dev_program_trial dt USING (nct_id) JOIN preclin.dev_program p USING (program_id)
-        WHERE dt.phase >= 2 AND p.mondo_id IS NOT NULL
-          AND (o.primary_endpoint = 'not_met' OR o.stop_reason = 'efficacy_futility')
-          AND coalesce(s.primary_completion_date, s.completion_date) IS NOT NULL""")
-
-
 def failures_by_gene(failed: pd.DataFrame, genes: dict) -> dict:
-    """gene -> [(moiety_id, mondo_id, ended)] for failed trials of entities on that primary target."""
+    """gene -> [(moiety_id, mondo_id, ended)] for the stops (safety_stops) of entities on that primary target."""
     out = defaultdict(list)
     for mid, d, ended in failed.itertuples(index=False):
         for g in genes.get(mid, ()):
             out[g].append((mid, d, pd.Timestamp(ended)))
     return out
-
-
-def earlier_failure(by_gene: dict, moiety_id, genes, related: frozenset, entry: pd.Timestamp) -> bool | None:
-    """Whether another entity on one of `genes` had a Phase 2/3 trial in a disease of `related` fail
-    within LOOKBACK_YEARS before `entry`; None for entries before FAILURES_FROM, whose lookback
-    reaches back before registered results."""
-    if entry.year < FAILURES_FROM:
-        return None
-    start = entry - pd.DateOffset(years=LOOKBACK_YEARS)
-    return any(mid != moiety_id and d in related and start <= ended < entry
-               for g in genes for mid, d, ended in by_gene.get(g, ()))
 
 
 def cell_dependency(genes, related: frozenset, year: int, lines: dict, dep_year: dict, essential: dict) -> float:
@@ -684,12 +651,6 @@ def build(window: tuple[date, date] = SECTION1) -> pd.DataFrame:
     d = rows.merge(feats, on=["program_id", "phase"], how="left")
     d["has_target_disease"] = d.g3.notna()
     d["regime"] = d.regime.fillna(pd.Series(np.where(d.bio_area.eq("oncology"), "ONC", "COM"), index=d.index))
-
-    by_gene = failures_by_gene(failed_trials(), dict(zip(ev.ent.index, ev.ent.genes)))
-    d["earlier_failure"] = pd.Series([
-        earlier_failure(by_gene, r.moiety_id, ev.ent.at[r.moiety_id, "genes"], ev.nb.terms(r.mondo_id, RELATED),
-                        pd.Timestamp(r.entry)) if r.has_target_disease else None for r in d.itertuples()],
-        index=d.index, dtype=object).map({True: 1.0, False: 0.0})
 
     unsafe = failures_by_gene(safety_stops(), dict(zip(ev.ent.index, ev.ent.genes)))
     d["earlier_safety_stop"] = pd.Series([
@@ -825,7 +786,7 @@ def long_form(d: pd.DataFrame) -> pd.DataFrame:
     return pd.concat(parts, ignore_index=True)
 
 
-LABEL_TABLES = ("dev_program_approval", "moiety_target", "trial_outcome", "trial_biomarker_selection")
+LABEL_TABLES = ("dev_program_approval", "moiety_target", "trial_biomarker_selection")
 RELEASE_TABLES = ("chembl_activity", "moiety_property")
 
 

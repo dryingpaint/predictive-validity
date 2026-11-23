@@ -2,37 +2,10 @@ import math
 
 import pandas as pd
 
-from report.evidence_lines import (biomarker_selected, cell_dependency, earlier_failure, earlier_safety_stop,
-                                    failures_by_gene, molecule_lines, stale_inputs)
+from report.evidence_lines import (biomarker_selected, cell_dependency, earlier_safety_stop, failures_by_gene,
+                                    molecule_lines, stale_inputs)
 
-RELATED = frozenset({"MONDO:A", "MONDO:A1"})
-FAILED = pd.DataFrame([
-    (1, "MONDO:A", "2014-06-30"),   # another entity on GENE1, related disease
-    (2, "MONDO:B", "2015-01-31"),   # another entity on GENE1, unrelated disease
-    (9, "MONDO:A1", "2015-03-31"),  # the entity itself
-], columns=["moiety_id", "mondo_id", "ended"])
 GENES = {1: ["GENE1"], 2: ["GENE1"], 9: ["GENE1"], 3: ["GENE2"]}
-BY_GENE = failures_by_gene(FAILED, GENES)
-
-
-def test_a_related_failure_within_three_years_before_entry_counts():
-    assert earlier_failure(BY_GENE, 9, ["GENE1"], RELATED, pd.Timestamp("2016-01-01")) is True
-
-
-def test_failures_more_than_three_years_before_entry_or_after_it_do_not_count():
-    assert earlier_failure(BY_GENE, 9, ["GENE1"], RELATED, pd.Timestamp("2017-07-01")) is False
-    assert earlier_failure(BY_GENE, 9, ["GENE1"], RELATED, pd.Timestamp("2014-06-30")) is False
-
-
-def test_the_entitys_own_failures_and_unrelated_diseases_do_not_count():
-    only_own = failures_by_gene(FAILED[FAILED.moiety_id.isin([2, 9])], GENES)
-    assert earlier_failure(only_own, 9, ["GENE1"], RELATED, pd.Timestamp("2016-01-01")) is False
-
-
-def test_entries_before_2011_have_no_value():
-    assert earlier_failure(BY_GENE, 9, ["GENE1"], RELATED, pd.Timestamp("2010-12-31")) is None
-
-
 UNSAFE = failures_by_gene(pd.DataFrame([
     (1, "MONDO:Z", "2012-06-30"),   # another entity on GENE1, any disease
     (9, "MONDO:A", "2010-01-31"),   # the entity itself
@@ -123,7 +96,7 @@ from report.evidence_lines import FACTS, FACT_PREFIX, KINDS, chart_rows, derive,
 
 RAW = ["burden", "mendelian", "gwas", "gwas_strong", "mendelian_strong", "somatic", "somatic_gof", "somatic_lof", "reactome", "mgi", "impc", "mgi_strong",
        "impc_strong", "crispr", "cell_dependency", "expression", "expression_up", "b1", "b1_close", "precedent",
-       "earlier_failure", "assay_best", "assay_margin", "drug_like", "brain_penetrant", "lit_animal_disease",
+       "assay_best", "assay_margin", "drug_like", "brain_penetrant", "lit_animal_disease",
        "lit_animal_healthy", "lit_human_engagement", "constrained", "ko_lethal", "pan_essential", "ko_vital_organ",
        "earlier_safety_stop", "crispr_untimed", "pan_essential_untimed", "cell_functional"]
 
