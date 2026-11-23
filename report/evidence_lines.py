@@ -51,8 +51,7 @@ from report.section3 import ERA_BINS, ERA_LABELS, RELATED, Evidence, cohorts, en
 from report.windows import SECTION1
 
 OUT = os.path.join(frame.REPO, "report", "output", "evidence_lines")
-LOOKBACK_YEARS = 3  # earlier failed trials on the target count when they ended this long before entry
-FAILURES_FROM = 2011  # first entry year whose lookback lies wholly in the era of registered results
+FAILURES_FROM = 2011  # first entry year an earlier safety stop is scored for: the traced stops begin with 2008 entries
 # A target is a dependency in a tumour type when at least this many, and this share, of the type's cell lines
 # screened by the cutoff depend on it (the 2026-11-04 comprehensiveness amendment).
 DEPENDENT_LINES, DEPENDENT_SHARE = 2, 0.2
@@ -90,7 +89,6 @@ APPLIES = {
     "small_molecule": lambda d: d.modality.eq("small_molecule"),
     "brain": lambda d: d.modality.eq("small_molecule") & d.bio_area.isin(BRAIN),
     "phase_2_3": lambda d: d.phase.ge(2),
-    "from_2011": lambda d: d.has_target_disease & d.entry_year.ge(FAILURES_FROM),
     "onc_screened": lambda d: d.has_target_disease & d.regime.eq("ONC") & d.entry_year.ge(CELL_SCREENS_FROM),
     "disease": lambda d: d.mondo_id.fillna("").ne(""),
 }
@@ -163,7 +161,8 @@ FACTS = {f.key: f for f in [
           ("unknown", "Mutated, effect unknown"), ("none", "Not recurrently mutated")),
          (("activating", "somatic_activating"), ("inactivating", "somatic_inactivating"), ("both", "somatic_both"),
           ("unknown", "somatic_effect_unknown"))),
-    Fact("pathway", "A curated pathway shows a disease mutation disrupting the target", "target", YES_NO,
+    Fact("pathway", "A curated human pathway shows a mutation that causes the disease in people disrupting the target",
+         "target", YES_NO,
          (("yes", "reactome"),)),
     Fact("mouse_match", "How closely mice with the gene altered resemble the disease", "target",
          (("close", "Closely"), ("loose", "Loosely"), ("none", "No such mice")),
@@ -180,14 +179,11 @@ FACTS = {f.key: f for f in [
           ("none", "No difference")),
          (("up", "expression_up"), ("down", "expression_down"))),
     Fact("best_approval", "The closest disease a drug on the target was approved for before entry", "target",
-         (("same_or_close", "This disease or a very close one (Lin at least 0.8)"),
+         (("same_or_close", "This disease or a very close one (Lin at least 0.8): validated at entry"),
           ("related", "A related disease (Lin 0.5 to 0.8)"), ("unrelated_only", "Only unrelated diseases"),
           ("none", "No approved drug on the target")),
          (("same_or_close", "validated_at_entry"), ("related", "approved_related"),
           ("unrelated_only", "approved_unrelated_only"))),
-    Fact("related_failure", "Another drug on the target failed in a related disease in the 3 years before entry",
-         "target", (("yes", "Yes"), ("no", "No"), ("not_scored", "Not scored: entered before 2011")),
-         (("yes", "earlier_failure"),), unknown=("not_scored",)),
     Fact("potency", "How strongly the drug binds its primary target, measured before entry", "small_molecule",
          (("le_10nm", "10 nM or better"), ("10_100nm", "10 to 100 nM"), ("weaker", "Weaker than 100 nM"),
           ("not_measured", "Not measured")),
@@ -220,11 +216,12 @@ FACTS = {f.key: f for f in [
          unknown=("not_searched",), note=literature_note("human_engagement", exploratory=False)),
     Fact("constraint", "People rarely carry broken copies of the gene (gnomAD LOEUF below 0.35; today's data)", "target", YES_NO,
          (("yes", "constrained"),)),
-    Fact("mice_die_young", "Mice without the gene die before weaning (today's data)", "target", YES_NO, (("yes", "ko_lethal"),)),
+    Fact("mice_die_young", "Mice lacking the gene die before weaning: as embryos, at birth or as pups (today's data)",
+         "target", YES_NO, (("yes", "ko_lethal"),)),
     Fact("most_cells_need_gene", "Most human cell types need the gene (DepMap common essential)", "target", YES_NO,
          (("yes", "pan_essential"),)),
-    Fact("vital_organ_phenotype", "Mutant mice show a phenotype in a vital organ (heart, liver, blood, immune or "
-         "nervous system; today's data)", "target", YES_NO, (("yes", "ko_vital_organ"),), counts=False,
+    Fact("vital_organ_phenotype", "Mutant mice show any abnormality in a vital organ system: heart and blood vessels, "
+         "liver, blood, immune or nervous system (today's data)", "target", YES_NO, (("yes", "ko_vital_organ"),), counts=False,
          note="exploratory (the 2026-11-08 safety amendment)"),
     Fact("earlier_safety_stop", "An earlier drug on the same target stopped for safety", "target",
          (("yes", "Yes"), ("no", "No"), ("not_scored", "Not scored: entered before 2011")),
@@ -253,10 +250,13 @@ KINDS = {k.key: k for k in [
          "COSMIC Cancer Gene Census, IntOGen and ClinVar somatic, through Open Targets", "somatic",
          (("mutation", ("activating", "inactivating", "both", "unknown")),), chart="mutation",
          derived=(Line("The mutation's effect matches the drug's action", "somatic_concordant", "ONC"),)),
-    Kind("curated_pathway", "human_genetics", "target", "Curated pathway: a disease mutation disrupts the target's pathway",
-         "A curated pathway shows a disease mutation disrupting the target", "Reactome, through Open Targets",
+    Kind("curated_pathway", "human_genetics", "target",
+         "Curated pathway: a mutation that causes the disease in people disrupts the target's pathway",
+         "A curated human pathway shows a mutation that causes the disease in people disrupting the target",
+         "Reactome's human pathways, through Open Targets",
          "reactome", (("pathway", ("yes",)),)),
-    Kind("human_cell_perturbation", "in_vitro", "target", "Human cell perturbation",
+    Kind("human_cell_perturbation", "in_vitro", "target",
+         "Primary cells: changing the target in primary human cells or tissue changes a disease feature",
          "Changing the target in primary human cells or tissue changes a disease feature", "Literature (#154)", None),
     Kind("cell_line_perturbation", "in_vitro", "target",
          "Cell lines: changing the target in an established cell line changes a disease feature (oncology, from 2015)",
@@ -291,23 +291,24 @@ KINDS = {k.key: k for k in [
          "Expression Atlas, through Open Targets (RNA, at least 2.1-fold)", "expression",
          (("rna", ("up", "down")),), chart="rna",
          derived=(Line("Target more active in disease, and the drug blocks it", "expression_up_inhibitor", "target"),)),
-    Kind("observational_biomarker", "human", "target", "Observational biomarker",
+    Kind("observational_biomarker", "human", "target",
+         "Observational biomarker: the target or its product, measured in blood, another fluid or by imaging, tracks the "
+         "disease",
          "The target or its product, measured in blood, another fluid or by imaging, tracks the disease",
          "Literature (#154)", None),
-    Kind("clinical_observation", "human", "target", "Clinical observation", "An effect seen in people, such as a side effect",
+    Kind("clinical_observation", "human", "target",
+         "Clinical observation: an effect seen in people implicates the target, such as a side effect",
+         "An effect seen in people that implicates the target, such as a side effect",
          "Literature (#154)", None),
-    Kind("validated_at_entry", "human", "target", "Validated at entry: a drug on the target approved for this or a very close "
-         "disease", "A drug on the target was already approved for the same or a very close disease (Lin at least "
-         "0.8) before entry", "Drugs@FDA approvals", "validated_at_entry", (("best_approval", ("same_or_close",)),)),
-    Kind("earlier_drug_other_disease", "human", "target", "A drug on the target approved for another disease",
-         "A drug on the target was approved for another disease, one not close enough to make the pair validated at "
-         "entry", "Drugs@FDA approvals", "approved_other_disease",
-         (("best_approval", ("related", "unrelated_only")),), chart="best_approval",
-         derived=(Line("A drug on the target approved for a related disease, Lin at least 0.5 (B1)", "b1", "target"),)),
-    Kind("earlier_drug_failure", "human", "target", "Another drug on the target failed in a related disease in the last 3 years",
-         "Another drug on the target had a Phase 2 or 3 trial in a related disease (Lin at least 0.5) miss its "
-         "primary endpoint or stop for futility in the three years before entry", "ClinicalTrials.gov",
-         "earlier_failure", (("related_failure", ("yes",)),)),
+    Kind("earlier_approval", "human", "target",
+         "Approved on the target: a drug on the target was approved before entry, for this disease or another",
+         "A drug on the target was approved before entry, banded by how close its disease is to the program's: the same "
+         "or a very close disease (Lin at least 0.8, validated at entry), a related one (Lin 0.5 to 0.8), or only "
+         "unrelated ones", "Drugs@FDA approvals", "approved_any",
+         (("best_approval", ("same_or_close", "related", "unrelated_only")),), chart="best_approval",
+         derived=(Line("A drug on the target approved for another disease (related or unrelated; the "
+                       "earlier_drug_other_disease origin)", "approved_other_disease", "target"),
+                  Line("A drug on the target approved for a related disease, Lin at least 0.5 (B1)", "b1", "target"))),
     Kind("binding", "the_drug", "drug", "Binding to the target measured before entry",
          "The drug's binding or activity at its primary target was measured in laboratory assays before entry "
          "(small molecules)", "ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it",
@@ -333,9 +334,9 @@ KINDS = {k.key: k for k in [
          "PubChem and ChEMBL computed properties", "molecule_properties",
          (("drug_like", ("yes",)), ("brain_suited", ("yes",))), drawn=False),
     Kind("target_safety", "safety", "target", "Any standard safety flag (aggregate): people rarely carry broken copies of the "
-         "gene, mice without it die young, or most cell types need it",
+         "gene, mice lacking it die before weaning, or most cell types need it",
          "A property of the target, not evidence for the disease: people rarely carry broken copies of the gene "
-         "(gnomAD LOEUF below 0.35), mice without it die before weaning, or most human cell types need it",
+         "(gnomAD LOEUF below 0.35), mice lacking it die before weaning, or most human cell types need it",
          "gnomAD v4.1; Mammalian Phenotype ontology, through Open Targets; DepMap", "liability",
          (("constraint", ("yes",)), ("mice_die_young", ("yes",)), ("most_cells_need_gene", ("yes",)),
           ("vital_organ_phenotype", ("yes",)), ("earlier_safety_stop", ("yes",)),
@@ -344,11 +345,17 @@ KINDS = {k.key: k for k in [
 ]}
 ADJUSTMENTS = [Line("Trial enrolled patients selected by a biomarker", "biomarker_selected", "all")]
 # Kinds about earlier drugs on the target: the target-precedent covariate would adjust for the kind itself.
-PRECEDENT_KINDS = ("validated_at_entry", "earlier_drug_other_disease", "earlier_drug_failure")
+PRECEDENT_KINDS = ("earlier_approval",)
+# The approval kind's bands predict in opposite directions (validated at entry raises success, an approval only for
+# another disease does not), so the stop-risk analysis also estimates them apart.
+APPROVAL_SPLIT = [Line("Validated at entry: a drug on the target approved for this or a very close disease",
+                       "validated_at_entry", "target"),
+                  Line("A drug on the target approved for another disease", "approved_other_disease", "target")]
 # The 2026-11-08 safety lines, tested against safety and efficacy stops.
-SAFETY = [Line("Standard flags: people rarely carry broken copies of the gene, or mice without it die young",
+SAFETY = [Line("Standard flags: people rarely carry broken copies of the gene, or mice lacking it die before weaning",
                "liability", "target"),
-          Line("Mutant mice show a phenotype in a vital organ (heart, liver, blood, immune or nervous system)",
+          Line("Mutant mice show any abnormality in a vital organ system (heart and blood vessels, liver, blood, immune "
+               "or nervous system)",
                "ko_vital_organ", "target"),
           Line("An earlier drug on the same target stopped for safety", "earlier_safety_stop", "target"),
           Line("The drug binds another protein within 10-fold of its target", "poor_selectivity", "small_molecule")]
@@ -439,7 +446,6 @@ def facts(d: pd.DataFrame) -> pd.DataFrame:
                                         (d.cell_dependency.isna(), "not_reached")], "no"),
         "rna": pick("target", [(on("expression_up"), "up"), (on("expression"), "down")]),
         "best_approval": pick("target", [(b1_close, "same_or_close"), (b1, "related"), (precedent, "unrelated_only")]),
-        "related_failure": scored("earlier_failure", "target", "not_scored"),
         "potency": pick("small_molecule", [(best.isna(), "not_measured"), (best >= POTENT_10NM, "le_10nm"),
                                            (best >= POTENT_100NM, "10_100nm")], "weaker"),
         "cell_functional": pick("small_molecule", [(best.isna(), "not_measured"), (on("cell_functional"), "yes")], "no"),
@@ -497,6 +503,7 @@ def derive(f: pd.DataFrame, action: pd.Series) -> pd.DataFrame:
         "animal_concordant": cross((inc & f.mouse_direction.eq("favours_raising"))
                                    | (dec & f.mouse_direction.eq("favours_lowering"))),
         "b1": flag("best_approval", ("same_or_close", "related")),
+        "approved_other_disease": flag("best_approval", ("related", "unrelated_only")),
         "potent_100nm": flag("potency", ("le_10nm", "10_100nm")),
         "selective": flag("selectivity", ("ge_10x",)),
     }
@@ -504,36 +511,13 @@ def derive(f: pd.DataFrame, action: pd.Series) -> pd.DataFrame:
     return pd.DataFrame(out, index=f.index)
 
 
-def failed_trials() -> pd.DataFrame:
-    """Phase 2/3 trials of each entity in a program disease that missed their primary endpoint or
-    stopped for futility, with the date they ended (primary completion, else completion)."""
-    return frame.query("""
-        SELECT DISTINCT p.moiety_id, p.mondo_id, coalesce(s.primary_completion_date, s.completion_date) AS ended
-        FROM preclin.trial_outcome o JOIN preclin.ctgov_study s USING (nct_id)
-        JOIN preclin.dev_program_trial dt USING (nct_id) JOIN preclin.dev_program p USING (program_id)
-        WHERE dt.phase >= 2 AND p.mondo_id IS NOT NULL
-          AND (o.primary_endpoint = 'not_met' OR o.stop_reason = 'efficacy_futility')
-          AND coalesce(s.primary_completion_date, s.completion_date) IS NOT NULL""")
-
-
 def failures_by_gene(failed: pd.DataFrame, genes: dict) -> dict:
-    """gene -> [(moiety_id, mondo_id, ended)] for failed trials of entities on that primary target."""
+    """gene -> [(moiety_id, mondo_id, ended)] for the stops (safety_stops) of entities on that primary target."""
     out = defaultdict(list)
     for mid, d, ended in failed.itertuples(index=False):
         for g in genes.get(mid, ()):
             out[g].append((mid, d, pd.Timestamp(ended)))
     return out
-
-
-def earlier_failure(by_gene: dict, moiety_id, genes, related: frozenset, entry: pd.Timestamp) -> bool | None:
-    """Whether another entity on one of `genes` had a Phase 2/3 trial in a disease of `related` fail
-    within LOOKBACK_YEARS before `entry`; None for entries before FAILURES_FROM, whose lookback
-    reaches back before registered results."""
-    if entry.year < FAILURES_FROM:
-        return None
-    start = entry - pd.DateOffset(years=LOOKBACK_YEARS)
-    return any(mid != moiety_id and d in related and start <= ended < entry
-               for g in genes for mid, d, ended in by_gene.get(g, ()))
 
 
 def cell_dependency(genes, related: frozenset, year: int, lines: dict, dep_year: dict, essential: dict) -> float:
@@ -667,12 +651,6 @@ def build(window: tuple[date, date] = SECTION1) -> pd.DataFrame:
     d = rows.merge(feats, on=["program_id", "phase"], how="left")
     d["has_target_disease"] = d.g3.notna()
     d["regime"] = d.regime.fillna(pd.Series(np.where(d.bio_area.eq("oncology"), "ONC", "COM"), index=d.index))
-
-    by_gene = failures_by_gene(failed_trials(), dict(zip(ev.ent.index, ev.ent.genes)))
-    d["earlier_failure"] = pd.Series([
-        earlier_failure(by_gene, r.moiety_id, ev.ent.at[r.moiety_id, "genes"], ev.nb.terms(r.mondo_id, RELATED),
-                        pd.Timestamp(r.entry)) if r.has_target_disease else None for r in d.itertuples()],
-        index=d.index, dtype=object).map({True: 1.0, False: 0.0})
 
     unsafe = failures_by_gene(safety_stops(), dict(zip(ev.ent.index, ev.ent.genes)))
     d["earlier_safety_stop"] = pd.Series([
@@ -808,7 +786,7 @@ def long_form(d: pd.DataFrame) -> pd.DataFrame:
     return pd.concat(parts, ignore_index=True)
 
 
-LABEL_TABLES = ("dev_program_approval", "moiety_target", "trial_outcome", "trial_biomarker_selection")
+LABEL_TABLES = ("dev_program_approval", "moiety_target", "trial_biomarker_selection")
 RELEASE_TABLES = ("chembl_activity", "moiety_property")
 
 

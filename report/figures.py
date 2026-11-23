@@ -16,16 +16,18 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches
+import matplotlib.ticker
 import numpy as np
 import pandas as pd
 from statsmodels.stats.proportion import proportion_confint
 
 from report import bio, frame
-from report.evidence_lines import CATEGORIES
+from report.evidence_lines import CATEGORIES, KINDS
 from report.evidence_lines import FACTS
 from report.render import S3_ENDPOINTS, S3_MAP_ROWS, stratum_name
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import BREAKDOWN, SHOWN, SUBCAUSE_NAMES
+from report.target_origin import CIRCULAR_ORIGINS
 
 OUT = os.path.join(frame.REPO, "report", "output")
 FIG = os.path.join(OUT, "figures")
@@ -560,8 +562,9 @@ EFFICACY_ROWS = {"validated_at_entry": ("Validated at entry: a drug on the targe
 # The safety lines (report.evidence_lines.SAFETY) against safety stops and, as a control, efficacy stops
 SAFETY_BLOCKS = [("stop_safety", "Stopped for safety", ABOUT_COLORS["safety"]),
                  ("stop_efficacy", "Stopped for efficacy (control: safety evidence should not predict it)", "#b5b4ae")]
-SAFETY_ROWS = {"liability": ("People rarely carry broken copies of the gene, or mice without it die young", "safety"),
-               "ko_vital_organ": ("Mutant mice show a phenotype in a vital organ", "safety"),
+SAFETY_ROWS = {"liability": ("People rarely carry broken copies of the gene, or mice lacking it die before weaning",
+                             "safety"),
+               "ko_vital_organ": ("Mutant mice show any abnormality in a vital organ system", "safety"),
                "earlier_safety_stop": ("An earlier drug on the same target stopped for safety", "safety"),
                "poor_selectivity": ("The drug binds another protein within 10-fold of its target", "safety")}
 
@@ -870,6 +873,118 @@ def amendment_hypotheses(a: dict) -> list[tuple[str, str, dict]]:
             ("N3", "Outside oncology: potent (100 nM), genetics and drug-likeness held fixed", a["N3"])]
 
 
+# Origins of a target-disease pair that are no kind of evidence, under their own heading after the kinds
+UNSETTLED_ORIGINS = {"phenotypic_screen": "Phenotypic screen: the drug came before any target hypothesis",
+                     "unclear": "Unclear: no source settles it", "disputed": "Disputed: the two checkers disagree",
+                     "not_reached": "Never answered"}
+MIN_ORIGIN_ENTRIES = 20  # origins with fewer entries are left off the chart; the table lists them
+
+
+def target_origin_not_causal():
+    """The share of Phase 2–3 entries that stopped because the target was not causal for the disease, by what first
+    proposed the target for the disease (report.target_origin), under one heading per broad category of the evidence
+    list in its order, then the origins that are no kind of evidence. Validated at entry is drawn for reference; it is
+    not an origin the test compares. The groups O1 compares are blue; the line is the Wilson 95% interval. An origin
+    that is the record the not-causal rule reads (report.target_origin.CIRCULAR_ORIGINS) is marked and footnoted."""
+    t = pd.read_csv(os.path.join(OUT, "target_origin", "by_origin.csv")).set_index("origin")
+    t = t[t.entries >= MIN_ORIGIN_ENTRIES]
+    compared = {"human_genetics", "diseased_tissue", "observational_biomarker"}
+    blocks = [(title, [(k.key, k.label.split(":")[0]) for k in KINDS.values() if k.category == c and k.key in t.index])
+              for c, title in CATEGORIES.items()]
+    blocks.append(("No kind of evidence", [(k, label) for k, label in UNSETTLED_ORIGINS.items() if k in t.index]))
+    rows, headings, y = [], [], 0.0
+    for title, members in (b for b in blocks if b[1]):
+        y -= 1.6 if rows else 0
+        headings.append((y + 1.1, title))
+        for key, label in members:
+            rows.append((y, key, label))
+            y -= 1
+    fig, ax = plt.subplots(figsize=(10, 0.4 * len(rows) + 0.55 * len(headings) + 1.2))
+    right = float(t.not_causal_hi.max()) * 100 + 2
+    rows = [(yi, key, label + (" †" if key in CIRCULAR_ORIGINS else "")) for yi, key, label in rows]
+    for yi, key, _ in rows:
+        r = t.loc[key]
+        color = ACCENT if key in compared else MUTED
+        ax.plot([r.not_causal_lo * 100, r.not_causal_hi * 100], [yi, yi], color=color, linewidth=2,
+                solid_capstyle="round")
+        ax.plot(r.mode_not_causal * 100, yi, "o", markersize=7, color=color)
+        ax.text(right, yi, f"{r.mode_not_causal:.0%}", va="center", color=INK2, fontsize=10)
+        ax.text(right + 3.5, yi, f"n={r.entries:,.0f}", va="center", color=INK2, fontsize=10)
+    ax.set_xlim(0, right)
+    ax.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(decimals=0))
+    ax.tick_params(axis="x", labelsize=10)
+    ax.set_xlabel("Share of entries that stopped because the target was not causal for the disease (95% range)",
+                  color=INK2, fontsize=10)
+    style(ax)
+    ax.set_yticks([r[0] for r in rows], [r[2] for r in rows], color=INK2, fontsize=10.5)
+    for tick in ax.get_yticklabels():
+        tick.set_horizontalalignment("left")
+    pad = label_pad(fig, ax)
+    ax.tick_params(axis="y", pad=pad)
+    label_x = -pad / 72 / (fig.get_figwidth() * ax.get_position().width)
+    for yh, title in headings:
+        ax.text(label_x, yh, title, transform=ax.get_yaxis_transform(), color=INK, fontsize=11.5, fontweight="bold")
+    ax.set_ylim(rows[-1][0] - 0.7, headings[0][0] + 0.8)
+    if any(k in CIRCULAR_ORIGINS for _, k, _ in rows):
+        ax.text(label_x, -0.085, "† An approval for another disease is the record that labels most of these stops "
+                "\"not causal\" (the target worked only elsewhere), so this origin is shown apart from the comparison.",
+                transform=ax.transAxes, color=INK2, fontsize=9, va="top")
+    save(fig, "target_origin_not_causal")
+
+
+# Colours of the broad categories of the evidence list in the target-origin share chart
+ORIGIN_CATEGORY_COLORS = {"human_genetics": "#2a78d6", "in_vitro": "#eda100", "animals": "#1baf7a", "human": "#4a3aa7"}
+# Each origin as the share chart names it; an origin that is no kind of evidence is drawn gray under its own heading
+ORIGIN_NAMES = {"human_genetics": "Human genetics", "tumour_genetics": "Tumour genetics",
+                "curated_pathway": "Curated pathway", "diseased_tissue": "Diseased tissue",
+                "human_cell_perturbation": "Changing the target in primary human cells",
+                "cell_line_perturbation": "Changing the target in cell lines", "mouse_genetics": "Mouse genetics",
+                "animal_model_pharmacology": "Drug-like change in an animal disease model",
+                "observational_biomarker": "Marker in blood, other fluid or imaging",
+                "clinical_observation": "Clinical observation",
+                "earlier_drug_other_disease": "A drug on the target approved for another disease"}
+NOT_EVIDENCE = {"phenotypic_screen": "A molecule found without a target hypothesis came first"}
+
+
+def target_origin_share():
+    """Settled target-disease pairs by what first proposed the target for the disease (report.target_origin
+    origin_counts), as bars under one heading per broad category of the evidence list, then the origin that is no
+    evidence about the target in gray; each bar with its count and share of the settled pairs."""
+    t = pd.read_csv(os.path.join(OUT, "target_origin", "origin_counts.csv")).set_index("origin")
+    n = json.load(open(os.path.join(OUT, "target_origin", "numbers.json")))["origins"]
+    blocks = [(CATEGORIES[c], [(ORIGIN_NAMES[k.key], k.key, color) for k in KINDS.values()
+                               if k.category == c and k.key in ORIGIN_NAMES])
+              for c, color in ORIGIN_CATEGORY_COLORS.items()]
+    blocks.append(("Not evidence about the target", [(label, key, MUTED) for key, label in NOT_EVIDENCE.items()]))
+    rows, headings, y = [], [], 0.0
+    for title, members in blocks:
+        y -= 0.6 if rows else 0
+        headings.append((y, title))
+        y -= 1
+        for label, key, color in members:
+            rows.append((y, label, int(t.pairs.get(key, 0)), color))
+            y -= 1
+    fig, ax = plt.subplots(figsize=(10, 0.36 * (len(rows) + len(headings)) + 1.6))
+    settled = n["settled"]
+    for yi, label, k, color in rows:
+        ax.barh(yi, k, height=0.62, color=color)
+        share = k / settled
+        ax.text(k + settled * 0.003, yi, f"{k:,}  ({share:.0%})" if share >= 0.005 else f"{k:,}  (<1%)",
+                va="center", color=INK2, fontsize=10)
+        ax.text(-0.02, yi, label, transform=ax.get_yaxis_transform(), ha="right", va="center", color=INK2,
+                fontsize=10.5)
+    for yh, title in headings:
+        ax.text(-0.02, yh, title, transform=ax.get_yaxis_transform(), ha="right", va="center", color=INK,
+                fontsize=10.5, fontweight="bold")
+    ax.set_yticks([])
+    ax.set_xlim(0, max(r[2] for r in rows) * 1.22)
+    ax.set_ylim(rows[-1][0] - 0.7, headings[0][0] + 0.7)
+    ax.tick_params(axis="x", labelsize=10, colors=INK2)
+    ax.set_xlabel("Target–disease pairs", color=INK2, fontsize=10)
+    style(ax)
+    save(fig, "target_origin_share")
+
+
 def main():
     history()
     loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA)
@@ -895,6 +1010,10 @@ def main():
     if os.path.exists(os.path.join(OUT, "evidence_analysis", "stop_risk.csv")):
         stop_ratios(EFFICACY_BLOCKS, EFFICACY_ROWS, "efficacy_risk")
         stop_ratios(SAFETY_BLOCKS, SAFETY_ROWS, "safety_risk")
+    if os.path.exists(os.path.join(OUT, "target_origin", "by_origin.csv")):
+        target_origin_not_causal()
+    if os.path.exists(os.path.join(OUT, "target_origin", "origin_counts.csv")):
+        target_origin_share()
 
 
 if __name__ == "__main__":

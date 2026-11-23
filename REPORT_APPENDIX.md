@@ -71,7 +71,7 @@ Each program is scored for the evidence its targets had for its disease as of th
 | **Human genetics** |  |  |
 | Human genetics | Inherited variants link the target to the disease (GWAS, gene burden, Mendelian): the program's disease, a subtype of it or a disease at least 0.8 similar on MONDO (Lin) | Open Targets 26.09 (GWAS credible sets, gene burden tests, ClinVar, PanelApp, Orphanet, Gene2Phenotype, ClinGen, UniProt); each item dated by when it became known |
 | Tumour genetics (oncology) | The gene is recurrently mutated in this cancer (oncology only) | COSMIC Cancer Gene Census, IntOGen and ClinVar somatic, through Open Targets |
-| Curated pathway | A curated pathway shows a disease mutation disrupting the target | Reactome, through Open Targets |
+| Curated pathway | A curated human pathway shows a mutation that causes the disease in people disrupting the target | Reactome's human pathways, through Open Targets |
 | **In vitro and ex vivo** |  |  |
 | Cell lines | Changing the target in an established cell line changes a disease feature. Today only knockout screens reach it: in screens published before entry, cancer cell lines of the program's tumour type need the gene (oncology entries from 2015); the literature is to come (#154) | DepMap and earlier RNAi and CRISPR dependency screens, each line dated by its first public release; Project Score through Open Targets, 2019 at the earliest |
 | Diseased tissue | The gene's RNA or protein level differs in diseased tissue (protein is to come, #154) | Expression Atlas, through Open Targets (RNA, at least 2.1-fold) |
@@ -79,16 +79,14 @@ Each program is scored for the evidence its targets had for its disease as of th
 | Mouse genetics | A genetic change in an animal links the target to the disease: the mutant shows the disease (a knockout or transgene altering an animal model of it is to come, #154) | IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm |
 | Animal model pharmacology | A non-genetic change to the target (drug, antibody, siRNA) alters an animal model of the disease, whatever the agent; today only published studies of the program's own drug are searched, other agents are to come (#154) (exploratory: the searches miss some of these studies) | PubMed abstracts and Firecrawl's research index, screened by an LLM |
 | **Human** |  |  |
-| Validated at entry | A drug on the target was already approved for the same or a very close disease (Lin at least 0.8) before entry | Drugs@FDA approvals |
-| A drug on the target approved for another disease | A drug on the target was approved for another disease, one not close enough to make the pair validated at entry | Drugs@FDA approvals |
-| Another drug on the target failed in a related disease in the last 3 years | Another drug on the target had a Phase 2 or 3 trial in a related disease (Lin at least 0.5) miss its primary endpoint or stop for futility in the three years before entry | ClinicalTrials.gov |
+| Approved on the target | A drug on the target was approved before entry, banded by how close its disease is to the program's: the same or a very close disease (Lin at least 0.8, validated at entry), a related one (Lin 0.5 to 0.8), or only unrelated ones | Drugs@FDA approvals |
 | **The drug** |  |  |
 | Binding to the target measured before entry (about the drug) | The drug's binding or activity at its primary target was measured in laboratory assays before entry (small molecules) | ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it |
 | Pharmacokinetics or target engagement measured in healthy animals (about the drug) | A published study of the drug's pharmacokinetics, or of its effect on its target or pathway, in healthy animals (exploratory: the searches miss some of these studies) | PubMed abstracts and Firecrawl's research index, screened by an LLM |
 | Drug shown to act on its target in people (about the drug) | A published study showing the drug acting on its target in people (exploratory) | PubMed abstracts, screened by an LLM |
 | Molecule properties (about the drug) | Drug-like size and chemistry (no more than one Lipinski violation); for brain diseases, chemistry suited to entering the brain (TPSA under 90, weight under 450, at most 3 donors) | PubChem and ChEMBL computed properties |
 | **Target safety risk** |  |  |
-| Any standard safety flag (aggregate) | A property of the target, not evidence for the disease: people rarely carry broken copies of the gene (gnomAD LOEUF below 0.35), mice without it die before weaning, or most human cell types need it | gnomAD v4.1; Mammalian Phenotype ontology, through Open Targets; DepMap |
+| Any standard safety flag (aggregate) | A property of the target, not evidence for the disease: people rarely carry broken copies of the gene (gnomAD LOEUF below 0.35), mice lacking it die before weaning, or most human cell types need it | gnomAD v4.1; Mammalian Phenotype ontology, through Open Targets; DepMap |
 
 ## Tables behind the figures
 
@@ -217,7 +215,7 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Both | 49 / 3,582 | 21 | Too rare to estimate | – | – | – |
 | · Mutated, effect unknown | 222 / 3,582 | 47 | 2.09 (0.43–3.80) | 1.86 (1.27–2.75) | 1.83 (1.26–2.66) | 0.76 (0.45–1.26) |
 | · The mutation's effect matches the drug's action (derived) | 746 / 3,582 | 110 | 1.76 (0.98–3.16) | 1.46 (1.02–2.09) | 1.37 (0.94–1.98) | 0.88 (0.63–1.22) |
-| Curated pathway: a disease mutation disrupts the target's pathway | 195 / 7,435 | 57 | 1.89 (0.93–2.80) | 1.33 (0.92–1.92) | 1.25 (0.87–1.81) | 0.71 (0.35–1.44) |
+| Curated pathway: a mutation that causes the disease in people disrupts the target's pathway | 195 / 7,435 | 57 | 1.89 (0.93–2.80) | 1.33 (0.92–1.92) | 1.25 (0.87–1.81) | 0.71 (0.35–1.44) |
 | **In vitro and ex vivo** |  |  |  |  |  |  |
 | Cell lines: changing the target in an established cell line changes a disease feature (oncology, from 2015) | 237 / 1,782 | 62 | 0.55 (0.16–1.38) | 0.56 (0.25–1.25) | 0.57 (0.25–1.28) | 0.55 (0.27–1.13) |
 | · A genome-wide knockout screen ranks the target for this cancer, on today's data (hindsight) | 373 / 7,435 | 100 | 1.96 (1.16–2.85) | 1.70 (1.18–2.43) | 1.60 (1.11–2.30) | 0.98 (0.70–1.36) |
@@ -236,12 +234,12 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Mouse genetics agrees with the drug's direction (derived) | 489 / 7,435 | 183 | 1.84 (1.33–2.50) | 1.38 (1.04–1.85) | 1.37 (1.03–1.82) | 0.55 (0.39–0.78) |
 | Animal model pharmacology: a non-genetic change to the target alters a disease model (today: the program's own drug) | 4,662 / 8,833 | 1,536 | 0.75 (0.63–0.91) | 0.83 (0.71–0.99) | 0.83 (0.70–0.98) | 0.93 (0.84–1.05) |
 | **Human** |  |  |  |  |  |  |
-| Validated at entry: a drug on the target approved for this or a very close disease | 1,284 / 7,435 | 336 | 2.17 (1.77–2.75) | 2.01 (1.67–2.41) | 1.99 (1.66–2.38) | 0.66 (0.53–0.82) |
+| Approved on the target: a drug on the target was approved before entry, for this disease or another | 4,305 / 7,435 | 605 | 1.50 (1.17–1.96) | 1.42 (1.16–1.74) | 1.42 (1.16–1.74) | – |
+| · This disease or a very close one (Lin at least 0.8): validated at entry | 1,284 / 7,435 | 336 | 2.17 (1.77–2.75) | 2.01 (1.67–2.41) | 1.99 (1.66–2.38) | 0.66 (0.53–0.82) |
 | · A related disease (Lin 0.5 to 0.8) | 892 / 7,435 | 234 | 1.19 (0.80–1.64) | 1.18 (0.93–1.50) | 1.18 (0.93–1.49) | 0.88 (0.72–1.09) |
 | · Only unrelated diseases | 2,129 / 7,435 | 433 | 0.74 (0.56–0.96) | 0.71 (0.57–0.89) | 0.72 (0.58–0.89) | 1.50 (1.25–1.80) |
-| A drug on the target approved for another disease | 3,021 / 7,435 | 500 | 0.83 (0.63–1.07) | 0.80 (0.65–0.99) | 0.81 (0.66–0.99) | 1.51 (1.22–1.87) |
+| · A drug on the target approved for another disease (related or unrelated; the earlier_drug_other_disease origin) (derived) | 3,021 / 7,435 | 500 | 0.83 (0.63–1.07) | 0.80 (0.65–0.99) | 0.81 (0.66–0.99) | 1.51 (1.22–1.87) |
 | · A drug on the target approved for a related disease, Lin at least 0.5 (B1) (derived) | 2,176 / 7,435 | 423 | 1.96 (1.58–2.46) | 1.85 (1.57–2.18) | 1.83 (1.55–2.17) | 0.67 (0.55–0.80) |
-| Another drug on the target failed in a related disease in the last 3 years | 1,685 / 5,836 | 393 | 1.57 (1.22–2.01) | 1.49 (1.19–1.86) | 1.47 (1.17–1.84) | 0.75 (0.62–0.90) |
 | **The drug** |  |  |  |  |  |  |
 | Binding to the target measured before entry | 1,658 / 6,091 | 415 | 1.45 (1.08–1.88) | 1.05 (0.81–1.36) | 1.04 (0.80–1.35) | 1.06 (0.89–1.25) |
 | · 10 nM or better | 1,027 / 6,091 | 263 | 1.96 (1.35–2.68) | 1.23 (0.92–1.66) | 1.21 (0.90–1.63) | 0.98 (0.80–1.19) |
@@ -257,11 +255,11 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Drug-like size and chemistry | 4,654 / 5,520 | 1,266 | 0.99 (0.75–1.34) | 0.93 (0.71–1.23) | 0.94 (0.71–1.22) | 0.90 (0.75–1.08) |
 | · Chemistry suited to entering the brain | 547 / 814 | 194 | 0.86 (0.48–1.65) | 1.43 (0.78–2.64) | 1.40 (0.76–2.58) | 0.91 (0.70–1.17) |
 | **Target safety risk** |  |  |  |  |  |  |
-| Any standard safety flag (aggregate): people rarely carry broken copies of the gene, mice without it die young, or most cell types need it | 4,045 / 7,435 | 634 | 0.98 (0.71–1.36) | 1.12 (0.90–1.38) | 1.11 (0.90–1.37) | 1.02 (0.54–1.94) (safety) |
+| Any standard safety flag (aggregate): people rarely carry broken copies of the gene, mice lacking it die before weaning, or most cell types need it | 4,045 / 7,435 | 634 | 0.98 (0.71–1.36) | 1.12 (0.90–1.38) | 1.11 (0.90–1.37) | 1.02 (0.54–1.94) (safety) |
 | · People rarely carry broken copies of the gene (gnomAD LOEUF below 0.35; today's data) | 1,629 / 7,435 | 242 | 0.83 (0.59–1.16) | 0.97 (0.75–1.26) | 0.98 (0.76–1.27) | 0.62 (0.24–1.61) (safety) |
-| · Mice without the gene die before weaning (today's data) | 3,747 / 7,435 | 588 | 0.99 (0.71–1.36) | 1.08 (0.87–1.33) | 1.07 (0.87–1.31) | 1.17 (0.63–2.17) (safety) |
+| · Mice lacking the gene die before weaning: as embryos, at birth or as pups (today's data) | 3,747 / 7,435 | 588 | 0.99 (0.71–1.36) | 1.08 (0.87–1.33) | 1.07 (0.87–1.31) | 1.17 (0.63–2.17) (safety) |
 | · Most human cell types need the gene (DepMap common essential) | 0 / 7,435 | 0 | Too rare to estimate | – | – | – |
-| · Mutant mice show a phenotype in a vital organ (heart, liver, blood, immune or nervous system; today's data) (exploratory) | 6,576 / 7,435 | 1,099 | 1.46 (0.95–2.31) | 1.05 (0.81–1.37) | 1.05 (0.80–1.36) | 2.10 (0.74–5.98) (safety) |
+| · Mutant mice show any abnormality in a vital organ system: heart and blood vessels, liver, blood, immune or nervous system (today's data) (exploratory) | 6,576 / 7,435 | 1,099 | 1.46 (0.95–2.31) | 1.05 (0.81–1.37) | 1.05 (0.80–1.36) | 2.10 (0.74–5.98) (safety) |
 | · An earlier drug on the same target stopped for safety (exploratory) | 1,220 / 5,836 | 264 | 0.84 (0.60–1.19) | 1.01 (0.81–1.27) | 1.02 (0.81–1.27) | 1.22 (0.44–3.39) (safety) |
 | · Most human cell types need the gene, on today's list (hindsight) | 678 / 7,435 | 101 | 0.43 (0.19–0.72) | 0.62 (0.39–0.99) | 0.63 (0.39–1.00) | 0.86 (0.27–2.77) (safety) |
 | **Adjustment** |  |  |  |  |  |  |
@@ -395,7 +393,7 @@ Every rule the plan registered, each against programs without it, before the rul
 | **Safety risk of the target** (not specific to the disease) |  |  |  |  |  |  |
 | Most human cell types need the gene | 0 (0) | – / 16% | 0% | – | – | – |
 | People rarely carry broken copies of the gene | 889 (220) | 15% / 16% | 19% | 0.98 (0.77–1.25) | 1.14 (0.88–1.49) | 0.82 (0.54–1.23) |
-| Mice without the gene die young | 2,224 (547) | 16% / 15% | 49% | 1.00 (0.83–1.22) | 0.88 (0.72–1.07) | 1.12 (0.76–1.65) |
+| Mice lacking the gene die before weaning | 2,224 (547) | 16% / 15% | 49% | 1.00 (0.83–1.22) | 0.88 (0.72–1.07) | 1.12 (0.76–1.65) |
 
 ### By endpoint
 

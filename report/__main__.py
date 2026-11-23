@@ -24,20 +24,23 @@ import time
 from datetime import datetime, timezone
 
 from report import (attribution, disease_match, evidence_analysis, evidence_facts, failure_modes, figures, frame,
-                    methods, quality, render, section1, section2, section3, stop_causes)
+                    methods, quality, render, section1, section2, section3, stop_causes, target_origin)
 
 # quality reads only the database and audit files, so it runs first with the other large reads
-STEPS = [quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes, methods, figures,
-         render]
+STEPS = [quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes, target_origin,
+         methods, figures, render]
 # step -> the steps whose outputs it reads or whose code it imports: it reruns whenever one of them does
 USES = {
     quality: (), section1: (), section2: (section1,), section3: (section1,),
     evidence_analysis: (section1, section2, section3, stop_causes), attribution: (section1, section3),
-    stop_causes: (section3,), failure_modes: (evidence_analysis, stop_causes, section3), methods: (stop_causes, attribution),
-    figures: (section1, section2, section3, evidence_analysis, attribution, stop_causes, render),
-    render: (quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes),
+    stop_causes: (section3,), failure_modes: (evidence_analysis, stop_causes, section3),
+    target_origin: (evidence_analysis, stop_causes, section3, failure_modes), methods: (stop_causes, attribution),
+    figures: (section1, section2, section3, evidence_analysis, attribution, stop_causes, target_origin, render),
+    render: (quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes,
+             target_origin),
 }
-QUERIES_DATABASE = (quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes)
+QUERIES_DATABASE = (quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes,
+                    target_origin)
 OUTPUT = os.path.join(frame.REPO, "report", "output")
 CACHE = os.path.expanduser("~/.cache/predictive-validity/report-output")
 MANIFEST = "_build.json"  # in each cached step directory: when, on which commit and snapshot it was built

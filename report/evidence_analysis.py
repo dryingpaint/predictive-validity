@@ -43,7 +43,7 @@ import pandas as pd
 from report import frame
 from pipeline.stops import keys
 from report import stop_causes
-from report.evidence_lines import KINDS, PRECEDENT_KINDS, SAFETY, build, chart_rows, loa_rows, report_lines, stale, us
+from report.evidence_lines import APPROVAL_SPLIT, KINDS, PRECEDENT_KINDS, SAFETY, build, chart_rows, loa_rows, report_lines, stale, us
 from report.section1 import failure_modes, phase_rows
 from report.section2 import relative_success
 from report.section3 import COVARS, MIN_TARGETS, adjusted, cause_outcomes, coef, describe, estimate, holm, jsonable, poisson, sponsors
@@ -120,6 +120,7 @@ def stop_risk(d: pd.DataFrame) -> pd.DataFrame:
     out = []
     for group, cat, line in [*(("kind", k.key, ln) for _, k, level, ln in chart_rows()
                                if level == "kind" and k.category != "safety"),
+                             *(("kind", "earlier_approval", ln) for ln in APPROVAL_SPLIT),
                              *(("safety", "target_safety", ln) for ln in SAFETY)]:
         elig = d[line.column].notna()
         x = d.loc[elig].assign(x=d.loc[elig, line.column].astype(float))

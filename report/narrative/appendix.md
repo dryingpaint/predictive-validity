@@ -52,6 +52,8 @@ Three labels were also compared with the decisions their revised prompts replace
 
 {{APPENDIX_SECTION2}}
 
+{{APPENDIX_TARGET_ORIGIN}}
+
 ### Can the evidence pick individual programs?
 
 Programs that entered Phase 1 in 2008–2016 were followed for ten years ({{section2.n_prediction|int}} programs, {{section2.n_prediction_positive|int}} approved), and models were tested on targets they had not seen.

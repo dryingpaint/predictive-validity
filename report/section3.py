@@ -101,7 +101,7 @@ LABELS = {  # evidence map rows, in display order (report.render and report.figu
     "liability": "Any safety risk of the target",
     "pan_essential": "Most human cell types need the gene",
     "constrained": "People rarely carry broken copies of the gene",
-    "ko_lethal": "Mice without the gene die young",
+    "ko_lethal": "Mice lacking the gene die before weaning",
 }
 MAP_FEATURES = list(LABELS)
 
