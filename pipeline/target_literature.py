@@ -524,9 +524,18 @@ def firecrawl(args) -> None:
         got = firecrawl_ids(results, y)
         external = resolve_external([g for g in got if not g[0].isdigit()])
         ids = sorted({g if g.isdigit() else external[g] for g, _ in got if g.isdigit() or g in external})
-        with llm.connect() as conn, conn.cursor() as cur:
-            store_search(cur, r.ensembl_id, r.mondo_id, y, source, k, n, q, len(results), ids)
-            conn.commit()
+        for attempt in range(5):  # a dropped database link is retried; the call's results are kept in memory
+            try:
+                with llm.connect() as conn, conn.cursor() as cur:
+                    store_search(cur, r.ensembl_id, r.mondo_id, y, source, k, n, q, len(results), ids)
+                    conn.commit()
+                break
+            except (psycopg2.OperationalError, psycopg2.InterfaceError):
+                time.sleep(10 * (attempt + 1))
+        else:
+            state["failed"] += 1
+            print(f"firecrawl not stored {r.symbol} {r.mondo_id} {k}: database unreachable", flush=True)
+            return
         state["done"] += 1
         if state["done"] % 500 == 0:
             print(f"firecrawl {args.mode} {state['done']}/{len(calls)} failed={state['failed']}", flush=True)
