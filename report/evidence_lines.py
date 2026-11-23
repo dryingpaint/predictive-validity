@@ -256,7 +256,8 @@ KINDS = {k.key: k for k in [
     Kind("curated_pathway", "human_genetics", "target", "Curated pathway: a disease mutation disrupts the target's pathway",
          "A curated pathway shows a disease mutation disrupting the target", "Reactome, through Open Targets",
          "reactome", (("pathway", ("yes",)),)),
-    Kind("human_cell_perturbation", "in_vitro", "target", "Human cell perturbation",
+    Kind("human_cell_perturbation", "in_vitro", "target",
+         "Primary cells: changing the target in primary human cells or tissue changes a disease feature",
          "Changing the target in primary human cells or tissue changes a disease feature", "Literature (#154)", None),
     Kind("cell_line_perturbation", "in_vitro", "target",
          "Cell lines: changing the target in an established cell line changes a disease feature (oncology, from 2015)",
@@ -291,10 +292,14 @@ KINDS = {k.key: k for k in [
          "Expression Atlas, through Open Targets (RNA, at least 2.1-fold)", "expression",
          (("rna", ("up", "down")),), chart="rna",
          derived=(Line("Target more active in disease, and the drug blocks it", "expression_up_inhibitor", "target"),)),
-    Kind("observational_biomarker", "human", "target", "Observational biomarker",
+    Kind("observational_biomarker", "human", "target",
+         "Observational biomarker: the target or its product, measured in blood, another fluid or by imaging, tracks the "
+         "disease",
          "The target or its product, measured in blood, another fluid or by imaging, tracks the disease",
          "Literature (#154)", None),
-    Kind("clinical_observation", "human", "target", "Clinical observation", "An effect seen in people, such as a side effect",
+    Kind("clinical_observation", "human", "target",
+         "Clinical observation: an effect seen in people implicates the target, such as a side effect",
+         "An effect seen in people that implicates the target, such as a side effect",
          "Literature (#154)", None),
     Kind("validated_at_entry", "human", "target", "Validated at entry: a drug on the target approved for this or a very close "
          "disease", "A drug on the target was already approved for the same or a very close disease (Lin at least "
