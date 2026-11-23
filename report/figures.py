@@ -562,8 +562,9 @@ EFFICACY_ROWS = {"validated_at_entry": ("Validated at entry: a drug on the targe
 # The safety lines (report.evidence_lines.SAFETY) against safety stops and, as a control, efficacy stops
 SAFETY_BLOCKS = [("stop_safety", "Stopped for safety", ABOUT_COLORS["safety"]),
                  ("stop_efficacy", "Stopped for efficacy (control: safety evidence should not predict it)", "#b5b4ae")]
-SAFETY_ROWS = {"liability": ("People rarely carry broken copies of the gene, or mice without it die young", "safety"),
-               "ko_vital_organ": ("Mutant mice show a phenotype in a vital organ", "safety"),
+SAFETY_ROWS = {"liability": ("People rarely carry broken copies of the gene, or mice lacking it die before weaning",
+                             "safety"),
+               "ko_vital_organ": ("Mutant mice show any abnormality in a vital organ system", "safety"),
                "earlier_safety_stop": ("An earlier drug on the same target stopped for safety", "safety"),
                "poor_selectivity": ("The drug binds another protein within 10-fold of its target", "safety")}
 

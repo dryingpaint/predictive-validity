@@ -221,11 +221,12 @@ FACTS = {f.key: f for f in [
          unknown=("not_searched",), note=literature_note("human_engagement", exploratory=False)),
     Fact("constraint", "People rarely carry broken copies of the gene (gnomAD LOEUF below 0.35; today's data)", "target", YES_NO,
          (("yes", "constrained"),)),
-    Fact("mice_die_young", "Mice without the gene die before weaning (today's data)", "target", YES_NO, (("yes", "ko_lethal"),)),
+    Fact("mice_die_young", "Mice lacking the gene die before weaning: as embryos, at birth or as pups (today's data)",
+         "target", YES_NO, (("yes", "ko_lethal"),)),
     Fact("most_cells_need_gene", "Most human cell types need the gene (DepMap common essential)", "target", YES_NO,
          (("yes", "pan_essential"),)),
-    Fact("vital_organ_phenotype", "Mutant mice show a phenotype in a vital organ (heart, liver, blood, immune or "
-         "nervous system; today's data)", "target", YES_NO, (("yes", "ko_vital_organ"),), counts=False,
+    Fact("vital_organ_phenotype", "Mutant mice show any abnormality in a vital organ system: heart and blood vessels, "
+         "liver, blood, immune or nervous system (today's data)", "target", YES_NO, (("yes", "ko_vital_organ"),), counts=False,
          note="exploratory (the 2026-11-08 safety amendment)"),
     Fact("earlier_safety_stop", "An earlier drug on the same target stopped for safety", "target",
          (("yes", "Yes"), ("no", "No"), ("not_scored", "Not scored: entered before 2011")),
@@ -341,9 +342,9 @@ KINDS = {k.key: k for k in [
          "PubChem and ChEMBL computed properties", "molecule_properties",
          (("drug_like", ("yes",)), ("brain_suited", ("yes",))), drawn=False),
     Kind("target_safety", "safety", "target", "Any standard safety flag (aggregate): people rarely carry broken copies of the "
-         "gene, mice without it die young, or most cell types need it",
+         "gene, mice lacking it die before weaning, or most cell types need it",
          "A property of the target, not evidence for the disease: people rarely carry broken copies of the gene "
-         "(gnomAD LOEUF below 0.35), mice without it die before weaning, or most human cell types need it",
+         "(gnomAD LOEUF below 0.35), mice lacking it die before weaning, or most human cell types need it",
          "gnomAD v4.1; Mammalian Phenotype ontology, through Open Targets; DepMap", "liability",
          (("constraint", ("yes",)), ("mice_die_young", ("yes",)), ("most_cells_need_gene", ("yes",)),
           ("vital_organ_phenotype", ("yes",)), ("earlier_safety_stop", ("yes",)),
@@ -354,9 +355,10 @@ ADJUSTMENTS = [Line("Trial enrolled patients selected by a biomarker", "biomarke
 # Kinds about earlier drugs on the target: the target-precedent covariate would adjust for the kind itself.
 PRECEDENT_KINDS = ("validated_at_entry", "earlier_drug_other_disease", "earlier_drug_failure")
 # The 2026-11-08 safety lines, tested against safety and efficacy stops.
-SAFETY = [Line("Standard flags: people rarely carry broken copies of the gene, or mice without it die young",
+SAFETY = [Line("Standard flags: people rarely carry broken copies of the gene, or mice lacking it die before weaning",
                "liability", "target"),
-          Line("Mutant mice show a phenotype in a vital organ (heart, liver, blood, immune or nervous system)",
+          Line("Mutant mice show any abnormality in a vital organ system (heart and blood vessels, liver, blood, immune "
+               "or nervous system)",
                "ko_vital_organ", "target"),
           Line("An earlier drug on the same target stopped for safety", "earlier_safety_stop", "target"),
           Line("The drug binds another protein within 10-fold of its target", "poor_selectivity", "small_molecule")]
