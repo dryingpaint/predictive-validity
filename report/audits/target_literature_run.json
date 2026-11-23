@@ -1,0 +1,111 @@
+{
+  "integrity": {
+    "checks": {
+      "cohort pairs missing a pubmed, europepmc or per-kind firecrawl search at their cutoff": 0,
+      "pairs with a qualifying record but no related-paper search": 0,
+      "retrieved records with stored text but no screen row, no prefilter-out row and no refusal by both models": 0,
+      "screen or prefilter rows for a record the pair's searches do not return": 0,
+      "hits without their search row": 0,
+      "searches of a pair outside the cohort, or at another cutoff": 0,
+      "screen rows whose decision is not a validated version 2 screen (or its fallback) of that pair and record": 0,
+      "prefilter rows whose decision is not a validated prefilter of that pair and record": 0,
+      "prefilter rows of a pair at or below the prefilter threshold": 0
+    },
+    "counts": {
+      "retrieved records without stored text (never screened)": 705,
+      "retrieved (pair, record)": 1107052,
+      "records refused by both the screen and fallback models (unread)": 257,
+      "retrieved (pair, record) by source": {
+        "europepmc": 34551,
+        "firecrawl": 445856,
+        "firecrawl_related": 72540,
+        "origin_europepmc": 12152,
+        "origin_pubmed": 191863,
+        "pubmed": 577798
+      },
+      "retrieved (pair, record) only from the origin search": 39927,
+      "screen rows": 943306,
+      "prefilter rows (possibly / not)": "125936 / 162764",
+      "search rows": 58610,
+      "hit rows": 1591939,
+      "retrieved records with no publication year": 705
+    },
+    "passes": true
+  },
+  "summary": {
+    "pairs": 5149,
+    "kinds": {
+      "human_cell_perturbation": {
+        "pairs_with_any": 1782,
+        "pairs_with_one_before_latest_entry": 1773,
+        "pairs_with_one_before_first_entry": 1598
+      },
+      "cell_line_perturbation": {
+        "pairs_with_any": 2491,
+        "pairs_with_one_before_latest_entry": 2482,
+        "pairs_with_one_before_first_entry": 2318
+      },
+      "diseased_tissue_protein": {
+        "pairs_with_any": 2620,
+        "pairs_with_one_before_latest_entry": 2611,
+        "pairs_with_one_before_first_entry": 2432
+      },
+      "animal_model_pharmacology": {
+        "pairs_with_any": 3162,
+        "pairs_with_one_before_latest_entry": 3143,
+        "pairs_with_one_before_first_entry": 2900,
+        "pairs_with_other_agent": 2953,
+        "pairs_with_other_agent_before_latest_entry": 2936
+      },
+      "mouse_genetic_disease_model": {
+        "pairs_with_any": 1552,
+        "pairs_with_one_before_latest_entry": 1546,
+        "pairs_with_one_before_first_entry": 1368
+      },
+      "observational_biomarker": {
+        "pairs_with_any": 2100,
+        "pairs_with_one_before_latest_entry": 2088,
+        "pairs_with_one_before_first_entry": 1925
+      },
+      "clinical_observation": {
+        "pairs_with_any": 1382,
+        "pairs_with_one_before_latest_entry": 1374,
+        "pairs_with_one_before_first_entry": 1200
+      }
+    }
+  },
+  "cost": {
+    "since": "2026-11-23T00:52:25Z",
+    "usd_by_task": {
+      "target_literature_gene_vet": 1.04,
+      "target_literature_model_terms": 0.71,
+      "target_literature_prefilter": 115.61,
+      "target_literature_screen": 1763.57,
+      "target_literature_screen_check": 1.63,
+      "target_literature_screen_fallback": 6.57
+    },
+    "usd_total": 1889.13,
+    "pilot_pairs": 300,
+    "run_usd_per_pilot_pair": 6.292,
+    "cohort_pairs": 5149,
+    "all_pairs": 11311
+  },
+  "cost_all": {
+    "since": null,
+    "usd_by_task": {
+      "target_literature_gene_vet": 1.66,
+      "target_literature_model_terms": 0.93,
+      "target_literature_prefilter": 130.62,
+      "target_literature_reference": 36.64,
+      "target_literature_reference_fallback": 3.08,
+      "target_literature_screen": 1915.26,
+      "target_literature_screen_check": 4.75,
+      "target_literature_screen_fallback": 6.57
+    },
+    "usd_total": 2099.49,
+    "pilot_pairs": 300,
+    "run_usd_per_pilot_pair": 6.85,
+    "cohort_pairs": 5149,
+    "all_pairs": 11311
+  }
+}

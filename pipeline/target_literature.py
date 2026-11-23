@@ -118,6 +118,7 @@ PREFILTER_CHECK = 300  # seeded prefiltered-out records given the full screen, t
 CHECK_PER_KIND = 50  # half screened in, half screened out, per kind
 CHECK_SEED = 20261123
 SCREEN_MODEL = "claude-sonnet-5"
+SCREEN_FALLBACK = "claude-opus-5"  # reads the records the screen model refuses or answers invalidly
 PREFILTER_MODEL = "claude-haiku-4-5-20251001"  # the id pipeline.literature runs
 CHECK_MODEL = "claude-opus-5-5"
 REFERENCE_MODEL = "claude-opus-5-5"
@@ -674,8 +675,8 @@ def screened(p: pd.DataFrame) -> set[tuple[str, str]]:
                            WHERE (h.ensembl_id, h.mondo_id, h.cutoff_year) = (w.ensembl_id, w.mondo_id, w.cutoff_year)
                              AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_screen s
                                              WHERE (s.ensembl_id, s.mondo_id, s.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))
-                             AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_prefilter f
-                                             WHERE (f.ensembl_id, f.mondo_id, f.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))
+                             AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_prefilter f WHERE NOT f.possibly
+                                             AND (f.ensembl_id, f.mondo_id, f.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))
                              AND (EXISTS (SELECT 1 FROM public.publications x WHERE x.pmid = h.record_id)
                                   OR EXISTS (SELECT 1 FROM preclin.literature_record x WHERE x.record_id = h.record_id)
                                   OR EXISTS (SELECT 1 FROM preclin.target_disease_source x
@@ -709,6 +710,9 @@ def screen_chunk(p: pd.DataFrame) -> None:
     pdec = decide(PREFILTER_TASK, pre) if pre else {}
     todo = {k: v for k, v in items.items() if k not in pre or pdec[k][1]["possibly"]}
     dec = decide(screen_task(), todo)
+    refused = {k: v for k, v in todo.items() if k not in dec}
+    if refused:  # the screen model's refusals and failed outputs, read once more by the fallback model
+        dec.update(decide(screen_task(SCREEN_FALLBACK, "_fallback"), refused))
     store_screens(p, pdec, dec)
     print(f"screen chunk: pairs={len(p)} records={len(recs)} readable={len(items)} large pairs={len(large)} "
           f"prefiltered={len(pdec)} screened={len(dec)}", flush=True)
@@ -775,6 +779,13 @@ def store_screens(p: pd.DataFrame, pdec: dict[str, tuple[int, dict]], dec: dict[
                                     disease_match, {", ".join(KINDS[:4])}, agent_is_program_drug, {", ".join(KINDS[4:])},
                                     quote, llm_decision_id) VALUES %s""", rows, page_size=2000)
         conn.commit()
+
+
+def screen_decisions(items: dict[str, dict]) -> dict[str, tuple[int, dict]]:
+    """The screen's decision of each item, or the fallback model's where the screen model gave none."""
+    dec = llm.current_decisions(screen_task(), items)
+    rest = {k: v for k, v in items.items() if k not in dec}
+    return dec | (llm.current_decisions(screen_task(SCREEN_FALLBACK, "_fallback"), rest) if rest else {})
 
 
 def screened_items(p: pd.DataFrame) -> dict[str, dict]:
@@ -964,7 +975,7 @@ def reference(args) -> None:
 def qualifying(pairs: pd.DataFrame) -> pd.DataFrame:
     """ensembl_id, mondo_id, record_id, year, doi and kind of every screened record that counts for a kind."""
     items = screened_items(pairs)
-    dec = llm.current_decisions(screen_task(), items)
+    dec = screen_decisions(items)
     dois = record_dois(sorted({k.split("|", 2)[2] for k in dec}))
     rows = []
     for k, (_, o) in dec.items():
@@ -1100,49 +1111,70 @@ def cost(args) -> None:
                       "all_pairs": all_pairs}, indent=2))
 
 
+# Records the screen model and its fallback both refused (their safety classifiers): no reading exists for them.
+REFUSED = """SELECT DISTINCT d.subject_key FROM pv_evidence.llm_decision d
+             WHERE d.task = 'target_literature_screen_fallback' AND d.validation_detail::text LIKE '%%refusal%%'
+               AND NOT EXISTS (SELECT 1 FROM pv_evidence.llm_decision v WHERE v.subject_key = d.subject_key
+                               AND v.task IN ('target_literature_screen', 'target_literature_screen_fallback')
+                               AND v.validation_status = 'validated')"""
+# Every retrieved (pair, record) of the run's pairs, with whether its text is stored anywhere and its year: a temp
+# table built once, so the checks below are joins rather than per-row lookups.
+RETRIEVED = """
+    CREATE TEMP TABLE retrieved ON COMMIT DROP AS
+    WITH ret AS (SELECT DISTINCT h.ensembl_id, h.mondo_id, h.record_id FROM preclin.target_literature_hit h
+                 JOIN want USING (ensembl_id, mondo_id, cutoff_year)),
+         ids AS (SELECT DISTINCT record_id FROM ret),
+         origin AS (SELECT regexp_replace(o.record_id, '^PMID:', '') AS record_id, min(o.year) AS year
+                    FROM preclin.target_disease_source o
+                    JOIN ids ON ids.record_id = regexp_replace(o.record_id, '^PMID:', '') GROUP BY 1),
+         txt AS (SELECT ids.record_id, (p.pmid IS NOT NULL OR r.record_id IS NOT NULL OR o.record_id IS NOT NULL) AS has_text,
+                        coalesce(p.year, r.year, o.year) AS year
+                 FROM ids LEFT JOIN public.publications p ON p.pmid = ids.record_id
+                 LEFT JOIN preclin.literature_record r ON r.record_id = ids.record_id
+                 LEFT JOIN origin o ON o.record_id = ids.record_id)
+    SELECT ret.*, txt.has_text, txt.year FROM ret JOIN txt USING (record_id)"""
 INTEGRITY = {
     "cohort pairs missing a pubmed, europepmc or per-kind firecrawl search at their cutoff": """
-        SELECT count(*) FROM want w WHERE NOT EXISTS (
-            SELECT 1 FROM preclin.target_literature_search s WHERE (s.ensembl_id, s.mondo_id, s.cutoff_year) =
-                (w.ensembl_id, w.mondo_id, w.cutoff_year)
-            GROUP BY s.ensembl_id HAVING count(*) FILTER (WHERE source = 'pubmed') = 1
-               AND count(*) FILTER (WHERE source = 'europepmc') = 1
-               AND count(DISTINCT kind) FILTER (WHERE source = 'firecrawl') = 7)""",
+        SELECT count(*) FROM want w LEFT JOIN (
+            SELECT ensembl_id, mondo_id, cutoff_year FROM preclin.target_literature_search GROUP BY 1, 2, 3
+            HAVING count(*) FILTER (WHERE source = 'pubmed') = 1 AND count(*) FILTER (WHERE source = 'europepmc') = 1
+               AND count(DISTINCT kind) FILTER (WHERE source = 'firecrawl') = 7) s USING (ensembl_id, mondo_id, cutoff_year)
+        WHERE s.ensembl_id IS NULL""",
     "pairs with a qualifying record but no related-paper search": """
-        SELECT count(*) FROM want w WHERE EXISTS (SELECT 1 FROM preclin.target_literature_evidence v
-                                                 WHERE (v.ensembl_id, v.mondo_id) = (w.ensembl_id, w.mondo_id))
-          AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_search s WHERE source = 'firecrawl_related'
+        SELECT count(*) FROM want w
+        WHERE EXISTS (SELECT 1 FROM preclin.target_literature_screen s
+                      WHERE (s.ensembl_id, s.mondo_id) = (w.ensembl_id, w.mondo_id) AND s.original_data
+                        AND s.disease_match = 'same_or_subtype'
+                        AND (s.human_cell_perturbation OR s.cell_line_perturbation OR s.diseased_tissue_protein
+                             OR s.animal_model_pharmacology OR s.mouse_genetic_disease_model
+                             OR s.observational_biomarker OR s.clinical_observation))
+          AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_search s WHERE s.source = 'firecrawl_related'
                           AND (s.ensembl_id, s.mondo_id, s.cutoff_year) = (w.ensembl_id, w.mondo_id, w.cutoff_year))""",
-    "retrieved records with stored text but no screen row and no prefilter-out row": """
-        SELECT count(*) FROM (SELECT DISTINCT h.ensembl_id, h.mondo_id, h.record_id FROM preclin.target_literature_hit h
-                              JOIN want w USING (ensembl_id, mondo_id, cutoff_year)) h
-        WHERE (EXISTS (SELECT 1 FROM public.publications p WHERE p.pmid = h.record_id)
-               OR EXISTS (SELECT 1 FROM preclin.literature_record r WHERE r.record_id = h.record_id)
-               OR EXISTS (SELECT 1 FROM preclin.target_disease_source o
-                          WHERE o.record_id IN (h.record_id, 'PMID:' || h.record_id)))
-          AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_screen s
-                          WHERE (s.ensembl_id, s.mondo_id, s.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))
-          AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_prefilter f WHERE NOT f.possibly
-                          AND (f.ensembl_id, f.mondo_id, f.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))""",
+    "retrieved records with stored text but no screen row, no prefilter-out row and no refusal by both models": f"""
+        SELECT count(*) FROM retrieved r
+        LEFT JOIN preclin.target_literature_screen s USING (ensembl_id, mondo_id, record_id)
+        LEFT JOIN preclin.target_literature_prefilter f USING (ensembl_id, mondo_id, record_id)
+        LEFT JOIN ({REFUSED}) x ON x.subject_key = r.ensembl_id || '|' || r.mondo_id || '|' || r.record_id
+        WHERE r.has_text AND s.record_id IS NULL AND (f.record_id IS NULL OR f.possibly) AND x.subject_key IS NULL""",
     "screen or prefilter rows for a record the pair's searches do not return": """
-        SELECT (SELECT count(*) FROM preclin.target_literature_screen s WHERE NOT EXISTS (
-                    SELECT 1 FROM preclin.target_literature_hit h
-                    WHERE (h.ensembl_id, h.mondo_id, h.record_id) = (s.ensembl_id, s.mondo_id, s.record_id)))
-             + (SELECT count(*) FROM preclin.target_literature_prefilter f WHERE NOT EXISTS (
-                    SELECT 1 FROM preclin.target_literature_hit h
-                    WHERE (h.ensembl_id, h.mondo_id, h.record_id) = (f.ensembl_id, f.mondo_id, f.record_id)))""",
+        SELECT (SELECT count(*) FROM preclin.target_literature_screen s LEFT JOIN retrieved r USING (ensembl_id, mondo_id, record_id)
+                WHERE r.record_id IS NULL)
+             + (SELECT count(*) FROM preclin.target_literature_prefilter f LEFT JOIN retrieved r USING (ensembl_id, mondo_id, record_id)
+                WHERE r.record_id IS NULL)""",
     "hits without their search row": """
-        SELECT count(*) FROM preclin.target_literature_hit h WHERE NOT EXISTS (
-            SELECT 1 FROM preclin.target_literature_search s WHERE (s.ensembl_id, s.mondo_id, s.cutoff_year, s.source)
-                = (h.ensembl_id, h.mondo_id, h.cutoff_year, h.source) AND (s.kind = h.kind OR h.kind = ''))""",
+        SELECT count(*) FROM preclin.target_literature_hit h LEFT JOIN preclin.target_literature_search s
+            ON (s.ensembl_id, s.mondo_id, s.cutoff_year, s.source, s.kind) = (h.ensembl_id, h.mondo_id, h.cutoff_year, h.source,
+                CASE WHEN h.source = 'firecrawl' AND h.kind = '' THEN s.kind ELSE h.kind END)
+        WHERE s.ensembl_id IS NULL""",
     "searches of a pair outside the cohort, or at another cutoff": """
-        SELECT count(*) FROM preclin.target_literature_search s WHERE NOT EXISTS (
-            SELECT 1 FROM want w WHERE (w.ensembl_id, w.mondo_id, w.cutoff_year) = (s.ensembl_id, s.mondo_id, s.cutoff_year))""",
-    "screen rows whose decision is not a validated version 2 screen of that pair and record": f"""
+        SELECT count(*) FROM preclin.target_literature_search s LEFT JOIN want w USING (ensembl_id, mondo_id, cutoff_year)
+        WHERE w.ensembl_id IS NULL""",
+    "screen rows whose decision is not a validated version 2 screen (or its fallback) of that pair and record": f"""
         SELECT count(*) FROM preclin.target_literature_screen s LEFT JOIN pv_evidence.llm_decision d
             ON d.llm_decision_id = s.llm_decision_id
         LEFT JOIN pv_evidence.llm_decision_run r ON r.decision_run_id = d.decision_run_id
-        WHERE d.llm_decision_id IS NULL OR d.task <> 'target_literature_screen' OR r.prompt_version <> '{VERSION}'
+        WHERE d.llm_decision_id IS NULL OR d.task NOT IN ('target_literature_screen', 'target_literature_screen_fallback')
+           OR r.prompt_version <> '{VERSION}'
            OR d.validation_status <> 'validated'
            OR d.subject_key <> s.ensembl_id || '|' || s.mondo_id || '|' || s.record_id""",
     "prefilter rows whose decision is not a validated prefilter of that pair and record": """
@@ -1151,38 +1183,25 @@ INTEGRITY = {
         WHERE d.llm_decision_id IS NULL OR d.task <> 'target_literature_prefilter' OR d.validation_status <> 'validated'
            OR d.subject_key <> f.ensembl_id || '|' || f.mondo_id || '|' || f.record_id""",
     "prefilter rows of a pair at or below the prefilter threshold": f"""
-        SELECT count(*) FROM preclin.target_literature_prefilter f WHERE (
-            SELECT count(DISTINCT record_id) FROM preclin.target_literature_hit h
-            WHERE (h.ensembl_id, h.mondo_id) = (f.ensembl_id, f.mondo_id)) <= {PREFILTER_ABOVE}""",
+        SELECT count(*) FROM preclin.target_literature_prefilter f
+        JOIN (SELECT ensembl_id, mondo_id, count(*) n FROM retrieved GROUP BY 1, 2) c USING (ensembl_id, mondo_id)
+        WHERE c.n <= {PREFILTER_ABOVE}""",
 }
 INFO = {
-    "retrieved records without stored text (never screened)": """
-        SELECT count(*) FROM (SELECT DISTINCT h.record_id FROM preclin.target_literature_hit h
-                              JOIN want w USING (ensembl_id, mondo_id, cutoff_year)) h
-        WHERE NOT EXISTS (SELECT 1 FROM public.publications p WHERE p.pmid = h.record_id)
-          AND NOT EXISTS (SELECT 1 FROM preclin.literature_record r WHERE r.record_id = h.record_id)
-          AND NOT EXISTS (SELECT 1 FROM preclin.target_disease_source o
-                          WHERE o.record_id IN (h.record_id, 'PMID:' || h.record_id))""",
+    "retrieved records without stored text (never screened)": "SELECT count(DISTINCT record_id) FROM retrieved WHERE NOT has_text",
+    "retrieved (pair, record)": "SELECT count(*) FROM retrieved",
+    "records refused by both the screen and fallback models (unread)": f"SELECT count(*) FROM ({REFUSED}) x",
     "retrieved (pair, record) by source": """SELECT json_object_agg(source, n) FROM (SELECT source, count(DISTINCT (ensembl_id, mondo_id, record_id)) n
                                    FROM preclin.target_literature_hit JOIN want USING (ensembl_id, mondo_id, cutoff_year) GROUP BY 1) x""",
     "retrieved (pair, record) only from the origin search": """SELECT count(*) FROM (SELECT ensembl_id, mondo_id, record_id
                                    FROM preclin.target_literature_hit JOIN want USING (ensembl_id, mondo_id, cutoff_year)
                                    GROUP BY 1, 2, 3 HAVING bool_and(source LIKE 'origin%%')) x""",
-    "retrieved (pair, record)": """SELECT count(*) FROM (SELECT DISTINCT ensembl_id, mondo_id, record_id
-                                   FROM preclin.target_literature_hit JOIN want USING (ensembl_id, mondo_id, cutoff_year)) x""",
     "screen rows": "SELECT count(*) FROM preclin.target_literature_screen",
     "prefilter rows (possibly / not)": """SELECT count(*) FILTER (WHERE possibly) || ' / ' || count(*) FILTER (WHERE NOT possibly)
                                           FROM preclin.target_literature_prefilter""",
     "search rows": "SELECT count(*) FROM preclin.target_literature_search",
     "hit rows": "SELECT count(*) FROM preclin.target_literature_hit",
-    "retrieved records with no publication year": """
-        SELECT count(*) FROM (SELECT DISTINCT h.record_id FROM preclin.target_literature_hit h
-                              JOIN want w USING (ensembl_id, mondo_id, cutoff_year)) h
-        LEFT JOIN public.publications p ON p.pmid = h.record_id
-        LEFT JOIN preclin.literature_record r ON r.record_id = h.record_id
-        LEFT JOIN (SELECT regexp_replace(record_id, '^PMID:', '') AS record_id, min(year) AS year
-                   FROM preclin.target_disease_source GROUP BY 1) o ON o.record_id = h.record_id
-        WHERE coalesce(p.year, r.year, o.year) IS NULL""",
+    "retrieved records with no publication year": "SELECT count(DISTINCT record_id) FROM retrieved WHERE year IS NULL",
 }
 
 
@@ -1193,6 +1212,11 @@ def integrity(args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("CREATE TEMP TABLE want (ensembl_id text, mondo_id text, cutoff_year int) ON COMMIT DROP")
         execute_values(cur, "INSERT INTO want VALUES %s", [(r.ensembl_id, r.mondo_id, int(r.cutoff_year)) for r in p.itertuples()])
+        cur.execute("CREATE INDEX ON want (ensembl_id, mondo_id, cutoff_year)")
+        cur.execute(RETRIEVED)
+        cur.execute("CREATE INDEX ON retrieved (ensembl_id, mondo_id, record_id)")
+        cur.execute("ANALYZE want")
+        cur.execute("ANALYZE retrieved")
         for name, sql in INTEGRITY.items():
             cur.execute(sql)
             out["checks"][name] = cur.fetchone()[0]
