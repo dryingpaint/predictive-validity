@@ -36,7 +36,8 @@ USES = {
     stop_causes: (section3,), failure_modes: (evidence_analysis, stop_causes, section3),
     target_origin: (evidence_analysis, stop_causes, section3, failure_modes), methods: (stop_causes, attribution),
     figures: (section1, section2, section3, evidence_analysis, attribution, stop_causes, target_origin, render),
-    render: (quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes),
+    render: (quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes,
+             target_origin),
 }
 QUERIES_DATABASE = (quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes,
                     target_origin)

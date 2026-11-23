@@ -574,6 +574,38 @@ def s3_rules_table() -> str:
                                              "Risk ratio, held-out targets (90% CI)", "Meets the bar"]))
 
 
+# The O1 test (report.target_origin) and each of its registered sensitivities, then the descriptive outcomes
+TARGET_ORIGIN_ANALYSES = {
+    "primary": ("As registered", "registered"),
+    "unclear_as_exposed": ("Unclear origins added to the biomarker or tissue group", "registered"),
+    "unclear_as_reference": ("Unclear origins added to the human genetics group", "registered"),
+    "unsettled_as_exposed": ("Unclear, disputed and unanswered origins added to the biomarker or tissue group",
+                             "registered"),
+    "unsettled_as_reference": ("Unclear, disputed and unanswered origins added to the human genetics group",
+                               "registered"),
+    "phase2": ("Phase 2 entries only", "registered"),
+    "any_date": ("Labels from sources of any date, including those dated in or after the entry year", "registered"),
+    "descriptive_not_causal_by_verdict": ("Outcome: the stop's own sources call the target not causal", "descriptive"),
+    "descriptive_target_never_worked_here": ("Outcome: the target never worked in this disease, whatever the failure "
+                                             "mode", "descriptive")}
+
+
+def target_origin_tests_table() -> str:
+    """Risk ratio (95% CI) of each target-origin contrast in each analysis, with the O1 groups' entries and events."""
+    t = pd.read_csv(os.path.join(OUT, "target_origin", "tests.csv"))
+    cell = lambda r: "not testable" if pd.isna(r.rr) else f"{r.rr:.2f} ({r.lo:.2f}–{r.hi:.2f})"  # noqa: E731
+    rows = []
+    for key, (name, kind) in TARGET_ORIGIN_ANALYSES.items():
+        a = t[t.analysis.eq(key)].set_index("contrast")
+        o1 = a.loc["o1"]
+        rows.append([name, kind, f"{int(o1.exposed_events):,} of {int(o1.exposed_entries):,}",
+                     f"{int(o1.reference_events):,} of {int(o1.reference_entries):,}", cell(o1),
+                     cell(a.loc["observational_biomarker"]), cell(a.loc["diseased_tissue"])])
+    return table(pd.DataFrame(rows, columns=["Analysis", "Kind", "Biomarker or tissue: stops of entries",
+                                             "Human genetics: stops of entries", "Biomarker or tissue vs genetics",
+                                             "Biomarker alone", "Tissue alone"]))
+
+
 TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivity_table,
           "PERIOD_TABLE": period_table, "YEAR_TABLE": year_table, "RUNNING_TABLE": running_table,
           "FAILURE_DEFINITIONS_TABLE": failure_definitions_table, "EVIDENCE_DEFINITIONS_TABLE": evidence_definitions_table,
@@ -589,7 +621,8 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table,
           "KINDS_TABLE": kinds_table, "ENGAGED_AREA_TABLE": engaged_area_table,
           "ENGAGED_EVIDENCE_TABLE": engaged_evidence_table,
-          "ENGAGED_DISEASE_TABLE": engaged_disease_table, "AMENDMENT_HYPOTHESES_TABLE": amendment_hypotheses_table}
+          "ENGAGED_DISEASE_TABLE": engaged_disease_table, "AMENDMENT_HYPOTHESES_TABLE": amendment_hypotheses_table,
+          "TARGET_ORIGIN_TESTS_TABLE": target_origin_tests_table}
 
 
 def flatten(d, prefix=""):
@@ -620,7 +653,7 @@ TABS = [("REPORT.template.md", "REPORT.md"), ("APPENDIX.template.md", "REPORT_AP
 def main() -> None:
     numbers = dict(BIO)
     for section in ("section1", "section2", "section3", "evidence_analysis", "attribution", "stop_causes", "failure_modes",
-                    "quality"):
+                    "target_origin", "quality"):
         numbers.update(flatten(json.load(open(os.path.join(OUT, section, "numbers.json"))), section + "."))
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float, sort_keys=True)

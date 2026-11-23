@@ -3,7 +3,7 @@ import pandas as pd
 
 from report.target_origin import (NEVER_WORKED, OUTCOME, STRICT, any_date_labels, by_origin, circular, contrast,
                                   contrasts, contrasts_table, descriptive_contrasts, entry_origin, history_outcomes,
-                                  pair_frame, shares)
+                                  origin_counts, pair_frame, shares)
 from report.engaged_modes import ENGAGED_MODES
 
 
@@ -157,3 +157,12 @@ def test_pair_descriptives_mark_validated_pairs_and_share_within_each_group():
     assert list(p.period) == ["2008-11", "2012-15", "2016-19"] and list(p.bio_area)[-1] == "unmapped"
     s = shares(p, "bio_area", "origin").set_index(["bio_area", "origin"])
     assert s.at[("oncology", "human_genetics"), "share"] == 0.5
+
+
+def test_origin_counts_take_shares_of_the_settled_pairs_and_pool_the_genetic_origins():
+    pairs = pd.DataFrame({"origin": ["human_genetics", "mouse_genetics", "diseased_tissue", "diseased_tissue",
+                                     "unclear", "disputed", "not_reached", None]})
+    t, n = origin_counts(pairs)
+    assert (n["labelled"], n["settled"], n["unclear"], n["disputed"], n["not_reached"]) == (7, 4, 1, 1, 1)
+    assert n["genetic_share"] == 0.5 and n["share"]["diseased_tissue"] == 0.5
+    assert t.set_index("origin").settled_share.isna().to_dict()["unclear"]

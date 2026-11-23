@@ -34,8 +34,11 @@ Descriptive, not registered (descriptive_contrasts): the O1 contrasts with two o
 stop's own verdict (STRICT) and a stop whose target never worked in this disease (NEVER_WORKED). An origin of an earlier
 drug for another disease (CIRCULAR_ORIGINS) is the target's record the not-causal rule reads; it is reported alone.
 
-Writes report/output/target_origin/: by_origin.csv, tests.csv, origin_by_area.csv, origin_by_period.csv,
-route_by_area.csv, route_by_period.csv and numbers.json.
+What first proposed the target (origin_counts): every labelled pair's origin as stored, counted against the pairs a
+supported label settles (any origin but UNSETTLED), with the genetic origins (GENETIC) together.
+
+Writes report/output/target_origin/: by_origin.csv, tests.csv, origin_counts.csv, origin_by_area.csv,
+origin_by_period.csv, route_by_area.csv, route_by_period.csv and numbers.json.
 """
 from __future__ import annotations
 
@@ -73,6 +76,10 @@ MODES = [f"mode_{m}" for m in ENGAGED_MODES]
 STATUSES = ("pathogen", "no_target", "validated_at_entry", "no_pair", "unlabelled", "mixed")
 # The origins a pair carries when no supported label settles it (they enter the test only in its sensitivities)
 UNSETTLED = ("unclear", "disputed", "not_reached")
+# The two pilot gates' results (pipeline.target_origin gate), kept beside the run's audit
+GATES = {"set_a": "report/audits/target_origin_gate_set_a.json", "set_b": "report/audits/target_origin_gate.json"}
+# Origins that are genetics of any kind: inherited human variants, the tumour's own mutations, and mouse genetics
+GENETIC = ("human_genetics", "tumour_genetics", "mouse_genetics")
 EXPOSED = ("observational_biomarker", "diseased_tissue")
 REFERENCE = ("human_genetics",)
 # Registered contrasts: name -> (exposed origins, reference origins)
@@ -218,6 +225,31 @@ def pair_frame(pairs: pd.DataFrame) -> pd.DataFrame:
                     period=pd.cut(pd.to_datetime(p.first_entry).dt.year, ERA_BINS, labels=ERA_LABELS).astype(str))
 
 
+def origin_counts(pairs: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
+    """Labelled pairs (origin not null) by origin as stored, each with its share of the settled pairs (none for an
+    UNSETTLED origin), and the totals: labelled, settled, each unsettled origin, and the genetic origins' share."""
+    c = pairs.origin.dropna().value_counts()
+    settled = int(c.drop(list(UNSETTLED), errors="ignore").sum())
+    t = c.rename("pairs").rename_axis("origin").reset_index()
+    t = t.assign(settled_share=[None if o in UNSETTLED else n / settled for o, n in zip(t.origin, t.pairs)])
+    genetic = int(c.reindex(list(GENETIC)).fillna(0).sum())
+    return t, {"labelled": int(c.sum()), "settled": settled,
+               **{o: int(c.get(o, 0)) for o in UNSETTLED},
+               "genetic": genetic, "genetic_share": genetic / settled,
+               "share": {o: float(n / settled) for o, n in c.items() if o not in UNSETTLED},
+               "pairs": {o: int(n) for o, n in c.items()}}
+
+
+def agreement() -> dict:
+    """Each pilot gate's agreement (GATES): Cohen's kappa between the origin as labelled and an independent blind
+    reading of the same pairs, and the number of pairs read."""
+    out = {}
+    for name, path in GATES.items():
+        g = json.load(open(os.path.join(frame.REPO, path)))
+        out[name] = {"kappa": g["kappa_raw"], "pairs": g["n"]}
+    return out
+
+
 def shares(p: pd.DataFrame, by: str, of: str) -> pd.DataFrame:
     """Pairs of each value of `of` within each value of `by`, as counts and shares of the `by` group."""
     c = p.groupby([by, of]).size().rename("pairs").reset_index()
@@ -247,6 +279,8 @@ def main() -> None:
     table = by_origin(e)
     table.to_csv(os.path.join(OUT, "by_origin.csv"), index=False)
     p = pair_frame(pairs)
+    counts, origins = origin_counts(pairs)
+    counts.to_csv(os.path.join(OUT, "origin_counts.csv"), index=False)
     for by in ("bio_area", "period"):
         shares(p, by, "origin").to_csv(os.path.join(OUT, f"origin_by_{by.replace('bio_', '')}.csv"), index=False)
         shares(p, by, "discovery_route").to_csv(os.path.join(OUT, f"route_by_{by.replace('bio_', '')}.csv"),
@@ -262,6 +296,7 @@ def main() -> None:
          "infectious_host_target": int((e.bio_area.eq("infectious_disease") & ~e.origin.isin(STATUSES)).sum()),
          "any_date": {"labels_restored": int(year_only.grade.isin(("stated", "pattern")).sum()),
                       "entries_moved": int((e.origin != e_any.origin).sum())},
+         "origins": origins, "agreement": agreement(),
          "pairs": {"labelled": int(len(p)), "validated_at_entry": int(p.origin.eq("validated_at_entry").sum()),
                    "origin": p.origin.value_counts().to_dict(),
                    "discovery_route": p.discovery_route.value_counts().to_dict()},

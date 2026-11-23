@@ -30,6 +30,8 @@ Two outcomes are measured on programs entering a phase in 2008–2019. *Relative
 
 {{ENGAGED_EVIDENCE_TABLE}}
 
+{{SECTION2_TARGET_ORIGIN}}
+
 ### What predicts safety failures
 
 ![Which safety evidence goes with more Phase 1–3 safety stops, with efficacy stops as a control](report/output/figures/safety_risk.png)

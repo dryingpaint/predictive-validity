@@ -28,8 +28,8 @@ def test_an_early_step_reruns_everything_downstream():
                                              "render"]
 
 
-def test_the_target_origin_step_redraws_the_figures_that_read_it():
-    assert names(selected(["target_origin"])) == ["target_origin", "figures"]
+def test_the_target_origin_step_redraws_its_figures_and_rewrites_the_text():
+    assert names(selected(["target_origin"])) == ["target_origin", "figures", "render"]
 
 
 def test_an_unknown_step_is_refused():
