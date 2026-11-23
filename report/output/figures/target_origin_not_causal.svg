@@ -992,31 +992,44 @@ z
     <g id="ytick_3">
      <g id="line2d_15"/>
      <g id="text_10">
-      <!-- Human cell perturbation -->
+      <!-- Primary cells -->
       <g style="fill: #52514e" transform="translate(7.2 143.55218) scale(0.105 -0.105)">
-       <use xlink:href="#DejaVuSans-2b"/>
-       <use xlink:href="#DejaVuSans-58" transform="translate(75.203125 0)"/>
-       <use xlink:href="#DejaVuSans-50" transform="translate(138.578125 0)"/>
-       <use xlink:href="#DejaVuSans-44" transform="translate(235.984375 0)"/>
-       <use xlink:href="#DejaVuSans-51" transform="translate(297.265625 0)"/>
-       <use xlink:href="#DejaVuSans-3" transform="translate(360.640625 0)"/>
-       <use xlink:href="#DejaVuSans-46" transform="translate(392.421875 0)"/>
-       <use xlink:href="#DejaVuSans-48" transform="translate(447.40625 0)"/>
-       <use xlink:href="#DejaVuSans-4f" transform="translate(508.9375 0)"/>
-       <use xlink:href="#DejaVuSans-4f" transform="translate(536.71875 0)"/>
-       <use xlink:href="#DejaVuSans-3" transform="translate(564.5 0)"/>
-       <use xlink:href="#DejaVuSans-53" transform="translate(596.28125 0)"/>
-       <use xlink:href="#DejaVuSans-48" transform="translate(659.765625 0)"/>
-       <use xlink:href="#DejaVuSans-55" transform="translate(721.296875 0)"/>
-       <use xlink:href="#DejaVuSans-57" transform="translate(762.40625 0)"/>
-       <use xlink:href="#DejaVuSans-58" transform="translate(801.609375 0)"/>
-       <use xlink:href="#DejaVuSans-55" transform="translate(864.984375 0)"/>
-       <use xlink:href="#DejaVuSans-45" transform="translate(906.09375 0)"/>
-       <use xlink:href="#DejaVuSans-44" transform="translate(969.578125 0)"/>
-       <use xlink:href="#DejaVuSans-57" transform="translate(1030.859375 0)"/>
-       <use xlink:href="#DejaVuSans-4c" transform="translate(1070.0625 0)"/>
-       <use xlink:href="#DejaVuSans-52" transform="translate(1097.84375 0)"/>
-       <use xlink:href="#DejaVuSans-51" transform="translate(1159.03125 0)"/>
+       <defs>
+        <path id="DejaVuSans-33" d="M 1259 4147 
+L 1259 2394 
+L 2053 2394 
+Q 2494 2394 2734 2622 
+Q 2975 2850 2975 3272 
+Q 2975 3691 2734 3919 
+Q 2494 4147 2053 4147 
+L 1259 4147 
+z
+M 628 4666 
+L 2053 4666 
+Q 2838 4666 3239 4311 
+Q 3641 3956 3641 3272 
+Q 3641 2581 3239 2228 
+Q 2838 1875 2053 1875 
+L 1259 1875 
+L 1259 0 
+L 628 0 
+L 628 4666 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#DejaVuSans-33"/>
+       <use xlink:href="#DejaVuSans-55" transform="translate(58.546875 0)"/>
+       <use xlink:href="#DejaVuSans-4c" transform="translate(99.65625 0)"/>
+       <use xlink:href="#DejaVuSans-50" transform="translate(127.4375 0)"/>
+       <use xlink:href="#DejaVuSans-44" transform="translate(224.84375 0)"/>
+       <use xlink:href="#DejaVuSans-55" transform="translate(286.125 0)"/>
+       <use xlink:href="#DejaVuSans-5c" transform="translate(327.234375 0)"/>
+       <use xlink:href="#DejaVuSans-3" transform="translate(386.421875 0)"/>
+       <use xlink:href="#DejaVuSans-46" transform="translate(418.203125 0)"/>
+       <use xlink:href="#DejaVuSans-48" transform="translate(473.1875 0)"/>
+       <use xlink:href="#DejaVuSans-4f" transform="translate(534.71875 0)"/>
+       <use xlink:href="#DejaVuSans-4f" transform="translate(562.5 0)"/>
+       <use xlink:href="#DejaVuSans-56" transform="translate(590.28125 0)"/>
       </g>
      </g>
     </g>
@@ -1422,27 +1435,6 @@ z
       <!-- Phenotypic screen: the drug came before any target hypothesis -->
       <g style="fill: #52514e" transform="translate(7.2 475.66298) scale(0.105 -0.105)">
        <defs>
-        <path id="DejaVuSans-33" d="M 1259 4147 
-L 1259 2394 
-L 2053 2394 
-Q 2494 2394 2734 2622 
-Q 2975 2850 2975 3272 
-Q 2975 3691 2734 3919 
-Q 2494 4147 2053 4147 
-L 1259 4147 
-z
-M 628 4666 
-L 2053 4666 
-Q 2838 4666 3239 4311 
-Q 3641 3956 3641 3272 
-Q 3641 2581 3239 2228 
-Q 2838 1875 2053 1875 
-L 1259 1875 
-L 1259 0 
-L 628 0 
-L 628 4666 
-z
-" transform="scale(0.015625)"/>
         <path id="DejaVuSans-1d" d="M 750 794 
 L 1409 794 
 L 1409 0 
