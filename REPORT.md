@@ -624,7 +624,7 @@ Genetic support for the disease did not measurably change the chance of missing 
 * **Human genetics.**
   * **Human genetics:** germline evidence for the disease (rare-variant or Mendelian, GWAS, or both), and what losing the gene does to disease risk by the labelled mechanism.
   * **Tumour genetics** (oncology): the gene recurrently mutated in the cancer, by whether the mutations activate or inactivate it.
-  * **Curated pathway:** a curated disease mechanism (Reactome) shows a disease mutation disrupting the target.
+  * **Curated pathway:** a curated human disease mechanism (Reactome's human pathways) shows a mutation that causes the disease in people disrupting the target.
 * **In vitro and ex vivo:** human cells and tissue studied outside the body, whether measured as taken from patients or changed by experiment.
   * **Diseased tissue:** the target's RNA level changed by at least 2.1-fold in diseased tissue against normal tissue, higher in at least one comparison or lower only. Protein in patients' tissue is on the list but not yet built.
   * Changing the target in primary human cells or tissue is on the list but not yet built.

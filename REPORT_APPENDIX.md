@@ -71,7 +71,7 @@ Each program is scored for the evidence its targets had for its disease as of th
 | **Human genetics** |  |  |
 | Human genetics | Inherited variants link the target to the disease (GWAS, gene burden, Mendelian): the program's disease, a subtype of it or a disease at least 0.8 similar on MONDO (Lin) | Open Targets 26.09 (GWAS credible sets, gene burden tests, ClinVar, PanelApp, Orphanet, Gene2Phenotype, ClinGen, UniProt); each item dated by when it became known |
 | Tumour genetics (oncology) | The gene is recurrently mutated in this cancer (oncology only) | COSMIC Cancer Gene Census, IntOGen and ClinVar somatic, through Open Targets |
-| Curated pathway | A curated pathway shows a disease mutation disrupting the target | Reactome, through Open Targets |
+| Curated pathway | A curated human pathway shows a mutation that causes the disease in people disrupting the target | Reactome's human pathways, through Open Targets |
 | **In vitro and ex vivo** |  |  |
 | Cell lines | Changing the target in an established cell line changes a disease feature. Today only knockout screens reach it: in screens published before entry, cancer cell lines of the program's tumour type need the gene (oncology entries from 2015); the literature is to come (#154) | DepMap and earlier RNAi and CRISPR dependency screens, each line dated by its first public release; Project Score through Open Targets, 2019 at the earliest |
 | Diseased tissue | The gene's RNA or protein level differs in diseased tissue (protein is to come, #154) | Expression Atlas, through Open Targets (RNA, at least 2.1-fold) |
@@ -217,7 +217,7 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Both | 49 / 3,582 | 21 | Too rare to estimate | – | – | – |
 | · Mutated, effect unknown | 222 / 3,582 | 47 | 2.09 (0.43–3.80) | 1.86 (1.27–2.75) | 1.83 (1.26–2.66) | 0.76 (0.45–1.26) |
 | · The mutation's effect matches the drug's action (derived) | 746 / 3,582 | 110 | 1.76 (0.98–3.16) | 1.46 (1.02–2.09) | 1.37 (0.94–1.98) | 0.88 (0.63–1.22) |
-| Curated pathway: a disease mutation disrupts the target's pathway | 195 / 7,435 | 57 | 1.89 (0.93–2.80) | 1.33 (0.92–1.92) | 1.25 (0.87–1.81) | 0.71 (0.35–1.44) |
+| Curated pathway: a mutation that causes the disease in people disrupts the target's pathway | 195 / 7,435 | 57 | 1.89 (0.93–2.80) | 1.33 (0.92–1.92) | 1.25 (0.87–1.81) | 0.71 (0.35–1.44) |
 | **In vitro and ex vivo** |  |  |  |  |  |  |
 | Cell lines: changing the target in an established cell line changes a disease feature (oncology, from 2015) | 237 / 1,782 | 62 | 0.55 (0.16–1.38) | 0.56 (0.25–1.25) | 0.57 (0.25–1.28) | 0.55 (0.27–1.13) |
 | · A genome-wide knockout screen ranks the target for this cancer, on today's data (hindsight) | 373 / 7,435 | 100 | 1.96 (1.16–2.85) | 1.70 (1.18–2.43) | 1.60 (1.11–2.30) | 0.98 (0.70–1.36) |
