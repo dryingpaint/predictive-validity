@@ -16,8 +16,7 @@
 
 names, search, firecrawl, screen, check and prefilter-check take --pairs pilot (the default) or cohort, the full
 descriptive run over every cohort pair; search --shard i/n splits the pairs across parallel processes; screen
---follow --since TIMESTAMP screens pairs as their searches finish and stops before its projected spend passes
-BUDGET_USD.
+--follow screens pairs as their searches finish, and --shard i/n splits them across parallel screens.
 
 The unit is a target-disease pair (preclin.target_disease) with a US-sited phase entry of 2008-2019 in the stored
 evidence dataset (preclin.evidence_entry). A pair is searched up to its cutoff, the year before its latest such
@@ -60,16 +59,18 @@ import json
 import os
 import re
 import time
+import zlib
 import xml.etree.ElementTree as ET
 
 import numpy as np
 import pandas as pd
+import psycopg2
 from psycopg2.extras import Json, execute_values
 
 from pipeline import llm, throttle
 from pipeline.outcomes import eutils
 from pipeline.attribution import NOT_REVIEWS
-from pipeline.literature import (FIRECRAWL_BACKOFF_MAX, FIRECRAWL_PER_SECOND, FIRECRAWL_RESULTS, FIRECRAWL_WORKERS,
+from pipeline.literature import (FIRECRAWL_BACKOFF_MAX, FIRECRAWL_PER_SECOND, FIRECRAWL_RESULTS,
                                  GATES, FirecrawlError, SourceDown, clean, epmc_records, fetch_papers, firecrawl_cli,
                                  firecrawl_credits, firecrawl_ids, kappa, names_clause, pubmed_ids, resolve_external,
                                  stored_papers, store_records)
@@ -111,6 +112,7 @@ MAX_GENE_NAMES = 16
 MAX_DISEASE_NAMES = 20
 MAX_SUBTYPE_NAMES = 15  # labels of the disease's direct MONDO subtypes searched as disease names (v2)
 MAX_MODEL_TERMS = 10
+FIRECRAWL_WORKERS = 16  # concurrent research-index calls: calls take seconds, so the shared rate throttle, not this, sets the pace
 PREFILTER_ABOVE = 3000  # records per pair above which a cheap model reads each record first (as #154 registered; v1 used 500)
 PREFILTER_CHECK = 300  # seeded prefiltered-out records given the full screen, to measure the prefilter's misses
 CHECK_PER_KIND = 50  # half screened in, half screened out, per kind
@@ -329,6 +331,21 @@ def record_texts(record_ids: list[str]) -> dict[str, tuple]:
     return out
 
 
+def fetch_texts(pmids: list[str]) -> None:
+    """Fetch and store the PubMed records not yet stored, in PMID order and retried on a deadlock: parallel searches
+    insert overlapping PMIDs into public.publications, and a common order keeps their row locks from crossing."""
+    for start in range(0, len(pmids), 1000):
+        part = sorted(pmids[start:start + 1000], key=int)
+        for attempt in range(5):
+            try:
+                fetch_papers(part, store=True)
+                break
+            except psycopg2.errors.DeadlockDetected:
+                time.sleep(5 * (attempt + 1))
+        else:
+            raise RuntimeError(f"deadlock storing {len(part)} PubMed records")
+
+
 def origin(args) -> None:
     """Read the origin search's records (#146) as hits of the pairs (--pairs): for each pair it searched, its PubMed
     and Europe PMC records dated by this run's cutoff become hits linked to preclin.target_disease_source, with one
@@ -430,8 +447,7 @@ def search(args) -> None:
             continue
         have = set(record_texts(pmids))
         missing = [x for x in pmids if x not in have]
-        for start in range(0, len(missing), 1000):
-            fetch_papers(missing[start:start + 1000], store=True)
+        fetch_texts(missing)
         with llm.connect() as conn, conn.cursor() as cur:
             store_records(cur, records)
             store_search(cur, r.ensembl_id, r.mondo_id, y, "pubmed", "", n, pq, pn, pmids)
@@ -508,10 +524,6 @@ def firecrawl(args) -> None:
         got = firecrawl_ids(results, y)
         external = resolve_external([g for g in got if not g[0].isdigit()])
         ids = sorted({g if g.isdigit() else external[g] for g, _ in got if g.isdigit() or g in external})
-        pmids = [x for x in ids if x.isdigit()]
-        have = set(record_texts(pmids))
-        if [x for x in pmids if x not in have]:
-            fetch_papers([x for x in pmids if x not in have], store=True)
         with llm.connect() as conn, conn.cursor() as cur:
             store_search(cur, r.ensembl_id, r.mondo_id, y, source, k, n, q, len(results), ids)
             conn.commit()
@@ -637,8 +649,29 @@ def decide(task: llm.Task, items: dict[str, dict]) -> dict[str, tuple[int, dict]
 
 
 CHUNK_PAIRS = 250  # pairs prefiltered and screened together; each chunk is stored before the next
-BUDGET_USD = 2000.0  # the full run stops before its projected spend passes this
 POLL_SECONDS = 300  # wait for searches to make more pairs ready
+
+
+def screened(p: pd.DataFrame) -> set[tuple[str, str]]:
+    """The pairs every retrieved record of which has a screen row or a prefilter-out row (or no stored text)."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("CREATE TEMP TABLE want (ensembl_id text, mondo_id text, cutoff_year int) ON COMMIT DROP")
+        execute_values(cur, "INSERT INTO want VALUES %s", [(r.ensembl_id, r.mondo_id, int(r.cutoff_year)) for r in p.itertuples()])
+        cur.execute("""SELECT w.ensembl_id, w.mondo_id FROM want w
+                       WHERE EXISTS (SELECT 1 FROM preclin.target_literature_screen s
+                                     WHERE (s.ensembl_id, s.mondo_id) = (w.ensembl_id, w.mondo_id))
+                         AND NOT EXISTS (
+                           SELECT 1 FROM preclin.target_literature_hit h
+                           WHERE (h.ensembl_id, h.mondo_id, h.cutoff_year) = (w.ensembl_id, w.mondo_id, w.cutoff_year)
+                             AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_screen s
+                                             WHERE (s.ensembl_id, s.mondo_id, s.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))
+                             AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_prefilter f
+                                             WHERE (f.ensembl_id, f.mondo_id, f.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))
+                             AND (EXISTS (SELECT 1 FROM public.publications x WHERE x.pmid = h.record_id)
+                                  OR EXISTS (SELECT 1 FROM preclin.literature_record x WHERE x.record_id = h.record_id)
+                                  OR EXISTS (SELECT 1 FROM preclin.target_disease_source x
+                                             WHERE x.record_id IN (h.record_id, 'PMID:' || h.record_id))))""")
+        return set(cur.fetchall())
 
 
 def ready(p: pd.DataFrame) -> pd.DataFrame:
@@ -658,6 +691,9 @@ def screen_chunk(p: pd.DataFrame) -> None:
     store both, replacing the pairs' earlier rows: a pair's prefilter and screen rows are exactly its current
     decisions on the records its searches now return."""
     recs = pair_records(p)
+    ids = sorted(set(recs.record_id))
+    have = set(record_texts(ids))
+    fetch_texts([x for x in ids if x.isdigit() and x not in have])  # Firecrawl's PubMed hits, fetched in bulk here
     items = screen_payloads(p, recs)
     large = large_pairs(recs)
     pre = {k: v for k, v in items.items() if tuple(k.split("|")[:2]) in large}
@@ -677,11 +713,15 @@ def large_pairs(recs: pd.DataFrame) -> set[tuple[str, str]]:
 def screen(args) -> None:
     """Screen the pairs (--pairs) in chunks of CHUNK_PAIRS. With --follow, keep taking pairs as their searches
     finish until every pair is screened. A chunk whose decisions are all stored costs nothing to redo: the runner
-    reuses them. Before each chunk the run's spend since --since is projected to every pair; past BUDGET_USD it
-    stops."""
+    reuses them. With --since, each chunk logs the spend since then and its projection to every pair. --shard i/n
+    takes the pairs whose key hashes to i of n, so parallel screens never share a pair."""
     p = pairs_of(args.pairs)
+    if args.shard:
+        i, n = map(int, args.shard.split("/"))
+        p = p[[zlib.crc32(pair_key(e, m).encode()) % n == i - 1 for e, m in zip(p.ensembl_id, p.mondo_id)]]
     reused = set(zip(*[pilot_pairs()[c] for c in ("ensembl_id", "mondo_id")]))  # screened by the pilot already
-    done: set[tuple[str, str]] = set()
+    done: set[tuple[str, str]] = screened(p) if args.skip_done else set()
+    print(f"screen: pairs={len(p)} already screened={len(done)}", flush=True)
     while True:
         avail = ready(p)
         avail = avail[[(e, m) not in done for e, m in zip(avail.ensembl_id, avail.mondo_id)]]
@@ -697,8 +737,6 @@ def screen(args) -> None:
                 projected = spent / new_done * (len(p) - len(reused)) if new_done else 0.0
                 print(f"spend since {args.since}: ${spent:,.0f}; pairs screened {len(done)}/{len(p)}; projected "
                       f"${projected:,.0f}", flush=True)
-                if spent > BUDGET_USD or (new_done >= 500 and projected > BUDGET_USD):
-                    raise SystemExit(f"STOPPED: projected spend ${projected:,.0f} would pass ${BUDGET_USD:,.0f}")
             chunk = avail.iloc[start:start + CHUNK_PAIRS]
             screen_chunk(chunk)
             done |= set(zip(chunk.ensembl_id, chunk.mondo_id))
@@ -1195,8 +1233,9 @@ def main() -> None:
             c.add_argument("--mode", choices=["search", "related"], required=True)
         if name == "screen":
             c.add_argument("--follow", action="store_true", help="keep screening pairs as their searches finish")
-        if name == "search":
-            c.add_argument("--shard", help="i/n: search every n-th pair from the i-th, to run n searches in parallel")
+            c.add_argument("--skip-done", action="store_true", help="skip pairs whose every record is already decided")
+        if name in ("search", "screen"):
+            c.add_argument("--shard", help="i/n: this process's share of the pairs, to run n in parallel")
         if name in ("screen", "cost"):
             c.add_argument("--since", help="count spend from this timestamp (the full run's start)")
     r = sub.add_parser("reference")
