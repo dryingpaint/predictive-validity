@@ -6,9 +6,11 @@ evidence kinds (PR #159, 2026-11-20).
     python -m report.evidence_lines store --rollback   # run the store's inserts and roll them back
     python -m report.evidence_lines check              # exit 1, naming what changed, when the stored dataset is stale
 
-One row per US-developed phase entry in 2008-2019 (report.section1.phase_rows with a US-sited industry trial in the
-phase, skipped phases excluded), keyed by (moiety_id, mondo_id, phase) and carrying the program_id of the current
-program build for joins within one run.
+One row per phase entry in 2008-2019 (report.section1.phase_rows, skipped phases excluded), keyed by (moiety_id,
+mondo_id, phase) and carrying the program_id of the current program build for joins within one run. Every part of the
+report reads its evidence lines from this one dataset, filtered to its group of entries: the evidence chart and the
+stored copy take the US-developed entries (a US-sited industry trial in the phase, us()), Sections 2 and 3 every entry
+with a target and a disease.
 
 The structure has three levels. CATEGORIES: broad categories by the experimental system that produced the evidence
 (human genetics, in vitro, animals, human, the drug, target safety risk).
@@ -148,6 +150,10 @@ FACTS = {f.key: f for f in [
          (("rare_only", "Rare variants only"), ("common_only", "Common variants only (genome-wide association studies)"),
           ("both", "Both rare and common variants"), ("none", "None")),
          (("rare_only", "tier_rare_only"), ("common_only", "tier_common_only"), ("both", "allelic_series"))),
+    Fact("genetic_strength", "How strong the strongest inherited-variant evidence is", "target",
+         (("strong", "Strong: a gene burden test, GWAS locus-to-gene at least 0.8, or a curated or multi-submitter "
+                     "Mendelian record"), ("supported", "Supported, none of it strong"), ("none", "None")),
+         (("strong", "genetics_strong"),), counts=False),
     Fact("loss_effect", "What losing the gene does to disease risk, by the labelled mechanism", "target",
          (("raises_risk", "Raises risk"), ("lowers_risk", "Lowers risk"), ("mixed", "Both, in different variants"),
           ("undirected", "Labelled, direction not given"), ("unlabelled", "No mechanism labelled"),
@@ -237,7 +243,8 @@ KINDS = {k.key: k for k in [
          "subtype of it or a disease at least 0.8 similar on MONDO (Lin)",
          "Open Targets 26.09 (GWAS credible sets, gene burden tests, ClinVar, PanelApp, Orphanet, Gene2Phenotype, "
          "ClinGen, UniProt); each item dated by when it became known", "g3",
-         (("variants", ("rare_only", "common_only", "both")), ("loss_effect", ())), chart="variants",
+         (("variants", ("rare_only", "common_only", "both")), ("genetic_strength", ()), ("loss_effect", ())),
+         chart="variants",
          derived=(Line("Rare inherited variants, including single-gene disease", "rare_variant", "target"),
                   Line("Common variants (genome-wide association studies)", "gwas", "target"),
                   Line("Genetics agrees with the drug's direction", "genetics_concordant", "target"))),
@@ -417,6 +424,8 @@ def facts(d: pd.DataFrame) -> pd.DataFrame:
     b1, b1_close, precedent = on("b1"), on("b1_close"), on("precedent")
     return pd.DataFrame({
         "variants": pick("target", [(rare & common, "both"), (rare, "rare_only"), (common, "common_only")]),
+        "genetic_strength": pick("target", [(on("burden") | on("gwas_strong") | on("mendelian_strong"), "strong"),
+                                            (rare | common, "supported")]),
         "loss_effect": d.loss_effect.where(APPLIES["target"](d)),
         "mutation": pick("ONC", [(on("somatic") & gof & lof, "both"), (on("somatic") & gof, "activating"),
                                  (on("somatic") & lof, "inactivating"), (on("somatic"), "unknown")]),
@@ -645,12 +654,13 @@ def earlier_safety_stop(by_gene: dict, moiety_id, genes, entry: pd.Timestamp) ->
 
 @frame.held_once
 def build(window: tuple[date, date] = SECTION1) -> pd.DataFrame:
-    """The dataset of the phase entries in `window`: SECTION1 for the report and the stored copy."""
+    """The dataset of every phase entry in `window` (SECTION1 for the report), developed in the US or not (us_site):
+    each part of the report takes its group of entries from it by a filter (us(), has_target_disease), and the stored
+    copy holds the US-developed entries."""
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
     ev = Evidence(progs)
     rows = entries(progs, trials, snap, window)
-    rows = rows[rows.us_site].copy()
     rows["mondo_id"] = rows.program_id.map(progs.set_index("program_id").mondo_id)
     feats = cohorts(rows.drop(columns="mondo_id"), ev).drop(columns=list(rows.columns.drop(["program_id", "phase"])),
                                                               errors="ignore")
@@ -707,11 +717,28 @@ def build(window: tuple[date, date] = SECTION1) -> pd.DataFrame:
         d, trials, frame.query("SELECT nct_id, selected FROM preclin.trial_biomarker_selection"))
     d["entry_date"] = pd.to_datetime(d.entry).dt.date
     d["era"] = pd.cut(d.entry_year, ERA_BINS, labels=ERA_LABELS).astype(str)
-    keep = ["moiety_id", "mondo_id", "phase", "program_id", "entry_date", "entry_year", "era", "regime", "bio_area",
-            "modality", "novel", "precedent", "target", "sign", "drug_action", "event", "s4", "has_target_disease",
+    keep = ["moiety_id", "mondo_id", "phase", "program_id", "us_site", "entry", "entry_date", "entry_year", "era",
+            "regime", "bio_area", "modality", "novel", "precedent", "target", "sign", "drug_action", "event", "years", "s4",
+            "has_target_disease", "approval_date",
             "assay_best", "assay_margin", *(FACT_PREFIX + k for k in FACTS),
             *(ln.column for _, _, ln in report_lines()), *(ln.column for ln in SAFETY)]
     return d[list(dict.fromkeys(keep))].sort_values(["moiety_id", "mondo_id", "phase"]).reset_index(drop=True)
+
+
+def loa_rows(d: pd.DataFrame, rows: pd.DataFrame) -> pd.DataFrame:
+    """The entries' phase rows (report.section1.phase_rows) for likelihood of approval: each entry, plus the
+    phases it skipped on the way to its next phase or approval, which carry the skipping entry's features."""
+    cols = [c for c in d.columns if c not in rows.columns or c in ("program_id", "phase")]
+    own = rows[~rows.credited].merge(d[cols], on=["program_id", "phase"])
+    first = d.sort_values("phase").drop_duplicates(["program_id", "entry_date"])
+    skipped = rows[rows.credited].assign(entry_date=pd.to_datetime(rows.entry).dt.date) \
+        .merge(first[[c for c in cols if c != "phase"]], on=["program_id", "entry_date"])
+    return pd.concat([own, skipped], ignore_index=True)
+
+
+def us(d: pd.DataFrame) -> pd.DataFrame:
+    """The US-developed entries of a build: the evidence chart's cohort and the stored dataset."""
+    return d[d.us_site].reset_index(drop=True)
 
 
 def biomarker_selected(rows: pd.DataFrame, trials: pd.DataFrame, sel: pd.DataFrame) -> pd.Series:
@@ -859,7 +886,7 @@ def main() -> None:
               f"stored evidence dataset is stale: {', '.join(changed)} changed; run python -m report.evidence_lines store")
         sys.exit(1 if changed else 0)
     os.makedirs(OUT, exist_ok=True)
-    d = build()
+    d = us(build())
     d.to_csv(os.path.join(OUT, "entries.csv"), index=False)
     cov = coverage(d)
     cov.to_csv(os.path.join(OUT, "coverage.csv"), index=False)

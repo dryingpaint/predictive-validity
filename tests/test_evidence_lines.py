@@ -121,7 +121,7 @@ def test_an_entry_is_biomarker_selected_by_the_trials_that_opened_its_phase():
 
 from report.evidence_lines import FACTS, FACT_PREFIX, KINDS, chart_rows, derive, facts, long_form, registry  # noqa: E402
 
-RAW = ["burden", "mendelian", "gwas", "somatic", "somatic_gof", "somatic_lof", "reactome", "mgi", "impc", "mgi_strong",
+RAW = ["burden", "mendelian", "gwas", "gwas_strong", "mendelian_strong", "somatic", "somatic_gof", "somatic_lof", "reactome", "mgi", "impc", "mgi_strong",
        "impc_strong", "crispr", "cell_dependency", "expression", "expression_up", "b1", "b1_close", "precedent",
        "earlier_failure", "assay_best", "assay_margin", "drug_like", "brain_penetrant", "lit_animal_disease",
        "lit_animal_healthy", "lit_human_engagement", "constrained", "ko_lethal", "pan_essential", "ko_vital_organ",
@@ -163,6 +163,13 @@ def test_inherited_variants_are_rare_only_common_only_both_or_none():
     assert out.g3.tolist() == [1.0, 1.0, 1.0, 0.0]
     assert out[["tier_rare_only", "tier_common_only", "allelic_series"]].sum(axis=1).tolist() == [1, 1, 1, 0]
     assert out.rare_variant.tolist() == [1.0, 0.0, 1.0, 0.0] and out.gwas.tolist() == [0.0, 1.0, 1.0, 0.0]
+
+
+def test_genetic_support_is_strong_with_a_burden_test_or_a_strong_tier_else_supported_or_none():
+    d = raw({"burden": 1.0}, {"gwas": 1.0, "gwas_strong": 1.0}, {"mendelian": 1.0, "mendelian_strong": 1.0},
+            {"gwas": 1.0}, {})
+    assert facts(d).genetic_strength.tolist() == ["strong", "strong", "strong", "supported", "none"]
+    assert lines_of(d).g3.tolist() == [1.0, 1.0, 1.0, 1.0, 0.0]  # strength refines the kind, it does not make it up
 
 
 def test_approvals_split_at_lin_08_into_validated_and_another_disease():

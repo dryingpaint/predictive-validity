@@ -1,0 +1,204 @@
+=== label (try 1) 2026-11-21 14:11:39 ===
+[target_origin] run=411ff9c3-788c-406e-b435-ecfec55dbc32 items=5174 reused=5101 new=73
+[target_origin] 73/73 validated=8 invalid=65
+run 411ff9c3-788c-406e-b435-ecfec55dbc32: 5109 decided, 65 undecided
+[target_origin] run=1650c370-2700-4cad-a7c7-c939c6a9dae5 items=65 reused=0 new=65
+[target_origin] 65/65 validated=2 invalid=63
+run 1650c370-2700-4cad-a7c7-c939c6a9dae5: 2 decided, 63 undecided
+[target_origin] run=379bfc07-3701-4d7b-99f1-940507e6ab60 items=63 reused=0 new=63
+[target_origin] 63/63 validated=2 invalid=61
+run 379bfc07-3701-4d7b-99f1-940507e6ab60: 2 decided, 61 undecided
+pairs=5174 decided=5113 undecided=61 runs=['411ff9c3-788c-406e-b435-ecfec55dbc32', '1650c370-2700-4cad-a7c7-c939c6a9dae5', '379bfc07-3701-4d7b-99f1-940507e6ab60']
+the rewritten rows are not_checked: run `check` on the same pairs before `gate`, `summary` or any test
+=== check (try 1) 2026-11-21 14:18:12 ===
+[target_origin_check] run=25ffe475-155f-4fa1-9ca9-365ab37e66c5 items=4431 reused=4419 new=12
+[target_origin_check] 12/12 validated=12 invalid=0
+[target_origin_check] run=8bf93f8c-e291-4599-b6fc-c55586e71f38 items=4431 reused=4402 new=29
+[target_origin_check] 29/29 validated=13 invalid=16
+[target_origin_check] run=dacf7eab-2e26-4c39-b25f-eb4d809fdc5b items=16 reused=0 new=16
+[target_origin_check] 16/16 validated=5 invalid=11
+[target_origin_check] run=a2710dc8-4c57-42ab-bf1a-32fd24bffe3f items=11 reused=0 new=11
+[target_origin_check] 11/11 validated=1 invalid=10
+graded labels=4431 outcomes={'supported': 3649, 'unsupported': 392, 'disputed': 385, 'unverified': 5} approval facts={'unrelated': 408, 'related': 301, 'none': 18} human verdicts applied=0 disputes on the sheet=461 (by field {'category': 289, 'year': 93, 'quote': 79}) runs={'v3': ['25ffe475-155f-4fa1-9ca9-365ab37e66c5'], 'v4': ['8bf93f8c-e291-4599-b6fc-c55586e71f38', 'dacf7eab-2e26-4c39-b25f-eb4d809fdc5b', 'a2710dc8-4c57-42ab-bf1a-32fd24bffe3f']}
+=== summary (try 1) 2026-11-21 14:36:37 ===
+5174 pairs in window: 3016 with records (median 1, max 31193); 5113 labelled
+origin:
+origin
+unclear                       1464
+diseased_tissue                870
+animal_model_pharmacology      831
+human_cell_perturbation        438
+earlier_drug_other_disease     388
+clinical_observation           322
+observational_biomarker        252
+human_genetics                 175
+mouse_genetics                 174
+tumour_genetics                120
+phenotypic_screen               69
+curated_pathway                  6
+cell_screen                      4
+grade:
+grade
+pattern    1842
+stated     1807
+none       1464
+check_outcome:
+check_outcome
+supported      3649
+not_checked     682
+unsupported     392
+disputed        385
+unverified        5
+discovery_route:
+discovery_route
+unclear                1583
+derived_from_active    1385
+repurposed_drug        1159
+target_screen           670
+de_novo_design          230
+phenotypic_screen        86
+tokens per decision:
+                    task     n  input_tokens  output_tokens
+           target_origin 20653        4972.0         1903.0
+target_origin_blind_read   739        4236.0         1053.0
+     target_origin_check 27447         959.0          424.0
+=== done 2026-11-21 14:37:00 ===
+=== check summary (try 1) 2026-11-21 14:40:43 ===
+usage: target_disease.py [-h]
+                         {build,provisional,search,label,check,blind,sample,package,gate,summary} ...
+target_disease.py: error: argument cmd: invalid choice: 'check summary' (choose from build, provisional, search, label, check, blind, sample, package, gate, summary)
+check summary failed; retry in 120s
+=== check summary (try 2) 2026-11-21 14:42:47 ===
+usage: target_disease.py [-h]
+                         {build,provisional,search,label,check,blind,sample,package,gate,summary} ...
+target_disease.py: error: argument cmd: invalid choice: 'check summary' (choose from build, provisional, search, label, check, blind, sample, package, gate, summary)
+check summary failed; retry in 120s
+=== check summary (try 3) 2026-11-21 14:44:53 ===
+usage: target_disease.py [-h]
+                         {build,provisional,search,label,check,blind,sample,package,gate,summary} ...
+target_disease.py: error: argument cmd: invalid choice: 'check summary' (choose from build, provisional, search, label, check, blind, sample, package, gate, summary)
+check summary failed; retry in 120s
+=== check summary (try 4) 2026-11-21 14:46:58 ===
+usage: target_disease.py [-h]
+                         {build,provisional,search,label,check,blind,sample,package,gate,summary} ...
+target_disease.py: error: argument cmd: invalid choice: 'check summary' (choose from build, provisional, search, label, check, blind, sample, package, gate, summary)
+check summary failed; retry in 120s
+=== check summary (try 5) 2026-11-21 14:49:03 ===
+usage: target_disease.py [-h]
+                         {build,provisional,search,label,check,blind,sample,package,gate,summary} ...
+target_disease.py: error: argument cmd: invalid choice: 'check summary' (choose from build, provisional, search, label, check, blind, sample, package, gate, summary)
+check summary failed; retry in 120s
+=== check summary (try 6) 2026-11-21 14:51:08 ===
+usage: target_disease.py [-h]
+                         {build,provisional,search,label,check,blind,sample,package,gate,summary} ...
+target_disease.py: error: argument cmd: invalid choice: 'check summary' (choose from build, provisional, search, label, check, blind, sample, package, gate, summary)
+=== check summary gave up after 6 tries 2026-11-21 14:51:13 ===
+=== check (try 1) 2026-11-21 14:52:43 ===
+[target_origin_check] run=bd91bc1c-ffdb-4c81-8b1d-ba6e289e79d8 items=3649 reused=3649 new=0
+[target_origin_check] run=f68db38f-0a78-45ae-8fde-673ec5fad67b items=3649 reused=3649 new=0
+graded labels=3649 outcomes={'supported': 3649} approval facts={'unrelated': 388} human verdicts applied=0 disputes on the sheet=0 (by field {}) runs={'v3': ['bd91bc1c-ffdb-4c81-8b1d-ba6e289e79d8'], 'v4': ['f68db38f-0a78-45ae-8fde-673ec5fad67b']}
+=== summary (try 1) 2026-11-21 15:06:37 ===
+5174 pairs in window: 3016 with records (median 1, max 31193); 5113 labelled
+origin:
+origin
+unclear                       1464
+diseased_tissue                870
+animal_model_pharmacology      831
+human_cell_perturbation        438
+earlier_drug_other_disease     388
+clinical_observation           322
+observational_biomarker        252
+human_genetics                 175
+mouse_genetics                 174
+tumour_genetics                120
+phenotypic_screen               69
+curated_pathway                  6
+cell_screen                      4
+grade:
+grade
+pattern    1842
+stated     1807
+none       1464
+check_outcome:
+check_outcome
+supported      3649
+not_checked     682
+unsupported     392
+disputed        385
+unverified        5
+discovery_route:
+discovery_route
+unclear                1583
+derived_from_active    1385
+repurposed_drug        1159
+target_screen           670
+de_novo_design          230
+phenotypic_screen        86
+tokens per decision:
+                    task     n  input_tokens  output_tokens
+           target_origin 20653        4972.0         1903.0
+target_origin_blind_read   739        4236.0         1053.0
+     target_origin_check 34745         968.0          423.0
+=== done 2026-11-21 15:06:56 ===
+=== check (try 1) 2026-11-21 15:49:42 ===
+[target_origin_check] run=4aa855ab-8d0d-43ee-9e06-dd158e9ae87c items=4431 reused=4431 new=0
+[target_origin_check] run=cff357ce-abe9-4ad3-84f9-a2681c72e798 items=4431 reused=4421 new=10
+[target_origin_check] 10/10 validated=3 invalid=7
+[target_origin_check] run=f9b9cff9-12ea-45f3-a4f5-30568bdcaec4 items=7 reused=0 new=7
+[target_origin_check] 7/7 validated=2 invalid=5
+[target_origin_check] run=b77aa1e3-6fd9-44e5-b117-805c5e0bd1d2 items=5 reused=0 new=5
+[target_origin_check] 5/5 validated=0 invalid=5
+graded labels=4431 outcomes={'supported': 3654, 'unsupported': 392, 'disputed': 380, 'unverified': 5} approval facts={'unrelated': 408, 'related': 301, 'none': 18} human verdicts applied=0 disputes on the sheet=426 (by field {'category': 277, 'year': 86, 'quote': 63}) runs={'v3': ['4aa855ab-8d0d-43ee-9e06-dd158e9ae87c'], 'v4': ['cff357ce-abe9-4ad3-84f9-a2681c72e798', 'f9b9cff9-12ea-45f3-a4f5-30568bdcaec4', 'b77aa1e3-6fd9-44e5-b117-805c5e0bd1d2']}
+=== summary (try 1) 2026-11-21 16:08:10 ===
+5174 pairs in window: 3016 with records (median 1, max 31193); 5113 labelled
+origin:
+origin
+unclear                       1459
+diseased_tissue                870
+animal_model_pharmacology      833
+human_cell_perturbation        439
+earlier_drug_other_disease     388
+clinical_observation           322
+observational_biomarker        252
+mouse_genetics                 176
+human_genetics                 175
+tumour_genetics                120
+phenotypic_screen               69
+curated_pathway                  6
+cell_screen                      4
+grade:
+grade
+pattern    1847
+stated     1807
+none       1459
+check_outcome:
+check_outcome
+supported      3654
+not_checked     682
+unsupported     392
+disputed        380
+unverified        5
+discovery_route:
+discovery_route
+unclear                1583
+derived_from_active    1385
+repurposed_drug        1159
+target_screen           670
+de_novo_design          230
+phenotypic_screen        86
+tokens per decision:
+                    task     n  input_tokens  output_tokens
+           target_origin 20653        4972.0         1903.0
+target_origin_blind_read   739        4236.0         1053.0
+     target_origin_check 43602         967.0          429.0
+=== done 2026-11-21 16:08:34 ===
+=== check (try 1) 2026-11-21 19:22:42 ===
+[target_origin_check] run=df3b1022-d43a-4f1d-8436-1d229dfe5110 items=4431 reused=4431 new=0
+[target_origin_check] run=a757883d-b9f7-47cc-884f-212927c2b827 items=4431 reused=4426 new=5
+[target_origin_check] 5/5 validated=0 invalid=5
+[target_origin_check] run=927eaf8f-9741-450a-80f7-67c9be3a1232 items=5 reused=0 new=5
+[target_origin_check] 5/5 validated=0 invalid=5
+[target_origin_check] run=262058ac-d13b-4547-966f-f0f8923d6a79 items=5 reused=0 new=5
+[target_origin_check] 5/5 validated=0 invalid=5
+graded labels=4431 outcomes={'supported': 3687, 'disputed': 394, 'unsupported': 344, 'unverified': 6} approval facts={'unrelated': 443, 'related': 164, 'close': 88, 'none': 32} human verdicts applied=0 disputes on the sheet=442 (by field {'category': 291, 'year': 87, 'quote': 64}) runs={'v3': ['df3b1022-d43a-4f1d-8436-1d229dfe5110'], 'v4': ['a757883d-b9f7-47cc-884f-212927c2b827', '927eaf8f-9741-450a-80f7-67c9be3a1232', '262058ac-d13b-4547-966f-f0f8923d6a79']}
+=== done 2026-11-21 19:40:19 ===

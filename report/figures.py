@@ -22,7 +22,8 @@ from statsmodels.stats.proportion import proportion_confint
 
 from report import bio, frame
 from report.evidence_lines import CATEGORIES
-from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, stratum_name
+from report.evidence_lines import FACTS
+from report.render import S3_ENDPOINTS, S3_MAP_ROWS, stratum_name
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import BREAKDOWN, SHOWN, SUBCAUSE_NAMES
 
@@ -238,7 +239,7 @@ def loa_bars(csv, title, name, ref):
     save(fig, name)
 
 
-BY_AREA_LINES = {"genetic_any": "Human genetics", "animal_model": "Mouse genetics"}
+BY_AREA_LINES = {"g3": "Human genetics", "mouse_genetics": "Mouse genetics"}
 
 
 def genetics_by_area():
@@ -246,7 +247,7 @@ def genetics_by_area():
     group with too few programs carrying the line to estimate shows its count instead of a dot."""
     df = pd.read_csv(os.path.join(OUT, "section2", "relative_success_by_area.csv"))
     pooled = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).set_index("feature")
-    groups = list(df[df.feature.eq("genetic_any")].sort_values("rs", na_position="first").group_label)
+    groups = list(df[df.feature.eq("g3")].sort_values("rs", na_position="first").group_label)
     labels = [*groups, "All areas"]
     y = np.arange(len(labels))
     fig, axes = plt.subplots(1, len(BY_AREA_LINES), figsize=(10, 0.42 * len(labels) + 1.2), sharey=True,
@@ -339,21 +340,22 @@ def sponsor_confound():
     save(fig, "sponsor_confound")
 
 
-def dose_response():
-    df = pd.read_csv(os.path.join(OUT, "section2", "genetic_dose_response.csv"))
-    fig, ax = plt.subplots(figsize=(7.4, 2.6))
+def genetic_strength():
+    df = pd.read_csv(os.path.join(OUT, "section2", "genetic_strength.csv"))
+    names = dict(FACTS["genetic_strength"].values)
+    fig, ax = plt.subplots(figsize=(7.4, 2.2))
     y = np.arange(len(df))[::-1]
     ax.barh(y, df.loa * 100, height=0.6, color=[BAR if b == "none" else ACCENT for b in df.band])
     ax.errorbar(df.loa * 100, y, xerr=[(df.loa - df.loa_lo) * 100, (df.loa_hi - df.loa) * 100],
                 fmt="none", ecolor=INK2, elinewidth=1, capsize=0)
     for yi, (v, hi, n) in zip(y, zip(df.loa, df.loa_hi, df.n_programs)):
         ax.text(hi * 100 + 0.4, yi, f"{v:.1%} (n={n:,})", va="center", color=INK2, fontsize=8)
-    ax.set_yticks(y, [band_label(*b) for b in zip(df.band, df.score_from, df.score_to)], color=INK, fontsize=9)
+    ax.set_yticks(y, [textwrap.fill(names[b].split(":")[0], 30) for b in df.band], color=INK, fontsize=9)
     ax.set_xlabel("Likelihood of FDA approval from Phase 1 (%), 95% CI", color=INK2, fontsize=8)
-    ax.set_ylabel("Genetic association score before entry", color=INK2, fontsize=8)
+    ax.set_ylabel("Human genetic support before entry", color=INK2, fontsize=8)
     style(ax)
     ax.set_title("Likelihood of approval by strength of human genetic support", loc="left", color=INK, fontsize=11)
-    save(fig, "genetic_dose_response")
+    save(fig, "genetic_strength")
 
 
 # Marks are coloured by what the evidence is about: the target, the drug, or (target safety risk) the target's safety.
@@ -873,7 +875,7 @@ def main():
     loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA)
     loa_bars("loa_by_modality.csv", "Likelihood of approval by modality", "loa_by_modality", bio.MODALITY_LOA)
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
-        dose_response()
+        genetic_strength()
         prediction()
     if os.path.exists(os.path.join(OUT, "section3", "commitment.csv")):
         sponsor_confound()

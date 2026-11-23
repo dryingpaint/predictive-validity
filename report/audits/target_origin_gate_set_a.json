@@ -1,0 +1,55 @@
+{
+  "n": 48,
+  "kappa_stored": 0.5166163141993958,
+  "kappa_raw": 0.6875312969454181,
+  "kappa_stored_layer": 0.5005476451259583,
+  "kappa_raw_layer": 0.6842105263157895,
+  "any_origin_agree": 0.7708333333333334,
+  "coverage": {
+    "not_causal": 0.44,
+    "other": 0.52
+  },
+  "gap_points": 8.0,
+  "n_missing": 0,
+  "kappa_blind_vs_reader": null,
+  "kappa_blind_vs_raw": null,
+  "n_covered": 20,
+  "kappa_covered": 0.5294117647058824,
+  "kappa_uncovered": 0.49167927382753407,
+  "gate_origin": "raw",
+  "pass": true,
+  "set": "a",
+  "reader": "model",
+  "read_pairs": 48,
+  "labelled_in_set": 50,
+  "kappa_min": 0.6,
+  "gap_max": 10.0,
+  "graded_not_checked": 0,
+  "runs": {
+    "target_origin_blind_read@v1": "952a9c9f-60f4-474c-916c-c261052f94b6",
+    "target_origin_label@v1": [
+      "411ff9c3-788c-406e-b435-ecfec55dbc32",
+      "1650c370-2700-4cad-a7c7-c939c6a9dae5",
+      "379bfc07-3701-4d7b-99f1-940507e6ab60"
+    ],
+    "target_origin_check@v2": {
+      "v3": [
+        "df3b1022-d43a-4f1d-8436-1d229dfe5110"
+      ],
+      "v4": [
+        "a757883d-b9f7-47cc-884f-212927c2b827",
+        "927eaf8f-9741-450a-80f7-67c9be3a1232",
+        "262058ac-d13b-4547-966f-f0f8923d6a79"
+      ]
+    }
+  },
+  "reference": "blind model reading, majority of replicates",
+  "consistency": {
+    "pairs": 50,
+    "replicates": 3,
+    "unanimous": 36,
+    "majority": 12,
+    "no_majority": 2,
+    "pairwise_agreement": 0.821917808219178
+  }
+}

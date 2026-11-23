@@ -59,10 +59,11 @@ from psycopg2.extras import Json, execute_values
 
 from pipeline import llm, throttle
 from pipeline.outcomes import eutils
+from pipeline.attribution import NOT_REVIEWS
 from pipeline.literature import (FIRECRAWL_BACKOFF_MAX, FIRECRAWL_PER_SECOND, FIRECRAWL_RESULTS, FIRECRAWL_WORKERS,
-                                 GATES, FirecrawlError, SourceDown, clean, epmc_clause, epmc_records, fetch_papers,
-                                 firecrawl_cli, firecrawl_credits, firecrawl_ids, kappa, medline_search, names_clause,
-                                 resolve_external, stored_papers, store_records)
+                                 GATES, FirecrawlError, SourceDown, clean, epmc_records, fetch_papers, firecrawl_cli,
+                                 firecrawl_credits, firecrawl_ids, kappa, names_clause, pubmed_ids, resolve_external,
+                                 stored_papers, store_records)
 
 KINDS = ("human_cell_perturbation", "cell_line_perturbation", "diseased_tissue_protein", "animal_model_pharmacology",
          "mouse_genetic_disease_model", "observational_biomarker", "clinical_observation")
@@ -300,6 +301,10 @@ def names(_args) -> None:
 
 # --- retrieval -----------------------------------------------------------------------------------------------------
 
+def epmc_clause(names: list[str]) -> str:
+    return f'({" OR ".join(f"TITLE_ABS:{chr(34)}{n}{chr(34)}" for n in names)})'
+
+
 def clauses(n: dict) -> tuple[str, str]:
     """The PubMed and Europe PMC clauses of one pair: a gene name and a disease name or model term."""
     dm = n["disease"] + [m for m in n["models"] if m.lower() not in {d.lower() for d in n["disease"]}]
@@ -345,8 +350,9 @@ def search(_args) -> None:
         pm, ep = clauses(n)
         for attempt in range(3):
             try:
-                pq, pn, pmids = medline_search(pm, ep, y)
-                eq, en, records = epmc_records(ep, y)
+                pq, pn, pmids = pubmed_ids([], y, term=lambda lo, hi, pm=pm: f'{pm} AND ("{lo}"[dp] : "{hi}"[dp]) {NOT_REVIEWS}')
+                eq, en, records = epmc_records([], y, query=f'{ep} AND PUB_YEAR:[1900 TO {y}] AND NOT SRC:MED '
+                                                            'AND HAS_ABSTRACT:Y AND NOT PUB_TYPE:"review"')
                 break
             except (SourceDown, RuntimeError) as err:
                 print(f"retry {r.symbol} {r.mondo_id}: {err}", flush=True)
