@@ -8,6 +8,8 @@ steps 2 to 5). Commands, registered on pipeline.target_disease:
              origin, its grade and the first drug's discovery route (preclin.target_disease_origin, basis labelled)
     check    two checkers verify each graded label's quote, date and reading; a label they reject becomes unclear,
              one they dispute becomes disputed
+    reread   one model reading, from a label's quote and stored records only, of a disputed category and of whether
+             a human-cell or animal-pharmacology label moves under the final definitions
     restore  rebuild the stored labelled rows from the decision log with no model call (the check's outcomes
              from the decisions each row cites, a disputes file's verdicts, not_reached for pairs never labelled)
     blind    a second model labels the hand-check sets from the records alone, for comparison with the reader
@@ -980,11 +982,14 @@ def label_row(e: str, m: str, decision_id: int, o: dict) -> dict:
             "sources": list(o["sources"]), "quote": o["quote"].strip() or None, "llm_decision_id": decision_id, "parsed_output": o}
 
 
-def check_items(pairs: pd.DataFrame) -> dict[str, dict]:
+def check_items(pairs: pd.DataFrame, moves: dict[str, str] | None = None) -> dict[str, dict]:
     """A payload per labelled row whose label as read is graded: the label (from its decision, not from the row, which
-    an earlier check may have reset) and the full text of the cited records it was shown."""
+    an earlier check may have reset) and the full text of the cited records it was shown. A label the reread moves
+    (moves, by default from the stored reread decisions) carries its new origin and the old one in moved_from."""
     if pairs.empty:
         return {}
+    if moves is None:
+        moves = reread_moves({k: o for k, (_, o) in reread_decisions().items()})
     rows = frame.query(CHECK_ITEMS_SQL, (tuple(zip(pairs.ensembl_id, pairs.mondo_id)),))
     base = pair_items(pairs)
     sources = sources_for(pairs)
@@ -993,6 +998,8 @@ def check_items(pairs: pd.DataFrame) -> dict[str, dict]:
         k = key(r.ensembl_id, r.mondo_id)
         items[k] = check_payload(label_row(r.ensembl_id, r.mondo_id, int(r.llm_decision_id), r.parsed_output),
                                  base[k], sources.get((r.ensembl_id, r.mondo_id), []))
+        if k in moves and items[k]["origin"] in REREAD_OF:
+            items[k] = {**items[k], "moved_from": items[k]["origin"], "origin": moves[k]}
     return items
 
 
@@ -1104,6 +1111,10 @@ def store_check(pairs: pd.DataFrame, items: dict[str, dict], outputs: dict[str, 
     answers = {k: [o for _, _, o in outputs[k]] for k in items}
     raw = {k: check_fields(items[k], facts[k], answers[k], None) for k in items}
     fields = {k: check_fields(items[k], facts[k], answers[k], human.get(k)) for k in items}
+    for k, p in items.items():  # the checkers judged the origin as read; the reread read the text for the new one
+        if p.get("moved_from"):
+            raw[k] = {**raw[k], "category": "yes"}
+            fields[k] = {**fields[k], "category": "yes", "moved_from": p["moved_from"]}
     outcomes = {k: check_outcome_v2(f) for k, f in fields.items()}
     with llm.connect() as conn, conn.cursor() as cur:
         llm.record_method(cur, *method, inputs, params)
@@ -1396,6 +1407,136 @@ def research(args) -> None:
     log("agreement:\n" + research_agreement(out).to_string(index=False))
     log(f"decided={int(out.verdict.ne('').sum())} open={int(out.verdict.eq('').sum())} unanswered={len(todo)} "
         f"runs={runs} -> {args.out}")
+
+
+# --- reread: one model reading of a stored label's quote and cited records, with no search ---
+
+REREAD_QUESTIONS = {
+    "category": ("Does the quote or a cited record itself show the defining observation of the label's origin, as the "
+                 "definition states it? yes only when the observation is in the text; no when reaching the origin "
+                 "needs a step the text does not contain, however well known that step is.", ("yes", "no")),
+    "cell_system": ("In the evidence the quote describes, was the target changed in primary human cells or tissue "
+                    "(cells or tissue taken from people, primary cultures, organoids, iPSC-derived cells, explants) or "
+                    "in an established cell line?", ("primary", "cell_line", "unclear")),
+    "animal_means": ("In the animal evidence the quote describes, was the target changed genetically in the animal "
+                     "(a knockout, knock-in, transgene or genetic deletion) or by other means (a drug, antibody, "
+                     "siRNA or antisense given to the animal)?", ("genetic", "non_genetic", "unclear")),
+}
+# The question each origin as read is reread under, and the answer that moves it to another origin under the final
+# list's definitions (#159 amendments): a cell line is cell_line_perturbation, a genetic change mouse_genetics.
+REREAD_OF = {"human_cell_perturbation": "cell_system", "animal_model_pharmacology": "animal_means"}
+REREAD_MOVES = {("cell_system", "cell_line"): "cell_line_perturbation", ("animal_means", "genetic"): "mouse_genetics"}
+REREAD_SYSTEM = f"""You reread one stored label of what first proposed a drug target for a disease. You are given the label's origin, the definitions of every origin, the label's quote, the full text of the cited records that are stored, and one question. Answer only from the quote and those records. Nothing you know from memory counts, and you cannot search. Copy into evidence the words your answer rests on; leave it empty when the answer is unclear.
+
+Definitions:
+{DEFINITIONS}"""
+REREAD_SCHEMA = {
+    "type": "object", "additionalProperties": False, "required": ["answer", "evidence", "note"],
+    "properties": {"answer": {"type": "string",
+                              "enum": sorted({a for _, ans in REREAD_QUESTIONS.values() for a in ans})},
+                   "evidence": {"type": "string"}, "note": {"type": "string"}},
+}
+REREAD_METHOD = "target_origin_reread@v1"
+REREAD_VERDICTS = os.path.join(frame.REPO, "report", "audits", "target_origin_verdicts.csv")
+
+
+def render_reread(p: dict) -> str:
+    question, answers = REREAD_QUESTIONS[p["question"]]
+    lines = [f"QUESTION: {question}", f"Answer one of: {', '.join(answers)}",
+             f"Gene: {p['symbol']}. Disease: {p['disease']}. Cutoff year: {p['cutoff_year']}.",
+             f"Label origin: {p['origin']}. Grade: {p['grade']}.", f"Quote: {p['quote']}",
+             "Sources cited: " + "; ".join(str(x) for x in p["sources"]), "", "Cited records stored:"]
+    for r in p["records"]:
+        lines += [f"- {r['record_id']} ({r.get('year')}): {r.get('title') or ''}", f"  {r.get('abstract') or ''}"]
+    if not p["records"]:
+        lines.append("- none stored (the label cites web pages only; answer from the quote)")
+    return "\n".join(lines)
+
+
+def validate_reread(p: dict, out: dict) -> None:
+    if out["answer"] not in REREAD_QUESTIONS[p["question"]][1]:
+        raise ValueError(f"answer {out['answer']!r} is not one of {REREAD_QUESTIONS[p['question']][1]}")
+
+
+REREAD_TASK = llm.Task(name="target_origin_reread", prompt_version="v1", schema_version="v1", system=REREAD_SYSTEM,
+                       schema=REREAD_SCHEMA, render=render_reread, validate=validate_reread,
+                       subject_type="target_disease", model="claude-sonnet-5-5", effort="low", max_tokens=2000)
+REREAD_DESCRIPTION = f"""One reading per question of a stored graded label, from its quote and its cited stored records
+only, with no search and no background knowledge (task {REREAD_TASK.name} {REREAD_TASK.prompt_version},
+{REREAD_TASK.model}). category: for each label disputed on the category, whether the text itself shows the origin's
+defining observation (the owner's rule of 2026-11-22: a step the cited source does not contain does not count); the
+answer is the label's category verdict. cell_system: for each human_cell_perturbation label as read, primary cells or
+tissue against an established cell line; a cell line moves it to cell_line_perturbation. animal_means: for each
+animal_model_pharmacology label as read, a genetic change against other means; genetic moves it to mouse_genetics
+(the final list's definitions, #159 amendments). The category verdicts go to target_origin_verdicts.csv beside the
+research pass's; check_items reads the moves."""
+
+
+def reread_targets(items: dict[str, dict], disputed_category: set[str]) -> dict[str, dict]:
+    """subject_key|question -> payload: the category question for each label disputed on the category, and the
+    system question for each label whose origin as read the final definitions split."""
+    out = {}
+    for k, p in items.items():
+        base = {f: p[f] for f in ("symbol", "disease", "cutoff_year", "origin", "grade", "quote", "sources", "records")}
+        if k in disputed_category:
+            out[f"{k}|category"] = {**base, "question": "category"}
+        if p["origin"] in REREAD_OF:
+            out[f"{k}|{REREAD_OF[p['origin']]}"] = {**base, "question": REREAD_OF[p["origin"]]}
+    return out
+
+
+def reread_moves(decided: dict[str, dict]) -> dict[str, str]:
+    """subject_key -> the origin a reread moves its label to, from outputs keyed subject_key|question."""
+    out = {}
+    for kq, o in decided.items():
+        k, question = kq.rsplit("|", 1)
+        moved = REREAD_MOVES.get((question, o["answer"]))
+        if moved:
+            out[k] = moved
+    return out
+
+
+def reread_decisions() -> dict[str, tuple[int, dict]]:
+    """subject_key|question -> (decision id, output) of the latest validated reread."""
+    d = llm.latest_decisions(REREAD_TASK.name, REREAD_TASK.prompt_version)
+    return {r.key: (int(r.llm_decision_id), r.parsed_output) for r in d.itertuples()}
+
+
+def reread(args) -> None:
+    pairs = pair_frame(args.pairs)
+    rows = frame.query("SELECT ensembl_id, mondo_id, check_fields FROM preclin.target_disease_origin "
+                       "WHERE basis = 'labelled' AND check_outcome = 'disputed'")
+    disputed = {key(r.ensembl_id, r.mondo_id) for r in rows.itertuples()
+                if r.check_fields.get("category") == "disputed"}
+    items = check_items(pairs, moves={})
+    todo = reread_targets(items, disputed)
+    log(f"labels={len(items)} questions={pd.Series([k.rsplit('|', 1)[1] for k in todo]).value_counts().to_dict()}")
+    runs = []
+    for _ in range(LABEL_PASSES):
+        if not todo:
+            break
+        run_id = llm.run(REREAD_TASK, todo)
+        runs.append(str(run_id))
+        todo = undecided(todo, llm.decisions(run_id))
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, REREAD_METHOD, "Reread of stored origin labels", REREAD_DESCRIPTION,
+                          ["preclin.target_disease_origin", "preclin.target_disease_source",
+                           "pv_evidence.llm_decision"],
+                          {"task": REREAD_TASK.name, "prompt_version": REREAD_TASK.prompt_version,
+                           "model": REREAD_TASK.model, "runs": runs, "unanswered": sorted(todo)})
+        conn.commit()
+    decided = reread_decisions()
+    verdicts = [{"subject_key": kq.rsplit("|", 1)[0], "field": "category", "verdict": o["answer"],
+                 "reader": REREAD_METHOD, "note": f"decision {i}: {o['evidence']}"}
+                for kq, (i, o) in sorted(decided.items()) if kq.endswith("|category")]
+    research = read_sheet(RESEARCH_CSV)
+    research = research[research.verdict.ne("")][["subject_key", "field", "verdict", "reader", "note"]]
+    out = pd.concat([research, pd.DataFrame(verdicts, columns=research.columns)], ignore_index=True)
+    out.to_csv(REREAD_VERDICTS, index=False)
+    answers = pd.Series([f"{k.rsplit('|', 1)[1]}:{o['answer']}" for k, (_, o) in decided.items()]).value_counts()
+    moves = pd.Series(list(reread_moves({k: o for k, (_, o) in decided.items()}).values())).value_counts()
+    log(f"decided={len(decided)} unanswered={len(todo)} answers={answers.to_dict()} moves={moves.to_dict()} "
+        f"verdicts file rows={len(out)}")
 
 
 # --- blind coder ---
@@ -1967,6 +2108,10 @@ def add_commands(sub) -> None:
     p.add_argument("--disputes", default=DISPUTES_CSV,
                    help="where the verdicts are read from (the disputes sheet, or the research pass's filled copy)")
     p.set_defaults(fn=restore)
+    p = sub.add_parser("reread", help="one model reading of each disputed label's category and of each label the final "
+                                      "definitions split, from its quote and stored records, no search")
+    pairs_option(p, default="window")
+    p.set_defaults(fn=reread)
     p = sub.add_parser("research", help="one model reading with search and fetch settles the factual disputes "
                                         "(quote, year, approval) into a filled copy of the sheet; no table write")
     pairs_option(p, default="window")

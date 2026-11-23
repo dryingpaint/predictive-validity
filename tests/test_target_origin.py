@@ -954,3 +954,30 @@ def test_research_agreement_counts_each_checker_against_the_verdict():
                                         "agrees_opus": 1, "agrees_neither": 0}
     assert a.loc["year"].agrees_sonnet == 0 and a.loc["year"].agrees_opus == 1
     assert a.loc["category"].agrees_opus == 1 and a.loc["category"].agrees_sonnet == 0  # partly counts as yes
+
+
+def reread_item(origin: str) -> dict:
+    return {"symbol": "G", "disease": "D", "cutoff_year": 2010, "origin": origin, "grade": "stated", "quote": "q",
+            "sources": ["PMID:1"], "records": []}
+
+
+def test_reread_asks_the_category_of_disputed_labels_and_the_system_of_labels_the_final_list_splits():
+    items = {"a": reread_item("human_cell_perturbation"), "b": reread_item("animal_model_pharmacology"),
+             "c": reread_item("diseased_tissue")}
+    todo = to.reread_targets(items, disputed_category={"c", "a"})
+    assert sorted(todo) == ["a|category", "a|cell_system", "b|animal_means", "c|category"]
+    assert {q["question"] for q in todo.values()} == {"category", "cell_system", "animal_means"}
+
+
+def test_a_cell_line_moves_to_cell_line_perturbation_and_a_genetic_change_to_mouse_genetics():
+    decided = {"a|cell_system": {"answer": "cell_line"}, "b|animal_means": {"answer": "genetic"},
+               "c|cell_system": {"answer": "primary"}, "d|animal_means": {"answer": "unclear"},
+               "e|category": {"answer": "no"}}
+    assert to.reread_moves(decided) == {"a": "cell_line_perturbation", "b": "mouse_genetics"}
+
+
+def test_a_reread_answer_outside_its_question_is_rejected():
+    import pytest
+    with pytest.raises(ValueError):
+        to.validate_reread({"question": "category"}, {"answer": "genetic"})
+    to.validate_reread({"question": "animal_means"}, {"answer": "non_genetic"})
