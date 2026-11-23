@@ -10,6 +10,14 @@
     python -m pipeline.target_literature reference --rows 1-100   # blind web-enabled model lists every study per kind
     python -m pipeline.target_literature gate --rows 1-100 --label v1   # recall, agreement and coverage gates
     python -m pipeline.target_literature cost         # the pilot's measured cost and its extrapolation
+    python -m pipeline.target_literature origin --pairs cohort      # link the origin search's records (#146) as hits
+    python -m pipeline.target_literature integrity --pairs cohort   # completeness and consistency checks of a run
+    python -m pipeline.target_literature summary --pairs cohort     # pairs with each kind, before entry
+
+names, search, firecrawl, screen, check and prefilter-check take --pairs pilot (the default) or cohort, the full
+descriptive run over every cohort pair; search --shard i/n splits the pairs across parallel processes; screen
+--follow --since TIMESTAMP screens pairs as their searches finish and stops before its projected spend passes
+BUDGET_USD.
 
 The unit is a target-disease pair (preclin.target_disease) with a US-sited phase entry of 2008-2019 in the stored
 evidence dataset (preclin.evidence_entry). A pair is searched up to its cutoff, the year before its latest such
@@ -28,7 +36,8 @@ as kind 4's flag) in the pair's disease, a subtype or a near-identical disease:
   the disease in an observational study;
 - clinical_observation (row 10): an effect seen in people that implicates the target, such as another drug's side effect.
 
-Retrieval per pair: PubMed and Europe PMC (outside MEDLINE) titles and abstracts naming the gene (HGNC symbol and its
+Retrieval per pair: the records of the origin search (#146, preclin.target_disease_source), linked as hits rather
+than copied; PubMed and Europe PMC (outside MEDLINE) titles and abstracts naming the gene (HGNC symbol and its
 names, vetted by an LLM, which drops ambiguous aliases and may add common protein names) and the disease (MONDO label
 and synonyms) or one of its experimental models (terms an LLM lists per disease, such as collagen-induced arthritis),
 reviews excluded; Firecrawl's research index once per pair and kind, and once for papers related to the pair's first
@@ -156,6 +165,11 @@ def sample(_args) -> None:
 
 def pilot_pairs() -> pd.DataFrame:
     return pd.read_csv(PILOT_CSV)
+
+
+def pairs_of(which: str) -> pd.DataFrame:
+    """The pilot sample, or every cohort pair (the full descriptive run)."""
+    return pilot_pairs() if which == "pilot" else cohort_pairs()
 
 
 def pair_key(ensembl_id: str, mondo_id: str) -> str:
@@ -294,12 +308,61 @@ def pair_names(pairs: pd.DataFrame, run: bool = True) -> dict[str, dict]:
             for r in pairs.itertuples()}
 
 
-def names(_args) -> None:
-    n = pair_names(pilot_pairs())
+def names(args) -> None:
+    n = pair_names(pairs_of(args.pairs))
     print(f"names: pairs={len(n)} without gene names={sum(not v['gene'] for v in n.values())}")
 
 
 # --- retrieval -----------------------------------------------------------------------------------------------------
+
+def record_texts(record_ids: list[str]) -> dict[str, tuple]:
+    """record id -> (title, abstract, year), read once from wherever the record is stored: public.publications,
+    preclin.literature_record, else the origin search's own copy in preclin.target_disease_source (PMID:N as N)."""
+    out = stored_papers(record_ids)
+    rest = [r for r in record_ids if r not in out]
+    if rest:
+        with llm.connect() as conn, conn.cursor() as cur:
+            cur.execute("""SELECT DISTINCT ON (record_id) regexp_replace(record_id, '^PMID:', ''), title, abstract, year
+                           FROM preclin.target_disease_source WHERE record_id = ANY(%s) ORDER BY record_id""",
+                        ([("PMID:" + r) if r.isdigit() else r for r in rest],))
+            out.update({r: (t or "", a, y) for r, t, a, y in cur.fetchall()})
+    return out
+
+
+def origin(args) -> None:
+    """Read the origin search's records (#146) as hits of the pairs (--pairs): for each pair it searched, its PubMed
+    and Europe PMC records dated by this run's cutoff become hits linked to preclin.target_disease_source, with one
+    search row per service recording its query and names. No text is copied; record_texts reads it from there."""
+    p = pairs_of(args.pairs)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT ensembl_id, mondo_id, service, cutoff_year, gene_names, disease_names, query, n_hits
+                       FROM preclin.target_disease_search""")
+        searches = {(e, m, sv): (y, g, d, q, n) for e, m, sv, y, g, d, q, n in cur.fetchall()}
+    rows = [(r, sv) for r in p.itertuples() for sv in ("pubmed", "europepmc") if (r.ensembl_id, r.mondo_id, sv) in searches]
+    print(f"origin: pairs={len(p)} searched by the origin search={len({(r.ensembl_id, r.mondo_id) for r, _ in rows})}",
+          flush=True)
+    linked = 0
+    for start in range(0, len(rows), 500):
+        part = rows[start:start + 500]
+        with llm.connect() as conn, conn.cursor() as cur:
+            cur.execute("CREATE TEMP TABLE want (ensembl_id text, mondo_id text, service text, cutoff_year int) ON COMMIT DROP")
+            execute_values(cur, "INSERT INTO want VALUES %s",
+                           [(r.ensembl_id, r.mondo_id, sv, int(r.cutoff_year)) for r, sv in part])
+            cur.execute("""SELECT s.ensembl_id, s.mondo_id, s.service, regexp_replace(s.record_id, '^PMID:', '')
+                           FROM preclin.target_disease_source s JOIN want w USING (ensembl_id, mondo_id, service)
+                           WHERE s.year <= w.cutoff_year""")
+            got: dict = {}
+            for e, m, sv, rid in cur.fetchall():
+                got.setdefault((e, m, sv), []).append(rid)
+            for r, sv in part:
+                y, g, d, q, n = searches[(r.ensembl_id, r.mondo_id, sv)]
+                ids = got.get((r.ensembl_id, r.mondo_id, sv), [])
+                store_search(cur, r.ensembl_id, r.mondo_id, int(r.cutoff_year), "origin_" + sv, "",
+                             {"gene": g, "disease": d, "origin_cutoff_year": y}, q, n, ids)
+                linked += len(ids)
+            conn.commit()
+    print(f"origin: search rows={len(rows)} hits linked={linked}", flush=True)
+
 
 def epmc_clause(names: list[str]) -> str:
     return f'({" OR ".join(f"TITLE_ABS:{chr(34)}{n}{chr(34)}" for n in names)})'
@@ -314,7 +377,7 @@ def clauses(n: dict) -> tuple[str, str]:
 def store_search(cur, e: str, m: str, y: int, source: str, kind: str, n: dict, query: str, n_hits: int,
                  record_ids: list[str]) -> None:
     cur.execute("""DELETE FROM preclin.target_literature_hit WHERE ensembl_id = %s AND mondo_id = %s AND cutoff_year = %s
-                   AND source = %s AND %s = ''""", (e, m, y, source, kind))
+                   AND source = %s AND kind = %s""", (e, m, y, source, kind))
     cur.execute("""INSERT INTO preclin.target_literature_search (ensembl_id, mondo_id, cutoff_year, source, kind, names,
                                                                  query, n_hits)
                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
@@ -322,16 +385,21 @@ def store_search(cur, e: str, m: str, y: int, source: str, kind: str, n: dict, q
                    DO UPDATE SET names = EXCLUDED.names, query = EXCLUDED.query, n_hits = EXCLUDED.n_hits,
                                  searched_at = now()""", (e, m, y, source, kind, Json(n), query, n_hits))
     if record_ids:
-        execute_values(cur, """INSERT INTO preclin.target_literature_hit (ensembl_id, mondo_id, cutoff_year, source, record_id)
-                               VALUES %s ON CONFLICT DO NOTHING""", [(e, m, y, source, r) for r in record_ids],
+        execute_values(cur, """INSERT INTO preclin.target_literature_hit (ensembl_id, mondo_id, cutoff_year, source, kind,
+                                                                          record_id)
+                               VALUES %s ON CONFLICT DO NOTHING""", [(e, m, y, source, kind, r) for r in record_ids],
                        page_size=5000)
 
 
-def search(_args) -> None:
-    """PubMed and Europe PMC for every pilot pair not yet searched with its current names; PubMed abstracts not in
-    public.publications are fetched and stored. Each pair is committed before the next."""
-    p = pilot_pairs()
-    nm = pair_names(p)
+def search(args) -> None:
+    """PubMed and Europe PMC for every pair (--pairs) not yet searched at its cutoff with its current names; PubMed
+    abstracts not in public.publications are fetched and stored. Each pair is committed before the next, so a
+    restarted run resumes where it stopped."""
+    p = pairs_of(args.pairs)
+    if args.shard:
+        i, n = map(int, args.shard.split("/"))
+        p = p.iloc[i - 1::n]
+    nm = pair_names(p, run=args.shard in (None, "1/1"))
     with llm.connect() as conn, conn.cursor() as cur:
         llm.record_method(cur, METHOD, "Published evidence about the target's biology before phase entry (#154)",
                           __doc__, ["PubMed", "Europe PMC", "Firecrawl research index", "preclin.hgnc_gene",
@@ -360,7 +428,7 @@ def search(_args) -> None:
         else:
             print(f"skipped {r.symbol} {r.mondo_id}: search failed", flush=True)
             continue
-        have = set(stored_papers(pmids))
+        have = set(record_texts(pmids))
         missing = [x for x in pmids if x not in have]
         for start in range(0, len(missing), 1000):
             fetch_papers(missing[start:start + 1000], store=True)
@@ -379,14 +447,15 @@ def firecrawl_query(symbol: str, gene: list[str], disease: str, kind: str) -> st
 
 
 def firecrawl(args) -> None:
-    """Firecrawl's research index for the pilot pairs: --mode search runs one semantic search per pair and kind;
+    """Firecrawl's research index for the pairs (--pairs): --mode search runs one semantic search per pair and kind;
     --mode related, papers related to each pair's first screened-in record. Results dated after the cutoff are dropped;
     ids outside PubMed resolve through Europe PMC. A failed call is not recorded, so a later run retries it."""
     from concurrent.futures import ThreadPoolExecutor
-    p = pilot_pairs()
+    p = pairs_of(args.pairs)
     nm = pair_names(p, run=False)
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT ensembl_id, mondo_id, source, kind FROM preclin.target_literature_search WHERE source LIKE 'firecrawl%%'")
+        cur.execute("""SELECT ensembl_id, mondo_id, source, kind FROM preclin.target_literature_search
+                       WHERE source LIKE 'firecrawl%%'""")
         done = set(cur.fetchall())
         cur.execute(f"""SELECT DISTINCT ON (ensembl_id, mondo_id) ensembl_id, mondo_id, record_id
                         FROM preclin.target_literature_screen
@@ -440,14 +509,14 @@ def firecrawl(args) -> None:
         external = resolve_external([g for g in got if not g[0].isdigit()])
         ids = sorted({g if g.isdigit() else external[g] for g, _ in got if g.isdigit() or g in external})
         pmids = [x for x in ids if x.isdigit()]
-        have = set(stored_papers(pmids))
+        have = set(record_texts(pmids))
         if [x for x in pmids if x not in have]:
             fetch_papers([x for x in pmids if x not in have], store=True)
         with llm.connect() as conn, conn.cursor() as cur:
             store_search(cur, r.ensembl_id, r.mondo_id, y, source, k, n, q, len(results), ids)
             conn.commit()
         state["done"] += 1
-        if state["done"] % 100 == 0:
+        if state["done"] % 500 == 0:
             print(f"firecrawl {args.mode} {state['done']}/{len(calls)} failed={state['failed']}", flush=True)
 
     with ThreadPoolExecutor(FIRECRAWL_WORKERS) as pool:
@@ -544,7 +613,7 @@ def screen_payloads(pairs: pd.DataFrame, recs: pd.DataFrame) -> dict[str, dict]:
     dis = disease_names(sorted(set(pairs.mondo_id)))
     drugs = pair_drugs(pairs)
     sym = dict(zip(zip(pairs.ensembl_id, pairs.mondo_id), pairs.symbol))
-    papers = stored_papers(sorted(set(recs.record_id)))
+    papers = record_texts(sorted(set(recs.record_id)))
     out = {}
     for r in recs.itertuples():
         paper = papers.get(r.record_id)
@@ -567,58 +636,118 @@ def decide(task: llm.Task, items: dict[str, dict]) -> dict[str, tuple[int, dict]
     return got
 
 
-def screen(_args) -> None:
-    """Prefilter the records of pairs with more than PREFILTER_ABOVE, then screen every record that reaches the
-    screen, storing both."""
-    p = pilot_pairs()
+CHUNK_PAIRS = 250  # pairs prefiltered and screened together; each chunk is stored before the next
+BUDGET_USD = 2000.0  # the full run stops before its projected spend passes this
+POLL_SECONDS = 300  # wait for searches to make more pairs ready
+
+
+def ready(p: pd.DataFrame) -> pd.DataFrame:
+    """The pairs whose PubMed, Europe PMC and per-kind Firecrawl searches are all stored at their cutoff."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT ensembl_id, mondo_id, cutoff_year FROM preclin.target_literature_search
+                       GROUP BY 1, 2, 3
+                       HAVING count(*) FILTER (WHERE source = 'pubmed') = 1
+                          AND count(*) FILTER (WHERE source = 'europepmc') = 1
+                          AND count(DISTINCT kind) FILTER (WHERE source = 'firecrawl') = %s""", (len(KINDS),))
+        done = set(cur.fetchall())
+    return p[[(r.ensembl_id, r.mondo_id, int(r.cutoff_year)) in done for r in p.itertuples()]]
+
+
+def screen_chunk(p: pd.DataFrame) -> None:
+    """Prefilter the records of pairs with more than PREFILTER_ABOVE, screen every record that reaches the screen, and
+    store both, replacing the pairs' earlier rows: a pair's prefilter and screen rows are exactly its current
+    decisions on the records its searches now return."""
     recs = pair_records(p)
     items = screen_payloads(p, recs)
-    size = recs.groupby(["ensembl_id", "mondo_id"]).size()
-    large = {k for k, n in size.items() if n > PREFILTER_ABOVE}
+    large = large_pairs(recs)
     pre = {k: v for k, v in items.items() if tuple(k.split("|")[:2]) in large}
-    print(f"screen: pairs={len(p)} records={len(items)} large pairs={len(large)} prefilter={len(pre)}", flush=True)
     pdec = decide(PREFILTER_TASK, pre) if pre else {}
-    with llm.connect() as conn, conn.cursor() as cur:
-        execute_values(cur, """INSERT INTO preclin.target_literature_prefilter (ensembl_id, mondo_id, record_id, possibly,
-                                                                                llm_decision_id)
-                               VALUES %s ON CONFLICT (ensembl_id, mondo_id, record_id)
-                               DO UPDATE SET possibly = EXCLUDED.possibly, llm_decision_id = EXCLUDED.llm_decision_id""",
-                       [(*k.split("|", 2), o["possibly"], d) for k, (d, o) in pdec.items()], page_size=5000)
-        conn.commit()
-    todo = {k: v for k, v in items.items() if k not in pre or pdec.get(k, (0, {"possibly": True}))[1]["possibly"]}
-    print(f"screen: to screen={len(todo)}", flush=True)
-    store_screens(decide(screen_task(), todo))
+    todo = {k: v for k, v in items.items() if k not in pre or pdec[k][1]["possibly"]}
+    dec = decide(screen_task(), todo)
+    store_screens(p, pdec, dec)
+    print(f"screen chunk: pairs={len(p)} records={len(recs)} readable={len(items)} large pairs={len(large)} "
+          f"prefiltered={len(pdec)} screened={len(dec)}", flush=True)
 
 
-def store_screens(dec: dict[str, tuple[int, dict]]) -> None:
+def large_pairs(recs: pd.DataFrame) -> set[tuple[str, str]]:
+    size = recs.groupby(["ensembl_id", "mondo_id"]).size()
+    return {k for k, n in size.items() if n > PREFILTER_ABOVE}
+
+
+def screen(args) -> None:
+    """Screen the pairs (--pairs) in chunks of CHUNK_PAIRS. With --follow, keep taking pairs as their searches
+    finish until every pair is screened. A chunk whose decisions are all stored costs nothing to redo: the runner
+    reuses them. Before each chunk the run's spend since --since is projected to every pair; past BUDGET_USD it
+    stops."""
+    p = pairs_of(args.pairs)
+    reused = set(zip(*[pilot_pairs()[c] for c in ("ensembl_id", "mondo_id")]))  # screened by the pilot already
+    done: set[tuple[str, str]] = set()
+    while True:
+        avail = ready(p)
+        avail = avail[[(e, m) not in done for e, m in zip(avail.ensembl_id, avail.mondo_id)]]
+        if avail.empty:
+            if len(done) == len(p) or not args.follow:
+                break
+            time.sleep(POLL_SECONDS)
+            continue
+        for start in range(0, len(avail), CHUNK_PAIRS):
+            if args.since:
+                spent = spend(args.since)
+                new_done = len(done - reused)
+                projected = spent / new_done * (len(p) - len(reused)) if new_done else 0.0
+                print(f"spend since {args.since}: ${spent:,.0f}; pairs screened {len(done)}/{len(p)}; projected "
+                      f"${projected:,.0f}", flush=True)
+                if spent > BUDGET_USD or (new_done >= 500 and projected > BUDGET_USD):
+                    raise SystemExit(f"STOPPED: projected spend ${projected:,.0f} would pass ${BUDGET_USD:,.0f}")
+            chunk = avail.iloc[start:start + CHUNK_PAIRS]
+            screen_chunk(chunk)
+            done |= set(zip(chunk.ensembl_id, chunk.mondo_id))
+        if not args.follow:
+            break
+    print(f"screen finished: pairs={len(done)}/{len(p)}", flush=True)
+
+
+def store_screens(p: pd.DataFrame, pdec: dict[str, tuple[int, dict]], dec: dict[str, tuple[int, dict]]) -> None:
+    """Replace the pairs' prefilter and screen rows with these decisions, in one transaction after every model
+    call has returned."""
+    keys = list(zip(p.ensembl_id, p.mondo_id))
     rows = [(*k.split("|", 2), o["original_data"], o["disease_match"], *(o["kinds"][x] for x in KINDS[:4]),
              o["agent_is_program_drug"], *(o["kinds"][x] for x in KINDS[4:]), o["quote"] or None, d)
             for k, (d, o) in dec.items()]
     with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("CREATE TEMP TABLE chunk_pairs (ensembl_id text, mondo_id text) ON COMMIT DROP")
+        execute_values(cur, "INSERT INTO chunk_pairs VALUES %s", keys)
+        cur.execute("DELETE FROM preclin.target_literature_prefilter USING chunk_pairs c "
+                    "WHERE (target_literature_prefilter.ensembl_id, target_literature_prefilter.mondo_id) = (c.ensembl_id, c.mondo_id)")
+        cur.execute("DELETE FROM preclin.target_literature_screen USING chunk_pairs c "
+                    "WHERE (target_literature_screen.ensembl_id, target_literature_screen.mondo_id) = (c.ensembl_id, c.mondo_id)")
+        execute_values(cur, """INSERT INTO preclin.target_literature_prefilter (ensembl_id, mondo_id, record_id, possibly,
+                                                                                llm_decision_id) VALUES %s""",
+                       [(*k.split("|", 2), o["possibly"], d) for k, (d, o) in pdec.items()], page_size=5000)
         execute_values(cur, f"""INSERT INTO preclin.target_literature_screen (ensembl_id, mondo_id, record_id, original_data,
                                     disease_match, {", ".join(KINDS[:4])}, agent_is_program_drug, {", ".join(KINDS[4:])},
-                                    quote, llm_decision_id)
-                                VALUES %s ON CONFLICT (ensembl_id, mondo_id, record_id) DO UPDATE SET
-                                    original_data = EXCLUDED.original_data, disease_match = EXCLUDED.disease_match,
-                                    {", ".join(f"{x} = EXCLUDED.{x}" for x in KINDS)},
-                                    agent_is_program_drug = EXCLUDED.agent_is_program_drug, quote = EXCLUDED.quote,
-                                    llm_decision_id = EXCLUDED.llm_decision_id""", rows, page_size=2000)
+                                    quote, llm_decision_id) VALUES %s""", rows, page_size=2000)
         conn.commit()
-    print(f"stored {len(rows)} screens", flush=True)
 
 
 def screened_items(p: pd.DataFrame) -> dict[str, dict]:
-    """The screen payloads of every record of the pairs that reached the screen (not dropped by the prefilter)."""
-    items = screen_payloads(p, pair_records(p))
-    dropped = {k for k, (_, o) in llm.current_decisions(PREFILTER_TASK, items).items() if not o["possibly"]}
+    """The screen payloads of every record of the pairs that reached the screen: all records of a pair with at most
+    PREFILTER_ABOVE, else those the prefilter read as possibly."""
+    recs = pair_records(p)
+    items = screen_payloads(p, recs)
+    large = large_pairs(recs)
+    pre = {k: v for k, v in items.items() if tuple(k.split("|")[:2]) in large}
+    dropped = {k for k, (_, o) in llm.current_decisions(PREFILTER_TASK, pre).items() if not o["possibly"]}
     return {k: v for k, v in items.items() if k not in dropped}
 
 
-def prefilter_check(_args) -> None:
+def prefilter_check(args) -> None:
     """Give the full screen to PREFILTER_CHECK seeded records the prefilter read as not possibly, and report how many
     of them count for any kind: the prefilter's misses."""
-    p = pilot_pairs()
-    items = screen_payloads(p, pair_records(p))
+    p = pairs_of(args.pairs)
+    recs = pair_records(p)
+    large = large_pairs(recs)
+    items = {k: v for k, v in screen_payloads(p, recs).items() if tuple(k.split("|")[:2]) in large}
     pdec = llm.current_decisions(PREFILTER_TASK, items)
     out = sorted(k for k, (_, o) in pdec.items() if not o["possibly"])
     rng = np.random.default_rng(CHECK_SEED)
@@ -637,11 +766,11 @@ def counts(o: dict, kind: str) -> bool:
     return o["kinds"][kind]
 
 
-def check(_args) -> None:
+def check(args) -> None:
     """A second model relabels a seeded sample of pilot screens: per kind, up to CHECK_PER_KIND / 2 screened in and as
     many screened out (the screened-out drawn from records the screen read as same-disease original data, where
     errors would matter); kappa per kind is computed by the gate."""
-    items = screened_items(pilot_pairs())
+    items = screened_items(pairs_of(args.pairs))
     dec = llm.current_decisions(screen_task(), items)
     rng = np.random.default_rng(CHECK_SEED)
     pick: set[str] = set()
@@ -656,9 +785,9 @@ def check(_args) -> None:
     decide(screen_task(CHECK_MODEL, "_check"), {k: items[k] for k in sorted(pick)})
 
 
-def agreement() -> dict[str, dict]:
+def agreement(which: str = "pilot") -> dict[str, dict]:
     """Kind -> kappa of the screen against the check model on the records both read."""
-    items = screened_items(pilot_pairs())
+    items = screened_items(pairs_of(which))
     a = llm.current_decisions(screen_task(), items)
     b = llm.current_decisions(screen_task(CHECK_MODEL, "_check"), items)
     both = sorted(set(a) & set(b))
@@ -880,44 +1009,196 @@ WEB_SEARCH_USD = 0.01
 BATCH_DISCOUNT = 0.5
 
 
-def cost(_args) -> None:
-    """The pilot's token cost by task, from the usage stored with each new decision of its tasks (batched calls at
-    the batch discount), and the extrapolation to every cohort pair and every pair in preclin.target_disease."""
+def task_usd(task: str, model: str, batched: bool, u: dict | None) -> float:
+    """One decision's cost at list prices: tokens by model, the Batch API discount on batched runs (not the
+    reference, which runs direct with web search), and each web search."""
+    u = u or {}
+    pi, po, pw, pr = PRICES.get(model, PRICES["claude-opus-5-5"])
+    usd = (u.get("input_tokens", 0) * pi + u.get("output_tokens", 0) * po
+           + u.get("cache_creation_input_tokens", 0) * pw + u.get("cache_read_input_tokens", 0) * pr) / 1e6
+    usd *= BATCH_DISCOUNT if batched and "reference" not in task else 1
+    return usd + (u.get("web_search_requests", 0) or 0) * WEB_SEARCH_USD
+
+
+def decision_costs(since: str | None = None) -> dict[str, float]:
+    """Task -> USD of every new (not reused) target-literature decision, made after since when given."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT d.task, r.model, coalesce(r.parameters->>'n_items', '0')::int > %s AS batched, d.usage
                        FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
-                       WHERE d.task LIKE 'target_literature%%' AND d.prior_decision_id IS NULL""", (llm.DIRECT_MAX,))
+                       WHERE d.task LIKE 'target_literature%%' AND d.prior_decision_id IS NULL
+                         AND d.created_at >= coalesce(%s::timestamptz, '-infinity')""", (llm.DIRECT_MAX, since))
         rows = cur.fetchall()
+    out: dict[str, float] = {}
+    for task, model, batched, u in rows:
+        out[task] = out.get(task, 0.0) + task_usd(task, model, batched, u)
+    return out
+
+
+def spend(since: str) -> float:
+    return sum(decision_costs(since).values())
+
+
+def cost(args) -> None:
+    """The token cost by task (of decisions made after --since when given), and its extrapolation per pair."""
+    by = decision_costs(args.since)
+    with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT count(*) FROM preclin.target_disease")
         all_pairs = cur.fetchone()[0]
-    by: dict[str, float] = {}
-    for task, model, batched, u in rows:
-        u = u or {}
-        pi, po, pw, pr = PRICES.get(model, PRICES["claude-opus-5-5"])
-        usd = (u.get("input_tokens", 0) * pi + u.get("output_tokens", 0) * po
-               + u.get("cache_creation_input_tokens", 0) * pw + u.get("cache_read_input_tokens", 0) * pr) / 1e6
-        usd = usd * (BATCH_DISCOUNT if batched and task != "target_literature_reference" else 1)
-        usd += (u.get("web_search_requests", 0) or 0) * WEB_SEARCH_USD
-        by[task] = by.get(task, 0.0) + usd
     n_pilot, n_cohort = len(pilot_pairs()), len(cohort_pairs())
     run_tasks = [t for t in by if "_check" not in t and "reference" not in t]
     per_pair = sum(by[t] for t in run_tasks) / n_pilot
-    out = {"usd_by_task": {k: round(v, 2) for k, v in sorted(by.items())}, "pilot_pairs": n_pilot,
-           "run_usd_per_pair": round(per_pair, 3), "cohort_pairs": n_cohort,
-           "full_run_usd_cohort": round(per_pair * n_cohort), "all_pairs": all_pairs,
-           "full_run_usd_all_pairs": round(per_pair * all_pairs)}
-    print(json.dumps(out, indent=2))
+    print(json.dumps({"since": args.since, "usd_by_task": {k: round(v, 2) for k, v in sorted(by.items())},
+                      "usd_total": round(sum(by.values()), 2), "pilot_pairs": n_pilot,
+                      "run_usd_per_pilot_pair": round(per_pair, 3), "cohort_pairs": n_cohort,
+                      "all_pairs": all_pairs}, indent=2))
+
+
+INTEGRITY = {
+    "cohort pairs missing a pubmed, europepmc or per-kind firecrawl search at their cutoff": """
+        SELECT count(*) FROM want w WHERE NOT EXISTS (
+            SELECT 1 FROM preclin.target_literature_search s WHERE (s.ensembl_id, s.mondo_id, s.cutoff_year) =
+                (w.ensembl_id, w.mondo_id, w.cutoff_year)
+            GROUP BY s.ensembl_id HAVING count(*) FILTER (WHERE source = 'pubmed') = 1
+               AND count(*) FILTER (WHERE source = 'europepmc') = 1
+               AND count(DISTINCT kind) FILTER (WHERE source = 'firecrawl') = 7)""",
+    "pairs with a qualifying record but no related-paper search": """
+        SELECT count(*) FROM want w WHERE EXISTS (SELECT 1 FROM preclin.target_literature_evidence v
+                                                 WHERE (v.ensembl_id, v.mondo_id) = (w.ensembl_id, w.mondo_id))
+          AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_search s WHERE source = 'firecrawl_related'
+                          AND (s.ensembl_id, s.mondo_id, s.cutoff_year) = (w.ensembl_id, w.mondo_id, w.cutoff_year))""",
+    "retrieved records with stored text but no screen row and no prefilter-out row": """
+        SELECT count(*) FROM (SELECT DISTINCT h.ensembl_id, h.mondo_id, h.record_id FROM preclin.target_literature_hit h
+                              JOIN want w USING (ensembl_id, mondo_id, cutoff_year)) h
+        WHERE (EXISTS (SELECT 1 FROM public.publications p WHERE p.pmid = h.record_id)
+               OR EXISTS (SELECT 1 FROM preclin.literature_record r WHERE r.record_id = h.record_id)
+               OR EXISTS (SELECT 1 FROM preclin.target_disease_source o
+                          WHERE o.record_id IN (h.record_id, 'PMID:' || h.record_id)))
+          AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_screen s
+                          WHERE (s.ensembl_id, s.mondo_id, s.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))
+          AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_prefilter f WHERE NOT f.possibly
+                          AND (f.ensembl_id, f.mondo_id, f.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))""",
+    "screen or prefilter rows for a record the pair's searches do not return": """
+        SELECT (SELECT count(*) FROM preclin.target_literature_screen s WHERE NOT EXISTS (
+                    SELECT 1 FROM preclin.target_literature_hit h
+                    WHERE (h.ensembl_id, h.mondo_id, h.record_id) = (s.ensembl_id, s.mondo_id, s.record_id)))
+             + (SELECT count(*) FROM preclin.target_literature_prefilter f WHERE NOT EXISTS (
+                    SELECT 1 FROM preclin.target_literature_hit h
+                    WHERE (h.ensembl_id, h.mondo_id, h.record_id) = (f.ensembl_id, f.mondo_id, f.record_id)))""",
+    "hits without their search row": """
+        SELECT count(*) FROM preclin.target_literature_hit h WHERE NOT EXISTS (
+            SELECT 1 FROM preclin.target_literature_search s WHERE (s.ensembl_id, s.mondo_id, s.cutoff_year, s.source)
+                = (h.ensembl_id, h.mondo_id, h.cutoff_year, h.source) AND (s.kind = h.kind OR h.kind = ''))""",
+    "searches of a pair outside the cohort, or at another cutoff": """
+        SELECT count(*) FROM preclin.target_literature_search s WHERE NOT EXISTS (
+            SELECT 1 FROM want w WHERE (w.ensembl_id, w.mondo_id, w.cutoff_year) = (s.ensembl_id, s.mondo_id, s.cutoff_year))""",
+    "screen rows whose decision is not a validated version 2 screen of that pair and record": f"""
+        SELECT count(*) FROM preclin.target_literature_screen s LEFT JOIN pv_evidence.llm_decision d
+            ON d.llm_decision_id = s.llm_decision_id
+        LEFT JOIN pv_evidence.llm_decision_run r ON r.decision_run_id = d.decision_run_id
+        WHERE d.llm_decision_id IS NULL OR d.task <> 'target_literature_screen' OR r.prompt_version <> '{VERSION}'
+           OR d.validation_status <> 'validated'
+           OR d.subject_key <> s.ensembl_id || '|' || s.mondo_id || '|' || s.record_id""",
+    "prefilter rows whose decision is not a validated prefilter of that pair and record": """
+        SELECT count(*) FROM preclin.target_literature_prefilter f LEFT JOIN pv_evidence.llm_decision d
+            ON d.llm_decision_id = f.llm_decision_id
+        WHERE d.llm_decision_id IS NULL OR d.task <> 'target_literature_prefilter' OR d.validation_status <> 'validated'
+           OR d.subject_key <> f.ensembl_id || '|' || f.mondo_id || '|' || f.record_id""",
+    "prefilter rows of a pair at or below the prefilter threshold": f"""
+        SELECT count(*) FROM preclin.target_literature_prefilter f WHERE (
+            SELECT count(DISTINCT record_id) FROM preclin.target_literature_hit h
+            WHERE (h.ensembl_id, h.mondo_id) = (f.ensembl_id, f.mondo_id)) <= {PREFILTER_ABOVE}""",
+}
+INFO = {
+    "retrieved records without stored text (never screened)": """
+        SELECT count(*) FROM (SELECT DISTINCT h.record_id FROM preclin.target_literature_hit h
+                              JOIN want w USING (ensembl_id, mondo_id, cutoff_year)) h
+        WHERE NOT EXISTS (SELECT 1 FROM public.publications p WHERE p.pmid = h.record_id)
+          AND NOT EXISTS (SELECT 1 FROM preclin.literature_record r WHERE r.record_id = h.record_id)
+          AND NOT EXISTS (SELECT 1 FROM preclin.target_disease_source o
+                          WHERE o.record_id IN (h.record_id, 'PMID:' || h.record_id))""",
+    "retrieved (pair, record) by source": """SELECT json_object_agg(source, n) FROM (SELECT source, count(DISTINCT (ensembl_id, mondo_id, record_id)) n
+                                   FROM preclin.target_literature_hit JOIN want USING (ensembl_id, mondo_id, cutoff_year) GROUP BY 1) x""",
+    "retrieved (pair, record) only from the origin search": """SELECT count(*) FROM (SELECT ensembl_id, mondo_id, record_id
+                                   FROM preclin.target_literature_hit JOIN want USING (ensembl_id, mondo_id, cutoff_year)
+                                   GROUP BY 1, 2, 3 HAVING bool_and(source LIKE 'origin%%')) x""",
+    "retrieved (pair, record)": """SELECT count(*) FROM (SELECT DISTINCT ensembl_id, mondo_id, record_id
+                                   FROM preclin.target_literature_hit JOIN want USING (ensembl_id, mondo_id, cutoff_year)) x""",
+    "screen rows": "SELECT count(*) FROM preclin.target_literature_screen",
+    "prefilter rows (possibly / not)": """SELECT count(*) FILTER (WHERE possibly) || ' / ' || count(*) FILTER (WHERE NOT possibly)
+                                          FROM preclin.target_literature_prefilter""",
+    "search rows": "SELECT count(*) FROM preclin.target_literature_search",
+    "hit rows": "SELECT count(*) FROM preclin.target_literature_hit",
+    "retrieved records with no publication year": """
+        SELECT count(*) FROM (SELECT DISTINCT h.record_id FROM preclin.target_literature_hit h
+                              JOIN want w USING (ensembl_id, mondo_id, cutoff_year)) h
+        LEFT JOIN public.publications p ON p.pmid = h.record_id
+        LEFT JOIN preclin.literature_record r ON r.record_id = h.record_id
+        LEFT JOIN (SELECT regexp_replace(record_id, '^PMID:', '') AS record_id, min(year) AS year
+                   FROM preclin.target_disease_source GROUP BY 1) o ON o.record_id = h.record_id
+        WHERE coalesce(p.year, r.year, o.year) IS NULL""",
+}
+
+
+def integrity(args) -> None:
+    """Every check in INTEGRITY must be 0 for the run to be complete; INFO gives the counts the run record reconciles."""
+    p = pairs_of(args.pairs)
+    out = {"checks": {}, "counts": {}}
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("CREATE TEMP TABLE want (ensembl_id text, mondo_id text, cutoff_year int) ON COMMIT DROP")
+        execute_values(cur, "INSERT INTO want VALUES %s", [(r.ensembl_id, r.mondo_id, int(r.cutoff_year)) for r in p.itertuples()])
+        for name, sql in INTEGRITY.items():
+            cur.execute(sql)
+            out["checks"][name] = cur.fetchone()[0]
+        for name, sql in INFO.items():
+            cur.execute(sql)
+            out["counts"][name] = cur.fetchone()[0]
+    out["passes"] = all(v == 0 for v in out["checks"].values())
+    print(json.dumps(out, indent=2, default=str))
+
+
+def summary(args) -> None:
+    """Per kind: cohort pairs with any qualifying record, and pairs with one dated by the year before a 2008-2019
+    entry of a program on the pair (from preclin.target_literature_evidence)."""
+    p = pairs_of(args.pairs)
+    want = set(zip(p.ensembl_id, p.mondo_id))
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT ensembl_id, mondo_id, kind, record_years, first_year_other_agent, program_drug_only
+                       FROM preclin.target_literature_evidence""")
+        ev = [r for r in cur.fetchall() if (r[0], r[1]) in want]
+    entries = cohort_entries()
+    last = entries.groupby(["ensembl_id", "mondo_id"]).entry_year.max().to_dict()
+    first = entries.groupby(["ensembl_id", "mondo_id"]).entry_year.min().to_dict()
+    out = {}
+    for kind in KINDS:
+        rows = [r for r in ev if r[2] == kind]
+        years = {(r[0], r[1]): [y for y in r[3] if y is not None] for r in rows}
+        out[kind] = {"pairs_with_any": len(rows),
+                     "pairs_with_one_before_latest_entry": sum(any(y <= last[k] - 1 for y in v) for k, v in years.items()),
+                     "pairs_with_one_before_first_entry": sum(any(y <= first[k] - 1 for y in v) for k, v in years.items())}
+        if kind == "animal_model_pharmacology":
+            out[kind]["pairs_with_other_agent"] = sum(r[5] is False for r in rows)
+            out[kind]["pairs_with_other_agent_before_latest_entry"] = sum(
+                r[4] is not None and r[4] <= last[(r[0], r[1])] - 1 for r in rows)
+    print(json.dumps({"pairs": len(p), "kinds": out}, indent=2))
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
     for name, fn in [("sample", sample), ("names", names), ("search", search), ("screen", screen), ("check", check),
-                     ("prefilter-check", prefilter_check), ("cost", cost)]:
-        sub.add_parser(name).set_defaults(fn=fn)
-    f = sub.add_parser("firecrawl")
-    f.add_argument("--mode", choices=["search", "related"], required=True)
-    f.set_defaults(fn=firecrawl)
+                     ("prefilter-check", prefilter_check), ("cost", cost), ("integrity", integrity),
+                     ("summary", summary), ("firecrawl", firecrawl), ("origin", origin)]:
+        c = sub.add_parser(name)
+        c.add_argument("--pairs", choices=["pilot", "cohort"], default="pilot")
+        c.set_defaults(fn=fn)
+        if name == "firecrawl":
+            c.add_argument("--mode", choices=["search", "related"], required=True)
+        if name == "screen":
+            c.add_argument("--follow", action="store_true", help="keep screening pairs as their searches finish")
+        if name == "search":
+            c.add_argument("--shard", help="i/n: search every n-th pair from the i-th, to run n searches in parallel")
+        if name in ("screen", "cost"):
+            c.add_argument("--since", help="count spend from this timestamp (the full run's start)")
     r = sub.add_parser("reference")
     r.add_argument("--rows", required=True)
     r.set_defaults(fn=reference)
