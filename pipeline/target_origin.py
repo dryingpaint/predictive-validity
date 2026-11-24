@@ -62,7 +62,7 @@ BUNDLE_LATEST = 15  # ... and the latest before the cutoff
 ABSTRACT_CHARS = 1500
 
 PILOT_CSV = os.path.join(frame.REPO, "report", "audits", "target_origin_pilot.csv")
-PAIR_SETS = ["pilot", "set_a", "set_b", "window", "all"]
+PAIR_SETS = ["pilot", "set_a", "set_b", "window", "stale", "unchecked", "all"]
 
 SEARCH_METHOD = "target_origin_search@v1"
 ORIGIN_SERVICES = ("pubmed", "europepmc")  # the origin search's services; firecrawl rows belong to #154
@@ -242,6 +242,20 @@ def records_from(df: pd.DataFrame) -> list[dict]:
 
 # --- pair sets ---
 
+# The cutoff year each window pair was last labelled against (its label decision's input), to find the pairs a
+# rebuild left unlabelled or moved to another cutoff year.
+LABELLED_CUTOFF_SQL = """SELECT o.ensembl_id, o.mondo_id, (d.input_payload->>'cutoff_year')::int AS labelled_cutoff
+                         FROM preclin.target_disease_origin o JOIN pv_evidence.llm_decision d USING (llm_decision_id)
+                         WHERE o.basis = 'labelled' AND o.origin <> 'not_reached'"""
+
+
+# Window pairs whose label as read is graded but that no checker has read: no check decisions on the row.
+UNCHECKED_SQL = """SELECT o.ensembl_id, o.mondo_id FROM preclin.target_disease_origin o
+                   JOIN pv_evidence.llm_decision d USING (llm_decision_id)
+                   WHERE o.basis = 'labelled' AND d.parsed_output->>'grade' <> 'none'
+                     AND coalesce(o.check_fields->'decisions', '{}'::jsonb) = '{}'::jsonb"""
+
+
 def pair_frame(which: str) -> pd.DataFrame:
     """The pairs a command works on: ensembl_id, mondo_id, symbol, first_entry, cutoff_year, validated_at_entry
     (and group, hand_check_set for the pilot sets)."""
@@ -250,8 +264,15 @@ def pair_frame(which: str) -> pd.DataFrame:
     hub["cutoff_year"] = hub.first_entry.dt.year
     if which == "all":
         return hub
+    window = hub[hub.first_entry.between(pd.Timestamp(SECTION1[0]), pd.Timestamp(SECTION1[1]))].reset_index(drop=True)
     if which == "window":
-        return hub[hub.first_entry.between(pd.Timestamp(SECTION1[0]), pd.Timestamp(SECTION1[1]))].reset_index(drop=True)
+        return window
+    if which == "unchecked":
+        return window.merge(frame.query(UNCHECKED_SQL), on=["ensembl_id", "mondo_id"]).reset_index(drop=True)
+    if which == "stale":  # window pairs with no label, or labelled against another cutoff year than their own now
+        done = frame.query(LABELLED_CUTOFF_SQL)
+        w = window.merge(done, on=["ensembl_id", "mondo_id"], how="left")
+        return w[w.labelled_cutoff.ne(w.cutoff_year)].drop(columns="labelled_cutoff").reset_index(drop=True)
     pilot = pd.read_csv(PILOT_CSV, dtype=str)
     if which == "set_a":
         pilot = pilot[pilot.hand_check_set == "a"]

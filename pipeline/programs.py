@@ -4,7 +4,9 @@
     python -m pipeline.programs roles      # role of each molecular entity in each trial (arm types, else LLM)
     python -m pipeline.programs purposes   # LLM: what each industry trial contributes to development
     python -m pipeline.programs indications  # LLM: group each entity's diseases into development indications
+    python -m pipeline.programs scope      # LLM: is a disease term that contains another an indication or a grouping
     python -m pipeline.programs build      # (molecular entity, indication) programs -> preclin.dev_program
+    python -m pipeline.programs build --dry-run  # the programs a build would write, against the stored ones
 
 A trial is in scope when it lists Early Phase 1, Phase 1, 2 or 3 (any sponsor,
 any date). Intervention names (DRUG, BIOLOGICAL, GENETIC, COMBINATION_PRODUCT)
@@ -484,6 +486,79 @@ def indications(_args) -> None:
           f"{len({(m, r) for m, _, r, _ in out})} indications")
 
 
+SCOPE_SYSTEM = """You decide whether a disease term from the MONDO ontology names one development indication or is a grouping term that spans several.
+
+An indication is a disease a sponsor runs a drug development program for and a regulator approves a drug for: rheumatoid arthritis, ankylosing spondylitis, acute myeloid leukemia, colorectal cancer, type 2 diabetes mellitus, diffuse large B-cell lymphoma, asthma. It stays an indication when the ontology lists other diseases under it, including its subtypes, stages and complications, and including diseases the ontology files under it that are separate indications in practice.
+
+A grouping term spans diseases that are developed and approved as separate indications, so trials listing it are spread over them: cancer, neoplasm, solid tumour, carcinoma, lymphoma, leukemia, non-Hodgkin lymphoma, arthritis, autoimmune disease, infectious disease, inflammatory bowel disease.
+
+You are given the term, its definition, the more specific diseases under it that drugs were also tested in, and how many trials list it. Judge the term itself, not any one drug."""
+
+SCOPE_SCHEMA = {
+    "type": "object",
+    "properties": {"scope": {"type": "string", "enum": ["indication", "grouping"]}, "reason": {"type": "string"}},
+    "required": ["scope", "reason"],
+    "additionalProperties": False,
+}
+
+
+def render_scope(p: dict) -> str:
+    return (f"Term: {p['mondo_id']} {p['label']}\nDefinition: {p['definition'] or 'none given'}\n"
+            f"Trials listing it: {p['n_trials']}\n"
+            f"More specific diseases under it that drugs tested in it were also tested in: {', '.join(p['within'])}")
+
+
+SCOPE_TASK = llm.Task(name="disease_term_scope", prompt_version="v1", schema_version="v1", system=SCOPE_SYSTEM,
+                      schema=SCOPE_SCHEMA, render=render_scope, subject_type="mondo_term", model="claude-opus-5-5",
+                      effort="low", max_tokens=1500)
+SCOPE_METHOD = "disease_term_scope@v1"
+
+
+def nested_terms(indication: dict, ancestors: dict) -> dict[str, set[str]]:
+    """Each disease that, for some entity, is an ancestor of another of that entity's indications -> those more
+    specific indications (indication: (entity, disease) -> the disease representing its group)."""
+    reps = defaultdict(set)
+    for (mid, _), rep in indication.items():
+        reps[mid].add(rep)
+    out = defaultdict(set)
+    for rs in reps.values():
+        for d in rs:
+            out[d] |= {o for o in rs if o != d and d in ancestors[o]}
+    return {d: within for d, within in out.items() if within}
+
+
+def scope(_args) -> None:
+    """Whether each disease term that contains another of some entity's indications is itself an indication."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT moiety_id, mondo_id, indication_mondo FROM preclin.program_indication")
+        indication = {(mid, d): rep for mid, d, rep in cur.fetchall()}
+        ancestors = mondo_ancestors(cur)
+        nested = nested_terms(indication, ancestors)
+        cur.execute("SELECT term_id, label, definition FROM preclin.ontology_term WHERE term_id = ANY(%s)",
+                    (sorted(set(nested) | {o for w in nested.values() for o in w}),))
+        terms = {t: (label, definition) for t, label, definition in cur.fetchall()}
+        cur.execute("""SELECT i.mondo_id, count(DISTINCT si.nct_id) FROM preclin.ctgov_study_indication si
+                       JOIN preclin.indication i USING (indication_id) WHERE i.mondo_id = ANY(%s) GROUP BY 1""",
+                    (sorted(nested),))
+        n_trials = dict(cur.fetchall())
+    items = {d: {"mondo_id": d, "label": terms.get(d, (d, None))[0], "definition": terms.get(d, (d, None))[1],
+                 "n_trials": int(n_trials.get(d, 0)),
+                 "within": sorted(terms.get(o, (o, None))[0] for o in within)[:15]}
+             for d, within in nested.items()}
+    run_id = llm.run(SCOPE_TASK, items)
+    out = [(d, o["scope"], i) for d, i, o in llm.decisions(run_id)]
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, SCOPE_METHOD, "Indication or grouping term", SCOPE_SYSTEM,
+                          ["preclin.program_indication", "preclin.ontology_term", "preclin.ontology_ancestor"],
+                          {"task": SCOPE_TASK.name, "prompt_version": SCOPE_TASK.prompt_version,
+                           "model": SCOPE_TASK.model, "run": str(run_id)})
+        cur.execute("DELETE FROM preclin.disease_term_scope")
+        execute_values(cur, "INSERT INTO preclin.disease_term_scope (mondo_id, scope, llm_decision_id) VALUES %s",
+                       out, page_size=5000)
+        conn.commit()
+    print(f"terms={len(items)} decided={len(out)} " + str(Counter(s for _, s, _ in out)))
+
+
 ACTIVE_STATUSES = {"RECRUITING", "ACTIVE_NOT_RECRUITING", "ENROLLING_BY_INVITATION", "NOT_YET_RECRUITING"}
 PHASE_NUM = {"EARLY_PHASE1": 1, "PHASE1": 1, "PHASE2": 2, "PHASE3": 3}
 
@@ -529,12 +604,15 @@ def entry_programs(first: dict, start: date) -> set:
 
 
 def assemble_programs(by_moiety: dict, trials: dict, trial_diseases: dict, demoted: dict, trial_other: set,
-                      baskets: set, indication: dict, ancestors: dict) -> dict:
+                      baskets: set, indication: dict, ancestors: dict, indications: set[str] = frozenset()) -> dict:
     """(moiety, mondo or None) -> {nct: (attach, marks_entry)} for each entity's investigational trials
     (`by_moiety`). trial_diseases: trial -> the MONDO diseases it counts for; demoted: trial -> those of
     them mapped only to a broader term while another of the trial's diseases is mapped exactly, which
     attach to the programs they name or contain as broader_condition without starting one; trials:
-    trial -> its "start" date; indication: (moiety, disease) -> the disease representing its group."""
+    trial -> its "start" date; indication: (moiety, disease) -> the disease representing its group;
+    indications: diseases judged one development indication (preclin.disease_term_scope), which keep their own
+    program when they contain another of the entity's diseases; any other disease that does is a grouping term
+    whose trials attach to the programs it contains."""
     programs = {}
     for mid, ncts in by_moiety.items():
         direct = defaultdict(set)
@@ -551,7 +629,7 @@ def assemble_programs(by_moiety: dict, trials: dict, trial_diseases: dict, demot
                 other_condition.append(nct)
             else:
                 no_disease.append(nct)
-        specific = {d for d in direct if not any(d in ancestors[o] for o in direct if o != d)}
+        specific = {d for d in direct if d in indications or not any(d in ancestors[o] for o in direct if o != d)}
         first = {(mid, d): min(trials[n]["start"] for n in direct[d]) for d in specific}
         for d in sorted(specific):
             programs[(mid, d)] = dict.fromkeys(sorted(direct[d]), ("disease", True))
@@ -587,16 +665,18 @@ def assemble_programs(by_moiety: dict, trials: dict, trial_diseases: dict, demot
     return programs
 
 
-def build(_args) -> None:
+def build(args) -> None:
     """(molecular entity, indication) programs from investigational trials. An
     indication is the MONDO disease representing a group of the entity's diseases
     (preclin.program_indication); ungrouped diseases are their own indication.
 
     A trial's phase is the highest phase it lists (Phase 1/2 counts as 2).
     Withdrawn trials never enrolled and are left out. A trial whose condition
-    is an ancestor of another of the entity's diseases (e.g. "solid tumors"
-    and "non-small cell lung carcinoma") attaches to the more specific
-    programs instead of forming its own; a trial without a disease
+    is a grouping term containing another of the entity's diseases (e.g. "solid tumors"
+    and "non-small cell lung carcinoma"; preclin.disease_term_scope) attaches to the more specific
+    programs instead of forming its own, while one that names an indication keeps its own program even
+    when the ontology files another of the entity's diseases under it (rheumatoid arthritis and
+    ankylosing spondylitis); a trial without a disease
     (healthy volunteers, or none listed) attaches to every program of the
     entity, or forms the entity's disease-unspecified program when it has none.
     A condition mapped only to a broader MONDO term (indication.mondo_match) in a
@@ -674,10 +754,14 @@ def build(_args) -> None:
         cur.execute("SELECT moiety_id, mondo_id, indication_mondo FROM preclin.program_indication")
         indication = {(mid, d): rep for mid, d, rep in cur.fetchall()}
         ancestors = mondo_ancestors(cur)
+        cur.execute("SELECT mondo_id FROM preclin.disease_term_scope WHERE scope = 'indication'")
+        indications = {d for (d,) in cur.fetchall()}
 
     snap = date.fromisoformat(snapshot)
     programs = assemble_programs(by_moiety, trials, trial_diseases, demoted, trial_other, baskets, indication,
-                                 ancestors)
+                                 ancestors, indications)
+    if getattr(args, "dry_run", False):
+        return dry_run(programs, trials)
 
     # Which trials can start a phase (preclin.trial_phase_role). A Phase 2 or 3 trial that would set a
     # program's phase start is judged when it could be an extension (open-label, not randomised) or
@@ -754,6 +838,36 @@ def build(_args) -> None:
           f"entities={len(by_moiety)}")
 
 
+DRY_RUN_CSV = "program_build_diff.csv"
+
+
+def dry_run(programs: dict, trials: dict) -> None:
+    """Compare the assembled programs ((entity, disease) -> trials) with preclin.dev_program; write each changed
+    program with its trial counts before and after to DRY_RUN_CSV and print the totals."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT p.moiety_id, p.mondo_id, array_agg(t.nct_id) FROM preclin.dev_program p
+                       JOIN preclin.dev_program_trial t USING (program_id) GROUP BY 1, 2""")
+        stored = {(mid, d): set(ncts) for mid, d, ncts in cur.fetchall()}
+    new = {k: set(v) for k, v in programs.items()}
+    rows = []
+    for k in set(stored) | set(new):
+        before, after = stored.get(k, set()), new.get(k, set())
+        if before != after:
+            rows.append({"moiety_id": k[0], "mondo_id": k[1], "trials_before": len(before), "trials_after": len(after),
+                         "status": "added" if not before else "removed" if not after else "changed",
+                         "phase_before": max((trials[n]["phase"] for n in before if n in trials), default=None),
+                         "phase_after": max((trials[n]["phase"] for n in after if n in trials), default=None)})
+    import csv
+    with open(DRY_RUN_CSV, "w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(rows[0]) if rows else ["moiety_id"])
+        w.writeheader()
+        w.writerows(rows)
+    status = Counter(r["status"] for r in rows)
+    moved = sum(abs(r["trials_after"] - r["trials_before"]) for r in rows)
+    print(f"stored={len(stored)} built={len(new)} changed programs={len(rows)} {dict(status)} "
+          f"trial links moved={moved}; detail in {DRY_RUN_CSV}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -761,7 +875,11 @@ def main() -> None:
     sub.add_parser("roles").set_defaults(fn=roles)
     sub.add_parser("purposes").set_defaults(fn=purposes)
     sub.add_parser("indications").set_defaults(fn=indications)
-    sub.add_parser("build").set_defaults(fn=build)
+    sub.add_parser("scope").set_defaults(fn=scope)
+    p = sub.add_parser("build")
+    p.add_argument("--dry-run", action="store_true",
+                   help="compare the programs a build would write with the stored ones; write nothing")
+    p.set_defaults(fn=build)
     args = parser.parse_args()
     args.fn(args)
 

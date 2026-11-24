@@ -118,3 +118,22 @@ def test_trial_context_gives_the_year_range_and_titles_spread_over_start_order()
 
 def test_trial_context_of_a_string_no_trial_lists():
     assert trial_context([]) == {"n": 0, "first_year": None, "last_year": None, "median_year": None, "titles": []}
+
+
+RA, AS = "MONDO:ra", "MONDO:as"
+
+
+def test_an_indication_the_ontology_files_another_disease_under_keeps_its_own_program():
+    """Rheumatoid arthritis contains ankylosing spondylitis in MONDO; as an indication it keeps its own program
+    and its trials, while a grouping term (cancer) still attaches to the programs it contains."""
+    conditions = [("NCT1", RA, "exact", "Rheumatoid Arthritis"), ("NCT2", AS, "exact", "Ankylosing Spondylitis"),
+                  ("NCT3", CANCER, "exact", "Cancer"), ("NCT4", NSCLC, "exact", "NSCLC")]
+    diseases, demoted, other = trial_disease_sets(conditions, {}, {}, {})
+    trials = {n: {"start": date(2020, 1, 1)} for n in ("NCT1", "NCT2", "NCT3", "NCT4")}
+    ancestors = defaultdict(set, {NSCLC: {CANCER}, AS: {RA}})
+    args = ({1: ["NCT1", "NCT2", "NCT3", "NCT4"]}, trials, diseases, demoted, other, set(), {}, ancestors)
+    got = assemble_programs(*args, indications={RA})
+    assert got[(1, RA)] == {"NCT1": ("disease", True)}
+    assert got[(1, AS)] == {"NCT2": ("disease", True)}
+    assert (1, CANCER) not in got and got[(1, NSCLC)]["NCT3"] == ("broader_condition", True)
+    assert (1, RA) not in assemble_programs(*args)  # judged a grouping term, it folds into what it contains
