@@ -489,53 +489,62 @@ def adverse_pairs() -> set[tuple[int, str]]:
             for event, mondo in reactions.get(other, ()) if mondo in nb.terms(disease, CLOSE)}
 
 
+def drug_searches(cur, moieties: list[int]) -> dict[int, str]:
+    """Each drug's openFDA search: a report naming it by one of the UNIIs of its entity and their salts and forms, by its
+    name as a generic name, or by its name as the product a report gives (a drug openFDA's labels no longer list, such
+    as a withdrawn one, has no UNII in the reports, and a salt missing from preclin.unii_parent is found by name)."""
+    cur.execute("""SELECT m.moiety_id, m.name, array_remove(array_append(array_agg(p.unii), m.unii), NULL)
+                   FROM preclin.moiety m LEFT JOIN preclin.unii_parent p ON p.parent_unii = m.unii
+                   WHERE m.moiety_id = ANY(%s) GROUP BY m.moiety_id""", (moieties,))
+    return {m: "(" + " ".join([*(f'patient.drug.openfda.unii:"{u}"' for u in sorted(set(uniis))),
+                                f'patient.drug.openfda.generic_name:"{name}"', f'patient.drug.medicinalproduct:"{name}"'])
+               + ")" for m, name, uniis in cur.fetchall()}
+
+
+def reaction_search(event: str) -> str:
+    return f'patient.reaction.reactionmeddrapt.exact:"{event.upper()}"'
+
+
 def adverse_dates(_args) -> None:
     """Count the FAERS reports of every pair the side-effect fact can reach, its drug, its reaction and all reports, by
-    year received, for counts not stored yet; then date every such pair by SIGNAL_METHOD."""
+    year received, for searches not stored yet; then date every such pair by SIGNAL_METHOD, and drop the stored counts of
+    drug and pair searches no pair uses any more."""
     through = datetime.date.today().year - 1  # the last whole year received
     pairs = adverse_pairs()
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT m.moiety_id, m.name, array_remove(array_append(array_agg(p.unii), m.unii), NULL)
-                       FROM preclin.moiety m LEFT JOIN preclin.unii_parent p ON p.parent_unii = m.unii
-                       WHERE m.moiety_id = ANY(%s) GROUP BY m.moiety_id""", ([m for m, _ in pairs],))
-        names = {m: (name, sorted(set(uniis))) for m, name, uniis in cur.fetchall()}
-        cur.execute("SELECT DISTINCT query_kind, subject_key FROM preclin.faers_year_count")
-        have = set(cur.fetchall())
+        searches = drug_searches(cur, sorted({m for m, _ in pairs}))
+        release = llm.register_release(cur, "openfda_drug_event", datetime.date.today().isoformat(), OPENFDA_EVENTS,
+                                       hashlib.sha256(json.dumps(sorted(pairs)).encode()).hexdigest(),
+                                       {"count": "receivedate", "pairs": len(pairs)})
         conn.commit()  # no transaction stays open through the openFDA calls
 
-    def drug_search(m: int) -> str:
-        name, uniis = names[m]
-        return ("patient.drug.openfda.unii:(" + " ".join(f'"{u}"' for u in uniis) + ")" if uniis
-                else f'patient.drug.openfda.generic_name.exact:"{name.upper()}"')
-
-    def reaction_search(event: str) -> str:
-        return f'patient.reaction.reactionmeddrapt.exact:"{event.upper()}"'
-    queries = [("all", "", None, None, None)]
-    queries += [("drug", str(m), m, None, drug_search(m)) for m in sorted({m for m, _ in pairs})]
-    queries += [("reaction", e, None, e, reaction_search(e)) for e in sorted({e for _, e in pairs})]
-    queries += [("pair", f"{m} {e}", m, e, f"{drug_search(m)} AND {reaction_search(e)}") for m, e in sorted(pairs)]
-    todo = [q for q in queries if q[:2] not in have]
-    print(f"pairs={len(pairs)} queries={len(queries)} to ask={len(todo)}", flush=True)
-    with llm.connect() as conn, conn.cursor() as cur:
-        release = llm.register_release(cur, "openfda_drug_event", datetime.date.today().isoformat(), OPENFDA_EVENTS,
-                                       hashlib.sha256(json.dumps(sorted(q[:2] for q in todo)).encode()).hexdigest(),
-                                       {"count": "receivedate", "queries": len(todo)})
-        conn.commit()
-    for i, (kind, key, moiety, event, search) in enumerate(todo):
-        years = faers_years(search)
-        # A query is stored whole, in its own transaction, so an interrupted run resumes after the last one stored;
-        # one with no reports keeps a single row of year 0 and 0 reports marking it asked.
-        rows = [(kind, key, moiety, event, y, n, release) for y, n in sorted(years.items())] or \
-               [(kind, key, moiety, event, 0, 0, release)]
+    def ask(queries: list[tuple]) -> None:
         with llm.connect() as conn, conn.cursor() as cur:
-            execute_values(cur, """INSERT INTO preclin.faers_year_count
-                  (query_kind, subject_key, moiety_id, event, year, reports, source_release_id) VALUES %s""", rows)
+            cur.execute("SELECT DISTINCT query_kind, subject_key FROM preclin.faers_year_count")
+            have = set(cur.fetchall())
             conn.commit()
-        if (i + 1) % 50 == 0:
-            print(f"{i + 1}/{len(todo)}", flush=True)
+        todo = [q for q in queries if q[:2] not in have]
+        print(f"{len(queries)} searches, {len(todo)} to ask", flush=True)
+        for i, (kind, key, moiety, event, search) in enumerate(todo):
+            years = faers_years(search)
+            # A search is stored whole, in its own transaction, so an interrupted run resumes after the last one
+            # stored; one with no reports keeps a single row of year 0 and 0 reports marking it asked.
+            rows = [(kind, key, moiety, event, y, n, release) for y, n in sorted(years.items())] or \
+                   [(kind, key, moiety, event, 0, 0, release)]
+            with llm.connect() as conn, conn.cursor() as cur:
+                execute_values(cur, """INSERT INTO preclin.faers_year_count
+                      (query_kind, subject_key, moiety_id, event, year, reports, source_release_id) VALUES %s""", rows)
+                conn.commit()
+            if (i + 1) % 50 == 0:
+                print(f"{i + 1}/{len(todo)}", flush=True)
+
+    drug = searches
+    pair = {(m, e): f"{drug[m]} AND {reaction_search(e)}" for m, e in pairs}
+    ask([("all", "", None, None, None)] + [("drug", q, m, None, q) for m, q in sorted(drug.items())]
+        + [("reaction", e, None, e, reaction_search(e)) for e in sorted({e for _, e in pairs})]
+        + [("pair", q, m, e, q) for (m, e), q in sorted(pair.items())])
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT query_kind, subject_key, year, reports FROM preclin.faers_year_count
-                       WHERE year > 0""")
+        cur.execute("SELECT query_kind, subject_key, year, reports FROM preclin.faers_year_count WHERE year > 0")
         counts: dict = defaultdict(dict)
         for kind, key, year, n in cur.fetchall():
             counts[(kind, key)][year] = n
@@ -547,9 +556,12 @@ def adverse_dates(_args) -> None:
                                            "min_chi2": SIGNAL_CHI2, "through": through})
         rows = []
         for m, e in sorted(pairs):
-            year, reports, prr, chi2 = signal(counts[("pair", f"{m} {e}")], counts[("drug", str(m))],
+            year, reports, prr, chi2 = signal(counts[("pair", pair[(m, e)])], counts[("drug", drug[m])],
                                               counts[("reaction", e)], counts[("all", "")], through)
             rows.append((m, e, year, through, reports, prr, chi2, method))
+        cur.execute("""DELETE FROM preclin.faers_year_count WHERE (query_kind = 'drug' AND subject_key <> ALL(%s))
+                                                                 OR (query_kind = 'pair' AND subject_key <> ALL(%s))""",
+                    (list(drug.values()), list(pair.values())))
         cur.execute("DELETE FROM preclin.faers_signal")
         execute_values(cur, """INSERT INTO preclin.faers_signal
               (moiety_id, event, signal_year, dated_through, reports, prr, chi2, method_id) VALUES %s""", rows)
