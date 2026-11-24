@@ -1,27 +1,24 @@
 """Published evidence about a target's biology in a disease, as known the year before a phase entry (issue #154).
 
-    python -m pipeline.target_literature sample       # the seeded pilot of 300 pairs (report/audits/target_literature_pilot.csv)
     python -m pipeline.target_literature names        # LLM: vet each gene's names; list each disease's model terms
+    python -m pipeline.target_literature origin       # link the origin search's records (#146) as hits
     python -m pipeline.target_literature search       # PubMed and Europe PMC by gene names and disease names/models
     python -m pipeline.target_literature firecrawl --mode search|related   # Firecrawl, per pair and kind / related papers
     python -m pipeline.target_literature screen       # LLM: prefilter large literatures, then screen every record
-    python -m pipeline.target_literature check        # second model on a seeded sample of screened records
+    python -m pipeline.target_literature check        # second model on a seeded sample of screens, and kappa per kind
     python -m pipeline.target_literature prefilter-check   # full screen of a seeded sample the prefilter dropped
-    python -m pipeline.target_literature reference --rows 1-100   # blind web-enabled model lists every study per kind
-    python -m pipeline.target_literature gate --rows 1-100 --label v1   # recall, agreement and coverage gates
-    python -m pipeline.target_literature cost         # the pilot's measured cost and its extrapolation
-    python -m pipeline.target_literature origin --pairs cohort      # link the origin search's records (#146) as hits
-    python -m pipeline.target_literature integrity --pairs cohort   # completeness and consistency checks of a run
-    python -m pipeline.target_literature summary --pairs cohort     # pairs with each kind, before entry
-    python -m pipeline.target_literature web --shard i/n            # the web arm: a web-enabled model per cohort pair
-    python -m pipeline.target_literature web-import                 # pilot rows 1-200's reference as their web answers
-    python -m pipeline.target_literature web-screen --shard i/n     # screen the web arm's records
-    python -m pipeline.target_literature yardstick                  # a differently set up model on 100 seeded pairs
-    python -m pipeline.target_literature web-score                  # recall of each arm and their union, per kind
+    python -m pipeline.target_literature web          # the web arm: a web-enabled model lists each pair's studies
+    python -m pipeline.target_literature web-screen   # screen the records the web arm (or --sources) added
+    python -m pipeline.target_literature yardstick    # a differently set up web-enabled model on 100 seeded pairs
+    python -m pipeline.target_literature web-score    # recall of the abstract run, the web arm and both, per kind
+    python -m pipeline.target_literature reconcile    # bring the stored literature to a rebuilt cohort, adding only
+    python -m pipeline.target_literature integrity    # completeness and consistency checks
+    python -m pipeline.target_literature summary      # pairs with each kind, before entry
+    python -m pipeline.target_literature cost         # spend by task
 
-names, search, firecrawl, screen, check and prefilter-check take --pairs pilot (the default) or cohort, the full
-descriptive run over every cohort pair; search --shard i/n splits the pairs across parallel processes; screen
---follow screens pairs as their searches finish, and --shard i/n splits them across parallel screens.
+Commands take --pairs pilot (the default), cohort (every cohort pair) or new (cohort pairs with nothing stored yet);
+search, screen, web and web-screen take --shard i/n to run n processes on disjoint pairs; screen --follow screens
+pairs as their searches finish. The method, the gate and the results are in report/audits/target_literature.md.
 
 The unit is a target-disease pair (preclin.target_disease) with a US-sited phase entry of 2008-2019 in the stored
 evidence dataset (preclin.evidence_entry). A pair is searched up to its cutoff, the year before its latest such
@@ -42,20 +39,14 @@ as kind 4's flag) in the pair's disease, a subtype or a near-identical disease:
 
 Retrieval per pair: the records of the origin search (#146, preclin.target_disease_source), linked as hits rather
 than copied; PubMed and Europe PMC (outside MEDLINE) titles and abstracts naming the gene (HGNC symbol and its
-names, vetted by an LLM, which drops ambiguous aliases and may add common protein names) and the disease (MONDO label
-and synonyms) or one of its experimental models (terms an LLM lists per disease, such as collagen-induced arthritis),
-reviews excluded; Firecrawl's research index once per pair and kind, and once for papers related to the pair's first
-screened-in record. A pair with more than PREFILTER_ABOVE records gets a cheap prefilter first. A second model
-relabels a seeded sample; a blind web-enabled model lists every study of each kind for pilot rows 1-100, the
-reference for recall. The plan's gates (recall >= 0.8, kappa >= 0.6, Phase 2 coverage >= 0.08) decide which kinds
-run on every pair, after the pilot's measured cost is approved.
-
-Version 1 failed every gate on rows 1-100. Version 2, the one revision #154 allows, fixed before its reference
-was built: gene names may add the receptor or complex names papers use for the protein; the disease's direct MONDO
-subtypes are searched with its names; the prefilter applies above 3,000 records, as registered; the screen first
-names the system of the paper's main finding and reads tighter kind definitions (clinical observations exclude
-efficacy trials in the disease). It is scored on rows 101-200 against a fresh reference. Every reference PMID is
-checked against the title the model gave (verify_pmids).
+names, vetted by an LLM, which drops ambiguous aliases and may add the receptor or complex names papers use for the
+protein) and the disease (MONDO label, synonyms and direct subtypes) or one of its experimental models (terms an LLM
+lists per disease, such as collagen-induced arthritis), reviews excluded; Firecrawl's research index once per pair
+and kind, and once for papers related to the pair's first screened-in record; and the web arm, a web-enabled model
+asked for the pair's studies of every kind (WEB_TASK), each study verified to a record (verify_studies). A pair with
+more than PREFILTER_ABOVE records gets a cheap prefilter first, except records the web arm named. Every record gets
+the same screen (screen_task). The kinds failed the registered gate (recall >= 0.8, kappa >= 0.6, Phase 2 coverage
+>= 0.08), so they are descriptive.
 """
 from __future__ import annotations
 
@@ -76,7 +67,7 @@ from pipeline import llm, throttle
 from pipeline.outcomes import eutils
 from pipeline.attribution import NOT_REVIEWS
 from pipeline.literature import (FIRECRAWL_BACKOFF_MAX, FIRECRAWL_PER_SECOND, FIRECRAWL_RESULTS,
-                                 GATES, FirecrawlError, SourceDown, clean, epmc_records, fetch_papers, firecrawl_cli,
+                                 FirecrawlError, SourceDown, clean, epmc_records, fetch_papers, firecrawl_cli,
                                  firecrawl_credits, firecrawl_ids, kappa, names_clause, pubmed_ids, resolve_external,
                                  stored_papers, store_records)
 
@@ -106,13 +97,11 @@ KIND_TEXT = {
                             "experiments), or autoantibodies against the target; efficacy trials of drugs in this "
                             "disease do not count",
 }
-VERSION = "v2"  # v1 (14b38ea) failed every gate; v2 is the registered single revision, scored on rows 101-200
+VERSION = "v2"  # prompt_version of the screen, prefilter, check and gene-vet tasks (#154's single allowed revision)
 COHORT = (2008, 2019)  # phase entry years of the evidence dataset
 PILOT_N = 300
-PILOT_SEED = 20261122
+PILOT_SEED = 20261122  # drew the pilot from the cohort of 2026-11-22; that cohort has since changed, so the draw is kept
 PILOT_CSV = os.path.join(llm.REPO, "report", "audits", "target_literature_pilot.csv")
-GATE = os.path.join(llm.REPO, "report", "audits", "target_literature_gate.json")
-REFERENCE_DIR = os.path.join(llm.REPO, "report", "audits", "target_literature_reference")
 MAX_GENE_NAMES = 16
 MAX_DISEASE_NAMES = 20
 MAX_SUBTYPE_NAMES = 15  # labels of the disease's direct MONDO subtypes searched as disease names (v2)
@@ -161,26 +150,20 @@ def cohort_pairs() -> pd.DataFrame:
     return p.merge(meta, on=["ensembl_id", "mondo_id"]).sort_values(["ensembl_id", "mondo_id"]).reset_index(drop=True)
 
 
-def sample(_args) -> None:
-    """Draw the seeded pilot of PILOT_N cohort pairs, numbered 1..PILOT_N in draw order."""
-    p = cohort_pairs()
-    rng = np.random.default_rng(PILOT_SEED)
-    s = p.iloc[rng.choice(len(p), PILOT_N, replace=False)].reset_index(drop=True)
-    s.insert(0, "row", range(1, len(s) + 1))
-    s.to_csv(PILOT_CSV, index=False)
-    print(f"pilot: {len(s)} of {len(p)} cohort pairs -> {PILOT_CSV}")
-
-
 def pilot_pairs() -> pd.DataFrame:
     return pd.read_csv(PILOT_CSV)
 
 
 def pairs_of(which: str) -> pd.DataFrame:
-    """The pilot sample, every cohort pair (the full descriptive run), or the cohort as the web arm searched it."""
-    if which in ("reconcile", "reconcile-new"):
-        p = pd.read_csv(RECONCILE_CSV)
-        return p if which == "reconcile" else p[p.change == "new"].reset_index(drop=True)
-    return pilot_pairs() if which == "pilot" else web_cohort() if which == "web" else cohort_pairs()
+    """The pilot sample, every cohort pair (the full descriptive run), or the cohort pairs with no search stored
+    yet (new, after a rebuild of programs or pairs: see reconcile)."""
+    if which == "new":
+        with llm.connect() as conn, conn.cursor() as cur:
+            cur.execute("SELECT DISTINCT ensembl_id, mondo_id FROM preclin.target_literature_search")
+            searched = set(cur.fetchall())
+        p = cohort_pairs()
+        return p[[(e, m) not in searched for e, m in zip(p.ensembl_id, p.mondo_id)]].reset_index(drop=True)
+    return pilot_pairs() if which == "pilot" else cohort_pairs()
 
 
 def pair_key(ensembl_id: str, mondo_id: str) -> str:
@@ -835,7 +818,7 @@ def counts(o: dict, kind: str) -> bool:
 def check(args) -> None:
     """A second model relabels a seeded sample of pilot screens: per kind, up to CHECK_PER_KIND / 2 screened in and as
     many screened out (the screened-out drawn from records the screen read as same-disease original data, where
-    errors would matter); kappa per kind is computed by the gate."""
+    errors would matter); then prints kappa per kind (agreement)."""
     items = screened_items(pairs_of(args.pairs))
     dec = llm.current_decisions(screen_task(), items)
     rng = np.random.default_rng(CHECK_SEED)
@@ -849,6 +832,7 @@ def check(args) -> None:
                 pick |= set(rng.choice(group, min(CHECK_PER_KIND // 2, len(group)), replace=False))
     print(f"check: records={len(pick)}", flush=True)
     decide(screen_task(CHECK_MODEL, "_check"), {k: items[k] for k in sorted(pick)})
+    print(json.dumps(agreement(args.pairs), indent=2))
 
 
 def agreement(which: str = "pilot") -> dict[str, dict]:
@@ -866,7 +850,7 @@ def agreement(which: str = "pilot") -> dict[str, dict]:
     return out
 
 
-# --- reference and gate --------------------------------------------------------------------------------------------
+# --- web search: the pilot's reference prompt, the web arm and the yardstick ----------------------------------------
 
 REFERENCE_KINDS = ("human_cell_perturbation", "cell_line_perturbation", "diseased_tissue_protein",
                    "animal_model_pharmacology_other", "mouse_genetic_disease_model", "observational_biomarker",
@@ -899,12 +883,6 @@ def render_reference(p: dict) -> str:
                       f"Cutoff year: {p['cutoff_year']} (only studies published in or before it)"])
 
 
-def reference_task(model: str = REFERENCE_MODEL, suffix: str = "") -> llm.Task:
-    return llm.Task(name="target_literature_reference" + suffix, prompt_version=VERSION, schema_version="v1",
-                    system=REFERENCE_SYSTEM, schema=REFERENCE_SCHEMA, render=render_reference, subject_type="pair",
-                    model=model, effort="medium", max_tokens=16000, tools=REFERENCE_TOOLS)
-
-
 REFERENCE_FALLBACK = "claude-opus-5"  # answers the pairs the reference model refuses
 
 
@@ -916,12 +894,6 @@ def reference_payloads(rows: pd.DataFrame) -> dict[str, dict]:
         "symbol": r.symbol, "gene": nm[pair_key(r.ensembl_id, r.mondo_id)]["gene"], "disease": dis[r.mondo_id]["label"],
         "synonyms": dis[r.mondo_id]["synonyms"], "drugs": drugs.get((r.ensembl_id, r.mondo_id), []),
         "cutoff_year": int(r.cutoff_year)} for r in rows.itertuples()}
-
-
-def rows_of(spec: str) -> pd.DataFrame:
-    lo, hi = map(int, spec.split("-"))
-    p = pilot_pairs()
-    return p[p.row.between(lo, hi)]
 
 
 TITLE_MATCH = 0.6  # share of the shorter title's words the other shares, for a PMID to match a stated title
@@ -936,134 +908,8 @@ def title_match(a: str | None, b: str | None) -> float:
     return len(x & y) / max(1, min(len(x), len(y)))
 
 
-def verify_pmids(studies: list[dict]) -> list[dict]:
-    """Each reference study with pmid checked against its stated title: kept when the PubMed title matches
-    (TITLE_MATCH), else replaced by the one PubMed record whose title matches a title search, else set to null.
-    pmid_given keeps what the model gave. Models cite real titles with wrong PMIDs; this keeps them from
-    counting as misses or matches for the wrong paper."""
-    ids = sorted({str(s["pmid"]).strip() for s in studies if s.get("pmid")})
-    papers = stored_papers(ids)
-    papers.update(fetch_papers([i for i in ids if i not in papers], store=True))
-    out = []
-    for s in studies:
-        s = {**s, "pmid_given": s.get("pmid")}
-        pid = str(s["pmid"]).strip() if s.get("pmid") else None
-        if pid and title_match(s["title"], (papers.get(pid) or ("",))[0]) < TITLE_MATCH:
-            words = " ".join(sorted(title_words(s["title"]), key=len, reverse=True)[:8])
-            hits = [x.text for x in ET.fromstring(eutils("esearch", term=f"{words}[ti]", retmax="5")).iter("Id")]
-            found = fetch_papers(hits, store=True) if hits else {}
-            best = max(found.items(), key=lambda kv: title_match(s["title"], kv[1][0]), default=None)
-            s["pmid"] = best[0] if best and title_match(s["title"], best[1][0]) >= TITLE_MATCH else None
-        out.append(s)
-    return out
-
-
-def reference(args) -> None:
-    """The blind reference for pilot rows --rows: a web-enabled model given only the gene, the disease, the program
-    drugs and the cutoff (no retrieval output) lists every qualifying study per kind; written to REFERENCE_DIR."""
-    rows = rows_of(args.rows)
-    items = reference_payloads(rows)
-    dec = {k: (REFERENCE_MODEL, o) for k, (_, o) in decide(reference_task(), items).items()}
-    refused = {k: v for k, v in items.items() if k not in dec}
-    if refused:
-        fb = decide(reference_task(REFERENCE_FALLBACK, "_fallback"), refused)
-        dec.update({k: (REFERENCE_FALLBACK, o) for k, (_, o) in fb.items()})
-    os.makedirs(REFERENCE_DIR, exist_ok=True)
-    out = [{"ensembl_id": k.split("|")[0], "mondo_id": k.split("|")[1], "model": model,
-            "studies": verify_pmids(o["studies"])} for k, (model, o) in sorted(dec.items())]
-    changed = sum(s["pmid"] != s["pmid_given"] for x in out for s in x["studies"])
-    print(f"reference: PMIDs corrected or dropped after title verification={changed}")
-    print(f"reference: refused by {REFERENCE_MODEL}={len(refused)}, answered by {REFERENCE_FALLBACK}="
-          f"{sum(m == REFERENCE_FALLBACK for m, _ in dec.values())}, unanswered={len(items) - len(dec)}")
-    with open(os.path.join(REFERENCE_DIR, f"rows_{args.rows}.json"), "w") as fh:
-        json.dump(out, fh, indent=1)
-    print(f"reference: pairs={len(out)} studies={sum(len(x['studies']) for x in out)}")
-
-
-def qualifying(pairs: pd.DataFrame) -> pd.DataFrame:
-    """ensembl_id, mondo_id, record_id, year, doi and kind of every screened record that counts for a kind."""
-    items = screened_items(pairs)
-    dec = screen_decisions(items)
-    dois = record_dois(sorted({k.split("|", 2)[2] for k in dec}))
-    rows = []
-    for k, (_, o) in dec.items():
-        e, m, rid = k.split("|", 2)
-        for kind in (*KINDS, "animal_model_pharmacology_other"):
-            if counts(o, kind):
-                rows.append((e, m, rid, items[k]["year"], dois.get(rid), kind))
-    return pd.DataFrame(rows, columns=["ensembl_id", "mondo_id", "record_id", "year", "doi", "kind"])
-
-
-def record_dois(record_ids: list[str]) -> dict[str, str]:
-    with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT pmid, lower(doi) FROM public.publications WHERE pmid = ANY(%s) AND doi IS NOT NULL",
-                    ([r for r in record_ids if r.isdigit()],))
-        out = dict(cur.fetchall())
-        cur.execute("SELECT record_id, lower(doi) FROM preclin.literature_record WHERE record_id = ANY(%s) AND doi IS NOT NULL",
-                    ([r for r in record_ids if not r.isdigit()],))
-        out.update(cur.fetchall())
-    return out
-
-
 def norm_doi(d: str | None) -> str | None:
     return d.lower().removeprefix("https://doi.org/").removeprefix("doi:").strip() if d else None
-
-
-def gate(args) -> None:
-    """Score pilot rows --rows against their blind reference: per kind, recall (reference studies dated by the cutoff
-    found among the counting records, by PMID or DOI), recall over PubMed-indexed reference studies, retrieval recall
-    (found among any retrieved record), kappa against the check model, and Phase 2 coverage over all pilot pairs (the
-    share of their 2008-2019 Phase 2 entries with a counting record published by the year before entry). Recorded
-    in GATE under --label."""
-    p = pilot_pairs()
-    rows = rows_of(args.rows)
-    with open(os.path.join(REFERENCE_DIR, f"rows_{args.rows}.json")) as fh:
-        ref = json.load(fh)
-    cut = {(r.ensembl_id, r.mondo_id): int(r.cutoff_year) for r in p.itertuples()}
-    q = qualifying(p)
-    retrieved = pair_records(rows)
-    got = {(e, m, k): set(g.record_id) | set(g.doi.dropna()) for (e, m, k), g in q.groupby(["ensembl_id", "mondo_id", "kind"])}
-    ret_dois = record_dois(sorted(set(retrieved.record_id)))
-    any_ret = {(e, m): set(g.record_id) | {ret_dois[x] for x in g.record_id if x in ret_dois}
-               for (e, m), g in retrieved.groupby(["ensembl_id", "mondo_id"])}
-    agree = agreement()
-    entries = cohort_entries()
-    e2 = entries[(entries.phase == 2)].merge(p[["ensembl_id", "mondo_id"]], on=["ensembl_id", "mondo_id"])
-    result = {"rows": args.rows, "reference_pairs": len(ref), "kinds": {}}
-    for kind in (*KINDS, "animal_model_pharmacology_other"):
-        ref_kind = "animal_model_pharmacology_other" if kind == "animal_model_pharmacology" else kind
-        studies = [(x["ensembl_id"], x["mondo_id"], s) for x in ref for s in x["studies"]
-                   if s["kind"] == ref_kind and (s["year"] is None or s["year"] <= cut[(x["ensembl_id"], x["mondo_id"])])]
-        hit, hit_pm, ret = [], [], []
-        for e, m, s in studies:
-            keys = {str(s["pmid"]).strip()} if s.get("pmid") else set()
-            if s.get("doi"):
-                keys.add(norm_doi(s["doi"]))
-            found = bool(keys & got.get((e, m, kind), set()))
-            hit.append(found)
-            ret.append(bool(keys & any_ret.get((e, m), set())))
-            if s.get("pmid"):
-                hit_pm.append(found)
-        qk = q[q.kind == kind]
-        by_pair = {k: g.year.dropna().astype(int).tolist() for k, g in qk.groupby(["ensembl_id", "mondo_id"])}
-        cov = [any(y <= r.entry_year - 1 for y in by_pair.get((r.ensembl_id, r.mondo_id), [])) for r in e2.itertuples()]
-        kap = (agree.get(kind) or {}).get("kappa")
-        k_out = {"reference_studies": len(studies), "reference_studies_in_pubmed": len(hit_pm),
-                 "recall": float(np.mean(hit)) if hit else None,
-                 "recall_pubmed_indexed": float(np.mean(hit_pm)) if hit_pm else None,
-                 "retrieval_recall": float(np.mean(ret)) if ret else None,
-                 "check": agree.get(kind), "phase2_entries": len(cov),
-                 "phase2_coverage": float(np.mean(cov)) if cov else None,
-                 "pilot_pairs_with_any": int(qk.groupby(["ensembl_id", "mondo_id"]).ngroups)}
-        k_out["passes"] = bool(k_out["recall"] is not None and k_out["recall"] >= GATES["recall"] and kap is not None
-                               and kap >= GATES["kappa"] and k_out["phase2_coverage"] is not None
-                               and k_out["phase2_coverage"] >= GATES["phase2_coverage"])
-        result["kinds"][kind] = k_out
-    record = json.load(open(GATE)) if os.path.exists(GATE) else {}
-    record[args.label] = {"gates": GATES, **result}
-    with open(GATE, "w") as fh:
-        json.dump(record, fh, indent=2)
-    print(json.dumps(result, indent=2))
 
 
 # --- web arm and yardstick (the second retrieval arm) ----------------------------------------------------------------
@@ -1076,7 +922,6 @@ WEB_CHUNK = 100  # pairs whose web searches are verified and stored together
 
 YARDSTICK_N = 100
 YARDSTICK_SEED = 20261124
-YARDSTICK_CSV = os.path.join(llm.REPO, "report", "audits", "target_literature_yardstick.csv")
 YARDSTICK_MODEL = "claude-sonnet-5"
 YARDSTICK_SYSTEM = """You are an expert curator auditing how complete a literature collection is. For one human gene (the target) and one disease, list the original studies published in or before the cutoff year that report evidence of the kinds below about this target in this disease (or a subtype, or an animal or cell model of it).
 
@@ -1191,130 +1036,65 @@ def store_web(arm: str, pairs: pd.DataFrame, answers: dict[str, tuple[int | None
         conn.commit()
 
 
-def ask(task: llm.Task, fallback: llm.Task, pairs: pd.DataFrame) -> tuple[dict[str, tuple[int, dict]], set[str]]:
-    """Each pair's answer from task, or from fallback where task refused or failed; and the pairs neither answered.
-    A pair the fallback already answered is not asked again."""
-    items = reference_payloads(pairs)
-    dec = llm.current_decisions(fallback, items)
-    dec.update(decide(task, {k: v for k, v in items.items() if k not in dec}))
-    rest = {k: v for k, v in items.items() if k not in dec}
-    if rest:
-        dec.update(decide(fallback, rest))
-    return dec, set(items) - set(dec)
-
-
-def shard_of(p: pd.DataFrame, shard: str | None) -> pd.DataFrame:
-    if not shard:
-        return p
-    i, n = map(int, shard.split("/"))
-    return p[[zlib.crc32(pair_key(e, m).encode()) % n == i - 1 for e, m in zip(p.ensembl_id, p.mondo_id)]]
-
-
-WEB_PAIRS_CSV = os.path.join(llm.REPO, "report", "audits", "target_literature_web_pairs.csv")
-
-
-def web_cohort() -> pd.DataFrame:
-    """The cohort pairs and cutoffs the web arm searched, as preclin.target_disease and the evidence dataset stood
-    when it ran (WEB_PAIRS_CSV, written at the run): a later rebuild of programs or pairs does not move them."""
-    return pd.read_csv(WEB_PAIRS_CSV) if os.path.exists(WEB_PAIRS_CSV) else cohort_pairs()
-
-
-WEB_ENTRIES_CSV = os.path.join(llm.REPO, "report", "audits", "target_literature_web_entries.csv")
-
-
-def web_entries() -> pd.DataFrame:
-    """The cohort entries as they stood when the web arm ran (WEB_ENTRIES_CSV), else the current ones."""
-    return pd.read_csv(WEB_ENTRIES_CSV) if os.path.exists(WEB_ENTRIES_CSV) else cohort_entries()
-
-
-RECONCILE_CSV = os.path.join(llm.REPO, "report", "audits", "target_literature_reconcile.csv")
-SOURCES = ("pubmed", "europepmc", "firecrawl", "firecrawl_related", "origin_pubmed", "origin_europepmc", "web_agent")
-
-
-def add_search(cur, e: str, m: str, y: int, source: str, kind: str, n: dict, query: str, n_hits: int,
-               record_ids: list[str]) -> None:
-    """Add a search's results to the pair's search row at cutoff y without removing anything: a new row, or the
-    query and hit count appended to an existing one; hits are added, never replaced (unlike store_search)."""
-    cur.execute("""INSERT INTO preclin.target_literature_search (ensembl_id, mondo_id, cutoff_year, source, kind, names,
-                                                                 query, n_hits)
-                   VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-                   ON CONFLICT (ensembl_id, mondo_id, cutoff_year, source, kind)
-                   DO UPDATE SET query = target_literature_search.query || ' | ' || EXCLUDED.query,
-                                 n_hits = target_literature_search.n_hits + EXCLUDED.n_hits, searched_at = now()""",
-                (e, m, y, source, kind, Json(n), query, n_hits))
-    if record_ids:
-        execute_values(cur, """INSERT INTO preclin.target_literature_hit (ensembl_id, mondo_id, cutoff_year, source, kind,
-                                                                          record_id)
-                               VALUES %s ON CONFLICT DO NOTHING""", [(e, m, y, source, kind, r) for r in record_ids],
-                       page_size=5000)
-
-
 def reconcile(_args) -> None:
     """Bring the stored literature to the cohort as it is now, after a rebuild of programs or pairs, without deleting
-    or rewriting any stored row. Diff the current cohort against the frozen one (WEB_PAIRS_CSV), then:
-    - cutoff moved (either way): link the pair's searches and hits at the old cutoff to the new one, as rows at the
-      new cutoff that hold the same records (the old rows stay); screens are keyed by pair and record, so they apply
-      as they are. Records dated after an earlier new cutoff stay as hits; the cutoff applied on read leaves them out;
-    - cutoff moved later: listed in RECONCILE_CSV (change later) for `gap`, which searches only the years between
-      the cutoffs in every source and adds the results;
-    - new to the cohort: listed in RECONCILE_CSV (change new) for the run's full pipeline;
-    - left the cohort: rows kept, counted.
-    The frozen files are then replaced by the current cohort and entries; the earlier ones are kept beside them,
-    suffixed with the time they were frozen."""
-    old, new = web_cohort(), cohort_pairs()
-    oc = {(r.ensembl_id, r.mondo_id): int(r.cutoff_year) for r in old.itertuples()}
-    nc = {(r.ensembl_id, r.mondo_id): int(r.cutoff_year) for r in new.itertuples()}
-    added = [k for k in nc if k not in oc]
-    left = [k for k in oc if k not in nc]
-    moved = [k for k in nc if k in oc and nc[k] != oc[k]]
+    or rewriting any stored row. A cohort pair with searches stored but none at its current cutoff gets rows at the new
+    cutoff linking the records of its latest earlier-stored cutoff (screens are keyed by pair and record, so they apply
+    as they are); when the new cutoff is later, the years between are searched in every source and added (gap).
+    Records dated after an earlier new cutoff stay as hits; the cutoff applied on read leaves them out. Pairs that
+    left the cohort keep their rows. A cohort pair with no search stored is new: run names, origin, search,
+    firecrawl --mode search, screen, firecrawl --mode related, web and web-screen with --pairs new (web-screen
+    --pairs cohort --sources all then screens every record added here)."""
+    p = cohort_pairs()
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT DISTINCT ensembl_id, mondo_id, cutoff_year FROM preclin.target_literature_search")
+        stored: dict = {}
+        for e, m, y in cur.fetchall():
+            stored.setdefault((e, m), set()).add(y)
+    moved = [(r, max(stored[(r.ensembl_id, r.mondo_id)])) for r in p.itertuples()
+             if (r.ensembl_id, r.mondo_id) in stored and int(r.cutoff_year) not in stored[(r.ensembl_id, r.mondo_id)]]
     linked = {"search": 0, "hit": 0}
     with llm.connect() as conn, conn.cursor() as cur:
-        for (e, m) in moved:
+        for r, old in moved:
             cur.execute("""INSERT INTO preclin.target_literature_search (ensembl_id, mondo_id, cutoff_year, source, kind,
                                                                          names, query, n_hits)
                            SELECT ensembl_id, mondo_id, %s, source, kind, names,
                                   'as searched at cutoff ' || cutoff_year || ': ' || query, n_hits
                            FROM preclin.target_literature_search WHERE ensembl_id = %s AND mondo_id = %s AND cutoff_year = %s
-                           ON CONFLICT DO NOTHING""", (nc[(e, m)], e, m, oc[(e, m)]))
+                           ON CONFLICT DO NOTHING""", (int(r.cutoff_year), r.ensembl_id, r.mondo_id, old))
             linked["search"] += cur.rowcount
             cur.execute("""INSERT INTO preclin.target_literature_hit (ensembl_id, mondo_id, cutoff_year, source, kind, record_id)
                            SELECT ensembl_id, mondo_id, %s, source, kind, record_id FROM preclin.target_literature_hit
                            WHERE ensembl_id = %s AND mondo_id = %s AND cutoff_year = %s ON CONFLICT DO NOTHING""",
-                        (nc[(e, m)], e, m, oc[(e, m)]))
+                        (int(r.cutoff_year), r.ensembl_id, r.mondo_id, old))
             linked["hit"] += cur.rowcount
         conn.commit()
-    change = {k: "new" for k in added} | {k: "later" for k in moved if nc[k] > oc[k]}
-    redo = new[[(e, m) in change for e, m in zip(new.ensembl_id, new.mondo_id)]].copy()
-    redo["change"] = [change[(e, m)] for e, m in zip(redo.ensembl_id, redo.mondo_id)]
-    redo["old_cutoff_year"] = [oc.get((e, m)) for e, m in zip(redo.ensembl_id, redo.mondo_id)]
-    redo.to_csv(RECONCILE_CSV, index=False)
-    stamp = time.strftime("%Y%m%dT%H%M", time.gmtime(os.path.getmtime(WEB_PAIRS_CSV)))
-    for path, frame_now in ((WEB_PAIRS_CSV, new), (WEB_ENTRIES_CSV, cohort_entries())):
-        os.replace(path, path.replace(".csv", f"_{stamp}.csv"))
-        frame_now.to_csv(path, index=False)
-    print(json.dumps({"frozen_pairs": len(oc), "current_pairs": len(nc), "new": len(added), "left": len(left),
-                      "cutoff_later": sum(nc[k] > oc[k] for k in moved), "cutoff_earlier": sum(nc[k] < oc[k] for k in moved),
+    later = [(r, old) for r, old in moved if int(r.cutoff_year) > old]
+    if later:
+        gap(p[[(e, m) in {(r.ensembl_id, r.mondo_id) for r, _ in later} for e, m in zip(p.ensembl_id, p.mondo_id)]],
+            {(r.ensembl_id, r.mondo_id): old for r, old in later})
+    cohort = {(e, m) for e, m in zip(p.ensembl_id, p.mondo_id)}
+    print(json.dumps({"cohort_pairs": len(p), "new": int(sum(k not in stored for k in cohort)),
+                      "left_rows_kept": int(sum(k not in cohort for k in stored)),
+                      "cutoff_later": len(later), "cutoff_earlier": len(moved) - len(later),
                       "rows_linked_to_new_cutoff": linked}, indent=2))
 
 
-def gap(args) -> None:
-    """For each pair whose cutoff moved later (RECONCILE_CSV, change later), search only the years after the old
-    cutoff up to the new one, in every source the run uses, and add the results to the pair's rows at the new cutoff
-    (add_search): PubMed and Europe PMC by the run's queries, the origin search's records of those years, Firecrawl
-    once per kind, and the web arm asked at the new cutoff with only its studies of those years added. Nothing is
-    removed; the screen then reads the records not yet screened (web-screen --pairs reconcile --sources all)."""
-    p = pd.read_csv(RECONCILE_CSV)
-    p = p[p.change == "later"]
+def gap(p: pd.DataFrame, old_cutoff: dict[tuple[str, str], int]) -> None:
+    """For pairs whose cutoff moved later (p, with old_cutoff), search only the years after the old cutoff up to the
+    new one, in every source the run uses, and add the results to the pair's rows at the new cutoff (add_search):
+    PubMed and Europe PMC by the run's queries, the origin search's records of those years, Firecrawl once per kind,
+    and the web arm asked at the new cutoff with only its studies of those years added. Nothing is removed."""
     nm = pair_names(p, run=False)
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT ensembl_id, mondo_id, service, query FROM preclin.target_disease_search")
         origin_q = {(e, m, sv): q for e, m, sv, q in cur.fetchall()}
     for r in p.itertuples():
-        e, m, lo, hi = r.ensembl_id, r.mondo_id, int(r.old_cutoff_year) + 1, int(r.cutoff_year)
+        e, m, hi = r.ensembl_id, r.mondo_id, int(r.cutoff_year)
+        lo = old_cutoff[(e, m)] + 1
         n = nm[pair_key(e, m)]
         pm, ep = clauses(n)
         pq, pn, pmids = pubmed_ids([], hi, term=lambda a, b, pm=pm: f'{pm} AND ("{max(a, str(lo))}"[dp] : "{b}"[dp]) {NOT_REVIEWS}')
-        pmids = [x for x in pmids if x]
         eq, en, records = epmc_records([], hi, query=f'{ep} AND PUB_YEAR:[{lo} TO {hi}] AND NOT SRC:MED '
                                                      'AND HAS_ABSTRACT:Y AND NOT PUB_TYPE:"review"')
         fetch_texts([x for x in pmids if x not in record_texts(pmids)])
@@ -1349,37 +1129,69 @@ def gap(args) -> None:
         cur.execute("""SELECT ensembl_id, mondo_id, coalesce(max(ordinal), -1), array_agg(record_id) FROM
                        preclin.target_literature_web_study WHERE arm = 'web' GROUP BY 1, 2""")
         prior = {(e, m): (o, set(x for x in rs if x)) for e, m, o, rs in cur.fetchall()}
-    cut = {pair_key(r.ensembl_id, r.mondo_id): (int(r.old_cutoff_year), int(r.cutoff_year)) for r in p.itertuples()}
-    added = 0
-    with llm.connect() as conn, conn.cursor() as cur:
         for key, (d, o) in dec.items():
             e, m = key.split("|")
-            lo, hi = cut[key]
+            lo, hi = old_cutoff[(e, m)], int(p[(p.ensembl_id == e) & (p.mondo_id == m)].cutoff_year.iloc[0])
             last, have = prior.get((e, m), (-1, set()))
-            gap_studies = [x for x in verify_studies(o["studies"]) if x.get("year") and lo < x["year"] <= hi
-                           and x["record_id"] not in have]
-            execute_values(cur, """INSERT INTO preclin.target_literature_web_study (arm, ensembl_id, mondo_id, cutoff_year,
-                                       ordinal, kind, title, year, venue, pmid_given, doi_given, record_id, verification,
-                                       llm_decision_id) VALUES %s""",
-                           [("web", e, m, hi, last + 1 + i, x["kind"], x["title"] or "", x.get("year"), x.get("venue"),
-                             x.get("pmid"), x.get("doi"), x["record_id"], x["verification"], d)
-                            for i, x in enumerate(gap_studies)]) if gap_studies else None
-            ids = sorted({x["record_id"] for x in gap_studies if x["record_id"]})
+            new = [x for x in verify_studies(o["studies"]) if x.get("year") and lo < x["year"] <= hi
+                   and x["record_id"] not in have]
+            if new:
+                execute_values(cur, """INSERT INTO preclin.target_literature_web_study (arm, ensembl_id, mondo_id,
+                                           cutoff_year, ordinal, kind, title, year, venue, pmid_given, doi_given, record_id,
+                                           verification, llm_decision_id) VALUES %s""",
+                               [("web", e, m, hi, last + 1 + i, x["kind"], x["title"] or "", x.get("year"), x.get("venue"),
+                                 x.get("pmid"), x.get("doi"), x["record_id"], x["verification"], d)
+                                for i, x in enumerate(new)])
+            ids = sorted({x["record_id"] for x in new if x["record_id"]})
             add_search(cur, e, m, hi, "web_agent", "", {"task": WEB_TASK.name, "prompt_version": WEB_TASK.prompt_version,
                                                         "refused": False},
                        f"gap {lo + 1}-{hi}: {WEB_TASK.name} {WEB_TASK.prompt_version} at cutoff {hi}", len(ids), ids)
-            added += len(gap_studies)
         conn.commit()
-    print(f"gap web: pairs={len(p)} answered={len(dec)} refused={len(refused)} gap studies added={added}", flush=True)
+    print(f"gap web: pairs={len(p)} answered={len(dec)} refused={len(refused)}", flush=True)
 
 
-def web_pairs() -> pd.DataFrame:
-    """The cohort pairs the web arm asks: all but pilot rows 1-200, whose blind reference (the same prompt) is
-    their web-arm answer (web_import)."""
-    p = web_cohort()
-    ref = pilot_pairs()
-    ref = set(zip(ref[ref.row <= 200].ensembl_id, ref[ref.row <= 200].mondo_id))
-    return p[[(e, m) not in ref for e, m in zip(p.ensembl_id, p.mondo_id)]].reset_index(drop=True)
+def ask(task: llm.Task, fallback: llm.Task, pairs: pd.DataFrame) -> tuple[dict[str, tuple[int, dict]], set[str]]:
+    """Each pair's answer from task, or from fallback where task refused or failed; and the pairs neither answered.
+    A pair the fallback already answered is not asked again."""
+    items = reference_payloads(pairs)
+    dec = llm.current_decisions(fallback, items)
+    dec.update(decide(task, {k: v for k, v in items.items() if k not in dec}))
+    rest = {k: v for k, v in items.items() if k not in dec}
+    if rest:
+        dec.update(decide(fallback, rest))
+    return dec, set(items) - set(dec)
+
+
+def shard_of(p: pd.DataFrame, shard: str | None) -> pd.DataFrame:
+    if not shard:
+        return p
+    i, n = map(int, shard.split("/"))
+    return p[[zlib.crc32(pair_key(e, m).encode()) % n == i - 1 for e, m in zip(p.ensembl_id, p.mondo_id)]]
+
+
+
+
+
+
+SOURCES = ("pubmed", "europepmc", "firecrawl", "firecrawl_related", "origin_pubmed", "origin_europepmc", "web_agent")
+
+
+def add_search(cur, e: str, m: str, y: int, source: str, kind: str, n: dict, query: str, n_hits: int,
+               record_ids: list[str]) -> None:
+    """Add a search's results to the pair's search row at cutoff y without removing anything: a new row, or the
+    query and hit count appended to an existing one; hits are added, never replaced (unlike store_search)."""
+    cur.execute("""INSERT INTO preclin.target_literature_search (ensembl_id, mondo_id, cutoff_year, source, kind, names,
+                                                                 query, n_hits)
+                   VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                   ON CONFLICT (ensembl_id, mondo_id, cutoff_year, source, kind)
+                   DO UPDATE SET query = target_literature_search.query || ' | ' || EXCLUDED.query,
+                                 n_hits = target_literature_search.n_hits + EXCLUDED.n_hits, searched_at = now()""",
+                (e, m, y, source, kind, Json(n), query, n_hits))
+    if record_ids:
+        execute_values(cur, """INSERT INTO preclin.target_literature_hit (ensembl_id, mondo_id, cutoff_year, source, kind,
+                                                                          record_id)
+                               VALUES %s ON CONFLICT DO NOTHING""", [(e, m, y, source, kind, r) for r in record_ids],
+                       page_size=5000)
 
 
 def web_done() -> set[tuple[str, str]]:
@@ -1391,7 +1203,7 @@ def web_done() -> set[tuple[str, str]]:
 def web(args) -> None:
     """The web arm over every cohort pair not yet stored (--shard i/n to run n in parallel): ask, verify, store,
     WEB_CHUNK pairs at a time, so an interrupted run resumes where it stopped and reuses stored decisions."""
-    p = shard_of(web_pairs() if args.pairs in ("pilot", "web") else pairs_of(args.pairs), args.shard)
+    p = shard_of(pairs_of(args.pairs), args.shard)
     done = web_done()
     p = p[[(e, m) not in done for e, m in zip(p.ensembl_id, p.mondo_id)]]
     print(f"web: pairs to ask={len(p)}", flush=True)
@@ -1415,28 +1227,12 @@ def web(args) -> None:
               flush=True)
 
 
-def web_import(_args) -> None:
-    """Pilot rows 1-200's blind reference (report/audits/target_literature_reference, the web arm's prompt) as their
-    web-arm answers: no new search, their studies re-verified the same way."""
-    p = pilot_pairs()
-    for spec in ("1-100", "101-200"):
-        with open(os.path.join(REFERENCE_DIR, f"rows_{spec}.json")) as fh:
-            ref = json.load(fh)
-        rows = rows_of(spec)
-        answers = {pair_key(x["ensembl_id"], x["mondo_id"]):
-                   (None, verify_studies([{**s, "pmid": s.get("pmid") or s.get("pmid_given")} for s in x["studies"]]))
-                   for x in ref}
-        refused = {pair_key(e, m) for e, m in zip(rows.ensembl_id, rows.mondo_id)} - set(answers)
-        store_web("web", p[p.row.isin(rows.row)], answers, refused)
-        print(f"web import {spec}: pairs={len(answers)} refused={len(refused)}", flush=True)
-
-
 def web_screen(args) -> None:
     """Screen every record from --sources (default web_agent) of the pairs not yet screened for that pair, with the
     run's screen (and its fallback): one screen definition for every record. A record the web arm named skips the
     prefilter (a cost saving for large literatures that has no bearing on a named study); any other record keeps an
     earlier prefilter-out decision."""
-    p = shard_of(web_cohort() if args.pairs in ("pilot", "web") else pairs_of(args.pairs), args.shard)
+    p = shard_of(pairs_of(args.pairs), args.shard)
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT DISTINCT h.ensembl_id, h.mondo_id, h.record_id FROM preclin.target_literature_hit h
                        WHERE h.source = ANY(%s)
@@ -1475,16 +1271,25 @@ def web_screen(args) -> None:
 
 
 def yardstick_pairs() -> pd.DataFrame:
-    if os.path.exists(YARDSTICK_CSV):
-        return pd.read_csv(YARDSTICK_CSV)
-    p = web_cohort()
+    """The yardstick's pairs: those the yardstick task answered (its validated decisions in pv_evidence.llm_decision,
+    including pairs it found no study for), with the cutoff they were asked at; else a fresh draw of YARDSTICK_N
+    cohort pairs outside the pilot (YARDSTICK_SEED). The stored draw was made on 2026-11-24 from the cohort as it then
+    stood, so it is read back from the database, not redrawn."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT DISTINCT split_part(d.subject_key, '|', 1), split_part(d.subject_key, '|', 2),
+                                       (d.input_payload->>'cutoff_year')::int, d.input_payload->>'symbol',
+                                       d.input_payload->>'disease'
+                       FROM pv_evidence.llm_decision d
+                       WHERE d.task IN (%s, %s) AND d.validation_status = 'validated'""",
+                    (YARDSTICK_TASK.name, YARDSTICK_FALLBACK.name))
+        stored = pd.DataFrame(cur.fetchall(), columns=["ensembl_id", "mondo_id", "cutoff_year", "symbol", "disease"])
+    if len(stored):
+        return stored.sort_values(["ensembl_id", "mondo_id"]).reset_index(drop=True)
+    p = cohort_pairs()
     pil = set(zip(pilot_pairs().ensembl_id, pilot_pairs().mondo_id))
     p = p[[(e, m) not in pil for e, m in zip(p.ensembl_id, p.mondo_id)]].reset_index(drop=True)
     rng = np.random.default_rng(YARDSTICK_SEED)
-    s = p.iloc[rng.choice(len(p), YARDSTICK_N, replace=False)].reset_index(drop=True)
-    s.insert(0, "row", range(1, len(s) + 1))
-    s.to_csv(YARDSTICK_CSV, index=False)
-    return s
+    return p.iloc[rng.choice(len(p), YARDSTICK_N, replace=False)].reset_index(drop=True)
 
 
 def yardstick(_args) -> None:
@@ -1498,7 +1303,6 @@ def yardstick(_args) -> None:
           f"studies={sum(len(ss) for _, ss in answers.values())}", flush=True)
 
 
-WEB_RECORD = os.path.join(llm.REPO, "report", "audits", "target_literature_web.json")
 
 
 def stored_qualifying(pairs: pd.DataFrame) -> pd.DataFrame:
@@ -1533,8 +1337,9 @@ def web_score(_args) -> None:
     from that arm's hits (recall_all_studies also counts unverified studies, as misses); per kind the cohort
     pairs with a counting record, and those with one only from the web arm; and the union's Phase 2 coverage."""
     ys = yardstick_pairs()
-    cp = web_cohort()
-    cut = {(r.ensembl_id, r.mondo_id): int(r.cutoff_year) for r in cp.itertuples()}
+    cp = cohort_pairs()
+    cut = {(r.ensembl_id, r.mondo_id): int(r.cutoff_year) for r in ys.itertuples()}  # the cutoff each pair was asked at
+    in_cohort = set(zip(cp.ensembl_id, cp.mondo_id))
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT ensembl_id, mondo_id, kind, record_id, doi_given, year FROM preclin.target_literature_web_study
                        WHERE arm = 'yardstick'""")
@@ -1542,11 +1347,11 @@ def web_score(_args) -> None:
         cur.execute("""SELECT DISTINCT ensembl_id, mondo_id, record_id, source = 'web_agent' FROM preclin.target_literature_hit""")
         arms = pd.DataFrame(cur.fetchall(), columns=["ensembl_id", "mondo_id", "record_id", "web"])
     by_arm = arms.groupby(["ensembl_id", "mondo_id", "record_id"]).web.agg(["any", "all"]).reset_index()
-    q = stored_qualifying(cp)
+    q = stored_qualifying(pd.concat([cp, ys]))
     q = q.merge(by_arm, on=["ensembl_id", "mondo_id", "record_id"], how="left")
     q["from_web"], q["from_abstract"] = q["any"].fillna(False), ~q["all"].fillna(False)
     result = {"yardstick_pairs": len(ys), "kinds": {}}
-    entries = web_entries()
+    entries = cohort_entries()
     e2 = entries[entries.phase == 2]
     for kind in (*KINDS, "animal_model_pharmacology_other"):
         ref_kind = "animal_model_pharmacology_other" if kind == "animal_model_pharmacology" else kind
@@ -1568,8 +1373,8 @@ def web_score(_args) -> None:
                     hit.append(found)
             rec[arm] = float(np.mean(hit)) if hit else None
             rec_all[arm] = float(np.mean(hit_all)) if hit_all else None
-        pairs_any = {(e, m) for e, m in zip(qk.ensembl_id, qk.mondo_id)}
-        pairs_abs = {(e, m) for e, m in zip(qk[qk.from_abstract].ensembl_id, qk[qk.from_abstract].mondo_id)}
+        pairs_any = {(e, m) for e, m in zip(qk.ensembl_id, qk.mondo_id)} & in_cohort
+        pairs_abs = {(e, m) for e, m in zip(qk[qk.from_abstract].ensembl_id, qk[qk.from_abstract].mondo_id)} & in_cohort
         years = {k: g.year.dropna().astype(int).tolist() for k, g in qk.groupby(["ensembl_id", "mondo_id"])}
         cov = [any(y <= r.entry_year - 1 for y in years.get((r.ensembl_id, r.mondo_id), [])) for r in e2.itertuples()]
         result["kinds"][kind] = {
@@ -1580,8 +1385,6 @@ def web_score(_args) -> None:
             "cohort_pairs_with_any": len(pairs_any), "cohort_pairs_from_abstract_arm": len(pairs_abs),
             "cohort_pairs_only_from_web_arm": len(pairs_any - pairs_abs),
             "phase2_coverage_union": float(np.mean(cov)) if cov else None}
-    with open(WEB_RECORD, "w") as fh:
-        json.dump(result, fh, indent=2)
     print(json.dumps(result, indent=2))
 
 
@@ -1804,13 +1607,13 @@ def summary(args) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name, fn in [("sample", sample), ("names", names), ("search", search), ("screen", screen), ("check", check),
+    for name, fn in [("names", names), ("search", search), ("screen", screen), ("check", check),
                      ("prefilter-check", prefilter_check), ("cost", cost), ("integrity", integrity),
                      ("summary", summary), ("firecrawl", firecrawl), ("origin", origin), ("web", web),
-                     ("web-import", web_import), ("web-screen", web_screen), ("yardstick", yardstick),
-                     ("web-score", web_score), ("reconcile", reconcile), ("gap", gap)]:
+                     ("web-screen", web_screen), ("yardstick", yardstick), ("web-score", web_score),
+                     ("reconcile", reconcile)]:
         c = sub.add_parser(name)
-        c.add_argument("--pairs", choices=["pilot", "cohort", "web", "reconcile", "reconcile-new"], default="pilot")
+        c.add_argument("--pairs", choices=["pilot", "cohort", "new"], default="pilot")
         c.set_defaults(fn=fn)
         if name == "firecrawl":
             c.add_argument("--mode", choices=["search", "related"], required=True)
@@ -1823,13 +1626,6 @@ def main() -> None:
             c.add_argument("--shard", help="i/n: this process's share of the pairs, to run n in parallel")
         if name in ("screen", "cost"):
             c.add_argument("--since", help="count spend from this timestamp (the full run's start)")
-    r = sub.add_parser("reference")
-    r.add_argument("--rows", required=True)
-    r.set_defaults(fn=reference)
-    g = sub.add_parser("gate")
-    g.add_argument("--rows", required=True)
-    g.add_argument("--label", required=True)
-    g.set_defaults(fn=gate)
     args = ap.parse_args()
     args.fn(args)
 
