@@ -209,14 +209,15 @@ FACTS = {f.key: f for f in [
           ("none", "No approved drug on the target")),
          (("same_or_close", "validated_at_entry"), ("related", "approved_related"),
           ("unrelated_only", "approved_unrelated_only"))),
-    Fact("side_effect", "Which way of moving the target causes the disease as a significant side effect of another "
-         "drug on it (FAERS, today's data)", "target",
+    Fact("side_effect", "Which way of moving the target causes the disease as a side effect of another drug on it "
+         "(a FAERS signal in reports received by the year before entry)", "target",
          (("lowering", "Lowering it: a drug that blocks the target"), ("raising", "Raising it: a drug that activates it"),
           ("both", "Both"), ("undirected", "A drug of unclear action"), ("none", "No such side effect"),
           ("no_drug", "No other drug on the target approved before entry outside related diseases")),
          (("lowering", "side_effect_lowering"), ("raising", "side_effect_raising"), ("both", "side_effect_both"),
-          ("undirected", "side_effect_undirected")), unknown=("no_drug",), counts=False, hindsight=True,
-         note="today's FAERS: reports build up after approval, so the fact is not as of entry"),
+          ("undirected", "side_effect_undirected")), unknown=("no_drug",)),
+    Fact("side_effect_hindsight", "Another drug on the target has the disease as a significant side effect, on today's "
+         "FAERS", "target", YES_NO, (("yes", "side_effect_untimed"),), counts=False, hindsight=True),
     Fact("potency", "How strongly the drug binds its primary target, measured before entry", "small_molecule",
          (("le_10nm", "10 nM or better"), ("10_100nm", "10 to 100 nM"), ("weaker", "Weaker than 100 nM"),
           ("not_measured", "Not measured")),
@@ -372,13 +373,16 @@ KINDS = {k.key: k for k in [
          "observational_biomarker", (("biomarker", ("yes",)),)),
     Kind("clinical_observation", "human", "target",
          "Clinical observation: an effect seen in people implicates the target, such as a side effect",
-         "An effect seen in people that implicates the target, such as a side effect: a published observation (#154, "
-         "descriptive), and the significant FAERS side effects of other drugs on the target, approved before entry "
-         "and developed for no related disease, that are the program's disease or a very close one (hindsight: "
-         "today's FAERS)",
-         "Literature (#154); FAERS significant adverse reactions (openFDA likelihood-ratio test, through Open Targets "
-         "26.09), matched to MONDO by name", "clinical_observation",
-         (("side_effect", ("lowering", "raising", "both", "undirected")), ("literature_observation", ("yes",))),
+         "An effect seen in people that implicates the target, such as a side effect: the FAERS side effects of other "
+         "drugs on the target, approved before entry and developed for no related disease, that are the program's "
+         "disease or a very close one and were a signal in the reports received by the year before entry; and, shown "
+         "beside it but not counted (#154, descriptive), a published observation in people",
+         "FAERS: the reactions Open Targets 26.09 finds significant for each drug (openFDA likelihood-ratio test), "
+         "matched to MONDO by name, each dated by the first year its reports received by then gave a signal "
+         "(openFDA receivedate; at least 3 reports, PRR at least 2, chi-squared at least 4); literature (#154)",
+         "clinical_observation",
+         (("side_effect", ("lowering", "raising", "both", "undirected")), ("side_effect_hindsight", ("yes",)),
+          ("literature_observation", ("yes",))),
          chart="side_effect", rows=("literature_observation",),
          derived=(Line("A side effect argues for the drug's direction", "side_effect_concordant", "target"),)),
     Kind("earlier_approval", "human", "target",
@@ -531,6 +535,8 @@ def facts(d: pd.DataFrame) -> pd.DataFrame:
         "protein_level_hindsight": pick("target", [(d.protein_level_untimed.ne("none") & d.protein_level_untimed.notna(),
                                                     "yes")], "no"),
         "side_effect": d.side_effect.where(APPLIES["target"](d)),
+        "side_effect_hindsight": pick("target", [(d.side_effect_untimed.isin(("lowering", "raising", "both",
+                                                                              "undirected")), "yes")], "no"),
         "best_approval": pick("target", [(b1_close, "same_or_close"), (b1, "related"), (precedent, "unrelated_only")]),
         "potency": pick("small_molecule", [(best.isna(), "not_measured"), (best >= POTENT_10NM, "le_10nm"),
                                            (best >= POTENT_100NM, "10_100nm")], "weaker"),

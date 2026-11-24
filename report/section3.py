@@ -213,10 +213,13 @@ class Evidence:
         pq = evidence_facts.facts("pqtl")
         for g, m, v, y in zip(pq.ensembl_id, pq.mondo_id, pq.value, pq.known_year.fillna(NEVER).astype(int)):
             self.pqtl[g][m].append((y, v))
-        # Significant FAERS reactions that are diseases, by drug (today's FAERS: undated), and the diseases each
-        # entity was developed for, which a reaction must not be near (confounding by indication).
+        # Significant FAERS reactions that are diseases, by drug, with the year each became a signal (NEVER when never
+        # dated), and the diseases each entity was developed for, which a reaction must not be near (confounding by
+        # indication).
         ae = evidence_facts.facts("adverse_reaction")
-        self.adverse = ae.groupby("moiety_id").mondo_id.apply(frozenset).to_dict()
+        self.adverse: dict = defaultdict(list)
+        for mid, m, y in zip(ae.moiety_id, ae.mondo_id, ae.known_year.fillna(NEVER).astype(int)):
+            self.adverse[mid].append((m, y))
         self.developed = progs.dropna(subset=["mondo_id"]).groupby("moiety_id").mondo_id.apply(frozenset).to_dict()
         self.on_gene: dict = defaultdict(list)  # gene -> [(entity, its action)] of every entity on it
         for mid, genes, sign in zip(self.ent.index, self.ent.genes, self.ent.sign):
@@ -262,15 +265,15 @@ class Evidence:
         return "mixed" if len(seen) > 1 else seen.pop() if seen else "none"
 
     def side_effect(self, moiety_id: str, genes: list[str], close: frozenset, related: frozenset,
-                    entry: pd.Timestamp) -> str:
-        """Which way of moving the target causes the disease as a significant FAERS reaction (today's FAERS) of
-        another entity on the target, approved before entry and developed for no disease related to it."""
+                    entry: pd.Timestamp, cut: int) -> str:
+        """Which way of moving the target causes the disease as a FAERS signal by `cut` of another entity on the
+        target, approved before entry and developed for no disease related to it."""
         others = {(mid, sign) for g in genes for mid, sign in self.on_gene.get(g, ())
                   if mid != moiety_id and self.entity_approval.get(mid, pd.Timestamp.max) < entry
                   and not self.developed.get(mid, frozenset()) & related}
         if not others:
             return "no_drug"
-        causes = {sign for mid, sign in others if self.adverse.get(mid, frozenset()) & close}
+        causes = {sign for mid, sign in others if any(m in close and y <= cut for m, y in self.adverse.get(mid, ()))}
         return ("none" if not causes else "both" if {"decrease", "increase"} <= causes else "lowering"
                 if "decrease" in causes else "raising" if "increase" in causes else "undirected")
 
@@ -332,7 +335,8 @@ class Evidence:
             "expression_up": float(on("expression", "up")),
             "protein_level": self.protein_level(e.genes, close, cut),
             "protein_level_untimed": self.protein_level(e.genes, close, NEVER),
-            "side_effect": self.side_effect(moiety_id, e.genes, close, related, entry),
+            "side_effect": self.side_effect(moiety_id, e.genes, close, related, entry, cut),
+            "side_effect_untimed": self.side_effect(moiety_id, e.genes, close, related, entry, NEVER),
             **liab, "liability": float(any(liab.values())),
             "crispr_untimed": float("crispr" in first and first["crispr"][TIERS.index("any")] <= NEVER),
             "pan_essential_untimed": float(frame.essential_as_of(self.essential, e.genes, NEVER)),

@@ -97,6 +97,7 @@ evidence:
 	$(RUN) pipeline.opentargets evidence
 	$(RUN) pipeline.opentargets pqtl
 	$(RUN) pipeline.opentargets adverse
+	$(RUN) pipeline.opentargets adverse-dates
 	$(RUN) pipeline.chembl activities
 	$(RUN) pipeline.pubchem properties
 	$(RUN) pipeline.depmap dependencies

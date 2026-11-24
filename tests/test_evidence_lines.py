@@ -107,7 +107,7 @@ def raw(*rows: dict) -> pd.DataFrame:
     base = {"moiety_id": 1, "mondo_id": "MONDO:A", "modality": "small_molecule", "bio_area": "oncology",
             "regime": "ONC", "phase": 2, "entry_year": 2016, "has_target_disease": True, "sign": "decrease",
             "loss_effect": "none", "mouse_favours": "none", "protein_level": "none", "protein_level_untimed": "none",
-            "side_effect": "no_drug", **{c: 0.0 for c in RAW}}
+            "side_effect": "no_drug", "side_effect_untimed": "no_drug", **{c: 0.0 for c in RAW}}
     return pd.DataFrame([{**base, "moiety_id": i + 1, **r} for i, r in enumerate(rows)])
 
 
@@ -177,12 +177,14 @@ def test_protein_genetics_counts_its_dated_direction_and_crosses_it_with_the_dru
     assert out.pqtl_concordant.tolist() == [1.0, 0.0, 1.0, 0.0, 0.0]
 
 
-def test_side_effects_of_other_drugs_are_hindsight_and_argue_for_the_opposite_action():
+def test_a_dated_side_effect_makes_up_clinical_observation_and_argues_for_the_opposite_action():
     d = raw({"side_effect": "lowering", "sign": "increase"}, {"side_effect": "lowering"},
-            {"side_effect": "raising"}, {"side_effect": "none"}, {"side_effect": "no_drug"})
-    out = lines_of(d)
-    assert out.clinical_observation.isna().all()  # today's FAERS does not make up the kind
-    assert out.side_effect_lowering.tolist()[:4] == [1.0, 1.0, 0.0, 0.0] and math.isnan(out.side_effect_lowering[4])
+            {"side_effect": "raising"}, {"side_effect": "none", "side_effect_untimed": "raising"},
+            {"side_effect": "no_drug"})
+    f, out = facts(d), lines_of(d)
+    assert out.clinical_observation.tolist()[:4] == [1.0, 1.0, 1.0, 0.0]  # a signal only after entry is no evidence
+    assert math.isnan(out.clinical_observation[4])  # no other drug on the target: unknown, not "no"
+    assert f.side_effect_hindsight.tolist() == ["no", "no", "no", "yes", "no"] and out.side_effect_untimed[3] == 1.0
     # a blocker of the target causing the disease argues for an activator, and the reverse
     assert out.side_effect_concordant.tolist()[:4] == [1.0, 0.0, 1.0, 0.0] and math.isnan(out.side_effect_concordant[4])
 
