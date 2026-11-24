@@ -136,10 +136,15 @@ def build(_args) -> None:
         execute_values(cur, "INSERT INTO keep VALUES %s", list(zip(hub.ensembl_id, hub.mondo_id)), page_size=5000)
         cur.execute("""DELETE FROM preclin.target_disease_origin o WHERE basis = 'provisional'
                          AND NOT EXISTS (SELECT 1 FROM keep k WHERE (k.ensembl_id, k.mondo_id) = (o.ensembl_id, o.mondo_id))""")
+        # a pair other tables still hold rows for (its origin, its searches, #154's literature) stays
         cur.execute("""DELETE FROM preclin.target_disease t
                        WHERE NOT EXISTS (SELECT 1 FROM keep k WHERE (k.ensembl_id, k.mondo_id) = (t.ensembl_id, t.mondo_id))
                          AND NOT EXISTS (SELECT 1 FROM preclin.target_disease_origin o
-                                         WHERE (o.ensembl_id, o.mondo_id) = (t.ensembl_id, t.mondo_id))""")
+                                         WHERE (o.ensembl_id, o.mondo_id) = (t.ensembl_id, t.mondo_id))
+                         AND NOT EXISTS (SELECT 1 FROM preclin.target_disease_search s
+                                         WHERE (s.ensembl_id, s.mondo_id) = (t.ensembl_id, t.mondo_id))
+                         AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_search s
+                                         WHERE (s.ensembl_id, s.mondo_id) = (t.ensembl_id, t.mondo_id))""")
         conn.commit()
     print(f"{len(hub):,} pairs; {int(hub.validated_at_entry.sum()):,} validated at entry", flush=True)
 
