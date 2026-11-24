@@ -177,6 +177,9 @@ def pilot_pairs() -> pd.DataFrame:
 
 def pairs_of(which: str) -> pd.DataFrame:
     """The pilot sample, every cohort pair (the full descriptive run), or the cohort as the web arm searched it."""
+    if which in ("reconcile", "reconcile-new"):
+        p = pd.read_csv(RECONCILE_CSV)
+        return p if which == "reconcile" else p[p.change == "new"].reset_index(drop=True)
     return pilot_pairs() if which == "pilot" else web_cohort() if which == "web" else cohort_pairs()
 
 
@@ -1224,6 +1227,152 @@ def web_entries() -> pd.DataFrame:
     return pd.read_csv(WEB_ENTRIES_CSV) if os.path.exists(WEB_ENTRIES_CSV) else cohort_entries()
 
 
+RECONCILE_CSV = os.path.join(llm.REPO, "report", "audits", "target_literature_reconcile.csv")
+SOURCES = ("pubmed", "europepmc", "firecrawl", "firecrawl_related", "origin_pubmed", "origin_europepmc", "web_agent")
+
+
+def add_search(cur, e: str, m: str, y: int, source: str, kind: str, n: dict, query: str, n_hits: int,
+               record_ids: list[str]) -> None:
+    """Add a search's results to the pair's search row at cutoff y without removing anything: a new row, or the
+    query and hit count appended to an existing one; hits are added, never replaced (unlike store_search)."""
+    cur.execute("""INSERT INTO preclin.target_literature_search (ensembl_id, mondo_id, cutoff_year, source, kind, names,
+                                                                 query, n_hits)
+                   VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                   ON CONFLICT (ensembl_id, mondo_id, cutoff_year, source, kind)
+                   DO UPDATE SET query = target_literature_search.query || ' | ' || EXCLUDED.query,
+                                 n_hits = target_literature_search.n_hits + EXCLUDED.n_hits, searched_at = now()""",
+                (e, m, y, source, kind, Json(n), query, n_hits))
+    if record_ids:
+        execute_values(cur, """INSERT INTO preclin.target_literature_hit (ensembl_id, mondo_id, cutoff_year, source, kind,
+                                                                          record_id)
+                               VALUES %s ON CONFLICT DO NOTHING""", [(e, m, y, source, kind, r) for r in record_ids],
+                       page_size=5000)
+
+
+def reconcile(_args) -> None:
+    """Bring the stored literature to the cohort as it is now, after a rebuild of programs or pairs, without deleting
+    or rewriting any stored row. Diff the current cohort against the frozen one (WEB_PAIRS_CSV), then:
+    - cutoff moved (either way): link the pair's searches and hits at the old cutoff to the new one, as rows at the
+      new cutoff that hold the same records (the old rows stay); screens are keyed by pair and record, so they apply
+      as they are. Records dated after an earlier new cutoff stay as hits; the cutoff applied on read leaves them out;
+    - cutoff moved later: listed in RECONCILE_CSV (change later) for `gap`, which searches only the years between
+      the cutoffs in every source and adds the results;
+    - new to the cohort: listed in RECONCILE_CSV (change new) for the run's full pipeline;
+    - left the cohort: rows kept, counted.
+    The frozen files are then replaced by the current cohort and entries; the earlier ones are kept beside them,
+    suffixed with the time they were frozen."""
+    old, new = web_cohort(), cohort_pairs()
+    oc = {(r.ensembl_id, r.mondo_id): int(r.cutoff_year) for r in old.itertuples()}
+    nc = {(r.ensembl_id, r.mondo_id): int(r.cutoff_year) for r in new.itertuples()}
+    added = [k for k in nc if k not in oc]
+    left = [k for k in oc if k not in nc]
+    moved = [k for k in nc if k in oc and nc[k] != oc[k]]
+    linked = {"search": 0, "hit": 0}
+    with llm.connect() as conn, conn.cursor() as cur:
+        for (e, m) in moved:
+            cur.execute("""INSERT INTO preclin.target_literature_search (ensembl_id, mondo_id, cutoff_year, source, kind,
+                                                                         names, query, n_hits)
+                           SELECT ensembl_id, mondo_id, %s, source, kind, names,
+                                  'as searched at cutoff ' || cutoff_year || ': ' || query, n_hits
+                           FROM preclin.target_literature_search WHERE ensembl_id = %s AND mondo_id = %s AND cutoff_year = %s
+                           ON CONFLICT DO NOTHING""", (nc[(e, m)], e, m, oc[(e, m)]))
+            linked["search"] += cur.rowcount
+            cur.execute("""INSERT INTO preclin.target_literature_hit (ensembl_id, mondo_id, cutoff_year, source, kind, record_id)
+                           SELECT ensembl_id, mondo_id, %s, source, kind, record_id FROM preclin.target_literature_hit
+                           WHERE ensembl_id = %s AND mondo_id = %s AND cutoff_year = %s ON CONFLICT DO NOTHING""",
+                        (nc[(e, m)], e, m, oc[(e, m)]))
+            linked["hit"] += cur.rowcount
+        conn.commit()
+    change = {k: "new" for k in added} | {k: "later" for k in moved if nc[k] > oc[k]}
+    redo = new[[(e, m) in change for e, m in zip(new.ensembl_id, new.mondo_id)]].copy()
+    redo["change"] = [change[(e, m)] for e, m in zip(redo.ensembl_id, redo.mondo_id)]
+    redo["old_cutoff_year"] = [oc.get((e, m)) for e, m in zip(redo.ensembl_id, redo.mondo_id)]
+    redo.to_csv(RECONCILE_CSV, index=False)
+    stamp = time.strftime("%Y%m%dT%H%M", time.gmtime(os.path.getmtime(WEB_PAIRS_CSV)))
+    for path, frame_now in ((WEB_PAIRS_CSV, new), (WEB_ENTRIES_CSV, cohort_entries())):
+        os.replace(path, path.replace(".csv", f"_{stamp}.csv"))
+        frame_now.to_csv(path, index=False)
+    print(json.dumps({"frozen_pairs": len(oc), "current_pairs": len(nc), "new": len(added), "left": len(left),
+                      "cutoff_later": sum(nc[k] > oc[k] for k in moved), "cutoff_earlier": sum(nc[k] < oc[k] for k in moved),
+                      "rows_linked_to_new_cutoff": linked}, indent=2))
+
+
+def gap(args) -> None:
+    """For each pair whose cutoff moved later (RECONCILE_CSV, change later), search only the years after the old
+    cutoff up to the new one, in every source the run uses, and add the results to the pair's rows at the new cutoff
+    (add_search): PubMed and Europe PMC by the run's queries, the origin search's records of those years, Firecrawl
+    once per kind, and the web arm asked at the new cutoff with only its studies of those years added. Nothing is
+    removed; the screen then reads the records not yet screened (web-screen --pairs reconcile --sources all)."""
+    p = pd.read_csv(RECONCILE_CSV)
+    p = p[p.change == "later"]
+    nm = pair_names(p, run=False)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT ensembl_id, mondo_id, service, query FROM preclin.target_disease_search")
+        origin_q = {(e, m, sv): q for e, m, sv, q in cur.fetchall()}
+    for r in p.itertuples():
+        e, m, lo, hi = r.ensembl_id, r.mondo_id, int(r.old_cutoff_year) + 1, int(r.cutoff_year)
+        n = nm[pair_key(e, m)]
+        pm, ep = clauses(n)
+        pq, pn, pmids = pubmed_ids([], hi, term=lambda a, b, pm=pm: f'{pm} AND ("{max(a, str(lo))}"[dp] : "{b}"[dp]) {NOT_REVIEWS}')
+        pmids = [x for x in pmids if x]
+        eq, en, records = epmc_records([], hi, query=f'{ep} AND PUB_YEAR:[{lo} TO {hi}] AND NOT SRC:MED '
+                                                     'AND HAS_ABSTRACT:Y AND NOT PUB_TYPE:"review"')
+        fetch_texts([x for x in pmids if x not in record_texts(pmids)])
+        fc = {}
+        for k in KINDS:
+            throttle.wait("firecrawl", FIRECRAWL_PER_SECOND)
+            res = firecrawl_cli(["search-papers", firecrawl_query(r.symbol, n["gene"], r.disease, k), "--limit",
+                                 str(FIRECRAWL_RESULTS), "--from", f"{lo}-01-01", "--to", f"{hi}-12-31"])
+            got = firecrawl_ids([x for x in res if (x.get("createdDate") or "0000")[:4] >= str(lo)], hi)
+            ext = resolve_external([g for g in got if not g[0].isdigit()])
+            fc[k] = (len(res), sorted({g if g.isdigit() else ext[g] for g, _ in got if g.isdigit() or g in ext}))
+        with llm.connect() as conn, conn.cursor() as cur:
+            cur.execute("""SELECT service, regexp_replace(record_id, '^PMID:', '') FROM preclin.target_disease_source
+                           WHERE ensembl_id = %s AND mondo_id = %s AND year BETWEEN %s AND %s""", (e, m, lo, hi))
+            orig: dict = {}
+            for sv, rid in cur.fetchall():
+                orig.setdefault(sv, []).append(rid)
+            store_records(cur, records)
+            tag = f"gap {lo}-{hi}"
+            add_search(cur, e, m, hi, "pubmed", "", n, f"{tag}: {pq}", pn, pmids)
+            add_search(cur, e, m, hi, "europepmc", "", n, f"{tag}: {eq}", en, [x[0] for x in records])
+            for sv, ids in orig.items():
+                add_search(cur, e, m, hi, "origin_" + sv, "", n, f"{tag}: {origin_q.get((e, m, sv), '')}", len(ids), ids)
+            for k, (cnt, ids) in fc.items():
+                add_search(cur, e, m, hi, "firecrawl", k, n, f"{tag}: {firecrawl_query(r.symbol, n['gene'], r.disease, k)}",
+                           cnt, ids)
+            conn.commit()
+        print(f"gap {r.symbol} x {r.disease} {lo}-{hi}: pubmed={len(pmids)} europepmc={len(records)} "
+              f"origin={sum(map(len, orig.values()))} firecrawl={sum(len(v[1]) for v in fc.values())}", flush=True)
+    dec, refused = ask(WEB_TASK, WEB_FALLBACK, p)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT ensembl_id, mondo_id, coalesce(max(ordinal), -1), array_agg(record_id) FROM
+                       preclin.target_literature_web_study WHERE arm = 'web' GROUP BY 1, 2""")
+        prior = {(e, m): (o, set(x for x in rs if x)) for e, m, o, rs in cur.fetchall()}
+    cut = {pair_key(r.ensembl_id, r.mondo_id): (int(r.old_cutoff_year), int(r.cutoff_year)) for r in p.itertuples()}
+    added = 0
+    with llm.connect() as conn, conn.cursor() as cur:
+        for key, (d, o) in dec.items():
+            e, m = key.split("|")
+            lo, hi = cut[key]
+            last, have = prior.get((e, m), (-1, set()))
+            gap_studies = [x for x in verify_studies(o["studies"]) if x.get("year") and lo < x["year"] <= hi
+                           and x["record_id"] not in have]
+            execute_values(cur, """INSERT INTO preclin.target_literature_web_study (arm, ensembl_id, mondo_id, cutoff_year,
+                                       ordinal, kind, title, year, venue, pmid_given, doi_given, record_id, verification,
+                                       llm_decision_id) VALUES %s""",
+                           [("web", e, m, hi, last + 1 + i, x["kind"], x["title"] or "", x.get("year"), x.get("venue"),
+                             x.get("pmid"), x.get("doi"), x["record_id"], x["verification"], d)
+                            for i, x in enumerate(gap_studies)]) if gap_studies else None
+            ids = sorted({x["record_id"] for x in gap_studies if x["record_id"]})
+            add_search(cur, e, m, hi, "web_agent", "", {"task": WEB_TASK.name, "prompt_version": WEB_TASK.prompt_version,
+                                                        "refused": False},
+                       f"gap {lo + 1}-{hi}: {WEB_TASK.name} {WEB_TASK.prompt_version} at cutoff {hi}", len(ids), ids)
+            added += len(gap_studies)
+        conn.commit()
+    print(f"gap web: pairs={len(p)} answered={len(dec)} refused={len(refused)} gap studies added={added}", flush=True)
+
+
 def web_pairs() -> pd.DataFrame:
     """The cohort pairs the web arm asks: all but pilot rows 1-200, whose blind reference (the same prompt) is
     their web-arm answer (web_import)."""
@@ -1242,7 +1391,7 @@ def web_done() -> set[tuple[str, str]]:
 def web(args) -> None:
     """The web arm over every cohort pair not yet stored (--shard i/n to run n in parallel): ask, verify, store,
     WEB_CHUNK pairs at a time, so an interrupted run resumes where it stopped and reuses stored decisions."""
-    p = shard_of(web_pairs(), args.shard)
+    p = shard_of(web_pairs() if args.pairs in ("pilot", "web") else pairs_of(args.pairs), args.shard)
     done = web_done()
     p = p[[(e, m) not in done for e, m in zip(p.ensembl_id, p.mondo_id)]]
     print(f"web: pairs to ask={len(p)}", flush=True)
@@ -1254,9 +1403,10 @@ def web(args) -> None:
                 answers = {k: (d, verify_studies(o["studies"])) for k, (d, o) in dec.items()}
                 store_web("web", chunk, answers, refused)
                 break
-            except (psycopg2.OperationalError, psycopg2.InterfaceError) as exc:
-                print(f"web chunk {start // WEB_CHUNK + 1}: database link dropped ({exc}); retrying", flush=True)
-                time.sleep(30 * (attempt + 1))
+            except (psycopg2.OperationalError, psycopg2.InterfaceError, SourceDown) as exc:
+                print(f"web chunk {start // WEB_CHUNK + 1}: database or Europe PMC unavailable ({exc}); retrying",
+                      flush=True)
+                time.sleep(120 * (attempt + 1))
         else:
             raise RuntimeError(f"web chunk {start // WEB_CHUNK + 1}: database unavailable")
         n = sum(len(ss) for _, ss in answers.values())
@@ -1286,7 +1436,7 @@ def web_screen(args) -> None:
     run's screen (and its fallback): one screen definition for every record. A record the web arm named skips the
     prefilter (a cost saving for large literatures that has no bearing on a named study); any other record keeps an
     earlier prefilter-out decision."""
-    p = shard_of(web_cohort(), args.shard)
+    p = shard_of(web_cohort() if args.pairs in ("pilot", "web") else pairs_of(args.pairs), args.shard)
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT DISTINCT h.ensembl_id, h.mondo_id, h.record_id FROM preclin.target_literature_hit h
                        WHERE h.source = ANY(%s)
@@ -1296,7 +1446,7 @@ def web_screen(args) -> None:
                          AND NOT EXISTS (
                            SELECT 1 FROM preclin.target_literature_screen s
                            WHERE (s.ensembl_id, s.mondo_id, s.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))""",
-                    (args.sources.split(","),))
+                    (list(SOURCES) if args.sources == "all" else args.sources.split(","),))
         recs = pd.DataFrame(cur.fetchall(), columns=["ensembl_id", "mondo_id", "record_id"])
     want = set(zip(p.ensembl_id, p.mondo_id))
     recs = recs[[(e, m) in want for e, m in zip(recs.ensembl_id, recs.mondo_id)]]
@@ -1533,19 +1683,19 @@ INTEGRITY = {
         LEFT JOIN preclin.target_literature_prefilter f USING (ensembl_id, mondo_id, record_id)
         LEFT JOIN ({REFUSED}) x ON x.subject_key = r.ensembl_id || '|' || r.mondo_id || '|' || r.record_id
         WHERE r.has_text AND s.record_id IS NULL AND (f.record_id IS NULL OR f.possibly) AND x.subject_key IS NULL""",
-    "screen or prefilter rows for a record the pair's searches do not return": """
-        SELECT (SELECT count(*) FROM preclin.target_literature_screen s LEFT JOIN retrieved r USING (ensembl_id, mondo_id, record_id)
-                WHERE r.record_id IS NULL)
-             + (SELECT count(*) FROM preclin.target_literature_prefilter f LEFT JOIN retrieved r USING (ensembl_id, mondo_id, record_id)
-                WHERE r.record_id IS NULL)""",
+    "screen or prefilter rows of a cohort pair for a record its searches do not return": """
+        SELECT (SELECT count(*) FROM preclin.target_literature_screen s
+                JOIN (SELECT DISTINCT ensembl_id, mondo_id FROM want) w USING (ensembl_id, mondo_id)
+                LEFT JOIN retrieved r USING (ensembl_id, mondo_id, record_id) WHERE r.record_id IS NULL)
+             + (SELECT count(*) FROM preclin.target_literature_prefilter f
+                JOIN (SELECT DISTINCT ensembl_id, mondo_id FROM want) w USING (ensembl_id, mondo_id)
+                LEFT JOIN retrieved r USING (ensembl_id, mondo_id, record_id) WHERE r.record_id IS NULL)""",
     "hits without their search row": """
         SELECT count(*) FROM preclin.target_literature_hit h LEFT JOIN preclin.target_literature_search s
             ON (s.ensembl_id, s.mondo_id, s.cutoff_year, s.source, s.kind) = (h.ensembl_id, h.mondo_id, h.cutoff_year, h.source,
                 CASE WHEN h.source = 'firecrawl' AND h.kind = '' THEN s.kind ELSE h.kind END)
         WHERE s.ensembl_id IS NULL""",
-    "searches of a pair outside the cohort, or at another cutoff": """
-        SELECT count(*) FROM preclin.target_literature_search s LEFT JOIN want w USING (ensembl_id, mondo_id, cutoff_year)
-        WHERE w.ensembl_id IS NULL""",
+
     "screen rows whose decision is not a validated version 2 screen (or its fallback) of that pair and record": f"""
         SELECT count(*) FROM preclin.target_literature_screen s LEFT JOIN pv_evidence.llm_decision d
             ON d.llm_decision_id = s.llm_decision_id
@@ -1569,13 +1719,19 @@ INTEGRITY = {
     "verified web-arm studies without their web_agent hit": """
         SELECT count(*) FROM preclin.target_literature_web_study w WHERE w.arm = 'web' AND w.record_id IS NOT NULL
           AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_hit h WHERE h.source = 'web_agent'
-                          AND (h.ensembl_id, h.mondo_id, h.cutoff_year, h.record_id) = (w.ensembl_id, w.mondo_id, w.cutoff_year, w.record_id))""",
+                          AND (h.ensembl_id, h.mondo_id, h.record_id) = (w.ensembl_id, w.mondo_id, w.record_id))""",
     "web_agent hits without a verified web-arm study": """
         SELECT count(*) FROM preclin.target_literature_hit h WHERE h.source = 'web_agent'
           AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_web_study w WHERE w.arm = 'web'
-                          AND (h.ensembl_id, h.mondo_id, h.cutoff_year, h.record_id) = (w.ensembl_id, w.mondo_id, w.cutoff_year, w.record_id))""",
+                          AND (h.ensembl_id, h.mondo_id, h.record_id) = (w.ensembl_id, w.mondo_id, w.record_id))""",
 }
 INFO = {
+    "search rows of cohort pairs at an earlier cutoff (kept; linked to the current one)": """
+        SELECT count(*) FROM preclin.target_literature_search s JOIN want w USING (ensembl_id, mondo_id)
+        WHERE s.cutoff_year <> w.cutoff_year""",
+    "pairs with search rows that are not in the cohort (left it; rows kept)": """
+        SELECT count(DISTINCT (ensembl_id, mondo_id)) FROM preclin.target_literature_search s
+        WHERE NOT EXISTS (SELECT 1 FROM want w WHERE (w.ensembl_id, w.mondo_id) = (s.ensembl_id, s.mondo_id))""",
     "web-arm studies by verification": """SELECT json_object_agg(verification, n) FROM (SELECT verification, count(*) n
                                           FROM preclin.target_literature_web_study WHERE arm = 'web' GROUP BY 1) x""",
     "yardstick studies by verification": """SELECT json_object_agg(verification, n) FROM (SELECT verification, count(*) n
@@ -1652,9 +1808,9 @@ def main() -> None:
                      ("prefilter-check", prefilter_check), ("cost", cost), ("integrity", integrity),
                      ("summary", summary), ("firecrawl", firecrawl), ("origin", origin), ("web", web),
                      ("web-import", web_import), ("web-screen", web_screen), ("yardstick", yardstick),
-                     ("web-score", web_score)]:
+                     ("web-score", web_score), ("reconcile", reconcile), ("gap", gap)]:
         c = sub.add_parser(name)
-        c.add_argument("--pairs", choices=["pilot", "cohort", "web"], default="pilot")
+        c.add_argument("--pairs", choices=["pilot", "cohort", "web", "reconcile", "reconcile-new"], default="pilot")
         c.set_defaults(fn=fn)
         if name == "firecrawl":
             c.add_argument("--mode", choices=["search", "related"], required=True)
@@ -1662,7 +1818,7 @@ def main() -> None:
             c.add_argument("--follow", action="store_true", help="keep screening pairs as their searches finish")
             c.add_argument("--skip-done", action="store_true", help="skip pairs whose every record is already decided")
         if name == "web-screen":
-            c.add_argument("--sources", default="web_agent", help="comma-separated hit sources to screen")
+            c.add_argument("--sources", default="web_agent", help="comma-separated hit sources to screen, or all")
         if name in ("search", "screen", "web", "web-screen"):
             c.add_argument("--shard", help="i/n: this process's share of the pairs, to run n in parallel")
         if name in ("screen", "cost"):

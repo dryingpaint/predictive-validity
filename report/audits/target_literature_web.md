@@ -122,3 +122,44 @@ At 06:45 UTC, mid-rebuild, the live cohort had 5,142 pairs against the snapshot'
 - 10 snapshot pairs had dropped out, 3 pairs were new, and 10 cutoffs had moved;
 - the dropped pairs' rows are kept;
 - reconcile once 6e's rebuild is done.
+
+## Reconciliation to the rebuilt cohort (2026-11-24)
+
+The #185 rebuild of programs and pairs (predictive-validity-6e) changed the cohort. The final evidence build is
+**`8c666830-2fbb-497a-85fe-a70a5985d21e`** (08:23 UTC), with no newer build at 12:32 UTC. The cohort is the pairs
+with a 2008–2019 US-sited entry in that build. Compared with the frozen snapshot of 03:38 UTC:
+
+| Change | Pairs | What was done |
+|---|---|---|
+| Unchanged | 5,095 | Nothing |
+| New to the cohort | 132 | The full pipeline: names, origin links, PubMed and Europe PMC, Firecrawl, screen, related papers, web arm, web screen. Each held no stored rows beforehand |
+| Cutoff moved later | 37 | The old rows were linked to the new cutoff. Searches covering only the gap years were added: PubMed 1,271, Europe PMC 32 and Firecrawl 5,180 hits (4,636 of them new records dated in the gap, 2 dated before it, 542 undated), plus 112 web-arm studies dated in the gap. New records were screened |
+| Cutoff moved earlier | 1 | The old rows were linked to the new cutoff. Records dated after it stay; the cutoff applied on read excludes them |
+| Left the cohort | 16 | The rows are kept (`integrity`: "pairs with search rows that are not in the cohort") |
+
+The current cohort is 5,265 pairs. `target_literature_web_{pairs,entries}.csv` now hold it, and the 03:38 UTC
+snapshot is kept as `*_20261124T0338.csv`. `target_literature_reconcile.csv` lists the new and later-moved pairs.
+
+- **No stored literature row was deleted or re-keyed.** Linking adds rows at the new cutoff that hold the same
+  records: 446 search rows and 9,987 hits. The old rows stay, and are counted in `integrity` as "search rows at an
+  earlier cutoff".
+- **Gap results were added, not replaced** (`add_search`).
+- **Screens apply as they are,** because they are keyed by pair and record.
+
+**Row counts before → after:**
+
+| Table | Before | After |
+|---|---|---|
+| search | 63,824 | 65,898 |
+| hit | 1,616,979 | 1,666,816 |
+| prefilter | 288,700 | 288,700 |
+| screen | 950,754 | 975,104 |
+| web_study | 32,588 | 33,684 |
+
+**Integrity** (`--pairs web`, the reconciled cohort) is all 0. The check of screen rows against retrieved records
+now covers cohort pairs only, so rows of pairs that left the cohort are counted, not flagged. 1,135,815 (pair,
+record) are retrieved. The 254 records both screen models had refused were read on the final screen's re-ask, so
+none are left unread. Europe PMC outages made one search fail (FLT1 × melanoma) and the web arm's first attempt at
+the new pairs stop. Both reran; Europe PMC outages now retry a web chunk.
+
+**Cost** of the reconciliation: **$87** (screen $48, web arm $39).
