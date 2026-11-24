@@ -4,6 +4,8 @@
     python -m pipeline.opentargets load   # release files in .cache/opentargets/<release>
     python -m pipeline.opentargets evidence  # evidence rows behind those associations, dated; mouse phenotypes
     python -m pipeline.opentargets dates     # re-date the rows from preclin.evidence_known_year, rebuild the series
+    python -m pipeline.opentargets pqtl      # cis-pQTLs colocalising with disease GWAS signals -> preclin.pqtl_coloc
+    python -m pipeline.opentargets adverse   # significant FAERS adverse reactions -> preclin.adverse_reaction
 
 Loads direct associations by data source for the targets of every molecular
 entity with an industry-sponsored development program (preclin.moiety_target).
@@ -21,12 +23,19 @@ not diseases have none. `evidence` keeps, for the same targets and sources, each
 evidence item with its date, direction of effect, confidence and source detail
 (preclin.ot_evidence), and the targets' mouse mutant phenotypes
 (preclin.ot_mouse_phenotype).
+
+`pqtl` and `adverse` query the same release in place, in Google's public BigQuery copy (the colocalisation table
+alone is 16 GB), billed to the Google Cloud project $BIGQUERY_PROJECT with application-default credentials.
+`pqtl` keeps each cis-pQTL of a target's plasma protein that colocalises with a GWAS signal of a disease, with the
+sign of the effect ratio (does the allele raising the protein raise risk); `adverse` keeps each adverse reaction
+FAERS reports significantly often for one of our drugs, with the MONDO diseases the reaction is.
 """
 from __future__ import annotations
 
 import argparse
 import glob
 import hashlib
+import json
 import os
 import re
 from collections import defaultdict
@@ -38,6 +47,11 @@ from psycopg2.extras import Json, execute_values
 from pipeline import llm
 
 RELEASE = "26.09"
+BIGQUERY = "bigquery-public-data.open_targets_platform"  # the release in BigQuery; ot_release names it
+BIGQUERY_URL = "https://bigquery.googleapis.com/bigquery/v2/projects"
+H4_MIN = 0.8  # coloc posterior of one shared causal variant at which a pQTL and a GWAS signal colocalise
+# Open Targets gives QTL studies no publication date: each pQTL project's paper (PubMed id, year).
+PQTL_PUBLISHED = {"Sun_2018": ("29875488", 2018), "UKB_PPP_EUR": ("37794186", 2023)}
 CACHE = os.path.join(llm.REPO, ".cache", "opentargets", RELEASE)
 SOURCE_URL = f"https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/{RELEASE}/output"
 DATASETS = ("association_by_datasource_direct", "disease")  # the release datasets load reads
@@ -143,16 +157,60 @@ def fetch(_args) -> None:
         print(f"{dataset}: {len(names)} files -> {os.path.join(CACHE, dataset)}", flush=True)
 
 
+def entity_targets(cur) -> list[str]:
+    """The Ensembl ids of every entity target, the targets the loaders keep."""
+    cur.execute("""SELECT DISTINCT t.ensembl_id FROM preclin.moiety_target mt
+                   JOIN public.targets t ON t.id = mt.target_id WHERE t.ensembl_id IS NOT NULL""")
+    return [r[0] for r in cur.fetchall()]
+
+
 def release_and_targets(cur, name: str, datasets: list[str], metadata: dict) -> tuple[int, list[str]]:
     """Register the release behind `datasets` (by the sha256 of their cached files), and return it
-    with the Ensembl ids of every entity target, the targets the loaders keep."""
+    with the entity targets."""
     files = sorted(f for d in datasets for f in glob.glob(os.path.join(CACHE, d, "*.parquet")))
     digest = hashlib.sha256("".join(llm.sha256_file(f) for f in files).encode())
     release = llm.register_release(cur, name, RELEASE, SOURCE_URL, digest.hexdigest(),
                                    {"datasets": datasets, **metadata, "sha256_of": "concatenated per-file sha256"})
-    cur.execute("""SELECT DISTINCT t.ensembl_id FROM preclin.moiety_target mt
-                   JOIN public.targets t ON t.id = mt.target_id WHERE t.ensembl_id IS NOT NULL""")
-    return release, [r[0] for r in cur.fetchall()]
+    return release, entity_targets(cur)
+
+
+CAST = {"INTEGER": int, "FLOAT": float, "BOOLEAN": lambda v: v == "true"}
+
+
+def bigquery(sql: str) -> list[dict]:
+    """The rows of a standard-SQL query, run in $BIGQUERY_PROJECT with application-default credentials."""
+    import google.auth
+    from google.auth.transport.requests import AuthorizedSession
+    credentials, _ = google.auth.default(scopes=["https://www.googleapis.com/auth/bigquery"])
+    session = AuthorizedSession(credentials)
+    base = f"{BIGQUERY_URL}/{os.environ['BIGQUERY_PROJECT']}/queries"
+    r = session.post(base, json={"query": sql, "useLegacySql": False, "timeoutMs": 60000, "maxResults": 20000},
+                     timeout=120)
+    r.raise_for_status()
+    page, rows = r.json(), []
+    job = page["jobReference"]
+    while True:
+        if page.get("jobComplete"):
+            fields = page["schema"]["fields"]
+            rows += [{f["name"]: None if c["v"] is None else CAST.get(f["type"], str)(c["v"])
+                      for f, c in zip(fields, row["f"])} for row in page.get("rows", [])]
+            if not page.get("pageToken"):
+                return rows
+        r = session.get(f"{base}/{job['jobId']}", timeout=120,
+                        params={"location": job["location"], "timeoutMs": 60000, "maxResults": 20000,
+                                **({"pageToken": page["pageToken"]} if page.get("pageToken") else {})})
+        r.raise_for_status()
+        page = r.json()
+
+
+def bigquery_release(cur, name: str, rows: list[dict], metadata: dict) -> int:
+    """Register the rows a BigQuery load read (by the sha256 of their JSON), after checking the dataset is RELEASE."""
+    (found,) = (r["release"] for r in bigquery(f"SELECT release FROM `{BIGQUERY}.ot_release`"))
+    if found != RELEASE:
+        raise RuntimeError(f"{BIGQUERY} holds Open Targets {found}, not {RELEASE}")
+    digest = hashlib.sha256(json.dumps(rows, sort_keys=True).encode()).hexdigest()
+    return llm.register_release(cur, name, RELEASE, f"bigquery://{BIGQUERY}", digest,
+                                {**metadata, "sha256_of": "the rows read, as sorted-key JSON"})
 
 
 def load(_args) -> None:
@@ -280,10 +338,78 @@ def evidence(_args) -> None:
           f"undated={sum(r[6] is None for r in rows)}")
 
 
+def pqtl(_args) -> None:
+    """Each cis-pQTL of an entity target's plasma protein colocalising (H4 >= H4_MIN) with a GWAS signal of a disease,
+    once per disease the GWAS study is mapped to; a pair of signals colocalised twice keeps its higher H4."""
+    rows = bigquery(f"""
+        SELECT c.leftStudyLocusId AS gwas_locus_id, c.rightStudyLocusId AS pqtl_locus_id, d.element AS disease_id,
+               q.geneId AS ensembl_id, g.studyId AS gwas_study_id, g.pubmedId AS gwas_pmid,
+               g.publicationDate AS gwas_date, q.studyId AS pqtl_study_id, q.projectId AS pqtl_project, c.h4,
+               c.betaRatioSignAverage AS beta_ratio_sign
+        FROM `{BIGQUERY}.colocalisation_coloc` c
+        JOIN `{BIGQUERY}.credible_set` qc ON qc.studyLocusId = c.rightStudyLocusId AND qc.isTransQtl IS FALSE
+        JOIN `{BIGQUERY}.study` q ON q.studyId = qc.studyId
+        JOIN `{BIGQUERY}.credible_set` gc ON gc.studyLocusId = c.leftStudyLocusId AND gc.studyType = 'gwas'
+        JOIN `{BIGQUERY}.study` g ON g.studyId = gc.studyId, UNNEST(g.diseaseIds.list) d
+        WHERE c.rightStudyType = 'pqtl' AND c.h4 >= {H4_MIN} AND c.betaRatioSignAverage != 0""")
+    unknown = {r["pqtl_project"] for r in rows} - set(PQTL_PUBLISHED)
+    if unknown:
+        raise RuntimeError(f"pQTL projects without a publication year in PQTL_PUBLISHED: {sorted(unknown)}")
+    with llm.connect() as conn, conn.cursor() as cur:
+        targets = set(entity_targets(cur))
+        release = bigquery_release(cur, "open_targets_pqtl_coloc", rows, {"h4_min": H4_MIN,
+                                                                          "pqtl_published": PQTL_PUBLISHED})
+        best: dict = {}
+        for r in rows:
+            if r["ensembl_id"] not in targets:
+                continue
+            key = (r["gwas_locus_id"], r["pqtl_locus_id"], curie(r["disease_id"]))
+            if key not in best or r["h4"] > best[key][10]:
+                best[key] = (*key, r["ensembl_id"], r["gwas_study_id"], r["gwas_pmid"],
+                             int(r["gwas_date"][:4]) if r["gwas_date"] else None, r["pqtl_study_id"],
+                             r["pqtl_project"], PQTL_PUBLISHED[r["pqtl_project"]][1], r["h4"], r["beta_ratio_sign"],
+                             release)
+        cur.execute("DELETE FROM preclin.pqtl_coloc")
+        execute_values(cur, """INSERT INTO preclin.pqtl_coloc
+              (gwas_locus_id, pqtl_locus_id, disease_id, ensembl_id, gwas_study_id, gwas_pmid, gwas_year,
+               pqtl_study_id, pqtl_project, pqtl_year, h4, beta_ratio_sign, source_release_id) VALUES %s""",
+                       list(best.values()), page_size=5000)
+        conn.commit()
+    print(f"release={RELEASE} colocalisations={len(rows)} kept={len(best)} "
+          f"genes={len({v[3] for v in best.values()})}")
+
+
+def adverse(_args) -> None:
+    """Each adverse reaction FAERS reports significantly often for one of our drugs, with the MONDO diseases it is: the
+    terms whose label or synonym is its MedDRA preferred term (the drug-level reactions carry no MedDRA code)."""
+    rows = bigquery(f"""SELECT chembl_id, event, count AS reports, llr, critval
+                        FROM `{BIGQUERY}.openfda_significant_adverse_drug_reactions`""")
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT DISTINCT parent_chembl_id FROM preclin.chembl_moiety")
+        ours = {r[0] for r in cur.fetchall()}
+        cur.execute("""SELECT lower(n), term_id FROM preclin.ontology_term,
+                              unnest(array_append(synonyms, label)) n
+                       WHERE ontology = 'MONDO' AND NOT is_obsolete""")
+        by_name = defaultdict(set)
+        for name, term in cur.fetchall():
+            by_name[name].add(term)
+        release = bigquery_release(cur, "open_targets_openfda", rows, {})
+        kept = [(r["chembl_id"], r["event"], r["reports"], r["llr"], r["critval"],
+                 sorted(by_name.get(r["event"].lower(), ())), release) for r in rows if r["chembl_id"] in ours]
+        cur.execute("DELETE FROM preclin.adverse_reaction")
+        execute_values(cur, """INSERT INTO preclin.adverse_reaction
+              (chembl_id, event, reports, llr, critval, mondo_ids, source_release_id) VALUES %s""",
+                       kept, page_size=5000)
+        conn.commit()
+    print(f"release={RELEASE} reactions={len(rows)} ours={len(kept)} drugs={len({k[0] for k in kept})} "
+          f"diseases={sum(bool(k[5]) for k in kept)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for name, fn in [("fetch", fetch), ("load", load), ("evidence", evidence), ("dates", dates)]:
+    for name, fn in [("fetch", fetch), ("load", load), ("evidence", evidence), ("dates", dates), ("pqtl", pqtl),
+                     ("adverse", adverse)]:
         sub.add_parser(name).set_defaults(fn=fn)
     args = parser.parse_args()
     args.fn(args)

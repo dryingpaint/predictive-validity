@@ -557,7 +557,7 @@ def definition_of(origin: str) -> str:
 def test_every_origin_has_one_definition_and_a_chart_line_entry():
     assert [ln[2:].split(":")[0] for ln in to.DEFINITIONS.splitlines()] == to.ORIGINS
     assert set(to.CHART_LINE) == set(to.ORIGINS)
-    assert set(to.CHART_LINE_PENDING) == {"observational_biomarker", "human_cell_perturbation", "clinical_observation"}
+    assert set(to.CHART_LINE_PENDING) == {"observational_biomarker", "human_cell_perturbation"}
     without = {o for o, c in to.CHART_LINE.items() if c is None}
     assert without == set(to.CHART_LINE_PENDING) | {"phenotypic_screen", "unclear"}
 

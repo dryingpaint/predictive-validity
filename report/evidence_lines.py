@@ -156,6 +156,13 @@ FACTS = {f.key: f for f in [
          (("raises_risk", "Raises risk"), ("lowers_risk", "Lowers risk"), ("mixed", "Both, in different variants"),
           ("undirected", "Labelled, direction not given"), ("unlabelled", "No mechanism labelled"),
           ("none", "No inherited variants"))),
+    Fact("protein_level", "Which way genetically higher levels of the target's protein move disease risk (a cis-pQTL "
+         "colocalising with a disease GWAS signal)", "target",
+         (("raises_risk", "Higher protein raises risk"), ("lowers_risk", "Higher protein lowers risk"),
+          ("mixed", "Both, in different studies or diseases"), ("none", "No colocalising pQTL")),
+         (("raises_risk", "pqtl_raises_risk"), ("lowers_risk", "pqtl_lowers_risk"), ("mixed", "pqtl_mixed"))),
+    Fact("protein_level_hindsight", "A cis-pQTL of the target's protein colocalises with a disease GWAS signal, on "
+         "today's data", "target", YES_NO, (("yes", "pqtl_untimed"),), counts=False, hindsight=True),
     Fact("mutation", "How the gene is recurrently mutated in this cancer", "ONC",
          (("activating", "Activating"), ("inactivating", "Inactivating"), ("both", "Both"),
           ("unknown", "Mutated, effect unknown"), ("none", "Not recurrently mutated")),
@@ -184,6 +191,14 @@ FACTS = {f.key: f for f in [
           ("none", "No approved drug on the target")),
          (("same_or_close", "validated_at_entry"), ("related", "approved_related"),
           ("unrelated_only", "approved_unrelated_only"))),
+    Fact("side_effect", "Which way of moving the target causes the disease as a significant side effect of another "
+         "drug on it (FAERS, today's data)", "target",
+         (("lowering", "Lowering it: a drug that blocks the target"), ("raising", "Raising it: a drug that activates it"),
+          ("both", "Both"), ("undirected", "A drug of unclear action"), ("none", "No such side effect"),
+          ("no_drug", "No other drug on the target approved before entry outside related diseases")),
+         (("lowering", "side_effect_lowering"), ("raising", "side_effect_raising"), ("both", "side_effect_both"),
+          ("undirected", "side_effect_undirected")), unknown=("no_drug",), counts=False, hindsight=True,
+         note="today's FAERS: reports build up after approval, so the fact is not as of entry"),
     Fact("potency", "How strongly the drug binds its primary target, measured before entry", "small_molecule",
          (("le_10nm", "10 nM or better"), ("10_100nm", "10 to 100 nM"), ("weaker", "Weaker than 100 nM"),
           ("not_measured", "Not measured")),
@@ -245,6 +260,16 @@ KINDS = {k.key: k for k in [
          derived=(Line("Rare inherited variants, including single-gene disease", "rare_variant", "target"),
                   Line("Common variants (genome-wide association studies)", "gwas", "target"),
                   Line("Genetics agrees with the drug's direction", "genetics_concordant", "target"))),
+    Kind("protein_genetics", "human_genetics", "target",
+         "Protein genetics: variants that change the target's protein level change disease risk",
+         "A variant that changes the level of the target's protein in blood (a cis-pQTL) colocalises with a GWAS "
+         "signal of the program's disease, a subtype of it or a disease at least 0.8 similar on MONDO (Lin); the sign "
+         "says which way changing the protein moves risk",
+         "Open Targets 26.09 colocalisation (coloc H4 at least 0.8) of plasma pQTLs (Sun 2018, INTERVAL; UKB-PPP "
+         "2023) with GWAS credible sets; each dated by the later of the two studies", "pqtl",
+         (("protein_level", ("raises_risk", "lowers_risk", "mixed")), ("protein_level_hindsight", ("yes",))),
+         chart="protein_level",
+         derived=(Line("Protein genetics agrees with the drug's direction", "pqtl_concordant", "target"),)),
     Kind("tumour_genetics", "human_genetics", "target", "Tumour genetics (oncology): the gene is recurrently mutated in this cancer",
          "The gene is recurrently mutated in this cancer (oncology only)",
          "COSMIC Cancer Gene Census, IntOGen and ClinVar somatic, through Open Targets", "somatic",
@@ -298,8 +323,14 @@ KINDS = {k.key: k for k in [
          "Literature (#154)", None),
     Kind("clinical_observation", "human", "target",
          "Clinical observation: an effect seen in people implicates the target, such as a side effect",
-         "An effect seen in people that implicates the target, such as a side effect",
-         "Literature (#154)", None),
+         "An effect seen in people that implicates the target, such as a side effect. Today the significant FAERS "
+         "side effects of other drugs on the target, approved before entry and developed for no related disease, "
+         "that are the program's disease or a very close one (hindsight: today's FAERS); the literature is to come "
+         "(#154)",
+         "FAERS significant adverse reactions (openFDA likelihood-ratio test, through Open Targets 26.09), matched to "
+         "MONDO by name; literature (#154)", "clinical_observation",
+         (("side_effect", ("lowering", "raising", "both", "undirected")),), chart="side_effect",
+         derived=(Line("A side effect argues for the drug's direction", "side_effect_concordant", "target"),)),
     Kind("earlier_approval", "human", "target",
          "Approved on the target: a drug on the target was approved before entry, for this disease or another",
          "A drug on the target was approved before entry, banded by how close its disease is to the program's: the same "
@@ -445,6 +476,10 @@ def facts(d: pd.DataFrame) -> pd.DataFrame:
                                         (on("cell_dependency") | on("crispr"), "yes"),
                                         (d.cell_dependency.isna(), "not_reached")], "no"),
         "rna": pick("target", [(on("expression_up"), "up"), (on("expression"), "down")]),
+        "protein_level": d.protein_level.where(APPLIES["target"](d)),
+        "protein_level_hindsight": pick("target", [(d.protein_level_untimed.ne("none") & d.protein_level_untimed.notna(),
+                                                    "yes")], "no"),
+        "side_effect": d.side_effect.where(APPLIES["target"](d)),
         "best_approval": pick("target", [(b1_close, "same_or_close"), (b1, "related"), (precedent, "unrelated_only")]),
         "potency": pick("small_molecule", [(best.isna(), "not_measured"), (best >= POTENT_10NM, "le_10nm"),
                                            (best >= POTENT_100NM, "10_100nm")], "weaker"),
@@ -500,6 +535,10 @@ def derive(f: pd.DataFrame, action: pd.Series) -> pd.DataFrame:
         "somatic_concordant": cross((dec & f.mutation.isin(("activating", "both")))
                                     | (inc & f.mutation.isin(("inactivating", "both"))), f.mutation.notna()),
         "expression_up_inhibitor": cross(f.rna.eq("up") & dec),
+        "pqtl_concordant": cross((dec & f.protein_level.eq("raises_risk")) | (inc & f.protein_level.eq("lowers_risk"))),
+        # A drug that lowers the target causing the disease argues for raising it, and so on.
+        "side_effect_concordant": cross((inc & f.side_effect.eq("lowering")) | (dec & f.side_effect.eq("raising")),
+                                        f.side_effect.notna() & ~f.side_effect.eq("no_drug")),
         "animal_concordant": cross((inc & f.mouse_direction.eq("favours_raising"))
                                    | (dec & f.mouse_direction.eq("favours_lowering"))),
         "b1": flag("best_approval", ("same_or_close", "related")),

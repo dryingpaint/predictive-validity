@@ -208,6 +208,20 @@ class Evidence:
                                          evidence_facts.detail(models, "perturbation"), models.value,
                                          models.known_year):
             self.mouse[(e, m)].append((pert, rel, int(year) if pd.notna(year) else NEVER))
+        # Colocalising cis-pQTLs: gene -> MONDO term -> [(year, direction)], undated ones at NEVER.
+        self.pqtl: dict = defaultdict(lambda: defaultdict(list))
+        pq = evidence_facts.facts("pqtl")
+        for g, m, v, y in zip(pq.ensembl_id, pq.mondo_id, pq.value, pq.known_year.fillna(NEVER).astype(int)):
+            self.pqtl[g][m].append((y, v))
+        # Significant FAERS reactions that are diseases, by drug (today's FAERS: undated), and the diseases each
+        # entity was developed for, which a reaction must not be near (confounding by indication).
+        ae = evidence_facts.facts("adverse_reaction")
+        self.adverse = ae.groupby("moiety_id").mondo_id.apply(frozenset).to_dict()
+        self.developed = progs.dropna(subset=["mondo_id"]).groupby("moiety_id").mondo_id.apply(frozenset).to_dict()
+        self.on_gene: dict = defaultdict(list)  # gene -> [(entity, its action)] of every entity on it
+        for mid, genes, sign in zip(self.ent.index, self.ent.genes, self.ent.sign):
+            for g in genes:
+                self.on_gene[g].append((mid, sign))
         self.disease = progs.set_index("program_id").mondo_id
         # Approvals on each gene: each entity's first FDA approval (any disease, or the dated approval
         # of one of its diseases if earlier), and its approved diseases.
@@ -215,6 +229,7 @@ class Evidence:
         when = approval_dates(p, p.approved.eq("yes"))
         first = pd.concat([pd.to_datetime(p.moiety_first_fda_approval), when], axis=1).min(axis=1)
         self.first_approval: dict = {}
+        self.entity_approval = first.groupby(p.moiety_id).min().dropna().to_dict()
         self.approved: dict = defaultdict(list)
         for pid, mid, d in zip(p.index, p.moiety_id, p.mondo_id):
             for gene in self.ent.at[mid, "genes"]:
@@ -240,6 +255,24 @@ class Evidence:
     def precedent(self, moiety_id: str, when: pd.Timestamp) -> bool:
         """An FDA-approved entity on one of the entity's primary targets before `when`."""
         return any(self.first_approval.get(g, pd.Timestamp.max) < when for g in self.ent.at[moiety_id, "genes"])
+
+    def protein_level(self, genes: list[str], close: frozenset, cut: int) -> str:
+        """Which way genetically higher protein moves risk of the disease, by the pQTLs known by `cut`."""
+        seen = {v for g in genes for ys in hits(self.pqtl.get(g, {}), close) for y, v in ys if y <= cut}
+        return "mixed" if len(seen) > 1 else seen.pop() if seen else "none"
+
+    def side_effect(self, moiety_id: str, genes: list[str], close: frozenset, related: frozenset,
+                    entry: pd.Timestamp) -> str:
+        """Which way of moving the target causes the disease as a significant FAERS reaction (today's FAERS) of
+        another entity on the target, approved before entry and developed for no disease related to it."""
+        others = {(mid, sign) for g in genes for mid, sign in self.on_gene.get(g, ())
+                  if mid != moiety_id and self.entity_approval.get(mid, pd.Timestamp.max) < entry
+                  and not self.developed.get(mid, frozenset()) & related}
+        if not others:
+            return "no_drug"
+        causes = {sign for mid, sign in others if self.adverse.get(mid, frozenset()) & close}
+        return ("none" if not causes else "both" if {"decrease", "increase"} <= causes else "lowering"
+                if "decrease" in causes else "raising" if "increase" in causes else "undirected")
 
     def program(self, moiety_id: str, d: str, entry: pd.Timestamp, cut: int) -> dict:
         e = self.ent.loc[moiety_id]
@@ -297,6 +330,9 @@ class Evidence:
             "mouse_favours": ("none" if not wants else "mixed" if len(wants) > 1 else
                               "favours_raising" if wants == {"increase"} else "favours_lowering"),
             "expression_up": float(on("expression", "up")),
+            "protein_level": self.protein_level(e.genes, close, cut),
+            "protein_level_untimed": self.protein_level(e.genes, close, NEVER),
+            "side_effect": self.side_effect(moiety_id, e.genes, close, related, entry),
             **liab, "liability": float(any(liab.values())),
             "crispr_untimed": float("crispr" in first and first["crispr"][TIERS.index("any")] <= NEVER),
             "pan_essential_untimed": float(frame.essential_as_of(self.essential, e.genes, NEVER)),
