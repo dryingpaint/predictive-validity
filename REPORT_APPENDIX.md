@@ -118,35 +118,56 @@ Cause of each Phase 2 and 3 stop as registered and after tracing.
 
 ### Why drugs that engaged their target failed, by disease
 
-A stop where the drug engaged its target without benefit takes one failure mode, decided in order. The target is not causal when no drug on the target has worked in the disease while drugs on it worked elsewhere or were tried again, or when the program's sources judge the only attempt not causal. When a drug on the target worked only in a disease the ontology rates as related, a reading of the two diseases decides whether the success was in a subgroup of this one (wrong patients), a stage of it (wrong time) or a different disease (not causal); of the headline stops it read, nearly all were a different disease. A success in this disease only in biomarker-selected trials, when this program did not select, is wrong patients. Otherwise the verdict read from the program's sources decides: wrong patients, wrong stage or timing, drug inadequate or trial inadequate. Everything else is unresolved, including a "not causal" verdict where another drug on the target worked in this disease, which the record contradicts.
+A stop where the drug engaged its target without benefit takes one failure mode, decided in order, and each mode falls under one of three groups: the target is not causal; the target is causal but the drug fell short, or the trial treated the wrong patients or at the wrong time; or it is unclear, because the trial could not answer or nothing settles it. The target is not causal when no drug on the target has worked in the disease while drugs on it worked elsewhere or were tried again, or when the program's sources judge the only attempt not causal. Next, a drug the program's sources judge inadequate fell short; this comes before wrong patients or wrong time, so each stop has one primary reason. When a drug on the target worked only in a disease the ontology rates as related, a reading of the two diseases decides whether the success was in a subgroup of this one (wrong patients), a stage of it (wrong time) or a different disease (not causal); of the headline stops it read, nearly all were a different disease. A success in this disease only in biomarker-selected trials, when this program did not select, is wrong patients. Otherwise the verdict read from the program's sources decides: wrong patients, wrong stage or timing, or trial inadequate. Everything else is unresolved, including a "not causal" verdict where another drug on the target worked in this disease, which the record contradicts. A not-causal call rests on the stop's own evidence when its sources judge the target not causal, and otherwise on the target's later record alone.
 
-Every disease with at least ten such stops.
+By disease area, each failure mode as a share of the area's stops.
 
-| Disease | Area | Stops | Target not causal | Wrong time | Wrong patients | Drug fell short | Trial couldn't answer | Unresolved |
-| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| No disease term (symptom or procedure) | Other | 43 | 95% | 0% | 0% | 0% | 5% | 0% |
-| Non-small cell lung carcinoma | Oncology | 37 | 51% | 0% | 8% | 0% | 3% | 38% |
-| Asthma | Respiratory | 30 | 43% | 0% | 0% | 3% | 7% | 47% |
-| Alzheimer disease | Neurology | 26 | 62% | 0% | 8% | 4% | 0% | 27% |
-| Rheumatoid arthritis | Autoimmune | 23 | 65% | 0% | 4% | 9% | 9% | 13% |
-| Colorectal cancer | Oncology | 19 | 58% | 0% | 26% | 0% | 5% | 11% |
-| Breast cancer | Oncology | 19 | 53% | 0% | 16% | 5% | 0% | 26% |
-| Ovarian cancer | Oncology | 18 | 61% | 0% | 11% | 17% | 0% | 11% |
-| Ulcerative colitis | Autoimmune | 17 | 65% | 0% | 6% | 6% | 12% | 12% |
-| Malignant pancreatic neoplasm | Oncology | 16 | 62% | 0% | 6% | 0% | 0% | 31% |
-| Hepatocellular carcinoma | Oncology | 15 | 60% | 0% | 13% | 13% | 13% | 0% |
-| Atopic eczema | Other | 15 | 87% | 0% | 0% | 0% | 0% | 13% |
-| Small cell lung carcinoma | Oncology | 13 | 69% | 0% | 8% | 0% | 0% | 23% |
-| Prostate cancer | Oncology | 13 | 77% | 0% | 0% | 23% | 0% | 0% |
-| Schizophrenia | Psychiatry | 13 | 46% | 0% | 0% | 0% | 0% | 54% |
-| Type 2 diabetes mellitus | Endocrine | 13 | 23% | 0% | 15% | 15% | 15% | 31% |
-| Crohn disease | Autoimmune | 12 | 58% | 0% | 0% | 8% | 25% | 8% |
-| Chronic obstructive pulmonary disease | Respiratory | 12 | 58% | 0% | 8% | 0% | 17% | 17% |
-| Major depressive disorder | Psychiatry | 12 | 42% | 0% | 8% | 17% | 8% | 25% |
-| Acute myeloid leukemia | Oncology | 12 | 58% | 0% | 8% | 8% | 0% | 25% |
-| Systemic lupus erythematosus | Autoimmune | 11 | 64% | 0% | 18% | 0% | 18% | 0% |
-| Plasma cell myeloma | Oncology | 11 | 64% | 0% | 9% | 9% | 0% | 18% |
-| Idiopathic pulmonary fibrosis | Respiratory | 10 | 100% | 0% | 0% | 0% | 0% | 0% |
+| Disease area | Stops | Target not causal | Causal: drug fell short | Causal: wrong patients | Causal: wrong time | Unclear: trial couldn't answer | Unclear: unresolved |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| All areas | 1,035 | 63% | 5% | 5% | 0% | 6% | 20% |
+| Oncology | 306 | 61% | 8% | 11% | 0% | 3% | 17% |
+| Neurology | 121 | 67% | 4% | 4% | 2% | 5% | 18% |
+| Autoimmune | 119 | 71% | 5% | 3% | 0% | 10% | 11% |
+| Other | 116 | 86% | 0% | 0% | 0% | 7% | 7% |
+| Respiratory | 77 | 56% | 3% | 3% | 0% | 9% | 30% |
+| Psychiatry | 60 | 57% | 5% | 2% | 0% | 13% | 23% |
+| Cardiovascular | 53 | 58% | 4% | 2% | 2% | 9% | 25% |
+| Infectious disease | 43 | 16% | 0% | 0% | 0% | 2% | 81% |
+| Gastroenterology | 37 | 54% | 3% | 3% | 3% | 8% | 30% |
+| Ophthalmology | 27 | 78% | 0% | 0% | 4% | 11% | 7% |
+| Endocrine | 26 | 38% | 23% | 8% | 0% | 8% | 23% |
+| Metabolic | 18 | 61% | 0% | 11% | 0% | 0% | 28% |
+| Allergy | 12 | 67% | 0% | 0% | 0% | 0% | 33% |
+| Urology | 11 | 82% | 0% | 9% | 0% | 9% | 0% |
+| Hematology | 9 | 67% | 22% | 0% | 0% | 0% | 11% |
+
+Every disease with at least ten such stops, by group and then by failure mode.
+
+| Disease | Area | Stops | Target not causal | Target causal | Unclear | Causal: drug fell short | Causal: wrong patients | Causal: wrong time | Unclear: trial couldn't answer | Unclear: unresolved |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| No disease term (symptom or procedure) | Other | 43 | 95% | 0% | 5% | 0% | 0% | 0% | 5% | 0% |
+| Non-small cell lung carcinoma | Oncology | 37 | 51% | 8% | 41% | 0% | 8% | 0% | 3% | 38% |
+| Asthma | Respiratory | 30 | 43% | 3% | 53% | 3% | 0% | 0% | 7% | 47% |
+| Alzheimer disease | Neurology | 26 | 62% | 12% | 27% | 4% | 8% | 0% | 0% | 27% |
+| Rheumatoid arthritis | Autoimmune | 23 | 65% | 13% | 22% | 9% | 4% | 0% | 9% | 13% |
+| Colorectal cancer | Oncology | 19 | 58% | 26% | 16% | 0% | 26% | 0% | 5% | 11% |
+| Breast cancer | Oncology | 19 | 53% | 21% | 26% | 5% | 16% | 0% | 0% | 26% |
+| Ovarian cancer | Oncology | 18 | 61% | 28% | 11% | 17% | 11% | 0% | 0% | 11% |
+| Ulcerative colitis | Autoimmune | 17 | 65% | 12% | 24% | 6% | 6% | 0% | 12% | 12% |
+| Malignant pancreatic neoplasm | Oncology | 16 | 62% | 6% | 31% | 0% | 6% | 0% | 0% | 31% |
+| Hepatocellular carcinoma | Oncology | 15 | 60% | 27% | 13% | 13% | 13% | 0% | 13% | 0% |
+| Atopic eczema | Other | 15 | 87% | 0% | 13% | 0% | 0% | 0% | 0% | 13% |
+| Small cell lung carcinoma | Oncology | 13 | 69% | 8% | 23% | 0% | 8% | 0% | 0% | 23% |
+| Prostate cancer | Oncology | 13 | 77% | 23% | 0% | 23% | 0% | 0% | 0% | 0% |
+| Schizophrenia | Psychiatry | 13 | 46% | 0% | 54% | 0% | 0% | 0% | 0% | 54% |
+| Type 2 diabetes mellitus | Endocrine | 13 | 23% | 31% | 46% | 15% | 15% | 0% | 15% | 31% |
+| Crohn disease | Autoimmune | 12 | 58% | 8% | 33% | 8% | 0% | 0% | 25% | 8% |
+| Chronic obstructive pulmonary disease | Respiratory | 12 | 58% | 8% | 33% | 0% | 8% | 0% | 17% | 17% |
+| Major depressive disorder | Psychiatry | 12 | 42% | 25% | 33% | 17% | 8% | 0% | 8% | 25% |
+| Acute myeloid leukemia | Oncology | 12 | 58% | 17% | 25% | 8% | 8% | 0% | 0% | 25% |
+| Systemic lupus erythematosus | Autoimmune | 11 | 64% | 18% | 18% | 9% | 9% | 0% | 18% | 0% |
+| Plasma cell myeloma | Oncology | 11 | 64% | 18% | 18% | 9% | 9% | 0% | 0% | 18% |
+| Idiopathic pulmonary fibrosis | Respiratory | 10 | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 
 ### Why efficacy failed
 
@@ -271,7 +292,7 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | :---- | :---- | :---- | :---- |
 | Rare inherited variants, including single-gene disease | 702 | 25.7% / 8.9% | 2.89 (2.14–3.81) |
 | Human genetics: inherited variants link the target to the disease | 910 | 24.1% / 8.7% | 2.76 (2.05–3.62) |
-| Curated pathway: a disease mutation disrupts the target's pathway | 197 | 22.0% / 9.9% | 2.21 (1.16–3.32) |
+| Curated pathway: a mutation that causes the disease in people disrupts the target's pathway | 197 | 22.0% / 9.9% | 2.21 (1.16–3.32) |
 | Tumour genetics (oncology): the gene is recurrently mutated in this cancer | 1,163 | 21.0% / 10.5% | 1.99 (1.15–3.79) |
 | Common variants (genome-wide association studies) | 259 | 17.1% / 10.0% | 1.70 (1.04–2.46) |
 | Mouse genetics: mice with the gene altered show the disease | 1,679 | 13.6% / 9.3% | 1.46 (1.10–1.91) |
@@ -314,7 +335,7 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | Tumour genetics (oncology): the gene is recurrently mutated in this cancer | 1.09 (0.98–1.22) | 1.33 (1.05–1.69) | 1.11 (0.87–1.41) |
 | Mouse genetics: mice with the gene altered show the disease | 0.97 (0.91–1.04) | 1.15 (1.01–1.30) | 1.06 (0.90–1.25) |
 | Diseased tissue: the gene's level differs in diseased tissue | 0.95 (0.88–1.04) | 0.86 (0.70–1.06) | 0.82 (0.65–1.04) |
-| Curated pathway: a disease mutation disrupts the target's pathway | 1.10 (0.99–1.22) | 0.81 (0.59–1.11) | 1.17 (0.94–1.45) |
+| Curated pathway: a mutation that causes the disease in people disrupts the target's pathway | 1.10 (0.99–1.22) | 0.81 (0.59–1.11) | 1.17 (0.94–1.45) |
 | **Safety risk of the target** (not specific to the disease) |  |  |  |
 | People rarely carry broken copies of the gene (gnomAD LOEUF below 0.35; today's data) | 0.90 (0.82–0.99) | 1.01 (0.85–1.19) | 0.97 (0.78–1.19) |
 | **The molecule** (assays of the drug itself, not evidence for the disease) |  |  |  |

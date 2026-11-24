@@ -39,36 +39,40 @@ For 2,959 of the 5,428 Phase 2 and 3 stops among 2008–2019 entries, the regist
 
 **Efficacy is the main reason programs stop in Phases 2 and 3.** Counting sourced and likely causes, efficacy or exposure ended 48% of Phase 2 stops and 48% of Phase 3 stops, against 29% of Phase 2 and 3 stops as the registry records them. Sponsor decisions are the next largest cause in Phase 2 (25%) and the largest in Phase 1 (47%). In Phase 3, 30% of stops followed a positive readout. Safety is rare once only stops whose sponsor gives a safety reason count: 4% in Phase 2 and 4% in Phase 3.
 
-**Why drugs that engaged their target still failed.** Of the efficacy stops whose engagement was examined, 47% are drugs that reached and engaged their target while the disease did not respond (1,035 stops, 69% of them failures of the target). Each is placed in one failure mode, first from what other drugs on the same target went on to do and, where that leaves the question open, from the program's own sources:
+**Why drugs that engaged their target still failed.** Of the efficacy stops whose engagement was examined, 47% are drugs that reached and engaged their target while the disease did not respond (1,035 stops). Each falls in one of three groups, and within it one subcategory, first from what other drugs on the same target went on to do and, where that leaves the question open, from the program's own sources:
 
-* **The target is not causal for the disease** (63%, 652 stops): no drug on the target has worked in this disease, though drugs on it work in others or others were tried. Where a drug on the target worked in a "related" disease, that disease was almost always a different one (asthma for COPD, ankylosing spondylitis for osteoarthritis), not a subgroup or stage of this one.
-* **The target is causal, but the program treated in the wrong patients** (5%) **or at the wrong time** (5 stops): the target works in a subgroup, often one a biomarker selects, or at another stage.
-* **The target is sound and the drug fell short** (5%): too little engagement, or a dose capped by its effects elsewhere.
-* **The trial could not answer** (6%): too small, too short, or the wrong endpoint.
-* **Unresolved** (20%): no resolved target, no source settles it, or the sources call the target not causal where another drug on it worked in this disease.
+* **The target is not causal** (63%, 652 stops): the target goes along with the disease but does not drive it. It is a biomarker, readout or surrogate, or the biology routes around it, as with CETP inhibitors, NK1 antagonists, 11β-HSD1 inhibitors in type 2 diabetes and anti-IL-13 antibodies in asthma. Where a drug on the target worked in a "related" disease, that disease was almost always a different one (asthma for COPD, ankylosing spondylitis for osteoarthritis), not a subgroup or stage of this one.
+* **The target is causal, but the program could not show it** (11%, 109 stops). Each stop takes one primary reason, in this order:
+    * *The drug could not be dosed well enough* (5%): too little engagement, or a therapeutic window capped by effects elsewhere, as with BACE inhibitors in Alzheimer's disease and pan-PI3K inhibitors in breast cancer.
+    * *The trial treated the wrong patients* (5%) *or at the wrong time* (5 stops): the target works in a subgroup, often one a biomarker selects, or at another stage of the disease, as in sepsis.
+* **Unclear** (26%, 274 stops):
+    * *The trial could not answer* (6%): too small, too short, or the wrong endpoint.
+    * *Nothing settles it* (20%): no resolved target, no source settles it, or the sources call the target not causal where another drug on it worked in this disease.
 
-Across all Phase 2 and 3 stops, a target that does not drive the disease accounts for 13%, against 10% of efficacy stops for drugs that never engaged their target. The split by disease area is below. Infectious-disease stops are mostly unresolved because their drugs act on pathogen proteins, whose record the target history does not follow; every disease with at least ten such stops is in the appendix.
+Most not-causal calls rest on the target never working in the disease afterwards: no drug on it has worked in this disease, though drugs on it work in others or were tried again (82% of the calls). Counting only stops whose own sources show the target is not causal, the share is 11% of these stops rather than 63%.
 
-| Disease area | Stops | Target not causal | Wrong time | Wrong patients | Drug fell short | Trial couldn't answer | Unresolved |
-| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| All areas | 1,035 | 63% | 0% | 5% | 5% | 6% | 20% |
-| Oncology | 306 | 61% | 0% | 12% | 7% | 3% | 17% |
-| Neurology | 121 | 67% | 2% | 4% | 4% | 5% | 18% |
-| Autoimmune | 119 | 71% | 0% | 4% | 4% | 10% | 11% |
-| Other | 116 | 86% | 0% | 0% | 0% | 7% | 7% |
-| Respiratory | 77 | 56% | 0% | 3% | 3% | 9% | 30% |
-| Psychiatry | 60 | 57% | 0% | 2% | 5% | 13% | 23% |
-| Cardiovascular | 53 | 58% | 2% | 2% | 4% | 9% | 25% |
-| Infectious disease | 43 | 16% | 0% | 0% | 0% | 2% | 81% |
-| Gastroenterology | 37 | 54% | 3% | 3% | 3% | 8% | 30% |
-| Ophthalmology | 27 | 78% | 4% | 0% | 0% | 11% | 7% |
-| Endocrine | 26 | 38% | 0% | 8% | 23% | 8% | 23% |
-| Metabolic | 18 | 61% | 0% | 11% | 0% | 0% | 28% |
-| Allergy | 12 | 67% | 0% | 0% | 0% | 0% | 33% |
-| Urology | 11 | 82% | 0% | 9% | 0% | 9% | 0% |
-| Hematology | 9 | 67% | 0% | 0% | 22% | 0% | 11% |
+Across all Phase 2 and 3 stops, a target that does not drive the disease accounts for 13%, against 10% of efficacy stops for drugs that never engaged their target. The split by disease area is below. Infectious-disease stops are mostly unclear because their drugs act on pathogen proteins, whose record the target history does not follow; every disease with at least ten such stops is in the appendix.
 
-![Phase 2 and 3 stops among 2008–2019 entries: by cause; the efficacy stops by what the evidence shows about engagement; and the stops where the drug engaged its target without benefit, by failure mode](report/output/figures/why_stop.png)
+| Disease area | Stops | Target not causal | Target causal | Unclear |
+| :---- | :---- | :---- | :---- | :---- |
+| All areas | 1,035 | 63% | 11% | 26% |
+| Oncology | 306 | 61% | 19% | 20% |
+| Neurology | 121 | 67% | 10% | 23% |
+| Autoimmune | 119 | 71% | 8% | 21% |
+| Other | 116 | 86% | 0% | 14% |
+| Respiratory | 77 | 56% | 5% | 39% |
+| Psychiatry | 60 | 57% | 7% | 37% |
+| Cardiovascular | 53 | 58% | 8% | 34% |
+| Infectious disease | 43 | 16% | 0% | 84% |
+| Gastroenterology | 37 | 54% | 8% | 38% |
+| Ophthalmology | 27 | 78% | 4% | 19% |
+| Endocrine | 26 | 38% | 31% | 31% |
+| Metabolic | 18 | 61% | 11% | 28% |
+| Allergy | 12 | 67% | 0% | 33% |
+| Urology | 11 | 82% | 9% | 9% |
+| Hematology | 9 | 67% | 22% | 11% |
+
+![Phase 2 and 3 stops among 2008–2019 entries: by cause; the efficacy stops by what the evidence shows about engagement; and the stops where the drug engaged its target without benefit, by whether the target was causal](report/output/figures/why_stop.png)
 
 **What each cause breaks down into.** Shares are of Phase 2 and 3 stops whose cause is sourced.
 
@@ -165,15 +169,15 @@ Patient selection does not explain the results: holding biomarker-selected enrol
 
 | Evidence before entry (entries) | Target never reached | Target not causal | Wrong patients | Drug fell short |
 | :---- | :---- | :---- | :---- | :---- |
-| Human genetics, rare variants (651) | 1.18 (0.60–2.33) | **0.24 (0.09–0.61)** | 0.20 (0.03–1.56) | 1.09 (0.25–4.75) |
-| Human genetics, GWAS only (187) | 2.08 (0.82–5.27) | 0.85 (0.41–1.79) | 1.14 (0.16–7.98) | 2.47 (0.55–11.19) |
-| Tumour mutation matching the drug (746) | 1.36 (0.70–2.64) | **0.38 (0.21–0.67)** | 1.16 (0.37–3.65) | 1.89 (0.67–5.33) |
-| Diseased tissue: RNA level differs (907) | **1.84 (1.12–3.01)** | 0.91 (0.64–1.29) | 0.54 (0.17–1.71) | 1.30 (0.48–3.51) |
-| Mouse genetics resembling the disease (1,504) | 1.03 (0.58–1.84) | **0.71 (0.50–0.99)** | 0.68 (0.26–1.79) | 0.93 (0.38–2.24) |
-| Binding to the target measured (1,658) | 1.03 (0.58–1.83) | **1.52 (1.15–2.02)** | 1.62 (0.76–3.44) | 1.91 (0.60–6.09) |
-| Animal model pharmacology (today the program's own drug) (4,662) | 1.14 (0.76–1.69) | **0.58 (0.46–0.72)** | 0.98 (0.55–1.74) | 1.16 (0.57–2.35) |
-| A drug on the target approved for this disease (validated) (1,284) | 0.77 (0.45–1.31) | not testable | not testable | 1.35 (0.61–2.98) |
-| A drug on the target approved for another disease (3,021) | 0.62 (0.38–1.00) | not testable | not testable | 1.54 (0.67–3.55) |
+| Human genetics, rare variants (651) | 1.18 (0.60–2.33) | **0.24 (0.09–0.61)** | not testable | 1.37 (0.37–5.08) |
+| Human genetics, GWAS only (187) | 2.08 (0.82–5.27) | 0.85 (0.41–1.79) | 1.16 (0.17–8.06) | 2.45 (0.55–10.99) |
+| Tumour mutation matching the drug (746) | 1.36 (0.70–2.64) | **0.38 (0.21–0.67)** | 1.06 (0.31–3.63) | 2.10 (0.79–5.63) |
+| Diseased tissue: RNA level differs (907) | **1.84 (1.12–3.01)** | 0.91 (0.64–1.29) | 0.55 (0.17–1.76) | 1.24 (0.46–3.32) |
+| Mouse genetics resembling the disease (1,504) | 1.03 (0.58–1.84) | **0.71 (0.50–0.99)** | 0.71 (0.27–1.86) | 0.90 (0.37–2.14) |
+| Binding to the target measured (1,658) | 1.03 (0.58–1.83) | **1.52 (1.15–2.02)** | 1.47 (0.67–3.20) | 2.19 (0.70–6.79) |
+| Animal model pharmacology (today the program's own drug) (4,662) | 1.14 (0.76–1.69) | **0.58 (0.46–0.72)** | 0.94 (0.53–1.68) | 1.22 (0.61–2.44) |
+| A drug on the target approved for this disease (validated) (1,284) | 0.77 (0.45–1.31) | not testable | not testable | 1.30 (0.59–2.83) |
+| A drug on the target approved for another disease (3,021) | 0.62 (0.38–1.00) | not testable | not testable | 1.66 (0.74–3.72) |
 
 ### What first proposed the target
 
@@ -192,6 +196,12 @@ For every target–disease pair whose first Phase 2 or 3 trial started in 2008�
 *Phase 2 and 3 entries 2008–2019 developed in the US, by the one origin their target–disease pairs share, with the share that stopped because the target was not causal for the disease and its 95% range. Blue: the groups the registered test compares. Gray rows are shown for reference: a target validated at entry already had a drug approved for the disease, and unclear or unanswered origins are not settled. Origins with fewer than 20 entries are left off.*
 
 Most "not causal" calls rest on the target never later working in the disease rather than on a trial that showed it, so the comparison is largely about which origins lead to targets that never succeed; an earlier drug approved for another disease is shown apart, because that approval is the record that labels most of its stops "not causal".
+
+**Targets chosen from genetics were approved about twice as often.** Programs whose target was first proposed by human or tumour genetics reached approval 1.95 times as often as programs whose target came by any other settled route (1.47–2.58), and fewer of them stopped because the target was not causal (0.68×), though that difference is not significant (0.40–1.16).
+
+![How often programs were approved, and stopped because the target was not causal, by what first proposed the target, relative to every other route](report/output/figures/target_origin_routes.png)
+
+*Phase 2 and 3 entries 2008–2019 developed in the US whose target–disease pairs share one settled origin. Each route against every other settled route, adjusted as in the registered test; blue, approval; orange, a stop because the target was not causal. Rows run from most to least often approved, with human and tumour genetics pooled at the top. Programs that stopped although the target was causal count as not stopping for a non-causal target. For an earlier drug approved for another disease, that approval is itself much of what labels a stop not causal.*
 
 
 ### What predicts safety failures
@@ -528,7 +538,7 @@ Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical 
 
 **An earlier drug as origin.** An entry whose target was first proposed by a drug approved for another disease is reported alone and in no comparison. That approval is itself the record the failure mode reads: a target that worked only in another disease is "not causal" for this one. Of its 231 entries, 33 stopped as not causal, 23 of them because the target had worked only elsewhere.
 
-**Sensitivity and descriptive analyses.** The registered sensitivities add the unclear origins, and then also the disputed and unanswered ones, to each compared group in turn; keep Phase 2 entries only; and admit labels whose source was dated in or after the entry year (30 labels, moving 20 entries). Two descriptive outcomes, not registered, replace the failure mode: a stop whose own sources call the target not causal (87 stops, against 502 by the failure mode), and a stop whose target never worked in this disease, whatever the failure mode (548). Risk ratios with 95% intervals; "of entries" counts the O1 groups' not-causal stops and entries.
+**Sensitivity and descriptive analyses.** The registered sensitivities add the unclear origins, and then also the disputed and unanswered ones, to each compared group in turn; keep Phase 2 entries only; and admit labels whose source was dated in or after the entry year (30 labels, moving 20 entries). Two descriptive outcomes, not registered, replace the failure mode: a stop whose own sources call the target not causal (87 stops, against 502 by the failure mode), and a stop whose target never worked in this disease, whatever the failure mode (548). A third descriptive comparison sets each route against every other settled origin, pooling human and tumour genetics as one route, for two outcomes: approval of the program for its disease, and a stop because the target was not causal; it is adjusted as the registered test is. Risk ratios with 95% intervals; "of entries" counts the O1 groups' not-causal stops and entries.
 
 | Analysis | Kind | Biomarker or tissue: stops of entries | Human genetics: stops of entries | Biomarker or tissue vs genetics | Biomarker alone | Tissue alone |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |

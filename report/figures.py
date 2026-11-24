@@ -607,7 +607,7 @@ def stop_ratios(blocks: list, lines: dict, name: str) -> None:
 
 
 # The stop drill-down's segments: (key, label, colour, hatched); the first segment of each bar is the next bar's whole.
-# Blue is the part carried down (and, in the last bar, the stops whose target worked somewhere); grey shades are the
+# Blue is the part carried down (and, in the last bar, the stops whose target was not causal); grey shades are the
 # other known answers, darkest first; a pale hatched segment is a stop whose answer is not known.
 DRILL_GREYS = ("#5f5e5a", "#8f8e88", "#b6b5ae", "#d4d3cd")
 DRILL_PALE = "#ecebe6"
@@ -623,13 +623,10 @@ DRILL = [
         ("trial_design", "Trial couldn't answer", DRILL_GREYS[2], False),
         ("no_engagement_data", "Engagement never measured", DRILL_PALE, True),
         ("not_examined", "Not examined", DRILL_GREYS[3], False)]),
-    ("engaged", "Engaged the target, no benefit", [
+    ("engaged_groups", "Engaged the target, no benefit", [
         ("not_causal", "Target not causal for the disease", ACCENT, False),
-        ("wrong_time", "Target causal, wrong time", "#7fb0e8", False),
-        ("wrong_patients", "Target causal, wrong patients", "#c6dbf4", False),
-        ("drug_fell_short", "Drug fell short", DRILL_GREYS[0], False),
-        ("trial_could_not_answer", "Trial couldn't answer", DRILL_GREYS[2], False),
-        ("unresolved", "Unresolved", DRILL_PALE, True)]),
+        ("causal", "Target causal", DRILL_GREYS[0], False),
+        ("unclear", "Unclear", DRILL_PALE, True)]),
 ]
 
 
@@ -649,8 +646,8 @@ def fit_label(ax, renderer, text: str, width_px: float, max_lines: int = 3, **kw
 
 def why_stop():
     """Phase 2–3 stops among 2008–2019 entries broken down three times (report.stop_causes.drilldown): by cause, the
-    efficacy stops by what the evidence shows about engagement, and the engaged-without-benefit stops by failure mode
-    (report.engaged_modes: blue, the target layer). A segment too narrow for its label is named in a lane under its bar, which the funnel to
+    efficacy stops by what the evidence shows about engagement, and the engaged-without-benefit stops by top-level group
+    (report.engaged_modes.GROUPS: blue, the target not causal). A segment too narrow for its label is named in a lane under its bar, which the funnel to
     the next bar leaves clear."""
     n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))["drilldown"]
     fig, ax = plt.subplots(figsize=(12, 6.2))
@@ -985,6 +982,59 @@ def target_origin_share():
     save(fig, "target_origin_share")
 
 
+ROUTE_OUTCOMES = {"approved": ("Approved", "#2a78d6"), "mode_not_causal": ("Stopped: target not causal", "#eb6834")}
+ROUTE_LIM = (0.25, 4)
+
+
+def target_origin_routes():
+    """For each route of target selection and the genetic routes pooled (report.target_origin.route_contrasts), the
+    adjusted risk ratio of approval and of a not-causal stop against every other settled origin: two marks per row,
+    rows by approval, the pooled genetics row shaded at the top. A filled dot is a 95% range clear of 1; a range past
+    the axis ends in an arrowhead."""
+    t = pd.read_csv(os.path.join(OUT, "target_origin", "route_contrasts.csv"))
+    rr = t.pivot(index="route", columns="outcome", values="rr")
+    order = ["genetics", *rr.drop("genetics").approved.sort_values(ascending=False).index]
+    entries = t[t.outcome.eq("approved")].set_index("route").exposed_entries
+    lim = tuple(np.log2(ROUTE_LIM))
+    fig, ax = plt.subplots(figsize=(10, 0.46 * len(order) + 1.9))
+    ax.axhspan(-0.5, 0.5, color=GRID, alpha=0.6, linewidth=0)
+    for i, route in enumerate(order):
+        y = -i
+        for j, (outcome, (_, color)) in enumerate(ROUTE_OUTCOMES.items()):
+            r = t[t.route.eq(route) & t.outcome.eq(outcome)].iloc[0]
+            if pd.isna(r.rr):
+                continue
+            yo = y + (0.14 if j == 0 else -0.14)
+            ax.plot([np.log2(max(r.lo, ROUTE_LIM[0])), np.log2(min(r.hi, ROUTE_LIM[1]))], [yo, yo], color=color,
+                    linewidth=2, solid_capstyle="round")
+            for end, beyond, mark in ((lim[0], r.lo < ROUTE_LIM[0], "<"), (lim[1], r.hi > ROUTE_LIM[1], ">")):
+                if beyond:
+                    ax.plot(end, yo, mark, markersize=6, color=color, clip_on=False)
+            ax.plot(np.log2(r.rr), yo, "o", markersize=7, color=color, markeredgewidth=1.5,
+                    markerfacecolor=color if r.lo > 1 or r.hi < 1 else "white", markeredgecolor=color)
+        ax.text(lim[1] + 0.12, y, f"n={entries[route]:,.0f}", va="center", color=INK2, fontsize=10)
+    names = {"genetics": "Genetics, human or tumour (pooled)", **ORIGIN_NAMES}
+    ax.set_yticks([-i for i in range(len(order))], [names[r] for r in order], color=INK2, fontsize=10.5)
+    ax.get_yticklabels()[0].set_color(INK)
+    ax.get_yticklabels()[0].set_fontweight("bold")
+    ax.axvline(0, color=INK2, linewidth=1)
+    ticks = [0.25, 0.5, 1, 2, 4]
+    ax.set_xticks(np.log2(ticks), [f"{x:g}×" for x in ticks])
+    ax.tick_params(axis="x", labelsize=10)
+    ax.set_xlim(*lim)
+    ax.set_ylim(-len(order) + 0.4, 1.1)
+    ax.set_xlabel("Adjusted risk ratio against programs whose target came by any other route (95% range)",
+                  color=INK2, fontsize=10)
+    style(ax)
+    for j, (label, color) in enumerate(ROUTE_OUTCOMES.values()):
+        x = lim[0] + j * 1.3
+        ax.plot(x + 0.05, 0.85, "o", markersize=7, color=color)
+        ax.text(x + 0.18, 0.85, label, va="center", color=INK, fontsize=10)
+    ax.text(0, -0.13, "Programs that stopped although the target was causal count as not stopping for a non-causal "
+            "target. Filled: the 95% range excludes 1.", transform=ax.transAxes, color=INK2, fontsize=9, va="top")
+    save(fig, "target_origin_routes")
+
+
 def main():
     history()
     loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA)
@@ -1014,6 +1064,8 @@ def main():
         target_origin_not_causal()
     if os.path.exists(os.path.join(OUT, "target_origin", "origin_counts.csv")):
         target_origin_share()
+    if os.path.exists(os.path.join(OUT, "target_origin", "route_contrasts.csv")):
+        target_origin_routes()
 
 
 if __name__ == "__main__":

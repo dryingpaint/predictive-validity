@@ -34,11 +34,15 @@ Descriptive, not registered (descriptive_contrasts): the O1 contrasts with two o
 stop's own verdict (STRICT) and a stop whose target never worked in this disease (NEVER_WORKED). An origin of an earlier
 drug for another disease (CIRCULAR_ORIGINS) is the target's record the not-causal rule reads; it is reported alone.
 
+Descriptive, not registered (route_contrasts): for each route of target selection (ROUTES) and the genetic routes
+pooled, the adjusted risk ratio of approval (APPROVED) and of a not-causal stop (OUTCOME) against every other settled
+origin; a program that stopped although its target was causal counts as not stopping for a non-causal target.
+
 What first proposed the target (origin_counts): every labelled pair's origin as stored, counted against the pairs a
 supported label settles (any origin but UNSETTLED), with the genetic origins (GENETIC) together.
 
 Writes report/output/target_origin/: by_origin.csv, tests.csv, origin_counts.csv, origin_by_area.csv,
-origin_by_period.csv, route_by_area.csv, route_by_period.csv and numbers.json.
+origin_by_period.csv, route_by_area.csv, route_by_period.csv, route_contrasts.csv and numbers.json.
 """
 from __future__ import annotations
 
@@ -82,6 +86,13 @@ GATES = {"set_a": "report/audits/target_origin_gate_set_a.json", "set_b": "repor
 GENETIC = ("human_genetics", "tumour_genetics", "mouse_genetics")
 EXPOSED = ("observational_biomarker", "diseased_tissue")
 REFERENCE = ("human_genetics",)
+# The routes of target selection compared with every other settled origin (route_contrasts), and the genetic routes
+# pooled under "genetics"; each also against approval of the program (APPROVED, approval_date not null)
+ROUTES = {"genetics": ("human_genetics", "tumour_genetics"),
+          **{o: (o,) for o in ("human_genetics", "tumour_genetics", "diseased_tissue", "human_cell_perturbation",
+                               "cell_line_perturbation", "mouse_genetics", "animal_model_pharmacology",
+                               "observational_biomarker", "clinical_observation", "earlier_drug_other_disease")}}
+APPROVED = "approved"
 # Registered contrasts: name -> (exposed origins, reference origins)
 CONTRASTS = {"o1": (EXPOSED, REFERENCE),
              "observational_biomarker": (("observational_biomarker",), REFERENCE),
@@ -173,6 +184,22 @@ def contrasts(d: pd.DataFrame, d_any_date: pd.DataFrame) -> dict:
 def descriptive_contrasts(d: pd.DataFrame) -> dict:
     """The O1 contrasts with each descriptive outcome in place of the registered one; not registered."""
     return {name: {k: contrast(d, e, r, name) for k, (e, r) in CONTRASTS.items()} for name in (STRICT, NEVER_WORKED)}
+
+
+def route_contrasts(d: pd.DataFrame) -> pd.DataFrame:
+    """Per route of ROUTES and outcome (APPROVED, OUTCOME): the adjusted risk ratio for entries of the route against
+    entries of every other settled origin (any origin but a status or UNSETTLED), with each group's entries and events.
+    d needs `origin`, APPROVED and OUTCOME."""
+    settled = tuple(sorted(o for o in d.origin.unique() if o not in STATUSES and o not in UNSETTLED))
+    rows = []
+    for route, origins in ROUTES.items():
+        others = tuple(o for o in settled if o not in origins)
+        for outcome in (APPROVED, OUTCOME):
+            r = contrast(d, origins, others, outcome)
+            rows.append({"route": route, "outcome": outcome, **{k: r[k] for k in ("rr", "lo", "hi", "p")},
+                         **{f"{side}_{k}": r[side][k] for side in ("exposed", "reference")
+                            for k in ("entries", "events", "rate")}})
+    return pd.DataFrame(rows)
 
 
 def circular(d: pd.DataFrame, key: pd.Series, h: pd.DataFrame) -> dict:
@@ -271,11 +298,14 @@ def main() -> None:
     key = pd.Series(keys(d), index=d.index)
     d = history_outcomes(d, key, h)
     e = entry_origin(d, genes, pairs)
+    e = e.assign(**{APPROVED: e.approval_date.notna().astype(float)})
     e_any = entry_origin(d, genes, any_date_labels(pairs, year_only))
     t = contrasts(e, e_any)
     desc = descriptive_contrasts(e)
     contrasts_table({**t, **{f"descriptive_{k}": v for k, v in desc.items()}}).to_csv(
         os.path.join(OUT, "tests.csv"), index=False)
+    routes = route_contrasts(e)
+    routes.to_csv(os.path.join(OUT, "route_contrasts.csv"), index=False)
     table = by_origin(e)
     table.to_csv(os.path.join(OUT, "by_origin.csv"), index=False)
     p = pair_frame(pairs)
@@ -312,6 +342,9 @@ def main() -> None:
                               "note": "a drug on the target approved for another disease is the worked_elsewhere_only "
                                       "fate the not_causal rule reads; reported alone, in no comparison with the other "
                                       "origins", **circular(e, key, h)},
+         "routes": {route: {o: {k: v for k, v in r.items() if k not in ("route", "outcome")}
+                            for o, r in g.set_index("outcome").to_dict("index").items()}
+                    for route, g in routes.groupby("route")},
          "by_origin": {r["origin"]: {k: v for k, v in r.items() if k != "origin"} for r in table.to_dict("records")}}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(jsonable(n), f, indent=1)

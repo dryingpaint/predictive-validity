@@ -182,18 +182,24 @@ def stop_cause_table() -> str:
                                              "After tracing: sourced or likely"]))
 
 
-MODE_NAMES = {"not_causal": "Target not causal", "wrong_time": "Wrong time", "wrong_patients": "Wrong patients",
-              "drug_fell_short": "Drug fell short", "trial_could_not_answer": "Trial couldn't answer",
-              "unresolved": "Unresolved"}
+GROUP_NAMES = {"not_causal": "Target not causal", "causal": "Target causal", "unclear": "Unclear"}
+# The failure modes under a group that holds more than one, named with their group
+SUBCATEGORY_NAMES = {"drug_fell_short": "Causal: drug fell short", "wrong_patients": "Causal: wrong patients",
+                     "wrong_time": "Causal: wrong time", "trial_could_not_answer": "Unclear: trial couldn't answer",
+                     "unresolved": "Unclear: unresolved"}
 
 
-def engaged_area_table() -> str:
-    """Engaged-without-benefit stops by failure mode in each disease area, largest area first."""
+def engaged_area_table(detail: bool = False) -> str:
+    """Engaged-without-benefit stops in each disease area, largest area first, by top-level group, or with detail by
+    failure mode."""
     n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))["drilldown"]
     areas = sorted(n["engaged_by_area"].items(), key=lambda kv: -kv[1]["stops"])
-    rows = [[sentence_case(a.replace("_", " ")), f"{g['stops']:,}"] + [pct(g[m]["share"], 0) for m in MODE_NAMES]
-            for a, g in [("all areas", n["engaged"]), *areas]]
-    return table(pd.DataFrame(rows, columns=["Disease area", "Stops", *MODE_NAMES.values()]))
+    whole = {**n["engaged"], "groups": {g: n["engaged_groups"][g] for g in GROUP_NAMES}}
+    names = {"not_causal": GROUP_NAMES["not_causal"], **SUBCATEGORY_NAMES} if detail else GROUP_NAMES
+    rows = [[sentence_case(a.replace("_", " ")), f"{g['stops']:,}"]
+            + [pct((g if detail else g["groups"])[m]["share"], 0) for m in names]
+            for a, g in [("all areas", whole), *areas]]
+    return table(pd.DataFrame(rows, columns=["Disease area", "Stops", *names.values()]))
 
 
 ENGAGED_EVIDENCE_ROWS = {"tier_rare_only": "Human genetics, rare variants", "tier_common_only": "Human genetics, GWAS only",
@@ -207,12 +213,15 @@ ENGAGED_EVIDENCE_ROWS = {"tier_rare_only": "Human genetics, rare variants", "tie
 
 
 def engaged_disease_table() -> str:
-    """Engaged-without-benefit stops by failure mode for every disease with at least MIN_DISEASE_STOPS of them."""
+    """Engaged-without-benefit stops for every disease with at least MIN_DISEASE_STOPS of them, by top-level group and
+    then by failure mode."""
     t = pd.read_csv(os.path.join(OUT, "stop_causes", "engaged_by_disease.csv"))
     t = t[t.stops >= MIN_DISEASE_STOPS]
     rows = [[sentence_case(str(r.disease)), sentence_case(r.area.replace("_", " ")), f"{r.stops:,}"]
-            + [pct(getattr(r, m) / r.stops, 0) for m in MODE_NAMES] for r in t.itertuples()]
-    return table(pd.DataFrame(rows, columns=["Disease", "Area", "Stops", *MODE_NAMES.values()]))
+            + [pct(getattr(r, f"group_{g}") / r.stops, 0) for g in GROUP_NAMES]
+            + [pct(getattr(r, m) / r.stops, 0) for m in SUBCATEGORY_NAMES] for r in t.itertuples()]
+    return table(pd.DataFrame(rows, columns=["Disease", "Area", "Stops", *GROUP_NAMES.values(),
+                                             *SUBCATEGORY_NAMES.values()]))
 
 
 MIN_DISEASE_STOPS = 10
@@ -620,6 +629,7 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "ATTRIBUTION_TABLE": attribution_table,
           "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table,
           "KINDS_TABLE": kinds_table, "ENGAGED_AREA_TABLE": engaged_area_table,
+          "ENGAGED_AREA_MODES_TABLE": lambda: engaged_area_table(detail=True),
           "ENGAGED_EVIDENCE_TABLE": engaged_evidence_table,
           "ENGAGED_DISEASE_TABLE": engaged_disease_table, "AMENDMENT_HYPOTHESES_TABLE": amendment_hypotheses_table,
           "TARGET_ORIGIN_TESTS_TABLE": target_origin_tests_table}

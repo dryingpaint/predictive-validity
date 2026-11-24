@@ -34,9 +34,13 @@ Cause of each Phase 2 and 3 stop as registered and after tracing.
 
 ### Why drugs that engaged their target failed, by disease
 
-A stop where the drug engaged its target without benefit takes one failure mode, decided in order. The target is not causal when no drug on the target has worked in the disease while drugs on it worked elsewhere or were tried again, or when the program's sources judge the only attempt not causal. When a drug on the target worked only in a disease the ontology rates as related, a reading of the two diseases decides whether the success was in a subgroup of this one (wrong patients), a stage of it (wrong time) or a different disease (not causal); of the headline stops it read, nearly all were a different disease. A success in this disease only in biomarker-selected trials, when this program did not select, is wrong patients. Otherwise the verdict read from the program's sources decides: wrong patients, wrong stage or timing, drug inadequate or trial inadequate. Everything else is unresolved, including a "not causal" verdict where another drug on the target worked in this disease, which the record contradicts.
+A stop where the drug engaged its target without benefit takes one failure mode, decided in order, and each mode falls under one of three groups: the target is not causal; the target is causal but the drug fell short, or the trial treated the wrong patients or at the wrong time; or it is unclear, because the trial could not answer or nothing settles it. The target is not causal when no drug on the target has worked in the disease while drugs on it worked elsewhere or were tried again, or when the program's sources judge the only attempt not causal. Next, a drug the program's sources judge inadequate fell short; this comes before wrong patients or wrong time, so each stop has one primary reason. When a drug on the target worked only in a disease the ontology rates as related, a reading of the two diseases decides whether the success was in a subgroup of this one (wrong patients), a stage of it (wrong time) or a different disease (not causal); of the headline stops it read, nearly all were a different disease. A success in this disease only in biomarker-selected trials, when this program did not select, is wrong patients. Otherwise the verdict read from the program's sources decides: wrong patients, wrong stage or timing, or trial inadequate. Everything else is unresolved, including a "not causal" verdict where another drug on the target worked in this disease, which the record contradicts. A not-causal call rests on the stop's own evidence when its sources judge the target not causal, and otherwise on the target's later record alone.
 
-Every disease with at least ten such stops.
+By disease area, each failure mode as a share of the area's stops.
+
+{{ENGAGED_AREA_MODES_TABLE}}
+
+Every disease with at least ten such stops, by group and then by failure mode.
 
 {{ENGAGED_DISEASE_TABLE}}
 

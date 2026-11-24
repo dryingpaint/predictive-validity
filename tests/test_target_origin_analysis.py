@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
 
-from report.target_origin import (NEVER_WORKED, OUTCOME, STRICT, any_date_labels, by_origin, circular, contrast,
+from report.target_origin import (APPROVED, NEVER_WORKED, OUTCOME, STRICT, any_date_labels, by_origin, circular, contrast,
                                   contrasts, contrasts_table, descriptive_contrasts, entry_origin, history_outcomes,
-                                  origin_counts, pair_frame, shares)
+                                  origin_counts, pair_frame, route_contrasts, shares)
 from report.engaged_modes import ENGAGED_MODES
 
 
@@ -96,6 +96,19 @@ def test_the_unclear_sensitivities_move_unclear_entries_into_each_group():
     table = contrasts_table(t)
     assert set(table.analysis) == {"primary", "unclear_as_exposed", "unclear_as_reference", "unsettled_as_exposed",
                                    "unsettled_as_reference", "phase2", "any_date"}
+
+
+def test_each_route_is_compared_with_every_other_settled_origin_on_approval_and_not_causal_stops():
+    d = pd.concat([cohort(0.4, 0.1), cohort(0.2, 0.2, n=5).assign(origin="validated_at_entry")])
+    d[APPROVED] = 1.0 - d[OUTCOME]
+    r = route_contrasts(d).set_index(["route", "outcome"])
+    genetics = r.loc[("genetics", APPROVED)]
+    assert genetics.exposed_entries == 120 and genetics.reference_entries == 240  # no unclear, no validated entries
+    assert r.loc[("diseased_tissue", OUTCOME)].reference_entries == 240
+    assert r.loc[("genetics", OUTCOME)].rr < 1 < genetics.rr
+    # with no tumour genetics entries, the pooled row is human genetics alone
+    assert r.loc[("human_genetics", OUTCOME)].rr == r.loc[("genetics", OUTCOME)].rr
+    assert r.loc[("mouse_genetics", APPROVED)].exposed_entries == 0 and pd.isna(r.loc[("mouse_genetics", APPROVED)].rr)
 
 
 def test_by_origin_gives_each_modes_share_and_approval():
