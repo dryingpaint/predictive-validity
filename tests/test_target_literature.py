@@ -38,3 +38,18 @@ def test_a_pair_is_searched_by_a_gene_name_and_a_disease_name_or_model_term():
                   '"collagen-induced arthritis"[tiab])')
     assert ep == ('(TITLE_ABS:"TNF" OR TITLE_ABS:"TNF-alpha") AND (TITLE_ABS:"rheumatoid arthritis" OR '
                   'TITLE_ABS:"collagen-induced arthritis")')
+
+
+def test_web_shards_split_the_pairs_without_overlap_or_gaps():
+    import pandas as pd
+    from pipeline.target_literature import shard_of
+    p = pd.DataFrame({"ensembl_id": [f"ENSG{i:011d}" for i in range(200)], "mondo_id": ["MONDO:0005015"] * 200})
+    parts = [shard_of(p, f"{i}/8") for i in range(1, 9)]
+    keys = [k for part in parts for k in zip(part.ensembl_id, part.mondo_id)]
+    assert len(keys) == len(set(keys)) == len(p)
+
+
+def test_a_model_named_pmid_counts_only_when_its_title_matches():
+    from pipeline.target_literature import TITLE_MATCH, title_match
+    assert title_match("IL-23 blockade attenuates colitis in mice", "Il-23 blockade attenuates colitis in mice.") >= TITLE_MATCH
+    assert title_match("IL-23 blockade attenuates colitis in mice", "A survey of hospital staffing") < TITLE_MATCH

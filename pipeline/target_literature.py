@@ -13,6 +13,11 @@
     python -m pipeline.target_literature origin --pairs cohort      # link the origin search's records (#146) as hits
     python -m pipeline.target_literature integrity --pairs cohort   # completeness and consistency checks of a run
     python -m pipeline.target_literature summary --pairs cohort     # pairs with each kind, before entry
+    python -m pipeline.target_literature web --shard i/n            # the web arm: a web-enabled model per cohort pair
+    python -m pipeline.target_literature web-import                 # pilot rows 1-200's reference as their web answers
+    python -m pipeline.target_literature web-screen --shard i/n     # screen the web arm's records
+    python -m pipeline.target_literature yardstick                  # a differently set up model on 100 seeded pairs
+    python -m pipeline.target_literature web-score                  # recall of each arm and their union, per kind
 
 names, search, firecrawl, screen, check and prefilter-check take --pairs pilot (the default) or cohort, the full
 descriptive run over every cohort pair; search --shard i/n splits the pairs across parallel processes; screen
@@ -171,8 +176,8 @@ def pilot_pairs() -> pd.DataFrame:
 
 
 def pairs_of(which: str) -> pd.DataFrame:
-    """The pilot sample, or every cohort pair (the full descriptive run)."""
-    return pilot_pairs() if which == "pilot" else cohort_pairs()
+    """The pilot sample, every cohort pair (the full descriptive run), or the cohort as the web arm searched it."""
+    return pilot_pairs() if which == "pilot" else web_cohort() if which == "web" else cohort_pairs()
 
 
 def pair_key(ensembl_id: str, mondo_id: str) -> str:
@@ -1058,6 +1063,378 @@ def gate(args) -> None:
     print(json.dumps(result, indent=2))
 
 
+# --- web arm and yardstick (the second retrieval arm) ----------------------------------------------------------------
+
+WEB_TASK = llm.Task(name="target_literature_web", prompt_version="v1", schema_version="v1", system=REFERENCE_SYSTEM,
+                    schema=REFERENCE_SCHEMA, render=render_reference, subject_type="pair", model=REFERENCE_MODEL,
+                    effort="medium", max_tokens=16000, tools=REFERENCE_TOOLS)
+WEB_FALLBACK = llm.Task(**{**WEB_TASK.__dict__, "name": "target_literature_web_fallback", "model": REFERENCE_FALLBACK})
+WEB_CHUNK = 100  # pairs whose web searches are verified and stored together
+
+YARDSTICK_N = 100
+YARDSTICK_SEED = 20261124
+YARDSTICK_CSV = os.path.join(llm.REPO, "report", "audits", "target_literature_yardstick.csv")
+YARDSTICK_MODEL = "claude-sonnet-5"
+YARDSTICK_SYSTEM = """You are an expert curator auditing how complete a literature collection is. For one human gene (the target) and one disease, list the original studies published in or before the cutoff year that report evidence of the kinds below about this target in this disease (or a subtype, or an animal or cell model of it).
+
+Work from the field's secondary literature outward: first find recent reviews, book chapters and guidelines on this target in this disease (or this target's pathway in the disease), read their reference lists, and follow citations both backwards (what the key papers cite) and forwards (who cites them). Then fill gaps with targeted web searches under the target's class, complex or receptor names and the disease's experimental model names. Prefer full text, figure legends and supplements to abstracts when deciding whether a study qualifies.
+
+Kinds:
+""" + "\n".join(f"- {k}: {v}" for k, v in REFERENCE_TEXT.items()) + """
+
+Only original data counts (no reviews, no editorials). A study can be listed under several kinds. Give the PMID whenever the study is in PubMed (look it up), else its DOI; the publication year; the venue. List at most 15 studies per kind, the ones you are most confident qualify. Return an empty list for a kind with no qualifying study. Do not list studies published after the cutoff year."""
+YARDSTICK_TASK = llm.Task(name="target_literature_yardstick", prompt_version="v1", schema_version="v1",
+                          system=YARDSTICK_SYSTEM, schema=REFERENCE_SCHEMA, render=render_reference, subject_type="pair",
+                          model=YARDSTICK_MODEL, effort="medium", max_tokens=16000, tools=REFERENCE_TOOLS)
+YARDSTICK_FALLBACK = llm.Task(**{**YARDSTICK_TASK.__dict__, "name": "target_literature_yardstick_fallback",
+                                 "model": REFERENCE_FALLBACK})
+
+
+def title_search(title: str) -> str | None:
+    """The one PubMed record whose title matches a title search for `title` (TITLE_MATCH), stored; else None."""
+    words = " ".join(sorted(title_words(title), key=len, reverse=True)[:8])
+    if not words:
+        return None
+    hits = [x.text for x in ET.fromstring(eutils("esearch", term=f"{words}[ti]", retmax="5")).iter("Id")]
+    found = fetch_papers(hits, store=True) if hits else {}
+    best = max(found.items(), key=lambda kv: title_match(title, kv[1][0]), default=None)
+    return best[0] if best and title_match(title, best[1][0]) >= TITLE_MATCH else None
+
+
+DOI_BATCH = 40  # DOIs per PubMed search
+
+
+def pmids_by_doi(dois: list[str]) -> dict[str, str]:
+    """Normalised DOI -> PMID for the DOIs PubMed holds, DOI_BATCH per search; the records are stored."""
+    out: dict[str, str] = {}
+    for start in range(0, len(dois), DOI_BATCH):
+        part = dois[start:start + DOI_BATCH]
+        term = " OR ".join(f'"{d}"[doi]' for d in part)
+        ids = [x.text for x in ET.fromstring(eutils("esearch", term=term, retmax=str(4 * len(part)))).iter("Id")]
+        if not ids:
+            continue
+        fetch_texts(ids)
+        with llm.connect() as conn, conn.cursor() as cur:
+            cur.execute("SELECT lower(doi), pmid FROM public.publications WHERE pmid = ANY(%s) AND doi IS NOT NULL", (ids,))
+            got = dict(cur.fetchall())
+        out.update({d: got[d] for d in part if d in got})
+    return out
+
+
+def verify_studies(studies: list[dict]) -> list[dict]:
+    """Each named study with record_id and verification: the given PMID when its PubMed title matches the stated
+    title (pmid_matched); else the PubMed record of its DOI (one search per DOI_BATCH DOIs), or the Europe PMC record
+    the DOI resolves to (pipeline.literature.resolve_external), when that record's title matches (doi_resolved); else
+    the record a PubMed title search matches (pmid_corrected); else unverified. Records found are stored."""
+    ids = sorted({str(s["pmid"]).strip() for s in studies if s.get("pmid")})
+    papers = stored_papers(ids)
+    fetch_texts([i for i in ids if i not in papers and i.isdigit()])
+    papers.update(stored_papers([i for i in ids if i not in papers]))
+    out = []
+    for s in studies:
+        pid = str(s["pmid"]).strip() if s.get("pmid") else None
+        ok = pid and title_match(s["title"], (papers.get(pid) or ("",))[0]) >= TITLE_MATCH
+        out.append({**s, "record_id": pid if ok else None, "verification": "pmid_matched" if ok else "unverified"})
+    todo = [s for s in out if s["record_id"] is None and s.get("doi")]
+    by_doi = pmids_by_doi(sorted({norm_doi(s["doi"]) for s in todo}))
+    rest = [s for s in todo if norm_doi(s["doi"]) not in by_doi]
+    by_doi.update({k[4:]: v for k, v in resolve_external(
+        [("DOI:" + d, d) for d in sorted({norm_doi(s["doi"]) for s in rest})]).items()})
+    texts = record_texts(sorted(set(by_doi.values())))
+    for s in todo:
+        rec = by_doi.get(norm_doi(s["doi"]))
+        if rec and title_match(s["title"], (texts.get(rec) or ("",))[0]) >= TITLE_MATCH:
+            s["record_id"], s["verification"] = rec, "doi_resolved"
+    for s in out:
+        if s["record_id"] is None and s.get("title"):
+            rec = title_search(s["title"])
+            if rec:
+                s["record_id"], s["verification"] = rec, "pmid_corrected"
+    return out
+
+
+def store_web(arm: str, pairs: pd.DataFrame, answers: dict[str, tuple[int | None, list[dict]]], refused: set[str]) -> None:
+    """Replace the pairs' studies of `arm`; for the web arm also their web_agent search row (refusals recorded with
+    no hits) and hits (one per verified record), in one transaction."""
+    cut = {pair_key(e, m): int(c) for e, m, c in zip(pairs.ensembl_id, pairs.mondo_id, pairs.cutoff_year)}
+    keys = [tuple(k.split("|")) for k in (*answers, *refused)]
+    studies = [(arm, *k.split("|"), cut[k], i, s["kind"], s["title"] or "", s.get("year"), s.get("venue"),
+                s.get("pmid_given", s.get("pmid")), s.get("doi"), s["record_id"], s["verification"], d)
+               for k, (d, ss) in answers.items() for i, s in enumerate(ss)]
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("CREATE TEMP TABLE chunk_pairs (ensembl_id text, mondo_id text) ON COMMIT DROP")
+        execute_values(cur, "INSERT INTO chunk_pairs VALUES %s", keys)
+        cur.execute("DELETE FROM preclin.target_literature_web_study w USING chunk_pairs c WHERE w.arm = %s "
+                    "AND (w.ensembl_id, w.mondo_id) = (c.ensembl_id, c.mondo_id)", (arm,))
+        execute_values(cur, """INSERT INTO preclin.target_literature_web_study (arm, ensembl_id, mondo_id, cutoff_year,
+                                   ordinal, kind, title, year, venue, pmid_given, doi_given, record_id, verification,
+                                   llm_decision_id) VALUES %s""", studies, page_size=2000)
+        if arm == "web":
+            cur.execute("DELETE FROM preclin.target_literature_hit h USING chunk_pairs c WHERE h.source = 'web_agent' "
+                        "AND (h.ensembl_id, h.mondo_id) = (c.ensembl_id, c.mondo_id)")
+            cur.execute("DELETE FROM preclin.target_literature_search s USING chunk_pairs c WHERE s.source = 'web_agent' "
+                        "AND (s.ensembl_id, s.mondo_id) = (c.ensembl_id, c.mondo_id)")
+            hits = {(*k.split("|"), cut[k], s["record_id"]) for k, (_, ss) in answers.items() for s in ss if s["record_id"]}
+            execute_values(cur, """INSERT INTO preclin.target_literature_search (ensembl_id, mondo_id, cutoff_year, source,
+                                       kind, names, query, n_hits) VALUES %s""",
+                           [(*k.split("|"), cut[k], "web_agent", "",
+                             Json({"task": WEB_TASK.name, "prompt_version": WEB_TASK.prompt_version, "refused": k in refused}),
+                             "refused by both models" if k in refused else f"{WEB_TASK.name} {WEB_TASK.prompt_version}",
+                             sum(h[0] == k.split("|")[0] and h[1] == k.split("|")[1] for h in hits))
+                            for k in (*answers, *refused)])
+            execute_values(cur, """INSERT INTO preclin.target_literature_hit (ensembl_id, mondo_id, cutoff_year, source, kind,
+                                       record_id) VALUES %s ON CONFLICT DO NOTHING""",
+                           [(e, m, c, "web_agent", "", r) for e, m, c, r in sorted(hits)], page_size=5000)
+        conn.commit()
+
+
+def ask(task: llm.Task, fallback: llm.Task, pairs: pd.DataFrame) -> tuple[dict[str, tuple[int, dict]], set[str]]:
+    """Each pair's answer from task, or from fallback where task refused or failed; and the pairs neither answered.
+    A pair the fallback already answered is not asked again."""
+    items = reference_payloads(pairs)
+    dec = llm.current_decisions(fallback, items)
+    dec.update(decide(task, {k: v for k, v in items.items() if k not in dec}))
+    rest = {k: v for k, v in items.items() if k not in dec}
+    if rest:
+        dec.update(decide(fallback, rest))
+    return dec, set(items) - set(dec)
+
+
+def shard_of(p: pd.DataFrame, shard: str | None) -> pd.DataFrame:
+    if not shard:
+        return p
+    i, n = map(int, shard.split("/"))
+    return p[[zlib.crc32(pair_key(e, m).encode()) % n == i - 1 for e, m in zip(p.ensembl_id, p.mondo_id)]]
+
+
+WEB_PAIRS_CSV = os.path.join(llm.REPO, "report", "audits", "target_literature_web_pairs.csv")
+
+
+def web_cohort() -> pd.DataFrame:
+    """The cohort pairs and cutoffs the web arm searched, as preclin.target_disease and the evidence dataset stood
+    when it ran (WEB_PAIRS_CSV, written at the run): a later rebuild of programs or pairs does not move them."""
+    return pd.read_csv(WEB_PAIRS_CSV) if os.path.exists(WEB_PAIRS_CSV) else cohort_pairs()
+
+
+WEB_ENTRIES_CSV = os.path.join(llm.REPO, "report", "audits", "target_literature_web_entries.csv")
+
+
+def web_entries() -> pd.DataFrame:
+    """The cohort entries as they stood when the web arm ran (WEB_ENTRIES_CSV), else the current ones."""
+    return pd.read_csv(WEB_ENTRIES_CSV) if os.path.exists(WEB_ENTRIES_CSV) else cohort_entries()
+
+
+def web_pairs() -> pd.DataFrame:
+    """The cohort pairs the web arm asks: all but pilot rows 1-200, whose blind reference (the same prompt) is
+    their web-arm answer (web_import)."""
+    p = web_cohort()
+    ref = pilot_pairs()
+    ref = set(zip(ref[ref.row <= 200].ensembl_id, ref[ref.row <= 200].mondo_id))
+    return p[[(e, m) not in ref for e, m in zip(p.ensembl_id, p.mondo_id)]].reset_index(drop=True)
+
+
+def web_done() -> set[tuple[str, str]]:
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT ensembl_id, mondo_id FROM preclin.target_literature_search WHERE source = 'web_agent'")
+        return set(cur.fetchall())
+
+
+def web(args) -> None:
+    """The web arm over every cohort pair not yet stored (--shard i/n to run n in parallel): ask, verify, store,
+    WEB_CHUNK pairs at a time, so an interrupted run resumes where it stopped and reuses stored decisions."""
+    p = shard_of(web_pairs(), args.shard)
+    done = web_done()
+    p = p[[(e, m) not in done for e, m in zip(p.ensembl_id, p.mondo_id)]]
+    print(f"web: pairs to ask={len(p)}", flush=True)
+    for start in range(0, len(p), WEB_CHUNK):
+        chunk = p.iloc[start:start + WEB_CHUNK]
+        for attempt in range(5):  # a dropped database link mid-chunk: the decisions are stored, so retry the chunk
+            try:
+                dec, refused = ask(WEB_TASK, WEB_FALLBACK, chunk)
+                answers = {k: (d, verify_studies(o["studies"])) for k, (d, o) in dec.items()}
+                store_web("web", chunk, answers, refused)
+                break
+            except (psycopg2.OperationalError, psycopg2.InterfaceError) as exc:
+                print(f"web chunk {start // WEB_CHUNK + 1}: database link dropped ({exc}); retrying", flush=True)
+                time.sleep(30 * (attempt + 1))
+        else:
+            raise RuntimeError(f"web chunk {start // WEB_CHUNK + 1}: database unavailable")
+        n = sum(len(ss) for _, ss in answers.values())
+        v = sum(s["record_id"] is not None for _, ss in answers.values() for s in ss)
+        print(f"web chunk {start // WEB_CHUNK + 1}: pairs={len(chunk)} refused={len(refused)} studies={n} verified={v}",
+              flush=True)
+
+
+def web_import(_args) -> None:
+    """Pilot rows 1-200's blind reference (report/audits/target_literature_reference, the web arm's prompt) as their
+    web-arm answers: no new search, their studies re-verified the same way."""
+    p = pilot_pairs()
+    for spec in ("1-100", "101-200"):
+        with open(os.path.join(REFERENCE_DIR, f"rows_{spec}.json")) as fh:
+            ref = json.load(fh)
+        rows = rows_of(spec)
+        answers = {pair_key(x["ensembl_id"], x["mondo_id"]):
+                   (None, verify_studies([{**s, "pmid": s.get("pmid") or s.get("pmid_given")} for s in x["studies"]]))
+                   for x in ref}
+        refused = {pair_key(e, m) for e, m in zip(rows.ensembl_id, rows.mondo_id)} - set(answers)
+        store_web("web", p[p.row.isin(rows.row)], answers, refused)
+        print(f"web import {spec}: pairs={len(answers)} refused={len(refused)}", flush=True)
+
+
+def web_screen(args) -> None:
+    """Screen every record from --sources (default web_agent) of the pairs not yet screened for that pair, with the
+    run's screen (and its fallback): one screen definition for every record. A record the web arm named skips the
+    prefilter (a cost saving for large literatures that has no bearing on a named study); any other record keeps an
+    earlier prefilter-out decision."""
+    p = shard_of(web_cohort(), args.shard)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT DISTINCT h.ensembl_id, h.mondo_id, h.record_id FROM preclin.target_literature_hit h
+                       WHERE h.source = ANY(%s)
+                         AND (h.source = 'web_agent' OR NOT EXISTS (
+                           SELECT 1 FROM preclin.target_literature_prefilter f WHERE NOT f.possibly
+                           AND (f.ensembl_id, f.mondo_id, f.record_id) = (h.ensembl_id, h.mondo_id, h.record_id)))
+                         AND NOT EXISTS (
+                           SELECT 1 FROM preclin.target_literature_screen s
+                           WHERE (s.ensembl_id, s.mondo_id, s.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))""",
+                    (args.sources.split(","),))
+        recs = pd.DataFrame(cur.fetchall(), columns=["ensembl_id", "mondo_id", "record_id"])
+    want = set(zip(p.ensembl_id, p.mondo_id))
+    recs = recs[[(e, m) in want for e, m in zip(recs.ensembl_id, recs.mondo_id)]]
+    print(f"web screen: records to screen={len(recs)}", flush=True)
+    for start in range(0, len(recs), 5000):
+        part = recs.iloc[start:start + 5000]
+        ids = sorted(set(part.record_id))
+        have = set(record_texts(ids))
+        fetch_texts([x for x in ids if x.isdigit() and x not in have])
+        pp = p.merge(part[["ensembl_id", "mondo_id"]].drop_duplicates(), on=["ensembl_id", "mondo_id"])
+        items = screen_payloads(pp, part)
+        dec = decide(screen_task(), items)
+        refused = {k: v for k, v in items.items() if k not in dec}
+        if refused:
+            dec.update(decide(screen_task(SCREEN_FALLBACK, "_fallback"), refused))
+        rows = [(*k.split("|", 2), o["original_data"], o["disease_match"], *(o["kinds"][x] for x in KINDS[:4]),
+                 o["agent_is_program_drug"], *(o["kinds"][x] for x in KINDS[4:]), o["quote"] or None, d)
+                for k, (d, o) in dec.items()]
+        with llm.connect() as conn, conn.cursor() as cur:
+            execute_values(cur, f"""INSERT INTO preclin.target_literature_screen (ensembl_id, mondo_id, record_id,
+                                        original_data, disease_match, {", ".join(KINDS[:4])}, agent_is_program_drug,
+                                        {", ".join(KINDS[4:])}, quote, llm_decision_id) VALUES %s ON CONFLICT DO NOTHING""",
+                           rows, page_size=2000)
+            conn.commit()
+        print(f"web screen: {start + len(part)}/{len(recs)} readable={len(items)} screened={len(dec)}", flush=True)
+
+
+def yardstick_pairs() -> pd.DataFrame:
+    if os.path.exists(YARDSTICK_CSV):
+        return pd.read_csv(YARDSTICK_CSV)
+    p = web_cohort()
+    pil = set(zip(pilot_pairs().ensembl_id, pilot_pairs().mondo_id))
+    p = p[[(e, m) not in pil for e, m in zip(p.ensembl_id, p.mondo_id)]].reset_index(drop=True)
+    rng = np.random.default_rng(YARDSTICK_SEED)
+    s = p.iloc[rng.choice(len(p), YARDSTICK_N, replace=False)].reset_index(drop=True)
+    s.insert(0, "row", range(1, len(s) + 1))
+    s.to_csv(YARDSTICK_CSV, index=False)
+    return s
+
+
+def yardstick(_args) -> None:
+    """The yardstick: a differently set up web-enabled model (YARDSTICK_SYSTEM, starting from reviews and
+    citations; YARDSTICK_MODEL) lists every qualifying study of YARDSTICK_N seeded cohort pairs outside the pilot."""
+    p = yardstick_pairs()
+    dec, refused = ask(YARDSTICK_TASK, YARDSTICK_FALLBACK, p)
+    answers = {k: (d, verify_studies(o["studies"])) for k, (d, o) in dec.items()}
+    store_web("yardstick", p, answers, refused)
+    print(f"yardstick: pairs={len(p)} answered={len(answers)} refused={len(refused)} "
+          f"studies={sum(len(ss) for _, ss in answers.values())}", flush=True)
+
+
+WEB_RECORD = os.path.join(llm.REPO, "report", "audits", "target_literature_web.json")
+
+
+def stored_qualifying(pairs: pd.DataFrame) -> pd.DataFrame:
+    """ensembl_id, mondo_id, record_id, year, doi and kind of every stored screen row that counts for a kind (counts),
+    read from preclin.target_literature_screen: unlike qualifying, it does not rebuild the screen's inputs, which
+    name the program drugs and so move when programs are rebuilt."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute(f"""SELECT s.ensembl_id, s.mondo_id, s.record_id, coalesce(p.year, r.year, o.year),
+                               lower(coalesce(p.doi, r.doi)), {", ".join("s." + k for k in KINDS)}, s.agent_is_program_drug
+                        FROM preclin.target_literature_screen s
+                        LEFT JOIN public.publications p ON p.pmid = s.record_id
+                        LEFT JOIN preclin.literature_record r ON r.record_id = s.record_id
+                        LEFT JOIN (SELECT regexp_replace(record_id, '^PMID:', '') AS record_id, min(year) AS year
+                                   FROM preclin.target_disease_source GROUP BY 1) o ON o.record_id = s.record_id
+                        WHERE s.original_data AND s.disease_match = 'same_or_subtype'""")
+        rows = cur.fetchall()
+    want = set(zip(pairs.ensembl_id, pairs.mondo_id))
+    out = []
+    for e, m, rid, year, doi, *flags in rows:
+        if (e, m) not in want:
+            continue
+        shown, agent = dict(zip(KINDS, flags[:-1])), flags[-1]
+        out += [(e, m, rid, year, doi, k) for k in KINDS if shown[k]]
+        if shown["animal_model_pharmacology"] and agent is False:
+            out.append((e, m, rid, year, doi, "animal_model_pharmacology_other"))
+    return pd.DataFrame(out, columns=["ensembl_id", "mondo_id", "record_id", "year", "doi", "kind"])
+
+
+def web_score(_args) -> None:
+    """Recall of the abstract run, the web arm and their union against the yardstick, per kind: the share of the
+    yardstick's verified studies (those with a record, verify_studies) found among the records counting for the kind
+    from that arm's hits (recall_all_studies also counts unverified studies, as misses); per kind the cohort
+    pairs with a counting record, and those with one only from the web arm; and the union's Phase 2 coverage."""
+    ys = yardstick_pairs()
+    cp = web_cohort()
+    cut = {(r.ensembl_id, r.mondo_id): int(r.cutoff_year) for r in cp.itertuples()}
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT ensembl_id, mondo_id, kind, record_id, doi_given, year FROM preclin.target_literature_web_study
+                       WHERE arm = 'yardstick'""")
+        ref = pd.DataFrame(cur.fetchall(), columns=["ensembl_id", "mondo_id", "kind", "record_id", "doi", "year"])
+        cur.execute("""SELECT DISTINCT ensembl_id, mondo_id, record_id, source = 'web_agent' FROM preclin.target_literature_hit""")
+        arms = pd.DataFrame(cur.fetchall(), columns=["ensembl_id", "mondo_id", "record_id", "web"])
+    by_arm = arms.groupby(["ensembl_id", "mondo_id", "record_id"]).web.agg(["any", "all"]).reset_index()
+    q = stored_qualifying(cp)
+    q = q.merge(by_arm, on=["ensembl_id", "mondo_id", "record_id"], how="left")
+    q["from_web"], q["from_abstract"] = q["any"].fillna(False), ~q["all"].fillna(False)
+    result = {"yardstick_pairs": len(ys), "kinds": {}}
+    entries = web_entries()
+    e2 = entries[entries.phase == 2]
+    for kind in (*KINDS, "animal_model_pharmacology_other"):
+        ref_kind = "animal_model_pharmacology_other" if kind == "animal_model_pharmacology" else kind
+        studies = ref[(ref.kind == ref_kind) & (ref.year.isna() | (ref.year <= ref.apply(
+            lambda r: cut[(r.ensembl_id, r.mondo_id)], axis=1)))] if len(ref) else ref
+        qk = q[q.kind == kind]
+        sets = {}
+        for arm, mask in (("abstract", qk.from_abstract), ("web", qk.from_web), ("union", qk.from_abstract | qk.from_web)):
+            g = qk[mask]
+            sets[arm] = {(e, m): set(x.record_id) | {norm_doi(d) for d in x.doi.dropna()}
+                         for (e, m), x in g.groupby(["ensembl_id", "mondo_id"])}
+        rec, rec_all = {}, {}
+        for arm, got in sets.items():
+            hit, hit_all = [], []
+            for s in studies.itertuples():
+                found = isinstance(s.record_id, str) and s.record_id in got.get((s.ensembl_id, s.mondo_id), set())
+                hit_all.append(found)
+                if isinstance(s.record_id, str):
+                    hit.append(found)
+            rec[arm] = float(np.mean(hit)) if hit else None
+            rec_all[arm] = float(np.mean(hit_all)) if hit_all else None
+        pairs_any = {(e, m) for e, m in zip(qk.ensembl_id, qk.mondo_id)}
+        pairs_abs = {(e, m) for e, m in zip(qk[qk.from_abstract].ensembl_id, qk[qk.from_abstract].mondo_id)}
+        years = {k: g.year.dropna().astype(int).tolist() for k, g in qk.groupby(["ensembl_id", "mondo_id"])}
+        cov = [any(y <= r.entry_year - 1 for y in years.get((r.ensembl_id, r.mondo_id), [])) for r in e2.itertuples()]
+        result["kinds"][kind] = {
+            "yardstick_studies": len(studies),
+            "yardstick_studies_verified": int(studies.record_id.notna().sum()) if len(studies) else 0,
+            "recall_abstract": rec["abstract"], "recall_web": rec["web"], "recall_union": rec["union"],
+            "recall_all_studies": rec_all,
+            "cohort_pairs_with_any": len(pairs_any), "cohort_pairs_from_abstract_arm": len(pairs_abs),
+            "cohort_pairs_only_from_web_arm": len(pairs_any - pairs_abs),
+            "phase2_coverage_union": float(np.mean(cov)) if cov else None}
+    with open(WEB_RECORD, "w") as fh:
+        json.dump(result, fh, indent=2)
+    print(json.dumps(result, indent=2))
+
+
 # --- cost ----------------------------------------------------------------------------------------------------------
 
 # US dollars per million tokens (input, output, cache write, cache read) and per web search
@@ -1069,12 +1446,12 @@ BATCH_DISCOUNT = 0.5
 
 def task_usd(task: str, model: str, batched: bool, u: dict | None) -> float:
     """One decision's cost at list prices: tokens by model, the Batch API discount on batched runs (not the
-    reference, which runs direct with web search), and each web search."""
+    reference, the web arm or the yardstick, which run direct with web search), and each web search."""
     u = u or {}
     pi, po, pw, pr = PRICES.get(model, PRICES["claude-opus-5-5"])
     usd = (u.get("input_tokens", 0) * pi + u.get("output_tokens", 0) * po
            + u.get("cache_creation_input_tokens", 0) * pw + u.get("cache_read_input_tokens", 0) * pr) / 1e6
-    usd *= BATCH_DISCOUNT if batched and "reference" not in task else 1
+    usd *= BATCH_DISCOUNT if batched and not any(t in task for t in ("reference", "_web", "yardstick")) else 1
     return usd + (u.get("web_search_requests", 0) or 0) * WEB_SEARCH_USD
 
 
@@ -1186,8 +1563,23 @@ INTEGRITY = {
         SELECT count(*) FROM preclin.target_literature_prefilter f
         JOIN (SELECT ensembl_id, mondo_id, count(*) n FROM retrieved GROUP BY 1, 2) c USING (ensembl_id, mondo_id)
         WHERE c.n <= {PREFILTER_ABOVE}""",
+    "cohort pairs without a web-arm search row (answered or refused by both models)": """
+        SELECT count(*) FROM want w WHERE NOT EXISTS (SELECT 1 FROM preclin.target_literature_search s
+            WHERE s.source = 'web_agent' AND (s.ensembl_id, s.mondo_id, s.cutoff_year) = (w.ensembl_id, w.mondo_id, w.cutoff_year))""",
+    "verified web-arm studies without their web_agent hit": """
+        SELECT count(*) FROM preclin.target_literature_web_study w WHERE w.arm = 'web' AND w.record_id IS NOT NULL
+          AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_hit h WHERE h.source = 'web_agent'
+                          AND (h.ensembl_id, h.mondo_id, h.cutoff_year, h.record_id) = (w.ensembl_id, w.mondo_id, w.cutoff_year, w.record_id))""",
+    "web_agent hits without a verified web-arm study": """
+        SELECT count(*) FROM preclin.target_literature_hit h WHERE h.source = 'web_agent'
+          AND NOT EXISTS (SELECT 1 FROM preclin.target_literature_web_study w WHERE w.arm = 'web'
+                          AND (h.ensembl_id, h.mondo_id, h.cutoff_year, h.record_id) = (w.ensembl_id, w.mondo_id, w.cutoff_year, w.record_id))""",
 }
 INFO = {
+    "web-arm studies by verification": """SELECT json_object_agg(verification, n) FROM (SELECT verification, count(*) n
+                                          FROM preclin.target_literature_web_study WHERE arm = 'web' GROUP BY 1) x""",
+    "yardstick studies by verification": """SELECT json_object_agg(verification, n) FROM (SELECT verification, count(*) n
+                                            FROM preclin.target_literature_web_study WHERE arm = 'yardstick' GROUP BY 1) x""",
     "retrieved records without stored text (never screened)": "SELECT count(DISTINCT record_id) FROM retrieved WHERE NOT has_text",
     "retrieved (pair, record)": "SELECT count(*) FROM retrieved",
     "records refused by both the screen and fallback models (unread)": f"SELECT count(*) FROM ({REFUSED}) x",
@@ -1258,16 +1650,20 @@ def main() -> None:
     sub = ap.add_subparsers(dest="cmd", required=True)
     for name, fn in [("sample", sample), ("names", names), ("search", search), ("screen", screen), ("check", check),
                      ("prefilter-check", prefilter_check), ("cost", cost), ("integrity", integrity),
-                     ("summary", summary), ("firecrawl", firecrawl), ("origin", origin)]:
+                     ("summary", summary), ("firecrawl", firecrawl), ("origin", origin), ("web", web),
+                     ("web-import", web_import), ("web-screen", web_screen), ("yardstick", yardstick),
+                     ("web-score", web_score)]:
         c = sub.add_parser(name)
-        c.add_argument("--pairs", choices=["pilot", "cohort"], default="pilot")
+        c.add_argument("--pairs", choices=["pilot", "cohort", "web"], default="pilot")
         c.set_defaults(fn=fn)
         if name == "firecrawl":
             c.add_argument("--mode", choices=["search", "related"], required=True)
         if name == "screen":
             c.add_argument("--follow", action="store_true", help="keep screening pairs as their searches finish")
             c.add_argument("--skip-done", action="store_true", help="skip pairs whose every record is already decided")
-        if name in ("search", "screen"):
+        if name == "web-screen":
+            c.add_argument("--sources", default="web_agent", help="comma-separated hit sources to screen")
+        if name in ("search", "screen", "web", "web-screen"):
             c.add_argument("--shard", help="i/n: this process's share of the pairs, to run n in parallel")
         if name in ("screen", "cost"):
             c.add_argument("--since", help="count spend from this timestamp (the full run's start)")
