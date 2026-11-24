@@ -73,9 +73,19 @@ LITERATURE_GATE = "v3_final"  # the gate scoring of the retrieval the literature
 
 # Each #154 target-literature kind's pair-level coverage and precision against the adjudicated confirmed set of 100
 # pairs (python -m pipeline.target_literature resolve-score; report/audits/target_literature.md): (pairs the search found
-# that had a confirmed study, pairs with a confirmed study, pairs the search read as yes). Coverage is against the
-# capture-recapture estimate of all qualifying pairs where it could be estimated.
-TARGET_LITERATURE_COVERAGE: dict[str, tuple[int, int, int]] = {}
+# that had a confirmed study, pairs with a confirmed study, pairs the search read as yes), each kind at its kept screen
+# version (preclin.target_literature_reading); resolve-score --version final, 2026-11-25. Capture-recapture puts the
+# qualifying pairs every source missed near zero for every kind but clinical observation (the record).
+TARGET_LITERATURE_COVERAGE: dict[str, tuple[int, int, int]] = {
+    "human_cell_perturbation": (22, 23, 26),
+    "cell_line_perturbation": (31, 34, 40),
+    "diseased_tissue_protein": (34, 35, 39),
+    "animal_model_pharmacology": (54, 56, 61),
+    "mouse_genetic_disease_model": (23, 27, 26),
+    "observational_biomarker": (18, 22, 26),
+    "clinical_observation": (11, 12, 18),
+    "animal_model_pharmacology_other": (45, 47, 54),
+}
 
 
 def target_literature_note(kind: str) -> str:
@@ -500,7 +510,9 @@ def report_lines() -> list[tuple[Kind | None, str, Line]]:
 
 
 def facts(d: pd.DataFrame) -> pd.DataFrame:
-    """Each fact's value for every entry it applies to (null elsewhere), from the raw evidence columns of build."""
+    """Each fact's value for every entry it applies to (null elsewhere), from the raw evidence columns of build; an
+    entry without a target-literature column was not searched."""
+    d = d.assign(**{c: np.nan for c in (*TARGET_LITERATURE, "tl_pharmacology_other") if c not in d})
     def pick(scope: str, conditions: list, default: str = "none") -> pd.Series:
         v = pd.Series(np.select([c.fillna(False).astype(bool) for c, _ in conditions], [x for _, x in conditions],
                                 default), index=d.index, dtype=object)

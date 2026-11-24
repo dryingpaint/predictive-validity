@@ -308,6 +308,37 @@ def interactions(p2: pd.DataFrame, covars: tuple[str, ...]) -> dict:
     return {"n": int(len(x)), "n_targets": int(x.target.nunique()), "tests": tests}
 
 
+# The #154 confirmatory test (registered 2026-11-25 on issue #154): the kinds that cleared pair-level coverage and
+# precision of 80% against the adjudicated set, each one-sided (raises S4), Holm-corrected together.
+TL_CONFIRM = {"C-L1": "tl_primary_cells", "C-L2": "tl_pharmacology_other", "C-L3": "tl_protein",
+              "C-L5": "tl_genetic_model"}
+
+
+def target_literature_confirmation(c: pd.DataFrame) -> dict:
+    """The registered #154 confirmatory test on the CONFIRM entries `c` (build(CONFIRM), US-developed): per TL_CONFIRM
+    kind, the adjusted risk ratio of S4 among Phase 2 entries with a resolved target and disease whose exposure is
+    known, with CONFIRM_COVARS; the one-sided p (RR above 1), the Holm-corrected p and the reading; and a secondary
+    estimate adding human genetics (g3), not tested."""
+    p2 = c[(c.phase == 2) & c.has_target_disease & c.s4.notna()].assign(
+        precedent=lambda x: x.precedent.fillna(0), target=lambda x: x.target.fillna("entity " + x.moiety_id.astype(str)),
+        year=lambda x: x.entry_year)
+    tests, secondary = {}, {}
+    for k, col in TL_CONFIRM.items():
+        part = p2[p2[col].notna()]
+        r = estimate(part, "s4", col, CONFIRM_COVARS)
+        if "rr" in r:
+            r["p_one_sided"] = r["p"] / 2 if r["rr"] > 1 else 1 - r["p"] / 2
+        tests[k] = {"column": col, "entries": int(len(part)), **r}
+        secondary[k] = adjusted(part.assign(g3=part.g3.fillna(0)), "s4", [col, "g3"], CONFIRM_COVARS)
+    adj = holm({k: t.get("p_one_sided") for k, t in tests.items()})
+    for k, t in tests.items():
+        if "rr" in t:
+            t["p_holm"] = adj[k]
+            t["reading"] = ("confirmed" if adj[k] < CONFIRM_ALPHA else
+                            "same direction, not confirmed" if t["rr"] > 1 else "not replicated")
+    return {"phase2_entries": int(len(p2)), "tests": tests, "secondary_with_genetics": secondary}
+
+
 def published_confirmation(c: pd.DataFrame, d: pd.DataFrame, rows_c: pd.DataFrame, rows_d: pd.DataFrame,
                            trials: pd.DataFrame) -> dict:
     """The registered confirmation (issue #140) of published_strata on the CONFIRM entries `c` (phase rows `rows_c`),
@@ -348,8 +379,10 @@ def main() -> None:
     rows = phase_rows(progs, trials, snap, window=SECTION1)
     d = us(build())
     lines, chart, stops, n = analyse(d, rows, failure_modes(rows, progs, trials, outcomes), trials)
-    n["published_confirmation"] = published_confirmation(us(build(CONFIRM)), d, phase_rows(progs, trials, snap, window=CONFIRM),
+    confirm = us(build(CONFIRM))
+    n["published_confirmation"] = published_confirmation(confirm, d, phase_rows(progs, trials, snap, window=CONFIRM),
                                                          rows, trials)
+    n["target_literature_confirmation"] = target_literature_confirmation(confirm)
     lines.to_csv(os.path.join(OUT, "lines.csv"), index=False)
     chart.to_csv(os.path.join(OUT, "chart.csv"), index=False)
     stops.to_csv(os.path.join(OUT, "stop_risk.csv"), index=False)

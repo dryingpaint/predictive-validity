@@ -1391,6 +1391,32 @@ def yardstick(_args) -> None:
 
 
 def stored_qualifying(pairs: pd.DataFrame, version: str | None = None) -> pd.DataFrame:
+    if version == "final":
+        return kept_qualifying(pairs)
+    return screen_qualifying(pairs, version)
+
+
+def kept_qualifying(pairs: pd.DataFrame) -> pd.DataFrame:
+    """As screen_qualifying, from each kind's kept screen version (the view preclin.target_literature_reading)."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("CREATE TEMP TABLE want_pairs (ensembl_id text, mondo_id text) ON COMMIT DROP")
+        execute_values(cur, "INSERT INTO want_pairs VALUES %s", sorted(set(zip(pairs.ensembl_id, pairs.mondo_id))))
+        cur.execute("""SELECT r.ensembl_id, r.mondo_id, r.record_id, coalesce(p.year, lr.year, o.year),
+                              lower(coalesce(p.doi, lr.doi)), r.kind, r.agent_is_program_drug
+                       FROM preclin.target_literature_reading r JOIN want_pairs USING (ensembl_id, mondo_id)
+                       LEFT JOIN public.publications p ON p.pmid = r.record_id
+                       LEFT JOIN preclin.literature_record lr ON lr.record_id = r.record_id
+                       LEFT JOIN LATERAL (SELECT min(x.year) AS year FROM preclin.target_disease_source x
+                                          WHERE x.record_id IN (r.record_id, 'PMID:' || r.record_id)) o ON true
+                       WHERE r.counts""")
+        rows = cur.fetchall()
+    out = [(e, m, rid, year, doi, k) for e, m, rid, year, doi, k, _ in rows]
+    out += [(e, m, rid, year, doi, "animal_model_pharmacology_other") for e, m, rid, year, doi, k, agent in rows
+            if k == "animal_model_pharmacology" and agent is False]
+    return pd.DataFrame(out, columns=["ensembl_id", "mondo_id", "record_id", "year", "doi", "kind"])
+
+
+def screen_qualifying(pairs: pd.DataFrame, version: str | None = None) -> pd.DataFrame:
     """ensembl_id, mondo_id, record_id, year, doi and kind of every stored screen row that counts for a kind (counts),
     read from preclin.target_literature_screen: unlike qualifying, it does not rebuild the screen's inputs, which
     name the program drugs and so move when programs are rebuilt."""
@@ -1720,7 +1746,7 @@ def resolve_metrics(version: str | None = None) -> dict:
                             WHERE (%(v)s IS NULL OR screen_version = %(v)s) AND (ensembl_id, mondo_id) IN %(p)s
                             ORDER BY ensembl_id, mondo_id, record_id, screen_version DESC) s
                         WHERE NOT (s.original_data AND s.disease_match = 'same_or_subtype' AND ({" OR ".join(KINDS)}))""",
-                    {"v": version, "p": tuple(zip(a.ensembl_id, a.mondo_id))})
+                    {"v": "v4" if version == "final" else version, "p": tuple(zip(a.ensembl_id, a.mondo_id))})
         negatives_total = cur.fetchone()[0]
     sample = a[a.screened_out_sample]
     out = {"version": version or "latest", "pairs": pairs_total, "candidates": len(a),
@@ -2028,7 +2054,8 @@ def main() -> None:
         if name in ("search", "screen", "web", "web-screen", "adjudicate", "reconcile"):
             c.add_argument("--shard", help="i/n: this process's share of the pairs, to run n in parallel")
         if name == "resolve-score":
-            c.add_argument("--version", help="score this screen version (default: each record's latest)")
+            c.add_argument("--version", help="score this screen version, or final (each kind's kept version; "
+                                             "default: each record's latest)")
         if name in ("screen", "cost"):
             c.add_argument("--since", help="count spend from this timestamp (the full run's start)")
         if name in ("screen", "web-screen"):
