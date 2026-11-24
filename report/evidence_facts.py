@@ -15,7 +15,7 @@ from report import frame
 
 FACT_KEYS = ("ot_tier", "disease_mechanism", "mouse_model", "loeuf", "mouse_phenotype", "common_essential",
              "screened_line", "dependency", "measurement", "literature", "molecule_property", "pqtl",
-             "adverse_reaction")  # the view's kinds of fact
+             "adverse_reaction", "target_literature", "target_literature_search")  # the view's kinds of fact
 
 
 @frame.held_once

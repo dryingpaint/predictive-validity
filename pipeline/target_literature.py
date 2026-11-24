@@ -12,6 +12,8 @@
     python -m pipeline.target_literature yardstick    # a differently set up web-enabled model on 100 seeded pairs
     python -m pipeline.target_literature web-score    # recall of the abstract run, the web arm and both, per kind
     python -m pipeline.target_literature reconcile    # bring the stored literature to a rebuilt cohort, adding only
+    python -m pipeline.target_literature adjudicate   # the confirmed set: a careful reading of every candidate of the yardstick's pairs
+    python -m pipeline.target_literature resolve-score  # coverage, precision and capture-recapture against the confirmed set
     python -m pipeline.target_literature integrity    # completeness and consistency checks
     python -m pipeline.target_literature summary      # pairs with each kind, before entry
     python -m pipeline.target_literature cost         # spend by task
@@ -98,6 +100,41 @@ KIND_TEXT = {
                             "disease do not count",
 }
 VERSION = "v2"  # prompt_version of the screen, prefilter, check and gene-vet tasks (#154's single allowed revision)
+SCREEN_VERSION = "v2"  # the screen new readings are stored under (preclin.target_literature_screen.screen_version)
+# The v3 screen's definitions, revised against the adjudication (resolve-score): its false positives were evidence about
+# the target's ligand, pathway partners or regulators rather than the target; another gene's knockout; drugs whose
+# effect on the target was incidental; single cases, null findings and genotype-defined groups read as biomarkers;
+# and mutation carriers' clinical course read as a clinical observation.
+KIND_TEXT_V3 = {
+    **KIND_TEXT,
+    "human_cell_perturbation": KIND_TEXT["human_cell_perturbation"] + "; the experimenter changes THIS target directly "
+                               "(its gene, or an agent whose primary action is on it), not a ligand's or another "
+                               "gene's level; work in living animals or people is never this kind",
+    "cell_line_perturbation": "the target is changed experimentally in an ESTABLISHED cell line (HeLa, HEK293, named "
+                              "cancer lines and the like): knockdown, knockout or overexpression of THIS target's gene, "
+                              "or an agent whose primary action is on THIS target; and a feature of the disease changes. "
+                              "Genome-wide screens count. An agent with many actions whose effect on the target is "
+                              "incidental, or changing an upstream regulator or pathway partner, does not count",
+    "diseased_tissue_protein": KIND_TEXT["diseased_tissue_protein"] + "; differences only among patients (for example "
+                               "with prognosis) without normal or less-affected tissue to compare do not count, nor do "
+                               "measurements of a different protein in the target's pathway",
+    "mouse_genetic_disease_model": "a knockout, knock-in or transgene of THIS target's own gene (not a regulator, "
+                                   "partner or pathway gene) alters an animal model of the disease, or the genetically "
+                                   "altered animal develops the disease; a drug given to a genetic model is "
+                                   "animal_model_pharmacology, not this kind",
+    "observational_biomarker": "an OBSERVATIONAL study of patients (no intervention assigned) measures THIS target or "
+                               "its own product (its protein, its enzymatic activity, or its occupancy by an imaging "
+                               "ligand; not its ligand, a hormone acting on it or a downstream marker) in blood, another "
+                               "body fluid or by imaging, and the measurement differs with the disease's presence, "
+                               "severity, progression or outcome in a group of patients; single cases, null findings, "
+                               "groups defined by genotype, tissue measurements, genetic association and drug-response "
+                               "markers in a trial do not count",
+    "clinical_observation": KIND_TEXT["clinical_observation"] + "; the clinical course of carriers of a mutation in "
+                            "the gene, and responses to surgery or devices, do not count",
+}
+# v4, the screen kept: v3's definitions except clinical_observation, whose v3 revision lowered both its coverage and
+# its precision against the adjudication (report/audits/target_literature.md), so it keeps the v2 definition.
+KIND_TEXT_V4 = {**KIND_TEXT_V3, "clinical_observation": KIND_TEXT["clinical_observation"]}
 COHORT = (2008, 2019)  # phase entry years of the evidence dataset
 PILOT_N = 300
 PILOT_SEED = 20261122  # drew the pilot from the cohort of 2026-11-22; that cohort has since changed, so the draw is kept
@@ -150,20 +187,45 @@ def cohort_pairs() -> pd.DataFrame:
     return p.merge(meta, on=["ensembl_id", "mondo_id"]).sort_values(["ensembl_id", "mondo_id"]).reset_index(drop=True)
 
 
+def confirm_pairs() -> pd.DataFrame:
+    """The pairs of the confirmation entries (report.windows.CONFIRM: US-sited Phase 2 entries of 2020 to 2022-11-02,
+    as issue #140's): ensembl_id, mondo_id, cutoff_year (the year before the pair's latest such entry), symbol and
+    disease label, for each entry's primary target gene that forms a pair in preclin.target_disease."""
+    from report import frame
+    from report.section1 import phase_rows
+    from report.windows import CONFIRM
+    progs = frame.programs()
+    rows = phase_rows(progs, frame.program_trials(), frame.snapshot(), window=CONFIRM)
+    rows = rows[~rows.credited & rows.us_site & rows.phase.eq(2)].copy()
+    rows["mondo_id"] = rows.program_id.map(progs.set_index("program_id").mondo_id)
+    rows["cutoff_year"] = pd.to_datetime(rows.entry).dt.year - 1
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT mt.moiety_id, t.ensembl_id FROM preclin.moiety_target mt
+                       JOIN public.targets t ON t.id = mt.target_id WHERE mt.is_primary""")
+        genes = pd.DataFrame(cur.fetchall(), columns=["moiety_id", "ensembl_id"])
+        cur.execute("""SELECT td.ensembl_id, td.mondo_id, td.symbol, o.label FROM preclin.target_disease td
+                       LEFT JOIN preclin.ontology_term o ON o.term_id = td.mondo_id""")
+        meta = pd.DataFrame(cur.fetchall(), columns=["ensembl_id", "mondo_id", "symbol", "disease"])
+    e = rows[["moiety_id", "mondo_id", "cutoff_year"]].merge(genes, on="moiety_id")
+    p = e.groupby(["ensembl_id", "mondo_id"], as_index=False).cutoff_year.max()
+    return p.merge(meta, on=["ensembl_id", "mondo_id"]).sort_values(["ensembl_id", "mondo_id"]).reset_index(drop=True)
+
+
 def pilot_pairs() -> pd.DataFrame:
     return pd.read_csv(PILOT_CSV)
 
 
 def pairs_of(which: str) -> pd.DataFrame:
-    """The pilot sample, every cohort pair (the full descriptive run), or the cohort pairs with no search stored
-    yet (new, after a rebuild of programs or pairs: see reconcile)."""
-    if which == "new":
+    """The pilot sample, every cohort pair (the full descriptive run), the confirmation pairs (confirm_pairs), or the
+    cohort or confirmation pairs with no search stored at an earlier cutoff than their own (new, confirm-new: pairs
+    searched only now, as against pairs whose cutoff moved, which reconcile brings forward)."""
+    if which in ("new", "confirm-new"):  # no search stored at an earlier cutoff: stays the same set as its run proceeds
+        p = cohort_pairs() if which == "new" else confirm_pairs()
         with llm.connect() as conn, conn.cursor() as cur:
-            cur.execute("SELECT DISTINCT ensembl_id, mondo_id FROM preclin.target_literature_search")
-            searched = set(cur.fetchall())
-        p = cohort_pairs()
-        return p[[(e, m) not in searched for e, m in zip(p.ensembl_id, p.mondo_id)]].reset_index(drop=True)
-    return pilot_pairs() if which == "pilot" else cohort_pairs()
+            cur.execute("SELECT ensembl_id, mondo_id, min(cutoff_year) FROM preclin.target_literature_search GROUP BY 1, 2")
+            first = {(e, m): y for e, m, y in cur.fetchall()}
+        return p[[first.get((e, m), c) >= c for e, m, c in zip(p.ensembl_id, p.mondo_id, p.cutoff_year)]].reset_index(drop=True)
+    return {"pilot": pilot_pairs, "cohort": cohort_pairs, "confirm": confirm_pairs, "yardstick": yardstick_pairs}[which]()
 
 
 def pair_key(ensembl_id: str, mondo_id: str) -> str:
@@ -540,18 +602,33 @@ def firecrawl(args) -> None:
 
 # --- screen --------------------------------------------------------------------------------------------------------
 
-SCREEN_SYSTEM = """You read one paper's title and abstract and decide what original evidence it reports about ONE human gene or its protein (the target) in ONE disease.
+SCREEN_PREAMBLE = """You read one paper's title and abstract and decide what original evidence it reports about ONE human gene or its protein (the target) in ONE disease.
 
 original_data: true when the paper reports new experimental or clinical results (not a review, commentary, guideline, protocol or case-free opinion).
 
 disease_match: the disease the evidence is about, against the disease given: same_or_subtype (the same disease, a subtype of it, or a near-identical disease, including an animal or cell model of it), related (a related but distinct disease), other (an unrelated disease), or none (no disease studied).
 
 kinds: true for each kind of evidence the paper reports about THIS target (under any of its names; a different gene of the same family does not count) in the disease named under disease_match, with original data:
-""" + "\n".join(f"- {k}: {v}" for k, v in KIND_TEXT.items()) + """
+"""
+SCREEN_RULES = """
 
 system: the experimental or clinical system of the paper's main finding about the target: primary_human_cells, cell_line, patient_tissue, patient_fluid_or_imaging, animal_model, people_other (clinical observations outside a trial), trial (an interventional trial), or none. Decide it first; each kind's system must match: primary_human_cells for human_cell_perturbation, cell_line for cell_line_perturbation, patient_tissue for diseased_tissue_protein, animal_model for the two animal kinds, patient_fluid_or_imaging for observational_biomarker, people_other for clinical_observation. A paper with several findings may show kinds in other systems too.
 
 A paper whose only agent is the program drug named below can show animal_model_pharmacology; mark agent_is_program_drug true then, false when another agent (a tool compound, antibody, siRNA, another drug) was used, and null when animal_model_pharmacology is false. Evidence must be about the target: a drug tested without the target being the point does not count, except under animal_model_pharmacology when the drug acts on this target. A kind is true only when the abstract states the finding; do not infer. Quote the sentence that decided the reading (empty when nothing qualifies)."""
+
+
+V3_RULE = """
+
+The target is the gene or protein named, under any of its names. Evidence about its ligand or hormone, an upstream regulator, a pathway partner or a downstream marker is not evidence about the target, even when the paper discusses the target's pathway."""
+
+
+def screen_system(version: str) -> str:
+    text = {"v3": KIND_TEXT_V3, "v4": KIND_TEXT_V4}.get(version, KIND_TEXT)
+    return SCREEN_PREAMBLE + "\n".join(f"- {k}: {v}" for k, v in text.items()) + \
+        (V3_RULE if version in ("v3", "v4") else "") + SCREEN_RULES
+
+
+SCREEN_SYSTEM = screen_system(VERSION)  # the gated v2 screen
 
 SCREEN_SCHEMA = {"type": "object", "additionalProperties": False,
                  "properties": {"original_data": {"type": "boolean"},
@@ -579,9 +656,12 @@ def validate_screen(_p: dict, out: dict) -> None:
         raise ValueError("agent_is_program_drug is set exactly when animal_model_pharmacology is true")
 
 
-def screen_task(model: str = SCREEN_MODEL, suffix: str = "") -> llm.Task:
-    return llm.Task(name="target_literature_screen" + suffix, prompt_version=VERSION, schema_version=VERSION,
-                    system=SCREEN_SYSTEM, schema=SCREEN_SCHEMA, render=render_screen, validate=validate_screen,
+def screen_task(model: str = SCREEN_MODEL, suffix: str = "", version: str | None = None) -> llm.Task:
+    """The screen at `version` (SCREEN_VERSION by default): v2 reads with KIND_TEXT, v3 with KIND_TEXT_V3, v4 (kept)
+    with KIND_TEXT_V4."""
+    version = version or SCREEN_VERSION
+    return llm.Task(name="target_literature_screen" + suffix, prompt_version=version, schema_version=VERSION,
+                    system=screen_system(version), schema=SCREEN_SCHEMA, render=render_screen, validate=validate_screen,
                     subject_type="pair_record", model=model, effort="medium", max_tokens=4000)
 
 
@@ -759,16 +839,19 @@ def store_screens(p: pd.DataFrame, pdec: dict[str, tuple[int, dict]], dec: dict[
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("CREATE TEMP TABLE chunk_pairs (ensembl_id text, mondo_id text) ON COMMIT DROP")
         execute_values(cur, "INSERT INTO chunk_pairs VALUES %s", keys)
-        cur.execute("DELETE FROM preclin.target_literature_prefilter USING chunk_pairs c "
-                    "WHERE (target_literature_prefilter.ensembl_id, target_literature_prefilter.mondo_id) = (c.ensembl_id, c.mondo_id)")
+        if SCREEN_VERSION == VERSION:  # a revised screen reads the same prefiltered records: its prefilter rows stand
+            cur.execute("DELETE FROM preclin.target_literature_prefilter USING chunk_pairs c "
+                        "WHERE (target_literature_prefilter.ensembl_id, target_literature_prefilter.mondo_id) = (c.ensembl_id, c.mondo_id)")
+            execute_values(cur, """INSERT INTO preclin.target_literature_prefilter (ensembl_id, mondo_id, record_id, possibly,
+                                                                                    llm_decision_id) VALUES %s""",
+                           [(*k.split("|", 2), o["possibly"], d) for k, (d, o) in pdec.items()], page_size=5000)
         cur.execute("DELETE FROM preclin.target_literature_screen USING chunk_pairs c "
-                    "WHERE (target_literature_screen.ensembl_id, target_literature_screen.mondo_id) = (c.ensembl_id, c.mondo_id)")
-        execute_values(cur, """INSERT INTO preclin.target_literature_prefilter (ensembl_id, mondo_id, record_id, possibly,
-                                                                                llm_decision_id) VALUES %s""",
-                       [(*k.split("|", 2), o["possibly"], d) for k, (d, o) in pdec.items()], page_size=5000)
+                    "WHERE (target_literature_screen.ensembl_id, target_literature_screen.mondo_id) = (c.ensembl_id, c.mondo_id) "
+                    "AND target_literature_screen.screen_version = %s", (SCREEN_VERSION,))
         execute_values(cur, f"""INSERT INTO preclin.target_literature_screen (ensembl_id, mondo_id, record_id, original_data,
                                     disease_match, {", ".join(KINDS[:4])}, agent_is_program_drug, {", ".join(KINDS[4:])},
-                                    quote, llm_decision_id) VALUES %s""", rows, page_size=2000)
+                                    quote, llm_decision_id, screen_version) VALUES %s""",
+                       [(*r, SCREEN_VERSION) for r in rows], page_size=2000)
         conn.commit()
 
 
@@ -1036,7 +1119,7 @@ def store_web(arm: str, pairs: pd.DataFrame, answers: dict[str, tuple[int | None
         conn.commit()
 
 
-def reconcile(_args) -> None:
+def reconcile(args) -> None:
     """Bring the stored literature to the cohort as it is now, after a rebuild of programs or pairs, without deleting
     or rewriting any stored row. A cohort pair with searches stored but none at its current cutoff gets rows at the new
     cutoff linking the records of its latest earlier-stored cutoff (screens are keyed by pair and record, so they apply
@@ -1044,8 +1127,9 @@ def reconcile(_args) -> None:
     Records dated after an earlier new cutoff stay as hits; the cutoff applied on read leaves them out. Pairs that
     left the cohort keep their rows. A cohort pair with no search stored is new: run names, origin, search,
     firecrawl --mode search, screen, firecrawl --mode related, web and web-screen with --pairs new (web-screen
-    --pairs cohort --sources all then screens every record added here)."""
-    p = cohort_pairs()
+    --pairs cohort --sources all then screens every record added here). With --pairs confirm the same brings the
+    confirmation pairs to their cutoffs (their new pairs: --pairs confirm-new); pairs not among them keep their rows."""
+    p = shard_of(pairs_of(args.pairs if args.pairs in ("cohort", "confirm") else "cohort"), args.shard)
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT DISTINCT ensembl_id, mondo_id, cutoff_year FROM preclin.target_literature_search")
         stored: dict = {}
@@ -1264,8 +1348,9 @@ def web_screen(args) -> None:
         with llm.connect() as conn, conn.cursor() as cur:
             execute_values(cur, f"""INSERT INTO preclin.target_literature_screen (ensembl_id, mondo_id, record_id,
                                         original_data, disease_match, {", ".join(KINDS[:4])}, agent_is_program_drug,
-                                        {", ".join(KINDS[4:])}, quote, llm_decision_id) VALUES %s ON CONFLICT DO NOTHING""",
-                           rows, page_size=2000)
+                                        {", ".join(KINDS[4:])}, quote, llm_decision_id, screen_version) VALUES %s
+                                        ON CONFLICT DO NOTHING""",
+                           [(*r, SCREEN_VERSION) for r in rows], page_size=2000)
             conn.commit()
         print(f"web screen: {start + len(part)}/{len(recs)} readable={len(items)} screened={len(dec)}", flush=True)
 
@@ -1305,19 +1390,24 @@ def yardstick(_args) -> None:
 
 
 
-def stored_qualifying(pairs: pd.DataFrame) -> pd.DataFrame:
+def stored_qualifying(pairs: pd.DataFrame, version: str | None = None) -> pd.DataFrame:
     """ensembl_id, mondo_id, record_id, year, doi and kind of every stored screen row that counts for a kind (counts),
     read from preclin.target_literature_screen: unlike qualifying, it does not rebuild the screen's inputs, which
     name the program drugs and so move when programs are rebuilt."""
     with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("CREATE TEMP TABLE want_pairs (ensembl_id text, mondo_id text) ON COMMIT DROP")
+        execute_values(cur, "INSERT INTO want_pairs VALUES %s", sorted(set(zip(pairs.ensembl_id, pairs.mondo_id))))
         cur.execute(f"""SELECT s.ensembl_id, s.mondo_id, s.record_id, coalesce(p.year, r.year, o.year),
                                lower(coalesce(p.doi, r.doi)), {", ".join("s." + k for k in KINDS)}, s.agent_is_program_drug
-                        FROM preclin.target_literature_screen s
+                        FROM (SELECT DISTINCT ON (ensembl_id, mondo_id, record_id) * FROM preclin.target_literature_screen
+                              JOIN want_pairs USING (ensembl_id, mondo_id)
+                              WHERE %(version)s IS NULL OR screen_version = %(version)s
+                              ORDER BY ensembl_id, mondo_id, record_id, screen_version DESC) s
                         LEFT JOIN public.publications p ON p.pmid = s.record_id
                         LEFT JOIN preclin.literature_record r ON r.record_id = s.record_id
-                        LEFT JOIN (SELECT regexp_replace(record_id, '^PMID:', '') AS record_id, min(year) AS year
-                                   FROM preclin.target_disease_source GROUP BY 1) o ON o.record_id = s.record_id
-                        WHERE s.original_data AND s.disease_match = 'same_or_subtype'""")
+                        LEFT JOIN LATERAL (SELECT min(x.year) AS year FROM preclin.target_disease_source x
+                                           WHERE x.record_id IN (s.record_id, 'PMID:' || s.record_id)) o ON true
+                        WHERE s.original_data AND s.disease_match = 'same_or_subtype'""", {"version": version})
         rows = cur.fetchall()
     want = set(zip(pairs.ensembl_id, pairs.mondo_id))
     out = []
@@ -1386,6 +1476,319 @@ def web_score(_args) -> None:
             "cohort_pairs_only_from_web_arm": len(pairs_any - pairs_abs),
             "phase2_coverage_union": float(np.mean(cov)) if cov else None}
     print(json.dumps(result, indent=2))
+
+
+# --- resolve: the confirmed set, coverage and precision -----------------------------------------------------------
+
+ADJUDICATE_MODEL = "claude-opus-5-5"
+ADJUDICATE_TOOLS = [{"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 3}]
+NEGATIVE_SAMPLE = 300  # seeded retrieved records of the yardstick's pairs that the screen read as showing no kind
+NEGATIVE_SEED = 20261125
+
+ADJUDICATE_SYSTEM = """You are the adjudicator who builds the confirmed set against which literature searches are scored. You judge ONE paper for ONE human gene or its protein (the target) and ONE disease, strictly, from the paper itself. Several searches found this paper; decide whether it truly reports each kind of evidence below. Do not search for other papers.
+
+Read the title and abstract given. When they do not settle a kind (for example the abstract mentions knockdown but not in which cells, or says "biomarker" without saying where it was measured), open the paper's full text with web_fetch (the PubMed Central, Europe PMC or publisher page from the link given) and read the methods, results and figure legends. Set full_text_read accordingly.
+
+original_data: true when the paper reports new experimental or clinical results (not a review, commentary, guideline, protocol or opinion).
+
+disease_match: the disease the evidence is about, against the disease given: same_or_subtype (the same disease, a subtype, a near-identical disease, or an animal or cell model of it), related (a related but distinct disease), other, or none.
+
+kinds: true for each kind the paper shows about THIS target (any of its names; a different gene of the same family does not count) in the disease under disease_match, with original data:
+""" + "\n".join(f"- {k}: {v}" for k, v in KIND_TEXT.items()) + """
+
+Boundaries, decided by the system and by HOW the target was changed:
+- Primary versus established cells: primary means cells or tissue taken from people (patients or healthy donors) and used directly or in short-term culture: PBMCs and isolated immune cells, primary fibroblasts, endothelial cells such as HUVEC, primary tumour cells, patient-derived organoids, iPSC-derived cells, tissue explants and slices. An established line is an immortalised or continuous line (HeLa, HEK293, Jurkat, THP-1, named cancer lines, commercial immortalised lines). Cells grown in animals (xenografts, PDX) are animal models.
+- Perturbation means the experimenter changes the target (knockdown, knockout, overexpression, or an inhibitor, antibody or agonist acting on it) and a feature of the disease changes (the disease's cells grow, die, invade or signal differently; a disease-relevant output changes). Only measuring the target's level does not count as perturbation.
+- Animal pharmacology versus animal genetics: a heritable genetic change of the target (germline or conditional knockout, knock-in, transgene, in vivo genome editing) is mouse_genetic_disease_model; a drug, antibody, tool compound, siRNA, antisense or viral vector given to the animal is animal_model_pharmacology. Either needs an animal model of THIS disease (induced, genetic or xenograft of this cancer); healthy animals do not count.
+- Tissue versus fluid: the target's PROTEIN measured in patients' diseased tissue (biopsy, resection, autopsy) against normal or less-affected tissue is diseased_tissue_protein; RNA alone does not count. The target or its product measured in patients' blood, serum, plasma, CSF, urine, another fluid, or by imaging, in an OBSERVATIONAL study, and associated with the disease's presence, severity, progression or outcome, is observational_biomarker. Genetic association is neither.
+- clinical_observation: an effect seen in people implicates the target in the disease: a side effect or unexpected benefit of a drug acting on the target outside trials of drugs for this disease, people with the target deficient or blocked, or autoantibodies against the target. Efficacy trials of drugs in this disease do not count.
+
+A paper whose only agent is a program drug named below can show animal_model_pharmacology; mark agent_is_program_drug true then, false when another agent was used, and null when animal_model_pharmacology is false. A kind is true only when the paper shows the finding. Quote the sentence that decided the reading (empty when nothing qualifies)."""
+
+ADJUDICATE_SCHEMA = {"type": "object", "additionalProperties": False,
+                     "properties": {**{k: v for k, v in SCREEN_SCHEMA["properties"].items() if k != "system"},
+                                    "full_text_read": {"type": "boolean"}},
+                     "required": ["original_data", "disease_match", "kinds", "agent_is_program_drug", "quote",
+                                  "full_text_read"]}
+
+
+def render_adjudicate(p: dict) -> str:
+    return render_screen(p) + f"\nLink: {p['link']}\nCutoff year: {p['cutoff_year']}"
+
+
+ADJUDICATE_TASK = llm.Task(name="target_literature_adjudicate", prompt_version="v1", schema_version="v1",
+                           system=ADJUDICATE_SYSTEM, schema=ADJUDICATE_SCHEMA, render=render_adjudicate,
+                           validate=validate_screen, subject_type="pair_record", model=ADJUDICATE_MODEL, effort="high",
+                           max_tokens=16000, tools=ADJUDICATE_TOOLS)
+ADJUDICATE_FALLBACK = llm.Task(**{**ADJUDICATE_TASK.__dict__, "name": "target_literature_adjudicate_fallback",
+                                  "model": REFERENCE_FALLBACK})
+
+
+def record_link(record_id: str, doi: str | None) -> str:
+    if record_id.isdigit():
+        return f"https://pubmed.ncbi.nlm.nih.gov/{record_id}/"
+    src, _, rid = record_id.partition(":")
+    return f"https://europepmc.org/article/{src}/{rid}" if rid else (f"https://doi.org/{doi}" if doi else record_id)
+
+
+def candidates() -> pd.DataFrame:
+    """Every candidate study of the yardstick's pairs (ensembl_id, mondo_id, record_id, cutoff_year and its sources):
+    the records the screen read as showing a kind, the verified studies the web arm and the yardstick named, and a
+    seeded sample (NEGATIVE_SAMPLE) of retrieved records the screen read as showing none; each published by the
+    pair's cutoff (or of unknown year). Unverified citations are not candidates: no paper behind them could be found."""
+    ys = yardstick_pairs()
+    cut = {(r.ensembl_id, r.mondo_id): int(r.cutoff_year) for r in ys.itertuples()}
+    q = stored_qualifying(ys)
+    screen = {(e, m, r) for e, m, r in zip(q.ensembl_id, q.mondo_id, q.record_id)}
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT arm, ensembl_id, mondo_id, record_id FROM preclin.target_literature_web_study
+                       WHERE record_id IS NOT NULL""")
+        named = pd.DataFrame(cur.fetchall(), columns=["arm", "ensembl_id", "mondo_id", "record_id"])
+        cur.execute(f"""SELECT ensembl_id, mondo_id, record_id FROM (
+                            SELECT DISTINCT ON (ensembl_id, mondo_id, record_id) * FROM preclin.target_literature_screen
+                            ORDER BY ensembl_id, mondo_id, record_id, screen_version DESC) s
+                        WHERE NOT (s.original_data AND s.disease_match = 'same_or_subtype'
+                                   AND ({" OR ".join(KINDS)}))""")
+        negatives = [x for x in cur.fetchall() if (x[0], x[1]) in cut]
+    named = named[[(e, m) in cut for e, m in zip(named.ensembl_id, named.mondo_id)]]
+    web = set(zip(*[named[named.arm == "web"][c] for c in ("ensembl_id", "mondo_id", "record_id")]))
+    yard = set(zip(*[named[named.arm == "yardstick"][c] for c in ("ensembl_id", "mondo_id", "record_id")]))
+    texts = record_texts(sorted({x[2] for x in (*screen, *web, *yard, *negatives)}))
+    by_cutoff = lambda x: (texts.get(x[2]) or (None, None, None))[2] is None or texts[x[2]][2] <= cut[(x[0], x[1])]  # noqa: E731
+    screen, web, yard = ({x for x in s if by_cutoff(x)} for s in (screen, web, yard))
+    negatives = sorted({x for x in negatives if by_cutoff(x)} - screen - web - yard)
+    rng = np.random.default_rng(NEGATIVE_SEED)
+    sample = {negatives[i] for i in rng.choice(len(negatives), min(NEGATIVE_SAMPLE, len(negatives)), replace=False)}
+    keys = sorted(screen | web | yard | sample)
+    return pd.DataFrame([(e, m, r, cut[(e, m)], (e, m, r) in screen, (e, m, r) in web, (e, m, r) in yard,
+                          (e, m, r) in sample) for e, m, r in keys],
+                        columns=["ensembl_id", "mondo_id", "record_id", "cutoff_year", "from_screen", "from_web",
+                                 "from_yardstick", "screened_out_sample"])
+
+
+def adjudicate_payloads(c: pd.DataFrame) -> dict[str, dict]:
+    pairs = yardstick_pairs()
+    items = screen_payloads(pairs, c[["ensembl_id", "mondo_id", "record_id"]])
+    cut = {(r.ensembl_id, r.mondo_id): int(r.cutoff_year) for r in pairs.itertuples()}
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT pmid, doi FROM public.publications WHERE pmid = ANY(%s)", (sorted(set(c.record_id)),))
+        dois = dict(cur.fetchall())
+    for k, v in items.items():
+        e, m, r = k.split("|", 2)
+        v["link"] = record_link(r, dois.get(r))
+        v["cutoff_year"] = cut[(e, m)]
+    return items
+
+
+def adjudicate(args) -> None:
+    """Judge every candidate (candidates) once with ADJUDICATE_TASK (the fallback model reads what it refuses) and
+    store the readings in preclin.target_literature_adjudication, replacing the table's rows of the same records."""
+    c = shard_of(candidates(), args.shard)
+    print(f"adjudicate: candidates={len(c)} screen={int(c.from_screen.sum())} web={int(c.from_web.sum())} "
+          f"yardstick={int(c.from_yardstick.sum())} screened-out sample={int(c.screened_out_sample.sum())}", flush=True)
+    items = adjudicate_payloads(c)
+    print(f"adjudicate: readable={len(items)} (no stored text: {len(c) - len(items)})", flush=True)
+    dec = decide(ADJUDICATE_TASK, items)
+    rest = {k: v for k, v in items.items() if k not in dec}
+    if rest:
+        dec.update(decide(ADJUDICATE_FALLBACK, rest))
+    years = {k: v["year"] for k, v in items.items()}
+    with llm.connect() as conn, conn.cursor() as cur:  # full text read: the reader fetched a page (its own flag can lag)
+        cur.execute("SELECT llm_decision_id, coalesce((usage->>'web_fetch_requests')::int, 0) > 0 FROM pv_evidence.llm_decision "
+                    "WHERE llm_decision_id = ANY(%s)", ([d for d, _ in dec.values()],))
+        fetched = dict(cur.fetchall())
+    src = {(r.ensembl_id, r.mondo_id, r.record_id): r for r in c.itertuples()}
+    rows = []
+    for k, (d, o) in dec.items():
+        r = src[tuple(k.split("|", 2))]
+        rows.append((r.ensembl_id, r.mondo_id, r.record_id, r.cutoff_year, years[k], r.from_screen, r.from_web,
+                     r.from_yardstick, r.screened_out_sample, o["original_data"], o["disease_match"],
+                     *(o["kinds"][x] for x in KINDS[:4]), o["agent_is_program_drug"],
+                     *(o["kinds"][x] for x in KINDS[4:]), o["full_text_read"] or fetched.get(d, False),
+                     o["quote"] or None, d))
+    with llm.connect() as conn, conn.cursor() as cur:
+        execute_values(cur, f"""INSERT INTO preclin.target_literature_adjudication (ensembl_id, mondo_id, record_id,
+                                    cutoff_year, year, from_screen, from_web, from_yardstick, screened_out_sample,
+                                    original_data, disease_match, {", ".join(KINDS[:4])}, agent_is_program_drug,
+                                    {", ".join(KINDS[4:])}, full_text_read, quote, llm_decision_id) VALUES %s
+                                ON CONFLICT (ensembl_id, mondo_id, record_id) DO UPDATE SET
+                                    from_screen = EXCLUDED.from_screen, from_web = EXCLUDED.from_web,
+                                    from_yardstick = EXCLUDED.from_yardstick,
+                                    screened_out_sample = EXCLUDED.screened_out_sample""", rows, page_size=1000)
+        conn.commit()
+    print(f"adjudicate: stored={len(rows)} unread={len(items) - len(dec)}", flush=True)
+
+
+SCORE_KINDS = (*KINDS, "animal_model_pharmacology_other")
+CR_BOOT = 2000  # parametric bootstrap draws for the capture-recapture intervals
+CR_SEED = 20261126
+
+
+def adjudicated() -> pd.DataFrame:
+    """The adjudication's rows, each with the kinds it confirms (published by the pair's cutoff, original data, the
+    pair's disease or a subtype; animal_model_pharmacology_other when the agent is not a program drug)."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute(f"""SELECT ensembl_id, mondo_id, record_id, cutoff_year, year, from_screen, from_web, from_yardstick,
+                               screened_out_sample, original_data, disease_match, {", ".join(KINDS)}, agent_is_program_drug,
+                               full_text_read, quote FROM preclin.target_literature_adjudication""")
+        a = pd.DataFrame(cur.fetchall(), columns=[d[0] for d in cur.description])
+    ok = a.original_data & a.disease_match.eq("same_or_subtype") & (a.year.isna() | (a.year <= a.cutoff_year))
+    for k in KINDS:
+        a["true_" + k] = ok & a[k]
+    a["true_animal_model_pharmacology_other"] = a.true_animal_model_pharmacology & a.agent_is_program_drug.eq(False)
+    return a
+
+
+def arm_positives(version: str | None = None) -> dict[str, set[tuple[str, str, str, str]]]:
+    """(ensembl_id, mondo_id, record_id, kind) each source reads as counting for the yardstick's pairs, by the pair's
+    cutoff: abstract (the screen at `version`, records from a non-web search), web (the screen, records the web arm
+    named), union (either), yardstick (the yardstick's verified studies under the kind it named)."""
+    ys = yardstick_pairs()
+    cut = {(r.ensembl_id, r.mondo_id): int(r.cutoff_year) for r in ys.itertuples()}
+    q = stored_qualifying(ys, version)
+    q = q[[pd.isna(y) or y <= cut[(e, m)] for e, m, y in zip(q.ensembl_id, q.mondo_id, q.year)]]
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT DISTINCT ensembl_id, mondo_id, record_id, source = 'web_agent' FROM preclin.target_literature_hit
+                       WHERE (ensembl_id, mondo_id) IN %s""", (tuple(cut),))
+        src: dict = {}
+        for e, m, r, w in cur.fetchall():
+            src.setdefault((e, m, r), set()).add(w)
+        cur.execute("""SELECT ensembl_id, mondo_id, record_id, kind, year FROM preclin.target_literature_web_study
+                       WHERE arm = 'yardstick' AND record_id IS NOT NULL""")
+        yard = {(e, m, r, k) for e, m, r, k, y in cur.fetchall() if (e, m) in cut and (y is None or y <= cut[(e, m)])}
+    out = {"abstract": set(), "web": set(), "union": set(), "yardstick": yard}
+    for e, m, r, k in zip(q.ensembl_id, q.mondo_id, q.record_id, q.kind):
+        how = src.get((e, m, r), set())
+        out["union"].add((e, m, r, k))
+        if False in how:
+            out["abstract"].add((e, m, r, k))
+        if True in how:
+            out["web"].add((e, m, r, k))
+    return out
+
+
+def capture_recapture(hist: list[tuple[int, int, int]], rng: np.random.Generator) -> dict:
+    """Log-linear capture-recapture for three sources: the observed histories (each a (s1, s2, s3) with at least one
+    1), the model among independence and the three one-interaction models with the lowest AIC, its estimate of the
+    unseen cell and of the total, and a parametric bootstrap interval for the total. Assumes a closed population and
+    homogeneous capture within the dependence the chosen model allows."""
+    import itertools
+    import statsmodels.api as sm
+    cells = [c for c in itertools.product((0, 1), repeat=3) if any(c)]
+    n = np.array([sum(h == c for h in hist) for c in cells], dtype=float)
+    if n.sum() < 5 or (n > 0).sum() < 3:
+        return {"observed": int(n.sum()), "estimable": False}
+    X0 = np.array(cells, dtype=float)
+    designs = {"independence": X0}
+    for (i, j), name in (((0, 1), "abstract×web"), ((0, 2), "abstract×yardstick"), ((1, 2), "web×yardstick")):
+        designs[f"independence + {name}"] = np.column_stack([X0, X0[:, i] * X0[:, j]])
+
+    def fit(X, y):
+        try:
+            r = sm.GLM(y, sm.add_constant(X, has_constant="add"), family=sm.families.Poisson()).fit()
+        except Exception:
+            return None
+        return r if np.isfinite(r.params).all() else None
+
+    fits = {k: fit(X, n) for k, X in designs.items()}
+    fits = {k: r for k, r in fits.items() if r is not None and len(r.params) < len(cells)}
+    name, best = min(fits.items(), key=lambda kv: kv[1].aic)
+    unseen = float(np.exp(best.params[0]))
+    mu = best.mu
+    boot = []
+    for _ in range(CR_BOOT):
+        y = rng.poisson(mu)
+        r = fit(designs[name], y.astype(float))
+        if r is not None:
+            boot.append(y.sum() + float(np.exp(r.params[0])))
+    lo, hi = (np.percentile(boot, [2.5, 97.5]) if boot else (np.nan, np.nan))
+    return {"observed": int(n.sum()), "histories": {"".join(map(str, c)): int(v) for c, v in zip(cells, n)},
+            "model": name, "aic": float(best.aic), "unseen": unseen, "total": float(n.sum() + unseen),
+            "total_lo": float(lo), "total_hi": float(hi), "estimable": True}
+
+
+def resolve_metrics(version: str | None = None) -> dict:
+    """Per kind, against the adjudicated confirmed set: each source's coverage and precision at pair level and study
+    level; what the screen missed among the screened-out sample; the capture-recapture estimate of the qualifying
+    pairs every source missed and the coverage of the union against it; and the screen-versus-adjudicator confusion."""
+    a = adjudicated()
+    pos = arm_positives(version)
+    rng = np.random.default_rng(CR_SEED)
+    pairs_total = len(yardstick_pairs())
+    with llm.connect() as conn, conn.cursor() as cur:  # screened-out records of the yardstick's pairs, by cutoff
+        cur.execute(f"""SELECT count(*) FROM (SELECT DISTINCT ON (ensembl_id, mondo_id, record_id) * FROM preclin.target_literature_screen
+                            WHERE (%(v)s IS NULL OR screen_version = %(v)s) AND (ensembl_id, mondo_id) IN %(p)s
+                            ORDER BY ensembl_id, mondo_id, record_id, screen_version DESC) s
+                        WHERE NOT (s.original_data AND s.disease_match = 'same_or_subtype' AND ({" OR ".join(KINDS)}))""",
+                    {"v": version, "p": tuple(zip(a.ensembl_id, a.mondo_id))})
+        negatives_total = cur.fetchone()[0]
+    sample = a[a.screened_out_sample]
+    out = {"version": version or "latest", "pairs": pairs_total, "candidates": len(a),
+           "full_text_read": float(a.full_text_read.mean()), "screened_out_sample": len(sample),
+           "screened_out_total": int(negatives_total), "kinds": {}}
+    for k in SCORE_KINDS:
+        t = a[a["true_" + k]]
+        true_studies = set(zip(t.ensembl_id, t.mondo_id, t.record_id))
+        true_pairs = {(e, m) for e, m, _ in true_studies}
+        res = {"confirmed_studies": len(true_studies), "confirmed_pairs": len(true_pairs)}
+        for arm, got in pos.items():
+            studies = {(e, m, r) for e, m, r, kk in got if kk == k}
+            pairs = {(e, m) for e, m, _ in studies}
+            judged = {x for x in studies if x in set(zip(a.ensembl_id, a.mondo_id, a.record_id))}
+            res[arm] = {"pairs_yes": len(pairs),
+                        "coverage_pair": len(pairs & true_pairs) / len(true_pairs) if true_pairs else None,
+                        "precision_pair": len(pairs & true_pairs) / len(pairs) if pairs else None,
+                        "coverage_study": len(studies & true_studies) / len(true_studies) if true_studies else None,
+                        "precision_study": len(judged & true_studies) / len(judged) if judged else None}
+        missed = sample[sample["true_" + k]]
+        res["screened_out"] = {"confirmed_in_sample": len(missed),
+                               "estimated_missed_studies": len(missed) / len(sample) * negatives_total if len(sample) else None,
+                               "pairs_only_from_sample": len({(e, m) for e, m in zip(missed.ensembl_id, missed.mondo_id)}
+                                                             - {(e, m) for e, m, _, kk in pos["union"] | pos["yardstick"] if kk == k})}
+        found = {arm: {(e, m) for e, m, r, kk in pos[arm] if kk == k and (e, m, r) in true_studies}
+                 for arm in ("abstract", "web", "yardstick")}
+        hist = [tuple(int(p in found[s]) for s in ("abstract", "web", "yardstick")) for p in true_pairs]
+        hist = [h for h in hist if any(h)]
+        cr = capture_recapture(hist, rng)
+        if cr.get("estimable"):
+            union_found = len(found["abstract"] | found["web"])
+            cr["union_coverage_pair"] = union_found / cr["total"]
+            cr["union_coverage_pair_lo"] = union_found / cr["total_hi"] if cr["total_hi"] else None
+            cr["union_coverage_pair_hi"] = union_found / cr["total_lo"] if cr["total_lo"] else None
+        res["capture_recapture"] = cr
+        out["kinds"][k] = res
+    conf: dict = {}
+    reasons: dict = {}
+    by_rec = {}
+    for e, m, r, kk in pos["union"]:
+        by_rec.setdefault((e, m, r), set()).add(kk)
+    adj = a.set_index(["ensembl_id", "mondo_id", "record_id"])
+    for key, kinds in by_rec.items():
+        if key not in adj.index:
+            continue
+        row = adj.loc[key]
+        truth = {k for k in SCORE_KINDS if row["true_" + k]}
+        for kk in kinds:
+            if kk in truth:
+                conf.setdefault(kk, {}).setdefault(kk, 0)
+                conf[kk][kk] += 1
+                continue
+            why = ("not original data" if not row.original_data else "disease not the pair's" if row.disease_match != "same_or_subtype"
+                   else "after the cutoff" if pd.notna(row.year) and row.year > row.cutoff_year
+                   else "another kind: " + ", ".join(sorted(truth)) if truth else "no kind")
+            reasons.setdefault(kk, {}).setdefault(why, 0)
+            reasons[kk][why] += 1
+            for t in truth:
+                conf.setdefault(kk, {}).setdefault(t, 0)
+                conf[kk][t] += 1
+    out["screen_kind_vs_adjudicated_kind"] = conf
+    out["screen_false_positive_reasons"] = reasons
+    return out
+
+
+def resolve_score(args) -> None:
+    """resolve_metrics for the screen version --version (default: each record's latest)."""
+    print(json.dumps(resolve_metrics(args.version), indent=1, default=float))
 
 
 # --- cost ----------------------------------------------------------------------------------------------------------
@@ -1499,12 +1902,12 @@ INTEGRITY = {
                 CASE WHEN h.source = 'firecrawl' AND h.kind = '' THEN s.kind ELSE h.kind END)
         WHERE s.ensembl_id IS NULL""",
 
-    "screen rows whose decision is not a validated version 2 screen (or its fallback) of that pair and record": f"""
+    "screen rows whose decision is not a validated screen (or its fallback) of that pair, record and version": """
         SELECT count(*) FROM preclin.target_literature_screen s LEFT JOIN pv_evidence.llm_decision d
             ON d.llm_decision_id = s.llm_decision_id
         LEFT JOIN pv_evidence.llm_decision_run r ON r.decision_run_id = d.decision_run_id
         WHERE d.llm_decision_id IS NULL OR d.task NOT IN ('target_literature_screen', 'target_literature_screen_fallback')
-           OR r.prompt_version <> '{VERSION}'
+           OR r.prompt_version <> s.screen_version
            OR d.validation_status <> 'validated'
            OR d.subject_key <> s.ensembl_id || '|' || s.mondo_id || '|' || s.record_id""",
     "prefilter rows whose decision is not a validated prefilter of that pair and record": """
@@ -1611,9 +2014,9 @@ def main() -> None:
                      ("prefilter-check", prefilter_check), ("cost", cost), ("integrity", integrity),
                      ("summary", summary), ("firecrawl", firecrawl), ("origin", origin), ("web", web),
                      ("web-screen", web_screen), ("yardstick", yardstick), ("web-score", web_score),
-                     ("reconcile", reconcile)]:
+                     ("reconcile", reconcile), ("adjudicate", adjudicate), ("resolve-score", resolve_score)]:
         c = sub.add_parser(name)
-        c.add_argument("--pairs", choices=["pilot", "cohort", "new"], default="pilot")
+        c.add_argument("--pairs", choices=["pilot", "cohort", "new", "confirm", "confirm-new", "yardstick"], default="pilot")
         c.set_defaults(fn=fn)
         if name == "firecrawl":
             c.add_argument("--mode", choices=["search", "related"], required=True)
@@ -1622,11 +2025,18 @@ def main() -> None:
             c.add_argument("--skip-done", action="store_true", help="skip pairs whose every record is already decided")
         if name == "web-screen":
             c.add_argument("--sources", default="web_agent", help="comma-separated hit sources to screen, or all")
-        if name in ("search", "screen", "web", "web-screen"):
+        if name in ("search", "screen", "web", "web-screen", "adjudicate", "reconcile"):
             c.add_argument("--shard", help="i/n: this process's share of the pairs, to run n in parallel")
+        if name == "resolve-score":
+            c.add_argument("--version", help="score this screen version (default: each record's latest)")
         if name in ("screen", "cost"):
             c.add_argument("--since", help="count spend from this timestamp (the full run's start)")
+        if name in ("screen", "web-screen"):
+            c.add_argument("--screen-version", choices=["v2", "v3", "v4"], help="store readings of this screen version")
     args = ap.parse_args()
+    if getattr(args, "screen_version", None):
+        global SCREEN_VERSION
+        SCREEN_VERSION = args.screen_version
     args.fn(args)
 
 

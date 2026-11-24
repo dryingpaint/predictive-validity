@@ -53,3 +53,29 @@ def test_a_model_named_pmid_counts_only_when_its_title_matches():
     from pipeline.target_literature import TITLE_MATCH, title_match
     assert title_match("IL-23 blockade attenuates colitis in mice", "Il-23 blockade attenuates colitis in mice.") >= TITLE_MATCH
     assert title_match("IL-23 blockade attenuates colitis in mice", "A survey of hospital staffing") < TITLE_MATCH
+
+
+def test_capture_recapture_estimates_at_least_the_pairs_seen_and_more_when_sources_overlap_little():
+    import numpy as np
+    from pipeline.target_literature import capture_recapture
+    rng = np.random.default_rng(1)
+    little = [(1, 0, 0)] * 20 + [(0, 1, 0)] * 20 + [(0, 0, 1)] * 20 + [(1, 1, 0)] * 2 + [(1, 0, 1)] * 2 + [(0, 1, 1)] * 2 + [(1, 1, 1)]
+    much = [(1, 1, 1)] * 40 + [(1, 1, 0)] * 5 + [(1, 0, 1)] * 5 + [(0, 1, 1)] * 5 + [(1, 0, 0)] + [(0, 1, 0)] + [(0, 0, 1)]
+    a, b = capture_recapture(little, rng), capture_recapture(much, rng)
+    assert a["total"] >= a["observed"] and b["total"] >= b["observed"]
+    assert a["total"] / a["observed"] > b["total"] / b["observed"]
+    assert not capture_recapture([(1, 0, 0)] * 2, rng)["estimable"]
+
+
+def test_the_misclassification_correction_leaves_a_perfect_search_alone_and_widens_an_imperfect_one():
+    import numpy as np
+    from report import evidence_analysis as ea
+    row = {"column": "observational_biomarker", "estimated": True, "exposed": 200, "eligible": 1000,
+           "rs_rs": 1.5, "rs_rs_lo": 1.2, "rs_rs_hi": 1.9, "rs_loa_without": 0.1}
+    ea.TARGET_LITERATURE_COVERAGE["observational_biomarker"] = (5000, 5000, 5000)
+    perfect = ea.corrected(row, np.random.default_rng(0))
+    assert abs(perfect["rs_corr"] - 1.5) < 0.05
+    ea.TARGET_LITERATURE_COVERAGE["observational_biomarker"] = (30, 40, 36)
+    rough = ea.corrected(row, np.random.default_rng(0))
+    assert rough["rs_corr_hi"] - rough["rs_corr_lo"] > perfect["rs_corr_hi"] - perfect["rs_corr_lo"]
+    del ea.TARGET_LITERATURE_COVERAGE["observational_biomarker"]

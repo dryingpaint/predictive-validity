@@ -507,7 +507,8 @@ def evidence_translates():
     (report.evidence_lines.chart_rows), on US-developed programs, under one heading per broad category; marks are
     coloured by whether the kind is about the target or the drug; a filled dot is a 95% interval clear of 1. Only rows
     with an estimate are drawn; every line tried is in the appendix table. An interval that runs past the axis ends
-    in an arrowhead at its edge."""
+    in an arrowhead at its edge. A #154 target-literature row (‡) draws its estimate corrected for the search's
+    coverage and precision (report.evidence_analysis.corrected), and its label gives the coverage."""
     lines = pd.read_csv(os.path.join(OUT, "evidence_analysis", "chart.csv"))
     lines = lines[lines.estimated.eq(True)].reset_index(drop=True)
     ys, y, prev = [], 0.0, None
@@ -517,11 +518,17 @@ def evidence_translates():
         prev = r.category
         ys.append(y)
     fig, ax = plt.subplots(figsize=(10, 0.4 * len(ys) + 3.4))
+    has_corr = "rs_corr" in lines.columns
     for yi, r in zip(ys, lines.itertuples()):
-        ratio_interval(ax, yi, r.rs_rs, r.rs_rs_lo, r.rs_rs_hi, r.exposed, about_color(r.category, r.about))
+        if has_corr and pd.notna(r.rs_corr):
+            ratio_interval(ax, yi, r.rs_corr, r.rs_corr_lo, r.rs_corr_hi, r.exposed, about_color(r.category, r.about))
+        else:
+            ratio_interval(ax, yi, r.rs_rs, r.rs_rs_lo, r.rs_rs_hi, r.exposed, about_color(r.category, r.about))
     ratio_axis(ax, "How often programs with the evidence reached approval, relative to those without (95% range)")
     style(ax)
-    labels = [("      " if r.level == "value" else "") + r.label for r in lines.itertuples()]
+    labels = [("      " if r.level == "value" else "") + r.label
+              + (f" ‡ (found for {r.coverage:.0%} of pairs)" if has_corr and pd.notna(r.rs_corr) else "")
+              for r in lines.itertuples()]
     ax.set_yticks(ys, labels, color=INK, fontsize=10.5)
     for t, r in zip(ax.get_yticklabels(), lines.itertuples()):
         t.set_horizontalalignment("left")

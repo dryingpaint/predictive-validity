@@ -43,7 +43,8 @@ import pandas as pd
 from report import frame
 from pipeline.stops import keys
 from report import stop_causes
-from report.evidence_lines import APPROVAL_SPLIT, KINDS, PRECEDENT_KINDS, SAFETY, build, chart_rows, loa_rows, report_lines, stale, us
+from report.evidence_lines import (APPROVAL_SPLIT, KINDS, PRECEDENT_KINDS, SAFETY, TARGET_LITERATURE, TARGET_LITERATURE_COVERAGE,
+                                   build, chart_rows, loa_rows, report_lines, stale, us)
 from report.section1 import failure_modes, phase_rows
 from report.section2 import relative_success
 from report.section3 import COVARS, MIN_TARGETS, adjusted, cause_outcomes, coef, describe, estimate, holm, jsonable, poisson, sponsors
@@ -52,6 +53,11 @@ from report.windows import CONFIRM, SECTION1
 OUT = os.path.join(frame.REPO, "report", "output", "evidence_analysis")
 LITERATURE_GATE = os.path.join(frame.REPO, "report", "audits", "literature_gate.json")  # pipeline.literature
 MIN_ENTRIES = 100  # exposed entries below which a line is described, not estimated
+QBA_DRAWS = 5000  # draws of the misclassification correction of the #154 target-literature rows
+QBA_SEED = 20261127
+# Each target-literature row's column -> the kind its coverage and precision were measured for
+CORRECTED = {**{c: k for c, k in TARGET_LITERATURE.items()}, "tl_pharmacology_other": "animal_model_pharmacology_other",
+             "primary_cell_perturbation": "human_cell_perturbation", "observational_biomarker": "observational_biomarker"}
 COVARS_23 = (*COVARS, "phase")
 
 
@@ -90,6 +96,40 @@ def line_row(kind: str, category: str, about: str, level: str, line, d: pd.DataF
 
 
 DOSE_REASON = "PK, dose or formulation"  # the registry reason a dose stop can carry (report.section1.REASON_ORDER)
+
+
+def corrected(row: dict, rng: np.random.Generator) -> dict:
+    """The relative success of a #154 target-literature row corrected for the search's misclassification of programs:
+    with pair-level sensitivity Se (pairs found, of those with a confirmed study) and precision PPV (pairs with a
+    confirmed study, of those the search read as yes) drawn from Beta posteriors of the adjudication's counts, the
+    observed prevalence p gives the true prevalence pi = PPV p / Se, and the observed groups' approval rates are
+    mixtures of the true groups' (with: PPV of truly exposed; without: (pi - PPV p) / (1 - p) truly exposed), solved
+    for the true rates; the observed ratio's sampling error enters as a log-normal draw from its 95% interval.
+    Assumes the misclassification is the same whether or not a program reached approval. Draws with an impossible
+    solution (a negative rate) are dropped and counted."""
+    kind = CORRECTED.get(row["column"])
+    found, true, said = TARGET_LITERATURE_COVERAGE.get(kind, (0, 0, 0))
+    if not (true and said and row.get("estimated") and np.isfinite(row.get("rs_rs", np.nan))):
+        return {}
+    p = row["exposed"] / row["eligible"]
+    se = rng.beta(found + 1, true - found + 1, QBA_DRAWS)
+    ppv = rng.beta(found + 1, said - found + 1, QBA_DRAWS)
+    sd = (np.log(row["rs_rs_hi"]) - np.log(row["rs_rs_lo"])) / (2 * 1.96)
+    l0 = row["rs_loa_without"]
+    l_with = l0 * np.exp(rng.normal(np.log(row["rs_rs"]), sd, QBA_DRAWS))
+    pi = np.minimum(ppv * p / se, 0.999)
+    q = np.clip((pi - ppv * p) / (1 - p), 0, 1)  # share of the observed without group truly exposed
+    det = ppv * (1 - q) - (1 - ppv) * q
+    with np.errstate(divide="ignore", invalid="ignore"):
+        t1 = (l_with * (1 - q) - l0 * (1 - ppv)) / det
+        t0 = (l0 * ppv - l_with * q) / det
+    ok = (t1 > 0) & (t0 > 0) & np.isfinite(t1) & np.isfinite(t0)
+    if ok.sum() < QBA_DRAWS / 2:
+        return {"rs_corr_dropped": float(1 - ok.mean())}
+    r = t1[ok] / t0[ok]
+    return {"rs_corr": float(np.median(r)), "rs_corr_lo": float(np.percentile(r, 2.5)),
+            "rs_corr_hi": float(np.percentile(r, 97.5)), "rs_corr_dropped": float(1 - ok.mean()),
+            "coverage": found / true, "precision": found / said}
 
 
 def stop_outcomes(t: pd.DataFrame) -> dict[str, pd.Series]:
@@ -191,6 +231,10 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame, trials: pd.Da
     out = [line_row(k.key if k else "", k.category if k else "adjustment", k.about if k else "", level, ln, d, lr)
            for k, level, ln in report_lines()]
     by_column = {r["column"]: r for r in out}
+    rng = np.random.default_rng(QBA_SEED)
+    for r in out:
+        if r.get("column") in CORRECTED:
+            r |= corrected(r, rng)
     chart = [by_column[ln.column] | {"kind": k.key, "category": category, "about": k.about, "level": level,
                                      "label": ln.label} for category, k, level, ln in chart_rows()]
     c2 = d[d.phase == 2]

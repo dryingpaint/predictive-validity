@@ -71,6 +71,20 @@ SAFETY_STOP_GAP_YEARS = 1  # an earlier safety stop counts once its trials ended
 LITERATURE_GATE = "v3_final"  # the gate scoring of the retrieval the literature lines are built from
 
 
+# Each #154 target-literature kind's pair-level coverage and precision against the adjudicated confirmed set of 100
+# pairs (python -m pipeline.target_literature resolve-score; report/audits/target_literature.md): (pairs the search found
+# that had a confirmed study, pairs with a confirmed study, pairs the search read as yes). Coverage is against the
+# capture-recapture estimate of all qualifying pairs where it could be estimated.
+TARGET_LITERATURE_COVERAGE: dict[str, tuple[int, int, int]] = {}
+
+
+def target_literature_note(kind: str) -> str:
+    """The plain-English caveat of a #154 target-literature fact: descriptive, and its coverage tag."""
+    found, true, said = TARGET_LITERATURE_COVERAGE.get(kind, (0, 0, 0))
+    tag = f"; found for {found / true:.0%} of the pairs that had such a study" if true else ""
+    return "descriptive: found by searching and reading published papers" + tag
+
+
 def literature_note(kind: str, exploratory: bool) -> str:
     """The plain-English caveat of a literature line, with its retrieval recall from the gate record."""
     import json
@@ -181,6 +195,10 @@ FACTS = {f.key: f for f in [
          "that reaches the entry: today the knockout screens of cancer cell lines (oncology entries from 2015)", "target",
          (("yes", "Yes"), ("no", "No"), ("not_reached", "No source reaches the entry")),
          (("yes", "cell_line_perturbation"),), unknown=("not_reached",)),
+    Fact("cell_line_literature", "A published experiment: changing the target in an established cell line changes a "
+         "disease feature", "target", (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")),
+         (("yes", "tl_cell_line"),), unknown=("not_searched",), counts=False,
+         note=target_literature_note("cell_line_perturbation")),
     Fact("rna", "How the gene's RNA level differs in diseased tissue", "target",
          (("up", "Higher in disease (in at least one comparison)"), ("down", "Lower in disease only"),
           ("none", "No difference")),
@@ -220,9 +238,33 @@ FACTS = {f.key: f for f in [
          (("yes", "Yes"), ("no", "No"), ("unknown", "Structure unknown")), (("yes", "brain_penetrant"),),
          unknown=("unknown",)),
     # Every agent pools into one fact; today the only source is the drug literature's screen of the program's own drug.
+    # The drug literature's screen of the program's own drug; the #154 target literature (any agent) is its own fact.
     Fact("disease_model", "A non-genetic change to the target alters an animal model of the disease", "disease",
          (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")), (("yes", "lit_animal_disease"),),
          unknown=("not_searched",), note=literature_note("animal_disease", exploratory=True)),
+    Fact("disease_model_literature", "A published study: any agent acting on the target (the program's drugs "
+         "included) alters an animal model of the disease", "target",
+         (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")), (("yes", "tl_pharmacology"),),
+         unknown=("not_searched",), counts=False, note=target_literature_note("animal_model_pharmacology")),
+    Fact("disease_model_other_agent", "An agent other than the program's drugs alters an animal model of the disease "
+         "(the registered L2's exposure)", "target", (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")),
+         (("yes", "tl_pharmacology_other"),), unknown=("not_searched",), counts=False,
+         note=target_literature_note("animal_model_pharmacology_other")),
+    Fact("primary_cells", "Changing the target in primary human cells or tissue changes a disease feature", "target",
+         (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")), (("yes", "tl_primary_cells"),),
+         unknown=("not_searched",), note=target_literature_note("human_cell_perturbation")),
+    Fact("protein", "The target's protein differs in patients' diseased tissue", "target",
+         (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")), (("yes", "tl_protein"),),
+         unknown=("not_searched",), counts=False, note=target_literature_note("diseased_tissue_protein")),
+    Fact("genetic_disease_model", "A knockout or transgene of the target alters an animal model of the disease",
+         "target", (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")), (("yes", "tl_genetic_model"),),
+         unknown=("not_searched",), counts=False, note=target_literature_note("mouse_genetic_disease_model")),
+    Fact("biomarker", "The target or its product, measured in patients' blood, another fluid or by imaging, tracks the "
+         "disease", "target", (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")),
+         (("yes", "tl_biomarker"),), unknown=("not_searched",), note=target_literature_note("observational_biomarker")),
+    Fact("literature_observation", "A published observation in people implicates the target, such as a side effect",
+         "target", (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")), (("yes", "tl_clinical"),),
+         unknown=("not_searched",), counts=False, note=target_literature_note("clinical_observation")),
     Fact("healthy_animals", "Pharmacokinetics or target engagement measured in healthy animals", "all",
          (("yes", "Yes"), ("no", "No"), ("not_searched", "Not searched")), (("yes", "lit_animal_healthy"),),
          unknown=("not_searched",), note=literature_note("animal_healthy", exploratory=False)),
@@ -281,55 +323,63 @@ KINDS = {k.key: k for k in [
          "Reactome's human pathways, through Open Targets",
          "reactome", (("pathway", ("yes",)),)),
     Kind("diseased_tissue", "in_vitro", "target", "Diseased tissue: the gene's level differs in diseased tissue",
-         "The gene's RNA or protein level differs in diseased tissue (protein is to come, #154)",
-         "Expression Atlas, through Open Targets (RNA, at least 2.1-fold)", "expression",
-         (("rna", ("up", "down")),), chart="rna",
+         "The gene's RNA or protein level differs in diseased tissue: RNA by at least 2.1-fold in Expression Atlas, or "
+         "the protein in patients' tissue in a published study (#154, descriptive)",
+         "Expression Atlas, through Open Targets (RNA, at least 2.1-fold); literature (#154)", "expression",
+         (("rna", ("up", "down")), ("protein", ("yes",))), chart="rna", rows=("protein",),
          derived=(Line("Target more active in disease, and the drug blocks it", "expression_up_inhibitor", "target"),)),
     Kind("human_cell_perturbation", "in_vitro", "target",
          "Primary cells: changing the target in primary human cells or tissue changes a disease feature",
-         "Changing the target in primary human cells or tissue changes a disease feature", "Literature (#154)", None),
+         "Changing the target in primary human cells or tissue changes a disease feature, in a published study "
+         "(#154, descriptive)", "PubMed, Europe PMC, Firecrawl's research index and a web-search arm, screened by an LLM",
+         "primary_cell_perturbation", (("primary_cells", ("yes",)),)),
     Kind("cell_line_perturbation", "in_vitro", "target",
-         "Cell lines: changing the target in an established cell line changes a disease feature (oncology, from 2015)",
-         "Changing the target in an established cell line changes a disease feature. Today only knockout screens reach "
-         "it: in screens published before entry, cancer cell lines of the program's tumour type need the gene "
-         "(oncology entries from 2015); the literature is to come (#154)",
+         "Cell lines: changing the target in an established cell line changes a disease feature",
+         "Changing the target in an established cell line changes a disease feature: in knockout screens published "
+         "before entry, cancer cell lines of the program's tumour type need the gene (oncology entries from 2015), or a "
+         "published experiment shows it (#154, descriptive)",
          "DepMap and earlier RNAi and CRISPR dependency screens, each line dated by its first public release; Project "
-         "Score through Open Targets, 2019 at the earliest", "cell_line_perturbation",
-         (("perturbation", ("yes",)), ("project_score_hindsight", ("yes",))),
+         "Score through Open Targets, 2019 at the earliest; literature (#154)", "cell_line_perturbation",
+         (("perturbation", ("yes",)), ("cell_line_literature", ("yes",)), ("project_score_hindsight", ("yes",))),
+         rows=("cell_line_literature",),
          derived=(Line("Cancer cells of this type need the gene to grow (dependency screens)", "cell_dependency",
                        "onc_screened"),
                   Line("Gene-knockout screens in human cells (Project Score)", "crispr", "target"))),
     Kind("mouse_genetics", "animals", "target", "Mouse genetics: mice with the gene altered show the disease",
-         "A genetic change in an animal links the target to the disease: the mutant shows the disease (a knockout or "
-         "transgene altering an animal model of it is to come, #154)",
-         "IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm",
-         "mouse_genetics", (("mouse_match", ("close", "loose")), ("mouse_direction", ())),
-         chart="mouse_match",
+         "A genetic change in an animal links the target to the disease: the mutant shows the disease, or a knockout "
+         "or transgene alters an animal model of it in a published study (#154, descriptive)",
+         "IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm; "
+         "literature (#154)",
+         "mouse_genetics", (("mouse_match", ("close", "loose")), ("mouse_direction", ()),
+                            ("genetic_disease_model", ("yes",))),
+         chart="mouse_match", rows=("genetic_disease_model",),
          derived=(Line("Mutant mice from published studies (MGI)", "mgi", "target"),
                   Line("Mouse knockout from a large-scale screen (IMPC)", "impc", "target"),
                   Line("Mouse genetics agrees with the drug's direction", "animal_concordant", "target"))),
     Kind("animal_model_pharmacology", "animals", "target",
-         "Animal model pharmacology: a non-genetic change to the target alters a disease model (today: the program's "
-         "own drug)",
+         "Animal model pharmacology: a non-genetic change to the target alters a disease model",
          "A non-genetic change to the target (drug, antibody, siRNA) alters an animal model of the disease, whatever "
-         "the agent; today only published studies of the program's own drug are searched, other agents are to come "
-         "(#154) (exploratory: the searches miss some of these studies)",
-         "PubMed abstracts and Firecrawl's research index, screened by an LLM", "lit_animal_disease",
-         (("disease_model", ("yes",)),)),
+         "the agent: published studies of the program's own drug and of any agent on the target (#154, descriptive)",
+         "PubMed, Europe PMC, Firecrawl's research index and a web-search arm, screened by an LLM", "lit_animal_disease",
+         (("disease_model", ("yes",)), ("disease_model_literature", ("yes",)), ("disease_model_other_agent", ("yes",))),
+         rows=("disease_model_literature", "disease_model_other_agent")),
     Kind("observational_biomarker", "human", "target",
          "Observational biomarker: the target or its product, measured in blood, another fluid or by imaging, tracks the "
          "disease",
-         "The target or its product, measured in blood, another fluid or by imaging, tracks the disease",
-         "Literature (#154)", None),
+         "The target or its product, measured in patients' blood, another fluid or by imaging, tracks the disease in "
+         "an observational study, in a published study (#154, descriptive)",
+         "PubMed, Europe PMC, Firecrawl's research index and a web-search arm, screened by an LLM",
+         "observational_biomarker", (("biomarker", ("yes",)),)),
     Kind("clinical_observation", "human", "target",
          "Clinical observation: an effect seen in people implicates the target, such as a side effect",
-         "An effect seen in people that implicates the target, such as a side effect. Today the significant FAERS "
-         "side effects of other drugs on the target, approved before entry and developed for no related disease, "
-         "that are the program's disease or a very close one (hindsight: today's FAERS); the literature is to come "
-         "(#154)",
-         "FAERS significant adverse reactions (openFDA likelihood-ratio test, through Open Targets 26.09), matched to "
-         "MONDO by name; literature (#154)", "clinical_observation",
-         (("side_effect", ("lowering", "raising", "both", "undirected")),), chart="side_effect",
+         "An effect seen in people that implicates the target, such as a side effect: a published observation (#154, "
+         "descriptive), and the significant FAERS side effects of other drugs on the target, approved before entry "
+         "and developed for no related disease, that are the program's disease or a very close one (hindsight: "
+         "today's FAERS)",
+         "Literature (#154); FAERS significant adverse reactions (openFDA likelihood-ratio test, through Open Targets "
+         "26.09), matched to MONDO by name", "clinical_observation",
+         (("side_effect", ("lowering", "raising", "both", "undirected")), ("literature_observation", ("yes",))),
+         chart="side_effect", rows=("literature_observation",),
          derived=(Line("A side effect argues for the drug's direction", "side_effect_concordant", "target"),)),
     Kind("earlier_approval", "human", "target",
          "Approved on the target: a drug on the target was approved before entry, for this disease or another",
@@ -475,6 +525,7 @@ def facts(d: pd.DataFrame) -> pd.DataFrame:
         "perturbation": pick("target", [(~APPLIES["onc_screened"](d), "not_reached"),
                                         (on("cell_dependency") | on("crispr"), "yes"),
                                         (d.cell_dependency.isna(), "not_reached")], "no"),
+        "cell_line_literature": scored("tl_cell_line", "target", "not_searched"),
         "rna": pick("target", [(on("expression_up"), "up"), (on("expression"), "down")]),
         "protein_level": d.protein_level.where(APPLIES["target"](d)),
         "protein_level_hindsight": pick("target", [(d.protein_level_untimed.ne("none") & d.protein_level_untimed.notna(),
@@ -491,6 +542,13 @@ def facts(d: pd.DataFrame) -> pd.DataFrame:
         "drug_like": scored("drug_like", "small_molecule", "unknown"),
         "brain_suited": scored("brain_penetrant", "brain", "unknown"),
         "disease_model": scored("lit_animal_disease", "disease", "not_searched"),
+        "disease_model_literature": scored("tl_pharmacology", "target", "not_searched"),
+        "disease_model_other_agent": scored("tl_pharmacology_other", "target", "not_searched"),
+        "primary_cells": scored("tl_primary_cells", "target", "not_searched"),
+        "protein": scored("tl_protein", "target", "not_searched"),
+        "genetic_disease_model": scored("tl_genetic_model", "target", "not_searched"),
+        "biomarker": scored("tl_biomarker", "target", "not_searched"),
+        "literature_observation": scored("tl_clinical", "target", "not_searched"),
         "healthy_animals": scored("lit_animal_healthy", "all", "not_searched"),
         "in_people": scored("lit_human_engagement", "phase_2_3", "not_searched"),
         "constraint": yes_no("constrained"),
@@ -650,6 +708,48 @@ def literature_columns(d: pd.DataFrame, related, q: pd.DataFrame, screened: dict
     return pd.DataFrame(out, index=d.index)
 
 
+# The #154 target-literature kinds (evidence_facts fact target_literature) as the raw columns of build.
+TARGET_LITERATURE = {"tl_primary_cells": "human_cell_perturbation", "tl_cell_line": "cell_line_perturbation",
+                     "tl_protein": "diseased_tissue_protein", "tl_pharmacology": "animal_model_pharmacology",
+                     "tl_genetic_model": "mouse_genetic_disease_model", "tl_biomarker": "observational_biomarker",
+                     "tl_clinical": "clinical_observation"}
+
+
+def target_literature_columns(d: pd.DataFrame, ev, last_cutoff: int) -> pd.DataFrame:
+    """Each #154 target-literature kind of each entry (TARGET_LITERATURE, plus tl_pharmacology_other for an agent other
+    than the program's drugs): 1 when a record the screen qualified for one of the entry's targets in its disease was
+    published by the year before entry, 0 when that target and disease were searched at least to that year and none
+    was, null when no target of the entry was searched that far (or the entry has no resolved target and disease).
+    Only searches up to `last_cutoff` and the records they retrieved count, so a later search leaves an earlier
+    window's columns as they were. A record with no known year cannot be shown to precede entry and does not count."""
+    lit = evidence_facts.facts("target_literature")
+    lit = lit[lit.known_year.notna()]
+    by: dict = defaultdict(list)
+    for e, m, kind, year, det in zip(lit.ensembl_id, lit.mondo_id, lit.value, lit.known_year.astype(int), lit.detail):
+        if min(c for c, _ in det["hits"]) <= last_cutoff:
+            by[(e, m, kind)].append((year, det.get("agent_is_program_drug")))
+    srch = evidence_facts.facts("target_literature_search")
+    cuts: dict = defaultdict(list)
+    for e, m, c in zip(srch.ensembl_id, srch.mondo_id, srch.known_year.astype(int)):
+        if c <= last_cutoff:
+            cuts[(e, m)].append(c)
+    cols = [*TARGET_LITERATURE, "tl_pharmacology_other"]
+    out: dict[str, list] = {c: [] for c in cols}
+    for r in d.itertuples():
+        genes = ev.ent.at[r.moiety_id, "genes"] if r.has_target_disease and r.moiety_id in ev.ent.index else []
+        cut = int(r.entry_year) - 1
+        reached = [g for g in genes if any(c >= cut for c in cuts.get((g, r.mondo_id), ()))]
+        if not reached:
+            for c in cols:
+                out[c].append(np.nan)
+            continue
+        for col, kind in TARGET_LITERATURE.items():
+            out[col].append(float(any(y <= cut for g in reached for y, _ in by[(g, r.mondo_id, kind)])))
+        out["tl_pharmacology_other"].append(float(any(y <= cut and a is False for g in reached
+                                                      for y, a in by[(g, r.mondo_id, "animal_model_pharmacology")])))
+    return pd.DataFrame(out, index=d.index)
+
+
 def vital_organ_genes() -> set[str]:
     """Ensembl ids of the genes whose mouse mutants show a phenotype in any VITAL_ORGANS class."""
     p = evidence_facts.facts("mouse_phenotype")
@@ -698,6 +798,8 @@ def build(window: tuple[date, date] = SECTION1) -> pd.DataFrame:
 
     d = d.join(literature_columns(d, lambda m: ev.nb.terms(m, RELATED),
                                   *literature_inputs(sorted({int(m) for m in d.moiety_id})), window[1].year - 1))
+
+    d = d.join(target_literature_columns(d, ev, window[1].year - 1))
 
     lines_by, dep_year = cell_screens()
     essential = evidence_facts.common_essentials()
