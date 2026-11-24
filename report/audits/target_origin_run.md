@@ -535,3 +535,14 @@ A moved label's category is the reread's (the checkers judged the origin as read
 checkers'. Then `restore --pairs window --disputes report/audits/target_origin_verdicts.csv`. Against the
 consolidation: supported 3,931 to 3,972, disputed 278 to 15, unsupported 216 to 438, unclear 904 to 1,126. All 218
 moved labels are supported.
+
+## Programmes rebuild (#185, 2026-11-23 to 24)
+
+Programmes were rebuilt so that an indication the ontology files another disease under keeps its own programme
+(rheumatoid arthritis above ankylosing spondylitis); `pipeline.programs scope` judged 454 nested terms (120 indications,
+334 grouping terms). The target-disease hub then held 11,437 pairs, 879 validated at entry; the 2008–2019 window 5,232
+pairs. Only the window pairs left unlabelled or labelled against another cutoff year were searched and labelled again
+(194: 168 unlabelled, 26 whose first entry moved), with `search`, `label` and `check` on the `stale` and `unchecked`
+pair sets, then `reread` and `restore` over the window. 152 of the 194 were labelled (42 refused on every pass, stored
+not_reached); of 132 graded new labels the check supported 119. Stored after the rebuild: supported 4,046, unsupported
+468, disputed 20, unverified 6, not checked 741.
