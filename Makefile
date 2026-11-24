@@ -80,7 +80,8 @@ labels:
 # Open Targets associations, the year each evidence item became known where its own date is
 # missing or a later revision (ClinVar record creation, IMPC releases, study dates, the first Open Targets
 # release listing a Project Score pair), the evidence rows
-# dated by it with their yearly series, then the germline mechanism of each target in each program
+# dated by it with their yearly series, the colocalising pQTLs and FAERS side effects (from BigQuery, billed to
+# $BIGQUERY_PROJECT), then the germline mechanism of each target in each program
 # disease and the orientation of each mouse model, both decided without the drug. Last, why each Phase 2/3
 # program stopped and, for stops for efficacy or exposure, whether the drug engaged its target: stop causes
 # are inferred where the registry gives none, the efficacy and exposure stops (registry and traced) are
@@ -94,6 +95,8 @@ evidence:
 	$(RUN) pipeline.evidence_dates studies
 	$(RUN) pipeline.evidence_dates projectscore
 	$(RUN) pipeline.opentargets evidence
+	$(RUN) pipeline.opentargets pqtl
+	$(RUN) pipeline.opentargets adverse
 	$(RUN) pipeline.chembl activities
 	$(RUN) pipeline.pubchem properties
 	$(RUN) pipeline.depmap dependencies
