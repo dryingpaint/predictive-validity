@@ -311,3 +311,10 @@ def test_a_later_search_leaves_an_earlier_window_as_it_was_and_scores_only_the_e
     assert literature_columns(d, lambda m: frozenset(), q, {1: [2021]}, to, last_cutoff=2018).isna().all().all()
 
 
+
+
+def test_the_chart_draws_each_category_as_one_block_in_category_order():
+    from report.evidence_lines import CATEGORIES, chart_rows
+    seen = [category for category, *_ in chart_rows()]
+    blocks = [c for i, c in enumerate(seen) if i == 0 or c != seen[i - 1]]
+    assert blocks == [c for c in CATEGORIES if c in seen]

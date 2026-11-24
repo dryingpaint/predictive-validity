@@ -73,8 +73,8 @@ Each program is scored for the evidence its targets had for its disease as of th
 | Tumour genetics (oncology) | The gene is recurrently mutated in this cancer (oncology only) | COSMIC Cancer Gene Census, IntOGen and ClinVar somatic, through Open Targets |
 | Curated pathway | A curated human pathway shows a mutation that causes the disease in people disrupting the target | Reactome's human pathways, through Open Targets |
 | **In vitro and ex vivo** |  |  |
-| Cell lines | Changing the target in an established cell line changes a disease feature. Today only knockout screens reach it: in screens published before entry, cancer cell lines of the program's tumour type need the gene (oncology entries from 2015); the literature is to come (#154) | DepMap and earlier RNAi and CRISPR dependency screens, each line dated by its first public release; Project Score through Open Targets, 2019 at the earliest |
 | Diseased tissue | The gene's RNA or protein level differs in diseased tissue (protein is to come, #154) | Expression Atlas, through Open Targets (RNA, at least 2.1-fold) |
+| Cell lines | Changing the target in an established cell line changes a disease feature. Today only knockout screens reach it: in screens published before entry, cancer cell lines of the program's tumour type need the gene (oncology entries from 2015); the literature is to come (#154) | DepMap and earlier RNAi and CRISPR dependency screens, each line dated by its first public release; Project Score through Open Targets, 2019 at the earliest |
 | **Animals** |  |  |
 | Mouse genetics | A genetic change in an animal links the target to the disease: the mutant shows the disease (a knockout or transgene altering an animal model of it is to come, #154) | IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm |
 | Animal model pharmacology | A non-genetic change to the target (drug, antibody, siRNA) alters an animal model of the disease, whatever the agent; today only published studies of the program's own drug are searched, other agents are to come (#154) (exploratory: the searches miss some of these studies) | PubMed abstracts and Firecrawl's research index, screened by an LLM |
@@ -238,14 +238,14 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · The mutation's effect matches the drug's action (derived) | 746 / 3,582 | 110 | 1.76 (0.98–3.16) | 1.46 (1.02–2.09) | 1.37 (0.94–1.98) | 0.88 (0.63–1.22) |
 | Curated pathway: a mutation that causes the disease in people disrupts the target's pathway | 195 / 7,435 | 57 | 1.89 (0.93–2.80) | 1.33 (0.92–1.92) | 1.25 (0.87–1.81) | 0.71 (0.35–1.44) |
 | **In vitro and ex vivo** |  |  |  |  |  |  |
-| Cell lines: changing the target in an established cell line changes a disease feature (oncology, from 2015) | 237 / 1,782 | 62 | 0.55 (0.16–1.38) | 0.56 (0.25–1.25) | 0.57 (0.25–1.28) | 0.55 (0.27–1.13) |
-| · A genome-wide knockout screen ranks the target for this cancer, on today's data (hindsight) | 373 / 7,435 | 100 | 1.96 (1.16–2.85) | 1.70 (1.18–2.43) | 1.60 (1.11–2.30) | 0.98 (0.70–1.36) |
-| · Cancer cells of this type need the gene to grow (dependency screens) (derived) | 237 / 1,782 | 62 | 0.55 (0.16–1.38) | 0.56 (0.25–1.25) | 0.57 (0.25–1.28) | 0.55 (0.27–1.13) |
-| · Gene-knockout screens in human cells (Project Score) (derived) | 0 / 7,435 | 0 | Too rare to estimate | – | – | – |
 | Diseased tissue: the gene's level differs in diseased tissue | 907 / 7,435 | 325 | 0.89 (0.58–1.26) | 0.95 (0.65–1.38) | 0.90 (0.63–1.30) | 1.22 (0.99–1.50) |
 | · Higher in disease (in at least one comparison) | 548 / 7,435 | 229 | 0.58 (0.29–0.93) | 0.72 (0.44–1.17) | 0.70 (0.43–1.13) | 1.43 (1.14–1.80) |
 | · Lower in disease only | 359 / 7,435 | 145 | 1.50 (0.86–2.21) | 1.30 (0.82–2.06) | 1.23 (0.79–1.91) | 0.91 (0.66–1.25) |
 | · Target more active in disease, and the drug blocks it (derived) | 418 / 7,435 | 158 | 0.62 (0.28–1.07) | 0.79 (0.46–1.37) | 0.77 (0.45–1.32) | 1.38 (1.06–1.79) |
+| Cell lines: changing the target in an established cell line changes a disease feature (oncology, from 2015) | 237 / 1,782 | 62 | 0.55 (0.16–1.38) | 0.56 (0.25–1.25) | 0.57 (0.25–1.28) | 0.55 (0.27–1.13) |
+| · A genome-wide knockout screen ranks the target for this cancer, on today's data (hindsight) | 373 / 7,435 | 100 | 1.96 (1.16–2.85) | 1.70 (1.18–2.43) | 1.60 (1.11–2.30) | 0.98 (0.70–1.36) |
+| · Cancer cells of this type need the gene to grow (dependency screens) (derived) | 237 / 1,782 | 62 | 0.55 (0.16–1.38) | 0.56 (0.25–1.25) | 0.57 (0.25–1.28) | 0.55 (0.27–1.13) |
+| · Gene-knockout screens in human cells (Project Score) (derived) | 0 / 7,435 | 0 | Too rare to estimate | – | – | – |
 | **Animals** |  |  |  |  |  |  |
 | Mouse genetics: mice with the gene altered show the disease | 1,504 / 7,435 | 462 | 1.44 (1.07–1.87) | 1.36 (1.10–1.68) | 1.34 (1.09–1.65) | 0.83 (0.69–1.00) |
 | · Closely | 878 / 7,435 | 317 | 1.44 (1.05–1.91) | 1.44 (1.15–1.80) | 1.42 (1.14–1.77) | 0.76 (0.61–0.96) |
