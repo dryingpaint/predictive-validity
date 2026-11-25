@@ -88,6 +88,21 @@ TARGET_LITERATURE_COVERAGE: dict[str, tuple[int, int, int]] = {
 }
 
 
+# The same rates corrected for the adjudicator's leniency (the spot check of 50 adjudications, a second-model review,
+# not human-verified; pipeline.target_literature.leniency): Beta (alpha, beta) of the pair-level sensitivity (se) and
+# precision (ppv) matching each corrected median and 95% interval. The chart's correction draws from these.
+TARGET_LITERATURE_RATES: dict[str, dict[str, tuple[float, float]]] = {
+    "human_cell_perturbation": {"se": (134.96, 7.1), "ppv": (17.71, 6.52)},
+    "cell_line_perturbation": {"se": (96.64, 3.22), "ppv": (99.29, 32.03)},
+    "diseased_tissue_protein": {"se": (276.1, 8.37), "ppv": (34.05, 7.45)},
+    "animal_model_pharmacology": {"se": (176.19, 3.6), "ppv": (32.59, 6.39)},
+    "mouse_genetic_disease_model": {"se": (26.14, 1.38), "ppv": (22.5, 4.09)},
+    "observational_biomarker": {"se": (30.22, 3.36), "ppv": (30.72, 16.26)},
+    "clinical_observation": {"se": (6.4, 0.13), "ppv": (6.8, 10.69)},
+    "animal_model_pharmacology_other": {"se": (123.06, 2.51), "ppv": (39.4, 10.08)},
+}
+
+
 def target_literature_note(kind: str) -> str:
     """The plain-English caveat of a #154 target-literature fact: descriptive, and its coverage tag."""
     found, true, said = TARGET_LITERATURE_COVERAGE.get(kind, (0, 0, 0))

@@ -72,10 +72,13 @@ def test_the_misclassification_correction_leaves_a_perfect_search_alone_and_wide
     from report import evidence_analysis as ea
     row = {"column": "observational_biomarker", "estimated": True, "exposed": 200, "eligible": 1000,
            "rs_rs": 1.5, "rs_rs_lo": 1.2, "rs_rs_hi": 1.9, "rs_loa_without": 0.1}
+    saved = ea.TARGET_LITERATURE_RATES.pop("observational_biomarker", None), ea.TARGET_LITERATURE_COVERAGE.get("observational_biomarker")
     ea.TARGET_LITERATURE_COVERAGE["observational_biomarker"] = (5000, 5000, 5000)
     perfect = ea.corrected(row, np.random.default_rng(0))
     assert abs(perfect["rs_corr"] - 1.5) < 0.05
     ea.TARGET_LITERATURE_COVERAGE["observational_biomarker"] = (30, 40, 36)
     rough = ea.corrected(row, np.random.default_rng(0))
     assert rough["rs_corr_hi"] - rough["rs_corr_lo"] > perfect["rs_corr_hi"] - perfect["rs_corr_lo"]
-    del ea.TARGET_LITERATURE_COVERAGE["observational_biomarker"]
+    ea.TARGET_LITERATURE_COVERAGE["observational_biomarker"] = saved[1]
+    if saved[0]:
+        ea.TARGET_LITERATURE_RATES["observational_biomarker"] = saved[0]

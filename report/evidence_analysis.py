@@ -44,6 +44,7 @@ from report import frame
 from pipeline.stops import keys
 from report import stop_causes
 from report.evidence_lines import (APPROVAL_SPLIT, KINDS, PRECEDENT_KINDS, SAFETY, TARGET_LITERATURE, TARGET_LITERATURE_COVERAGE,
+                                   TARGET_LITERATURE_RATES,
                                    build, chart_rows, loa_rows, report_lines, stale, us)
 from report.section1 import failure_modes, phase_rows
 from report.section2 import relative_success
@@ -101,7 +102,8 @@ DOSE_REASON = "PK, dose or formulation"  # the registry reason a dose stop can c
 def corrected(row: dict, rng: np.random.Generator) -> dict:
     """The relative success of a #154 target-literature row corrected for the search's misclassification of programs:
     with pair-level sensitivity Se (pairs found, of those with a confirmed study) and precision PPV (pairs with a
-    confirmed study, of those the search read as yes) drawn from Beta posteriors of the adjudication's counts, the
+    confirmed study, of those the search read as yes) drawn from their leniency-corrected Beta (TARGET_LITERATURE_RATES,
+    else Beta posteriors of the adjudication's counts), the
     observed prevalence p gives the true prevalence pi = PPV p / Se, and the observed groups' approval rates are
     mixtures of the true groups' (with: PPV of truly exposed; without: (pi - PPV p) / (1 - p) truly exposed), solved
     for the true rates; the observed ratio's sampling error enters as a log-normal draw from its 95% interval.
@@ -112,8 +114,9 @@ def corrected(row: dict, rng: np.random.Generator) -> dict:
     if not (true and said and row.get("estimated") and np.isfinite(row.get("rs_rs", np.nan))):
         return {}
     p = row["exposed"] / row["eligible"]
-    se = rng.beta(found + 1, true - found + 1, QBA_DRAWS)
-    ppv = rng.beta(found + 1, said - found + 1, QBA_DRAWS)
+    rates = TARGET_LITERATURE_RATES.get(kind)
+    se = rng.beta(*rates["se"], QBA_DRAWS) if rates else rng.beta(found + 1, true - found + 1, QBA_DRAWS)
+    ppv = rng.beta(*rates["ppv"], QBA_DRAWS) if rates else rng.beta(found + 1, said - found + 1, QBA_DRAWS)
     sd = (np.log(row["rs_rs_hi"]) - np.log(row["rs_rs_lo"])) / (2 * 1.96)
     l0 = row["rs_loa_without"]
     l_with = l0 * np.exp(rng.normal(np.log(row["rs_rs"]), sd, QBA_DRAWS))
@@ -129,7 +132,7 @@ def corrected(row: dict, rng: np.random.Generator) -> dict:
     r = t1[ok] / t0[ok]
     return {"rs_corr": float(np.median(r)), "rs_corr_lo": float(np.percentile(r, 2.5)),
             "rs_corr_hi": float(np.percentile(r, 97.5)), "rs_corr_dropped": float(1 - ok.mean()),
-            "coverage": found / true, "precision": found / said}
+            "coverage": float(np.median(se)), "precision": float(np.median(ppv))}
 
 
 def stop_outcomes(t: pd.DataFrame) -> dict[str, pd.Series]:

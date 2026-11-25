@@ -1154,6 +1154,17 @@ def reconcile(args) -> None:
             linked["hit"] += cur.rowcount
         conn.commit()
     later = [(r, old) for r, old in moved if int(r.cutoff_year) > old]
+    # A pair linked forward by an earlier run whose gap search never finished: its PubMed row at the new cutoff is
+    # still only the link, so the years between are searched now (resuming a run that stopped).
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT ensembl_id, mondo_id, cutoff_year FROM preclin.target_literature_search
+                       WHERE source = 'pubmed' AND query LIKE 'as searched at cutoff %%' AND query NOT LIKE '%%| gap %%'""")
+        pending = set(cur.fetchall())
+    seen = {(r.ensembl_id, r.mondo_id) for r, _ in later}
+    later += [(r, max(y for y in stored[(r.ensembl_id, r.mondo_id)] if y < int(r.cutoff_year)))
+              for r in p.itertuples() if (r.ensembl_id, r.mondo_id, int(r.cutoff_year)) in pending
+              and (r.ensembl_id, r.mondo_id) not in seen
+              and any(y < int(r.cutoff_year) for y in stored.get((r.ensembl_id, r.mondo_id), ()))]
     if later:
         gap(p[[(e, m) in {(r.ensembl_id, r.mondo_id) for r, _ in later} for e, m in zip(p.ensembl_id, p.mondo_id)]],
             {(r.ensembl_id, r.mondo_id): old for r, old in later})
@@ -1312,8 +1323,9 @@ def web(args) -> None:
 
 
 def web_screen(args) -> None:
-    """Screen every record from --sources (default web_agent) of the pairs not yet screened for that pair, with the
-    run's screen (and its fallback): one screen definition for every record. A record the web arm named skips the
+    """Screen every record from --sources (default web_agent) of the pairs not yet read for that pair at the screen
+    version stored (--screen-version), with that screen (and its fallback), adding rows only: one screen definition
+    for every record. A record the web arm named skips the
     prefilter (a cost saving for large literatures that has no bearing on a named study); any other record keeps an
     earlier prefilter-out decision."""
     p = shard_of(pairs_of(args.pairs), args.shard)
@@ -1325,8 +1337,9 @@ def web_screen(args) -> None:
                            AND (f.ensembl_id, f.mondo_id, f.record_id) = (h.ensembl_id, h.mondo_id, h.record_id)))
                          AND NOT EXISTS (
                            SELECT 1 FROM preclin.target_literature_screen s
-                           WHERE (s.ensembl_id, s.mondo_id, s.record_id) = (h.ensembl_id, h.mondo_id, h.record_id))""",
-                    (list(SOURCES) if args.sources == "all" else args.sources.split(","),))
+                           WHERE (s.ensembl_id, s.mondo_id, s.record_id) = (h.ensembl_id, h.mondo_id, h.record_id)
+                             AND s.screen_version = %s)""",
+                    (list(SOURCES) if args.sources == "all" else args.sources.split(","), SCREEN_VERSION))
         recs = pd.DataFrame(cur.fetchall(), columns=["ensembl_id", "mondo_id", "record_id"])
     want = set(zip(p.ensembl_id, p.mondo_id))
     recs = recs[[(e, m) in want for e, m in zip(recs.ensembl_id, recs.mondo_id)]]
@@ -1542,12 +1555,92 @@ def render_adjudicate(p: dict) -> str:
     return render_screen(p) + f"\nLink: {p['link']}\nCutoff year: {p['cutoff_year']}"
 
 
+# v2 of the rubric, after the spot check (SPOT_CHECK): every disagreement was a lenient YES at a kind's boundary.
+ADJUDICATE_SYSTEM_V2 = ADJUDICATE_SYSTEM.replace(
+    "A paper whose only agent is a program drug",
+    """Stricter boundaries:
+- Viral, transgenic or other genetic expression of the target (wild type or mutant) that creates or alters an animal model is mouse_genetic_disease_model, never animal_model_pharmacology; animal_model_pharmacology needs an agent acting on the target (drug, antibody, tool compound, siRNA or antisense) given to a model.
+- Genome editing of cells that are then transplanted into an animal (a xenograft) is cell_line_perturbation or human_cell_perturbation by the cells' origin, not mouse_genetic_disease_model.
+- human_cell_perturbation needs human cells or tissue; a study in animals or animal cells is never this kind.
+- Human germline variants of the gene (carriers, null or loss-of-function variants, families) are genetics, not clinical_observation.
+- A single case or a series of two patients does not count for observational_biomarker or clinical_observation.
+- Perturbing cells (platelets, blood cells) ex vivo is perturbation, not observational_biomarker.
+- An agent that acts on many targets counts for this target only when the paper attributes the effect to this target specifically.
+- Decide only from the text given or the full text you open: never from your memory of a paper. When neither shows the finding, the kind is false.
+
+A paper whose only agent is a program drug""")
+assert ADJUDICATE_SYSTEM_V2 != ADJUDICATE_SYSTEM
+ADJUDICATE_VERSION = "v2"  # the rubric new readings are stored under
+REVISED_KINDS = ("human_cell_perturbation", "animal_model_pharmacology", "mouse_genetic_disease_model",
+                 "observational_biomarker", "clinical_observation")  # the kinds whose v1 YES calls v2 re-reads
+
 ADJUDICATE_TASK = llm.Task(name="target_literature_adjudicate", prompt_version="v1", schema_version="v1",
                            system=ADJUDICATE_SYSTEM, schema=ADJUDICATE_SCHEMA, render=render_adjudicate,
                            validate=validate_screen, subject_type="pair_record", model=ADJUDICATE_MODEL, effort="high",
                            max_tokens=16000, tools=ADJUDICATE_TOOLS)
 ADJUDICATE_FALLBACK = llm.Task(**{**ADJUDICATE_TASK.__dict__, "name": "target_literature_adjudicate_fallback",
                                   "model": REFERENCE_FALLBACK})
+ADJUDICATE_V2 = llm.Task(**{**ADJUDICATE_TASK.__dict__, "prompt_version": "v2", "system": ADJUDICATE_SYSTEM_V2})
+ADJUDICATE_V2_FALLBACK = llm.Task(**{**ADJUDICATE_FALLBACK.__dict__, "prompt_version": "v2", "system": ADJUDICATE_SYSTEM_V2})
+
+# The spot check of 50 seeded v1 adjudications (the review packet, items 0-49 in order): a second-model review by the
+# coordinating Claude session, done in Melissa's place at her request, NOT human-verified. Verdict on the
+# adjudicator's call: agree, disagree or unsure. Keyed (kind, ensembl_id, mondo_id, record_id).
+SPOT_CHECK = {
+    ("human_cell_perturbation", "ENSG00000159110", "MONDO:0005301", "11696016"): "agree",
+    ("human_cell_perturbation", "ENSG00000188906", "MONDO:0005180", "27863501"): "agree",
+    ("human_cell_perturbation", "ENSG00000198793", "MONDO:0001734", "23947572"): "agree",
+    ("human_cell_perturbation", "ENSG00000188906", "MONDO:0005180", "22773119"): "agree",
+    ("human_cell_perturbation", "ENSG00000188906", "MONDO:0005180", "22914360"): "agree",
+    ("human_cell_perturbation", "ENSG00000121966", "MONDO:0009693", "17686053"): "agree",
+    ("human_cell_perturbation", "ENSG00000128052", "MONDO:0005150", "28715845"): "disagree",
+    ("cell_line_perturbation", "ENSG00000198793", "MONDO:0005575", "14729629"): "agree",
+    ("cell_line_perturbation", "ENSG00000140443", "MONDO:0021038", "11410521"): "agree",
+    ("cell_line_perturbation", "ENSG00000166851", "MONDO:0008315", "28043128"): "unsure",
+    ("cell_line_perturbation", "ENSG00000188906", "MONDO:0005180", "20144646"): "agree",
+    ("cell_line_perturbation", "ENSG00000112062", "MONDO:0004975", "23178511"): "agree",
+    ("cell_line_perturbation", "ENSG00000188906", "MONDO:0005180", "27618216"): "unsure",
+    ("cell_line_perturbation", "ENSG00000198793", "MONDO:0005575", "19517193"): "agree",
+    ("diseased_tissue_protein", "ENSG00000149295", "MONDO:0005180", "9756147"): "agree",
+    ("diseased_tissue_protein", "ENSG00000105329", "MONDO:0005233", "29253845"): "agree",
+    ("diseased_tissue_protein", "ENSG00000112062", "MONDO:0004975", "21883897"): "unsure",
+    ("diseased_tissue_protein", "ENSG00000157404", "MONDO:0004967", "9697876"): "unsure",
+    ("diseased_tissue_protein", "ENSG00000010671", "MONDO:0007915", "28789968"): "agree",
+    ("diseased_tissue_protein", "ENSG00000198793", "MONDO:0005575", "22333609"): "agree",
+    ("diseased_tissue_protein", "ENSG00000198793", "MONDO:0005575", "19517193"): "agree",
+    ("animal_model_pharmacology", "ENSG00000105329", "MONDO:0005233", "23806302"): "unsure",
+    ("animal_model_pharmacology", "ENSG00000198793", "MONDO:0005575", "20416302"): "agree",
+    ("animal_model_pharmacology", "ENSG00000169710", "MONDO:0007027", "21382219"): "agree",
+    ("animal_model_pharmacology", "ENSG00000198793", "MONDO:0001734", "23437388"): "agree",
+    ("animal_model_pharmacology", "ENSG00000197891", "MONDO:0005393", "21154198"): "agree",
+    ("animal_model_pharmacology", "ENSG00000197891", "MONDO:0005393", "25499818"): "agree",
+    ("animal_model_pharmacology", "ENSG00000188906", "MONDO:0005180", "21248115"): "disagree",
+    ("animal_model_pharmacology", "ENSG00000188906", "MONDO:0005180", "25731749"): "disagree",
+    ("mouse_genetic_disease_model", "ENSG00000188906", "MONDO:0005180", "25836420"): "agree",
+    ("mouse_genetic_disease_model", "ENSG00000010671", "MONDO:0007915", "18849077"): "agree",
+    ("mouse_genetic_disease_model", "ENSG00000010671", "MONDO:0007915", "26209625"): "unsure",
+    ("mouse_genetic_disease_model", "ENSG00000198793", "MONDO:0001734", "22056141"): "agree",
+    ("mouse_genetic_disease_model", "ENSG00000185000", "MONDO:0005148", "17618857"): "agree",
+    ("mouse_genetic_disease_model", "ENSG00000077782", "MONDO:0005233", "18852144"): "unsure",
+    ("mouse_genetic_disease_model", "ENSG00000188389", "MONDO:0001187", "30457360"): "disagree",
+    ("observational_biomarker", "ENSG00000149295", "MONDO:0005180", "7884499"): "agree",
+    ("observational_biomarker", "ENSG00000149295", "MONDO:0005180", "26419749"): "disagree",
+    ("observational_biomarker", "ENSG00000188906", "MONDO:0005180", "ETH:625227"): "agree",
+    ("observational_biomarker", "ENSG00000121966", "MONDO:0009693", "19335218"): "agree",
+    ("observational_biomarker", "ENSG00000105329", "MONDO:0005233", "18034241"): "agree",
+    ("observational_biomarker", "ENSG00000131473", "MONDO:0005148", "14681844"): "disagree",
+    ("observational_biomarker", "ENSG00000121966", "MONDO:0009693", "25825601"): "agree",
+    ("clinical_observation", "ENSG00000157404", "MONDO:0006951", "27319943"): "disagree",
+    ("clinical_observation", "ENSG00000166603", "MONDO:0019182", "15126516"): "disagree",
+    ("clinical_observation", "ENSG00000188906", "MONDO:0005180", "24355527"): "agree",
+    ("clinical_observation", "ENSG00000109163", "MONDO:0008487", "16704856"): "agree",
+    ("clinical_observation", "ENSG00000121966", "MONDO:0009693", "21183878"): "agree",
+    ("clinical_observation", "ENSG00000144891", "MONDO:0100313", "23465123"): "unsure",
+    ("clinical_observation", "ENSG00000166603", "MONDO:0019182", "10078568"): "disagree",
+}
+LENIENCY_PRIOR = 4.0  # pseudo-items of a kind's shrinkage toward its screen stratum's pooled agreement
+LENIENCY_DRAWS = 2000
+LENIENCY_SEED = 20261129
 
 
 def record_link(record_id: str, doi: str | None) -> str:
@@ -1609,15 +1702,21 @@ def adjudicate_payloads(c: pd.DataFrame) -> dict[str, dict]:
 def adjudicate(args) -> None:
     """Judge every candidate (candidates) once with ADJUDICATE_TASK (the fallback model reads what it refuses) and
     store the readings in preclin.target_literature_adjudication, replacing the table's rows of the same records."""
+    v2 = getattr(args, "rubric", "v1") == "v2"
     c = shard_of(candidates(), args.shard)
+    if v2:  # re-read only the v1 YES calls of the revised kinds
+        a = adjudicated("v1")
+        yes = a[a[["true_" + k for k in REVISED_KINDS]].any(axis=1)]
+        c = c.merge(yes[["ensembl_id", "mondo_id", "record_id"]], on=["ensembl_id", "mondo_id", "record_id"])
     print(f"adjudicate: candidates={len(c)} screen={int(c.from_screen.sum())} web={int(c.from_web.sum())} "
           f"yardstick={int(c.from_yardstick.sum())} screened-out sample={int(c.screened_out_sample.sum())}", flush=True)
     items = adjudicate_payloads(c)
     print(f"adjudicate: readable={len(items)} (no stored text: {len(c) - len(items)})", flush=True)
-    dec = decide(ADJUDICATE_TASK, items)
+    task, fallback = (ADJUDICATE_V2, ADJUDICATE_V2_FALLBACK) if v2 else (ADJUDICATE_TASK, ADJUDICATE_FALLBACK)
+    dec = decide(task, items)
     rest = {k: v for k, v in items.items() if k not in dec}
     if rest:
-        dec.update(decide(ADJUDICATE_FALLBACK, rest))
+        dec.update(decide(fallback, rest))
     years = {k: v["year"] for k, v in items.items()}
     with llm.connect() as conn, conn.cursor() as cur:  # full text read: the reader fetched a page (its own flag can lag)
         cur.execute("SELECT llm_decision_id, coalesce((usage->>'web_fetch_requests')::int, 0) > 0 FROM pv_evidence.llm_decision "
@@ -1631,13 +1730,14 @@ def adjudicate(args) -> None:
                      r.from_yardstick, r.screened_out_sample, o["original_data"], o["disease_match"],
                      *(o["kinds"][x] for x in KINDS[:4]), o["agent_is_program_drug"],
                      *(o["kinds"][x] for x in KINDS[4:]), o["full_text_read"] or fetched.get(d, False),
-                     o["quote"] or None, d))
+                     o["quote"] or None, d, "v2" if v2 else "v1"))
     with llm.connect() as conn, conn.cursor() as cur:
         execute_values(cur, f"""INSERT INTO preclin.target_literature_adjudication (ensembl_id, mondo_id, record_id,
                                     cutoff_year, year, from_screen, from_web, from_yardstick, screened_out_sample,
                                     original_data, disease_match, {", ".join(KINDS[:4])}, agent_is_program_drug,
-                                    {", ".join(KINDS[4:])}, full_text_read, quote, llm_decision_id) VALUES %s
-                                ON CONFLICT (ensembl_id, mondo_id, record_id) DO UPDATE SET
+                                    {", ".join(KINDS[4:])}, full_text_read, quote, llm_decision_id,
+                                    adjudication_version) VALUES %s
+                                ON CONFLICT (ensembl_id, mondo_id, record_id, adjudication_version) DO UPDATE SET
                                     from_screen = EXCLUDED.from_screen, from_web = EXCLUDED.from_web,
                                     from_yardstick = EXCLUDED.from_yardstick,
                                     screened_out_sample = EXCLUDED.screened_out_sample""", rows, page_size=1000)
@@ -1650,13 +1750,16 @@ CR_BOOT = 2000  # parametric bootstrap draws for the capture-recapture intervals
 CR_SEED = 20261126
 
 
-def adjudicated() -> pd.DataFrame:
-    """The adjudication's rows, each with the kinds it confirms (published by the pair's cutoff, original data, the
+def adjudicated(version: str | None = None) -> pd.DataFrame:
+    """The adjudication's rows at their latest rubric version (up to ), each with the kinds it confirms (published by the pair's cutoff, original data, the
     pair's disease or a subtype; animal_model_pharmacology_other when the agent is not a program drug)."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute(f"""SELECT ensembl_id, mondo_id, record_id, cutoff_year, year, from_screen, from_web, from_yardstick,
                                screened_out_sample, original_data, disease_match, {", ".join(KINDS)}, agent_is_program_drug,
-                               full_text_read, quote FROM preclin.target_literature_adjudication""")
+                               full_text_read, quote, adjudication_version FROM (
+                            SELECT DISTINCT ON (ensembl_id, mondo_id, record_id) * FROM preclin.target_literature_adjudication
+                            WHERE %(v)s IS NULL OR adjudication_version <= %(v)s
+                            ORDER BY ensembl_id, mondo_id, record_id, adjudication_version DESC) a""", {"v": version})
         a = pd.DataFrame(cur.fetchall(), columns=[d[0] for d in cur.description])
     ok = a.original_data & a.disease_match.eq("same_or_subtype") & (a.year.isna() | (a.year <= a.cutoff_year))
     for k in KINDS:
@@ -1733,11 +1836,11 @@ def capture_recapture(hist: list[tuple[int, int, int]], rng: np.random.Generator
             "total_lo": float(lo), "total_hi": float(hi), "estimable": True}
 
 
-def resolve_metrics(version: str | None = None) -> dict:
+def resolve_metrics(version: str | None = None, adjudication: str | None = None) -> dict:
     """Per kind, against the adjudicated confirmed set: each source's coverage and precision at pair level and study
     level; what the screen missed among the screened-out sample; the capture-recapture estimate of the qualifying
     pairs every source missed and the coverage of the union against it; and the screen-versus-adjudicator confusion."""
-    a = adjudicated()
+    a = adjudicated(adjudication)
     pos = arm_positives(version)
     rng = np.random.default_rng(CR_SEED)
     pairs_total = len(yardstick_pairs())
@@ -1812,9 +1915,63 @@ def resolve_metrics(version: str | None = None) -> dict:
     return out
 
 
+def leniency(a: pd.DataFrame, pos: dict) -> dict:
+    """Coverage and precision at pair level corrected for the adjudicator's leniency, from the spot check (SPOT_CHECK):
+    a confirmed study is real with the adjudicator's precision on YES calls for its kind and screen stratum (the
+    screen found it, or only the adjudicator did), drawn from a Beta posterior that shrinks the kind's decided
+    verdicts toward its stratum's pooled agreement (LENIENCY_PRIOR pseudo-items); each draw keeps each confirmed study
+    with that probability and recomputes the rates. Unsure verdicts are left out; the adjudicator's NO calls are taken
+    as right (the spot check found no disagreement with them). Medians and 95% intervals per kind and source."""
+    rng = np.random.default_rng(LENIENCY_SEED)
+    found_by = set(pos["union"])
+    adj_yes = {(k, e, m, r) for k, e, m, r in SPOT_CHECK
+               if a[(a.ensembl_id == e) & (a.mondo_id == m) & (a.record_id == r)]["true_" + k].any()}
+    checks = [(k, (e, m, r, k) in found_by, v)
+              for (k, e, m, r), v in SPOT_CHECK.items() if v != "unsure" and (k, e, m, r) in adj_yes]
+    pooled = {s: (sum(v == "agree" for _, st, v in checks if st == s), sum(1 for _, st, _ in checks if st == s))
+              for s in (True, False)}
+    out = {"spot_check": {"decided_yes_calls": len(checks),
+                          "agreement_screen_found": pooled[True], "agreement_adjudicator_only": pooled[False]},
+           "kinds": {}}
+    for k in SCORE_KINDS:
+        base = "animal_model_pharmacology" if k == "animal_model_pharmacology_other" else k
+        t = a[a["true_" + k]]
+        studies = list(zip(t.ensembl_id, t.mondo_id, t.record_id))
+        if not studies:
+            continue
+        screen_found = np.array([(e, m, r, k) in found_by for e, m, r in studies])
+        post = {}
+        for st in (True, False):
+            agree, n = pooled[st]
+            prior = (agree + 1) / (n + 2)
+            ka = sum(v == "agree" for kk, s2, v in checks if kk == base and s2 == st)
+            kn = sum(1 for kk, s2, _ in checks if kk == base and s2 == st)
+            post[st] = (LENIENCY_PRIOR * prior + ka, LENIENCY_PRIOR * (1 - prior) + kn - ka)
+        res = {}
+        for arm in ("union", "yardstick"):
+            arm_pairs = {(e, m) for e, m, _, kk in pos[arm] if kk == k}
+            cov, prec = [], []
+            for _ in range(LENIENCY_DRAWS):
+                p_found, p_only = rng.beta(*post[True]), rng.beta(*post[False])
+                keep = rng.random(len(studies)) < np.where(screen_found, p_found, p_only)
+                real = [s for s, kp in zip(studies, keep) if kp]
+                true_pairs = {(e, m) for e, m, _ in real}
+                if true_pairs:
+                    cov.append(len(true_pairs & arm_pairs) / len(true_pairs))
+                if arm_pairs:
+                    prec.append(len(true_pairs & arm_pairs) / len(arm_pairs))
+            q = lambda x: [float(np.median(x)), *map(float, np.percentile(x, [2.5, 97.5]))] if x else None  # noqa: E731
+            res[arm] = {"coverage_pair": q(cov), "precision_pair": q(prec)}
+        out["kinds"][k] = res
+    return out
+
+
 def resolve_score(args) -> None:
     """resolve_metrics for the screen version --version (default: each record's latest)."""
-    print(json.dumps(resolve_metrics(args.version), indent=1, default=float))
+    out = resolve_metrics(args.version, args.adjudication)
+    if args.leniency:
+        out["leniency"] = leniency(adjudicated(args.adjudication), arm_positives(args.version))
+    print(json.dumps(out, indent=1, default=float))
 
 
 # --- cost ----------------------------------------------------------------------------------------------------------
@@ -2053,9 +2210,14 @@ def main() -> None:
             c.add_argument("--sources", default="web_agent", help="comma-separated hit sources to screen, or all")
         if name in ("search", "screen", "web", "web-screen", "adjudicate", "reconcile"):
             c.add_argument("--shard", help="i/n: this process's share of the pairs, to run n in parallel")
+        if name == "adjudicate":
+            c.add_argument("--rubric", choices=["v1", "v2"], default="v1",
+                           help="v2 re-reads the v1 YES calls of REVISED_KINDS under the tightened rubric, adding rows")
         if name == "resolve-score":
             c.add_argument("--version", help="score this screen version, or final (each kind's kept version; "
                                              "default: each record's latest)")
+            c.add_argument("--adjudication", help="the confirmed set as of this rubric version (default: latest)")
+            c.add_argument("--leniency", action="store_true", help="also correct for the adjudicator's leniency")
         if name in ("screen", "cost"):
             c.add_argument("--since", help="count spend from this timestamp (the full run's start)")
         if name in ("screen", "web-screen"):

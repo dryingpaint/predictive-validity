@@ -204,6 +204,82 @@ Rows kept from earlier cutoffs (446 search rows) and from the 16 pairs that left
 
 **Total cost** for the pilot, run, web arm and reconciliation: **about $3,180.**
 
+## Resolution against a confirmed set (2026-11-25)
+
+Recall against another model's web search measures agreement, not truth. So the 100 yardstick pairs were resolved
+against a confirmed set.
+
+**Adjudication** (`adjudicate`, table `preclin.target_literature_adjudication`, migration 163).
+- **Candidates:** 3,718. These are every study any source found for the 100 pairs by their cutoff: the screen's positives at every
+  version, the web arm's and the yardstick's verified studies, and seeded samples of records the screen read as showing
+  nothing (300 per screen version). Unverifiable citations are left out, since no paper could be found for them.
+- **Reader:** Opus 5.5 with a strict rubric that sets the boundaries between kinds (primary cells against cell lines,
+  pharmacology against genetics, tissue against fluid). It opened the full text for 27% of them. Opus 5 read the
+  ones Opus 5.5 refused. None is left unread.
+- **Spot-check:** Melissa's spot-check of 50 seeded judgements is pending, so everything below is provisional until she has
+  reviewed it.
+
+**Coverage and precision of each kind at its kept screen version** (`resolve-score --version final`). Pair level means
+a pair counts once whatever number of studies it has.
+
+| Kind | Confirmed pairs | Kept | Coverage, pairs | Precision, pairs | Coverage, studies | Precision, studies | Yardstick coverage, pairs | Yardstick precision, pairs | Coverage against capture–recapture (95%) |
+|---|---|---|---|---|---|---|---|---|---|
+| Primary cells or tissue | 23 | v4 | 0.96 | 0.85 | 0.67 | 0.72 | 0.57 | 0.59 | 0.91 (0.62–1.47) |
+| Cell line | 34 | v4 | 0.91 | 0.78 | 0.77 | 0.80 | 0.71 | 0.77 | 0.92 (0.67–1.39) |
+| Protein in patients' tissue | 35 | v4 | 0.97 | 0.87 | 0.78 | 0.67 | 0.74 | 0.74 | 0.96 (0.72–1.41) |
+| Animal model pharmacology, any agent | 56 | v2 | 0.96 | 0.89 | 0.93 | 0.73 | 0.00 | – | – |
+| Knockout or transgene, disease model | 27 | v4 | 0.85 | 0.88 | 0.73 | 0.67 | 0.67 | 0.60 | 0.92 (0.64–1.46) |
+| Observational biomarker | 22 | v4 | 0.82 | 0.69 | 0.86 | 0.71 | 0.50 | 0.69 | 0.97 (0.66–1.80) |
+| Clinical observation | 12 | v2 | 0.92 | 0.61 | 0.74 | 0.27 | 0.50 | 0.67 | 0.63 (0.00–1.67) |
+| Animal model pharmacology, other agents | 47 | v2 | 0.96 | 0.83 | 0.88 | 0.58 | 0.62 | 0.81 | 0.90 (0.68–1.29) |
+
+**Reading the table**
+- **Missed by every source.** Capture–recapture uses the overlap of the abstract run, the web arm and the yardstick, with a
+  log-linear model chosen by AIC among independence and one two-source interaction. It puts the pairs every source missed
+  near zero for every kind but clinical observation, whose interval is too wide to read with 12 confirmed pairs.
+- **Missed by the screen.** Of the screened-out samples, at most 6 records per kind were confirmed. Projected over the
+  14,619 screened-out records of these pairs, that is a small share of each kind's studies.
+- **Where the error lies.** The remaining error is in deciding what counts, not in finding papers.
+
+**Definitions revised against the adjudication.** The screen's false positives were evidence about the target's ligand,
+pathway partners or regulators rather than the target; another gene's knockout; drugs whose effect on the target was
+incidental; single cases, null findings and groups defined by genotype read as biomarkers; and the clinical course of
+mutation carriers. The revisions are:
+- **v3** tightened five definitions and added a target-identity rule.
+- **v4** is v3 with clinical observation's v2 definition, because v3 lowered both its rates.
+
+Each version was scored on the same confirmed set:
+
+| Kind | v2 coverage / precision | v3 | v4 | Kept |
+|---|---|---|---|---|
+| Primary cells or tissue | 0.96 / 0.79 | 0.96 / 0.88 | 0.96 / 0.85 | v4 |
+| Cell line | 0.91 / 0.72 | 0.94 / 0.78 | 0.91 / 0.78 | v4 |
+| Protein in patients' tissue | 0.97 / 0.77 | 0.94 / 0.87 | 0.97 / 0.87 | v4 |
+| Animal model pharmacology, any agent | 0.96 / 0.89 | 0.93 / 0.91 | 0.93 / 0.88 | v2 |
+| Knockout or transgene, disease model | 0.81 / 0.69 | 0.85 / 0.92 | 0.85 / 0.88 | v4 |
+| Observational biomarker | 0.86 / 0.54 | 0.77 / 0.77 | 0.82 / 0.69 | v4 |
+| Clinical observation | 0.92 / 0.61 | 0.83 / 0.59 | 0.67 / 0.44 | v2 |
+| Animal model pharmacology, other agents | 0.96 / 0.83 | 0.89 / 0.82 | 0.91 / 0.80 | v2 |
+
+- **Kept per kind:** v4 for the five kinds it improved; v2 for animal model pharmacology and clinical observation, where v2
+  scored better on both rates.
+- **Stored:** both versions' readings are kept (`screen_version`). The view `preclin.target_literature_reading`
+  (migration 169) reads each kind at its kept version, and the evidence views read it.
+- **Optimistic:** the definitions were tuned on these same 100 pairs, so their rates are optimistic.
+
+**On the chart.**
+- **Where the kinds appear:** as rows marked ‡. Primary cells and observational biomarker are kinds of their own; the
+  other literature facts are rows under their kinds (diseased tissue, cell lines, mouse genetics, animal model
+  pharmacology, clinical observation) and do not change those kinds' existing columns.
+- **Correction:** each ‡ row's relative success is corrected for misclassification (`report.evidence_analysis.corrected`).
+  The pair-level coverage and precision above are drawn from Beta posteriors, give the true prevalence, and un-mix the
+  observed groups' approval rates, with the observed ratio's sampling error included. This assumes the misclassification
+  is the same whether or not a program was approved.
+- **Facts:** these are in `preclin.evidence_subject_fact` as `target_literature` and `target_literature_search`
+  (migrations 166 and 169), scored as of entry like every other fact.
+
+__CONFIRMATION__
+
 ## Where the data is
 
 | Data | Location |
@@ -211,7 +287,10 @@ Rows kept from earlier cutoffs (446 search rows) and from the 16 pairs that left
 | Searches, hits, prefilter and screen | `preclin.target_literature_search`, `_hit`, `_prefilter`, `_screen` (with each decision's `pv_evidence.llm_decision` id) |
 | Every study the web arm, the yardstick or the pilot reference named, with its verification | `preclin.target_literature_web_study` |
 | The pilot reference's answers | `pv_evidence.llm_decision`, tasks `target_literature_reference` and `_fallback` |
+| Each record's reading of each kind at its kept screen version | the view `preclin.target_literature_reading` |
+| The confirmed set of the 100 yardstick pairs | `preclin.target_literature_adjudication` (task `target_literature_adjudicate`) |
 | Per-pair results | the view `preclin.target_literature_evidence` |
+| As evidence facts (scored as of entry) | `preclin.evidence_subject_fact`, fact keys `target_literature` and `target_literature_search` |
 | Record text and years | `public.publications`, `preclin.literature_record` or `preclin.target_disease_source` |
 
 **Final prompts by task.** These are in `pipeline/target_literature.py`. Earlier versions are in git history and in
@@ -222,7 +301,9 @@ the logged decisions' runs.
 | `target_literature_gene_vet` | v2 | Sonnet 5 | `GENE_VET_SYSTEM` |
 | `target_literature_model_terms` | v1 | Sonnet 5 | `MODEL_TERMS_SYSTEM` |
 | `target_literature_prefilter` | v1 | Haiku 4.5 | `PREFILTER_SYSTEM` |
-| `target_literature_screen` / `_fallback` / `_check` | v2 | Sonnet 5 / Opus 5 / Opus 5.5 | `SCREEN_SYSTEM` |
+| `target_literature_screen` / `_fallback` | v2 (kept for animal pharmacology and clinical observation), v4 (kept for the other five) | Sonnet 5 / Opus 5 | `screen_system(version)`: `KIND_TEXT`, `KIND_TEXT_V4` |
+| `target_literature_check` | v2 | Opus 5.5 | `SCREEN_SYSTEM` |
+| `target_literature_adjudicate` / `_fallback` | v1 | Opus 5.5 / Opus 5 | `ADJUDICATE_SYSTEM` |
 | `target_literature_reference` / `_fallback` (pilot, logged) | v2 | Opus 5.5 / Opus 5 | `REFERENCE_SYSTEM` |
 | `target_literature_web` / `_fallback` | v1 | Opus 5.5 / Opus 5 | `REFERENCE_SYSTEM` (the reference's prompt) |
 | `target_literature_yardstick` / `_fallback` | v1 | Sonnet 5 / Opus 5 | `YARDSTICK_SYSTEM` |
