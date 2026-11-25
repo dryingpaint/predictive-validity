@@ -75,13 +75,15 @@ def line_row(kind: str, category: str, about: str, level: str, line, d: pd.DataF
     rs = relative_success(lr.merge(keys, on=["program_id", "entry_date"]), "x")
     row |= {f"rs_{k}": rs[k] for k in ("rs", "rs_lo", "rs_hi", "loa_with", "loa_without")}
     c2 = x[x.phase == 2]
-    base = tuple(c for c in COVARS if not (kind in PRECEDENT_KINDS and c == "precedent"))  # not the exposure itself
+    # a precedent kind leaves out the target-precedent covariate, which would adjust for the exposure itself
+    base, base_23 = (tuple(c for c in covars if not (kind in PRECEDENT_KINDS and c == "precedent"))
+                     for covars in (COVARS, COVARS_23))
     for prefix, part, outcome, covars in (
             ("s4", c2, "s4", base),
             ("s4_biomarker", c2.assign(biomarker_selected=c2.biomarker_selected.fillna(0)), "s4",
              (*base, "biomarker_selected")) if level != "adjustment" else (None,) * 4,  # it is the exposure there
-            ("efficacy_stop", x[x.phase >= 2], "f_efficacy", COVARS_23) if category != "safety" else (None,) * 4,
-            ("safety_stop", x, "f_safety", COVARS_23) if category == "safety" else (None,) * 4):
+            ("efficacy_stop", x[x.phase >= 2], "f_efficacy", base_23) if category != "safety" else (None,) * 4,
+            ("safety_stop", x, "f_safety", base_23) if category == "safety" else (None,) * 4):
         if prefix is None:
             continue
         r = estimate(part, outcome, "x", covars)
