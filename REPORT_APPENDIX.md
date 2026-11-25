@@ -70,6 +70,7 @@ Each program is scored for the evidence its targets had for its disease as of th
 | :---- | :---- | :---- |
 | **Human genetics** |  |  |
 | Human genetics | Inherited variants link the target to the disease (GWAS, gene burden, Mendelian): the program's disease, a subtype of it or a disease at least 0.8 similar on MONDO (Lin) | Open Targets 26.09 (GWAS credible sets, gene burden tests, ClinVar, PanelApp, Orphanet, Gene2Phenotype, ClinGen, UniProt); each item dated by when it became known |
+| Protein genetics | A variant that changes the level of the target's protein in blood (a cis-pQTL) colocalises with a GWAS signal of the program's disease, a subtype of it or a disease at least 0.8 similar on MONDO (Lin); the sign says which way changing the protein moves risk | Open Targets 26.09 colocalisation (coloc H4 at least 0.8) of plasma pQTLs (Sun 2018, INTERVAL; UKB-PPP 2023) with GWAS credible sets; each dated by the later of the two studies |
 | Tumour genetics (oncology) | The gene is recurrently mutated in this cancer (oncology only) | COSMIC Cancer Gene Census, IntOGen and ClinVar somatic, through Open Targets |
 | Curated pathway | A curated human pathway shows a mutation that causes the disease in people disrupting the target | Reactome's human pathways, through Open Targets |
 | **In vitro and ex vivo** |  |  |
@@ -79,6 +80,7 @@ Each program is scored for the evidence its targets had for its disease as of th
 | Mouse genetics | A genetic change in an animal links the target to the disease: the mutant shows the disease (a knockout or transgene altering an animal model of it is to come, #154) | IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm |
 | Animal model pharmacology | A non-genetic change to the target (drug, antibody, siRNA) alters an animal model of the disease, whatever the agent; today only published studies of the program's own drug are searched, other agents are to come (#154) (exploratory: the searches miss some of these studies) | PubMed abstracts and Firecrawl's research index, screened by an LLM |
 | **Human** |  |  |
+| Clinical observation | An effect seen in people that implicates the target, such as a side effect. Today the FAERS side effects of other drugs on the target, approved before entry and developed for no related disease, that are the program's disease or a very close one and were a signal in the reports received by the year before entry; the literature is to come (#154) | FAERS: the reactions Open Targets 26.09 finds significant for each drug (openFDA likelihood-ratio test), matched to MONDO by name, each dated by the first year its reports received by then gave a signal (openFDA receivedate; at least 3 reports, PRR at least 2, chi-squared at least 4); literature (#154) |
 | Approved on the target | A drug on the target was approved before entry, banded by how close its disease is to the program's: the same or a very close disease (Lin at least 0.8, validated at entry), a related one (Lin 0.5 to 0.8), or only unrelated ones | Drugs@FDA approvals |
 | **The drug** |  |  |
 | Binding to the target measured before entry (about the drug) | The drug's binding or activity at its primary target was measured in laboratory assays before entry (small molecules) | ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it |
@@ -155,19 +157,19 @@ Every disease with at least ten such stops, by group and then by failure mode.
 | Ovarian cancer | Oncology | 18 | 61% | 28% | 11% | 17% | 11% | 0% | 0% | 11% |
 | Ulcerative colitis | Autoimmune | 17 | 65% | 12% | 24% | 6% | 6% | 0% | 6% | 18% |
 | Hepatocellular carcinoma | Oncology | 16 | 56% | 38% | 6% | 19% | 19% | 0% | 0% | 6% |
-| Atopic eczema | Other | 15 | 87% | 0% | 13% | 0% | 0% | 0% | 0% | 13% |
 | Malignant pancreatic neoplasm | Oncology | 15 | 67% | 7% | 27% | 0% | 7% | 0% | 0% | 27% |
-| Prostate cancer | Oncology | 13 | 77% | 23% | 0% | 23% | 0% | 0% | 0% | 0% |
+| Atopic eczema | Other | 15 | 87% | 0% | 13% | 0% | 0% | 0% | 0% | 13% |
+| Acute myeloid leukemia | Oncology | 13 | 38% | 15% | 46% | 8% | 8% | 0% | 8% | 38% |
 | Type 2 diabetes mellitus | Endocrine | 13 | 23% | 31% | 46% | 15% | 15% | 0% | 15% | 31% |
-| Chronic obstructive pulmonary disease | Respiratory | 13 | 69% | 8% | 23% | 0% | 8% | 0% | 8% | 15% |
+| Prostate cancer | Oncology | 13 | 77% | 23% | 0% | 23% | 0% | 0% | 0% | 0% |
 | Small cell lung carcinoma | Oncology | 13 | 69% | 8% | 23% | 0% | 8% | 0% | 0% | 23% |
 | Schizophrenia | Psychiatry | 13 | 46% | 0% | 54% | 0% | 0% | 0% | 0% | 54% |
-| Acute myeloid leukemia | Oncology | 13 | 38% | 15% | 46% | 8% | 8% | 0% | 8% | 38% |
+| Chronic obstructive pulmonary disease | Respiratory | 13 | 69% | 8% | 23% | 0% | 8% | 0% | 8% | 15% |
 | Plasma cell myeloma | Oncology | 12 | 58% | 17% | 25% | 8% | 8% | 0% | 0% | 25% |
 | Major depressive disorder | Psychiatry | 12 | 42% | 17% | 42% | 8% | 8% | 0% | 8% | 33% |
 | Systemic lupus erythematosus | Autoimmune | 11 | 64% | 18% | 18% | 0% | 18% | 0% | 18% | 0% |
-| Crohn disease | Autoimmune | 10 | 60% | 10% | 30% | 10% | 0% | 0% | 20% | 10% |
 | Idiopathic pulmonary fibrosis | Respiratory | 10 | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
+| Crohn disease | Autoimmune | 10 | 60% | 10% | 30% | 10% | 0% | 0% | 20% | 10% |
 
 ### Why efficacy failed
 
@@ -230,6 +232,12 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Rare inherited variants, including single-gene disease (derived) | 724 / 7,656 | 225 | 2.55 (1.95–3.29) | 1.88 (1.50–2.37) | 1.83 (1.44–2.31) | 0.55 (0.39–0.78) |
 | · Common variants (genome-wide association studies) (derived) | 243 / 7,656 | 95 | 1.60 (0.99–2.24) | 1.11 (0.71–1.73) | 1.12 (0.73–1.73) | 1.09 (0.78–1.52) |
 | · Genetics agrees with the drug's direction (derived) | 447 / 7,656 | 148 | 2.51 (1.91–3.29) | 1.82 (1.37–2.43) | 1.76 (1.31–2.36) | 0.52 (0.32–0.83) |
+| Protein genetics: variants that change the target's protein level change disease risk | 2 / 7,656 | 2 | Too rare to estimate | – | – | – |
+| · Higher protein raises risk | 2 / 7,656 | 2 | Too rare to estimate | – | – | – |
+| · Higher protein lowers risk | 0 / 7,656 | 0 | Too rare to estimate | – | – | – |
+| · Both, in different studies or diseases | 0 / 7,656 | 0 | Too rare to estimate | – | – | – |
+| · A cis-pQTL of the target's protein colocalises with a disease GWAS signal, on today's data (hindsight) | 101 / 7,656 | 36 | – | 1.02 (0.45–2.33) | 1.03 (0.44–2.43) | 1.07 (0.67–1.72) |
+| · Protein genetics agrees with the drug's direction (derived) | 2 / 7,656 | 2 | Too rare to estimate | – | – | – |
 | Tumour genetics (oncology): the gene is recurrently mutated in this cancer | 1,108 / 3,714 | 164 | 1.96 (1.13–3.43) | 1.55 (1.09–2.22) | 1.47 (1.03–2.10) | 0.84 (0.62–1.13) |
 | · Activating | 776 / 3,714 | 112 | 1.69 (0.96–2.95) | 1.41 (1.00–1.99) | 1.34 (0.95–1.89) | 0.81 (0.58–1.13) |
 | · Inactivating | 47 / 3,714 | 13 | Too rare to estimate | – | – | – |
@@ -255,12 +263,19 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Mouse genetics agrees with the drug's direction (derived) | 507 / 7,656 | 186 | 1.81 (1.37–2.41) | 1.44 (1.10–1.90) | 1.43 (1.09–1.87) | 0.59 (0.43–0.80) |
 | Animal model pharmacology: a non-genetic change to the target alters a disease model (today: the program's own drug) | 4,782 / 9,060 | 1,542 | 0.74 (0.61–0.91) | 0.85 (0.73–1.00) | 0.85 (0.72–0.99) | 0.93 (0.84–1.05) |
 | **Human** |  |  |  |  |  |  |
-| Approved on the target: a drug on the target was approved before entry, for this disease or another | 4,436 / 7,656 | 614 | 1.45 (1.16–1.82) | 1.36 (1.12–1.65) | 1.35 (1.12–1.64) | – |
-| · This disease or a very close one (Lin at least 0.8): validated at entry | 1,439 / 7,656 | 361 | 2.05 (1.68–2.53) | 1.90 (1.58–2.28) | 1.87 (1.56–2.25) | 0.67 (0.54–0.82) |
-| · A related disease (Lin 0.5 to 0.8) | 994 / 7,656 | 248 | 1.31 (0.94–1.71) | 1.21 (0.96–1.53) | 1.21 (0.96–1.53) | 0.83 (0.67–1.02) |
-| · Only unrelated diseases | 2,003 / 7,656 | 429 | 0.68 (0.53–0.85) | 0.67 (0.53–0.84) | 0.67 (0.54–0.84) | 1.57 (1.31–1.89) |
-| · A drug on the target approved for another disease (related or unrelated; the earlier_drug_other_disease origin) (derived) | 2,997 / 7,656 | 500 | 0.83 (0.66–1.04) | 0.79 (0.65–0.95) | 0.79 (0.65–0.96) | 1.50 (1.22–1.85) |
-| · A drug on the target approved for a related disease, Lin at least 0.5 (B1) (derived) | 2,433 / 7,656 | 447 | 1.98 (1.56–2.46) | 1.80 (1.52–2.13) | 1.78 (1.50–2.11) | 0.64 (0.53–0.76) |
+| Clinical observation: an effect seen in people implicates the target, such as a side effect | 189 / 1,961 | 61 | 1.91 (1.09–3.19) | 1.90 (1.25–2.89) | 1.98 (1.28–3.05) | 0.66 (0.44–1.00) |
+| · Lowering it: a drug that blocks the target | 58 / 1,961 | 33 | Too rare to estimate | – | – | – |
+| · Raising it: a drug that activates it | 125 / 1,961 | 28 | 2.07 (1.03–3.76) | 1.55 (0.92–2.59) | 1.63 (0.92–2.89) | 0.58 (0.33–1.03) |
+| · Both | 4 / 1,961 | 3 | Too rare to estimate | – | – | – |
+| · A drug of unclear action | 2 / 1,961 | 2 | Too rare to estimate | – | – | – |
+| · Another drug on the target has the disease as a significant side effect, on today's FAERS (hindsight) | 296 / 7,656 | 89 | 1.34 (0.87–1.93) | 1.51 (1.02–2.22) | 1.51 (1.03–2.22) | 0.75 (0.55–1.03) |
+| · A side effect argues for the drug's direction (derived) | 51 / 1,961 | 15 | Too rare to estimate | – | – | – |
+| Approved on the target: a drug on the target was approved before entry, for this disease or another | 4,436 / 7,656 | 614 | 1.45 (1.16–1.82) | 1.36 (1.12–1.65) | 1.35 (1.12–1.64) | 0.74 (0.64–0.86) |
+| · This disease or a very close one (Lin at least 0.8): validated at entry | 1,439 / 7,656 | 361 | 2.05 (1.68–2.53) | 1.90 (1.58–2.28) | 1.87 (1.56–2.25) | 0.61 (0.51–0.74) |
+| · A related disease (Lin 0.5 to 0.8) | 994 / 7,656 | 248 | 1.31 (0.94–1.71) | 1.21 (0.96–1.53) | 1.21 (0.96–1.53) | 0.75 (0.61–0.93) |
+| · Only unrelated diseases | 2,003 / 7,656 | 429 | 0.68 (0.53–0.85) | 0.67 (0.53–0.84) | 0.67 (0.54–0.84) | 1.17 (1.02–1.35) |
+| · A drug on the target approved for another disease (related or unrelated; the earlier_drug_other_disease origin) (derived) | 2,997 / 7,656 | 500 | 0.83 (0.66–1.04) | 0.79 (0.65–0.95) | 0.79 (0.65–0.96) | 1.03 (0.89–1.18) |
+| · A drug on the target approved for a related disease, Lin at least 0.5 (B1) (derived) | 2,433 / 7,656 | 447 | 1.98 (1.56–2.46) | 1.80 (1.52–2.13) | 1.78 (1.50–2.11) | 0.61 (0.52–0.72) |
 | **The drug** |  |  |  |  |  |  |
 | Binding to the target measured before entry | 1,708 / 6,216 | 416 | 1.41 (1.04–1.83) | 1.05 (0.81–1.34) | 1.03 (0.80–1.33) | 1.07 (0.90–1.27) |
 | · 10 nM or better | 1,063 / 6,216 | 263 | 1.95 (1.35–2.68) | 1.23 (0.93–1.62) | 1.20 (0.91–1.60) | 0.98 (0.80–1.20) |
