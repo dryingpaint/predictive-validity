@@ -157,6 +157,7 @@ REFERENCE_TOOLS = [{"type": "web_search_20260209", "name": "web_search", "max_us
                    {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 6}]
 METHOD = "target_literature@v1"
 ABSTRACT_CHARS = 4000
+NETWORK_RETRIES = 8  # reruns of a command after a network or database outage (main)
 
 
 # --- pairs ---------------------------------------------------------------------------------------------------------
@@ -2226,6 +2227,17 @@ def main() -> None:
     if getattr(args, "screen_version", None):
         global SCREEN_VERSION
         SCREEN_VERSION = args.screen_version
+    # Every command resumes where it stopped (stored searches, decisions and rows are reused), so a dropped database
+    # link, a network outage or a source that is down reruns the command after a backoff instead of ending it.
+    for attempt in range(NETWORK_RETRIES):
+        try:
+            args.fn(args)
+            return
+        except (psycopg2.OperationalError, psycopg2.InterfaceError, FirecrawlError, SourceDown, OSError) as e:
+            wait = min(60 * 2 ** attempt, 1800)
+            print(f"{args.cmd}: {type(e).__name__}: {str(e)[:200]}; rerunning in {wait} s "
+                  f"({attempt + 1}/{NETWORK_RETRIES})", flush=True)
+            time.sleep(wait)
     args.fn(args)
 
 
