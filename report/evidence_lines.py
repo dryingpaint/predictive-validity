@@ -74,32 +74,32 @@ LITERATURE_GATE = "v3_final"  # the gate scoring of the retrieval the literature
 # Each #154 target-literature kind's pair-level coverage and precision against the adjudicated confirmed set of 100
 # pairs (python -m pipeline.target_literature resolve-score; report/audits/target_literature.md): (pairs the search found
 # that had a confirmed study, pairs with a confirmed study, pairs the search read as yes), each kind at its kept screen
-# version (preclin.target_literature_reading); resolve-score --version final, 2026-11-25. Capture-recapture puts the
+# version (preclin.target_literature_reading) against the v2-rubric confirmed set; resolve-score --version final, 2026-11-25. Capture-recapture puts the
 # qualifying pairs every source missed near zero for every kind but clinical observation (the record).
 TARGET_LITERATURE_COVERAGE: dict[str, tuple[int, int, int]] = {
-    "human_cell_perturbation": (22, 23, 26),
-    "cell_line_perturbation": (31, 34, 40),
-    "diseased_tissue_protein": (34, 35, 39),
-    "animal_model_pharmacology": (54, 56, 61),
-    "mouse_genetic_disease_model": (23, 27, 26),
-    "observational_biomarker": (18, 22, 26),
-    "clinical_observation": (11, 12, 18),
-    "animal_model_pharmacology_other": (45, 47, 54),
+    "human_cell_perturbation": (21, 22, 26),
+    "cell_line_perturbation": (32, 33, 41),
+    "diseased_tissue_protein": (33, 34, 39),
+    "animal_model_pharmacology": (49, 49, 61),
+    "mouse_genetic_disease_model": (23, 26, 26),
+    "observational_biomarker": (17, 20, 26),
+    "clinical_observation": (7, 7, 18),
+    "animal_model_pharmacology_other": (40, 40, 54),
 }
 
 
-# The same rates corrected for the adjudicator's leniency (the spot check of 50 adjudications, a second-model review,
+# The same rates (v2-rubric confirmed set) corrected for the adjudicator's leniency (the spot check of 50 adjudications, a second-model review,
 # not human-verified; pipeline.target_literature.leniency): Beta (alpha, beta) of the pair-level sensitivity (se) and
 # precision (ppv) matching each corrected median and 95% interval. The chart's correction draws from these.
 TARGET_LITERATURE_RATES: dict[str, dict[str, tuple[float, float]]] = {
-    "human_cell_perturbation": {"se": (134.96, 7.1), "ppv": (17.71, 6.52)},
-    "cell_line_perturbation": {"se": (96.64, 3.22), "ppv": (99.29, 32.03)},
-    "diseased_tissue_protein": {"se": (276.1, 8.37), "ppv": (34.05, 7.45)},
-    "animal_model_pharmacology": {"se": (176.19, 3.6), "ppv": (32.59, 6.39)},
-    "mouse_genetic_disease_model": {"se": (26.14, 1.38), "ppv": (22.5, 4.09)},
-    "observational_biomarker": {"se": (30.22, 3.36), "ppv": (30.72, 16.26)},
-    "clinical_observation": {"se": (6.4, 0.13), "ppv": (6.8, 10.69)},
-    "animal_model_pharmacology_other": {"se": (123.06, 2.51), "ppv": (39.4, 10.08)},
+    "human_cell_perturbation": {"se": (155.07, 8.16), "ppv": (29.75, 10.96)},
+    "cell_line_perturbation": {"se": (283.97, 8.87), "ppv": (137.38, 38.64)},
+    "diseased_tissue_protein": {"se": (276.1, 8.37), "ppv": (77.63, 16.98)},
+    "animal_model_pharmacology": {"se": (191.1, 3.9), "ppv": (92.36, 25.02)},
+    "mouse_genetic_disease_model": {"se": (60.24, 5.24), "ppv": (36.63, 4.78)},
+    "observational_biomarker": {"se": (31.18, 1.95), "ppv": (60.84, 32.21)},
+    "clinical_observation": {"se": (191.1, 3.9), "ppv": (17.06, 44.36)},
+    "animal_model_pharmacology_other": {"se": (191.1, 3.9), "ppv": (131.77, 50.68)},
 }
 
 
