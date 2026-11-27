@@ -525,9 +525,9 @@ def firecrawl(args) -> None:
     p = pairs_of(args.pairs)
     nm = pair_names(p, run=False)
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT ensembl_id, mondo_id, source, kind FROM preclin.target_literature_search
+        cur.execute("""SELECT ensembl_id, mondo_id, cutoff_year, source, kind FROM preclin.target_literature_search
                        WHERE source LIKE 'firecrawl%%'""")
-        done = set(cur.fetchall())
+        done = set(cur.fetchall())  # by cutoff: a pair searched only at another cutoff is searched at its own
         cur.execute(f"""SELECT DISTINCT ON (ensembl_id, mondo_id) ensembl_id, mondo_id, record_id
                         FROM preclin.target_literature_screen
                         WHERE original_data AND disease_match = 'same_or_subtype' AND ({" OR ".join(KINDS)})
@@ -535,10 +535,10 @@ def firecrawl(args) -> None:
         seeds = {(e, m): rid for e, m, rid in cur.fetchall()}
     if args.mode == "search":
         calls = [(r, k) for r in p.itertuples() for k in KINDS
-                 if (r.ensembl_id, r.mondo_id, "firecrawl", k) not in done and nm[pair_key(r.ensembl_id, r.mondo_id)]["gene"]]
+                 if (r.ensembl_id, r.mondo_id, int(r.cutoff_year), "firecrawl", k) not in done and nm[pair_key(r.ensembl_id, r.mondo_id)]["gene"]]
     else:
         calls = [(r, "") for r in p.itertuples() if (r.ensembl_id, r.mondo_id) in seeds
-                 and (r.ensembl_id, r.mondo_id, "firecrawl_related", "") not in done]
+                 and (r.ensembl_id, r.mondo_id, int(r.cutoff_year), "firecrawl_related", "") not in done]
     before = firecrawl_credits()
     print(f"firecrawl {args.mode}: calls={len(calls)} credits={before}", flush=True)
     state = {"done": 0, "failed": 0, "stop": None, "wait": 30}
@@ -1585,7 +1585,7 @@ ADJUDICATE_V2 = llm.Task(**{**ADJUDICATE_TASK.__dict__, "prompt_version": "v2", 
 ADJUDICATE_V2_FALLBACK = llm.Task(**{**ADJUDICATE_FALLBACK.__dict__, "prompt_version": "v2", "system": ADJUDICATE_SYSTEM_V2})
 
 # The spot check of 50 seeded v1 adjudications (the review packet, items 0-49 in order): a second-model review by the
-# coordinating Claude session, done in Melissa's place at her request, NOT human-verified. Verdict on the
+# coordinating Claude session, delegated by Melissa and final: a second-model review (Claude), not human-verified. Verdict on the
 # adjudicator's call: agree, disagree or unsure. Keyed (kind, ensembl_id, mondo_id, record_id).
 SPOT_CHECK = {
     ("human_cell_perturbation", "ENSG00000159110", "MONDO:0005301", "11696016"): "agree",
@@ -2073,13 +2073,15 @@ INTEGRITY = {
         LEFT JOIN preclin.target_literature_prefilter f USING (ensembl_id, mondo_id, record_id)
         LEFT JOIN ({REFUSED}) x ON x.subject_key = r.ensembl_id || '|' || r.mondo_id || '|' || r.record_id
         WHERE r.has_text AND s.record_id IS NULL AND (f.record_id IS NULL OR f.possibly) AND x.subject_key IS NULL""",
-    "screen or prefilter rows of a cohort pair for a record its searches do not return": """
+    "screen or prefilter rows of a pair for a record no search of the pair returns, at any cutoff": """
         SELECT (SELECT count(*) FROM preclin.target_literature_screen s
                 JOIN (SELECT DISTINCT ensembl_id, mondo_id FROM want) w USING (ensembl_id, mondo_id)
-                LEFT JOIN retrieved r USING (ensembl_id, mondo_id, record_id) WHERE r.record_id IS NULL)
+                WHERE NOT EXISTS (SELECT 1 FROM preclin.target_literature_hit h
+                                  WHERE (h.ensembl_id, h.mondo_id, h.record_id) = (s.ensembl_id, s.mondo_id, s.record_id)))
              + (SELECT count(*) FROM preclin.target_literature_prefilter f
                 JOIN (SELECT DISTINCT ensembl_id, mondo_id FROM want) w USING (ensembl_id, mondo_id)
-                LEFT JOIN retrieved r USING (ensembl_id, mondo_id, record_id) WHERE r.record_id IS NULL)""",
+                WHERE NOT EXISTS (SELECT 1 FROM preclin.target_literature_hit h
+                                  WHERE (h.ensembl_id, h.mondo_id, h.record_id) = (f.ensembl_id, f.mondo_id, f.record_id)))""",
     "hits without their search row": """
         SELECT count(*) FROM preclin.target_literature_hit h LEFT JOIN preclin.target_literature_search s
             ON (s.ensembl_id, s.mondo_id, s.cutoff_year, s.source, s.kind) = (h.ensembl_id, h.mondo_id, h.cutoff_year, h.source,
@@ -2116,6 +2118,12 @@ INTEGRITY = {
                           AND (h.ensembl_id, h.mondo_id, h.record_id) = (w.ensembl_id, w.mondo_id, w.record_id))""",
 }
 INFO = {
+    "screen rows for records returned only by a search at another cutoff of the pair (kept; the read-time cutoff applies)": """
+        SELECT count(*) FROM preclin.target_literature_screen s
+        JOIN (SELECT DISTINCT ensembl_id, mondo_id FROM want) w USING (ensembl_id, mondo_id)
+        LEFT JOIN retrieved r USING (ensembl_id, mondo_id, record_id)
+        WHERE r.record_id IS NULL AND EXISTS (SELECT 1 FROM preclin.target_literature_hit h
+              WHERE (h.ensembl_id, h.mondo_id, h.record_id) = (s.ensembl_id, s.mondo_id, s.record_id))""",
     "search rows of cohort pairs at an earlier cutoff (kept; linked to the current one)": """
         SELECT count(*) FROM preclin.target_literature_search s JOIN want w USING (ensembl_id, mondo_id)
         WHERE s.cutoff_year <> w.cutoff_year""",

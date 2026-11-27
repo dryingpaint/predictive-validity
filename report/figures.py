@@ -508,6 +508,11 @@ FAILURE_AXIS = {"efficacy_safety": "efficacy and safety stops", "safety": "safet
                 "no_benefit": "efficacy stops where the drug engaged its target without benefit"}
 
 
+# Target-literature rows shown by count alone: published clinical observations, whose precision against the adjudicated
+# set (0.28, on 7 confirmed pairs) is too low and too uncertain for an observed or corrected estimate to mean anything.
+COUNTS_ONLY = {"tl_clinical"}
+
+
 def evidence_translates(failure: str = "all"):
     """Relative success to approval from any phase for each kind of evidence and the values of its chart fact
     (report.evidence_lines.chart_rows), on US-developed programs, under one failure definition (every stop, or only
@@ -515,9 +520,10 @@ def evidence_translates(failure: str = "all"):
     coloured by whether the kind is about the target or the drug; a filled dot is a 95% interval clear of 1. Only rows
     with an estimate are drawn; every line tried is in the appendix table. An interval that runs past the axis ends
     in an arrowhead at its edge. A #154 target-literature row (‡) draws its estimate corrected for the search's
-    coverage and precision (report.evidence_analysis.corrected), and its label gives the coverage."""
+    coverage and precision (report.evidence_analysis.corrected), and its label gives the coverage; a row in
+    COUNTS_ONLY shows its count and no estimate."""
     lines = pd.read_csv(os.path.join(OUT, "evidence_analysis", "chart.csv"))
-    lines = lines[lines.failure.eq(failure) & lines.estimated.eq(True)].reset_index(drop=True)
+    lines = lines[lines.failure.eq(failure) & (lines.estimated.eq(True) | lines.column.isin(COUNTS_ONLY))].reset_index(drop=True)
     ys, y, prev = [], 0.0, None
     for i, r in enumerate(lines.itertuples()):
         if i:
@@ -527,7 +533,9 @@ def evidence_translates(failure: str = "all"):
     fig, ax = plt.subplots(figsize=(10, 0.4 * len(ys) + 3.4))
     has_corr = "rs_corr" in lines.columns
     for yi, r in zip(ys, lines.itertuples()):
-        if has_corr and pd.notna(r.rs_corr):
+        if r.column in COUNTS_ONLY:
+            ax.text(RATIO_LIM[1] + 0.85, yi, f"n={r.exposed:,.0f}", va="center", color=INK2, fontsize=10)
+        elif has_corr and pd.notna(r.rs_corr):
             ratio_interval(ax, yi, r.rs_corr, r.rs_corr_lo, r.rs_corr_hi, r.exposed, about_color(r.category, r.about))
         else:
             ratio_interval(ax, yi, r.rs_rs, r.rs_rs_lo, r.rs_rs_hi, r.exposed, about_color(r.category, r.about))
@@ -535,7 +543,8 @@ def evidence_translates(failure: str = "all"):
                + (f"\ncounting only {FAILURE_AXIS[failure]} as failures" if failure != "all" else ""))
     style(ax)
     labels = [("      " if r.level == "value" else "") + r.label
-              + (f" ‡ (found for {r.coverage:.0%} of pairs)" if has_corr and pd.notna(r.rs_corr) else "")
+              + (" ‡ (count only: too few confirmed pairs to correct)" if r.column in COUNTS_ONLY
+                 else f" ‡ (found for {r.coverage:.0%} of pairs)" if has_corr and pd.notna(r.rs_corr) else "")
               for r in lines.itertuples()]
     ax.set_yticks(ys, labels, color=INK, fontsize=10.5)
     for t, r in zip(ax.get_yticklabels(), lines.itertuples()):

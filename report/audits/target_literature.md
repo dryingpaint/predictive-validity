@@ -219,7 +219,7 @@ against a confirmed set.
 - **Spot-check:** a second-model review of 50 seeded judgements (below), not human-verified.
 
 **Spot check of the adjudicator.** Fifty seeded v1 adjudications were reviewed by a second model (Claude, the
-coordinating session), at Melissa's request, in her place; this review is NOT human-verified. It agreed with 33,
+coordinating session), delegated by Melissa: a second-model review (Claude), not human-verified. It agreed with 33,
 disagreed with 9 and was unsure of 8, which is 79% agreement on the items it decided. Every disagreement was a lenient
 YES at a kind's boundary:
 - a mouse study filed as primary human cells;
@@ -238,7 +238,7 @@ stratum: a Beta posterior shrunk toward the stratum's pooled agreement with 4 ps
 over 2,000 draws (`resolve-score --leniency`).
 
 **Coverage and precision of each kind at its kept screen version, against the v2 confirmed set.** Pair level counts a
-pair once whatever its number of studies. Provisional, since the spot check is a model review.
+pair once whatever its number of studies. The spot check is a second-model review (Claude), not human-verified.
 
 | Kind | Kept | Confirmed pairs | Coverage | Precision | Coverage, leniency-corrected (95%) | Precision, leniency-corrected (95%) | Yardstick coverage | Coverage against capture–recapture |
 |---|---|---|---|---|---|---|---|---|
@@ -333,9 +333,9 @@ Each version was scored on the same confirmed set:
 | Animal pharmacology, any agent | 1.14 | 1.19 (0.88–1.61) |
 | Animal pharmacology, other agents | 1.20 | 1.29 (0.95–1.70) |
 | Observational biomarker | 1.53 | 1.87 (1.43–2.48) |
-| Clinical observation | 1.85 | 4.16 (2.67–7.00) |
+| Clinical observation | count only | – |
 
-Clinical observation's correction rests on a precision of 0.28 from 7 confirmed pairs, so it is unreliable and should not be read.
+Clinical observation is drawn by count alone, with no estimate: its precision is 0.28 on 7 confirmed pairs, too low and too uncertain to correct.
 
 **Cost** of the resolution work (adjudication, v3 and v4 screens, re-adjudication, confirmation retrieval and screening) was about $3,255 at list prices (`python -m pipeline.target_literature cost --since 2026-11-24T20:00:00Z`).
 
