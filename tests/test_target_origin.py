@@ -557,9 +557,11 @@ def definition_of(origin: str) -> str:
 def test_every_origin_has_one_definition_and_a_chart_line_entry():
     assert [ln[2:].split(":")[0] for ln in to.DEFINITIONS.splitlines()] == to.ORIGINS
     assert set(to.CHART_LINE) == set(to.ORIGINS)
-    assert set(to.CHART_LINE_PENDING) == {"observational_biomarker", "human_cell_perturbation"}
+    assert to.CHART_LINE_PENDING == ()  # every kind of the list has a chart column (the #154 literature)
+    assert to.CHART_LINE["human_cell_perturbation"] == "primary_cell_perturbation"
+    assert to.CHART_LINE["observational_biomarker"] == "observational_biomarker"
     without = {o for o, c in to.CHART_LINE.items() if c is None}
-    assert without == set(to.CHART_LINE_PENDING) | {"phenotypic_screen", "unclear"}
+    assert without == {"phenotypic_screen", "unclear"}
 
 
 def test_every_origin_kind_is_a_kind_of_the_evidence_list_with_its_chart_column():
