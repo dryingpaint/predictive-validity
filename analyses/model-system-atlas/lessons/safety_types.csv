@@ -11,7 +11,8 @@ breast-cancer-hsp90aa1-hsp90ab1-inhibitors,alvespimycin-rat-dog-tox,silent,ocula
 breast-cancer-pan-her-inhibitors,er-pos-tamres-mcf7-xenograft,silent,gastrointestinal;skin,mice can show EGFR-TKI diarrhoea; the model was silent; diarrhoea 40-51 % and rash in MINT
 breast-cancer-parp1-2-inhibitors,brca1-gemm-k14cre-azd2281,silent,haematological,grade 3+ haematological toxicity in 65 % dose-reduced; the GEMM could show cytopenias and reported none
 breast-cancer-parp1-2-inhibitors,pamiparib-mda-mb-436-xenograft,silent,haematological,anaemia and neutropenia; the xenograft mouse could show cytopenias and reported none
-breast-cancer-pi3k-pan-inhibitors,pi3k-driven-breast-xenografts,silent,liver;cns,grade 3-4 ALT/AST rises (25 % / 18 %) and mood disorders ended buparlisib; the package was silent
+breast-cancer-pi3k-pan-inhibitors,pi3k-driven-breast-xenografts,stated_safe,skin;gastrointestinal,"Raynaud's mice tolerated the effective pictilisib dose with normal weight gain; FERGI grade 3+ events 61 % vs 28 % (rash, diarrhoea) and the dose was cut to 260 mg"
+breast-cancer-pi3k-pan-inhibitors,buparlisib-rat-dog-tox,stated_safe,liver;cns,rat and dog package listed no liver finding and rat safety pharmacology found no behavioural effect (BERIL-1 protocol); BELLE-2 grade 3-4 ALT/AST 25 % / 18 % and more depression and anxiety ended buparlisib
 chronic-obstructive-pulmonary-disease-chrm3-antagonists,az-guinea-pig-bronchoprotection,silent,respiratory,paradoxical FEV1 fall within 15 min in three COPD patients; authors say preclinical data give no explanation
 colorectal-cancer-kdr-vegfr-inhibitors,tox-rodent-nonrodent,silent,cardiovascular,dog telemetry and 13-week rat/dog studies silent on blood pressure; hypertension the commonest grade 3-4 event
 crohn-disease-anti-il23a-antibodies,cynomolgus-toxicology,silent,liver,hepatotoxicity (one Hy's-law pattern) with 600 mg IV induction; monkeys at 1.3x exposure had no clinical-pathology change

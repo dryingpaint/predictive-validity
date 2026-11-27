@@ -1,0 +1,158 @@
+{
+ "tile": "breast-cancer-pi3k-pan-inhibitors",
+ "date": "2026-11-22",
+ "by": "rescore pass (Claude Code, for review)",
+ "changed": [
+  {
+   "cell": "dose",
+   "index": 2,
+   "what": "re-sourced to Sarker 2015's stated comparison (MDA-MB-361 target AUC 6 h·µM reached above 80 mg); FERGI pairing and its PRP/tumour pAkt mix-up removed; status same and year 2014 unchanged",
+   "old": {
+    "year": 2014,
+    "status": "same",
+    "src": "https://doi.org/10.1016/S1470-2045(16)00106-6",
+    "srcLabel": "Krop 2016",
+    "quote": "Although addition of pictilisib to fulvestrant did not significantly improve progression-free survival, dosing of pictilisib was limited by toxicity, potentially limiting its efficacy.",
+    "comparison_stated": false,
+    "model_src": "https://doi.org/10.1158/1078-0432.CCR-14-0947",
+    "model_src_tier": 1,
+    "subjects": "patients",
+    "population": "ER+/HER2-negative, aromatase-inhibitor-resistant advanced breast cancer (FERGI)",
+    "population_group": "stage_or_line",
+    "combination_with": "fulvestrant",
+    "epub_year": 2016,
+    "print_year": 2016,
+    "magnitude_basis": null,
+    "source_calls_it": null,
+    "note": "FERGI dosed pictilisib at 340 mg, above the 330 mg where tumour pAkt fell >90%; PFS missed, dose cut to 260 mg, program dropped. Combination with fulvestrant, scored like any trial. Dated to FERGI part 1 at SABCS December 2014 (earliest public).",
+    "short": "pAkt suppression exposure reached",
+    "reason": "Reached, failed, abandoned in this setting",
+    "judgement": "Dose scored on its own prediction (rule v4): 340 mg was at or above the 330 mg where tumour pAkt fell >90%. Part 1 gave 340 mg daily, at or above the 330 mg RP2D where Sarker 2015 showed >90% tumour pAkt suppression, so the model's pathway-inhibition exposure was reached; the primary endpoint missed and Roche stopped pictilisib in this setting, which is the 'reached, failed, abandoned' row (contra derived from efficacy). Part 2's cut to 260 mg for toxicity is not scored as blocked_by because Raynaud 2009 stated no tolerability margin. Buparlisib on the same track would be same: its 100 mg/day MTD showed clear target inhibition (Bendell 2012) and BELLE-2 met its primary at that dose; one drug's contra beats another's same on one track, so it sits in this judgement. PEGGY dosed 260 mg on days 1-5 only, below the daily target, and also failed.",
+    "confidence": "medium",
+    "confidence_note": "Abstract-level reading (PMC5524539). FERGI NCT01437566 has no results posted, so registry_date is null. No exposure-level model-versus-patient comparison was read, so magnitude is null. model_src is Sarker 2015, which states the MDA-MB-361 PK-PD exposure target (checker correction). Year is the SABCS 2014 presentation (AACR blog 2014-12-12); the Lancet Oncology paper is the quoted source."
+   }
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "model_id pi3k-driven-breast-xenografts -> buparlisib-rat-dog-tox (opener of the toxicology track); year 2011 -> 2008 (first use, proxied by the first-in-human start); status untested unchanged",
+   "old": {
+    "model_id": "pi3k-driven-breast-xenografts",
+    "model": "PI3K-pathway-activated lines and xenografts (U87MG, IGROV-1; breast lines incl. MCF7, KPL-4)",
+    "model_first_use_year": 2009,
+    "year": 2011,
+    "note": "Novartis stated buparlisib's preclinical safety profile supported clinical development; this is the track's only stated tolerability claim.",
+    "short": "Preclinical safety profile called supportive",
+    "reason": null,
+    "judgement": "Opening entry of buparlisib's safety track: the stated preclinical safety claim is a passing tolerability claim, scored as a safety prediction against BELLE-2.",
+    "confidence": "medium",
+    "confidence_note": "Abstract-level reading; the species and findings of the preclinical safety package are not in the abstract and no FDA review exists for any member."
+   }
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "model_id pi3k-driven-breast-xenografts -> buparlisib-rat-dog-tox; mood now scored with the liver harm (rat safety pharmacology found no behavioural effect); package contents verified from the BERIL-1 protocol; confidence medium -> high; status contra and year 2015 unchanged",
+   "old": {
+    "model_id": "pi3k-driven-breast-xenografts",
+    "model": "PI3K-pathway-activated lines and xenografts (U87MG, IGROV-1; breast lines incl. MCF7, KPL-4)",
+    "model_first_use_year": 2009,
+    "year": 2015,
+    "note": "BELLE-2: grade 3-4 ALT rise 25% vs 1%, AST 18% vs 3%; with mood disorders this toxicity ended buparlisib despite a positive primary. Dated to SABCS December 2015, where transaminitis led the toxicities.",
+    "short": "Liver toxicity unflagged by preclinical package",
+    "reason": "Hepatotoxicity ended a drug the package cleared",
+    "judgement": "Scored on the harm the species could have shown: rodents and dogs can show transaminase elevation, the discovery paper called the preclinical safety profile supportive, and grade 3-4 ALT rises hit a quarter of BELLE-2 patients, liver toxicity suspended NeoPHOEBE, and BELLE-2 concluded no further studies would be pursued because of toxicity. Mood alteration, a buparlisib DLT from the phase 1 (Bendell 2012) that drove the discontinuations, is not scored: a xenograft study cannot show it. Hyperglycaemia is on-target and was read as target modulation in the phase 1s, so it is not a miss. Pictilisib's FERGI toxicity is scored on its own track (safety entry 4). Counted once, here, because no member's model predicted it.",
+    "confidence": "medium",
+    "confidence_note": "Abstract-level reading (PMC5549667). Quote is a verbatim leading fragment of the abstract's adverse-event sentence. NCT01610284 results posted 2020-06-18, after the paper. Whether Novartis' rat or dog toxicology showed transaminase rises is unverified; if it did, the harm was predicted and belongs in dose as a misplaced margin, not here. Year moved to 2015: at SABCS 2015 (abstract S6-01) grade 3-4 events were 77.3% vs 32.0%, led by transaminitis, hyperglycaemia, rash and mood disorders (ASCO Post, January 2016)."
+   }
+  },
+  {
+   "cell": "all",
+   "index": null,
+   "what": "model text of pi3k-driven-breast-xenografts names MDA-MB-361 (12 entries)",
+   "old": {
+    "model": "PI3K-pathway-activated lines and xenografts (U87MG, IGROV-1; breast lines incl. MCF7, KPL-4)"
+   }
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "what": "population: stale xenograft/panel text -> the patients the track is compared with (checker note)",
+   "old": {
+    "population": "mechanistic xenografts (A2780, U87MG) and a 353-line panel"
+   }
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "what": "year 2015 -> 2014 and dating sentence, per the checker (Mayer 2014 phase 1b, ER+/HER2-); status contra unchanged",
+   "old": {
+    "year": 2015,
+    "confidence_note": "Full text read (PMC5549667): 'The most frequently reported mood disorders were depression and anxiety, and these were more common in the buparlisib group than in the placebo group'. Model side verified from the BERIL-1 protocol (NCT01852292, Prot_001.pdf, version 03 dated 2016-08-30, uploaded 2018-03-30): 'Safety pharmacology studies in rats revealed no effects on neuronal (behavior) or respiratory functions.' The protocol is a sponsor document on a registry record, so it verifies the package but does not date the entry; the 2015 status rests on Maira 2012's claim. Year 2015: at SABCS 2015 (abstract S6-01) grade 3-4 events were led by transaminitis, hyperglycaemia, rash and mood disorders (ASCO Post, January 2016). NCT01610284 results posted 2020-06-18."
+   }
+  }
+ ],
+ "added": [
+  {
+   "cell": "efficacy",
+   "index": [
+    11,
+    12
+   ],
+   "what": "bkm120-353-line-panel-genotype opener (2011 untested) and BELLE-2 co-primary (2015 contra), appended by merge_models.py"
+  }
+ ],
+ "sources_opened": [
+  "Sarker 2015 Clin Cancer Res full text, PMC4287394 (target AUC sentence; tumour pAkt at AUC >20 h·µM in 2 of 3; PK table)",
+  "Salphati 2010 Drug Metab Dispos abstract, PMID 20538720 (MCF7.1, not MDA-MB-361); Salphati 2011 Xenobiotica abstract, PMID 21838594",
+  "BERIL-1 protocol CBKM120H2201 v03 (2016-08-30), ClinicalTrials.gov NCT01852292 Prot_001.pdf, uploaded 2018-03-30: section 1.2.1.1.2",
+  "Baselga 2017 Lancet Oncol full text, PMC5549667 (co-primary in PI3K-activated group; ctDNA exploratory; mood disorders)",
+  "Maira 2012 Mol Cancer Ther abstract, PMID 22188813 (353-line panel; preclinical safety claim)",
+  "ClinicalTrials.gov NCT01068483 (CBKM120X2101 start 2008-11)"
+ ],
+ "rule_questions": [
+  "Dose: when the model's stated exposure target was reached but patients' tumour pharmacodynamics show it was too low (pictilisib: tumour pAkt >90% only above AUC 20 h·µM, over three times the 6 h·µM target), is that a dose contra ('target too low') without a later higher dose that worked? Here the higher exposure (FERGI 340 mg) was given and also missed, so the draft keeps same.",
+  "Efficacy, patient-level track: BELLE-2's co-primaries split (all patients met; PI3K-activated missed). The co-primary rule scores a trial as its authors call it, which suits a class-level track; the draft scores the genotype track on the co-primary that carries its prediction (contra). Confirm.",
+  "Model side from a sponsor protocol posted to a registry (BERIL-1): does it count as tier 3 for model_src, and does its upload date (2018) date the comparison it verifies?"
+ ],
+ "checked": "Independent checker (CHECKER_BRIEF / rescore): safety 2 and efficacy 11 confirmed; safety 3 contra kept, year 2015 -> 2014 (Mayer 2014 phase 1b, ER+/HER2-); dose 2 same -> retro; efficacy 12 contra -> untested. Three verdicts replaced in place, two appended.",
+ "adjudicated": [
+  {
+   "cell": "dose",
+   "index": 2,
+   "drafter": "same",
+   "checker": "retro",
+   "adjudicated": "retro",
+   "why": "the MDA-MB-361 target is first public in Sarker 2015 (2014), after pictilisib's own phase 1 PK was presented (2008-2011); post-dating alone makes a retrodiction"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "drafter": "contra",
+   "checker": "untested",
+   "adjudicated": "untested",
+   "why": "BELLE-2's activated co-primary mixed PIK3CA mutation with PTEN loss (which the panel said would not respond) on archival tissue; the authors call the trial positive"
+  }
+ ],
+ "untested_reason_set": [
+  {
+   "cell": "dose",
+   "index": 1,
+   "value": "not_measured"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "value": "unsettled"
+  }
+ ],
+ "headline_effect": {
+  "engagement": "same (unchanged)",
+  "dose": "same -> untested (only comparison is a retrodiction)",
+  "efficacy": "same (unchanged; pictilisib dissents)",
+  "safety": "contra (unchanged), now on buparlisib-rat-dog-tox, 2014"
+ },
+ "leads": [
+  "Pictilisib 2008-2011 congress abstracts: if the first presentation stated the MDA-MB-361 target with the first patient PK, dose 2 returns to same with an earlier year (ascopubs not reachable here)."
+ ]
+}

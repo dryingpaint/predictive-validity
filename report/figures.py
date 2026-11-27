@@ -502,15 +502,22 @@ def ratio_axis(ax, label: str) -> None:
     ax.set_xlabel(label, color=INK2, fontsize=10)
 
 
-def evidence_translates():
+# The stops each failure definition (report.evidence_analysis.FAILURES) counts as failures, as the axis names them.
+FAILURE_AXIS = {"efficacy_safety": "efficacy and safety stops", "safety": "safety stops", "efficacy": "efficacy stops",
+                "not_reached": "efficacy stops where the drug never adequately reached its target",
+                "no_benefit": "efficacy stops where the drug engaged its target without benefit"}
+
+
+def evidence_translates(failure: str = "all"):
     """Relative success to approval from any phase for each kind of evidence and the values of its chart fact
-    (report.evidence_lines.chart_rows), on US-developed programs, under one heading per broad category; marks are
+    (report.evidence_lines.chart_rows), on US-developed programs, under one failure definition (every stop, or only
+    the stops of FAILURE_AXIS with the rest censored), under one heading per broad category; marks are
     coloured by whether the kind is about the target or the drug; a filled dot is a 95% interval clear of 1. Only rows
     with an estimate are drawn; every line tried is in the appendix table. An interval that runs past the axis ends
     in an arrowhead at its edge. A #154 target-literature row (‡) draws its estimate corrected for the search's
     coverage and precision (report.evidence_analysis.corrected), and its label gives the coverage."""
     lines = pd.read_csv(os.path.join(OUT, "evidence_analysis", "chart.csv"))
-    lines = lines[lines.estimated.eq(True)].reset_index(drop=True)
+    lines = lines[lines.failure.eq(failure) & lines.estimated.eq(True)].reset_index(drop=True)
     ys, y, prev = [], 0.0, None
     for i, r in enumerate(lines.itertuples()):
         if i:
@@ -524,7 +531,8 @@ def evidence_translates():
             ratio_interval(ax, yi, r.rs_corr, r.rs_corr_lo, r.rs_corr_hi, r.exposed, about_color(r.category, r.about))
         else:
             ratio_interval(ax, yi, r.rs_rs, r.rs_rs_lo, r.rs_rs_hi, r.exposed, about_color(r.category, r.about))
-    ratio_axis(ax, "How often programs with the evidence reached approval, relative to those without (95% range)")
+    ratio_axis(ax, "How often programs with the evidence reached approval, relative to those without (95% range)"
+               + (f"\ncounting only {FAILURE_AXIS[failure]} as failures" if failure != "all" else ""))
     style(ax)
     labels = [("      " if r.level == "value" else "") + r.label
               + (f" ‡ (found for {r.coverage:.0%} of pairs)" if has_corr and pd.notna(r.rs_corr) else "")
@@ -543,7 +551,7 @@ def evidence_translates():
             ax.text(label_x, first + 1.2, title, transform=ax.get_yaxis_transform(), color=INK, fontsize=11.5,
                     fontweight="bold")
     ax.set_ylim(ys[-1] - 0.7, ys[0] + 1.9)
-    save(fig, "evidence_translates")
+    save(fig, "evidence_translates" + (f"_{failure}" if failure != "all" else ""))
 
 
 # Evidence lines whose stops are what an outcome's label was read from: published human engagement is the evidence the
@@ -1063,7 +1071,8 @@ def main():
         s3_endpoints()
         s3_hypotheses()
     if os.path.exists(os.path.join(OUT, "evidence_analysis", "lines.csv")):
-        evidence_translates()
+        for failure in ("all", *FAILURE_AXIS):
+            evidence_translates(failure)
     if os.path.exists(os.path.join(OUT, "evidence_analysis", "stop_risk.csv")):
         stop_ratios(EFFICACY_BLOCKS, EFFICACY_ROWS, "efficacy_risk")
         stop_ratios(SAFETY_BLOCKS, SAFETY_ROWS, "safety_risk")

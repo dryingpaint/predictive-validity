@@ -16,7 +16,7 @@ type-2-diabetes-mellitus-dpp4-inhibitors,endocrine,3,same,retro,retro,same,False
 type-2-diabetes-mellitus-gcgr-antagonists,endocrine,2,same,same,retro,contra,False,direct,metabolic_disease_model
 type-2-diabetes-mellitus-gcgr-glp1r-agonists,endocrine,2,contra,same,same,same,False,downstream,pharmacological_challenge_human
 type-2-diabetes-mellitus-gpr119-agonists,endocrine,2,untested,contra,contra,same,False,proximal,tox_repeat_dose
-type-2-diabetes-mellitus-hsd11b1-inhibitors,endocrine,2,untested,same,same,same,False,direct,metabolic_disease_model
+type-2-diabetes-mellitus-hsd11b1-inhibitors,endocrine,2,untested,contra,same,same,False,direct,metabolic_disease_model
 type-2-diabetes-mellitus-insr-agonists,endocrine,4,untested,retro,untested,same,True,downstream,metabolic_disease_model
 type-2-diabetes-mellitus-slc5a2-inhibitors,endocrine,4,same,retro,retro,same,True,proximal,metabolic_disease_model
 metabolic-dysfunction-associated-steatohepatitis-fgf21-analogue-fgfr1c-klb-agonists,gastroenterology,3,same,same,same,same,False,downstream,metabolic_disease_model
@@ -39,7 +39,7 @@ acute-myeloid-leukemia-cd33-directed-depleters,oncology,3,untested,untested,cont
 breast-cancer-esr1-degrader,oncology,4,same,untested,untested,untested,True,direct,xenograft_pdx
 breast-cancer-hsp90aa1-hsp90ab1-inhibitors,oncology,2,same,contra,same,contra,False,proximal,xenograft_cell_line
 breast-cancer-parp1-2-inhibitors,oncology,3,same,same,retro,same,False,proximal,xenograft_cell_line
-breast-cancer-pi3k-pan-inhibitors,oncology,3,same,same,same,contra,False,proximal,xenograft_cell_line
+breast-cancer-pi3k-pan-inhibitors,oncology,3,retro,same,same,contra,False,proximal,xenograft_cell_line
 breast-cancer-pi3k-mtor-inhibitors,oncology,2,untested,contra,same,contra,False,proximal,xenograft_cell_line
 breast-cancer-pik3ca-inhibitors,oncology,4,untested,same,same,untested,True,downstream,xenograft_cell_line
 breast-cancer-anti-igf1r-antibodies,oncology,2,untested,same,same,untested,False,direct,xenograft_cell_line

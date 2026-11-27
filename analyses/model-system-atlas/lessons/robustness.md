@@ -2,32 +2,32 @@
 
 ## Engagement held, by class outcome
 
-Engagement headline matched in 37 of 78 approved classes and 41 of 88 never-approved classes (Fisher p = 1.00). Among the 78 tiles with engagement held, efficacy was contradicted in 18 of 41 never-approved and 2 of 37 approved classes.
+Engagement headline matched in 37 of 78 approved classes and 41 of 88 never-approved classes (Fisher p = 1.00). Among the 78 tiles with engagement held, efficacy was contradicted in 19 of 41 never-approved and 2 of 37 approved classes.
 
 ## Efficacy contradicted among tiles with engagement held, by readout tier (Wilson 95 %)
 
 | tier | contradicted / n | share | 95 % |
 |---|---|---|---|
-| Direct (occupancy, free target) | 7/21 | 0.33 | 0.17-0.55 |
+| Direct (occupancy, free target) | 8/21 | 0.38 | 0.21-0.59 |
 | Proximal (the target's product) | 5/27 | 0.18 | 0.08-0.37 |
 | Downstream biomarker | 6/28 | 0.21 | 0.10-0.40 |
 
-Chi-square tier x contradicted p = 0.46; direct vs the rest, Fisher p = 0.39. The tier is the headline engagement track's. With the best tier among a tile's matched engagement tracks instead:
+Chi-square tier x contradicted p = 0.26; direct vs the rest, Fisher p = 0.25. The tier is the headline engagement track's. With the best tier among a tile's matched engagement tracks instead:
 
-- Direct (occupancy, free target): 8/24 = 0.33 (0.18-0.53)
+- Direct (occupancy, free target): 9/24 = 0.38 (0.21-0.57)
 - Proximal (the target's product): 5/26 = 0.19 (0.09-0.38)
 - Downstream biomarker: 5/25 = 0.20 (0.09-0.39)
-- chi-square p = 0.43
+- chi-square p = 0.25
 
-Direct-tier tiles outside neurology and psychiatry: 6 of 19 contradicted; non-direct outside: 11 of 52.
+Direct-tier tiles outside neurology and psychiatry: 7 of 19 contradicted; non-direct outside: 11 of 52.
 
 ## Sensitivity: the drafters' statuses instead of the adjudicated ones
 
-Engagement held in 96 tiles (adjudicated: 78); efficacy contradicted among them in 20 (adjudicated: 20). Compared safety contradictions: 111 (adjudicated: 113), 110 in common.
+Engagement held in 96 tiles (adjudicated: 78); efficacy contradicted among them in 20 (adjudicated: 21). Compared safety contradictions: 112 (adjudicated: 114), 111 in common.
 
 ## Safety packages that serve more than one tile
 
-127 typed contradictions on 107 model systems; systems in more than one tile: `cyno-monkey-ro` (3 tiles); `cynomolgus-toxicology` (2 tiles); `ganetespib-mouse-tox` (2 tiles); `pamiparib-mda-mb-436-xenograft` (2 tiles); `rat-dog-glp-tox` (2 tiles). Harm rows: 157 by track, 137 unique (system, harm, type); the figure counts the unique rows.
+127 typed contradictions on 108 model systems; systems in more than one tile: `cyno-monkey-ro` (3 tiles); `cynomolgus-toxicology` (2 tiles); `ganetespib-mouse-tox` (2 tiles); `pamiparib-mda-mb-436-xenograft` (2 tiles); `rat-dog-glp-tox` (2 tiles). Harm rows: 157 by track, 139 unique (system, harm, type); the figure counts the unique rows.
 
 ## Second, blind coder on the safety typing
 

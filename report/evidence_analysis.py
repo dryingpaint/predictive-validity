@@ -20,6 +20,8 @@ against the traced cause of each stop (report.stop_causes: the cause, or the lik
 one): the adjusted risk ratio of stopping for efficacy or exposure and for safety, and of the efficacy stop split
 into whether the drug adequately reached its target and, where it did, efficacy proper (stop_outcomes), among Phase 1-3 entries,
 adjusted as above with phase added. A stop for any other reason is not an event of either.
+The evidence chart's relative success is also estimated under each failure definition of FAILURES: only the stops
+it names count as failures, and every other stop is censored, as a program still running is.
 A line exposed in fewer than MIN_ENTRIES entries or MIN_TARGETS distinct target sets is described, not
 estimated. Hindsight and exploratory facts are estimated alongside but make up no kind.
 N1-N3 are tested as the plan words them and Holm-corrected together.
@@ -28,7 +30,7 @@ The published-animal-study finding is then tested on the later entries of report
 issue #140 (published_confirmation).
 
 Writes report/output/evidence_analysis/: lines.csv (every line, kind by kind), chart.csv (the evidence chart's rows,
-report.evidence_lines.chart_rows), stop_risk.csv (the stop-risk figure's rows) and
+report.evidence_lines.chart_rows, once per failure definition), stop_risk.csv (the stop-risk figure's rows) and
 numbers.json, which also carries the literature
 gate results (report/audits/literature_gate.json) that leave the literature lines descriptive.
 """
@@ -66,9 +68,11 @@ def exposed_enough(desc: dict) -> bool:
     return desc["n"] >= MIN_ENTRIES and desc["n_targets"] >= MIN_TARGETS
 
 
-def line_row(kind: str, category: str, about: str, level: str, line, d: pd.DataFrame, lr: pd.DataFrame) -> dict:
+def line_row(kind: str, category: str, about: str, level: str, line, d: pd.DataFrame, lr: pd.DataFrame,
+             outcomes: bool = True) -> dict:
     """One line's estimates. `kind` decides the covariates (the precedent kinds leave out the target-precedent
-    covariate) and `category` the stop outcome (a safety stop for target safety risk, else an efficacy stop)."""
+    covariate) and `category` the stop outcome (a safety stop for target safety risk, else an efficacy stop); without
+    `outcomes`, relative success only."""
     row = {"category": category, "about": about, "kind": kind, "level": level, "label": line.label,
            "column": line.column, "status": line.status}
     elig = d[line.column].notna()
@@ -81,14 +85,18 @@ def line_row(kind: str, category: str, about: str, level: str, line, d: pd.DataF
     keys = x[["program_id", "entry_date", "x"]].drop_duplicates(["program_id", "entry_date"])
     rs = relative_success(lr.merge(keys, on=["program_id", "entry_date"]), "x")
     row |= {f"rs_{k}": rs[k] for k in ("rs", "rs_lo", "rs_hi", "loa_with", "loa_without")}
+    if not outcomes:
+        return row
     c2 = x[x.phase == 2]
-    base = tuple(c for c in COVARS if not (kind in PRECEDENT_KINDS and c == "precedent"))  # not the exposure itself
+    # a precedent kind leaves out the target-precedent covariate, which would adjust for the exposure itself
+    base, base_23 = (tuple(c for c in covars if not (kind in PRECEDENT_KINDS and c == "precedent"))
+                     for covars in (COVARS, COVARS_23))
     for prefix, part, outcome, covars in (
             ("s4", c2, "s4", base),
             ("s4_biomarker", c2.assign(biomarker_selected=c2.biomarker_selected.fillna(0)), "s4",
              (*base, "biomarker_selected")) if level != "adjustment" else (None,) * 4,  # it is the exposure there
-            ("efficacy_stop", x[x.phase >= 2], "f_efficacy", COVARS_23) if category != "safety" else (None,) * 4,
-            ("safety_stop", x, "f_safety", COVARS_23) if category == "safety" else (None,) * 4):
+            ("efficacy_stop", x[x.phase >= 2], "f_efficacy", base_23) if category != "safety" else (None,) * 4,
+            ("safety_stop", x, "f_safety", base_23) if category == "safety" else (None,) * 4):
         if prefix is None:
             continue
         r = estimate(part, outcome, "x", covars)
@@ -157,6 +165,21 @@ def traced_stops(d: pd.DataFrame) -> pd.DataFrame:
                        for col, hit in stop_outcomes(t).items()})
 
 
+# The evidence chart's failure definitions: the stop_outcomes columns whose stops count as failures (None: every stop,
+# as Section 1 counts them). Under the others a stop that none of them names is censored.
+FAILURES = {"all": None, "efficacy_safety": ("stop_efficacy", "stop_safety"), "safety": ("stop_safety",),
+            "efficacy": ("stop_efficacy",), "not_reached": ("stop_not_reached",), "no_benefit": ("stop_no_benefit",)}
+
+
+def failing(rows: pd.DataFrame, counted: pd.DataFrame, failure: str) -> pd.DataFrame:
+    """The phase rows with every stop the failure definition does not count censored; counted holds traced_stops'
+    columns for the same rows."""
+    if FAILURES[failure] is None:
+        return rows
+    hit = counted.loc[rows.index, list(FAILURES[failure])].astype(bool).any(axis=1)
+    return rows.assign(event=rows.event.mask(rows.event.eq("suspended") & ~hit, "censored"))
+
+
 def stop_risk(d: pd.DataFrame) -> pd.DataFrame:
     """For each kind of target and drug evidence and each safety line, the adjusted risk ratio of each stop outcome
     (traced_stops) among the entries it is known for (Phase 1-3), when the line is exposed enough to estimate."""
@@ -223,10 +246,11 @@ def evidence_basis(d: pd.DataFrame) -> dict:
                      "none": float((~(published | approved | potent))[rest].mean())}}
 
 
-def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame, trials: pd.DataFrame) \
+def analyse(d: pd.DataFrame, rows: pd.DataFrame, counted: pd.DataFrame, fm: pd.DataFrame, trials: pd.DataFrame) \
         -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict]:
-    """The lines table (report_lines), the chart table (chart_rows), the stop-risk table (stop_risk) and numbers from
-    the evidence-line dataset, the phase rows and the failure modes."""
+    """The lines table (report_lines), the chart table (chart_rows, under each failure definition of FAILURES; counted
+    holds traced_stops' columns for the phase rows), the stop-risk table (stop_risk) and numbers from the
+    evidence-line dataset, the phase rows and the failure modes."""
     d = d.assign(precedent=d.precedent.fillna(0),  # no resolved target: no approved drug known on it
                  target=d.target.fillna("entity " + d.moiety_id.astype(str)))  # and it is its own cluster
     d = cause_outcomes(d.merge(fm[["program_id", "phase", "reason"]], on=["program_id", "phase"], how="left"))
@@ -238,8 +262,13 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame, trials: pd.Da
     for r in out:
         if r.get("column") in CORRECTED:
             r |= corrected(r, rng)
-    chart = [by_column[ln.column] | {"kind": k.key, "category": category, "about": k.about, "level": level,
-                                     "label": ln.label} for category, k, level, ln in chart_rows()]
+    chart = [{"failure": "all"} | by_column[ln.column] | {"kind": k.key, "category": category, "about": k.about,
+                                                          "level": level, "label": ln.label}
+             for category, k, level, ln in chart_rows()]
+    for failure in [f for f in FAILURES if f != "all"]:
+        lf = loa_rows(d, failing(rows[rows.us_site], counted, failure))
+        chart += [{"failure": failure} | line_row(k.key, category, k.about, level, ln, d, lf, outcomes=False)
+                  | {"label": ln.label} for category, k, level, ln in chart_rows()]
     c2 = d[d.phase == 2]
     n = {"cohort": {"entries": int(len(d)), "programs": int(d.program_id.nunique()),
                     "with_target_disease": int(d.has_target_disease.sum()), "phase2": int(len(c2)),
@@ -380,8 +409,10 @@ def main() -> None:
     snap = frame.snapshot()
     progs, trials, outcomes = frame.programs(), frame.program_trials(), frame.trial_outcomes()
     rows = phase_rows(progs, trials, snap, window=SECTION1)
+    counted = traced_stops(rows[["moiety_id", "phase"]].assign(
+        mondo_id=rows.program_id.map(progs.set_index("program_id").mondo_id)))
     d = us(build())
-    lines, chart, stops, n = analyse(d, rows, failure_modes(rows, progs, trials, outcomes), trials)
+    lines, chart, stops, n = analyse(d, rows, counted, failure_modes(rows, progs, trials, outcomes), trials)
     confirm = us(build(CONFIRM))
     n["published_confirmation"] = published_confirmation(confirm, d, phase_rows(progs, trials, snap, window=CONFIRM),
                                                          rows, trials)

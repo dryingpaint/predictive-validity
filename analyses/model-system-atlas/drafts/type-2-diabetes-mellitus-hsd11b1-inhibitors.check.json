@@ -76,13 +76,13 @@
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "unverified",
+   "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": false,
-   "rule": "DRAFTER_BRIEF rule 6 (earliest public date) and efficacy (primary endpoint governs)",
-   "note": "ADA 2013 abstract exists (Morrow, Diabetes 62 Suppl 1:A293; EASD Diabetologia 56 S407; Crossref refs of DeFronzo 2014) but its text was unreadable; Heise epub 2014-06-09 omits registry primary (mean daily glucose). 'same' rests on secondary HbA1c trend; earlier-cited 2015 Roche synopsis not re-opened.",
-   "checked_by": "CHECKER_BRIEF / dates"
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "DRAFTER_BRIEF efficacy (the trial's primary endpoint governs; dose table: no stated exposure target, so efficacy as the trial showed) and rule 6 (earliest public date; a pairing takes the later side)",
+   "note": "Full text: quote verbatim; Methods primary (MDPG change, day -1 to 27) matches NCT00823680; Table 1 numbers match. JEM 2005 predicted lower glucose; MDPG +6 vs +4 placebo: contra. No 2013 abstract found: 2014. Fields right.",
+   "checked_by": "CHECKER_BRIEF / rescore full text"
   },
   {
    "cell": "efficacy",
@@ -287,6 +287,8 @@
   "Decision 6 (#3) vs decision 11 (#110), raised by the models check: in one source (Heise 2014) the predicted HPA/adrenal-androgen rise appeared with RO5093151 but not with RO5027383, both with urinary-confirmed 11β-HSD1 inhibition. Does the second drug's null score contra on the safety track (decision 5), partial (decision 11, though the split is by drug not readout), or nothing? Affects the crd-human-genetic and hsd11b1-ko-mouse safety entries alike.",
   "[fields] combination_with for add-on to background therapy: RO5093151 and BI 187004 metformin arms name metformin as partner (Vitae 8-K calls it 'metformin background therapy'), while MK-0736's background ACEi/ARB, active on its BP primaries, is not named. Is an add-on to stable background with placebo on the same background a 'combination trial'?",
   "[fields] Retrodiction by post-dating when a model system is first public after a patient result on the target but before the compared drug's own result (rat-adipose 2015 vs BI 187004 2022; GK rat 2023): is every later entry on that track a retrodiction, or only the result it could have reproduced? Also, does non-selective carbenoxolone's human hepatic 11b-HSD1 inhibition (1995) make the 2005 DIO-mouse engagement and efficacy openers retrodictions?",
-  "[fields] A model whose source scopes its prediction to a subpopulation (GK rat, non-obese T2D) paired with a trial in the complementary subpopulation (BMI 28-40): untested (condition never tested) or contra?"
+  "[fields] A model whose source scopes its prediction to a subpopulation (GK rat, non-obese T2D) paired with a trial in the complementary subpopulation (BMI 28-40): untested (condition never tested) or contra?",
+  "(full-text check) Heise 2014's introduction says RO-151 and RO-838 'had shown beneficial metabolic effects in rodents including improvements in FPG and PPG' (Roche data on file), and the same paper reports MDPG and FPG unchanged. Is a member drug's own unpublished rodent prediction, stated in its trial paper, a separate product_in_model track scored at low confidence (rule 2, 'data not shown'), or untested with untested_reason unpublished (rule 5)?",
+  "(full-text check) magnitude on an efficacy contra where the predicted fall was simply absent (RO5093151 MDPG +6 vs +4 mg/dl on placebo, every CI spanning zero): null, as drafted, or 'opposite' by analogy with safety, where a predicted harm that never appeared is contra with magnitude 'opposite'? The efficacy rules do not say."
  ]
 }

@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from report.evidence_analysis import stop_outcomes
+from report.evidence_analysis import failing, stop_outcomes
 from report.evidence_lines import loa_rows
 
 # Program 1 entered Phase 1 and jumped straight to Phase 3, so Phase 2 is credited as passed;
@@ -64,3 +64,19 @@ def test_a_gap_with_smaller_sponsors_confirms_c2_and_its_reverse_does_not_replic
     from report.evidence_analysis import CONFIRM_COVARS, interactions
     assert interactions(confirmation_entries(0.5), CONFIRM_COVARS)["tests"]["C2"]["reading"] == "confirmed"
     assert interactions(confirmation_entries(1.6), CONFIRM_COVARS)["tests"]["C2"]["reading"] == "not replicated"
+
+
+# Three stops (efficacy with the target engaged, safety, a sponsor decision), an advance and a program still running.
+PHASE_ROWS = pd.DataFrame({"event": ["suspended", "suspended", "suspended", "advanced", "censored"]})
+COUNTED = pd.DataFrame({"stop_efficacy": [1.0, 0, 0, 0, 0], "stop_safety": [0, 1.0, 0, 0, 0],
+                        "stop_not_reached": [0.0] * 5, "stop_no_benefit": [1.0, 0, 0, 0, 0]})
+
+
+def test_a_failure_definition_censors_every_stop_it_does_not_count_and_leaves_advances_alone():
+    def events(failure):
+        return failing(PHASE_ROWS, COUNTED, failure).event.tolist()
+    assert events("all") == ["suspended", "suspended", "suspended", "advanced", "censored"]
+    assert events("efficacy_safety") == ["suspended", "suspended", "censored", "advanced", "censored"]
+    assert events("safety") == ["censored", "suspended", "censored", "advanced", "censored"]
+    assert events("no_benefit") == ["suspended", "censored", "censored", "advanced", "censored"]
+    assert events("not_reached") == ["censored", "censored", "censored", "advanced", "censored"]

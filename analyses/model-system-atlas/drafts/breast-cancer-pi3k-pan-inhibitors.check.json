@@ -42,13 +42,17 @@
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "6",
-   "note": "Krop 2016 quote verbatim (PMID 27155741); part 1 dosed 340 mg, above Sarker's stated MDA-MB-361 target (Sarker epub 2014-11, before SABCS 2014-12-10): same, year 2014. Judgement still says 'contra derived from efficacy' and 'Raynaud stated no margin': stale prose.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2014,
+   "rule": "Retrodiction (DRAFTER_BRIEF: post-dating alone makes it one; for dose, the same drug's own patient result public earlier)",
+   "note": "Quote verbatim (PMC4287394, epub 2014-11-04); model_src null fine. But the MDA-MB-361 target is first public here, after pictilisib's own phase-1 exposure data (ASCO 2011 abstract 3021, per engagement 2 adjudication): retro; dose 1 then needs untested_reason.",
+   "checked_by": "CHECKER_BRIEF / rescore",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule, dose (same drug's earlier patient result; post-dating alone): the uncited MDA-MB-361 target is first public in Sarker (epub 2014-11-04), after this trial's 2008-2011 congress presentations (ASCO 2011 abstract 3021 related pAKT to exposure); target reached: retro."
   },
   {
    "cell": "efficacy",
@@ -110,20 +114,22 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "rule": "passing tolerability claim",
-   "note": "Maira 2012 (PMID 22188813, epub 2011-12-21, not OA) quote verbatim in abstract; buparlisib/oral untested opener right. The 'preclinical safety profile' is likely the GLP toxicology package, not the xenograft system: arguably a separate model_id; status unchanged.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "rule": "6 (opener at model_first_use_year, proxy allowed)",
+   "note": "Maira 2012 abstract quote verbatim (PMID 22188813, epub 2011-12-21). NCT01068483 (CBKM120X2101) start 2008-11 confirms the 2008 opener; protocol upload 2018-03-30 confirmed. Fix stale population (xenograft/353-line wording, not rat/dog). Retrodiction: see existing RQ on Maira vs Bendell.",
+   "checked_by": "CHECKER_BRIEF / rescore"
   },
   {
    "cell": "safety",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "6",
-   "note": "Baselga 2017 quote verbatim. SABCS 2015 abstract S6-01 (Cancer Res 76(4 Suppl), Dec 8-12 2015) reports grade 3/4 ALT 26% vs 1%, AST 18% vs 3%: year 2015 holds; buparlisib + fulvestrant, stage_or_line correct; contra.",
-   "checked_by": "CHECKER_BRIEF / fields"
+   "proposed_status": "contra",
+   "proposed_year": 2014,
+   "rule": "6 (earliest public date of the comparison)",
+   "note": "Quotes verbatim (Baselga abstract; protocol 1.2.1.1.2: no liver finding, no behavioural effect). Liver miss carries contra. But Mayer 2014 (JCO, epub 2014-03-24) already reported drug-related transaminitis and mood disorders in ER+/HER2- patients: year 2014. Protocol also flags rat brain-neurotransmitter alterations.",
+   "checked_by": "CHECKER_BRIEF / rescore"
   },
   {
    "cell": "efficacy",
@@ -206,6 +212,32 @@
    "rule": "6",
    "note": "ASCO Post 2014-12-10 (SABCS S2-02): grade 3+ rash 17%, diarrhoea 7%, more dose adjustments/discontinuations on pictilisib. Later side of pairing, model 2009; year 2014, contra holds, not retrodiction. Draft confidence_note still says 2016 epub.",
    "checked_by": "CHECKER_BRIEF / dates"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "6 (opener at first public use)",
+   "note": "Maira 2012 abstract quote verbatim (PMID 22188813, epub 2011-12-21); buparlisib/oral/biomarker_selected, prediction_level patient right; separate system from Genentech breast panel. model_kind animal for an in-vitro panel follows house usage (rule question). Bendell 2012 retrodiction question raised.",
+   "checked_by": "CHECKER_BRIEF / rescore"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2015,
+   "rule": "CHECKER_BRIEF 3 (trial attributes the result to a condition the model never tested: untested); efficacy primary-endpoint rule; rule 5 untested_reason unsettled",
+   "note": "Quote verbatim (PMC5549667). The co-primary pooled PIK3CA mutation with PTEN loss (panel: PTEN-mutant lines not preferentially inhibited), on archival tissue Baselga says 'might not accurately reflect' status; the panel's own PIK3CA call was tested only exploratorily (ctDNA, matched). Untested, unsettled.",
+   "checked_by": "CHECKER_BRIEF / rescore",
+   "adjudicated_status": "untested",
+   "adjudication_note": "CHECKER_BRIEF 3 (pairing; trial attributes result to conditions the model never tested): Baselga ascribes the activated co-primary miss to α=0.01, archival-tissue status change and assay methods; composite 26% PTEN-loss-only. Co-primary rule: authors call trial positive. Untested, unsettled."
   }
  ],
  "missing": [
@@ -214,7 +246,10 @@
   "Sachs 2018, Cell (doi 10.1016/j.cell.2017.11.010, PMID 29224780): breast organoid biobank whose drug screens were 'consistent with in vivo xeno-transplantations and patient response'; whether pictilisib or another pan-PI3K member was in the panel could not be verified (abstract only).",
   "Same-track model-side gaps, not new tracks: (a) the Genentech MDA-MB-361 breast-xenograft PK-PD model cited as ref 9 of Sarker 2015, which set the 6 uM.h target AUC for >=90% TGI, is the real dose-target source rather than Raynaud's exposure sentence; (b) ref 17 of Baselga 2017 (buparlisib plus fulvestrant regressed ER+ breast xenografts) is the buparlisib model side for the BELLE-2 comparison, which the draft scores only via Sanchez 2011 in vitro.",
   "(models check) Sachs 2018 Cell (doi 10.1016/j.cell.2017.11.010, epub 2017-12-07), full text read via cell.com PDF (PII S0092-8674(17)31319-3; earlier attempts used a wrong PII): pictilisib was in the organoid drug panel ('Pictilisib PI3K'; dose-response curves of afatinib and pictilisib for lines 10T and 27T, Fig. 7A), but in-vivo validation was afatinib only and the patient comparison tamoxifen only ('Tamoxifen was the only drug that resulted in differential responses'). A breast-organoid track opening untested in 2017 for pictilisib; no pan-PI3K comparison with patients in the paper.",
-  "Buparlisib patient-level genotype track: Maira 2012 (doi 10.1158/1535-7163.MCT-11-0474) 353-line panel showed 'preferential inhibition of tumor cells bearing PIK3CA mutations'; BELLE-2 ctDNA PIK3CA-mutant PFS benefit (SABCS 2015 abstract S6-01; Baselga 2017) would be a buparlisib same on its own track, not a partial on pictilisib's contra track."
+  "Buparlisib patient-level genotype track: Maira 2012 (doi 10.1158/1535-7163.MCT-11-0474) 353-line panel showed 'preferential inhibition of tumor cells bearing PIK3CA mutations'; BELLE-2 ctDNA PIK3CA-mutant PFS benefit (SABCS 2015 abstract S6-01; Baselga 2017) would be a buparlisib same on its own track, not a partial on pictilisib's contra track.",
+  "(rescore check) Mayer 2014, J Clin Oncol (doi 10.1200/JCO.2013.54.0518, PMID 24663045, epub 2014-03-24), buparlisib + letrozole phase Ib in ER+/HER2- metastatic breast cancer: 'Common drug-related adverse events included ≤ grade 2 hyperglycemia, nausea, fatigue, transaminitis, and mood disorders' - the earliest this-disease liver and mood harm for buparlisib-rat-dog-tox (dates safety 3 to 2014); and 'Clinical activity was observed independent of PIK3CA mutation status' - a patient_trials item (no genotype success bar; primary endpoint MTD) for bkm120-353-line-panel-genotype.",
+  "(rescore check) Ma 2016, Clin Cancer Res (doi 10.1158/1078-0432.CCR-15-1745, PMID 26563128, epub 2015-11-12, before SABCS 2015), buparlisib + fulvestrant phase I in ER+ metastatic breast cancer: transaminases elevation 35.5%; 'Response was not associated with PIK3CA mutation or treatment cohort' - patient_trials for bkm120-353-line-panel-genotype and a second pre-BELLE-2 liver signal for buparlisib-rat-dog-tox.",
+  "(rescore check) BELLE-4, Martin 2017 Ann Oncol (doi 10.1093/annonc/mdw562, PMID 27803006, NCT01572727): buparlisib + paclitaxel in HER2-negative advanced breast cancer, primary PFS in the full and PI3K pathway-activated populations, futility in both (activated HR 1.17). A buparlisib comparison with no entry; it counts for this HR+/HER2- context only if HR+ patients were >= 80% of the trial (HR+ and triple-negative were stratified; share not verified)."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
@@ -225,6 +260,12 @@
   "Decision 8: a PDX/organoid biobank that screens a member drug and claims translatability but never pairs with a named trial (Bruna 2016, Sachs 2018): is it a track opening at untested, or not a comparison at all?",
   "(models check) Decision 10 / decision 4: can a retrodiction be scored retro against a post-hoc, non-significant subgroup correlate (Nixon 2019: 3/3 clinical-benefit patients luminal A among 14 PAM50-typed, p = 0.07 one-tailed only when pooled with alpelisib, a non-member) from a phase Ib whose primary endpoint was MTD and which pre-specified no PoC gate? The brief's 'non-significant trend ... is not a patient result' is written for terminated trials; read broadly it makes efficacy 8 untested, read narrowly retro.",
   "Safety retrodiction by public date: Maira 2012's buparlisib safety claim (epub 2011-12-21) post-dates buparlisib's own phase 1 safety result (Bendell, epub 2011-12-12; ASCO abstracts earlier), though the liver harm was not in that phase 1. Does post-dating alone make the buparlisib safety track a retrodiction? Status contra either way.",
-  "Dose vs safety for pictilisib: safety 4 scores Raynaud's 'well tolerated' at the effective dose as a stated tolerability claim, while dose 2 says Raynaud stated no margin. Is that claim a stated margin (dose contra, blocked_by toxicity, since FERGI cut to 260 mg), or a missed harm counted once in safety?"
+  "Dose vs safety for pictilisib: safety 4 scores Raynaud's 'well tolerated' at the effective dose as a stated tolerability claim, while dose 2 says Raynaud stated no margin. Is that claim a stated margin (dose contra, blocked_by toxicity, since FERGI cut to 260 mg), or a missed harm counted once in safety?",
+  "(rescore check) Dose retrodiction by public date: the MDA-MB-361 target AUC (Sarker 2014) was first made public in the same paper as pictilisib's own phase-1 PK, after that trial's exposure data were presented (ASCO 2011 abstract 3021 and earlier congresses). Does 'post-dating alone' make dose 2 retro, or does the source's 'preclinical modeling predicted' (run before first-in-human) keep it same? Same question as the Maira/Bendell safety item, now on dose; if retro, a later patient PK source would be the track's first prospective entry.",
+  "(rescore check) Patient-level genotype prediction against a composite co-primary: BELLE-2's biomarker co-primary pooled PIK3CA mutation with PTEN loss on archival tissue, while Maira's panel found PIK3CA-mutant lines preferentially inhibited and PTEN-mutant lines not; the panel's own genotype was tested only in a prespecified exploratory analysis of the primary endpoint (ctDNA PIK3CA: benefit in mutant, none in non-mutant). Contra, same (partial) or untested? If exploratory genotype analyses count, Mayer 2014 ('independent of PIK3CA mutation status', epub 2014-03-24) makes the track contra from 2014 instead.",
+  "(rescore check) Efficacy retrodiction from another disease's patients: Bendell 2012 (buparlisib phase 1, mixed solid tumours, epub 2011-12-12) reported 'No significant trends were seen to correlate tumor molecular alterations with clinical activity' nine days before Maira 2012's 353-line panel (epub 2011-12-21). Does a genotype null outside the context's disease make the panel a retrodiction for this context's efficacy?",
+  "(rescore check) Safety year, same drug: does a low-grade harm in an uncontrolled phase Ib in this disease's patients (Mayer 2014: drug-related grade <= 2 transaminitis and mood disorders on buparlisib + letrozole) set the contra year, or the first placebo-controlled grade 3-4 signal (BELLE-2, SABCS 2015)? Rule 6 reads as the former.",
+  "(rescore check) Safety, flagged CNS signal: the buparlisib package found no behavioural effect in rat safety pharmacology but listed 'alterations in the levels of multiple brain neurotransmitters' as a safety consideration. Is that a stated prediction of the mood harm seen in patients (part-match), or silence on a harm rats could have shown (miss)? Liver alone keeps safety 3 contra.",
+  "(rescore check) Cell-line panel identity and kind: model_kind has no in-vitro value, so both genotype panel tracks (Genentech breast panel, Novartis 353-line panel) are coded 'animal'. And the models file folds GDSC into the Genentech panel track as 'same system' while the Novartis 353-line panel gets its own model_id. Is a genotype-annotated cell-line panel one system across sponsors, or one per panel?"
  ]
 }

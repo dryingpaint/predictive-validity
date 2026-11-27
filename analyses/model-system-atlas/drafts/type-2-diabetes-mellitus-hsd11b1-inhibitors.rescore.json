@@ -1,0 +1,81 @@
+{
+ "tile": "type-2-diabetes-mellitus-hsd11b1-inhibitors",
+ "date": "2026-11-22",
+ "by": "rescore audit (Claude Code, for review)",
+ "why": "An atlas-wide audit (headlines recomputed as glance.py does, from the drafts and verdicts) found one cell whose headline rests only on an entry the checker could not support: this tile's efficacy cell (matched), set by efficacy 3. A verdict marked 'unverified' never reaches adjudication, so the drafter's status stood. Set aside, the headline would be contradicted (BI 187004 on the DIO-mouse and knockout-mouse tracks).",
+ "changed_verdicts": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "old": {
+    "cell": "efficacy",
+    "index": 3,
+    "verdict": "unverified",
+    "source_resolves": true,
+    "quote_found": "abstract_only",
+    "status_supported": false,
+    "rule": "DRAFTER_BRIEF rule 6 (earliest public date) and efficacy (primary endpoint governs)",
+    "note": "ADA 2013 abstract exists (Morrow, Diabetes 62 Suppl 1:A293; EASD Diabetologia 56 S407; Crossref refs of DeFronzo 2014) but its text was unreadable; Heise epub 2014-06-09 omits registry primary (mean daily glucose). 'same' rests on secondary HbA1c trend; earlier-cited 2015 Roche synopsis not re-opened.",
+    "checked_by": "CHECKER_BRIEF / dates"
+   },
+   "new": "corrected, proposed untested (unsettled), for adjudication"
+  }
+ ],
+ "sources_opened": [
+  "ClinicalTrials.gov NCT00823680 (primary outcome; hasResults false)",
+  "Europe PMC core record for doi 10.1111/dom.12317 (PMID 24828020; abstract; not open access)",
+  "Unpaywall for doi 10.1111/dom.12317 (closed)",
+  "Web search for the primary-endpoint result (none found)"
+ ],
+ "rule_questions": [
+  "Should a verdict 'unverified' with status_supported false go to adjudication like a 'corrected' one? Today it leaves the drafter's status in the figure."
+ ],
+ "adjudicated": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "drafter": "same",
+   "checker": "untested",
+   "adjudicated": "untested",
+   "why": "registry primary (mean daily plasma glucose) unreported; the abstract gives only HbA1c trends and weight (efficacy rule, rule 3)"
+  }
+ ],
+ "untested_reason_set": [
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "value": "unsettled"
+  }
+ ],
+ "headline_effect": {
+  "efficacy": "same -> contra (BI 187004 on the DIO-mouse and knockout-mouse tracks)"
+ },
+ "leads": [
+  "EU Clinical Trials Register results attachment for EudraCT 2008-001122-13 (Roche synopsis, protocol BP21850): a search snippet suggests the glucose comparisons were non-significant; automated download was blocked. If quotable, a redraft of efficacy 3 would likely be contra (headline unchanged)."
+ ],
+ "full_text_update": [
+  {
+   "date": "2026-11-23",
+   "cell": "efficacy",
+   "index": 3,
+   "what": "Redrafted from the full text: status same -> contra (primary endpoint MDPG not lowered), year 2013 -> 2014 (full-paper epub), quote, note, judgement, confidence low -> high; untested_reason removed. Replaces the adjudicated untested (unsettled) call, which rested on the abstract alone.",
+   "old": {
+    "year": 2013,
+    "status": "same",
+    "quote": "Despite the short treatment duration, both RO-151 and RO-838 showed trends for improved HbA1c and consistent reductions in body weight (-0.86 to -1.67 kg) exceeding those observed with placebo (-0.28 kg, p = 0.019 for 200 mg RO-151 vs. placebo).",
+    "note": "RO5093151 for 28 days in metformin-treated T2D: HbA1c trends, weight -1.67 kg (p=0.019), insulin sensitivity NS; registry primary (mean daily glucose) not in the abstract. Design: RO5093151 added to stable metformin, placebo-controlled; scored like any trial, metformin named as partner. Dated 2013: the trial's efficacy result (HbA1c tendency) was first public as an ADA congress abstract, Morrow L, Heise T et al., Diabetes 62 (Suppl. 1):A293, June 2013 (also EASD, Diabetologia 56 Suppl. 1:S407-8, 2013), cited in DeFronzo, Diabetes Spectrum 2014 (PMC4522879).",
+    "short": "Weight fell, HbA1c only trended at 4 weeks",
+    "judgement": "Same/partial on the authors' own wording ('slight metabolic improvements ... often did not reach statistical significance'); the alternative is contra on an unmet glucose primary, which the abstract does not state. Strengthens the 2013 entry rather than changing it.",
+    "confidence": "low",
+    "confidence_note": "Abstract only (paywalled); NCT00823680 lists 'absolute change in mean daily plasma glucose' as primary and posted no results, so whether the primary was met is unverified. No FDA review exists for this class (nothing approved), so model_filed cannot be read from a filing. Abstract-level reading.",
+    "endpoint_role": null,
+    "magnitude": "direction_only",
+    "magnitude_basis": "body weight and HbA1c direction; glucose profile result not available",
+    "source_calls_it": "partial",
+    "strengthens": true,
+    "untested_reason": "unsettled"
+   },
+   "source": "Heise 2014 full text (Diabetes Obes Metab 2014;16:1070-7, doi 10.1111/dom.12317), Methods and Table 1"
+  }
+ ]
+}
