@@ -155,7 +155,7 @@ The #185 rebuild of programs and pairs changed the cohort. The final evidence bu
 - **No stored row was deleted or re-keyed** (`reconcile` adds only). Linking added 446 search rows and 9,987 hits.
 - **Cost: $87.**
 
-## Current state (build 8c666830; 5,265 cohort pairs)
+## Current state at the reconciliation (build 8c666830; 5,265 cohort pairs)
 
 **Pairs with each kind:**
 
@@ -216,22 +216,42 @@ against a confirmed set.
 - **Reader:** Opus 5.5 with a strict rubric that sets the boundaries between kinds (primary cells against cell lines,
   pharmacology against genetics, tissue against fluid). It opened the full text for 27% of them. Opus 5 read the
   ones Opus 5.5 refused. None is left unread.
-- **Spot-check:** Melissa's spot-check of 50 seeded judgements is pending, so everything below is provisional until she has
-  reviewed it.
+- **Spot-check:** a second-model review of 50 seeded judgements (below), not human-verified.
 
-**Coverage and precision of each kind at its kept screen version** (`resolve-score --version final`). Pair level means
-a pair counts once whatever number of studies it has.
+**Spot check of the adjudicator.** Fifty seeded v1 adjudications were reviewed by a second model (Claude, the
+coordinating session), at Melissa's request, in her place; this review is NOT human-verified. It agreed with 33,
+disagreed with 9 and was unsure of 8, which is 79% agreement on the items it decided. Every disagreement was a lenient
+YES at a kind's boundary:
+- a mouse study filed as primary human cells;
+- viral expression of a mutant gene to make a model, filed as pharmacology;
+- genome editing of transplanted cells, filed as mouse genetics;
+- human germline variants filed as clinical observations;
+- a two-patient case, a multi-kinase drug's side effect, and an ex vivo perturbation filed as a biomarker.
 
-| Kind | Confirmed pairs | Kept | Coverage, pairs | Precision, pairs | Coverage, studies | Precision, studies | Yardstick coverage, pairs | Yardstick precision, pairs | Coverage against capture–recapture (95%) |
-|---|---|---|---|---|---|---|---|---|---|
-| Primary cells or tissue | 23 | v4 | 0.96 | 0.85 | 0.67 | 0.72 | 0.57 | 0.59 | 0.91 (0.62–1.47) |
-| Cell line | 34 | v4 | 0.91 | 0.78 | 0.77 | 0.80 | 0.71 | 0.77 | 0.92 (0.67–1.39) |
-| Protein in patients' tissue | 35 | v4 | 0.97 | 0.87 | 0.78 | 0.67 | 0.74 | 0.74 | 0.96 (0.72–1.41) |
-| Animal model pharmacology, any agent | 56 | v2 | 0.96 | 0.89 | 0.93 | 0.73 | 0.00 | – | – |
-| Knockout or transgene, disease model | 27 | v4 | 0.85 | 0.88 | 0.73 | 0.67 | 0.67 | 0.60 | 0.92 (0.64–1.46) |
-| Observational biomarker | 22 | v4 | 0.82 | 0.69 | 0.86 | 0.71 | 0.50 | 0.69 | 0.97 (0.66–1.80) |
-| Clinical observation | 12 | v2 | 0.92 | 0.61 | 0.74 | 0.27 | 0.50 | 0.67 | 0.63 (0.00–1.67) |
-| Animal model pharmacology, other agents | 47 | v2 | 0.96 | 0.83 | 0.88 | 0.58 | 0.62 | 0.81 | 0.90 (0.68–1.29) |
+Agreement on YES calls was 10/13 where the screen also found the study, and 5/11 where only the adjudicator did.
+
+**Rubric v2.** The adjudication rubric was tightened at those boundaries and re-read the 880 v1 YES calls of the five
+affected kinds (migration 170, rows added beside v1). Readings now come only from text, never from recall.
+
+**Leniency correction.** Each confirmed study is real with the adjudicator's YES precision for its kind and screen
+stratum: a Beta posterior shrunk toward the stratum's pooled agreement with 4 pseudo-items. The rates are recomputed
+over 2,000 draws (`resolve-score --leniency`).
+
+**Coverage and precision of each kind at its kept screen version, against the v2 confirmed set.** Pair level counts a
+pair once whatever its number of studies. Provisional, since the spot check is a model review.
+
+| Kind | Kept | Confirmed pairs | Coverage | Precision | Coverage, leniency-corrected (95%) | Precision, leniency-corrected (95%) | Yardstick coverage | Coverage against capture–recapture |
+|---|---|---|---|---|---|---|---|---|
+| Primary cells or tissue | v4 | 22 | 0.95 | 0.81 | 0.95 (0.93–1.00) | 0.73 (0.54–0.81) | 0.59 | 0.91 |
+| Cell line | v4 | 33 | 0.97 | 0.78 | 0.97 (0.96–1.00) | 0.78 (0.66–0.78) | 0.70 | 0.96 |
+| Protein in patients' tissue | v4 | 34 | 0.97 | 0.85 | 0.97 (0.97–1.00) | 0.82 (0.69–0.85) | 0.74 | 0.96 |
+| Animal model pharmacology, any agent | v2 | 49 | 1.00 | 0.80 | 1.00 (1.00–1.00) | 0.79 (0.66–0.80) | 0.00 | – |
+| Knockout or transgene, disease model | v4 | 26 | 0.88 | 0.88 | 0.92 (0.87–1.00) | 0.88 (0.69–0.88) | 0.62 | 1.00 |
+| Observational biomarker | v4 | 20 | 0.85 | 0.65 | 0.94 (0.84–1.00) | 0.65 (0.46–0.65) | 0.55 | 0.97 |
+| Clinical observation | v2 | 7 | 1.00 | 0.39 | 1.00 (1.00–1.00) | 0.28 (0.17–0.39) | 0.57 | – |
+| Animal model pharmacology, other agents | v2 | 40 | 1.00 | 0.74 | 1.00 (1.00–1.00) | 0.72 (0.61–0.74) | 0.65 | 1.00 |
+
+On the v1 confirmed set, before the spot check, the coverages were 0.82–0.97 and the precisions 0.61–0.89.
 
 **Reading the table**
 - **Missed by every source.** Capture–recapture uses the overlap of the abstract run, the web arm and the yardstick, with a
@@ -278,7 +298,46 @@ Each version was scored on the same confirmed set:
 - **Facts:** these are in `preclin.evidence_subject_fact` as `target_literature` and `target_literature_search`
   (migrations 166 and 169), scored as of entry like every other fact.
 
-__CONFIRMATION__
+## Registered confirmation (2026-11-25/26)
+
+**Registration.** It was registered on #154 (comment 7146949694) before any outcome of the confirmation entries was computed, and run unchanged.
+- **Cohort:** the 2020 to 2022-11-02 US Phase 2 entries of `report.windows.CONFIRM`.
+- **Pairs:** 1,225 target–disease pairs. 709 were new pairs and got the full pipeline. 516 had searches at an earlier cutoff; they were linked forward, and only the years in between were searched. Nothing was deleted.
+- **Integrity:** every check is 0 except two:
+  - 4 pairs with evidence still lack a related-paper search;
+  - 88 screen rows belong to pairs whose confirmation cutoff is earlier than their cohort one. They are kept, and the read-time cutoff leaves them out.
+
+**Results.** 1,017 Phase 2 entries with a resolved target, disease, S4 and known exposure. Each test is a modified Poisson model of S4 with `CONFIRM_COVARS`, one-sided, Holm-corrected at 0.05.
+
+| Test | Kind | Entries with it | S4 with / without | RR (95%) | p one-sided | p Holm | Reading | RR holding genetics fixed (secondary) |
+|---|---|---|---|---|---|---|---|---|
+| C-L1 | Primary cells or tissue | 505 | 20% / 13% | 1.31 (0.94–1.84) | 0.057 | 0.057 | same direction, not confirmed | 1.17 (0.84–1.64) |
+| C-L2 | Animal model pharmacology, other agents | 710 | 19% / 11% | 1.53 (1.04–2.23) | 0.015 | 0.037 | confirmed | 1.34 (0.92–1.94) |
+| C-L3 | Protein in patients' tissue | 582 | 20% / 13% | 1.56 (1.16–2.11) | 0.002 | 0.007 | confirmed | 1.40 (1.03–1.90) |
+| C-L5 | Knockout or transgene, disease model | 454 | 21% / 13% | 1.42 (1.05–1.92) | 0.012 | 0.037 | confirmed | 1.22 (0.88–1.68) |
+
+**How to read it**
+- **Correction and the registered bar.** The registration stands. After the leniency correction, C-L1's precision (0.73) and C-L2's (0.72) fall below the 80% bar the kinds were chosen by; C-L3 (0.82) and C-L5 (0.88) still clear it.
+- **Holding human genetics fixed.** Only C-L3 keeps an interval clear of 1.
+- **Uncorrected estimates.** These are the observed exposures, not corrected for misclassification.
+- **Literature volume.** More is published about well-studied targets, so a kind partly marks how much literature a target has.
+
+**Corrected chart rows (‡, 2008–2019 cohort, build 37f24080).** Relative success to approval, observed → corrected (95%), from the leniency-corrected rates:
+
+| Row | Observed | Corrected (95%) |
+|---|---|---|
+| Primary cells | 1.56 | 1.83 (1.43–2.40) |
+| Protein in patients' tissue | 1.34 | 1.45 (1.12–1.87) |
+| Cell line, literature | 1.21 | 1.29 (0.94–1.73) |
+| Knockout or transgene, disease model | 1.30 | 1.37 (1.04–1.84) |
+| Animal pharmacology, any agent | 1.14 | 1.19 (0.88–1.61) |
+| Animal pharmacology, other agents | 1.20 | 1.29 (0.95–1.70) |
+| Observational biomarker | 1.53 | 1.87 (1.43–2.48) |
+| Clinical observation | 1.85 | 4.16 (2.67–7.00) |
+
+Clinical observation's correction rests on a precision of 0.28 from 7 confirmed pairs, so it is unreliable and should not be read.
+
+**Cost** of the resolution work (adjudication, v3 and v4 screens, re-adjudication, confirmation retrieval and screening) was about $3,255 at list prices (`python -m pipeline.target_literature cost --since 2026-11-24T20:00:00Z`).
 
 ## Where the data is
 

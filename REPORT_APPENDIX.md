@@ -70,15 +70,19 @@ Each program is scored for the evidence its targets had for its disease as of th
 | :---- | :---- | :---- |
 | **Human genetics** |  |  |
 | Human genetics | Inherited variants link the target to the disease (GWAS, gene burden, Mendelian): the program's disease, a subtype of it or a disease at least 0.8 similar on MONDO (Lin) | Open Targets 26.09 (GWAS credible sets, gene burden tests, ClinVar, PanelApp, Orphanet, Gene2Phenotype, ClinGen, UniProt); each item dated by when it became known |
+| Protein genetics | A variant that changes the level of the target's protein in blood (a cis-pQTL) colocalises with a GWAS signal of the program's disease, a subtype of it or a disease at least 0.8 similar on MONDO (Lin); the sign says which way changing the protein moves risk | Open Targets 26.09 colocalisation (coloc H4 at least 0.8) of plasma pQTLs (Sun 2018, INTERVAL; UKB-PPP 2023) with GWAS credible sets; each dated by the later of the two studies |
 | Tumour genetics (oncology) | The gene is recurrently mutated in this cancer (oncology only) | COSMIC Cancer Gene Census, IntOGen and ClinVar somatic, through Open Targets |
 | Curated pathway | A curated human pathway shows a mutation that causes the disease in people disrupting the target | Reactome's human pathways, through Open Targets |
 | **In vitro and ex vivo** |  |  |
-| Diseased tissue | The gene's RNA or protein level differs in diseased tissue (protein is to come, #154) | Expression Atlas, through Open Targets (RNA, at least 2.1-fold) |
-| Cell lines | Changing the target in an established cell line changes a disease feature. Today only knockout screens reach it: in screens published before entry, cancer cell lines of the program's tumour type need the gene (oncology entries from 2015); the literature is to come (#154) | DepMap and earlier RNAi and CRISPR dependency screens, each line dated by its first public release; Project Score through Open Targets, 2019 at the earliest |
+| Diseased tissue | The gene's RNA or protein level differs in diseased tissue: RNA by at least 2.1-fold in Expression Atlas, or the protein in patients' tissue in a published study (#154, descriptive) | Expression Atlas, through Open Targets (RNA, at least 2.1-fold); literature (#154) |
+| Primary cells | Changing the target in primary human cells or tissue changes a disease feature, in a published study (#154, descriptive) | PubMed, Europe PMC, Firecrawl's research index and a web-search arm, screened by an LLM |
+| Cell lines | Changing the target in an established cell line changes a disease feature: in knockout screens published before entry, cancer cell lines of the program's tumour type need the gene (oncology entries from 2015), or a published experiment shows it (#154, descriptive) | DepMap and earlier RNAi and CRISPR dependency screens, each line dated by its first public release; Project Score through Open Targets, 2019 at the earliest; literature (#154) |
 | **Animals** |  |  |
-| Mouse genetics | A genetic change in an animal links the target to the disease: the mutant shows the disease (a knockout or transgene altering an animal model of it is to come, #154) | IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm |
-| Animal model pharmacology | A non-genetic change to the target (drug, antibody, siRNA) alters an animal model of the disease, whatever the agent; today only published studies of the program's own drug are searched, other agents are to come (#154) (exploratory: the searches miss some of these studies) | PubMed abstracts and Firecrawl's research index, screened by an LLM |
+| Mouse genetics | A genetic change in an animal links the target to the disease: the mutant shows the disease, or a knockout or transgene alters an animal model of it in a published study (#154, descriptive) | IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm; literature (#154) |
+| Animal model pharmacology | A non-genetic change to the target (drug, antibody, siRNA) alters an animal model of the disease, whatever the agent: published studies of the program's own drug and of any agent on the target (#154, descriptive) | PubMed, Europe PMC, Firecrawl's research index and a web-search arm, screened by an LLM |
 | **Human** |  |  |
+| Observational biomarker | The target or its product, measured in patients' blood, another fluid or by imaging, tracks the disease in an observational study, in a published study (#154, descriptive) | PubMed, Europe PMC, Firecrawl's research index and a web-search arm, screened by an LLM |
+| Clinical observation | An effect seen in people that implicates the target, such as a side effect: the FAERS side effects of other drugs on the target, approved before entry and developed for no related disease, that are the program's disease or a very close one and were a signal in the reports received by the year before entry; and, shown beside it but not counted (#154, descriptive), a published observation in people | FAERS: the reactions Open Targets 26.09 finds significant for each drug (openFDA likelihood-ratio test), matched to MONDO by name, each dated by the first year its reports received by then gave a signal (openFDA receivedate; at least 3 reports, PRR at least 2, chi-squared at least 4); literature (#154) |
 | Approved on the target | A drug on the target was approved before entry, banded by how close its disease is to the program's: the same or a very close disease (Lin at least 0.8, validated at entry), a related one (Lin 0.5 to 0.8), or only unrelated ones | Drugs@FDA approvals |
 | **The drug** |  |  |
 | Binding to the target measured before entry (about the drug) | The drug's binding or activity at its primary target was measured in laboratory assays before entry (small molecules) | ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it |
@@ -230,6 +234,12 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | · Rare inherited variants, including single-gene disease (derived) | 724 / 7,656 | 225 | 2.55 (1.95–3.29) | 1.88 (1.50–2.37) | 1.83 (1.44–2.31) | 0.55 (0.39–0.78) |
 | · Common variants (genome-wide association studies) (derived) | 243 / 7,656 | 95 | 1.60 (0.99–2.24) | 1.11 (0.71–1.73) | 1.12 (0.73–1.73) | 1.09 (0.78–1.52) |
 | · Genetics agrees with the drug's direction (derived) | 447 / 7,656 | 148 | 2.51 (1.91–3.29) | 1.82 (1.37–2.43) | 1.76 (1.31–2.36) | 0.52 (0.32–0.83) |
+| Protein genetics: variants that change the target's protein level change disease risk | 2 / 7,656 | 2 | Too rare to estimate | – | – | – |
+| · Higher protein raises risk | 2 / 7,656 | 2 | Too rare to estimate | – | – | – |
+| · Higher protein lowers risk | 0 / 7,656 | 0 | Too rare to estimate | – | – | – |
+| · Both, in different studies or diseases | 0 / 7,656 | 0 | Too rare to estimate | – | – | – |
+| · A cis-pQTL of the target's protein colocalises with a disease GWAS signal, on today's data (hindsight) | 101 / 7,656 | 36 | – | 1.02 (0.45–2.33) | 1.03 (0.44–2.43) | 1.07 (0.67–1.72) |
+| · Protein genetics agrees with the drug's direction (derived) | 2 / 7,656 | 2 | Too rare to estimate | – | – | – |
 | Tumour genetics (oncology): the gene is recurrently mutated in this cancer | 1,108 / 3,714 | 164 | 1.96 (1.13–3.43) | 1.55 (1.09–2.22) | 1.47 (1.03–2.10) | 0.84 (0.62–1.13) |
 | · Activating | 776 / 3,714 | 112 | 1.69 (0.96–2.95) | 1.41 (1.00–1.99) | 1.34 (0.95–1.89) | 0.81 (0.58–1.13) |
 | · Inactivating | 47 / 3,714 | 13 | Too rare to estimate | – | – | – |
@@ -241,8 +251,12 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | Diseased tissue: the gene's level differs in diseased tissue | 946 / 7,656 | 330 | 0.95 (0.65–1.33) | 0.93 (0.66–1.32) | 0.89 (0.63–1.24) | 1.23 (0.99–1.51) |
 | · Higher in disease (in at least one comparison) | 568 / 7,656 | 234 | 0.62 (0.33–0.95) | 0.73 (0.47–1.15) | 0.71 (0.46–1.11) | 1.44 (1.14–1.82) |
 | · Lower in disease only | 378 / 7,656 | 148 | 1.59 (0.99–2.30) | 1.23 (0.80–1.88) | 1.16 (0.76–1.75) | 0.91 (0.66–1.24) |
+| · The target's protein differs in patients' diseased tissue (exploratory) | 3,858 / 6,449 | 883 | 1.35 (1.10–1.66) | 1.09 (0.92–1.30) | 1.07 (0.90–1.27) | 0.93 (0.82–1.06) |
 | · Target more active in disease, and the drug blocks it (derived) | 436 / 7,656 | 163 | 0.68 (0.35–1.09) | 0.81 (0.49–1.33) | 0.79 (0.48–1.28) | 1.39 (1.06–1.82) |
-| Cell lines: changing the target in an established cell line changes a disease feature (oncology, from 2015) | 239 / 1,841 | 62 | 0.47 (0.15–1.15) | 0.53 (0.24–1.20) | 0.55 (0.24–1.23) | 0.60 (0.31–1.16) |
+| Primary cells: changing the target in primary human cells or tissue changes a disease feature | 2,951 / 6,449 | 740 | 1.56 (1.30–1.89) | 1.39 (1.16–1.67) | 1.37 (1.14–1.64) | 0.73 (0.63–0.83) |
+| · Changing the target in primary human cells or tissue changes a disease feature (exploratory) | 2,951 / 6,449 | 740 | 1.56 (1.30–1.89) | 1.39 (1.16–1.67) | 1.37 (1.14–1.64) | 0.73 (0.63–0.83) |
+| Cell lines: changing the target in an established cell line changes a disease feature | 239 / 1,841 | 62 | 0.47 (0.15–1.15) | 0.53 (0.24–1.20) | 0.55 (0.24–1.23) | 0.60 (0.31–1.16) |
+| · A published experiment: changing the target in an established cell line changes a disease feature (exploratory) | 3,608 / 6,449 | 860 | 1.22 (0.97–1.54) | 0.99 (0.82–1.20) | 0.97 (0.80–1.17) | 0.83 (0.72–0.96) |
 | · A genome-wide knockout screen ranks the target for this cancer, on today's data (hindsight) | 386 / 7,656 | 100 | 1.94 (1.15–2.77) | 1.68 (1.19–2.37) | 1.57 (1.10–2.24) | 0.97 (0.69–1.36) |
 | · Cancer cells of this type need the gene to grow (dependency screens) (derived) | 239 / 1,841 | 62 | 0.47 (0.15–1.15) | 0.53 (0.24–1.20) | 0.55 (0.24–1.23) | 0.60 (0.31–1.16) |
 | · Gene-knockout screens in human cells (Project Score) (derived) | 0 / 7,656 | 0 | Too rare to estimate | – | – | – |
@@ -250,11 +264,24 @@ Every kind of evidence on US-developed programs, section by section: the kind, t
 | Mouse genetics: mice with the gene altered show the disease | 1,576 / 7,656 | 469 | 1.44 (1.07–1.86) | 1.41 (1.15–1.73) | 1.39 (1.14–1.70) | 0.83 (0.69–1.00) |
 | · Closely | 923 / 7,656 | 322 | 1.47 (1.10–1.93) | 1.47 (1.19–1.81) | 1.45 (1.18–1.79) | 0.76 (0.61–0.94) |
 | · Loosely | 653 / 7,656 | 249 | 1.24 (0.86–1.70) | 1.13 (0.82–1.55) | 1.11 (0.82–1.51) | 1.00 (0.79–1.26) |
+| · A knockout or transgene of the target alters an animal model of the disease (exploratory) | 2,633 / 6,449 | 745 | 1.30 (1.04–1.66) | 1.26 (1.05–1.52) | 1.24 (1.03–1.48) | 0.87 (0.77–1.00) |
 | · Mutant mice from published studies (MGI) (derived) | 1,568 / 7,656 | 465 | 1.44 (1.08–1.87) | 1.41 (1.15–1.73) | 1.39 (1.14–1.70) | 0.83 (0.69–1.00) |
 | · Mouse knockout from a large-scale screen (IMPC) (derived) | 46 / 7,656 | 16 | Too rare to estimate | – | – | – |
 | · Mouse genetics agrees with the drug's direction (derived) | 507 / 7,656 | 186 | 1.81 (1.37–2.41) | 1.44 (1.10–1.90) | 1.43 (1.09–1.87) | 0.59 (0.43–0.80) |
-| Animal model pharmacology: a non-genetic change to the target alters a disease model (today: the program's own drug) | 4,782 / 9,060 | 1,542 | 0.74 (0.61–0.91) | 0.85 (0.73–1.00) | 0.85 (0.72–0.99) | 0.93 (0.84–1.05) |
+| Animal model pharmacology: a non-genetic change to the target alters a disease model | 4,782 / 9,060 | 1,542 | 0.74 (0.61–0.91) | 0.85 (0.73–1.00) | 0.85 (0.72–0.99) | 0.93 (0.84–1.05) |
+| · A published study: any agent acting on the target (the program's drugs included) alters an animal model of the disease (exploratory) | 4,773 / 6,449 | 1,057 | 1.15 (0.92–1.46) | 1.14 (0.94–1.39) | 1.12 (0.93–1.36) | 0.95 (0.83–1.08) |
+| · An agent other than the program's drugs alters an animal model of the disease (the registered L2's exposure) (exploratory) | 4,575 / 6,449 | 1,026 | 1.20 (0.98–1.49) | 1.20 (0.98–1.46) | 1.18 (0.97–1.43) | 0.88 (0.77–1.01) |
 | **Human** |  |  |  |  |  |  |
+| Observational biomarker: the target or its product, measured in blood, another fluid or by imaging, tracks the disease | 2,755 / 6,449 | 704 | 1.53 (1.27–1.84) | 1.31 (1.09–1.58) | 1.29 (1.07–1.55) | 0.87 (0.76–0.99) |
+| · The target or its product, measured in patients' blood, another fluid or by imaging, tracks the disease (exploratory) | 2,755 / 6,449 | 704 | 1.53 (1.27–1.84) | 1.31 (1.09–1.58) | 1.29 (1.07–1.55) | 0.87 (0.76–0.99) |
+| Clinical observation: an effect seen in people implicates the target, such as a side effect | 189 / 1,961 | 61 | 1.91 (1.09–3.19) | 1.90 (1.25–2.89) | 1.98 (1.28–3.05) | 0.66 (0.44–1.00) |
+| · Lowering it: a drug that blocks the target | 58 / 1,961 | 33 | Too rare to estimate | – | – | – |
+| · Raising it: a drug that activates it | 125 / 1,961 | 28 | 2.07 (1.03–3.76) | 1.55 (0.92–2.59) | 1.63 (0.92–2.89) | 0.58 (0.33–1.03) |
+| · Both | 4 / 1,961 | 3 | Too rare to estimate | – | – | – |
+| · A drug of unclear action | 2 / 1,961 | 2 | Too rare to estimate | – | – | – |
+| · Another drug on the target has the disease as a significant side effect, on today's FAERS (hindsight) | 296 / 7,656 | 89 | 1.34 (0.87–1.93) | 1.51 (1.02–2.22) | 1.51 (1.03–2.22) | 0.75 (0.55–1.03) |
+| · A published observation in people implicates the target, such as a side effect (exploratory) | 2,535 / 6,449 | 654 | 1.86 (1.51–2.29) | 1.60 (1.32–1.93) | 1.57 (1.30–1.91) | 0.71 (0.61–0.82) |
+| · A side effect argues for the drug's direction (derived) | 51 / 1,961 | 15 | Too rare to estimate | – | – | – |
 | Approved on the target: a drug on the target was approved before entry, for this disease or another | 4,436 / 7,656 | 614 | 1.45 (1.16–1.82) | 1.36 (1.12–1.65) | 1.35 (1.12–1.64) | – |
 | · This disease or a very close one (Lin at least 0.8): validated at entry | 1,439 / 7,656 | 361 | 2.05 (1.68–2.53) | 1.90 (1.58–2.28) | 1.87 (1.56–2.25) | 0.67 (0.54–0.82) |
 | · A related disease (Lin 0.5 to 0.8) | 994 / 7,656 | 248 | 1.31 (0.94–1.71) | 1.21 (0.96–1.53) | 1.21 (0.96–1.53) | 0.83 (0.67–1.02) |
