@@ -31,6 +31,9 @@ COMBINATION = (
     "Background standard of care that every arm receives (methotrexate in rheumatoid arthritis, metformin in type 2 "
     "diabetes, stable conventional therapy) does not make a combination; a drug tested on top of it is tested alone."
 )
+# For the two-pathway evidence of #195 and #196, a randomised add-on trial also counts: a drug acting through a new
+# pathway added to a fixed background acting through another, against background alone, on the same patients.
+ADD_ON_COUNTS_AS_TWO_PATHWAYS = True
 
 
 @dataclass(frozen=True)
@@ -59,41 +62,43 @@ SHORTLIST = {
 }
 MIN_APPROVED_PATHWAYS = 3
 
-# A pathway gets most patients to goal when its share reaching the endpoint is at least SOLVED_RESPONSE and its
-# placebo-adjusted difference at least SOLVED_DELTA, in patients naive to advanced therapy.
-SOLVED_RESPONSE = 0.50
-SOLVED_DELTA = 0.40
+# Solved by one drug: one drug (approved, or positive in Phase 3) acting through at most MAX_PATHWAYS_ONE_DRUG pathways
+# gets a placebo-adjusted share of at least SOLVED_DELTA of patients naive to advanced therapy to the endpoint. One
+# drug is one molecule: bispecifics, trispecifics and multi-receptor agonists count; co-formulations of separate
+# drugs do not. The report also shows the labels at SOLVED_SENSITIVITY.
+SOLVED_DELTA = 0.50
+SOLVED_SENSITIVITY = (0.40, 0.60)
+MAX_PATHWAYS_ONE_DRUG = 3
 # Retained effect: pathway B's placebo-adjusted effect in patients who failed pathway A, over its placebo-adjusted
 # effect in naive patients. Its median over the disease's (A, B) pairs decides between the two partial labels.
 RETAINED_DIFFERENT = 0.75
 RETAINED_SEVERAL = 0.50
 
-LABELS = ("single_target_enough", "different_patients", "several_targets_needed", "cant_tell")
+LABELS = ("solved_by_one_drug", "different_patients", "several_targets_needed", "cant_tell")
 
 
 @dataclass(frozen=True)
 class Response:
-    pathways: frozenset[str]  # one pathway, or two or more for a combination or a drug spanning them
-    response: float           # share reaching the endpoint, 0-1
-    delta: float              # placebo-adjusted difference, 0-1
+    pathways: frozenset[str]  # the pathways the regimen acts through
+    delta: float              # placebo-adjusted share reaching the endpoint, 0-1
+    one_drug: bool            # a single molecule, as opposed to two or more drugs given together
 
 
-def disease_label(naive: list[Response], retained: list[float], combination_beats_single: bool) -> str:
+def disease_label(naive: list[Response], retained: list[float], combination_beats_single: bool,
+                  solved_delta: float = SOLVED_DELTA) -> str:
     """The registered label of one shortlisted disease.
 
-    naive: the best estimate per mechanism in patients naive to advanced therapy, biomarker-selected trials left out.
+    naive: the best estimate per approved or Phase 3-positive regimen in patients naive to advanced therapy,
+    biomarker-selected trials left out.
     retained: retained effect of each (failed pathway, next pathway) pair with an estimate.
     combination_beats_single: a randomised trial in the disease of two pathways against one of them alone met its
     efficacy primary endpoint, and the two-pathway arm was not stopped or abandoned for safety.
 
-    Single target enough needs a single-pathway mechanism to reach goal; a disease that only a two-pathway drug gets
-    to goal is read by the crossover rules like any other. A combination beating one drug is not enough alone for
-    several targets needed, since different patients responding to different drugs also produces it."""
-    if len({r.pathways for r in naive}) < 2:
-        return "cant_tell"
-    if any(len(r.pathways) == 1 and r.response >= SOLVED_RESPONSE and r.delta >= SOLVED_DELTA for r in naive):
-        return "single_target_enough"
-    if not retained:
+    A combination beating one drug is not enough alone for several targets needed, since different patients
+    responding to different drugs also produces it."""
+    if any(r.one_drug and len(r.pathways) <= MAX_PATHWAYS_ONE_DRUG and r.delta >= solved_delta for r in naive):
+        return "solved_by_one_drug"
+    if len({r.pathways for r in naive}) < 2 or not retained:
         return "cant_tell"
     kept = statistics.median(retained)
     if kept >= RETAINED_DIFFERENT:

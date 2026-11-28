@@ -2,17 +2,38 @@ import pytest
 
 from pipeline.single_target import Response, disease_label, validate_merge, validate_pathway
 
-IL23 = Response(frozenset({"IL-23"}), response=0.75, delta=0.70)
-TNF = Response(frozenset({"TNF"}), response=0.45, delta=0.30)
-IL6 = Response(frozenset({"IL-6"}), response=0.40, delta=0.25)
-DUAL = Response(frozenset({"GLP-1", "GIP"}), response=0.57, delta=0.54)
+IL23 = Response(frozenset({"IL-23"}), delta=0.70, one_drug=True)
+TNF = Response(frozenset({"TNF"}), delta=0.30, one_drug=True)
+IL6 = Response(frozenset({"IL-6"}), delta=0.25, one_drug=True)
+SEMAGLUTIDE = Response(frozenset({"GLP-1"}), delta=0.46, one_drug=True)
+TIRZEPATIDE = Response(frozenset({"GLP-1", "GIP"}), delta=0.54, one_drug=True)
 
 
-def test_one_pathway_reaching_goal_is_single_target_enough_whatever_crossover_shows():
-    assert disease_label([IL23, TNF], retained=[0.3], combination_beats_single=True) == "single_target_enough"
+def test_one_drug_reaching_goal_solves_the_disease_whatever_crossover_shows():
+    assert disease_label([IL23, TNF], retained=[0.3], combination_beats_single=True) == "solved_by_one_drug"
 
 
-def test_fewer_than_two_mechanisms_cannot_be_labelled():
+def test_a_drug_spanning_two_pathways_counts_as_one_drug():
+    assert disease_label([SEMAGLUTIDE, TIRZEPATIDE], retained=[], combination_beats_single=False) == "solved_by_one_drug"
+
+
+def test_two_drugs_given_together_do_not_count_as_one_drug():
+    together = Response(frozenset({"TNF", "IL-6"}), delta=0.60, one_drug=False)
+    assert disease_label([TNF, IL6, together], retained=[], combination_beats_single=True) == "cant_tell"
+
+
+def test_a_drug_spanning_four_pathways_is_not_one_drug_solving_it():
+    broad = Response(frozenset({"A", "B", "C", "D"}), delta=0.60, one_drug=True)
+    assert disease_label([TNF, broad], retained=[], combination_beats_single=False) == "cant_tell"
+
+
+def test_the_sensitivity_threshold_moves_the_line():
+    assert disease_label([SEMAGLUTIDE, TNF], retained=[], combination_beats_single=False) == "cant_tell"
+    assert disease_label([SEMAGLUTIDE, TNF], retained=[], combination_beats_single=False,
+                         solved_delta=0.40) == "solved_by_one_drug"
+
+
+def test_fewer_than_two_mechanisms_cannot_be_labelled_unless_solved():
     assert disease_label([TNF], retained=[0.9], combination_beats_single=False) == "cant_tell"
 
 
@@ -31,11 +52,6 @@ def test_a_winning_combination_without_crossover_data_cannot_be_labelled():
 
 def test_retained_effect_between_the_thresholds_cannot_be_labelled():
     assert disease_label([TNF, IL6], retained=[0.6], combination_beats_single=True) == "cant_tell"
-
-
-def test_only_a_two_pathway_drug_reaching_goal_goes_to_the_crossover_rules():
-    single = Response(frozenset({"GLP-1"}), response=0.48, delta=0.44)
-    assert disease_label([single, DUAL], retained=[], combination_beats_single=True) == "cant_tell"
 
 
 def test_a_specific_mechanism_names_one_to_three_pathways():
