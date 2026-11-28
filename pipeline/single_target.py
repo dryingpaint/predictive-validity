@@ -1,7 +1,8 @@
 """Which diseases the target-based drugging paradigm solves (#197): definitions registered in #198, and the pathway of
 every atlas mechanism.
 
-    python -m pipeline.single_target pathways   # LLM: pathways each atlas mechanism acts through -> preclin.mechanism_pathway
+    python -m pipeline.single_target indications  # LLM: shortlisted diseases each FDA label treats -> preclin.label_indication
+    python -m pipeline.single_target pathways     # LLM: pathways of atlas and labelled mechanisms -> preclin.mechanism_pathway
 
 Each shortlisted disease gets two labels. How solved: by one drug (one molecule, up to three pathways), by stacking
 drugs, or unsolved. Why one drug is not enough, where it is not: different patients need different targets, each
@@ -228,11 +229,29 @@ MERGE_TASK = llm.Task(name="pathway_names", prompt_version="v2", schema_version=
 PATHWAY_METHOD = "mechanism_pathway@v1+pathway_names@v2"
 
 
+def mechanism_keys(cur) -> dict[int, tuple[str, str, str]]:
+    """Entity -> (mechanism_key, target_label, action) for every entity with a current FDA label: its reviewed target
+    and action where the atlas reviewed it, else its primary targets and their actions."""
+    cur.execute("""SELECT DISTINCT m.moiety_id FROM preclin.fda_label l JOIN preclin.moiety m ON m.unii = ANY(l.unii)""")
+    labelled = [r[0] for r in cur.fetchall()]
+    cur.execute("SELECT moiety_id, target_label, coalesce(action, '') FROM preclin.atlas_moiety_review "
+                "WHERE moiety_id = ANY(%s)", (labelled,))
+    out = {mid: (f"{target}|{action}", target, action) for mid, target, action in cur.fetchall()}
+    cur.execute("""SELECT mt.moiety_id, string_agg(DISTINCT t.symbol, ';' ORDER BY t.symbol),
+                          string_agg(DISTINCT mt.action, ';' ORDER BY mt.action)
+                   FROM preclin.moiety_target mt JOIN public.targets t ON t.id = mt.target_id
+                   WHERE mt.is_primary AND mt.moiety_id = ANY(%s) AND t.symbol IS NOT NULL GROUP BY 1""",
+                ([m for m in labelled if m not in out],))
+    out.update({mid: (f"{target}|{action}", target, action) for mid, target, action in cur.fetchall()})
+    return out
+
+
 def pathways(_args) -> None:
-    """Name the pathways of every atlas mechanism, merge spelling variants into canonical names, store the table."""
+    """Name the pathways of every atlas mechanism and every labelled entity's mechanism, merge spelling variants into
+    canonical names, store the table."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT mechanism_key, target_label, action, label FROM preclin.atlas_mechanism")
-        mechanisms = cur.fetchall()
+        mechanisms = {key: (target, action, label) for key, target, action, label in cur.fetchall()}
         cur.execute("""SELECT a.mechanism_key, m.name, string_agg(DISTINCT i.label, ', ')
                        FROM preclin.atlas_member a JOIN preclin.moiety m ON m.moiety_id = a.entity_id
                        JOIN preclin.atlas_indication i ON i.mondo_id = a.mondo_id
@@ -240,8 +259,15 @@ def pathways(_args) -> None:
         drugs: dict[str, list[str]] = {}
         for key, name, diseases in cur.fetchall():
             drugs.setdefault(key, []).append(f"{name} ({diseases})")
+        labelled = mechanism_keys(cur)
+        cur.execute("SELECT moiety_id, name FROM preclin.moiety WHERE moiety_id = ANY(%s)", (list(labelled),))
+        names = dict(cur.fetchall())
+    for mid, (key, target, action) in sorted(labelled.items()):
+        mechanisms.setdefault(key, (target, action, f"{target} {action}"))
+        if key not in drugs or len(drugs[key]) < 5:
+            drugs.setdefault(key, []).append(f"{names[mid]} (FDA-approved)")
     items = {key: {"label": label, "target_label": target, "action": action, "drugs": drugs.get(key, [])[:5]}
-             for key, target, action, label in mechanisms}
+             for key, (target, action, label) in mechanisms.items()}
     named = {key: (decision_id, out) for key, decision_id, out in llm.decisions(llm.run(PATHWAY_TASK, items))}
 
     counts = Counter(p for _, out in named.values() for p in out["pathways"])
@@ -253,9 +279,12 @@ def pathways(_args) -> None:
              merge_id if out["kind"] == "specific" else None)
             for key, (decision_id, out) in named.items()]
     with llm.connect() as conn, conn.cursor() as cur:
-        llm.record_method(cur, PATHWAY_METHOD, "Pathways of atlas mechanisms", PATHWAY_SYSTEM + "\n\n" + MERGE_SYSTEM,
-                          ["preclin.atlas_mechanism", "preclin.atlas_member", "preclin.moiety"],
-                          {"tasks": [PATHWAY_TASK.name, MERGE_TASK.name], "prompt_versions": [PATHWAY_TASK.prompt_version, MERGE_TASK.prompt_version],
+        llm.record_method(cur, PATHWAY_METHOD, "Pathways of atlas and labelled mechanisms",
+                          PATHWAY_SYSTEM + "\n\n" + MERGE_SYSTEM,
+                          ["preclin.atlas_mechanism", "preclin.atlas_member", "preclin.atlas_moiety_review",
+                           "preclin.moiety_target", "preclin.fda_label", "preclin.moiety"],
+                          {"tasks": [PATHWAY_TASK.name, MERGE_TASK.name],
+                           "prompt_versions": [PATHWAY_TASK.prompt_version, MERGE_TASK.prompt_version],
                            "model": PATHWAY_TASK.model, "merge_run": str(merge_run)})
         cur.execute("DELETE FROM preclin.mechanism_pathway")
         execute_values(cur, """INSERT INTO preclin.mechanism_pathway (mechanism_key, kind, pathways, llm_decision_id,
@@ -265,10 +294,63 @@ def pathways(_args) -> None:
           f"names={len(counts)} canonical={len({c for cs in canonical.values() for c in cs})}")
 
 
+INDICATION_SYSTEM = """You read the Indications and Usage section of a US FDA drug label and say which diseases on a fixed list the label treats or prevents.
+
+A disease counts when the label is indicated to treat it, to control its defining measure (blood pressure for hypertension, LDL cholesterol for hyperlipidemia, HbA1c for type 2 diabetes, weight for obesity), or, for a disease defined by events, to reduce those events: a drug indicated to reduce the risk of myocardial infarction, stroke or cardiovascular death in patients with coronary heart disease counts for coronary artery disease; one reducing stroke and systemic embolism in nonvalvular atrial fibrillation counts for atrial fibrillation; one reducing cardiovascular death or hospitalisation in heart failure counts for heart failure.
+
+A disease does not count when the label mentions it only as a population restriction, a contraindication, a comorbidity of the treated patients, or a different disease that shares a word (ocular hypertension is not essential hypertension; pulmonary arterial hypertension is its own entry; acute migraine treatment counts for migraine). Return an empty list when none applies."""
+
+
+def indication_schema(ids: list[str]) -> dict:
+    return {"type": "object",
+            "properties": {"diseases": {"type": "array", "items": {"type": "string", "enum": ids}},
+                           "reason": {"type": "string"}},
+            "required": ["diseases", "reason"], "additionalProperties": False}
+
+
+SHORTLISTED = {**SHORTLIST, **EVENT_SHORTLIST}
+
+
+def render_indication(p: dict) -> str:
+    listed = "\n".join(f"{mid}: {e.disease}" for mid, e in SHORTLISTED.items())
+    return f"Diseases:\n{listed}\n\nIndications and Usage:\n{p['text']}"
+
+
+INDICATION_TASK = llm.Task(name="label_indication", prompt_version="v1", schema_version="v1", system=INDICATION_SYSTEM,
+                           schema=indication_schema(list(SHORTLISTED)), render=render_indication,
+                           subject_type="label_indications_text", model="claude-opus-5-5", effort="low",
+                           max_tokens=1500)
+INDICATION_METHOD = "label_indication@v1"
+
+
+def indications(_args) -> None:
+    """Which shortlisted diseases each current FDA label treats, decided once per distinct indications text."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT set_id, indications_text FROM preclin.fda_label WHERE indications_text IS NOT NULL")
+        labels = cur.fetchall()
+    by_text: dict[str, list[str]] = {}
+    for set_id, text in labels:
+        by_text.setdefault(llm.sha256_text(text), []).append(set_id)
+    texts = {llm.sha256_text(text): text for _, text in labels}
+    run_id = llm.run(INDICATION_TASK, {h: {"text": t} for h, t in texts.items()})
+    rows = [(set_id, mid, decision_id) for h, decision_id, out in llm.decisions(run_id)
+            for mid in sorted(set(out["diseases"])) for set_id in by_text[h]]
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, INDICATION_METHOD, "Shortlisted diseases an FDA label treats", INDICATION_SYSTEM,
+                          ["preclin.fda_label"], {"task": INDICATION_TASK.name, "prompt_version": "v1",
+                                                  "model": INDICATION_TASK.model, "run": str(run_id)})
+        cur.execute("DELETE FROM preclin.label_indication")
+        execute_values(cur, "INSERT INTO preclin.label_indication (set_id, mondo_id, llm_decision_id) VALUES %s",
+                       rows, page_size=5000)
+        conn.commit()
+    print(f"labels={len(labels)} texts={len(texts)} rows={len(rows)} " + str(Counter(r[1] for r in rows)))
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(required=True)
-    sub.add_parser("pathways").set_defaults(fn=pathways)
+    for name, fn in (("indications", indications), ("pathways", pathways)):
+        sub.add_parser(name).set_defaults(fn=fn)
     args = ap.parse_args()
     args.fn(args)
 
