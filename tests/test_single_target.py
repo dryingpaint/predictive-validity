@@ -1,6 +1,6 @@
 import pytest
 
-from pipeline.single_target import Response, disease_label, validate_merge, validate_pathway
+from pipeline.single_target import Response, disease_label, event_label, validate_merge, validate_pathway
 
 IL23 = Response(frozenset({"IL-23"}), delta=0.70, one_drug=True)
 TNF = Response(frozenset({"TNF"}), delta=0.30, one_drug=True)
@@ -71,3 +71,16 @@ def test_the_merge_maps_every_name_exactly_once():
         validate_merge(payload, {"names": [{"name": "IL-17", "canonical": ["IL-17"]}]})
     with pytest.raises(ValueError):
         validate_merge(payload, {"names": [{"name": "IL-17", "canonical": ["IL-17"]}, {"name": "IL17", "canonical": []}]})
+
+
+def test_one_drug_preventing_most_events_solves_an_event_disease():
+    assert event_label([0.36], add_on_hrs=[]) == "solved_by_one_drug"
+
+
+def test_a_stack_of_add_ons_preventing_most_events_is_solved_by_stacking():
+    assert event_label([0.75, 0.80], add_on_hrs=[0.70, 0.80, 0.75, 0.80]) == "solved_by_stacking"
+
+
+def test_neither_one_drug_nor_the_stack_reaching_half_the_events_is_unsolved():
+    assert event_label([0.80], add_on_hrs=[0.85, 0.90]) == "unsolved"
+    assert event_label([], add_on_hrs=[]) == "unsolved"

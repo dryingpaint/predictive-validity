@@ -11,6 +11,7 @@ disease. All of them are here, fixed before any response or regimen data is pull
 from __future__ import annotations
 
 import argparse
+import math
 import statistics
 from collections import Counter
 from dataclasses import dataclass
@@ -59,6 +60,18 @@ SHORTLIST = {
     "MONDO:0011122": Endpoint("obesity", "weight loss of 15% or more", "52-72"),
     "MONDO:0005148": Endpoint("type 2 diabetes mellitus", "HbA1c below 7%", "24-52"),
     "MONDO:0005277": Endpoint("migraine", "50% or greater reduction in monthly migraine days", "12"),
+    "MONDO:0021187": Endpoint("hyperlipidemia", "LDL cholesterol below 70 mg/dL", "12-24"),
+    "MONDO:0001134": Endpoint("essential hypertension", "blood pressure below 130/80 mmHg", "8-12"),
+}
+
+# Diseases whose shared endpoint is an event, read as a hazard ratio against placebo or against background care.
+EVENT_SHORTLIST = {
+    "MONDO:0005252": Endpoint("heart failure", "cardiovascular death or heart failure hospitalisation", "trial length"),
+    "MONDO:0005010": Endpoint("coronary artery disease", "major adverse cardiovascular events", "trial length"),
+    "MONDO:0005300": Endpoint("chronic kidney disease", "kidney composite (sustained eGFR decline, kidney failure, "
+                              "renal or cardiovascular death)", "trial length"),
+    "MONDO:0004981": Endpoint("atrial fibrillation", "stroke or systemic embolism", "trial length"),
+    "MONDO:0015924": Endpoint("pulmonary arterial hypertension", "clinical worsening or death", "trial length"),
 }
 MIN_APPROVED_PATHWAYS = 3
 
@@ -106,6 +119,26 @@ def disease_label(naive: list[Response], retained: list[float], combination_beat
     if kept < RETAINED_SEVERAL and combination_beats_single:
         return "several_targets_needed"
     return "cant_tell"
+
+
+EVENT_LABELS = ("solved_by_one_drug", "solved_by_stacking", "unsolved")
+
+
+def event_label(one_drug_hrs: list[float], add_on_hrs: list[float], solved_rrr: float = SOLVED_DELTA) -> str:
+    """The registered label of one event-endpoint disease.
+
+    one_drug_hrs: hazard ratio against placebo of each approved or Phase 3-positive drug that counts as one drug
+    (one molecule, at most MAX_PATHWAYS_ONE_DRUG pathways).
+    add_on_hrs: hazard ratio of each pathway shown to add benefit in a randomised add-on trial, against the
+    background of the pathways before it. The regimen's risk reduction is 1 - their product.
+
+    Events cannot separate different patients from each patient needing several pathways, so a disease that only a
+    stack of drugs solves is labelled by that fact alone."""
+    if any(1 - hr >= solved_rrr for hr in one_drug_hrs):
+        return "solved_by_one_drug"
+    if add_on_hrs and 1 - math.prod(add_on_hrs) >= solved_rrr:
+        return "solved_by_stacking"
+    return "unsolved"
 
 
 PATHWAY_SYSTEM = """You name the signalling pathways a drug mechanism acts through, so that mechanisms acting through the same pathway can be counted together.
