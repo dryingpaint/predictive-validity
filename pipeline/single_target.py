@@ -964,7 +964,7 @@ def render_responses(p: dict) -> str:
 
 RESPONSE_TOOLS = [{"type": "web_search_20260209", "name": "web_search", "max_uses": 30},
                   {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 15}]
-RESPONSE_METHOD = "mechanism_response@v2"
+RESPONSE_METHOD = "mechanism_response@v2+response_subgroup@v1"
 
 
 def responses_task(pathway_names: list[str]) -> llm.Task:
@@ -1029,8 +1029,10 @@ def risk_estimates(rows: list[dict]) -> list[str]:
 
 
 def response_rows(question: str, mondo: str, risk_mondo: str | None, decision_id: int, out: dict,
-                  names: dict[str, str], mechanisms: dict[str, set[str]]) -> list[tuple]:
-    """Table rows of one decision: pathway names in their canonical spelling, drugs resolved to mechanism keys."""
+                  names: dict[str, str], mechanisms: dict[str, set[str]],
+                  subgroup: dict[tuple[int, int], tuple[bool, int]]) -> list[tuple]:
+    """Table rows of one decision: pathway names in their canonical spelling, drugs resolved to mechanism keys, and
+    whether each estimate comes from a subgroup."""
     def canon(ps: list[str]) -> list[str]:
         return sorted({names[p.strip().lower()] for p in ps})
 
@@ -1041,8 +1043,43 @@ def response_rows(question: str, mondo: str, risk_mondo: str | None, decision_id
              e["estimate"], e["ci_low"],
              e["ci_high"], e["trial_weeks"], e["per_unit"], e["source_kind"], e["source_name"], e["pmid"],
              sorted({retrieved_source(u, out["retrieved_urls"]) for u in e["sources"]}), e["quote"],
-             e["derivation"], decision_id)
-            for e in out["estimates"]]
+             e["derivation"], decision_id, *subgroup[(decision_id, i)])
+            for i, e in enumerate(out["estimates"])]
+
+
+SUBGROUP_SYSTEM = """You read one published effect estimate recorded for a study of drug response and say whether it comes from a subgroup.
+
+The study takes estimates from a network meta-analysis, pooled trials or a whole trial. An estimate is a subgroup estimate when it is restricted to a subset of the source's randomised or analysed population defined by a patient characteristic: a baseline-therapy subgroup (patients already on an SGLT2 inhibitor), a disease-type or severity subgroup, a region, age or biomarker subgroup, or any post hoc stratum.
+
+One restriction does not count: prior advanced therapy, when the estimate's population is the one the study asks for. An estimate in advanced-therapy-naive (biologic-naive, TNF-naive) patients with population naive, or in patients who failed a named pathway with population prior_failure, is not a subgroup estimate, whether the source reports it as a stratum of a trial or as its own trial. A trial whose whole population is restricted by design (a trial enrolling only patients with HFpEF and obesity, or only ACE-inhibitor-intolerant patients) is a whole trial, not a subgroup. A secondary endpoint or a post hoc endpoint analysed in the whole trial is not a subgroup either."""
+
+SUBGROUP_SCHEMA = {"type": "object", "properties": {"subgroup": {"type": "boolean"}, "reason": {"type": "string"}},
+                   "required": ["subgroup", "reason"], "additionalProperties": False}
+
+
+def render_subgroup(p: dict) -> str:
+    return (f"Disease: {p['disease']}\nEstimate population: {p['population']}"
+            f"{' (failed ' + p['failed_pathway'] + ')' if p['failed_pathway'] else ''}\nRegimen: {p['regimen']}\n"
+            f"Endpoint: {p['endpoint']}\nSource: {p['source_name']} ({p['source_kind']})\nQuote: {p['quote']}\n"
+            f"Derivation: {p['derivation']}")
+
+
+SUBGROUP_TASK = llm.Task(name="response_subgroup", prompt_version="v1", schema_version="v1", system=SUBGROUP_SYSTEM,
+                         schema=SUBGROUP_SCHEMA, render=render_subgroup, subject_type="mechanism_response_estimate",
+                         model="claude-opus-5-5", effort="low", max_tokens=1500)
+
+
+def subgroups(decisions: dict[str, tuple[int, dict]], disease: dict[str, str]) -> dict[tuple[int, int], tuple[bool, int]]:
+    """(decision id, estimate index) -> (subgroup, decision id of the subgroup call) for every estimate."""
+    items = {f"{decision_id}|{i}": {"disease": disease[key], **{k: e[k] for k in (
+                 "population", "failed_pathway", "regimen", "endpoint", "source_name", "source_kind", "quote",
+                 "derivation")}}
+             for key, (decision_id, out) in decisions.items() for i, e in enumerate(out["estimates"])}
+    run_id = llm.run(SUBGROUP_TASK, items)
+    read = {tuple(map(int, k.split("|"))): (o["subgroup"], i) for k, i, o in llm.decisions(run_id)}
+    if missing := len(items) - len(read):
+        raise SystemExit(f"run {run_id}: {missing} subgroup decisions failed validation; run again")
+    return read
 
 
 def responses(_args) -> None:
@@ -1080,25 +1117,27 @@ def responses(_args) -> None:
         raise SystemExit(f"no valid decision for {sorted(missing)}; run again (decided ones are reused)")
 
     every = {**items, **pair_items}
+    flagged = subgroups({**decided, **paired}, {key: p["disease"] for key, p in every.items()})
     rows = [r for key, (decision_id, out) in {**decided, **paired}.items()
             for r in response_rows(every[key]["question"], every[key]["mondo_id"], every[key].get("risk_mondo_id"),
-                                   decision_id, out, names, mechanisms)]
+                                   decision_id, out, names, mechanisms, flagged)]
     with llm.connect() as conn, conn.cursor() as cur:
         llm.record_method(cur, RESPONSE_METHOD, "Published estimates behind the single-drug labels", task.system,
                           ["web search", "preclin.mechanism_pathway", "preclin.label_indication",
                            "preclin.combination_trial", "preclin.atlas_member", "preclin.moiety"],
                           {"task": task.name, "prompt_version": task.prompt_version, "model": task.model,
                            "effort": task.effort, "questions": QUESTION_TEXT, "run": str(run_id),
-                           "pair_run": str(pair_run)})
+                           "pair_run": str(pair_run), "subgroup_task": SUBGROUP_TASK.name,
+                           "subgroup_prompt": SUBGROUP_SYSTEM})
         cur.execute("DELETE FROM preclin.mechanism_response")
         execute_values(cur, """INSERT INTO preclin.mechanism_response (mondo_id, question, risk_factor_mondo_id,
                                  regimen, drugs, pathways, mechanism_keys, one_drug, endpoint, measure, population,
                                  failed_pathway, background_pathways, stack_position, pair_key, estimate, ci_low,
                                  ci_high, trial_weeks, per_unit, source_kind, source_name, pmid, sources, quote,
-                                 derivation, llm_decision_id) VALUES %s""", rows)
+                                 derivation, llm_decision_id, subgroup, subgroup_decision_id) VALUES %s""", rows)
         conn.commit()
     print(f"run={run_id} pair_run={pair_run} rows={len(rows)} by question={dict(Counter(r[1] for r in rows))} "
-          f"with mechanism keys={sum(bool(r[6]) for r in rows)}")
+          f"with mechanism keys={sum(bool(r[6]) for r in rows)} subgroup={sum(r[-2] for r in rows)}")
 
 
 def main() -> None:

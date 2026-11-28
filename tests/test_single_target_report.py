@@ -1,7 +1,8 @@
 import pandas as pd
 import pytest
 
-from report.single_target import approved_pathways, crossover_pairs, disease_labels, shortlist_table, tried_by_area
+from report.single_target import (approved_pathways, crossover_pairs, disease_labels, label_table, shortlist_table,
+                                  tried_by_area)
 
 PSORIASIS = "MONDO:0005083"
 
@@ -40,7 +41,8 @@ def test_oncology_and_infectious_disease_are_flagged_apart():
 def estimate(**kw):
     row = {"mondo_id": PSORIASIS, "question": "response", "regimen": "drug", "pathways": ["IL-17"], "one_drug": True,
            "endpoint": "PASI 90", "measure": "share", "population": "naive", "failed_pathway": None,
-           "stack_position": None, "pair_key": None, "estimate": 40.0, "source_name": "s"}
+           "stack_position": None, "pair_key": None, "estimate": 40.0, "source_name": "s", "source_kind": "trial",
+           "trial_weeks": 100.0, "drugs": ["drug"], "subgroup": False}
     return {**row, **kw}
 
 
@@ -87,3 +89,28 @@ def test_retained_effect_is_prior_failure_over_naive_per_comparison():
     winning = [{"relation": "parallel", "result": "met_primary", "stopped_for_safety": False}]
     assert disease_labels(rows, winning)["why_not_one_drug"] == "several_targets"
     assert disease_labels(rows, [])["why_not_one_drug"] == "cant_tell"
+
+
+def test_a_subgroup_estimate_does_not_solve_a_disease():
+    rows = pd.DataFrame([estimate(estimate=30.0), estimate(estimate=70.0, subgroup=True)])
+    assert disease_labels(rows, [])["how_solved_50"] == "unsolved"
+
+
+def test_a_subgroup_stack_position_takes_the_whole_trial_estimate_of_its_pathway():
+    hr = {"question": "events", "measure": "hazard_ratio"}
+    rows = pd.DataFrame([estimate(**hr, estimate=0.8, stack_position=1, pathways=["RAS"]),
+                         estimate(**hr, estimate=0.4, stack_position=2, pathways=["MR"], subgroup=True),
+                         estimate(**hr, estimate=0.82, pathways=["MR"], source_kind="trial"),
+                         estimate(**hr, estimate=0.77, pathways=["MR"], source_kind="pooled_trials")])
+    out = disease_labels(rows, [])
+    assert out["stack_effect"] == pytest.approx(1 - 0.8 * 0.77, abs=1e-3)
+    assert out["best_one_drug_effect"] == pytest.approx(0.23)
+
+
+def test_the_fda_sensitivity_leaves_out_drugs_without_a_label():
+    responses = pd.DataFrame([estimate(drugs=["netakimab"], estimate=64.0, regimen="netakimab"),
+                              estimate(drugs=["bimekizumab"], estimate=34.0, regimen="bimekizumab")])
+    combos = pd.DataFrame(columns=["mondo_id", "relation", "result", "stopped_for_safety"])
+    row = label_table(responses, combos, {"bimekizumab"}).set_index("mondo_id").loc[PSORIASIS]
+    assert (row.how_solved_50, row.how_solved_50_fda_approved_only) == ("solved_by_one_drug", "unsolved")
+    assert row.best_one_drug_fda_approved_only == "bimekizumab"

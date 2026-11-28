@@ -13,13 +13,18 @@ Pathways approved: every pathway of an entity whose current FDA label is indicat
 year. An entity with no resolvable target counts toward the disease's labelled entities but no pathway, and the share
 is reported. A shortlisted disease stays only with at least MIN_APPROVED_PATHWAYS approved pathways.
 
-Labels (rules in pipeline.single_target, registered in #198), computed here and not stored. One drug's effect is the
+Labels (rules in pipeline.single_target, registered in #198), computed here and not stored. Subgroup estimates are left
+out, since #198 reads a network meta-analysis, pooled trials or a whole trial; a stack position held by a subgroup
+estimate takes the same pathway's whole-trial estimate instead (whole_trial). One drug's effect is the
 placebo-adjusted share of a one-drug response estimate in naive patients (percentage points / 100) or 1 - HR of a
 one-drug events estimate; the stack's is the best multi-drug regimen's share in naive patients or stacked_rrr() of the
 events stack (preclin.mechanism_response). how_solved() is read at SOLVED_AT and SOLVED_SENSITIVITY. For a disease one
 drug does not solve at SOLVED_AT, why_not_one_drug() takes the retained effect of each crossover comparison (prior
 failure share / naive share, naive share above zero) and combination_beats_single() over the disease's
 preclin.combination_trial rows. Each risk factor -> outcome pair is read across from the pair estimates.
+
+Sensitivity, not part of the registered rule: how_solved at SOLVED_AT using only estimates whose drugs all have an FDA
+approval (an entity of preclin.fda_application_moiety, matched by name or alias).
 
 Writes report/output/single_target/: shortlist.csv, tried_by_area.csv, labels.csv, crossover.csv, pairs.csv,
 estimates.csv and numbers.json.
@@ -48,8 +53,11 @@ LABELLED_SQL = """SELECT DISTINCT li.mondo_id, m.moiety_id
 PATHWAYS_SQL = "SELECT mechanism_key, kind, pathways FROM preclin.mechanism_pathway"
 RESPONSES_SQL = """SELECT mondo_id, question, risk_factor_mondo_id, regimen, pathways, one_drug, endpoint, measure,
                           population, failed_pathway, background_pathways, stack_position, pair_key, estimate, ci_low,
-                          ci_high, trial_weeks, per_unit, source_kind, source_name, pmid
+                          ci_high, trial_weeks, per_unit, source_kind, source_name, pmid, drugs, subgroup
                    FROM preclin.mechanism_response ORDER BY mondo_id, question, response_id"""
+APPROVED_NAMES_SQL = """SELECT DISTINCT lower(n) AS name FROM preclin.moiety m, unnest(m.name || coalesce(m.aliases, '{}')) n
+                        WHERE EXISTS (SELECT 1 FROM preclin.fda_application_moiety a WHERE a.moiety_id = m.moiety_id)"""
+SOURCE_RANK = {"nma": 0, "pooled_trials": 1, "trial": 2}
 COMBOS_SQL = "SELECT mondo_id, relation, result, stopped_for_safety FROM preclin.combination_trial"
 THRESHOLDS = (SOLVED_AT, *SOLVED_SENSITIVITY)
 
@@ -96,6 +104,22 @@ def effect(measure: str, estimate: float) -> float:
     return estimate / 100 if measure == "share" else 1 - estimate
 
 
+def whole_trial(rows: pd.DataFrame) -> pd.DataFrame:
+    """A disease's estimates without subgroup estimates. A stack position held by a subgroup estimate takes the
+    whole-trial estimate of the same pathways instead: the preferred source kind (network meta-analysis, pooled trials,
+    trial), then the longest trial; the position is dropped when there is none."""
+    whole = rows[~rows.subgroup]
+    out = [whole]
+    for _, r in rows[rows.subgroup & rows.stack_position.notna()].iterrows():
+        same = whole[whole.question.eq(r.question) & whole.stack_position.isna()
+                     & whole.pathways.map(lambda ps: sorted(ps) == sorted(r.pathways)).astype(bool)]
+        if len(same):
+            best = same.assign(rank=same.source_kind.map(SOURCE_RANK), weeks=-same.trial_weeks.fillna(0)) \
+                       .sort_values(["rank", "weeks"]).iloc[0]
+            out.append(best.drop(["rank", "weeks"]).to_frame().T.assign(stack_position=r.stack_position))
+    return pd.concat(out).astype({"one_drug": bool, "estimate": float})
+
+
 def one_drug_effects(rows: pd.DataFrame) -> pd.DataFrame:
     """A disease's one-drug estimates that count toward how_solved, with their effect, largest first: response rows in
     naive patients and every events row (each against placebo, on whatever background)."""
@@ -139,6 +163,7 @@ def crossover_pairs(rows: pd.DataFrame) -> pd.DataFrame:
 def disease_labels(rows: pd.DataFrame, combos: list[dict]) -> dict:
     """Both labels of one disease from its estimates and its combination trials: how solved at each threshold, the
     best one drug and the pathways it spans, the stack, and why one drug is not enough where it is not at SOLVED_AT."""
+    rows = whole_trial(rows)
     ones = one_drug_effects(rows)
     stack, stack_regimen = stack_effect(rows)
     best = ones.iloc[0] if len(ones) else None
@@ -157,15 +182,25 @@ def disease_labels(rows: pd.DataFrame, combos: list[dict]) -> dict:
             "why_not_one_drug": None if solved_alone else why_not_one_drug(retained, beats)}
 
 
-def label_table(responses: pd.DataFrame, combos: pd.DataFrame) -> pd.DataFrame:
-    """labels.csv: disease_labels() for every confirmed disease."""
+def fda_approved(drugs: list[str], approved: set[str]) -> bool:
+    """Whether every drug of an estimate has an FDA approval (approved: lower-case names and aliases of approved
+    entities)."""
+    return all(d.strip().lower() in approved for d in drugs)
+
+
+def label_table(responses: pd.DataFrame, combos: pd.DataFrame, approved: set[str]) -> pd.DataFrame:
+    """labels.csv: disease_labels() for every confirmed disease, and the sensitivity label at SOLVED_AT from estimates
+    whose drugs all have an FDA approval."""
     out = []
     for mondo_id, e in {**CONFIRMED, **EVENTS_CONFIRMED}.items():
         rows = responses[responses.mondo_id.eq(mondo_id) & responses.question.ne("pair")]
         trials = combos[combos.mondo_id.eq(mondo_id)].to_dict("records")
+        fda = disease_labels(rows[rows.drugs.map(lambda d: fda_approved(d, approved)).astype(bool)], trials)
         out.append({"mondo_id": mondo_id, "disease": e.disease,
                     "endpoint": "event" if mondo_id in EVENTS_CONFIRMED else "responder",
-                    **disease_labels(rows, trials)})
+                    **disease_labels(rows, trials),
+                    "how_solved_50_fda_approved_only": fda["how_solved_50"],
+                    "best_one_drug_fda_approved_only": fda["best_one_drug"]})
     return pd.DataFrame(out)
 
 
@@ -178,7 +213,7 @@ def pair_table(responses: pd.DataFrame, labels: pd.DataFrame) -> pd.DataFrame:
     for risk, outcome in PAIRS:
         p = responses[responses.question.eq("pair") & responses.mondo_id.eq(outcome)
                       & responses.risk_factor_mondo_id.eq(risk)]
-        trial = p[p.population.ne("lifelong_genetic")]
+        trial = p[p.population.ne("lifelong_genetic") & ~p.subgroup]
         mr = p[p.population.eq("lifelong_genetic")]
         t = trial.iloc[0] if len(trial) else None
         out.append({"risk_factor": by.loc[risk, "disease"], "outcome": by.loc[outcome, "disease"],
@@ -210,9 +245,9 @@ def main() -> None:
     if stays != set(CONFIRMED) | set(EVENTS_CONFIRMED):
         raise SystemExit(f"the inclusion rule now keeps {sorted(stays)}, not pipeline.single_target's confirmed list")
     responses = frame.query(RESPONSES_SQL)
-    labels = label_table(responses, frame.query(COMBOS_SQL))
+    labels = label_table(responses, frame.query(COMBOS_SQL), set(frame.query(APPROVED_NAMES_SQL).name))
     pairs = pair_table(responses, labels)
-    crossover = pd.concat([crossover_pairs(responses[responses.mondo_id.eq(m)]).assign(mondo_id=m)
+    crossover = pd.concat([crossover_pairs(responses[responses.mondo_id.eq(m) & ~responses.subgroup]).assign(mondo_id=m)
                            for m in CONFIRMED])
     os.makedirs(OUT, exist_ok=True)
     short.to_csv(os.path.join(OUT, "shortlist.csv"), index=False)
@@ -230,6 +265,8 @@ def main() -> None:
                **{f"how_solved_{round(t * 100)}": labels[f"how_solved_{round(t * 100)}"].value_counts().to_dict()
                   for t in THRESHOLDS},
                "why_not_one_drug": labels.why_not_one_drug.dropna().value_counts().to_dict(),
+               "subgroup_estimates": int(responses.subgroup.sum()),
+               "how_solved_50_fda_approved_only": labels.how_solved_50_fda_approved_only.value_counts().to_dict(),
                "crossover_comparisons": int(crossover.retained.notna().sum())}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=2)
