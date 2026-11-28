@@ -156,15 +156,23 @@ PATHWAY_TASK = llm.Task(name="mechanism_pathway", prompt_version="v1", schema_ve
                         schema=PATHWAY_SCHEMA, render=render_pathway, subject_type="atlas_mechanism",
                         validate=validate_pathway, model="claude-opus-5-5", effort="low", max_tokens=2000)
 
-MERGE_SYSTEM = """You are given pathway names that were assigned to drug mechanisms one mechanism at a time, with how many mechanisms carry each. The same pathway was sometimes written in different ways ("IL-17", "IL17", "interleukin-17 pathway"; "JAK-STAT", "JAK/STAT signalling").
+MERGE_SYSTEM = """You are given pathway names that were assigned to drug mechanisms one mechanism at a time, with how many mechanisms carry each. The same pathway was sometimes written in different ways or at different levels of detail.
 
-Map every name to one canonical name. Names that mean the same pathway get the same canonical name: use the shortest conventional form among them ("IL-17", "JAK-STAT", "GLP-1", "B cells"). Never merge different pathways, even closely related ones: IL-23 and IL-17 stay apart, GLP-1 and GIP stay apart, IL-4 and IL-13 stay apart, PD-1/PD-L1 and CTLA-4 stay apart. Return every input name exactly once."""
+A pathway is a ligand or hormone with its receptors, an intracellular cascade, a cell population a depleting drug removes, or otherwise a target family. Map every name to the canonical pathway names it stands for:
+- Spelling variants of one pathway share one canonical name, the shortest conventional form ("IL-17", "JAK-STAT", "GLP-1", "B cells").
+- A receptor subtype or transporter of a transmitter or ligand belongs to that transmitter's pathway: "Serotonin 5-HT2A", "serotonin 5-HT1B/1D" and "Serotonin transporter" are "Serotonin"; "Dopamine D2" and "Dopamine transporter" are "Dopamine"; "PPAR-gamma" is "PPAR".
+- An integrin keeps its own heterodimer, written one way ("α4β7 integrin"); a name covering two heterodimers maps to both.
+- A name joining two pathways that are separate maps to both: "IL-4/IL-13" is "IL-4" and "IL-13"; "EGFR/HER2" is "EGFR" and "HER2". A name for one complex or one ligand-receptor pair stays one: "PD-1/PD-L1", "CDK4/6", "BAFF/APRIL", "Na+/K+-ATPase".
+- Never merge different pathways, even closely related ones: IL-23 and IL-17, GLP-1 and GIP, IL-4 and IL-13, PD-1/PD-L1 and CTLA-4 stay apart.
+
+Return every input name exactly once, with one or more canonical names."""
 
 MERGE_SCHEMA = {
     "type": "object",
     "properties": {"names": {"type": "array", "items": {
         "type": "object",
-        "properties": {"name": {"type": "string"}, "canonical": {"type": "string"}},
+        "properties": {"name": {"type": "string"},
+                       "canonical": {"type": "array", "items": {"type": "string"}}},
         "required": ["name", "canonical"], "additionalProperties": False}}},
     "required": ["names"],
     "additionalProperties": False,
@@ -176,16 +184,18 @@ def validate_merge(payload: dict, out: dict) -> None:
     got = [m["name"] for m in out["names"]]
     if set(got) != given or len(got) != len(given):
         raise ValueError(f"mapped {len(set(got) & given)} of {len(given)} names")
+    if any(not m["canonical"] or not all(c.strip() for c in m["canonical"]) for m in out["names"]):
+        raise ValueError("a name mapped to no canonical name")
 
 
 def render_merge(p: dict) -> str:
     return "Pathway names (mechanisms carrying each):\n" + "\n".join(f"{n} ({c})" for n, c in p["names"])
 
 
-MERGE_TASK = llm.Task(name="pathway_names", prompt_version="v1", schema_version="v1", system=MERGE_SYSTEM,
+MERGE_TASK = llm.Task(name="pathway_names", prompt_version="v2", schema_version="v2", system=MERGE_SYSTEM,
                       schema=MERGE_SCHEMA, render=render_merge, subject_type="pathway_name_set",
                       validate=validate_merge, model="claude-opus-5-5", effort="medium", max_tokens=64000)
-PATHWAY_METHOD = "mechanism_pathway@v1"
+PATHWAY_METHOD = "mechanism_pathway@v1+pathway_names@v2"
 
 
 def pathways(_args) -> None:
@@ -209,20 +219,20 @@ def pathways(_args) -> None:
     [(_, merge_id, merged)] = llm.decisions(merge_run)
     canonical = {m["name"]: m["canonical"] for m in merged["names"]}
 
-    rows = [(key, out["kind"], sorted({canonical[p] for p in out["pathways"]}), decision_id,
+    rows = [(key, out["kind"], sorted({c for p in out["pathways"] for c in canonical[p]}), decision_id,
              merge_id if out["kind"] == "specific" else None)
             for key, (decision_id, out) in named.items()]
     with llm.connect() as conn, conn.cursor() as cur:
         llm.record_method(cur, PATHWAY_METHOD, "Pathways of atlas mechanisms", PATHWAY_SYSTEM + "\n\n" + MERGE_SYSTEM,
                           ["preclin.atlas_mechanism", "preclin.atlas_member", "preclin.moiety"],
-                          {"tasks": [PATHWAY_TASK.name, MERGE_TASK.name], "prompt_version": PATHWAY_TASK.prompt_version,
+                          {"tasks": [PATHWAY_TASK.name, MERGE_TASK.name], "prompt_versions": [PATHWAY_TASK.prompt_version, MERGE_TASK.prompt_version],
                            "model": PATHWAY_TASK.model, "merge_run": str(merge_run)})
         cur.execute("DELETE FROM preclin.mechanism_pathway")
         execute_values(cur, """INSERT INTO preclin.mechanism_pathway (mechanism_key, kind, pathways, llm_decision_id,
                                  merge_decision_id) VALUES %s""", rows, page_size=2000)
         conn.commit()
     print(f"mechanisms={len(rows)} kinds={dict(Counter(r[1] for r in rows))} "
-          f"names={len(counts)} canonical={len(set(canonical.values()))}")
+          f"names={len(counts)} canonical={len({c for cs in canonical.values() for c in cs})}")
 
 
 def main() -> None:

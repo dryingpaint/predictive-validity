@@ -65,6 +65,9 @@ def test_a_specific_mechanism_names_one_to_three_pathways():
 
 def test_the_merge_maps_every_name_exactly_once():
     payload = {"names": [("IL-17", 3), ("IL17", 1)]}
-    validate_merge(payload, {"names": [{"name": "IL-17", "canonical": "IL-17"}, {"name": "IL17", "canonical": "IL-17"}]})
+    validate_merge(payload, {"names": [{"name": "IL-17", "canonical": ["IL-17"]},
+                                       {"name": "IL17", "canonical": ["IL-17"]}]})
     with pytest.raises(ValueError):
-        validate_merge(payload, {"names": [{"name": "IL-17", "canonical": "IL-17"}]})
+        validate_merge(payload, {"names": [{"name": "IL-17", "canonical": ["IL-17"]}]})
+    with pytest.raises(ValueError):
+        validate_merge(payload, {"names": [{"name": "IL-17", "canonical": ["IL-17"]}, {"name": "IL17", "canonical": []}]})
