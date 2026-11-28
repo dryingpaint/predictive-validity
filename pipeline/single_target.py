@@ -1,12 +1,13 @@
-"""The limits of single-target drugs (#197): definitions registered in #198, and the pathway of every atlas mechanism.
+"""Which diseases the target-based drugging paradigm solves (#197): definitions registered in #198, and the pathway of
+every atlas mechanism.
 
     python -m pipeline.single_target pathways   # LLM: pathways each atlas mechanism acts through -> preclin.mechanism_pathway
 
-When one mechanism doesn't fully treat a disease, either different patients need different targets, one pathway is not
-blocked fully enough, or each patient needs several targets hit. Telling these apart needs pathways rather than
-targets (IL-17A and IL-17A/F antibodies act through one pathway; an IL-17A/TNF bispecific through two), one
-definition of a combination, a fixed set of diseases with a shared endpoint, and fixed rules for labelling each
-disease. All of them are here, fixed before any response or regimen data is pulled.
+Each shortlisted disease gets two labels. How solved: by one drug (one molecule, up to three pathways), by stacking
+drugs, or unsolved. Why one drug is not enough, where it is not: different patients need different targets, each
+patient needs several, or the data can't tell. Counting needs pathways rather than targets (IL-17A and IL-17A/F
+antibodies act through one pathway; an IL-17A/TNF bispecific through two). All rules are fixed here before any
+response or regimen data is pulled.
 """
 from __future__ import annotations
 
@@ -20,8 +21,9 @@ from psycopg2.extras import execute_values
 
 from pipeline import llm
 
-# Disease areas reported apart from the rest: their combinations exist mainly to overcome resistance (tumour or
-# pathogen evolution), not because the disease biology needs two targets (preclin.atlas_indication.area).
+# Disease areas left out of the labels and given their own sections (#200): their combinations exist mainly to stay
+# ahead of tumour or pathogen evolution, not because the disease biology needs two targets
+# (preclin.atlas_indication.area).
 AREAS_APART = ("oncology", "infectious_disease")
 
 # What counts as a combination when a later success on a target is read (#194) and when trials are collected (#196).
@@ -75,70 +77,66 @@ EVENT_SHORTLIST = {
 }
 MIN_APPROVED_PATHWAYS = 3
 
-# Solved by one drug: one drug (approved, or positive in Phase 3) acting through at most MAX_PATHWAYS_ONE_DRUG pathways
-# gets a placebo-adjusted share of at least SOLVED_DELTA of patients naive to advanced therapy to the endpoint. One
-# drug is one molecule: bispecifics, trispecifics and multi-receptor agonists count; co-formulations of separate
-# drugs do not. The report also shows the labels at SOLVED_SENSITIVITY.
-SOLVED_DELTA = 0.50
+# Axis 1, how solved. Effects share one scale: for a responder endpoint the placebo-adjusted share of patients naive
+# to advanced therapy reaching it, for an event endpoint the relative risk reduction (1 - HR). One drug is one molecule
+# (approved, or positive in Phase 3) acting through at most MAX_PATHWAYS_ONE_DRUG pathways: bispecifics, trispecifics
+# and multi-receptor agonists count, co-formulations of separate drugs do not. A stack is the best regimen of several
+# drugs: for a responder endpoint its placebo-adjusted share, for an event endpoint stacked_rrr() of the add-on hazard
+# ratios. The report also shows the labels at SOLVED_SENSITIVITY.
+SOLVED_AT = 0.50
 SOLVED_SENSITIVITY = (0.40, 0.60)
 MAX_PATHWAYS_ONE_DRUG = 3
-# Retained effect: pathway B's placebo-adjusted effect in patients who failed pathway A, over its placebo-adjusted
-# effect in naive patients. Its median over the disease's (A, B) pairs decides between the two partial labels.
+HOW_SOLVED = ("solved_by_one_drug", "solved_by_stacking", "unsolved")
+
+# Axis 2, why one drug is not enough, asked of every disease one drug does not solve. Retained effect: pathway B's
+# placebo-adjusted effect in patients who failed pathway A, over its effect in naive patients; its median over the
+# disease's (A, B) pairs decides. Event endpoints have no retained effect, so they come out cant_tell.
 RETAINED_DIFFERENT = 0.75
 RETAINED_SEVERAL = 0.50
+WHY_NOT_ONE_DRUG = ("different_patients", "several_targets", "cant_tell")
 
-LABELS = ("solved_by_one_drug", "different_patients", "several_targets_needed", "cant_tell")
+# Risk factor and the outcome disease it is treated to prevent: the drug that solves the risk factor is read across to
+# the outcome's events, with trial length beside each estimate, since short trials in established disease understate
+# what lifelong lowering does.
+PAIRS = (
+    ("MONDO:0021187", "MONDO:0005010"),  # hyperlipidemia -> coronary artery disease
+    ("MONDO:0001134", "MONDO:0005010"),  # essential hypertension -> coronary artery disease
+    ("MONDO:0011122", "MONDO:0005010"),  # obesity -> coronary artery disease
+    ("MONDO:0005148", "MONDO:0005300"),  # type 2 diabetes -> chronic kidney disease
+    ("MONDO:0005148", "MONDO:0005252"),  # type 2 diabetes -> heart failure
+)
 
 
-@dataclass(frozen=True)
-class Response:
-    pathways: frozenset[str]  # the pathways the regimen acts through
-    delta: float              # placebo-adjusted share reaching the endpoint, 0-1
-    one_drug: bool            # a single molecule, as opposed to two or more drugs given together
+def stacked_rrr(add_on_hrs: list[float]) -> float:
+    """Risk reduction of a stack of pathways, each hazard ratio measured against the background of those before it."""
+    return 1 - math.prod(add_on_hrs)
 
 
-def disease_label(naive: list[Response], retained: list[float], combination_beats_single: bool,
-                  solved_delta: float = SOLVED_DELTA) -> str:
-    """The registered label of one shortlisted disease.
-
-    naive: the best estimate per approved or Phase 3-positive regimen in patients naive to advanced therapy,
-    biomarker-selected trials left out.
-    retained: retained effect of each (failed pathway, next pathway) pair with an estimate.
-    combination_beats_single: a randomised trial in the disease of two pathways against one of them alone met its
-    efficacy primary endpoint, and the two-pathway arm was not stopped or abandoned for safety.
-
-    A combination beating one drug is not enough alone for several targets needed, since different patients
-    responding to different drugs also produces it."""
-    if any(r.one_drug and len(r.pathways) <= MAX_PATHWAYS_ONE_DRUG and r.delta >= solved_delta for r in naive):
+def how_solved(one_drug: list[float], stack: float | None, solved_at: float = SOLVED_AT) -> str:
+    """Axis 1. one_drug: the effect of each qualifying single drug; stack: the effect of the best multi-drug regimen."""
+    if any(e >= solved_at for e in one_drug):
         return "solved_by_one_drug"
-    if len({r.pathways for r in naive}) < 2 or not retained:
+    if stack is not None and stack >= solved_at:
+        return "solved_by_stacking"
+    return "unsolved"
+
+
+def why_not_one_drug(retained: list[float], combination_beats_single: bool) -> str:
+    """Axis 2. retained: retained effect of each (failed pathway, next pathway) pair with an estimate.
+    combination_beats_single: a randomised trial in the disease of two pathways against one (a combination, an add-on
+    to a fixed background, or a multi-pathway drug head to head) met its efficacy primary endpoint, and the two-pathway
+    arm was not stopped or abandoned for safety.
+
+    Several targets needs both: a winning combination alone also arises when different patients respond to different
+    drugs, and lost effect alone also arises because patients who failed a drug are harder to treat."""
+    if not retained:
         return "cant_tell"
     kept = statistics.median(retained)
     if kept >= RETAINED_DIFFERENT:
         return "different_patients"
     if kept < RETAINED_SEVERAL and combination_beats_single:
-        return "several_targets_needed"
+        return "several_targets"
     return "cant_tell"
-
-
-EVENT_LABELS = ("solved_by_one_drug", "solved_by_stacking", "unsolved")
-
-
-def event_label(one_drug_hrs: list[float], add_on_hrs: list[float], solved_rrr: float = SOLVED_DELTA) -> str:
-    """The registered label of one event-endpoint disease.
-
-    one_drug_hrs: hazard ratio against placebo of each approved or Phase 3-positive drug that counts as one drug
-    (one molecule, at most MAX_PATHWAYS_ONE_DRUG pathways).
-    add_on_hrs: hazard ratio of each pathway shown to add benefit in a randomised add-on trial, against the
-    background of the pathways before it. The regimen's risk reduction is 1 - their product.
-
-    Events cannot separate different patients from each patient needing several pathways, so a disease that only a
-    stack of drugs solves is labelled by that fact alone."""
-    if any(1 - hr >= solved_rrr for hr in one_drug_hrs):
-        return "solved_by_one_drug"
-    if add_on_hrs and 1 - math.prod(add_on_hrs) >= solved_rrr:
-        return "solved_by_stacking"
-    return "unsolved"
 
 
 PATHWAY_SYSTEM = """You name the signalling pathways a drug mechanism acts through, so that mechanisms acting through the same pathway can be counted together.
