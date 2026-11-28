@@ -303,7 +303,7 @@ Qualifying trials are randomised, Phase 2b or 3 or a large Phase 2, in the disea
 - combination: two drugs on different pathways given together vs one of them alone (or vs one of them plus placebo);
 - add_on: a drug on a new pathway added to a fixed background on another pathway vs the background alone (with placebo). For event diseases (heart failure, coronary artery disease, chronic kidney disease, atrial fibrillation, pulmonary arterial hypertension) these add-on outcome trials are the main evidence; the background may span several pathways;
 - head_to_head_multi_pathway: one molecule acting through two pathways (a bispecific, a multi-receptor agonist) or a co-formulation vs a drug acting through only one of them.
-A trial of a drug against placebo with no shared background pathway does not qualify, nor does a trial of two drugs on the same single pathway with no second pathway (two TNF blockers), nor a trial comparing two different single pathways head to head.
+Both arms' pathways must be specific. Conventional background with no specific pathway (methotrexate, azathioprine, 6-mercaptopurine, ciclosporin, corticosteroids, other general immunosuppressants or cytotoxics) is background care: a drug added to it, or combined with it, is tested alone, and the trial does not qualify (infliximab plus azathioprine vs infliximab; a biologic plus methotrexate vs methotrexate). A trial of a drug against placebo with no shared background pathway does not qualify, nor does a trial of two drugs on the same single pathway with no second pathway (two TNF blockers), nor a trial comparing two different single pathways head to head.
 
 {COMBINATION}
 
@@ -317,13 +317,13 @@ effect: the primary endpoint estimate of the two-pathway arm against the one-pat
 limited_by: what held the two-pathway arm back: none (it won and was safe enough to use), efficacy (no or too small a gain), safety (more harm: serious infections, hyperkalaemia, kidney injury, bleeding). A trial that met its primary but whose regimen was dropped for harm is safety.
 stopped_for_safety: true when the trial or its two-pathway arm was stopped early for harm, or the two-pathway regimen was abandoned or advised against because of harm seen in it (e.g. a regulator warning or a guideline recommending against the combination on safety grounds).
 
-pathways: name each with the canonical names below, written exactly as listed, wherever one fits; only when none does, use a short conventional name. comparator_pathways: the pathways of the one-pathway arm (for an add-on trial, the background's main pathways). added_pathway: the pathway the two-pathway arm adds (for same_pathway, the shared pathway itself).
+pathways: name each with the canonical names below, written exactly as listed, wherever one fits; only when none does, use a short conventional name. comparator_pathways: the pathways of the one-pathway arm only (for an add-on trial, the background's main pathways). added_pathway: the pathway the two-pathway arm adds (for same_pathway, the shared pathway itself). When a trial has two monotherapy arms (A plus B vs A vs B), compare against the monotherapy the primary analysis names, or else the first-listed, and list only that arm's pathway: AMBITION is comparator ["Endothelin"], added "NO-cGMP".
 
 Canonical pathway names: {"; ".join(pathway_names)}
 
 How to search: start with the seed trials given (find each one's publication and registration) and then search for further trials in the disease: trial registries (ClinicalTrials.gov), PubMed, journal pages, systematic reviews and network meta-analyses of combination or add-on therapy, regulatory reviews. Return up to 12 trials per disease: the largest and most cited, every head-to-head multi-pathway trial, and well-known negative or safety-stopped ones. Return none when the disease has none.
 
-Judge only from pages you retrieved; never fill an NCT id, PMID or number from memory. For each trial give nct_id (NCT followed by 8 digits) and pmid (digits) of the primary results paper as shown on a page you retrieved, null if not found; at least one is needed. sources: URLs you retrieved that show the trial's design and result. quote: the sentence from a source that states the primary result."""
+Judge only from pages you retrieved; never fill an NCT id, PMID or number from memory. For each trial give nct_id (NCT followed by 8 digits) and pmid (digits) of the primary results paper as shown on a page you retrieved, null if not found; leave out a trial for which you found neither. One entry per trial: a paper reporting two trials gives two entries, each with its own NCT id. sources: URLs from your own web_search results or web_fetch calls that show the trial's design and result, copied character for character as the tool returned them (never shortened, never a URL you did not see returned); a PubMed link counts only if a search returned it or you fetched it. quote: the sentence from a source that states the primary result."""
 
 
 COMBO_SCHEMA = {
@@ -408,15 +408,15 @@ def render_combos(p: dict) -> str:
             f"Seed trials:\n{seeds}")
 
 
-COMBO_TOOLS = [{"type": "web_search_20260209", "name": "web_search", "max_uses": 15},
-               {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 10}]
+COMBO_TOOLS = [{"type": "web_search_20260209", "name": "web_search", "max_uses": 25},
+               {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 12}]
 
 
-COMBO_METHOD = "combination_trial@v1"
+COMBO_METHOD = "combination_trial@v2"
 
 
 def combos_task(pathway_names: list[str]) -> llm.Task:
-    return llm.Task(name="combination_trial", prompt_version="v1", schema_version="v1",
+    return llm.Task(name="combination_trial", prompt_version="v2", schema_version="v1",
                     system=combos_system(pathway_names), schema=COMBO_SCHEMA, render=render_combos,
                     subject_type="mondo_disease", validate=validate_combos, model="claude-opus-5-5",
                     effort="medium", max_tokens=32000, tools=COMBO_TOOLS)
@@ -458,14 +458,16 @@ def combos(_args) -> None:
                                  ci_low, ci_high, effect_text, limited_by, stopped_for_safety, sources, quote,
                                  llm_decision_id) VALUES %s""", rows)
         conn.commit()
+    decided = {mondo for mondo, _, _ in llm.decisions(run_id)}
     by_disease: dict[str, list[dict]] = {}
     for r in rows:
         by_disease.setdefault(r[0], []).append({"relation": r[13], "result": r[15], "stopped_for_safety": r[22]})
-    print(f"diseases decided={len(llm.decisions(run_id))}/{len(items)} trials={len(rows)} "
+    print(f"diseases decided={len(decided)}/{len(items)} trials={len(rows)} "
           f"relations={dict(Counter(r[13] for r in rows))} results={dict(Counter(r[15] for r in rows))}")
     for mondo, e in {**SHORTLIST, **EVENT_SHORTLIST}.items():
         trials = by_disease.get(mondo, [])
-        print(f"  {e.disease}: trials={len(trials)} combination_beats_single={combination_beats_single(trials)}")
+        print(f"  {e.disease}: " + (f"trials={len(trials)} combination_beats_single={combination_beats_single(trials)}"
+                                    if mondo in decided else "no valid decision; run again"))
 
 
 def main() -> None:
