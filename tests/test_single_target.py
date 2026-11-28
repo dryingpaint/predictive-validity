@@ -1,8 +1,8 @@
 import pytest
 
-from pipeline.single_target import (combination_beats_single, how_solved, partner_works_alone, retrieved_source,
-                                    stacked_rrr, success_regimen, validate_combos, validate_merge, validate_pathway,
-                                    validate_regimen, why_not_one_drug)
+from pipeline.single_target import (check_estimates, combination_beats_single, how_solved, partner_works_alone,
+                                    retrieved_source, stacked_rrr, success_regimen, validate_combos, validate_merge,
+                                    validate_pathway, validate_regimen, why_not_one_drug)
 
 
 def test_one_drug_reaching_half_solves_the_disease():
@@ -166,3 +166,63 @@ def test_a_trial_listed_twice_is_rejected():
     out["trials"] *= 2
     with pytest.raises(ValueError):
         validate_combos({}, out)
+
+
+NAMES = {"il-17": "IL-17", "tnf": "TNF", "jak-stat": "JAK-STAT"}
+PUBMED = "https://pubmed.ncbi.nlm.nih.gov/27028914"
+
+
+def est(**kw):
+    e = {"regimen": "baricitinib", "drugs": ["baricitinib"], "pathways": ["JAK-STAT"], "one_drug": True,
+         "endpoint": "ACR50 wk 12", "measure": "share", "population": "naive", "failed_pathway": None,
+         "background_pathways": [], "stack_position": None, "pair_key": None, "estimate": 20.9, "ci_low": None,
+         "ci_high": None, "trial_weeks": 12, "per_unit": None, "source_kind": "trial", "source_name": "RA-BUILD",
+         "pmid": "27028914", "sources": [PUBMED + "/"], "quote": "", "derivation": ""}
+    return {**e, **kw}
+
+
+def answer(*estimates):
+    return {"estimates": list(estimates), "retrieved_urls": [PUBMED]}
+
+
+def test_a_crossover_comparison_is_one_prior_failure_and_one_naive_row_on_one_endpoint():
+    prior = est(population="prior_failure", failed_pathway="TNF", pair_key="bari", estimate=12.1)
+    check_estimates("crossover", answer(prior, est(pair_key="bari")), NAMES)
+    with pytest.raises(ValueError):
+        check_estimates("crossover", answer(prior), NAMES)
+    with pytest.raises(ValueError):
+        check_estimates("crossover", answer(prior, est(pair_key="bari", endpoint="ACR20 wk 12")), NAMES)
+
+
+def test_pathway_names_must_be_canonical_in_any_case():
+    check_estimates("response", answer(est(pathways=["jak-stat"])), NAMES)
+    with pytest.raises(ValueError):
+        check_estimates("response", answer(est(pathways=["JAK1"])), NAMES)
+
+
+def test_an_event_stack_numbers_its_positions_from_one():
+    hr = {"measure": "hazard_ratio", "estimate": 0.75}
+    check_estimates("events", answer(est(**hr, stack_position=1), est(**hr, stack_position=2)), NAMES)
+    with pytest.raises(ValueError):
+        check_estimates("events", answer(est(**hr, stack_position=2)), NAMES)
+
+
+@pytest.mark.parametrize("question, bad", [
+    ("response", {"sources": ["https://example.org/not-retrieved"]}),
+    ("response", {"measure": "hazard_ratio", "estimate": 0.8}),  # a responder question takes shares
+    ("response", {"population": "prior_failure", "failed_pathway": "TNF"}),
+    ("response", {"one_drug": True, "pathways": ["IL-17", "TNF", "JAK-STAT", "IL-17 "]}),
+    ("events", {"measure": "hazard_ratio", "estimate": -0.2}),
+    ("pair", {"measure": "odds_ratio", "estimate": 0.5, "population": "lifelong_genetic"}),  # not from an MR study
+])
+def test_an_estimate_breaking_its_question_rules_is_rejected(question, bad):
+    with pytest.raises(ValueError):
+        check_estimates(question, answer(est(**bad)), NAMES)
+
+
+def test_a_mendelian_randomisation_estimate_needs_no_drug():
+    mr = est(regimen="genetically lower LDL cholesterol", drugs=[], pathways=[], measure="odds_ratio", estimate=0.5,
+             population="lifelong_genetic", source_kind="mendelian_randomisation")
+    check_estimates("pair", answer(mr), NAMES)
+    with pytest.raises(ValueError):
+        check_estimates("pair", answer({**mr, "population": "naive", "source_kind": "trial"}), NAMES)
