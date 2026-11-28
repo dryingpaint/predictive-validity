@@ -7,6 +7,8 @@ every atlas mechanism, and randomised trials of two pathways against one (#196).
                                                   #   -> preclin.trial_regimen, preclin.stop_target_history
     python -m pipeline.single_target combos       # LLM + web: randomised trials of two pathways vs one
                                                   #   -> preclin.combination_trial
+    python -m pipeline.single_target responses    # LLM + web: published responder shares, crossover, event hazard
+                                                  #   ratios, risk factor -> outcome -> preclin.mechanism_response
 
 Each shortlisted disease gets two labels. How solved: by one drug (one molecule, up to three pathways), by stacking
 drugs, or unsolved. Why one drug is not enough, where it is not: different patients need different targets, each
@@ -87,6 +89,11 @@ EVENT_SHORTLIST = {
     "MONDO:0015924": Endpoint("pulmonary arterial hypertension", "clinical worsening or death", "trial length"),
 }
 MIN_APPROVED_PATHWAYS = 3
+# The diseases #193 confirmed under that rule, the ones the labels are computed for: hidradenitis suppurativa has two
+# approved pathways (TNF, IL-17). report.single_target checks this against the rule on the current labels.
+DROPPED = ("MONDO:0006559",)
+CONFIRMED = {mondo: e for mondo, e in SHORTLIST.items() if mondo not in DROPPED}
+EVENTS_CONFIRMED = {mondo: e for mondo, e in EVENT_SHORTLIST.items() if mondo not in DROPPED}
 
 # Axis 1, how solved. Effects share one scale: for a responder endpoint the placebo-adjusted share of patients naive
 # to advanced therapy reaching it, for an event endpoint the relative risk reduction (1 - HR). One drug is one molecule
@@ -796,11 +803,309 @@ def combos(_args) -> None:
         print(f"  {e.disease}: trials={len(trials)} combination_beats_single={combination_beats_single(trials)}")
 
 
+# Published estimates behind the labels (#195), one decision per confirmed disease and question, or per risk factor ->
+# outcome pair. A pair's decision is shown the risk factor's response estimates, so pairs run after the rest.
+MEASURES = ("share", "hazard_ratio", "odds_ratio")
+POPULATIONS = ("naive", "prior_failure", "on_background", "lifelong_genetic")
+SOURCE_KINDS = ("nma", "pooled_trials", "trial", "mendelian_randomisation")
+
+QUESTION_TEXT = {
+    "response": """Question: response. For every drug approved (US or EU) for the disease, and for drugs positive in Phase 3 for it, give its placebo-adjusted share reaching the endpoint in the window, in patients naive to advanced therapy (no prior biologic or targeted synthetic drug; for a metabolic or cardiovascular disease, patients on no drug of a specific pathway beyond the background care named below). Where a network meta-analysis pools a class, one row for the class is enough; give separate rows for molecules the source separates when they differ materially. Add every multi-drug regimen (two or more separate drugs on specific pathways, started together) tested against placebo or against background care alone on this endpoint, one_drug false; the best one matters most. A drug added to a background drug on a specific pathway, against that background alone, is population on_background with the background in background_pathways. population is naive or on_background.""",
+    "crossover": """Question: crossover. For every (failed pathway A -> pathway B) comparison you can find, give two rows sharing one pair_key: B's placebo-adjusted share in patients who failed or were intolerant of A (an inadequate-responder trial such as TNF-IR in rheumatoid arthritis, psoriatic arthritis, ankylosing spondylitis, ulcerative colitis or Crohn disease, a prior-biologic subgroup of a placebo-controlled trial, or a network meta-analysis of the prior-failure population), population prior_failure with failed_pathway A; and B's placebo-adjusted share in naive patients from the same source family (the same network meta-analysis, the same programme's naive trial, or the naive subgroup of the same trial), population naive, on the same endpoint and time point, so that the ratio is like for like. The registered endpoint is preferred; when the source family reports the prior-failure result only on another responder endpoint (ACR20, clinical response), use that endpoint for both rows. Each row gives B's pathways in pathways. Search (trial registries, PubMed, reviews of resistant or refractory disease) before concluding; return no rows only when your searches found no such comparison.""",
+    "events": """Question: events. measure hazard_ratio throughout, on the registered event endpoint (or the closest composite the trial reports, named in endpoint). (a) For every drug approved or Phase 3-positive for the disease with a placebo-controlled outcome trial, its hazard ratio against placebo; population naive when the trial had no background on a specific pathway, otherwise on_background with those pathways in background_pathways (a drug added to background care is still that one drug's effect against placebo). (b) The disease's best stack: a sequence of pathways where position 1 was tested against placebo, and each later position was added to a background that included the pathways of the positions before it, against that background with placebo; mark those rows with stack_position 1, 2, 3, ... Prefer the stack modern guidelines recommend. Use the randomised add-on trials listed in the message where they fit, with their published hazard ratios on this endpoint. trial_weeks is the median follow-up in weeks.""",
+    "pair": """Question: pair. The risk factor's own response estimates are listed in the message. (a) Take the drug (or class) with the largest one-drug placebo-adjusted share there: the drug that best solves the risk factor. Give its hazard ratio on the outcome disease's event endpoint from its placebo-controlled outcome trial, with trial_weeks and in per_unit the risk-factor change the trial achieved. When that drug has no placebo-controlled outcome trial on the endpoint, give the drug of the same pathway closest to it that has one and say so in derivation; when the pathway has none, give the outcome trial of the next-best drug on the risk-factor list. (b) Any Mendelian randomisation estimate of lifelong genetically lower risk factor (or of variants in the solving drug's target gene) on the outcome: population lifelong_genetic, source_kind mendelian_randomisation, measure odds_ratio (or hazard_ratio when the study reports one), per_unit the change it is scaled to, trial_weeks null; regimen names the genetic exposure, drugs is empty, and pathways is the target gene's pathway or empty for variants across the genome. Give the largest or most cited, at most three.""",
+}
+
+
+def responses_system(pathway_names: list[str]) -> str:
+    return f"""You collect published effect estimates of drugs and drug regimens in one disease, for a study of which diseases one drug can solve. The user message names the disease, its registered endpoint and window, and the question to answer.
+
+One drug is one molecule acting through at most 3 pathways: bispecifics, trispecifics and multi-receptor agonists (tirzepatide) count as one drug; co-formulations of separate drugs and regimens of several drugs do not (one_drug false). A pooled class of such molecules is one_drug true. A pathway is a ligand or hormone with its receptors, an intracellular cascade, a cell population a depleting drug removes, or otherwise the target's family.
+
+Background care that every arm receives and that is not a drug of a specific pathway does not count as a drug: methotrexate and other conventional DMARDs, corticosteroids, aminosalicylates, thiopurines, topical therapy, stable conventional therapy, lifestyle advice, and metformin in type 2 diabetes. A drug tested on top of such background against placebo on the same background is tested alone (population naive). Any other background drug (a statin, a renin-angiotensin blocker, an SGLT2 inhibitor, a TNF blocker) is a background pathway.
+
+Sources, in order of preference: the most recent network meta-analysis that covers the drug and reports the endpoint on the estimate's own scale (for a share, the absolute share per arm or the risk difference against placebo; for an event, the hazard ratio); else pooled placebo-controlled Phase 3 trials (a pooled analysis, or the programme's Phase 3 trials pooled by patient numbers); else the largest placebo-controlled Phase 3 trial (trial). Leave out trials that enrolled only biomarker-selected patients. Systemic drugs only for a disease that also has topical treatments: leave out creams, ointments and other topical forms. Use the registered endpoint in the registered window; when no source reports it, use the closest responder threshold or time point and name it exactly in endpoint.
+
+Every estimate:
+- regimen: the drug, class or regimen as the source names it; drugs: the generic names of its active drugs in lower case (every member for a class); pathways: its pathways, written exactly as in the canonical list below (choose the closest canonical name; never invent one).
+- measure share: placebo-adjusted percentage points of patients reaching the endpoint, active share minus placebo share (e.g. 66.3 for 70.9% vs 4.6%), both shares as the source reports them. Never convert a risk ratio or odds ratio into a share: a ratio against a small placebo share is unstable and an assumed placebo rate is not data. When a network meta-analysis reports only ratios, use pooled Phase 3 shares (or the largest Phase 3 trial) instead. ci_low and ci_high only when the source reports the interval of the difference in percentage points, null otherwise.
+- measure hazard_ratio: against placebo (or against the background with placebo), with its 95% CI.
+- trial_weeks: the week the share was assessed, or the outcome trial's median follow-up in weeks.
+- source_kind, source_name (first author, year, trial or review name), pmid of that source as shown on a page you retrieved (null if not found).
+- quote: text copied from a retrieved source that states the numbers used; derivation: the arithmetic from those numbers to estimate (or "as reported").
+- sources: URLs from your own web_search results or web_fetch calls that show the numbers, copied character for character as the tool returned them; a PubMed link counts only if a search returned it or you fetched it.
+
+Judge only from pages you retrieved; never fill a number, PMID or URL from memory. Leave out an estimate you could not find on a retrieved page. Fields that do not apply to the question are null (failed_pathway, stack_position, pair_key, per_unit) or empty (background_pathways). Return at most 30 estimates.
+
+Canonical pathway names: {"; ".join(pathway_names)}"""
+
+
+RESPONSE_SCHEMA = {
+    "type": "object",
+    "properties": {"estimates": {"type": "array", "items": {
+        "type": "object",
+        "properties": {
+            "regimen": {"type": "string"},
+            "drugs": {"type": "array", "items": {"type": "string"}},
+            "pathways": {"type": "array", "items": {"type": "string"}},
+            "one_drug": {"type": "boolean"},
+            "endpoint": {"type": "string"},
+            "measure": {"type": "string", "enum": list(MEASURES)},
+            "population": {"type": "string", "enum": list(POPULATIONS)},
+            "failed_pathway": {"type": ["string", "null"]},
+            "background_pathways": {"type": "array", "items": {"type": "string"}},
+            "stack_position": {"type": ["integer", "null"]},
+            "pair_key": {"type": ["string", "null"]},
+            "estimate": {"type": "number"},
+            "ci_low": {"type": ["number", "null"]},
+            "ci_high": {"type": ["number", "null"]},
+            "trial_weeks": {"type": ["number", "null"]},
+            "per_unit": {"type": ["string", "null"]},
+            "source_kind": {"type": "string", "enum": list(SOURCE_KINDS)},
+            "source_name": {"type": "string"},
+            "pmid": {"type": ["string", "null"]},
+            "sources": {"type": "array", "items": {"type": "string"}},
+            "quote": {"type": "string"},
+            "derivation": {"type": "string"},
+        },
+        "required": ["regimen", "drugs", "pathways", "one_drug", "endpoint", "measure", "population",
+                     "failed_pathway", "background_pathways", "stack_position", "pair_key", "estimate", "ci_low",
+                     "ci_high", "trial_weeks", "per_unit", "source_kind", "source_name", "pmid", "sources",
+                     "quote", "derivation"],
+        "additionalProperties": False}}},
+    "required": ["estimates"],
+    "additionalProperties": False,
+}
+
+# What each question may return: (measures, populations)
+QUESTION_ROWS = {
+    "response": ({"share"}, {"naive", "on_background"}),
+    "crossover": ({"share"}, {"naive", "prior_failure"}),
+    "events": ({"hazard_ratio"}, {"naive", "on_background"}),
+    "pair": ({"hazard_ratio", "odds_ratio"}, {"naive", "on_background", "lifelong_genetic"}),
+}
+
+
+def canonical_pathway(name: str, names: dict[str, str]) -> str | None:
+    """The canonical spelling of a pathway name (names: lower case -> canonical), None when it is not canonical."""
+    return names.get(name.strip().lower())
+
+
+def check_estimates(question: str, out: dict, names: dict[str, str]) -> None:
+    """Raise when a decision's estimates break the question's rules: sources not retrieved, a pathway not canonical,
+    a measure or population the question does not take, a crossover comparison that is not one prior-failure and one
+    naive row on one endpoint, or a stack whose positions are not 1..n."""
+    retrieved = out.get("retrieved_urls", [])
+    if not retrieved:
+        raise ValueError("no search returned anything, so no answer either way")
+    measures, populations = QUESTION_ROWS[question]
+    for e in out["estimates"]:
+        name = e["regimen"]
+        if not e["sources"] or any(retrieved_source(s, retrieved) is None for s in e["sources"]):
+            raise ValueError(f"{name}: no sources, or cites sources it did not retrieve")
+        if e["pmid"] is not None and not re.fullmatch(r"\d{6,9}", e["pmid"]):
+            raise ValueError(f"{name}: pmid {e['pmid']!r}")
+        if (not e["drugs"] or not e["pathways"]) and e["population"] != "lifelong_genetic":
+            raise ValueError(f"{name}: no drugs or no pathways")
+        unknown = [p for p in e["pathways"] + e["background_pathways"] if canonical_pathway(p, names) is None]
+        if unknown:
+            raise ValueError(f"{name}: pathways not in the canonical list: {unknown}")
+        if e["one_drug"] and len(e["pathways"]) > MAX_PATHWAYS_ONE_DRUG:
+            raise ValueError(f"{name}: one drug on {len(e['pathways'])} pathways")
+        if e["measure"] not in measures or e["population"] not in populations:
+            raise ValueError(f"{name}: {e['measure']} / {e['population']} in question {question}")
+        if (e["population"] == "prior_failure") != bool(e["failed_pathway"]):
+            raise ValueError(f"{name}: population {e['population']} with failed_pathway {e['failed_pathway']!r}")
+        if (e["population"] == "lifelong_genetic") != (e["source_kind"] == "mendelian_randomisation"):
+            raise ValueError(f"{name}: population {e['population']} from a {e['source_kind']}")
+        if e["measure"] == "share" and not -100 <= e["estimate"] <= 100:
+            raise ValueError(f"{name}: share {e['estimate']}")
+        if e["measure"] != "share" and e["estimate"] <= 0:
+            raise ValueError(f"{name}: ratio {e['estimate']}")
+        if None not in (e["ci_low"], e["ci_high"]) and e["ci_low"] > e["ci_high"]:
+            raise ValueError(f"{name}: confidence interval reversed")
+        if e["trial_weeks"] is not None and e["trial_weeks"] <= 0:
+            raise ValueError(f"{name}: trial_weeks {e['trial_weeks']}")
+        if question == "crossover" and not e["pair_key"]:  # other questions' pair_key is ignored (response_rows)
+            raise ValueError(f"{name}: crossover estimate without a pair_key")
+        if e["stack_position"] is not None and question != "events":
+            raise ValueError(f"{name}: stack_position in question {question}")
+    if question == "crossover":
+        pairs: dict[str, list[dict]] = {}
+        for e in out["estimates"]:
+            pairs.setdefault(e["pair_key"], []).append(e)
+        for key, rows in pairs.items():
+            if sorted(r["population"] for r in rows) != ["naive", "prior_failure"]:
+                raise ValueError(f"comparison {key}: {[r['population'] for r in rows]}")
+            if len({squash(r["endpoint"]).lower() for r in rows}) != 1:
+                raise ValueError(f"comparison {key}: two endpoints")
+    positions = sorted(e["stack_position"] for e in out["estimates"] if e["stack_position"] is not None)
+    if positions != list(range(1, len(positions) + 1)):
+        raise ValueError(f"stack positions {positions}")
+
+
+def render_responses(p: dict) -> str:
+    if p["question"] == "pair":
+        listed = "\n".join(f"- {s}" for s in p["risk_estimates"]) or "(none stored)"
+        return (f"Risk factor: {p['risk_factor']} ({p['risk_mondo_id']}); its endpoint: {p['risk_endpoint']}\n"
+                f"Outcome disease: {p['disease']} ({p['mondo_id']}); event endpoint: {p['endpoint']}\n\n"
+                f"Risk factor response estimates (one drug, placebo-adjusted share):\n{listed}\n\n"
+                f"{QUESTION_TEXT['pair']}")
+    labelled = "\n".join(f"- {d}" for d in p["labelled"]) or "(none listed)"
+    text = (f"Disease: {p['disease']} ({p['mondo_id']})\nRegistered endpoint: {p['endpoint']}\n"
+            f"Window: {p['weeks']}{' weeks' if p['question'] != 'events' else ''}\n\n"
+            f"Drugs with a current FDA label for the disease (their pathways), a starting list, not a limit:\n"
+            f"{labelled}\n\n{QUESTION_TEXT[p['question']]}")
+    if p["question"] == "events":
+        trials = "\n".join(f"- {t}" for t in p["add_on_trials"]) or "(none)"
+        text += f"\n\nRandomised add-on and combination trials found for the disease:\n{trials}"
+    return text
+
+
+RESPONSE_TOOLS = [{"type": "web_search_20260209", "name": "web_search", "max_uses": 30},
+                  {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 15}]
+RESPONSE_METHOD = "mechanism_response@v2"
+
+
+def responses_task(pathway_names: list[str]) -> llm.Task:
+    names = {n.lower(): n for n in pathway_names}
+    return llm.Task(name="mechanism_response", prompt_version="v2", schema_version="v1",
+                    system=responses_system(pathway_names), schema=RESPONSE_SCHEMA, render=render_responses,
+                    subject_type="disease_question",
+                    validate=lambda p, out: check_estimates(p["question"], out, names),
+                    model="claude-opus-5-5", effort="medium", max_tokens=48000, tools=RESPONSE_TOOLS)
+
+
+def drug_mechanisms(cur) -> dict[str, set[str]]:
+    """Lower-case entity name or alias -> its mechanism keys (atlas membership, and the labelled entity's mechanism)."""
+    cur.execute("SELECT DISTINCT entity_id, mechanism_key FROM preclin.atlas_member WHERE mechanism_key IS NOT NULL")
+    by_entity: dict[int, set[str]] = {}
+    for entity, key in cur.fetchall():
+        by_entity.setdefault(entity, set()).add(key)
+    for mid, (key, _, _) in mechanism_keys(cur).items():
+        by_entity.setdefault(mid, set()).add(key)
+    cur.execute("SELECT moiety_id, name, aliases FROM preclin.moiety WHERE moiety_id = ANY(%s)", (list(by_entity),))
+    out: dict[str, set[str]] = {}
+    for mid, name, aliases in cur.fetchall():
+        for n in [name, *(aliases or [])]:
+            out.setdefault(n.strip().lower(), set()).update(by_entity[mid])
+    return out
+
+
+def labelled_drugs(cur) -> dict[str, list[str]]:
+    """Disease -> 'drug (pathways)' for every entity with a current FDA label indicated for it."""
+    keys = mechanism_keys(cur)
+    cur.execute("SELECT mechanism_key, pathways FROM preclin.mechanism_pathway")
+    pathways = dict(cur.fetchall())
+    cur.execute("""SELECT DISTINCT li.mondo_id, m.moiety_id, m.name FROM preclin.label_indication li
+                   JOIN preclin.fda_label l USING (set_id) JOIN preclin.moiety m ON m.unii = ANY(l.unii)
+                   ORDER BY 1, 3""")
+    out: dict[str, list[str]] = {}
+    for mondo, mid, name in cur.fetchall():
+        ps = pathways.get(keys.get(mid, ("",))[0]) or []
+        out.setdefault(mondo, []).append(f"{name} ({', '.join(ps) or 'pathway not resolved'})")
+    return out
+
+
+def add_on_trials(cur) -> dict[str, list[str]]:
+    """Disease -> one line per preclin.combination_trial row, for the events question."""
+    cur.execute("""SELECT mondo_id, trial_name, two_pathway_arm, one_pathway_arm, added_pathway, comparator_pathways,
+                          primary_endpoint, effect_measure, effect, ci_low, ci_high, result
+                   FROM preclin.combination_trial ORDER BY 1, 2""")
+    out: dict[str, list[str]] = {}
+    for mondo, name, two, one, added, base, endpoint, measure, effect, lo, hi, result in cur.fetchall():
+        ci = f" ({lo}-{hi})" if lo is not None and hi is not None else ""
+        out.setdefault(mondo, []).append(
+            f"{name}: {two} vs {one}; adds {added} to {', '.join(base)}; primary {endpoint}; "
+            f"{measure} {effect if effect is not None else 'not given'}{ci}; {result}")
+    return out
+
+
+def risk_estimates(rows: list[dict]) -> list[str]:
+    """One line per one-drug naive response estimate of a risk factor, largest first."""
+    best = sorted((e for e in rows if e["one_drug"] and e["population"] == "naive"), key=lambda e: -e["estimate"])
+    return [f"{e['regimen']} ({', '.join(e['pathways'])}): {e['estimate']:g} points, {e['endpoint']} "
+            f"[{e['source_name']}]" for e in best]
+
+
+def response_rows(question: str, mondo: str, risk_mondo: str | None, decision_id: int, out: dict,
+                  names: dict[str, str], mechanisms: dict[str, set[str]]) -> list[tuple]:
+    """Table rows of one decision: pathway names in their canonical spelling, drugs resolved to mechanism keys."""
+    def canon(ps: list[str]) -> list[str]:
+        return sorted({names[p.strip().lower()] for p in ps})
+
+    return [(mondo, question, risk_mondo, e["regimen"], [d.strip().lower() for d in e["drugs"]],
+             canon(e["pathways"]), sorted({k for d in e["drugs"] for k in mechanisms.get(d.strip().lower(), ())}),
+             e["one_drug"], e["endpoint"], e["measure"], e["population"], e["failed_pathway"],
+             canon(e["background_pathways"]), e["stack_position"], e["pair_key"] if question == "crossover" else None,
+             e["estimate"], e["ci_low"],
+             e["ci_high"], e["trial_weeks"], e["per_unit"], e["source_kind"], e["source_name"], e["pmid"],
+             sorted({retrieved_source(u, out["retrieved_urls"]) for u in e["sources"]}), e["quote"],
+             e["derivation"], decision_id)
+            for e in out["estimates"]]
+
+
+def responses(_args) -> None:
+    """Collect the published estimates behind the labels for every confirmed disease and risk factor -> outcome pair;
+    store the table."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT DISTINCT p FROM preclin.mechanism_pathway, unnest(pathways) p ORDER BY 1")
+        pathway_names = [r[0] for r in cur.fetchall()]
+        labelled = labelled_drugs(cur)
+        trials = add_on_trials(cur)
+        mechanisms = drug_mechanisms(cur)
+    names = {n.lower(): n for n in pathway_names}
+    task = responses_task(pathway_names)
+
+    def item(question: str, mondo: str, e: Endpoint) -> dict:
+        return {"question": question, "mondo_id": mondo, "disease": e.disease, "endpoint": e.endpoint,
+                "weeks": e.weeks, "labelled": labelled.get(mondo, []),
+                **({"add_on_trials": trials.get(mondo, [])} if question == "events" else {})}
+
+    items = {f"{mondo}|{q}": item(q, mondo, e) for mondo, e in CONFIRMED.items() for q in ("response", "crossover")}
+    items |= {f"{mondo}|events": item("events", mondo, e) for mondo, e in EVENTS_CONFIRMED.items()}
+    run_id = llm.run(task, items)
+    decided = {key: (decision_id, out) for key, decision_id, out in llm.decisions(run_id)}
+    if missing := set(items) - set(decided):  # the table is replaced whole
+        raise SystemExit(f"no valid decision for {sorted(missing)}; run again (decided ones are reused)")
+
+    pair_items = {f"{risk}>{outcome}|pair": {
+        "question": "pair", "mondo_id": outcome, "disease": EVENTS_CONFIRMED[outcome].disease,
+        "endpoint": EVENTS_CONFIRMED[outcome].endpoint, "risk_mondo_id": risk, "risk_factor": CONFIRMED[risk].disease,
+        "risk_endpoint": CONFIRMED[risk].endpoint,
+        "risk_estimates": risk_estimates(decided[f"{risk}|response"][1]["estimates"])} for risk, outcome in PAIRS}
+    pair_run = llm.run(task, pair_items)
+    paired = {key: (decision_id, out) for key, decision_id, out in llm.decisions(pair_run)}
+    if missing := set(pair_items) - set(paired):
+        raise SystemExit(f"no valid decision for {sorted(missing)}; run again (decided ones are reused)")
+
+    every = {**items, **pair_items}
+    rows = [r for key, (decision_id, out) in {**decided, **paired}.items()
+            for r in response_rows(every[key]["question"], every[key]["mondo_id"], every[key].get("risk_mondo_id"),
+                                   decision_id, out, names, mechanisms)]
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, RESPONSE_METHOD, "Published estimates behind the single-drug labels", task.system,
+                          ["web search", "preclin.mechanism_pathway", "preclin.label_indication",
+                           "preclin.combination_trial", "preclin.atlas_member", "preclin.moiety"],
+                          {"task": task.name, "prompt_version": task.prompt_version, "model": task.model,
+                           "effort": task.effort, "questions": QUESTION_TEXT, "run": str(run_id),
+                           "pair_run": str(pair_run)})
+        cur.execute("DELETE FROM preclin.mechanism_response")
+        execute_values(cur, """INSERT INTO preclin.mechanism_response (mondo_id, question, risk_factor_mondo_id,
+                                 regimen, drugs, pathways, mechanism_keys, one_drug, endpoint, measure, population,
+                                 failed_pathway, background_pathways, stack_position, pair_key, estimate, ci_low,
+                                 ci_high, trial_weeks, per_unit, source_kind, source_name, pmid, sources, quote,
+                                 derivation, llm_decision_id) VALUES %s""", rows)
+        conn.commit()
+    print(f"run={run_id} pair_run={pair_run} rows={len(rows)} by question={dict(Counter(r[1] for r in rows))} "
+          f"with mechanism keys={sum(bool(r[6]) for r in rows)}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(required=True)
     for name, fn in (("indications", indications), ("pathways", pathways), ("regimens", regimens),
-                     ("regimen-summary", regimen_summary), ("combos", combos)):
+                     ("regimen-summary", regimen_summary), ("combos", combos), ("responses", responses)):
         sub.add_parser(name).set_defaults(fn=fn)
     args = ap.parse_args()
     args.fn(args)
