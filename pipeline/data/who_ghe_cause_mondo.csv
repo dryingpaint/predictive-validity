@@ -1,0 +1,329 @@
+code,cause,mondo_id,relation,note
+0,All Causes,,none,all causes
+10,"Communicable, maternal, perinatal and nutritional conditions",,none,group
+20,Infectious and parasitic diseases,,none,group
+30,Tuberculosis,MONDO:0018076,exact,"A15-A19, B90"
+40,STDs excluding HIV,,none,group
+50,Syphilis,MONDO:0005976,exact,
+60,Chlamydia,,none,A55-A56; no MONDO term for genital chlamydia; MONDO:0005701 Chlamydia trachomatis infection also holds trachoma (310)
+70,Gonorrhoea,MONDO:0004277,exact,
+80,Trichomoniasis,MONDO:0002154,exact,
+85,Gential Herpes,MONDO:0005770,exact,
+90,Other STDs,,none,residual
+100,HIV/AIDS,MONDO:0005109,exact,
+110,Diarrhoeal diseases,MONDO:0001673,exact,diarrhoeal diseases are modelled as diarrhoea episodes (three or more loose stools in 24 h); MONDO term is defined the same way
+120,Childhood-cluster diseases,,none,group
+130,Whooping cough,MONDO:0005077,exact,
+140,Diphtheria,MONDO:0005504,exact,
+150,Measles,MONDO:0004619,exact,
+160,Tetanus,MONDO:0005526,exact,
+170,Meningitis,MONDO:0021108,exact,
+180,Encephalitis,MONDO:0019956,exact,
+185,Hepatitis,,none,"group of acute hepatitis A, B, C, E; MONDO viral hepatitis MONDO:0006011 also holds chronic infection"
+186,Acute hepatitis A,MONDO:0005790,exact,hepatitis A is always acute
+190,Acute hepatitis B,MONDO:0100370,exact,
+200,Acute hepatitis C,MONDO:0005231,exact,"acute hepatitis C, cirrhosis and liver cancer secondary to hepatitis C"
+205,Acute hepatitis E,MONDO:0005788,exact,
+210,Parasitic and vector diseases,,none,group
+220,Malaria,MONDO:0005136,exact,
+230,Trypanosomiasis,MONDO:0005459,exact,B56 African trypanosomiasis; Chagas is 240
+240,Chagas disease,MONDO:0001444,exact,
+250,Schistosomiasis,MONDO:0015254,exact,
+260,Leishmaniasis,MONDO:0011989,exact,"B55, all forms"
+270,lymphatic filariasis,MONDO:0005761,exact,MONDO label filarial elephantiasis; synonym lymphatic filariasis
+280,Onchocerciasis,MONDO:0017137,exact,
+285,Cysticercosis,MONDO:0015484,exact,
+295,Echinococcosis,MONDO:0005738,exact,"B67, cystic and alveolar"
+300,Dengue,MONDO:0005502,exact,
+310,Trachoma,MONDO:0001249,exact,
+315,Yellow fever,MONDO:0020502,exact,
+320,Rabies,MONDO:0019173,exact,
+330,Intestinal nematode infections,,none,group B76-B81; no MONDO term for intestinal nematode infections
+340,Ascariasis,MONDO:0005654,exact,
+350,Trichuriasis,MONDO:0005996,exact,
+360,Hookworm disease,MONDO:0005799,exact,
+362,Food-borne trematodes,,none,"WHO codes B78, B80, B81; no MONDO group term"
+365,Leprosy,MONDO:0005124,exact,
+370,Other infectious diseases,,none,residual
+380,Respiratory Infectious ,,none,group
+390,Lower respiratory infections,MONDO:0002465,broader,bronchiolitis within J09-J22
+390,Lower respiratory infections,MONDO:0005249,broader,pneumonia within J09-J22
+390,Lower respiratory infections,MONDO:0005812,broader,influenza (J09-J11) within J09-J22
+395,COVID-19,MONDO:0100096,exact,
+400,Upper respiratory infections,,none,"J00-J06; common cold, pharyngitis, tonsillitis, sinusitis and laryngitis have separate MONDO terms"
+410,Otitis media,MONDO:0005441,exact,H65-H66
+410,Otitis media,MONDO:0005892,broader,otitis media with effusion (H65) within otitis media H65-H66
+420,Maternal conditions,MONDO:0000755,broader,ectopic pregnancy (O00) within maternal conditions
+420,Maternal conditions,MONDO:0005081,broader,preeclampsia (O14) within maternal conditions O00-O99
+490,Neonatal conditions,,none,group
+500,Preterm birth complications,MONDO:0009971,broader,RDS of prematurity within preterm birth complications
+500,Preterm birth complications,MONDO:0019091,broader,"bronchopulmonary dysplasia (P27.1) within preterm birth complications P05, P07, P22, P27-P28"
+500,Preterm birth complications,MONDO:0700081,broader,newborn respiratory distress syndrome (P22.0) within preterm birth complications
+510,Birth asphyxia and birth trauma,MONDO:0006663,broader,birth asphyxia (P21) within the cause
+520,Neonatal sepsis and infections,MONDO:0700217,broader,neonatal sepsis (P36) within the cause
+530,Other neonatal conditions,,none,residual
+540,Nutritional deficiencies,,none,group
+550,Protein-energy malnutrition,MONDO:0001371,exact,E40-E46
+560,Iodine deficiency,,none,E00-E02; MONDO has endemic goiter MONDO:0006742 and iodine hypothyroidism MONDO:0003271 only
+570,Vitamin A deficiency,MONDO:0007016,exact,E50
+580,Iron-deficiency anaemia,MONDO:0001356,exact,D50; WHO adds D64.9 unspecified anaemia
+590,Other nutritional deficiencies,,none,residual
+600,Noncommunicable diseases,,none,group
+610,Malignant neoplasms,,none,group
+620,Mouth and oropharynx cancers,,none,group
+621,Lip and oral cavity,MONDO:0023644,exact,C00-C08
+622,Nasopharynx,MONDO:0021315,exact,C11
+623,Other pharynx,MONDO:0004608,broader,oropharynx cancer (C09-C10) within other pharynx
+623,Other pharynx,MONDO:0005806,broader,hypopharynx cancer (C12-C13) within other pharynx
+630,Oesophagus cancer,MONDO:0007576,exact,C15
+640,Stomach cancer,MONDO:0001056,exact,Stomach cancer
+650,Colon and rectum cancers,MONDO:0005575,exact,Colon and rectum cancers
+660,Liver cancer,MONDO:0002691,exact,C22
+660,Liver cancer,MONDO:0007256,broader,Liver cancer; hepatocellular carcinoma is most of it
+661,Liver cancer secondary to hepatitis B,MONDO:0005366,exact,cirrhosis and liver cancer secondary to hepatitis B; acute hepatitis B excluded
+662,Liver cancer secondary to hepatitis C,MONDO:0005231,exact,"acute hepatitis C, cirrhosis and liver cancer secondary to hepatitis C"
+663,Liver cancer secondary to alcohol use,,none,etiologic subdivision of liver cancer
+664,Other liver cancer,,none,residual subdivision of liver cancer
+670,Pancreas cancer,MONDO:0009831,exact,Pancreas cancer
+680,"Trachea, bronchus, lung cancers",MONDO:0008903,exact,C33-C34; tracheal cancer (C33) is under one percent of it
+680,"Trachea, bronchus, lung cancers",MONDO:0005233,broader,"Trachea, bronchus, lung cancers; NSCLC is about 85% of lung cancer"
+680,"Trachea, bronchus, lung cancers",MONDO:0008433,broader,"within lung cancers, held by NSCLC in burden.py"
+690,Melanoma and other skin cancers,MONDO:0002898,exact,C43-C44 skin cancer
+691,Malignant skin melanoma,MONDO:0005105,exact,Malignant skin melanoma
+692,Non-melanoma skin cancer,MONDO:0002656,exact,MONDO label skin carcinoma; synonym non-melanoma skin cancer (C44)
+692,Non-melanoma skin cancer,MONDO:0002529,broader,cutaneous squamous cell carcinoma within C44
+692,Non-melanoma skin cancer,MONDO:0005341,broader,basal cell carcinoma within C44
+700,Breast cancer,MONDO:0007254,exact,
+710,Cervix uteri cancer,MONDO:0002974,exact,Cervix uteri cancer
+720,Corpus uteri cancer,MONDO:0006003,exact,C54 corpus uteri
+720,Corpus uteri cancer,MONDO:0011962,broader,endometrial cancer (C54.1) within corpus uteri cancer
+730,Ovary cancer,MONDO:0008170,exact,Ovary cancer
+740,Prostate cancer,MONDO:0008315,exact,
+742,Testicular cancer,MONDO:0005447,exact,C62
+745,Kidney cancer,MONDO:0002367,exact,WHO C64-C66 adds renal pelvis and ureter
+745,Kidney cancer,MONDO:0005086,broader,Kidney cancer; renal cell carcinoma is about nine tenths of it
+750,Bladder cancer,MONDO:0001187,exact,C67
+751,Brain and nervous system cancers,MONDO:0002714,exact,C70-C72
+752,Gallbladder and biliary tract cancer,MONDO:0003060,broader,biliary tract cancer (C24) within the cause; MONDO does not nest gallbladder cancer under it
+752,Gallbladder and biliary tract cancer,MONDO:0005411,broader,gallbladder cancer (C23) within the cause
+753,Larynx cancer,MONDO:0002352,exact,C32
+754,Thyroid cancer,MONDO:0002108,exact,C73
+755,Mesothelioma,MONDO:0005065,exact,C45
+760,"Lymphomas, multiple myeloma",,none,group
+761,Hodgkin lymphoma,MONDO:0004952,exact,
+762,Non-Hodgkin lymphoma,MONDO:0018908,exact,"C82-C86, C96"
+762,Non-Hodgkin lymphoma,MONDO:0007243,broader,Burkitt lymphoma (C83.7) within non-Hodgkin lymphoma
+762,Non-Hodgkin lymphoma,MONDO:0015759,broader,"within Non-Hodgkin lymphoma, held by follicular lymphoma in burden.py"
+762,Non-Hodgkin lymphoma,MONDO:0017604,broader,"within Non-Hodgkin lymphoma, held by follicular lymphoma in burden.py"
+762,Non-Hodgkin lymphoma,MONDO:0018876,broader,"within Non-Hodgkin lymphoma, held by follicular lymphoma in burden.py"
+762,Non-Hodgkin lymphoma,MONDO:0018905,broader,"within Non-Hodgkin lymphoma, held by follicular lymphoma in burden.py"
+762,Non-Hodgkin lymphoma,MONDO:0018906,broader,"Non-Hodgkin lymphoma, all subtypes"
+762,Non-Hodgkin lymphoma,MONDO:0019472,broader,"within Non-Hodgkin lymphoma, held by follicular lymphoma in burden.py"
+762,Non-Hodgkin lymphoma,MONDO:0100280,broader,"within Non-Hodgkin lymphoma, held by follicular lymphoma in burden.py"
+762,Non-Hodgkin lymphoma,MONDO:0968974,broader,"within Non-Hodgkin lymphoma, held by follicular lymphoma in burden.py"
+763,Multiple myeloma,MONDO:0009693,exact,Multiple myeloma
+770,Leukaemia,MONDO:0005059,exact,C91-C95
+770,Leukaemia,MONDO:0003864,broader,"within Leukaemia, held by acute myeloid leukemia in burden.py"
+770,Leukaemia,MONDO:0004967,broader,"within Leukaemia, held by acute myeloid leukemia in burden.py"
+770,Leukaemia,MONDO:0011996,broader,"within Leukaemia, held by acute myeloid leukemia in burden.py"
+770,Leukaemia,MONDO:0018874,broader,"Leukaemia, all types"
+780,Other malignant neoplasms,,none,residual
+790,Other neoplasms,,none,residual; holds uterine fibroids D25 and myelodysplastic syndrome D46
+800,Diabetes mellitus,MONDO:0005015,exact,E10-E14
+800,Diabetes mellitus,MONDO:0005147,broader,"within Diabetes mellitus, held by type 2 diabetes in burden.py"
+800,Diabetes mellitus,MONDO:0005148,broader,Diabetes mellitus; type 2 is about nine tenths of it
+800,Diabetes mellitus,MONDO:0006626,broader,diabetes with neurological complications (E10.4-E14.4) sits inside Diabetes mellitus
+810,"Endocrine, blood, immune disorders",,none,group
+811,Thalassaemias,MONDO:0000984,exact,D56
+811,Thalassaemias,MONDO:0019402,broader,beta thalassemia within thalassaemias D56
+811,Thalassaemias,MONDO:0044210,broader,beta-thalassemia trait (D56.3) within thalassaemias
+812,Sickle cell disorders and trait,MONDO:0011382,broader,cause also holds sickle cell trait (D57.3)
+813,Other haemoglobinopathies and haemolytic anaemias,,none,residual
+814,"Other endocrine, blood and immune disorders",,none,residual
+820,Mental and substance use disorders,,none,group
+830,Depressive disorders,MONDO:0002050,exact,"F32-F33, F34.1"
+830,Depressive disorders,MONDO:0001442,broader,dysthymia (F34.1) within depressive disorders; MONDO does not nest it under depressive disorder
+830,Depressive disorders,MONDO:0002009,broader,"major depressive disorder (F32-F33) within depressive disorders F32-F33, F34.1"
+840,Bipolar disorder,MONDO:0004985,exact,F30-F31
+840,Bipolar disorder,MONDO:0001866,broader,bipolar I within bipolar disorder
+840,Bipolar disorder,MONDO:0024613,broader,depressive phase of bipolar disorder
+850,Schizophrenia,MONDO:0005090,exact,F20-F29
+860,Alcohol use disorders,MONDO:0021698,exact,F10 plus alcoholic nervous-system and muscle disease and fetal alcohol syndrome; MONDO alcohol-related disorders covers the same span
+860,Alcohol use disorders,MONDO:0002046,broader,harmful use (F10.1) within F10
+860,Alcohol use disorders,MONDO:0007079,broader,alcohol dependence (F10.2) within alcohol use disorders F10
+870,Drug use disorders,,none,group
+871,Opioid use disorders,MONDO:0001225,broader,opioid abuse (F11.1) within F11
+871,Opioid use disorders,MONDO:0005530,broader,opioid dependence (F11.2) within F11
+872,Cocaine use disorders,MONDO:0004456,broader,cocaine abuse (F14.1) within F14
+872,Cocaine use disorders,MONDO:0005186,broader,cocaine dependence (F14.2) within F14
+873,Amphetamine use disorders,MONDO:0003969,broader,amphetamine abuse (F15.1) within F15
+873,Amphetamine use disorders,MONDO:0005419,broader,methamphetamine dependence (F15.2) within F15
+874,Cannabis use disorders,MONDO:0005689,broader,cannabis dependence (F12.2) within F12
+875,Other drug use disorders,,none,residual
+880,Anxiety disorders,MONDO:0005618,exact,F40-F44
+880,Anxiety disorders,MONDO:0001247,broader,social phobia (F40.1) within F40-F44
+880,Anxiety disorders,MONDO:0001942,broader,generalized anxiety disorder (F41.1) within F40-F44
+880,Anxiety disorders,MONDO:0003699,broader,phobic disorders (F40) within F40-F44
+880,Anxiety disorders,MONDO:0005146,broader,PTSD (F43.1) within anxiety disorders F40-F44; MONDO nests it
+880,Anxiety disorders,MONDO:0008114,broader,OCD (F42) within anxiety disorders F40-F44; MONDO nests it
+880,Anxiety disorders,MONDO:0011918,broader,symptom-level MONDO term that MONDO nests under anxiety disorder
+890,Eating disorders,MONDO:0005451,exact,F50
+890,Eating disorders,MONDO:0005351,broader,anorexia nervosa (F50.0) within F50
+890,Eating disorders,MONDO:0005452,broader,bulimia nervosa (F50.2) within F50
+890,Eating disorders,MONDO:0005582,broader,binge eating disorder (F50.8) within eating disorders F50
+900,Austism and Asperger syndrome,MONDO:0005258,exact,F84
+910,Childhood behavioural disorders,,none,group
+911,Attention deficit/hyperactivity syndrome,MONDO:0007743,exact,F90
+912,Conduct disorder,MONDO:0005352,exact,F91-F92
+920,Idiopathic intellectual disability,,none,F70-F79; MONDO intellectual disability MONDO:0001071 is wider than the idiopathic residual
+930,Other mental and behavioural disorders,,none,residual
+940,Neurological conditions,,none,group
+950,Alzheimer disease and other dementias,MONDO:0001627,exact,"F01-F03, G30-G31 all dementia"
+950,Alzheimer disease and other dementias,MONDO:0004975,broader,Alzheimer disease and other dementias
+950,Alzheimer disease and other dementias,MONDO:0007488,broader,Lewy body dementia (G31.83) within dementias
+950,Alzheimer disease and other dementias,MONDO:0017276,broader,frontotemporal dementia (G31.0) within dementias
+960,Parkinson disease,MONDO:0005180,exact,
+970,Epilepsy,MONDO:0005027,exact,G40-G41
+970,Epilepsy,MONDO:0005384,broader,focal epilepsy within epilepsy
+970,Epilepsy,MONDO:0010246,broader,PCDH19 epileptic encephalopathy within epilepsy
+970,Epilepsy,MONDO:0015643,broader,photosensitive epilepsy within epilepsy
+970,Epilepsy,MONDO:0016532,broader,Lennox-Gastaut syndrome (G40.81) within epilepsy
+970,Epilepsy,MONDO:0018097,broader,infantile spasms (G40.4) within epilepsy
+970,Epilepsy,MONDO:0100135,broader,Dravet syndrome within epilepsy
+980,Multiple sclerosis,MONDO:0005301,exact,
+980,Multiple sclerosis,MONDO:0000450,broader,secondary progressive MS within MS
+980,Multiple sclerosis,MONDO:0000451,broader,primary progressive MS within MS
+980,Multiple sclerosis,MONDO:0005284,broader,chronic progressive MS within MS
+980,Multiple sclerosis,MONDO:0005314,broader,relapsing-remitting MS within MS
+990,Migraine,MONDO:0005277,exact,
+990,Migraine,MONDO:0005475,broader,migraine with aura within migraine
+990,Migraine,MONDO:0100431,broader,migraine without aura within migraine
+1000,Non-migrane headache,MONDO:0043537,broader,cluster headache (G44.0) within non-migraine headache G44
+1010,Other neurological conditions,,none,residual
+1020,Sense organ diseases,,none,group
+1030,Glaucoma,MONDO:0005041,exact,H40
+1030,Glaucoma,MONDO:0005338,broader,"Glaucoma, all forms"
+1040,Cataracts,MONDO:0005129,exact,H25-H26
+1050,Uncorrected refractive errors,MONDO:0001330,broader,presbyopia (H52.4) within uncorrected refractive errors H49-H52
+1050,Uncorrected refractive errors,MONDO:0004891,broader,hyperopia (H52.0) within H49-H52
+1050,Uncorrected refractive errors,MONDO:0004892,broader,"refractive error (H52) within H49-H52, which also holds strabismus"
+1060,Macular degeneration,MONDO:0003004,exact,H35.3 degeneration of macula and posterior pole is all macular degeneration; AMD is nearly all of it and burden.py records AMD as exact too
+1060,Macular degeneration,MONDO:0005150,exact,Macular degeneration
+1060,Macular degeneration,MONDO:0005417,broader,wet AMD within macular degeneration H35.3
+1060,Macular degeneration,MONDO:0100114,broader,dry AMD within macular degeneration
+1070,Other vision loss,,none,residual
+1080,Other hearing loss,,none,residual by name; H90-H91 hearing loss is MONDO:0005365
+1090,Other sense organ disorders,,none,residual
+1100,Cardiovascular diseases,,none,group
+1110,Rheumatic heart disease,MONDO:0006955,exact,I01-I09
+1120,Hypertensive heart disease,MONDO:0001302,exact,I11-I15
+1130,Ischaemic heart disease,MONDO:0024644,exact,"MONDO label myocardial ischemia; synonym ischaemic heart disease, ICD I20-I25"
+1130,Ischaemic heart disease,MONDO:0004781,broader,acute myocardial infarction within I20-I25
+1130,Ischaemic heart disease,MONDO:0005010,broader,coronary artery disease (I25.1) within ischaemic heart disease I20-I25; MONDO does not nest it
+1130,Ischaemic heart disease,MONDO:0005068,broader,myocardial infarction (I21-I22) within I20-I25
+1130,Ischaemic heart disease,MONDO:0005542,broader,Ischaemic heart disease; acute coronary syndrome is its acute presentation
+1130,Ischaemic heart disease,MONDO:0041656,broader,STEMI within I20-I25
+1130,Ischaemic heart disease,MONDO:0044875,broader,"coronary microvascular dysfunction (I20.81, I21.B) within I20-I25; MONDO does not nest it"
+1140,Stroke,MONDO:0005098,exact,I60-I69
+1141,Ischaemic stroke,MONDO:1060198,exact,I63
+1142,Haemorrhagic stroke,MONDO:1060199,exact,I60-I62
+1142,Haemorrhagic stroke,MONDO:0005099,broader,subarachnoid haemorrhage (I60) within haemorrhagic stroke
+1142,Haemorrhagic stroke,MONDO:0013792,broader,intracerebral haemorrhage (I61) within haemorrhagic stroke I60-I62
+1150,"Cardiomyopathy, myocarditis, endocarditis",MONDO:0004496,broader,myocarditis (I40) within the cause
+1150,"Cardiomyopathy, myocarditis, endocarditis",MONDO:0004994,broader,"cardiomyopathy I42 within cardiomyopathy, myocarditis, endocarditis"
+1150,"Cardiomyopathy, myocarditis, endocarditis",MONDO:0005021,broader,dilated cardiomyopathy (I42.0) within the cause
+1150,"Cardiomyopathy, myocarditis, endocarditis",MONDO:0005025,broader,"endocarditis (I33, I38) within the cause"
+1150,"Cardiomyopathy, myocarditis, endocarditis",MONDO:0005045,broader,hypertrophic cardiomyopathy (I42.1-I42.2) within the cause
+1150,"Cardiomyopathy, myocarditis, endocarditis",MONDO:0006643,broader,alcoholic cardiomyopathy (I42.6) within the cause
+1150,"Cardiomyopathy, myocarditis, endocarditis",MONDO:0016662,broader,pericarditis I30-I32 is in the cause ICD range
+1160,Other circulatory diseases,,none,residual
+1170,Respiratory diseases,,none,group
+1180,Chronic obstructive pulmonary disease,MONDO:0005002,exact,
+1190,Asthma,MONDO:0004979,exact,
+1190,Asthma,MONDO:0004784,broader,allergic asthma within asthma
+1190,Asthma,MONDO:0850287,broader,aspirin-exacerbated respiratory disease; MONDO nests it under asthma
+1200,Other respiratory diseases,,none,residual
+1210,Digestive diseases,,none,group
+1220,Peptic ulcer disease,MONDO:0004247,exact,K25-K27
+1230,Cirrhosis of the liver,MONDO:0005155,exact,"K70, K74"
+1231,Cirrhosis due to hepatitis B,MONDO:0005366,exact,cirrhosis and liver cancer secondary to hepatitis B; acute hepatitis B excluded
+1232,Cirrhosis due to hepatitis C,MONDO:0005231,exact,"acute hepatitis C, cirrhosis and liver cancer secondary to hepatitis C"
+1233,Cirrhosis due to alcohol use,MONDO:0043693,exact,K70 alcoholic liver disease
+1233,Cirrhosis due to alcohol use,MONDO:0001505,broader,alcoholic hepatitis (K70.1) within K70 alcoholic liver disease
+1233,Cirrhosis due to alcohol use,MONDO:0006644,broader,alcoholic cirrhosis (K70.3) within K70
+1234,Other liver cirrhosis,MONDO:0007027,broader,"Other liver cirrhosis, which holds MASH among other causes"
+1234,Other liver cirrhosis,MONDO:0013209,broader,same basis as burden.py MASH entry: cirrhosis attributable to MASLD; non-cirrhotic MASLD (K76.0) sits in Other digestive diseases
+1240,Appendicitis,MONDO:0005649,exact,K35-K37
+1241,Gastritis and duodenitis,MONDO:0004627,broader,duodenitis within K29
+1241,Gastritis and duodenitis,MONDO:0004966,broader,gastritis within K29
+1242,Paralytic ileus and intestinal obstruction,MONDO:0004565,exact,K56; MONDO intestinal obstruction nests ileus
+1242,Paralytic ileus and intestinal obstruction,MONDO:0004567,broader,ileus within K56; MONDO nests it under intestinal obstruction
+1242,Paralytic ileus and intestinal obstruction,MONDO:0004568,broader,paralytic ileus (K56.0) within K56
+1244,Inflammatory bowel disease,MONDO:0005265,exact,"K50-K52, K58.0"
+1244,Inflammatory bowel disease,MONDO:0005011,broader,"Inflammatory bowel disease, with ulcerative colitis"
+1244,Inflammatory bowel disease,MONDO:0005101,broader,"within Inflammatory bowel disease, held by Crohn disease in burden.py"
+1244,Inflammatory bowel disease,MONDO:0005537,broader,perianal Crohn disease within Crohn disease
+1246,Gallbladder and biliary diseases,MONDO:0002155,broader,cholecystitis (K81) within K80-K83
+1246,Gallbladder and biliary diseases,MONDO:0012672,broader,cholelithiasis (K80) within K80-K83
+1246,Gallbladder and biliary diseases,MONDO:0013433,broader,primary sclerosing cholangitis (K83.01) within gallbladder and biliary diseases K80-K83
+1248,Pancreatitis,MONDO:0004982,exact,K85-K86
+1248,Pancreatitis,MONDO:0005003,broader,chronic pancreatitis (K86) within pancreatitis K85-K86
+1248,Pancreatitis,MONDO:0006515,broader,acute pancreatitis (K85) within pancreatitis
+1250,Other digestive diseases,,none,residual
+1260,Genitourinary diseases,,none,group
+1270,Kidney diseases,,none,group
+1271,Acute glomerulonephritis,,none,N00-N01 acute nephritic syndrome; MONDO acute proliferative glomerulonephritis MONDO:0001644 is post-streptococcal only
+1272,Chronic kidney disease due to diabetes,MONDO:0005016,exact,Chronic kidney disease due to diabetes
+1273,Other chronic kidney disease,,none,residual
+1280,Benign prostatic hyperplasia,MONDO:0010811,exact,N40
+1290,Urolithiasis,MONDO:0024647,exact,N20-N23
+1290,Urolithiasis,MONDO:0008171,broader,kidney stones (N20) within urolithiasis N20-N23
+1300,Other urinary diseases,,none,residual
+1310,Infertility,MONDO:0005047,exact,"MONDO label infertility disorder; N46, N97"
+1310,Infertility,MONDO:0005372,broader,male infertility (N46) within infertility
+1310,Infertility,MONDO:0021124,broader,"female infertility (N97) within infertility N46, N97"
+1320,Gynecological diseases,,none,aggregate per burden.py
+1330,Skin diseases,,none,aggregate per burden.py
+1340,Musculoskeletal diseases,,none,group
+1350,Rheumatoid arthritis,MONDO:0008383,exact,
+1360,Osteoarthritis,MONDO:0005178,exact,
+1360,Osteoarthritis,MONDO:0005416,broader,knee osteoarthritis (M17) within osteoarthritis M15-M19
+1370,Gout,MONDO:0005393,exact,
+1380,Back and neck pain,MONDO:0002959,broader,radiculopathy (M54.1) within M50-M54
+1380,Back and neck pain,MONDO:0005306,broader,"WHO GHE codes ankylosing spondylitis M45 to Back and neck pain (M45-M48, M50-M54)"
+1380,Back and neck pain,MONDO:0011385,broader,intervertebral disc disorders M50-M51 within M50-M54
+1380,Back and neck pain,MONDO:0024333,broader,sciatica (M54.3) within M50-M54
+1380,Back and neck pain,MONDO:0100201,broader,lumbar disc disease (M51) within M50-M54
+1390,Other musculoskeletal disorders,,none,residual
+1400,Congenital anomalies,,none,group
+1410,Neural tube defects,MONDO:0018075,exact,"Q00, Q05"
+1420,Cleft lip and cleft palate,MONDO:0000358,exact,Q35-Q37
+1420,Cleft lip and cleft palate,MONDO:0004747,broader,cleft lip (Q36) within Q35-Q37
+1420,Cleft lip and cleft palate,MONDO:0016064,broader,cleft palate (Q35) within Q35-Q37
+1430,Down syndrome,MONDO:0008608,exact,
+1440,Congenital heart anomalies,MONDO:0005453,exact,Q20-Q28
+1440,Congenital heart anomalies,MONDO:0004933,broader,hypoplastic left heart (Q23.4) within congenital heart anomalies
+1440,Congenital heart anomalies,MONDO:0019820,broader,univentricular heart (Q20.4) within congenital heart anomalies Q20-Q28; MONDO does not nest it
+1450,Other chromosomal anomalies,,none,residual
+1460,Other congenital anomalies,,none,residual
+1470,Oral conditions,,none,group
+1480,Dental caries,MONDO:0005276,exact,K02
+1490,Periodontal disease,MONDO:0002635,exact,MONDO label periodontal disorder; K05
+1490,Periodontal disease,MONDO:0005076,broader,periodontitis (K05.3-K05.4) within periodontal disease K05
+1500,Edentulism,,none,no MONDO term
+1502,Other oral disorders,,none,residual
+1505,Sudden infant death syndrome,,none,R95; MONDO sudden unexpected infant death MONDO:1010116 is wider than SIDS
+1510,Injuries,,none,group
+1520,Unintentional injuries,,none,group
+1530,Road injury,,none,injury
+1540,Poisonings,,none,injury
+1550,Falls,,none,injury
+1560,"Fire, heat and hot substances",,none,injury
+1570,Drowning,,none,injury
+1575,Exposure to mechanical forces,,none,injury
+1580,Natural disasters,,none,injury
+1590,Other unintentional injuries,,none,injury
+1600,Intentional injuries,,none,group
+1610,Self-harm,,none,injury
+1620,Interpersonal violence,,none,injury
+1630,Collective violence and legal intervention,,none,injury

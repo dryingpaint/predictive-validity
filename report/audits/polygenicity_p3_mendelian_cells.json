@@ -1,0 +1,28 @@
+{
+ "min_targets": 15,
+ "estimable_by_targets": false,
+ "diseases": {
+  "no_form": 172,
+  "form": 306
+ },
+ "entries": 1948,
+ "cells": {
+  "no_form_genetics": {
+   "entries": 6,
+   "targets": 5
+  },
+  "no_form_no_genetics": {
+   "entries": 539,
+   "targets": 314
+  },
+  "form_genetics": {
+   "entries": 278,
+   "targets": 153
+  },
+  "form_no_genetics": {
+   "entries": 1125,
+   "targets": 501
+  }
+ },
+ "note": "target sets and Phase 2 entries only; outcome columns dropped before counting"
+}

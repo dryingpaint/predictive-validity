@@ -1,0 +1,24 @@
+{
+ "build_id": "5945a7e4-1b7d-4f1c-9767-2c3424b76512",
+ "built_at": "2026-11-24 03:42:43.668534+00:00",
+ "snapshot": "2026-11-02",
+ "diseases": 531,
+ "entries": 2321,
+ "scored_diseases": 114,
+ "scored_entries": 1167,
+ "not_profiled": [],
+ "zero_loci_diseases": 9,
+ "k_via_parent_diseases": 163,
+ "within_area_variance": {
+  "diseases": 114,
+  "areas": 13,
+  "share": 0.7942240453778222
+ },
+ "evidence_line_build": {
+  "build_id": "37f24080-9f7a-47a7-8656-f287befabc6e",
+  "built_at": "2026-11-24 23:03:20.274972+00:00",
+  "code_commit": "ee87412636ebe6d4b58d521e64a98ad836bec7dd"
+ },
+ "engaged_stops": 474,
+ "engaged_stops_without_history": 0
+}

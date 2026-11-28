@@ -24,23 +24,25 @@ import time
 from datetime import datetime, timezone
 
 from report import (attribution, disease_match, evidence_analysis, evidence_facts, failure_modes, figures, frame,
-                    methods, quality, render, section1, section2, section3, stop_causes, target_origin)
+                    methods, polygenicity, quality, render, section1, section2, section3, stop_causes, target_origin)
 
 # quality reads only the database and audit files, so it runs first with the other large reads
 STEPS = [quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes, target_origin,
-         methods, figures, render]
+         polygenicity, methods, figures, render]
 # step -> the steps whose outputs it reads or whose code it imports: it reruns whenever one of them does
 USES = {
     quality: (), section1: (), section2: (section1,), section3: (section1,),
     evidence_analysis: (section1, section2, section3, stop_causes), attribution: (section1, section3),
     stop_causes: (section3,), failure_modes: (evidence_analysis, stop_causes, section3),
     target_origin: (evidence_analysis, stop_causes, section3, failure_modes), methods: (stop_causes, attribution),
-    figures: (section1, section2, section3, evidence_analysis, attribution, stop_causes, target_origin, render),
+    polygenicity: (evidence_analysis, stop_causes, section3, failure_modes),
+    figures: (section1, section2, section3, evidence_analysis, attribution, stop_causes, target_origin, polygenicity,
+              render),
     render: (quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes,
-             target_origin),
+             target_origin, polygenicity),
 }
 QUERIES_DATABASE = (quality, section1, section2, section3, evidence_analysis, attribution, stop_causes, failure_modes,
-                    target_origin)
+                    target_origin, polygenicity)
 OUTPUT = os.path.join(frame.REPO, "report", "output")
 CACHE = os.path.expanduser("~/.cache/predictive-validity/report-output")
 MANIFEST = "_build.json"  # in each cached step directory: when, on which commit and snapshot it was built
@@ -62,18 +64,36 @@ def selected(names: list[str]) -> list:
     return [s for s in STEPS if s in run]
 
 
+def seed_step(step, why: str) -> None:
+    """Copy the step's cached outputs into report/output/<step>/ when that is missing."""
+    here, cached = os.path.join(OUTPUT, name(step)), os.path.join(CACHE, name(step))
+    if os.path.isdir(here):
+        return
+    if not os.path.isdir(cached):
+        raise SystemExit(f"no outputs of {name(step)} here or in {CACHE}: {why}")
+    shutil.copytree(cached, here)
+    m = json.load(open(os.path.join(cached, MANIFEST)))
+    print(f"[report] {name(step)} seeded from the cache: built {m['built_at']} on {m['commit']} ({m['branch']}), "
+          f"snapshot {m['snapshot']}", flush=True)
+
+
 def seed(run: list) -> None:
     """Copy from CACHE the outputs of every step not run whose report/output/<step>/ is missing."""
     for step in (s for s in QUERIES_DATABASE if s not in run):
-        here, cached = os.path.join(OUTPUT, name(step)), os.path.join(CACHE, name(step))
-        if os.path.isdir(here):
-            continue
-        if not os.path.isdir(cached):
-            raise SystemExit(f"no outputs of {name(step)} here or in {CACHE}: run it too, or the full build")
-        shutil.copytree(cached, here)
-        m = json.load(open(os.path.join(cached, MANIFEST)))
-        print(f"[report] {name(step)} seeded from the cache: built {m['built_at']} on {m['commit']} ({m['branch']}), "
-              f"snapshot {m['snapshot']}", flush=True)
+        seed_step(step, "run it too, or the full build")
+
+
+def run_step(step) -> bool:
+    """Run one step: True when it ran and its outputs are to be cached. A step that stands aside (frame.StandAside:
+    the database is not the one its results were registered on) keeps its cached outputs, copied into report/output
+    when missing, and is not re-cached."""
+    try:
+        step.main()
+        return True
+    except frame.StandAside as e:
+        print(f"[report] {name(step)} stands aside: {e}", flush=True)
+        seed_step(step, "run it on the build it was registered on")
+        return False
 
 
 def git(*args: str) -> str:
@@ -115,8 +135,7 @@ def main() -> None:
     problems = []
     for step in run:
         start = time.monotonic()
-        step.main()
-        if step in QUERIES_DATABASE:
+        if run_step(step) and step in QUERIES_DATABASE:
             cache(step)
         print(f"[report] {step.__name__} {time.monotonic() - start:.0f}s", flush=True)
     if frame.snapshots_read > 1:

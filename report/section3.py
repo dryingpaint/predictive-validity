@@ -396,14 +396,16 @@ def design(d: pd.DataFrame, exposure: list[str], covars: tuple[str, ...]) -> pd.
     return sm.add_constant(X, has_constant="add")
 
 
-def fit_poisson(y: pd.Series, X: pd.DataFrame, targets: pd.Series):
-    """Modified Poisson fit: log link, robust errors clustered by primary-target set."""
+def fit_poisson(y: pd.Series, X: pd.DataFrame, groups: pd.Series):
+    """Modified Poisson fit: log link, robust errors clustered by `groups` (the primary-target set in the report;
+    the disease in the polygenicity tests of #147)."""
     return sm.GLM(y.astype(float), X, family=sm.families.Poisson()).fit(
-        cov_type="cluster", cov_kwds={"groups": pd.factorize(targets, sort=True)[0]})
+        cov_type="cluster", cov_kwds={"groups": pd.factorize(groups, sort=True)[0]})
 
 
-def poisson(d: pd.DataFrame, outcome: str, exposure: list[str], covars: tuple[str, ...] = COVARS):
-    return fit_poisson(d[outcome], design(d, exposure, covars), d.target)
+def poisson(d: pd.DataFrame, outcome: str, exposure: list[str], covars: tuple[str, ...] = COVARS,
+            cluster: str = "target"):
+    return fit_poisson(d[outcome], design(d, exposure, covars), d[cluster])
 
 
 def coef(fit, name: str, ratio: str = "rr") -> dict:
@@ -429,19 +431,20 @@ def estimable(desc: dict) -> bool:
     return desc["n_targets"] >= MIN_TARGETS and bool(desc["ppv"]) and bool(desc["rate_without"])
 
 
-def estimate(d: pd.DataFrame, outcome: str, col: str, covars: tuple[str, ...] = COVARS) -> dict:
-    """Description plus the adjusted risk ratio of one binary exposure."""
+def estimate(d: pd.DataFrame, outcome: str, col: str, covars: tuple[str, ...] = COVARS, cluster: str = "target") -> dict:
+    """Description plus the adjusted risk ratio of one binary exposure, errors clustered by `cluster`."""
     desc = describe(d, outcome, col)
     if not estimable(desc):
         return {"feature": col, **desc}
-    return {"feature": col, **desc, **coef(poisson(d, outcome, [col], covars), col)}
+    return {"feature": col, **desc, **coef(poisson(d, outcome, [col], covars, cluster), col)}
 
 
-def adjusted(d: pd.DataFrame, outcome: str, exposure: list[str], covars: tuple[str, ...] = COVARS) -> dict:
+def adjusted(d: pd.DataFrame, outcome: str, exposure: list[str], covars: tuple[str, ...] = COVARS,
+             cluster: str = "target") -> dict:
     """Risk ratio of the first exposure from a model holding all of them, when it is estimable."""
     if not estimable(describe(d, outcome, exposure[0])):
         return {}
-    return coef(poisson(d, outcome, exposure, covars), exposure[0])
+    return coef(poisson(d, outcome, exposure, covars, cluster), exposure[0])
 
 
 def levels_vs_g0(d: pd.DataFrame) -> dict:

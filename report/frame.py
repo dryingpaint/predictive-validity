@@ -15,6 +15,11 @@ import psycopg2
 from dotenv import load_dotenv
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+class StandAside(Exception):
+    """Raised by a step's main() when the database is not the one its results were registered on (a programme build
+    other than the one a dated comment fixed): the runner keeps the step's cached outputs and carries on."""
 load_dotenv(os.path.join(REPO, ".env"))
 
 ACTIVE = ("RECRUITING", "ACTIVE_NOT_RECRUITING", "ENROLLING_BY_INVITATION", "NOT_YET_RECRUITING")

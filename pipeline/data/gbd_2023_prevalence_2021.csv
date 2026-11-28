@@ -1,0 +1,300 @@
+population_group_id,population_group_name,measure_id,measure_name,location_id,location_name,sex_id,sex_name,age_id,age_name,cause_id,cause_name,metric_id,metric_name,year,val,upper,lower
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,627,Rheumatoid arthritis,3,Rate,2021,226.62831599573,257.44122994040004,203.20977824167
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,630,Low back pain,3,Rate,2021,7918.483397942449,8814.40305980047,6946.19652104137
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,631,Neck pain,3,Rate,2021,2606.8550421139003,3231.2524441942105,2059.18633270877
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,632,Gout,3,Rate,2021,716.5049121094399,891.78437186829,571.65598248966
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,639,Other musculoskeletal disorders,3,Rate,2021,6350.75431876852,7244.89401063468,5558.13963179521
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,642,Neural tube defects,3,Rate,2021,14.34311681089,16.59833797241,12.23669935756
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,643,Congenital heart anomalies,3,Rate,2021,200.22220016940997,220.83818193898,177.45319194494002
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,644,Orofacial clefts,3,Rate,2021,52.60105042886,64.34910529879001,42.79586402128
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,645,Down syndrome,3,Rate,2021,20.346450762699998,24.57450642903,17.105005219899997
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,721,Self-harm by firearm,3,Rate,2021,12.14303415063,15.0892668348,10.24976326673
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,725,Physical violence by firearm,3,Rate,2021,65.27998387590999,80.73103102623,54.67843446765001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,726,Physical violence by sharp object,3,Rate,2021,285.70799566553,344.4078703756,235.53544898085
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,727,Physical violence by other means,3,Rate,2021,698.74465596889,813.48478364051,621.2939643607799
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,729,Exposure to forces of nature,3,Rate,2021,118.37302102273999,192.32948566302,74.8959650513
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,837,Thalassemias trait,3,Rate,2021,4492.946845436631,5089.47175602715,3967.95093275564
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,838,Sickle cell trait,3,Rate,2021,5229.36591861544,5783.11904663658,4741.098494809879
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,839,G6PD trait,3,Rate,2021,14076.153818032039,14523.44758438785,13618.58472053848
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,842,Environmental heat and cold exposure,3,Rate,2021,172.14094607047,194.33143143137002,147.79670472473
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,843,Ebola,3,Rate,2021,0.0007650065,0.00201547307,0.00022665116
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,845,Acute lymphoid leukemia,3,Rate,2021,7.08266316109,12.206336505329999,3.8122557230500003
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,846,Chronic lymphoid leukemia,3,Rate,2021,9.99595702821,13.08659177531,7.54125940261
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,847,Acute myeloid leukemia,3,Rate,2021,5.11607370865,10.85845164703,2.0820769926200002
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,848,Chronic myeloid leukemia,3,Rate,2021,1.7671064685300002,2.91346176397,0.95786198693
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,849,Non-melanoma skin cancer (squamous-cell carcinoma),3,Rate,2021,29.396894187239997,33.38380738821,25.42986417819
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1017,Osteoarthritis other,3,Rate,2021,790.4291164599,1023.8381279097,624.09644696545
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1024,Ulcerative colitis,3,Rate,2021,30.402195439449997,36.60129180985,25.08688742642
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1025,Crohn's disease,3,Rate,2021,16.769997354,20.55325894269,13.639581025650001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1026,Total burden related to hepatitis B,3,Rate,2021,3612.8370885159597,3925.44909872488,3349.43722774143
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1027,Total burden related to hepatitis C,3,Rate,2021,1659.33471898054,2005.72210208646,1383.13192332141
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1028,Total burden related to Non-alcoholic fatty liver disease (NAFLD),3,Rate,2021,15546.1203212403,17196.67178244225,14289.93408687633
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1029,Total cancers,3,Rate,2021,1103.71192659503,1298.78271505427,950.05579836433
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1032,Thyroid diseases,3,Rate,2021,5316.25826522393,6514.8579741431595,4226.441367095899
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1048,COVID-19,3,Rate,2021,3468.5039904595696,4575.13829694819,2690.34604961683
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1059,Total Cancers excluding Non-melanoma skin cancer,3,Rate,2021,1066.43972760785,1259.38987923272,912.36994597687
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1160,Other direct maternal disorders,3,Rate,2021,52.74153858815,66.83257303674,40.17561772692
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1161,Other digestive diseases,3,Rate,2021,57.178806904610006,64.02074077531,51.286535551149996
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1162,Other vision loss,3,Rate,2021,659.6263985069301,731.7199247172999,581.7677637183899
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1163,Self-harm by other specified means,3,Rate,2021,208.22534335639997,239.39932262774002,185.55732971029
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1164,Other benign and in situ neoplasms,3,Rate,2021,1928.69154827183,2262.05988593944,1631.57705613954
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,402,Acute hepatitis B,3,Rate,2021,101.21224460139,121.8545746283,84.14192641522
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,403,Acute hepatitis C,3,Rate,2021,10.52899515971,11.89275157592,9.2946357968
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,404,Acute hepatitis E,3,Rate,2021,48.32999595765,54.489887315439994,42.46892975896
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,405,Leprosy,3,Rate,2021,5.15462028371,5.93685426688,4.5244185751
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,408,Other unspecified infectious diseases,3,Rate,2021,1228.28935200804,1471.1059496826801,1071.74559053923
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,411,Esophageal cancer,3,Rate,2021,12.3875612017,13.48559905349,11.206623550349999
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,414,Stomach cancer,3,Rate,2021,31.99577621495,40.42966628366,25.900766954410003
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,418,Liver cancer due to hepatitis B,3,Rate,2021,3.6788847780499996,4.32248561487,3.12282192319
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,419,Liver cancer due to hepatitis C,3,Rate,2021,2.7769274630600003,3.3468784203700004,2.28506203924
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,420,Liver cancer due to alcohol use,3,Rate,2021,1.7947513238900001,2.34126889785,1.41605178132
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,421,Liver cancer due to other causes,3,Rate,2021,0.47960132053000004,0.60156313815,0.36269924034
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,423,Larynx cancer,3,Rate,2021,15.083525901109999,18.10488526876,12.71479726197
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,426,"Tracheal, bronchus, and lung cancer",3,Rate,2021,40.29290376455,46.10542988131,35.10159574309
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,429,Breast cancer,3,Rate,2021,259.08985862917,285.33677659187,233.94476629731003
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,432,Cervical cancer,3,Rate,2021,55.51993037574,74.19205066513,42.55118001415
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,435,Uterine cancer,3,Rate,2021,45.022425468289995,53.0253739649,37.91196459788
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,438,Prostate cancer,3,Rate,2021,127.84939181048999,150.90050024819,108.35074901542
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,441,Colon and rectum cancer,3,Rate,2021,141.25192851317001,161.47171695885,122.36399130948
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,546,Multiple sclerosis,3,Rate,2021,24.9374096445,27.257867650690002,22.77469309302
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,547,Migraine,3,Rate,2021,14439.55545322061,16298.13679937755,12470.10984482459
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,548,Tension-type headache,3,Rate,2021,25679.856370055433,28940.41822504641,22707.065848376427
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,554,Motor neuron disease,3,Rate,2021,3.48266430002,3.99294421446,3.01820845263
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,557,Other neurological disorders,3,Rate,2021,0.24220865116,0.32328114875,0.18713100822
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,559,Schizophrenia,3,Rate,2021,330.8911622032,391.68388613796003,277.12620219236004
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,560,Alcohol use disorders,3,Rate,2021,1431.05759363658,1641.0430348678601,1253.27355372622
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,562,Opioid use disorders,3,Rate,2021,210.09428755906,238.53216286307003,183.44327529537
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,563,Cocaine use disorders,3,Rate,2021,59.40616618536,74.16863132495999,48.35644004372
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,564,Amphetamine use disorders,3,Rate,2021,116.70078576704,154.00499761358,86.72703079281
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,565,Cannabis use disorders,3,Rate,2021,272.63355331799,350.34027504876,204.30841562355
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,566,Other drug use disorders,3,Rate,2021,18.64976783035,23.32470081597,14.797445607630001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,348,Visceral leishmaniasis,3,Rate,2021,0.0690081791,0.08801883558,0.059669408539999996
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,349,Cutaneous and mucocutaneous leishmaniasis,3,Rate,2021,151.87210938879,181.88811908771,132.08184289787002
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,350,African trypanosomiasis,3,Rate,2021,0.01908459716,0.02743245481,0.01352131416
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,351,Schistosomiasis,3,Rate,2021,2359.42990462634,3004.84548983765,1775.7652193658698
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,352,Cysticercosis,3,Rate,2021,55.15904233317,74.07075098944999,39.06618929865
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,353,Cystic echinococcosis,3,Rate,2021,5.97508766381,7.356708563690001,4.6620679084
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,354,Lymphatic filariasis,3,Rate,2021,822.1672334047701,972.8610361878399,697.6566283555101
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,355,Onchocerciasis,3,Rate,2021,166.11940851359,188.89976131129998,146.87428875647
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,356,Trachoma,3,Rate,2021,18.20860546327,23.12548290618,13.770567465020001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,357,Dengue,3,Rate,2021,9.53358014954,14.20449956646,6.07573427225
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,358,Yellow fever,3,Rate,2021,0.027790072510000003,0.05861235743,0.01084986617
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,359,Rabies,3,Rate,2021,0.00856937802,0.017682584,0.0034679240100000002
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,361,Ascariasis,3,Rate,2021,4376.78734982114,5413.35487248435,3486.82021884996
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,362,Trichuriasis,3,Rate,2021,4692.95155844715,5662.91642086478,3839.2372356108
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,363,Hookworm disease,3,Rate,2021,1462.8895232759598,1813.9334875685702,1193.0175359812201
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,568,Major depressive disorder,3,Rate,2021,2909.78374468723,3590.9864788648597,2406.35081243201
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,569,Dysthymia,3,Rate,2021,1078.3596512377799,1262.31635831737,914.29074087625
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,570,Bipolar disorder,3,Rate,2021,439.16687438758,520.9283003809401,374.4172762164
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,571,Anxiety disorders,3,Rate,2021,4883.12577336321,6136.4314936344,3858.7574019938
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,573,Anorexia nervosa,3,Rate,2021,48.42034187014,65.34098601769,34.30898700447
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,574,Bulimia nervosa,3,Rate,2021,174.3248981111,247.26311284204002,123.68157805916
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,670,Glaucoma,3,Rate,2021,82.72764966682999,96.53555344516,69.23013645054
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,671,Cataract,3,Rate,2021,1262.43513091992,1434.95099389278,1115.7947581835301
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,672,Age-related macular degeneration,3,Rate,2021,77.01666927164,91.43147819373,64.82160426200001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,674,Age-related and other hearing loss,3,Rate,2021,20507.81190744275,21348.060209649862,19714.5512016592
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,679,Other sense organ diseases,3,Rate,2021,1558.25976662276,1860.9807433756498,1342.55766196346
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,681,Caries of deciduous teeth,3,Rate,2021,6707.0381406264105,7870.69890093683,5694.927726322279
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,364,Food-borne trematodiases,3,Rate,2021,569.2523503495399,642.71875502367,517.4039479013001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,365,Other neglected tropical diseases,3,Rate,2021,1480.25957477749,1791.98507036912,1285.6714974715799
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,367,Maternal hemorrhage,3,Rate,2021,10.07342346976,16.29621085707,4.05219732679
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,368,Maternal sepsis and other maternal infections,3,Rate,2021,18.09301134369,24.089412959580002,13.18874199348
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,493,Ischemic heart disease,3,Rate,2021,2874.9791236924602,3234.57516568968,2557.64747060325
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,495,Ischemic stroke,3,Rate,2021,940.87001757525,1016.08663890604,868.7702278965801
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,496,Intracerebral hemorrhage,3,Rate,2021,209.75296681584,228.00833484372998,192.18581702247
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,497,Subarachnoid hemorrhage,3,Rate,2021,125.55702242996,139.52236552577,113.00972245781001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,498,Hypertensive heart disease,3,Rate,2021,160.59826875107,201.48284739196,127.68549299850001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,500,Atrial fibrillation and flutter,3,Rate,2021,708.2071261357901,860.81735814315,564.36344115335
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,502,Lower extremity peripheral arterial disease,3,Rate,2021,1467.49836477161,1880.7174908497998,1136.97871182785
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,503,Endocarditis,3,Rate,2021,5.08081238943,5.79637349436,4.42009015203
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,507,Other cardiovascular and circulatory diseases,3,Rate,2021,1046.92609452704,1310.6947174376398,817.09861549625
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,509,Chronic obstructive pulmonary disease,3,Rate,2021,2577.72651918618,2788.38659884052,2330.2148986829498
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,682,Caries of permanent teeth,3,Rate,2021,28356.61160515577,32988.34032720568,24807.620754998312
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,683,Periodontal diseases,3,Rate,2021,13486.19610579842,15559.31720685172,11359.342066971261
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,684,Edentulism,3,Rate,2021,4510.0740536625,5329.16723071261,3905.5048302588298
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,685,Other oral disorders,3,Rate,2021,1908.81219602836,1983.67752009801,1835.2769929323
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,690,Pedestrian road injuries,3,Rate,2021,489.57386294699995,562.50681524861,430.75651530084
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,691,Cyclist road injuries,3,Rate,2021,313.51462023608,364.40006579927,267.3183878122
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,692,Motorcyclist road injuries,3,Rate,2021,371.27165393389,425.15323404283,315.24282019025003
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,693,Motor vehicle road injuries,3,Rate,2021,593.28444771008,684.73936320551,516.23953658677
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,694,Other road injuries,3,Rate,2021,93.2004649048,109.20359613698001,81.75190627820001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,959,Invasive Non-typhoidal Salmonella (iNTS),3,Rate,2021,0.17042327533,0.46657553398,0.027398439009999997
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,964,"Myelodysplastic, myeloproliferative, and other hematopoietic neoplasms",3,Rate,2021,44.38904251892,51.517942821990005,38.26990690003
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,965,Benign and in situ intestinal neoplasms,3,Rate,2021,96.85400017923,115.10839583072001,79.93697310123001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,511,Silicosis,3,Rate,2021,10.80299128635,13.66622682555,8.71285702028
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,512,Asbestosis,3,Rate,2021,0.6556629120099999,0.80043630194,0.54215361472
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,513,Coal workers pneumoconiosis,3,Rate,2021,1.43072496034,1.80853473885,1.15657193859
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,514,Other pneumoconiosis,3,Rate,2021,1.05071753512,1.2884915452699999,0.8683723031299999
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,515,Asthma,3,Rate,2021,4382.80197355667,5151.7778787611,3752.3256448534403
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,516,Interstitial lung disease and pulmonary sarcoidosis,3,Rate,2021,56.79677563349001,63.93522131572001,51.20838937856
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,609,Premenstrual syndrome,3,Rate,2021,12241.19943693473,14537.100186730058,10026.898402489
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,612,Other gynecological diseases,3,Rate,2021,6613.12652336731,7616.4399609625,5637.16705073302
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,614,Thalassemias,3,Rate,2021,17.07945644519,20.054389847,14.543401083640001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,615,Sickle cell disorders,3,Rate,2021,95.48837633032,114.97091771934,81.19295678152
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,616,G6PD deficiency,3,Rate,2021,5609.9363835699305,6094.26913197698,5153.87346114611
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,618,Other hemoglobinopathies and hemolytic anemias,3,Rate,2021,1632.3017886696298,1946.66240365358,1414.55038528215
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,625,"Other endocrine, metabolic, blood, and immune disorders",3,Rate,2021,537.83475264589,615.66178517992,463.17572838095
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,966,Benign and in situ cervical and uterine neoplasms,3,Rate,2021,56.312649851969994,69.28509513849,42.53089489128
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,968,Non-rheumatic calcific aortic valve disease,3,Rate,2021,167.44138075183,192.10920047553,143.28031989596
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,969,Non-rheumatic degenerative mitral valve disease,3,Rate,2021,195.6588361955,209.7216881428,182.29613206675
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,970,Other non-rheumatic valve diseases,3,Rate,2021,0.14828108797,0.17616009203,0.12231774116
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,971,Nonalcoholic fatty liver disease including cirrhosis,3,Rate,2021,15545.42560746551,17196.00488553415,14289.294217248798
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,975,Diabetes mellitus type 1,3,Rate,2021,104.38993909873001,120.49241467686001,89.76547709581999
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,976,Diabetes mellitus type 2,3,Rate,2021,6629.37279147627,7135.038574685849,6129.58064600576
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,977,Atopic dermatitis,3,Rate,2021,3198.36797049214,3340.8279293092396,3072.80463660545
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,978,Contact dermatitis,3,Rate,2021,1869.59045559964,2349.89749043067,1495.84219543059
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,979,Seborrhoeic dermatitis,3,Rate,2021,329.28588511045,351.24602541696004,309.64808162189
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,369,Maternal hypertensive disorders,3,Rate,2021,36.62443442293,53.1540596865,23.435591957
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,370,Maternal obstructed labor and uterine rupture,3,Rate,2021,16.02863021605,20.76049235498,12.430783402360001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,374,Ectopic pregnancy,3,Rate,2021,0.24646515979999997,0.35467369094,0.16432176893
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,381,Neonatal preterm birth,3,Rate,2021,1556.2600472923,1745.63565952639,1350.1150191219099
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,382,Neonatal encephalopathy due to birth asphyxia and trauma,3,Rate,2021,239.62566907269,274.5294873568,206.48581873863003
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,383,Neonatal sepsis and other neonatal infections,3,Rate,2021,123.15381457977,153.92768354814,95.08074967559
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,384,Hemolytic disease and other neonatal jaundice,3,Rate,2021,69.20322886571,75.81313084720999,62.30237576015
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,387,Protein-energy malnutrition,3,Rate,2021,1621.39710851424,1787.7662604210202,1480.54498530245
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,388,Iodine deficiency,3,Rate,2021,2273.75571012072,2732.13567698216,1855.84770151275
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,389,Vitamin A deficiency,3,Rate,2021,5989.89149486493,9277.525984959,4144.67701995364
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,390,Dietary iron deficiency,3,Rate,2021,17914.32053427046,21476.72134725429,15561.56581135363
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,394,Syphilis,3,Rate,2021,894.81202228601,1092.4492016152099,720.15088835463
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,395,Chlamydial infection,3,Rate,2021,1111.44052111467,1505.8916418523202,844.4869085874499
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,396,Gonococcal infection,3,Rate,2021,290.77422207455,406.14364699773995,213.65731877794
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,397,Trichomoniasis,3,Rate,2021,1718.65144869356,2234.65670479547,1267.76611566705
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,398,Genital herpes,3,Rate,2021,10335.12294358964,12018.04018024929,8709.82494522042
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,399,Other sexually transmitted infections,3,Rate,2021,157.43377431695,191.94668037553,130.64422313619
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,401,Acute hepatitis A,3,Rate,2021,141.27790489544,152.51562194203999,131.94446045712002
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,522,Chronic hepatitis B including cirrhosis,3,Rate,2021,3507.94595913652,3816.3301712703696,3255.2952367098096
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,523,Chronic hepatitis C including cirrhosis,3,Rate,2021,1646.02879635777,1991.0394208840598,1370.39331963716
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,524,Cirrhosis due to alcohol,3,Rate,2021,39.28145508464,47.23008440777,33.196536857030004
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,525,Cirrhosis due to other causes,3,Rate,2021,39.33221787314,46.11591199766,33.39249762883
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,527,Peptic ulcer disease,3,Rate,2021,83.24660895052,97.71201796146,72.38535710865
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,528,Gastritis and duodenitis,3,Rate,2021,489.89316079979,587.50782722222,394.37023620976
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,529,Appendicitis,3,Rate,2021,11.18709491679,13.479698372480001,9.28518628845
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,530,Paralytic ileus and intestinal obstruction,3,Rate,2021,6.6171100133900005,6.815633911749999,6.42464418272
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,531,"Inguinal, femoral, and abdominal hernia",3,Rate,2021,193.83015437926,223.06743246603003,163.95449747567
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,533,Vascular intestinal disorders,3,Rate,2021,2.09394820871,2.2936720248799998,1.9068249719300001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,534,Gallbladder and biliary diseases,3,Rate,2021,3443.14825627467,3997.0031292888702,2992.59299471681
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,535,Pancreatitis,3,Rate,2021,75.65545861649001,99.16744432759,57.097918943020005
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,536,Gastroesophageal reflux disease,3,Rate,2021,10423.08672001984,11697.72645089489,9309.28649808329
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,543,Alzheimer's disease and other dementias,3,Rate,2021,704.22125979522,802.9360854008801,606.5293929775701
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,544,Parkinson's disease,3,Rate,2021,136.45496420902,158.60469654755,118.11544738502
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,545,Idiopathic epilepsy,3,Rate,2021,311.25027643185,382.91530074246003,247.56112461107
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,646,Turner syndrome,3,Rate,2021,6.76565112912,8.79791661774,5.3750522707999995
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,647,Klinefelter syndrome,3,Rate,2021,14.20439760708,17.85044357344,10.911368171320001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,648,Other chromosomal abnormalities,3,Rate,2021,45.06412699623,51.66996687674,39.930218729509996
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,649,Congenital musculoskeletal and limb anomalies,3,Rate,2021,235.15561154808998,287.64059141714,190.05420413186002
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,650,Urogenital congenital anomalies,3,Rate,2021,81.22207300005,101.81354583049,65.97260941182999
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,651,Digestive congenital anomalies,3,Rate,2021,41.04133608342,49.29524183025,32.83407367193
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,652,Other congenital birth defects,3,Rate,2021,162.52659750133,255.67880084668002,88.20405311872
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,655,Psoriasis,3,Rate,2021,375.39677288780996,386.05267710845,363.08746793615
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,656,Cellulitis,3,Rate,2021,9.78576172124,10.38380716733,9.21319429217
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,657,Pyoderma,3,Rate,2021,243.57802296853,249.58229181075998,238.04219959333
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,658,Scabies,3,Rate,2021,1541.68131873944,1758.39950891119,1341.74262305658
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,659,Fungal skin diseases,3,Rate,2021,4368.97426834706,5217.82763476011,3650.4222883695397
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,660,Viral skin diseases,3,Rate,2021,732.34875710478,759.4003951271,702.18092420428
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,661,Acne vulgaris,3,Rate,2021,654.12948114204,776.68333390557,548.25653079811
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,662,Alopecia areata,3,Rate,2021,44.11451054458,45.397115938519995,42.90601342222
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,663,Pruritus,3,Rate,2021,131.47941190521,146.54212750818,118.0633247268
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,664,Urticaria,3,Rate,2021,1048.83278394848,1182.60467075704,932.66147930546
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,665,Decubitus ulcer,3,Rate,2021,7.62139335178,8.4109292804,6.93196715896
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,668,Other skin and subcutaneous diseases,3,Rate,2021,2322.44704651745,2366.89166779578,2274.49682058314
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,850,Non-melanoma skin cancer (basal-cell carcinoma),3,Rate,2021,7.875304799939999,9.38564220104,6.68591317886
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,854,Police conflict and executions,3,Rate,2021,175.77679506451,285.09127261595,110.80902188255
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,934,Drug-susceptible tuberculosis,3,Rate,2021,237.86363794942,269.05760409893,204.61927575207
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,935,Zika virus,3,Rate,2021,0.03585681599,0.08352227228,0.01509899973
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,936,Guinea worm disease,3,Rate,2021,8.319314e-05,0.00012823213,4.4089780000000005e-05
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,938,Alcoholic cardiomyopathy,3,Rate,2021,6.85652045612,8.07790917446,5.76133472238
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,940,Electrocution,3,Rate,2021,49.54297141163,58.55511412209,41.99259070435
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,942,Myocarditis,3,Rate,2021,4.77368855025,5.69864733151,3.97671226942
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,943,Other leukemia,3,Rate,2021,4.95898062629,6.583919739590001,3.89656175298
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,944,Other cardiomyopathy,3,Rate,2021,53.48198686281,62.40253925845,43.44311968239
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,945,Conflict and terrorism,3,Rate,2021,837.7094624052099,1317.2406023501298,530.54138574584
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,946,Multidrug-resistant tuberculosis without extensive drug resistance,3,Rate,2021,10.7069149538,25.134598103280002,4.68900549551
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,947,Extensively drug-resistant tuberculosis,3,Rate,2021,0.39016496959,0.80547182356,0.19972566173
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,948,HIV/AIDS - Drug-susceptible Tuberculosis,3,Rate,2021,21.555214022479998,24.31732295514,18.61126714629
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,949,HIV/AIDS - Multidrug-resistant Tuberculosis without extensive drug resistance,3,Rate,2021,0.9046361922599999,1.8484858925,0.46146510956000003
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,950,HIV/AIDS - Extensively drug-resistant Tuberculosis,3,Rate,2021,0.02302685084,0.03915431647,0.013115567740000002
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,954,Latent tuberculosis infection,3,Rate,2021,23718.28659855902,26152.29934316651,21413.31474456898
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,486,Multiple myeloma,3,Rate,2021,6.459186518459999,9.65432824624,4.49013787484
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,489,Other malignant neoplasms,3,Rate,2021,24.477278149830003,30.499317572040002,19.60920827528
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,492,Rheumatic heart disease,3,Rate,2021,669.5670941628,799.37787980976,538.84617414382
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,575,Autism spectrum disorders,3,Rate,2021,641.5017133243599,1087.0986471915899,345.64783967168
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,578,Attention-deficit/hyperactivity disorder,3,Rate,2021,1074.12069960888,1463.79156798949,761.4289120451699
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,579,Conduct disorder,3,Rate,2021,488.77881272034,616.9494688375501,361.50705371321
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,582,Idiopathic developmental intellectual disability,3,Rate,2021,868.22327292432,1542.50769550753,432.74438097399
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,585,Other mental disorders,3,Rate,2021,1575.0159735088298,1962.93045869547,1249.36932034876
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,588,Acute glomerulonephritis,3,Rate,2021,0.44878538812,0.52280067806,0.38448103282999996
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,591,Chronic kidney disease due to hypertension,3,Rate,2021,663.22963075785,706.4863425216901,623.63208590786
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,592,Chronic kidney disease due to glomerulonephritis,3,Rate,2021,608.24565537327,677.29144159806,558.88766150627
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,593,Chronic kidney disease due to other and unspecified causes,3,Rate,2021,6756.6028429489,7271.071613766029,6334.583689933081
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,595,Urinary tract infections and interstitial nephritis,3,Rate,2021,104.0072720852,115.41602497944,94.25405248315
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,596,Urolithiasis,3,Rate,2021,51.25600756143999,61.238916786409995,42.88559943489
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,597,Benign prostatic hyperplasia,3,Rate,2021,1444.24566851007,1843.6884781665199,1144.73627721525
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,598,Male infertility,3,Rate,2021,692.98315452057,1096.14511050381,402.79010475593
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,604,Uterine fibroids,3,Rate,2021,1511.3689386814,1933.7134260828,1154.11820966959
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,605,Polycystic ovarian syndrome,3,Rate,2021,875.0862509984299,1186.53144391079,625.7435579870801
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,606,Female infertility,3,Rate,2021,1386.5698742230602,2525.01675504354,735.30261091427
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,607,Endometriosis,3,Rate,2021,247.7221168948,322.25174490103,184.9827966753
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,608,Genital prolapse,3,Rate,2021,1572.7559096363998,1857.2675031253798,1301.8698616481001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,695,Other transport injuries,3,Rate,2021,186.47089129416,225.65099214139,157.75786975815
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,697,Falls,3,Rate,2021,14471.02423797019,16404.069843160298,12945.75889300892
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,698,Drowning,3,Rate,2021,27.81012535962,31.82471658144,24.1687815281
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,699,"Fire, heat, and hot substances",3,Rate,2021,1476.46672916599,1742.2827656164802,1261.43460950419
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,701,Poisoning by carbon monoxide,3,Rate,2021,11.45721448891,13.782559492999999,9.28173140229
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,703,Poisoning by other means,3,Rate,2021,45.44873071074,56.89028831297001,38.755003900860004
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,705,Unintentional firearm injuries,3,Rate,2021,84.69273684827999,104.16872830957,73.79711227275
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,707,Other exposure to mechanical forces,3,Rate,2021,3068.6494661030897,3476.59220759065,2685.76968752481
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,708,Adverse effects of medical treatment,3,Rate,2021,12.00967785263,14.84115205782,9.11207116327
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,710,Venomous animal contact,3,Rate,2021,80.39429427290999,94.34749601369,67.84460916947
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,711,Non-venomous animal contact,3,Rate,2021,308.86925792776,361.48875063052,264.91980651579
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,713,Pulmonary aspiration and foreign body in airway,3,Rate,2021,25.398539462040002,30.24195813476,20.7579450054
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,714,Foreign body in eyes,3,Rate,2021,77.33671601592,117.92170867483999,45.69784164764
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,715,Foreign body in other body part,3,Rate,2021,276.85469406712,348.62631558564,225.21118749891997
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,716,Other unintentional injuries,3,Rate,2021,4157.63845311316,5026.6527004307,3382.43136610749
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,995,Maternal abortion and miscarriage,3,Rate,2021,6.7849562807899995,9.812665053189999,4.23254903508
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,996,Liver cancer due to NASH,3,Rate,2021,0.6947137747800001,0.89084852231,0.53242488189
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,997,Chronic kidney disease due to diabetes mellitus type 1,3,Rate,2021,45.68853082728,51.606149747690004,40.28782025429
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,998,Chronic kidney disease due to diabetes mellitus type 2,3,Rate,2021,1896.04481609884,2027.89035966072,1761.29531050978
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,999,Refraction disorders,3,Rate,2021,1611.4242901843797,1779.01753126652,1459.53329414146
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1000,Near vision loss,3,Rate,2021,6860.13304733458,9257.7695695283,5119.9242120362305
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1004,Pulmonary Arterial Hypertension,3,Rate,2021,2.42799346807,3.0131284216800003,1.95868294236
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1005,Hepatoblastoma,3,Rate,2021,0.20293643195,0.4719525316,0.10047710317999999
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1006,Burkitt lymphoma,3,Rate,2021,0.8357162044700001,1.7599740702999997,0.38302002991000006
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1007,Other non-Hodgkin lymphoma,3,Rate,2021,42.79526817312,66.96776107493,25.2263367327
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1009,Retinoblastoma,3,Rate,2021,0.6050618067,1.0159312788400001,0.33440904197
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1010,Other eye cancers,3,Rate,2021,1.5638655375,2.24627179234,1.06183799567
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1011,Soft tissue and other extraosseous sarcomas,3,Rate,2021,8.4515366388,10.76082362946,6.634617316970001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1012,Malignant neoplasm of bone and articular cartilage,3,Rate,2021,8.74502387063,12.05962169993,6.6550486949500005
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1013,Neuroblastoma and other peripheral nervous cell tumors,3,Rate,2021,1.0070954350599999,1.9041515173799999,0.43422504546999996
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1014,Osteoarthritis hip,3,Rate,2021,455.58311481767,588.41296739306,343.85167673885
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1015,Osteoarthritis knee,3,Rate,2021,4754.30431806862,5433.44574241787,4070.30689640535
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,1016,Osteoarthritis hand,3,Rate,2021,2459.40744726113,3101.3783388020097,1868.8723190908
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,300,HIV/AIDS resulting in other diseases,3,Rate,2021,491.27465538263,511.25873685,467.6752438292
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,302,Diarrheal diseases,3,Rate,2021,725.09003005121,820.58054415843,645.9094400082399
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,319,Typhoid fever,3,Rate,2021,5.34895457134,8.50707609066,3.00199680945
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,320,Paratyphoid fever,3,Rate,2021,1.03958293131,1.6409259405199998,0.55509473847
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,322,Lower respiratory infections,3,Rate,2021,56.081259793120005,59.33224323078999,53.56507908127
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,328,Upper respiratory infections,3,Rate,2021,2265.51691806247,2521.5252538770696,2048.6723543835897
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,329,Otitis media,3,Rate,2021,1540.74293785355,1788.97863694275,1325.8261036603399
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,332,Meningitis,3,Rate,2021,83.41182572439,105.07411765444999,68.49979587968
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,337,Encephalitis,3,Rate,2021,66.85412821261,84.97320475209,45.11251571453
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,338,Diphtheria,3,Rate,2021,0.03879537653,0.048380045690000005,0.031013697129999997
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,339,Pertussis,3,Rate,2021,12.525866594050001,16.251286169409997,9.25944091739
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,340,Tetanus,3,Rate,2021,0.48407375786999995,0.6217070182300001,0.35566353457
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,341,Measles,3,Rate,2021,2.30873380911,4.58803811226,0.9446502691900001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,342,Varicella and herpes zoster,3,Rate,2021,61.762640229649996,73.19251629835999,52.09906256419
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,345,Malaria,3,Rate,2021,2176.3191218975903,2350.30366197885,2045.66995456348
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,346,Chagas disease,3,Rate,2021,134.85029863984,149.53636668017,120.98002644935
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,444,Lip and oral cavity cancer,3,Rate,2021,18.356131368270002,22.27588110236,15.219873390639998
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,447,Nasopharynx cancer,3,Rate,2021,9.90868283998,13.08350749121,7.46354827596
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,450,Other pharynx cancer,3,Rate,2021,3.8755549915700005,4.61052194809,3.1765876843000003
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,453,Gallbladder and biliary tract cancer,3,Rate,2021,3.76972940538,4.40765787442,3.25456287607
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,456,Pancreatic cancer,3,Rate,2021,6.38971659807,7.1196230065999995,5.66546722111
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,459,Malignant skin melanoma,3,Rate,2021,28.24420466325,35.25240775678,21.64881994928
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,465,Ovarian cancer,3,Rate,2021,15.93853254824,18.94698197545,13.63935999286
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,468,Testicular cancer,3,Rate,2021,9.00633025751,12.13154125823,6.260223985260001
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,471,Kidney cancer,3,Rate,2021,25.206192565410003,30.86418918478,20.9404396383
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,474,Bladder cancer,3,Rate,2021,37.51700069134,43.18732916507,32.28024834077
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,477,Brain and central nervous system cancer,3,Rate,2021,14.293573710759999,21.71305543788,9.50349293151
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,480,Thyroid cancer,3,Rate,2021,26.82105235477,34.66461673608,19.29276476703
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,483,Mesothelioma,3,Rate,2021,0.50475098445,0.58451334929,0.42656630616
+1,All Population,5,Prevalence,1,Global,3,Both,22,All ages,484,Hodgkin lymphoma,3,Rate,2021,4.62634432997,5.70789379394,3.80764198128

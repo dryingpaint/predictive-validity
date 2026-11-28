@@ -1,0 +1,28 @@
+{
+ "cutpoints": [
+  164.37305314732993,
+  796.2935736638328
+ ],
+ "min_targets": 15,
+ "estimable_by_targets": false,
+ "entries": 691,
+ "cells": {
+  "top_genetics": {
+   "entries": 74,
+   "targets": 33
+  },
+  "top_no_genetics": {
+   "entries": 409,
+   "targets": 233
+  },
+  "bottom_genetics": {
+   "entries": 15,
+   "targets": 12
+  },
+  "bottom_no_genetics": {
+   "entries": 193,
+   "targets": 143
+  }
+ },
+ "note": "target sets and Phase 2 entries only; outcome columns dropped before counting"
+}

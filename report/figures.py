@@ -1059,6 +1059,63 @@ def target_origin_routes():
     save(fig, "target_origin_routes")
 
 
+def polygenicity_tertiles():
+    """The polygenicity tertiles and the no-score group (report.polygenicity tertiles.csv): the share of Phase 2 and
+    3 entries that stopped because the target was not causal, and the share of Phase 2 entries that advanced, each
+    with its Wilson 95% range; and the genetics risk ratio on S4 within the top and bottom tertiles (numbers.json),
+    drawn where that tertile's cells pass the P3 floor. The tertiles the tests compare are blue."""
+    t = pd.read_csv(os.path.join(OUT, "polygenicity", "tertiles.csv")).set_index("tertile")
+    n = json.load(open(os.path.join(OUT, "polygenicity", "numbers.json")))
+    order = [g for g in ("top", "middle", "bottom", "none") if g in t.index]
+    labels = {"top": "Top tertile (most polygenic)", "middle": "Middle tertile",
+              "bottom": "Bottom tertile (least polygenic)", "none": "No score"}
+    compared = {"top", "bottom"}
+    y = {g: -i for i, g in enumerate(order)}
+    fig, axes = plt.subplots(1, 3, figsize=(12, 0.5 * len(order) + 1.4), sharey=True,
+                             gridspec_kw={"width_ratios": [1.4, 1.4, 1], "wspace": 0.45})
+    panels = (("not_causal", "entries", "Stopped: target not causal\n(Phase 2 and 3 entries, 95% range)"),
+              ("s4", "phase2_entries", "Advanced from Phase 2\n(Phase 2 entries, 95% range)"))
+    for ax, (num, den, title) in zip(axes[:2], panels):
+        ranges = {g: proportion_confint(int(t.loc[g, num]), int(t.loc[g, den]), method="wilson") for g in order}
+        right = max(hi for _, hi in ranges.values()) * 100 + 2
+        for g in order:
+            k, m = int(t.loc[g, num]), int(t.loc[g, den])
+            lo, hi = ranges[g]
+            color = ACCENT if g in compared else MUTED
+            ax.plot([lo * 100, hi * 100], [y[g], y[g]], color=color, linewidth=2, solid_capstyle="round")
+            ax.plot(k / m * 100, y[g], "o", markersize=7, color=color)
+            ax.text(right, y[g], f"{k / m:.0%}", va="center", color=INK2, fontsize=9)
+            ax.text(right + 4, y[g], f"n={m:,}", va="center", color=INK2, fontsize=9)
+        ax.set_xlim(0, right)
+        ax.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(decimals=0))
+        style(ax)
+        ax.set_title(title, loc="left", color=INK, fontsize=10)
+    ax = axes[2]
+    p3 = n["tests"]["P3"]
+    within = p3.get("genetics_within", {})
+    for lev in ("top", "bottom"):
+        r = within.get(lev, {})
+        if "rr" in r:
+            ax.plot([np.log2(r["lo"]), np.log2(r["hi"])], [y[lev], y[lev]], color=INK2, linewidth=1)
+            ax.scatter(np.log2(r["rr"]), y[lev], s=28, color=ACCENT, zorder=3, edgecolors="none")
+            ax.text(max(np.log2(r["hi"]), 0) + 0.08, y[lev], f"{r['rr']:.2f}× (n={r['n_cohort']:,})", va="center",
+                    color=INK2, fontsize=8)
+        else:
+            sets = p3["cells"][f"{lev}_genetics"]["targets"]
+            ax.text(np.log2(0.4) + 0.08, y[lev], f"not estimable ({sets} target sets with support)", va="center",
+                    color=MUTED, fontsize=8)
+    ax.axvline(0, color=INK2, linewidth=1)
+    ticks = [0.5, 1, 2, 4]
+    ax.set_xticks(np.log2(ticks), [f"{x:g}×" for x in ticks])
+    ax.set_xlim(np.log2(0.4), np.log2(6))
+    style(ax)
+    ax.set_title("Advance with human genetic support\nagainst without, within tertile (adjusted)", loc="left",
+                 color=INK, fontsize=10)
+    axes[0].set_yticks([y[g] for g in order], [labels[g] for g in order], color=INK, fontsize=9)
+    axes[0].set_ylim(min(y.values()) - 0.6, 0.6)
+    save(fig, "polygenicity_tertiles")
+
+
 def main():
     history()
     loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA)
@@ -1089,6 +1146,8 @@ def main():
         target_origin_not_causal()
     if os.path.exists(os.path.join(OUT, "target_origin", "origin_counts.csv")):
         target_origin_share()
+    if os.path.exists(os.path.join(OUT, "polygenicity", "tertiles.csv")):
+        polygenicity_tertiles()
     if os.path.exists(os.path.join(OUT, "target_origin", "route_contrasts.csv")):
         target_origin_routes()
 
