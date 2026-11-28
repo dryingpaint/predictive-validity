@@ -370,8 +370,16 @@ def trial_key(t: dict) -> str:
     return t["nct_id"] or f"PMID:{t['pmid']}"
 
 
+def retrieved_source(source: str, retrieved: list[str]) -> str | None:
+    """The retrieved URL a cited source stands for: the same URL, or one it is a truncation of (the model shortens
+    long URLs); None when it stands for none."""
+    cited = llm.norm_url(source)
+    return next((u for u in retrieved if llm.norm_url(u) == cited), None) or next(
+        (u for u in retrieved if len(cited) >= 30 and llm.norm_url(u).startswith(cited)), None)
+
+
 def validate_combos(_payload: dict, out: dict) -> None:
-    retrieved = {llm.norm_url(u) for u in out.get("retrieved_urls", [])}
+    retrieved = out.get("retrieved_urls", [])
     if not retrieved:
         raise ValueError("no search returned anything, so no answer either way")
     keys = []
@@ -385,7 +393,7 @@ def validate_combos(_payload: dict, out: dict) -> None:
             raise ValueError(f"{name}: neither an NCT id nor a PMID")
         if not t["sources"]:
             raise ValueError(f"{name}: no sources")
-        unknown = [s for s in t["sources"] if llm.norm_url(s) not in retrieved]
+        unknown = [s for s in t["sources"] if retrieved_source(s, retrieved) is None]
         if unknown:
             raise ValueError(f"{name}: cites sources it did not retrieve: {unknown[:3]}")
         if not t["comparator_pathways"] or not t["added_pathway"].strip():
@@ -444,7 +452,8 @@ def combos(_args) -> None:
              t["n_randomised"], t["two_pathway_arm"], t["one_pathway_arm"], t["comparator_pathways"],
              t["added_pathway"], t["design"], t["relation"], t["primary_endpoint"], t["result"],
              t["effect_measure"], t["effect"], t["ci_low"], t["ci_high"], t["effect_text"], t["limited_by"],
-             t["stopped_for_safety"], t["sources"], t["quote"], decision_id)
+             t["stopped_for_safety"], sorted({retrieved_source(u, out["retrieved_urls"]) for u in t["sources"]}),
+             t["quote"], decision_id)
             for mondo, decision_id, out in llm.decisions(run_id) for t in out["trials"]]
     with llm.connect() as conn, conn.cursor() as cur:
         llm.record_method(cur, COMBO_METHOD, "Randomised trials of two pathways against one", task.system,

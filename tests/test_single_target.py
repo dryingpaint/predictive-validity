@@ -1,7 +1,7 @@
 import pytest
 
-from pipeline.single_target import (combination_beats_single, how_solved, stacked_rrr, validate_combos, validate_merge,
-                                    validate_pathway, why_not_one_drug)
+from pipeline.single_target import (combination_beats_single, how_solved, retrieved_source, stacked_rrr, validate_combos,
+                                    validate_merge, validate_pathway, why_not_one_drug)
 
 
 def test_one_drug_reaching_half_solves_the_disease():
@@ -98,6 +98,13 @@ def combo_output(**kw):
 def test_a_trial_read_from_retrieved_pages_is_valid():
     validate_combos({}, combo_output())
     validate_combos({}, combo_output(nct_id=None))
+
+
+def test_a_source_cut_short_stands_for_the_retrieved_url_it_begins():
+    long = "https://www.researchgate.net/publication/371368790_Plain_language_summary_of_results_from_ORION-11"
+    assert retrieved_source(long[:80], [long]) == long
+    assert retrieved_source("https://pubmed.ncbi.nlm.nih.gov/33891380/", [long]) is None
+    assert retrieved_source("https://www.r", [long]) is None
 
 
 @pytest.mark.parametrize("bad", [
