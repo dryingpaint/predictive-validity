@@ -1,6 +1,7 @@
 import pytest
 
-from pipeline.single_target import how_solved, stacked_rrr, validate_merge, validate_pathway, why_not_one_drug
+from pipeline.single_target import (how_solved, partner_works_alone, stacked_rrr, success_regimen, validate_merge,
+                                    validate_pathway, validate_regimen, why_not_one_drug)
 
 
 def test_one_drug_reaching_half_solves_the_disease():
@@ -59,3 +60,48 @@ def test_the_merge_maps_every_name_exactly_once():
         validate_merge(payload, {"names": [{"name": "IL-17", "canonical": ["IL-17"]}]})
     with pytest.raises(ValueError):
         validate_merge(payload, {"names": [{"name": "IL-17", "canonical": ["IL-17"]}, {"name": "IL17", "canonical": []}]})
+
+
+def test_one_success_tested_alone_makes_the_target_work_alone():
+    assert success_regimen(["combination", "add_on_background"], unread_approvals=1) == "alone"
+    assert success_regimen(["monotherapy"], unread_approvals=0) == "alone"
+
+
+def test_with_partner_needs_every_success_to_be_a_combination():
+    assert success_regimen(["combination", "combination"], unread_approvals=0) == "with_partner"
+
+
+def test_an_approval_with_no_trial_to_read_leaves_combinations_unknown():
+    assert success_regimen(["combination"], unread_approvals=1) == "unknown"
+    assert success_regimen([], unread_approvals=2) == "unknown"
+
+
+def test_partners_work_alone_only_when_every_one_does():
+    assert partner_works_alone([7, 8], works_alone={7, 8}) is True
+    assert partner_works_alone([7, 8], works_alone={7}) is False
+    assert partner_works_alone([7, None], works_alone={7}) is None
+    assert partner_works_alone([8, None], works_alone={7}) is False
+
+
+REGIMEN_RECORD = {"moiety_id": 1, "title": "Drug A plus drug B in psoriasis", "official_title": "", "summary": "",
+                  "arms": "- A+B (EXPERIMENTAL): A 10 mg and B 5 mg",
+                  "interventions": [{"name": "A", "type": "DRUG", "arms": [], "entities": [(1, "a")]},
+                                    {"name": "B", "type": "DRUG", "arms": [], "entities": [(2, "b")]}]}
+
+
+def test_a_combination_names_a_listed_partner_and_quotes_the_record():
+    validate_regimen(REGIMEN_RECORD, {"regimen": "combination", "partner": "B", "partner_moiety_id": 2,
+                                      "quote": "Drug A plus drug B"})
+    validate_regimen(REGIMEN_RECORD, {"regimen": "monotherapy", "partner": None, "partner_moiety_id": None,
+                                      "quote": "A 10 mg"})
+    validate_regimen(REGIMEN_RECORD, {"regimen": "combination", "partner": "B", "partner_moiety_id": 2,
+                                      "quote": "A+B (EXPERIMENTAL): ... B 5 mg"})
+    for bad in ({"regimen": "combination", "partner": None, "partner_moiety_id": None, "quote": "A 10 mg"},
+                {"regimen": "monotherapy", "partner": "B", "partner_moiety_id": None, "quote": "A 10 mg"},
+                {"regimen": "combination", "partner": "B", "partner_moiety_id": 1, "quote": "A 10 mg"},
+                {"regimen": "combination", "partner": "B", "partner_moiety_id": 3, "quote": "A 10 mg"},
+                {"regimen": "combination", "partner": "B", "partner_moiety_id": 2, "quote": "A with C"},
+                {"regimen": "combination", "partner": "B", "partner_moiety_id": 2, "quote": "A 10 mg ... C 5 mg"},
+                {"regimen": "combination", "partner": "B", "partner_moiety_id": 2, "quote": "..."}):
+        with pytest.raises(ValueError):
+            validate_regimen(REGIMEN_RECORD, bad)
