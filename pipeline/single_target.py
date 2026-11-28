@@ -1,8 +1,12 @@
 """Which diseases the target-based drugging paradigm solves (#197): definitions registered in #198, the pathway of
 every atlas mechanism, and randomised trials of two pathways against one (#196).
 
-    python -m pipeline.single_target pathways   # LLM: pathways each atlas mechanism acts through -> preclin.mechanism_pathway
-    python -m pipeline.single_target combos     # LLM + web: randomised trials of two pathways vs one -> preclin.combination_trial
+    python -m pipeline.single_target indications  # LLM: shortlisted diseases each FDA label treats -> preclin.label_indication
+    python -m pipeline.single_target pathways     # LLM: pathways of atlas and labelled mechanisms -> preclin.mechanism_pathway
+    python -m pipeline.single_target regimens     # LLM: alone or with a partner, for each success on a stopped target
+                                                  #   -> preclin.trial_regimen, preclin.stop_target_history
+    python -m pipeline.single_target combos       # LLM + web: randomised trials of two pathways vs one
+                                                  #   -> preclin.combination_trial
 
 Each shortlisted disease gets two labels. How solved: by one drug (one molecule, up to three pathways), by stacking
 drugs, or unsolved. Why one drug is not enough, where it is not: different patients need different targets, each
@@ -16,12 +20,18 @@ import argparse
 import math
 import re
 import statistics
+import uuid
 from collections import Counter
 from dataclasses import dataclass
 
+import pandas as pd
 from psycopg2.extras import execute_values
 
 from pipeline import llm
+from pipeline.outcomes import squash
+from pipeline.target_history import History, stored
+from report import frame
+from report.section3 import CLOSE
 
 # Disease areas left out of the labels and given their own sections (#200): their combinations exist mainly to stay
 # ahead of tumour or pathogen evolution, not because the disease biology needs two targets
@@ -230,11 +240,29 @@ MERGE_TASK = llm.Task(name="pathway_names", prompt_version="v2", schema_version=
 PATHWAY_METHOD = "mechanism_pathway@v1+pathway_names@v2"
 
 
+def mechanism_keys(cur) -> dict[int, tuple[str, str, str]]:
+    """Entity -> (mechanism_key, target_label, action) for every entity with a current FDA label: its reviewed target
+    and action where the atlas reviewed it, else its primary targets and their actions."""
+    cur.execute("""SELECT DISTINCT m.moiety_id FROM preclin.fda_label l JOIN preclin.moiety m ON m.unii = ANY(l.unii)""")
+    labelled = [r[0] for r in cur.fetchall()]
+    cur.execute("SELECT moiety_id, target_label, coalesce(action, '') FROM preclin.atlas_moiety_review "
+                "WHERE moiety_id = ANY(%s)", (labelled,))
+    out = {mid: (f"{target}|{action}", target, action) for mid, target, action in cur.fetchall()}
+    cur.execute("""SELECT mt.moiety_id, string_agg(DISTINCT t.symbol, ';' ORDER BY t.symbol),
+                          string_agg(DISTINCT mt.action, ';' ORDER BY mt.action)
+                   FROM preclin.moiety_target mt JOIN public.targets t ON t.id = mt.target_id
+                   WHERE mt.is_primary AND mt.moiety_id = ANY(%s) AND t.symbol IS NOT NULL GROUP BY 1""",
+                ([m for m in labelled if m not in out],))
+    out.update({mid: (f"{target}|{action}", target, action) for mid, target, action in cur.fetchall()})
+    return out
+
+
 def pathways(_args) -> None:
-    """Name the pathways of every atlas mechanism, merge spelling variants into canonical names, store the table."""
+    """Name the pathways of every atlas mechanism and every labelled entity's mechanism, merge spelling variants into
+    canonical names, store the table."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT mechanism_key, target_label, action, label FROM preclin.atlas_mechanism")
-        mechanisms = cur.fetchall()
+        mechanisms = {key: (target, action, label) for key, target, action, label in cur.fetchall()}
         cur.execute("""SELECT a.mechanism_key, m.name, string_agg(DISTINCT i.label, ', ')
                        FROM preclin.atlas_member a JOIN preclin.moiety m ON m.moiety_id = a.entity_id
                        JOIN preclin.atlas_indication i ON i.mondo_id = a.mondo_id
@@ -242,8 +270,15 @@ def pathways(_args) -> None:
         drugs: dict[str, list[str]] = {}
         for key, name, diseases in cur.fetchall():
             drugs.setdefault(key, []).append(f"{name} ({diseases})")
+        labelled = mechanism_keys(cur)
+        cur.execute("SELECT moiety_id, name FROM preclin.moiety WHERE moiety_id = ANY(%s)", (list(labelled),))
+        names = dict(cur.fetchall())
+    for mid, (key, target, action) in sorted(labelled.items()):
+        mechanisms.setdefault(key, (target, action, f"{target} {action}"))
+        if key not in drugs or len(drugs[key]) < 5:
+            drugs.setdefault(key, []).append(f"{names[mid]} (FDA-approved)")
     items = {key: {"label": label, "target_label": target, "action": action, "drugs": drugs.get(key, [])[:5]}
-             for key, target, action, label in mechanisms}
+             for key, (target, action, label) in mechanisms.items()}
     named = {key: (decision_id, out) for key, decision_id, out in llm.decisions(llm.run(PATHWAY_TASK, items))}
 
     counts = Counter(p for _, out in named.values() for p in out["pathways"])
@@ -255,9 +290,12 @@ def pathways(_args) -> None:
              merge_id if out["kind"] == "specific" else None)
             for key, (decision_id, out) in named.items()]
     with llm.connect() as conn, conn.cursor() as cur:
-        llm.record_method(cur, PATHWAY_METHOD, "Pathways of atlas mechanisms", PATHWAY_SYSTEM + "\n\n" + MERGE_SYSTEM,
-                          ["preclin.atlas_mechanism", "preclin.atlas_member", "preclin.moiety"],
-                          {"tasks": [PATHWAY_TASK.name, MERGE_TASK.name], "prompt_versions": [PATHWAY_TASK.prompt_version, MERGE_TASK.prompt_version],
+        llm.record_method(cur, PATHWAY_METHOD, "Pathways of atlas and labelled mechanisms",
+                          PATHWAY_SYSTEM + "\n\n" + MERGE_SYSTEM,
+                          ["preclin.atlas_mechanism", "preclin.atlas_member", "preclin.atlas_moiety_review",
+                           "preclin.moiety_target", "preclin.fda_label", "preclin.moiety"],
+                          {"tasks": [PATHWAY_TASK.name, MERGE_TASK.name],
+                           "prompt_versions": [PATHWAY_TASK.prompt_version, MERGE_TASK.prompt_version],
                            "model": PATHWAY_TASK.model, "merge_run": str(merge_run)})
         cur.execute("DELETE FROM preclin.mechanism_pathway")
         execute_values(cur, """INSERT INTO preclin.mechanism_pathway (mechanism_key, kind, pathways, llm_decision_id,
@@ -265,6 +303,286 @@ def pathways(_args) -> None:
         conn.commit()
     print(f"mechanisms={len(rows)} kinds={dict(Counter(r[1] for r in rows))} "
           f"names={len(counts)} canonical={len({c for cs in canonical.values() for c in cs})}")
+
+
+INDICATION_SYSTEM = """You read the Indications and Usage section of a US FDA drug label and say which diseases on a fixed list the label treats or prevents.
+
+A disease counts when the label is indicated to treat it, to control its defining measure (blood pressure for hypertension, LDL cholesterol for hyperlipidemia, HbA1c for type 2 diabetes, weight for obesity), or, for a disease defined by events, to reduce those events: a drug indicated to reduce the risk of myocardial infarction, stroke or cardiovascular death in patients with coronary heart disease counts for coronary artery disease; one reducing stroke and systemic embolism in nonvalvular atrial fibrillation counts for atrial fibrillation; one reducing cardiovascular death or hospitalisation in heart failure counts for heart failure.
+
+A disease does not count when the label mentions it only as a population restriction, a contraindication, a comorbidity of the treated patients, or a different disease that shares a word (ocular hypertension is not essential hypertension; pulmonary arterial hypertension is its own entry; acute migraine treatment counts for migraine). Return an empty list when none applies."""
+
+
+def indication_schema(ids: list[str]) -> dict:
+    return {"type": "object",
+            "properties": {"diseases": {"type": "array", "items": {"type": "string", "enum": ids}},
+                           "reason": {"type": "string"}},
+            "required": ["diseases", "reason"], "additionalProperties": False}
+
+
+SHORTLISTED = {**SHORTLIST, **EVENT_SHORTLIST}
+
+
+def render_indication(p: dict) -> str:
+    listed = "\n".join(f"{mid}: {e.disease}" for mid, e in SHORTLISTED.items())
+    return f"Diseases:\n{listed}\n\nIndications and Usage:\n{p['text']}"
+
+
+INDICATION_TASK = llm.Task(name="label_indication", prompt_version="v1", schema_version="v1", system=INDICATION_SYSTEM,
+                           schema=indication_schema(list(SHORTLISTED)), render=render_indication,
+                           subject_type="label_indications_text", model="claude-opus-5-5", effort="low",
+                           max_tokens=1500)
+INDICATION_METHOD = "label_indication@v1"
+
+
+def indications(_args) -> None:
+    """Which shortlisted diseases each current FDA label treats, decided once per distinct indications text."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT set_id, indications_text FROM preclin.fda_label WHERE indications_text IS NOT NULL")
+        labels = cur.fetchall()
+    by_text: dict[str, list[str]] = {}
+    for set_id, text in labels:
+        by_text.setdefault(llm.sha256_text(text), []).append(set_id)
+    texts = {llm.sha256_text(text): text for _, text in labels}
+    run_id = llm.run(INDICATION_TASK, {h: {"text": t} for h, t in texts.items()})
+    rows = [(set_id, mid, decision_id) for h, decision_id, out in llm.decisions(run_id)
+            for mid in sorted(set(out["diseases"])) for set_id in by_text[h]]
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, INDICATION_METHOD, "Shortlisted diseases an FDA label treats", INDICATION_SYSTEM,
+                          ["preclin.fda_label"], {"task": INDICATION_TASK.name, "prompt_version": "v1",
+                                                  "model": INDICATION_TASK.model, "run": str(run_id)})
+        cur.execute("DELETE FROM preclin.label_indication")
+        execute_values(cur, "INSERT INTO preclin.label_indication (set_id, mondo_id, llm_decision_id) VALUES %s",
+                       rows, page_size=5000)
+        conn.commit()
+    print(f"labels={len(labels)} texts={len(texts)} rows={len(rows)} " + str(Counter(r[1] for r in rows)))
+
+REGIMENS = ("monotherapy", "add_on_background", "combination")
+ALONE = ("monotherapy", "add_on_background")
+SUCCESS_FATES = ("worked_here", "worked_here_selected")
+RECORD_CHARS = 12000  # of the summary and of the arm groups, each
+
+REGIMEN_SYSTEM = f"""You read a clinical trial's registry record and decide how one drug, the drug of interest, was tested in it: alone or together with a partner drug.
+
+{COMBINATION}
+
+regimen:
+- monotherapy: some experimental arm gives the drug of interest without any other active agent (placebo, vehicle or rescue medication do not count), whether against placebo, an active comparator or another dose;
+- add_on_background: the drug of interest is added to background therapy that every arm receives, including the control arm (methotrexate, metformin, standard of care, stable conventional therapy, the same chemotherapy backbone in every arm), and no experimental arm pairs it with a further agent the control arm lacks;
+- combination: every experimental arm that gives the drug of interest also gives another active agent on a different pathway that the control arm does not receive (or there is no control arm and the regimen is the pairing): a fixed-dose co-formulation, a protocol-specified pairing, or a drug added to a new partner.
+When one arm gives the drug alone and another gives it with a partner, the regimen is monotherapy. Another drug acting through the same pathway as the drug of interest is not a partner. Hormone add-back therapy or an agent given to offset a side effect, when the control arm lacks it, is still a partner.
+
+partner: for a combination, the paired agent or agents as the record names them; null otherwise. partner_moiety_id: for a combination, the entity id of the partner from the interventions list (the one newest to the regimen when there are several); null when the regimen is not combination or the partner has no entity id listed. Never give the drug of interest's own entity id.
+quote: the record text (title, summary or arm group) that shows the regimen, copied exactly."""
+
+REGIMEN_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "regimen": {"type": "string", "enum": list(REGIMENS)},
+        "partner": {"type": ["string", "null"]},
+        "partner_moiety_id": {"type": ["integer", "null"]},
+        "quote": {"type": "string"},
+    },
+    "required": ["regimen", "partner", "partner_moiety_id", "quote"],
+    "additionalProperties": False,
+}
+
+
+def render_regimen(p: dict) -> str:
+    interventions = "\n".join(
+        f"- {i['name']} ({i['type']}; arms: {', '.join(i['arms']) or 'not given'}; entities: "
+        f"{', '.join(f'{n} [id {m}]' for m, n in i['entities']) or 'none'})" for i in p["interventions"])
+    return (f"Drug of interest: {p['drug']} [id {p['moiety_id']}]\n\nTitle: {p['title']}\nOfficial title: "
+            f"{p['official_title']}\n\nBrief summary:\n{p['summary']}\n\nArm groups:\n{p['arms']}\n\n"
+            f"Interventions:\n{interventions}")
+
+
+def validate_regimen(p: dict, out: dict) -> None:
+    combination = out["regimen"] == "combination"
+    if combination != bool(out["partner"] and out["partner"].strip()):
+        raise ValueError(f"regimen {out['regimen']} with partner {out['partner']!r}")
+    listed = {m for i in p["interventions"] for m, _ in i["entities"]} - {p["moiety_id"]}
+    if out["partner_moiety_id"] is not None and (not combination or out["partner_moiety_id"] not in listed):
+        raise ValueError(f"partner_moiety_id {out['partner_moiety_id']} with regimen {out['regimen']}")
+    record = squash(" ".join([p["title"], p["official_title"], p["summary"], p["arms"]]))
+    fragments = [f.strip() for f in re.split(r"\.\.\.|…", squash(out["quote"])) if f.strip()]
+    if not fragments or any(f not in record for f in fragments):  # an ellipsis may join exact fragments
+        raise ValueError(f"quote not in the record: {out['quote'][:120]}")
+
+
+REGIMEN_TASK = llm.Task(name="trial_regimen", prompt_version="v1", schema_version="v1", system=REGIMEN_SYSTEM,
+                        schema=REGIMEN_SCHEMA, render=render_regimen, validate=validate_regimen,
+                        subject_type="trial_drug", model="claude-opus-5-5", effort="low", max_tokens=1500)
+REGIMEN_METHOD = "trial_regimen@v1"
+REGIMEN_DESCRIPTION = f"""Cohort: the stops of preclin.stop_target_history with target_fate {' or '.join(SUCCESS_FATES)}.
+Their successes are those pipeline.target_history counts: another drug on the target (a partner there) approved for this
+disease (MONDO Lin >= {CLOSE}) or with a Phase 2/3 trial there that met its primary endpoint (preclin.trial_outcome).
+An approval is read through the met Phase 2/3 trials of the same program; an approval with none is a success of unknown
+regimen. Each met trial is read for the drug that makes it a success (task {REGIMEN_TASK.name}
+{REGIMEN_TASK.prompt_version}, model {REGIMEN_TASK.model}, effort {REGIMEN_TASK.effort}, no web): title, summary, arm
+groups and interventions with the entities they resolve to, into monotherapy, add_on_background or combination under
+the combination definition registered in #198, with the partner. success_regimen: alone when any success trial is
+monotherapy or add_on_background; with_partner when every success is a combination trial; unknown otherwise (an approval
+with no met trial). For with_partner, the met trials in the disease of each combination partner not approved for it are
+read the same way, with the partner as the drug; partner_works_alone is true when every partner is approved in the
+disease or tested alone in a met trial there, false when a resolved partner is neither, null when a partner did not
+resolve to an entity."""
+
+
+def success_regimen(regimens: list[str], unread_approvals: int) -> str:
+    """How a target worked in a disease, from the regimens of its success trials and the number of its approvals with
+    no met trial to read: alone if any success tested the drug alone, with_partner only if every one paired it."""
+    if any(r in ALONE for r in regimens):
+        return "alone"
+    if regimens and not unread_approvals:
+        return "with_partner"
+    return "unknown"
+
+
+def partner_works_alone(partners: list[int | None], works_alone: set[int]) -> bool | None:
+    """Whether the partners of a with_partner success (one per combination trial, None when unresolved) all work on
+    their own in the disease."""
+    if any(p is not None and p not in works_alone for p in partners):
+        return False
+    if any(p is None for p in partners):
+        return None
+    return True
+
+
+def met_trials() -> dict[tuple[int, str], set[str]]:
+    """(entity, disease) -> its Phase 2/3 trials that met their primary endpoint, as pipeline.target_history counts
+    them."""
+    met = frame.query("""
+        SELECT DISTINCT p.moiety_id, p.mondo_id, o.nct_id FROM preclin.trial_outcome o
+        JOIN preclin.dev_program_trial dt USING (nct_id) JOIN preclin.dev_program p USING (program_id)
+        WHERE dt.phase >= 2 AND p.mondo_id IS NOT NULL AND o.primary_endpoint = 'met'""")
+    return met.groupby(["moiety_id", "mondo_id"]).nct_id.apply(set).to_dict()
+
+
+def regimen_items(pairs: set[tuple[str, int]]) -> dict[str, dict]:
+    """Payload per (trial, drug of interest), keyed nct_id|moiety_id."""
+    ncts = sorted({n for n, _ in pairs})
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT nct_id, brief_title, official_title, brief_summary, arm_groups
+                       FROM preclin.ctgov_study WHERE nct_id = ANY(%s)""", (ncts,))
+        studies = {r[0]: r[1:] for r in cur.fetchall()}
+        cur.execute("""SELECT sd.nct_id, d.display_name, sd.intervention_type, sd.arm_types,
+                              coalesce(array_agg(m.moiety_id ORDER BY m.moiety_id) FILTER (WHERE m.moiety_id IS NOT NULL), '{}'),
+                              coalesce(array_agg(m.name ORDER BY m.moiety_id) FILTER (WHERE m.moiety_id IS NOT NULL), '{}')
+                       FROM preclin.ctgov_study_drug sd JOIN preclin.drug d USING (drug_id)
+                       LEFT JOIN preclin.drug_moiety dm USING (drug_id) LEFT JOIN preclin.moiety m USING (moiety_id)
+                       WHERE sd.nct_id = ANY(%s) GROUP BY 1, 2, 3, 4 ORDER BY 1, 2""", (ncts,))
+        interventions: dict[str, list[dict]] = {}
+        for nct, name, kind, arms, ids, names in cur.fetchall():
+            interventions.setdefault(nct, []).append({"name": name, "type": kind, "arms": arms or [],
+                                                      "entities": list(zip(ids, names))})
+        cur.execute("SELECT moiety_id, name FROM preclin.moiety WHERE moiety_id = ANY(%s)",
+                    (sorted({m for _, m in pairs}),))
+        names = dict(cur.fetchall())
+    items = {}
+    for nct, m in sorted(pairs):
+        title, official, summary, arms = studies[nct]
+        arm_text = "\n".join(f"- {a.get('label', '')} ({a.get('type', 'type not given')}): {a.get('description', '')}"
+                             f" Interventions: {', '.join(a.get('interventionNames', []))}" for a in arms or [])
+        items[f"{nct}|{m}"] = {"moiety_id": m, "drug": names[m], "title": title or "", "official_title": official or "",
+                               "summary": (summary or "")[:RECORD_CHARS],
+                               "arms": arm_text[:RECORD_CHARS] or "(not registered)",
+                               "interventions": interventions.get(nct, [])}
+    return items
+
+
+def read_regimens(pairs: set[tuple[str, int]]) -> tuple[uuid.UUID, dict[tuple[str, int], tuple[int, dict]]]:
+    """Run the regimen task on (trial, drug) pairs: the run id and (trial, drug) -> (decision id, output). Every pair
+    must validate; a rerun reuses the validated decisions and asks again for the rest."""
+    run_id = llm.run(REGIMEN_TASK, regimen_items(pairs))
+    read = {(k.split("|")[0], int(k.split("|")[1])): (i, o) for k, i, o in llm.decisions(run_id)}
+    if missing := pairs - set(read):
+        raise SystemExit(f"run {run_id}: {len(missing)} of {len(pairs)} decisions failed validation; rerun to retry")
+    return run_id, read
+
+
+def regimens(_args) -> None:
+    """Read the regimen of every success behind a worked_here stop, and of its partners' trials in the disease when it
+    needed a partner; store preclin.trial_regimen and the two regimen columns of preclin.stop_target_history."""
+    d = stored()
+    d = d[d.target_fate.isin(SUCCESS_FATES)]
+    h = History()
+    trials = met_trials()
+    behind: dict[str, tuple[set[tuple[str, int]], int]] = {}  # stop -> (success trial, drug) pairs, unread approvals
+    for r in d.itertuples():
+        close = h.nb.terms(r.mondo_id, CLOSE)
+        here = {(s.moiety_id, s.mondo_id, s.kind) for o in h.partners.get(r.moiety_id, ())
+                for s in h.succ.get(o, ()) if s.mondo_id in close}
+        pairs = {(n, m) for m, x, kind in here if kind == "met" for n in trials[(m, x)]}
+        unread = sum(1 for m, x, kind in here if kind == "approved" and (m, x) not in trials)
+        behind[r.key] = (pairs, unread)
+    run_id, read = read_regimens({p for pairs, _ in behind.values() for p in pairs})
+
+    regimen = {}
+    for r in d.itertuples():
+        pairs, unread = behind[r.key]
+        regimen[r.key] = success_regimen([read[p][1]["regimen"] for p in pairs], unread)
+    # partners of with_partner successes, and their met trials in the disease where they are not approved for it
+    partners_of = {k: [read[p][1]["partner_moiety_id"] for p in behind[k][0]] for k, v in regimen.items()
+                   if v == "with_partner"}
+    asked: dict[str, tuple[set[int], set[tuple[str, int]]]] = {}  # stop -> (approved partners, partner trial pairs)
+    for r in d[d.key.isin(set(partners_of))].itertuples():
+        close = h.nb.terms(r.mondo_id, CLOSE)
+        approved, pairs = set(), set()
+        for p in {p for p in partners_of[r.key] if p is not None}:
+            for s in h.succ.get(p, ()):
+                if s.mondo_id in close and s.kind == "approved":
+                    approved.add(p)
+                elif s.mondo_id in close:
+                    pairs |= {(n, p) for n in trials[(p, s.mondo_id)]}
+        asked[r.key] = (approved, {q for q in pairs if q[1] not in approved})
+    todo = {q for _, pairs in asked.values() for q in pairs} - set(read)
+    partner_run, partner_read = read_regimens(todo) if todo else (None, {})
+    read |= partner_read
+    alone_partner = {k: partner_works_alone(partners_of[k], approved | {p for n, p in pairs
+                                                                        if read[(n, p)][1]["regimen"] in ALONE})
+                     for k, (approved, pairs) in asked.items()}
+
+    rows = [(n, m, o["regimen"], o["partner"], o["partner_moiety_id"], o["quote"], i) for (n, m), (i, o) in read.items()]
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, REGIMEN_METHOD, "Alone or with a partner: the regimen of a success on a stopped target",
+                          REGIMEN_DESCRIPTION,
+                          ["preclin.stop_target_history", "preclin.trial_outcome", "preclin.dev_program_trial",
+                           "preclin.dev_program_approval", "preclin.ctgov_study", "preclin.ctgov_study_drug",
+                           "preclin.drug_moiety"],
+                          {"task": REGIMEN_TASK.name, "prompt_version": REGIMEN_TASK.prompt_version,
+                           "model": REGIMEN_TASK.model, "effort": REGIMEN_TASK.effort, "close": CLOSE,
+                           "run": str(run_id), "partner_run": str(partner_run) if partner_run else None})
+        cur.execute("DELETE FROM preclin.trial_regimen")
+        execute_values(cur, """INSERT INTO preclin.trial_regimen (nct_id, moiety_id, regimen, partner, partner_moiety_id,
+                                 quote, llm_decision_id) VALUES %s""", rows, page_size=5000)
+        cur.execute("UPDATE preclin.stop_target_history SET success_regimen = NULL, partner_works_alone = NULL")
+        execute_values(cur, """UPDATE preclin.stop_target_history h SET success_regimen = v.regimen,
+                                 partner_works_alone = v.alone
+                               FROM (VALUES %s) AS v(moiety_id, mondo_id, phase, regimen, alone)
+                               WHERE (h.moiety_id, h.mondo_id, h.phase) = (v.moiety_id, v.mondo_id, v.phase)""",
+                       [(int(k.split("|")[0]), k.split("|")[1], int(k.split("|")[2]), v, alone_partner.get(k))
+                        for k, v in regimen.items()], template="(%s, %s, %s, %s, %s::boolean)")
+        conn.commit()
+    print(f"trials read={len(rows)} {dict(Counter(r[2] for r in rows))} run={run_id} partner_run={partner_run}")
+    regimen_summary(None)
+
+
+def regimen_summary(_args) -> None:
+    """Counts by success regimen and partner, over every worked_here stop and those with a phase entry in the
+    headline window, and across the #158 stops (worked_here with verdict target_not_causal)."""
+    d = stored()
+    print(f"engaged-without-benefit stops: {len(d)}, with a phase entry in the window: {int(d.headline.sum())}")
+    d = d[d.target_fate.isin(SUCCESS_FATES)].copy()
+    d["partner"] = d.partner_works_alone.map({True: "works alone", False: "not alone"})
+    d["partner"] = d.partner.where(d.partner.notna(), d.success_regimen.eq("with_partner").map({True: "cannot tell",
+                                                                                                False: "-"}))
+    for name, g in (("all", d), ("phase entry in window", d[d.headline]),
+                    ("#158: worked_here, target_not_causal", d[d.target_fate.eq("worked_here")
+                                                               & d.verdict.eq("target_not_causal")]),
+                    ("#158 in window", d[d.headline & d.target_fate.eq("worked_here")
+                                         & d.verdict.eq("target_not_causal")])):
+        print(f"\n{name}: {len(g)} stops")
+        print(pd.crosstab([g.target_fate, g.success_regimen.fillna("(none)")], g.partner, margins=True).to_string())
 
 
 # Randomised trials of two pathways against one (#196), the trial half of the several-targets rule
@@ -481,8 +799,9 @@ def combos(_args) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(required=True)
-    sub.add_parser("pathways").set_defaults(fn=pathways)
-    sub.add_parser("combos").set_defaults(fn=combos)
+    for name, fn in (("indications", indications), ("pathways", pathways), ("regimens", regimens),
+                     ("regimen-summary", regimen_summary), ("combos", combos)):
+        sub.add_parser(name).set_defaults(fn=fn)
     args = ap.parse_args()
     args.fn(args)
 
