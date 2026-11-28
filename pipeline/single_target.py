@@ -26,7 +26,9 @@ from pipeline import llm
 # (preclin.atlas_indication.area).
 AREAS_APART = ("oncology", "infectious_disease")
 
-# What counts as a combination when a later success on a target is read (#194) and when trials are collected (#196).
+# What counts as a combination when a later success on a target is read (#194). For the two-pathway evidence of #195
+# and #196, a randomised add-on trial also counts: a drug on a new pathway added to a fixed background on another,
+# against background alone, in the same patients.
 COMBINATION = (
     "A combination is two active agents acting through different pathways given together as the tested regimen: a "
     "fixed-dose co-formulation, one molecule acting through two pathways (a bispecific antibody or a multi-receptor "
@@ -34,20 +36,17 @@ COMBINATION = (
     "Background standard of care that every arm receives (methotrexate in rheumatoid arthritis, metformin in type 2 "
     "diabetes, stable conventional therapy) does not make a combination; a drug tested on top of it is tested alone."
 )
-# For the two-pathway evidence of #195 and #196, a randomised add-on trial also counts: a drug acting through a new
-# pathway added to a fixed background acting through another, against background alone, on the same patients.
-ADD_ON_COUNTS_AS_TWO_PATHWAYS = True
 
 
 @dataclass(frozen=True)
 class Endpoint:
     disease: str
-    endpoint: str  # a responder endpoint: the share of patients reaching it
-    weeks: str     # the assessment window the estimate is read at
+    endpoint: str  # the responder goal or the event the estimate is read on
+    weeks: str     # the assessment window, or trial length for an event endpoint
 
 
-# Diseases where several approved mechanisms are measured on the same responder endpoint (#195). A disease stays on
-# the list only if #193 counts at least MIN_APPROVED_PATHWAYS distinct pathways with an FDA approval for it, any
+# Diseases where several approved mechanisms are measured on the same responder endpoint (#195). A disease on either
+# list stays only if #193 counts at least MIN_APPROVED_PATHWAYS distinct pathways with an FDA approval for it, any
 # year. Asthma and multiple sclerosis are left out: their shared endpoints are rates (exacerbations, relapses), not
 # responder shares.
 SHORTLIST = {
