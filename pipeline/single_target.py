@@ -1,7 +1,8 @@
-"""Which diseases the target-based drugging paradigm solves (#197): definitions registered in #198, and the pathway of
-every atlas mechanism.
+"""Which diseases the target-based drugging paradigm solves (#197): definitions registered in #198, the pathway of
+every atlas mechanism, and randomised trials of two pathways against one (#196).
 
     python -m pipeline.single_target pathways   # LLM: pathways each atlas mechanism acts through -> preclin.mechanism_pathway
+    python -m pipeline.single_target combos     # LLM + web: randomised trials of two pathways vs one -> preclin.combination_trial
 
 Each shortlisted disease gets two labels. How solved: by one drug (one molecule, up to three pathways), by stacking
 drugs, or unsolved. Why one drug is not enough, where it is not: different patients need different targets, each
@@ -13,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import math
+import re
 import statistics
 from collections import Counter
 from dataclasses import dataclass
@@ -265,10 +267,212 @@ def pathways(_args) -> None:
           f"names={len(counts)} canonical={len({c for cs in canonical.values() for c in cs})}")
 
 
+# Randomised trials of two pathways against one (#196), the trial half of the several-targets rule
+# (combination_beats_single). Known trials seed each disease's search; the model finds the rest.
+SEED_TRIALS = {
+    "MONDO:0005083": ["BE RADIANT, Reich 2021 (PMID 33891380): bimekizumab (IL-17A and IL-17F) vs secukinumab (IL-17A)"],
+    "MONDO:0008383": ["Genovese 2004 (PMID 15146410): anakinra plus etanercept vs etanercept",
+                      "Weinblatt 2007 (PMID 16935912): abatacept added to a TNF blocker vs the TNF blocker alone"],
+    "MONDO:0011122": ["SURMOUNT-5: tirzepatide (GIP and GLP-1) vs semaglutide (GLP-1)"],
+    "MONDO:0005148": ["SURPASS-2: tirzepatide vs semaglutide"],
+    "MONDO:0005252": ["PARADIGM-HF: sacubitril/valsartan vs enalapril", "DAPA-HF: dapagliflozin added to background",
+                      "EMPEROR-Reduced: empagliflozin added to background", "RALES: spironolactone added to background",
+                      "EMPHASIS-HF: eplerenone added to background"],
+    "MONDO:0005300": ["CREDENCE, DAPA-CKD, EMPA-KIDNEY: an SGLT2 inhibitor added to a renin-angiotensin blocker",
+                      "FIDELIO-DKD: finerenone added to a renin-angiotensin blocker",
+                      "VA NEPHRON-D and ALTITUDE: a second renin-angiotensin blocker added to the first"],
+    "MONDO:0005010": ["IMPROVE-IT: ezetimibe added to simvastatin", "FOURIER and ODYSSEY OUTCOMES: a PCSK9 antibody "
+                      "added to a statin", "COMPASS: rivaroxaban added to aspirin", "CANTOS: canakinumab added to "
+                      "background"],
+    "MONDO:0004981": ["ACTIVE A: clopidogrel added to aspirin"],
+    "MONDO:0015924": ["AMBITION: ambrisentan plus tadalafil vs either alone", "GRIPHON: selexipag added to background",
+                      "STELLAR: sotatercept added to background", "SERAPHIN: macitentan, most patients on background"],
+}
+
+COMBO_DESIGNS = ("combination", "add_on", "head_to_head_multi_pathway")
+COMBO_RELATIONS = ("same_pathway", "parallel", "independent")
+COMBO_RESULTS = ("met_primary", "missed_primary")
+COMBO_LIMITS = ("none", "efficacy", "safety")
+EFFECT_MEASURES = ("risk_difference", "hazard_ratio", "mean_difference", "other")
+
+
+def combos_system(pathway_names: list[str]) -> str:
+    return f"""You find randomised trials that test two pathways against one in one disease, and read each one.
+
+Qualifying trials are randomised, Phase 2b or 3 or a large Phase 2, in the disease you are given, and compare an arm acting through two pathways with an arm acting through one of them:
+- combination: two drugs on different pathways given together vs one of them alone (or vs one of them plus placebo);
+- add_on: a drug on a new pathway added to a fixed background on another pathway vs the background alone (with placebo). For event diseases (heart failure, coronary artery disease, chronic kidney disease, atrial fibrillation, pulmonary arterial hypertension) these add-on outcome trials are the main evidence; the background may span several pathways;
+- head_to_head_multi_pathway: one molecule acting through two pathways (a bispecific, a multi-receptor agonist) or a co-formulation vs a drug acting through only one of them.
+A trial of a drug against placebo with no shared background pathway does not qualify, nor does a trial of two drugs on the same single pathway with no second pathway (two TNF blockers), nor a trial comparing two different single pathways head to head.
+
+{COMBINATION}
+
+relation, how the added pathway relates to the comparator's pathway:
+- same_pathway: both arms act on one pathway; the two-pathway arm only blocks more of it (IL-17A vs IL-17A plus IL-17F; a second renin-angiotensin blocker on the first);
+- parallel: different pathways converging on the same disease process (IL-17 and TNF in psoriasis; GIP and GLP-1 in obesity; a statin and ezetimibe lowering LDL; an SGLT2 inhibitor added to renin-angiotensin blockade for heart failure);
+- independent: unrelated disease processes (an anti-inflammatory added to lipid lowering in coronary disease; an anticoagulant added to an antiplatelet).
+
+result: met_primary when the two-pathway arm was statistically superior to the one-pathway arm on the trial's primary efficacy endpoint; otherwise missed_primary (including a non-inferiority primary with no superiority shown, and a trial stopped before its primary was read).
+effect: the primary endpoint estimate of the two-pathway arm against the one-pathway arm: for a responder endpoint the difference in the share of patients responding in percentage points (risk_difference, e.g. 13.5 for 61.7% vs 48.2%); for an event endpoint the hazard ratio (hazard_ratio); a mean difference for a continuous primary; with the 95% confidence interval when reported, null otherwise. effect_text states it in words with the endpoint and time point.
+limited_by: what held the two-pathway arm back: none (it won and was safe enough to use), efficacy (no or too small a gain), safety (more harm: serious infections, hyperkalaemia, kidney injury, bleeding). A trial that met its primary but whose regimen was dropped for harm is safety.
+stopped_for_safety: true when the trial or its two-pathway arm was stopped early for harm, or the two-pathway regimen was abandoned or advised against because of harm seen in it (e.g. a regulator warning or a guideline recommending against the combination on safety grounds).
+
+pathways: name each with the canonical names below, written exactly as listed, wherever one fits; only when none does, use a short conventional name. comparator_pathways: the pathways of the one-pathway arm (for an add-on trial, the background's main pathways). added_pathway: the pathway the two-pathway arm adds (for same_pathway, the shared pathway itself).
+
+Canonical pathway names: {"; ".join(pathway_names)}
+
+How to search: start with the seed trials given (find each one's publication and registration) and then search for further trials in the disease: trial registries (ClinicalTrials.gov), PubMed, journal pages, systematic reviews and network meta-analyses of combination or add-on therapy, regulatory reviews. Return up to 12 trials per disease: the largest and most cited, every head-to-head multi-pathway trial, and well-known negative or safety-stopped ones. Return none when the disease has none.
+
+Judge only from pages you retrieved; never fill an NCT id, PMID or number from memory. For each trial give nct_id (NCT followed by 8 digits) and pmid (digits) of the primary results paper as shown on a page you retrieved, null if not found; at least one is needed. sources: URLs you retrieved that show the trial's design and result. quote: the sentence from a source that states the primary result."""
+
+
+COMBO_SCHEMA = {
+    "type": "object",
+    "properties": {"trials": {"type": "array", "items": {
+        "type": "object",
+        "properties": {
+            "trial_name": {"type": "string"},
+            "nct_id": {"type": ["string", "null"]},
+            "pmid": {"type": ["string", "null"]},
+            "year": {"type": ["integer", "null"]},
+            "phase": {"type": "string"},
+            "n_randomised": {"type": ["integer", "null"]},
+            "two_pathway_arm": {"type": "string"},
+            "one_pathway_arm": {"type": "string"},
+            "comparator_pathways": {"type": "array", "items": {"type": "string"}},
+            "added_pathway": {"type": "string"},
+            "design": {"type": "string", "enum": list(COMBO_DESIGNS)},
+            "relation": {"type": "string", "enum": list(COMBO_RELATIONS)},
+            "primary_endpoint": {"type": "string"},
+            "result": {"type": "string", "enum": list(COMBO_RESULTS)},
+            "effect_measure": {"type": "string", "enum": list(EFFECT_MEASURES)},
+            "effect": {"type": ["number", "null"]},
+            "ci_low": {"type": ["number", "null"]},
+            "ci_high": {"type": ["number", "null"]},
+            "effect_text": {"type": "string"},
+            "limited_by": {"type": "string", "enum": list(COMBO_LIMITS)},
+            "stopped_for_safety": {"type": "boolean"},
+            "sources": {"type": "array", "items": {"type": "string"}},
+            "quote": {"type": "string"},
+        },
+        "required": ["trial_name", "nct_id", "pmid", "year", "phase", "n_randomised", "two_pathway_arm",
+                     "one_pathway_arm", "comparator_pathways", "added_pathway", "design", "relation",
+                     "primary_endpoint", "result", "effect_measure", "effect", "ci_low", "ci_high", "effect_text",
+                     "limited_by", "stopped_for_safety", "sources", "quote"],
+        "additionalProperties": False}}},
+    "required": ["trials"],
+    "additionalProperties": False,
+}
+
+
+def trial_key(t: dict) -> str:
+    """The trial's key within a disease: its NCT id, else PMID:n."""
+    return t["nct_id"] or f"PMID:{t['pmid']}"
+
+
+def validate_combos(_payload: dict, out: dict) -> None:
+    retrieved = {llm.norm_url(u) for u in out.get("retrieved_urls", [])}
+    if not retrieved:
+        raise ValueError("no search returned anything, so no answer either way")
+    keys = []
+    for t in out["trials"]:
+        name = t["trial_name"]
+        if t["nct_id"] is not None and not re.fullmatch(r"NCT\d{8}", t["nct_id"]):
+            raise ValueError(f"{name}: nct_id {t['nct_id']!r}")
+        if t["pmid"] is not None and not re.fullmatch(r"\d{6,9}", t["pmid"]):
+            raise ValueError(f"{name}: pmid {t['pmid']!r}")
+        if not (t["nct_id"] or t["pmid"]):
+            raise ValueError(f"{name}: neither an NCT id nor a PMID")
+        if not t["sources"]:
+            raise ValueError(f"{name}: no sources")
+        unknown = [s for s in t["sources"] if llm.norm_url(s) not in retrieved]
+        if unknown:
+            raise ValueError(f"{name}: cites sources it did not retrieve: {unknown[:3]}")
+        if not t["comparator_pathways"] or not t["added_pathway"].strip():
+            raise ValueError(f"{name}: pathways missing")
+        if (t["relation"] == "same_pathway") != (t["added_pathway"] in t["comparator_pathways"]):
+            raise ValueError(f"{name}: relation {t['relation']} with added {t['added_pathway']} on "
+                             f"{t['comparator_pathways']}")
+        if t["effect_measure"] == "hazard_ratio" and t["effect"] is not None and t["effect"] <= 0:
+            raise ValueError(f"{name}: hazard ratio {t['effect']}")
+        if None not in (t["ci_low"], t["ci_high"]) and t["ci_low"] > t["ci_high"]:
+            raise ValueError(f"{name}: confidence interval reversed")
+        keys.append(trial_key(t))
+    if len(keys) != len(set(keys)):
+        raise ValueError(f"a trial listed twice: {sorted(k for k, n in Counter(keys).items() if n > 1)}")
+
+
+def render_combos(p: dict) -> str:
+    seeds = "\n".join(f"- {s}" for s in p["seeds"]) or "(none)"
+    return (f"Disease: {p['disease']} ({p['mondo_id']})\nEndpoint it is measured on: {p['endpoint']}\n\n"
+            f"Seed trials:\n{seeds}")
+
+
+COMBO_TOOLS = [{"type": "web_search_20260209", "name": "web_search", "max_uses": 15},
+               {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 10}]
+
+
+COMBO_METHOD = "combination_trial@v1"
+
+
+def combos_task(pathway_names: list[str]) -> llm.Task:
+    return llm.Task(name="combination_trial", prompt_version="v1", schema_version="v1",
+                    system=combos_system(pathway_names), schema=COMBO_SCHEMA, render=render_combos,
+                    subject_type="mondo_disease", validate=validate_combos, model="claude-opus-5-5",
+                    effort="medium", max_tokens=32000, tools=COMBO_TOOLS)
+
+
+def combination_beats_single(rows: list[dict]) -> bool:
+    """Whether a disease's randomised trials (rows of preclin.combination_trial) show two pathways beating one: a
+    trial whose two arms differ by a second pathway (not same_pathway) met its efficacy primary endpoint, and its
+    two-pathway arm was not stopped or abandoned for safety."""
+    return any(r["relation"] != "same_pathway" and r["result"] == "met_primary" and not r["stopped_for_safety"]
+               for r in rows)
+
+
+def combos(_args) -> None:
+    """Find and read each shortlisted disease's randomised trials of two pathways against one; store the table."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT DISTINCT p FROM preclin.mechanism_pathway, unnest(pathways) p ORDER BY 1")
+        names = [r[0] for r in cur.fetchall()]
+    task = combos_task(names)
+    items = {mondo: {"mondo_id": mondo, "disease": e.disease, "endpoint": e.endpoint,
+                     "seeds": SEED_TRIALS.get(mondo, [])}
+             for mondo, e in {**SHORTLIST, **EVENT_SHORTLIST}.items()}
+    run_id = llm.run(task, items)
+    rows = [(mondo, trial_key(t), t["trial_name"], t["nct_id"], t["pmid"], t["year"], t["phase"],
+             t["n_randomised"], t["two_pathway_arm"], t["one_pathway_arm"], t["comparator_pathways"],
+             t["added_pathway"], t["design"], t["relation"], t["primary_endpoint"], t["result"],
+             t["effect_measure"], t["effect"], t["ci_low"], t["ci_high"], t["effect_text"], t["limited_by"],
+             t["stopped_for_safety"], t["sources"], t["quote"], decision_id)
+            for mondo, decision_id, out in llm.decisions(run_id) for t in out["trials"]]
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, COMBO_METHOD, "Randomised trials of two pathways against one", task.system,
+                          ["web search", "preclin.mechanism_pathway"],
+                          {"task": task.name, "prompt_version": task.prompt_version, "model": task.model,
+                           "run": str(run_id)})
+        cur.execute("DELETE FROM preclin.combination_trial")
+        execute_values(cur, """INSERT INTO preclin.combination_trial (mondo_id, trial_key, trial_name, nct_id, pmid,
+                                 year, phase, n_randomised, two_pathway_arm, one_pathway_arm, comparator_pathways,
+                                 added_pathway, design, relation, primary_endpoint, result, effect_measure, effect,
+                                 ci_low, ci_high, effect_text, limited_by, stopped_for_safety, sources, quote,
+                                 llm_decision_id) VALUES %s""", rows)
+        conn.commit()
+    by_disease: dict[str, list[dict]] = {}
+    for r in rows:
+        by_disease.setdefault(r[0], []).append({"relation": r[13], "result": r[15], "stopped_for_safety": r[22]})
+    print(f"diseases decided={len(llm.decisions(run_id))}/{len(items)} trials={len(rows)} "
+          f"relations={dict(Counter(r[13] for r in rows))} results={dict(Counter(r[15] for r in rows))}")
+    for mondo, e in {**SHORTLIST, **EVENT_SHORTLIST}.items():
+        trials = by_disease.get(mondo, [])
+        print(f"  {e.disease}: trials={len(trials)} combination_beats_single={combination_beats_single(trials)}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(required=True)
     sub.add_parser("pathways").set_defaults(fn=pathways)
+    sub.add_parser("combos").set_defaults(fn=combos)
     args = ap.parse_args()
     args.fn(args)
 
