@@ -418,8 +418,6 @@ def render_combos(p: dict) -> str:
 
 COMBO_TOOLS = [{"type": "web_search_20260209", "name": "web_search", "max_uses": 25},
                {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 12}]
-
-
 COMBO_METHOD = "combination_trial@v2"
 
 
@@ -448,6 +446,9 @@ def combos(_args) -> None:
                      "seeds": SEED_TRIALS.get(mondo, [])}
              for mondo, e in {**SHORTLIST, **EVENT_SHORTLIST}.items()}
     run_id = llm.run(task, items)
+    decided = {mondo for mondo, _, _ in llm.decisions(run_id)}
+    if decided != set(items):  # the table is replaced whole, so a disease without a decision would lose its rows
+        raise SystemExit(f"no valid decision for {sorted(set(items) - decided)}; run again (decided ones are reused)")
     rows = [(mondo, trial_key(t), t["trial_name"], t["nct_id"], t["pmid"], t["year"], t["phase"],
              t["n_randomised"], t["two_pathway_arm"], t["one_pathway_arm"], t["comparator_pathways"],
              t["added_pathway"], t["design"], t["relation"], t["primary_endpoint"], t["result"],
@@ -467,16 +468,14 @@ def combos(_args) -> None:
                                  ci_low, ci_high, effect_text, limited_by, stopped_for_safety, sources, quote,
                                  llm_decision_id) VALUES %s""", rows)
         conn.commit()
-    decided = {mondo for mondo, _, _ in llm.decisions(run_id)}
     by_disease: dict[str, list[dict]] = {}
     for r in rows:
         by_disease.setdefault(r[0], []).append({"relation": r[13], "result": r[15], "stopped_for_safety": r[22]})
-    print(f"diseases decided={len(decided)}/{len(items)} trials={len(rows)} "
+    print(f"diseases={len(items)} trials={len(rows)} "
           f"relations={dict(Counter(r[13] for r in rows))} results={dict(Counter(r[15] for r in rows))}")
     for mondo, e in {**SHORTLIST, **EVENT_SHORTLIST}.items():
         trials = by_disease.get(mondo, [])
-        print(f"  {e.disease}: " + (f"trials={len(trials)} combination_beats_single={combination_beats_single(trials)}"
-                                    if mondo in decided else "no valid decision; run again"))
+        print(f"  {e.disease}: trials={len(trials)} combination_beats_single={combination_beats_single(trials)}")
 
 
 def main() -> None:
